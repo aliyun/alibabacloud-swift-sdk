@@ -7009,29 +7009,41 @@ public class ChangeLhDagOwnerResponse : Tea.TeaModel {
 }
 
 public class ChatWithDesensitizeRequest : Tea.TeaModel {
+    public var audioJson: String?
+
     public var desensitizationRule: String?
+
+    public var enableCodeInterpreter: Bool?
+
+    public var enableSearch: Bool?
 
     public var enableThinking: Bool?
 
     public var instanceId: Int64?
 
+    public var logprobs: Bool?
+
     public var maxTokens: Int32?
 
-    public var messages: [[String: Any]]?
+    public var messages: [Any]?
+
+    public var modalitiesList: [String]?
 
     public var model: String?
 
     public var needDesensitization: Bool?
 
-    public var presencePenalty: Double?
+    public var presencePenalty: String?
 
     public var responseFormat: String?
+
+    public var searchOptions: [String: String]?
 
     public var seed: Int32?
 
     public var stop: [String]?
 
-    public var temperature: Double?
+    public var temperature: String?
 
     public var thinkingBudget: Int32?
 
@@ -7039,7 +7051,11 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
 
     public var topLogprobs: Int32?
 
-    public var topP: Double?
+    public var topP: String?
+
+    public var vlHighResolutionImages: Bool?
+
+    public var XDashScopeDataInspection: String?
 
     public override init() {
         super.init()
@@ -7055,8 +7071,17 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audioJson != nil {
+            map["AudioJson"] = self.audioJson!
+        }
         if self.desensitizationRule != nil {
             map["DesensitizationRule"] = self.desensitizationRule!
+        }
+        if self.enableCodeInterpreter != nil {
+            map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
+        }
+        if self.enableSearch != nil {
+            map["EnableSearch"] = self.enableSearch!
         }
         if self.enableThinking != nil {
             map["EnableThinking"] = self.enableThinking!
@@ -7064,11 +7089,17 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.logprobs != nil {
+            map["Logprobs"] = self.logprobs!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
         if self.messages != nil {
             map["Messages"] = self.messages!
+        }
+        if self.modalitiesList != nil {
+            map["ModalitiesList"] = self.modalitiesList!
         }
         if self.model != nil {
             map["Model"] = self.model!
@@ -7081,6 +7112,9 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         }
         if self.responseFormat != nil {
             map["ResponseFormat"] = self.responseFormat!
+        }
+        if self.searchOptions != nil {
+            map["SearchOptions"] = self.searchOptions!
         }
         if self.seed != nil {
             map["Seed"] = self.seed!
@@ -7103,13 +7137,28 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if self.topP != nil {
             map["TopP"] = self.topP!
         }
+        if self.vlHighResolutionImages != nil {
+            map["VlHighResolutionImages"] = self.vlHighResolutionImages!
+        }
+        if self.XDashScopeDataInspection != nil {
+            map["XDashScopeDataInspection"] = self.XDashScopeDataInspection!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AudioJson"] as? String {
+            self.audioJson = value
+        }
         if let value = dict["DesensitizationRule"] as? String {
             self.desensitizationRule = value
+        }
+        if let value = dict["EnableCodeInterpreter"] as? Bool {
+            self.enableCodeInterpreter = value
+        }
+        if let value = dict["EnableSearch"] as? Bool {
+            self.enableSearch = value
         }
         if let value = dict["EnableThinking"] as? Bool {
             self.enableThinking = value
@@ -7117,11 +7166,17 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? Int64 {
             self.instanceId = value
         }
+        if let value = dict["Logprobs"] as? Bool {
+            self.logprobs = value
+        }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
         }
-        if let value = dict["Messages"] as? [[String: Any]] {
+        if let value = dict["Messages"] as? [Any] {
             self.messages = value
+        }
+        if let value = dict["ModalitiesList"] as? [String] {
+            self.modalitiesList = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
@@ -7129,11 +7184,14 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if let value = dict["NeedDesensitization"] as? Bool {
             self.needDesensitization = value
         }
-        if let value = dict["PresencePenalty"] as? Double {
+        if let value = dict["PresencePenalty"] as? String {
             self.presencePenalty = value
         }
         if let value = dict["ResponseFormat"] as? String {
             self.responseFormat = value
+        }
+        if let value = dict["SearchOptions"] as? [String: String] {
+            self.searchOptions = value
         }
         if let value = dict["Seed"] as? Int32 {
             self.seed = value
@@ -7141,7 +7199,7 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if let value = dict["Stop"] as? [String] {
             self.stop = value
         }
-        if let value = dict["Temperature"] as? Double {
+        if let value = dict["Temperature"] as? String {
             self.temperature = value
         }
         if let value = dict["ThinkingBudget"] as? Int32 {
@@ -7153,36 +7211,54 @@ public class ChatWithDesensitizeRequest : Tea.TeaModel {
         if let value = dict["TopLogprobs"] as? Int32 {
             self.topLogprobs = value
         }
-        if let value = dict["TopP"] as? Double {
+        if let value = dict["TopP"] as? String {
             self.topP = value
+        }
+        if let value = dict["VlHighResolutionImages"] as? Bool {
+            self.vlHighResolutionImages = value
+        }
+        if let value = dict["XDashScopeDataInspection"] as? String {
+            self.XDashScopeDataInspection = value
         }
     }
 }
 
 public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
+    public var audioJson: String?
+
     public var desensitizationRule: String?
+
+    public var enableCodeInterpreter: Bool?
+
+    public var enableSearch: Bool?
 
     public var enableThinking: Bool?
 
     public var instanceId: Int64?
 
+    public var logprobs: Bool?
+
     public var maxTokens: Int32?
 
     public var messagesShrink: String?
+
+    public var modalitiesListShrink: String?
 
     public var model: String?
 
     public var needDesensitization: Bool?
 
-    public var presencePenalty: Double?
+    public var presencePenalty: String?
 
     public var responseFormat: String?
+
+    public var searchOptionsShrink: String?
 
     public var seed: Int32?
 
     public var stopShrink: String?
 
-    public var temperature: Double?
+    public var temperature: String?
 
     public var thinkingBudget: Int32?
 
@@ -7190,7 +7266,11 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
 
     public var topLogprobs: Int32?
 
-    public var topP: Double?
+    public var topP: String?
+
+    public var vlHighResolutionImages: Bool?
+
+    public var XDashScopeDataInspection: String?
 
     public override init() {
         super.init()
@@ -7206,8 +7286,17 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audioJson != nil {
+            map["AudioJson"] = self.audioJson!
+        }
         if self.desensitizationRule != nil {
             map["DesensitizationRule"] = self.desensitizationRule!
+        }
+        if self.enableCodeInterpreter != nil {
+            map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
+        }
+        if self.enableSearch != nil {
+            map["EnableSearch"] = self.enableSearch!
         }
         if self.enableThinking != nil {
             map["EnableThinking"] = self.enableThinking!
@@ -7215,11 +7304,17 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.logprobs != nil {
+            map["Logprobs"] = self.logprobs!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
         if self.messagesShrink != nil {
             map["Messages"] = self.messagesShrink!
+        }
+        if self.modalitiesListShrink != nil {
+            map["ModalitiesList"] = self.modalitiesListShrink!
         }
         if self.model != nil {
             map["Model"] = self.model!
@@ -7232,6 +7327,9 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         }
         if self.responseFormat != nil {
             map["ResponseFormat"] = self.responseFormat!
+        }
+        if self.searchOptionsShrink != nil {
+            map["SearchOptions"] = self.searchOptionsShrink!
         }
         if self.seed != nil {
             map["Seed"] = self.seed!
@@ -7254,13 +7352,28 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if self.topP != nil {
             map["TopP"] = self.topP!
         }
+        if self.vlHighResolutionImages != nil {
+            map["VlHighResolutionImages"] = self.vlHighResolutionImages!
+        }
+        if self.XDashScopeDataInspection != nil {
+            map["XDashScopeDataInspection"] = self.XDashScopeDataInspection!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AudioJson"] as? String {
+            self.audioJson = value
+        }
         if let value = dict["DesensitizationRule"] as? String {
             self.desensitizationRule = value
+        }
+        if let value = dict["EnableCodeInterpreter"] as? Bool {
+            self.enableCodeInterpreter = value
+        }
+        if let value = dict["EnableSearch"] as? Bool {
+            self.enableSearch = value
         }
         if let value = dict["EnableThinking"] as? Bool {
             self.enableThinking = value
@@ -7268,11 +7381,17 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? Int64 {
             self.instanceId = value
         }
+        if let value = dict["Logprobs"] as? Bool {
+            self.logprobs = value
+        }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
         }
         if let value = dict["Messages"] as? String {
             self.messagesShrink = value
+        }
+        if let value = dict["ModalitiesList"] as? String {
+            self.modalitiesListShrink = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
@@ -7280,11 +7399,14 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if let value = dict["NeedDesensitization"] as? Bool {
             self.needDesensitization = value
         }
-        if let value = dict["PresencePenalty"] as? Double {
+        if let value = dict["PresencePenalty"] as? String {
             self.presencePenalty = value
         }
         if let value = dict["ResponseFormat"] as? String {
             self.responseFormat = value
+        }
+        if let value = dict["SearchOptions"] as? String {
+            self.searchOptionsShrink = value
         }
         if let value = dict["Seed"] as? Int32 {
             self.seed = value
@@ -7292,7 +7414,7 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if let value = dict["Stop"] as? String {
             self.stopShrink = value
         }
-        if let value = dict["Temperature"] as? Double {
+        if let value = dict["Temperature"] as? String {
             self.temperature = value
         }
         if let value = dict["ThinkingBudget"] as? Int32 {
@@ -7304,8 +7426,14 @@ public class ChatWithDesensitizeShrinkRequest : Tea.TeaModel {
         if let value = dict["TopLogprobs"] as? Int32 {
             self.topLogprobs = value
         }
-        if let value = dict["TopP"] as? Double {
+        if let value = dict["TopP"] as? String {
             self.topP = value
+        }
+        if let value = dict["VlHighResolutionImages"] as? Bool {
+            self.vlHighResolutionImages = value
+        }
+        if let value = dict["XDashScopeDataInspection"] as? String {
+            self.XDashScopeDataInspection = value
         }
     }
 }
@@ -7361,6 +7489,8 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
             }
             public var finishReason: String?
 
+            public var logprobs: [String: Any]?
+
             public var message: ChatWithDesensitizeResponseBody.Data.Choices.Message?
 
             public override init() {
@@ -7381,6 +7511,9 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
                 if self.finishReason != nil {
                     map["FinishReason"] = self.finishReason!
                 }
+                if self.logprobs != nil {
+                    map["Logprobs"] = self.logprobs!
+                }
                 if self.message != nil {
                     map["Message"] = self.message?.toMap()
                 }
@@ -7392,6 +7525,9 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
                 if let value = dict["FinishReason"] as? String {
                     self.finishReason = value
                 }
+                if let value = dict["Logprobs"] as? [String: Any] {
+                    self.logprobs = value
+                }
                 if let value = dict["Message"] as? [String: Any?] {
                     var model = ChatWithDesensitizeResponseBody.Data.Choices.Message()
                     model.fromMap(value)
@@ -7402,7 +7538,11 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
         public class Usage : Tea.TeaModel {
             public var completionTokens: String?
 
+            public var completionTokensDetails: [String: String]?
+
             public var promptTokens: String?
+
+            public var promptTokensDetails: [String: String]?
 
             public var totalTokens: String?
 
@@ -7423,8 +7563,14 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
                 if self.completionTokens != nil {
                     map["CompletionTokens"] = self.completionTokens!
                 }
+                if self.completionTokensDetails != nil {
+                    map["CompletionTokensDetails"] = self.completionTokensDetails!
+                }
                 if self.promptTokens != nil {
                     map["PromptTokens"] = self.promptTokens!
+                }
+                if self.promptTokensDetails != nil {
+                    map["PromptTokensDetails"] = self.promptTokensDetails!
                 }
                 if self.totalTokens != nil {
                     map["TotalTokens"] = self.totalTokens!
@@ -7437,8 +7583,14 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
                 if let value = dict["CompletionTokens"] as? String {
                     self.completionTokens = value
                 }
+                if let value = dict["CompletionTokensDetails"] as? [String: String] {
+                    self.completionTokensDetails = value
+                }
                 if let value = dict["PromptTokens"] as? String {
                     self.promptTokens = value
+                }
+                if let value = dict["PromptTokensDetails"] as? [String: String] {
+                    self.promptTokensDetails = value
                 }
                 if let value = dict["TotalTokens"] as? String {
                     self.totalTokens = value
@@ -7449,7 +7601,13 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
 
         public var created: String?
 
+        public var message: String?
+
         public var model: String?
+
+        public var statusCode: String?
+
+        public var type: String?
 
         public var usage: ChatWithDesensitizeResponseBody.Data.Usage?
 
@@ -7478,8 +7636,17 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
             if self.created != nil {
                 map["Created"] = self.created!
             }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
             if self.model != nil {
                 map["Model"] = self.model!
+            }
+            if self.statusCode != nil {
+                map["StatusCode"] = self.statusCode!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
             }
             if self.usage != nil {
                 map["Usage"] = self.usage?.toMap()
@@ -7505,8 +7672,17 @@ public class ChatWithDesensitizeResponseBody : Tea.TeaModel {
             if let value = dict["Created"] as? String {
                 self.created = value
             }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
             if let value = dict["Model"] as? String {
                 self.model = value
+            }
+            if let value = dict["StatusCode"] as? String {
+                self.statusCode = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
             if let value = dict["Usage"] as? [String: Any?] {
                 var model = ChatWithDesensitizeResponseBody.Data.Usage()
@@ -7624,6 +7800,297 @@ public class ChatWithDesensitizeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ChatWithDesensitizeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CheckBatchTableAccessPermissionRequest : Tea.TeaModel {
+    public var dbId: Int64?
+
+    public var logic: Bool?
+
+    public var permissionType: String?
+
+    public var tableNameList: [String]?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dbId != nil {
+            map["DbId"] = self.dbId!
+        }
+        if self.logic != nil {
+            map["Logic"] = self.logic!
+        }
+        if self.permissionType != nil {
+            map["PermissionType"] = self.permissionType!
+        }
+        if self.tableNameList != nil {
+            map["TableNameList"] = self.tableNameList!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DbId"] as? Int64 {
+            self.dbId = value
+        }
+        if let value = dict["Logic"] as? Bool {
+            self.logic = value
+        }
+        if let value = dict["PermissionType"] as? String {
+            self.permissionType = value
+        }
+        if let value = dict["TableNameList"] as? [String] {
+            self.tableNameList = value
+        }
+        if let value = dict["Tid"] as? Int64 {
+            self.tid = value
+        }
+    }
+}
+
+public class CheckBatchTableAccessPermissionShrinkRequest : Tea.TeaModel {
+    public var dbId: Int64?
+
+    public var logic: Bool?
+
+    public var permissionType: String?
+
+    public var tableNameListShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dbId != nil {
+            map["DbId"] = self.dbId!
+        }
+        if self.logic != nil {
+            map["Logic"] = self.logic!
+        }
+        if self.permissionType != nil {
+            map["PermissionType"] = self.permissionType!
+        }
+        if self.tableNameListShrink != nil {
+            map["TableNameList"] = self.tableNameListShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DbId"] as? Int64 {
+            self.dbId = value
+        }
+        if let value = dict["Logic"] as? Bool {
+            self.logic = value
+        }
+        if let value = dict["PermissionType"] as? String {
+            self.permissionType = value
+        }
+        if let value = dict["TableNameList"] as? String {
+            self.tableNameListShrink = value
+        }
+        if let value = dict["Tid"] as? Int64 {
+            self.tid = value
+        }
+    }
+}
+
+public class CheckBatchTableAccessPermissionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var errorMessage: String?
+
+        public var success: String?
+
+        public var tableName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["Success"] as? String {
+                self.success = value
+            }
+            if let value = dict["TableName"] as? String {
+                self.tableName = value
+            }
+        }
+    }
+    public var data: [CheckBatchTableAccessPermissionResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [CheckBatchTableAccessPermissionResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = CheckBatchTableAccessPermissionResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CheckBatchTableAccessPermissionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckBatchTableAccessPermissionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CheckBatchTableAccessPermissionResponseBody()
             model.fromMap(value)
             self.body = model
         }
