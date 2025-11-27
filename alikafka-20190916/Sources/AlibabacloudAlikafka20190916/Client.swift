@@ -1047,6 +1047,141 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downgradePostPayOrderWithOptions(_ tmpReq: DowngradePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DowngradePostPayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DowngradePostPayOrderShrinkRequest = DowngradePostPayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.diskSize)) {
+            query["DiskSize"] = request.diskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eipMax)) {
+            query["EipMax"] = request.eipMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eipModel)) {
+            query["EipModel"] = request.eipModel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMax)) {
+            query["IoMax"] = request.ioMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
+            query["IoMaxSpec"] = request.ioMaxSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionNum)) {
+            query["PartitionNum"] = request.partitionNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specType)) {
+            query["SpecType"] = request.specType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicQuota)) {
+            query["TopicQuota"] = request.topicQuota!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DowngradePostPayOrder",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DowngradePostPayOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downgradePostPayOrder(_ request: DowngradePostPayOrderRequest) async throws -> DowngradePostPayOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await downgradePostPayOrderWithOptions(request as! DowngradePostPayOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downgradePrePayOrderWithOptions(_ tmpReq: DowngradePrePayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DowngradePrePayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DowngradePrePayOrderShrinkRequest = DowngradePrePayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.confluentConfig)) {
+            request.confluentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.confluentConfig, "ConfluentConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.confluentConfigShrink)) {
+            query["ConfluentConfig"] = request.confluentConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskSize)) {
+            query["DiskSize"] = request.diskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eipMax)) {
+            query["EipMax"] = request.eipMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eipModel)) {
+            query["EipModel"] = request.eipModel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMax)) {
+            query["IoMax"] = request.ioMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
+            query["IoMaxSpec"] = request.ioMaxSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidType)) {
+            query["PaidType"] = request.paidType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionNum)) {
+            query["PartitionNum"] = request.partitionNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specType)) {
+            query["SpecType"] = request.specType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicQuota)) {
+            query["TopicQuota"] = request.topicQuota!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DowngradePrePayOrder",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DowngradePrePayOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downgradePrePayOrder(_ request: DowngradePrePayOrderRequest) async throws -> DowngradePrePayOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await downgradePrePayOrderWithOptions(request as! DowngradePrePayOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enableAutoGroupCreationWithOptions(_ request: EnableAutoGroupCreationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableAutoGroupCreationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

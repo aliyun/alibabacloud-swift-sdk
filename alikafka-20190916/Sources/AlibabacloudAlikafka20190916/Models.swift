@@ -5729,6 +5729,894 @@ public class DescribeSaslUsersResponse : Tea.TeaModel {
     }
 }
 
+public class DowngradePostPayOrderRequest : Tea.TeaModel {
+    public class ServerlessConfig : Tea.TeaModel {
+        public var reservedPublishCapacity: Int64?
+
+        public var reservedSubscribeCapacity: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reservedPublishCapacity != nil {
+                map["ReservedPublishCapacity"] = self.reservedPublishCapacity!
+            }
+            if self.reservedSubscribeCapacity != nil {
+                map["ReservedSubscribeCapacity"] = self.reservedSubscribeCapacity!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ReservedPublishCapacity"] as? Int64 {
+                self.reservedPublishCapacity = value
+            }
+            if let value = dict["ReservedSubscribeCapacity"] as? Int64 {
+                self.reservedSubscribeCapacity = value
+            }
+        }
+    }
+    public var diskSize: Int32?
+
+    public var eipMax: Int32?
+
+    public var eipModel: Bool?
+
+    public var instanceId: String?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var serverlessConfig: DowngradePostPayOrderRequest.ServerlessConfig?
+
+    public var specType: String?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.serverlessConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.eipModel != nil {
+            map["EipModel"] = self.eipModel!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serverlessConfig != nil {
+            map["ServerlessConfig"] = self.serverlessConfig?.toMap()
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskSize"] as? Int32 {
+            self.diskSize = value
+        }
+        if let value = dict["EipMax"] as? Int32 {
+            self.eipMax = value
+        }
+        if let value = dict["EipModel"] as? Bool {
+            self.eipModel = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["IoMax"] as? Int32 {
+            self.ioMax = value
+        }
+        if let value = dict["IoMaxSpec"] as? String {
+            self.ioMaxSpec = value
+        }
+        if let value = dict["PartitionNum"] as? Int32 {
+            self.partitionNum = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ServerlessConfig"] as? [String: Any?] {
+            var model = DowngradePostPayOrderRequest.ServerlessConfig()
+            model.fromMap(value)
+            self.serverlessConfig = model
+        }
+        if let value = dict["SpecType"] as? String {
+            self.specType = value
+        }
+        if let value = dict["TopicQuota"] as? Int32 {
+            self.topicQuota = value
+        }
+    }
+}
+
+public class DowngradePostPayOrderShrinkRequest : Tea.TeaModel {
+    public var diskSize: Int32?
+
+    public var eipMax: Int32?
+
+    public var eipModel: Bool?
+
+    public var instanceId: String?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var serverlessConfigShrink: String?
+
+    public var specType: String?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.eipModel != nil {
+            map["EipModel"] = self.eipModel!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serverlessConfigShrink != nil {
+            map["ServerlessConfig"] = self.serverlessConfigShrink!
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiskSize"] as? Int32 {
+            self.diskSize = value
+        }
+        if let value = dict["EipMax"] as? Int32 {
+            self.eipMax = value
+        }
+        if let value = dict["EipModel"] as? Bool {
+            self.eipModel = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["IoMax"] as? Int32 {
+            self.ioMax = value
+        }
+        if let value = dict["IoMaxSpec"] as? String {
+            self.ioMaxSpec = value
+        }
+        if let value = dict["PartitionNum"] as? Int32 {
+            self.partitionNum = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ServerlessConfig"] as? String {
+            self.serverlessConfigShrink = value
+        }
+        if let value = dict["SpecType"] as? String {
+            self.specType = value
+        }
+        if let value = dict["TopicQuota"] as? Int32 {
+            self.topicQuota = value
+        }
+    }
+}
+
+public class DowngradePostPayOrderResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DowngradePostPayOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DowngradePostPayOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DowngradePostPayOrderResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DowngradePrePayOrderRequest : Tea.TeaModel {
+    public class ConfluentConfig : Tea.TeaModel {
+        public var connectCU: Int32?
+
+        public var connectReplica: Int32?
+
+        public var controlCenterCU: Int32?
+
+        public var controlCenterReplica: Int32?
+
+        public var controlCenterStorage: Int32?
+
+        public var kafkaCU: Int32?
+
+        public var kafkaReplica: Int32?
+
+        public var kafkaRestProxyCU: Int32?
+
+        public var kafkaRestProxyReplica: Int32?
+
+        public var kafkaStorage: Int32?
+
+        public var ksqlCU: Int32?
+
+        public var ksqlReplica: Int32?
+
+        public var ksqlStorage: Int32?
+
+        public var schemaRegistryCU: Int32?
+
+        public var schemaRegistryReplica: Int32?
+
+        public var zooKeeperCU: Int32?
+
+        public var zooKeeperReplica: Int32?
+
+        public var zooKeeperStorage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectCU != nil {
+                map["ConnectCU"] = self.connectCU!
+            }
+            if self.connectReplica != nil {
+                map["ConnectReplica"] = self.connectReplica!
+            }
+            if self.controlCenterCU != nil {
+                map["ControlCenterCU"] = self.controlCenterCU!
+            }
+            if self.controlCenterReplica != nil {
+                map["ControlCenterReplica"] = self.controlCenterReplica!
+            }
+            if self.controlCenterStorage != nil {
+                map["ControlCenterStorage"] = self.controlCenterStorage!
+            }
+            if self.kafkaCU != nil {
+                map["KafkaCU"] = self.kafkaCU!
+            }
+            if self.kafkaReplica != nil {
+                map["KafkaReplica"] = self.kafkaReplica!
+            }
+            if self.kafkaRestProxyCU != nil {
+                map["KafkaRestProxyCU"] = self.kafkaRestProxyCU!
+            }
+            if self.kafkaRestProxyReplica != nil {
+                map["KafkaRestProxyReplica"] = self.kafkaRestProxyReplica!
+            }
+            if self.kafkaStorage != nil {
+                map["KafkaStorage"] = self.kafkaStorage!
+            }
+            if self.ksqlCU != nil {
+                map["KsqlCU"] = self.ksqlCU!
+            }
+            if self.ksqlReplica != nil {
+                map["KsqlReplica"] = self.ksqlReplica!
+            }
+            if self.ksqlStorage != nil {
+                map["KsqlStorage"] = self.ksqlStorage!
+            }
+            if self.schemaRegistryCU != nil {
+                map["SchemaRegistryCU"] = self.schemaRegistryCU!
+            }
+            if self.schemaRegistryReplica != nil {
+                map["SchemaRegistryReplica"] = self.schemaRegistryReplica!
+            }
+            if self.zooKeeperCU != nil {
+                map["ZooKeeperCU"] = self.zooKeeperCU!
+            }
+            if self.zooKeeperReplica != nil {
+                map["ZooKeeperReplica"] = self.zooKeeperReplica!
+            }
+            if self.zooKeeperStorage != nil {
+                map["ZooKeeperStorage"] = self.zooKeeperStorage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectCU"] as? Int32 {
+                self.connectCU = value
+            }
+            if let value = dict["ConnectReplica"] as? Int32 {
+                self.connectReplica = value
+            }
+            if let value = dict["ControlCenterCU"] as? Int32 {
+                self.controlCenterCU = value
+            }
+            if let value = dict["ControlCenterReplica"] as? Int32 {
+                self.controlCenterReplica = value
+            }
+            if let value = dict["ControlCenterStorage"] as? Int32 {
+                self.controlCenterStorage = value
+            }
+            if let value = dict["KafkaCU"] as? Int32 {
+                self.kafkaCU = value
+            }
+            if let value = dict["KafkaReplica"] as? Int32 {
+                self.kafkaReplica = value
+            }
+            if let value = dict["KafkaRestProxyCU"] as? Int32 {
+                self.kafkaRestProxyCU = value
+            }
+            if let value = dict["KafkaRestProxyReplica"] as? Int32 {
+                self.kafkaRestProxyReplica = value
+            }
+            if let value = dict["KafkaStorage"] as? Int32 {
+                self.kafkaStorage = value
+            }
+            if let value = dict["KsqlCU"] as? Int32 {
+                self.ksqlCU = value
+            }
+            if let value = dict["KsqlReplica"] as? Int32 {
+                self.ksqlReplica = value
+            }
+            if let value = dict["KsqlStorage"] as? Int32 {
+                self.ksqlStorage = value
+            }
+            if let value = dict["SchemaRegistryCU"] as? Int32 {
+                self.schemaRegistryCU = value
+            }
+            if let value = dict["SchemaRegistryReplica"] as? Int32 {
+                self.schemaRegistryReplica = value
+            }
+            if let value = dict["ZooKeeperCU"] as? Int32 {
+                self.zooKeeperCU = value
+            }
+            if let value = dict["ZooKeeperReplica"] as? Int32 {
+                self.zooKeeperReplica = value
+            }
+            if let value = dict["ZooKeeperStorage"] as? Int32 {
+                self.zooKeeperStorage = value
+            }
+        }
+    }
+    public var confluentConfig: DowngradePrePayOrderRequest.ConfluentConfig?
+
+    public var diskSize: Int32?
+
+    public var eipMax: Int32?
+
+    public var eipModel: Bool?
+
+    public var instanceId: String?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var paidType: Int32?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var specType: String?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.confluentConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.confluentConfig != nil {
+            map["ConfluentConfig"] = self.confluentConfig?.toMap()
+        }
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.eipModel != nil {
+            map["EipModel"] = self.eipModel!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfluentConfig"] as? [String: Any?] {
+            var model = DowngradePrePayOrderRequest.ConfluentConfig()
+            model.fromMap(value)
+            self.confluentConfig = model
+        }
+        if let value = dict["DiskSize"] as? Int32 {
+            self.diskSize = value
+        }
+        if let value = dict["EipMax"] as? Int32 {
+            self.eipMax = value
+        }
+        if let value = dict["EipModel"] as? Bool {
+            self.eipModel = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["IoMax"] as? Int32 {
+            self.ioMax = value
+        }
+        if let value = dict["IoMaxSpec"] as? String {
+            self.ioMaxSpec = value
+        }
+        if let value = dict["PaidType"] as? Int32 {
+            self.paidType = value
+        }
+        if let value = dict["PartitionNum"] as? Int32 {
+            self.partitionNum = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SpecType"] as? String {
+            self.specType = value
+        }
+        if let value = dict["TopicQuota"] as? Int32 {
+            self.topicQuota = value
+        }
+    }
+}
+
+public class DowngradePrePayOrderShrinkRequest : Tea.TeaModel {
+    public var confluentConfigShrink: String?
+
+    public var diskSize: Int32?
+
+    public var eipMax: Int32?
+
+    public var eipModel: Bool?
+
+    public var instanceId: String?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var paidType: Int32?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var specType: String?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.confluentConfigShrink != nil {
+            map["ConfluentConfig"] = self.confluentConfigShrink!
+        }
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.eipModel != nil {
+            map["EipModel"] = self.eipModel!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfluentConfig"] as? String {
+            self.confluentConfigShrink = value
+        }
+        if let value = dict["DiskSize"] as? Int32 {
+            self.diskSize = value
+        }
+        if let value = dict["EipMax"] as? Int32 {
+            self.eipMax = value
+        }
+        if let value = dict["EipModel"] as? Bool {
+            self.eipModel = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["IoMax"] as? Int32 {
+            self.ioMax = value
+        }
+        if let value = dict["IoMaxSpec"] as? String {
+            self.ioMaxSpec = value
+        }
+        if let value = dict["PaidType"] as? Int32 {
+            self.paidType = value
+        }
+        if let value = dict["PartitionNum"] as? Int32 {
+            self.partitionNum = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SpecType"] as? String {
+            self.specType = value
+        }
+        if let value = dict["TopicQuota"] as? Int32 {
+            self.topicQuota = value
+        }
+    }
+}
+
+public class DowngradePrePayOrderResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DowngradePrePayOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DowngradePrePayOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DowngradePrePayOrderResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnableAutoGroupCreationRequest : Tea.TeaModel {
     public var enable: Bool?
 
@@ -8749,6 +9637,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var saslEndPoint: String?
 
+            public var scheduledRetirement: Bool?
+
             public var securityGroup: String?
 
             public var series: String?
@@ -8900,6 +9790,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if self.saslEndPoint != nil {
                     map["SaslEndPoint"] = self.saslEndPoint!
+                }
+                if self.scheduledRetirement != nil {
+                    map["ScheduledRetirement"] = self.scheduledRetirement!
                 }
                 if self.securityGroup != nil {
                     map["SecurityGroup"] = self.securityGroup!
@@ -9062,6 +9955,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SaslEndPoint"] as? String {
                     self.saslEndPoint = value
+                }
+                if let value = dict["ScheduledRetirement"] as? Bool {
+                    self.scheduledRetirement = value
                 }
                 if let value = dict["SecurityGroup"] as? String {
                     self.securityGroup = value
