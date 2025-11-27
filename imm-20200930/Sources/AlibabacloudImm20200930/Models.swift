@@ -7945,6 +7945,8 @@ public class TargetVideo : Tea.TeaModel {
 
         public var scaleType: String?
 
+        public var videoSlim: Int32?
+
         public override init() {
             super.init()
         }
@@ -8010,6 +8012,9 @@ public class TargetVideo : Tea.TeaModel {
             if self.scaleType != nil {
                 map["ScaleType"] = self.scaleType!
             }
+            if self.videoSlim != nil {
+                map["VideoSlim"] = self.videoSlim!
+            }
             return map
         }
 
@@ -8065,6 +8070,9 @@ public class TargetVideo : Tea.TeaModel {
             }
             if let value = dict["ScaleType"] as? String {
                 self.scaleType = value
+            }
+            if let value = dict["VideoSlim"] as? Int32 {
+                self.videoSlim = value
             }
         }
     }
@@ -27870,6 +27878,234 @@ public class IndexFileMetaResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = IndexFileMetaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAttachedOSSBucketsRequest : Tea.TeaModel {
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var projectName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ProjectName"] as? String {
+            self.projectName = value
+        }
+    }
+}
+
+public class ListAttachedOSSBucketsResponseBody : Tea.TeaModel {
+    public class AttachedOSSBuckets : Tea.TeaModel {
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var OSSBucket: String?
+
+        public var ownerId: String?
+
+        public var projectName: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.OSSBucket != nil {
+                map["OSSBucket"] = self.OSSBucket!
+            }
+            if self.ownerId != nil {
+                map["OwnerId"] = self.ownerId!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["OSSBucket"] as? String {
+                self.OSSBucket = value
+            }
+            if let value = dict["OwnerId"] as? String {
+                self.ownerId = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
+            }
+        }
+    }
+    public var attachedOSSBuckets: [ListAttachedOSSBucketsResponseBody.AttachedOSSBuckets]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attachedOSSBuckets != nil {
+            var tmp : [Any] = []
+            for k in self.attachedOSSBuckets! {
+                tmp.append(k.toMap())
+            }
+            map["AttachedOSSBuckets"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttachedOSSBuckets"] as? [Any?] {
+            var tmp : [ListAttachedOSSBucketsResponseBody.AttachedOSSBuckets] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAttachedOSSBucketsResponseBody.AttachedOSSBuckets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.attachedOSSBuckets = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListAttachedOSSBucketsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAttachedOSSBucketsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAttachedOSSBucketsResponseBody()
             model.fromMap(value)
             self.body = model
         }
