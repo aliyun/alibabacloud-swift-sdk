@@ -1686,6 +1686,8 @@ public class CreateUsersRequest : Tea.TeaModel {
 
         public var endUserId: String?
 
+        public var groupIdList: [String]?
+
         public var orgId: String?
 
         public var ownerType: String?
@@ -1718,6 +1720,9 @@ public class CreateUsersRequest : Tea.TeaModel {
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
             }
+            if self.groupIdList != nil {
+                map["GroupIdList"] = self.groupIdList!
+            }
             if self.orgId != nil {
                 map["OrgId"] = self.orgId!
             }
@@ -1746,6 +1751,9 @@ public class CreateUsersRequest : Tea.TeaModel {
             }
             if let value = dict["EndUserId"] as? String {
                 self.endUserId = value
+            }
+            if let value = dict["GroupIdList"] as? [String] {
+                self.groupIdList = value
             }
             if let value = dict["OrgId"] as? String {
                 self.orgId = value
@@ -2742,6 +2750,8 @@ public class DescribeGroupsRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var idpId: String?
+
     public var loginPolicyId: String?
 
     public var pageNumber: Int32?
@@ -2778,6 +2788,9 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.idpId != nil {
+            map["IdpId"] = self.idpId!
+        }
         if self.loginPolicyId != nil {
             map["LoginPolicyId"] = self.loginPolicyId!
         }
@@ -2809,6 +2822,9 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
+        }
+        if let value = dict["IdpId"] as? String {
+            self.idpId = value
         }
         if let value = dict["LoginPolicyId"] as? String {
             self.loginPolicyId = value
@@ -4812,6 +4828,10 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
         public var ownerType: String?
 
+        public var passwordExpireDays: Int32?
+
+        public var passwordExpireRestDays: Int32?
+
         public var phone: String?
 
         public var properties: [DescribeUsersResponseBody.Users.Properties]?
@@ -4891,6 +4911,12 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if self.ownerType != nil {
                 map["OwnerType"] = self.ownerType!
+            }
+            if self.passwordExpireDays != nil {
+                map["PasswordExpireDays"] = self.passwordExpireDays!
+            }
+            if self.passwordExpireRestDays != nil {
+                map["PasswordExpireRestDays"] = self.passwordExpireRestDays!
             }
             if self.phone != nil {
                 map["Phone"] = self.phone!
@@ -4985,6 +5011,12 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if let value = dict["OwnerType"] as? String {
                 self.ownerType = value
+            }
+            if let value = dict["PasswordExpireDays"] as? Int32 {
+                self.passwordExpireDays = value
+            }
+            if let value = dict["PasswordExpireRestDays"] as? Int32 {
+                self.passwordExpireRestDays = value
             }
             if let value = dict["Phone"] as? String {
                 self.phone = value
@@ -5701,6 +5733,44 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Groups : Tea.TeaModel {
+            public var groupId: String?
+
+            public var groupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GroupId"] as? String {
+                    self.groupId = value
+                }
+                if let value = dict["GroupName"] as? String {
+                    self.groupName = value
+                }
+            }
+        }
         public class OrgList : Tea.TeaModel {
             public var orgId: String?
 
@@ -5921,6 +5991,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
 
         public var externalInfo: FilterUsersResponseBody.Users.ExternalInfo?
 
+        public var groups: [FilterUsersResponseBody.Users.Groups]?
+
         public var id: Int64?
 
         public var isTenantManager: Bool?
@@ -5980,6 +6052,13 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             }
             if self.externalInfo != nil {
                 map["ExternalInfo"] = self.externalInfo?.toMap()
+            }
+            if self.groups != nil {
+                var tmp : [Any] = []
+                for k in self.groups! {
+                    tmp.append(k.toMap())
+                }
+                map["Groups"] = tmp
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -6056,6 +6135,19 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 var model = FilterUsersResponseBody.Users.ExternalInfo()
                 model.fromMap(value)
                 self.externalInfo = model
+            }
+            if let value = dict["Groups"] as? [Any?] {
+                var tmp : [FilterUsersResponseBody.Users.Groups] = []
+                for v in value {
+                    if v != nil {
+                        var model = FilterUsersResponseBody.Users.Groups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.groups = tmp
             }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
