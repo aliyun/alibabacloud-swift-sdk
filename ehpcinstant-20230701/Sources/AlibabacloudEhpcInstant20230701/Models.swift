@@ -2493,6 +2493,149 @@ public class DeleteActionPlanResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteJobRecordsRequest : Tea.TeaModel {
+    public var jobIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobIds != nil {
+            map["JobIds"] = self.jobIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobIds"] as? [String] {
+            self.jobIds = value
+        }
+    }
+}
+
+public class DeleteJobRecordsShrinkRequest : Tea.TeaModel {
+    public var jobIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobIdsShrink != nil {
+            map["JobIds"] = self.jobIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobIds"] as? String {
+            self.jobIdsShrink = value
+        }
+    }
+}
+
+public class DeleteJobRecordsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteJobRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteJobRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteJobRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteJobsRequest : Tea.TeaModel {
     public class JobSpec : Tea.TeaModel {
         public class TaskSpec : Tea.TeaModel {
@@ -6468,6 +6611,8 @@ public class ListExecutorsRequest : Tea.TeaModel {
 
         public var timeCreatedBefore: Int32?
 
+        public var vpcId: String?
+
         public var vswitchId: String?
 
         public override init() {
@@ -6505,6 +6650,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             if self.timeCreatedBefore != nil {
                 map["TimeCreatedBefore"] = self.timeCreatedBefore!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             if self.vswitchId != nil {
                 map["VswitchId"] = self.vswitchId!
             }
@@ -6533,6 +6681,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             }
             if let value = dict["TimeCreatedBefore"] as? Int32 {
                 self.timeCreatedBefore = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
             }
             if let value = dict["VswitchId"] as? String {
                 self.vswitchId = value
@@ -6827,6 +6978,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var taskSustainable: Bool?
 
+        public var vpcId: String?
+
         public var vswitchId: String?
 
         public override init() {
@@ -6917,6 +7070,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.taskSustainable != nil {
                 map["TaskSustainable"] = self.taskSustainable!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             if self.vswitchId != nil {
                 map["VswitchId"] = self.vswitchId!
             }
@@ -7005,6 +7161,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TaskSustainable"] as? Bool {
                 self.taskSustainable = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
             }
             if let value = dict["VswitchId"] as? String {
                 self.vswitchId = value

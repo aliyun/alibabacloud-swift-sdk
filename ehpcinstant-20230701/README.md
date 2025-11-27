@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEhpcInstant20230701` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ehpcinstant-20230701" "3.2.1"
+github "alibabacloud-sdk-swift/ehpcinstant-20230701" "3.3.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEhpcInstant20230701` into your Xcode project using [Sw
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpcinstant-20230701.git", from: "3.2.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpcinstant-20230701.git", from: "3.3.0")
 ]
 ```
 
