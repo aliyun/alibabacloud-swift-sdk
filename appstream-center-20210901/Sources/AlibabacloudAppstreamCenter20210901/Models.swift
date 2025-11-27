@@ -1271,6 +1271,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
     public var userDefinePolicy: CreateAppInstanceGroupRequest.UserDefinePolicy?
 
+    public var userGroupIds: [String]?
+
     public var userInfo: CreateAppInstanceGroupRequest.UserInfo?
 
     public var users: [String]?
@@ -1371,6 +1373,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         if self.userDefinePolicy != nil {
             map["UserDefinePolicy"] = self.userDefinePolicy?.toMap()
         }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
         if self.userInfo != nil {
             map["UserInfo"] = self.userInfo?.toMap()
         }
@@ -1469,6 +1474,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             model.fromMap(value)
             self.userDefinePolicy = model
         }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
+        }
         if let value = dict["UserInfo"] as? [String: Any?] {
             var model = CreateAppInstanceGroupRequest.UserInfo()
             model.fromMap(value)
@@ -1533,6 +1541,8 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
     public var subPayType: String?
 
     public var userDefinePolicyShrink: String?
+
+    public var userGroupIds: [String]?
 
     public var userInfoShrink: String?
 
@@ -1626,6 +1636,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.userDefinePolicyShrink != nil {
             map["UserDefinePolicy"] = self.userDefinePolicyShrink!
         }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
         if self.userInfoShrink != nil {
             map["UserInfo"] = self.userInfoShrink!
         }
@@ -1711,6 +1724,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["UserDefinePolicy"] as? String {
             self.userDefinePolicyShrink = value
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
         }
         if let value = dict["UserInfo"] as? String {
             self.userInfoShrink = value
@@ -3976,7 +3992,11 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportUserGroupMixedAuth: Bool?
+
         public var tags: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags]?
+
+        public var userGroupAuthMode: String?
 
         public override init() {
             super.init()
@@ -4106,12 +4126,18 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
             }
             return map
         }
@@ -4245,6 +4271,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if let value = dict["Status"] as? String {
                 self.status = value
             }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags] = []
                 for v in value {
@@ -4257,6 +4286,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
             }
         }
     }
@@ -6071,6 +6103,8 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var excludedUserGroupIds: [String]?
+
     public var nodeInstanceType: String?
 
     public var officeSiteId: String?
@@ -6086,6 +6120,8 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
     public var status: [String]?
 
     public var tag: [ListAppInstanceGroupRequest.Tag]?
+
+    public var userGroupIds: [String]?
 
     public override init() {
         super.init()
@@ -6112,6 +6148,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.excludedUserGroupIds != nil {
+            map["ExcludedUserGroupIds"] = self.excludedUserGroupIds!
         }
         if self.nodeInstanceType != nil {
             map["NodeInstanceType"] = self.nodeInstanceType!
@@ -6141,6 +6180,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
         return map
     }
 
@@ -6157,6 +6199,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ExcludedUserGroupIds"] as? [String] {
+            self.excludedUserGroupIds = value
         }
         if let value = dict["NodeInstanceType"] as? String {
             self.nodeInstanceType = value
@@ -6191,6 +6236,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
         }
     }
 }
@@ -6761,7 +6809,11 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var supportUserGroupMixedAuth: Bool?
+
         public var tags: [ListAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags]?
+
+        public var userGroupAuthMode: String?
 
         public override init() {
             super.init()
@@ -6895,12 +6947,18 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.supportUserGroupMixedAuth != nil {
+                map["SupportUserGroupMixedAuth"] = self.supportUserGroupMixedAuth!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.userGroupAuthMode != nil {
+                map["UserGroupAuthMode"] = self.userGroupAuthMode!
             }
             return map
         }
@@ -7044,6 +7102,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if let value = dict["Status"] as? String {
                 self.status = value
             }
+            if let value = dict["SupportUserGroupMixedAuth"] as? Bool {
+                self.supportUserGroupMixedAuth = value
+            }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [ListAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags] = []
                 for v in value {
@@ -7056,6 +7117,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["UserGroupAuthMode"] as? String {
+                self.userGroupAuthMode = value
             }
         }
     }
