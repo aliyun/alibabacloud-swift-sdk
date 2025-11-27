@@ -8665,6 +8665,8 @@ public class OssConfiguration : Tea.TeaModel {
 
     public var prefix_: String?
 
+    public var region: String?
+
     public override init() {
         super.init()
     }
@@ -8691,6 +8693,9 @@ public class OssConfiguration : Tea.TeaModel {
         if self.prefix_ != nil {
             map["prefix"] = self.prefix_!
         }
+        if self.region != nil {
+            map["region"] = self.region!
+        }
         return map
     }
 
@@ -8707,6 +8712,9 @@ public class OssConfiguration : Tea.TeaModel {
         }
         if let value = dict["prefix"] as? String {
             self.prefix_ = value
+        }
+        if let value = dict["region"] as? String {
+            self.region = value
         }
     }
 }
@@ -10253,6 +10261,8 @@ public class Template : Tea.TeaModel {
 
     public var credentialConfiguration: CredentialConfiguration?
 
+    public var description_: String?
+
     public var diskSize: Int32?
 
     public var environmentVariables: String?
@@ -10326,6 +10336,9 @@ public class Template : Tea.TeaModel {
         }
         if self.credentialConfiguration != nil {
             map["credentialConfiguration"] = self.credentialConfiguration?.toMap()
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
@@ -10414,6 +10427,9 @@ public class Template : Tea.TeaModel {
             var model = CredentialConfiguration()
             model.fromMap(value)
             self.credentialConfiguration = model
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
@@ -15167,6 +15183,8 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
 
     public var searchMode: String?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -15193,6 +15211,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         if self.searchMode != nil {
             map["searchMode"] = self.searchMode!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         return map
     }
 
@@ -15209,6 +15230,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         }
         if let value = dict["searchMode"] as? String {
             self.searchMode = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
     }
 }
