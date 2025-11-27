@@ -19384,6 +19384,8 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
 
             public var creationTime: String?
 
+            public var DBClusterId: String?
+
             public var description_: String?
 
             public var endpoints: DescribeApplicationsResponseBody.Items.Applications.Endpoints?
@@ -19428,6 +19430,9 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
                 }
+                if self.DBClusterId != nil {
+                    map["DBClusterId"] = self.DBClusterId!
+                }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
@@ -19471,6 +19476,9 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
+                }
+                if let value = dict["DBClusterId"] as? String {
+                    self.DBClusterId = value
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
