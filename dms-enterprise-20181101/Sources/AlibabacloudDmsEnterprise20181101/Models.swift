@@ -7806,6 +7806,581 @@ public class ChatWithDesensitizeResponse : Tea.TeaModel {
     }
 }
 
+public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
+    public var audioJson: String?
+
+    public var desensitizationRule: String?
+
+    public var enableCodeInterpreter: Bool?
+
+    public var enableSearch: Bool?
+
+    public var enableThinking: Bool?
+
+    public var includeUsage: Bool?
+
+    public var instanceId: Int64?
+
+    public var logprobs: Bool?
+
+    public var maxTokens: Int32?
+
+    public var messages: [Any]?
+
+    public var modalitiesList: [String]?
+
+    public var model: String?
+
+    public var needDesensitization: Bool?
+
+    public var presencePenalty: String?
+
+    public var responseFormat: String?
+
+    public var searchOptions: [String: String]?
+
+    public var seed: Int32?
+
+    public var stop: [String]?
+
+    public var stream: Bool?
+
+    public var temperature: String?
+
+    public var thinkingBudget: Int32?
+
+    public var topK: Int32?
+
+    public var topLogprobs: Int32?
+
+    public var topP: String?
+
+    public var vlHighResolutionImages: Bool?
+
+    public var XDashScopeDataInspection: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.audioJson != nil {
+            map["AudioJson"] = self.audioJson!
+        }
+        if self.desensitizationRule != nil {
+            map["DesensitizationRule"] = self.desensitizationRule!
+        }
+        if self.enableCodeInterpreter != nil {
+            map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
+        }
+        if self.enableSearch != nil {
+            map["EnableSearch"] = self.enableSearch!
+        }
+        if self.enableThinking != nil {
+            map["EnableThinking"] = self.enableThinking!
+        }
+        if self.includeUsage != nil {
+            map["IncludeUsage"] = self.includeUsage!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.logprobs != nil {
+            map["Logprobs"] = self.logprobs!
+        }
+        if self.maxTokens != nil {
+            map["MaxTokens"] = self.maxTokens!
+        }
+        if self.messages != nil {
+            map["Messages"] = self.messages!
+        }
+        if self.modalitiesList != nil {
+            map["ModalitiesList"] = self.modalitiesList!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.needDesensitization != nil {
+            map["NeedDesensitization"] = self.needDesensitization!
+        }
+        if self.presencePenalty != nil {
+            map["PresencePenalty"] = self.presencePenalty!
+        }
+        if self.responseFormat != nil {
+            map["ResponseFormat"] = self.responseFormat!
+        }
+        if self.searchOptions != nil {
+            map["SearchOptions"] = self.searchOptions!
+        }
+        if self.seed != nil {
+            map["Seed"] = self.seed!
+        }
+        if self.stop != nil {
+            map["Stop"] = self.stop!
+        }
+        if self.stream != nil {
+            map["Stream"] = self.stream!
+        }
+        if self.temperature != nil {
+            map["Temperature"] = self.temperature!
+        }
+        if self.thinkingBudget != nil {
+            map["ThinkingBudget"] = self.thinkingBudget!
+        }
+        if self.topK != nil {
+            map["TopK"] = self.topK!
+        }
+        if self.topLogprobs != nil {
+            map["TopLogprobs"] = self.topLogprobs!
+        }
+        if self.topP != nil {
+            map["TopP"] = self.topP!
+        }
+        if self.vlHighResolutionImages != nil {
+            map["VlHighResolutionImages"] = self.vlHighResolutionImages!
+        }
+        if self.XDashScopeDataInspection != nil {
+            map["XDashScopeDataInspection"] = self.XDashScopeDataInspection!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AudioJson"] as? String {
+            self.audioJson = value
+        }
+        if let value = dict["DesensitizationRule"] as? String {
+            self.desensitizationRule = value
+        }
+        if let value = dict["EnableCodeInterpreter"] as? Bool {
+            self.enableCodeInterpreter = value
+        }
+        if let value = dict["EnableSearch"] as? Bool {
+            self.enableSearch = value
+        }
+        if let value = dict["EnableThinking"] as? Bool {
+            self.enableThinking = value
+        }
+        if let value = dict["IncludeUsage"] as? Bool {
+            self.includeUsage = value
+        }
+        if let value = dict["InstanceId"] as? Int64 {
+            self.instanceId = value
+        }
+        if let value = dict["Logprobs"] as? Bool {
+            self.logprobs = value
+        }
+        if let value = dict["MaxTokens"] as? Int32 {
+            self.maxTokens = value
+        }
+        if let value = dict["Messages"] as? [Any] {
+            self.messages = value
+        }
+        if let value = dict["ModalitiesList"] as? [String] {
+            self.modalitiesList = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["NeedDesensitization"] as? Bool {
+            self.needDesensitization = value
+        }
+        if let value = dict["PresencePenalty"] as? String {
+            self.presencePenalty = value
+        }
+        if let value = dict["ResponseFormat"] as? String {
+            self.responseFormat = value
+        }
+        if let value = dict["SearchOptions"] as? [String: String] {
+            self.searchOptions = value
+        }
+        if let value = dict["Seed"] as? Int32 {
+            self.seed = value
+        }
+        if let value = dict["Stop"] as? [String] {
+            self.stop = value
+        }
+        if let value = dict["Stream"] as? Bool {
+            self.stream = value
+        }
+        if let value = dict["Temperature"] as? String {
+            self.temperature = value
+        }
+        if let value = dict["ThinkingBudget"] as? Int32 {
+            self.thinkingBudget = value
+        }
+        if let value = dict["TopK"] as? Int32 {
+            self.topK = value
+        }
+        if let value = dict["TopLogprobs"] as? Int32 {
+            self.topLogprobs = value
+        }
+        if let value = dict["TopP"] as? String {
+            self.topP = value
+        }
+        if let value = dict["VlHighResolutionImages"] as? Bool {
+            self.vlHighResolutionImages = value
+        }
+        if let value = dict["XDashScopeDataInspection"] as? String {
+            self.XDashScopeDataInspection = value
+        }
+    }
+}
+
+public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
+    public var audioJson: String?
+
+    public var desensitizationRule: String?
+
+    public var enableCodeInterpreter: Bool?
+
+    public var enableSearch: Bool?
+
+    public var enableThinking: Bool?
+
+    public var includeUsage: Bool?
+
+    public var instanceId: Int64?
+
+    public var logprobs: Bool?
+
+    public var maxTokens: Int32?
+
+    public var messagesShrink: String?
+
+    public var modalitiesListShrink: String?
+
+    public var model: String?
+
+    public var needDesensitization: Bool?
+
+    public var presencePenalty: String?
+
+    public var responseFormat: String?
+
+    public var searchOptionsShrink: String?
+
+    public var seed: Int32?
+
+    public var stopShrink: String?
+
+    public var stream: Bool?
+
+    public var temperature: String?
+
+    public var thinkingBudget: Int32?
+
+    public var topK: Int32?
+
+    public var topLogprobs: Int32?
+
+    public var topP: String?
+
+    public var vlHighResolutionImages: Bool?
+
+    public var XDashScopeDataInspection: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.audioJson != nil {
+            map["AudioJson"] = self.audioJson!
+        }
+        if self.desensitizationRule != nil {
+            map["DesensitizationRule"] = self.desensitizationRule!
+        }
+        if self.enableCodeInterpreter != nil {
+            map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
+        }
+        if self.enableSearch != nil {
+            map["EnableSearch"] = self.enableSearch!
+        }
+        if self.enableThinking != nil {
+            map["EnableThinking"] = self.enableThinking!
+        }
+        if self.includeUsage != nil {
+            map["IncludeUsage"] = self.includeUsage!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.logprobs != nil {
+            map["Logprobs"] = self.logprobs!
+        }
+        if self.maxTokens != nil {
+            map["MaxTokens"] = self.maxTokens!
+        }
+        if self.messagesShrink != nil {
+            map["Messages"] = self.messagesShrink!
+        }
+        if self.modalitiesListShrink != nil {
+            map["ModalitiesList"] = self.modalitiesListShrink!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.needDesensitization != nil {
+            map["NeedDesensitization"] = self.needDesensitization!
+        }
+        if self.presencePenalty != nil {
+            map["PresencePenalty"] = self.presencePenalty!
+        }
+        if self.responseFormat != nil {
+            map["ResponseFormat"] = self.responseFormat!
+        }
+        if self.searchOptionsShrink != nil {
+            map["SearchOptions"] = self.searchOptionsShrink!
+        }
+        if self.seed != nil {
+            map["Seed"] = self.seed!
+        }
+        if self.stopShrink != nil {
+            map["Stop"] = self.stopShrink!
+        }
+        if self.stream != nil {
+            map["Stream"] = self.stream!
+        }
+        if self.temperature != nil {
+            map["Temperature"] = self.temperature!
+        }
+        if self.thinkingBudget != nil {
+            map["ThinkingBudget"] = self.thinkingBudget!
+        }
+        if self.topK != nil {
+            map["TopK"] = self.topK!
+        }
+        if self.topLogprobs != nil {
+            map["TopLogprobs"] = self.topLogprobs!
+        }
+        if self.topP != nil {
+            map["TopP"] = self.topP!
+        }
+        if self.vlHighResolutionImages != nil {
+            map["VlHighResolutionImages"] = self.vlHighResolutionImages!
+        }
+        if self.XDashScopeDataInspection != nil {
+            map["XDashScopeDataInspection"] = self.XDashScopeDataInspection!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AudioJson"] as? String {
+            self.audioJson = value
+        }
+        if let value = dict["DesensitizationRule"] as? String {
+            self.desensitizationRule = value
+        }
+        if let value = dict["EnableCodeInterpreter"] as? Bool {
+            self.enableCodeInterpreter = value
+        }
+        if let value = dict["EnableSearch"] as? Bool {
+            self.enableSearch = value
+        }
+        if let value = dict["EnableThinking"] as? Bool {
+            self.enableThinking = value
+        }
+        if let value = dict["IncludeUsage"] as? Bool {
+            self.includeUsage = value
+        }
+        if let value = dict["InstanceId"] as? Int64 {
+            self.instanceId = value
+        }
+        if let value = dict["Logprobs"] as? Bool {
+            self.logprobs = value
+        }
+        if let value = dict["MaxTokens"] as? Int32 {
+            self.maxTokens = value
+        }
+        if let value = dict["Messages"] as? String {
+            self.messagesShrink = value
+        }
+        if let value = dict["ModalitiesList"] as? String {
+            self.modalitiesListShrink = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["NeedDesensitization"] as? Bool {
+            self.needDesensitization = value
+        }
+        if let value = dict["PresencePenalty"] as? String {
+            self.presencePenalty = value
+        }
+        if let value = dict["ResponseFormat"] as? String {
+            self.responseFormat = value
+        }
+        if let value = dict["SearchOptions"] as? String {
+            self.searchOptionsShrink = value
+        }
+        if let value = dict["Seed"] as? Int32 {
+            self.seed = value
+        }
+        if let value = dict["Stop"] as? String {
+            self.stopShrink = value
+        }
+        if let value = dict["Stream"] as? Bool {
+            self.stream = value
+        }
+        if let value = dict["Temperature"] as? String {
+            self.temperature = value
+        }
+        if let value = dict["ThinkingBudget"] as? Int32 {
+            self.thinkingBudget = value
+        }
+        if let value = dict["TopK"] as? Int32 {
+            self.topK = value
+        }
+        if let value = dict["TopLogprobs"] as? Int32 {
+            self.topLogprobs = value
+        }
+        if let value = dict["TopP"] as? String {
+            self.topP = value
+        }
+        if let value = dict["VlHighResolutionImages"] as? Bool {
+            self.vlHighResolutionImages = value
+        }
+        if let value = dict["XDashScopeDataInspection"] as? String {
+            self.XDashScopeDataInspection = value
+        }
+    }
+}
+
+public class ChatWithDesensitizeSSEResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ChatWithDesensitizeSSEResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChatWithDesensitizeSSEResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChatWithDesensitizeSSEResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CheckBatchTableAccessPermissionRequest : Tea.TeaModel {
     public var dbId: Int64?
 

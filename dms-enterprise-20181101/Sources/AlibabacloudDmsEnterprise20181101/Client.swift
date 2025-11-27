@@ -1063,6 +1063,128 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithDesensitizeSSEWithOptions(_ tmpReq: ChatWithDesensitizeSSERequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatWithDesensitizeSSEResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ChatWithDesensitizeSSEShrinkRequest = ChatWithDesensitizeSSEShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.messages)) {
+            request.messagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.messages, "Messages", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modalitiesList)) {
+            request.modalitiesListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modalitiesList, "ModalitiesList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchOptions)) {
+            request.searchOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchOptions, "SearchOptions", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.stop)) {
+            request.stopShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stop, "Stop", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.audioJson)) {
+            query["AudioJson"] = request.audioJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desensitizationRule)) {
+            query["DesensitizationRule"] = request.desensitizationRule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableCodeInterpreter)) {
+            query["EnableCodeInterpreter"] = request.enableCodeInterpreter!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableSearch)) {
+            query["EnableSearch"] = request.enableSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableThinking)) {
+            query["EnableThinking"] = request.enableThinking!;
+        }
+        if (!TeaUtils.Client.isUnset(request.includeUsage)) {
+            query["IncludeUsage"] = request.includeUsage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logprobs)) {
+            query["Logprobs"] = request.logprobs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxTokens)) {
+            query["MaxTokens"] = request.maxTokens!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modalitiesListShrink)) {
+            query["ModalitiesList"] = request.modalitiesListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needDesensitization)) {
+            query["NeedDesensitization"] = request.needDesensitization!;
+        }
+        if (!TeaUtils.Client.isUnset(request.presencePenalty)) {
+            query["PresencePenalty"] = request.presencePenalty ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseFormat)) {
+            query["ResponseFormat"] = request.responseFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchOptionsShrink)) {
+            query["SearchOptions"] = request.searchOptionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seed)) {
+            query["Seed"] = request.seed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.stopShrink)) {
+            query["Stop"] = request.stopShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            query["Stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.temperature)) {
+            query["Temperature"] = request.temperature ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.thinkingBudget)) {
+            query["ThinkingBudget"] = request.thinkingBudget!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            query["TopK"] = request.topK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topLogprobs)) {
+            query["TopLogprobs"] = request.topLogprobs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topP)) {
+            query["TopP"] = request.topP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vlHighResolutionImages)) {
+            query["VlHighResolutionImages"] = request.vlHighResolutionImages!;
+        }
+        if (!TeaUtils.Client.isUnset(request.XDashScopeDataInspection)) {
+            query["XDashScopeDataInspection"] = request.XDashScopeDataInspection ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messagesShrink)) {
+            body["Messages"] = request.messagesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChatWithDesensitizeSSE",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatWithDesensitizeSSEResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithDesensitizeSSE(_ request: ChatWithDesensitizeSSERequest) async throws -> ChatWithDesensitizeSSEResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await chatWithDesensitizeSSEWithOptions(request as! ChatWithDesensitizeSSERequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkBatchTableAccessPermissionWithOptions(_ tmpReq: CheckBatchTableAccessPermissionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckBatchTableAccessPermissionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CheckBatchTableAccessPermissionShrinkRequest = CheckBatchTableAccessPermissionShrinkRequest([:])
