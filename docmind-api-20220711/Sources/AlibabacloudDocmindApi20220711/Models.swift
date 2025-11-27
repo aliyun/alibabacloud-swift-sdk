@@ -1733,6 +1733,8 @@ public class QueryDocParserStatusResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var forceMergeExcel: Bool?
 
     public var imageNameExtension: String?
@@ -1759,6 +1761,9 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.forceMergeExcel != nil {
             map["ForceMergeExcel"] = self.forceMergeExcel!
         }
@@ -1782,6 +1787,9 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ForceMergeExcel"] as? Bool {
             self.forceMergeExcel = value
         }
@@ -1804,6 +1812,8 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var forceMergeExcel: Bool?
 
     public var imageNameExtension: String?
@@ -1830,6 +1840,9 @@ public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.forceMergeExcel != nil {
             map["ForceMergeExcel"] = self.forceMergeExcel!
         }
@@ -1853,6 +1866,9 @@ public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ForceMergeExcel"] as? Bool {
             self.forceMergeExcel = value
         }
@@ -2277,6 +2293,8 @@ public class SubmitConvertImageToMarkdownJobResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var imageNameExtension: String?
 
     public var imageNames: [String]?
@@ -2301,6 +2319,9 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.imageNameExtension != nil {
             map["ImageNameExtension"] = self.imageNameExtension!
         }
@@ -2321,6 +2342,9 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ImageNameExtension"] as? String {
             self.imageNameExtension = value
         }
@@ -2340,6 +2364,8 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var imageNameExtension: String?
 
     public var imageNamesShrink: String?
@@ -2364,6 +2390,9 @@ public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.imageNameExtension != nil {
             map["ImageNameExtension"] = self.imageNameExtension!
         }
@@ -2384,6 +2413,9 @@ public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ImageNameExtension"] as? String {
             self.imageNameExtension = value
         }
@@ -2541,6 +2573,8 @@ public class SubmitConvertImageToPdfJobResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var imageNameExtension: String?
 
     public var imageNames: [String]?
@@ -2565,6 +2599,9 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.imageNameExtension != nil {
             map["ImageNameExtension"] = self.imageNameExtension!
         }
@@ -2585,6 +2622,9 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ImageNameExtension"] as? String {
             self.imageNameExtension = value
         }
@@ -2604,6 +2644,8 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var imageNameExtension: String?
 
     public var imageNamesShrink: String?
@@ -2628,6 +2670,9 @@ public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.imageNameExtension != nil {
             map["ImageNameExtension"] = self.imageNameExtension!
         }
@@ -2648,6 +2693,9 @@ public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["ImageNameExtension"] as? String {
             self.imageNameExtension = value
         }
@@ -2805,6 +2853,8 @@ public class SubmitConvertImageToWordJobResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrl: String?
@@ -2831,6 +2881,9 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -2854,6 +2907,9 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -2876,6 +2932,8 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
@@ -2902,6 +2960,9 @@ public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -2925,6 +2986,9 @@ public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -3085,6 +3149,8 @@ public class SubmitConvertPdfToExcelJobResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrl: String?
@@ -3107,6 +3173,9 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -3124,6 +3193,9 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -3140,6 +3212,8 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
@@ -3162,6 +3236,9 @@ public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -3179,6 +3256,9 @@ public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -3581,6 +3661,8 @@ public class SubmitConvertPdfToMarkdownJobResponse : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrl: String?
@@ -3609,6 +3691,9 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -3635,6 +3720,9 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -3660,6 +3748,8 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
 }
 
 public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
@@ -3688,6 +3778,9 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -3714,6 +3807,9 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -4296,6 +4392,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
     }
     public var customOssConfig: SubmitDocParserJobRequest.CustomOssConfig?
 
+    public var enableEventCallback: Bool?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4343,6 +4441,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.customOssConfig != nil {
             map["CustomOssConfig"] = self.customOssConfig?.toMap()
+        }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
         }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
@@ -4395,6 +4496,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
             var model = SubmitDocParserJobRequest.CustomOssConfig()
             model.fromMap(value)
             self.customOssConfig = model
+        }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
         }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
@@ -4570,6 +4674,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     }
     public var customOssConfig: SubmitDocParserJobAdvanceRequest.CustomOssConfig?
 
+    public var enableEventCallback: Bool?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4617,6 +4723,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.customOssConfig != nil {
             map["CustomOssConfig"] = self.customOssConfig?.toMap()
+        }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
         }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
@@ -4670,6 +4779,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
             model.fromMap(value)
             self.customOssConfig = model
         }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
         }
@@ -4722,6 +4834,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
     public var customOssConfigShrink: String?
 
+    public var enableEventCallback: Bool?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4766,6 +4880,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.customOssConfigShrink != nil {
             map["CustomOssConfig"] = self.customOssConfigShrink!
+        }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
         }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
@@ -4816,6 +4933,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CustomOssConfig"] as? String {
             self.customOssConfigShrink = value
+        }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
         }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
@@ -5003,6 +5123,8 @@ public class SubmitDocParserJobResponse : Tea.TeaModel {
 public class SubmitDocStructureJobRequest : Tea.TeaModel {
     public var allowPptFormat: Bool?
 
+    public var enableEventCallback: Bool?
+
     public var fileName: String?
 
     public var fileNameExtension: String?
@@ -5036,6 +5158,9 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if self.allowPptFormat != nil {
             map["AllowPptFormat"] = self.allowPptFormat!
         }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -5068,6 +5193,9 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if let value = dict["AllowPptFormat"] as? Bool {
             self.allowPptFormat = value
         }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -5097,6 +5225,8 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
 
 public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
     public var allowPptFormat: Bool?
+
+    public var enableEventCallback: Bool?
 
     public var fileName: String?
 
@@ -5131,6 +5261,9 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         if self.allowPptFormat != nil {
             map["AllowPptFormat"] = self.allowPptFormat!
         }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -5162,6 +5295,9 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AllowPptFormat"] as? Bool {
             self.allowPptFormat = value
+        }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
         }
         if let value = dict["FileName"] as? String {
             self.fileName = value

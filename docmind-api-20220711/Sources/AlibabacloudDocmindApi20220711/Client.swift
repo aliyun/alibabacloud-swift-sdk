@@ -75,40 +75,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func _postOSSObject(_ bucketName: String, _ data: [String: Any]) async throws -> [String: Any] {
-        var _request: Tea.TeaRequest = Tea.TeaRequest()
-        var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
-        var boundary: String = TeaFileForm.Client.getBoundary()
-        var host: String = try TeaUtils.Client.assertAsString(form["host"])
-        _request.protocol_ = "HTTPS"
-        _request.method = "POST"
-        _request.pathname = "/"
-        _request.headers = [
-            "host": host as! String,
-            "date": TeaUtils.Client.getDateUTCString(),
-            "user-agent": TeaUtils.Client.getUserAgent("")
+    public func _postOSSObject(_ bucketName: String, _ data: [String: Any], _ runtime: TeaUtils.RuntimeOptions) async throws -> [String: Any] {
+        try runtime.validate()
+        var _runtime: [String: Any] = [
+            "timeouted": "retry",
+            "key": TeaUtils.Client.defaultString(runtime.key, self._key),
+            "cert": TeaUtils.Client.defaultString(runtime.cert, self._cert),
+            "ca": TeaUtils.Client.defaultString(runtime.ca, self._ca),
+            "readTimeout": TeaUtils.Client.defaultNumber(runtime.readTimeout, self._readTimeout),
+            "connectTimeout": TeaUtils.Client.defaultNumber(runtime.connectTimeout, self._connectTimeout),
+            "httpProxy": TeaUtils.Client.defaultString(runtime.httpProxy, self._httpProxy),
+            "httpsProxy": TeaUtils.Client.defaultString(runtime.httpsProxy, self._httpsProxy),
+            "noProxy": TeaUtils.Client.defaultString(runtime.noProxy, self._noProxy),
+            "socks5Proxy": TeaUtils.Client.defaultString(runtime.socks5Proxy, self._socks5Proxy),
+            "socks5NetWork": TeaUtils.Client.defaultString(runtime.socks5NetWork, self._socks5NetWork),
+            "maxIdleConns": TeaUtils.Client.defaultNumber(runtime.maxIdleConns, self._maxIdleConns),
+            "retry": [
+                "retryable": runtime.autoretry!,
+                "maxAttempts": TeaUtils.Client.defaultNumber(runtime.maxAttempts, 3)
+            ],
+            "backoff": [
+                "policy": TeaUtils.Client.defaultString(runtime.backoffPolicy, "no"),
+                "period": TeaUtils.Client.defaultNumber(runtime.backoffPeriod, 1)
+            ],
+            "ignoreSSL": AlibabacloudOpenApi.Client.defaultAny(runtime.ignoreSSL, false),
+            "tlsMinVersion": self._tlsMinVersion ?? ""
         ]
-        _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
-        _request.body = TeaFileForm.Client.toFileForm(form, boundary)
-        var _lastRequest: Tea.TeaRequest = _request
-        var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request)
-        var respMap: [String: Any]? = nil
-        var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
-        if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
-            respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-            var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
-            throw Tea.ReuqestError([
-                "code": err["Code"]!,
-                "message": err["Message"]!,
-                "data": [
-                    "httpCode": _response.statusCode,
-                    "requestId": err["RequestId"]!,
-                    "hostId": err["HostId"]!
+        var _lastRequest: Tea.TeaRequest? = nil
+        var _lastException: Tea.TeaError? = nil
+        var _now: Int32 = Tea.TeaCore.timeNow()
+        var _retryTimes: Int32 = 0
+        while (Tea.TeaCore.allowRetry(_runtime["retry"], _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                var _backoffTime: Int32 = Tea.TeaCore.getBackoffTime(_runtime["backoff"], _retryTimes)
+                if (_backoffTime > 0) {
+                    Tea.TeaCore.sleep(_backoffTime)
+                }
+            }
+            _retryTimes = _retryTimes + 1
+            do {
+                var _request: Tea.TeaRequest = Tea.TeaRequest()
+                var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
+                var boundary: String = TeaFileForm.Client.getBoundary()
+                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                _request.protocol_ = "HTTPS"
+                _request.method = "POST"
+                _request.pathname = "/"
+                _request.headers = [
+                    "host": host as! String,
+                    "date": TeaUtils.Client.getDateUTCString(),
+                    "user-agent": TeaUtils.Client.getUserAgent("")
                 ]
-            ])
+                _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
+                _request.body = TeaFileForm.Client.toFileForm(form, boundary)
+                _lastRequest = _request
+                var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request, _runtime)
+                var respMap: [String: Any]? = nil
+                var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
+                if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
+                    respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                    var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
+                    throw Tea.ReuqestError([
+                        "code": err["Code"]!,
+                        "message": err["Message"]!,
+                        "data": [
+                            "httpCode": _response.statusCode,
+                            "requestId": err["RequestId"]!,
+                            "hostId": err["HostId"]!
+                        ]
+                    ])
+                }
+                respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                return Tea.TeaConverter.merge([:], respMap)
+            }
+            catch {
+                if (Tea.TeaCore.isRetryable(error)) {
+                    _lastException = error as! Tea.RetryableError
+                    continue
+                }
+                throw error
+            }
         }
-        respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-        return Tea.TeaConverter.merge([:], respMap)
+        throw Tea.UnretryableError(_lastRequest, _lastException)
     }
 
     public func getEndpoint(_ productId: String, _ regionId: String, _ endpointRule: String, _ network: String, _ suffix: String, _ endpointMap: [String: String], _ endpoint: String) throws -> String {
@@ -452,6 +500,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.imageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrls, "ImageUrls", "simple")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.forceMergeExcel)) {
             query["ForceMergeExcel"] = request.forceMergeExcel!;
         }
@@ -557,6 +608,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.imageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrls, "ImageUrls", "simple")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageNameExtension)) {
             query["ImageNameExtension"] = request.imageNameExtension ?? "";
         }
@@ -608,6 +662,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.imageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrls, "ImageUrls", "simple")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageNameExtension)) {
             query["ImageNameExtension"] = request.imageNameExtension ?? "";
         }
@@ -651,6 +708,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitConvertPdfToExcelJobWithOptions(_ request: SubmitConvertPdfToExcelJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitConvertPdfToExcelJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
@@ -770,7 +830,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitConvertPdfToExcelJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitConvertPdfToExcelJobResp: SubmitConvertPdfToExcelJobResponse = try await submitConvertPdfToExcelJobWithOptions(submitConvertPdfToExcelJobReq as! SubmitConvertPdfToExcelJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -781,6 +841,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitConvertPdfToImageJobWithOptions(_ request: SubmitConvertPdfToImageJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitConvertPdfToImageJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
@@ -894,7 +957,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitConvertPdfToImageJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitConvertPdfToImageJobResp: SubmitConvertPdfToImageJobResponse = try await submitConvertPdfToImageJobWithOptions(submitConvertPdfToImageJobReq as! SubmitConvertPdfToImageJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1018,7 +1081,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitConvertPdfToMarkdownJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitConvertPdfToMarkdownJobResp: SubmitConvertPdfToMarkdownJobResponse = try await submitConvertPdfToMarkdownJobWithOptions(submitConvertPdfToMarkdownJobReq as! SubmitConvertPdfToMarkdownJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1029,6 +1092,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitConvertPdfToWordJobWithOptions(_ request: SubmitConvertPdfToWordJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitConvertPdfToWordJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
@@ -1151,7 +1217,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitConvertPdfToWordJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitConvertPdfToWordJobResp: SubmitConvertPdfToWordJobResponse = try await submitConvertPdfToWordJobWithOptions(submitConvertPdfToWordJobReq as! SubmitConvertPdfToWordJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1287,7 +1353,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitDigitalDocStructureJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDigitalDocStructureJobResp: SubmitDigitalDocStructureJobResponse = try await submitDigitalDocStructureJobWithOptions(submitDigitalDocStructureJobReq as! SubmitDigitalDocStructureJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1311,6 +1377,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.customOssConfigShrink)) {
             query["CustomOssConfig"] = request.customOssConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
         }
         if (!TeaUtils.Client.isUnset(request.enhancementMode)) {
             query["EnhancementMode"] = request.enhancementMode ?? "";
@@ -1455,7 +1524,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitDocParserJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocParserJobResp: SubmitDocParserJobResponse = try await submitDocParserJobWithOptions(submitDocParserJobReq as! SubmitDocParserJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1468,6 +1537,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allowPptFormat)) {
             query["AllowPptFormat"] = request.allowPptFormat!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableEventCallback)) {
+            query["EnableEventCallback"] = request.enableEventCallback!;
         }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
@@ -1594,7 +1666,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitDocStructureJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocStructureJobResp: SubmitDocStructureJobResponse = try await submitDocStructureJobWithOptions(submitDocStructureJobReq as! SubmitDocStructureJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1721,7 +1793,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitDocumentExtractJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocumentExtractJobResp: SubmitDocumentExtractJobResponse = try await submitDocumentExtractJobWithOptions(submitDocumentExtractJobReq as! SubmitDocumentExtractJobRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1848,7 +1920,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             submitTableUnderstandingJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitTableUnderstandingJobResp: SubmitTableUnderstandingJobResponse = try await submitTableUnderstandingJobWithOptions(submitTableUnderstandingJobReq as! SubmitTableUnderstandingJobRequest, runtime as! TeaUtils.RuntimeOptions)
