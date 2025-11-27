@@ -3406,6 +3406,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var certificateType: String?
 
+        public var clusterId: String?
+
         public var commonName: String?
 
         public var countryCode: String?
@@ -3421,6 +3423,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
         public var identifier: String?
 
         public var issuerType: String?
+
+        public var keyIndex: Int32?
 
         public var keySize: Int32?
 
@@ -3494,6 +3498,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if self.certificateType != nil {
                 map["CertificateType"] = self.certificateType!
             }
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
             if self.commonName != nil {
                 map["CommonName"] = self.commonName!
             }
@@ -3517,6 +3524,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.issuerType != nil {
                 map["IssuerType"] = self.issuerType!
+            }
+            if self.keyIndex != nil {
+                map["KeyIndex"] = self.keyIndex!
             }
             if self.keySize != nil {
                 map["KeySize"] = self.keySize!
@@ -3602,6 +3612,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if let value = dict["CertificateType"] as? String {
                 self.certificateType = value
             }
+            if let value = dict["ClusterId"] as? String {
+                self.clusterId = value
+            }
             if let value = dict["CommonName"] as? String {
                 self.commonName = value
             }
@@ -3625,6 +3638,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["IssuerType"] as? String {
                 self.issuerType = value
+            }
+            if let value = dict["KeyIndex"] as? Int32 {
+                self.keyIndex = value
             }
             if let value = dict["KeySize"] as? Int32 {
                 self.keySize = value
