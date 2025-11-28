@@ -1278,6 +1278,505 @@ public class SinkOSSParameters : Tea.TeaModel {
     }
 }
 
+public class SinkRabbitMQMetaParameters : Tea.TeaModel {
+    public var endpoint: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var networkType: String?
+
+    public var password: String?
+
+    public var securityGroupId: String?
+
+    public var username: String?
+
+    public var vSwitchIds: String?
+
+    public var virtualHostName: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.virtualHostName != nil {
+            map["VirtualHostName"] = self.virtualHostName!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+        if let value = dict["VSwitchIds"] as? String {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VirtualHostName"] as? String {
+            self.virtualHostName = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class SinkRabbitMQMsgSyncParameters : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class Exchange : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class MessageId : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class Properties : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class RoutingKey : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var body: SinkRabbitMQMsgSyncParameters.Body?
+
+    public var endpoint: String?
+
+    public var exchange: SinkRabbitMQMsgSyncParameters.Exchange?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var maxHops: String?
+
+    public var messageId: SinkRabbitMQMsgSyncParameters.MessageId?
+
+    public var networkType: String?
+
+    public var password: String?
+
+    public var properties: SinkRabbitMQMsgSyncParameters.Properties?
+
+    public var routingKey: SinkRabbitMQMsgSyncParameters.RoutingKey?
+
+    public var securityGroupId: String?
+
+    public var username: String?
+
+    public var vSwitchIds: String?
+
+    public var virtualHostName: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+        try self.exchange?.validate()
+        try self.messageId?.validate()
+        try self.properties?.validate()
+        try self.routingKey?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["Body"] = self.body?.toMap()
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.exchange != nil {
+            map["Exchange"] = self.exchange?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.maxHops != nil {
+            map["MaxHops"] = self.maxHops!
+        }
+        if self.messageId != nil {
+            map["MessageId"] = self.messageId?.toMap()
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.properties != nil {
+            map["Properties"] = self.properties?.toMap()
+        }
+        if self.routingKey != nil {
+            map["RoutingKey"] = self.routingKey?.toMap()
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.virtualHostName != nil {
+            map["VirtualHostName"] = self.virtualHostName!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Body"] as? [String: Any?] {
+            var model = SinkRabbitMQMsgSyncParameters.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["Exchange"] as? [String: Any?] {
+            var model = SinkRabbitMQMsgSyncParameters.Exchange()
+            model.fromMap(value)
+            self.exchange = model
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["MaxHops"] as? String {
+            self.maxHops = value
+        }
+        if let value = dict["MessageId"] as? [String: Any?] {
+            var model = SinkRabbitMQMsgSyncParameters.MessageId()
+            model.fromMap(value)
+            self.messageId = model
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["Properties"] as? [String: Any?] {
+            var model = SinkRabbitMQMsgSyncParameters.Properties()
+            model.fromMap(value)
+            self.properties = model
+        }
+        if let value = dict["RoutingKey"] as? [String: Any?] {
+            var model = SinkRabbitMQMsgSyncParameters.RoutingKey()
+            model.fromMap(value)
+            self.routingKey = model
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+        if let value = dict["VSwitchIds"] as? String {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VirtualHostName"] as? String {
+            self.virtualHostName = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
 public class SourceMySQLParameters : Tea.TeaModel {
     public var databaseName: String?
 
@@ -1525,6 +2024,268 @@ public class SourcePostgreSQLParameters : Tea.TeaModel {
         }
         if let value = dict["VSwitchIds"] as? String {
             self.vSwitchIds = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class SourceRabbitMQMetaParameters : Tea.TeaModel {
+    public var endpoint: String?
+
+    public var innerNameSuffix: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var maxHops: String?
+
+    public var networkType: String?
+
+    public var orderConsume: String?
+
+    public var password: String?
+
+    public var regex: String?
+
+    public var securityGroupId: String?
+
+    public var username: String?
+
+    public var vSwitchIds: String?
+
+    public var virtualHostName: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.innerNameSuffix != nil {
+            map["InnerNameSuffix"] = self.innerNameSuffix!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.maxHops != nil {
+            map["MaxHops"] = self.maxHops!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.orderConsume != nil {
+            map["OrderConsume"] = self.orderConsume!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.regex != nil {
+            map["Regex"] = self.regex!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.virtualHostName != nil {
+            map["VirtualHostName"] = self.virtualHostName!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["InnerNameSuffix"] as? String {
+            self.innerNameSuffix = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["MaxHops"] as? String {
+            self.maxHops = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["OrderConsume"] as? String {
+            self.orderConsume = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["Regex"] as? String {
+            self.regex = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+        if let value = dict["VSwitchIds"] as? String {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VirtualHostName"] as? String {
+            self.virtualHostName = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class SourceRabbitMQMsgSyncParameters : Tea.TeaModel {
+    public var bodyDataType: String?
+
+    public var endpoint: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var networkType: String?
+
+    public var orderConsume: String?
+
+    public var password: String?
+
+    public var prefetchCount: String?
+
+    public var securityGroupId: String?
+
+    public var username: String?
+
+    public var vSwitchIds: String?
+
+    public var virtualHostName: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bodyDataType != nil {
+            map["BodyDataType"] = self.bodyDataType!
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.orderConsume != nil {
+            map["OrderConsume"] = self.orderConsume!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.prefetchCount != nil {
+            map["PrefetchCount"] = self.prefetchCount!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.virtualHostName != nil {
+            map["VirtualHostName"] = self.virtualHostName!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BodyDataType"] as? String {
+            self.bodyDataType = value
+        }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["OrderConsume"] as? String {
+            self.orderConsume = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["PrefetchCount"] as? String {
+            self.prefetchCount = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+        if let value = dict["VSwitchIds"] as? String {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VirtualHostName"] as? String {
+            self.virtualHostName = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -4651,6 +5412,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var bootstraps: String?
 
+            public var compressionType: String?
+
             public var headers: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers?
 
             public var key: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Key?
@@ -4666,6 +5429,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
             public var securityProtocol: String?
+
+            public var sslTruststoreCertificates: String?
 
             public var topic: String?
 
@@ -4702,6 +5467,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.bootstraps != nil {
                     map["Bootstraps"] = self.bootstraps!
                 }
+                if self.compressionType != nil {
+                    map["CompressionType"] = self.compressionType!
+                }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
                 }
@@ -4726,6 +5494,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
                 }
+                if self.sslTruststoreCertificates != nil {
+                    map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
                 }
@@ -4748,6 +5519,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["Bootstraps"] as? String {
                     self.bootstraps = value
+                }
+                if let value = dict["CompressionType"] as? String {
+                    self.compressionType = value
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers()
@@ -4780,6 +5554,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslTruststoreCertificates"] as? String {
+                    self.sslTruststoreCertificates = value
                 }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
@@ -7635,6 +8412,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             public var acks: CreateEventStreamingRequest.Sink.SinkKafkaParameters.Acks?
 
+            public var compressionType: String?
+
             public var headers: CreateEventStreamingRequest.Sink.SinkKafkaParameters.Headers?
 
             public var instanceId: CreateEventStreamingRequest.Sink.SinkKafkaParameters.InstanceId?
@@ -7668,6 +8447,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.acks != nil {
                     map["Acks"] = self.acks?.toMap()
                 }
+                if self.compressionType != nil {
+                    map["CompressionType"] = self.compressionType!
+                }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
                 }
@@ -7692,6 +8474,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                     var model = CreateEventStreamingRequest.Sink.SinkKafkaParameters.Acks()
                     model.fromMap(value)
                     self.acks = model
+                }
+                if let value = dict["CompressionType"] as? String {
+                    self.compressionType = value
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = CreateEventStreamingRequest.Sink.SinkKafkaParameters.Headers()
@@ -10986,6 +11771,10 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkPrometheusParameters: CreateEventStreamingRequest.Sink.SinkPrometheusParameters?
 
+        public var sinkRabbitMQMetaParameters: SinkRabbitMQMetaParameters?
+
+        public var sinkRabbitMQMsgSyncParameters: SinkRabbitMQMsgSyncParameters?
+
         public var sinkRabbitMQParameters: CreateEventStreamingRequest.Sink.SinkRabbitMQParameters?
 
         public var sinkRocketMQCheckpointParameters: CreateEventStreamingRequest.Sink.SinkRocketMQCheckpointParameters?
@@ -11022,6 +11811,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
+            try self.sinkRabbitMQMetaParameters?.validate()
+            try self.sinkRabbitMQMsgSyncParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
             try self.sinkRocketMQCheckpointParameters?.validate()
             try self.sinkRocketMQParameters?.validate()
@@ -11083,6 +11874,12 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkPrometheusParameters != nil {
                 map["SinkPrometheusParameters"] = self.sinkPrometheusParameters?.toMap()
+            }
+            if self.sinkRabbitMQMetaParameters != nil {
+                map["SinkRabbitMQMetaParameters"] = self.sinkRabbitMQMetaParameters?.toMap()
+            }
+            if self.sinkRabbitMQMsgSyncParameters != nil {
+                map["SinkRabbitMQMsgSyncParameters"] = self.sinkRabbitMQMsgSyncParameters?.toMap()
             }
             if self.sinkRabbitMQParameters != nil {
                 map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -11191,6 +11988,16 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.sinkPrometheusParameters = model
             }
+            if let value = dict["SinkRabbitMQMetaParameters"] as? [String: Any?] {
+                var model = SinkRabbitMQMetaParameters()
+                model.fromMap(value)
+                self.sinkRabbitMQMetaParameters = model
+            }
+            if let value = dict["SinkRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                var model = SinkRabbitMQMsgSyncParameters()
+                model.fromMap(value)
+                self.sinkRabbitMQMsgSyncParameters = model
+            }
             if let value = dict["SinkRabbitMQParameters"] as? [String: Any?] {
                 var model = CreateEventStreamingRequest.Sink.SinkRabbitMQParameters()
                 model.fromMap(value)
@@ -11232,6 +12039,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: String?
 
             public var securityProtocol: String?
+
+            public var sslTruststoreCertificates: String?
 
             public var topic: String?
 
@@ -11282,6 +12091,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
                 }
+                if self.sslTruststoreCertificates != nil {
+                    map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
                 }
@@ -11325,6 +12137,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslTruststoreCertificates"] as? String {
+                    self.sslTruststoreCertificates = value
                 }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
@@ -12515,6 +13330,10 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sourcePrometheusParameters: CreateEventStreamingRequest.Source.SourcePrometheusParameters?
 
+        public var sourceRabbitMQMetaParameters: SourceRabbitMQMetaParameters?
+
+        public var sourceRabbitMQMsgSyncParameters: SourceRabbitMQMsgSyncParameters?
+
         public var sourceRabbitMQParameters: CreateEventStreamingRequest.Source.SourceRabbitMQParameters?
 
         public var sourceRocketMQCheckpointParameters: CreateEventStreamingRequest.Source.SourceRocketMQCheckpointParameters?
@@ -12547,6 +13366,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sourceOpenSourceRabbitMQParameters?.validate()
             try self.sourcePostgreSQLParameters?.validate()
             try self.sourcePrometheusParameters?.validate()
+            try self.sourceRabbitMQMetaParameters?.validate()
+            try self.sourceRabbitMQMsgSyncParameters?.validate()
             try self.sourceRabbitMQParameters?.validate()
             try self.sourceRocketMQCheckpointParameters?.validate()
             try self.sourceRocketMQParameters?.validate()
@@ -12596,6 +13417,12 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sourcePrometheusParameters != nil {
                 map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
+            }
+            if self.sourceRabbitMQMetaParameters != nil {
+                map["SourceRabbitMQMetaParameters"] = self.sourceRabbitMQMetaParameters?.toMap()
+            }
+            if self.sourceRabbitMQMsgSyncParameters != nil {
+                map["SourceRabbitMQMsgSyncParameters"] = self.sourceRabbitMQMsgSyncParameters?.toMap()
             }
             if self.sourceRabbitMQParameters != nil {
                 map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -12683,6 +13510,16 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Source.SourcePrometheusParameters()
                 model.fromMap(value)
                 self.sourcePrometheusParameters = model
+            }
+            if let value = dict["SourceRabbitMQMetaParameters"] as? [String: Any?] {
+                var model = SourceRabbitMQMetaParameters()
+                model.fromMap(value)
+                self.sourceRabbitMQMetaParameters = model
+            }
+            if let value = dict["SourceRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                var model = SourceRabbitMQMsgSyncParameters()
+                model.fromMap(value)
+                self.sourceRabbitMQMsgSyncParameters = model
             }
             if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
                 var model = CreateEventStreamingRequest.Source.SourceRabbitMQParameters()
@@ -18586,6 +19423,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var bootstraps: String?
 
+                public var compressionType: String?
+
                 public var headers: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Headers?
 
                 public var key: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Key?
@@ -18601,6 +19440,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 public var securityGroupId: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
                 public var securityProtocol: String?
+
+                public var sslTruststoreCertificates: String?
 
                 public var topic: String?
 
@@ -18637,6 +19478,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.bootstraps != nil {
                         map["Bootstraps"] = self.bootstraps!
                     }
+                    if self.compressionType != nil {
+                        map["CompressionType"] = self.compressionType!
+                    }
                     if self.headers != nil {
                         map["Headers"] = self.headers?.toMap()
                     }
@@ -18661,6 +19505,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.securityProtocol != nil {
                         map["SecurityProtocol"] = self.securityProtocol!
                     }
+                    if self.sslTruststoreCertificates != nil {
+                        map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                    }
                     if self.topic != nil {
                         map["Topic"] = self.topic!
                     }
@@ -18683,6 +19530,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Bootstraps"] as? String {
                         self.bootstraps = value
+                    }
+                    if let value = dict["CompressionType"] as? String {
+                        self.compressionType = value
                     }
                     if let value = dict["Headers"] as? [String: Any?] {
                         var model = GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Headers()
@@ -18715,6 +19565,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SecurityProtocol"] as? String {
                         self.securityProtocol = value
+                    }
+                    if let value = dict["SslTruststoreCertificates"] as? String {
+                        self.sslTruststoreCertificates = value
                     }
                     if let value = dict["Topic"] as? String {
                         self.topic = value
@@ -21570,6 +22423,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 public var acks: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Acks?
 
+                public var compressionType: String?
+
                 public var headers: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Headers?
 
                 public var instanceId: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.InstanceId?
@@ -21603,6 +22458,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.acks != nil {
                         map["Acks"] = self.acks?.toMap()
                     }
+                    if self.compressionType != nil {
+                        map["CompressionType"] = self.compressionType!
+                    }
                     if self.headers != nil {
                         map["Headers"] = self.headers?.toMap()
                     }
@@ -21627,6 +22485,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                         var model = GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Acks()
                         model.fromMap(value)
                         self.acks = model
+                    }
+                    if let value = dict["CompressionType"] as? String {
+                        self.compressionType = value
                     }
                     if let value = dict["Headers"] as? [String: Any?] {
                         var model = GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Headers()
@@ -24327,6 +25188,10 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sinkOpenSourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Sink.SinkOpenSourceRabbitMQParameters?
 
+            public var sinkRabbitMQMetaParameters: SinkRabbitMQMetaParameters?
+
+            public var sinkRabbitMQMsgSyncParameters: SinkRabbitMQMsgSyncParameters?
+
             public var sinkRabbitMQParameters: GetEventStreamingResponseBody.Data.Sink.SinkRabbitMQParameters?
 
             public var sinkRocketMQCheckpointParameters: GetEventStreamingResponseBody.Data.Sink.SinkRocketMQCheckpointParameters?
@@ -24362,6 +25227,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sinkMNSParameters?.validate()
                 try self.sinkOSSParameters?.validate()
                 try self.sinkOpenSourceRabbitMQParameters?.validate()
+                try self.sinkRabbitMQMetaParameters?.validate()
+                try self.sinkRabbitMQMsgSyncParameters?.validate()
                 try self.sinkRabbitMQParameters?.validate()
                 try self.sinkRocketMQCheckpointParameters?.validate()
                 try self.sinkRocketMQParameters?.validate()
@@ -24420,6 +25287,12 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sinkOpenSourceRabbitMQParameters != nil {
                     map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
+                }
+                if self.sinkRabbitMQMetaParameters != nil {
+                    map["SinkRabbitMQMetaParameters"] = self.sinkRabbitMQMetaParameters?.toMap()
+                }
+                if self.sinkRabbitMQMsgSyncParameters != nil {
+                    map["SinkRabbitMQMsgSyncParameters"] = self.sinkRabbitMQMsgSyncParameters?.toMap()
                 }
                 if self.sinkRabbitMQParameters != nil {
                     map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -24523,6 +25396,16 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.sinkOpenSourceRabbitMQParameters = model
                 }
+                if let value = dict["SinkRabbitMQMetaParameters"] as? [String: Any?] {
+                    var model = SinkRabbitMQMetaParameters()
+                    model.fromMap(value)
+                    self.sinkRabbitMQMetaParameters = model
+                }
+                if let value = dict["SinkRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                    var model = SinkRabbitMQMsgSyncParameters()
+                    model.fromMap(value)
+                    self.sinkRabbitMQMsgSyncParameters = model
+                }
                 if let value = dict["SinkRabbitMQParameters"] as? [String: Any?] {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkRabbitMQParameters()
                     model.fromMap(value)
@@ -24564,6 +25447,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 public var securityGroupId: String?
 
                 public var securityProtocol: String?
+
+                public var sslTruststoreCertificates: String?
 
                 public var topic: String?
 
@@ -24614,6 +25499,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.securityProtocol != nil {
                         map["SecurityProtocol"] = self.securityProtocol!
                     }
+                    if self.sslTruststoreCertificates != nil {
+                        map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                    }
                     if self.topic != nil {
                         map["Topic"] = self.topic!
                     }
@@ -24657,6 +25545,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SecurityProtocol"] as? String {
                         self.securityProtocol = value
+                    }
+                    if let value = dict["SslTruststoreCertificates"] as? String {
+                        self.sslTruststoreCertificates = value
                     }
                     if let value = dict["Topic"] as? String {
                         self.topic = value
@@ -25863,6 +26754,10 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sourcePrometheusParameters: GetEventStreamingResponseBody.Data.Source.SourcePrometheusParameters?
 
+            public var sourceRabbitMQMetaParameters: SourceRabbitMQMetaParameters?
+
+            public var sourceRabbitMQMsgSyncParameters: SourceRabbitMQMsgSyncParameters?
+
             public var sourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Source.SourceRabbitMQParameters?
 
             public var sourceRocketMQCheckpointParameters: GetEventStreamingResponseBody.Data.Source.SourceRocketMQCheckpointParameters?
@@ -25895,6 +26790,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sourceOpenSourceRabbitMQParameters?.validate()
                 try self.sourcePostgreSQLParameters?.validate()
                 try self.sourcePrometheusParameters?.validate()
+                try self.sourceRabbitMQMetaParameters?.validate()
+                try self.sourceRabbitMQMsgSyncParameters?.validate()
                 try self.sourceRabbitMQParameters?.validate()
                 try self.sourceRocketMQCheckpointParameters?.validate()
                 try self.sourceRocketMQParameters?.validate()
@@ -25944,6 +26841,12 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sourcePrometheusParameters != nil {
                     map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
+                }
+                if self.sourceRabbitMQMetaParameters != nil {
+                    map["SourceRabbitMQMetaParameters"] = self.sourceRabbitMQMetaParameters?.toMap()
+                }
+                if self.sourceRabbitMQMsgSyncParameters != nil {
+                    map["SourceRabbitMQMsgSyncParameters"] = self.sourceRabbitMQMsgSyncParameters?.toMap()
                 }
                 if self.sourceRabbitMQParameters != nil {
                     map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -26031,6 +26934,16 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     var model = GetEventStreamingResponseBody.Data.Source.SourcePrometheusParameters()
                     model.fromMap(value)
                     self.sourcePrometheusParameters = model
+                }
+                if let value = dict["SourceRabbitMQMetaParameters"] as? [String: Any?] {
+                    var model = SourceRabbitMQMetaParameters()
+                    model.fromMap(value)
+                    self.sourceRabbitMQMetaParameters = model
+                }
+                if let value = dict["SourceRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                    var model = SourceRabbitMQMsgSyncParameters()
+                    model.fromMap(value)
+                    self.sourceRabbitMQMsgSyncParameters = model
                 }
                 if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
                     var model = GetEventStreamingResponseBody.Data.Source.SourceRabbitMQParameters()
@@ -31793,6 +32706,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     public var acks: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.Acks?
 
+                    public var compressionType: String?
+
                     public var instanceId: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.InstanceId?
 
                     public var key: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.Key?
@@ -31823,6 +32738,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         if self.acks != nil {
                             map["Acks"] = self.acks?.toMap()
                         }
+                        if self.compressionType != nil {
+                            map["CompressionType"] = self.compressionType!
+                        }
                         if self.instanceId != nil {
                             map["InstanceId"] = self.instanceId?.toMap()
                         }
@@ -31844,6 +32762,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.Acks()
                             model.fromMap(value)
                             self.acks = model
+                        }
+                        if let value = dict["CompressionType"] as? String {
+                            self.compressionType = value
                         }
                         if let value = dict["InstanceId"] as? [String: Any?] {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.InstanceId()
@@ -34535,6 +35456,10 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sinkOpenSourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkOpenSourceRabbitMQParameters?
 
+                public var sinkRabbitMQMetaParameters: SinkRabbitMQMetaParameters?
+
+                public var sinkRabbitMQMsgSyncParameters: SinkRabbitMQMsgSyncParameters?
+
                 public var sinkRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRabbitMQParameters?
 
                 public var sinkRocketMQCheckpointParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQCheckpointParameters?
@@ -34568,6 +35493,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sinkMNSParameters?.validate()
                     try self.sinkOSSParameters?.validate()
                     try self.sinkOpenSourceRabbitMQParameters?.validate()
+                    try self.sinkRabbitMQMetaParameters?.validate()
+                    try self.sinkRabbitMQMsgSyncParameters?.validate()
                     try self.sinkRabbitMQParameters?.validate()
                     try self.sinkRocketMQCheckpointParameters?.validate()
                     try self.sinkRocketMQParameters?.validate()
@@ -34620,6 +35547,12 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sinkOpenSourceRabbitMQParameters != nil {
                         map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
+                    }
+                    if self.sinkRabbitMQMetaParameters != nil {
+                        map["SinkRabbitMQMetaParameters"] = self.sinkRabbitMQMetaParameters?.toMap()
+                    }
+                    if self.sinkRabbitMQMsgSyncParameters != nil {
+                        map["SinkRabbitMQMsgSyncParameters"] = self.sinkRabbitMQMsgSyncParameters?.toMap()
                     }
                     if self.sinkRabbitMQParameters != nil {
                         map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -34712,6 +35645,16 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkOpenSourceRabbitMQParameters()
                         model.fromMap(value)
                         self.sinkOpenSourceRabbitMQParameters = model
+                    }
+                    if let value = dict["SinkRabbitMQMetaParameters"] as? [String: Any?] {
+                        var model = SinkRabbitMQMetaParameters()
+                        model.fromMap(value)
+                        self.sinkRabbitMQMetaParameters = model
+                    }
+                    if let value = dict["SinkRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                        var model = SinkRabbitMQMsgSyncParameters()
+                        model.fromMap(value)
+                        self.sinkRabbitMQMsgSyncParameters = model
                     }
                     if let value = dict["SinkRabbitMQParameters"] as? [String: Any?] {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRabbitMQParameters()
@@ -35917,6 +36860,10 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sourcePrometheusParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters?
 
+                public var sourceRabbitMQMetaParameters: SourceRabbitMQMetaParameters?
+
+                public var sourceRabbitMQMsgSyncParameters: SourceRabbitMQMsgSyncParameters?
+
                 public var sourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRabbitMQParameters?
 
                 public var sourceRocketMQCheckpointParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRocketMQCheckpointParameters?
@@ -35948,6 +36895,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sourceOpenSourceRabbitMQParameters?.validate()
                     try self.sourcePostgreSQLParameters?.validate()
                     try self.sourcePrometheusParameters?.validate()
+                    try self.sourceRabbitMQMetaParameters?.validate()
+                    try self.sourceRabbitMQMsgSyncParameters?.validate()
                     try self.sourceRabbitMQParameters?.validate()
                     try self.sourceRocketMQCheckpointParameters?.validate()
                     try self.sourceRocketMQParameters?.validate()
@@ -35994,6 +36943,12 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sourcePrometheusParameters != nil {
                         map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
+                    }
+                    if self.sourceRabbitMQMetaParameters != nil {
+                        map["SourceRabbitMQMetaParameters"] = self.sourceRabbitMQMetaParameters?.toMap()
+                    }
+                    if self.sourceRabbitMQMsgSyncParameters != nil {
+                        map["SourceRabbitMQMsgSyncParameters"] = self.sourceRabbitMQMsgSyncParameters?.toMap()
                     }
                     if self.sourceRabbitMQParameters != nil {
                         map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -36076,6 +37031,16 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters()
                         model.fromMap(value)
                         self.sourcePrometheusParameters = model
+                    }
+                    if let value = dict["SourceRabbitMQMetaParameters"] as? [String: Any?] {
+                        var model = SourceRabbitMQMetaParameters()
+                        model.fromMap(value)
+                        self.sourceRabbitMQMetaParameters = model
+                    }
+                    if let value = dict["SourceRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                        var model = SourceRabbitMQMsgSyncParameters()
+                        model.fromMap(value)
+                        self.sourceRabbitMQMsgSyncParameters = model
                     }
                     if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRabbitMQParameters()
@@ -43471,6 +44436,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var bootstraps: String?
 
+            public var compressionType: String?
+
             public var headers: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers?
 
             public var key: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Key?
@@ -43486,6 +44453,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
             public var securityProtocol: String?
+
+            public var sslTruststoreCertificates: String?
 
             public var topic: String?
 
@@ -43522,6 +44491,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.bootstraps != nil {
                     map["Bootstraps"] = self.bootstraps!
                 }
+                if self.compressionType != nil {
+                    map["CompressionType"] = self.compressionType!
+                }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
                 }
@@ -43546,6 +44518,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
                 }
+                if self.sslTruststoreCertificates != nil {
+                    map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
                 }
@@ -43568,6 +44543,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["Bootstraps"] as? String {
                     self.bootstraps = value
+                }
+                if let value = dict["CompressionType"] as? String {
+                    self.compressionType = value
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers()
@@ -43600,6 +44578,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslTruststoreCertificates"] as? String {
+                    self.sslTruststoreCertificates = value
                 }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
@@ -46569,6 +47550,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             public var acks: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Acks?
 
+            public var compressionType: String?
+
             public var headers: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Headers?
 
             public var instanceId: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.InstanceId?
@@ -46602,6 +47585,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.acks != nil {
                     map["Acks"] = self.acks?.toMap()
                 }
+                if self.compressionType != nil {
+                    map["CompressionType"] = self.compressionType!
+                }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
                 }
@@ -46626,6 +47612,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     var model = UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Acks()
                     model.fromMap(value)
                     self.acks = model
+                }
+                if let value = dict["CompressionType"] as? String {
+                    self.compressionType = value
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Headers()
@@ -49920,6 +50909,10 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkPrometheusParameters: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters?
 
+        public var sinkRabbitMQMetaParameters: SinkRabbitMQMetaParameters?
+
+        public var sinkRabbitMQMsgSyncParameters: SinkRabbitMQMsgSyncParameters?
+
         public var sinkRabbitMQParameters: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters?
 
         public var sinkRocketMQCheckpointParameters: UpdateEventStreamingRequest.Sink.SinkRocketMQCheckpointParameters?
@@ -49956,6 +50949,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
+            try self.sinkRabbitMQMetaParameters?.validate()
+            try self.sinkRabbitMQMsgSyncParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
             try self.sinkRocketMQCheckpointParameters?.validate()
             try self.sinkRocketMQParameters?.validate()
@@ -50017,6 +51012,12 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkPrometheusParameters != nil {
                 map["SinkPrometheusParameters"] = self.sinkPrometheusParameters?.toMap()
+            }
+            if self.sinkRabbitMQMetaParameters != nil {
+                map["SinkRabbitMQMetaParameters"] = self.sinkRabbitMQMetaParameters?.toMap()
+            }
+            if self.sinkRabbitMQMsgSyncParameters != nil {
+                map["SinkRabbitMQMsgSyncParameters"] = self.sinkRabbitMQMsgSyncParameters?.toMap()
             }
             if self.sinkRabbitMQParameters != nil {
                 map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -50125,6 +51126,16 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.sinkPrometheusParameters = model
             }
+            if let value = dict["SinkRabbitMQMetaParameters"] as? [String: Any?] {
+                var model = SinkRabbitMQMetaParameters()
+                model.fromMap(value)
+                self.sinkRabbitMQMetaParameters = model
+            }
+            if let value = dict["SinkRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                var model = SinkRabbitMQMsgSyncParameters()
+                model.fromMap(value)
+                self.sinkRabbitMQMsgSyncParameters = model
+            }
             if let value = dict["SinkRabbitMQParameters"] as? [String: Any?] {
                 var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters()
                 model.fromMap(value)
@@ -50166,6 +51177,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: String?
 
             public var securityProtocol: String?
+
+            public var sslTruststoreCertificates: String?
 
             public var topic: String?
 
@@ -50216,6 +51229,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
                 }
+                if self.sslTruststoreCertificates != nil {
+                    map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
                 }
@@ -50259,6 +51275,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslTruststoreCertificates"] as? String {
+                    self.sslTruststoreCertificates = value
                 }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
@@ -51425,6 +52444,10 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sourcePrometheusParameters: UpdateEventStreamingRequest.Source.SourcePrometheusParameters?
 
+        public var sourceRabbitMQMetaParameters: SourceRabbitMQMetaParameters?
+
+        public var sourceRabbitMQMsgSyncParameters: SourceRabbitMQMsgSyncParameters?
+
         public var sourceRabbitMQParameters: UpdateEventStreamingRequest.Source.SourceRabbitMQParameters?
 
         public var sourceRocketMQCheckpointParameters: UpdateEventStreamingRequest.Source.SourceRocketMQCheckpointParameters?
@@ -51457,6 +52480,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sourceOpenSourceRabbitMQParameters?.validate()
             try self.sourcePostgreSQLParameters?.validate()
             try self.sourcePrometheusParameters?.validate()
+            try self.sourceRabbitMQMetaParameters?.validate()
+            try self.sourceRabbitMQMsgSyncParameters?.validate()
             try self.sourceRabbitMQParameters?.validate()
             try self.sourceRocketMQCheckpointParameters?.validate()
             try self.sourceRocketMQParameters?.validate()
@@ -51506,6 +52531,12 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sourcePrometheusParameters != nil {
                 map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
+            }
+            if self.sourceRabbitMQMetaParameters != nil {
+                map["SourceRabbitMQMetaParameters"] = self.sourceRabbitMQMetaParameters?.toMap()
+            }
+            if self.sourceRabbitMQMsgSyncParameters != nil {
+                map["SourceRabbitMQMsgSyncParameters"] = self.sourceRabbitMQMsgSyncParameters?.toMap()
             }
             if self.sourceRabbitMQParameters != nil {
                 map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -51593,6 +52624,16 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Source.SourcePrometheusParameters()
                 model.fromMap(value)
                 self.sourcePrometheusParameters = model
+            }
+            if let value = dict["SourceRabbitMQMetaParameters"] as? [String: Any?] {
+                var model = SourceRabbitMQMetaParameters()
+                model.fromMap(value)
+                self.sourceRabbitMQMetaParameters = model
+            }
+            if let value = dict["SourceRabbitMQMsgSyncParameters"] as? [String: Any?] {
+                var model = SourceRabbitMQMsgSyncParameters()
+                model.fromMap(value)
+                self.sourceRabbitMQMsgSyncParameters = model
             }
             if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
                 var model = UpdateEventStreamingRequest.Source.SourceRabbitMQParameters()
