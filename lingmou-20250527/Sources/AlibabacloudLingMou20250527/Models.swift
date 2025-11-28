@@ -5,6 +5,178 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class BroadcastTemplate : Tea.TeaModel {
+    public var createTime: String?
+
+    public var id: String?
+
+    public var modifiedTime: String?
+
+    public var name: String?
+
+    public var variables: [TemplateVariable]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["createTime"] = self.createTime!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.modifiedTime != nil {
+            map["modifiedTime"] = self.modifiedTime!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.variables != nil {
+            var tmp : [Any] = []
+            for k in self.variables! {
+                tmp.append(k.toMap())
+            }
+            map["variables"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["modifiedTime"] as? String {
+            self.modifiedTime = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["variables"] as? [Any?] {
+            var tmp : [TemplateVariable] = []
+            for v in value {
+                if v != nil {
+                    var model = TemplateVariable()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.variables = tmp
+        }
+    }
+}
+
+public class BroadcastVideo : Tea.TeaModel {
+    public var alignmentFileURL: String?
+
+    public var captionURL: String?
+
+    public var coverURL: String?
+
+    public var createTime: String?
+
+    public var id: String?
+
+    public var modifiedTime: String?
+
+    public var name: String?
+
+    public var status: String?
+
+    public var videoURL: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alignmentFileURL != nil {
+            map["alignmentFileURL"] = self.alignmentFileURL!
+        }
+        if self.captionURL != nil {
+            map["captionURL"] = self.captionURL!
+        }
+        if self.coverURL != nil {
+            map["coverURL"] = self.coverURL!
+        }
+        if self.createTime != nil {
+            map["createTime"] = self.createTime!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.modifiedTime != nil {
+            map["modifiedTime"] = self.modifiedTime!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.videoURL != nil {
+            map["videoURL"] = self.videoURL!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["alignmentFileURL"] as? String {
+            self.alignmentFileURL = value
+        }
+        if let value = dict["captionURL"] as? String {
+            self.captionURL = value
+        }
+        if let value = dict["coverURL"] as? String {
+            self.coverURL = value
+        }
+        if let value = dict["createTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["modifiedTime"] as? String {
+            self.modifiedTime = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["videoURL"] as? String {
+            self.videoURL = value
+        }
+    }
+}
+
 public class ChatSessionInfo : Tea.TeaModel {
     public var createdAt: Int64?
 
@@ -48,6 +220,53 @@ public class ChatSessionInfo : Tea.TeaModel {
         }
         if let value = dict["sessionId"] as? String {
             self.sessionId = value
+        }
+    }
+}
+
+public class TemplateVariable : Tea.TeaModel {
+    public var name: String?
+
+    public var properties: Any?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.properties != nil {
+            map["properties"] = self.properties!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["properties"] as? Any {
+            self.properties = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
