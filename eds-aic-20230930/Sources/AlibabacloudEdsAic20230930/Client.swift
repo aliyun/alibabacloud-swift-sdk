@@ -374,6 +374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             query["PromotionId"] = request.promotionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.streamMode)) {
+            query["StreamMode"] = request.streamMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
@@ -2663,6 +2666,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.policyGroupId)) {
             query["PolicyGroupId"] = request.policyGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamMode)) {
+            query["StreamMode"] = request.streamMode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

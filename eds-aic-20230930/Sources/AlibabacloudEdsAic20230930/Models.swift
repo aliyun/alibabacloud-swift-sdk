@@ -1664,6 +1664,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var streamMode: Int32?
+
     public var tag: [CreateAndroidInstanceGroupRequest.Tag]?
 
     public var vSwitchId: String?
@@ -1752,6 +1754,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -1837,6 +1842,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateAndroidInstanceGroupRequest.Tag] = []
@@ -1942,6 +1950,8 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var streamMode: Int32?
+
     public var tag: [CreateAndroidInstanceGroupShrinkRequest.Tag]?
 
     public var vSwitchId: String?
@@ -2029,6 +2039,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -2112,6 +2125,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateAndroidInstanceGroupShrinkRequest.Tag] = []
@@ -16923,6 +16939,8 @@ public class ModifyAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var policyGroupId: String?
 
+    public var streamMode: Int32?
+
     public override init() {
         super.init()
     }
@@ -16946,6 +16964,9 @@ public class ModifyAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         return map
     }
 
@@ -16959,6 +16980,9 @@ public class ModifyAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
     }
 }
