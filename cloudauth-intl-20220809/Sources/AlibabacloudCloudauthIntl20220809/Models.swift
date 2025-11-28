@@ -3918,6 +3918,8 @@ public class DocOcrResponse : Tea.TeaModel {
 }
 
 public class DocOcrMaxRequest : Tea.TeaModel {
+    public var authorize: String?
+
     public var docPage: String?
 
     public var docType: String?
@@ -3960,6 +3962,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
         if self.docPage != nil {
             map["DocPage"] = self.docPage!
         }
@@ -4007,6 +4012,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Authorize"] as? String {
+            self.authorize = value
+        }
         if let value = dict["DocPage"] as? String {
             self.docPage = value
         }
