@@ -8170,7 +8170,11 @@ public class DescribeGroupEndpointsResponse : Tea.TeaModel {
 }
 
 public class DescribeMachineSpecRequest : Tea.TeaModel {
+    public var chargeType: String?
+
     public var instanceTypes: [String]?
+
+    public var resourceType: String?
 
     public override init() {
         super.init()
@@ -8186,22 +8190,38 @@ public class DescribeMachineSpecRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.instanceTypes != nil {
             map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["InstanceTypes"] as? [String] {
             self.instanceTypes = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
 
 public class DescribeMachineSpecShrinkRequest : Tea.TeaModel {
+    public var chargeType: String?
+
     public var instanceTypesShrink: String?
+
+    public var resourceType: String?
 
     public override init() {
         super.init()
@@ -8217,16 +8237,28 @@ public class DescribeMachineSpecShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.instanceTypesShrink != nil {
             map["InstanceTypes"] = self.instanceTypesShrink!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["InstanceTypes"] as? String {
             self.instanceTypesShrink = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
@@ -16241,6 +16273,150 @@ public class ListVirtualResourceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListVirtualResourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MigrateResourceInstanceRequest : Tea.TeaModel {
+    public var destResourceId: String?
+
+    public var instanceIds: [String]?
+
+    public var migrateToHybrid: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.destResourceId != nil {
+            map["DestResourceId"] = self.destResourceId!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.migrateToHybrid != nil {
+            map["MigrateToHybrid"] = self.migrateToHybrid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DestResourceId"] as? String {
+            self.destResourceId = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MigrateToHybrid"] as? Bool {
+            self.migrateToHybrid = value
+        }
+    }
+}
+
+public class MigrateResourceInstanceResponseBody : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MigrateResourceInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MigrateResourceInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MigrateResourceInstanceResponseBody()
             model.fromMap(value)
             self.body = model
         }
