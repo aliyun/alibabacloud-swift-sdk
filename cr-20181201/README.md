@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudCr20181201` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/cr-20181201" "2.0.6"
+github "alibabacloud-sdk-swift/cr-20181201" "2.1.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudCr20181201` into your Xcode project using [Swift Packa
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/cr-20181201.git", from: "2.0.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/cr-20181201.git", from: "2.1.0")
 ]
 ```
 
