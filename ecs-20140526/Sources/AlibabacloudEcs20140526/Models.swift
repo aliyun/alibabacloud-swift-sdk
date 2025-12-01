@@ -7182,6 +7182,36 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SecurityOptions : Tea.TeaModel {
+            public var trustedSystemMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.trustedSystemMode != nil {
+                    map["TrustedSystemMode"] = self.trustedSystemMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TrustedSystemMode"] as? String {
+                    self.trustedSystemMode = value
+                }
+            }
+        }
         public var arn: [CreateAutoProvisioningGroupRequest.LaunchConfiguration.Arn]?
 
         public var autoReleaseTime: String?
@@ -7258,6 +7288,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
         public var schedulerOptions: CreateAutoProvisioningGroupRequest.LaunchConfiguration.SchedulerOptions?
 
+        public var securityOptions: CreateAutoProvisioningGroupRequest.LaunchConfiguration.SecurityOptions?
+
         public var spotDuration: Int32?
 
         public var spotInterruptionBehavior: String?
@@ -7276,6 +7308,7 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             try self.cpuOptions?.validate()
             try self.imageOptions?.validate()
             try self.schedulerOptions?.validate()
+            try self.securityOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -7405,6 +7438,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if self.schedulerOptions != nil {
                 map["SchedulerOptions"] = self.schedulerOptions?.toMap()
+            }
+            if self.securityOptions != nil {
+                map["SecurityOptions"] = self.securityOptions?.toMap()
             }
             if self.spotDuration != nil {
                 map["SpotDuration"] = self.spotDuration!
@@ -7568,6 +7604,11 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 var model = CreateAutoProvisioningGroupRequest.LaunchConfiguration.SchedulerOptions()
                 model.fromMap(value)
                 self.schedulerOptions = model
+            }
+            if let value = dict["SecurityOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupRequest.LaunchConfiguration.SecurityOptions()
+                model.fromMap(value)
+                self.securityOptions = model
             }
             if let value = dict["SpotDuration"] as? Int32 {
                 self.spotDuration = value
@@ -8684,6 +8725,36 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SecurityOptions : Tea.TeaModel {
+            public var trustedSystemMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.trustedSystemMode != nil {
+                    map["TrustedSystemMode"] = self.trustedSystemMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TrustedSystemMode"] as? String {
+                    self.trustedSystemMode = value
+                }
+            }
+        }
         public var arn: [CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.Arn]?
 
         public var autoReleaseTime: String?
@@ -8760,6 +8831,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
         public var schedulerOptions: CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SchedulerOptions?
 
+        public var securityOptions: CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SecurityOptions?
+
         public var spotDuration: Int32?
 
         public var spotInterruptionBehavior: String?
@@ -8778,6 +8851,7 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             try self.cpuOptions?.validate()
             try self.imageOptions?.validate()
             try self.schedulerOptions?.validate()
+            try self.securityOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8907,6 +8981,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if self.schedulerOptions != nil {
                 map["SchedulerOptions"] = self.schedulerOptions?.toMap()
+            }
+            if self.securityOptions != nil {
+                map["SecurityOptions"] = self.securityOptions?.toMap()
             }
             if self.spotDuration != nil {
                 map["SpotDuration"] = self.spotDuration!
@@ -9070,6 +9147,11 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
                 var model = CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SchedulerOptions()
                 model.fromMap(value)
                 self.schedulerOptions = model
+            }
+            if let value = dict["SecurityOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SecurityOptions()
+                model.fromMap(value)
+                self.securityOptions = model
             }
             if let value = dict["SpotDuration"] as? Int32 {
                 self.spotDuration = value
@@ -115396,6 +115478,142 @@ public class ModifyVpcAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyVpcAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class OpenSnapshotServiceRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class OpenSnapshotServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class OpenSnapshotServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OpenSnapshotServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OpenSnapshotServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
