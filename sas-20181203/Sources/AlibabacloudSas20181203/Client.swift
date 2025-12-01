@@ -200,6 +200,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkIds)) {
             query["CheckIds"] = request.checkIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             query["Remark"] = request.remark ?? "";
         }
@@ -33176,6 +33179,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkIds)) {
             query["CheckIds"] = request.checkIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId!;
         }
@@ -36284,6 +36290,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkId)) {
             query["CheckId"] = request.checkId!;
         }
+        if (!TeaUtils.Client.isUnset(request.checkIds)) {
+            query["CheckIds"] = request.checkIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
         }
@@ -36320,6 +36329,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.checkIds)) {
             query["CheckIds"] = request.checkIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.taskSource)) {
             query["TaskSource"] = request.taskSource ?? "";
