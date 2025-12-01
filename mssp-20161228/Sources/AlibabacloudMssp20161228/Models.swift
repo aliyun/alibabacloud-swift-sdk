@@ -294,6 +294,8 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
 
     public var ownerId: String?
 
+    public var priority: Int32?
+
     public var startTime: Int64?
 
     public var workOrderDetail: String?
@@ -356,6 +358,9 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -414,6 +419,9 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
@@ -1215,6 +1223,44 @@ public class DisposeServiceWorkOrderResponse : Tea.TeaModel {
 }
 
 public class DisposeWorkTaskRequest : Tea.TeaModel {
+    public class WorkTaskAnalysisResults : Tea.TeaModel {
+        public var analysisResult: String?
+
+        public var taskId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.analysisResult != nil {
+                map["AnalysisResult"] = self.analysisResult!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AnalysisResult"] as? String {
+                self.analysisResult = value
+            }
+            if let value = dict["TaskId"] as? Int64 {
+                self.taskId = value
+            }
+        }
+    }
     public var operator_: String?
 
     public var optRemark: String?
@@ -1222,6 +1268,8 @@ public class DisposeWorkTaskRequest : Tea.TeaModel {
     public var status: Int32?
 
     public var taskIds: String?
+
+    public var workTaskAnalysisResults: [DisposeWorkTaskRequest.WorkTaskAnalysisResults]?
 
     public override init() {
         super.init()
@@ -1249,6 +1297,13 @@ public class DisposeWorkTaskRequest : Tea.TeaModel {
         if self.taskIds != nil {
             map["TaskIds"] = self.taskIds!
         }
+        if self.workTaskAnalysisResults != nil {
+            var tmp : [Any] = []
+            for k in self.workTaskAnalysisResults! {
+                tmp.append(k.toMap())
+            }
+            map["WorkTaskAnalysisResults"] = tmp
+        }
         return map
     }
 
@@ -1265,6 +1320,82 @@ public class DisposeWorkTaskRequest : Tea.TeaModel {
         }
         if let value = dict["TaskIds"] as? String {
             self.taskIds = value
+        }
+        if let value = dict["WorkTaskAnalysisResults"] as? [Any?] {
+            var tmp : [DisposeWorkTaskRequest.WorkTaskAnalysisResults] = []
+            for v in value {
+                if v != nil {
+                    var model = DisposeWorkTaskRequest.WorkTaskAnalysisResults()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workTaskAnalysisResults = tmp
+        }
+    }
+}
+
+public class DisposeWorkTaskShrinkRequest : Tea.TeaModel {
+    public var operator_: String?
+
+    public var optRemark: String?
+
+    public var status: Int32?
+
+    public var taskIds: String?
+
+    public var workTaskAnalysisResultsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operator_ != nil {
+            map["Operator"] = self.operator_!
+        }
+        if self.optRemark != nil {
+            map["OptRemark"] = self.optRemark!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskIds != nil {
+            map["TaskIds"] = self.taskIds!
+        }
+        if self.workTaskAnalysisResultsShrink != nil {
+            map["WorkTaskAnalysisResults"] = self.workTaskAnalysisResultsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Operator"] as? String {
+            self.operator_ = value
+        }
+        if let value = dict["OptRemark"] as? String {
+            self.optRemark = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["TaskIds"] as? String {
+            self.taskIds = value
+        }
+        if let value = dict["WorkTaskAnalysisResults"] as? String {
+            self.workTaskAnalysisResultsShrink = value
         }
     }
 }

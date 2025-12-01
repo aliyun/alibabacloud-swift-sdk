@@ -128,6 +128,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             body["OwnerId"] = request.ownerId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             body["StartTime"] = request.startTime!;
         }
@@ -309,8 +312,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func disposeWorkTaskWithOptions(_ request: DisposeWorkTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisposeWorkTaskResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func disposeWorkTaskWithOptions(_ tmpReq: DisposeWorkTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisposeWorkTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DisposeWorkTaskShrinkRequest = DisposeWorkTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.workTaskAnalysisResults)) {
+            request.workTaskAnalysisResultsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.workTaskAnalysisResults, "WorkTaskAnalysisResults", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.operator_)) {
             body["Operator"] = request.operator_ ?? "";
@@ -323,6 +331,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskIds)) {
             body["TaskIds"] = request.taskIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workTaskAnalysisResultsShrink)) {
+            body["WorkTaskAnalysisResults"] = request.workTaskAnalysisResultsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
