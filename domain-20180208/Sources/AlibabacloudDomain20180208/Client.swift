@@ -836,6 +836,87 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryBuyerDomainTradeRecordsWithOptions(_ tmpReq: QueryBuyerDomainTradeRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryBuyerDomainTradeRecordsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryBuyerDomainTradeRecordsShrinkRequest = QueryBuyerDomainTradeRecordsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.bizIdList)) {
+            request.bizIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bizIdList, "BizIdList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.domainNameList)) {
+            request.domainNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.domainNameList, "DomainNameList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.statusList)) {
+            request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.suffixList)) {
+            request.suffixListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.suffixList, "SuffixList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tradeTypeList)) {
+            request.tradeTypeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tradeTypeList, "TradeTypeList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizIdListShrink)) {
+            query["BizIdList"] = request.bizIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainNameListShrink)) {
+            query["DomainNameList"] = request.domainNameListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["EndDate"] = request.endDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endPrice)) {
+            query["EndPrice"] = request.endPrice!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sorter)) {
+            query["Sorter"] = request.sorter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["StartDate"] = request.startDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startPrice)) {
+            query["StartPrice"] = request.startPrice!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statusListShrink)) {
+            query["StatusList"] = request.statusListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.suffixListShrink)) {
+            query["SuffixList"] = request.suffixListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tradeTypeListShrink)) {
+            query["TradeTypeList"] = request.tradeTypeListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryBuyerDomainTradeRecords",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryBuyerDomainTradeRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryBuyerDomainTradeRecords(_ request: QueryBuyerDomainTradeRecordsRequest) async throws -> QueryBuyerDomainTradeRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryBuyerDomainTradeRecordsWithOptions(request as! QueryBuyerDomainTradeRecordsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryDomainTransferStatusWithOptions(_ request: QueryDomainTransferStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDomainTransferStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
