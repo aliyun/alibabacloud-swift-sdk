@@ -3156,6 +3156,283 @@ public class AttachEndUserResponse : Tea.TeaModel {
     }
 }
 
+public class BatchModifyEntitlementRequest : Tea.TeaModel {
+    public var desktopId: [String]?
+
+    public var endUserId: [String]?
+
+    public var maxDesktopPerUser: Int32?
+
+    public var maxUserPerDesktop: Int32?
+
+    public var preview: Bool?
+
+    public var regionId: String?
+
+    public var strategy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.maxDesktopPerUser != nil {
+            map["MaxDesktopPerUser"] = self.maxDesktopPerUser!
+        }
+        if self.maxUserPerDesktop != nil {
+            map["MaxUserPerDesktop"] = self.maxUserPerDesktop!
+        }
+        if self.preview != nil {
+            map["Preview"] = self.preview!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.strategy != nil {
+            map["Strategy"] = self.strategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesktopId"] as? [String] {
+            self.desktopId = value
+        }
+        if let value = dict["EndUserId"] as? [String] {
+            self.endUserId = value
+        }
+        if let value = dict["MaxDesktopPerUser"] as? Int32 {
+            self.maxDesktopPerUser = value
+        }
+        if let value = dict["MaxUserPerDesktop"] as? Int32 {
+            self.maxUserPerDesktop = value
+        }
+        if let value = dict["Preview"] as? Bool {
+            self.preview = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Strategy"] as? String {
+            self.strategy = value
+        }
+    }
+}
+
+public class BatchModifyEntitlementResponseBody : Tea.TeaModel {
+    public class Entitlements : Tea.TeaModel {
+        public class AssignModels : Tea.TeaModel {
+            public var desktopId: String?
+
+            public var endUserIds: [String]?
+
+            public var innerStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desktopId != nil {
+                    map["DesktopId"] = self.desktopId!
+                }
+                if self.endUserIds != nil {
+                    map["EndUserIds"] = self.endUserIds!
+                }
+                if self.innerStatus != nil {
+                    map["InnerStatus"] = self.innerStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DesktopId"] as? String {
+                    self.desktopId = value
+                }
+                if let value = dict["EndUserIds"] as? [String] {
+                    self.endUserIds = value
+                }
+                if let value = dict["InnerStatus"] as? String {
+                    self.innerStatus = value
+                }
+            }
+        }
+        public var assignModels: [BatchModifyEntitlementResponseBody.Entitlements.AssignModels]?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assignModels != nil {
+                var tmp : [Any] = []
+                for k in self.assignModels! {
+                    tmp.append(k.toMap())
+                }
+                map["AssignModels"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssignModels"] as? [Any?] {
+                var tmp : [BatchModifyEntitlementResponseBody.Entitlements.AssignModels] = []
+                for v in value {
+                    if v != nil {
+                        var model = BatchModifyEntitlementResponseBody.Entitlements.AssignModels()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.assignModels = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var entitlements: BatchModifyEntitlementResponseBody.Entitlements?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.entitlements?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.entitlements != nil {
+            map["Entitlements"] = self.entitlements?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Entitlements"] as? [String: Any?] {
+            var model = BatchModifyEntitlementResponseBody.Entitlements()
+            model.fromMap(value)
+            self.entitlements = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class BatchModifyEntitlementResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchModifyEntitlementResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchModifyEntitlementResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BindConfigGroupRequest : Tea.TeaModel {
     public class ResourceInfos : Tea.TeaModel {
         public var productType: String?
@@ -7286,6 +7563,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var clientControlMenu: String?
 
+    public var clientCreateSnapshot: String?
+
     public var clientType: [CreateCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
@@ -7496,6 +7775,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var watermarkSecurity: String?
 
+    public var watermarkShadow: String?
+
     public var watermarkTransparencyValue: Int32?
 
     public var watermarkType: String?
@@ -7549,6 +7830,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.clientControlMenu != nil {
             map["ClientControlMenu"] = self.clientControlMenu!
+        }
+        if self.clientCreateSnapshot != nil {
+            map["ClientCreateSnapshot"] = self.clientCreateSnapshot!
         }
         if self.clientType != nil {
             var tmp : [Any] = []
@@ -7897,6 +8181,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.watermarkSecurity != nil {
             map["WatermarkSecurity"] = self.watermarkSecurity!
         }
+        if self.watermarkShadow != nil {
+            map["WatermarkShadow"] = self.watermarkShadow!
+        }
         if self.watermarkTransparencyValue != nil {
             map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
         }
@@ -7957,6 +8244,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ClientControlMenu"] as? String {
             self.clientControlMenu = value
+        }
+        if let value = dict["ClientCreateSnapshot"] as? String {
+            self.clientCreateSnapshot = value
         }
         if let value = dict["ClientType"] as? [Any?] {
             var tmp : [CreateCenterPolicyRequest.ClientType] = []
@@ -8352,6 +8642,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["WatermarkSecurity"] as? String {
             self.watermarkSecurity = value
+        }
+        if let value = dict["WatermarkShadow"] as? String {
+            self.watermarkShadow = value
         }
         if let value = dict["WatermarkTransparencyValue"] as? Int32 {
             self.watermarkTransparencyValue = value
@@ -34991,6 +35284,8 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
 
         public var officeSiteName: String?
 
+        public var officeSiteType: String?
+
         public var osType: String?
 
         public var platform: String?
@@ -35068,6 +35363,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if self.officeSiteName != nil {
                 map["OfficeSiteName"] = self.officeSiteName!
+            }
+            if self.officeSiteType != nil {
+                map["OfficeSiteType"] = self.officeSiteType!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -35156,6 +35454,9 @@ public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OfficeSiteName"] as? String {
                 self.officeSiteName = value
+            }
+            if let value = dict["OfficeSiteType"] as? String {
+                self.officeSiteType = value
             }
             if let value = dict["OsType"] as? String {
                 self.osType = value
@@ -40665,6 +40966,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var clientControlMenu: String?
 
+        public var clientCreateSnapshot: String?
+
         public var clientTypes: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes]?
 
         public var clipboard: String?
@@ -40879,6 +41182,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var watermarkSecurity: String?
 
+        public var watermarkShadow: String?
+
         public var watermarkTransparency: String?
 
         public var watermarkTransparencyValue: Int32?
@@ -40931,6 +41236,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.clientControlMenu != nil {
                 map["ClientControlMenu"] = self.clientControlMenu!
+            }
+            if self.clientCreateSnapshot != nil {
+                map["ClientCreateSnapshot"] = self.clientCreateSnapshot!
             }
             if self.clientTypes != nil {
                 var tmp : [Any] = []
@@ -41281,6 +41589,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.watermarkSecurity != nil {
                 map["WatermarkSecurity"] = self.watermarkSecurity!
             }
+            if self.watermarkShadow != nil {
+                map["WatermarkShadow"] = self.watermarkShadow!
+            }
             if self.watermarkTransparency != nil {
                 map["WatermarkTransparency"] = self.watermarkTransparency!
             }
@@ -41341,6 +41652,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientControlMenu"] as? String {
                 self.clientControlMenu = value
+            }
+            if let value = dict["ClientCreateSnapshot"] as? String {
+                self.clientCreateSnapshot = value
             }
             if let value = dict["ClientTypes"] as? [Any?] {
                 var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes] = []
@@ -41732,6 +42046,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["WatermarkSecurity"] as? String {
                 self.watermarkSecurity = value
+            }
+            if let value = dict["WatermarkShadow"] as? String {
+                self.watermarkShadow = value
             }
             if let value = dict["WatermarkTransparency"] as? String {
                 self.watermarkTransparency = value
@@ -58381,6 +58698,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var clientControlMenu: String?
 
+    public var clientCreateSnapshot: String?
+
     public var clientType: [ModifyCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
@@ -58597,6 +58916,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var watermarkSecurity: String?
 
+    public var watermarkShadow: String?
+
     public var watermarkTransparencyValue: Int32?
 
     public var watermarkType: String?
@@ -58650,6 +58971,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.clientControlMenu != nil {
             map["ClientControlMenu"] = self.clientControlMenu!
+        }
+        if self.clientCreateSnapshot != nil {
+            map["ClientCreateSnapshot"] = self.clientCreateSnapshot!
         }
         if self.clientType != nil {
             var tmp : [Any] = []
@@ -59015,6 +59339,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.watermarkSecurity != nil {
             map["WatermarkSecurity"] = self.watermarkSecurity!
         }
+        if self.watermarkShadow != nil {
+            map["WatermarkShadow"] = self.watermarkShadow!
+        }
         if self.watermarkTransparencyValue != nil {
             map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
         }
@@ -59075,6 +59402,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ClientControlMenu"] as? String {
             self.clientControlMenu = value
+        }
+        if let value = dict["ClientCreateSnapshot"] as? String {
+            self.clientCreateSnapshot = value
         }
         if let value = dict["ClientType"] as? [Any?] {
             var tmp : [ModifyCenterPolicyRequest.ClientType] = []
@@ -59499,6 +59829,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["WatermarkSecurity"] as? String {
             self.watermarkSecurity = value
+        }
+        if let value = dict["WatermarkShadow"] as? String {
+            self.watermarkShadow = value
         }
         if let value = dict["WatermarkTransparencyValue"] as? Int32 {
             self.watermarkTransparencyValue = value
