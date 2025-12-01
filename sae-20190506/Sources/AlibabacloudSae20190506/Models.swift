@@ -27434,6 +27434,8 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
 
             public var timestamp: Int64?
 
+            public var trafficStatus: String?
+
             public var unhealthyMessage: String?
 
             public var vSwitchId: String?
@@ -27501,6 +27503,9 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
                 if self.timestamp != nil {
                     map["Timestamp"] = self.timestamp!
                 }
+                if self.trafficStatus != nil {
+                    map["TrafficStatus"] = self.trafficStatus!
+                }
                 if self.unhealthyMessage != nil {
                     map["UnhealthyMessage"] = self.unhealthyMessage!
                 }
@@ -27566,6 +27571,9 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Timestamp"] as? Int64 {
                     self.timestamp = value
+                }
+                if let value = dict["TrafficStatus"] as? String {
+                    self.trafficStatus = value
                 }
                 if let value = dict["UnhealthyMessage"] as? String {
                     self.unhealthyMessage = value
@@ -45022,6 +45030,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var namespaceId: String?
 
+    public var newSaeVersion: String?
+
     public var orderBy: String?
 
     public var pageSize: Int32?
@@ -45065,6 +45075,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
         }
+        if self.newSaeVersion != nil {
+            map["NewSaeVersion"] = self.newSaeVersion!
+        }
         if self.orderBy != nil {
             map["OrderBy"] = self.orderBy!
         }
@@ -45102,6 +45115,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["NamespaceId"] as? String {
             self.namespaceId = value
+        }
+        if let value = dict["NewSaeVersion"] as? String {
+            self.newSaeVersion = value
         }
         if let value = dict["OrderBy"] as? String {
             self.orderBy = value

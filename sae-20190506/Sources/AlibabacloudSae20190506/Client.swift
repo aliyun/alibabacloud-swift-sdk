@@ -4252,6 +4252,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.newSaeVersion)) {
+            query["NewSaeVersion"] = request.newSaeVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderBy)) {
             query["OrderBy"] = request.orderBy ?? "";
         }
