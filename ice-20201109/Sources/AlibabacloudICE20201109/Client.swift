@@ -4345,6 +4345,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             query["CalledNumber"] = request.calledNumber ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callerNumber)) {
+            query["CallerNumber"] = request.callerNumber ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.errorPrompt)) {
             query["ErrorPrompt"] = request.errorPrompt ?? "";
         }

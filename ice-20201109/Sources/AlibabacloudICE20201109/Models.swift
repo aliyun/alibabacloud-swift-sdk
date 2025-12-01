@@ -114,6 +114,238 @@ public class AIAgentConfig : Tea.TeaModel {
             }
         }
     }
+    public class AutoSpeechConfig : Tea.TeaModel {
+        public class LlmPending : Tea.TeaModel {
+            public class Messages : Tea.TeaModel {
+                public var probability: Double?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.probability != nil {
+                        map["Probability"] = self.probability!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Probability"] as? Double {
+                        self.probability = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var messages: [AIAgentConfig.AutoSpeechConfig.LlmPending.Messages]?
+
+            public var waitTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.messages != nil {
+                    var tmp : [Any] = []
+                    for k in self.messages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Messages"] = tmp
+                }
+                if self.waitTime != nil {
+                    map["WaitTime"] = self.waitTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Messages"] as? [Any?] {
+                    var tmp : [AIAgentConfig.AutoSpeechConfig.LlmPending.Messages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AIAgentConfig.AutoSpeechConfig.LlmPending.Messages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.messages = tmp
+                }
+                if let value = dict["WaitTime"] as? Int32 {
+                    self.waitTime = value
+                }
+            }
+        }
+        public class UserIdle : Tea.TeaModel {
+            public class Messages : Tea.TeaModel {
+                public var probability: Double?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.probability != nil {
+                        map["Probability"] = self.probability!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Probability"] as? Double {
+                        self.probability = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var maxRepeats: Int32?
+
+            public var messages: [AIAgentConfig.AutoSpeechConfig.UserIdle.Messages]?
+
+            public var waitTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxRepeats != nil {
+                    map["MaxRepeats"] = self.maxRepeats!
+                }
+                if self.messages != nil {
+                    var tmp : [Any] = []
+                    for k in self.messages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Messages"] = tmp
+                }
+                if self.waitTime != nil {
+                    map["WaitTime"] = self.waitTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MaxRepeats"] as? Int32 {
+                    self.maxRepeats = value
+                }
+                if let value = dict["Messages"] as? [Any?] {
+                    var tmp : [AIAgentConfig.AutoSpeechConfig.UserIdle.Messages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AIAgentConfig.AutoSpeechConfig.UserIdle.Messages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.messages = tmp
+                }
+                if let value = dict["WaitTime"] as? Int32 {
+                    self.waitTime = value
+                }
+            }
+        }
+        public var llmPending: AIAgentConfig.AutoSpeechConfig.LlmPending?
+
+        public var userIdle: AIAgentConfig.AutoSpeechConfig.UserIdle?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.llmPending?.validate()
+            try self.userIdle?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.llmPending != nil {
+                map["LlmPending"] = self.llmPending?.toMap()
+            }
+            if self.userIdle != nil {
+                map["UserIdle"] = self.userIdle?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LlmPending"] as? [String: Any?] {
+                var model = AIAgentConfig.AutoSpeechConfig.LlmPending()
+                model.fromMap(value)
+                self.llmPending = model
+            }
+            if let value = dict["UserIdle"] as? [String: Any?] {
+                var model = AIAgentConfig.AutoSpeechConfig.UserIdle()
+                model.fromMap(value)
+                self.userIdle = model
+            }
+        }
+    }
     public class AvatarConfig : Tea.TeaModel {
         public var avatarId: String?
 
@@ -263,6 +495,8 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public var functionMap: [AIAgentConfig.LlmConfig.FunctionMap]?
 
+        public var historySyncWithTTS: Bool?
+
         public var llmCompleteReply: Bool?
 
         public var llmHistory: [AIAgentConfig.LlmConfig.LlmHistory]?
@@ -300,6 +534,9 @@ public class AIAgentConfig : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["FunctionMap"] = tmp
+            }
+            if self.historySyncWithTTS != nil {
+                map["HistorySyncWithTTS"] = self.historySyncWithTTS!
             }
             if self.llmCompleteReply != nil {
                 map["LlmCompleteReply"] = self.llmCompleteReply!
@@ -346,6 +583,9 @@ public class AIAgentConfig : Tea.TeaModel {
                     }
                 }
                 self.functionMap = tmp
+            }
+            if let value = dict["HistorySyncWithTTS"] as? Bool {
+                self.historySyncWithTTS = value
             }
             if let value = dict["LlmCompleteReply"] as? Bool {
                 self.llmCompleteReply = value
@@ -890,6 +1130,8 @@ public class AIAgentConfig : Tea.TeaModel {
 
     public var asrConfig: AIAgentConfig.AsrConfig?
 
+    public var autoSpeechConfig: AIAgentConfig.AutoSpeechConfig?
+
     public var avatarConfig: AIAgentConfig.AvatarConfig?
 
     public var avatarUrl: String?
@@ -942,6 +1184,7 @@ public class AIAgentConfig : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
+        try self.autoSpeechConfig?.validate()
         try self.avatarConfig?.validate()
         try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
@@ -958,6 +1201,9 @@ public class AIAgentConfig : Tea.TeaModel {
         }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
+        }
+        if self.autoSpeechConfig != nil {
+            map["AutoSpeechConfig"] = self.autoSpeechConfig?.toMap()
         }
         if self.avatarConfig != nil {
             map["AvatarConfig"] = self.avatarConfig?.toMap()
@@ -1033,6 +1279,11 @@ public class AIAgentConfig : Tea.TeaModel {
             var model = AIAgentConfig.AsrConfig()
             model.fromMap(value)
             self.asrConfig = model
+        }
+        if let value = dict["AutoSpeechConfig"] as? [String: Any?] {
+            var model = AIAgentConfig.AutoSpeechConfig()
+            model.fromMap(value)
+            self.autoSpeechConfig = model
         }
         if let value = dict["AvatarConfig"] as? [String: Any?] {
             var model = AIAgentConfig.AvatarConfig()
@@ -1220,6 +1471,238 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             }
         }
     }
+    public class AutoSpeechConfig : Tea.TeaModel {
+        public class LlmPending : Tea.TeaModel {
+            public class Messages : Tea.TeaModel {
+                public var probability: Double?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.probability != nil {
+                        map["Probability"] = self.probability!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Probability"] as? Double {
+                        self.probability = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var messages: [AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending.Messages]?
+
+            public var waitTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.messages != nil {
+                    var tmp : [Any] = []
+                    for k in self.messages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Messages"] = tmp
+                }
+                if self.waitTime != nil {
+                    map["WaitTime"] = self.waitTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Messages"] as? [Any?] {
+                    var tmp : [AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending.Messages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending.Messages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.messages = tmp
+                }
+                if let value = dict["WaitTime"] as? Int32 {
+                    self.waitTime = value
+                }
+            }
+        }
+        public class UserIdle : Tea.TeaModel {
+            public class Messages : Tea.TeaModel {
+                public var probability: Double?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.probability != nil {
+                        map["Probability"] = self.probability!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Probability"] as? Double {
+                        self.probability = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var maxRepeats: Int32?
+
+            public var messages: [AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle.Messages]?
+
+            public var waitTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxRepeats != nil {
+                    map["MaxRepeats"] = self.maxRepeats!
+                }
+                if self.messages != nil {
+                    var tmp : [Any] = []
+                    for k in self.messages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Messages"] = tmp
+                }
+                if self.waitTime != nil {
+                    map["WaitTime"] = self.waitTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MaxRepeats"] as? Int32 {
+                    self.maxRepeats = value
+                }
+                if let value = dict["Messages"] as? [Any?] {
+                    var tmp : [AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle.Messages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle.Messages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.messages = tmp
+                }
+                if let value = dict["WaitTime"] as? Int32 {
+                    self.waitTime = value
+                }
+            }
+        }
+        public var llmPending: AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending?
+
+        public var userIdle: AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.llmPending?.validate()
+            try self.userIdle?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.llmPending != nil {
+                map["LlmPending"] = self.llmPending?.toMap()
+            }
+            if self.userIdle != nil {
+                map["UserIdle"] = self.userIdle?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LlmPending"] as? [String: Any?] {
+                var model = AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending()
+                model.fromMap(value)
+                self.llmPending = model
+            }
+            if let value = dict["UserIdle"] as? [String: Any?] {
+                var model = AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle()
+                model.fromMap(value)
+                self.userIdle = model
+            }
+        }
+    }
     public class InterruptConfig : Tea.TeaModel {
         public var enableVoiceInterrupt: Bool?
 
@@ -1339,6 +1822,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
         public var functionMap: [AIAgentOutboundCallConfig.LlmConfig.FunctionMap]?
 
+        public var historySyncWithTTS: Bool?
+
         public var llmCompleteReply: Bool?
 
         public var llmHistory: [AIAgentOutboundCallConfig.LlmConfig.LlmHistory]?
@@ -1376,6 +1861,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["FunctionMap"] = tmp
+            }
+            if self.historySyncWithTTS != nil {
+                map["HistorySyncWithTTS"] = self.historySyncWithTTS!
             }
             if self.llmCompleteReply != nil {
                 map["LlmCompleteReply"] = self.llmCompleteReply!
@@ -1422,6 +1910,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
                     }
                 }
                 self.functionMap = tmp
+            }
+            if let value = dict["HistorySyncWithTTS"] as? Bool {
+                self.historySyncWithTTS = value
             }
             if let value = dict["LlmCompleteReply"] as? Bool {
                 self.llmCompleteReply = value
@@ -1644,6 +2135,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
     public var asrConfig: AIAgentOutboundCallConfig.AsrConfig?
 
+    public var autoSpeechConfig: AIAgentOutboundCallConfig.AutoSpeechConfig?
+
     public var enableIntelligentSegment: Bool?
 
     public var experimentalConfig: String?
@@ -1655,6 +2148,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
     public var interruptConfig: AIAgentOutboundCallConfig.InterruptConfig?
 
     public var llmConfig: AIAgentOutboundCallConfig.LlmConfig?
+
+    public var maxIdleTime: Int32?
 
     public var ttsConfig: AIAgentOutboundCallConfig.TtsConfig?
 
@@ -1672,6 +2167,7 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
+        try self.autoSpeechConfig?.validate()
         try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
         try self.ttsConfig?.validate()
@@ -1685,6 +2181,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
         }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
+        }
+        if self.autoSpeechConfig != nil {
+            map["AutoSpeechConfig"] = self.autoSpeechConfig?.toMap()
         }
         if self.enableIntelligentSegment != nil {
             map["EnableIntelligentSegment"] = self.enableIntelligentSegment!
@@ -1703,6 +2202,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
         }
         if self.llmConfig != nil {
             map["LlmConfig"] = self.llmConfig?.toMap()
+        }
+        if self.maxIdleTime != nil {
+            map["MaxIdleTime"] = self.maxIdleTime!
         }
         if self.ttsConfig != nil {
             map["TtsConfig"] = self.ttsConfig?.toMap()
@@ -1725,6 +2227,11 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             model.fromMap(value)
             self.asrConfig = model
         }
+        if let value = dict["AutoSpeechConfig"] as? [String: Any?] {
+            var model = AIAgentOutboundCallConfig.AutoSpeechConfig()
+            model.fromMap(value)
+            self.autoSpeechConfig = model
+        }
         if let value = dict["EnableIntelligentSegment"] as? Bool {
             self.enableIntelligentSegment = value
         }
@@ -1746,6 +2253,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             var model = AIAgentOutboundCallConfig.LlmConfig()
             model.fromMap(value)
             self.llmConfig = model
+        }
+        if let value = dict["MaxIdleTime"] as? Int32 {
+            self.maxIdleTime = value
         }
         if let value = dict["TtsConfig"] as? [String: Any?] {
             var model = AIAgentOutboundCallConfig.TtsConfig()
@@ -29842,6 +30352,8 @@ public class ForbidMediaConnectFlowOutputResponse : Tea.TeaModel {
 public class ForwardAIAgentCallRequest : Tea.TeaModel {
     public var calledNumber: String?
 
+    public var callerNumber: String?
+
     public var errorPrompt: String?
 
     public var instanceId: String?
@@ -29865,6 +30377,9 @@ public class ForwardAIAgentCallRequest : Tea.TeaModel {
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
         }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
         if self.errorPrompt != nil {
             map["ErrorPrompt"] = self.errorPrompt!
         }
@@ -29881,6 +30396,9 @@ public class ForwardAIAgentCallRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
+        }
+        if let value = dict["CallerNumber"] as? String {
+            self.callerNumber = value
         }
         if let value = dict["ErrorPrompt"] as? String {
             self.errorPrompt = value
