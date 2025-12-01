@@ -1749,6 +1749,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodepoolId)) {
             body["nodepool_id"] = request.nodepoolId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.oneTimeToken)) {
+            body["one_time_token"] = request.oneTimeToken!;
+        }
         if (!TeaUtils.Client.isUnset(request.options)) {
             body["options"] = request.options ?? "";
         }

@@ -10369,6 +10369,8 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
 
     public var nodepoolId: String?
 
+    public var oneTimeToken: Bool?
+
     public var options: String?
 
     public var rdsInstances: [String]?
@@ -10402,6 +10404,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
         if self.nodepoolId != nil {
             map["nodepool_id"] = self.nodepoolId!
         }
+        if self.oneTimeToken != nil {
+            map["one_time_token"] = self.oneTimeToken!
+        }
         if self.options != nil {
             map["options"] = self.options!
         }
@@ -10427,6 +10432,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
         }
         if let value = dict["nodepool_id"] as? String {
             self.nodepoolId = value
+        }
+        if let value = dict["one_time_token"] as? Bool {
+            self.oneTimeToken = value
         }
         if let value = dict["options"] as? String {
             self.options = value
