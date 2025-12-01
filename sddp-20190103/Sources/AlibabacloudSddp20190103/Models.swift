@@ -14734,6 +14734,166 @@ public class ManualTriggerMaskingProcessResponse : Tea.TeaModel {
     }
 }
 
+public class MaskOssImageRequest : Tea.TeaModel {
+    public var bucketName: String?
+
+    public var isAlwaysUpload: Bool?
+
+    public var isSupportRestore: Bool?
+
+    public var lang: String?
+
+    public var maskRuleIdList: String?
+
+    public var objectKey: String?
+
+    public var serviceRegionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
+        if self.isAlwaysUpload != nil {
+            map["IsAlwaysUpload"] = self.isAlwaysUpload!
+        }
+        if self.isSupportRestore != nil {
+            map["IsSupportRestore"] = self.isSupportRestore!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maskRuleIdList != nil {
+            map["MaskRuleIdList"] = self.maskRuleIdList!
+        }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["IsAlwaysUpload"] as? Bool {
+            self.isAlwaysUpload = value
+        }
+        if let value = dict["IsSupportRestore"] as? Bool {
+            self.isSupportRestore = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaskRuleIdList"] as? String {
+            self.maskRuleIdList = value
+        }
+        if let value = dict["ObjectKey"] as? String {
+            self.objectKey = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
+        }
+    }
+}
+
+public class MaskOssImageResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MaskOssImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MaskOssImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MaskOssImageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyDataLimitRequest : Tea.TeaModel {
     public var auditStatus: Int32?
 
@@ -15856,6 +16016,158 @@ public class ModifyRuleStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyRuleStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RestoreOssImageRequest : Tea.TeaModel {
+    public var bucket: String?
+
+    public var lang: String?
+
+    public var objectKey: String?
+
+    public var serviceRegionId: String?
+
+    public var targetObjectKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucket != nil {
+            map["Bucket"] = self.bucket!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        if self.targetObjectKey != nil {
+            map["TargetObjectKey"] = self.targetObjectKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Bucket"] as? String {
+            self.bucket = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["ObjectKey"] as? String {
+            self.objectKey = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
+        }
+        if let value = dict["TargetObjectKey"] as? String {
+            self.targetObjectKey = value
+        }
+    }
+}
+
+public class RestoreOssImageResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var restoredImageKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.restoredImageKey != nil {
+            map["RestoredImageKey"] = self.restoredImageKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RestoredImageKey"] as? String {
+            self.restoredImageKey = value
+        }
+    }
+}
+
+public class RestoreOssImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RestoreOssImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RestoreOssImageResponseBody()
             model.fromMap(value)
             self.body = model
         }

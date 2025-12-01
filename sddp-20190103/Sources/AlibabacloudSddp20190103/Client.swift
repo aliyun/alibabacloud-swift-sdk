@@ -2271,6 +2271,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func maskOssImageWithOptions(_ request: MaskOssImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MaskOssImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["BucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAlwaysUpload)) {
+            query["IsAlwaysUpload"] = request.isAlwaysUpload!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isSupportRestore)) {
+            query["IsSupportRestore"] = request.isSupportRestore!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maskRuleIdList)) {
+            query["MaskRuleIdList"] = request.maskRuleIdList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectKey)) {
+            query["ObjectKey"] = request.objectKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MaskOssImage",
+            "version": "2019-01-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MaskOssImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func maskOssImage(_ request: MaskOssImageRequest) async throws -> MaskOssImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await maskOssImageWithOptions(request as! MaskOssImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyDataLimitWithOptions(_ request: ModifyDataLimitRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDataLimitResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2611,6 +2660,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyRuleStatus(_ request: ModifyRuleStatusRequest) async throws -> ModifyRuleStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyRuleStatusWithOptions(request as! ModifyRuleStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func restoreOssImageWithOptions(_ request: RestoreOssImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestoreOssImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucket)) {
+            query["Bucket"] = request.bucket ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectKey)) {
+            query["ObjectKey"] = request.objectKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetObjectKey)) {
+            query["TargetObjectKey"] = request.targetObjectKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RestoreOssImage",
+            "version": "2019-01-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RestoreOssImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func restoreOssImage(_ request: RestoreOssImageRequest) async throws -> RestoreOssImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await restoreOssImageWithOptions(request as! RestoreOssImageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
