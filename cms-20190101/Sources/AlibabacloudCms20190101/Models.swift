@@ -39800,6 +39800,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var emptyMessage: Bool?
 
+            public var enablePacketCapture: Bool?
+
             public var expectExistString: DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.ExpectExistString?
 
             public var expectNonExistString: DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.ExpectNonExistString?
@@ -39960,6 +39962,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.emptyMessage != nil {
                     map["empty_message"] = self.emptyMessage!
+                }
+                if self.enablePacketCapture != nil {
+                    map["enable_packet_capture"] = self.enablePacketCapture!
                 }
                 if self.expectExistString != nil {
                     map["expect_exist_string"] = self.expectExistString?.toMap()
@@ -40153,6 +40158,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["empty_message"] as? Bool {
                     self.emptyMessage = value
+                }
+                if let value = dict["enable_packet_capture"] as? Bool {
+                    self.enablePacketCapture = value
                 }
                 if let value = dict["expect_exist_string"] as? [String: Any?] {
                     var model = DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.ExpectExistString()
