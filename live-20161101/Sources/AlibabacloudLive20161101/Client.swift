@@ -17414,6 +17414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.notifyAuthKey)) {
             query["NotifyAuthKey"] = request.notifyAuthKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.notifyFileUploadedFormat)) {
+            query["NotifyFileUploadedFormat"] = request.notifyFileUploadedFormat ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.notifyUrl)) {
             query["NotifyUrl"] = request.notifyUrl ?? "";
         }

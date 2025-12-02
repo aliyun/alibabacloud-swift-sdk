@@ -94300,6 +94300,8 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
 
     public var notifyAuthKey: String?
 
+    public var notifyFileUploadedFormat: [String]?
+
     public var notifyUrl: String?
 
     public var recordParams: StartRtcCloudRecordingRequest.RecordParams?
@@ -94345,6 +94347,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
         if self.notifyAuthKey != nil {
             map["NotifyAuthKey"] = self.notifyAuthKey!
         }
+        if self.notifyFileUploadedFormat != nil {
+            map["NotifyFileUploadedFormat"] = self.notifyFileUploadedFormat!
+        }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
         }
@@ -94384,6 +94389,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
         if let value = dict["NotifyAuthKey"] as? String {
             self.notifyAuthKey = value
         }
+        if let value = dict["NotifyFileUploadedFormat"] as? [String] {
+            self.notifyFileUploadedFormat = value
+        }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value
         }
@@ -94417,6 +94425,8 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
     public var mixTranscodeParamsShrink: String?
 
     public var notifyAuthKey: String?
+
+    public var notifyFileUploadedFormat: [String]?
 
     public var notifyUrl: String?
 
@@ -94458,6 +94468,9 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
         if self.notifyAuthKey != nil {
             map["NotifyAuthKey"] = self.notifyAuthKey!
         }
+        if self.notifyFileUploadedFormat != nil {
+            map["NotifyFileUploadedFormat"] = self.notifyFileUploadedFormat!
+        }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
         }
@@ -94492,6 +94505,9 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NotifyAuthKey"] as? String {
             self.notifyAuthKey = value
+        }
+        if let value = dict["NotifyFileUploadedFormat"] as? [String] {
+            self.notifyFileUploadedFormat = value
         }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value
