@@ -283,7 +283,15 @@ public class CstoreIndexModel : Tea.TeaModel {
 public class DatabaseSummaryModel : Tea.TeaModel {
     public var createTime: String?
 
+    public var createdBySource: String?
+
+    public var createdByUser: String?
+
+    public var dbType: String?
+
     public var description_: String?
+
+    public var location: String?
 
     public var owner: String?
 
@@ -308,8 +316,20 @@ public class DatabaseSummaryModel : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.createdBySource != nil {
+            map["CreatedBySource"] = self.createdBySource!
+        }
+        if self.createdByUser != nil {
+            map["CreatedByUser"] = self.createdByUser!
+        }
+        if self.dbType != nil {
+            map["DbType"] = self.dbType!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
         }
         if self.owner != nil {
             map["Owner"] = self.owner!
@@ -328,8 +348,20 @@ public class DatabaseSummaryModel : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["CreatedBySource"] as? String {
+            self.createdBySource = value
+        }
+        if let value = dict["CreatedByUser"] as? String {
+            self.createdByUser = value
+        }
+        if let value = dict["DbType"] as? String {
+            self.dbType = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Location"] as? String {
+            self.location = value
         }
         if let value = dict["Owner"] as? String {
             self.owner = value
@@ -2090,9 +2122,17 @@ public class TableDetailModel : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var createdBySource: String?
+
+    public var createdByUser: String?
+
     public var description_: String?
 
+    public var location: String?
+
     public var owner: String?
+
+    public var parameters: [String: String]?
 
     public var schemaName: String?
 
@@ -2129,11 +2169,23 @@ public class TableDetailModel : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.createdBySource != nil {
+            map["CreatedBySource"] = self.createdBySource!
+        }
+        if self.createdByUser != nil {
+            map["CreatedByUser"] = self.createdByUser!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
         if self.owner != nil {
             map["Owner"] = self.owner!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
         }
         if self.schemaName != nil {
             map["SchemaName"] = self.schemaName!
@@ -2171,11 +2223,23 @@ public class TableDetailModel : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["CreatedBySource"] as? String {
+            self.createdBySource = value
+        }
+        if let value = dict["CreatedByUser"] as? String {
+            self.createdByUser = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["Location"] as? String {
+            self.location = value
+        }
         if let value = dict["Owner"] as? String {
             self.owner = value
+        }
+        if let value = dict["Parameters"] as? [String: String] {
+            self.parameters = value
         }
         if let value = dict["SchemaName"] as? String {
             self.schemaName = value
@@ -2208,6 +2272,10 @@ public class TableModel : Tea.TeaModel {
     public var compression: String?
 
     public var createTime: String?
+
+    public var createdBySource: String?
+
+    public var createdByUser: String?
 
     public var currentVersion: Int64?
 
@@ -2332,6 +2400,12 @@ public class TableModel : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.createdBySource != nil {
+            map["CreatedBySource"] = self.createdBySource!
+        }
+        if self.createdByUser != nil {
+            map["CreatedByUser"] = self.createdByUser!
         }
         if self.currentVersion != nil {
             map["CurrentVersion"] = self.currentVersion!
@@ -2508,6 +2582,12 @@ public class TableModel : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["CreatedBySource"] as? String {
+            self.createdBySource = value
+        }
+        if let value = dict["CreatedByUser"] as? String {
+            self.createdByUser = value
+        }
         if let value = dict["CurrentVersion"] as? Int64 {
             self.currentVersion = value
         }
@@ -2678,6 +2758,10 @@ public class TableModel : Tea.TeaModel {
 public class TableSummaryModel : Tea.TeaModel {
     public var createTime: String?
 
+    public var createdBySource: String?
+
+    public var createdByUser: String?
+
     public var description_: String?
 
     public var mvDetailModel: OpenStructMvDetailModel?
@@ -2714,6 +2798,12 @@ public class TableSummaryModel : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.createdBySource != nil {
+            map["CreatedBySource"] = self.createdBySource!
+        }
+        if self.createdByUser != nil {
+            map["CreatedByUser"] = self.createdByUser!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -2748,6 +2838,12 @@ public class TableSummaryModel : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CreatedBySource"] as? String {
+            self.createdBySource = value
+        }
+        if let value = dict["CreatedByUser"] as? String {
+            self.createdByUser = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -9358,6 +9454,96 @@ public class CreateDBClusterResponse : Tea.TeaModel {
 }
 
 public class CreateDBResourceGroupRequest : Tea.TeaModel {
+    public class GpuElasticPlan : Tea.TeaModel {
+        public class Rules : Tea.TeaModel {
+            public var endCronExpression: String?
+
+            public var startCronExpression: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endCronExpression != nil {
+                    map["EndCronExpression"] = self.endCronExpression!
+                }
+                if self.startCronExpression != nil {
+                    map["StartCronExpression"] = self.startCronExpression!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndCronExpression"] as? String {
+                    self.endCronExpression = value
+                }
+                if let value = dict["StartCronExpression"] as? String {
+                    self.startCronExpression = value
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var rules: [CreateDBResourceGroupRequest.GpuElasticPlan.Rules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Rules"] as? [Any?] {
+                var tmp : [CreateDBResourceGroupRequest.GpuElasticPlan.Rules] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateDBResourceGroupRequest.GpuElasticPlan.Rules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.rules = tmp
+            }
+        }
+    }
     public class RayConfig : Tea.TeaModel {
         public class WorkerGroups : Tea.TeaModel {
             public var allocateUnit: String?
@@ -9588,6 +9774,8 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
     public var engineParams: [String: Any]?
 
+    public var gpuElasticPlan: CreateDBResourceGroupRequest.GpuElasticPlan?
+
     public var groupName: String?
 
     public var groupType: String?
@@ -9624,6 +9812,7 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.gpuElasticPlan?.validate()
         try self.rayConfig?.validate()
     }
 
@@ -9649,6 +9838,9 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         }
         if self.engineParams != nil {
             map["EngineParams"] = self.engineParams!
+        }
+        if self.gpuElasticPlan != nil {
+            map["GpuElasticPlan"] = self.gpuElasticPlan?.toMap()
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -9719,6 +9911,11 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if let value = dict["EngineParams"] as? [String: Any] {
             self.engineParams = value
         }
+        if let value = dict["GpuElasticPlan"] as? [String: Any?] {
+            var model = CreateDBResourceGroupRequest.GpuElasticPlan()
+            model.fromMap(value)
+            self.gpuElasticPlan = model
+        }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
         }
@@ -9788,6 +9985,8 @@ public class CreateDBResourceGroupShrinkRequest : Tea.TeaModel {
 
     public var engineParamsShrink: String?
 
+    public var gpuElasticPlanShrink: String?
+
     public var groupName: String?
 
     public var groupType: String?
@@ -9848,6 +10047,9 @@ public class CreateDBResourceGroupShrinkRequest : Tea.TeaModel {
         }
         if self.engineParamsShrink != nil {
             map["EngineParams"] = self.engineParamsShrink!
+        }
+        if self.gpuElasticPlanShrink != nil {
+            map["GpuElasticPlan"] = self.gpuElasticPlanShrink!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -9913,6 +10115,9 @@ public class CreateDBResourceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EngineParams"] as? String {
             self.engineParamsShrink = value
+        }
+        if let value = dict["GpuElasticPlan"] as? String {
+            self.gpuElasticPlanShrink = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -12940,6 +13145,166 @@ public class DeleteLakeStorageResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteLakeStorageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteMaterializedViewRecommendRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DeleteMaterializedViewRecommendResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteMaterializedViewRecommendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteMaterializedViewRecommendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteMaterializedViewRecommendResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -27415,6 +27780,96 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
 
 public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
     public class GroupsInfo : Tea.TeaModel {
+        public class GpuElasticPlan : Tea.TeaModel {
+            public class Rules : Tea.TeaModel {
+                public var endCronExpression: String?
+
+                public var startCronExpression: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endCronExpression != nil {
+                        map["EndCronExpression"] = self.endCronExpression!
+                    }
+                    if self.startCronExpression != nil {
+                        map["StartCronExpression"] = self.startCronExpression!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndCronExpression"] as? String {
+                        self.endCronExpression = value
+                    }
+                    if let value = dict["StartCronExpression"] as? String {
+                        self.startCronExpression = value
+                    }
+                }
+            }
+            public var enabled: Bool?
+
+            public var rules: [DescribeDBResourceGroupResponseBody.GroupsInfo.GpuElasticPlan.Rules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.rules != nil {
+                    var tmp : [Any] = []
+                    for k in self.rules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Rules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["Rules"] as? [Any?] {
+                    var tmp : [DescribeDBResourceGroupResponseBody.GroupsInfo.GpuElasticPlan.Rules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeDBResourceGroupResponseBody.GroupsInfo.GpuElasticPlan.Rules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.rules = tmp
+                }
+            }
+        }
         public class RayConfig : Tea.TeaModel {
             public class AppConfig : Tea.TeaModel {
                 public class ImageSelector : Tea.TeaModel {
@@ -27837,6 +28292,8 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public var engineParams: [String: Any]?
 
+        public var gpuElasticPlan: DescribeDBResourceGroupResponseBody.GroupsInfo.GpuElasticPlan?
+
         public var groupName: String?
 
         public var groupType: String?
@@ -27881,6 +28338,7 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.gpuElasticPlan?.validate()
             try self.rayConfig?.validate()
         }
 
@@ -27909,6 +28367,9 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             }
             if self.engineParams != nil {
                 map["EngineParams"] = self.engineParams!
+            }
+            if self.gpuElasticPlan != nil {
+                map["GpuElasticPlan"] = self.gpuElasticPlan?.toMap()
             }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
@@ -27993,6 +28454,11 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["EngineParams"] as? [String: Any] {
                 self.engineParams = value
+            }
+            if let value = dict["GpuElasticPlan"] as? [String: Any?] {
+                var model = DescribeDBResourceGroupResponseBody.GroupsInfo.GpuElasticPlan()
+                model.fromMap(value)
+                self.gpuElasticPlan = model
             }
             if let value = dict["GroupName"] as? String {
                 self.groupName = value
@@ -34696,6 +35162,835 @@ public class DescribeLakeCacheSizeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeLakeCacheSizeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeMVRecommendResultsRequest : Tea.TeaModel {
+    public var actionInner: String?
+
+    public var DBClusterId: String?
+
+    public var from: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var subQueryId: Int64?
+
+    public var subtaskId: Int64?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionInner != nil {
+            map["ActionInner"] = self.actionInner!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.subQueryId != nil {
+            map["SubQueryId"] = self.subQueryId!
+        }
+        if self.subtaskId != nil {
+            map["SubtaskId"] = self.subtaskId!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionInner"] as? String {
+            self.actionInner = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SubQueryId"] as? Int64 {
+            self.subQueryId = value
+        }
+        if let value = dict["SubtaskId"] as? Int64 {
+            self.subtaskId = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DescribeMVRecommendResultsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mvRecommendResultModels: [OpenStructMVRecommendResultModel]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mvRecommendResultModels != nil {
+                var tmp : [Any] = []
+                for k in self.mvRecommendResultModels! {
+                    tmp.append(k.toMap())
+                }
+                map["MvRecommendResultModels"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MvRecommendResultModels"] as? [Any?] {
+                var tmp : [OpenStructMVRecommendResultModel] = []
+                for v in value {
+                    if v != nil {
+                        var model = OpenStructMVRecommendResultModel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mvRecommendResultModels = tmp
+            }
+            if let value = dict["PageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: DescribeMVRecommendResultsResponseBody.Data?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeMVRecommendResultsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeMVRecommendResultsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMVRecommendResultsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeMVRecommendResultsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeMvRecommendSubTasksRequest : Tea.TeaModel {
+    public var actionInner: String?
+
+    public var DBClusterId: String?
+
+    public var from: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var subtaskId: Int64?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionInner != nil {
+            map["ActionInner"] = self.actionInner!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.subtaskId != nil {
+            map["SubtaskId"] = self.subtaskId!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionInner"] as? String {
+            self.actionInner = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SubtaskId"] as? Int64 {
+            self.subtaskId = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DescribeMvRecommendSubTasksResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mvRecommendSubTaskModels: [OpenStructMvRecommendSubTaskModel]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mvRecommendSubTaskModels != nil {
+                var tmp : [Any] = []
+                for k in self.mvRecommendSubTaskModels! {
+                    tmp.append(k.toMap())
+                }
+                map["MvRecommendSubTaskModels"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MvRecommendSubTaskModels"] as? [Any?] {
+                var tmp : [OpenStructMvRecommendSubTaskModel] = []
+                for v in value {
+                    if v != nil {
+                        var model = OpenStructMvRecommendSubTaskModel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mvRecommendSubTaskModels = tmp
+            }
+            if let value = dict["PageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: DescribeMvRecommendSubTasksResponseBody.Data?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeMvRecommendSubTasksResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeMvRecommendSubTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMvRecommendSubTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeMvRecommendSubTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeMvRecommendTasksRequest : Tea.TeaModel {
+    public var actionInner: String?
+
+    public var DBClusterId: String?
+
+    public var from: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionInner != nil {
+            map["ActionInner"] = self.actionInner!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionInner"] as? String {
+            self.actionInner = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["From"] as? String {
+            self.from = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DescribeMvRecommendTasksResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mvRecommendTaskModels: [OpenStructMvRecommendTaskModel]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mvRecommendTaskModels != nil {
+                var tmp : [Any] = []
+                for k in self.mvRecommendTaskModels! {
+                    tmp.append(k.toMap())
+                }
+                map["MvRecommendTaskModels"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MvRecommendTaskModels"] as? [Any?] {
+                var tmp : [OpenStructMvRecommendTaskModel] = []
+                for v in value {
+                    if v != nil {
+                        var model = OpenStructMvRecommendTaskModel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mvRecommendTaskModels = tmp
+            }
+            if let value = dict["PageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: DescribeMvRecommendTasksResponseBody.Data?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeMvRecommendTasksResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeMvRecommendTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMvRecommendTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeMvRecommendTasksResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -42191,6 +43486,285 @@ public class DescribeUserQuotaResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeUserQuotaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeViewJobsRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var filterOwner: String?
+
+    public var filterViewName: String?
+
+    public var filterViewType: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var schemaName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.filterOwner != nil {
+            map["FilterOwner"] = self.filterOwner!
+        }
+        if self.filterViewName != nil {
+            map["FilterViewName"] = self.filterViewName!
+        }
+        if self.filterViewType != nil {
+            map["FilterViewType"] = self.filterViewType!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FilterOwner"] as? String {
+            self.filterOwner = value
+        }
+        if let value = dict["FilterViewName"] as? String {
+            self.filterViewName = value
+        }
+        if let value = dict["FilterViewType"] as? String {
+            self.filterViewType = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SchemaName"] as? String {
+            self.schemaName = value
+        }
+    }
+}
+
+public class DescribeViewJobsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mvRefreshJobModels: [OpenStructRefreshJobModel]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mvRefreshJobModels != nil {
+                var tmp : [Any] = []
+                for k in self.mvRefreshJobModels! {
+                    tmp.append(k.toMap())
+                }
+                map["MvRefreshJobModels"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MvRefreshJobModels"] as? [Any?] {
+                var tmp : [OpenStructRefreshJobModel] = []
+                for v in value {
+                    if v != nil {
+                        var model = OpenStructRefreshJobModel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mvRefreshJobModels = tmp
+            }
+            if let value = dict["PageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: DescribeViewJobsResponseBody.Data?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeViewJobsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeViewJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeViewJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeViewJobsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -57946,6 +59520,96 @@ public class ModifyDBClusterVipResponse : Tea.TeaModel {
 }
 
 public class ModifyDBResourceGroupRequest : Tea.TeaModel {
+    public class GpuElasticPlan : Tea.TeaModel {
+        public class Rules : Tea.TeaModel {
+            public var endCronExpression: String?
+
+            public var startCronExpression: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endCronExpression != nil {
+                    map["EndCronExpression"] = self.endCronExpression!
+                }
+                if self.startCronExpression != nil {
+                    map["StartCronExpression"] = self.startCronExpression!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndCronExpression"] as? String {
+                    self.endCronExpression = value
+                }
+                if let value = dict["StartCronExpression"] as? String {
+                    self.startCronExpression = value
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var rules: [ModifyDBResourceGroupRequest.GpuElasticPlan.Rules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Rules"] as? [Any?] {
+                var tmp : [ModifyDBResourceGroupRequest.GpuElasticPlan.Rules] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyDBResourceGroupRequest.GpuElasticPlan.Rules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.rules = tmp
+            }
+        }
+    }
     public class RayConfig : Tea.TeaModel {
         public class AppConfig : Tea.TeaModel {
             public class ImageSelector : Tea.TeaModel {
@@ -58340,6 +60004,8 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
 
     public var engineParams: [String: Any]?
 
+    public var gpuElasticPlan: ModifyDBResourceGroupRequest.GpuElasticPlan?
+
     public var groupName: String?
 
     public var groupType: String?
@@ -58378,6 +60044,7 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.gpuElasticPlan?.validate()
         try self.rayConfig?.validate()
     }
 
@@ -58400,6 +60067,9 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         }
         if self.engineParams != nil {
             map["EngineParams"] = self.engineParams!
+        }
+        if self.gpuElasticPlan != nil {
+            map["GpuElasticPlan"] = self.gpuElasticPlan?.toMap()
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -58469,6 +60139,11 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["EngineParams"] as? [String: Any] {
             self.engineParams = value
+        }
+        if let value = dict["GpuElasticPlan"] as? [String: Any?] {
+            var model = ModifyDBResourceGroupRequest.GpuElasticPlan()
+            model.fromMap(value)
+            self.gpuElasticPlan = model
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -58540,6 +60215,8 @@ public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
 
     public var engineParamsShrink: String?
 
+    public var gpuElasticPlanShrink: String?
+
     public var groupName: String?
 
     public var groupType: String?
@@ -58599,6 +60276,9 @@ public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
         }
         if self.engineParamsShrink != nil {
             map["EngineParams"] = self.engineParamsShrink!
+        }
+        if self.gpuElasticPlanShrink != nil {
+            map["GpuElasticPlan"] = self.gpuElasticPlanShrink!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -58664,6 +60344,9 @@ public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EngineParams"] as? String {
             self.engineParamsShrink = value
+        }
+        if let value = dict["GpuElasticPlan"] as? String {
+            self.gpuElasticPlanShrink = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
