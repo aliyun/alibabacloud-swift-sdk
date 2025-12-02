@@ -872,6 +872,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
     public var backupSetId: String?
 
+    public var category: String?
+
     public var clientToken: String?
 
     public var DBInstanceDescription: String?
@@ -928,6 +930,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.backupSetId != nil {
             map["BackupSetId"] = self.backupSetId!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -1000,6 +1005,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupSetId"] as? String {
             self.backupSetId = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -1077,6 +1085,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var backupSetId: String?
 
+    public var category: String?
+
     public var clientToken: String?
 
     public var DBInstanceDescription: String?
@@ -1133,6 +1143,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.backupSetId != nil {
             map["BackupSetId"] = self.backupSetId!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -1201,6 +1214,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupSetId"] as? String {
             self.backupSetId = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
