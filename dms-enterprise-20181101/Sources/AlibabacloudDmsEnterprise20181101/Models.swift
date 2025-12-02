@@ -7811,6 +7811,8 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
 
     public var desensitizationRule: String?
 
+    public var dimensions: Int32?
+
     public var enableCodeInterpreter: Bool?
 
     public var enableSearch: Bool?
@@ -7818,6 +7820,8 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
     public var enableThinking: Bool?
 
     public var includeUsage: Bool?
+
+    public var input: String?
 
     public var instanceId: Int64?
 
@@ -7879,6 +7883,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         if self.desensitizationRule != nil {
             map["DesensitizationRule"] = self.desensitizationRule!
         }
+        if self.dimensions != nil {
+            map["Dimensions"] = self.dimensions!
+        }
         if self.enableCodeInterpreter != nil {
             map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
         }
@@ -7890,6 +7897,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         }
         if self.includeUsage != nil {
             map["IncludeUsage"] = self.includeUsage!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -7962,6 +7972,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         if let value = dict["DesensitizationRule"] as? String {
             self.desensitizationRule = value
         }
+        if let value = dict["Dimensions"] as? Int32 {
+            self.dimensions = value
+        }
         if let value = dict["EnableCodeInterpreter"] as? Bool {
             self.enableCodeInterpreter = value
         }
@@ -7973,6 +7986,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         }
         if let value = dict["IncludeUsage"] as? Bool {
             self.includeUsage = value
+        }
+        if let value = dict["Input"] as? String {
+            self.input = value
         }
         if let value = dict["InstanceId"] as? Int64 {
             self.instanceId = value
@@ -8042,6 +8058,8 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
 
     public var desensitizationRule: String?
 
+    public var dimensions: Int32?
+
     public var enableCodeInterpreter: Bool?
 
     public var enableSearch: Bool?
@@ -8049,6 +8067,8 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
     public var enableThinking: Bool?
 
     public var includeUsage: Bool?
+
+    public var input: String?
 
     public var instanceId: Int64?
 
@@ -8110,6 +8130,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         if self.desensitizationRule != nil {
             map["DesensitizationRule"] = self.desensitizationRule!
         }
+        if self.dimensions != nil {
+            map["Dimensions"] = self.dimensions!
+        }
         if self.enableCodeInterpreter != nil {
             map["EnableCodeInterpreter"] = self.enableCodeInterpreter!
         }
@@ -8121,6 +8144,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         }
         if self.includeUsage != nil {
             map["IncludeUsage"] = self.includeUsage!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -8193,6 +8219,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         if let value = dict["DesensitizationRule"] as? String {
             self.desensitizationRule = value
         }
+        if let value = dict["Dimensions"] as? Int32 {
+            self.dimensions = value
+        }
         if let value = dict["EnableCodeInterpreter"] as? Bool {
             self.enableCodeInterpreter = value
         }
@@ -8204,6 +8233,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeUsage"] as? Bool {
             self.includeUsage = value
+        }
+        if let value = dict["Input"] as? String {
+            self.input = value
         }
         if let value = dict["InstanceId"] as? Int64 {
             self.instanceId = value
@@ -13560,6 +13592,8 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
 
     public var natGatewayOption: String?
 
+    public var onlyIntranet: Bool?
+
     public var ossPath: String?
 
     public var ossResourceId: Int32?
@@ -13719,6 +13753,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if self.natGatewayOption != nil {
             map["NatGatewayOption"] = self.natGatewayOption!
+        }
+        if self.onlyIntranet != nil {
+            map["OnlyIntranet"] = self.onlyIntranet!
         }
         if self.ossPath != nil {
             map["OssPath"] = self.ossPath!
@@ -13898,6 +13935,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["NatGatewayOption"] as? String {
             self.natGatewayOption = value
+        }
+        if let value = dict["OnlyIntranet"] as? Bool {
+            self.onlyIntranet = value
         }
         if let value = dict["OssPath"] as? String {
             self.ossPath = value
