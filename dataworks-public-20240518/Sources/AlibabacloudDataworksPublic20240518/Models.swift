@@ -51627,6 +51627,8 @@ public class ListDataQualityScanRunsRequest : Tea.TeaModel {
 
     public var dataQualityScanId: Int64?
 
+    public var filter: [String: Any]?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -51660,6 +51662,9 @@ public class ListDataQualityScanRunsRequest : Tea.TeaModel {
         if self.dataQualityScanId != nil {
             map["DataQualityScanId"] = self.dataQualityScanId!
         }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -51688,6 +51693,104 @@ public class ListDataQualityScanRunsRequest : Tea.TeaModel {
         }
         if let value = dict["DataQualityScanId"] as? Int64 {
             self.dataQualityScanId = value
+        }
+        if let value = dict["Filter"] as? [String: Any] {
+            self.filter = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class ListDataQualityScanRunsShrinkRequest : Tea.TeaModel {
+    public var createTimeFrom: Int64?
+
+    public var createTimeTo: Int64?
+
+    public var dataQualityScanId: Int64?
+
+    public var filterShrink: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: Int64?
+
+    public var sortBy: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTimeFrom != nil {
+            map["CreateTimeFrom"] = self.createTimeFrom!
+        }
+        if self.createTimeTo != nil {
+            map["CreateTimeTo"] = self.createTimeTo!
+        }
+        if self.dataQualityScanId != nil {
+            map["DataQualityScanId"] = self.dataQualityScanId!
+        }
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateTimeFrom"] as? Int64 {
+            self.createTimeFrom = value
+        }
+        if let value = dict["CreateTimeTo"] as? Int64 {
+            self.createTimeTo = value
+        }
+        if let value = dict["DataQualityScanId"] as? Int64 {
+            self.dataQualityScanId = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filterShrink = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value

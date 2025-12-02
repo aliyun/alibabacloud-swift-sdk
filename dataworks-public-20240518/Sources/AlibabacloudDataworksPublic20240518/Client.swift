@@ -6019,8 +6019,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listDataQualityScanRunsWithOptions(_ request: ListDataQualityScanRunsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataQualityScanRunsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listDataQualityScanRunsWithOptions(_ tmpReq: ListDataQualityScanRunsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataQualityScanRunsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListDataQualityScanRunsShrinkRequest = ListDataQualityScanRunsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "Filter", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.createTimeFrom)) {
             query["CreateTimeFrom"] = request.createTimeFrom!;
@@ -6030,6 +6035,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dataQualityScanId)) {
             query["DataQualityScanId"] = request.dataQualityScanId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["Filter"] = request.filterShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
