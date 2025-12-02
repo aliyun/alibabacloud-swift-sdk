@@ -14734,6 +14734,8 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
 
         public var indebt: Bool?
 
+        public var instanceId: String?
+
         public var tag: String?
 
         public override init() {
@@ -14759,6 +14761,9 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
             if self.indebt != nil {
                 map["Indebt"] = self.indebt!
             }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.tag != nil {
                 map["Tag"] = self.tag!
             }
@@ -14775,6 +14780,9 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["Indebt"] as? Bool {
                 self.indebt = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
             if let value = dict["Tag"] as? String {
                 self.tag = value
