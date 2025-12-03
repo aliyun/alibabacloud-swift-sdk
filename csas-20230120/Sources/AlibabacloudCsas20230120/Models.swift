@@ -336,6 +336,53 @@ public class CommonConfig : Tea.TeaModel {
     }
 }
 
+public class DeviceGroupDynamicRule : Tea.TeaModel {
+    public var args: Any?
+
+    public var key: String?
+
+    public var operator_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.args != nil {
+            map["Args"] = self.args!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.operator_ != nil {
+            map["Operator"] = self.operator_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Args"] as? Any {
+            self.args = value
+        }
+        if let value = dict["Key"] as? String {
+            self.key = value
+        }
+        if let value = dict["Operator"] as? String {
+            self.operator_ = value
+        }
+    }
+}
+
 public class DisposalContent : Tea.TeaModel {
     public var alertContent: String?
 
@@ -562,6 +609,8 @@ public class IdpConfig : Tea.TeaModel {
 
     public var loginConfig: IdpLoginConfig?
 
+    public var logoDirectory: String?
+
     public var name: String?
 
     public var syncConfig: IdpSyncConfig?
@@ -630,6 +679,9 @@ public class IdpConfig : Tea.TeaModel {
         }
         if self.loginConfig != nil {
             map["LoginConfig"] = self.loginConfig?.toMap()
+        }
+        if self.logoDirectory != nil {
+            map["LogoDirectory"] = self.logoDirectory!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -700,6 +752,9 @@ public class IdpConfig : Tea.TeaModel {
             var model = IdpLoginConfig()
             model.fromMap(value)
             self.loginConfig = model
+        }
+        if let value = dict["LogoDirectory"] as? String {
+            self.logoDirectory = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -1871,6 +1926,68 @@ public class OpenStructSaseDepartment : Tea.TeaModel {
 }
 
 public class OpenStructSaseUser : Tea.TeaModel {
+    public class UserTags : Tea.TeaModel {
+        public var aliuid: String?
+
+        public var description_: String?
+
+        public var name: String?
+
+        public var saseUserId: String?
+
+        public var tagId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliuid != nil {
+                map["Aliuid"] = self.aliuid!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.saseUserId != nil {
+                map["SaseUserId"] = self.saseUserId!
+            }
+            if self.tagId != nil {
+                map["TagId"] = self.tagId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Aliuid"] as? String {
+                self.aliuid = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SaseUserId"] as? String {
+                self.saseUserId = value
+            }
+            if let value = dict["TagId"] as? String {
+                self.tagId = value
+            }
+        }
+    }
     public var createTimeUnix: Int64?
 
     public var customFields: [IdpCustomField]?
@@ -1898,6 +2015,8 @@ public class OpenStructSaseUser : Tea.TeaModel {
     public var title: String?
 
     public var updateTimeUnix: Int64?
+
+    public var userTags: [OpenStructSaseUser.UserTags]?
 
     public var username: String?
 
@@ -1966,6 +2085,13 @@ public class OpenStructSaseUser : Tea.TeaModel {
         }
         if self.updateTimeUnix != nil {
             map["UpdateTimeUnix"] = self.updateTimeUnix!
+        }
+        if self.userTags != nil {
+            var tmp : [Any] = []
+            for k in self.userTags! {
+                tmp.append(k.toMap())
+            }
+            map["UserTags"] = tmp
         }
         if self.username != nil {
             map["Username"] = self.username!
@@ -2039,6 +2165,19 @@ public class OpenStructSaseUser : Tea.TeaModel {
         }
         if let value = dict["UpdateTimeUnix"] as? Int64 {
             self.updateTimeUnix = value
+        }
+        if let value = dict["UserTags"] as? [Any?] {
+            var tmp : [OpenStructSaseUser.UserTags] = []
+            for v in value {
+                if v != nil {
+                    var model = OpenStructSaseUser.UserTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.userTags = tmp
         }
         if let value = dict["Username"] as? String {
             self.username = value
@@ -5645,6 +5784,12 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var userGroupMode: String?
 
+    public var validFrom: Int64?
+
+    public var validTimeStatus: String?
+
+    public var validUntil: Int64?
+
     public override init() {
         super.init()
     }
@@ -5714,6 +5859,15 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.userGroupMode != nil {
             map["UserGroupMode"] = self.userGroupMode!
         }
+        if self.validFrom != nil {
+            map["ValidFrom"] = self.validFrom!
+        }
+        if self.validTimeStatus != nil {
+            map["ValidTimeStatus"] = self.validTimeStatus!
+        }
+        if self.validUntil != nil {
+            map["ValidUntil"] = self.validUntil!
+        }
         return map
     }
 
@@ -5779,6 +5933,15 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["UserGroupMode"] as? String {
             self.userGroupMode = value
+        }
+        if let value = dict["ValidFrom"] as? Int64 {
+            self.validFrom = value
+        }
+        if let value = dict["ValidTimeStatus"] as? String {
+            self.validTimeStatus = value
+        }
+        if let value = dict["ValidUntil"] as? Int64 {
+            self.validUntil = value
         }
     }
 }
@@ -15708,6 +15871,12 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
 
         public var userGroupMode: String?
 
+        public var validFrom: Int64?
+
+        public var validTimeStatus: String?
+
+        public var validUntil: Int64?
+
         public override init() {
             super.init()
         }
@@ -15783,6 +15952,15 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             if self.userGroupMode != nil {
                 map["UserGroupMode"] = self.userGroupMode!
             }
+            if self.validFrom != nil {
+                map["ValidFrom"] = self.validFrom!
+            }
+            if self.validTimeStatus != nil {
+                map["ValidTimeStatus"] = self.validTimeStatus!
+            }
+            if self.validUntil != nil {
+                map["ValidUntil"] = self.validUntil!
+            }
             return map
         }
 
@@ -15854,6 +16032,15 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserGroupMode"] as? String {
                 self.userGroupMode = value
+            }
+            if let value = dict["ValidFrom"] as? Int64 {
+                self.validFrom = value
+            }
+            if let value = dict["ValidTimeStatus"] as? String {
+                self.validTimeStatus = value
+            }
+            if let value = dict["ValidUntil"] as? Int64 {
+                self.validUntil = value
             }
         }
     }
@@ -26197,6 +26384,12 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
 
         public var userGroupMode: String?
 
+        public var validFrom: Int64?
+
+        public var validTimeStatus: String?
+
+        public var validUntil: Int64?
+
         public override init() {
             super.init()
         }
@@ -26272,6 +26465,15 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             if self.userGroupMode != nil {
                 map["UserGroupMode"] = self.userGroupMode!
             }
+            if self.validFrom != nil {
+                map["ValidFrom"] = self.validFrom!
+            }
+            if self.validTimeStatus != nil {
+                map["ValidTimeStatus"] = self.validTimeStatus!
+            }
+            if self.validUntil != nil {
+                map["ValidUntil"] = self.validUntil!
+            }
             return map
         }
 
@@ -26343,6 +26545,15 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserGroupMode"] as? String {
                 self.userGroupMode = value
+            }
+            if let value = dict["ValidFrom"] as? Int64 {
+                self.validFrom = value
+            }
+            if let value = dict["ValidTimeStatus"] as? String {
+                self.validTimeStatus = value
+            }
+            if let value = dict["ValidUntil"] as? Int64 {
+                self.validUntil = value
             }
         }
     }
@@ -37288,6 +37499,12 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var userGroupMode: String?
 
+    public var validFrom: Int64?
+
+    public var validTimeStatus: String?
+
+    public var validUntil: Int64?
+
     public override init() {
         super.init()
     }
@@ -37360,6 +37577,15 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.userGroupMode != nil {
             map["UserGroupMode"] = self.userGroupMode!
         }
+        if self.validFrom != nil {
+            map["ValidFrom"] = self.validFrom!
+        }
+        if self.validTimeStatus != nil {
+            map["ValidTimeStatus"] = self.validTimeStatus!
+        }
+        if self.validUntil != nil {
+            map["ValidUntil"] = self.validUntil!
+        }
         return map
     }
 
@@ -37428,6 +37654,15 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["UserGroupMode"] as? String {
             self.userGroupMode = value
+        }
+        if let value = dict["ValidFrom"] as? Int64 {
+            self.validFrom = value
+        }
+        if let value = dict["ValidTimeStatus"] as? String {
+            self.validTimeStatus = value
+        }
+        if let value = dict["ValidUntil"] as? Int64 {
+            self.validUntil = value
         }
     }
 }

@@ -504,6 +504,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.userGroupMode)) {
             body["UserGroupMode"] = request.userGroupMode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.validFrom)) {
+            body["ValidFrom"] = request.validFrom!;
+        }
+        if (!TeaUtils.Client.isUnset(request.validTimeStatus)) {
+            body["ValidTimeStatus"] = request.validTimeStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validUntil)) {
+            body["ValidUntil"] = request.validUntil!;
+        }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -3905,6 +3914,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.userGroupMode)) {
             body["UserGroupMode"] = request.userGroupMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validFrom)) {
+            body["ValidFrom"] = request.validFrom!;
+        }
+        if (!TeaUtils.Client.isUnset(request.validTimeStatus)) {
+            body["ValidTimeStatus"] = request.validTimeStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validUntil)) {
+            body["ValidUntil"] = request.validUntil!;
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
