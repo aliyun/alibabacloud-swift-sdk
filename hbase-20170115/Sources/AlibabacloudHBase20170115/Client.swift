@@ -10,18 +10,40 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "ap-southeast-1": "hbase.aliyuncs.com",
-            "cn-beijing": "hbase.aliyuncs.com",
-            "cn-hangzhou": "hbase.aliyuncs.com",
-            "cn-hangzhou-finance": "hbase.aliyuncs.com",
-            "cn-hongkong": "hbase.aliyuncs.com",
-            "cn-north-2-gov-1": "hbase.aliyuncs.com",
-            "cn-qingdao": "hbase.aliyuncs.com",
-            "cn-shanghai": "hbase.aliyuncs.com",
-            "cn-shanghai-finance-1": "hbase.aliyuncs.com",
-            "cn-shenzhen": "hbase.aliyuncs.com",
-            "cn-shenzhen-finance-1": "hbase.aliyuncs.com",
-            "cn-guangzhou": "hbase.aliyuncs.com"
+            "ap-northeast-2-pop": "hbase.aliyuncs.com",
+            "ap-south-1": "hbase.aliyuncs.com",
+            "ap-southeast-2": "hbase.aliyuncs.com",
+            "cn-beijing-finance-1": "hbase.aliyuncs.com",
+            "cn-beijing-finance-pop": "hbase.aliyuncs.com",
+            "cn-beijing-gov-1": "hbase.aliyuncs.com",
+            "cn-beijing-nu16-b01": "hbase.aliyuncs.com",
+            "cn-edge-1": "hbase.aliyuncs.com",
+            "cn-fujian": "hbase.aliyuncs.com",
+            "cn-haidian-cm12-c01": "hbase.aliyuncs.com",
+            "cn-hangzhou-bj-b01": "hbase.aliyuncs.com",
+            "cn-hangzhou-internal-prod-1": "hbase.aliyuncs.com",
+            "cn-hangzhou-internal-test-1": "hbase.aliyuncs.com",
+            "cn-hangzhou-internal-test-2": "hbase.aliyuncs.com",
+            "cn-hangzhou-internal-test-3": "hbase.aliyuncs.com",
+            "cn-hangzhou-test-306": "hbase.aliyuncs.com",
+            "cn-hongkong-finance-pop": "hbase.aliyuncs.com",
+            "cn-qingdao-nebula": "hbase.aliyuncs.com",
+            "cn-shanghai-et15-b01": "hbase.aliyuncs.com",
+            "cn-shanghai-et2-b01": "hbase.aliyuncs.com",
+            "cn-shanghai-inner": "hbase.aliyuncs.com",
+            "cn-shanghai-internal-test-1": "hbase.aliyuncs.com",
+            "cn-shenzhen-inner": "hbase.aliyuncs.com",
+            "cn-shenzhen-st4-d01": "hbase.aliyuncs.com",
+            "cn-shenzhen-su18-b01": "hbase.aliyuncs.com",
+            "cn-wuhan": "hbase.aliyuncs.com",
+            "cn-wulanchabu": "hbase.aliyuncs.com",
+            "cn-yushanfang": "hbase.aliyuncs.com",
+            "cn-zhangbei": "hbase.aliyuncs.com",
+            "cn-zhangbei-na61-b01": "hbase.aliyuncs.com",
+            "cn-zhangjiakou-na62-a01": "hbase.aliyuncs.com",
+            "cn-zhengzhou-nebula-1": "hbase.aliyuncs.com",
+            "eu-west-1-oxs": "hbase.aliyuncs.com",
+            "rus-west-1-pop": "hbase.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("hbase", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -1402,6 +1424,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -1447,6 +1472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -1494,6 +1522,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -1536,6 +1567,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -2293,6 +2327,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -2339,6 +2376,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -2378,6 +2418,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -2895,6 +2938,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
