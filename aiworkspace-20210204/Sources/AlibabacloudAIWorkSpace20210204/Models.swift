@@ -796,6 +796,8 @@ public class DatasetFileMeta : Tea.TeaModel {
 
     public var semanticIndexUpdateTime: String?
 
+    public var status: String?
+
     public var tags: String?
 
     public var thumbnailUrl: String?
@@ -855,6 +857,9 @@ public class DatasetFileMeta : Tea.TeaModel {
         if self.semanticIndexUpdateTime != nil {
             map["SemanticIndexUpdateTime"] = self.semanticIndexUpdateTime!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -907,6 +912,9 @@ public class DatasetFileMeta : Tea.TeaModel {
         }
         if let value = dict["SemanticIndexUpdateTime"] as? String {
             self.semanticIndexUpdateTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["Tags"] as? String {
             self.tags = value
@@ -1185,6 +1193,8 @@ public class DatasetFileMetaContentGet : Tea.TeaModel {
 
     public var semanticIndexUpdateTime: String?
 
+    public var status: String?
+
     public var tagUpdateTime: String?
 
     public var tags: String?
@@ -1244,6 +1254,9 @@ public class DatasetFileMetaContentGet : Tea.TeaModel {
         if self.semanticIndexUpdateTime != nil {
             map["SemanticIndexUpdateTime"] = self.semanticIndexUpdateTime!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.tagUpdateTime != nil {
             map["TagUpdateTime"] = self.tagUpdateTime!
         }
@@ -1296,6 +1309,9 @@ public class DatasetFileMetaContentGet : Tea.TeaModel {
         }
         if let value = dict["SemanticIndexUpdateTime"] as? String {
             self.semanticIndexUpdateTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["TagUpdateTime"] as? String {
             self.tagUpdateTime = value
@@ -1653,6 +1669,8 @@ public class DatasetShareRelationship : Tea.TeaModel {
 
     public var expiresAt: String?
 
+    public var extra: String?
+
     public var isSecureMode: Bool?
 
     public var sharedAt: String?
@@ -1687,6 +1705,9 @@ public class DatasetShareRelationship : Tea.TeaModel {
         if self.expiresAt != nil {
             map["ExpiresAt"] = self.expiresAt!
         }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
         if self.isSecureMode != nil {
             map["IsSecureMode"] = self.isSecureMode!
         }
@@ -1718,6 +1739,9 @@ public class DatasetShareRelationship : Tea.TeaModel {
         }
         if let value = dict["ExpiresAt"] as? String {
             self.expiresAt = value
+        }
+        if let value = dict["Extra"] as? String {
+            self.extra = value
         }
         if let value = dict["IsSecureMode"] as? Bool {
             self.isSecureMode = value
@@ -15948,6 +15972,8 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 
     public var startTagUpdateTime: String?
 
+    public var status: String?
+
     public var thumbnailMode: String?
 
     public var topK: Int32?
@@ -16034,6 +16060,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         if self.startTagUpdateTime != nil {
             map["StartTagUpdateTime"] = self.startTagUpdateTime!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.thumbnailMode != nil {
             map["ThumbnailMode"] = self.thumbnailMode!
         }
@@ -16114,6 +16143,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         if let value = dict["StartTagUpdateTime"] as? String {
             self.startTagUpdateTime = value
         }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
         if let value = dict["ThumbnailMode"] as? String {
             self.thumbnailMode = value
         }
@@ -16170,6 +16202,8 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
     public var startFileUpdateTime: String?
 
     public var startTagUpdateTime: String?
+
+    public var status: String?
 
     public var thumbnailMode: String?
 
@@ -16257,6 +16291,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         if self.startTagUpdateTime != nil {
             map["StartTagUpdateTime"] = self.startTagUpdateTime!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.thumbnailMode != nil {
             map["ThumbnailMode"] = self.thumbnailMode!
         }
@@ -16336,6 +16373,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["StartTagUpdateTime"] as? String {
             self.startTagUpdateTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["ThumbnailMode"] as? String {
             self.thumbnailMode = value

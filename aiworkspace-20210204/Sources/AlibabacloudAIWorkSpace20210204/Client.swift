@@ -2807,6 +2807,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTagUpdateTime)) {
             query["StartTagUpdateTime"] = request.startTagUpdateTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.thumbnailMode)) {
             query["ThumbnailMode"] = request.thumbnailMode ?? "";
         }
