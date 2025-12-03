@@ -2842,6 +2842,12 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
 
+    public var pipelineCommercialCu: Int32?
+
+    public var pipelineCommercialType: String?
+
+    public var pipelineRetrieveRateLimitStrategy: String?
+
     public override init() {
         super.init()
     }
@@ -2933,6 +2939,15 @@ public class CreateIndexRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["metaExtractColumns"] = tmp
+        }
+        if self.pipelineCommercialCu != nil {
+            map["pipelineCommercialCu"] = self.pipelineCommercialCu!
+        }
+        if self.pipelineCommercialType != nil {
+            map["pipelineCommercialType"] = self.pipelineCommercialType!
+        }
+        if self.pipelineRetrieveRateLimitStrategy != nil {
+            map["pipelineRetrieveRateLimitStrategy"] = self.pipelineRetrieveRateLimitStrategy!
         }
         return map
     }
@@ -3030,6 +3045,15 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
             self.metaExtractColumns = tmp
         }
+        if let value = dict["pipelineCommercialCu"] as? Int32 {
+            self.pipelineCommercialCu = value
+        }
+        if let value = dict["pipelineCommercialType"] as? String {
+            self.pipelineCommercialType = value
+        }
+        if let value = dict["pipelineRetrieveRateLimitStrategy"] as? String {
+            self.pipelineRetrieveRateLimitStrategy = value
+        }
     }
 }
 
@@ -3079,6 +3103,12 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var enableHeaders: Bool?
 
     public var metaExtractColumnsShrink: String?
+
+    public var pipelineCommercialCu: Int32?
+
+    public var pipelineCommercialType: String?
+
+    public var pipelineRetrieveRateLimitStrategy: String?
 
     public override init() {
         super.init()
@@ -3163,6 +3193,15 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.metaExtractColumnsShrink != nil {
             map["metaExtractColumns"] = self.metaExtractColumnsShrink!
         }
+        if self.pipelineCommercialCu != nil {
+            map["pipelineCommercialCu"] = self.pipelineCommercialCu!
+        }
+        if self.pipelineCommercialType != nil {
+            map["pipelineCommercialType"] = self.pipelineCommercialType!
+        }
+        if self.pipelineRetrieveRateLimitStrategy != nil {
+            map["pipelineRetrieveRateLimitStrategy"] = self.pipelineRetrieveRateLimitStrategy!
+        }
         return map
     }
 
@@ -3236,6 +3275,15 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["metaExtractColumns"] as? String {
             self.metaExtractColumnsShrink = value
+        }
+        if let value = dict["pipelineCommercialCu"] as? Int32 {
+            self.pipelineCommercialCu = value
+        }
+        if let value = dict["pipelineCommercialType"] as? String {
+            self.pipelineCommercialType = value
+        }
+        if let value = dict["pipelineRetrieveRateLimitStrategy"] as? String {
+            self.pipelineRetrieveRateLimitStrategy = value
         }
     }
 }

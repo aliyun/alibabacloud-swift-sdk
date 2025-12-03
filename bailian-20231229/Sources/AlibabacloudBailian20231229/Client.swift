@@ -448,6 +448,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.metaExtractColumnsShrink)) {
             query["metaExtractColumns"] = request.metaExtractColumnsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pipelineCommercialCu)) {
+            query["pipelineCommercialCu"] = request.pipelineCommercialCu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineCommercialType)) {
+            query["pipelineCommercialType"] = request.pipelineCommercialType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineRetrieveRateLimitStrategy)) {
+            query["pipelineRetrieveRateLimitStrategy"] = request.pipelineRetrieveRateLimitStrategy ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
