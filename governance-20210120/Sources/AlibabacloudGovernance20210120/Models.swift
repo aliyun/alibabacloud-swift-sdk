@@ -3327,6 +3327,8 @@ public class ListEvaluationMetadataResponse : Tea.TeaModel {
 public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
     public var accountId: Int64?
 
+    public var date: String?
+
     public var id: String?
 
     public var maxResults: Int32?
@@ -3356,6 +3358,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.date != nil {
+            map["Date"] = self.date!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -3381,6 +3386,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountId"] as? Int64 {
             self.accountId = value
+        }
+        if let value = dict["Date"] as? String {
+            self.date = value
         }
         if let value = dict["Id"] as? String {
             self.id = value
@@ -3542,6 +3550,8 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var date: String?
+
     public var nextToken: String?
 
     public var requestId: String?
@@ -3562,6 +3572,9 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.date != nil {
+            map["Date"] = self.date!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -3580,6 +3593,9 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Date"] as? String {
+            self.date = value
+        }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
