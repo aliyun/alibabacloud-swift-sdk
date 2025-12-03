@@ -1062,6 +1062,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateModuleWithOptions(_ request: GenerateModuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateModuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.generateSource)) {
+            body["generateSource"] = request.generateSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            body["parameters"] = request.parameters ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.syntax)) {
+            body["syntax"] = request.syntax ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.template)) {
+            body["template"] = request.template ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terraformProviderVersion)) {
+            body["terraformProviderVersion"] = request.terraformProviderVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terraformResourceType)) {
+            body["terraformResourceType"] = request.terraformResourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateModule",
+            "version": "2021-08-06",
+            "protocol": "HTTPS",
+            "pathname": "/explorer/generate/module",
+            "method": "POST",
+            "authType": "Anonymous",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await doROARequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.pathname ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateModuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateModule(_ request: GenerateModuleRequest) async throws -> GenerateModuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generateModuleWithOptions(request as! GenerateModuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getExecuteStateWithOptions(_ stateId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetExecuteStateResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]

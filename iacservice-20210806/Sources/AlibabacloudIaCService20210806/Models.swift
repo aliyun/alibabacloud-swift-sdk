@@ -4007,6 +4007,182 @@ public class ExecuteTerraformPlanResponse : Tea.TeaModel {
     }
 }
 
+public class GenerateModuleRequest : Tea.TeaModel {
+    public var generateSource: String?
+
+    public var parameters: [String: Any]?
+
+    public var regionId: String?
+
+    public var syntax: String?
+
+    public var template: String?
+
+    public var terraformProviderVersion: String?
+
+    public var terraformResourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.generateSource != nil {
+            map["generateSource"] = self.generateSource!
+        }
+        if self.parameters != nil {
+            map["parameters"] = self.parameters!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.syntax != nil {
+            map["syntax"] = self.syntax!
+        }
+        if self.template != nil {
+            map["template"] = self.template!
+        }
+        if self.terraformProviderVersion != nil {
+            map["terraformProviderVersion"] = self.terraformProviderVersion!
+        }
+        if self.terraformResourceType != nil {
+            map["terraformResourceType"] = self.terraformResourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["generateSource"] as? String {
+            self.generateSource = value
+        }
+        if let value = dict["parameters"] as? [String: Any] {
+            self.parameters = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["syntax"] as? String {
+            self.syntax = value
+        }
+        if let value = dict["template"] as? String {
+            self.template = value
+        }
+        if let value = dict["terraformProviderVersion"] as? String {
+            self.terraformProviderVersion = value
+        }
+        if let value = dict["terraformResourceType"] as? String {
+            self.terraformResourceType = value
+        }
+    }
+}
+
+public class GenerateModuleResponseBody : Tea.TeaModel {
+    public var module: String?
+
+    public var properties: [String: Any]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.module != nil {
+            map["module"] = self.module!
+        }
+        if self.properties != nil {
+            map["properties"] = self.properties!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["module"] as? String {
+            self.module = value
+        }
+        if let value = dict["properties"] as? [String: Any] {
+            self.properties = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GenerateModuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateModuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateModuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetExecuteStateResponseBody : Tea.TeaModel {
     public var errorMessage: String?
 
@@ -4564,6 +4740,8 @@ public class GetJobResponseBody : Tea.TeaModel {
         public class Config : Tea.TeaModel {
             public var autoApply: Bool?
 
+            public var hasConfigProactive: String?
+
             public var isDestroy: Bool?
 
             public var moduleVersion: String?
@@ -4589,6 +4767,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.autoApply != nil {
                     map["autoApply"] = self.autoApply!
                 }
+                if self.hasConfigProactive != nil {
+                    map["hasConfigProactive"] = self.hasConfigProactive!
+                }
                 if self.isDestroy != nil {
                     map["isDestroy"] = self.isDestroy!
                 }
@@ -4608,6 +4789,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["autoApply"] as? Bool {
                     self.autoApply = value
+                }
+                if let value = dict["hasConfigProactive"] as? String {
+                    self.hasConfigProactive = value
                 }
                 if let value = dict["isDestroy"] as? Bool {
                     self.isDestroy = value
