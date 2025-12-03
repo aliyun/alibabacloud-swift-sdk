@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudVod20170321"
-  spec.version      = "2.8.1"
+  spec.version      = "2.8.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ApsaraVideo for VOD (20170321) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/vod-20170321" 

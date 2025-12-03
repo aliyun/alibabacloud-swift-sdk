@@ -2309,6 +2309,8 @@ public class AttachAppPolicyToIdentityResponse : Tea.TeaModel {
 public class BatchGetMediaInfosRequest : Tea.TeaModel {
     public var mediaIds: String?
 
+    public var referenceIds: String?
+
     public override init() {
         super.init()
     }
@@ -2326,6 +2328,9 @@ public class BatchGetMediaInfosRequest : Tea.TeaModel {
         if self.mediaIds != nil {
             map["MediaIds"] = self.mediaIds!
         }
+        if self.referenceIds != nil {
+            map["ReferenceIds"] = self.referenceIds!
+        }
         return map
     }
 
@@ -2333,6 +2338,9 @@ public class BatchGetMediaInfosRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MediaIds"] as? String {
             self.mediaIds = value
+        }
+        if let value = dict["ReferenceIds"] as? String {
+            self.referenceIds = value
         }
     }
 }
@@ -2357,6 +2365,8 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
             public var mediaId: String?
 
             public var modificationTime: String?
+
+            public var referenceId: String?
 
             public var restoreExpiration: String?
 
@@ -2419,6 +2429,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 if self.modificationTime != nil {
                     map["ModificationTime"] = self.modificationTime!
                 }
+                if self.referenceId != nil {
+                    map["ReferenceId"] = self.referenceId!
+                }
                 if self.restoreExpiration != nil {
                     map["RestoreExpiration"] = self.restoreExpiration!
                 }
@@ -2480,6 +2493,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ModificationTime"] as? String {
                     self.modificationTime = value
+                }
+                if let value = dict["ReferenceId"] as? String {
+                    self.referenceId = value
                 }
                 if let value = dict["RestoreExpiration"] as? String {
                     self.restoreExpiration = value
@@ -3356,6 +3372,8 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
 
     public var nonExistMediaIds: [String]?
 
+    public var nonExistReferenceIds: [String]?
+
     public var requestId: String?
 
     public override init() {
@@ -3385,6 +3403,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
         if self.nonExistMediaIds != nil {
             map["NonExistMediaIds"] = self.nonExistMediaIds!
         }
+        if self.nonExistReferenceIds != nil {
+            map["NonExistReferenceIds"] = self.nonExistReferenceIds!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -3411,6 +3432,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
         }
         if let value = dict["NonExistMediaIds"] as? [String] {
             self.nonExistMediaIds = value
+        }
+        if let value = dict["NonExistReferenceIds"] as? [String] {
+            self.nonExistReferenceIds = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -4857,6 +4881,8 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
 
     public var fileSize: Int64?
 
+    public var referenceId: String?
+
     public var storageLocation: String?
 
     public var tags: String?
@@ -4901,6 +4927,9 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
         if self.fileSize != nil {
             map["FileSize"] = self.fileSize!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.storageLocation != nil {
             map["StorageLocation"] = self.storageLocation!
         }
@@ -4941,6 +4970,9 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
         }
         if let value = dict["FileSize"] as? Int64 {
             self.fileSize = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["StorageLocation"] as? String {
             self.storageLocation = value
@@ -6495,6 +6527,8 @@ public class DeleteMessageCallbackResponse : Tea.TeaModel {
 public class DeleteMezzaninesRequest : Tea.TeaModel {
     public var force: Bool?
 
+    public var referenceIds: String?
+
     public var videoIds: String?
 
     public override init() {
@@ -6514,6 +6548,9 @@ public class DeleteMezzaninesRequest : Tea.TeaModel {
         if self.force != nil {
             map["Force"] = self.force!
         }
+        if self.referenceIds != nil {
+            map["ReferenceIds"] = self.referenceIds!
+        }
         if self.videoIds != nil {
             map["VideoIds"] = self.videoIds!
         }
@@ -6525,6 +6562,9 @@ public class DeleteMezzaninesRequest : Tea.TeaModel {
         if let value = dict["Force"] as? Bool {
             self.force = value
         }
+        if let value = dict["ReferenceIds"] as? String {
+            self.referenceIds = value
+        }
         if let value = dict["VideoIds"] as? String {
             self.videoIds = value
         }
@@ -6532,6 +6572,8 @@ public class DeleteMezzaninesRequest : Tea.TeaModel {
 }
 
 public class DeleteMezzaninesResponseBody : Tea.TeaModel {
+    public var nonExistReferenceIds: [String]?
+
     public var nonExistVideoIds: [String]?
 
     public var requestId: String?
@@ -6552,6 +6594,9 @@ public class DeleteMezzaninesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nonExistReferenceIds != nil {
+            map["NonExistReferenceIds"] = self.nonExistReferenceIds!
+        }
         if self.nonExistVideoIds != nil {
             map["NonExistVideoIds"] = self.nonExistVideoIds!
         }
@@ -6566,6 +6611,9 @@ public class DeleteMezzaninesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NonExistReferenceIds"] as? [String] {
+            self.nonExistReferenceIds = value
+        }
         if let value = dict["NonExistVideoIds"] as? [String] {
             self.nonExistVideoIds = value
         }
@@ -6759,6 +6807,8 @@ public class DeleteMultipartUploadResponse : Tea.TeaModel {
 public class DeleteStreamRequest : Tea.TeaModel {
     public var jobIds: String?
 
+    public var referenceId: String?
+
     public var videoId: String?
 
     public override init() {
@@ -6778,6 +6828,9 @@ public class DeleteStreamRequest : Tea.TeaModel {
         if self.jobIds != nil {
             map["JobIds"] = self.jobIds!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -6788,6 +6841,9 @@ public class DeleteStreamRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["JobIds"] as? String {
             self.jobIds = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["VideoId"] as? String {
             self.videoId = value
@@ -7013,6 +7069,8 @@ public class DeleteTranscodeTemplateGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteVideoRequest : Tea.TeaModel {
+    public var referenceIds: String?
+
     public var videoIds: String?
 
     public override init() {
@@ -7029,6 +7087,9 @@ public class DeleteVideoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.referenceIds != nil {
+            map["ReferenceIds"] = self.referenceIds!
+        }
         if self.videoIds != nil {
             map["VideoIds"] = self.videoIds!
         }
@@ -7037,6 +7098,9 @@ public class DeleteVideoRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ReferenceIds"] as? String {
+            self.referenceIds = value
+        }
         if let value = dict["VideoIds"] as? String {
             self.videoIds = value
         }
@@ -7045,6 +7109,8 @@ public class DeleteVideoRequest : Tea.TeaModel {
 
 public class DeleteVideoResponseBody : Tea.TeaModel {
     public var forbiddenVideoIds: [String]?
+
+    public var nonExistReferenceIds: [String]?
 
     public var nonExistVideoIds: [String]?
 
@@ -7067,6 +7133,9 @@ public class DeleteVideoResponseBody : Tea.TeaModel {
         if self.forbiddenVideoIds != nil {
             map["ForbiddenVideoIds"] = self.forbiddenVideoIds!
         }
+        if self.nonExistReferenceIds != nil {
+            map["NonExistReferenceIds"] = self.nonExistReferenceIds!
+        }
         if self.nonExistVideoIds != nil {
             map["NonExistVideoIds"] = self.nonExistVideoIds!
         }
@@ -7080,6 +7149,9 @@ public class DeleteVideoResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ForbiddenVideoIds"] as? [String] {
             self.forbiddenVideoIds = value
+        }
+        if let value = dict["NonExistReferenceIds"] as? [String] {
+            self.nonExistReferenceIds = value
         }
         if let value = dict["NonExistVideoIds"] as? [String] {
             self.nonExistVideoIds = value
@@ -30703,6 +30775,8 @@ public class GetMezzanineInfoRequest : Tea.TeaModel {
 
     public var outputType: String?
 
+    public var referenceId: String?
+
     public var videoId: String?
 
     public override init() {
@@ -30728,6 +30802,9 @@ public class GetMezzanineInfoRequest : Tea.TeaModel {
         if self.outputType != nil {
             map["OutputType"] = self.outputType!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -30744,6 +30821,9 @@ public class GetMezzanineInfoRequest : Tea.TeaModel {
         }
         if let value = dict["OutputType"] as? String {
             self.outputType = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["VideoId"] as? String {
             self.videoId = value
@@ -31426,6 +31506,8 @@ public class GetPlayInfoRequest : Tea.TeaModel {
 
     public var reAuthInfo: String?
 
+    public var referenceId: String?
+
     public var resultType: String?
 
     public var streamType: String?
@@ -31472,6 +31554,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         if self.reAuthInfo != nil {
             map["ReAuthInfo"] = self.reAuthInfo!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.resultType != nil {
             map["ResultType"] = self.resultType!
         }
@@ -31512,6 +31597,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         }
         if let value = dict["ReAuthInfo"] as? String {
             self.reAuthInfo = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["ResultType"] as? String {
             self.resultType = value
@@ -34040,6 +34128,8 @@ public class GetUploadDetailsResponse : Tea.TeaModel {
 }
 
 public class GetVideoInfoRequest : Tea.TeaModel {
+    public var referenceId: String?
+
     public var videoId: String?
 
     public override init() {
@@ -34056,6 +34146,9 @@ public class GetVideoInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -34064,6 +34157,9 @@ public class GetVideoInfoRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
+        }
         if let value = dict["VideoId"] as? String {
             self.videoId = value
         }
@@ -34123,6 +34219,8 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
         public var duration: Double?
 
         public var modificationTime: String?
+
+        public var referenceId: String?
 
         public var regionId: String?
 
@@ -34197,6 +34295,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             }
             if self.modificationTime != nil {
                 map["ModificationTime"] = self.modificationTime!
+            }
+            if self.referenceId != nil {
+                map["ReferenceId"] = self.referenceId!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -34274,6 +34375,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModificationTime"] as? String {
                 self.modificationTime = value
+            }
+            if let value = dict["ReferenceId"] as? String {
+                self.referenceId = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
@@ -34410,6 +34514,8 @@ public class GetVideoInfoResponse : Tea.TeaModel {
 }
 
 public class GetVideoInfosRequest : Tea.TeaModel {
+    public var referenceIds: String?
+
     public var videoIds: String?
 
     public override init() {
@@ -34426,6 +34532,9 @@ public class GetVideoInfosRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.referenceIds != nil {
+            map["ReferenceIds"] = self.referenceIds!
+        }
         if self.videoIds != nil {
             map["VideoIds"] = self.videoIds!
         }
@@ -34434,6 +34543,9 @@ public class GetVideoInfosRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ReferenceIds"] as? String {
+            self.referenceIds = value
+        }
         if let value = dict["VideoIds"] as? String {
             self.videoIds = value
         }
@@ -34459,6 +34571,8 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
         public var duration: Double?
 
         public var modificationTime: String?
+
+        public var referenceId: String?
 
         public var restoreExpiration: String?
 
@@ -34524,6 +34638,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             }
             if self.modificationTime != nil {
                 map["ModificationTime"] = self.modificationTime!
+            }
+            if self.referenceId != nil {
+                map["ReferenceId"] = self.referenceId!
             }
             if self.restoreExpiration != nil {
                 map["RestoreExpiration"] = self.restoreExpiration!
@@ -34593,6 +34710,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             if let value = dict["ModificationTime"] as? String {
                 self.modificationTime = value
             }
+            if let value = dict["ReferenceId"] as? String {
+                self.referenceId = value
+            }
             if let value = dict["RestoreExpiration"] as? String {
                 self.restoreExpiration = value
             }
@@ -34631,6 +34751,8 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nonExistReferenceIds: [String]?
+
     public var nonExistVideoIds: [String]?
 
     public var requestId: String?
@@ -34651,6 +34773,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nonExistReferenceIds != nil {
+            map["NonExistReferenceIds"] = self.nonExistReferenceIds!
+        }
         if self.nonExistVideoIds != nil {
             map["NonExistVideoIds"] = self.nonExistVideoIds!
         }
@@ -34669,6 +34794,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NonExistReferenceIds"] as? [String] {
+            self.nonExistReferenceIds = value
+        }
         if let value = dict["NonExistVideoIds"] as? [String] {
             self.nonExistVideoIds = value
         }
@@ -34750,6 +34878,8 @@ public class GetVideoListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var referenceIds: String?
+
     public var sortBy: String?
 
     public var startTime: String?
@@ -34784,6 +34914,9 @@ public class GetVideoListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.referenceIds != nil {
+            map["ReferenceIds"] = self.referenceIds!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -34812,6 +34945,9 @@ public class GetVideoListRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ReferenceIds"] as? String {
+            self.referenceIds = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
@@ -34877,6 +35013,8 @@ public class GetVideoListResponseBody : Tea.TeaModel {
 
             public var modificationTime: String?
 
+            public var referenceId: String?
+
             public var restoreExpiration: String?
 
             public var restoreStatus: String?
@@ -34937,6 +35075,9 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 }
                 if self.modificationTime != nil {
                     map["ModificationTime"] = self.modificationTime!
+                }
+                if self.referenceId != nil {
+                    map["ReferenceId"] = self.referenceId!
                 }
                 if self.restoreExpiration != nil {
                     map["RestoreExpiration"] = self.restoreExpiration!
@@ -34999,6 +35140,9 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ModificationTime"] as? String {
                     self.modificationTime = value
+                }
+                if let value = dict["ReferenceId"] as? String {
+                    self.referenceId = value
                 }
                 if let value = dict["RestoreExpiration"] as? String {
                     self.restoreExpiration = value
@@ -35184,6 +35328,8 @@ public class GetVideoPlayAuthRequest : Tea.TeaModel {
 
     public var authInfoTimeout: Int64?
 
+    public var referenceId: String?
+
     public var videoId: String?
 
     public override init() {
@@ -35206,6 +35352,9 @@ public class GetVideoPlayAuthRequest : Tea.TeaModel {
         if self.authInfoTimeout != nil {
             map["AuthInfoTimeout"] = self.authInfoTimeout!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -35219,6 +35368,9 @@ public class GetVideoPlayAuthRequest : Tea.TeaModel {
         }
         if let value = dict["AuthInfoTimeout"] as? Int64 {
             self.authInfoTimeout = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["VideoId"] as? String {
             self.videoId = value
@@ -40120,6 +40272,8 @@ public class RefreshMediaPlayUrlsResponse : Tea.TeaModel {
 public class RefreshUploadVideoRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
+    public var referenceId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -40143,6 +40297,9 @@ public class RefreshUploadVideoRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -40159,6 +40316,9 @@ public class RefreshUploadVideoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -41848,6 +42008,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
             public var preprocessStatus: String?
 
+            public var referenceId: String?
+
             public var restoreExpiration: String?
 
             public var restoreStatus: String?
@@ -41919,6 +42081,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if self.preprocessStatus != nil {
                     map["PreprocessStatus"] = self.preprocessStatus!
+                }
+                if self.referenceId != nil {
+                    map["ReferenceId"] = self.referenceId!
                 }
                 if self.restoreExpiration != nil {
                     map["RestoreExpiration"] = self.restoreExpiration!
@@ -41993,6 +42158,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PreprocessStatus"] as? String {
                     self.preprocessStatus = value
+                }
+                if let value = dict["ReferenceId"] as? String {
+                    self.referenceId = value
                 }
                 if let value = dict["RestoreExpiration"] as? String {
                     self.restoreExpiration = value
@@ -42170,6 +42338,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
             public var preprocessStatus: String?
 
+            public var referenceId: String?
+
             public var restoreExpiration: String?
 
             public var restoreStatus: String?
@@ -42240,6 +42410,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if self.preprocessStatus != nil {
                     map["PreprocessStatus"] = self.preprocessStatus!
+                }
+                if self.referenceId != nil {
+                    map["ReferenceId"] = self.referenceId!
                 }
                 if self.restoreExpiration != nil {
                     map["RestoreExpiration"] = self.restoreExpiration!
@@ -42314,6 +42487,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PreprocessStatus"] as? String {
                     self.preprocessStatus = value
+                }
+                if let value = dict["ReferenceId"] as? String {
+                    self.referenceId = value
                 }
                 if let value = dict["RestoreExpiration"] as? String {
                     self.restoreExpiration = value
@@ -45360,6 +45536,8 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
 
     public var interval: Int64?
 
+    public var referenceId: String?
+
     public var snapshotTemplateId: String?
 
     public var specifiedOffsetTime: Int64?
@@ -45397,6 +45575,9 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.snapshotTemplateId != nil {
             map["SnapshotTemplateId"] = self.snapshotTemplateId!
         }
@@ -45432,6 +45613,9 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
         if let value = dict["Interval"] as? Int64 {
             self.interval = value
         }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
+        }
         if let value = dict["SnapshotTemplateId"] as? String {
             self.snapshotTemplateId = value
         }
@@ -45462,6 +45646,8 @@ public class SubmitSnapshotJobShrinkRequest : Tea.TeaModel {
     public var height: String?
 
     public var interval: Int64?
+
+    public var referenceId: String?
 
     public var snapshotTemplateId: String?
 
@@ -45500,6 +45686,9 @@ public class SubmitSnapshotJobShrinkRequest : Tea.TeaModel {
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.snapshotTemplateId != nil {
             map["SnapshotTemplateId"] = self.snapshotTemplateId!
         }
@@ -45534,6 +45723,9 @@ public class SubmitSnapshotJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Interval"] as? Int64 {
             self.interval = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["SnapshotTemplateId"] as? String {
             self.snapshotTemplateId = value
@@ -45690,6 +45882,8 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
 
     public var priority: String?
 
+    public var referenceId: String?
+
     public var sessionId: String?
 
     public var templateGroupId: String?
@@ -45724,6 +45918,9 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -45752,6 +45949,9 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
         }
         if let value = dict["Priority"] as? String {
             self.priority = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
@@ -47348,6 +47548,8 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var referenceId: String?
+
     public var tags: String?
 
     public var title: String?
@@ -47379,6 +47581,9 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.referenceId != nil {
+            map["ReferenceId"] = self.referenceId!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -47404,6 +47609,9 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ReferenceId"] as? String {
+            self.referenceId = value
         }
         if let value = dict["Tags"] as? String {
             self.tags = value
@@ -47535,6 +47743,8 @@ public class UpdateVideoInfosRequest : Tea.TeaModel {
 public class UpdateVideoInfosResponseBody : Tea.TeaModel {
     public var forbiddenVideoIds: [String]?
 
+    public var nonExistReferenceIds: [String]?
+
     public var nonExistVideoIds: [String]?
 
     public var requestId: String?
@@ -47556,6 +47766,9 @@ public class UpdateVideoInfosResponseBody : Tea.TeaModel {
         if self.forbiddenVideoIds != nil {
             map["ForbiddenVideoIds"] = self.forbiddenVideoIds!
         }
+        if self.nonExistReferenceIds != nil {
+            map["NonExistReferenceIds"] = self.nonExistReferenceIds!
+        }
         if self.nonExistVideoIds != nil {
             map["NonExistVideoIds"] = self.nonExistVideoIds!
         }
@@ -47569,6 +47782,9 @@ public class UpdateVideoInfosResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ForbiddenVideoIds"] as? [String] {
             self.forbiddenVideoIds = value
+        }
+        if let value = dict["NonExistReferenceIds"] as? [String] {
+            self.nonExistReferenceIds = value
         }
         if let value = dict["NonExistVideoIds"] as? [String] {
             self.nonExistVideoIds = value
