@@ -33862,11 +33862,25 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                 }
             }
             public class TtsConfig : Tea.TeaModel {
+                public var backgroundEnabled: Bool?
+
+                public var backgroundSound: Int64?
+
+                public var backgroundVolume: Int64?
+
+                public var mixingEnabled: Bool?
+
+                public var mixingTemplate: Int64?
+
                 public var ttsSpeed: Int64?
 
                 public var ttsStyle: String?
 
                 public var ttsVolume: Int64?
+
+                public var voiceCode: String?
+
+                public var voiceType: String?
 
                 public override init() {
                     super.init()
@@ -33882,6 +33896,21 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.backgroundEnabled != nil {
+                        map["BackgroundEnabled"] = self.backgroundEnabled!
+                    }
+                    if self.backgroundSound != nil {
+                        map["BackgroundSound"] = self.backgroundSound!
+                    }
+                    if self.backgroundVolume != nil {
+                        map["BackgroundVolume"] = self.backgroundVolume!
+                    }
+                    if self.mixingEnabled != nil {
+                        map["MixingEnabled"] = self.mixingEnabled!
+                    }
+                    if self.mixingTemplate != nil {
+                        map["MixingTemplate"] = self.mixingTemplate!
+                    }
                     if self.ttsSpeed != nil {
                         map["TtsSpeed"] = self.ttsSpeed!
                     }
@@ -33891,11 +33920,32 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                     if self.ttsVolume != nil {
                         map["TtsVolume"] = self.ttsVolume!
                     }
+                    if self.voiceCode != nil {
+                        map["VoiceCode"] = self.voiceCode!
+                    }
+                    if self.voiceType != nil {
+                        map["VoiceType"] = self.voiceType!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BackgroundEnabled"] as? Bool {
+                        self.backgroundEnabled = value
+                    }
+                    if let value = dict["BackgroundSound"] as? Int64 {
+                        self.backgroundSound = value
+                    }
+                    if let value = dict["BackgroundVolume"] as? Int64 {
+                        self.backgroundVolume = value
+                    }
+                    if let value = dict["MixingEnabled"] as? Bool {
+                        self.mixingEnabled = value
+                    }
+                    if let value = dict["MixingTemplate"] as? Int64 {
+                        self.mixingTemplate = value
+                    }
                     if let value = dict["TtsSpeed"] as? Int64 {
                         self.ttsSpeed = value
                     }
@@ -33904,6 +33954,12 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["TtsVolume"] as? Int64 {
                         self.ttsVolume = value
+                    }
+                    if let value = dict["VoiceCode"] as? String {
+                        self.voiceCode = value
+                    }
+                    if let value = dict["VoiceType"] as? String {
+                        self.voiceType = value
                     }
                 }
             }
@@ -34362,6 +34418,8 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
 
                 public var phoneTagRequired: Bool?
 
+                public var phoneTagSource: String?
+
                 public var phoneTagType: String?
 
                 public override init() {
@@ -34400,6 +34458,9 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                     if self.phoneTagRequired != nil {
                         map["PhoneTagRequired"] = self.phoneTagRequired!
                     }
+                    if self.phoneTagSource != nil {
+                        map["PhoneTagSource"] = self.phoneTagSource!
+                    }
                     if self.phoneTagType != nil {
                         map["PhoneTagType"] = self.phoneTagType!
                     }
@@ -34435,6 +34496,9 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["PhoneTagRequired"] as? Bool {
                         self.phoneTagRequired = value
+                    }
+                    if let value = dict["PhoneTagSource"] as? String {
+                        self.phoneTagSource = value
                     }
                     if let value = dict["PhoneTagType"] as? String {
                         self.phoneTagType = value
@@ -34478,6 +34542,10 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
             public var phoneTagConfig: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig]?
 
             public var prologue: String?
+
+            public var recordingFile: String?
+
+            public var startWordType: Int64?
 
             public var sysRole: String?
 
@@ -34572,6 +34640,12 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                 }
                 if self.prologue != nil {
                     map["Prologue"] = self.prologue!
+                }
+                if self.recordingFile != nil {
+                    map["RecordingFile"] = self.recordingFile!
+                }
+                if self.startWordType != nil {
+                    map["StartWordType"] = self.startWordType!
                 }
                 if self.sysRole != nil {
                     map["SysRole"] = self.sysRole!
@@ -34685,6 +34759,12 @@ public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Prologue"] as? String {
                     self.prologue = value
+                }
+                if let value = dict["RecordingFile"] as? String {
+                    self.recordingFile = value
+                }
+                if let value = dict["StartWordType"] as? Int64 {
+                    self.startWordType = value
                 }
                 if let value = dict["SysRole"] as? String {
                     self.sysRole = value
@@ -35055,6 +35135,8 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
 
             public var required_: Bool?
 
+            public var source: String?
+
             public var value: String?
 
             public override init() {
@@ -35083,6 +35165,9 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
                 if self.required_ != nil {
                     map["Required"] = self.required_!
                 }
+                if self.source != nil {
+                    map["Source"] = self.source!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
                 }
@@ -35102,6 +35187,9 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Required"] as? Bool {
                     self.required_ = value
+                }
+                if let value = dict["Source"] as? String {
+                    self.source = value
                 }
                 if let value = dict["Value"] as? String {
                     self.value = value
