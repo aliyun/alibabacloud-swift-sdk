@@ -1316,6 +1316,8 @@ public class SceneItem : Tea.TeaModel {
 public class ScorePageItem : Tea.TeaModel {
     public var cardType: String?
 
+    public var correlationTag: Int32?
+
     public var displayLink: String?
 
     public var hostAuthorityScore: Double?
@@ -1372,6 +1374,9 @@ public class ScorePageItem : Tea.TeaModel {
         var map = super.toMap()
         if self.cardType != nil {
             map["cardType"] = self.cardType!
+        }
+        if self.correlationTag != nil {
+            map["correlationTag"] = self.correlationTag!
         }
         if self.displayLink != nil {
             map["displayLink"] = self.displayLink!
@@ -1444,6 +1449,9 @@ public class ScorePageItem : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["cardType"] as? String {
             self.cardType = value
+        }
+        if let value = dict["correlationTag"] as? Int32 {
+            self.correlationTag = value
         }
         if let value = dict["displayLink"] as? String {
             self.displayLink = value
@@ -1681,6 +1689,8 @@ public class UnifiedOriginalQuery : Tea.TeaModel {
 }
 
 public class UnifiedPageItem : Tea.TeaModel {
+    public var correlationTag: Int32?
+
     public var hostAuthorityScore: Double?
 
     public var hostLogo: String?
@@ -1723,6 +1733,9 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.correlationTag != nil {
+            map["correlationTag"] = self.correlationTag!
+        }
         if self.hostAuthorityScore != nil {
             map["hostAuthorityScore"] = self.hostAuthorityScore!
         }
@@ -1770,6 +1783,9 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["correlationTag"] as? Int32 {
+            self.correlationTag = value
+        }
         if let value = dict["hostAuthorityScore"] as? Double {
             self.hostAuthorityScore = value
         }
