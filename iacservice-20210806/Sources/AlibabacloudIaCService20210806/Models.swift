@@ -12,6 +12,8 @@ public class JobStatusDetailValue : Tea.TeaModel {
 
     public var timeStamps: String?
 
+    public var errorMessage: String?
+
     public override init() {
         super.init()
     }
@@ -35,6 +37,9 @@ public class JobStatusDetailValue : Tea.TeaModel {
         if self.timeStamps != nil {
             map["timeStamps"] = self.timeStamps!
         }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
         return map
     }
 
@@ -48,6 +53,9 @@ public class JobStatusDetailValue : Tea.TeaModel {
         }
         if let value = dict["timeStamps"] as? String {
             self.timeStamps = value
+        }
+        if let value = dict["errorMessage"] as? String {
+            self.errorMessage = value
         }
     }
 }
