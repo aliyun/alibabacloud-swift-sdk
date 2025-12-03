@@ -836,6 +836,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             body["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dataFormatType)) {
+            body["DataFormatType"] = request.dataFormatType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dataOutputFormat)) {
             body["DataOutputFormat"] = request.dataOutputFormat ?? "";
         }

@@ -7176,6 +7176,8 @@ public class CreateApsKafkaHudiJobRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var dataFormatType: String?
+
     public var dataOutputFormat: String?
 
     public var datasourceId: Int64?
@@ -7254,6 +7256,9 @@ public class CreateApsKafkaHudiJobRequest : Tea.TeaModel {
         }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.dataFormatType != nil {
+            map["DataFormatType"] = self.dataFormatType!
         }
         if self.dataOutputFormat != nil {
             map["DataOutputFormat"] = self.dataOutputFormat!
@@ -7354,6 +7359,9 @@ public class CreateApsKafkaHudiJobRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["DataFormatType"] as? String {
+            self.dataFormatType = value
+        }
         if let value = dict["DataOutputFormat"] as? String {
             self.dataOutputFormat = value
         }
@@ -7437,6 +7445,8 @@ public class CreateApsKafkaHudiJobShrinkRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var dataFormatType: String?
+
     public var dataOutputFormat: String?
 
     public var datasourceId: Int64?
@@ -7511,6 +7521,9 @@ public class CreateApsKafkaHudiJobShrinkRequest : Tea.TeaModel {
         }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.dataFormatType != nil {
+            map["DataFormatType"] = self.dataFormatType!
         }
         if self.dataOutputFormat != nil {
             map["DataOutputFormat"] = self.dataOutputFormat!
@@ -7600,6 +7613,9 @@ public class CreateApsKafkaHudiJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["DataFormatType"] as? String {
+            self.dataFormatType = value
         }
         if let value = dict["DataOutputFormat"] as? String {
             self.dataOutputFormat = value
