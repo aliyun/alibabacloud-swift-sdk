@@ -10191,6 +10191,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.exportId)) {
             query["ExportId"] = request.exportId!;
         }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -13366,6 +13369,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeNoticeConfigWithOptions(_ request: DescribeNoticeConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNoticeConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceIp)) {
             query["SourceIp"] = request.sourceIp ?? "";
         }
@@ -15118,6 +15124,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
         }
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source!;
@@ -18930,6 +18939,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.params)) {
             query["Params"] = request.params ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -30281,6 +30293,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNoticeConfigWithOptions(_ request: ModifyNoticeConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNoticeConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.project)) {
             query["Project"] = request.project ?? "";
         }
@@ -34871,11 +34886,44 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateFileProtectEventStatusWithOptions(_ request: UpdateFileProtectEventStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFileProtectEventStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertLevels)) {
+            query["AlertLevels"] = request.alertLevels ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.internetIp)) {
+            query["InternetIp"] = request.internetIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intranetIp)) {
+            query["IntranetIp"] = request.intranetIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            query["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectAllAcrossPages)) {
+            query["SelectAllAcrossPages"] = request.selectAllAcrossPages!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -34905,11 +34953,47 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateFileProtectRemarkWithOptions(_ request: UpdateFileProtectRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFileProtectRemarkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertLevels)) {
+            query["AlertLevels"] = request.alertLevels ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id!;
         }
+        if (!TeaUtils.Client.isUnset(request.idList)) {
+            query["IdList"] = request.idList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.internetIp)) {
+            query["InternetIp"] = request.internetIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intranetIp)) {
+            query["IntranetIp"] = request.intranetIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            query["Operation"] = request.operation ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             query["Remark"] = request.remark ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selectAllAcrossPages)) {
+            query["SelectAllAcrossPages"] = request.selectAllAcrossPages!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
