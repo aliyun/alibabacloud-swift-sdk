@@ -1750,9 +1750,17 @@ public class MetaCategory : Tea.TeaModel {
 
     public var depth: Int32?
 
+    public var description_: String?
+
     public var name: String?
 
+    public var ownerIds: [Int64]?
+
+    public var ownerNickNames: [String]?
+
     public var parentCategoryId: Int64?
+
+    public var remark: String?
 
     public override init() {
         super.init()
@@ -1777,11 +1785,23 @@ public class MetaCategory : Tea.TeaModel {
         if self.depth != nil {
             map["Depth"] = self.depth!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ownerIds != nil {
+            map["OwnerIds"] = self.ownerIds!
+        }
+        if self.ownerNickNames != nil {
+            map["OwnerNickNames"] = self.ownerNickNames!
+        }
         if self.parentCategoryId != nil {
             map["ParentCategoryId"] = self.parentCategoryId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
         }
         return map
     }
@@ -1797,11 +1817,23 @@ public class MetaCategory : Tea.TeaModel {
         if let value = dict["Depth"] as? Int32 {
             self.depth = value
         }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["OwnerIds"] as? [Int64] {
+            self.ownerIds = value
+        }
+        if let value = dict["OwnerNickNames"] as? [String] {
+            self.ownerNickNames = value
+        }
         if let value = dict["ParentCategoryId"] as? Int64 {
             self.parentCategoryId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
         }
     }
 }
@@ -15080,9 +15112,15 @@ public class CreateLogicDatabaseResponse : Tea.TeaModel {
 }
 
 public class CreateMetaCategoryRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var name: String?
 
+    public var ownerIds: [Int64]?
+
     public var parentCategoryId: Int64?
+
+    public var remark: String?
 
     public var tid: Int64?
 
@@ -15100,11 +15138,20 @@ public class CreateMetaCategoryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ownerIds != nil {
+            map["OwnerIds"] = self.ownerIds!
+        }
         if self.parentCategoryId != nil {
             map["ParentCategoryId"] = self.parentCategoryId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
         }
         if self.tid != nil {
             map["Tid"] = self.tid!
@@ -15114,11 +15161,91 @@ public class CreateMetaCategoryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["OwnerIds"] as? [Int64] {
+            self.ownerIds = value
+        }
         if let value = dict["ParentCategoryId"] as? Int64 {
             self.parentCategoryId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["Tid"] as? Int64 {
+            self.tid = value
+        }
+    }
+}
+
+public class CreateMetaCategoryShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var ownerIdsShrink: String?
+
+    public var parentCategoryId: Int64?
+
+    public var remark: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerIdsShrink != nil {
+            map["OwnerIds"] = self.ownerIdsShrink!
+        }
+        if self.parentCategoryId != nil {
+            map["ParentCategoryId"] = self.parentCategoryId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerIds"] as? String {
+            self.ownerIdsShrink = value
+        }
+        if let value = dict["ParentCategoryId"] as? Int64 {
+            self.parentCategoryId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
         }
         if let value = dict["Tid"] as? Int64 {
             self.tid = value
@@ -81569,7 +81696,13 @@ public class UpdateInstanceResponse : Tea.TeaModel {
 public class UpdateMetaCategoryRequest : Tea.TeaModel {
     public var categoryId: Int64?
 
+    public var description_: String?
+
     public var name: String?
+
+    public var ownerIds: [Int64]?
+
+    public var remark: String?
 
     public var tid: Int64?
 
@@ -81590,8 +81723,17 @@ public class UpdateMetaCategoryRequest : Tea.TeaModel {
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.ownerIds != nil {
+            map["OwnerIds"] = self.ownerIds!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
         }
         if self.tid != nil {
             map["Tid"] = self.tid!
@@ -81604,8 +81746,88 @@ public class UpdateMetaCategoryRequest : Tea.TeaModel {
         if let value = dict["CategoryId"] as? Int64 {
             self.categoryId = value
         }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OwnerIds"] as? [Int64] {
+            self.ownerIds = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["Tid"] as? Int64 {
+            self.tid = value
+        }
+    }
+}
+
+public class UpdateMetaCategoryShrinkRequest : Tea.TeaModel {
+    public var categoryId: Int64?
+
+    public var description_: String?
+
+    public var name: String?
+
+    public var ownerIdsShrink: String?
+
+    public var remark: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerIdsShrink != nil {
+            map["OwnerIds"] = self.ownerIdsShrink!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CategoryId"] as? Int64 {
+            self.categoryId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerIds"] as? String {
+            self.ownerIdsShrink = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
         }
         if let value = dict["Tid"] as? Int64 {
             self.tid = value

@@ -2346,14 +2346,28 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createMetaCategoryWithOptions(_ request: CreateMetaCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMetaCategoryResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createMetaCategoryWithOptions(_ tmpReq: CreateMetaCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMetaCategoryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateMetaCategoryShrinkRequest = CreateMetaCategoryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ownerIds)) {
+            request.ownerIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ownerIds, "OwnerIds", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ownerIdsShrink)) {
+            query["OwnerIds"] = request.ownerIdsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.parentCategoryId)) {
             query["ParentCategoryId"] = request.parentCategoryId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
@@ -12555,14 +12569,28 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateMetaCategoryWithOptions(_ request: UpdateMetaCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMetaCategoryResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateMetaCategoryWithOptions(_ tmpReq: UpdateMetaCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMetaCategoryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMetaCategoryShrinkRequest = UpdateMetaCategoryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ownerIds)) {
+            request.ownerIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ownerIds, "OwnerIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId!;
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerIdsShrink)) {
+            query["OwnerIds"] = request.ownerIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
