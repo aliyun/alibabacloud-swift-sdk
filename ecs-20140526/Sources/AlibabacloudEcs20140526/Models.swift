@@ -71526,6 +71526,109 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class QoSConfig : Tea.TeaModel {
+        public class QoS : Tea.TeaModel {
+            public var bandwidthRx: Int64?
+
+            public var bandwidthTx: Int64?
+
+            public var concurrentConnections: Int64?
+
+            public var ppsRx: Int64?
+
+            public var ppsTx: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bandwidthRx != nil {
+                    map["BandwidthRx"] = self.bandwidthRx!
+                }
+                if self.bandwidthTx != nil {
+                    map["BandwidthTx"] = self.bandwidthTx!
+                }
+                if self.concurrentConnections != nil {
+                    map["ConcurrentConnections"] = self.concurrentConnections!
+                }
+                if self.ppsRx != nil {
+                    map["PpsRx"] = self.ppsRx!
+                }
+                if self.ppsTx != nil {
+                    map["PpsTx"] = self.ppsTx!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BandwidthRx"] as? Int64 {
+                    self.bandwidthRx = value
+                }
+                if let value = dict["BandwidthTx"] as? Int64 {
+                    self.bandwidthTx = value
+                }
+                if let value = dict["ConcurrentConnections"] as? Int64 {
+                    self.concurrentConnections = value
+                }
+                if let value = dict["PpsRx"] as? Int64 {
+                    self.ppsRx = value
+                }
+                if let value = dict["PpsTx"] as? Int64 {
+                    self.ppsTx = value
+                }
+            }
+        }
+        public var enableQoS: Bool?
+
+        public var qoS: DescribeNetworkInterfaceAttributeResponseBody.QoSConfig.QoS?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.qoS?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableQoS != nil {
+                map["EnableQoS"] = self.enableQoS!
+            }
+            if self.qoS != nil {
+                map["QoS"] = self.qoS?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableQoS"] as? Bool {
+                self.enableQoS = value
+            }
+            if let value = dict["QoS"] as? [String: Any?] {
+                var model = DescribeNetworkInterfaceAttributeResponseBody.QoSConfig.QoS()
+                model.fromMap(value)
+                self.qoS = model
+            }
+        }
+    }
     public class SecurityGroupIds : Tea.TeaModel {
         public var securityGroupId: [String]?
 
@@ -71724,6 +71827,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
     public var privateIpSets: DescribeNetworkInterfaceAttributeResponseBody.PrivateIpSets?
 
+    public var qoSConfig: DescribeNetworkInterfaceAttributeResponseBody.QoSConfig?
+
     public var queueNumber: Int32?
 
     public var queuePairNumber: Int32?
@@ -71776,6 +71881,7 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         try self.ipv6Sets?.validate()
         try self.networkInterfaceTrafficConfig?.validate()
         try self.privateIpSets?.validate()
+        try self.qoSConfig?.validate()
         try self.securityGroupIds?.validate()
         try self.slaveInterfaceSpecification?.validate()
         try self.tags?.validate()
@@ -71842,6 +71948,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if self.privateIpSets != nil {
             map["PrivateIpSets"] = self.privateIpSets?.toMap()
+        }
+        if self.qoSConfig != nil {
+            map["QoSConfig"] = self.qoSConfig?.toMap()
         }
         if self.queueNumber != nil {
             map["QueueNumber"] = self.queueNumber!
@@ -71975,6 +72084,11 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             var model = DescribeNetworkInterfaceAttributeResponseBody.PrivateIpSets()
             model.fromMap(value)
             self.privateIpSets = model
+        }
+        if let value = dict["QoSConfig"] as? [String: Any?] {
+            var model = DescribeNetworkInterfaceAttributeResponseBody.QoSConfig()
+            model.fromMap(value)
+            self.qoSConfig = model
         }
         if let value = dict["QueueNumber"] as? Int32 {
             self.queueNumber = value
@@ -96278,6 +96392,158 @@ public class DisableDiskEncryptionByDefaultResponse : Tea.TeaModel {
     }
 }
 
+public class DisableNetworkInterfaceQoSRequest : Tea.TeaModel {
+    public var networkInterfaceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceId != nil {
+            map["NetworkInterfaceId"] = self.networkInterfaceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkInterfaceId"] as? String {
+            self.networkInterfaceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class DisableNetworkInterfaceQoSResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DisableNetworkInterfaceQoSResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableNetworkInterfaceQoSResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableNetworkInterfaceQoSResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnableDiskEncryptionByDefaultRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
@@ -96416,6 +96682,231 @@ public class EnableDiskEncryptionByDefaultResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = EnableDiskEncryptionByDefaultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableNetworkInterfaceQoSRequest : Tea.TeaModel {
+    public class QoS : Tea.TeaModel {
+        public var bandwidthRx: Int64?
+
+        public var bandwidthTx: Int64?
+
+        public var concurrentConnections: Int64?
+
+        public var ppsRx: Int64?
+
+        public var ppsTx: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidthRx != nil {
+                map["BandwidthRx"] = self.bandwidthRx!
+            }
+            if self.bandwidthTx != nil {
+                map["BandwidthTx"] = self.bandwidthTx!
+            }
+            if self.concurrentConnections != nil {
+                map["ConcurrentConnections"] = self.concurrentConnections!
+            }
+            if self.ppsRx != nil {
+                map["PpsRx"] = self.ppsRx!
+            }
+            if self.ppsTx != nil {
+                map["PpsTx"] = self.ppsTx!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BandwidthRx"] as? Int64 {
+                self.bandwidthRx = value
+            }
+            if let value = dict["BandwidthTx"] as? Int64 {
+                self.bandwidthTx = value
+            }
+            if let value = dict["ConcurrentConnections"] as? Int64 {
+                self.concurrentConnections = value
+            }
+            if let value = dict["PpsRx"] as? Int64 {
+                self.ppsRx = value
+            }
+            if let value = dict["PpsTx"] as? Int64 {
+                self.ppsTx = value
+            }
+        }
+    }
+    public var networkInterfaceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var qoS: EnableNetworkInterfaceQoSRequest.QoS?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.qoS?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceId != nil {
+            map["NetworkInterfaceId"] = self.networkInterfaceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qoS != nil {
+            map["QoS"] = self.qoS?.toMap()
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkInterfaceId"] as? String {
+            self.networkInterfaceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["QoS"] as? [String: Any?] {
+            var model = EnableNetworkInterfaceQoSRequest.QoS()
+            model.fromMap(value)
+            self.qoS = model
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class EnableNetworkInterfaceQoSResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EnableNetworkInterfaceQoSResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableNetworkInterfaceQoSResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableNetworkInterfaceQoSResponseBody()
             model.fromMap(value)
             self.body = model
         }
