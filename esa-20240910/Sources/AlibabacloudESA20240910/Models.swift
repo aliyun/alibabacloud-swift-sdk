@@ -6769,6 +6769,12 @@ public class CreateCacheRuleRequest : Tea.TeaModel {
 
     public var includeHeader: String?
 
+    public var postBodyCacheKey: String?
+
+    public var postBodySizeLimit: String?
+
+    public var postCache: String?
+
     public var queryString: String?
 
     public var queryStringMode: String?
@@ -6847,6 +6853,15 @@ public class CreateCacheRuleRequest : Tea.TeaModel {
         }
         if self.includeHeader != nil {
             map["IncludeHeader"] = self.includeHeader!
+        }
+        if self.postBodyCacheKey != nil {
+            map["PostBodyCacheKey"] = self.postBodyCacheKey!
+        }
+        if self.postBodySizeLimit != nil {
+            map["PostBodySizeLimit"] = self.postBodySizeLimit!
+        }
+        if self.postCache != nil {
+            map["PostCache"] = self.postCache!
         }
         if self.queryString != nil {
             map["QueryString"] = self.queryString!
@@ -6930,6 +6945,15 @@ public class CreateCacheRuleRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeHeader"] as? String {
             self.includeHeader = value
+        }
+        if let value = dict["PostBodyCacheKey"] as? String {
+            self.postBodyCacheKey = value
+        }
+        if let value = dict["PostBodySizeLimit"] as? String {
+            self.postBodySizeLimit = value
+        }
+        if let value = dict["PostCache"] as? String {
+            self.postCache = value
         }
         if let value = dict["QueryString"] as? String {
             self.queryString = value
@@ -30544,6 +30568,12 @@ public class GetCacheRuleResponseBody : Tea.TeaModel {
 
     public var includeHeader: String?
 
+    public var postBodyCacheKey: String?
+
+    public var postBodySizeLimit: String?
+
+    public var postCache: String?
+
     public var queryString: String?
 
     public var queryStringMode: String?
@@ -30628,6 +30658,15 @@ public class GetCacheRuleResponseBody : Tea.TeaModel {
         }
         if self.includeHeader != nil {
             map["IncludeHeader"] = self.includeHeader!
+        }
+        if self.postBodyCacheKey != nil {
+            map["PostBodyCacheKey"] = self.postBodyCacheKey!
+        }
+        if self.postBodySizeLimit != nil {
+            map["PostBodySizeLimit"] = self.postBodySizeLimit!
+        }
+        if self.postCache != nil {
+            map["PostCache"] = self.postCache!
         }
         if self.queryString != nil {
             map["QueryString"] = self.queryString!
@@ -30717,6 +30756,15 @@ public class GetCacheRuleResponseBody : Tea.TeaModel {
         }
         if let value = dict["IncludeHeader"] as? String {
             self.includeHeader = value
+        }
+        if let value = dict["PostBodyCacheKey"] as? String {
+            self.postBodyCacheKey = value
+        }
+        if let value = dict["PostBodySizeLimit"] as? String {
+            self.postBodySizeLimit = value
+        }
+        if let value = dict["PostCache"] as? String {
+            self.postCache = value
         }
         if let value = dict["QueryString"] as? String {
             self.queryString = value
@@ -49318,6 +49366,12 @@ public class ListCacheRulesResponseBody : Tea.TeaModel {
 
         public var includeHeader: String?
 
+        public var postBodyCacheKey: String?
+
+        public var postBodySizeLimit: String?
+
+        public var postCache: String?
+
         public var queryString: String?
 
         public var queryStringMode: String?
@@ -49400,6 +49454,15 @@ public class ListCacheRulesResponseBody : Tea.TeaModel {
             }
             if self.includeHeader != nil {
                 map["IncludeHeader"] = self.includeHeader!
+            }
+            if self.postBodyCacheKey != nil {
+                map["PostBodyCacheKey"] = self.postBodyCacheKey!
+            }
+            if self.postBodySizeLimit != nil {
+                map["PostBodySizeLimit"] = self.postBodySizeLimit!
+            }
+            if self.postCache != nil {
+                map["PostCache"] = self.postCache!
             }
             if self.queryString != nil {
                 map["QueryString"] = self.queryString!
@@ -49486,6 +49549,15 @@ public class ListCacheRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["IncludeHeader"] as? String {
                 self.includeHeader = value
+            }
+            if let value = dict["PostBodyCacheKey"] as? String {
+                self.postBodyCacheKey = value
+            }
+            if let value = dict["PostBodySizeLimit"] as? String {
+                self.postBodySizeLimit = value
+            }
+            if let value = dict["PostCache"] as? String {
+                self.postCache = value
             }
             if let value = dict["QueryString"] as? String {
                 self.queryString = value
@@ -75182,6 +75254,12 @@ public class UpdateCacheRuleRequest : Tea.TeaModel {
 
     public var includeHeader: String?
 
+    public var postBodyCacheKey: String?
+
+    public var postBodySizeLimit: String?
+
+    public var postCache: String?
+
     public var queryString: String?
 
     public var queryStringMode: String?
@@ -75261,6 +75339,15 @@ public class UpdateCacheRuleRequest : Tea.TeaModel {
         }
         if self.includeHeader != nil {
             map["IncludeHeader"] = self.includeHeader!
+        }
+        if self.postBodyCacheKey != nil {
+            map["PostBodyCacheKey"] = self.postBodyCacheKey!
+        }
+        if self.postBodySizeLimit != nil {
+            map["PostBodySizeLimit"] = self.postBodySizeLimit!
+        }
+        if self.postCache != nil {
+            map["PostCache"] = self.postCache!
         }
         if self.queryString != nil {
             map["QueryString"] = self.queryString!
@@ -75344,6 +75431,15 @@ public class UpdateCacheRuleRequest : Tea.TeaModel {
         }
         if let value = dict["IncludeHeader"] as? String {
             self.includeHeader = value
+        }
+        if let value = dict["PostBodyCacheKey"] as? String {
+            self.postBodyCacheKey = value
+        }
+        if let value = dict["PostBodySizeLimit"] as? String {
+            self.postBodySizeLimit = value
+        }
+        if let value = dict["PostCache"] as? String {
+            self.postCache = value
         }
         if let value = dict["QueryString"] as? String {
             self.queryString = value
