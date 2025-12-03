@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudSysOM20231230` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/sysom-20231230" "1.11.0"
+github "alibabacloud-sdk-swift/sysom-20231230" "1.12.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/sysom-20231230" "1.11.0"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/sysom-20231230.git", from: "1.11.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/sysom-20231230.git", from: "1.12.0")
 ]
 ```
 
