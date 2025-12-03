@@ -32851,6 +32851,8 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
 
     public var ntpServers: [String]?
 
+    public var override_: Bool?
+
     public var ownerId: Int64?
 
     public var ramRoleName: String?
@@ -33027,6 +33029,9 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.ntpServers != nil {
             map["NtpServers"] = self.ntpServers!
+        }
+        if self.override_ != nil {
+            map["Override"] = self.override_!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -33257,6 +33262,9 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if let value = dict["NtpServers"] as? [String] {
             self.ntpServers = value
+        }
+        if let value = dict["Override"] as? Bool {
+            self.override_ = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value

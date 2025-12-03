@@ -4114,6 +4114,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ntpServers)) {
             query["NtpServers"] = request.ntpServers ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.override_)) {
+            query["Override"] = request.override_!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
