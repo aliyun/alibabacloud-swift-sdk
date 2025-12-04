@@ -204,6 +204,64 @@ public class AsyncDraftDeployResult : Tea.TeaModel {
     }
 }
 
+public class AsyncDraftValidateResult : Tea.TeaModel {
+    public var draftValidationDetail: DraftValidationDetail?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public var ticketStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.draftValidationDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.draftValidationDetail != nil {
+            map["draftValidationDetail"] = self.draftValidationDetail?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.ticketStatus != nil {
+            map["ticketStatus"] = self.ticketStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["draftValidationDetail"] as? [String: Any?] {
+            var model = DraftValidationDetail()
+            model.fromMap(value)
+            self.draftValidationDetail = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["ticketStatus"] as? String {
+            self.ticketStatus = value
+        }
+    }
+}
+
 public class AsyncResourcePlanOperationResult : Tea.TeaModel {
     public var message: String?
 
@@ -1511,6 +1569,148 @@ public class DraftDeployResult : Tea.TeaModel {
         }
         if let value = dict["success"] as? Bool {
             self.success = value
+        }
+    }
+}
+
+public class DraftMetaInfoErrorDetail : Tea.TeaModel {
+    public var message: String?
+
+    public var reason: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["reason"] as? String {
+            self.reason = value
+        }
+    }
+}
+
+public class DraftValidateParams : Tea.TeaModel {
+    public var deploymentDraftId: String?
+
+    public var deploymentTargetName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deploymentDraftId != nil {
+            map["deploymentDraftId"] = self.deploymentDraftId!
+        }
+        if self.deploymentTargetName != nil {
+            map["deploymentTargetName"] = self.deploymentTargetName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["deploymentDraftId"] as? String {
+            self.deploymentDraftId = value
+        }
+        if let value = dict["deploymentTargetName"] as? String {
+            self.deploymentTargetName = value
+        }
+    }
+}
+
+public class DraftValidationDetail : Tea.TeaModel {
+    public var draftMetaInfoErrorDetails: [DraftMetaInfoErrorDetail]?
+
+    public var sqlErrorDetail: ValidationErrorDetails?
+
+    public var sqlValidationResult: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sqlErrorDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.draftMetaInfoErrorDetails != nil {
+            var tmp : [Any] = []
+            for k in self.draftMetaInfoErrorDetails! {
+                tmp.append(k.toMap())
+            }
+            map["draftMetaInfoErrorDetails"] = tmp
+        }
+        if self.sqlErrorDetail != nil {
+            map["sqlErrorDetail"] = self.sqlErrorDetail?.toMap()
+        }
+        if self.sqlValidationResult != nil {
+            map["sqlValidationResult"] = self.sqlValidationResult!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["draftMetaInfoErrorDetails"] as? [Any?] {
+            var tmp : [DraftMetaInfoErrorDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = DraftMetaInfoErrorDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.draftMetaInfoErrorDetails = tmp
+        }
+        if let value = dict["sqlErrorDetail"] as? [String: Any?] {
+            var model = ValidationErrorDetails()
+            model.fromMap(value)
+            self.sqlErrorDetail = model
+        }
+        if let value = dict["sqlValidationResult"] as? String {
+            self.sqlValidationResult = value
         }
     }
 }
@@ -18405,6 +18605,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var sortName: String?
 
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -18431,6 +18633,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.sortName != nil {
             map["sortName"] = self.sortName!
         }
+        if self.sortOrder != nil {
+            map["sortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -18447,6 +18652,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["sortName"] as? String {
             self.sortName = value
+        }
+        if let value = dict["sortOrder"] as? String {
+            self.sortOrder = value
         }
     }
 }

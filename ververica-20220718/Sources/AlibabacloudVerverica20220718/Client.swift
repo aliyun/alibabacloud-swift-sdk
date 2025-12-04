@@ -2265,6 +2265,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sortName)) {
             query["sortName"] = request.sortName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["sortOrder"] = request.sortOrder ?? "";
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
