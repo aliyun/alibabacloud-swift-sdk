@@ -6571,6 +6571,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeRspDomainServerHoldStatusForGatewayWithOptions(_ request: RemoveRspDomainServerHoldStatusForGatewayRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveRspDomainServerHoldStatusForGatewayResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusMsg)) {
+            query["StatusMsg"] = request.statusMsg ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveRspDomainServerHoldStatusForGateway",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveRspDomainServerHoldStatusForGatewayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeRspDomainServerHoldStatusForGateway(_ request: RemoveRspDomainServerHoldStatusForGatewayRequest) async throws -> RemoveRspDomainServerHoldStatusForGatewayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeRspDomainServerHoldStatusForGatewayWithOptions(request as! RemoveRspDomainServerHoldStatusForGatewayRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func replaceCloudGtmAddressPoolAddressWithOptions(_ tmpReq: ReplaceCloudGtmAddressPoolAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReplaceCloudGtmAddressPoolAddressResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ReplaceCloudGtmAddressPoolAddressShrinkRequest = ReplaceCloudGtmAddressPoolAddressShrinkRequest([:])
@@ -9689,53 +9726,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateRspDomainServerHoldStatusOteWithOptions(_ request: UpdateRspDomainServerHoldStatusOteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRspDomainServerHoldStatusOteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clientToken)) {
-            query["ClientToken"] = request.clientToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.domainName)) {
-            query["DomainName"] = request.domainName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.operatorId)) {
-            query["OperatorId"] = request.operatorId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.operatorType)) {
-            query["OperatorType"] = request.operatorType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.serverHoldStatus)) {
-            query["ServerHoldStatus"] = request.serverHoldStatus ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.statusMsg)) {
-            query["StatusMsg"] = request.statusMsg ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateRspDomainServerHoldStatusOte",
-            "version": "2015-01-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateRspDomainServerHoldStatusOteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateRspDomainServerHoldStatusOte(_ request: UpdateRspDomainServerHoldStatusOteRequest) async throws -> UpdateRspDomainServerHoldStatusOteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await updateRspDomainServerHoldStatusOteWithOptions(request as! UpdateRspDomainServerHoldStatusOteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateRspDomainStatusOteWithOptions(_ request: UpdateRspDomainStatusOteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRspDomainStatusOteResponse {
+    public func updateRspDomainServerProhibitStatusForGatewayWithOptions(_ request: UpdateRspDomainServerProhibitStatusForGatewayRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRspDomainServerProhibitStatusForGatewayResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.addStatusList)) {
@@ -9750,17 +9741,11 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.operatorId)) {
-            query["OperatorId"] = request.operatorId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.operatorType)) {
-            query["OperatorType"] = request.operatorType ?? "";
-        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateRspDomainStatusOte",
+            "action": "UpdateRspDomainServerProhibitStatusForGateway",
             "version": "2015-01-09",
             "protocol": "HTTPS",
             "pathname": "/",
@@ -9771,13 +9756,13 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateRspDomainStatusOteResponse(), tmp)
+        return Tea.TeaConverter.fromMap(UpdateRspDomainServerProhibitStatusForGatewayResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateRspDomainStatusOte(_ request: UpdateRspDomainStatusOteRequest) async throws -> UpdateRspDomainStatusOteResponse {
+    public func updateRspDomainServerProhibitStatusForGateway(_ request: UpdateRspDomainServerProhibitStatusForGatewayRequest) async throws -> UpdateRspDomainServerProhibitStatusForGatewayResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await updateRspDomainStatusOteWithOptions(request as! UpdateRspDomainStatusOteRequest, runtime as! TeaUtils.RuntimeOptions)
+        return try await updateRspDomainServerProhibitStatusForGatewayWithOptions(request as! UpdateRspDomainServerProhibitStatusForGatewayRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

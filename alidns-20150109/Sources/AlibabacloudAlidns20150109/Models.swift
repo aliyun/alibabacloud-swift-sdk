@@ -44789,6 +44789,280 @@ public class RemovePdnsUdpIpSegmentResponse : Tea.TeaModel {
     }
 }
 
+public class RemoveRspDomainServerHoldStatusForGatewayRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var domainName: String?
+
+    public var statusMsg: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.statusMsg != nil {
+            map["StatusMsg"] = self.statusMsg!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["StatusMsg"] as? String {
+            self.statusMsg = value
+        }
+    }
+}
+
+public class RemoveRspDomainServerHoldStatusForGatewayResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthAction"] as? String {
+                self.authAction = value
+            }
+            if let value = dict["AuthPrincipalDisplayName"] as? String {
+                self.authPrincipalDisplayName = value
+            }
+            if let value = dict["AuthPrincipalOwnerId"] as? String {
+                self.authPrincipalOwnerId = value
+            }
+            if let value = dict["AuthPrincipalType"] as? String {
+                self.authPrincipalType = value
+            }
+            if let value = dict["EncodedDiagnosticMessage"] as? String {
+                self.encodedDiagnosticMessage = value
+            }
+            if let value = dict["NoPermissionType"] as? String {
+                self.noPermissionType = value
+            }
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
+            }
+        }
+    }
+    public class Data : Tea.TeaModel {
+        public var domainName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainName != nil {
+                map["DomainName"] = self.domainName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DomainName"] as? String {
+                self.domainName = value
+            }
+        }
+    }
+    public var accessDeniedDetail: RemoveRspDomainServerHoldStatusForGatewayResponseBody.AccessDeniedDetail?
+
+    public var data: RemoveRspDomainServerHoldStatusForGatewayResponseBody.Data?
+
+    public var recoverableError: Bool?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.recoverableError != nil {
+            map["RecoverableError"] = self.recoverableError!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
+            var model = RemoveRspDomainServerHoldStatusForGatewayResponseBody.AccessDeniedDetail()
+            model.fromMap(value)
+            self.accessDeniedDetail = model
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = RemoveRspDomainServerHoldStatusForGatewayResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RecoverableError"] as? Bool {
+            self.recoverableError = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class RemoveRspDomainServerHoldStatusForGatewayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemoveRspDomainServerHoldStatusForGatewayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RemoveRspDomainServerHoldStatusForGatewayResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ReplaceCloudGtmAddressPoolAddressRequest : Tea.TeaModel {
     public class Addresses : Tea.TeaModel {
         public var addressId: String?
@@ -59576,313 +59850,7 @@ public class UpdateRecursionZoneRemarkResponse : Tea.TeaModel {
     }
 }
 
-public class UpdateRspDomainServerHoldStatusOteRequest : Tea.TeaModel {
-    public var clientToken: String?
-
-    public var domainName: String?
-
-    public var operatorId: String?
-
-    public var operatorType: String?
-
-    public var serverHoldStatus: String?
-
-    public var statusMsg: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clientToken != nil {
-            map["ClientToken"] = self.clientToken!
-        }
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        if self.operatorId != nil {
-            map["OperatorId"] = self.operatorId!
-        }
-        if self.operatorType != nil {
-            map["OperatorType"] = self.operatorType!
-        }
-        if self.serverHoldStatus != nil {
-            map["ServerHoldStatus"] = self.serverHoldStatus!
-        }
-        if self.statusMsg != nil {
-            map["StatusMsg"] = self.statusMsg!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["ClientToken"] as? String {
-            self.clientToken = value
-        }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-        if let value = dict["OperatorId"] as? String {
-            self.operatorId = value
-        }
-        if let value = dict["OperatorType"] as? String {
-            self.operatorType = value
-        }
-        if let value = dict["ServerHoldStatus"] as? String {
-            self.serverHoldStatus = value
-        }
-        if let value = dict["StatusMsg"] as? String {
-            self.statusMsg = value
-        }
-    }
-}
-
-public class UpdateRspDomainServerHoldStatusOteResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["AuthAction"] as? String {
-                self.authAction = value
-            }
-            if let value = dict["AuthPrincipalDisplayName"] as? String {
-                self.authPrincipalDisplayName = value
-            }
-            if let value = dict["AuthPrincipalOwnerId"] as? String {
-                self.authPrincipalOwnerId = value
-            }
-            if let value = dict["AuthPrincipalType"] as? String {
-                self.authPrincipalType = value
-            }
-            if let value = dict["EncodedDiagnosticMessage"] as? String {
-                self.encodedDiagnosticMessage = value
-            }
-            if let value = dict["NoPermissionType"] as? String {
-                self.noPermissionType = value
-            }
-            if let value = dict["PolicyType"] as? String {
-                self.policyType = value
-            }
-        }
-    }
-    public class Data : Tea.TeaModel {
-        public var domainName: String?
-
-        public var serverHoldStatus: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.domainName != nil {
-                map["DomainName"] = self.domainName!
-            }
-            if self.serverHoldStatus != nil {
-                map["ServerHoldStatus"] = self.serverHoldStatus!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["DomainName"] as? String {
-                self.domainName = value
-            }
-            if let value = dict["ServerHoldStatus"] as? String {
-                self.serverHoldStatus = value
-            }
-        }
-    }
-    public var accessDeniedDetail: UpdateRspDomainServerHoldStatusOteResponseBody.AccessDeniedDetail?
-
-    public var data: UpdateRspDomainServerHoldStatusOteResponseBody.Data?
-
-    public var recoverableError: Bool?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.recoverableError != nil {
-            map["RecoverableError"] = self.recoverableError!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
-            var model = UpdateRspDomainServerHoldStatusOteResponseBody.AccessDeniedDetail()
-            model.fromMap(value)
-            self.accessDeniedDetail = model
-        }
-        if let value = dict["Data"] as? [String: Any?] {
-            var model = UpdateRspDomainServerHoldStatusOteResponseBody.Data()
-            model.fromMap(value)
-            self.data = model
-        }
-        if let value = dict["RecoverableError"] as? Bool {
-            self.recoverableError = value
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-        if let value = dict["Success"] as? Bool {
-            self.success = value
-        }
-    }
-}
-
-public class UpdateRspDomainServerHoldStatusOteResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: UpdateRspDomainServerHoldStatusOteResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = UpdateRspDomainServerHoldStatusOteResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
-public class UpdateRspDomainStatusOteRequest : Tea.TeaModel {
+public class UpdateRspDomainServerProhibitStatusForGatewayRequest : Tea.TeaModel {
     public class AddStatusList : Tea.TeaModel {
         public var status: String?
 
@@ -59959,17 +59927,13 @@ public class UpdateRspDomainStatusOteRequest : Tea.TeaModel {
             }
         }
     }
-    public var addStatusList: [UpdateRspDomainStatusOteRequest.AddStatusList]?
+    public var addStatusList: [UpdateRspDomainServerProhibitStatusForGatewayRequest.AddStatusList]?
 
     public var clientToken: String?
 
-    public var deleteStatusList: [UpdateRspDomainStatusOteRequest.DeleteStatusList]?
+    public var deleteStatusList: [UpdateRspDomainServerProhibitStatusForGatewayRequest.DeleteStatusList]?
 
     public var domainName: String?
-
-    public var operatorId: String?
-
-    public var operatorType: String?
 
     public override init() {
         super.init()
@@ -60005,22 +59969,16 @@ public class UpdateRspDomainStatusOteRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
-        if self.operatorId != nil {
-            map["OperatorId"] = self.operatorId!
-        }
-        if self.operatorType != nil {
-            map["OperatorType"] = self.operatorType!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
         if let value = dict["AddStatusList"] as? [Any?] {
-            var tmp : [UpdateRspDomainStatusOteRequest.AddStatusList] = []
+            var tmp : [UpdateRspDomainServerProhibitStatusForGatewayRequest.AddStatusList] = []
             for v in value {
                 if v != nil {
-                    var model = UpdateRspDomainStatusOteRequest.AddStatusList()
+                    var model = UpdateRspDomainServerProhibitStatusForGatewayRequest.AddStatusList()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
@@ -60033,10 +59991,10 @@ public class UpdateRspDomainStatusOteRequest : Tea.TeaModel {
             self.clientToken = value
         }
         if let value = dict["DeleteStatusList"] as? [Any?] {
-            var tmp : [UpdateRspDomainStatusOteRequest.DeleteStatusList] = []
+            var tmp : [UpdateRspDomainServerProhibitStatusForGatewayRequest.DeleteStatusList] = []
             for v in value {
                 if v != nil {
-                    var model = UpdateRspDomainStatusOteRequest.DeleteStatusList()
+                    var model = UpdateRspDomainServerProhibitStatusForGatewayRequest.DeleteStatusList()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
@@ -60048,16 +60006,10 @@ public class UpdateRspDomainStatusOteRequest : Tea.TeaModel {
         if let value = dict["DomainName"] as? String {
             self.domainName = value
         }
-        if let value = dict["OperatorId"] as? String {
-            self.operatorId = value
-        }
-        if let value = dict["OperatorType"] as? String {
-            self.operatorType = value
-        }
     }
 }
 
-public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
+public class UpdateRspDomainServerProhibitStatusForGatewayResponseBody : Tea.TeaModel {
     public class AccessDeniedDetail : Tea.TeaModel {
         public var authAction: String?
 
@@ -60185,7 +60137,7 @@ public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
         }
         public var domainName: String?
 
-        public var statusList: [UpdateRspDomainStatusOteResponseBody.Data.StatusList]?
+        public var statusList: [UpdateRspDomainServerProhibitStatusForGatewayResponseBody.Data.StatusList]?
 
         public override init() {
             super.init()
@@ -60220,10 +60172,10 @@ public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
                 self.domainName = value
             }
             if let value = dict["StatusList"] as? [Any?] {
-                var tmp : [UpdateRspDomainStatusOteResponseBody.Data.StatusList] = []
+                var tmp : [UpdateRspDomainServerProhibitStatusForGatewayResponseBody.Data.StatusList] = []
                 for v in value {
                     if v != nil {
-                        var model = UpdateRspDomainStatusOteResponseBody.Data.StatusList()
+                        var model = UpdateRspDomainServerProhibitStatusForGatewayResponseBody.Data.StatusList()
                         if v != nil {
                             model.fromMap(v as? [String: Any?])
                         }
@@ -60234,9 +60186,9 @@ public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: UpdateRspDomainStatusOteResponseBody.AccessDeniedDetail?
+    public var accessDeniedDetail: UpdateRspDomainServerProhibitStatusForGatewayResponseBody.AccessDeniedDetail?
 
-    public var data: UpdateRspDomainStatusOteResponseBody.Data?
+    public var data: UpdateRspDomainServerProhibitStatusForGatewayResponseBody.Data?
 
     public var recoverableError: Bool?
 
@@ -60281,12 +60233,12 @@ public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
         if let value = dict["AccessDeniedDetail"] as? [String: Any?] {
-            var model = UpdateRspDomainStatusOteResponseBody.AccessDeniedDetail()
+            var model = UpdateRspDomainServerProhibitStatusForGatewayResponseBody.AccessDeniedDetail()
             model.fromMap(value)
             self.accessDeniedDetail = model
         }
         if let value = dict["Data"] as? [String: Any?] {
-            var model = UpdateRspDomainStatusOteResponseBody.Data()
+            var model = UpdateRspDomainServerProhibitStatusForGatewayResponseBody.Data()
             model.fromMap(value)
             self.data = model
         }
@@ -60302,12 +60254,12 @@ public class UpdateRspDomainStatusOteResponseBody : Tea.TeaModel {
     }
 }
 
-public class UpdateRspDomainStatusOteResponse : Tea.TeaModel {
+public class UpdateRspDomainServerProhibitStatusForGatewayResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
     public var statusCode: Int32?
 
-    public var body: UpdateRspDomainStatusOteResponseBody?
+    public var body: UpdateRspDomainServerProhibitStatusForGatewayResponseBody?
 
     public override init() {
         super.init()
@@ -60345,7 +60297,7 @@ public class UpdateRspDomainStatusOteResponse : Tea.TeaModel {
             self.statusCode = value
         }
         if let value = dict["body"] as? [String: Any?] {
-            var model = UpdateRspDomainStatusOteResponseBody()
+            var model = UpdateRspDomainServerProhibitStatusForGatewayResponseBody()
             model.fromMap(value)
             self.body = model
         }
