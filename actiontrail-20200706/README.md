@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudActiontrail20200706` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/actiontrail-20200706" "1.2.1"
+github "alibabacloud-sdk-swift/actiontrail-20200706" "1.3.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudActiontrail20200706` into your Xcode project using [Sw
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/actiontrail-20200706.git", from: "1.2.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/actiontrail-20200706.git", from: "1.3.0")
 ]
 ```
 

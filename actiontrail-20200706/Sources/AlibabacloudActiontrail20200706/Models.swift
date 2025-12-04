@@ -941,6 +941,118 @@ public class DeleteAdvancedQueryTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDataEventSelectorRequest : Tea.TeaModel {
+    public var trailName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.trailName != nil {
+            map["TrailName"] = self.trailName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TrailName"] as? String {
+            self.trailName = value
+        }
+    }
+}
+
+public class DeleteDataEventSelectorResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteDataEventSelectorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDataEventSelectorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteDataEventSelectorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDeliveryHistoryJobRequest : Tea.TeaModel {
     public var jobId: Int32?
 
@@ -4386,6 +4498,234 @@ public class GetAdvancedQueryTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetDataEventSelectorRequest : Tea.TeaModel {
+    public var trailName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.trailName != nil {
+            map["TrailName"] = self.trailName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TrailName"] as? String {
+            self.trailName = value
+        }
+    }
+}
+
+public class GetDataEventSelectorResponseBody : Tea.TeaModel {
+    public class SlsDeliveryConfigs : Tea.TeaModel {
+        public var createTime: String?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var regionSlsProjectArn: String?
+
+        public var status: String?
+
+        public var trailRegion: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.regionSlsProjectArn != nil {
+                map["RegionSlsProjectArn"] = self.regionSlsProjectArn!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.trailRegion != nil {
+                map["TrailRegion"] = self.trailRegion!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["RegionSlsProjectArn"] as? String {
+                self.regionSlsProjectArn = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TrailRegion"] as? String {
+                self.trailRegion = value
+            }
+        }
+    }
+    public var dataEventSelectors: String?
+
+    public var isTrailAllRegion: Bool?
+
+    public var requestId: String?
+
+    public var slsDeliveryConfigs: [GetDataEventSelectorResponseBody.SlsDeliveryConfigs]?
+
+    public var trailArn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataEventSelectors != nil {
+            map["DataEventSelectors"] = self.dataEventSelectors!
+        }
+        if self.isTrailAllRegion != nil {
+            map["IsTrailAllRegion"] = self.isTrailAllRegion!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.slsDeliveryConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.slsDeliveryConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["SlsDeliveryConfigs"] = tmp
+        }
+        if self.trailArn != nil {
+            map["TrailArn"] = self.trailArn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataEventSelectors"] as? String {
+            self.dataEventSelectors = value
+        }
+        if let value = dict["IsTrailAllRegion"] as? Bool {
+            self.isTrailAllRegion = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SlsDeliveryConfigs"] as? [Any?] {
+            var tmp : [GetDataEventSelectorResponseBody.SlsDeliveryConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetDataEventSelectorResponseBody.SlsDeliveryConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.slsDeliveryConfigs = tmp
+        }
+        if let value = dict["TrailArn"] as? String {
+            self.trailArn = value
+        }
+    }
+}
+
+public class GetDataEventSelectorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDataEventSelectorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDataEventSelectorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetDeliveryHistoryJobRequest : Tea.TeaModel {
     public var jobId: Int64?
 
@@ -5087,6 +5427,343 @@ public class GetTrailStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetTrailStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListDataEventSelectorsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListDataEventSelectorsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DataEventSelectorInfos : Tea.TeaModel {
+            public class SlsDeliveryConfigs : Tea.TeaModel {
+                public var createTime: String?
+
+                public var errorCode: String?
+
+                public var errorMessage: String?
+
+                public var regionSlsProjectArn: String?
+
+                public var status: String?
+
+                public var trailRegion: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.createTime != nil {
+                        map["CreateTime"] = self.createTime!
+                    }
+                    if self.errorCode != nil {
+                        map["ErrorCode"] = self.errorCode!
+                    }
+                    if self.errorMessage != nil {
+                        map["ErrorMessage"] = self.errorMessage!
+                    }
+                    if self.regionSlsProjectArn != nil {
+                        map["RegionSlsProjectArn"] = self.regionSlsProjectArn!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.trailRegion != nil {
+                        map["TrailRegion"] = self.trailRegion!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CreateTime"] as? String {
+                        self.createTime = value
+                    }
+                    if let value = dict["ErrorCode"] as? String {
+                        self.errorCode = value
+                    }
+                    if let value = dict["ErrorMessage"] as? String {
+                        self.errorMessage = value
+                    }
+                    if let value = dict["RegionSlsProjectArn"] as? String {
+                        self.regionSlsProjectArn = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                    if let value = dict["TrailRegion"] as? String {
+                        self.trailRegion = value
+                    }
+                }
+            }
+            public var eventSelectors: String?
+
+            public var isTrailAllRegion: Bool?
+
+            public var slsDeliveryConfigs: [ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos.SlsDeliveryConfigs]?
+
+            public var trailArn: String?
+
+            public var trailName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.eventSelectors != nil {
+                    map["EventSelectors"] = self.eventSelectors!
+                }
+                if self.isTrailAllRegion != nil {
+                    map["IsTrailAllRegion"] = self.isTrailAllRegion!
+                }
+                if self.slsDeliveryConfigs != nil {
+                    var tmp : [Any] = []
+                    for k in self.slsDeliveryConfigs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SlsDeliveryConfigs"] = tmp
+                }
+                if self.trailArn != nil {
+                    map["TrailArn"] = self.trailArn!
+                }
+                if self.trailName != nil {
+                    map["TrailName"] = self.trailName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EventSelectors"] as? String {
+                    self.eventSelectors = value
+                }
+                if let value = dict["IsTrailAllRegion"] as? Bool {
+                    self.isTrailAllRegion = value
+                }
+                if let value = dict["SlsDeliveryConfigs"] as? [Any?] {
+                    var tmp : [ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos.SlsDeliveryConfigs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos.SlsDeliveryConfigs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.slsDeliveryConfigs = tmp
+                }
+                if let value = dict["TrailArn"] as? String {
+                    self.trailArn = value
+                }
+                if let value = dict["TrailName"] as? String {
+                    self.trailName = value
+                }
+            }
+        }
+        public var dataEventSelectorInfos: [ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataEventSelectorInfos != nil {
+                var tmp : [Any] = []
+                for k in self.dataEventSelectorInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["DataEventSelectorInfos"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataEventSelectorInfos"] as? [Any?] {
+                var tmp : [ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListDataEventSelectorsResponseBody.Data.DataEventSelectorInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dataEventSelectorInfos = tmp
+            }
+            if let value = dict["MaxResults"] as? Int32 {
+                self.maxResults = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+        }
+    }
+    public var data: ListDataEventSelectorsResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListDataEventSelectorsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListDataEventSelectorsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataEventSelectorsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListDataEventSelectorsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -5804,6 +6481,158 @@ public class LookupEventsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = LookupEventsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class PutDataEventSelectorRequest : Tea.TeaModel {
+    public var eventSelectors: String?
+
+    public var isTrailAllRegion: Bool?
+
+    public var trailName: String?
+
+    public var trailRegionIds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eventSelectors != nil {
+            map["EventSelectors"] = self.eventSelectors!
+        }
+        if self.isTrailAllRegion != nil {
+            map["IsTrailAllRegion"] = self.isTrailAllRegion!
+        }
+        if self.trailName != nil {
+            map["TrailName"] = self.trailName!
+        }
+        if self.trailRegionIds != nil {
+            map["TrailRegionIds"] = self.trailRegionIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EventSelectors"] as? String {
+            self.eventSelectors = value
+        }
+        if let value = dict["IsTrailAllRegion"] as? Bool {
+            self.isTrailAllRegion = value
+        }
+        if let value = dict["TrailName"] as? String {
+            self.trailName = value
+        }
+        if let value = dict["TrailRegionIds"] as? String {
+            self.trailRegionIds = value
+        }
+    }
+}
+
+public class PutDataEventSelectorResponseBody : Tea.TeaModel {
+    public var dataEventSelectors: String?
+
+    public var requestId: String?
+
+    public var trailArn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataEventSelectors != nil {
+            map["DataEventSelectors"] = self.dataEventSelectors!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.trailArn != nil {
+            map["TrailArn"] = self.trailArn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataEventSelectors"] as? String {
+            self.dataEventSelectors = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TrailArn"] as? String {
+            self.trailArn = value
+        }
+    }
+}
+
+public class PutDataEventSelectorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PutDataEventSelectorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PutDataEventSelectorResponseBody()
             model.fromMap(value)
             self.body = model
         }

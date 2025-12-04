@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudActiontrail20200706"
-  spec.version      = "1.2.1"
+  spec.version      = "1.3.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ActionTrail (20200706) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/actiontrail-20200706" 
