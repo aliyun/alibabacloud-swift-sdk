@@ -17035,6 +17035,8 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
             public var corpId: String?
 
+            public var dingtalkLoginVersion: String?
+
             public var dingtalkVersion: String?
 
             public var encryptKey: String?
@@ -17064,6 +17066,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 if self.corpId != nil {
                     map["CorpId"] = self.corpId!
                 }
+                if self.dingtalkLoginVersion != nil {
+                    map["DingtalkLoginVersion"] = self.dingtalkLoginVersion!
+                }
                 if self.dingtalkVersion != nil {
                     map["DingtalkVersion"] = self.dingtalkVersion!
                 }
@@ -17086,6 +17091,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CorpId"] as? String {
                     self.corpId = value
+                }
+                if let value = dict["DingtalkLoginVersion"] as? String {
+                    self.dingtalkLoginVersion = value
                 }
                 if let value = dict["DingtalkVersion"] as? String {
                     self.dingtalkVersion = value
@@ -45957,6 +45965,8 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
         public var appSecret: String?
 
+        public var dingtalkLoginVersion: String?
+
         public var encryptKey: String?
 
         public var verificationToken: String?
@@ -45981,6 +45991,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             if self.appSecret != nil {
                 map["AppSecret"] = self.appSecret!
             }
+            if self.dingtalkLoginVersion != nil {
+                map["DingtalkLoginVersion"] = self.dingtalkLoginVersion!
+            }
             if self.encryptKey != nil {
                 map["EncryptKey"] = self.encryptKey!
             }
@@ -45997,6 +46010,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["AppSecret"] as? String {
                 self.appSecret = value
+            }
+            if let value = dict["DingtalkLoginVersion"] as? String {
+                self.dingtalkLoginVersion = value
             }
             if let value = dict["EncryptKey"] as? String {
                 self.encryptKey = value
