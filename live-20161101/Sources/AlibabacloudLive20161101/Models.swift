@@ -48721,6 +48721,298 @@ public class DescribeLiveRecordVodConfigsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeLiveRtcRecordUsageDataRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var endTime: String?
+
+    public var interval: String?
+
+    public var recordMode: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.recordMode != nil {
+            map["RecordMode"] = self.recordMode!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Interval"] as? String {
+            self.interval = value
+        }
+        if let value = dict["RecordMode"] as? String {
+            self.recordMode = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeLiveRtcRecordUsageDataResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var audioDuration: Double?
+
+        public var timestamp: String?
+
+        public var totalDuration: Double?
+
+        public var v1080Duration: Double?
+
+        public var v480Duration: Double?
+
+        public var v720Duration: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.audioDuration != nil {
+                map["AudioDuration"] = self.audioDuration!
+            }
+            if self.timestamp != nil {
+                map["Timestamp"] = self.timestamp!
+            }
+            if self.totalDuration != nil {
+                map["TotalDuration"] = self.totalDuration!
+            }
+            if self.v1080Duration != nil {
+                map["V1080Duration"] = self.v1080Duration!
+            }
+            if self.v480Duration != nil {
+                map["V480Duration"] = self.v480Duration!
+            }
+            if self.v720Duration != nil {
+                map["V720Duration"] = self.v720Duration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AudioDuration"] as? Double {
+                self.audioDuration = value
+            }
+            if let value = dict["Timestamp"] as? String {
+                self.timestamp = value
+            }
+            if let value = dict["TotalDuration"] as? Double {
+                self.totalDuration = value
+            }
+            if let value = dict["V1080Duration"] as? Double {
+                self.v1080Duration = value
+            }
+            if let value = dict["V480Duration"] as? Double {
+                self.v480Duration = value
+            }
+            if let value = dict["V720Duration"] as? Double {
+                self.v720Duration = value
+            }
+        }
+    }
+    public var appId: String?
+
+    public var audioSummaryDuration: Double?
+
+    public var data: [DescribeLiveRtcRecordUsageDataResponseBody.Data]?
+
+    public var recordMode: String?
+
+    public var requestId: String?
+
+    public var totalSummaryDuration: Double?
+
+    public var v1080SummaryDuration: Double?
+
+    public var v480SummaryDuration: Double?
+
+    public var v720SummaryDuration: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.audioSummaryDuration != nil {
+            map["AudioSummaryDuration"] = self.audioSummaryDuration!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.recordMode != nil {
+            map["RecordMode"] = self.recordMode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalSummaryDuration != nil {
+            map["TotalSummaryDuration"] = self.totalSummaryDuration!
+        }
+        if self.v1080SummaryDuration != nil {
+            map["V1080SummaryDuration"] = self.v1080SummaryDuration!
+        }
+        if self.v480SummaryDuration != nil {
+            map["V480SummaryDuration"] = self.v480SummaryDuration!
+        }
+        if self.v720SummaryDuration != nil {
+            map["V720SummaryDuration"] = self.v720SummaryDuration!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AudioSummaryDuration"] as? Double {
+            self.audioSummaryDuration = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [DescribeLiveRtcRecordUsageDataResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeLiveRtcRecordUsageDataResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RecordMode"] as? String {
+            self.recordMode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalSummaryDuration"] as? Double {
+            self.totalSummaryDuration = value
+        }
+        if let value = dict["V1080SummaryDuration"] as? Double {
+            self.v1080SummaryDuration = value
+        }
+        if let value = dict["V480SummaryDuration"] as? Double {
+            self.v480SummaryDuration = value
+        }
+        if let value = dict["V720SummaryDuration"] as? Double {
+            self.v720SummaryDuration = value
+        }
+    }
+}
+
+public class DescribeLiveRtcRecordUsageDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLiveRtcRecordUsageDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeLiveRtcRecordUsageDataResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeLiveShiftConfigsRequest : Tea.TeaModel {
     public var domainName: String?
 
