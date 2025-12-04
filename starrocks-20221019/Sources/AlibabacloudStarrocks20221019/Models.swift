@@ -700,6 +700,10 @@ public class CreateInstanceV1Request : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dlfCatalogName: String?
+
+    public var dlfCatalogType: String?
+
     public var duration: Int32?
 
     public var encrypted: Bool?
@@ -712,6 +716,8 @@ public class CreateInstanceV1Request : Tea.TeaModel {
 
     public var kmsKeyId: String?
 
+    public var linkedRamUserName: String?
+
     public var observerNodeGroups: [CreateInstanceV1Request.ObserverNodeGroups]?
 
     public var ossAccessingRoleName: String?
@@ -722,7 +728,11 @@ public class CreateInstanceV1Request : Tea.TeaModel {
 
     public var pricingCycle: String?
 
+    public var principalType: String?
+
     public var promotionOptionNo: String?
+
+    public var ramUserId: String?
 
     public var regionId: String?
 
@@ -777,6 +787,12 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dlfCatalogName != nil {
+            map["DlfCatalogName"] = self.dlfCatalogName!
+        }
+        if self.dlfCatalogType != nil {
+            map["DlfCatalogType"] = self.dlfCatalogType!
+        }
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
@@ -799,6 +815,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if self.kmsKeyId != nil {
             map["KmsKeyId"] = self.kmsKeyId!
         }
+        if self.linkedRamUserName != nil {
+            map["LinkedRamUserName"] = self.linkedRamUserName!
+        }
         if self.observerNodeGroups != nil {
             var tmp : [Any] = []
             for k in self.observerNodeGroups! {
@@ -818,8 +837,14 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
         }
+        if self.principalType != nil {
+            map["PrincipalType"] = self.principalType!
+        }
         if self.promotionOptionNo != nil {
             map["PromotionOptionNo"] = self.promotionOptionNo!
+        }
+        if self.ramUserId != nil {
+            map["RamUserId"] = self.ramUserId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -888,6 +913,12 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["DlfCatalogName"] as? String {
+            self.dlfCatalogName = value
+        }
+        if let value = dict["DlfCatalogType"] as? String {
+            self.dlfCatalogType = value
+        }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
         }
@@ -916,6 +947,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if let value = dict["KmsKeyId"] as? String {
             self.kmsKeyId = value
         }
+        if let value = dict["LinkedRamUserName"] as? String {
+            self.linkedRamUserName = value
+        }
         if let value = dict["ObserverNodeGroups"] as? [Any?] {
             var tmp : [CreateInstanceV1Request.ObserverNodeGroups] = []
             for v in value {
@@ -941,8 +975,14 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if let value = dict["PricingCycle"] as? String {
             self.pricingCycle = value
         }
+        if let value = dict["PrincipalType"] as? String {
+            self.principalType = value
+        }
         if let value = dict["PromotionOptionNo"] as? String {
             self.promotionOptionNo = value
+        }
+        if let value = dict["RamUserId"] as? String {
+            self.ramUserId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -2152,6 +2192,44 @@ public class DescribeNodeGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var accountStatus: String?
 
         public var architecture: String?
@@ -2211,6 +2289,8 @@ public class DescribeNodeGroupsResponseBody : Tea.TeaModel {
         public var storagePerformanceLevel: String?
 
         public var storageSize: Int32?
+
+        public var tags: [DescribeNodeGroupsResponseBody.Data.Tags]?
 
         public var targetElasticNodeNumber: Int32?
 
@@ -2324,6 +2404,13 @@ public class DescribeNodeGroupsResponseBody : Tea.TeaModel {
             if self.storageSize != nil {
                 map["StorageSize"] = self.storageSize!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.targetElasticNodeNumber != nil {
                 map["TargetElasticNodeNumber"] = self.targetElasticNodeNumber!
             }
@@ -2434,6 +2521,19 @@ public class DescribeNodeGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["StorageSize"] as? Int32 {
                 self.storageSize = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeNodeGroupsResponseBody.Data.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeNodeGroupsResponseBody.Data.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["TargetElasticNodeNumber"] as? Int32 {
                 self.targetElasticNodeNumber = value
