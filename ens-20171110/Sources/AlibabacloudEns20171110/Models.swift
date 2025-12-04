@@ -44788,6 +44788,8 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
 
                     public var privateIpAddress: String?
 
+                    public var privateIpStatus: String?
+
                     public override init() {
                         super.init()
                     }
@@ -44808,6 +44810,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         if self.privateIpAddress != nil {
                             map["PrivateIpAddress"] = self.privateIpAddress!
                         }
+                        if self.privateIpStatus != nil {
+                            map["PrivateIpStatus"] = self.privateIpStatus!
+                        }
                         return map
                     }
 
@@ -44818,6 +44823,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["PrivateIpAddress"] as? String {
                             self.privateIpAddress = value
+                        }
+                        if let value = dict["PrivateIpStatus"] as? String {
+                            self.privateIpStatus = value
                         }
                     }
                 }
