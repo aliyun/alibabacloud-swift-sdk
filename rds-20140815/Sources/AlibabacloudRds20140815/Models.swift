@@ -96923,6 +96923,8 @@ public class ReleaseReadWriteSplittingConnectionRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var RWAddressType: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -96950,6 +96952,9 @@ public class ReleaseReadWriteSplittingConnectionRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.RWAddressType != nil {
+            map["RWAddressType"] = self.RWAddressType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -96969,6 +96974,9 @@ public class ReleaseReadWriteSplittingConnectionRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["RWAddressType"] as? String {
+            self.RWAddressType = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
