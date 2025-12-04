@@ -37500,6 +37500,10 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var instanceVersion: String?
+
+    public var payType: String?
+
     public var privateConnectUrl: String?
 
     public var projectId: String?
@@ -37519,6 +37523,8 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
     public var status: String?
 
     public var storageSize: Int64?
+
+    public var storageType: String?
 
     public var vSwitchId: String?
 
@@ -37558,6 +37564,12 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
         }
+        if self.instanceVersion != nil {
+            map["InstanceVersion"] = self.instanceVersion!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
         if self.privateConnectUrl != nil {
             map["PrivateConnectUrl"] = self.privateConnectUrl!
         }
@@ -37587,6 +37599,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -37620,6 +37635,12 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         if let value = dict["EngineVersion"] as? String {
             self.engineVersion = value
         }
+        if let value = dict["InstanceVersion"] as? String {
+            self.instanceVersion = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
         if let value = dict["PrivateConnectUrl"] as? String {
             self.privateConnectUrl = value
         }
@@ -37649,6 +37670,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if let value = dict["StorageSize"] as? Int64 {
             self.storageSize = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
@@ -39316,6 +39340,8 @@ public class ListAINodePoolsResponseBody : Tea.TeaModel {
 
             public var updateTime: String?
 
+            public var zoneId: String?
+
             public override init() {
                 super.init()
             }
@@ -39351,6 +39377,9 @@ public class ListAINodePoolsResponseBody : Tea.TeaModel {
                 if self.updateTime != nil {
                     map["UpdateTime"] = self.updateTime!
                 }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
                 return map
             }
 
@@ -39376,6 +39405,9 @@ public class ListAINodePoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["UpdateTime"] as? String {
                     self.updateTime = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
                 }
             }
         }
@@ -45019,6 +45051,10 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var regionId: String?
 
     public override init() {
@@ -45041,6 +45077,12 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -45054,6 +45096,12 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -45074,6 +45122,8 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
         public var engine: String?
 
         public var engineVersion: String?
+
+        public var expireTime: String?
 
         public var payType: String?
 
@@ -45132,6 +45182,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
             }
             if self.engineVersion != nil {
                 map["EngineVersion"] = self.engineVersion!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
             }
             if self.payType != nil {
                 map["PayType"] = self.payType!
@@ -45194,6 +45247,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EngineVersion"] as? String {
                 self.engineVersion = value
+            }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
             }
             if let value = dict["PayType"] as? String {
                 self.payType = value

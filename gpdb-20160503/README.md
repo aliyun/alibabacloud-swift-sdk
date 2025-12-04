@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudGpdb20160503` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/gpdb-20160503" "2.8.0"
+github "alibabacloud-sdk-swift/gpdb-20160503" "2.8.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudGpdb20160503` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/gpdb-20160503.git", from: "2.8.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/gpdb-20160503.git", from: "2.8.1")
 ]
 ```
 
