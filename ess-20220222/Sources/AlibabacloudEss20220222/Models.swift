@@ -38427,6 +38427,8 @@ public class RemoveInstancesRequest : Tea.TeaModel {
 
         public var ignoredLifecycleHookIds: [String]?
 
+        public var lifecycleHookResult: String?
+
         public override init() {
             super.init()
         }
@@ -38447,6 +38449,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
             if self.ignoredLifecycleHookIds != nil {
                 map["IgnoredLifecycleHookIds"] = self.ignoredLifecycleHookIds!
             }
+            if self.lifecycleHookResult != nil {
+                map["LifecycleHookResult"] = self.lifecycleHookResult!
+            }
             return map
         }
 
@@ -38457,6 +38462,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["IgnoredLifecycleHookIds"] as? [String] {
                 self.ignoredLifecycleHookIds = value
+            }
+            if let value = dict["LifecycleHookResult"] as? String {
+                self.lifecycleHookResult = value
             }
         }
     }
@@ -38717,6 +38725,54 @@ public class RemoveInstancesShrinkRequest : Tea.TeaModel {
 }
 
 public class RemoveInstancesResponseBody : Tea.TeaModel {
+    public class IgnoredInstances : Tea.TeaModel {
+        public var code: String?
+
+        public var instanceId: String?
+
+        public var message: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+        }
+    }
+    public var ignoredInstances: [RemoveInstancesResponseBody.IgnoredInstances]?
+
     public var requestId: String?
 
     public var scalingActivityId: String?
@@ -38735,6 +38791,13 @@ public class RemoveInstancesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ignoredInstances != nil {
+            var tmp : [Any] = []
+            for k in self.ignoredInstances! {
+                tmp.append(k.toMap())
+            }
+            map["IgnoredInstances"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -38746,6 +38809,19 @@ public class RemoveInstancesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["IgnoredInstances"] as? [Any?] {
+            var tmp : [RemoveInstancesResponseBody.IgnoredInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = RemoveInstancesResponseBody.IgnoredInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ignoredInstances = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -39251,6 +39327,8 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
 
         public var ignoredLifecycleHookIds: [String]?
 
+        public var lifecycleHookResult: String?
+
         public override init() {
             super.init()
         }
@@ -39271,6 +39349,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
             if self.ignoredLifecycleHookIds != nil {
                 map["IgnoredLifecycleHookIds"] = self.ignoredLifecycleHookIds!
             }
+            if self.lifecycleHookResult != nil {
+                map["LifecycleHookResult"] = self.lifecycleHookResult!
+            }
             return map
         }
 
@@ -39281,6 +39362,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
             }
             if let value = dict["IgnoredLifecycleHookIds"] as? [String] {
                 self.ignoredLifecycleHookIds = value
+            }
+            if let value = dict["LifecycleHookResult"] as? String {
+                self.lifecycleHookResult = value
             }
         }
     }
