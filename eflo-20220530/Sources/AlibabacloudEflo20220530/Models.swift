@@ -3990,6 +3990,8 @@ public class DeleteErAttachmentResponse : Tea.TeaModel {
 public class DeleteErRouteMapRequest : Tea.TeaModel {
     public var erId: String?
 
+    public var erRouteMapId: String?
+
     public var erRouteMapIds: [String]?
 
     public var regionId: String?
@@ -4011,6 +4013,9 @@ public class DeleteErRouteMapRequest : Tea.TeaModel {
         if self.erId != nil {
             map["ErId"] = self.erId!
         }
+        if self.erRouteMapId != nil {
+            map["ErRouteMapId"] = self.erRouteMapId!
+        }
         if self.erRouteMapIds != nil {
             map["ErRouteMapIds"] = self.erRouteMapIds!
         }
@@ -4024,6 +4029,9 @@ public class DeleteErRouteMapRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ErId"] as? String {
             self.erId = value
+        }
+        if let value = dict["ErRouteMapId"] as? String {
+            self.erRouteMapId = value
         }
         if let value = dict["ErRouteMapIds"] as? [String] {
             self.erRouteMapIds = value
@@ -22183,6 +22191,190 @@ public class RetryVccResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RetryVccResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SwitchVccConnectionRequest : Tea.TeaModel {
+    public var cenId: String?
+
+    public var connectionType: String?
+
+    public var regionId: String?
+
+    public var vSwitchId: String?
+
+    public var vccId: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.connectionType != nil {
+            map["ConnectionType"] = self.connectionType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vccId != nil {
+            map["VccId"] = self.vccId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CenId"] as? String {
+            self.cenId = value
+        }
+        if let value = dict["ConnectionType"] as? String {
+            self.connectionType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["VccId"] as? String {
+            self.vccId = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class SwitchVccConnectionResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: Int32?
+
+    public var content: Any?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Content"] as? Any {
+            self.content = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SwitchVccConnectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SwitchVccConnectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SwitchVccConnectionResponseBody()
             model.fromMap(value)
             self.body = model
         }

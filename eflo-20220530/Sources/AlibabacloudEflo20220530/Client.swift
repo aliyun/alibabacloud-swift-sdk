@@ -818,6 +818,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.erId)) {
             body["ErId"] = request.erId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.erRouteMapId)) {
+            body["ErRouteMapId"] = request.erRouteMapId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.erRouteMapIds)) {
             body["ErRouteMapIds"] = request.erRouteMapIds ?? [];
         }
@@ -3023,6 +3026,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func retryVcc(_ request: RetryVccRequest) async throws -> RetryVccResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await retryVccWithOptions(request as! RetryVccRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchVccConnectionWithOptions(_ request: SwitchVccConnectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SwitchVccConnectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cenId)) {
+            body["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionType)) {
+            body["ConnectionType"] = request.connectionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            body["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vccId)) {
+            body["VccId"] = request.vccId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            body["VpcId"] = request.vpcId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SwitchVccConnection",
+            "version": "2022-05-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SwitchVccConnectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchVccConnection(_ request: SwitchVccConnectionRequest) async throws -> SwitchVccConnectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await switchVccConnectionWithOptions(request as! SwitchVccConnectionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

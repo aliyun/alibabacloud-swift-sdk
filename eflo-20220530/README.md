@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEflo20220530` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/eflo-20220530" "1.1.7"
+github "alibabacloud-sdk-swift/eflo-20220530" "1.2.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEflo20220530` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/eflo-20220530.git", from: "1.1.7")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/eflo-20220530.git", from: "1.2.0")
 ]
 ```
 
