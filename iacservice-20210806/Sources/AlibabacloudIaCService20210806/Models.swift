@@ -61,9 +61,9 @@ public class JobStatusDetailValue : Tea.TeaModel {
 }
 
 public class JobsStatusDetailValue : Tea.TeaModel {
-    public var jobResult: String?
-
     public var comment: String?
+
+    public var jobResult: String?
 
     public var timeStamps: String?
 
@@ -81,11 +81,11 @@ public class JobsStatusDetailValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.jobResult != nil {
-            map["jobResult"] = self.jobResult!
-        }
         if self.comment != nil {
             map["comment"] = self.comment!
+        }
+        if self.jobResult != nil {
+            map["jobResult"] = self.jobResult!
         }
         if self.timeStamps != nil {
             map["timeStamps"] = self.timeStamps!
@@ -95,11 +95,11 @@ public class JobsStatusDetailValue : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["jobResult"] as? String {
-            self.jobResult = value
-        }
         if let value = dict["comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["jobResult"] as? String {
+            self.jobResult = value
         }
         if let value = dict["timeStamps"] as? String {
             self.timeStamps = value
@@ -4833,6 +4833,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var jobId: String?
 
+        public var jobType: String?
+
         public var logFile: [String: Any]?
 
         public var output: String?
@@ -4896,6 +4898,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if self.jobId != nil {
                 map["jobId"] = self.jobId!
+            }
+            if self.jobType != nil {
+                map["jobType"] = self.jobType!
             }
             if self.logFile != nil {
                 map["logFile"] = self.logFile!
@@ -4971,6 +4976,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["jobId"] as? String {
                 self.jobId = value
+            }
+            if let value = dict["jobType"] as? String {
+                self.jobType = value
             }
             if let value = dict["logFile"] as? [String: Any] {
                 self.logFile = value
@@ -8952,6 +8960,8 @@ public class ListGroupResponse : Tea.TeaModel {
 }
 
 public class ListJobsRequest : Tea.TeaModel {
+    public var jobType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -8974,6 +8984,9 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.jobType != nil {
+            map["jobType"] = self.jobType!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -8991,6 +9004,9 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["jobType"] as? String {
+            self.jobType = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }

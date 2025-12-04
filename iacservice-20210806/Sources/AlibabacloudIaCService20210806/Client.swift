@@ -1658,6 +1658,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listJobsWithOptions(_ taskId: String, _ request: ListJobsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["jobType"] = request.jobType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
