@@ -2416,6 +2416,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.messages)) {
             body["messages"] = request.messages ?? [];
         }
@@ -2832,6 +2835,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
         }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
@@ -3308,6 +3314,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
         }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
@@ -5572,6 +5581,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
         }
         if (!TeaUtils.Client.isUnset(request.messages)) {
             body["messages"] = request.messages ?? [];
@@ -9639,6 +9651,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.messages)) {
             body["messages"] = request.messages ?? [];
         }
@@ -10183,6 +10198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             body["limit"] = request.limit!;
@@ -12845,6 +12863,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
+            body["extLoginUser"] = request.extLoginUser!;
         }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";

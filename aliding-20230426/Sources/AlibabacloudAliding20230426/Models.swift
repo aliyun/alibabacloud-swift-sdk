@@ -17985,6 +17985,52 @@ public class CreateMessageHeaders : Tea.TeaModel {
 }
 
 public class CreateMessageRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public class Messages : Tea.TeaModel {
         public class Content : Tea.TeaModel {
             public class CardCallback : Tea.TeaModel {
@@ -19000,6 +19046,8 @@ public class CreateMessageRequest : Tea.TeaModel {
     }
     public var assistantId: String?
 
+    public var extLoginUser: CreateMessageRequest.ExtLoginUser?
+
     public var messages: [CreateMessageRequest.Messages]?
 
     public var originalAssistantId: String?
@@ -19020,12 +19068,16 @@ public class CreateMessageRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.messages != nil {
             var tmp : [Any] = []
@@ -19053,6 +19105,11 @@ public class CreateMessageRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = CreateMessageRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["messages"] as? [Any?] {
             var tmp : [CreateMessageRequest.Messages] = []
@@ -22318,9 +22375,57 @@ public class CreateRunHeaders : Tea.TeaModel {
 }
 
 public class CreateRunRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public var allowStructViewContent: Bool?
 
     public var assistantId: String?
+
+    public var extLoginUser: CreateRunRequest.ExtLoginUser?
 
     public var originalAssistantId: String?
 
@@ -22342,6 +22447,7 @@ public class CreateRunRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -22351,6 +22457,9 @@ public class CreateRunRequest : Tea.TeaModel {
         }
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.originalAssistantId != nil {
             map["originalAssistantId"] = self.originalAssistantId!
@@ -22377,6 +22486,11 @@ public class CreateRunRequest : Tea.TeaModel {
         }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = CreateRunRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["originalAssistantId"] as? String {
             self.originalAssistantId = value
@@ -26756,7 +26870,55 @@ public class CreateThreadHeaders : Tea.TeaModel {
 }
 
 public class CreateThreadRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public var assistantId: String?
+
+    public var extLoginUser: CreateThreadRequest.ExtLoginUser?
 
     public var originalAssistantId: String?
 
@@ -26774,12 +26936,16 @@ public class CreateThreadRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.originalAssistantId != nil {
             map["originalAssistantId"] = self.originalAssistantId!
@@ -26797,6 +26963,11 @@ public class CreateThreadRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = CreateThreadRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["originalAssistantId"] as? String {
             self.originalAssistantId = value
@@ -40626,6 +40797,52 @@ public class GetAssistantCapabilityHeaders : Tea.TeaModel {
 }
 
 public class GetAssistantCapabilityRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public class Messages : Tea.TeaModel {
         public class Content : Tea.TeaModel {
             public class CardCallback : Tea.TeaModel {
@@ -41641,6 +41858,8 @@ public class GetAssistantCapabilityRequest : Tea.TeaModel {
     }
     public var assistantId: String?
 
+    public var extLoginUser: GetAssistantCapabilityRequest.ExtLoginUser?
+
     public var messages: [GetAssistantCapabilityRequest.Messages]?
 
     public var originalAssistantId: String?
@@ -41665,12 +41884,16 @@ public class GetAssistantCapabilityRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.messages != nil {
             var tmp : [Any] = []
@@ -41704,6 +41927,11 @@ public class GetAssistantCapabilityRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = GetAssistantCapabilityRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["messages"] as? [Any?] {
             var tmp : [GetAssistantCapabilityRequest.Messages] = []
@@ -74817,6 +75045,52 @@ public class InvokeAssistantHeaders : Tea.TeaModel {
 }
 
 public class InvokeAssistantRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public class Messages : Tea.TeaModel {
         public class Content : Tea.TeaModel {
             public class CardCallback : Tea.TeaModel {
@@ -75832,6 +76106,8 @@ public class InvokeAssistantRequest : Tea.TeaModel {
     }
     public var assistantId: String?
 
+    public var extLoginUser: InvokeAssistantRequest.ExtLoginUser?
+
     public var messages: [InvokeAssistantRequest.Messages]?
 
     public var originalAssistantId: String?
@@ -75854,12 +76130,16 @@ public class InvokeAssistantRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.messages != nil {
             var tmp : [Any] = []
@@ -75890,6 +76170,11 @@ public class InvokeAssistantRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = InvokeAssistantRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["messages"] as? [Any?] {
             var tmp : [InvokeAssistantRequest.Messages] = []
@@ -82280,7 +82565,55 @@ public class ListMessageHeaders : Tea.TeaModel {
 }
 
 public class ListMessageRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public var assistantId: String?
+
+    public var extLoginUser: ListMessageRequest.ExtLoginUser?
 
     public var limit: Int32?
 
@@ -82306,12 +82639,16 @@ public class ListMessageRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.limit != nil {
             map["limit"] = self.limit!
@@ -82341,6 +82678,11 @@ public class ListMessageRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = ListMessageRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["limit"] as? Int32 {
             self.limit = value
@@ -106186,7 +106528,55 @@ public class RetrieveRunHeaders : Tea.TeaModel {
 }
 
 public class RetrieveRunRequest : Tea.TeaModel {
+    public class ExtLoginUser : Tea.TeaModel {
+        public var extLoginUserDomain: String?
+
+        public var extLoginUserId: String?
+
+        public var extLoginUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extLoginUserDomain != nil {
+                map["extLoginUserDomain"] = self.extLoginUserDomain!
+            }
+            if self.extLoginUserId != nil {
+                map["extLoginUserId"] = self.extLoginUserId!
+            }
+            if self.extLoginUserName != nil {
+                map["extLoginUserName"] = self.extLoginUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["extLoginUserDomain"] as? String {
+                self.extLoginUserDomain = value
+            }
+            if let value = dict["extLoginUserId"] as? String {
+                self.extLoginUserId = value
+            }
+            if let value = dict["extLoginUserName"] as? String {
+                self.extLoginUserName = value
+            }
+        }
+    }
     public var assistantId: String?
+
+    public var extLoginUser: RetrieveRunRequest.ExtLoginUser?
 
     public var originalAssistantId: String?
 
@@ -106206,12 +106596,16 @@ public class RetrieveRunRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extLoginUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.extLoginUser != nil {
+            map["extLoginUser"] = self.extLoginUser?.toMap()
         }
         if self.originalAssistantId != nil {
             map["originalAssistantId"] = self.originalAssistantId!
@@ -106232,6 +106626,11 @@ public class RetrieveRunRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["extLoginUser"] as? [String: Any?] {
+            var model = RetrieveRunRequest.ExtLoginUser()
+            model.fromMap(value)
+            self.extLoginUser = model
         }
         if let value = dict["originalAssistantId"] as? String {
             self.originalAssistantId = value
