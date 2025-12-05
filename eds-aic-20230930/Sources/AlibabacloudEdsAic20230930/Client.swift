@@ -2332,6 +2332,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importImageWithOptions(_ request: ImportImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageDescription)) {
+            query["ImageDescription"] = request.imageDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageFileURL)) {
+            query["ImageFileURL"] = request.imageFileURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageName)) {
+            query["ImageName"] = request.imageName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportImage",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importImage(_ request: ImportImageRequest) async throws -> ImportImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importImageWithOptions(request as! ImportImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importKeyPairWithOptions(_ request: ImportKeyPairRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportKeyPairResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

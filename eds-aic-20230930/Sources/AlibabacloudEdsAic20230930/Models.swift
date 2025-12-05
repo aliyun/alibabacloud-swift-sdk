@@ -7452,6 +7452,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var bindUserId: String?
 
+        public var bizImageType: String?
+
         public var bizTags: [DescribeAndroidInstancesResponseBody.InstanceModel.BizTags]?
 
         public var chargeType: String?
@@ -7580,6 +7582,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.bindUserId != nil {
                 map["BindUserId"] = self.bindUserId!
+            }
+            if self.bizImageType != nil {
+                map["BizImageType"] = self.bizImageType!
             }
             if self.bizTags != nil {
                 var tmp : [Any] = []
@@ -7749,6 +7754,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BindUserId"] as? String {
                 self.bindUserId = value
+            }
+            if let value = dict["BizImageType"] as? String {
+                self.bizImageType = value
             }
             if let value = dict["BizTags"] as? [Any?] {
                 var tmp : [DescribeAndroidInstancesResponseBody.InstanceModel.BizTags] = []
@@ -15037,6 +15045,142 @@ public class GetInstancePropertiesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetInstancePropertiesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ImportImageRequest : Tea.TeaModel {
+    public var imageDescription: String?
+
+    public var imageFileURL: String?
+
+    public var imageName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageDescription != nil {
+            map["ImageDescription"] = self.imageDescription!
+        }
+        if self.imageFileURL != nil {
+            map["ImageFileURL"] = self.imageFileURL!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ImageDescription"] as? String {
+            self.imageDescription = value
+        }
+        if let value = dict["ImageFileURL"] as? String {
+            self.imageFileURL = value
+        }
+        if let value = dict["ImageName"] as? String {
+            self.imageName = value
+        }
+    }
+}
+
+public class ImportImageResponseBody : Tea.TeaModel {
+    public var imageId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ImportImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ImportImageResponseBody()
             model.fromMap(value)
             self.body = model
         }
