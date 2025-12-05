@@ -45401,6 +45401,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
                 public var regionId: String?
 
+                public var resourceType: String?
+
                 public var runningInstances: Int32?
 
                 public var scaleRuleEnabled: Bool?
@@ -45471,6 +45473,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                     if self.regionId != nil {
                         map["RegionId"] = self.regionId!
                     }
+                    if self.resourceType != nil {
+                        map["ResourceType"] = self.resourceType!
+                    }
                     if self.runningInstances != nil {
                         map["RunningInstances"] = self.runningInstances!
                     }
@@ -45539,6 +45544,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["RegionId"] as? String {
                         self.regionId = value
+                    }
+                    if let value = dict["ResourceType"] as? String {
+                        self.resourceType = value
                     }
                     if let value = dict["RunningInstances"] as? Int32 {
                         self.runningInstances = value
@@ -45646,6 +45654,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var resourceType: String?
+
             public var runningInstances: Int32?
 
             public var tags: [ListApplicationsResponseBody.Data.Applications.Tags]?
@@ -45735,6 +45745,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
                 }
                 if self.runningInstances != nil {
                     map["RunningInstances"] = self.runningInstances!
@@ -45829,6 +45842,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
+                }
+                if let value = dict["ResourceType"] as? String {
+                    self.resourceType = value
                 }
                 if let value = dict["RunningInstances"] as? Int32 {
                     self.runningInstances = value
