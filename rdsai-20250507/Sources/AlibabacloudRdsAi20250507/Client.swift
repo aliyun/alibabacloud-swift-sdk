@@ -32,9 +32,6 @@ open class Client : AlibabacloudOpenApi.Client {
             request.inputsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.inputs, "Inputs", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
             query["ConversationId"] = request.conversationId ?? "";
         }
@@ -75,9 +72,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatMessagesTaskStopWithOptions(_ request: ChatMessagesTaskStopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatMessagesTaskStopResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
         }
@@ -189,9 +183,6 @@ open class Client : AlibabacloudOpenApi.Client {
             request.toolsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tools, "Tools", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.enableTools)) {
             query["EnableTools"] = request.enableTools!;
         }
@@ -269,9 +260,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCustomAgentWithOptions(_ request: DeleteCustomAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.customAgentId)) {
             query["CustomAgentId"] = request.customAgentId ?? "";
         }
@@ -630,9 +618,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getConversationsWithOptions(_ request: GetConversationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConversationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.lastId)) {
             query["LastId"] = request.lastId ?? "";
         }
@@ -673,9 +658,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCustomAgentWithOptions(_ request: GetCustomAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.customAgentId)) {
             query["CustomAgentId"] = request.customAgentId ?? "";
         }
@@ -707,9 +689,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getMessagesWithOptions(_ request: GetMessagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMessagesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
             query["ConversationId"] = request.conversationId ?? "";
         }
@@ -747,9 +726,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCustomAgentWithOptions(_ request: ListCustomAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -781,15 +757,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listCustomAgentToolsWithOptions(_ request: ListCustomAgentToolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomAgentToolsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
+    public func listCustomAgentToolsWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomAgentToolsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ListCustomAgentTools",
             "version": "2025-05-07",
@@ -806,9 +775,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listCustomAgentTools(_ request: ListCustomAgentToolsRequest) async throws -> ListCustomAgentToolsResponse {
+    public func listCustomAgentTools() async throws -> ListCustomAgentToolsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listCustomAgentToolsWithOptions(request as! ListCustomAgentToolsRequest, runtime as! TeaUtils.RuntimeOptions)
+        return try await listCustomAgentToolsWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1085,9 +1054,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyMessagesFeedbacksWithOptions(_ request: ModifyMessagesFeedbacksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyMessagesFeedbacksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
         }
@@ -1272,9 +1238,6 @@ open class Client : AlibabacloudOpenApi.Client {
             request.toolsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tools, "Tools", "json")
         }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiId)) {
-            query["ApiId"] = request.apiId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.customAgentId)) {
             query["CustomAgentId"] = request.customAgentId ?? "";
         }

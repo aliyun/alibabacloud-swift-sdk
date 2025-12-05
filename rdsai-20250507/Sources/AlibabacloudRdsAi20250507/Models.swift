@@ -60,8 +60,6 @@ public class ChatMessagesRequest : Tea.TeaModel {
             }
         }
     }
-    public var apiId: String?
-
     public var conversationId: String?
 
     public var inputs: ChatMessagesRequest.Inputs?
@@ -85,9 +83,6 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
@@ -105,9 +100,6 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
         }
@@ -126,8 +118,6 @@ public class ChatMessagesRequest : Tea.TeaModel {
 }
 
 public class ChatMessagesShrinkRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var conversationId: String?
 
     public var inputsShrink: String?
@@ -150,9 +140,6 @@ public class ChatMessagesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
@@ -170,9 +157,6 @@ public class ChatMessagesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
         }
@@ -334,8 +318,6 @@ public class ChatMessagesResponse : Tea.TeaModel {
 }
 
 public class ChatMessagesTaskStopRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var taskId: String?
 
     public override init() {
@@ -352,9 +334,6 @@ public class ChatMessagesTaskStopRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -363,9 +342,6 @@ public class ChatMessagesTaskStopRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -870,8 +846,6 @@ public class CreateAppInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateCustomAgentRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var enableTools: Bool?
 
     public var name: String?
@@ -894,9 +868,6 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.enableTools != nil {
             map["EnableTools"] = self.enableTools!
         }
@@ -914,9 +885,6 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["EnableTools"] as? Bool {
             self.enableTools = value
         }
@@ -933,8 +901,6 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 }
 
 public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var enableTools: Bool?
 
     public var name: String?
@@ -957,9 +923,6 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.enableTools != nil {
             map["EnableTools"] = self.enableTools!
         }
@@ -977,9 +940,6 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["EnableTools"] as? Bool {
             self.enableTools = value
         }
@@ -1261,8 +1221,6 @@ public class DeleteAppInstanceResponse : Tea.TeaModel {
 }
 
 public class DeleteCustomAgentRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var customAgentId: String?
 
     public override init() {
@@ -1279,9 +1237,6 @@ public class DeleteCustomAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -1290,9 +1245,6 @@ public class DeleteCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
@@ -3402,8 +3354,6 @@ public class DescribeInstanceStorageConfigResponse : Tea.TeaModel {
 }
 
 public class GetConversationsRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var lastId: String?
 
     public var limit: String?
@@ -3426,9 +3376,6 @@ public class GetConversationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.lastId != nil {
             map["LastId"] = self.lastId!
         }
@@ -3446,9 +3393,6 @@ public class GetConversationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["LastId"] as? String {
             self.lastId = value
         }
@@ -3638,8 +3582,6 @@ public class GetConversationsResponse : Tea.TeaModel {
 }
 
 public class GetCustomAgentRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var customAgentId: String?
 
     public override init() {
@@ -3656,9 +3598,6 @@ public class GetCustomAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -3667,9 +3606,6 @@ public class GetCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
@@ -3814,8 +3750,6 @@ public class GetCustomAgentResponse : Tea.TeaModel {
 }
 
 public class GetMessagesRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var conversationId: String?
 
     public var firstId: String?
@@ -3836,9 +3770,6 @@ public class GetMessagesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
@@ -3853,9 +3784,6 @@ public class GetMessagesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
         }
@@ -4066,8 +3994,6 @@ public class GetMessagesResponse : Tea.TeaModel {
 }
 
 public class ListCustomAgentRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -4086,9 +4012,6 @@ public class ListCustomAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -4100,9 +4023,6 @@ public class ListCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
         }
@@ -4313,37 +4233,6 @@ public class ListCustomAgentResponse : Tea.TeaModel {
             var model = ListCustomAgentResponseBody()
             model.fromMap(value)
             self.body = model
-        }
-    }
-}
-
-public class ListCustomAgentToolsRequest : Tea.TeaModel {
-    public var apiId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
         }
     }
 }
@@ -5747,8 +5636,6 @@ public class ModifyInstanceStorageConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var content: String?
 
     public var messageId: String?
@@ -5769,9 +5656,6 @@ public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -5786,9 +5670,6 @@ public class ModifyMessagesFeedbacksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["Content"] as? String {
             self.content = value
         }
@@ -6419,8 +6300,6 @@ public class StopInstanceResponse : Tea.TeaModel {
 }
 
 public class UpdateCustomAgentRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var customAgentId: String?
 
     public var enableTools: Bool?
@@ -6445,9 +6324,6 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -6468,9 +6344,6 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
@@ -6490,8 +6363,6 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
 }
 
 public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
-    public var apiId: String?
-
     public var customAgentId: String?
 
     public var enableTools: Bool?
@@ -6516,9 +6387,6 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiId != nil {
-            map["ApiId"] = self.apiId!
-        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -6539,9 +6407,6 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ApiId"] as? String {
-            self.apiId = value
-        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
