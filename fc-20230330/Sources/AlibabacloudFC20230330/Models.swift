@@ -715,6 +715,8 @@ public class ConcurrencyConfig : Tea.TeaModel {
 }
 
 public class CookieSessionAffinityConfig : Tea.TeaModel {
+    public var disableSessionIdReuse: Bool?
+
     public var sessionConcurrencyPerInstance: Int64?
 
     public var sessionIdleTimeoutInSeconds: Int64?
@@ -735,6 +737,9 @@ public class CookieSessionAffinityConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disableSessionIdReuse != nil {
+            map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
         if self.sessionConcurrencyPerInstance != nil {
             map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
         }
@@ -749,6 +754,9 @@ public class CookieSessionAffinityConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["disableSessionIdReuse"] as? Bool {
+            self.disableSessionIdReuse = value
+        }
         if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
             self.sessionConcurrencyPerInstance = value
         }
@@ -1314,7 +1322,11 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 }
 
 public class CreateSessionInput : Tea.TeaModel {
+    public var disableSessionIdReuse: Bool?
+
     public var nasConfig: NASConfig?
+
+    public var sessionId: String?
 
     public var sessionIdleTimeoutInSeconds: Int64?
 
@@ -1335,8 +1347,14 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disableSessionIdReuse != nil {
+            map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
         }
         if self.sessionIdleTimeoutInSeconds != nil {
             map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
@@ -1349,10 +1367,16 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["disableSessionIdReuse"] as? Bool {
+            self.disableSessionIdReuse = value
+        }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
             model.fromMap(value)
             self.nasConfig = model
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
         }
         if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
             self.sessionIdleTimeoutInSeconds = value
@@ -3491,6 +3515,8 @@ public class HTTPTriggerConfig : Tea.TeaModel {
 public class HeaderFieldSessionAffinityConfig : Tea.TeaModel {
     public var affinityHeaderFieldName: String?
 
+    public var disableSessionIdReuse: Bool?
+
     public var sessionConcurrencyPerInstance: Int64?
 
     public var sessionIdleTimeoutInSeconds: Int64?
@@ -3514,6 +3540,9 @@ public class HeaderFieldSessionAffinityConfig : Tea.TeaModel {
         if self.affinityHeaderFieldName != nil {
             map["affinityHeaderFieldName"] = self.affinityHeaderFieldName!
         }
+        if self.disableSessionIdReuse != nil {
+            map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
         if self.sessionConcurrencyPerInstance != nil {
             map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
         }
@@ -3530,6 +3559,9 @@ public class HeaderFieldSessionAffinityConfig : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["affinityHeaderFieldName"] as? String {
             self.affinityHeaderFieldName = value
+        }
+        if let value = dict["disableSessionIdReuse"] as? Bool {
+            self.disableSessionIdReuse = value
         }
         if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
             self.sessionConcurrencyPerInstance = value
@@ -6187,6 +6219,8 @@ public class PutProvisionConfigInput : Tea.TeaModel {
 }
 
 public class PutScalingConfigInput : Tea.TeaModel {
+    public var enableOnDemandScaling: Bool?
+
     public var horizontalScalingPolicies: [ScalingPolicy]?
 
     public var minInstances: Int64?
@@ -6209,6 +6243,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableOnDemandScaling != nil {
+            map["enableOnDemandScaling"] = self.enableOnDemandScaling!
+        }
         if self.horizontalScalingPolicies != nil {
             var tmp : [Any] = []
             for k in self.horizontalScalingPolicies! {
@@ -6234,6 +6271,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["enableOnDemandScaling"] as? Bool {
+            self.enableOnDemandScaling = value
+        }
         if let value = dict["horizontalScalingPolicies"] as? [Any?] {
             var tmp : [ScalingPolicy] = []
             for v in value {
@@ -6557,6 +6597,8 @@ public class ResidentResourceAllocation : Tea.TeaModel {
 
     public var instanceCount: Int32?
 
+    public var instanceType: String?
+
     public var qualifier: String?
 
     public var totalCpuCores: Double?
@@ -6587,6 +6629,9 @@ public class ResidentResourceAllocation : Tea.TeaModel {
         if self.instanceCount != nil {
             map["instanceCount"] = self.instanceCount!
         }
+        if self.instanceType != nil {
+            map["instanceType"] = self.instanceType!
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
         }
@@ -6612,6 +6657,9 @@ public class ResidentResourceAllocation : Tea.TeaModel {
         }
         if let value = dict["instanceCount"] as? Int32 {
             self.instanceCount = value
+        }
+        if let value = dict["instanceType"] as? String {
+            self.instanceType = value
         }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
@@ -7251,6 +7299,8 @@ public class ScalingConfigStatus : Tea.TeaModel {
 
     public var currentInstances: Int64?
 
+    public var enableOnDemandScaling: Bool?
+
     public var functionArn: String?
 
     public var horizontalScalingPolicies: [ScalingPolicy]?
@@ -7282,6 +7332,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         }
         if self.currentInstances != nil {
             map["currentInstances"] = self.currentInstances!
+        }
+        if self.enableOnDemandScaling != nil {
+            map["enableOnDemandScaling"] = self.enableOnDemandScaling!
         }
         if self.functionArn != nil {
             map["functionArn"] = self.functionArn!
@@ -7319,6 +7372,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         }
         if let value = dict["currentInstances"] as? Int64 {
             self.currentInstances = value
+        }
+        if let value = dict["enableOnDemandScaling"] as? Bool {
+            self.enableOnDemandScaling = value
         }
         if let value = dict["functionArn"] as? String {
             self.functionArn = value
@@ -7634,6 +7690,8 @@ public class Session : Tea.TeaModel {
 
     public var createdTime: String?
 
+    public var disableSessionIdReuse: Bool?
+
     public var functionName: String?
 
     public var lastModifiedTime: String?
@@ -7673,6 +7731,9 @@ public class Session : Tea.TeaModel {
         if self.createdTime != nil {
             map["createdTime"] = self.createdTime!
         }
+        if self.disableSessionIdReuse != nil {
+            map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
         }
@@ -7710,6 +7771,9 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["createdTime"] as? String {
             self.createdTime = value
+        }
+        if let value = dict["disableSessionIdReuse"] as? Bool {
+            self.disableSessionIdReuse = value
         }
         if let value = dict["functionName"] as? String {
             self.functionName = value
@@ -9296,6 +9360,8 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 }
 
 public class UpdateSessionInput : Tea.TeaModel {
+    public var disableSessionIdReuse: Bool?
+
     public var sessionIdleTimeoutInSeconds: Int64?
 
     public var sessionTTLInSeconds: Int64?
@@ -9314,6 +9380,9 @@ public class UpdateSessionInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disableSessionIdReuse != nil {
+            map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
         if self.sessionIdleTimeoutInSeconds != nil {
             map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
         }
@@ -9325,6 +9394,9 @@ public class UpdateSessionInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["disableSessionIdReuse"] as? Bool {
+            self.disableSessionIdReuse = value
+        }
         if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
             self.sessionIdleTimeoutInSeconds = value
         }
