@@ -3410,6 +3410,8 @@ public class CreateDatabaseRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceMemberId: Int64?
+
     public var networkDomainId: String?
 
     public var polarDBEndpointType: String?
@@ -3460,6 +3462,9 @@ public class CreateDatabaseRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceMemberId != nil {
+            map["InstanceMemberId"] = self.instanceMemberId!
+        }
         if self.networkDomainId != nil {
             map["NetworkDomainId"] = self.networkDomainId!
         }
@@ -3506,6 +3511,9 @@ public class CreateDatabaseRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InstanceMemberId"] as? Int64 {
+            self.instanceMemberId = value
         }
         if let value = dict["NetworkDomainId"] as? String {
             self.networkDomainId = value
@@ -3926,6 +3934,8 @@ public class CreateHostRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceMemberId: Int64?
+
     public var instanceRegionId: String?
 
     public var networkDomainId: String?
@@ -3970,6 +3980,9 @@ public class CreateHostRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceMemberId != nil {
+            map["InstanceMemberId"] = self.instanceMemberId!
+        }
         if self.instanceRegionId != nil {
             map["InstanceRegionId"] = self.instanceRegionId!
         }
@@ -4010,6 +4023,9 @@ public class CreateHostRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InstanceMemberId"] as? Int64 {
+            self.instanceMemberId = value
         }
         if let value = dict["InstanceRegionId"] as? String {
             self.instanceRegionId = value
