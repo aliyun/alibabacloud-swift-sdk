@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudPTS20201020"
-  spec.version      = "1.9.3"
+  spec.version      = "1.10.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Performance Testing (20201020) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/pts-20201020" 
@@ -17,9 +17,9 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
-  spec.dependency 'TeaUtils',  '~> 1.0.3'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.3'
+  spec.dependency 'Tea',  '~> 1.0.3'
+  spec.dependency 'TeaUtils',  '~> 1.0.6'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
