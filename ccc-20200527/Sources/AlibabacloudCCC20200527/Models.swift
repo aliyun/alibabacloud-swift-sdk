@@ -43,18 +43,19 @@ public class CheckServiceLinkedRoleForDeletingRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DeletionTaskId") && dict["DeletionTaskId"] != nil {
-            self.deletionTaskId = dict["DeletionTaskId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DeletionTaskId"] as? String {
+            self.deletionTaskId = value
         }
-        if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
-            self.roleArn = dict["RoleArn"] as! String
+        if let value = dict["RoleArn"] as? String {
+            self.roleArn = value
         }
-        if dict.keys.contains("SPIRegionId") && dict["SPIRegionId"] != nil {
-            self.SPIRegionId = dict["SPIRegionId"] as! String
+        if let value = dict["SPIRegionId"] as? String {
+            self.SPIRegionId = value
         }
-        if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
-            self.serviceName = dict["ServiceName"] as! String
+        if let value = dict["ServiceName"] as? String {
+            self.serviceName = value
         }
     }
 }
@@ -88,12 +89,13 @@ public class CheckServiceLinkedRoleForDeletingResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Region") && dict["Region"] != nil {
-                self.region = dict["Region"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Resources") && dict["Resources"] != nil {
-                self.resources = dict["Resources"] as! [String]
+            if let value = dict["Resources"] as? [String] {
+                self.resources = value
             }
         }
     }
@@ -133,21 +135,24 @@ public class CheckServiceLinkedRoleForDeletingResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DeleTable") && dict["DeleTable"] != nil {
-            self.deleTable = dict["DeleTable"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DeleTable"] as? Bool {
+            self.deleTable = value
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("RoleUsages") && dict["RoleUsages"] != nil {
+        if let value = dict["RoleUsages"] as? [Any?] {
             var tmp : [CheckServiceLinkedRoleForDeletingResponseBody.RoleUsages] = []
-            for v in dict["RoleUsages"] as! [Any] {
-                var model = CheckServiceLinkedRoleForDeletingResponseBody.RoleUsages()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = CheckServiceLinkedRoleForDeletingResponseBody.RoleUsages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.roleUsages = tmp
         }
@@ -171,9 +176,6 @@ public class CheckServiceLinkedRoleForDeletingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -191,16 +193,17 @@ public class CheckServiceLinkedRoleForDeletingResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if let value = dict["body"] as? [String: Any?] {
             var model = CheckServiceLinkedRoleForDeletingResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
