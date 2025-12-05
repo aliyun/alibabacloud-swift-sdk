@@ -10998,6 +10998,172 @@ public class CreateMcpServerRequest : Tea.TeaModel {
             }
         }
     }
+    public class GrayMcpServerConfigs : Tea.TeaModel {
+        public class BackendConfig : Tea.TeaModel {
+            public class Services : Tea.TeaModel {
+                public var port: Int32?
+
+                public var protocol_: String?
+
+                public var serviceId: String?
+
+                public var version: String?
+
+                public var weight: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.port != nil {
+                        map["port"] = self.port!
+                    }
+                    if self.protocol_ != nil {
+                        map["protocol"] = self.protocol_!
+                    }
+                    if self.serviceId != nil {
+                        map["serviceId"] = self.serviceId!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    if self.weight != nil {
+                        map["weight"] = self.weight!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["port"] as? Int32 {
+                        self.port = value
+                    }
+                    if let value = dict["protocol"] as? String {
+                        self.protocol_ = value
+                    }
+                    if let value = dict["serviceId"] as? String {
+                        self.serviceId = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                    if let value = dict["weight"] as? Int32 {
+                        self.weight = value
+                    }
+                }
+            }
+            public var scene: String?
+
+            public var services: [CreateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.scene != nil {
+                    map["scene"] = self.scene!
+                }
+                if self.services != nil {
+                    var tmp : [Any] = []
+                    for k in self.services! {
+                        tmp.append(k.toMap())
+                    }
+                    map["services"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["scene"] as? String {
+                    self.scene = value
+                }
+                if let value = dict["services"] as? [Any?] {
+                    var tmp : [CreateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.services = tmp
+                }
+            }
+        }
+        public var backendConfig: CreateMcpServerRequest.GrayMcpServerConfigs.BackendConfig?
+
+        public var match: HttpRouteMatch?
+
+        public var routeId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.backendConfig?.validate()
+            try self.match?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backendConfig != nil {
+                map["backendConfig"] = self.backendConfig?.toMap()
+            }
+            if self.match != nil {
+                map["match"] = self.match?.toMap()
+            }
+            if self.routeId != nil {
+                map["routeId"] = self.routeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["backendConfig"] as? [String: Any?] {
+                var model = CreateMcpServerRequest.GrayMcpServerConfigs.BackendConfig()
+                model.fromMap(value)
+                self.backendConfig = model
+            }
+            if let value = dict["match"] as? [String: Any?] {
+                var model = HttpRouteMatch()
+                model.fromMap(value)
+                self.match = model
+            }
+            if let value = dict["routeId"] as? String {
+                self.routeId = value
+            }
+        }
+    }
     public var assembledSources: [CreateMcpServerRequest.AssembledSources]?
 
     public var backendConfig: CreateMcpServerRequest.BackendConfig?
@@ -11011,6 +11177,8 @@ public class CreateMcpServerRequest : Tea.TeaModel {
     public var exposedUriPath: String?
 
     public var gatewayId: String?
+
+    public var grayMcpServerConfigs: [CreateMcpServerRequest.GrayMcpServerConfigs]?
 
     public var match: HttpRouteMatch?
 
@@ -11062,6 +11230,13 @@ public class CreateMcpServerRequest : Tea.TeaModel {
         }
         if self.gatewayId != nil {
             map["gatewayId"] = self.gatewayId!
+        }
+        if self.grayMcpServerConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.grayMcpServerConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayMcpServerConfigs"] = tmp
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
@@ -11115,6 +11290,19 @@ public class CreateMcpServerRequest : Tea.TeaModel {
         }
         if let value = dict["gatewayId"] as? String {
             self.gatewayId = value
+        }
+        if let value = dict["grayMcpServerConfigs"] as? [Any?] {
+            var tmp : [CreateMcpServerRequest.GrayMcpServerConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateMcpServerRequest.GrayMcpServerConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayMcpServerConfigs = tmp
         }
         if let value = dict["match"] as? [String: Any?] {
             var model = HttpRouteMatch()
@@ -17334,6 +17522,172 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class GrayMcpServerConfigs : Tea.TeaModel {
+            public class BackendConfig : Tea.TeaModel {
+                public class Services : Tea.TeaModel {
+                    public var port: Int32?
+
+                    public var protocol_: String?
+
+                    public var serviceId: String?
+
+                    public var version: String?
+
+                    public var weight: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.port != nil {
+                            map["port"] = self.port!
+                        }
+                        if self.protocol_ != nil {
+                            map["protocol"] = self.protocol_!
+                        }
+                        if self.serviceId != nil {
+                            map["serviceId"] = self.serviceId!
+                        }
+                        if self.version != nil {
+                            map["version"] = self.version!
+                        }
+                        if self.weight != nil {
+                            map["weight"] = self.weight!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["port"] as? Int32 {
+                            self.port = value
+                        }
+                        if let value = dict["protocol"] as? String {
+                            self.protocol_ = value
+                        }
+                        if let value = dict["serviceId"] as? String {
+                            self.serviceId = value
+                        }
+                        if let value = dict["version"] as? String {
+                            self.version = value
+                        }
+                        if let value = dict["weight"] as? Int32 {
+                            self.weight = value
+                        }
+                    }
+                }
+                public var scene: String?
+
+                public var services: [GetMcpServerResponseBody.Data.GrayMcpServerConfigs.BackendConfig.Services]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.scene != nil {
+                        map["scene"] = self.scene!
+                    }
+                    if self.services != nil {
+                        var tmp : [Any] = []
+                        for k in self.services! {
+                            tmp.append(k.toMap())
+                        }
+                        map["services"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["scene"] as? String {
+                        self.scene = value
+                    }
+                    if let value = dict["services"] as? [Any?] {
+                        var tmp : [GetMcpServerResponseBody.Data.GrayMcpServerConfigs.BackendConfig.Services] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetMcpServerResponseBody.Data.GrayMcpServerConfigs.BackendConfig.Services()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.services = tmp
+                    }
+                }
+            }
+            public var backendConfig: GetMcpServerResponseBody.Data.GrayMcpServerConfigs.BackendConfig?
+
+            public var match: HttpRouteMatch?
+
+            public var routeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.backendConfig?.validate()
+                try self.match?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendConfig != nil {
+                    map["backendConfig"] = self.backendConfig?.toMap()
+                }
+                if self.match != nil {
+                    map["match"] = self.match?.toMap()
+                }
+                if self.routeId != nil {
+                    map["routeId"] = self.routeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["backendConfig"] as? [String: Any?] {
+                    var model = GetMcpServerResponseBody.Data.GrayMcpServerConfigs.BackendConfig()
+                    model.fromMap(value)
+                    self.backendConfig = model
+                }
+                if let value = dict["match"] as? [String: Any?] {
+                    var model = HttpRouteMatch()
+                    model.fromMap(value)
+                    self.match = model
+                }
+                if let value = dict["routeId"] as? String {
+                    self.routeId = value
+                }
+            }
+        }
         public class NacosMcpSyncInfo : Tea.TeaModel {
             public var importInstanceId: String?
 
@@ -17399,6 +17753,8 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
         public var exposedUriPath: String?
 
         public var gatewayId: String?
+
+        public var grayMcpServerConfigs: [GetMcpServerResponseBody.Data.GrayMcpServerConfigs]?
 
         public var match: HttpRouteMatch?
 
@@ -17476,6 +17832,13 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
             }
             if self.gatewayId != nil {
                 map["gatewayId"] = self.gatewayId!
+            }
+            if self.grayMcpServerConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.grayMcpServerConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["grayMcpServerConfigs"] = tmp
             }
             if self.match != nil {
                 map["match"] = self.match?.toMap()
@@ -17566,6 +17929,19 @@ public class GetMcpServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["gatewayId"] as? String {
                 self.gatewayId = value
+            }
+            if let value = dict["grayMcpServerConfigs"] as? [Any?] {
+                var tmp : [GetMcpServerResponseBody.Data.GrayMcpServerConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetMcpServerResponseBody.Data.GrayMcpServerConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.grayMcpServerConfigs = tmp
             }
             if let value = dict["match"] as? [String: Any?] {
                 var model = HttpRouteMatch()
@@ -28682,6 +29058,172 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
             }
         }
     }
+    public class GrayMcpServerConfigs : Tea.TeaModel {
+        public class BackendConfig : Tea.TeaModel {
+            public class Services : Tea.TeaModel {
+                public var port: Int32?
+
+                public var protocol_: String?
+
+                public var serviceId: String?
+
+                public var version: String?
+
+                public var weight: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.port != nil {
+                        map["port"] = self.port!
+                    }
+                    if self.protocol_ != nil {
+                        map["protocol"] = self.protocol_!
+                    }
+                    if self.serviceId != nil {
+                        map["serviceId"] = self.serviceId!
+                    }
+                    if self.version != nil {
+                        map["version"] = self.version!
+                    }
+                    if self.weight != nil {
+                        map["weight"] = self.weight!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["port"] as? Int32 {
+                        self.port = value
+                    }
+                    if let value = dict["protocol"] as? String {
+                        self.protocol_ = value
+                    }
+                    if let value = dict["serviceId"] as? String {
+                        self.serviceId = value
+                    }
+                    if let value = dict["version"] as? String {
+                        self.version = value
+                    }
+                    if let value = dict["weight"] as? Int32 {
+                        self.weight = value
+                    }
+                }
+            }
+            public var scene: String?
+
+            public var services: [UpdateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.scene != nil {
+                    map["scene"] = self.scene!
+                }
+                if self.services != nil {
+                    var tmp : [Any] = []
+                    for k in self.services! {
+                        tmp.append(k.toMap())
+                    }
+                    map["services"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["scene"] as? String {
+                    self.scene = value
+                }
+                if let value = dict["services"] as? [Any?] {
+                    var tmp : [UpdateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateMcpServerRequest.GrayMcpServerConfigs.BackendConfig.Services()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.services = tmp
+                }
+            }
+        }
+        public var backendConfig: UpdateMcpServerRequest.GrayMcpServerConfigs.BackendConfig?
+
+        public var match: HttpRouteMatch?
+
+        public var routeId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.backendConfig?.validate()
+            try self.match?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backendConfig != nil {
+                map["backendConfig"] = self.backendConfig?.toMap()
+            }
+            if self.match != nil {
+                map["match"] = self.match?.toMap()
+            }
+            if self.routeId != nil {
+                map["routeId"] = self.routeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["backendConfig"] as? [String: Any?] {
+                var model = UpdateMcpServerRequest.GrayMcpServerConfigs.BackendConfig()
+                model.fromMap(value)
+                self.backendConfig = model
+            }
+            if let value = dict["match"] as? [String: Any?] {
+                var model = HttpRouteMatch()
+                model.fromMap(value)
+                self.match = model
+            }
+            if let value = dict["routeId"] as? String {
+                self.routeId = value
+            }
+        }
+    }
     public var assembledSources: [UpdateMcpServerRequest.AssembledSources]?
 
     public var backendConfig: UpdateMcpServerRequest.BackendConfig?
@@ -28693,6 +29235,8 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
     public var domainIds: [String]?
 
     public var exposedUriPath: String?
+
+    public var grayMcpServerConfigs: [UpdateMcpServerRequest.GrayMcpServerConfigs]?
 
     public var match: HttpRouteMatch?
 
@@ -28740,6 +29284,13 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
         if self.exposedUriPath != nil {
             map["exposedUriPath"] = self.exposedUriPath!
         }
+        if self.grayMcpServerConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.grayMcpServerConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayMcpServerConfigs"] = tmp
+        }
         if self.match != nil {
             map["match"] = self.match?.toMap()
         }
@@ -28786,6 +29337,19 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
         }
         if let value = dict["exposedUriPath"] as? String {
             self.exposedUriPath = value
+        }
+        if let value = dict["grayMcpServerConfigs"] as? [Any?] {
+            var tmp : [UpdateMcpServerRequest.GrayMcpServerConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateMcpServerRequest.GrayMcpServerConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayMcpServerConfigs = tmp
         }
         if let value = dict["match"] as? [String: Any?] {
             var model = HttpRouteMatch()

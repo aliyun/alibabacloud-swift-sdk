@@ -687,6 +687,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gatewayId)) {
             body["gatewayId"] = request.gatewayId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.grayMcpServerConfigs)) {
+            body["grayMcpServerConfigs"] = request.grayMcpServerConfigs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.match)) {
             body["match"] = request.match!;
         }
@@ -3573,6 +3576,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.exposedUriPath)) {
             body["exposedUriPath"] = request.exposedUriPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grayMcpServerConfigs)) {
+            body["grayMcpServerConfigs"] = request.grayMcpServerConfigs ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.match)) {
             body["match"] = request.match!;
