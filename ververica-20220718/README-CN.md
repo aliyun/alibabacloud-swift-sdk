@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudVerverica20220718` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ververica-20220718" "1.12.1"
+github "alibabacloud-sdk-swift/ververica-20220718" "1.13.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/ververica-20220718" "1.12.1"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ververica-20220718.git", from: "1.12.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ververica-20220718.git", from: "1.13.0")
 ]
 ```
 

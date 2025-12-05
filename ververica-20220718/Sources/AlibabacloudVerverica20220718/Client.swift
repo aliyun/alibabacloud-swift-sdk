@@ -1436,6 +1436,153 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByIpWithOptions(_ namespace: String, _ request: GetDeploymentsByIpRequest, _ headers: GetDeploymentsByIpHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDeploymentsByIpResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dstIp)) {
+            query["dstIp"] = request.dstIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstPort)) {
+            query["dstPort"] = request.dstPort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreJobSummary)) {
+            query["ignoreJobSummary"] = request.ignoreJobSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreResourceSetting)) {
+            query["ignoreResourceSetting"] = request.ignoreResourceSetting!;
+        }
+        if (!TeaUtils.Client.isUnset(request.srcIp)) {
+            query["srcIp"] = request.srcIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcPort)) {
+            query["srcPort"] = request.srcPort ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDeploymentsByIp",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/getDeployments/byIp",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDeploymentsByIpResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByIp(_ namespace: String, _ request: GetDeploymentsByIpRequest) async throws -> GetDeploymentsByIpResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetDeploymentsByIpHeaders = GetDeploymentsByIpHeaders([:])
+        return try await getDeploymentsByIpWithOptions(namespace as! String, request as! GetDeploymentsByIpRequest, headers as! GetDeploymentsByIpHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByLabelWithOptions(_ namespace: String, _ request: GetDeploymentsByLabelRequest, _ headers: GetDeploymentsByLabelHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDeploymentsByLabelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ignoreJobSummary)) {
+            query["ignoreJobSummary"] = request.ignoreJobSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreResourceSetting)) {
+            query["ignoreResourceSetting"] = request.ignoreResourceSetting!;
+        }
+        if (!TeaUtils.Client.isUnset(request.labelKey)) {
+            query["labelKey"] = request.labelKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelValue)) {
+            query["labelValue"] = request.labelValue ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDeploymentsByLabel",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/getDeployments/byLabel",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDeploymentsByLabelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByLabel(_ namespace: String, _ request: GetDeploymentsByLabelRequest) async throws -> GetDeploymentsByLabelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetDeploymentsByLabelHeaders = GetDeploymentsByLabelHeaders([:])
+        return try await getDeploymentsByLabelWithOptions(namespace as! String, request as! GetDeploymentsByLabelRequest, headers as! GetDeploymentsByLabelHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByNameWithOptions(_ namespace: String, _ deploymentName: String, _ request: GetDeploymentsByNameRequest, _ headers: GetDeploymentsByNameHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDeploymentsByNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ignoreJobSummary)) {
+            query["ignoreJobSummary"] = request.ignoreJobSummary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreResourceSetting)) {
+            query["ignoreResourceSetting"] = request.ignoreResourceSetting!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDeploymentsByName",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/name/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDeploymentsByNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeploymentsByName(_ namespace: String, _ deploymentName: String, _ request: GetDeploymentsByNameRequest) async throws -> GetDeploymentsByNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetDeploymentsByNameHeaders = GetDeploymentsByNameHeaders([:])
+        return try await getDeploymentsByNameWithOptions(namespace as! String, deploymentName as! String, request as! GetDeploymentsByNameRequest, headers as! GetDeploymentsByNameHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEventsWithOptions(_ namespace: String, _ request: GetEventsRequest, _ headers: GetEventsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEventsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1947,6 +2094,40 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetUdfArtifactsHeaders = GetUdfArtifactsHeaders([:])
         return try await getUdfArtifactsWithOptions(namespace as! String, request as! GetUdfArtifactsRequest, headers as! GetUdfArtifactsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getValidateDeploymentDraftResultWithOptions(_ namespace: String, _ ticketId: String, _ headers: GetValidateDeploymentDraftResultHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetValidateDeploymentDraftResultResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetValidateDeploymentDraftResult",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-drafts/tickets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ticketId)) + "/async-validate",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetValidateDeploymentDraftResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getValidateDeploymentDraftResult(_ namespace: String, _ ticketId: String) async throws -> GetValidateDeploymentDraftResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetValidateDeploymentDraftResultHeaders = GetValidateDeploymentDraftResultHeaders([:])
+        return try await getValidateDeploymentDraftResultWithOptions(namespace as! String, ticketId as! String, headers as! GetValidateDeploymentDraftResultHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3254,6 +3435,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateVariableHeaders = UpdateVariableHeaders([:])
         return try await updateVariableWithOptions(namespace as! String, name as! String, request as! UpdateVariableRequest, headers as! UpdateVariableHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateDeploymentDraftAsyncWithOptions(_ namespace: String, _ request: ValidateDeploymentDraftAsyncRequest, _ headers: ValidateDeploymentDraftAsyncHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateDeploymentDraftAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateDeploymentDraftAsync",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-drafts/async-validate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateDeploymentDraftAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateDeploymentDraftAsync(_ namespace: String, _ request: ValidateDeploymentDraftAsyncRequest) async throws -> ValidateDeploymentDraftAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ValidateDeploymentDraftAsyncHeaders = ValidateDeploymentDraftAsyncHeaders([:])
+        return try await validateDeploymentDraftAsyncWithOptions(namespace as! String, request as! ValidateDeploymentDraftAsyncRequest, headers as! ValidateDeploymentDraftAsyncHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
