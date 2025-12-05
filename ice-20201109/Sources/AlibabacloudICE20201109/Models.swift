@@ -5720,11 +5720,11 @@ public class MediaConvertJobConfig : Tea.TeaModel {
         public class GroupConfig : Tea.TeaModel {
             public class ManifestExtend : Tea.TeaModel {
                 public class Excludes : Tea.TeaModel {
+                    public var language: String?
+
                     public var name: String?
 
                     public var type: String?
-
-                    public var language: String?
 
                     public override init() {
                         super.init()
@@ -5740,28 +5740,28 @@ public class MediaConvertJobConfig : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.language != nil {
+                            map["Language"] = self.language!
+                        }
                         if self.name != nil {
                             map["Name"] = self.name!
                         }
                         if self.type != nil {
                             map["Type"] = self.type!
                         }
-                        if self.language != nil {
-                            map["language"] = self.language!
-                        }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["Language"] as? String {
+                            self.language = value
+                        }
                         if let value = dict["Name"] as? String {
                             self.name = value
                         }
                         if let value = dict["Type"] as? String {
                             self.type = value
-                        }
-                        if let value = dict["language"] as? String {
-                            self.language = value
                         }
                     }
                 }
@@ -50458,11 +50458,23 @@ public class GetTemplateParamsResponseBody : Tea.TeaModel {
 
         public var coverUrl: String?
 
+        public var height: Int32?
+
         public var key: String?
 
         public var mediaUrl: String?
 
+        public var timelineIn: Double?
+
+        public var timelineOut: Double?
+
         public var type: String?
+
+        public var width: Int32?
+
+        public var x: Int32?
+
+        public var y: Int32?
 
         public override init() {
             super.init()
@@ -50484,14 +50496,32 @@ public class GetTemplateParamsResponseBody : Tea.TeaModel {
             if self.coverUrl != nil {
                 map["CoverUrl"] = self.coverUrl!
             }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
             if self.key != nil {
                 map["Key"] = self.key!
             }
             if self.mediaUrl != nil {
                 map["MediaUrl"] = self.mediaUrl!
             }
+            if self.timelineIn != nil {
+                map["TimelineIn"] = self.timelineIn!
+            }
+            if self.timelineOut != nil {
+                map["TimelineOut"] = self.timelineOut!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            if self.x != nil {
+                map["X"] = self.x!
+            }
+            if self.y != nil {
+                map["Y"] = self.y!
             }
             return map
         }
@@ -50504,14 +50534,32 @@ public class GetTemplateParamsResponseBody : Tea.TeaModel {
             if let value = dict["CoverUrl"] as? String {
                 self.coverUrl = value
             }
+            if let value = dict["Height"] as? Int32 {
+                self.height = value
+            }
             if let value = dict["Key"] as? String {
                 self.key = value
             }
             if let value = dict["MediaUrl"] as? String {
                 self.mediaUrl = value
             }
+            if let value = dict["TimelineIn"] as? Double {
+                self.timelineIn = value
+            }
+            if let value = dict["TimelineOut"] as? Double {
+                self.timelineOut = value
+            }
             if let value = dict["Type"] as? String {
                 self.type = value
+            }
+            if let value = dict["Width"] as? Int32 {
+                self.width = value
+            }
+            if let value = dict["X"] as? Int32 {
+                self.x = value
+            }
+            if let value = dict["Y"] as? Int32 {
+                self.y = value
             }
         }
     }
