@@ -28815,6 +28815,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
     public var payType: String?
 
+    public var processStatus: String?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -28856,6 +28858,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
+        if self.processStatus != nil {
+            map["ProcessStatus"] = self.processStatus!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28892,6 +28897,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
+        }
+        if let value = dict["ProcessStatus"] as? String {
+            self.processStatus = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
