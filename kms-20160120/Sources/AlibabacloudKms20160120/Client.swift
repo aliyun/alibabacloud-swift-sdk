@@ -508,51 +508,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCertificateWithOptions(_ tmpReq: CreateCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCertificateResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: CreateCertificateShrinkRequest = CreateCertificateShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.subjectAlternativeNames)) {
-            request.subjectAlternativeNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subjectAlternativeNames, "SubjectAlternativeNames", "json")
-        }
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.exportablePrivateKey)) {
-            query["ExportablePrivateKey"] = request.exportablePrivateKey!;
-        }
-        if (!TeaUtils.Client.isUnset(request.keySpec)) {
-            query["KeySpec"] = request.keySpec ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.subject)) {
-            query["Subject"] = request.subject ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.subjectAlternativeNamesShrink)) {
-            query["SubjectAlternativeNames"] = request.subjectAlternativeNamesShrink ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateCertificate",
-            "version": "2016-01-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateCertificateResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCertificate(_ request: CreateCertificateRequest) async throws -> CreateCertificateResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createCertificateWithOptions(request as! CreateCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createClientKeyWithOptions(_ request: CreateClientKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClientKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1869,6 +1824,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKmsInstanceQuotaInfosWithOptions(_ request: GetKmsInstanceQuotaInfosRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKmsInstanceQuotaInfosResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.kmsInstanceId)) {
+            query["KmsInstanceId"] = request.kmsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKmsInstanceQuotaInfos",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKmsInstanceQuotaInfosResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKmsInstanceQuotaInfos(_ request: GetKmsInstanceQuotaInfosRequest) async throws -> GetKmsInstanceQuotaInfosResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKmsInstanceQuotaInfosWithOptions(request as! GetKmsInstanceQuotaInfosRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getParametersForImportWithOptions(_ request: GetParametersForImportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetParametersForImportResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2319,6 +2308,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKmsInstancesWithOptions(_ request: ListKmsInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKmsInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -3250,7 +3242,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateKmsInstanceBindVpcWithOptions(_ request: UpdateKmsInstanceBindVpcRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKmsInstanceBindVpcResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bindVpcs)) {
+            query["BindVpcs"] = request.bindVpcs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsInstanceId)) {
+            query["KmsInstanceId"] = request.kmsInstanceId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3259,7 +3257,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2016-01-20",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
