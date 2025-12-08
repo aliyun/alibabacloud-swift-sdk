@@ -284,6 +284,15 @@ open class Client : AlibabacloudOpenApi.Client {
     public func allocateIpAddressWithOptions(_ request: AllocateIpAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AllocateIpAddressResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bandwidth)) {
+            query["Bandwidth"] = request.bandwidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.internetChargeType)) {
+            query["InternetChargeType"] = request.internetChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.networkInterfaceId)) {
             query["NetworkInterfaceId"] = request.networkInterfaceId ?? "";
         }

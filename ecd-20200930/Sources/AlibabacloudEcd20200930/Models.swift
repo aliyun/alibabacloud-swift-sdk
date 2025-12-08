@@ -1565,6 +1565,12 @@ public class AddUserToDesktopOversoldUserGroupResponse : Tea.TeaModel {
 }
 
 public class AllocateIpAddressRequest : Tea.TeaModel {
+    public var bandwidth: Int32?
+
+    public var internetChargeType: String?
+
+    public var name: String?
+
     public var networkInterfaceId: String?
 
     public var officeSiteId: String?
@@ -1585,6 +1591,15 @@ public class AllocateIpAddressRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bandwidth != nil {
+            map["Bandwidth"] = self.bandwidth!
+        }
+        if self.internetChargeType != nil {
+            map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.networkInterfaceId != nil {
             map["NetworkInterfaceId"] = self.networkInterfaceId!
         }
@@ -1599,6 +1614,15 @@ public class AllocateIpAddressRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Bandwidth"] as? Int32 {
+            self.bandwidth = value
+        }
+        if let value = dict["InternetChargeType"] as? String {
+            self.internetChargeType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["NetworkInterfaceId"] as? String {
             self.networkInterfaceId = value
         }
