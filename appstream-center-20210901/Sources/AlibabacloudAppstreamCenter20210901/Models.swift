@@ -8587,6 +8587,8 @@ public class ListImageResponseBody : Tea.TeaModel {
 
         public var resourceInstanceCategory: String?
 
+        public var scene: String?
+
         public var sessionType: String?
 
         public var status: String?
@@ -8726,6 +8728,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if self.resourceInstanceCategory != nil {
                 map["ResourceInstanceCategory"] = self.resourceInstanceCategory!
+            }
+            if self.scene != nil {
+                map["Scene"] = self.scene!
             }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
@@ -8877,6 +8882,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceInstanceCategory"] as? String {
                 self.resourceInstanceCategory = value
+            }
+            if let value = dict["Scene"] as? String {
+                self.scene = value
             }
             if let value = dict["SessionType"] as? String {
                 self.sessionType = value
