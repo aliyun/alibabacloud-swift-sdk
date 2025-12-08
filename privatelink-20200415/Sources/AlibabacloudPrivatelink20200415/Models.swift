@@ -3110,6 +3110,8 @@ public class EnableVpcEndpointConnectionRequest : Tea.TeaModel {
 
     public var serviceId: String?
 
+    public var trafficControlMode: String?
+
     public override init() {
         super.init()
     }
@@ -3142,6 +3144,9 @@ public class EnableVpcEndpointConnectionRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.trafficControlMode != nil {
+            map["TrafficControlMode"] = self.trafficControlMode!
+        }
         return map
     }
 
@@ -3164,6 +3169,9 @@ public class EnableVpcEndpointConnectionRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["TrafficControlMode"] as? String {
+            self.trafficControlMode = value
         }
     }
 }
@@ -4474,6 +4482,8 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
 
         public var serviceId: String?
 
+        public var trafficControlMode: String?
+
         public var zones: [ListVpcEndpointConnectionsResponseBody.Connections.Zones]?
 
         public override init() {
@@ -4517,6 +4527,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
             }
+            if self.trafficControlMode != nil {
+                map["TrafficControlMode"] = self.trafficControlMode!
+            }
             if self.zones != nil {
                 var tmp : [Any] = []
                 for k in self.zones! {
@@ -4555,6 +4568,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["TrafficControlMode"] as? String {
+                self.trafficControlMode = value
             }
             if let value = dict["Zones"] as? [Any?] {
                 var tmp : [ListVpcEndpointConnectionsResponseBody.Connections.Zones] = []
@@ -8242,6 +8258,8 @@ public class UpdateVpcEndpointConnectionAttributeRequest : Tea.TeaModel {
 
     public var serviceId: String?
 
+    public var trafficControlMode: String?
+
     public override init() {
         super.init()
     }
@@ -8274,6 +8292,9 @@ public class UpdateVpcEndpointConnectionAttributeRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.trafficControlMode != nil {
+            map["TrafficControlMode"] = self.trafficControlMode!
+        }
         return map
     }
 
@@ -8296,6 +8317,9 @@ public class UpdateVpcEndpointConnectionAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["TrafficControlMode"] as? String {
+            self.trafficControlMode = value
         }
     }
 }
