@@ -7571,6 +7571,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var academicProxy: String?
+
     public var adminAccess: String?
 
     public var appContentProtection: String?
@@ -7580,6 +7582,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var authorizeSecurityPolicyRule: [CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
     public var autoReconnect: String?
+
+    public var businessChannel: String?
 
     public var businessType: Int32?
 
@@ -7603,6 +7607,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var cpuDownGradeDuration: Int32?
 
+    public var cpuOverload: String?
+
     public var cpuProcessors: [String]?
 
     public var cpuProtectedMode: String?
@@ -7622,6 +7628,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var disconnectKeepSession: String?
 
     public var disconnectKeepSessionTime: Int32?
+
+    public var diskOverload: String?
 
     public var displayMode: String?
 
@@ -7659,6 +7667,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var memoryDownGradeDuration: Int32?
 
+    public var memoryOverload: String?
+
     public var memoryProcessors: [String]?
 
     public var memoryProtectedMode: String?
@@ -7679,6 +7689,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var mobileWyAssistant: String?
 
+    public var modelLibrary: String?
+
     public var name: String?
 
     public var netRedirect: String?
@@ -7688,6 +7700,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var noOperationDisconnect: String?
 
     public var noOperationDisconnectTime: Int32?
+
+    public var portProxy: String?
 
     public var printerRedirect: String?
 
@@ -7823,6 +7837,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.academicProxy != nil {
+            map["AcademicProxy"] = self.academicProxy!
+        }
         if self.adminAccess != nil {
             map["AdminAccess"] = self.adminAccess!
         }
@@ -7845,6 +7862,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.autoReconnect != nil {
             map["AutoReconnect"] = self.autoReconnect!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
         }
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
@@ -7887,6 +7907,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.cpuDownGradeDuration != nil {
             map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
         }
+        if self.cpuOverload != nil {
+            map["CpuOverload"] = self.cpuOverload!
+        }
         if self.cpuProcessors != nil {
             map["CpuProcessors"] = self.cpuProcessors!
         }
@@ -7924,6 +7947,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.disconnectKeepSessionTime != nil {
             map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+        }
+        if self.diskOverload != nil {
+            map["DiskOverload"] = self.diskOverload!
         }
         if self.displayMode != nil {
             map["DisplayMode"] = self.displayMode!
@@ -7983,6 +8009,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.memoryDownGradeDuration != nil {
             map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
         }
+        if self.memoryOverload != nil {
+            map["MemoryOverload"] = self.memoryOverload!
+        }
         if self.memoryProcessors != nil {
             map["MemoryProcessors"] = self.memoryProcessors!
         }
@@ -8013,6 +8042,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.mobileWyAssistant != nil {
             map["MobileWyAssistant"] = self.mobileWyAssistant!
         }
+        if self.modelLibrary != nil {
+            map["ModelLibrary"] = self.modelLibrary!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -8031,6 +8063,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.noOperationDisconnectTime != nil {
             map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+        }
+        if self.portProxy != nil {
+            map["PortProxy"] = self.portProxy!
         }
         if self.printerRedirect != nil {
             map["PrinterRedirect"] = self.printerRedirect!
@@ -8225,6 +8260,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcademicProxy"] as? String {
+            self.academicProxy = value
+        }
         if let value = dict["AdminAccess"] as? String {
             self.adminAccess = value
         }
@@ -8259,6 +8297,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["AutoReconnect"] as? String {
             self.autoReconnect = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["BusinessType"] as? Int32 {
             self.businessType = value
@@ -8313,6 +8354,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["CpuDownGradeDuration"] as? Int32 {
             self.cpuDownGradeDuration = value
         }
+        if let value = dict["CpuOverload"] as? String {
+            self.cpuOverload = value
+        }
         if let value = dict["CpuProcessors"] as? [String] {
             self.cpuProcessors = value
         }
@@ -8362,6 +8406,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
             self.disconnectKeepSessionTime = value
+        }
+        if let value = dict["DiskOverload"] as? String {
+            self.diskOverload = value
         }
         if let value = dict["DisplayMode"] as? String {
             self.displayMode = value
@@ -8427,6 +8474,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MemoryDownGradeDuration"] as? Int32 {
             self.memoryDownGradeDuration = value
         }
+        if let value = dict["MemoryOverload"] as? String {
+            self.memoryOverload = value
+        }
         if let value = dict["MemoryProcessors"] as? [String] {
             self.memoryProcessors = value
         }
@@ -8457,6 +8507,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MobileWyAssistant"] as? String {
             self.mobileWyAssistant = value
         }
+        if let value = dict["ModelLibrary"] as? String {
+            self.modelLibrary = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -8481,6 +8534,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["NoOperationDisconnectTime"] as? Int32 {
             self.noOperationDisconnectTime = value
+        }
+        if let value = dict["PortProxy"] as? String {
+            self.portProxy = value
         }
         if let value = dict["PrinterRedirect"] as? String {
             self.printerRedirect = value
@@ -22195,13 +22251,19 @@ public class DescribeCensResponse : Tea.TeaModel {
 }
 
 public class DescribeCenterPolicyListRequest : Tea.TeaModel {
+    public var academicProxy: String?
+
     public var businessType: Int32?
+
+    public var modelLibrary: String?
 
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
 
     public var policyGroupId: [String]?
+
+    public var portProxy: String?
 
     public var resourceType: String?
 
@@ -22221,8 +22283,14 @@ public class DescribeCenterPolicyListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.academicProxy != nil {
+            map["AcademicProxy"] = self.academicProxy!
+        }
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
+        }
+        if self.modelLibrary != nil {
+            map["ModelLibrary"] = self.modelLibrary!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -22232,6 +22300,9 @@ public class DescribeCenterPolicyListRequest : Tea.TeaModel {
         }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.portProxy != nil {
+            map["PortProxy"] = self.portProxy!
         }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
@@ -22244,8 +22315,14 @@ public class DescribeCenterPolicyListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcademicProxy"] as? String {
+            self.academicProxy = value
+        }
         if let value = dict["BusinessType"] as? Int32 {
             self.businessType = value
+        }
+        if let value = dict["ModelLibrary"] as? String {
+            self.modelLibrary = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -22255,6 +22332,9 @@ public class DescribeCenterPolicyListRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyGroupId"] as? [String] {
             self.policyGroupId = value
+        }
+        if let value = dict["PortProxy"] as? String {
+            self.portProxy = value
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
@@ -40410,6 +40490,8 @@ public class DescribeOfficeSitesResponse : Tea.TeaModel {
 }
 
 public class DescribePolicyGroupsRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var externalPolicyGroupIds: [String]?
 
     public var maxResults: Int32?
@@ -40440,6 +40522,9 @@ public class DescribePolicyGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.externalPolicyGroupIds != nil {
             map["ExternalPolicyGroupIds"] = self.externalPolicyGroupIds!
         }
@@ -40469,6 +40554,9 @@ public class DescribePolicyGroupsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["ExternalPolicyGroupIds"] as? [String] {
             self.externalPolicyGroupIds = value
         }
@@ -40976,6 +41064,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var academicProxy: String?
+
         public var adminAccess: String?
 
         public var appContentProtection: String?
@@ -41002,6 +41092,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var cpuDownGradeDuration: Int32?
 
+        public var cpuOverload: String?
+
         public var cpuProcessors: [String]?
 
         public var cpuProtectedMode: String?
@@ -41021,6 +41113,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var deviceRedirects: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects]?
 
         public var deviceRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRules]?
+
+        public var diskOverload: String?
 
         public var displayMode: String?
 
@@ -41064,6 +41158,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var memoryDownGradeDuration: Int32?
 
+        public var memoryOverload: String?
+
         public var memoryProcessors: [String]?
 
         public var memoryProtectedMode: String?
@@ -41084,6 +41180,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var mobileWyAssistant: String?
 
+        public var modelLibrary: String?
+
         public var name: String?
 
         public var netRedirect: String?
@@ -41095,6 +41193,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var policyGroupType: String?
 
         public var policyStatus: String?
+
+        public var portProxy: String?
 
         public var preemptLogin: String?
 
@@ -41232,6 +41332,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.academicProxy != nil {
+                map["AcademicProxy"] = self.academicProxy!
+            }
             if self.adminAccess != nil {
                 map["AdminAccess"] = self.adminAccess!
             }
@@ -41283,6 +41386,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.cpuDownGradeDuration != nil {
                 map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
             }
+            if self.cpuOverload != nil {
+                map["CpuOverload"] = self.cpuOverload!
+            }
             if self.cpuProcessors != nil {
                 map["CpuProcessors"] = self.cpuProcessors!
             }
@@ -41320,6 +41426,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DeviceRules"] = tmp
+            }
+            if self.diskOverload != nil {
+                map["DiskOverload"] = self.diskOverload!
             }
             if self.displayMode != nil {
                 map["DisplayMode"] = self.displayMode!
@@ -41388,6 +41497,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.memoryDownGradeDuration != nil {
                 map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
             }
+            if self.memoryOverload != nil {
+                map["MemoryOverload"] = self.memoryOverload!
+            }
             if self.memoryProcessors != nil {
                 map["MemoryProcessors"] = self.memoryProcessors!
             }
@@ -41418,6 +41530,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.mobileWyAssistant != nil {
                 map["MobileWyAssistant"] = self.mobileWyAssistant!
             }
+            if self.modelLibrary != nil {
+                map["ModelLibrary"] = self.modelLibrary!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -41439,6 +41554,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.policyStatus != nil {
                 map["PolicyStatus"] = self.policyStatus!
+            }
+            if self.portProxy != nil {
+                map["PortProxy"] = self.portProxy!
             }
             if self.preemptLogin != nil {
                 map["PreemptLogin"] = self.preemptLogin!
@@ -41636,6 +41754,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AcademicProxy"] as? String {
+                self.academicProxy = value
+            }
             if let value = dict["AdminAccess"] as? String {
                 self.adminAccess = value
             }
@@ -41705,6 +41826,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["CpuDownGradeDuration"] as? Int32 {
                 self.cpuDownGradeDuration = value
             }
+            if let value = dict["CpuOverload"] as? String {
+                self.cpuOverload = value
+            }
             if let value = dict["CpuProcessors"] as? [String] {
                 self.cpuProcessors = value
             }
@@ -41754,6 +41878,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.deviceRules = tmp
+            }
+            if let value = dict["DiskOverload"] as? String {
+                self.diskOverload = value
             }
             if let value = dict["DisplayMode"] as? String {
                 self.displayMode = value
@@ -41828,6 +41955,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["MemoryDownGradeDuration"] as? Int32 {
                 self.memoryDownGradeDuration = value
             }
+            if let value = dict["MemoryOverload"] as? String {
+                self.memoryOverload = value
+            }
             if let value = dict["MemoryProcessors"] as? [String] {
                 self.memoryProcessors = value
             }
@@ -41858,6 +41988,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["MobileWyAssistant"] as? String {
                 self.mobileWyAssistant = value
             }
+            if let value = dict["ModelLibrary"] as? String {
+                self.modelLibrary = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
             }
@@ -41885,6 +42018,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["PolicyStatus"] as? String {
                 self.policyStatus = value
+            }
+            if let value = dict["PortProxy"] as? String {
+                self.portProxy = value
             }
             if let value = dict["PreemptLogin"] as? String {
                 self.preemptLogin = value
@@ -58706,6 +58842,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var academicProxy: String?
+
     public var adminAccess: String?
 
     public var appContentProtection: String?
@@ -58715,6 +58853,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var authorizeSecurityPolicyRule: [ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
     public var autoReconnect: String?
+
+    public var businessChannel: String?
 
     public var businessType: Int32?
 
@@ -58738,6 +58878,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var cpuDownGradeDuration: Int32?
 
+    public var cpuOverload: String?
+
     public var cpuProcessors: [String]?
 
     public var cpuProtectedMode: String?
@@ -58757,6 +58899,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var disconnectKeepSession: String?
 
     public var disconnectKeepSessionTime: Int32?
+
+    public var diskOverload: String?
 
     public var displayMode: String?
 
@@ -58794,6 +58938,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var memoryDownGradeDuration: Int32?
 
+    public var memoryOverload: String?
+
     public var memoryProcessors: [String]?
 
     public var memoryProtectedMode: String?
@@ -58814,6 +58960,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var mobileWyAssistant: String?
 
+    public var modelLibrary: String?
+
     public var name: String?
 
     public var netRedirect: String?
@@ -58825,6 +58973,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var noOperationDisconnectTime: Int32?
 
     public var policyGroupId: String?
+
+    public var portProxy: String?
 
     public var printerRedirect: String?
 
@@ -58964,6 +59114,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.academicProxy != nil {
+            map["AcademicProxy"] = self.academicProxy!
+        }
         if self.adminAccess != nil {
             map["AdminAccess"] = self.adminAccess!
         }
@@ -58986,6 +59139,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.autoReconnect != nil {
             map["AutoReconnect"] = self.autoReconnect!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
         }
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
@@ -59028,6 +59184,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.cpuDownGradeDuration != nil {
             map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
         }
+        if self.cpuOverload != nil {
+            map["CpuOverload"] = self.cpuOverload!
+        }
         if self.cpuProcessors != nil {
             map["CpuProcessors"] = self.cpuProcessors!
         }
@@ -59065,6 +59224,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.disconnectKeepSessionTime != nil {
             map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+        }
+        if self.diskOverload != nil {
+            map["DiskOverload"] = self.diskOverload!
         }
         if self.displayMode != nil {
             map["DisplayMode"] = self.displayMode!
@@ -59124,6 +59286,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.memoryDownGradeDuration != nil {
             map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
         }
+        if self.memoryOverload != nil {
+            map["MemoryOverload"] = self.memoryOverload!
+        }
         if self.memoryProcessors != nil {
             map["MemoryProcessors"] = self.memoryProcessors!
         }
@@ -59154,6 +59319,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.mobileWyAssistant != nil {
             map["MobileWyAssistant"] = self.mobileWyAssistant!
         }
+        if self.modelLibrary != nil {
+            map["ModelLibrary"] = self.modelLibrary!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -59175,6 +59343,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.portProxy != nil {
+            map["PortProxy"] = self.portProxy!
         }
         if self.printerRedirect != nil {
             map["PrinterRedirect"] = self.printerRedirect!
@@ -59383,6 +59554,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcademicProxy"] as? String {
+            self.academicProxy = value
+        }
         if let value = dict["AdminAccess"] as? String {
             self.adminAccess = value
         }
@@ -59417,6 +59591,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["AutoReconnect"] as? String {
             self.autoReconnect = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["BusinessType"] as? Int32 {
             self.businessType = value
@@ -59471,6 +59648,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["CpuDownGradeDuration"] as? Int32 {
             self.cpuDownGradeDuration = value
         }
+        if let value = dict["CpuOverload"] as? String {
+            self.cpuOverload = value
+        }
         if let value = dict["CpuProcessors"] as? [String] {
             self.cpuProcessors = value
         }
@@ -59520,6 +59700,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
             self.disconnectKeepSessionTime = value
+        }
+        if let value = dict["DiskOverload"] as? String {
+            self.diskOverload = value
         }
         if let value = dict["DisplayMode"] as? String {
             self.displayMode = value
@@ -59585,6 +59768,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MemoryDownGradeDuration"] as? Int32 {
             self.memoryDownGradeDuration = value
         }
+        if let value = dict["MemoryOverload"] as? String {
+            self.memoryOverload = value
+        }
         if let value = dict["MemoryProcessors"] as? [String] {
             self.memoryProcessors = value
         }
@@ -59615,6 +59801,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MobileWyAssistant"] as? String {
             self.mobileWyAssistant = value
         }
+        if let value = dict["ModelLibrary"] as? String {
+            self.modelLibrary = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -59642,6 +59831,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["PortProxy"] as? String {
+            self.portProxy = value
         }
         if let value = dict["PrinterRedirect"] as? String {
             self.printerRedirect = value
