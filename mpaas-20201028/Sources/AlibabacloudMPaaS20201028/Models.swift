@@ -15206,7 +15206,7 @@ public class GetUserAppEnhanceProcessInMsaResponseBody : Tea.TeaModel {
 
             public var beforeSize: Int64?
 
-            public var classForest: [String]?
+            public var classForest: String?
 
             public var enhanceMapping: [GetUserAppEnhanceProcessInMsaResponseBody.ResultContent.Data.EnhanceMapping]?
 
@@ -15341,7 +15341,7 @@ public class GetUserAppEnhanceProcessInMsaResponseBody : Tea.TeaModel {
                 if let value = dict["BeforeSize"] as? Int64 {
                     self.beforeSize = value
                 }
-                if let value = dict["ClassForest"] as? [String] {
+                if let value = dict["ClassForest"] as? String {
                     self.classForest = value
                 }
                 if let value = dict["EnhanceMapping"] as? [Any?] {
