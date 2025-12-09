@@ -66716,6 +66716,8 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var planNameEn: String?
+
     public var planType: String?
 
     public var remainingExpireDays: Int32?
@@ -66754,6 +66756,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.planNameEn != nil {
+            map["PlanNameEn"] = self.planNameEn!
+        }
         if self.planType != nil {
             map["PlanType"] = self.planType!
         }
@@ -66788,6 +66793,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PlanNameEn"] as? String {
+            self.planNameEn = value
         }
         if let value = dict["PlanType"] as? String {
             self.planType = value
