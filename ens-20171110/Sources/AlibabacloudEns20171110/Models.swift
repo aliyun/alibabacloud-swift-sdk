@@ -5382,9 +5382,249 @@ public class CreateClassicNetworkResponse : Tea.TeaModel {
 }
 
 public class CreateClusterRequest : Tea.TeaModel {
+    public class ControlPlaneConfig : Tea.TeaModel {
+        public var imageId: String?
+
+        public var instanceSpec: String?
+
+        public var nodePortRange: String?
+
+        public var runtime: String?
+
+        public var size: Int32?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.instanceSpec != nil {
+                map["InstanceSpec"] = self.instanceSpec!
+            }
+            if self.nodePortRange != nil {
+                map["NodePortRange"] = self.nodePortRange!
+            }
+            if self.runtime != nil {
+                map["Runtime"] = self.runtime!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["InstanceSpec"] as? String {
+                self.instanceSpec = value
+            }
+            if let value = dict["NodePortRange"] as? String {
+                self.nodePortRange = value
+            }
+            if let value = dict["Runtime"] as? String {
+                self.runtime = value
+            }
+            if let value = dict["Size"] as? Int32 {
+                self.size = value
+            }
+            if let value = dict["SystemDiskCategory"] as? String {
+                self.systemDiskCategory = value
+            }
+            if let value = dict["SystemDiskSize"] as? Int64 {
+                self.systemDiskSize = value
+            }
+        }
+    }
+    public var clusterType: String?
+
     public var clusterVersion: String?
 
+    public var containerCidr: String?
+
+    public var controlPlaneConfig: CreateClusterRequest.ControlPlaneConfig?
+
+    public var ensRegionId: String?
+
+    public var kubernetesVersion: String?
+
+    public var loadBalancerId: String?
+
     public var name: String?
+
+    public var podVswitchIds: [String]?
+
+    public var profile: String?
+
+    public var publicAccess: Bool?
+
+    public var serviceCidr: String?
+
+    public var vpcId: String?
+
+    public var vswitchIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.controlPlaneConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.clusterVersion != nil {
+            map["ClusterVersion"] = self.clusterVersion!
+        }
+        if self.containerCidr != nil {
+            map["ContainerCidr"] = self.containerCidr!
+        }
+        if self.controlPlaneConfig != nil {
+            map["ControlPlaneConfig"] = self.controlPlaneConfig?.toMap()
+        }
+        if self.ensRegionId != nil {
+            map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.kubernetesVersion != nil {
+            map["KubernetesVersion"] = self.kubernetesVersion!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.podVswitchIds != nil {
+            map["PodVswitchIds"] = self.podVswitchIds!
+        }
+        if self.profile != nil {
+            map["Profile"] = self.profile!
+        }
+        if self.publicAccess != nil {
+            map["PublicAccess"] = self.publicAccess!
+        }
+        if self.serviceCidr != nil {
+            map["ServiceCidr"] = self.serviceCidr!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vswitchIds != nil {
+            map["VswitchIds"] = self.vswitchIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["ClusterVersion"] as? String {
+            self.clusterVersion = value
+        }
+        if let value = dict["ContainerCidr"] as? String {
+            self.containerCidr = value
+        }
+        if let value = dict["ControlPlaneConfig"] as? [String: Any?] {
+            var model = CreateClusterRequest.ControlPlaneConfig()
+            model.fromMap(value)
+            self.controlPlaneConfig = model
+        }
+        if let value = dict["EnsRegionId"] as? String {
+            self.ensRegionId = value
+        }
+        if let value = dict["KubernetesVersion"] as? String {
+            self.kubernetesVersion = value
+        }
+        if let value = dict["LoadBalancerId"] as? String {
+            self.loadBalancerId = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PodVswitchIds"] as? [String] {
+            self.podVswitchIds = value
+        }
+        if let value = dict["Profile"] as? String {
+            self.profile = value
+        }
+        if let value = dict["PublicAccess"] as? Bool {
+            self.publicAccess = value
+        }
+        if let value = dict["ServiceCidr"] as? String {
+            self.serviceCidr = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["VswitchIds"] as? [String] {
+            self.vswitchIds = value
+        }
+    }
+}
+
+public class CreateClusterShrinkRequest : Tea.TeaModel {
+    public var clusterType: String?
+
+    public var clusterVersion: String?
+
+    public var containerCidr: String?
+
+    public var controlPlaneConfigShrink: String?
+
+    public var ensRegionId: String?
+
+    public var kubernetesVersion: String?
+
+    public var loadBalancerId: String?
+
+    public var name: String?
+
+    public var podVswitchIdsShrink: String?
+
+    public var profile: String?
+
+    public var publicAccess: Bool?
+
+    public var serviceCidr: String?
+
+    public var vpcId: String?
+
+    public var vswitchIdsShrink: String?
 
     public override init() {
         super.init()
@@ -5400,22 +5640,94 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
         if self.clusterVersion != nil {
             map["ClusterVersion"] = self.clusterVersion!
         }
+        if self.containerCidr != nil {
+            map["ContainerCidr"] = self.containerCidr!
+        }
+        if self.controlPlaneConfigShrink != nil {
+            map["ControlPlaneConfig"] = self.controlPlaneConfigShrink!
+        }
+        if self.ensRegionId != nil {
+            map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.kubernetesVersion != nil {
+            map["KubernetesVersion"] = self.kubernetesVersion!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.podVswitchIdsShrink != nil {
+            map["PodVswitchIds"] = self.podVswitchIdsShrink!
+        }
+        if self.profile != nil {
+            map["Profile"] = self.profile!
+        }
+        if self.publicAccess != nil {
+            map["PublicAccess"] = self.publicAccess!
+        }
+        if self.serviceCidr != nil {
+            map["ServiceCidr"] = self.serviceCidr!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vswitchIdsShrink != nil {
+            map["VswitchIds"] = self.vswitchIdsShrink!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
         if let value = dict["ClusterVersion"] as? String {
             self.clusterVersion = value
         }
+        if let value = dict["ContainerCidr"] as? String {
+            self.containerCidr = value
+        }
+        if let value = dict["ControlPlaneConfig"] as? String {
+            self.controlPlaneConfigShrink = value
+        }
+        if let value = dict["EnsRegionId"] as? String {
+            self.ensRegionId = value
+        }
+        if let value = dict["KubernetesVersion"] as? String {
+            self.kubernetesVersion = value
+        }
+        if let value = dict["LoadBalancerId"] as? String {
+            self.loadBalancerId = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PodVswitchIds"] as? String {
+            self.podVswitchIdsShrink = value
+        }
+        if let value = dict["Profile"] as? String {
+            self.profile = value
+        }
+        if let value = dict["PublicAccess"] as? Bool {
+            self.publicAccess = value
+        }
+        if let value = dict["ServiceCidr"] as? String {
+            self.serviceCidr = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["VswitchIds"] as? String {
+            self.vswitchIdsShrink = value
         }
     }
 }

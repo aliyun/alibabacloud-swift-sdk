@@ -921,14 +921,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createClusterWithOptions(_ request: CreateClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createClusterWithOptions(_ tmpReq: CreateClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateClusterShrinkRequest = CreateClusterShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.controlPlaneConfig)) {
+            request.controlPlaneConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.controlPlaneConfig, "ControlPlaneConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.podVswitchIds)) {
+            request.podVswitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.podVswitchIds, "PodVswitchIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.vswitchIds)) {
+            request.vswitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vswitchIds, "VswitchIds", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterType)) {
+            query["ClusterType"] = request.clusterType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterVersion)) {
             query["ClusterVersion"] = request.clusterVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.containerCidr)) {
+            query["ContainerCidr"] = request.containerCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlPlaneConfigShrink)) {
+            query["ControlPlaneConfig"] = request.controlPlaneConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ensRegionId)) {
+            query["EnsRegionId"] = request.ensRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubernetesVersion)) {
+            query["KubernetesVersion"] = request.kubernetesVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loadBalancerId)) {
+            query["LoadBalancerId"] = request.loadBalancerId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.podVswitchIdsShrink)) {
+            query["PodVswitchIds"] = request.podVswitchIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profile)) {
+            query["Profile"] = request.profile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publicAccess)) {
+            query["PublicAccess"] = request.publicAccess!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceCidr)) {
+            query["ServiceCidr"] = request.serviceCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchIdsShrink)) {
+            query["VswitchIds"] = request.vswitchIdsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
