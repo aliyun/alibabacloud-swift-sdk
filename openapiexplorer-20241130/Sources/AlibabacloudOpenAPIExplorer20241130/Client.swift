@@ -8,7 +8,11 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "central"
+        self._endpointMap = [
+            "ap-southeast-1": "openapi-mcp.ap-southeast-1.aliyuncs.com",
+            "cn-hangzhou": "openapi-mcp.cn-hangzhou.aliyuncs.com"
+        ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("openapiexplorer", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -81,6 +85,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableAssumeRole)) {
             body["enableAssumeRole"] = request.enableAssumeRole!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableCustomVpcWhitelist)) {
+            body["enableCustomVpcWhitelist"] = request.enableCustomVpcWhitelist!;
+        }
         if (!TeaUtils.Client.isUnset(request.instructions)) {
             body["instructions"] = request.instructions ?? "";
         }
@@ -96,11 +103,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.prompts)) {
             body["prompts"] = request.prompts ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.publicAccess)) {
+            body["publicAccess"] = request.publicAccess ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.systemTools)) {
             body["systemTools"] = request.systemTools ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.terraformTools)) {
             body["terraformTools"] = request.terraformTools ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcWhitelists)) {
+            body["vpcWhitelists"] = request.vpcWhitelists ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -181,6 +194,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.apiVersion)) {
             body["apiVersion"] = request.apiVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonApiParams)) {
+            body["jsonApiParams"] = request.jsonApiParams ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.product)) {
             body["product"] = request.product ?? "";
@@ -284,6 +300,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getApiMcpServerWithOptions(request as! GetApiMcpServerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getApiMcpServerUserConfigWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApiMcpServerUserConfigResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetApiMcpServerUserConfig",
+            "version": "2024-11-30",
+            "protocol": "HTTPS",
+            "pathname": "/userconfig/get",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetApiMcpServerUserConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getApiMcpServerUserConfig() async throws -> GetApiMcpServerUserConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getApiMcpServerUserConfigWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -591,6 +634,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableAssumeRole)) {
             body["enableAssumeRole"] = request.enableAssumeRole!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableCustomVpcWhitelist)) {
+            body["enableCustomVpcWhitelist"] = request.enableCustomVpcWhitelist!;
+        }
         if (!TeaUtils.Client.isUnset(request.instructions)) {
             body["instructions"] = request.instructions ?? "";
         }
@@ -603,11 +649,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.prompts)) {
             body["prompts"] = request.prompts ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.publicAccess)) {
+            body["publicAccess"] = request.publicAccess ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.systemTools)) {
             body["systemTools"] = request.systemTools ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.terraformTools)) {
             body["terraformTools"] = request.terraformTools ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcWhitelists)) {
+            body["vpcWhitelists"] = request.vpcWhitelists ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -634,5 +686,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateApiMcpServerWithOptions(request as! UpdateApiMcpServerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateApiMcpServerUserConfigWithOptions(_ request: UpdateApiMcpServerUserConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApiMcpServerUserConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enablePublicAccess)) {
+            body["enablePublicAccess"] = request.enablePublicAccess!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcWhitelists)) {
+            body["vpcWhitelists"] = request.vpcWhitelists ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateApiMcpServerUserConfig",
+            "version": "2024-11-30",
+            "protocol": "HTTPS",
+            "pathname": "/userconfig/update",
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateApiMcpServerUserConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateApiMcpServerUserConfig(_ request: UpdateApiMcpServerUserConfigRequest) async throws -> UpdateApiMcpServerUserConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateApiMcpServerUserConfigWithOptions(request as! UpdateApiMcpServerUserConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }

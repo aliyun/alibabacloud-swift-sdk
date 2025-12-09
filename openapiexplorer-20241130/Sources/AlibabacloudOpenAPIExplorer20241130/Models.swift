@@ -532,6 +532,8 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
 
     public var enableAssumeRole: Bool?
 
+    public var enableCustomVpcWhitelist: Bool?
+
     public var instructions: String?
 
     public var language: String?
@@ -542,9 +544,13 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
 
     public var prompts: [CreateApiMcpServerRequest.Prompts]?
 
+    public var publicAccess: String?
+
     public var systemTools: [String]?
 
     public var terraformTools: [CreateApiMcpServerRequest.TerraformTools]?
+
+    public var vpcWhitelists: [String]?
 
     public override init() {
         super.init()
@@ -589,6 +595,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
         if self.enableAssumeRole != nil {
             map["enableAssumeRole"] = self.enableAssumeRole!
         }
+        if self.enableCustomVpcWhitelist != nil {
+            map["enableCustomVpcWhitelist"] = self.enableCustomVpcWhitelist!
+        }
         if self.instructions != nil {
             map["instructions"] = self.instructions!
         }
@@ -608,6 +617,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
             }
             map["prompts"] = tmp
         }
+        if self.publicAccess != nil {
+            map["publicAccess"] = self.publicAccess!
+        }
         if self.systemTools != nil {
             map["systemTools"] = self.systemTools!
         }
@@ -617,6 +629,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["terraformTools"] = tmp
+        }
+        if self.vpcWhitelists != nil {
+            map["vpcWhitelists"] = self.vpcWhitelists!
         }
         return map
     }
@@ -664,6 +679,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
         if let value = dict["enableAssumeRole"] as? Bool {
             self.enableAssumeRole = value
         }
+        if let value = dict["enableCustomVpcWhitelist"] as? Bool {
+            self.enableCustomVpcWhitelist = value
+        }
         if let value = dict["instructions"] as? String {
             self.instructions = value
         }
@@ -689,6 +707,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
             }
             self.prompts = tmp
         }
+        if let value = dict["publicAccess"] as? String {
+            self.publicAccess = value
+        }
         if let value = dict["systemTools"] as? [String] {
             self.systemTools = value
         }
@@ -705,6 +726,9 @@ public class CreateApiMcpServerRequest : Tea.TeaModel {
             }
             self.terraformTools = tmp
         }
+        if let value = dict["vpcWhitelists"] as? [String] {
+            self.vpcWhitelists = value
+        }
     }
 }
 
@@ -713,6 +737,10 @@ public class CreateApiMcpServerResponseBody : Tea.TeaModel {
         public var mcp: String?
 
         public var sse: String?
+
+        public var vpcMcp: String?
+
+        public var vpcSse: String?
 
         public override init() {
             super.init()
@@ -734,6 +762,12 @@ public class CreateApiMcpServerResponseBody : Tea.TeaModel {
             if self.sse != nil {
                 map["sse"] = self.sse!
             }
+            if self.vpcMcp != nil {
+                map["vpcMcp"] = self.vpcMcp!
+            }
+            if self.vpcSse != nil {
+                map["vpcSse"] = self.vpcSse!
+            }
             return map
         }
 
@@ -744,6 +778,12 @@ public class CreateApiMcpServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["sse"] as? String {
                 self.sse = value
+            }
+            if let value = dict["vpcMcp"] as? String {
+                self.vpcMcp = value
+            }
+            if let value = dict["vpcSse"] as? String {
+                self.vpcSse = value
             }
         }
     }
@@ -973,6 +1013,8 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
 
     public var apiVersion: String?
 
+    public var jsonApiParams: String?
+
     public var product: String?
 
     public var regionId: String?
@@ -1000,6 +1042,9 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
         if self.apiVersion != nil {
             map["apiVersion"] = self.apiVersion!
         }
+        if self.jsonApiParams != nil {
+            map["jsonApiParams"] = self.jsonApiParams!
+        }
         if self.product != nil {
             map["product"] = self.product!
         }
@@ -1020,6 +1065,9 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
         if let value = dict["apiVersion"] as? String {
             self.apiVersion = value
         }
+        if let value = dict["jsonApiParams"] as? String {
+            self.jsonApiParams = value
+        }
         if let value = dict["product"] as? String {
             self.product = value
         }
@@ -1035,6 +1083,8 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
     public var apiParamsShrink: String?
 
     public var apiVersion: String?
+
+    public var jsonApiParams: String?
 
     public var product: String?
 
@@ -1063,6 +1113,9 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
         if self.apiVersion != nil {
             map["apiVersion"] = self.apiVersion!
         }
+        if self.jsonApiParams != nil {
+            map["jsonApiParams"] = self.jsonApiParams!
+        }
         if self.product != nil {
             map["product"] = self.product!
         }
@@ -1082,6 +1135,9 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["apiVersion"] as? String {
             self.apiVersion = value
+        }
+        if let value = dict["jsonApiParams"] as? String {
+            self.jsonApiParams = value
         }
         if let value = dict["product"] as? String {
             self.product = value
@@ -1740,6 +1796,10 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
 
         public var sse: String?
 
+        public var vpcMcp: String?
+
+        public var vpcSse: String?
+
         public override init() {
             super.init()
         }
@@ -1760,6 +1820,12 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
             if self.sse != nil {
                 map["sse"] = self.sse!
             }
+            if self.vpcMcp != nil {
+                map["vpcMcp"] = self.vpcMcp!
+            }
+            if self.vpcSse != nil {
+                map["vpcSse"] = self.vpcSse!
+            }
             return map
         }
 
@@ -1770,6 +1836,12 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["sse"] as? String {
                 self.sse = value
+            }
+            if let value = dict["vpcMcp"] as? String {
+                self.vpcMcp = value
+            }
+            if let value = dict["vpcSse"] as? String {
+                self.vpcSse = value
             }
         }
     }
@@ -1789,6 +1861,8 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
 
     public var enableAssumeRole: Bool?
 
+    public var enableCustomVpcWhitelist: Bool?
+
     public var id: String?
 
     public var instructions: String?
@@ -1800,6 +1874,8 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
     public var oauthClientId: String?
 
     public var prompts: [GetApiMcpServerResponseBody.Prompts]?
+
+    public var publicAccess: String?
 
     public var requestId: String?
 
@@ -1816,6 +1892,8 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
     public var updateTime: String?
 
     public var urls: GetApiMcpServerResponseBody.Urls?
+
+    public var vpcWhitelists: [String]?
 
     public override init() {
         super.init()
@@ -1869,6 +1947,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
         if self.enableAssumeRole != nil {
             map["enableAssumeRole"] = self.enableAssumeRole!
         }
+        if self.enableCustomVpcWhitelist != nil {
+            map["enableCustomVpcWhitelist"] = self.enableCustomVpcWhitelist!
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -1890,6 +1971,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["prompts"] = tmp
+        }
+        if self.publicAccess != nil {
+            map["publicAccess"] = self.publicAccess!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -1918,6 +2002,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
         }
         if self.urls != nil {
             map["urls"] = self.urls?.toMap()
+        }
+        if self.vpcWhitelists != nil {
+            map["vpcWhitelists"] = self.vpcWhitelists!
         }
         return map
     }
@@ -1978,6 +2065,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
         if let value = dict["enableAssumeRole"] as? Bool {
             self.enableAssumeRole = value
         }
+        if let value = dict["enableCustomVpcWhitelist"] as? Bool {
+            self.enableCustomVpcWhitelist = value
+        }
         if let value = dict["id"] as? String {
             self.id = value
         }
@@ -2005,6 +2095,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
                 }
             }
             self.prompts = tmp
+        }
+        if let value = dict["publicAccess"] as? String {
+            self.publicAccess = value
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
@@ -2043,6 +2136,9 @@ public class GetApiMcpServerResponseBody : Tea.TeaModel {
             var model = GetApiMcpServerResponseBody.Urls()
             model.fromMap(value)
             self.urls = model
+        }
+        if let value = dict["vpcWhitelists"] as? [String] {
+            self.vpcWhitelists = value
         }
     }
 }
@@ -2091,6 +2187,127 @@ public class GetApiMcpServerResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetApiMcpServerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetApiMcpServerUserConfigResponseBody : Tea.TeaModel {
+    public var accountId: String?
+
+    public var enablePublicAccess: Bool?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var requestId: String?
+
+    public var vpcWhitelists: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountId != nil {
+            map["accountId"] = self.accountId!
+        }
+        if self.enablePublicAccess != nil {
+            map["enablePublicAccess"] = self.enablePublicAccess!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vpcWhitelists != nil {
+            map["vpcWhitelists"] = self.vpcWhitelists!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["accountId"] as? String {
+            self.accountId = value
+        }
+        if let value = dict["enablePublicAccess"] as? Bool {
+            self.enablePublicAccess = value
+        }
+        if let value = dict["gmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["gmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["vpcWhitelists"] as? [String] {
+            self.vpcWhitelists = value
+        }
+    }
+}
+
+public class GetApiMcpServerUserConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetApiMcpServerUserConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetApiMcpServerUserConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -4681,6 +4898,10 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
 
             public var sse: String?
 
+            public var vpcMcp: String?
+
+            public var vpcSse: String?
+
             public override init() {
                 super.init()
             }
@@ -4701,6 +4922,12 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
                 if self.sse != nil {
                     map["sse"] = self.sse!
                 }
+                if self.vpcMcp != nil {
+                    map["vpcMcp"] = self.vpcMcp!
+                }
+                if self.vpcSse != nil {
+                    map["vpcSse"] = self.vpcSse!
+                }
                 return map
             }
 
@@ -4711,6 +4938,12 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["sse"] as? String {
                     self.sse = value
+                }
+                if let value = dict["vpcMcp"] as? String {
+                    self.vpcMcp = value
+                }
+                if let value = dict["vpcSse"] as? String {
+                    self.vpcSse = value
                 }
             }
         }
@@ -4728,6 +4961,8 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
 
         public var enableAssumeRole: Bool?
 
+        public var enableCustomVpcWhitelist: Bool?
+
         public var id: String?
 
         public var instructions: String?
@@ -4740,6 +4975,8 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
 
         public var prompts: [ListApiMcpServersResponseBody.ApiMcpServers.Prompts]?
 
+        public var publicAccess: String?
+
         public var sourceType: String?
 
         public var systemMcpServerInfo: ListApiMcpServersResponseBody.ApiMcpServers.SystemMcpServerInfo?
@@ -4751,6 +4988,8 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
         public var updateTime: String?
 
         public var urls: ListApiMcpServersResponseBody.ApiMcpServers.Urls?
+
+        public var vpcWhitelists: [String]?
 
         public override init() {
             super.init()
@@ -4797,6 +5036,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
             if self.enableAssumeRole != nil {
                 map["enableAssumeRole"] = self.enableAssumeRole!
             }
+            if self.enableCustomVpcWhitelist != nil {
+                map["enableCustomVpcWhitelist"] = self.enableCustomVpcWhitelist!
+            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -4819,6 +5061,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
                 }
                 map["prompts"] = tmp
             }
+            if self.publicAccess != nil {
+                map["publicAccess"] = self.publicAccess!
+            }
             if self.sourceType != nil {
                 map["sourceType"] = self.sourceType!
             }
@@ -4840,6 +5085,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
             }
             if self.urls != nil {
                 map["urls"] = self.urls?.toMap()
+            }
+            if self.vpcWhitelists != nil {
+                map["vpcWhitelists"] = self.vpcWhitelists!
             }
             return map
         }
@@ -4887,6 +5135,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
             if let value = dict["enableAssumeRole"] as? Bool {
                 self.enableAssumeRole = value
             }
+            if let value = dict["enableCustomVpcWhitelist"] as? Bool {
+                self.enableCustomVpcWhitelist = value
+            }
             if let value = dict["id"] as? String {
                 self.id = value
             }
@@ -4914,6 +5165,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
                     }
                 }
                 self.prompts = tmp
+            }
+            if let value = dict["publicAccess"] as? String {
+                self.publicAccess = value
             }
             if let value = dict["sourceType"] as? String {
                 self.sourceType = value
@@ -4946,6 +5200,9 @@ public class ListApiMcpServersResponseBody : Tea.TeaModel {
                 var model = ListApiMcpServersResponseBody.ApiMcpServers.Urls()
                 model.fromMap(value)
                 self.urls = model
+            }
+            if let value = dict["vpcWhitelists"] as? [String] {
+                self.vpcWhitelists = value
             }
         }
     }
@@ -5440,6 +5697,8 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
 
     public var enableAssumeRole: Bool?
 
+    public var enableCustomVpcWhitelist: Bool?
+
     public var instructions: String?
 
     public var language: String?
@@ -5448,9 +5707,13 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
 
     public var prompts: [UpdateApiMcpServerRequest.Prompts]?
 
+    public var publicAccess: String?
+
     public var systemTools: [String]?
 
     public var terraformTools: [UpdateApiMcpServerRequest.TerraformTools]?
+
+    public var vpcWhitelists: [String]?
 
     public var clientToken: String?
 
@@ -5496,6 +5759,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
         if self.enableAssumeRole != nil {
             map["enableAssumeRole"] = self.enableAssumeRole!
         }
+        if self.enableCustomVpcWhitelist != nil {
+            map["enableCustomVpcWhitelist"] = self.enableCustomVpcWhitelist!
+        }
         if self.instructions != nil {
             map["instructions"] = self.instructions!
         }
@@ -5512,6 +5778,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
             }
             map["prompts"] = tmp
         }
+        if self.publicAccess != nil {
+            map["publicAccess"] = self.publicAccess!
+        }
         if self.systemTools != nil {
             map["systemTools"] = self.systemTools!
         }
@@ -5521,6 +5790,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["terraformTools"] = tmp
+        }
+        if self.vpcWhitelists != nil {
+            map["vpcWhitelists"] = self.vpcWhitelists!
         }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
@@ -5571,6 +5843,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
         if let value = dict["enableAssumeRole"] as? Bool {
             self.enableAssumeRole = value
         }
+        if let value = dict["enableCustomVpcWhitelist"] as? Bool {
+            self.enableCustomVpcWhitelist = value
+        }
         if let value = dict["instructions"] as? String {
             self.instructions = value
         }
@@ -5593,6 +5868,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
             }
             self.prompts = tmp
         }
+        if let value = dict["publicAccess"] as? String {
+            self.publicAccess = value
+        }
         if let value = dict["systemTools"] as? [String] {
             self.systemTools = value
         }
@@ -5608,6 +5886,9 @@ public class UpdateApiMcpServerRequest : Tea.TeaModel {
                 }
             }
             self.terraformTools = tmp
+        }
+        if let value = dict["vpcWhitelists"] as? [String] {
+            self.vpcWhitelists = value
         }
         if let value = dict["clientToken"] as? String {
             self.clientToken = value
@@ -5693,6 +5974,126 @@ public class UpdateApiMcpServerResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateApiMcpServerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateApiMcpServerUserConfigRequest : Tea.TeaModel {
+    public var enablePublicAccess: Bool?
+
+    public var vpcWhitelists: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enablePublicAccess != nil {
+            map["enablePublicAccess"] = self.enablePublicAccess!
+        }
+        if self.vpcWhitelists != nil {
+            map["vpcWhitelists"] = self.vpcWhitelists!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["enablePublicAccess"] as? Bool {
+            self.enablePublicAccess = value
+        }
+        if let value = dict["vpcWhitelists"] as? [String] {
+            self.vpcWhitelists = value
+        }
+    }
+}
+
+public class UpdateApiMcpServerUserConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateApiMcpServerUserConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateApiMcpServerUserConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateApiMcpServerUserConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
