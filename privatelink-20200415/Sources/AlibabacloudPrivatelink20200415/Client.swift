@@ -1717,6 +1717,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resetPolicy)) {
+            query["ResetPolicy"] = request.resetPolicy!;
+        }
         if (!TeaUtils.Client.isUnset(request.zoneAffinityEnabled)) {
             query["ZoneAffinityEnabled"] = request.zoneAffinityEnabled!;
         }

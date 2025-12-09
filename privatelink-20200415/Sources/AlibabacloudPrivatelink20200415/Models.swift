@@ -6226,6 +6226,8 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
         }
         public var addressIpVersion: String?
 
+        public var autoAcceptEnabled: Bool?
+
         public var payer: String?
 
         public var resourceGroupId: String?
@@ -6243,6 +6245,8 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
         public var serviceType: String?
 
         public var tags: [ListVpcEndpointServicesByEndUserResponseBody.Services.Tags]?
+
+        public var vpcEndpointPolicySupported: Bool?
 
         public var zoneAffinityEnabled: Bool?
 
@@ -6264,6 +6268,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.addressIpVersion != nil {
                 map["AddressIpVersion"] = self.addressIpVersion!
+            }
+            if self.autoAcceptEnabled != nil {
+                map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
             }
             if self.payer != nil {
                 map["Payer"] = self.payer!
@@ -6296,6 +6303,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
                 }
                 map["Tags"] = tmp
             }
+            if self.vpcEndpointPolicySupported != nil {
+                map["VpcEndpointPolicySupported"] = self.vpcEndpointPolicySupported!
+            }
             if self.zoneAffinityEnabled != nil {
                 map["ZoneAffinityEnabled"] = self.zoneAffinityEnabled!
             }
@@ -6309,6 +6319,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AddressIpVersion"] as? String {
                 self.addressIpVersion = value
+            }
+            if let value = dict["AutoAcceptEnabled"] as? Bool {
+                self.autoAcceptEnabled = value
             }
             if let value = dict["Payer"] as? String {
                 self.payer = value
@@ -6346,6 +6359,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["VpcEndpointPolicySupported"] as? Bool {
+                self.vpcEndpointPolicySupported = value
             }
             if let value = dict["ZoneAffinityEnabled"] as? Bool {
                 self.zoneAffinityEnabled = value
@@ -8086,6 +8102,8 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resetPolicy: Bool?
+
     public var zoneAffinityEnabled: Bool?
 
     public override init() {
@@ -8126,6 +8144,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resetPolicy != nil {
+            map["ResetPolicy"] = self.resetPolicy!
+        }
         if self.zoneAffinityEnabled != nil {
             map["ZoneAffinityEnabled"] = self.zoneAffinityEnabled!
         }
@@ -8157,6 +8178,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResetPolicy"] as? Bool {
+            self.resetPolicy = value
         }
         if let value = dict["ZoneAffinityEnabled"] as? Bool {
             self.zoneAffinityEnabled = value
