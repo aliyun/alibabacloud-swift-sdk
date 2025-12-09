@@ -2145,9 +2145,13 @@ public class CommonResult : Tea.TeaModel {
 }
 
 public class ContainerConfiguration : Tea.TeaModel {
+    public var acrInstanceId: String?
+
     public var command: [String]?
 
     public var image: String?
+
+    public var imageRegistryType: String?
 
     public override init() {
         super.init()
@@ -2163,22 +2167,34 @@ public class ContainerConfiguration : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acrInstanceId != nil {
+            map["acrInstanceId"] = self.acrInstanceId!
+        }
         if self.command != nil {
             map["command"] = self.command!
         }
         if self.image != nil {
             map["image"] = self.image!
         }
+        if self.imageRegistryType != nil {
+            map["imageRegistryType"] = self.imageRegistryType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["acrInstanceId"] as? String {
+            self.acrInstanceId = value
+        }
         if let value = dict["command"] as? [String] {
             self.command = value
         }
         if let value = dict["image"] as? String {
             self.image = value
+        }
+        if let value = dict["imageRegistryType"] as? String {
+            self.imageRegistryType = value
         }
     }
 }
@@ -8413,9 +8429,9 @@ public class ModelService : Tea.TeaModel {
 
     public var lastUpdatedAt: String?
 
-    public var modeServiceId: String?
-
     public var modelInfoConfigs: [ModelInfoConfig]?
+
+    public var modelServiceId: String?
 
     public var modelServiceName: String?
 
@@ -8459,15 +8475,15 @@ public class ModelService : Tea.TeaModel {
         if self.lastUpdatedAt != nil {
             map["lastUpdatedAt"] = self.lastUpdatedAt!
         }
-        if self.modeServiceId != nil {
-            map["modeServiceId"] = self.modeServiceId!
-        }
         if self.modelInfoConfigs != nil {
             var tmp : [Any] = []
             for k in self.modelInfoConfigs! {
                 tmp.append(k.toMap())
             }
             map["modelInfoConfigs"] = tmp
+        }
+        if self.modelServiceId != nil {
+            map["modelServiceId"] = self.modelServiceId!
         }
         if self.modelServiceName != nil {
             map["modelServiceName"] = self.modelServiceName!
@@ -8507,9 +8523,6 @@ public class ModelService : Tea.TeaModel {
         if let value = dict["lastUpdatedAt"] as? String {
             self.lastUpdatedAt = value
         }
-        if let value = dict["modeServiceId"] as? String {
-            self.modeServiceId = value
-        }
         if let value = dict["modelInfoConfigs"] as? [Any?] {
             var tmp : [ModelInfoConfig] = []
             for v in value {
@@ -8522,6 +8535,9 @@ public class ModelService : Tea.TeaModel {
                 }
             }
             self.modelInfoConfigs = tmp
+        }
+        if let value = dict["modelServiceId"] as? String {
+            self.modelServiceId = value
         }
         if let value = dict["modelServiceName"] as? String {
             self.modelServiceName = value
@@ -10265,7 +10281,7 @@ public class Template : Tea.TeaModel {
 
     public var diskSize: Int32?
 
-    public var environmentVariables: String?
+    public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
 
@@ -10295,7 +10311,7 @@ public class Template : Tea.TeaModel {
 
     public var templateArn: String?
 
-    public var templateConfiguration: String?
+    public var templateConfiguration: [String: Any]?
 
     public var templateId: String?
 
@@ -10434,7 +10450,7 @@ public class Template : Tea.TeaModel {
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
         }
-        if let value = dict["environmentVariables"] as? String {
+        if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
         if let value = dict["executionRoleArn"] as? String {
@@ -10497,7 +10513,7 @@ public class Template : Tea.TeaModel {
         if let value = dict["templateArn"] as? String {
             self.templateArn = value
         }
-        if let value = dict["templateConfiguration"] as? String {
+        if let value = dict["templateConfiguration"] as? [String: Any] {
             self.templateConfiguration = value
         }
         if let value = dict["templateId"] as? String {
