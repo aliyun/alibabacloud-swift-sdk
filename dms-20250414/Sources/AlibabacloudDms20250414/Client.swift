@@ -756,6 +756,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatContentWithOptions(_ request: GetChatContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChatContentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkpoint)) {
+            query["Checkpoint"] = request.checkpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
+            query["DMSUnit"] = request.DMSUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetChatContent",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetChatContentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatContent(_ request: GetChatContentRequest) async throws -> GetChatContentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getChatContentWithOptions(request as! GetChatContentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDataLakeCatalogWithOptions(_ request: GetDataLakeCatalogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDataLakeCatalogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1012,6 +1052,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getNotebookAndSubmitTask(_ request: GetNotebookAndSubmitTaskRequest) async throws -> GetNotebookAndSubmitTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getNotebookAndSubmitTaskWithOptions(request as! GetNotebookAndSubmitTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotebookTaskStatusWithOptions(_ request: GetNotebookTaskStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNotebookTaskStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNotebookTaskStatus",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNotebookTaskStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotebookTaskStatus(_ request: GetNotebookTaskStatusRequest) async throws -> GetNotebookTaskStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNotebookTaskStatusWithOptions(request as! GetNotebookTaskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1551,6 +1628,72 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDataLakeTablebaseInfo(_ request: ListDataLakeTablebaseInfoRequest) async throws -> ListDataLakeTablebaseInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDataLakeTablebaseInfoWithOptions(request as! ListDataLakeTablebaseInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendChatMessageWithOptions(_ tmpReq: SendChatMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendChatMessageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SendChatMessageShrinkRequest = SendChatMessageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSource)) {
+            request.dataSourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSource, "DataSource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sessionConfig)) {
+            request.sessionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sessionConfig, "SessionConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
+            query["DMSUnit"] = request.DMSUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceShrink)) {
+            query["DataSource"] = request.dataSourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.message)) {
+            query["Message"] = request.message ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageType)) {
+            query["MessageType"] = request.messageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.question)) {
+            query["Question"] = request.question ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotedMessage)) {
+            query["QuotedMessage"] = request.quotedMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replyTo)) {
+            query["ReplyTo"] = request.replyTo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionConfigShrink)) {
+            query["SessionConfig"] = request.sessionConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendChatMessage",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendChatMessageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendChatMessage(_ request: SendChatMessageRequest) async throws -> SendChatMessageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendChatMessageWithOptions(request as! SendChatMessageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
