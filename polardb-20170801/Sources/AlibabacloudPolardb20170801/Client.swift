@@ -1206,6 +1206,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
             query["Components"] = request.componentsShrink ?? "";
         }
@@ -1229,6 +1232,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.polarFSInstanceId)) {
             query["PolarFSInstanceId"] = request.polarFSInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -1508,6 +1514,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.backupRetentionPolicyOnClusterDeletion)) {
             query["BackupRetentionPolicyOnClusterDeletion"] = request.backupRetentionPolicyOnClusterDeletion ?? "";
         }
@@ -1588,6 +1597,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
             query["ProvisionedIops"] = request.provisionedIops!;
@@ -1999,6 +2011,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDBNodesWithOptions(_ request: CreateDBNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBNodesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -2031,6 +2046,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
@@ -2655,6 +2673,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createStoragePlanWithOptions(_ request: CreateStoragePlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateStoragePlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -2666,6 +2687,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -11149,11 +11173,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterArchWithOptions(_ request: ModifyDBClusterArchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterArchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hotStandbyCluster)) {
             query["HotStandbyCluster"] = request.hotStandbyCluster ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -12035,6 +12065,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterStoragePerformanceWithOptions(_ request: ModifyDBClusterStoragePerformanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterStoragePerformanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.burstingEnabled)) {
             query["BurstingEnabled"] = request.burstingEnabled ?? "";
         }
@@ -12046,6 +12079,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modifyType)) {
             query["ModifyType"] = request.modifyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
             query["ProvisionedIops"] = request.provisionedIops!;
@@ -12084,6 +12120,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterStorageSpaceWithOptions(_ request: ModifyDBClusterStorageSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterStorageSpaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -12104,6 +12143,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -12417,6 +12459,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBNodeClassWithOptions(_ request: ModifyDBNodeClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBNodeClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -12449,6 +12494,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -12689,6 +12737,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBNodesClassWithOptions(_ request: ModifyDBNodesClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBNodesClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -12718,6 +12769,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -14337,6 +14391,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func tempModifyDBNodeWithOptions(_ request: TempModifyDBNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TempModifyDBNodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -14357,6 +14414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -14395,6 +14455,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func transformDBClusterPayTypeWithOptions(_ request: TransformDBClusterPayTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TransformDBClusterPayTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -14412,6 +14475,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";

@@ -4164,6 +4164,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var autoUseCoupon: Bool?
+
     public var components: [CreateApplicationRequest.Components]?
 
     public var DBClusterId: String?
@@ -4179,6 +4181,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var period: String?
 
     public var polarFSInstanceId: String?
+
+    public var promotionCode: String?
 
     public var regionId: String?
 
@@ -4215,6 +4219,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.components != nil {
             var tmp : [Any] = []
             for k in self.components! {
@@ -4247,6 +4254,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.polarFSInstanceId != nil {
             map["PolarFSInstanceId"] = self.polarFSInstanceId!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4278,6 +4288,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
+        }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
         }
         if let value = dict["Components"] as? [Any?] {
             var tmp : [CreateApplicationRequest.Components] = []
@@ -4323,6 +4336,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["PolarFSInstanceId"] as? String {
             self.polarFSInstanceId = value
         }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -4351,6 +4367,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var autoUseCoupon: Bool?
+
     public var componentsShrink: String?
 
     public var DBClusterId: String?
@@ -4366,6 +4384,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var period: String?
 
     public var polarFSInstanceId: String?
+
+    public var promotionCode: String?
 
     public var regionId: String?
 
@@ -4402,6 +4422,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.componentsShrink != nil {
             map["Components"] = self.componentsShrink!
         }
@@ -4425,6 +4448,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.polarFSInstanceId != nil {
             map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -4458,6 +4484,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["Components"] as? String {
             self.componentsShrink = value
         }
@@ -4481,6 +4510,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolarFSInstanceId"] as? String {
             self.polarFSInstanceId = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -5529,6 +5561,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var autoUseCoupon: Bool?
+
     public var backupRetentionPolicyOnClusterDeletion: String?
 
     public var burstingEnabled: String?
@@ -5582,6 +5616,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
     public var payType: String?
 
     public var period: String?
+
+    public var promotionCode: String?
 
     public var provisionedIops: Int64?
 
@@ -5668,6 +5704,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.backupRetentionPolicyOnClusterDeletion != nil {
             map["BackupRetentionPolicyOnClusterDeletion"] = self.backupRetentionPolicyOnClusterDeletion!
         }
@@ -5748,6 +5787,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.provisionedIops != nil {
             map["ProvisionedIops"] = self.provisionedIops!
@@ -5860,6 +5902,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["BackupRetentionPolicyOnClusterDeletion"] as? String {
             self.backupRetentionPolicyOnClusterDeletion = value
         }
@@ -5940,6 +5985,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if let value = dict["Period"] as? String {
             self.period = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ProvisionedIops"] as? Int64 {
             self.provisionedIops = value
@@ -7131,6 +7179,8 @@ public class CreateDBNodesRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var cloudProvider: String?
@@ -7153,6 +7203,8 @@ public class CreateDBNodesRequest : Tea.TeaModel {
 
     public var plannedStartTime: String?
 
+    public var promotionCode: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -7173,6 +7225,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -7210,6 +7265,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -7224,6 +7282,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -7266,6 +7327,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
         }
         if let value = dict["PlannedStartTime"] as? String {
             self.plannedStartTime = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -9478,6 +9542,8 @@ public class CreateServiceLinkedRoleResponse : Tea.TeaModel {
 }
 
 public class CreateStoragePlanRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var ownerAccount: String?
@@ -9485,6 +9551,8 @@ public class CreateStoragePlanRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var period: String?
+
+    public var promotionCode: String?
 
     public var resourceOwnerAccount: String?
 
@@ -9510,6 +9578,9 @@ public class CreateStoragePlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -9521,6 +9592,9 @@ public class CreateStoragePlanRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
@@ -9542,6 +9616,9 @@ public class CreateStoragePlanRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -9553,6 +9630,9 @@ public class CreateStoragePlanRequest : Tea.TeaModel {
         }
         if let value = dict["Period"] as? String {
             self.period = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -14133,6 +14213,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var DBVersion: String?
 
+    public var ecsSecurityGroupId: String?
+
     public var endpointList: [DescribeAIDBClusterAttributeResponseBody.EndpointList]?
 
     public var expireTime: String?
@@ -14211,6 +14293,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.DBVersion != nil {
             map["DBVersion"] = self.DBVersion!
+        }
+        if self.ecsSecurityGroupId != nil {
+            map["EcsSecurityGroupId"] = self.ecsSecurityGroupId!
         }
         if self.endpointList != nil {
             var tmp : [Any] = []
@@ -14315,6 +14400,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["DBVersion"] as? String {
             self.DBVersion = value
+        }
+        if let value = dict["EcsSecurityGroupId"] as? String {
+            self.ecsSecurityGroupId = value
         }
         if let value = dict["EndpointList"] as? [Any?] {
             var tmp : [DescribeAIDBClusterAttributeResponseBody.EndpointList] = []
@@ -46900,6 +46988,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var customBucketPath: String?
+
     public var DBType: String?
 
     public var expireTime: String?
@@ -46988,6 +47078,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.customBucketPath != nil {
+            map["CustomBucketPath"] = self.customBucketPath!
         }
         if self.DBType != nil {
             map["DBType"] = self.DBType!
@@ -47092,6 +47185,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CustomBucketPath"] as? String {
+            self.customBucketPath = value
         }
         if let value = dict["DBType"] as? String {
             self.DBType = value
@@ -60294,9 +60390,13 @@ public class ModifyDBClusterAndNodesParametersResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterArchRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var DBClusterId: String?
 
     public var hotStandbyCluster: String?
+
+    public var promotionCode: String?
 
     public var regionId: String?
 
@@ -60316,11 +60416,17 @@ public class ModifyDBClusterArchRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
         if self.hotStandbyCluster != nil {
             map["HotStandbyCluster"] = self.hotStandbyCluster!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -60333,11 +60439,17 @@ public class ModifyDBClusterArchRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
         if let value = dict["HotStandbyCluster"] as? String {
             self.hotStandbyCluster = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -63166,6 +63278,8 @@ public class ModifyDBClusterServerlessConfResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var burstingEnabled: String?
 
     public var clientToken: String?
@@ -63173,6 +63287,8 @@ public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
     public var modifyType: String?
+
+    public var promotionCode: String?
 
     public var provisionedIops: Int32?
 
@@ -63194,6 +63310,9 @@ public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.burstingEnabled != nil {
             map["BurstingEnabled"] = self.burstingEnabled!
         }
@@ -63205,6 +63324,9 @@ public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
         }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.provisionedIops != nil {
             map["ProvisionedIops"] = self.provisionedIops!
@@ -63220,6 +63342,9 @@ public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["BurstingEnabled"] as? String {
             self.burstingEnabled = value
         }
@@ -63231,6 +63356,9 @@ public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
         }
         if let value = dict["ModifyType"] as? String {
             self.modifyType = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ProvisionedIops"] as? Int32 {
             self.provisionedIops = value
@@ -63342,6 +63470,8 @@ public class ModifyDBClusterStoragePerformanceResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var cloudProvider: String?
@@ -63355,6 +63485,8 @@ public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
     public var plannedEndTime: String?
 
     public var plannedStartTime: String?
+
+    public var promotionCode: String?
 
     public var resourceOwnerAccount: String?
 
@@ -63378,6 +63510,9 @@ public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -63399,6 +63534,9 @@ public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -63416,6 +63554,9 @@ public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -63436,6 +63577,9 @@ public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
         }
         if let value = dict["PlannedStartTime"] as? String {
             self.plannedStartTime = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -64422,6 +64566,8 @@ public class ModifyDBEndpointAddressResponse : Tea.TeaModel {
 }
 
 public class ModifyDBNodeClassRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var cloudProvider: String?
@@ -64444,6 +64590,8 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
 
     public var plannedStartTime: String?
 
+    public var promotionCode: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -64464,6 +64612,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -64497,6 +64648,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -64511,6 +64665,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -64543,6 +64700,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         }
         if let value = dict["PlannedStartTime"] as? String {
             self.plannedStartTime = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -65364,6 +65524,8 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var cloudProvider: String?
@@ -65383,6 +65545,8 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
     public var plannedFlashingOffTime: String?
 
     public var plannedStartTime: String?
+
+    public var promotionCode: String?
 
     public var resourceOwnerAccount: String?
 
@@ -65404,6 +65568,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -65438,6 +65605,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -65452,6 +65622,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -65491,6 +65664,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
         }
         if let value = dict["PlannedStartTime"] as? String {
             self.plannedStartTime = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -71463,6 +71639,8 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var DBClusterId: String?
@@ -71476,6 +71654,8 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var promotionCode: String?
 
     public var resourceOwnerAccount: String?
 
@@ -71497,6 +71677,9 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -71522,6 +71705,9 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -71536,6 +71722,9 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -71566,6 +71755,9 @@ public class TempModifyDBNodeRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -71685,6 +71877,8 @@ public class TempModifyDBNodeResponse : Tea.TeaModel {
 }
 
 public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var clientToken: String?
 
     public var DBClusterId: String?
@@ -71696,6 +71890,8 @@ public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
     public var payType: String?
 
     public var period: String?
+
+    public var promotionCode: String?
 
     public var regionId: String?
 
@@ -71721,6 +71917,9 @@ public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -71738,6 +71937,9 @@ public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -71759,6 +71961,9 @@ public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -71776,6 +71981,9 @@ public class TransformDBClusterPayTypeRequest : Tea.TeaModel {
         }
         if let value = dict["Period"] as? String {
             self.period = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
