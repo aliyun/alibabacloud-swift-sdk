@@ -25454,6 +25454,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCloudAssetInstancesWithOptions(_ request: ListCloudAssetInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudAssetInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAssetQueryData)) {
+            query["CloudAssetQueryData"] = request.cloudAssetQueryData ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.cloudAssetTypes)) {
             query["CloudAssetTypes"] = request.cloudAssetTypes ?? [];
         }
