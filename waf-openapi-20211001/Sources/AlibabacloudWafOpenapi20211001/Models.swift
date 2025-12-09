@@ -823,6 +823,8 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
 
         public var resourceProduct: String?
 
+        public var resourceRegionId: String?
+
         public var TLSVersion: String?
 
         public override init() {
@@ -870,6 +872,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             if self.resourceProduct != nil {
                 map["ResourceProduct"] = self.resourceProduct!
             }
+            if self.resourceRegionId != nil {
+                map["ResourceRegionId"] = self.resourceRegionId!
+            }
             if self.TLSVersion != nil {
                 map["TLSVersion"] = self.TLSVersion!
             }
@@ -914,6 +919,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
             if let value = dict["ResourceProduct"] as? String {
                 self.resourceProduct = value
+            }
+            if let value = dict["ResourceRegionId"] as? String {
+                self.resourceRegionId = value
             }
             if let value = dict["TLSVersion"] as? String {
                 self.TLSVersion = value
@@ -13106,6 +13114,266 @@ public class DescribeBaseSystemRulesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeBaseSystemRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeBotRuleLabelsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var labelType: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public var subScene: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.labelType != nil {
+            map["LabelType"] = self.labelType!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        if self.subScene != nil {
+            map["SubScene"] = self.subScene!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["LabelType"] as? String {
+            self.labelType = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+        if let value = dict["SubScene"] as? String {
+            self.subScene = value
+        }
+    }
+}
+
+public class DescribeBotRuleLabelsResponseBody : Tea.TeaModel {
+    public class RuleLabels : Tea.TeaModel {
+        public var botBehavior: String?
+
+        public var labelKey: String?
+
+        public var labelType: String?
+
+        public var subScene: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.botBehavior != nil {
+                map["BotBehavior"] = self.botBehavior!
+            }
+            if self.labelKey != nil {
+                map["LabelKey"] = self.labelKey!
+            }
+            if self.labelType != nil {
+                map["LabelType"] = self.labelType!
+            }
+            if self.subScene != nil {
+                map["SubScene"] = self.subScene!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BotBehavior"] as? String {
+                self.botBehavior = value
+            }
+            if let value = dict["LabelKey"] as? String {
+                self.labelKey = value
+            }
+            if let value = dict["LabelType"] as? String {
+                self.labelType = value
+            }
+            if let value = dict["SubScene"] as? String {
+                self.subScene = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var ruleLabels: [DescribeBotRuleLabelsResponseBody.RuleLabels]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.ruleLabels != nil {
+            var tmp : [Any] = []
+            for k in self.ruleLabels! {
+                tmp.append(k.toMap())
+            }
+            map["RuleLabels"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RuleLabels"] as? [Any?] {
+            var tmp : [DescribeBotRuleLabelsResponseBody.RuleLabels] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeBotRuleLabelsResponseBody.RuleLabels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ruleLabels = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeBotRuleLabelsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBotRuleLabelsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeBotRuleLabelsResponseBody()
             model.fromMap(value)
             self.body = model
         }
