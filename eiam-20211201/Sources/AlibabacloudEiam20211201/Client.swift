@@ -6980,6 +6980,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateApplicationSsoFormParamsWithOptions(_ request: UpdateApplicationSsoFormParamsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApplicationSsoFormParamsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationTemplateParams)) {
+            query["ApplicationTemplateParams"] = request.applicationTemplateParams ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateApplicationSsoFormParams",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateApplicationSsoFormParamsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateApplicationSsoFormParams(_ request: UpdateApplicationSsoFormParamsRequest) async throws -> UpdateApplicationSsoFormParamsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateApplicationSsoFormParamsWithOptions(request as! UpdateApplicationSsoFormParamsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateApplicationTokenExpirationTimeWithOptions(_ request: UpdateApplicationTokenExpirationTimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApplicationTokenExpirationTimeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
