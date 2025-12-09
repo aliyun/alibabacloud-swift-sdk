@@ -32545,6 +32545,285 @@ public class RebootRenderingInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class RebootRenderingServerRequest : Tea.TeaModel {
+    public var renderingInstanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.renderingInstanceIds != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RenderingInstanceIds"] as? [String] {
+            self.renderingInstanceIds = value
+        }
+    }
+}
+
+public class RebootRenderingServerShrinkRequest : Tea.TeaModel {
+    public var renderingInstanceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.renderingInstanceIdsShrink != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RenderingInstanceIds"] as? String {
+            self.renderingInstanceIdsShrink = value
+        }
+    }
+}
+
+public class RebootRenderingServerResponseBody : Tea.TeaModel {
+    public class FailedInstances : Tea.TeaModel {
+        public var errCode: Int32?
+
+        public var errMessage: String?
+
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errCode != nil {
+                map["ErrCode"] = self.errCode!
+            }
+            if self.errMessage != nil {
+                map["ErrMessage"] = self.errMessage!
+            }
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrCode"] as? Int32 {
+                self.errCode = value
+            }
+            if let value = dict["ErrMessage"] as? String {
+                self.errMessage = value
+            }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public class SuccessInstances : Tea.TeaModel {
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public var failedInstanceCount: Int32?
+
+    public var failedInstances: [RebootRenderingServerResponseBody.FailedInstances]?
+
+    public var requestId: String?
+
+    public var successInstanceCount: Int32?
+
+    public var successInstances: [RebootRenderingServerResponseBody.SuccessInstances]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failedInstanceCount != nil {
+            map["FailedInstanceCount"] = self.failedInstanceCount!
+        }
+        if self.failedInstances != nil {
+            var tmp : [Any] = []
+            for k in self.failedInstances! {
+                tmp.append(k.toMap())
+            }
+            map["FailedInstances"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successInstanceCount != nil {
+            map["SuccessInstanceCount"] = self.successInstanceCount!
+        }
+        if self.successInstances != nil {
+            var tmp : [Any] = []
+            for k in self.successInstances! {
+                tmp.append(k.toMap())
+            }
+            map["SuccessInstances"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FailedInstanceCount"] as? Int32 {
+            self.failedInstanceCount = value
+        }
+        if let value = dict["FailedInstances"] as? [Any?] {
+            var tmp : [RebootRenderingServerResponseBody.FailedInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = RebootRenderingServerResponseBody.FailedInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.failedInstances = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SuccessInstanceCount"] as? Int32 {
+            self.successInstanceCount = value
+        }
+        if let value = dict["SuccessInstances"] as? [Any?] {
+            var tmp : [RebootRenderingServerResponseBody.SuccessInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = RebootRenderingServerResponseBody.SuccessInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.successInstances = tmp
+        }
+    }
+}
+
+public class RebootRenderingServerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RebootRenderingServerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RebootRenderingServerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RecoverRenderingDataPackageRequest : Tea.TeaModel {
     public var dataPackageId: String?
 

@@ -5982,6 +5982,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rebootRenderingServerWithOptions(_ tmpReq: RebootRenderingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RebootRenderingServerResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RebootRenderingServerShrinkRequest = RebootRenderingServerShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.renderingInstanceIds)) {
+            request.renderingInstanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.renderingInstanceIds, "RenderingInstanceIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceIdsShrink)) {
+            query["RenderingInstanceIds"] = request.renderingInstanceIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RebootRenderingServer",
+            "version": "2018-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RebootRenderingServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rebootRenderingServer(_ request: RebootRenderingServerRequest) async throws -> RebootRenderingServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await rebootRenderingServerWithOptions(request as! RebootRenderingServerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func recoverRenderingDataPackageWithOptions(_ request: RecoverRenderingDataPackageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecoverRenderingDataPackageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
