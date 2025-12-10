@@ -5387,6 +5387,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var instanceSpec: String?
 
+        public var loginPassword: String?
+
         public var nodePortRange: String?
 
         public var runtime: String?
@@ -5417,6 +5419,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.instanceSpec != nil {
                 map["InstanceSpec"] = self.instanceSpec!
             }
+            if self.loginPassword != nil {
+                map["LoginPassword"] = self.loginPassword!
+            }
             if self.nodePortRange != nil {
                 map["NodePortRange"] = self.nodePortRange!
             }
@@ -5442,6 +5447,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if let value = dict["InstanceSpec"] as? String {
                 self.instanceSpec = value
+            }
+            if let value = dict["LoginPassword"] as? String {
+                self.loginPassword = value
             }
             if let value = dict["NodePortRange"] as? String {
                 self.nodePortRange = value
@@ -6122,7 +6130,11 @@ public class CreateEipInstanceRequest : Tea.TeaModel {
 
     public var instanceChargeType: String?
 
+    public var instanceId: String?
+
     public var internetChargeType: String?
+
+    public var ipAddress: String?
 
     public var isp: String?
 
@@ -6159,8 +6171,14 @@ public class CreateEipInstanceRequest : Tea.TeaModel {
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.internetChargeType != nil {
             map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.ipAddress != nil {
+            map["IpAddress"] = self.ipAddress!
         }
         if self.isp != nil {
             map["Isp"] = self.isp!
@@ -6195,8 +6213,14 @@ public class CreateEipInstanceRequest : Tea.TeaModel {
         if let value = dict["InstanceChargeType"] as? String {
             self.instanceChargeType = value
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["InternetChargeType"] as? String {
             self.internetChargeType = value
+        }
+        if let value = dict["IpAddress"] as? String {
+            self.ipAddress = value
         }
         if let value = dict["Isp"] as? String {
             self.isp = value
