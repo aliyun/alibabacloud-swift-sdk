@@ -7220,6 +7220,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public class ClipboardGraineds : Tea.TeaModel {
         public var clipboardSize: Int32?
 
+        public var clipboardSizeUnit: String?
+
         public var clipboardType: String?
 
         public var grainedType: String?
@@ -7241,6 +7243,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             if self.clipboardSize != nil {
                 map["ClipboardSize"] = self.clipboardSize!
             }
+            if self.clipboardSizeUnit != nil {
+                map["ClipboardSizeUnit"] = self.clipboardSizeUnit!
+            }
             if self.clipboardType != nil {
                 map["ClipboardType"] = self.clipboardType!
             }
@@ -7254,6 +7259,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ClipboardSize"] as? Int32 {
                 self.clipboardSize = value
+            }
+            if let value = dict["ClipboardSizeUnit"] as? String {
+                self.clipboardSizeUnit = value
             }
             if let value = dict["ClipboardType"] as? String {
                 self.clipboardType = value
@@ -58375,6 +58383,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public class ClipboardGraineds : Tea.TeaModel {
         public var clipboardSize: Int32?
 
+        public var clipboardSizeUnit: String?
+
         public var clipboardType: String?
 
         public var grainedType: String?
@@ -58396,6 +58406,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             if self.clipboardSize != nil {
                 map["ClipboardSize"] = self.clipboardSize!
             }
+            if self.clipboardSizeUnit != nil {
+                map["ClipboardSizeUnit"] = self.clipboardSizeUnit!
+            }
             if self.clipboardType != nil {
                 map["ClipboardType"] = self.clipboardType!
             }
@@ -58409,6 +58422,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ClipboardSize"] as? Int32 {
                 self.clipboardSize = value
+            }
+            if let value = dict["ClipboardSizeUnit"] as? String {
+                self.clipboardSizeUnit = value
             }
             if let value = dict["ClipboardType"] as? String {
                 self.clipboardType = value
