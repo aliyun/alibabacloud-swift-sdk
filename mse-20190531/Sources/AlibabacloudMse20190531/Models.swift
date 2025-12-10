@@ -28364,11 +28364,15 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
 
         public var keepaliveHeaderTimeout: Int32?
 
+        public var liteMetrics: Bool?
+
         public var logFilterConfig: String?
 
         public var noSupportedConfigList: String?
 
         public var pathWithEscapedSlashes: String?
+
+        public var preserveExternalRequestID: Bool?
 
         public var preserveHeaderFormat: Bool?
 
@@ -28464,6 +28468,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             if self.keepaliveHeaderTimeout != nil {
                 map["KeepaliveHeaderTimeout"] = self.keepaliveHeaderTimeout!
             }
+            if self.liteMetrics != nil {
+                map["LiteMetrics"] = self.liteMetrics!
+            }
             if self.logFilterConfig != nil {
                 map["LogFilterConfig"] = self.logFilterConfig!
             }
@@ -28472,6 +28479,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if self.pathWithEscapedSlashes != nil {
                 map["PathWithEscapedSlashes"] = self.pathWithEscapedSlashes!
+            }
+            if self.preserveExternalRequestID != nil {
+                map["PreserveExternalRequestID"] = self.preserveExternalRequestID!
             }
             if self.preserveHeaderFormat != nil {
                 map["PreserveHeaderFormat"] = self.preserveHeaderFormat!
@@ -28566,6 +28576,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             if let value = dict["KeepaliveHeaderTimeout"] as? Int32 {
                 self.keepaliveHeaderTimeout = value
             }
+            if let value = dict["LiteMetrics"] as? Bool {
+                self.liteMetrics = value
+            }
             if let value = dict["LogFilterConfig"] as? String {
                 self.logFilterConfig = value
             }
@@ -28574,6 +28587,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["PathWithEscapedSlashes"] as? String {
                 self.pathWithEscapedSlashes = value
+            }
+            if let value = dict["PreserveExternalRequestID"] as? Bool {
+                self.preserveExternalRequestID = value
             }
             if let value = dict["PreserveHeaderFormat"] as? Bool {
                 self.preserveHeaderFormat = value
