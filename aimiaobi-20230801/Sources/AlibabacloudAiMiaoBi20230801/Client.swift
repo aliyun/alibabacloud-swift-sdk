@@ -127,9 +127,27 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.colorWords)) {
             request.colorWordsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.colorWords, "ColorWords", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.stickers)) {
+            request.stickersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stickers, "Stickers", "json")
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.closeMusic)) {
+            body["CloseMusic"] = request.closeMusic!;
+        }
+        if (!TeaUtils.Client.isUnset(request.closeSubtitle)) {
+            body["CloseSubtitle"] = request.closeSubtitle!;
+        }
+        if (!TeaUtils.Client.isUnset(request.closeVoice)) {
+            body["CloseVoice"] = request.closeVoice!;
+        }
         if (!TeaUtils.Client.isUnset(request.colorWordsShrink)) {
             body["ColorWords"] = request.colorWordsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customVoiceUrl)) {
+            body["CustomVoiceUrl"] = request.customVoiceUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customVoiceVolume)) {
+            body["CustomVoiceVolume"] = request.customVoiceVolume!;
         }
         if (!TeaUtils.Client.isUnset(request.height)) {
             body["Height"] = request.height!;
@@ -139,6 +157,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.musicVolume)) {
             body["MusicVolume"] = request.musicVolume!;
+        }
+        if (!TeaUtils.Client.isUnset(request.stickersShrink)) {
+            body["Stickers"] = request.stickersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.subtitleFontSize)) {
             body["SubtitleFontSize"] = request.subtitleFontSize!;
@@ -321,18 +342,33 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.sourceVideos)) {
             request.sourceVideosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceVideos, "SourceVideos", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.videoRoles)) {
+            request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "VideoRoles", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.anlysisPrompt)) {
             body["AnlysisPrompt"] = request.anlysisPrompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceIdentitySimilarityMinScore)) {
+            body["FaceIdentitySimilarityMinScore"] = request.faceIdentitySimilarityMinScore!;
+        }
         if (!TeaUtils.Client.isUnset(request.referenceVideoShrink)) {
             body["ReferenceVideo"] = request.referenceVideoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.removeSubtitle)) {
+            body["RemoveSubtitle"] = request.removeSubtitle!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceVideosShrink)) {
             body["SourceVideos"] = request.sourceVideosShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.splitInterval)) {
             body["SplitInterval"] = request.splitInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.videoRolesShrink)) {
+            body["VideoRoles"] = request.videoRolesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoShotFaceIdentityCount)) {
+            body["VideoShotFaceIdentityCount"] = request.videoShotFaceIdentityCount!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

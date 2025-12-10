@@ -1769,13 +1769,111 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class Stickers : Tea.TeaModel {
+        public var duration: Int32?
+
+        public var dyncFrames: Int32?
+
+        public var height: Int32?
+
+        public var timelineIn: Int32?
+
+        public var url: String?
+
+        public var width: Int32?
+
+        public var x: Double?
+
+        public var y: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.dyncFrames != nil {
+                map["DyncFrames"] = self.dyncFrames!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.timelineIn != nil {
+                map["TimelineIn"] = self.timelineIn!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            if self.x != nil {
+                map["X"] = self.x!
+            }
+            if self.y != nil {
+                map["Y"] = self.y!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Int32 {
+                self.duration = value
+            }
+            if let value = dict["DyncFrames"] as? Int32 {
+                self.dyncFrames = value
+            }
+            if let value = dict["Height"] as? Int32 {
+                self.height = value
+            }
+            if let value = dict["TimelineIn"] as? Int32 {
+                self.timelineIn = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+            if let value = dict["Width"] as? Int32 {
+                self.width = value
+            }
+            if let value = dict["X"] as? Double {
+                self.x = value
+            }
+            if let value = dict["Y"] as? Double {
+                self.y = value
+            }
+        }
+    }
+    public var closeMusic: Bool?
+
+    public var closeSubtitle: Bool?
+
+    public var closeVoice: Bool?
+
     public var colorWords: [AsyncCreateClipsTaskRequest.ColorWords]?
+
+    public var customVoiceUrl: String?
+
+    public var customVoiceVolume: Int32?
 
     public var height: Int32?
 
     public var musicUrl: String?
 
     public var musicVolume: Int32?
+
+    public var stickers: [AsyncCreateClipsTaskRequest.Stickers]?
 
     public var subtitleFontSize: Int32?
 
@@ -1803,12 +1901,27 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.closeMusic != nil {
+            map["CloseMusic"] = self.closeMusic!
+        }
+        if self.closeSubtitle != nil {
+            map["CloseSubtitle"] = self.closeSubtitle!
+        }
+        if self.closeVoice != nil {
+            map["CloseVoice"] = self.closeVoice!
+        }
         if self.colorWords != nil {
             var tmp : [Any] = []
             for k in self.colorWords! {
                 tmp.append(k.toMap())
             }
             map["ColorWords"] = tmp
+        }
+        if self.customVoiceUrl != nil {
+            map["CustomVoiceUrl"] = self.customVoiceUrl!
+        }
+        if self.customVoiceVolume != nil {
+            map["CustomVoiceVolume"] = self.customVoiceVolume!
         }
         if self.height != nil {
             map["Height"] = self.height!
@@ -1818,6 +1931,13 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
         }
         if self.musicVolume != nil {
             map["MusicVolume"] = self.musicVolume!
+        }
+        if self.stickers != nil {
+            var tmp : [Any] = []
+            for k in self.stickers! {
+                tmp.append(k.toMap())
+            }
+            map["Stickers"] = tmp
         }
         if self.subtitleFontSize != nil {
             map["SubtitleFontSize"] = self.subtitleFontSize!
@@ -1842,6 +1962,15 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloseMusic"] as? Bool {
+            self.closeMusic = value
+        }
+        if let value = dict["CloseSubtitle"] as? Bool {
+            self.closeSubtitle = value
+        }
+        if let value = dict["CloseVoice"] as? Bool {
+            self.closeVoice = value
+        }
         if let value = dict["ColorWords"] as? [Any?] {
             var tmp : [AsyncCreateClipsTaskRequest.ColorWords] = []
             for v in value {
@@ -1855,6 +1984,12 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
             }
             self.colorWords = tmp
         }
+        if let value = dict["CustomVoiceUrl"] as? String {
+            self.customVoiceUrl = value
+        }
+        if let value = dict["CustomVoiceVolume"] as? Int32 {
+            self.customVoiceVolume = value
+        }
         if let value = dict["Height"] as? Int32 {
             self.height = value
         }
@@ -1863,6 +1998,19 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
         }
         if let value = dict["MusicVolume"] as? Int32 {
             self.musicVolume = value
+        }
+        if let value = dict["Stickers"] as? [Any?] {
+            var tmp : [AsyncCreateClipsTaskRequest.Stickers] = []
+            for v in value {
+                if v != nil {
+                    var model = AsyncCreateClipsTaskRequest.Stickers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.stickers = tmp
         }
         if let value = dict["SubtitleFontSize"] as? Int32 {
             self.subtitleFontSize = value
@@ -1886,13 +2034,25 @@ public class AsyncCreateClipsTaskRequest : Tea.TeaModel {
 }
 
 public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
+    public var closeMusic: Bool?
+
+    public var closeSubtitle: Bool?
+
+    public var closeVoice: Bool?
+
     public var colorWordsShrink: String?
+
+    public var customVoiceUrl: String?
+
+    public var customVoiceVolume: Int32?
 
     public var height: Int32?
 
     public var musicUrl: String?
 
     public var musicVolume: Int32?
+
+    public var stickersShrink: String?
 
     public var subtitleFontSize: Int32?
 
@@ -1920,8 +2080,23 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.closeMusic != nil {
+            map["CloseMusic"] = self.closeMusic!
+        }
+        if self.closeSubtitle != nil {
+            map["CloseSubtitle"] = self.closeSubtitle!
+        }
+        if self.closeVoice != nil {
+            map["CloseVoice"] = self.closeVoice!
+        }
         if self.colorWordsShrink != nil {
             map["ColorWords"] = self.colorWordsShrink!
+        }
+        if self.customVoiceUrl != nil {
+            map["CustomVoiceUrl"] = self.customVoiceUrl!
+        }
+        if self.customVoiceVolume != nil {
+            map["CustomVoiceVolume"] = self.customVoiceVolume!
         }
         if self.height != nil {
             map["Height"] = self.height!
@@ -1931,6 +2106,9 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
         }
         if self.musicVolume != nil {
             map["MusicVolume"] = self.musicVolume!
+        }
+        if self.stickersShrink != nil {
+            map["Stickers"] = self.stickersShrink!
         }
         if self.subtitleFontSize != nil {
             map["SubtitleFontSize"] = self.subtitleFontSize!
@@ -1955,8 +2133,23 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloseMusic"] as? Bool {
+            self.closeMusic = value
+        }
+        if let value = dict["CloseSubtitle"] as? Bool {
+            self.closeSubtitle = value
+        }
+        if let value = dict["CloseVoice"] as? Bool {
+            self.closeVoice = value
+        }
         if let value = dict["ColorWords"] as? String {
             self.colorWordsShrink = value
+        }
+        if let value = dict["CustomVoiceUrl"] as? String {
+            self.customVoiceUrl = value
+        }
+        if let value = dict["CustomVoiceVolume"] as? Int32 {
+            self.customVoiceVolume = value
         }
         if let value = dict["Height"] as? Int32 {
             self.height = value
@@ -1966,6 +2159,9 @@ public class AsyncCreateClipsTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MusicVolume"] as? Int32 {
             self.musicVolume = value
+        }
+        if let value = dict["Stickers"] as? String {
+            self.stickersShrink = value
         }
         if let value = dict["SubtitleFontSize"] as? Int32 {
             self.subtitleFontSize = value
@@ -3085,13 +3281,119 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
             }
         }
     }
+    public class VideoRoles : Tea.TeaModel {
+        public class RoleUrls : Tea.TeaModel {
+            public var roleFileName: String?
+
+            public var roleFileUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.roleFileName != nil {
+                    map["RoleFileName"] = self.roleFileName!
+                }
+                if self.roleFileUrl != nil {
+                    map["RoleFileUrl"] = self.roleFileUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RoleFileName"] as? String {
+                    self.roleFileName = value
+                }
+                if let value = dict["RoleFileUrl"] as? String {
+                    self.roleFileUrl = value
+                }
+            }
+        }
+        public var roleInfo: String?
+
+        public var roleName: String?
+
+        public var roleUrls: [AsyncUploadVideoRequest.VideoRoles.RoleUrls]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.roleInfo != nil {
+                map["RoleInfo"] = self.roleInfo!
+            }
+            if self.roleName != nil {
+                map["RoleName"] = self.roleName!
+            }
+            if self.roleUrls != nil {
+                var tmp : [Any] = []
+                for k in self.roleUrls! {
+                    tmp.append(k.toMap())
+                }
+                map["RoleUrls"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RoleInfo"] as? String {
+                self.roleInfo = value
+            }
+            if let value = dict["RoleName"] as? String {
+                self.roleName = value
+            }
+            if let value = dict["RoleUrls"] as? [Any?] {
+                var tmp : [AsyncUploadVideoRequest.VideoRoles.RoleUrls] = []
+                for v in value {
+                    if v != nil {
+                        var model = AsyncUploadVideoRequest.VideoRoles.RoleUrls()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.roleUrls = tmp
+            }
+        }
+    }
     public var anlysisPrompt: String?
 
+    public var faceIdentitySimilarityMinScore: Double?
+
     public var referenceVideo: AsyncUploadVideoRequest.ReferenceVideo?
+
+    public var removeSubtitle: Bool?
 
     public var sourceVideos: [AsyncUploadVideoRequest.SourceVideos]?
 
     public var splitInterval: Int32?
+
+    public var videoRoles: [AsyncUploadVideoRequest.VideoRoles]?
+
+    public var videoShotFaceIdentityCount: Int32?
 
     public var workspaceId: String?
 
@@ -3113,8 +3415,14 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         if self.anlysisPrompt != nil {
             map["AnlysisPrompt"] = self.anlysisPrompt!
         }
+        if self.faceIdentitySimilarityMinScore != nil {
+            map["FaceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
+        }
         if self.referenceVideo != nil {
             map["ReferenceVideo"] = self.referenceVideo?.toMap()
+        }
+        if self.removeSubtitle != nil {
+            map["RemoveSubtitle"] = self.removeSubtitle!
         }
         if self.sourceVideos != nil {
             var tmp : [Any] = []
@@ -3125,6 +3433,16 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         }
         if self.splitInterval != nil {
             map["SplitInterval"] = self.splitInterval!
+        }
+        if self.videoRoles != nil {
+            var tmp : [Any] = []
+            for k in self.videoRoles! {
+                tmp.append(k.toMap())
+            }
+            map["VideoRoles"] = tmp
+        }
+        if self.videoShotFaceIdentityCount != nil {
+            map["VideoShotFaceIdentityCount"] = self.videoShotFaceIdentityCount!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -3137,10 +3455,16 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         if let value = dict["AnlysisPrompt"] as? String {
             self.anlysisPrompt = value
         }
+        if let value = dict["FaceIdentitySimilarityMinScore"] as? Double {
+            self.faceIdentitySimilarityMinScore = value
+        }
         if let value = dict["ReferenceVideo"] as? [String: Any?] {
             var model = AsyncUploadVideoRequest.ReferenceVideo()
             model.fromMap(value)
             self.referenceVideo = model
+        }
+        if let value = dict["RemoveSubtitle"] as? Bool {
+            self.removeSubtitle = value
         }
         if let value = dict["SourceVideos"] as? [Any?] {
             var tmp : [AsyncUploadVideoRequest.SourceVideos] = []
@@ -3158,6 +3482,22 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         if let value = dict["SplitInterval"] as? Int32 {
             self.splitInterval = value
         }
+        if let value = dict["VideoRoles"] as? [Any?] {
+            var tmp : [AsyncUploadVideoRequest.VideoRoles] = []
+            for v in value {
+                if v != nil {
+                    var model = AsyncUploadVideoRequest.VideoRoles()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.videoRoles = tmp
+        }
+        if let value = dict["VideoShotFaceIdentityCount"] as? Int32 {
+            self.videoShotFaceIdentityCount = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -3167,11 +3507,19 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
 public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
     public var anlysisPrompt: String?
 
+    public var faceIdentitySimilarityMinScore: Double?
+
     public var referenceVideoShrink: String?
+
+    public var removeSubtitle: Bool?
 
     public var sourceVideosShrink: String?
 
     public var splitInterval: Int32?
+
+    public var videoRolesShrink: String?
+
+    public var videoShotFaceIdentityCount: Int32?
 
     public var workspaceId: String?
 
@@ -3192,14 +3540,26 @@ public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
         if self.anlysisPrompt != nil {
             map["AnlysisPrompt"] = self.anlysisPrompt!
         }
+        if self.faceIdentitySimilarityMinScore != nil {
+            map["FaceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
+        }
         if self.referenceVideoShrink != nil {
             map["ReferenceVideo"] = self.referenceVideoShrink!
+        }
+        if self.removeSubtitle != nil {
+            map["RemoveSubtitle"] = self.removeSubtitle!
         }
         if self.sourceVideosShrink != nil {
             map["SourceVideos"] = self.sourceVideosShrink!
         }
         if self.splitInterval != nil {
             map["SplitInterval"] = self.splitInterval!
+        }
+        if self.videoRolesShrink != nil {
+            map["VideoRoles"] = self.videoRolesShrink!
+        }
+        if self.videoShotFaceIdentityCount != nil {
+            map["VideoShotFaceIdentityCount"] = self.videoShotFaceIdentityCount!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -3212,14 +3572,26 @@ public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
         if let value = dict["AnlysisPrompt"] as? String {
             self.anlysisPrompt = value
         }
+        if let value = dict["FaceIdentitySimilarityMinScore"] as? Double {
+            self.faceIdentitySimilarityMinScore = value
+        }
         if let value = dict["ReferenceVideo"] as? String {
             self.referenceVideoShrink = value
+        }
+        if let value = dict["RemoveSubtitle"] as? Bool {
+            self.removeSubtitle = value
         }
         if let value = dict["SourceVideos"] as? String {
             self.sourceVideosShrink = value
         }
         if let value = dict["SplitInterval"] as? Int32 {
             self.splitInterval = value
+        }
+        if let value = dict["VideoRoles"] as? String {
+            self.videoRolesShrink = value
+        }
+        if let value = dict["VideoShotFaceIdentityCount"] as? Int32 {
+            self.videoShotFaceIdentityCount = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -14092,6 +14464,92 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Stickers : Tea.TeaModel {
+            public var duration: Int32?
+
+            public var dyncFrames: Int32?
+
+            public var height: Int32?
+
+            public var timelineIn: Int32?
+
+            public var url: String?
+
+            public var width: Int32?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.dyncFrames != nil {
+                    map["DyncFrames"] = self.dyncFrames!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.timelineIn != nil {
+                    map["TimelineIn"] = self.timelineIn!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Duration"] as? Int32 {
+                    self.duration = value
+                }
+                if let value = dict["DyncFrames"] as? Int32 {
+                    self.dyncFrames = value
+                }
+                if let value = dict["Height"] as? Int32 {
+                    self.height = value
+                }
+                if let value = dict["TimelineIn"] as? Int32 {
+                    self.timelineIn = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+                if let value = dict["Width"] as? Int32 {
+                    self.width = value
+                }
+                if let value = dict["X"] as? Double {
+                    self.x = value
+                }
+                if let value = dict["Y"] as? Double {
+                    self.y = value
+                }
+            }
+        }
         public class Timelines : Tea.TeaModel {
             public class Clips : Tea.TeaModel {
                 public var clipId: String?
@@ -14238,9 +14696,19 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var closeMusic: Bool?
+
+        public var closeSubtitle: Bool?
+
+        public var closeVoice: Bool?
+
         public var colorWords: [GetAutoClipsTaskInfoResponseBody.Data.ColorWords]?
 
         public var content: String?
+
+        public var customVoiceUrl: String?
+
+        public var customVoiceVolume: Int32?
 
         public var errorMessage: String?
 
@@ -14257,6 +14725,8 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
         public var status: Int32?
 
         public var step: String?
+
+        public var stickers: [GetAutoClipsTaskInfoResponseBody.Data.Stickers]?
 
         public var subtitleFontSize: Int32?
 
@@ -14282,6 +14752,15 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.closeMusic != nil {
+                map["CloseMusic"] = self.closeMusic!
+            }
+            if self.closeSubtitle != nil {
+                map["CloseSubtitle"] = self.closeSubtitle!
+            }
+            if self.closeVoice != nil {
+                map["CloseVoice"] = self.closeVoice!
+            }
             if self.colorWords != nil {
                 var tmp : [Any] = []
                 for k in self.colorWords! {
@@ -14291,6 +14770,12 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             }
             if self.content != nil {
                 map["Content"] = self.content!
+            }
+            if self.customVoiceUrl != nil {
+                map["CustomVoiceUrl"] = self.customVoiceUrl!
+            }
+            if self.customVoiceVolume != nil {
+                map["CustomVoiceVolume"] = self.customVoiceVolume!
             }
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
@@ -14316,6 +14801,13 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             if self.step != nil {
                 map["Step"] = self.step!
             }
+            if self.stickers != nil {
+                var tmp : [Any] = []
+                for k in self.stickers! {
+                    tmp.append(k.toMap())
+                }
+                map["Stickers"] = tmp
+            }
             if self.subtitleFontSize != nil {
                 map["SubtitleFontSize"] = self.subtitleFontSize!
             }
@@ -14340,6 +14832,15 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CloseMusic"] as? Bool {
+                self.closeMusic = value
+            }
+            if let value = dict["CloseSubtitle"] as? Bool {
+                self.closeSubtitle = value
+            }
+            if let value = dict["CloseVoice"] as? Bool {
+                self.closeVoice = value
+            }
             if let value = dict["ColorWords"] as? [Any?] {
                 var tmp : [GetAutoClipsTaskInfoResponseBody.Data.ColorWords] = []
                 for v in value {
@@ -14355,6 +14856,12 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Content"] as? String {
                 self.content = value
+            }
+            if let value = dict["CustomVoiceUrl"] as? String {
+                self.customVoiceUrl = value
+            }
+            if let value = dict["CustomVoiceVolume"] as? Int32 {
+                self.customVoiceVolume = value
             }
             if let value = dict["ErrorMessage"] as? String {
                 self.errorMessage = value
@@ -14379,6 +14886,19 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Step"] as? String {
                 self.step = value
+            }
+            if let value = dict["Stickers"] as? [Any?] {
+                var tmp : [GetAutoClipsTaskInfoResponseBody.Data.Stickers] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetAutoClipsTaskInfoResponseBody.Data.Stickers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.stickers = tmp
             }
             if let value = dict["SubtitleFontSize"] as? Int32 {
                 self.subtitleFontSize = value
