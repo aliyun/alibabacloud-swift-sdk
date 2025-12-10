@@ -798,6 +798,53 @@ public class ForwardInfoResponse : Tea.TeaModel {
     }
 }
 
+public class PodIp : Tea.TeaModel {
+    public var interfaceName: String?
+
+    public var ip: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.interfaceName != nil {
+            map["InterfaceName"] = self.interfaceName!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InterfaceName"] as? String {
+            self.interfaceName = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class ServiceConfig : Tea.TeaModel {
     public var codeServerAuth: String?
 
@@ -4511,6 +4558,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var podIps: [PodIp]?
+
     public var priority: Int64?
 
     public var proxyPath: String?
@@ -4685,6 +4734,13 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
+        }
+        if self.podIps != nil {
+            var tmp : [Any] = []
+            for k in self.podIps! {
+                tmp.append(k.toMap())
+            }
+            map["PodIps"] = tmp
         }
         if self.priority != nil {
             map["Priority"] = self.priority!
@@ -4904,6 +4960,19 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
+        }
+        if let value = dict["PodIps"] as? [Any?] {
+            var tmp : [PodIp] = []
+            for v in value {
+                if v != nil {
+                    var model = PodIp()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.podIps = tmp
         }
         if let value = dict["Priority"] as? Int64 {
             self.priority = value
