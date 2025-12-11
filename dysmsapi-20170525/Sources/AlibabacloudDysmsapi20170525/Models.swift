@@ -2308,6 +2308,8 @@ public class CreateSmsAuthorizationLetterResponse : Tea.TeaModel {
 }
 
 public class CreateSmsSignRequest : Tea.TeaModel {
+    public var appIcpRecordId: Int64?
+
     public var applySceneContent: String?
 
     public var authorizationLetterId: Int64?
@@ -2332,6 +2334,8 @@ public class CreateSmsSignRequest : Tea.TeaModel {
 
     public var thirdParty: Bool?
 
+    public var trademarkId: Int64?
+
     public override init() {
         super.init()
     }
@@ -2346,6 +2350,9 @@ public class CreateSmsSignRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appIcpRecordId != nil {
+            map["AppIcpRecordId"] = self.appIcpRecordId!
+        }
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
@@ -2382,11 +2389,17 @@ public class CreateSmsSignRequest : Tea.TeaModel {
         if self.thirdParty != nil {
             map["ThirdParty"] = self.thirdParty!
         }
+        if self.trademarkId != nil {
+            map["TrademarkId"] = self.trademarkId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppIcpRecordId"] as? Int64 {
+            self.appIcpRecordId = value
+        }
         if let value = dict["ApplySceneContent"] as? String {
             self.applySceneContent = value
         }
@@ -2423,10 +2436,15 @@ public class CreateSmsSignRequest : Tea.TeaModel {
         if let value = dict["ThirdParty"] as? Bool {
             self.thirdParty = value
         }
+        if let value = dict["TrademarkId"] as? Int64 {
+            self.trademarkId = value
+        }
     }
 }
 
 public class CreateSmsSignShrinkRequest : Tea.TeaModel {
+    public var appIcpRecordId: Int64?
+
     public var applySceneContent: String?
 
     public var authorizationLetterId: Int64?
@@ -2451,6 +2469,8 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
 
     public var thirdParty: Bool?
 
+    public var trademarkId: Int64?
+
     public override init() {
         super.init()
     }
@@ -2465,6 +2485,9 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appIcpRecordId != nil {
+            map["AppIcpRecordId"] = self.appIcpRecordId!
+        }
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
@@ -2501,11 +2524,17 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
         if self.thirdParty != nil {
             map["ThirdParty"] = self.thirdParty!
         }
+        if self.trademarkId != nil {
+            map["TrademarkId"] = self.trademarkId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppIcpRecordId"] as? Int64 {
+            self.appIcpRecordId = value
+        }
         if let value = dict["ApplySceneContent"] as? String {
             self.applySceneContent = value
         }
@@ -2541,6 +2570,9 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ThirdParty"] as? Bool {
             self.thirdParty = value
+        }
+        if let value = dict["TrademarkId"] as? Int64 {
+            self.trademarkId = value
         }
     }
 }
@@ -5885,6 +5917,8 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var appIcpRecordId: Int64?
+
     public var applyScene: String?
 
     public var auditInfo: GetSmsSignResponseBody.AuditInfo?
@@ -5925,6 +5959,8 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
 
     public var thirdParty: Bool?
 
+    public var trademarkId: Int64?
+
     public override init() {
         super.init()
     }
@@ -5940,6 +5976,9 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appIcpRecordId != nil {
+            map["AppIcpRecordId"] = self.appIcpRecordId!
+        }
         if self.applyScene != nil {
             map["ApplyScene"] = self.applyScene!
         }
@@ -6004,11 +6043,17 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         if self.thirdParty != nil {
             map["ThirdParty"] = self.thirdParty!
         }
+        if self.trademarkId != nil {
+            map["TrademarkId"] = self.trademarkId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppIcpRecordId"] as? Int64 {
+            self.appIcpRecordId = value
+        }
         if let value = dict["ApplyScene"] as? String {
             self.applyScene = value
         }
@@ -6080,6 +6125,9 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         }
         if let value = dict["ThirdParty"] as? Bool {
             self.thirdParty = value
+        }
+        if let value = dict["TrademarkId"] as? Int64 {
+            self.trademarkId = value
         }
     }
 }
@@ -11193,6 +11241,8 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appIcpRecordId: Int64?
+
         public var auditStatus: String?
 
         public var authorizationLetterId: Int64?
@@ -11206,6 +11256,8 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
         public var reason: QuerySmsSignListResponseBody.SmsSignList.Reason?
 
         public var signName: String?
+
+        public var trademarkId: Int64?
 
         public var authorizationLetterAuditPass: Bool?
 
@@ -11224,6 +11276,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appIcpRecordId != nil {
+                map["AppIcpRecordId"] = self.appIcpRecordId!
+            }
             if self.auditStatus != nil {
                 map["AuditStatus"] = self.auditStatus!
             }
@@ -11245,6 +11300,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
             if self.signName != nil {
                 map["SignName"] = self.signName!
             }
+            if self.trademarkId != nil {
+                map["TrademarkId"] = self.trademarkId!
+            }
             if self.authorizationLetterAuditPass != nil {
                 map["authorizationLetterAuditPass"] = self.authorizationLetterAuditPass!
             }
@@ -11253,6 +11311,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppIcpRecordId"] as? Int64 {
+                self.appIcpRecordId = value
+            }
             if let value = dict["AuditStatus"] as? String {
                 self.auditStatus = value
             }
@@ -11275,6 +11336,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
             }
             if let value = dict["SignName"] as? String {
                 self.signName = value
+            }
+            if let value = dict["TrademarkId"] as? Int64 {
+                self.trademarkId = value
             }
             if let value = dict["authorizationLetterAuditPass"] as? Bool {
                 self.authorizationLetterAuditPass = value
@@ -15606,6 +15670,8 @@ public class UpdateSmsQualificationResponse : Tea.TeaModel {
 }
 
 public class UpdateSmsSignRequest : Tea.TeaModel {
+    public var appIcpRecordId: Int64?
+
     public var applySceneContent: String?
 
     public var authorizationLetterId: Int64?
@@ -15630,6 +15696,8 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
 
     public var thirdParty: Bool?
 
+    public var trademarkId: Int64?
+
     public override init() {
         super.init()
     }
@@ -15644,6 +15712,9 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appIcpRecordId != nil {
+            map["AppIcpRecordId"] = self.appIcpRecordId!
+        }
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
@@ -15680,11 +15751,17 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
         if self.thirdParty != nil {
             map["ThirdParty"] = self.thirdParty!
         }
+        if self.trademarkId != nil {
+            map["TrademarkId"] = self.trademarkId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppIcpRecordId"] as? Int64 {
+            self.appIcpRecordId = value
+        }
         if let value = dict["ApplySceneContent"] as? String {
             self.applySceneContent = value
         }
@@ -15721,10 +15798,15 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
         if let value = dict["ThirdParty"] as? Bool {
             self.thirdParty = value
         }
+        if let value = dict["TrademarkId"] as? Int64 {
+            self.trademarkId = value
+        }
     }
 }
 
 public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
+    public var appIcpRecordId: Int64?
+
     public var applySceneContent: String?
 
     public var authorizationLetterId: Int64?
@@ -15749,6 +15831,8 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
 
     public var thirdParty: Bool?
 
+    public var trademarkId: Int64?
+
     public override init() {
         super.init()
     }
@@ -15763,6 +15847,9 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appIcpRecordId != nil {
+            map["AppIcpRecordId"] = self.appIcpRecordId!
+        }
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
@@ -15799,11 +15886,17 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
         if self.thirdParty != nil {
             map["ThirdParty"] = self.thirdParty!
         }
+        if self.trademarkId != nil {
+            map["TrademarkId"] = self.trademarkId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppIcpRecordId"] as? Int64 {
+            self.appIcpRecordId = value
+        }
         if let value = dict["ApplySceneContent"] as? String {
             self.applySceneContent = value
         }
@@ -15839,6 +15932,9 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ThirdParty"] as? Bool {
             self.thirdParty = value
+        }
+        if let value = dict["TrademarkId"] as? Int64 {
+            self.trademarkId = value
         }
     }
 }

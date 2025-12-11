@@ -511,6 +511,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.moreDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.moreData, "MoreData", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appIcpRecordId)) {
+            query["AppIcpRecordId"] = request.appIcpRecordId!;
+        }
         if (!TeaUtils.Client.isUnset(request.applySceneContent)) {
             query["ApplySceneContent"] = request.applySceneContent ?? "";
         }
@@ -546,6 +549,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.thirdParty)) {
             query["ThirdParty"] = request.thirdParty!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trademarkId)) {
+            query["TrademarkId"] = request.trademarkId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2859,6 +2865,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.moreDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.moreData, "MoreData", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appIcpRecordId)) {
+            query["AppIcpRecordId"] = request.appIcpRecordId!;
+        }
         if (!TeaUtils.Client.isUnset(request.applySceneContent)) {
             query["ApplySceneContent"] = request.applySceneContent ?? "";
         }
@@ -2894,6 +2903,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.thirdParty)) {
             query["ThirdParty"] = request.thirdParty!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trademarkId)) {
+            query["TrademarkId"] = request.trademarkId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
