@@ -2641,6 +2641,8 @@ public class CreateQualityCheckTaskRequest : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sceneCode: String?
+
     public var type: String?
 
     public override init() {
@@ -2673,6 +2675,9 @@ public class CreateQualityCheckTaskRequest : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.sceneCode != nil {
+            map["sceneCode"] = self.sceneCode!
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -2697,6 +2702,9 @@ public class CreateQualityCheckTaskRequest : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["sceneCode"] as? String {
+            self.sceneCode = value
         }
         if let value = dict["type"] as? String {
             self.type = value
@@ -3180,6 +3188,182 @@ public class DeleteLibraryResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteLibraryResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EndToEndRealTimeDialogRequest : Tea.TeaModel {
+    public var asrModelId: String?
+
+    public var inputFormat: String?
+
+    public var outputFormat: String?
+
+    public var pitchRate: Int32?
+
+    public var sampleRate: String?
+
+    public var speechRate: Int32?
+
+    public var ttsModelId: String?
+
+    public var voiceCode: String?
+
+    public var volume: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asrModelId != nil {
+            map["asrModelId"] = self.asrModelId!
+        }
+        if self.inputFormat != nil {
+            map["inputFormat"] = self.inputFormat!
+        }
+        if self.outputFormat != nil {
+            map["outputFormat"] = self.outputFormat!
+        }
+        if self.pitchRate != nil {
+            map["pitchRate"] = self.pitchRate!
+        }
+        if self.sampleRate != nil {
+            map["sampleRate"] = self.sampleRate!
+        }
+        if self.speechRate != nil {
+            map["speechRate"] = self.speechRate!
+        }
+        if self.ttsModelId != nil {
+            map["ttsModelId"] = self.ttsModelId!
+        }
+        if self.voiceCode != nil {
+            map["voiceCode"] = self.voiceCode!
+        }
+        if self.volume != nil {
+            map["volume"] = self.volume!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["asrModelId"] as? String {
+            self.asrModelId = value
+        }
+        if let value = dict["inputFormat"] as? String {
+            self.inputFormat = value
+        }
+        if let value = dict["outputFormat"] as? String {
+            self.outputFormat = value
+        }
+        if let value = dict["pitchRate"] as? Int32 {
+            self.pitchRate = value
+        }
+        if let value = dict["sampleRate"] as? String {
+            self.sampleRate = value
+        }
+        if let value = dict["speechRate"] as? Int32 {
+            self.speechRate = value
+        }
+        if let value = dict["ttsModelId"] as? String {
+            self.ttsModelId = value
+        }
+        if let value = dict["voiceCode"] as? String {
+            self.voiceCode = value
+        }
+        if let value = dict["volume"] as? Int32 {
+            self.volume = value
+        }
+    }
+}
+
+public class EndToEndRealTimeDialogResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EndToEndRealTimeDialogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EndToEndRealTimeDialogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EndToEndRealTimeDialogResponseBody()
             model.fromMap(value)
             self.body = model
         }
