@@ -512,6 +512,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isSingleImgDisk)) {
+            query["IsSingleImgDisk"] = request.isSingleImgDisk!;
+        }
         if (!TeaUtils.Client.isUnset(request.networkId)) {
             query["NetworkId"] = request.networkId ?? "";
         }

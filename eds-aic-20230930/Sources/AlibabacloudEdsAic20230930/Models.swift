@@ -2915,6 +2915,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var isSingleImgDisk: Bool?
+
     public var networkId: String?
 
     public var networkInfo: CreateCloudPhoneNodeRequest.NetworkInfo?
@@ -3001,6 +3003,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.isSingleImgDisk != nil {
+            map["IsSingleImgDisk"] = self.isSingleImgDisk!
         }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
@@ -3102,6 +3107,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["IsSingleImgDisk"] as? Bool {
+            self.isSingleImgDisk = value
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
@@ -3236,6 +3244,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var isSingleImgDisk: Bool?
+
     public var networkId: String?
 
     public var networkInfoShrink: String?
@@ -3320,6 +3330,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.isSingleImgDisk != nil {
+            map["IsSingleImgDisk"] = self.isSingleImgDisk!
         }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
@@ -3419,6 +3432,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["IsSingleImgDisk"] as? Bool {
+            self.isSingleImgDisk = value
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
