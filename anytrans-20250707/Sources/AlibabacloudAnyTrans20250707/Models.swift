@@ -6006,6 +6006,8 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public var examples: [TextTranslateRequest.Ext.Examples]?
 
+        public var prefix_: String?
+
         public var sensitives: [String]?
 
         public var terminologies: [TextTranslateRequest.Ext.Terminologies]?
@@ -6043,6 +6045,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.prefix_ != nil {
+                map["prefix"] = self.prefix_!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -6085,6 +6090,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["prefix"] as? String {
+                self.prefix_ = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
