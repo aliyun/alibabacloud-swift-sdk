@@ -10908,6 +10908,8 @@ public class DeleteBackupResponse : Tea.TeaModel {
 public class DeleteDBClusterRequest : Tea.TeaModel {
     public var backupRetentionPolicyOnClusterDeletion: String?
 
+    public var cloudProvider: String?
+
     public var DBClusterId: String?
 
     public var ownerAccount: String?
@@ -10935,6 +10937,9 @@ public class DeleteDBClusterRequest : Tea.TeaModel {
         if self.backupRetentionPolicyOnClusterDeletion != nil {
             map["BackupRetentionPolicyOnClusterDeletion"] = self.backupRetentionPolicyOnClusterDeletion!
         }
+        if self.cloudProvider != nil {
+            map["CloudProvider"] = self.cloudProvider!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -10957,6 +10962,9 @@ public class DeleteDBClusterRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupRetentionPolicyOnClusterDeletion"] as? String {
             self.backupRetentionPolicyOnClusterDeletion = value
+        }
+        if let value = dict["CloudProvider"] as? String {
+            self.cloudProvider = value
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
@@ -14557,6 +14565,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var modelName: String?
 
+    public var modelType: String?
+
     public var payType: String?
 
     public var publicIp: String?
@@ -14651,6 +14661,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -14764,6 +14777,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
@@ -15475,6 +15491,8 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
 
             public var lockMode: String?
 
+            public var modelType: String?
+
             public var payType: String?
 
             public var regionId: String?
@@ -15543,6 +15561,9 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
                 }
+                if self.modelType != nil {
+                    map["ModelType"] = self.modelType!
+                }
                 if self.payType != nil {
                     map["PayType"] = self.payType!
                 }
@@ -15610,6 +15631,9 @@ public class DescribeAIDBClustersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LockMode"] as? String {
                     self.lockMode = value
+                }
+                if let value = dict["ModelType"] as? String {
+                    self.modelType = value
                 }
                 if let value = dict["PayType"] as? String {
                     self.payType = value
@@ -69501,6 +69525,8 @@ public class RemoveDBClusterFromGDNRequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var targetDBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -69539,6 +69565,9 @@ public class RemoveDBClusterFromGDNRequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.targetDBClusterId != nil {
+            map["TargetDBClusterId"] = self.targetDBClusterId!
+        }
         return map
     }
 
@@ -69567,6 +69596,9 @@ public class RemoveDBClusterFromGDNRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
+        }
+        if let value = dict["TargetDBClusterId"] as? String {
+            self.targetDBClusterId = value
         }
     }
 }
