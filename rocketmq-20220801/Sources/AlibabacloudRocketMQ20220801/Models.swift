@@ -7070,6 +7070,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         public class NetworkInfo : Tea.TeaModel {
             public class Endpoints : Tea.TeaModel {
+                public var endpointId: String?
+
                 public var endpointType: String?
 
                 public var endpointUrl: String?
@@ -7090,6 +7092,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.endpointId != nil {
+                        map["endpointId"] = self.endpointId!
+                    }
                     if self.endpointType != nil {
                         map["endpointType"] = self.endpointType!
                     }
@@ -7104,6 +7109,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["endpointId"] as? String {
+                        self.endpointId = value
+                    }
                     if let value = dict["endpointType"] as? String {
                         self.endpointType = value
                     }
