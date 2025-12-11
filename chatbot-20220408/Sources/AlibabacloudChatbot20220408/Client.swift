@@ -2068,26 +2068,28 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
         }
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.email)) {
-            query["Email"] = request.email ?? "";
+            body["Email"] = request.email ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.expireTime)) {
-            query["ExpireTime"] = request.expireTime!;
+            body["ExpireTime"] = request.expireTime!;
         }
         if (!TeaUtils.Client.isUnset(request.extraInfo)) {
-            query["ExtraInfo"] = request.extraInfo ?? "";
+            body["ExtraInfo"] = request.extraInfo ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.foreignId)) {
-            query["ForeignId"] = request.foreignId ?? "";
+            body["ForeignId"] = request.foreignId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nick)) {
-            query["Nick"] = request.nick ?? "";
+            body["Nick"] = request.nick ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.telephone)) {
-            query["Telephone"] = request.telephone ?? "";
+            body["Telephone"] = request.telephone ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GenerateUserAccessToken",
@@ -2293,14 +2295,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
         }
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.from)) {
-            query["From"] = request.from ?? "";
+            body["From"] = request.from ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userAccessToken)) {
-            query["UserAccessToken"] = request.userAccessToken ?? "";
+            body["UserAccessToken"] = request.userAccessToken ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "InitIMConnect",
