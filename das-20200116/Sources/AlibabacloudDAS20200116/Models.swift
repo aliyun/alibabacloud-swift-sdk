@@ -11412,6 +11412,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var nodeId: String?
 
+            public var opType: String?
+
             public var originTime: String?
 
             public var physicalIOReads: Int64?
@@ -11548,6 +11550,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
+                }
+                if self.opType != nil {
+                    map["OpType"] = self.opType!
                 }
                 if self.originTime != nil {
                     map["OriginTime"] = self.originTime!
@@ -11703,6 +11708,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NodeId"] as? String {
                     self.nodeId = value
+                }
+                if let value = dict["OpType"] as? String {
+                    self.opType = value
                 }
                 if let value = dict["OriginTime"] as? String {
                     self.originTime = value
