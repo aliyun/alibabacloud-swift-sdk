@@ -4240,49 +4240,50 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDocumentRetrieveWithOptions(_ request: ListDocumentRetrieveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDocumentRetrieveResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.contentType)) {
-            query["ContentType"] = request.contentType ?? "";
+            body["ContentType"] = request.contentType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.elementScope)) {
-            query["ElementScope"] = request.elementScope ?? "";
+            body["ElementScope"] = request.elementScope ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
-            query["EndDate"] = request.endDate ?? "";
+            body["EndDate"] = request.endDate ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.office)) {
-            query["Office"] = request.office ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.region)) {
-            query["Region"] = request.region ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.source)) {
-            query["Source"] = request.source ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.startDate)) {
-            query["StartDate"] = request.startDate ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.subContentType)) {
-            query["SubContentType"] = request.subContentType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wordSize)) {
-            query["WordSize"] = request.wordSize ?? "";
-        }
-        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.office)) {
+            body["Office"] = request.office ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.query)) {
             body["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["StartDate"] = request.startDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subContentType)) {
+            body["SubContentType"] = request.subContentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subjectClassify)) {
+            body["SubjectClassify"] = request.subjectClassify ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wordSize)) {
+            body["WordSize"] = request.wordSize ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

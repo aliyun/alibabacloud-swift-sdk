@@ -33845,6 +33845,8 @@ public class ListDocumentRetrieveRequest : Tea.TeaModel {
 
     public var subContentType: String?
 
+    public var subjectClassify: String?
+
     public var wordSize: String?
 
     public var workspaceId: String?
@@ -33896,6 +33898,9 @@ public class ListDocumentRetrieveRequest : Tea.TeaModel {
         if self.subContentType != nil {
             map["SubContentType"] = self.subContentType!
         }
+        if self.subjectClassify != nil {
+            map["SubjectClassify"] = self.subjectClassify!
+        }
         if self.wordSize != nil {
             map["WordSize"] = self.wordSize!
         }
@@ -33939,6 +33944,9 @@ public class ListDocumentRetrieveRequest : Tea.TeaModel {
         }
         if let value = dict["SubContentType"] as? String {
             self.subContentType = value
+        }
+        if let value = dict["SubjectClassify"] as? String {
+            self.subjectClassify = value
         }
         if let value = dict["WordSize"] as? String {
             self.wordSize = value
