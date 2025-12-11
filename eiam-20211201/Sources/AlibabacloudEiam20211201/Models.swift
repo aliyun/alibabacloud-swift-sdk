@@ -18745,6 +18745,10 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var managedServiceCode: String?
+
+        public var serviceManaged: Bool?
+
         public var status: String?
 
         public override init() {
@@ -18781,6 +18785,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.managedServiceCode != nil {
+                map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -18810,6 +18820,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["ManagedServiceCode"] as? String {
+                self.managedServiceCode = value
+            }
+            if let value = dict["ServiceManaged"] as? Bool {
+                self.serviceManaged = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -32619,6 +32635,10 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var managedServiceCode: String?
+
+        public var serviceManaged: Bool?
+
         public var status: String?
 
         public override init() {
@@ -32648,6 +32668,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.managedServiceCode != nil {
+                map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -32669,6 +32695,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["ManagedServiceCode"] as? String {
+                self.managedServiceCode = value
+            }
+            if let value = dict["ServiceManaged"] as? Bool {
+                self.serviceManaged = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
