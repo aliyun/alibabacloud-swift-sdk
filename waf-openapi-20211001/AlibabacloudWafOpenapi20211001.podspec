@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudWafOpenapi20211001"
-  spec.version      = "8.1.0"
+  spec.version      = "8.1.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud waf-openapi (20211001) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/waf-openapi-20211001" 

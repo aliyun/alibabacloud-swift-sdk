@@ -2685,6 +2685,10 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public var focusHttpBackend: Bool?
 
+        public var http2Origin: Bool?
+
+        public var http2OriginMaxConcurrency: Int32?
+
         public var keepalive: Bool?
 
         public var keepaliveRequests: Int32?
@@ -2754,6 +2758,12 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if self.focusHttpBackend != nil {
                 map["FocusHttpBackend"] = self.focusHttpBackend!
+            }
+            if self.http2Origin != nil {
+                map["Http2Origin"] = self.http2Origin!
+            }
+            if self.http2OriginMaxConcurrency != nil {
+                map["Http2OriginMaxConcurrency"] = self.http2OriginMaxConcurrency!
             }
             if self.keepalive != nil {
                 map["Keepalive"] = self.keepalive!
@@ -2842,6 +2852,12 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if let value = dict["FocusHttpBackend"] as? Bool {
                 self.focusHttpBackend = value
+            }
+            if let value = dict["Http2Origin"] as? Bool {
+                self.http2Origin = value
+            }
+            if let value = dict["Http2OriginMaxConcurrency"] as? Int32 {
+                self.http2OriginMaxConcurrency = value
             }
             if let value = dict["Keepalive"] as? Bool {
                 self.keepalive = value
@@ -21361,6 +21377,10 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var focusHttpBackend: Bool?
 
+        public var http2Origin: Bool?
+
+        public var http2OriginMaxConcurrency: Int32?
+
         public var keepalive: Bool?
 
         public var keepaliveRequests: Int32?
@@ -21439,6 +21459,12 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.focusHttpBackend != nil {
                 map["FocusHttpBackend"] = self.focusHttpBackend!
+            }
+            if self.http2Origin != nil {
+                map["Http2Origin"] = self.http2Origin!
+            }
+            if self.http2OriginMaxConcurrency != nil {
+                map["Http2OriginMaxConcurrency"] = self.http2OriginMaxConcurrency!
             }
             if self.keepalive != nil {
                 map["Keepalive"] = self.keepalive!
@@ -21547,6 +21573,12 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["FocusHttpBackend"] as? Bool {
                 self.focusHttpBackend = value
+            }
+            if let value = dict["Http2Origin"] as? Bool {
+                self.http2Origin = value
+            }
+            if let value = dict["Http2OriginMaxConcurrency"] as? Int32 {
+                self.http2OriginMaxConcurrency = value
             }
             if let value = dict["Keepalive"] as? Bool {
                 self.keepalive = value
@@ -48024,6 +48056,10 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public var focusHttpBackend: Bool?
 
+        public var http2Origin: Bool?
+
+        public var http2OriginMaxConcurrency: Int32?
+
         public var keepalive: Bool?
 
         public var keepaliveRequests: Int32?
@@ -48093,6 +48129,12 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if self.focusHttpBackend != nil {
                 map["FocusHttpBackend"] = self.focusHttpBackend!
+            }
+            if self.http2Origin != nil {
+                map["Http2Origin"] = self.http2Origin!
+            }
+            if self.http2OriginMaxConcurrency != nil {
+                map["Http2OriginMaxConcurrency"] = self.http2OriginMaxConcurrency!
             }
             if self.keepalive != nil {
                 map["Keepalive"] = self.keepalive!
@@ -48181,6 +48223,12 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if let value = dict["FocusHttpBackend"] as? Bool {
                 self.focusHttpBackend = value
+            }
+            if let value = dict["Http2Origin"] as? Bool {
+                self.http2Origin = value
+            }
+            if let value = dict["Http2OriginMaxConcurrency"] as? Int32 {
+                self.http2OriginMaxConcurrency = value
             }
             if let value = dict["Keepalive"] as? Bool {
                 self.keepalive = value
