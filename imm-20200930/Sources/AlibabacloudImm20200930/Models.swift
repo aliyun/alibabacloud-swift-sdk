@@ -31920,6 +31920,8 @@ public class SemanticQueryRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var sourceURI: String?
+
     public var withFields: [String]?
 
     public override init() {
@@ -31954,6 +31956,9 @@ public class SemanticQueryRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.sourceURI != nil {
+            map["SourceURI"] = self.sourceURI!
+        }
         if self.withFields != nil {
             map["WithFields"] = self.withFields!
         }
@@ -31980,6 +31985,9 @@ public class SemanticQueryRequest : Tea.TeaModel {
         if let value = dict["Query"] as? String {
             self.query = value
         }
+        if let value = dict["SourceURI"] as? String {
+            self.sourceURI = value
+        }
         if let value = dict["WithFields"] as? [String] {
             self.withFields = value
         }
@@ -31998,6 +32006,8 @@ public class SemanticQueryShrinkRequest : Tea.TeaModel {
     public var projectName: String?
 
     public var query: String?
+
+    public var sourceURI: String?
 
     public var withFieldsShrink: String?
 
@@ -32033,6 +32043,9 @@ public class SemanticQueryShrinkRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.sourceURI != nil {
+            map["SourceURI"] = self.sourceURI!
+        }
         if self.withFieldsShrink != nil {
             map["WithFields"] = self.withFieldsShrink!
         }
@@ -32058,6 +32071,9 @@ public class SemanticQueryShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Query"] as? String {
             self.query = value
+        }
+        if let value = dict["SourceURI"] as? String {
+            self.sourceURI = value
         }
         if let value = dict["WithFields"] as? String {
             self.withFieldsShrink = value

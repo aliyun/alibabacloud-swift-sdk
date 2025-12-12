@@ -4701,6 +4701,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.query)) {
             query["Query"] = request.query ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceURI)) {
+            query["SourceURI"] = request.sourceURI ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.withFieldsShrink)) {
             query["WithFields"] = request.withFieldsShrink ?? "";
         }
