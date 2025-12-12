@@ -671,9 +671,81 @@ public class GraphFlowNode : Tea.TeaModel {
 }
 
 public class JudgeNodeMetaDesc : Tea.TeaModel {
+    public class ExpressionMetaDesc : Tea.TeaModel {
+        public var leftFieldType: Int32?
+
+        public var leftOperand: String?
+
+        public var operator_: String?
+
+        public var rightFieldType: Int32?
+
+        public var rightOperand: String?
+
+        public var roundingMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.leftFieldType != nil {
+                map["LeftFieldType"] = self.leftFieldType!
+            }
+            if self.leftOperand != nil {
+                map["LeftOperand"] = self.leftOperand!
+            }
+            if self.operator_ != nil {
+                map["Operator"] = self.operator_!
+            }
+            if self.rightFieldType != nil {
+                map["RightFieldType"] = self.rightFieldType!
+            }
+            if self.rightOperand != nil {
+                map["RightOperand"] = self.rightOperand!
+            }
+            if self.roundingMode != nil {
+                map["RoundingMode"] = self.roundingMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LeftFieldType"] as? Int32 {
+                self.leftFieldType = value
+            }
+            if let value = dict["LeftOperand"] as? String {
+                self.leftOperand = value
+            }
+            if let value = dict["Operator"] as? String {
+                self.operator_ = value
+            }
+            if let value = dict["RightFieldType"] as? Int32 {
+                self.rightFieldType = value
+            }
+            if let value = dict["RightOperand"] as? String {
+                self.rightOperand = value
+            }
+            if let value = dict["RoundingMode"] as? String {
+                self.roundingMode = value
+            }
+        }
+    }
     public var actualValue: String?
 
     public var dataType: Int32?
+
+    public var expressionMetaDesc: JudgeNodeMetaDesc.ExpressionMetaDesc?
 
     public var field: String?
 
@@ -693,6 +765,7 @@ public class JudgeNodeMetaDesc : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.expressionMetaDesc?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -702,6 +775,9 @@ public class JudgeNodeMetaDesc : Tea.TeaModel {
         }
         if self.dataType != nil {
             map["DataType"] = self.dataType!
+        }
+        if self.expressionMetaDesc != nil {
+            map["ExpressionMetaDesc"] = self.expressionMetaDesc?.toMap()
         }
         if self.field != nil {
             map["Field"] = self.field!
@@ -725,6 +801,11 @@ public class JudgeNodeMetaDesc : Tea.TeaModel {
         }
         if let value = dict["DataType"] as? Int32 {
             self.dataType = value
+        }
+        if let value = dict["ExpressionMetaDesc"] as? [String: Any?] {
+            var model = JudgeNodeMetaDesc.ExpressionMetaDesc()
+            model.fromMap(value)
+            self.expressionMetaDesc = model
         }
         if let value = dict["Field"] as? String {
             self.field = value
