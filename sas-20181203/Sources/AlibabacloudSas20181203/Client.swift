@@ -13731,6 +13731,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.extend)) {
             query["Extend"] = request.extend ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -13739,6 +13742,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.user)) {
             query["User"] = request.user ?? "";
@@ -13823,6 +13829,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.extend)) {
             query["Extend"] = request.extend ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -13837,6 +13846,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
             query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
@@ -13921,6 +13933,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -13935,6 +13950,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
             query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.user)) {
             query["User"] = request.user ?? "";
@@ -14025,6 +14043,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name!;
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -14063,6 +14084,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.searchItemSub)) {
             query["SearchItemSub"] = request.searchItemSub ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.user)) {
             query["User"] = request.user ?? "";
@@ -14242,6 +14266,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -14253,6 +14280,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.softwareVersion)) {
             query["SoftwareVersion"] = request.softwareVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
@@ -14408,11 +14438,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lastLoginTimeStart)) {
             query["LastLoginTimeStart"] = request.lastLoginTimeStart!;
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.user)) {
             query["User"] = request.user ?? "";
@@ -19881,6 +19917,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
@@ -19889,6 +19928,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.searchCriteriaList)) {
             query["SearchCriteriaList"] = request.searchCriteriaList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.useNextToken)) {
+            query["UseNextToken"] = request.useNextToken!;
         }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
