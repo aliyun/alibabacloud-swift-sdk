@@ -8003,6 +8003,290 @@ public class GetLivyComputeTokenResponse : Tea.TeaModel {
     }
 }
 
+public class GetRunConfigurationRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetRunConfigurationResponseBody : Tea.TeaModel {
+    public class RunConfiguration : Tea.TeaModel {
+        public class ApplicationConfigs : Tea.TeaModel {
+            public var configFileName: String?
+
+            public var configItemKey: String?
+
+            public var configItemValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configFileName != nil {
+                    map["configFileName"] = self.configFileName!
+                }
+                if self.configItemKey != nil {
+                    map["configItemKey"] = self.configItemKey!
+                }
+                if self.configItemValue != nil {
+                    map["configItemValue"] = self.configItemValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["configFileName"] as? String {
+                    self.configFileName = value
+                }
+                if let value = dict["configItemKey"] as? String {
+                    self.configItemKey = value
+                }
+                if let value = dict["configItemValue"] as? String {
+                    self.configItemValue = value
+                }
+            }
+        }
+        public class LogConfig : Tea.TeaModel {
+            public var logLevel: String?
+
+            public var logPath: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logLevel != nil {
+                    map["LogLevel"] = self.logLevel!
+                }
+                if self.logPath != nil {
+                    map["LogPath"] = self.logPath!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogLevel"] as? String {
+                    self.logLevel = value
+                }
+                if let value = dict["LogPath"] as? String {
+                    self.logPath = value
+                }
+            }
+        }
+        public var applicationConfigs: [GetRunConfigurationResponseBody.RunConfiguration.ApplicationConfigs]?
+
+        public var logConfig: GetRunConfigurationResponseBody.RunConfiguration.LogConfig?
+
+        public var runtimeConfigs: [Tag]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.logConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.applicationConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["applicationConfigs"] = tmp
+            }
+            if self.logConfig != nil {
+                map["logConfig"] = self.logConfig?.toMap()
+            }
+            if self.runtimeConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.runtimeConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["runtimeConfigs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["applicationConfigs"] as? [Any?] {
+                var tmp : [GetRunConfigurationResponseBody.RunConfiguration.ApplicationConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRunConfigurationResponseBody.RunConfiguration.ApplicationConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationConfigs = tmp
+            }
+            if let value = dict["logConfig"] as? [String: Any?] {
+                var model = GetRunConfigurationResponseBody.RunConfiguration.LogConfig()
+                model.fromMap(value)
+                self.logConfig = model
+            }
+            if let value = dict["runtimeConfigs"] as? [Any?] {
+                var tmp : [Tag] = []
+                for v in value {
+                    if v != nil {
+                        var model = Tag()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.runtimeConfigs = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var runConfiguration: GetRunConfigurationResponseBody.RunConfiguration?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.runConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.runConfiguration != nil {
+            map["runConfiguration"] = self.runConfiguration?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["runConfiguration"] as? [String: Any?] {
+            var model = GetRunConfigurationResponseBody.RunConfiguration()
+            model.fromMap(value)
+            self.runConfiguration = model
+        }
+    }
+}
+
+public class GetRunConfigurationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRunConfigurationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRunConfigurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetSessionClusterRequest : Tea.TeaModel {
     public var regionId: String?
 
