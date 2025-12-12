@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudClickhouse20191111"
-  spec.version      = "1.1.0"
+  spec.version      = "1.2.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ClickHouse (20191111) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/clickhouse-20191111" 
