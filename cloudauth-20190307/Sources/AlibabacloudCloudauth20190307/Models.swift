@@ -1503,6 +1503,10 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
 
     public var platform: String?
 
+    public var returnPicCount: Int64?
+
+    public var returnVideoLength: Int64?
+
     public var sceneName: String?
 
     public var storeImage: String?
@@ -1536,6 +1540,12 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         if self.platform != nil {
             map["Platform"] = self.platform!
         }
+        if self.returnPicCount != nil {
+            map["ReturnPicCount"] = self.returnPicCount!
+        }
+        if self.returnVideoLength != nil {
+            map["ReturnVideoLength"] = self.returnVideoLength!
+        }
         if self.sceneName != nil {
             map["SceneName"] = self.sceneName!
         }
@@ -1561,6 +1571,12 @@ public class CreateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
+        }
+        if let value = dict["ReturnPicCount"] as? Int64 {
+            self.returnPicCount = value
+        }
+        if let value = dict["ReturnVideoLength"] as? Int64 {
+            self.returnVideoLength = value
         }
         if let value = dict["SceneName"] as? String {
             self.sceneName = value
@@ -7253,6 +7269,10 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
 
         public var platform: String?
 
+        public var returnPicCount: Int64?
+
+        public var returnVideoLength: Int64?
+
         public var sceneId: Int64?
 
         public var sceneName: String?
@@ -7301,6 +7321,12 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             if self.platform != nil {
                 map["Platform"] = self.platform!
             }
+            if self.returnPicCount != nil {
+                map["ReturnPicCount"] = self.returnPicCount!
+            }
+            if self.returnVideoLength != nil {
+                map["ReturnVideoLength"] = self.returnVideoLength!
+            }
             if self.sceneId != nil {
                 map["SceneId"] = self.sceneId!
             }
@@ -7344,6 +7370,12 @@ public class DescribeListAntCloudAuthScenesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Platform"] as? String {
                 self.platform = value
+            }
+            if let value = dict["ReturnPicCount"] as? Int64 {
+                self.returnPicCount = value
+            }
+            if let value = dict["ReturnVideoLength"] as? Int64 {
+                self.returnVideoLength = value
             }
             if let value = dict["SceneId"] as? Int64 {
                 self.sceneId = value
@@ -22851,6 +22883,10 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
 
     public var platform: String?
 
+    public var returnPicCount: Int64?
+
+    public var returnVideoLength: Int64?
+
     public var sceneId: Int64?
 
     public var sceneName: String?
@@ -22888,6 +22924,12 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         if self.platform != nil {
             map["Platform"] = self.platform!
         }
+        if self.returnPicCount != nil {
+            map["ReturnPicCount"] = self.returnPicCount!
+        }
+        if self.returnVideoLength != nil {
+            map["ReturnVideoLength"] = self.returnVideoLength!
+        }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
@@ -22919,6 +22961,12 @@ public class UpdateAntCloudAuthSceneRequest : Tea.TeaModel {
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
+        }
+        if let value = dict["ReturnPicCount"] as? Int64 {
+            self.returnPicCount = value
+        }
+        if let value = dict["ReturnVideoLength"] as? Int64 {
+            self.returnVideoLength = value
         }
         if let value = dict["SceneId"] as? Int64 {
             self.sceneId = value

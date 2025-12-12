@@ -514,6 +514,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.platform)) {
             query["Platform"] = request.platform ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.returnPicCount)) {
+            query["ReturnPicCount"] = request.returnPicCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnVideoLength)) {
+            query["ReturnVideoLength"] = request.returnVideoLength!;
+        }
         if (!TeaUtils.Client.isUnset(request.sceneName)) {
             query["SceneName"] = request.sceneName ?? "";
         }
@@ -4569,6 +4575,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.platform)) {
             query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnPicCount)) {
+            query["ReturnPicCount"] = request.returnPicCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnVideoLength)) {
+            query["ReturnVideoLength"] = request.returnVideoLength!;
         }
         if (!TeaUtils.Client.isUnset(request.sceneId)) {
             query["SceneId"] = request.sceneId!;
