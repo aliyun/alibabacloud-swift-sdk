@@ -508,6 +508,8 @@ public class CreateAutoScalingConfigRequest : Tea.TeaModel {
 
     public var specId: String?
 
+    public var storageCapacityMax: Int64?
+
     public override init() {
         super.init()
     }
@@ -574,6 +576,9 @@ public class CreateAutoScalingConfigRequest : Tea.TeaModel {
         if self.specId != nil {
             map["SpecId"] = self.specId!
         }
+        if self.storageCapacityMax != nil {
+            map["StorageCapacityMax"] = self.storageCapacityMax!
+        }
         return map
     }
 
@@ -637,6 +642,9 @@ public class CreateAutoScalingConfigRequest : Tea.TeaModel {
         if let value = dict["SpecId"] as? String {
             self.specId = value
         }
+        if let value = dict["StorageCapacityMax"] as? Int64 {
+            self.storageCapacityMax = value
+        }
     }
 }
 
@@ -672,6 +680,8 @@ public class CreateAutoScalingConfigShrinkRequest : Tea.TeaModel {
     public var securityToken: String?
 
     public var specId: String?
+
+    public var storageCapacityMax: Int64?
 
     public override init() {
         super.init()
@@ -735,6 +745,9 @@ public class CreateAutoScalingConfigShrinkRequest : Tea.TeaModel {
         if self.specId != nil {
             map["SpecId"] = self.specId!
         }
+        if self.storageCapacityMax != nil {
+            map["StorageCapacityMax"] = self.storageCapacityMax!
+        }
         return map
     }
 
@@ -787,6 +800,9 @@ public class CreateAutoScalingConfigShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SpecId"] as? String {
             self.specId = value
+        }
+        if let value = dict["StorageCapacityMax"] as? Int64 {
+            self.storageCapacityMax = value
         }
     }
 }
@@ -8504,6 +8520,8 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
 
             public var enableAttachLocalDisk: Bool?
 
+            public var isScaleSpecGroup: Bool?
+
             public var localDiskCapacity: Int64?
 
             public var localDiskCategory: String?
@@ -8543,6 +8561,9 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
                 if self.enableAttachLocalDisk != nil {
                     map["EnableAttachLocalDisk"] = self.enableAttachLocalDisk!
                 }
+                if self.isScaleSpecGroup != nil {
+                    map["IsScaleSpecGroup"] = self.isScaleSpecGroup!
+                }
                 if self.localDiskCapacity != nil {
                     map["LocalDiskCapacity"] = self.localDiskCapacity!
                 }
@@ -8580,6 +8601,9 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EnableAttachLocalDisk"] as? Bool {
                     self.enableAttachLocalDisk = value
+                }
+                if let value = dict["IsScaleSpecGroup"] as? Bool {
+                    self.isScaleSpecGroup = value
                 }
                 if let value = dict["LocalDiskCapacity"] as? Int64 {
                     self.localDiskCapacity = value
@@ -11800,6 +11824,8 @@ public class ListAutoScalingConfigsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var scaleTypes: [String]?
+
     public var securityToken: String?
 
     public override init() {
@@ -11831,6 +11857,9 @@ public class ListAutoScalingConfigsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.scaleTypes != nil {
+            map["ScaleTypes"] = self.scaleTypes!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -11853,6 +11882,88 @@ public class ListAutoScalingConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["ScaleTypes"] as? [String] {
+            self.scaleTypes = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class ListAutoScalingConfigsShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scaleTypesShrink: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scaleTypesShrink != nil {
+            map["ScaleTypes"] = self.scaleTypesShrink!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["ScaleTypes"] as? String {
+            self.scaleTypesShrink = value
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
@@ -12053,6 +12164,8 @@ public class ListAutoScalingConfigsResponseBody : Tea.TeaModel {
 
             public var specId: String?
 
+            public var storageCapacityMax: Int64?
+
             public override init() {
                 super.init()
             }
@@ -12107,6 +12220,9 @@ public class ListAutoScalingConfigsResponseBody : Tea.TeaModel {
                 if self.specId != nil {
                     map["SpecId"] = self.specId!
                 }
+                if self.storageCapacityMax != nil {
+                    map["StorageCapacityMax"] = self.storageCapacityMax!
+                }
                 return map
             }
 
@@ -12157,6 +12273,9 @@ public class ListAutoScalingConfigsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SpecId"] as? String {
                     self.specId = value
+                }
+                if let value = dict["StorageCapacityMax"] as? Int64 {
+                    self.storageCapacityMax = value
                 }
             }
         }
@@ -12365,6 +12484,8 @@ public class ListAutoScalingRecordsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var scaleTypes: [String]?
+
     public var securityToken: String?
 
     public override init() {
@@ -12402,6 +12523,9 @@ public class ListAutoScalingRecordsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.scaleTypes != nil {
+            map["ScaleTypes"] = self.scaleTypes!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -12430,6 +12554,104 @@ public class ListAutoScalingRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["ScaleTypes"] as? [String] {
+            self.scaleTypes = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class ListAutoScalingRecordsShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scaleTypesShrink: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scaleTypesShrink != nil {
+            map["ScaleTypes"] = self.scaleTypesShrink!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["ScaleTypes"] as? String {
+            self.scaleTypesShrink = value
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
@@ -13989,6 +14211,172 @@ public class MigrateSingleZoneToMultiZoneResponse : Tea.TeaModel {
 }
 
 public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
+    public class ScaleRuleList : Tea.TeaModel {
+        public var configId: String?
+
+        public var enabled: Bool?
+
+        public var endTime: String?
+
+        public var instanceId: String?
+
+        public var observationWindow: Int32?
+
+        public var operationType: String?
+
+        public var ruleId: String?
+
+        public var ruleName: String?
+
+        public var ruleType: String?
+
+        public var scaleInStep: Int32?
+
+        public var scaleOutStep: Int32?
+
+        public var silenceTime: Int32?
+
+        public var startTime: String?
+
+        public var targetMetric: String?
+
+        public var targetNodes: Int32?
+
+        public var thresholdLower: Int32?
+
+        public var thresholdUpper: Int32?
+
+        public var triggerCronExpr: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configId != nil {
+                map["ConfigId"] = self.configId!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.observationWindow != nil {
+                map["ObservationWindow"] = self.observationWindow!
+            }
+            if self.operationType != nil {
+                map["OperationType"] = self.operationType!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            if self.scaleInStep != nil {
+                map["ScaleInStep"] = self.scaleInStep!
+            }
+            if self.scaleOutStep != nil {
+                map["ScaleOutStep"] = self.scaleOutStep!
+            }
+            if self.silenceTime != nil {
+                map["SilenceTime"] = self.silenceTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.targetMetric != nil {
+                map["TargetMetric"] = self.targetMetric!
+            }
+            if self.targetNodes != nil {
+                map["TargetNodes"] = self.targetNodes!
+            }
+            if self.thresholdLower != nil {
+                map["ThresholdLower"] = self.thresholdLower!
+            }
+            if self.thresholdUpper != nil {
+                map["ThresholdUpper"] = self.thresholdUpper!
+            }
+            if self.triggerCronExpr != nil {
+                map["TriggerCronExpr"] = self.triggerCronExpr!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigId"] as? String {
+                self.configId = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["ObservationWindow"] as? Int32 {
+                self.observationWindow = value
+            }
+            if let value = dict["OperationType"] as? String {
+                self.operationType = value
+            }
+            if let value = dict["RuleId"] as? String {
+                self.ruleId = value
+            }
+            if let value = dict["RuleName"] as? String {
+                self.ruleName = value
+            }
+            if let value = dict["RuleType"] as? String {
+                self.ruleType = value
+            }
+            if let value = dict["ScaleInStep"] as? Int32 {
+                self.scaleInStep = value
+            }
+            if let value = dict["ScaleOutStep"] as? Int32 {
+                self.scaleOutStep = value
+            }
+            if let value = dict["SilenceTime"] as? Int32 {
+                self.silenceTime = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["TargetMetric"] as? String {
+                self.targetMetric = value
+            }
+            if let value = dict["TargetNodes"] as? Int32 {
+                self.targetNodes = value
+            }
+            if let value = dict["ThresholdLower"] as? Int32 {
+                self.thresholdLower = value
+            }
+            if let value = dict["ThresholdUpper"] as? Int32 {
+                self.thresholdUpper = value
+            }
+            if let value = dict["TriggerCronExpr"] as? String {
+                self.triggerCronExpr = value
+            }
+        }
+    }
     public var configId: String?
 
     public var configName: String?
@@ -14015,11 +14403,15 @@ public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var scaleRuleList: [ModifyAutoScalingConfigRequest.ScaleRuleList]?
+
     public var scaleType: String?
 
     public var securityToken: String?
 
     public var specId: String?
+
+    public var storageCapacityMax: Int64?
 
     public override init() {
         super.init()
@@ -14074,6 +14466,13 @@ public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.scaleRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.scaleRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["ScaleRuleList"] = tmp
+        }
         if self.scaleType != nil {
             map["ScaleType"] = self.scaleType!
         }
@@ -14082,6 +14481,9 @@ public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
         }
         if self.specId != nil {
             map["SpecId"] = self.specId!
+        }
+        if self.storageCapacityMax != nil {
+            map["StorageCapacityMax"] = self.storageCapacityMax!
         }
         return map
     }
@@ -14127,6 +14529,19 @@ public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
         }
+        if let value = dict["ScaleRuleList"] as? [Any?] {
+            var tmp : [ModifyAutoScalingConfigRequest.ScaleRuleList] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyAutoScalingConfigRequest.ScaleRuleList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scaleRuleList = tmp
+        }
         if let value = dict["ScaleType"] as? String {
             self.scaleType = value
         }
@@ -14135,6 +14550,176 @@ public class ModifyAutoScalingConfigRequest : Tea.TeaModel {
         }
         if let value = dict["SpecId"] as? String {
             self.specId = value
+        }
+        if let value = dict["StorageCapacityMax"] as? Int64 {
+            self.storageCapacityMax = value
+        }
+    }
+}
+
+public class ModifyAutoScalingConfigShrinkRequest : Tea.TeaModel {
+    public var configId: String?
+
+    public var configName: String?
+
+    public var effectiveTimeEnd: String?
+
+    public var effectiveTimeStart: String?
+
+    public var enabled: Bool?
+
+    public var engine: String?
+
+    public var instanceId: String?
+
+    public var nodesMax: Int32?
+
+    public var nodesMin: Int32?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scaleRuleListShrink: String?
+
+    public var scaleType: String?
+
+    public var securityToken: String?
+
+    public var specId: String?
+
+    public var storageCapacityMax: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.configName != nil {
+            map["ConfigName"] = self.configName!
+        }
+        if self.effectiveTimeEnd != nil {
+            map["EffectiveTimeEnd"] = self.effectiveTimeEnd!
+        }
+        if self.effectiveTimeStart != nil {
+            map["EffectiveTimeStart"] = self.effectiveTimeStart!
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.nodesMax != nil {
+            map["NodesMax"] = self.nodesMax!
+        }
+        if self.nodesMin != nil {
+            map["NodesMin"] = self.nodesMin!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scaleRuleListShrink != nil {
+            map["ScaleRuleList"] = self.scaleRuleListShrink!
+        }
+        if self.scaleType != nil {
+            map["ScaleType"] = self.scaleType!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.specId != nil {
+            map["SpecId"] = self.specId!
+        }
+        if self.storageCapacityMax != nil {
+            map["StorageCapacityMax"] = self.storageCapacityMax!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? String {
+            self.configId = value
+        }
+        if let value = dict["ConfigName"] as? String {
+            self.configName = value
+        }
+        if let value = dict["EffectiveTimeEnd"] as? String {
+            self.effectiveTimeEnd = value
+        }
+        if let value = dict["EffectiveTimeStart"] as? String {
+            self.effectiveTimeStart = value
+        }
+        if let value = dict["Enabled"] as? Bool {
+            self.enabled = value
+        }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["NodesMax"] as? Int32 {
+            self.nodesMax = value
+        }
+        if let value = dict["NodesMin"] as? Int32 {
+            self.nodesMin = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["ScaleRuleList"] as? String {
+            self.scaleRuleListShrink = value
+        }
+        if let value = dict["ScaleType"] as? String {
+            self.scaleType = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+        if let value = dict["SpecId"] as? String {
+            self.specId = value
+        }
+        if let value = dict["StorageCapacityMax"] as? Int64 {
+            self.storageCapacityMax = value
         }
     }
 }
@@ -18638,6 +19223,234 @@ public class UpdateLindormV2InstanceParameterResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateLindormV2InstanceParameterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateLindormV2WhiteIpListRequest : Tea.TeaModel {
+    public class WhiteIpGroupList : Tea.TeaModel {
+        public var groupName: String?
+
+        public var whiteIpList: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.whiteIpList != nil {
+                map["WhiteIpList"] = self.whiteIpList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["WhiteIpList"] as? String {
+                self.whiteIpList = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public var whiteIpGroupList: [UpdateLindormV2WhiteIpListRequest.WhiteIpGroupList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.whiteIpGroupList != nil {
+            var tmp : [Any] = []
+            for k in self.whiteIpGroupList! {
+                tmp.append(k.toMap())
+            }
+            map["WhiteIpGroupList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+        if let value = dict["WhiteIpGroupList"] as? [Any?] {
+            var tmp : [UpdateLindormV2WhiteIpListRequest.WhiteIpGroupList] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateLindormV2WhiteIpListRequest.WhiteIpGroupList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.whiteIpGroupList = tmp
+        }
+    }
+}
+
+public class UpdateLindormV2WhiteIpListResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateLindormV2WhiteIpListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateLindormV2WhiteIpListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateLindormV2WhiteIpListResponseBody()
             model.fromMap(value)
             self.body = model
         }

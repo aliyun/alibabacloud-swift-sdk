@@ -163,6 +163,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.specId)) {
             query["SpecId"] = request.specId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storageCapacityMax)) {
+            query["StorageCapacityMax"] = request.storageCapacityMax!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1965,8 +1968,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listAutoScalingConfigsWithOptions(_ request: ListAutoScalingConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutoScalingConfigsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listAutoScalingConfigsWithOptions(_ tmpReq: ListAutoScalingConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutoScalingConfigsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAutoScalingConfigsShrinkRequest = ListAutoScalingConfigsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.scaleTypes)) {
+            request.scaleTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scaleTypes, "ScaleTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -1982,6 +1990,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scaleTypesShrink)) {
+            query["ScaleTypes"] = request.scaleTypesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
@@ -2011,8 +2022,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listAutoScalingRecordsWithOptions(_ request: ListAutoScalingRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutoScalingRecordsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listAutoScalingRecordsWithOptions(_ tmpReq: ListAutoScalingRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutoScalingRecordsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAutoScalingRecordsShrinkRequest = ListAutoScalingRecordsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.scaleTypes)) {
+            request.scaleTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scaleTypes, "ScaleTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -2034,6 +2050,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scaleTypesShrink)) {
+            query["ScaleTypes"] = request.scaleTypesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
@@ -2280,8 +2299,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyAutoScalingConfigWithOptions(_ request: ModifyAutoScalingConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAutoScalingConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyAutoScalingConfigWithOptions(_ tmpReq: ModifyAutoScalingConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAutoScalingConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyAutoScalingConfigShrinkRequest = ModifyAutoScalingConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.scaleRuleList)) {
+            request.scaleRuleListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scaleRuleList, "ScaleRuleList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.configId)) {
             query["ConfigId"] = request.configId ?? "";
@@ -2322,6 +2346,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.scaleRuleListShrink)) {
+            query["ScaleRuleList"] = request.scaleRuleListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scaleType)) {
             query["ScaleType"] = request.scaleType ?? "";
         }
@@ -2330,6 +2357,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.specId)) {
             query["SpecId"] = request.specId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageCapacityMax)) {
+            query["StorageCapacityMax"] = request.storageCapacityMax!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3575,6 +3605,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateLindormV2InstanceParameter(_ request: UpdateLindormV2InstanceParameterRequest) async throws -> UpdateLindormV2InstanceParameterResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateLindormV2InstanceParameterWithOptions(request as! UpdateLindormV2InstanceParameterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLindormV2WhiteIpListWithOptions(_ request: UpdateLindormV2WhiteIpListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLindormV2WhiteIpListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.whiteIpGroupList)) {
+            query["WhiteIpGroupList"] = request.whiteIpGroupList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateLindormV2WhiteIpList",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateLindormV2WhiteIpListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLindormV2WhiteIpList(_ request: UpdateLindormV2WhiteIpListRequest) async throws -> UpdateLindormV2WhiteIpListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateLindormV2WhiteIpListWithOptions(request as! UpdateLindormV2WhiteIpListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
