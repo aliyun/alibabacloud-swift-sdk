@@ -241,6 +241,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runContractExtractWithOptions(_ workspaceId: String, _ tmpReq: RunContractExtractRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunContractExtractResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunContractExtractShrinkRequest = RunContractExtractShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.fieldsToExtract)) {
+            request.fieldsToExtractShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fieldsToExtract, "fieldsToExtract", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldsToExtractShrink)) {
+            body["fieldsToExtract"] = request.fieldsToExtractShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileOssUrl)) {
+            body["fileOssUrl"] = request.fileOssUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunContractExtract",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/pop/contract/extraction",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunContractExtractResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runContractExtract(_ workspaceId: String, _ request: RunContractExtractRequest) async throws -> RunContractExtractResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runContractExtractWithOptions(workspaceId as! String, request as! RunContractExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runContractResultGenerationWithOptions(_ workspaceId: String, _ tmpReq: RunContractResultGenerationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunContractResultGenerationResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunContractResultGenerationShrinkRequest = RunContractResultGenerationShrinkRequest([:])

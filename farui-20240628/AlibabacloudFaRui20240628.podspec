@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudFaRui20240628"
-  spec.version      = "1.5.3"
+  spec.version      = "1.6.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud FaRui (20240628) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/farui-20240628" 

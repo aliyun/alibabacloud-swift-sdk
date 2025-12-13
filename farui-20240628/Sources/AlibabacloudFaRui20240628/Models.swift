@@ -312,6 +312,458 @@ public class CreateTextFileResponse : Tea.TeaModel {
     }
 }
 
+public class RunContractExtractRequest : Tea.TeaModel {
+    public class FieldsToExtract : Tea.TeaModel {
+        public var desc: String?
+
+        public var extractItem: String?
+
+        public var option: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desc != nil {
+                map["desc"] = self.desc!
+            }
+            if self.extractItem != nil {
+                map["extractItem"] = self.extractItem!
+            }
+            if self.option != nil {
+                map["option"] = self.option!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["desc"] as? String {
+                self.desc = value
+            }
+            if let value = dict["extractItem"] as? String {
+                self.extractItem = value
+            }
+            if let value = dict["option"] as? [String] {
+                self.option = value
+            }
+        }
+    }
+    public var appId: String?
+
+    public var fieldsToExtract: [RunContractExtractRequest.FieldsToExtract]?
+
+    public var fileOssUrl: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["appId"] = self.appId!
+        }
+        if self.fieldsToExtract != nil {
+            var tmp : [Any] = []
+            for k in self.fieldsToExtract! {
+                tmp.append(k.toMap())
+            }
+            map["fieldsToExtract"] = tmp
+        }
+        if self.fileOssUrl != nil {
+            map["fileOssUrl"] = self.fileOssUrl!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["appId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["fieldsToExtract"] as? [Any?] {
+            var tmp : [RunContractExtractRequest.FieldsToExtract] = []
+            for v in value {
+                if v != nil {
+                    var model = RunContractExtractRequest.FieldsToExtract()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fieldsToExtract = tmp
+        }
+        if let value = dict["fileOssUrl"] as? String {
+            self.fileOssUrl = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class RunContractExtractShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var fieldsToExtractShrink: String?
+
+    public var fileOssUrl: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["appId"] = self.appId!
+        }
+        if self.fieldsToExtractShrink != nil {
+            map["fieldsToExtract"] = self.fieldsToExtractShrink!
+        }
+        if self.fileOssUrl != nil {
+            map["fileOssUrl"] = self.fileOssUrl!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["appId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["fieldsToExtract"] as? String {
+            self.fieldsToExtractShrink = value
+        }
+        if let value = dict["fileOssUrl"] as? String {
+            self.fileOssUrl = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class RunContractExtractResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ExtractResult : Tea.TeaModel {
+            public class Value : Tea.TeaModel {
+                public var data: String?
+
+                public var originalText: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["data"] = self.data!
+                    }
+                    if self.originalText != nil {
+                        map["originalText"] = self.originalText!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["data"] as? String {
+                        self.data = value
+                    }
+                    if let value = dict["originalText"] as? String {
+                        self.originalText = value
+                    }
+                }
+            }
+            public var desc: String?
+
+            public var extractItem: String?
+
+            public var option: String?
+
+            public var value: [RunContractExtractResponseBody.Data.ExtractResult.Value]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["desc"] = self.desc!
+                }
+                if self.extractItem != nil {
+                    map["extractItem"] = self.extractItem!
+                }
+                if self.option != nil {
+                    map["option"] = self.option!
+                }
+                if self.value != nil {
+                    var tmp : [Any] = []
+                    for k in self.value! {
+                        tmp.append(k.toMap())
+                    }
+                    map["value"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["desc"] as? String {
+                    self.desc = value
+                }
+                if let value = dict["extractItem"] as? String {
+                    self.extractItem = value
+                }
+                if let value = dict["option"] as? String {
+                    self.option = value
+                }
+                if let value = dict["value"] as? [Any?] {
+                    var tmp : [RunContractExtractResponseBody.Data.ExtractResult.Value] = []
+                    for v in value {
+                        if v != nil {
+                            var model = RunContractExtractResponseBody.Data.ExtractResult.Value()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.value = tmp
+                }
+            }
+        }
+        public var contractText: String?
+
+        public var extractResult: [RunContractExtractResponseBody.Data.ExtractResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contractText != nil {
+                map["contractText"] = self.contractText!
+            }
+            if self.extractResult != nil {
+                var tmp : [Any] = []
+                for k in self.extractResult! {
+                    tmp.append(k.toMap())
+                }
+                map["extractResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["contractText"] as? String {
+                self.contractText = value
+            }
+            if let value = dict["extractResult"] as? [Any?] {
+                var tmp : [RunContractExtractResponseBody.Data.ExtractResult] = []
+                for v in value {
+                    if v != nil {
+                        var model = RunContractExtractResponseBody.Data.ExtractResult()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.extractResult = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: RunContractExtractResponseBody.Data?
+
+    public var httpStatusCode: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = RunContractExtractResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? Int64 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class RunContractExtractResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunContractExtractResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RunContractExtractResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RunContractResultGenerationRequest : Tea.TeaModel {
     public class Assistant : Tea.TeaModel {
         public class MetaData : Tea.TeaModel {
