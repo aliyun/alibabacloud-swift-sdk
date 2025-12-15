@@ -5574,13 +5574,79 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
         }
         public class ManagerNode : Tea.TeaModel {
+            public class SystemDisk : Tea.TeaModel {
+                public var category: String?
+
+                public var level: String?
+
+                public var size: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Category"] as? String {
+                        self.category = value
+                    }
+                    if let value = dict["Level"] as? String {
+                        self.level = value
+                    }
+                    if let value = dict["Size"] as? Int64 {
+                        self.size = value
+                    }
+                }
+            }
+            public var autoRenew: Bool?
+
+            public var autoRenewPeriod: Int64?
+
+            public var duration: Int64?
+
+            public var enableHt: Bool?
+
             public var expiredTime: String?
+
+            public var imageId: String?
 
             public var instanceChargeType: String?
 
             public var instanceId: String?
 
             public var instanceType: String?
+
+            public var period: Int64?
+
+            public var periodUnit: String?
+
+            public var spotPriceLimit: Double?
+
+            public var spotStrategy: String?
+
+            public var systemDisk: GetClusterResponseBody.Manager.ManagerNode.SystemDisk?
 
             public override init() {
                 super.init()
@@ -5592,12 +5658,28 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.systemDisk?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoRenew != nil {
+                    map["AutoRenew"] = self.autoRenew!
+                }
+                if self.autoRenewPeriod != nil {
+                    map["AutoRenewPeriod"] = self.autoRenewPeriod!
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.enableHt != nil {
+                    map["EnableHt"] = self.enableHt!
+                }
                 if self.expiredTime != nil {
                     map["ExpiredTime"] = self.expiredTime!
+                }
+                if self.imageId != nil {
+                    map["ImageId"] = self.imageId!
                 }
                 if self.instanceChargeType != nil {
                     map["InstanceChargeType"] = self.instanceChargeType!
@@ -5608,13 +5690,43 @@ public class GetClusterResponseBody : Tea.TeaModel {
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
                 }
+                if self.period != nil {
+                    map["Period"] = self.period!
+                }
+                if self.periodUnit != nil {
+                    map["PeriodUnit"] = self.periodUnit!
+                }
+                if self.spotPriceLimit != nil {
+                    map["SpotPriceLimit"] = self.spotPriceLimit!
+                }
+                if self.spotStrategy != nil {
+                    map["SpotStrategy"] = self.spotStrategy!
+                }
+                if self.systemDisk != nil {
+                    map["SystemDisk"] = self.systemDisk?.toMap()
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AutoRenew"] as? Bool {
+                    self.autoRenew = value
+                }
+                if let value = dict["AutoRenewPeriod"] as? Int64 {
+                    self.autoRenewPeriod = value
+                }
+                if let value = dict["Duration"] as? Int64 {
+                    self.duration = value
+                }
+                if let value = dict["EnableHt"] as? Bool {
+                    self.enableHt = value
+                }
                 if let value = dict["ExpiredTime"] as? String {
                     self.expiredTime = value
+                }
+                if let value = dict["ImageId"] as? String {
+                    self.imageId = value
                 }
                 if let value = dict["InstanceChargeType"] as? String {
                     self.instanceChargeType = value
@@ -5624,6 +5736,23 @@ public class GetClusterResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InstanceType"] as? String {
                     self.instanceType = value
+                }
+                if let value = dict["Period"] as? Int64 {
+                    self.period = value
+                }
+                if let value = dict["PeriodUnit"] as? String {
+                    self.periodUnit = value
+                }
+                if let value = dict["SpotPriceLimit"] as? Double {
+                    self.spotPriceLimit = value
+                }
+                if let value = dict["SpotStrategy"] as? String {
+                    self.spotStrategy = value
+                }
+                if let value = dict["SystemDisk"] as? [String: Any?] {
+                    var model = GetClusterResponseBody.Manager.ManagerNode.SystemDisk()
+                    model.fromMap(value)
+                    self.systemDisk = model
                 }
             }
         }
@@ -12602,6 +12731,226 @@ public class ListQueuesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListQueuesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRegionsRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var specCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.specCode != nil {
+            map["SpecCode"] = self.specCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["SpecCode"] as? String {
+            self.specCode = value
+        }
+    }
+}
+
+public class ListRegionsResponseBody : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public var localName: String?
+
+        public var regionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.localName != nil {
+                map["LocalName"] = self.localName!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LocalName"] as? String {
+                self.localName = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regions: [ListRegionsResponseBody.Regions]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regions != nil {
+            var tmp : [Any] = []
+            for k in self.regions! {
+                tmp.append(k.toMap())
+            }
+            map["Regions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Regions"] as? [Any?] {
+            var tmp : [ListRegionsResponseBody.Regions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRegionsResponseBody.Regions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.regions = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRegionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
