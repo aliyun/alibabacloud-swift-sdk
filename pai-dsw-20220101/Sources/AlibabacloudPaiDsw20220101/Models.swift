@@ -1883,6 +1883,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var labels: [CreateInstanceRequest.Labels]?
 
+    public var migrationOptions: [String: Any]?
+
     public var oversoldType: String?
 
     public var priority: Int64?
@@ -1983,6 +1985,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Labels"] = tmp
+        }
+        if self.migrationOptions != nil {
+            map["MigrationOptions"] = self.migrationOptions!
         }
         if self.oversoldType != nil {
             map["OversoldType"] = self.oversoldType!
@@ -2108,6 +2113,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 }
             }
             self.labels = tmp
+        }
+        if let value = dict["MigrationOptions"] as? [String: Any] {
+            self.migrationOptions = value
         }
         if let value = dict["OversoldType"] as? String {
             self.oversoldType = value
@@ -4554,6 +4562,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var migrationOptions: [String: Any]?
+
     public var nodeErrorRecovery: GetInstanceResponseBody.NodeErrorRecovery?
 
     public var paymentType: String?
@@ -4728,6 +4738,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.migrationOptions != nil {
+            map["MigrationOptions"] = self.migrationOptions!
         }
         if self.nodeErrorRecovery != nil {
             map["NodeErrorRecovery"] = self.nodeErrorRecovery?.toMap()
@@ -4952,6 +4965,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Message"] as? String {
             self.message = value
+        }
+        if let value = dict["MigrationOptions"] as? [String: Any] {
+            self.migrationOptions = value
         }
         if let value = dict["NodeErrorRecovery"] as? [String: Any?] {
             var model = GetInstanceResponseBody.NodeErrorRecovery()
@@ -9999,6 +10015,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var migrationOptions: [String: Any]?
+
     public var requestId: String?
 
     public var success: Bool?
@@ -10035,6 +10053,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.migrationOptions != nil {
+            map["MigrationOptions"] = self.migrationOptions!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -10070,6 +10091,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         }
         if let value = dict["Message"] as? String {
             self.message = value
+        }
+        if let value = dict["MigrationOptions"] as? [String: Any] {
+            self.migrationOptions = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -11350,6 +11374,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var disassociateForwardInfos: Bool?
 
+    public var disassociateMigrationOptions: Bool?
+
     public var disassociateSpot: Bool?
 
     public var disassociateUserCommand: Bool?
@@ -11371,6 +11397,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var imageUrl: String?
 
     public var instanceName: String?
+
+    public var migrationOptions: [String: Any]?
 
     public var oversoldType: String?
 
@@ -11456,6 +11484,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.disassociateForwardInfos != nil {
             map["DisassociateForwardInfos"] = self.disassociateForwardInfos!
         }
+        if self.disassociateMigrationOptions != nil {
+            map["DisassociateMigrationOptions"] = self.disassociateMigrationOptions!
+        }
         if self.disassociateSpot != nil {
             map["DisassociateSpot"] = self.disassociateSpot!
         }
@@ -11488,6 +11519,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.migrationOptions != nil {
+            map["MigrationOptions"] = self.migrationOptions!
         }
         if self.oversoldType != nil {
             map["OversoldType"] = self.oversoldType!
@@ -11583,6 +11617,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if let value = dict["DisassociateForwardInfos"] as? Bool {
             self.disassociateForwardInfos = value
         }
+        if let value = dict["DisassociateMigrationOptions"] as? Bool {
+            self.disassociateMigrationOptions = value
+        }
         if let value = dict["DisassociateSpot"] as? Bool {
             self.disassociateSpot = value
         }
@@ -11617,6 +11654,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["MigrationOptions"] as? [String: Any] {
+            self.migrationOptions = value
         }
         if let value = dict["OversoldType"] as? String {
             self.oversoldType = value

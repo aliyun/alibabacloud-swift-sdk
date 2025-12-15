@@ -150,6 +150,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.labels)) {
             body["Labels"] = request.labels ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.migrationOptions)) {
+            body["MigrationOptions"] = request.migrationOptions ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.oversoldType)) {
             body["OversoldType"] = request.oversoldType ?? "";
         }
@@ -1352,6 +1355,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.disassociateForwardInfos)) {
             body["DisassociateForwardInfos"] = request.disassociateForwardInfos!;
         }
+        if (!TeaUtils.Client.isUnset(request.disassociateMigrationOptions)) {
+            body["DisassociateMigrationOptions"] = request.disassociateMigrationOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.disassociateSpot)) {
             body["DisassociateSpot"] = request.disassociateSpot!;
         }
@@ -1384,6 +1390,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.migrationOptions)) {
+            body["MigrationOptions"] = request.migrationOptions ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.oversoldType)) {
             body["OversoldType"] = request.oversoldType ?? "";
