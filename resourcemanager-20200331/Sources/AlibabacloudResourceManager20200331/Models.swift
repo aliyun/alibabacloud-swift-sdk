@@ -16141,6 +16141,202 @@ public class ListPolicyVersionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListResourceGroupCapabilityRequest : Tea.TeaModel {
+    public var resourceType: String?
+
+    public var service: String?
+
+    public var supportResourceGroupEvent: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.service != nil {
+            map["Service"] = self.service!
+        }
+        if self.supportResourceGroupEvent != nil {
+            map["SupportResourceGroupEvent"] = self.supportResourceGroupEvent!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["Service"] as? String {
+            self.service = value
+        }
+        if let value = dict["SupportResourceGroupEvent"] as? Bool {
+            self.supportResourceGroupEvent = value
+        }
+    }
+}
+
+public class ListResourceGroupCapabilityResponseBody : Tea.TeaModel {
+    public class Capabilities : Tea.TeaModel {
+        public var resourceType: String?
+
+        public var service: String?
+
+        public var supportResourceGroupEvent: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.service != nil {
+                map["Service"] = self.service!
+            }
+            if self.supportResourceGroupEvent != nil {
+                map["SupportResourceGroupEvent"] = self.supportResourceGroupEvent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["Service"] as? String {
+                self.service = value
+            }
+            if let value = dict["SupportResourceGroupEvent"] as? Bool {
+                self.supportResourceGroupEvent = value
+            }
+        }
+    }
+    public var capabilities: [ListResourceGroupCapabilityResponseBody.Capabilities]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capabilities != nil {
+            var tmp : [Any] = []
+            for k in self.capabilities! {
+                tmp.append(k.toMap())
+            }
+            map["Capabilities"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Capabilities"] as? [Any?] {
+            var tmp : [ListResourceGroupCapabilityResponseBody.Capabilities] = []
+            for v in value {
+                if v != nil {
+                    var model = ListResourceGroupCapabilityResponseBody.Capabilities()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.capabilities = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListResourceGroupCapabilityResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResourceGroupCapabilityResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListResourceGroupCapabilityResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListResourceGroupsRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -19102,6 +19298,440 @@ public class ListTrustedServiceStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListTrustedServiceStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class LookupResourceGroupEventsRequest : Tea.TeaModel {
+    public class LookupAttributes : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var eventCategory: String?
+
+    public var lookupAttributes: [LookupResourceGroupEventsRequest.LookupAttributes]?
+
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var resourceGroupDisplayName: String?
+
+    public var resourceGroupId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.eventCategory != nil {
+            map["EventCategory"] = self.eventCategory!
+        }
+        if self.lookupAttributes != nil {
+            var tmp : [Any] = []
+            for k in self.lookupAttributes! {
+                tmp.append(k.toMap())
+            }
+            map["LookupAttributes"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceGroupDisplayName != nil {
+            map["ResourceGroupDisplayName"] = self.resourceGroupDisplayName!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EventCategory"] as? String {
+            self.eventCategory = value
+        }
+        if let value = dict["LookupAttributes"] as? [Any?] {
+            var tmp : [LookupResourceGroupEventsRequest.LookupAttributes] = []
+            for v in value {
+                if v != nil {
+                    var model = LookupResourceGroupEventsRequest.LookupAttributes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.lookupAttributes = tmp
+        }
+        if let value = dict["MaxResults"] as? String {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ResourceGroupDisplayName"] as? String {
+            self.resourceGroupDisplayName = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class LookupResourceGroupEventsResponseBody : Tea.TeaModel {
+    public class Events : Tea.TeaModel {
+        public class SourceResourceGroupInfo : Tea.TeaModel {
+            public var resourceGroupDisplayName: String?
+
+            public var resourceGroupId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceGroupDisplayName != nil {
+                    map["ResourceGroupDisplayName"] = self.resourceGroupDisplayName!
+                }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceGroupDisplayName"] as? String {
+                    self.resourceGroupDisplayName = value
+                }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
+                }
+            }
+        }
+        public class TargetResourceGroupInfo : Tea.TeaModel {
+            public var resourceGroupDisplayName: String?
+
+            public var resourceGroupId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceGroupDisplayName != nil {
+                    map["ResourceGroupDisplayName"] = self.resourceGroupDisplayName!
+                }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceGroupDisplayName"] as? String {
+                    self.resourceGroupDisplayName = value
+                }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
+                }
+            }
+        }
+        public var changeType: String?
+
+        public var eventTime: String?
+
+        public var regionId: String?
+
+        public var resourceGroupDisplayName: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public var service: String?
+
+        public var sourceResourceGroupInfo: LookupResourceGroupEventsResponseBody.Events.SourceResourceGroupInfo?
+
+        public var targetResourceGroupInfo: LookupResourceGroupEventsResponseBody.Events.TargetResourceGroupInfo?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.sourceResourceGroupInfo?.validate()
+            try self.targetResourceGroupInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.changeType != nil {
+                map["ChangeType"] = self.changeType!
+            }
+            if self.eventTime != nil {
+                map["EventTime"] = self.eventTime!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupDisplayName != nil {
+                map["ResourceGroupDisplayName"] = self.resourceGroupDisplayName!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.service != nil {
+                map["Service"] = self.service!
+            }
+            if self.sourceResourceGroupInfo != nil {
+                map["SourceResourceGroupInfo"] = self.sourceResourceGroupInfo?.toMap()
+            }
+            if self.targetResourceGroupInfo != nil {
+                map["TargetResourceGroupInfo"] = self.targetResourceGroupInfo?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChangeType"] as? String {
+                self.changeType = value
+            }
+            if let value = dict["EventTime"] as? String {
+                self.eventTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResourceGroupDisplayName"] as? String {
+                self.resourceGroupDisplayName = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["Service"] as? String {
+                self.service = value
+            }
+            if let value = dict["SourceResourceGroupInfo"] as? [String: Any?] {
+                var model = LookupResourceGroupEventsResponseBody.Events.SourceResourceGroupInfo()
+                model.fromMap(value)
+                self.sourceResourceGroupInfo = model
+            }
+            if let value = dict["TargetResourceGroupInfo"] as? [String: Any?] {
+                var model = LookupResourceGroupEventsResponseBody.Events.TargetResourceGroupInfo()
+                model.fromMap(value)
+                self.targetResourceGroupInfo = model
+            }
+        }
+    }
+    public var events: [LookupResourceGroupEventsResponseBody.Events]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.events != nil {
+            var tmp : [Any] = []
+            for k in self.events! {
+                tmp.append(k.toMap())
+            }
+            map["Events"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Events"] as? [Any?] {
+            var tmp : [LookupResourceGroupEventsResponseBody.Events] = []
+            for v in value {
+                if v != nil {
+                    var model = LookupResourceGroupEventsResponseBody.Events()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.events = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class LookupResourceGroupEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LookupResourceGroupEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = LookupResourceGroupEventsResponseBody()
             model.fromMap(value)
             self.body = model
         }
