@@ -37500,6 +37500,8 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var eni: String?
+
     public var instanceVersion: String?
 
     public var payType: String?
@@ -37563,6 +37565,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.eni != nil {
+            map["Eni"] = self.eni!
         }
         if self.instanceVersion != nil {
             map["InstanceVersion"] = self.instanceVersion!
@@ -37634,6 +37639,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         }
         if let value = dict["EngineVersion"] as? String {
             self.engineVersion = value
+        }
+        if let value = dict["Eni"] as? String {
+            self.eni = value
         }
         if let value = dict["InstanceVersion"] as? String {
             self.instanceVersion = value
