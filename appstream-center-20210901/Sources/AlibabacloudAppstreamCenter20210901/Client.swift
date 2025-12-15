@@ -363,10 +363,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createWuyingServerWithOptions(_ request: CreateWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWuyingServerResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.savingPlanId)) {
-            query["SavingPlanId"] = request.savingPlanId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.amount)) {
             body["Amount"] = request.amount!;
@@ -389,6 +385,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.dataDisk)) {
             bodyFlat["DataDisk"] = request.dataDisk ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.hostName)) {
+            body["HostName"] = request.hostName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.idempotenceToken)) {
             body["IdempotenceToken"] = request.idempotenceToken ?? "";
@@ -413,6 +412,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             body["PromotionId"] = request.promotionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.savingPlanId)) {
+            body["SavingPlanId"] = request.savingPlanId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serverInstanceType)) {
             body["ServerInstanceType"] = request.serverInstanceType ?? "";
@@ -440,7 +442,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

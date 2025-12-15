@@ -2332,6 +2332,8 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
 
     public var dataDisk: [CreateWuyingServerRequest.DataDisk]?
 
+    public var hostName: String?
+
     public var idempotenceToken: String?
 
     public var imageId: String?
@@ -2404,6 +2406,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
         }
         if self.idempotenceToken != nil {
             map["IdempotenceToken"] = self.idempotenceToken!
@@ -2491,6 +2496,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 }
             }
             self.dataDisk = tmp
+        }
+        if let value = dict["HostName"] as? String {
+            self.hostName = value
         }
         if let value = dict["IdempotenceToken"] as? String {
             self.idempotenceToken = value
