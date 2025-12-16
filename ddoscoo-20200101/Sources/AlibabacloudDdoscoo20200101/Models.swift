@@ -32245,6 +32245,8 @@ public class ModifyNetworkRuleAttributeRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var module: String?
+
     public override init() {
         super.init()
     }
@@ -32271,6 +32273,9 @@ public class ModifyNetworkRuleAttributeRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
         return map
     }
 
@@ -32287,6 +32292,9 @@ public class ModifyNetworkRuleAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Module"] as? String {
+            self.module = value
         }
     }
 }
