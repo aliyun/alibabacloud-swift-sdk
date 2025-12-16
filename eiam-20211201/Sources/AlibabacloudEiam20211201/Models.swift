@@ -12306,6 +12306,224 @@ public class GetApplicationResponse : Tea.TeaModel {
     }
 }
 
+public class GetApplicationAdvancedConfigRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetApplicationAdvancedConfigResponseBody : Tea.TeaModel {
+    public class ApplicationAdvancedConfig : Tea.TeaModel {
+        public class ScimServerAdvancedConfig : Tea.TeaModel {
+            public var supportedUserCustomFieldIds: [String]?
+
+            public var userCustomFieldNamespace: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.supportedUserCustomFieldIds != nil {
+                    map["SupportedUserCustomFieldIds"] = self.supportedUserCustomFieldIds!
+                }
+                if self.userCustomFieldNamespace != nil {
+                    map["UserCustomFieldNamespace"] = self.userCustomFieldNamespace!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SupportedUserCustomFieldIds"] as? [String] {
+                    self.supportedUserCustomFieldIds = value
+                }
+                if let value = dict["UserCustomFieldNamespace"] as? String {
+                    self.userCustomFieldNamespace = value
+                }
+            }
+        }
+        public var applicationId: String?
+
+        public var instanceId: String?
+
+        public var scimServerAdvancedConfig: GetApplicationAdvancedConfigResponseBody.ApplicationAdvancedConfig.ScimServerAdvancedConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.scimServerAdvancedConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationId != nil {
+                map["ApplicationId"] = self.applicationId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.scimServerAdvancedConfig != nil {
+                map["ScimServerAdvancedConfig"] = self.scimServerAdvancedConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationId"] as? String {
+                self.applicationId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["ScimServerAdvancedConfig"] as? [String: Any?] {
+                var model = GetApplicationAdvancedConfigResponseBody.ApplicationAdvancedConfig.ScimServerAdvancedConfig()
+                model.fromMap(value)
+                self.scimServerAdvancedConfig = model
+            }
+        }
+    }
+    public var applicationAdvancedConfig: GetApplicationAdvancedConfigResponseBody.ApplicationAdvancedConfig?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicationAdvancedConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationAdvancedConfig != nil {
+            map["ApplicationAdvancedConfig"] = self.applicationAdvancedConfig?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationAdvancedConfig"] as? [String: Any?] {
+            var model = GetApplicationAdvancedConfigResponseBody.ApplicationAdvancedConfig()
+            model.fromMap(value)
+            self.applicationAdvancedConfig = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetApplicationAdvancedConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetApplicationAdvancedConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetApplicationAdvancedConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetApplicationFederatedCredentialRequest : Tea.TeaModel {
     public var applicationFederatedCredentialId: String?
 
@@ -42925,6 +43143,175 @@ public class UnlockUserResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UnlockUserResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateApplicationAdvancedConfigRequest : Tea.TeaModel {
+    public class ScimServerAdvancedConfig : Tea.TeaModel {
+        public var supportedUserCustomFieldIds: [String]?
+
+        public var userCustomFieldNamespace: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.supportedUserCustomFieldIds != nil {
+                map["SupportedUserCustomFieldIds"] = self.supportedUserCustomFieldIds!
+            }
+            if self.userCustomFieldNamespace != nil {
+                map["UserCustomFieldNamespace"] = self.userCustomFieldNamespace!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SupportedUserCustomFieldIds"] as? [String] {
+                self.supportedUserCustomFieldIds = value
+            }
+            if let value = dict["UserCustomFieldNamespace"] as? String {
+                self.userCustomFieldNamespace = value
+            }
+        }
+    }
+    public var applicationId: String?
+
+    public var instanceId: String?
+
+    public var scimServerAdvancedConfig: UpdateApplicationAdvancedConfigRequest.ScimServerAdvancedConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.scimServerAdvancedConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scimServerAdvancedConfig != nil {
+            map["ScimServerAdvancedConfig"] = self.scimServerAdvancedConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["ScimServerAdvancedConfig"] as? [String: Any?] {
+            var model = UpdateApplicationAdvancedConfigRequest.ScimServerAdvancedConfig()
+            model.fromMap(value)
+            self.scimServerAdvancedConfig = model
+        }
+    }
+}
+
+public class UpdateApplicationAdvancedConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateApplicationAdvancedConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateApplicationAdvancedConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateApplicationAdvancedConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
