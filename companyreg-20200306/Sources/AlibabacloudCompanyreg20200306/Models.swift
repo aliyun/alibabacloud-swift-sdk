@@ -6919,6 +6919,8 @@ public class TransferIntentionOwnerRequest : Tea.TeaModel {
 
     public var bizType: String?
 
+    public var employeeCode: String?
+
     public var personId: Int32?
 
     public var remark: String?
@@ -6943,6 +6945,9 @@ public class TransferIntentionOwnerRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.employeeCode != nil {
+            map["EmployeeCode"] = self.employeeCode!
+        }
         if self.personId != nil {
             map["PersonId"] = self.personId!
         }
@@ -6959,6 +6964,9 @@ public class TransferIntentionOwnerRequest : Tea.TeaModel {
         }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["EmployeeCode"] as? String {
+            self.employeeCode = value
         }
         if let value = dict["PersonId"] as? Int32 {
             self.personId = value
@@ -7087,6 +7095,8 @@ public class TransferProduceOwnerRequest : Tea.TeaModel {
 
     public var bizType: String?
 
+    public var employeeCode: String?
+
     public var personId: Int32?
 
     public var remark: String?
@@ -7111,6 +7121,9 @@ public class TransferProduceOwnerRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.employeeCode != nil {
+            map["EmployeeCode"] = self.employeeCode!
+        }
         if self.personId != nil {
             map["PersonId"] = self.personId!
         }
@@ -7127,6 +7140,9 @@ public class TransferProduceOwnerRequest : Tea.TeaModel {
         }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["EmployeeCode"] as? String {
+            self.employeeCode = value
         }
         if let value = dict["PersonId"] as? Int32 {
             self.personId = value
