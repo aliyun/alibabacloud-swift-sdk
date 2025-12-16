@@ -2745,8 +2745,72 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
         }
         public class Payload : Tea.TeaModel {
             public class Output : Tea.TeaModel {
+                public class AddDatasetDocumentsResult : Tea.TeaModel {
+                    public var docId: String?
+
+                    public var docUuid: String?
+
+                    public var errorMessage: String?
+
+                    public var status: Int64?
+
+                    public var title: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.docId != nil {
+                            map["docId"] = self.docId!
+                        }
+                        if self.docUuid != nil {
+                            map["docUuid"] = self.docUuid!
+                        }
+                        if self.errorMessage != nil {
+                            map["errorMessage"] = self.errorMessage!
+                        }
+                        if self.status != nil {
+                            map["status"] = self.status!
+                        }
+                        if self.title != nil {
+                            map["title"] = self.title!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["docId"] as? String {
+                            self.docId = value
+                        }
+                        if let value = dict["docUuid"] as? String {
+                            self.docUuid = value
+                        }
+                        if let value = dict["errorMessage"] as? String {
+                            self.errorMessage = value
+                        }
+                        if let value = dict["status"] as? Int64 {
+                            self.status = value
+                        }
+                        if let value = dict["title"] as? String {
+                            self.title = value
+                        }
+                    }
+                }
                 public class VideoAnalysisResult : Tea.TeaModel {
                     public class Usage : Tea.TeaModel {
+                        public var imageTokens: Int64?
+
                         public var inputTokens: Int64?
 
                         public var outputTokens: Int64?
@@ -2767,6 +2831,9 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
+                            if self.imageTokens != nil {
+                                map["imageTokens"] = self.imageTokens!
+                            }
                             if self.inputTokens != nil {
                                 map["inputTokens"] = self.inputTokens!
                             }
@@ -2781,6 +2848,9 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
 
                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                             guard let dict else { return }
+                            if let value = dict["imageTokens"] as? Int64 {
+                                self.imageTokens = value
+                            }
                             if let value = dict["inputTokens"] as? Int64 {
                                 self.inputTokens = value
                             }
@@ -2905,6 +2975,144 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                                 }
                             }
                             self.videoShotAnalysisResults = tmp
+                        }
+                    }
+                }
+                public class VideoCalculatorResult : Tea.TeaModel {
+                    public class Items : Tea.TeaModel {
+                        public var inputExpense: Double?
+
+                        public var inputToken: Int64?
+
+                        public var name: String?
+
+                        public var outputExpense: Double?
+
+                        public var outputToken: Int64?
+
+                        public var time: Int64?
+
+                        public var timeExpense: Double?
+
+                        public var totalExpense: Double?
+
+                        public var type: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.inputExpense != nil {
+                                map["inputExpense"] = self.inputExpense!
+                            }
+                            if self.inputToken != nil {
+                                map["inputToken"] = self.inputToken!
+                            }
+                            if self.name != nil {
+                                map["name"] = self.name!
+                            }
+                            if self.outputExpense != nil {
+                                map["outputExpense"] = self.outputExpense!
+                            }
+                            if self.outputToken != nil {
+                                map["outputToken"] = self.outputToken!
+                            }
+                            if self.time != nil {
+                                map["time"] = self.time!
+                            }
+                            if self.timeExpense != nil {
+                                map["timeExpense"] = self.timeExpense!
+                            }
+                            if self.totalExpense != nil {
+                                map["totalExpense"] = self.totalExpense!
+                            }
+                            if self.type != nil {
+                                map["type"] = self.type!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["inputExpense"] as? Double {
+                                self.inputExpense = value
+                            }
+                            if let value = dict["inputToken"] as? Int64 {
+                                self.inputToken = value
+                            }
+                            if let value = dict["name"] as? String {
+                                self.name = value
+                            }
+                            if let value = dict["outputExpense"] as? Double {
+                                self.outputExpense = value
+                            }
+                            if let value = dict["outputToken"] as? Int64 {
+                                self.outputToken = value
+                            }
+                            if let value = dict["time"] as? Int64 {
+                                self.time = value
+                            }
+                            if let value = dict["timeExpense"] as? Double {
+                                self.timeExpense = value
+                            }
+                            if let value = dict["totalExpense"] as? Double {
+                                self.totalExpense = value
+                            }
+                            if let value = dict["type"] as? String {
+                                self.type = value
+                            }
+                        }
+                    }
+                    public var items: [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCalculatorResult.Items]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.items != nil {
+                            var tmp : [Any] = []
+                            for k in self.items! {
+                                tmp.append(k.toMap())
+                            }
+                            map["items"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["items"] as? [Any?] {
+                            var tmp : [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCalculatorResult.Items] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCalculatorResult.Items()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.items = tmp
                         }
                     }
                 }
@@ -3796,9 +4004,13 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var addDatasetDocumentsResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.AddDatasetDocumentsResult?
+
                 public var resultJsonFileUrl: String?
 
                 public var videoAnalysisResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoAnalysisResult?
+
+                public var videoCalculatorResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCalculatorResult?
 
                 public var videoCaptionResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCaptionResult?
 
@@ -3822,7 +4034,9 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.addDatasetDocumentsResult?.validate()
                     try self.videoAnalysisResult?.validate()
+                    try self.videoCalculatorResult?.validate()
                     try self.videoCaptionResult?.validate()
                     try self.videoGenerateResult?.validate()
                     try self.videoMindMappingGenerateResult?.validate()
@@ -3832,11 +4046,17 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.addDatasetDocumentsResult != nil {
+                        map["addDatasetDocumentsResult"] = self.addDatasetDocumentsResult?.toMap()
+                    }
                     if self.resultJsonFileUrl != nil {
                         map["resultJsonFileUrl"] = self.resultJsonFileUrl!
                     }
                     if self.videoAnalysisResult != nil {
                         map["videoAnalysisResult"] = self.videoAnalysisResult?.toMap()
+                    }
+                    if self.videoCalculatorResult != nil {
+                        map["videoCalculatorResult"] = self.videoCalculatorResult?.toMap()
                     }
                     if self.videoCaptionResult != nil {
                         map["videoCaptionResult"] = self.videoCaptionResult?.toMap()
@@ -3865,6 +4085,11 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["addDatasetDocumentsResult"] as? [String: Any?] {
+                        var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.AddDatasetDocumentsResult()
+                        model.fromMap(value)
+                        self.addDatasetDocumentsResult = model
+                    }
                     if let value = dict["resultJsonFileUrl"] as? String {
                         self.resultJsonFileUrl = value
                     }
@@ -3872,6 +4097,11 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                         var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoAnalysisResult()
                         model.fromMap(value)
                         self.videoAnalysisResult = model
+                    }
+                    if let value = dict["videoCalculatorResult"] as? [String: Any?] {
+                        var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCalculatorResult()
+                        model.fromMap(value)
+                        self.videoCalculatorResult = model
                     }
                     if let value = dict["videoCaptionResult"] as? [String: Any?] {
                         var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoCaptionResult()
@@ -12857,6 +13087,93 @@ public class RunTagMiningAnalysisResponse : Tea.TeaModel {
 }
 
 public class RunVideoAnalysisRequest : Tea.TeaModel {
+    public class AddDocumentParam : Tea.TeaModel {
+        public class Document : Tea.TeaModel {
+            public var docId: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.docId != nil {
+                    map["docId"] = self.docId!
+                }
+                if self.title != nil {
+                    map["title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["docId"] as? String {
+                    self.docId = value
+                }
+                if let value = dict["title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var datasetId: Int64?
+
+        public var datasetName: String?
+
+        public var document: RunVideoAnalysisRequest.AddDocumentParam.Document?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.document?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.datasetId != nil {
+                map["datasetId"] = self.datasetId!
+            }
+            if self.datasetName != nil {
+                map["datasetName"] = self.datasetName!
+            }
+            if self.document != nil {
+                map["document"] = self.document?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["datasetId"] as? Int64 {
+                self.datasetId = value
+            }
+            if let value = dict["datasetName"] as? String {
+                self.datasetName = value
+            }
+            if let value = dict["document"] as? [String: Any?] {
+                var model = RunVideoAnalysisRequest.AddDocumentParam.Document()
+                model.fromMap(value)
+                self.document = model
+            }
+        }
+    }
     public class FrameSampleMethod : Tea.TeaModel {
         public var interval: Double?
 
@@ -13169,6 +13486,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public var addDocumentParam: RunVideoAnalysisRequest.AddDocumentParam?
+
     public var autoRoleRecognitionVideoUrl: String?
 
     public var excludeGenerateOptions: [String]?
@@ -13223,12 +13542,16 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.addDocumentParam?.validate()
         try self.frameSampleMethod?.validate()
         try self.videoCaptionInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addDocumentParam != nil {
+            map["addDocumentParam"] = self.addDocumentParam?.toMap()
+        }
         if self.autoRoleRecognitionVideoUrl != nil {
             map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
         }
@@ -13308,6 +13631,11 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["addDocumentParam"] as? [String: Any?] {
+            var model = RunVideoAnalysisRequest.AddDocumentParam()
+            model.fromMap(value)
+            self.addDocumentParam = model
+        }
         if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
             self.autoRoleRecognitionVideoUrl = value
         }
@@ -13402,6 +13730,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 }
 
 public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
+    public var addDocumentParamShrink: String?
+
     public var autoRoleRecognitionVideoUrl: String?
 
     public var excludeGenerateOptionsShrink: String?
@@ -13460,6 +13790,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addDocumentParamShrink != nil {
+            map["addDocumentParam"] = self.addDocumentParamShrink!
+        }
         if self.autoRoleRecognitionVideoUrl != nil {
             map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
         }
@@ -13531,6 +13864,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["addDocumentParam"] as? String {
+            self.addDocumentParamShrink = value
+        }
         if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
             self.autoRoleRecognitionVideoUrl = value
         }
@@ -13681,8 +14017,72 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
     }
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
+            public class AddDatasetDocumentsResult : Tea.TeaModel {
+                public var docId: String?
+
+                public var docUuid: String?
+
+                public var errorMessage: String?
+
+                public var status: Int64?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.docId != nil {
+                        map["docId"] = self.docId!
+                    }
+                    if self.docUuid != nil {
+                        map["docUuid"] = self.docUuid!
+                    }
+                    if self.errorMessage != nil {
+                        map["errorMessage"] = self.errorMessage!
+                    }
+                    if self.status != nil {
+                        map["status"] = self.status!
+                    }
+                    if self.title != nil {
+                        map["title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["docId"] as? String {
+                        self.docId = value
+                    }
+                    if let value = dict["docUuid"] as? String {
+                        self.docUuid = value
+                    }
+                    if let value = dict["errorMessage"] as? String {
+                        self.errorMessage = value
+                    }
+                    if let value = dict["status"] as? Int64 {
+                        self.status = value
+                    }
+                    if let value = dict["title"] as? String {
+                        self.title = value
+                    }
+                }
+            }
             public class VideoAnalysisResult : Tea.TeaModel {
                 public class Usage : Tea.TeaModel {
+                    public var imageTokens: Int64?
+
                     public var inputTokens: Int64?
 
                     public var outputTokens: Int64?
@@ -13703,6 +14103,9 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.imageTokens != nil {
+                            map["imageTokens"] = self.imageTokens!
+                        }
                         if self.inputTokens != nil {
                             map["inputTokens"] = self.inputTokens!
                         }
@@ -13717,6 +14120,9 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["imageTokens"] as? Int64 {
+                            self.imageTokens = value
+                        }
                         if let value = dict["inputTokens"] as? Int64 {
                             self.inputTokens = value
                         }
@@ -13849,6 +14255,144 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                             }
                         }
                         self.videoShotAnalysisResults = tmp
+                    }
+                }
+            }
+            public class VideoCalculatorResult : Tea.TeaModel {
+                public class Items : Tea.TeaModel {
+                    public var inputExpense: Double?
+
+                    public var inputToken: Int64?
+
+                    public var name: String?
+
+                    public var outputExpense: Double?
+
+                    public var outputToken: Int64?
+
+                    public var time: Int64?
+
+                    public var timeExpense: Double?
+
+                    public var totalExpense: Double?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.inputExpense != nil {
+                            map["inputExpense"] = self.inputExpense!
+                        }
+                        if self.inputToken != nil {
+                            map["inputToken"] = self.inputToken!
+                        }
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.outputExpense != nil {
+                            map["outputExpense"] = self.outputExpense!
+                        }
+                        if self.outputToken != nil {
+                            map["outputToken"] = self.outputToken!
+                        }
+                        if self.time != nil {
+                            map["time"] = self.time!
+                        }
+                        if self.timeExpense != nil {
+                            map["timeExpense"] = self.timeExpense!
+                        }
+                        if self.totalExpense != nil {
+                            map["totalExpense"] = self.totalExpense!
+                        }
+                        if self.type != nil {
+                            map["type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["inputExpense"] as? Double {
+                            self.inputExpense = value
+                        }
+                        if let value = dict["inputToken"] as? Int64 {
+                            self.inputToken = value
+                        }
+                        if let value = dict["name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["outputExpense"] as? Double {
+                            self.outputExpense = value
+                        }
+                        if let value = dict["outputToken"] as? Int64 {
+                            self.outputToken = value
+                        }
+                        if let value = dict["time"] as? Int64 {
+                            self.time = value
+                        }
+                        if let value = dict["timeExpense"] as? Double {
+                            self.timeExpense = value
+                        }
+                        if let value = dict["totalExpense"] as? Double {
+                            self.totalExpense = value
+                        }
+                        if let value = dict["type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var items: [RunVideoAnalysisResponseBody.Payload.Output.VideoCalculatorResult.Items]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.items != nil {
+                        var tmp : [Any] = []
+                        for k in self.items! {
+                            tmp.append(k.toMap())
+                        }
+                        map["items"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["items"] as? [Any?] {
+                        var tmp : [RunVideoAnalysisResponseBody.Payload.Output.VideoCalculatorResult.Items] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunVideoAnalysisResponseBody.Payload.Output.VideoCalculatorResult.Items()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.items = tmp
                     }
                 }
             }
@@ -14922,9 +15466,13 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var addDatasetDocumentsResult: RunVideoAnalysisResponseBody.Payload.Output.AddDatasetDocumentsResult?
+
             public var resultJsonFileUrl: String?
 
             public var videoAnalysisResult: RunVideoAnalysisResponseBody.Payload.Output.VideoAnalysisResult?
+
+            public var videoCalculatorResult: RunVideoAnalysisResponseBody.Payload.Output.VideoCalculatorResult?
 
             public var videoCaptionResult: RunVideoAnalysisResponseBody.Payload.Output.VideoCaptionResult?
 
@@ -14950,7 +15498,9 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.addDatasetDocumentsResult?.validate()
                 try self.videoAnalysisResult?.validate()
+                try self.videoCalculatorResult?.validate()
                 try self.videoCaptionResult?.validate()
                 try self.videoGenerateResult?.validate()
                 try self.videoMindMappingGenerateResult?.validate()
@@ -14961,11 +15511,17 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.addDatasetDocumentsResult != nil {
+                    map["addDatasetDocumentsResult"] = self.addDatasetDocumentsResult?.toMap()
+                }
                 if self.resultJsonFileUrl != nil {
                     map["resultJsonFileUrl"] = self.resultJsonFileUrl!
                 }
                 if self.videoAnalysisResult != nil {
                     map["videoAnalysisResult"] = self.videoAnalysisResult?.toMap()
+                }
+                if self.videoCalculatorResult != nil {
+                    map["videoCalculatorResult"] = self.videoCalculatorResult?.toMap()
                 }
                 if self.videoCaptionResult != nil {
                     map["videoCaptionResult"] = self.videoCaptionResult?.toMap()
@@ -14997,6 +15553,11 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["addDatasetDocumentsResult"] as? [String: Any?] {
+                    var model = RunVideoAnalysisResponseBody.Payload.Output.AddDatasetDocumentsResult()
+                    model.fromMap(value)
+                    self.addDatasetDocumentsResult = model
+                }
                 if let value = dict["resultJsonFileUrl"] as? String {
                     self.resultJsonFileUrl = value
                 }
@@ -15004,6 +15565,11 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                     var model = RunVideoAnalysisResponseBody.Payload.Output.VideoAnalysisResult()
                     model.fromMap(value)
                     self.videoAnalysisResult = model
+                }
+                if let value = dict["videoCalculatorResult"] as? [String: Any?] {
+                    var model = RunVideoAnalysisResponseBody.Payload.Output.VideoCalculatorResult()
+                    model.fromMap(value)
+                    self.videoCalculatorResult = model
                 }
                 if let value = dict["videoCaptionResult"] as? [String: Any?] {
                     var model = RunVideoAnalysisResponseBody.Payload.Output.VideoCaptionResult()
@@ -17270,6 +17836,93 @@ public class SubmitTagMiningAnalysisTaskResponse : Tea.TeaModel {
 }
 
 public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
+    public class AddDocumentParam : Tea.TeaModel {
+        public class Document : Tea.TeaModel {
+            public var docId: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.docId != nil {
+                    map["docId"] = self.docId!
+                }
+                if self.title != nil {
+                    map["title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["docId"] as? String {
+                    self.docId = value
+                }
+                if let value = dict["title"] as? String {
+                    self.title = value
+                }
+            }
+        }
+        public var datasetId: Int64?
+
+        public var datasetName: String?
+
+        public var document: SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.document?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.datasetId != nil {
+                map["datasetId"] = self.datasetId!
+            }
+            if self.datasetName != nil {
+                map["datasetName"] = self.datasetName!
+            }
+            if self.document != nil {
+                map["document"] = self.document?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["datasetId"] as? Int64 {
+                self.datasetId = value
+            }
+            if let value = dict["datasetName"] as? String {
+                self.datasetName = value
+            }
+            if let value = dict["document"] as? [String: Any?] {
+                var model = SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document()
+                model.fromMap(value)
+                self.document = model
+            }
+        }
+    }
     public class FrameSampleMethod : Tea.TeaModel {
         public var interval: Double?
 
@@ -17582,6 +18235,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var addDocumentParam: SubmitVideoAnalysisTaskRequest.AddDocumentParam?
+
     public var autoRoleRecognitionVideoUrl: String?
 
     public var deduplicationId: String?
@@ -17634,12 +18289,16 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.addDocumentParam?.validate()
         try self.frameSampleMethod?.validate()
         try self.videoCaptionInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addDocumentParam != nil {
+            map["addDocumentParam"] = self.addDocumentParam?.toMap()
+        }
         if self.autoRoleRecognitionVideoUrl != nil {
             map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
         }
@@ -17716,6 +18375,11 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["addDocumentParam"] as? [String: Any?] {
+            var model = SubmitVideoAnalysisTaskRequest.AddDocumentParam()
+            model.fromMap(value)
+            self.addDocumentParam = model
+        }
         if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
             self.autoRoleRecognitionVideoUrl = value
         }
@@ -17807,6 +18471,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var addDocumentParamShrink: String?
+
     public var autoRoleRecognitionVideoUrl: String?
 
     public var deduplicationId: String?
@@ -17863,6 +18529,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addDocumentParamShrink != nil {
+            map["addDocumentParam"] = self.addDocumentParamShrink!
+        }
         if self.autoRoleRecognitionVideoUrl != nil {
             map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
         }
@@ -17931,6 +18600,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["addDocumentParam"] as? String {
+            self.addDocumentParamShrink = value
+        }
         if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
             self.autoRoleRecognitionVideoUrl = value
         }

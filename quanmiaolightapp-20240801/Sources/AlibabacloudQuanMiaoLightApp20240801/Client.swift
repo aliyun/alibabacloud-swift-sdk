@@ -1276,6 +1276,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunVideoAnalysisShrinkRequest = RunVideoAnalysisShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.addDocumentParam)) {
+            request.addDocumentParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.addDocumentParam, "addDocumentParam", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.excludeGenerateOptions)) {
             request.excludeGenerateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeGenerateOptions, "excludeGenerateOptions", "json")
         }
@@ -1295,6 +1298,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addDocumentParamShrink)) {
+            body["addDocumentParam"] = request.addDocumentParamShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRoleRecognitionVideoUrl)) {
             body["autoRoleRecognitionVideoUrl"] = request.autoRoleRecognitionVideoUrl ?? "";
         }
@@ -1667,6 +1673,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitVideoAnalysisTaskShrinkRequest = SubmitVideoAnalysisTaskShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.addDocumentParam)) {
+            request.addDocumentParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.addDocumentParam, "addDocumentParam", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.excludeGenerateOptions)) {
             request.excludeGenerateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeGenerateOptions, "excludeGenerateOptions", "json")
         }
@@ -1686,6 +1695,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addDocumentParamShrink)) {
+            body["addDocumentParam"] = request.addDocumentParamShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRoleRecognitionVideoUrl)) {
             body["autoRoleRecognitionVideoUrl"] = request.autoRoleRecognitionVideoUrl ?? "";
         }
