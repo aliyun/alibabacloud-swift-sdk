@@ -27294,13 +27294,19 @@ public class ListCloudAppsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var latestVersionOnly: Bool?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
 
+    public var pkgLabel: String?
+
     public var pkgType: String?
 
     public var startTime: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -27328,17 +27334,26 @@ public class ListCloudAppsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.latestVersionOnly != nil {
+            map["LatestVersionOnly"] = self.latestVersionOnly!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.pkgLabel != nil {
+            map["PkgLabel"] = self.pkgLabel!
+        }
         if self.pkgType != nil {
             map["PkgType"] = self.pkgType!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
         }
         return map
     }
@@ -27357,17 +27372,26 @@ public class ListCloudAppsRequest : Tea.TeaModel {
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
+        if let value = dict["LatestVersionOnly"] as? Bool {
+            self.latestVersionOnly = value
+        }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["PkgLabel"] as? String {
+            self.pkgLabel = value
+        }
         if let value = dict["PkgType"] as? String {
             self.pkgType = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -37991,11 +38015,17 @@ public class UnlockDeviceResponse : Tea.TeaModel {
 
 public class UpdateCloudAppInfoRequest : Tea.TeaModel {
     public class Patch : Tea.TeaModel {
+        public var asStablePatch: Bool?
+
         public var downloadURL: String?
 
         public var md5: String?
 
         public var patchName: String?
+
+        public var pkgFormat: String?
+
+        public var renderingInstanceId: String?
 
         public override init() {
             super.init()
@@ -38011,6 +38041,9 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asStablePatch != nil {
+                map["AsStablePatch"] = self.asStablePatch!
+            }
             if self.downloadURL != nil {
                 map["DownloadURL"] = self.downloadURL!
             }
@@ -38020,11 +38053,20 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
             if self.patchName != nil {
                 map["PatchName"] = self.patchName!
             }
+            if self.pkgFormat != nil {
+                map["PkgFormat"] = self.pkgFormat!
+            }
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AsStablePatch"] as? Bool {
+                self.asStablePatch = value
+            }
             if let value = dict["DownloadURL"] as? String {
                 self.downloadURL = value
             }
@@ -38034,6 +38076,12 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
             if let value = dict["PatchName"] as? String {
                 self.patchName = value
             }
+            if let value = dict["PkgFormat"] as? String {
+                self.pkgFormat = value
+            }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
         }
     }
     public var appId: String?
@@ -38041,6 +38089,8 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
     public var description_: String?
 
     public var patch: UpdateCloudAppInfoRequest.Patch?
+
+    public var pkgLabels: [String]?
 
     public var stablePatchId: String?
 
@@ -38068,6 +38118,9 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
         if self.patch != nil {
             map["Patch"] = self.patch?.toMap()
         }
+        if self.pkgLabels != nil {
+            map["PkgLabels"] = self.pkgLabels!
+        }
         if self.stablePatchId != nil {
             map["StablePatchId"] = self.stablePatchId!
         }
@@ -38087,6 +38140,9 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
             model.fromMap(value)
             self.patch = model
         }
+        if let value = dict["PkgLabels"] as? [String] {
+            self.pkgLabels = value
+        }
         if let value = dict["StablePatchId"] as? String {
             self.stablePatchId = value
         }
@@ -38099,6 +38155,8 @@ public class UpdateCloudAppInfoShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var patchShrink: String?
+
+    public var pkgLabelsShrink: String?
 
     public var stablePatchId: String?
 
@@ -38125,6 +38183,9 @@ public class UpdateCloudAppInfoShrinkRequest : Tea.TeaModel {
         if self.patchShrink != nil {
             map["Patch"] = self.patchShrink!
         }
+        if self.pkgLabelsShrink != nil {
+            map["PkgLabels"] = self.pkgLabelsShrink!
+        }
         if self.stablePatchId != nil {
             map["StablePatchId"] = self.stablePatchId!
         }
@@ -38141,6 +38202,9 @@ public class UpdateCloudAppInfoShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Patch"] as? String {
             self.patchShrink = value
+        }
+        if let value = dict["PkgLabels"] as? String {
+            self.pkgLabelsShrink = value
         }
         if let value = dict["StablePatchId"] as? String {
             self.stablePatchId = value
@@ -39236,6 +39300,8 @@ public class UploadCloudAppRequest : Tea.TeaModel {
 
     public var pkgFormat: String?
 
+    public var pkgLabels: [String]?
+
     public var pkgType: String?
 
     public override init() {
@@ -39270,6 +39336,9 @@ public class UploadCloudAppRequest : Tea.TeaModel {
         if self.pkgFormat != nil {
             map["PkgFormat"] = self.pkgFormat!
         }
+        if self.pkgLabels != nil {
+            map["PkgLabels"] = self.pkgLabels!
+        }
         if self.pkgType != nil {
             map["PkgType"] = self.pkgType!
         }
@@ -39295,6 +39364,96 @@ public class UploadCloudAppRequest : Tea.TeaModel {
         }
         if let value = dict["PkgFormat"] as? String {
             self.pkgFormat = value
+        }
+        if let value = dict["PkgLabels"] as? [String] {
+            self.pkgLabels = value
+        }
+        if let value = dict["PkgType"] as? String {
+            self.pkgType = value
+        }
+    }
+}
+
+public class UploadCloudAppShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var appVersion: String?
+
+    public var description_: String?
+
+    public var downloadUrl: String?
+
+    public var md5: String?
+
+    public var pkgFormat: String?
+
+    public var pkgLabelsShrink: String?
+
+    public var pkgType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.appVersion != nil {
+            map["AppVersion"] = self.appVersion!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.downloadUrl != nil {
+            map["DownloadUrl"] = self.downloadUrl!
+        }
+        if self.md5 != nil {
+            map["Md5"] = self.md5!
+        }
+        if self.pkgFormat != nil {
+            map["PkgFormat"] = self.pkgFormat!
+        }
+        if self.pkgLabelsShrink != nil {
+            map["PkgLabels"] = self.pkgLabelsShrink!
+        }
+        if self.pkgType != nil {
+            map["PkgType"] = self.pkgType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["AppVersion"] as? String {
+            self.appVersion = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DownloadUrl"] as? String {
+            self.downloadUrl = value
+        }
+        if let value = dict["Md5"] as? String {
+            self.md5 = value
+        }
+        if let value = dict["PkgFormat"] as? String {
+            self.pkgFormat = value
+        }
+        if let value = dict["PkgLabels"] as? String {
+            self.pkgLabelsShrink = value
         }
         if let value = dict["PkgType"] as? String {
             self.pkgType = value

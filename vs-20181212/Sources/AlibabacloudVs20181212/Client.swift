@@ -7320,6 +7320,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.patch)) {
             request.patchShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.patch, "Patch", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.pkgLabels)) {
+            request.pkgLabelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pkgLabels, "PkgLabels", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
@@ -7327,14 +7330,19 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.patchShrink)) {
-            query["Patch"] = request.patchShrink ?? "";
+        if (!TeaUtils.Client.isUnset(request.pkgLabelsShrink)) {
+            query["PkgLabels"] = request.pkgLabelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.stablePatchId)) {
             query["StablePatchId"] = request.stablePatchId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.patchShrink)) {
+            body["Patch"] = request.patchShrink ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateCloudAppInfo",
@@ -7569,8 +7577,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func uploadCloudAppWithOptions(_ request: UploadCloudAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadCloudAppResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func uploadCloudAppWithOptions(_ tmpReq: UploadCloudAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadCloudAppResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UploadCloudAppShrinkRequest = UploadCloudAppShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.pkgLabels)) {
+            request.pkgLabelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pkgLabels, "PkgLabels", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
@@ -7589,6 +7602,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pkgFormat)) {
             query["PkgFormat"] = request.pkgFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pkgLabelsShrink)) {
+            query["PkgLabels"] = request.pkgLabelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pkgType)) {
             query["PkgType"] = request.pkgType ?? "";
