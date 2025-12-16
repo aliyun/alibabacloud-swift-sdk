@@ -3117,6 +3117,8 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
 
         public var language: String?
 
+        public var mcpServerIds: [String]?
+
         public var mode: String?
 
         public override init() {
@@ -3145,6 +3147,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.mcpServerIds != nil {
+                map["McpServerIds"] = self.mcpServerIds!
+            }
             if self.mode != nil {
                 map["Mode"] = self.mode!
             }
@@ -3164,6 +3169,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if let value = dict["Language"] as? String {
                 self.language = value
+            }
+            if let value = dict["McpServerIds"] as? [String] {
+                self.mcpServerIds = value
             }
             if let value = dict["Mode"] as? String {
                 self.mode = value
@@ -3309,6 +3317,8 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var language: String?
 
+            public var mcpServerIds: [String]?
+
             public var mode: String?
 
             public override init() {
@@ -3337,6 +3347,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
+                if self.mcpServerIds != nil {
+                    map["McpServerIds"] = self.mcpServerIds!
+                }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
                 }
@@ -3356,6 +3369,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Language"] as? String {
                     self.language = value
+                }
+                if let value = dict["McpServerIds"] as? [String] {
+                    self.mcpServerIds = value
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
@@ -5735,6 +5751,8 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var language: String?
 
+            public var mcpServerIds: [String]?
+
             public var mode: String?
 
             public override init() {
@@ -5763,6 +5781,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
+                if self.mcpServerIds != nil {
+                    map["McpServerIds"] = self.mcpServerIds!
+                }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
                 }
@@ -5782,6 +5803,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Language"] as? String {
                     self.language = value
+                }
+                if let value = dict["McpServerIds"] as? [String] {
+                    self.mcpServerIds = value
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
