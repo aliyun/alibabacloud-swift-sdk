@@ -2626,8 +2626,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDatasetDocumentWithOptions(_ request: GetDatasetDocumentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetDocumentResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getDatasetDocumentWithOptions(_ tmpReq: GetDatasetDocumentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetDocumentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetDatasetDocumentShrinkRequest = GetDatasetDocumentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.includeFields)) {
+            request.includeFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.includeFields, "IncludeFields", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetId)) {
             body["DatasetId"] = request.datasetId!;
@@ -2640,6 +2645,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.docUuid)) {
             body["DocUuid"] = request.docUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeFieldsShrink)) {
+            body["IncludeFields"] = request.includeFieldsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

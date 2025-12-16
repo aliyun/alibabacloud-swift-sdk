@@ -1191,6 +1191,172 @@ public class AddAuditTermsResponse : Tea.TeaModel {
 
 public class AddDatasetDocumentRequest : Tea.TeaModel {
     public class Document : Tea.TeaModel {
+        public class Metadata : Tea.TeaModel {
+            public class AsrSentences : Tea.TeaModel {
+                public var endTime: Int64?
+
+                public var startTime: Int64?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndTime"] as? Int64 {
+                        self.endTime = value
+                    }
+                    if let value = dict["StartTime"] as? Int64 {
+                        self.startTime = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public class VideoShots : Tea.TeaModel {
+                public var endTime: Int64?
+
+                public var startTime: Int64?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndTime"] as? Int64 {
+                        self.endTime = value
+                    }
+                    if let value = dict["StartTime"] as? Int64 {
+                        self.startTime = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var asrSentences: [AddDatasetDocumentRequest.Document.Metadata.AsrSentences]?
+
+            public var text: String?
+
+            public var videoShots: [AddDatasetDocumentRequest.Document.Metadata.VideoShots]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.asrSentences != nil {
+                    var tmp : [Any] = []
+                    for k in self.asrSentences! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AsrSentences"] = tmp
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                if self.videoShots != nil {
+                    var tmp : [Any] = []
+                    for k in self.videoShots! {
+                        tmp.append(k.toMap())
+                    }
+                    map["VideoShots"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AsrSentences"] as? [Any?] {
+                    var tmp : [AddDatasetDocumentRequest.Document.Metadata.AsrSentences] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AddDatasetDocumentRequest.Document.Metadata.AsrSentences()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.asrSentences = tmp
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+                if let value = dict["VideoShots"] as? [Any?] {
+                    var tmp : [AddDatasetDocumentRequest.Document.Metadata.VideoShots] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AddDatasetDocumentRequest.Document.Metadata.VideoShots()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.videoShots = tmp
+                }
+            }
+        }
         public class MultimodalMedias : Tea.TeaModel {
             public var fileUrl: String?
 
@@ -1253,6 +1419,8 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
 
         public var extend3: String?
 
+        public var metadata: AddDatasetDocumentRequest.Document.Metadata?
+
         public var multimodalIndexName: String?
 
         public var multimodalMedias: [AddDatasetDocumentRequest.Document.MultimodalMedias]?
@@ -1277,6 +1445,7 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.metadata?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1304,6 +1473,9 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
             }
             if self.extend3 != nil {
                 map["Extend3"] = self.extend3!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata?.toMap()
             }
             if self.multimodalIndexName != nil {
                 map["MultimodalIndexName"] = self.multimodalIndexName!
@@ -1358,6 +1530,11 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
             }
             if let value = dict["Extend3"] as? String {
                 self.extend3 = value
+            }
+            if let value = dict["Metadata"] as? [String: Any?] {
+                var model = AddDatasetDocumentRequest.Document.Metadata()
+                model.fromMap(value)
+                self.metadata = model
             }
             if let value = dict["MultimodalIndexName"] as? String {
                 self.multimodalIndexName = value
@@ -18369,6 +18546,8 @@ public class GetDatasetDocumentRequest : Tea.TeaModel {
 
     public var docUuid: String?
 
+    public var includeFields: [String]?
+
     public var workspaceId: String?
 
     public override init() {
@@ -18397,6 +18576,9 @@ public class GetDatasetDocumentRequest : Tea.TeaModel {
         if self.docUuid != nil {
             map["DocUuid"] = self.docUuid!
         }
+        if self.includeFields != nil {
+            map["IncludeFields"] = self.includeFields!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -18417,6 +18599,80 @@ public class GetDatasetDocumentRequest : Tea.TeaModel {
         if let value = dict["DocUuid"] as? String {
             self.docUuid = value
         }
+        if let value = dict["IncludeFields"] as? [String] {
+            self.includeFields = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class GetDatasetDocumentShrinkRequest : Tea.TeaModel {
+    public var datasetId: Int64?
+
+    public var datasetName: String?
+
+    public var docId: String?
+
+    public var docUuid: String?
+
+    public var includeFieldsShrink: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.datasetId != nil {
+            map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.docId != nil {
+            map["DocId"] = self.docId!
+        }
+        if self.docUuid != nil {
+            map["DocUuid"] = self.docUuid!
+        }
+        if self.includeFieldsShrink != nil {
+            map["IncludeFields"] = self.includeFieldsShrink!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DatasetId"] as? Int64 {
+            self.datasetId = value
+        }
+        if let value = dict["DatasetName"] as? String {
+            self.datasetName = value
+        }
+        if let value = dict["DocId"] as? String {
+            self.docId = value
+        }
+        if let value = dict["DocUuid"] as? String {
+            self.docUuid = value
+        }
+        if let value = dict["IncludeFields"] as? String {
+            self.includeFieldsShrink = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -18425,17 +18681,189 @@ public class GetDatasetDocumentRequest : Tea.TeaModel {
 
 public class GetDatasetDocumentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Metadata : Tea.TeaModel {
+            public class AsrSentences : Tea.TeaModel {
+                public var endTime: Int64?
+
+                public var startTime: Int64?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndTime"] as? Int64 {
+                        self.endTime = value
+                    }
+                    if let value = dict["StartTime"] as? Int64 {
+                        self.startTime = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public class VideoShots : Tea.TeaModel {
+                public var endTime: Int64?
+
+                public var startTime: Int64?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndTime"] as? Int64 {
+                        self.endTime = value
+                    }
+                    if let value = dict["StartTime"] as? Int64 {
+                        self.startTime = value
+                    }
+                    if let value = dict["Text"] as? String {
+                        self.text = value
+                    }
+                }
+            }
+            public var asrSentences: [GetDatasetDocumentResponseBody.Data.Metadata.AsrSentences]?
+
+            public var text: String?
+
+            public var videoShots: [GetDatasetDocumentResponseBody.Data.Metadata.VideoShots]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.asrSentences != nil {
+                    var tmp : [Any] = []
+                    for k in self.asrSentences! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AsrSentences"] = tmp
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                if self.videoShots != nil {
+                    var tmp : [Any] = []
+                    for k in self.videoShots! {
+                        tmp.append(k.toMap())
+                    }
+                    map["VideoShots"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AsrSentences"] as? [Any?] {
+                    var tmp : [GetDatasetDocumentResponseBody.Data.Metadata.AsrSentences] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetDatasetDocumentResponseBody.Data.Metadata.AsrSentences()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.asrSentences = tmp
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+                if let value = dict["VideoShots"] as? [Any?] {
+                    var tmp : [GetDatasetDocumentResponseBody.Data.Metadata.VideoShots] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetDatasetDocumentResponseBody.Data.Metadata.VideoShots()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.videoShots = tmp
+                }
+            }
+        }
         public var content: String?
 
         public var disableHandleMultimodalMedia: Bool?
 
         public var docId: String?
 
+        public var docType: String?
+
         public var docUuid: String?
+
+        public var metadata: GetDatasetDocumentResponseBody.Data.Metadata?
 
         public var pubTime: String?
 
         public var sourceFrom: String?
+
+        public var status: Int32?
 
         public var summary: String?
 
@@ -18453,6 +18881,7 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.metadata?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -18466,14 +18895,23 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             if self.docId != nil {
                 map["DocId"] = self.docId!
             }
+            if self.docType != nil {
+                map["DocType"] = self.docType!
+            }
             if self.docUuid != nil {
                 map["DocUuid"] = self.docUuid!
+            }
+            if self.metadata != nil {
+                map["Metadata"] = self.metadata?.toMap()
             }
             if self.pubTime != nil {
                 map["PubTime"] = self.pubTime!
             }
             if self.sourceFrom != nil {
                 map["SourceFrom"] = self.sourceFrom!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
             }
             if self.summary != nil {
                 map["Summary"] = self.summary!
@@ -18498,14 +18936,25 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             if let value = dict["DocId"] as? String {
                 self.docId = value
             }
+            if let value = dict["DocType"] as? String {
+                self.docType = value
+            }
             if let value = dict["DocUuid"] as? String {
                 self.docUuid = value
+            }
+            if let value = dict["Metadata"] as? [String: Any?] {
+                var model = GetDatasetDocumentResponseBody.Data.Metadata()
+                model.fromMap(value)
+                self.metadata = model
             }
             if let value = dict["PubTime"] as? String {
                 self.pubTime = value
             }
             if let value = dict["SourceFrom"] as? String {
                 self.sourceFrom = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
             }
             if let value = dict["Summary"] as? String {
                 self.summary = value
