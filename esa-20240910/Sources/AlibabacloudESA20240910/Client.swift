@@ -1242,6 +1242,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEdgeContainerAppImageSecretWithOptions(_ request: CreateEdgeContainerAppImageSecretRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEdgeContainerAppImageSecretResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.registry)) {
+            query["Registry"] = request.registry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateEdgeContainerAppImageSecret",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateEdgeContainerAppImageSecretResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEdgeContainerAppImageSecret(_ request: CreateEdgeContainerAppImageSecretRequest) async throws -> CreateEdgeContainerAppImageSecretResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createEdgeContainerAppImageSecretWithOptions(request as! CreateEdgeContainerAppImageSecretRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createEdgeContainerAppRecordWithOptions(_ request: CreateEdgeContainerAppRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEdgeContainerAppRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3668,6 +3708,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEdgeContainerApp(_ request: DeleteEdgeContainerAppRequest) async throws -> DeleteEdgeContainerAppResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteEdgeContainerAppWithOptions(request as! DeleteEdgeContainerAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEdgeContainerAppImageSecretWithOptions(_ request: DeleteEdgeContainerAppImageSecretRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEdgeContainerAppImageSecretResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEdgeContainerAppImageSecret",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEdgeContainerAppImageSecretResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEdgeContainerAppImageSecret(_ request: DeleteEdgeContainerAppImageSecretRequest) async throws -> DeleteEdgeContainerAppImageSecretResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEdgeContainerAppImageSecretWithOptions(request as! DeleteEdgeContainerAppImageSecretRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6143,6 +6217,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEdgeContainerAppResourceCapacityWithOptions(_ request: GetEdgeContainerAppResourceCapacityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEdgeContainerAppResourceCapacityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetEdgeContainerAppResourceCapacity",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetEdgeContainerAppResourceCapacityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEdgeContainerAppResourceCapacity(_ request: GetEdgeContainerAppResourceCapacityRequest) async throws -> GetEdgeContainerAppResourceCapacityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getEdgeContainerAppResourceCapacityWithOptions(request as! GetEdgeContainerAppResourceCapacityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEdgeContainerAppResourceReserveWithOptions(_ request: GetEdgeContainerAppResourceReserveRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEdgeContainerAppResourceReserveResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8255,6 +8360,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listESAIPInfo(_ request: ListESAIPInfoRequest) async throws -> ListESAIPInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listESAIPInfoWithOptions(request as! ListESAIPInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEdgeContainerAppImageSecretsWithOptions(_ request: ListEdgeContainerAppImageSecretsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEdgeContainerAppImageSecretsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEdgeContainerAppImageSecrets",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEdgeContainerAppImageSecretsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEdgeContainerAppImageSecrets(_ request: ListEdgeContainerAppImageSecretsRequest) async throws -> ListEdgeContainerAppImageSecretsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listEdgeContainerAppImageSecretsWithOptions(request as! ListEdgeContainerAppImageSecretsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
