@@ -5608,6 +5608,8 @@ public class CreateVaultRequest : Tea.TeaModel {
 
     public var kmsKeyId: String?
 
+    public var replication: Bool?
+
     public var vaultName: String?
 
     public var vaultRegionId: String?
@@ -5641,6 +5643,9 @@ public class CreateVaultRequest : Tea.TeaModel {
         if self.kmsKeyId != nil {
             map["KmsKeyId"] = self.kmsKeyId!
         }
+        if self.replication != nil {
+            map["Replication"] = self.replication!
+        }
         if self.vaultName != nil {
             map["VaultName"] = self.vaultName!
         }
@@ -5669,6 +5674,9 @@ public class CreateVaultRequest : Tea.TeaModel {
         }
         if let value = dict["KmsKeyId"] as? String {
             self.kmsKeyId = value
+        }
+        if let value = dict["Replication"] as? Bool {
+            self.replication = value
         }
         if let value = dict["VaultName"] as? String {
             self.vaultName = value
@@ -5803,6 +5811,166 @@ public class CreateVaultResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateVaultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateVaultReplicationRequest : Tea.TeaModel {
+    public var replicationSourceRegionId: String?
+
+    public var replicationSourceVaultId: String?
+
+    public var replicationTargetVaultId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.replicationSourceRegionId != nil {
+            map["ReplicationSourceRegionId"] = self.replicationSourceRegionId!
+        }
+        if self.replicationSourceVaultId != nil {
+            map["ReplicationSourceVaultId"] = self.replicationSourceVaultId!
+        }
+        if self.replicationTargetVaultId != nil {
+            map["ReplicationTargetVaultId"] = self.replicationTargetVaultId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReplicationSourceRegionId"] as? String {
+            self.replicationSourceRegionId = value
+        }
+        if let value = dict["ReplicationSourceVaultId"] as? String {
+            self.replicationSourceVaultId = value
+        }
+        if let value = dict["ReplicationTargetVaultId"] as? String {
+            self.replicationTargetVaultId = value
+        }
+    }
+}
+
+public class CreateVaultReplicationResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class CreateVaultReplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateVaultReplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateVaultReplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -7880,6 +8048,158 @@ public class DeleteVaultResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteVaultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteVaultReplicationRequest : Tea.TeaModel {
+    public var replicationSourceRegionId: String?
+
+    public var replicationSourceVaultId: String?
+
+    public var replicationTargetVaultId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.replicationSourceRegionId != nil {
+            map["ReplicationSourceRegionId"] = self.replicationSourceRegionId!
+        }
+        if self.replicationSourceVaultId != nil {
+            map["ReplicationSourceVaultId"] = self.replicationSourceVaultId!
+        }
+        if self.replicationTargetVaultId != nil {
+            map["ReplicationTargetVaultId"] = self.replicationTargetVaultId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReplicationSourceRegionId"] as? String {
+            self.replicationSourceRegionId = value
+        }
+        if let value = dict["ReplicationSourceVaultId"] as? String {
+            self.replicationSourceVaultId = value
+        }
+        if let value = dict["ReplicationTargetVaultId"] as? String {
+            self.replicationTargetVaultId = value
+        }
+    }
+}
+
+public class DeleteVaultReplicationResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteVaultReplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteVaultReplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteVaultReplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -18979,6 +19299,8 @@ public class DescribeVaultsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var replication: Bool?
+
     public var resourceGroupId: String?
 
     public var status: String?
@@ -18988,6 +19310,8 @@ public class DescribeVaultsRequest : Tea.TeaModel {
     public var vaultId: String?
 
     public var vaultName: String?
+
+    public var vaultOwnerId: Int64?
 
     public var vaultRegionId: String?
 
@@ -19013,6 +19337,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.replication != nil {
+            map["Replication"] = self.replication!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -19032,6 +19359,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         if self.vaultName != nil {
             map["VaultName"] = self.vaultName!
         }
+        if self.vaultOwnerId != nil {
+            map["VaultOwnerId"] = self.vaultOwnerId!
+        }
         if self.vaultRegionId != nil {
             map["VaultRegionId"] = self.vaultRegionId!
         }
@@ -19048,6 +19378,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["Replication"] as? Bool {
+            self.replication = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -19073,6 +19406,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         }
         if let value = dict["VaultName"] as? String {
             self.vaultName = value
+        }
+        if let value = dict["VaultOwnerId"] as? Int64 {
+            self.vaultOwnerId = value
         }
         if let value = dict["VaultRegionId"] as? String {
             self.vaultRegionId = value
@@ -19263,6 +19599,36 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["NewReplicationProgress"] as? Int64 {
                         self.newReplicationProgress = value
+                    }
+                }
+            }
+            public class RsTargetAccountIds : Tea.TeaModel {
+                public var rsTargetAccountId: [Int64]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.rsTargetAccountId != nil {
+                        map["RsTargetAccountId"] = self.rsTargetAccountId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RsTargetAccountId"] as? [Int64] {
+                        self.rsTargetAccountId = value
                     }
                 }
             }
@@ -19472,17 +19838,27 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
 
             public var replicationProgress: DescribeVaultsResponseBody.Vaults.Vault.ReplicationProgress?
 
+            public var replicationSourceOwnerId: Int64?
+
             public var replicationSourceRegionId: String?
 
             public var replicationSourceVault: Bool?
 
             public var replicationSourceVaultId: String?
 
+            public var replicationStatus: String?
+
+            public var replicationTargetOwnerId: Int64?
+
             public var replicationTargetRegionId: String?
+
+            public var replicationTargetVaultId: String?
 
             public var resourceGroupId: String?
 
             public var retention: Int64?
+
+            public var rsTargetAccountIds: DescribeVaultsResponseBody.Vaults.Vault.RsTargetAccountIds?
 
             public var searchEnabled: Bool?
 
@@ -19503,6 +19879,8 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
             public var vaultId: String?
 
             public var vaultName: String?
+
+            public var vaultOwnerId: Int64?
 
             public var vaultRegionId: String?
 
@@ -19526,6 +19904,7 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.backupPlanStatistics?.validate()
                 try self.replicationProgress?.validate()
+                try self.rsTargetAccountIds?.validate()
                 try self.sourceTypes?.validate()
                 try self.tags?.validate()
                 try self.trialInfo?.validate()
@@ -19593,6 +19972,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 if self.replicationProgress != nil {
                     map["ReplicationProgress"] = self.replicationProgress?.toMap()
                 }
+                if self.replicationSourceOwnerId != nil {
+                    map["ReplicationSourceOwnerId"] = self.replicationSourceOwnerId!
+                }
                 if self.replicationSourceRegionId != nil {
                     map["ReplicationSourceRegionId"] = self.replicationSourceRegionId!
                 }
@@ -19602,14 +19984,26 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 if self.replicationSourceVaultId != nil {
                     map["ReplicationSourceVaultId"] = self.replicationSourceVaultId!
                 }
+                if self.replicationStatus != nil {
+                    map["ReplicationStatus"] = self.replicationStatus!
+                }
+                if self.replicationTargetOwnerId != nil {
+                    map["ReplicationTargetOwnerId"] = self.replicationTargetOwnerId!
+                }
                 if self.replicationTargetRegionId != nil {
                     map["ReplicationTargetRegionId"] = self.replicationTargetRegionId!
+                }
+                if self.replicationTargetVaultId != nil {
+                    map["ReplicationTargetVaultId"] = self.replicationTargetVaultId!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
                 if self.retention != nil {
                     map["Retention"] = self.retention!
+                }
+                if self.rsTargetAccountIds != nil {
+                    map["RsTargetAccountIds"] = self.rsTargetAccountIds?.toMap()
                 }
                 if self.searchEnabled != nil {
                     map["SearchEnabled"] = self.searchEnabled!
@@ -19640,6 +20034,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 }
                 if self.vaultName != nil {
                     map["VaultName"] = self.vaultName!
+                }
+                if self.vaultOwnerId != nil {
+                    map["VaultOwnerId"] = self.vaultOwnerId!
                 }
                 if self.vaultRegionId != nil {
                     map["VaultRegionId"] = self.vaultRegionId!
@@ -19725,6 +20122,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.replicationProgress = model
                 }
+                if let value = dict["ReplicationSourceOwnerId"] as? Int64 {
+                    self.replicationSourceOwnerId = value
+                }
                 if let value = dict["ReplicationSourceRegionId"] as? String {
                     self.replicationSourceRegionId = value
                 }
@@ -19734,14 +20134,28 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 if let value = dict["ReplicationSourceVaultId"] as? String {
                     self.replicationSourceVaultId = value
                 }
+                if let value = dict["ReplicationStatus"] as? String {
+                    self.replicationStatus = value
+                }
+                if let value = dict["ReplicationTargetOwnerId"] as? Int64 {
+                    self.replicationTargetOwnerId = value
+                }
                 if let value = dict["ReplicationTargetRegionId"] as? String {
                     self.replicationTargetRegionId = value
+                }
+                if let value = dict["ReplicationTargetVaultId"] as? String {
+                    self.replicationTargetVaultId = value
                 }
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
                 }
                 if let value = dict["Retention"] as? Int64 {
                     self.retention = value
+                }
+                if let value = dict["RsTargetAccountIds"] as? [String: Any?] {
+                    var model = DescribeVaultsResponseBody.Vaults.Vault.RsTargetAccountIds()
+                    model.fromMap(value)
+                    self.rsTargetAccountIds = model
                 }
                 if let value = dict["SearchEnabled"] as? Bool {
                     self.searchEnabled = value
@@ -19778,6 +20192,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["VaultName"] as? String {
                     self.vaultName = value
+                }
+                if let value = dict["VaultOwnerId"] as? Int64 {
+                    self.vaultOwnerId = value
                 }
                 if let value = dict["VaultRegionId"] as? String {
                     self.vaultRegionId = value

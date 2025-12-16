@@ -1040,6 +1040,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
             query["KmsKeyId"] = request.kmsKeyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.replication)) {
+            query["Replication"] = request.replication!;
+        }
         if (!TeaUtils.Client.isUnset(request.vaultName)) {
             query["VaultName"] = request.vaultName ?? "";
         }
@@ -1077,6 +1080,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createVault(_ request: CreateVaultRequest) async throws -> CreateVaultResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createVaultWithOptions(request as! CreateVaultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVaultReplicationWithOptions(_ request: CreateVaultReplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVaultReplicationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.replicationSourceRegionId)) {
+            query["ReplicationSourceRegionId"] = request.replicationSourceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicationSourceVaultId)) {
+            query["ReplicationSourceVaultId"] = request.replicationSourceVaultId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicationTargetVaultId)) {
+            query["ReplicationTargetVaultId"] = request.replicationTargetVaultId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVaultReplication",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVaultReplicationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVaultReplication(_ request: CreateVaultReplicationRequest) async throws -> CreateVaultReplicationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVaultReplicationWithOptions(request as! CreateVaultReplicationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1566,6 +1606,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVault(_ request: DeleteVaultRequest) async throws -> DeleteVaultResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteVaultWithOptions(request as! DeleteVaultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVaultReplicationWithOptions(_ request: DeleteVaultReplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVaultReplicationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.replicationSourceRegionId)) {
+            query["ReplicationSourceRegionId"] = request.replicationSourceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicationSourceVaultId)) {
+            query["ReplicationSourceVaultId"] = request.replicationSourceVaultId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicationTargetVaultId)) {
+            query["ReplicationTargetVaultId"] = request.replicationTargetVaultId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVaultReplication",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVaultReplicationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVaultReplication(_ request: DeleteVaultReplicationRequest) async throws -> DeleteVaultReplicationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVaultReplicationWithOptions(request as! DeleteVaultReplicationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2592,6 +2669,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.replication)) {
+            query["Replication"] = request.replication!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
@@ -2603,6 +2683,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.vaultName)) {
             query["VaultName"] = request.vaultName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vaultOwnerId)) {
+            query["VaultOwnerId"] = request.vaultOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.vaultRegionId)) {
             query["VaultRegionId"] = request.vaultRegionId ?? "";
