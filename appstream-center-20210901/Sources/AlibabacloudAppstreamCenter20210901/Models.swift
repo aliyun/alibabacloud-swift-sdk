@@ -3305,6 +3305,8 @@ public class DescribeWuyingServerEipInfoRequest : Tea.TeaModel {
 
 public class DescribeWuyingServerEipInfoResponseBody : Tea.TeaModel {
     public class EipInfoModel : Tea.TeaModel {
+        public var eipId: String?
+
         public var ipAddress: String?
 
         public var networkInterfaceId: String?
@@ -3325,6 +3327,9 @@ public class DescribeWuyingServerEipInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.eipId != nil {
+                map["EipId"] = self.eipId!
+            }
             if self.ipAddress != nil {
                 map["IpAddress"] = self.ipAddress!
             }
@@ -3339,6 +3344,9 @@ public class DescribeWuyingServerEipInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EipId"] as? String {
+                self.eipId = value
+            }
             if let value = dict["IpAddress"] as? String {
                 self.ipAddress = value
             }
