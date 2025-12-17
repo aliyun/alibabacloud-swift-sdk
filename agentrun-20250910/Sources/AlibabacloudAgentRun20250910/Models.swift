@@ -3182,6 +3182,8 @@ public class CreateModelProxyInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executionRoleArn: String?
+
     public var litellmVersion: String?
 
     public var logConfiguration: LogConfiguration?
@@ -3230,6 +3232,9 @@ public class CreateModelProxyInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
         if self.litellmVersion != nil {
             map["litellmVersion"] = self.litellmVersion!
         }
@@ -3275,6 +3280,9 @@ public class CreateModelProxyInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
         }
         if let value = dict["litellmVersion"] as? String {
             self.litellmVersion = value
@@ -8197,6 +8205,8 @@ public class ModelProxy : Tea.TeaModel {
 
     public var endpoint: String?
 
+    public var executionRoleArn: String?
+
     public var functionName: String?
 
     public var lastUpdatedAt: String?
@@ -8256,6 +8266,9 @@ public class ModelProxy : Tea.TeaModel {
         }
         if self.endpoint != nil {
             map["endpoint"] = self.endpoint!
+        }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
         }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
@@ -8318,6 +8331,9 @@ public class ModelProxy : Tea.TeaModel {
         }
         if let value = dict["endpoint"] as? String {
             self.endpoint = value
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
         }
         if let value = dict["functionName"] as? String {
             self.functionName = value
@@ -8974,6 +8990,100 @@ public class ProxyConfig : Tea.TeaModel {
         }
     }
     public class Policies : Tea.TeaModel {
+        public class AiGuardrailConfig : Tea.TeaModel {
+            public var blockOnContentModeration: Bool?
+
+            public var blockOnMaliciousUrl: Bool?
+
+            public var blockOnModelHallucination: Bool?
+
+            public var blockOnPromptAttack: Bool?
+
+            public var blockOnSensitiveData: Bool?
+
+            public var checkRequest: Bool?
+
+            public var checkResponse: Bool?
+
+            public var level: String?
+
+            public var maxTextLength: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.blockOnContentModeration != nil {
+                    map["blockOnContentModeration"] = self.blockOnContentModeration!
+                }
+                if self.blockOnMaliciousUrl != nil {
+                    map["blockOnMaliciousUrl"] = self.blockOnMaliciousUrl!
+                }
+                if self.blockOnModelHallucination != nil {
+                    map["blockOnModelHallucination"] = self.blockOnModelHallucination!
+                }
+                if self.blockOnPromptAttack != nil {
+                    map["blockOnPromptAttack"] = self.blockOnPromptAttack!
+                }
+                if self.blockOnSensitiveData != nil {
+                    map["blockOnSensitiveData"] = self.blockOnSensitiveData!
+                }
+                if self.checkRequest != nil {
+                    map["checkRequest"] = self.checkRequest!
+                }
+                if self.checkResponse != nil {
+                    map["checkResponse"] = self.checkResponse!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.maxTextLength != nil {
+                    map["maxTextLength"] = self.maxTextLength!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["blockOnContentModeration"] as? Bool {
+                    self.blockOnContentModeration = value
+                }
+                if let value = dict["blockOnMaliciousUrl"] as? Bool {
+                    self.blockOnMaliciousUrl = value
+                }
+                if let value = dict["blockOnModelHallucination"] as? Bool {
+                    self.blockOnModelHallucination = value
+                }
+                if let value = dict["blockOnPromptAttack"] as? Bool {
+                    self.blockOnPromptAttack = value
+                }
+                if let value = dict["blockOnSensitiveData"] as? Bool {
+                    self.blockOnSensitiveData = value
+                }
+                if let value = dict["checkRequest"] as? Bool {
+                    self.checkRequest = value
+                }
+                if let value = dict["checkResponse"] as? Bool {
+                    self.checkResponse = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["maxTextLength"] as? Int32 {
+                    self.maxTextLength = value
+                }
+            }
+        }
         public class Fallbacks : Tea.TeaModel {
             public var modelName: String?
 
@@ -9012,6 +9122,62 @@ public class ProxyConfig : Tea.TeaModel {
                 }
             }
         }
+        public class TokenRateLimiter : Tea.TeaModel {
+            public var tpd: Int32?
+
+            public var tph: Int32?
+
+            public var tpm: Int32?
+
+            public var tps: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tpd != nil {
+                    map["tpd"] = self.tpd!
+                }
+                if self.tph != nil {
+                    map["tph"] = self.tph!
+                }
+                if self.tpm != nil {
+                    map["tpm"] = self.tpm!
+                }
+                if self.tps != nil {
+                    map["tps"] = self.tps!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["tpd"] as? Int32 {
+                    self.tpd = value
+                }
+                if let value = dict["tph"] as? Int32 {
+                    self.tph = value
+                }
+                if let value = dict["tpm"] as? Int32 {
+                    self.tpm = value
+                }
+                if let value = dict["tps"] as? Int32 {
+                    self.tps = value
+                }
+            }
+        }
+        public var aiGuardrailConfig: ProxyConfig.Policies.AiGuardrailConfig?
+
         public var cache: Bool?
 
         public var concurrencyLimit: Int32?
@@ -9021,6 +9187,8 @@ public class ProxyConfig : Tea.TeaModel {
         public var numRetries: Int32?
 
         public var requestTimeout: Int32?
+
+        public var tokenRateLimiter: ProxyConfig.Policies.TokenRateLimiter?
 
         public override init() {
             super.init()
@@ -9032,10 +9200,15 @@ public class ProxyConfig : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aiGuardrailConfig?.validate()
+            try self.tokenRateLimiter?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiGuardrailConfig != nil {
+                map["aiGuardrailConfig"] = self.aiGuardrailConfig?.toMap()
+            }
             if self.cache != nil {
                 map["cache"] = self.cache!
             }
@@ -9055,11 +9228,19 @@ public class ProxyConfig : Tea.TeaModel {
             if self.requestTimeout != nil {
                 map["requestTimeout"] = self.requestTimeout!
             }
+            if self.tokenRateLimiter != nil {
+                map["tokenRateLimiter"] = self.tokenRateLimiter?.toMap()
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["aiGuardrailConfig"] as? [String: Any?] {
+                var model = ProxyConfig.Policies.AiGuardrailConfig()
+                model.fromMap(value)
+                self.aiGuardrailConfig = model
+            }
             if let value = dict["cache"] as? Bool {
                 self.cache = value
             }
@@ -9084,6 +9265,11 @@ public class ProxyConfig : Tea.TeaModel {
             }
             if let value = dict["requestTimeout"] as? Int32 {
                 self.requestTimeout = value
+            }
+            if let value = dict["tokenRateLimiter"] as? [String: Any?] {
+                var model = ProxyConfig.Policies.TokenRateLimiter()
+                model.fromMap(value)
+                self.tokenRateLimiter = model
             }
         }
     }
@@ -11438,6 +11624,8 @@ public class UpdateModelProxyInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executionRoleArn: String?
+
     public var logConfiguration: LogConfiguration?
 
     public var networkConfiguration: NetworkConfiguration?
@@ -11471,6 +11659,9 @@ public class UpdateModelProxyInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
         if self.logConfiguration != nil {
             map["logConfiguration"] = self.logConfiguration?.toMap()
         }
@@ -11495,6 +11686,9 @@ public class UpdateModelProxyInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
         }
         if let value = dict["logConfiguration"] as? [String: Any?] {
             var model = LogConfiguration()
