@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEHPC20240730` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ehpc-20240730" "2.2.0"
+github "alibabacloud-sdk-swift/ehpc-20240730" "2.2.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEHPC20240730` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpc-20240730.git", from: "2.2.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpc-20240730.git", from: "2.2.1")
 ]
 ```
 

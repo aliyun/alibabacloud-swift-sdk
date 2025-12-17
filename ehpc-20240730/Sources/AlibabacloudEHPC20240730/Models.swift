@@ -7255,6 +7255,8 @@ public class GetQueueResponseBody : Tea.TeaModel {
 
         public var computeNodes: [NodeTemplate]?
 
+        public var createTime: String?
+
         public var enableScaleIn: Bool?
 
         public var enableScaleOut: Bool?
@@ -7281,6 +7283,8 @@ public class GetQueueResponseBody : Tea.TeaModel {
 
         public var reservedNodePoolId: String?
 
+        public var updateTime: String?
+
         public var vSwitchIds: [String]?
 
         public override init() {
@@ -7306,6 +7310,9 @@ public class GetQueueResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ComputeNodes"] = tmp
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
             }
             if self.enableScaleIn != nil {
                 map["EnableScaleIn"] = self.enableScaleIn!
@@ -7346,6 +7353,9 @@ public class GetQueueResponseBody : Tea.TeaModel {
             if self.reservedNodePoolId != nil {
                 map["ReservedNodePoolId"] = self.reservedNodePoolId!
             }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
             if self.vSwitchIds != nil {
                 map["VSwitchIds"] = self.vSwitchIds!
             }
@@ -7369,6 +7379,9 @@ public class GetQueueResponseBody : Tea.TeaModel {
                     }
                 }
                 self.computeNodes = tmp
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
             }
             if let value = dict["EnableScaleIn"] as? Bool {
                 self.enableScaleIn = value
@@ -7408,6 +7421,9 @@ public class GetQueueResponseBody : Tea.TeaModel {
             }
             if let value = dict["ReservedNodePoolId"] as? String {
                 self.reservedNodePoolId = value
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
             }
             if let value = dict["VSwitchIds"] as? [String] {
                 self.vSwitchIds = value
