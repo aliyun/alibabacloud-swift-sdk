@@ -1716,6 +1716,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFileUploadWithOptions(_ request: ListFileUploadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFileUploadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callFrom)) {
+            query["CallFrom"] = request.callFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileCategory)) {
+            query["FileCategory"] = request.fileCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileFrom)) {
+            query["FileFrom"] = request.fileFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileId)) {
+            query["FileId"] = request.fileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortColumn)) {
+            query["SortColumn"] = request.sortColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortDirection)) {
+            query["SortDirection"] = request.sortDirection ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListFileUpload",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListFileUploadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFileUpload(_ request: ListFileUploadRequest) async throws -> ListFileUploadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listFileUploadWithOptions(request as! ListFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sendChatMessageWithOptions(_ tmpReq: SendChatMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendChatMessageResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SendChatMessageShrinkRequest = SendChatMessageShrinkRequest([:])

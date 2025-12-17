@@ -10667,6 +10667,354 @@ public class ListDataLakeTablebaseInfoResponse : Tea.TeaModel {
     }
 }
 
+public class ListFileUploadRequest : Tea.TeaModel {
+    public var callFrom: String?
+
+    public var dmsUnit: String?
+
+    public var fileCategory: String?
+
+    public var fileFrom: String?
+
+    public var fileId: String?
+
+    public var sessionId: String?
+
+    public var sortColumn: String?
+
+    public var sortDirection: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callFrom != nil {
+            map["CallFrom"] = self.callFrom!
+        }
+        if self.dmsUnit != nil {
+            map["DmsUnit"] = self.dmsUnit!
+        }
+        if self.fileCategory != nil {
+            map["FileCategory"] = self.fileCategory!
+        }
+        if self.fileFrom != nil {
+            map["FileFrom"] = self.fileFrom!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.sortColumn != nil {
+            map["SortColumn"] = self.sortColumn!
+        }
+        if self.sortDirection != nil {
+            map["SortDirection"] = self.sortDirection!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallFrom"] as? String {
+            self.callFrom = value
+        }
+        if let value = dict["DmsUnit"] as? String {
+            self.dmsUnit = value
+        }
+        if let value = dict["FileCategory"] as? String {
+            self.fileCategory = value
+        }
+        if let value = dict["FileFrom"] as? String {
+            self.fileFrom = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+        if let value = dict["SortColumn"] as? String {
+            self.sortColumn = value
+        }
+        if let value = dict["SortDirection"] as? String {
+            self.sortDirection = value
+        }
+    }
+}
+
+public class ListFileUploadResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var aliyunParentUid: String?
+
+        public var aliyunUid: String?
+
+        public var downloadLink: String?
+
+        public var fileCategory: String?
+
+        public var fileFrom: String?
+
+        public var fileId: String?
+
+        public var fileName: String?
+
+        public var fileSize: Int64?
+
+        public var fileType: String?
+
+        public var gmtCreated: String?
+
+        public var intranetDownloadLink: String?
+
+        public var region: String?
+
+        public var sessionId: String?
+
+        public var uploadLocation: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyunParentUid != nil {
+                map["AliyunParentUid"] = self.aliyunParentUid!
+            }
+            if self.aliyunUid != nil {
+                map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.downloadLink != nil {
+                map["DownloadLink"] = self.downloadLink!
+            }
+            if self.fileCategory != nil {
+                map["FileCategory"] = self.fileCategory!
+            }
+            if self.fileFrom != nil {
+                map["FileFrom"] = self.fileFrom!
+            }
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.fileType != nil {
+                map["FileType"] = self.fileType!
+            }
+            if self.gmtCreated != nil {
+                map["GmtCreated"] = self.gmtCreated!
+            }
+            if self.intranetDownloadLink != nil {
+                map["IntranetDownloadLink"] = self.intranetDownloadLink!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            if self.uploadLocation != nil {
+                map["UploadLocation"] = self.uploadLocation!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliyunParentUid"] as? String {
+                self.aliyunParentUid = value
+            }
+            if let value = dict["AliyunUid"] as? String {
+                self.aliyunUid = value
+            }
+            if let value = dict["DownloadLink"] as? String {
+                self.downloadLink = value
+            }
+            if let value = dict["FileCategory"] as? String {
+                self.fileCategory = value
+            }
+            if let value = dict["FileFrom"] as? String {
+                self.fileFrom = value
+            }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FileSize"] as? Int64 {
+                self.fileSize = value
+            }
+            if let value = dict["FileType"] as? String {
+                self.fileType = value
+            }
+            if let value = dict["GmtCreated"] as? String {
+                self.gmtCreated = value
+            }
+            if let value = dict["IntranetDownloadLink"] as? String {
+                self.intranetDownloadLink = value
+            }
+            if let value = dict["Region"] as? String {
+                self.region = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
+            if let value = dict["UploadLocation"] as? String {
+                self.uploadLocation = value
+            }
+        }
+    }
+    public var data: [ListFileUploadResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [ListFileUploadResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListFileUploadResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListFileUploadResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListFileUploadResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListFileUploadResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SendChatMessageRequest : Tea.TeaModel {
     public class DataSource : Tea.TeaModel {
         public var dataSourceId: String?
