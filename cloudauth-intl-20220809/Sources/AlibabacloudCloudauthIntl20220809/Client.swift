@@ -1128,6 +1128,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downloadVerifyRecordIntlWithOptions(_ request: DownloadVerifyRecordIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DownloadVerifyRecordIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.code)) {
+            query["Code"] = request.code ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.downloadMode)) {
+            query["DownloadMode"] = request.downloadMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.param)) {
+            query["Param"] = request.param ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            query["ProductType"] = request.productType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DownloadVerifyRecordIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DownloadVerifyRecordIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func downloadVerifyRecordIntl(_ request: DownloadVerifyRecordIntlRequest) async throws -> DownloadVerifyRecordIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await downloadVerifyRecordIntlWithOptions(request as! DownloadVerifyRecordIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func ekycVerifyWithOptions(_ request: EkycVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EkycVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1263,26 +1306,28 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sceneCode)) {
             query["SceneCode"] = request.sceneCode ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.sourceAFacePicture)) {
-            query["SourceAFacePicture"] = request.sourceAFacePicture ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sourceAFacePictureUrl)) {
             query["SourceAFacePictureUrl"] = request.sourceAFacePictureUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceBFacePicture)) {
-            query["SourceBFacePicture"] = request.sourceBFacePicture ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceBFacePictureUrl)) {
             query["SourceBFacePictureUrl"] = request.sourceBFacePictureUrl ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.sourceCFacePicture)) {
-            query["SourceCFacePicture"] = request.sourceCFacePicture ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sourceCFacePictureUrl)) {
             query["SourceCFacePictureUrl"] = request.sourceCFacePictureUrl ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceAFacePicture)) {
+            body["SourceAFacePicture"] = request.sourceAFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceBFacePicture)) {
+            body["SourceBFacePicture"] = request.sourceBFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCFacePicture)) {
+            body["SourceCFacePicture"] = request.sourceCFacePicture ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "FaceCrossCompareIntl",

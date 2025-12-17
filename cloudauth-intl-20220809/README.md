@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudCloudauthIntl20220809` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/cloudauth-intl-20220809" "3.13.2"
+github "alibabacloud-sdk-swift/cloudauth-intl-20220809" "3.14.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudCloudauthIntl20220809` into your Xcode project using [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/cloudauth-intl-20220809.git", from: "3.13.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/cloudauth-intl-20220809.git", from: "3.14.0")
 ]
 ```
 
