@@ -3796,6 +3796,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceWithOptions(_ serviceId: String, _ request: UpdateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addresses)) {
+            body["addresses"] = request.addresses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.agentServiceConfig)) {
+            body["agentServiceConfig"] = request.agentServiceConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.aiServiceConfig)) {
+            body["aiServiceConfig"] = request.aiServiceConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dnsServers)) {
+            body["dnsServers"] = request.dnsServers ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.healthCheckConfig)) {
+            body["healthCheckConfig"] = request.healthCheckConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.healthyPanicThreshold)) {
+            body["healthyPanicThreshold"] = request.healthyPanicThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outlierDetectionConfig)) {
+            body["outlierDetectionConfig"] = request.outlierDetectionConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ports)) {
+            body["ports"] = request.ports ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["protocol"] = request.protocol_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateService",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(serviceId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateService(_ serviceId: String, _ request: UpdateServiceRequest) async throws -> UpdateServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateServiceWithOptions(serviceId as! String, request as! UpdateServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateServiceVersionWithOptions(_ serviceId: String, _ name: String, _ request: UpdateServiceVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
