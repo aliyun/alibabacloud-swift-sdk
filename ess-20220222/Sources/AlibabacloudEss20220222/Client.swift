@@ -1672,6 +1672,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDiagnoseReportWithOptions(_ request: DeleteDiagnoseReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDiagnoseReportResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDiagnoseReport",
+            "version": "2022-02-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDiagnoseReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDiagnoseReport(_ request: DeleteDiagnoseReportRequest) async throws -> DeleteDiagnoseReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDiagnoseReportWithOptions(request as! DeleteDiagnoseReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteEciScalingConfigurationWithOptions(_ request: DeleteEciScalingConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEciScalingConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
