@@ -35735,6 +35735,606 @@ public class DescribeGlobalDesktopRecordsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeGlobalTimerBatchesRequest : Tea.TeaModel {
+    public var groupId: String?
+
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var searchRegionId: String?
+
+    public var timerType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.searchRegionId != nil {
+            map["SearchRegionId"] = self.searchRegionId!
+        }
+        if self.timerType != nil {
+            map["TimerType"] = self.timerType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GroupId"] as? String {
+            self.groupId = value
+        }
+        if let value = dict["MaxResults"] as? String {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SearchRegionId"] as? String {
+            self.searchRegionId = value
+        }
+        if let value = dict["TimerType"] as? String {
+            self.timerType = value
+        }
+    }
+}
+
+public class DescribeGlobalTimerBatchesResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public var batchId: String?
+
+        public var createTime: String?
+
+        public var failedCount: Int32?
+
+        public var runningCount: Int32?
+
+        public var skippedCount: Int32?
+
+        public var succeedCount: Int32?
+
+        public var timerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchId != nil {
+                map["BatchId"] = self.batchId!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.failedCount != nil {
+                map["FailedCount"] = self.failedCount!
+            }
+            if self.runningCount != nil {
+                map["RunningCount"] = self.runningCount!
+            }
+            if self.skippedCount != nil {
+                map["SkippedCount"] = self.skippedCount!
+            }
+            if self.succeedCount != nil {
+                map["SucceedCount"] = self.succeedCount!
+            }
+            if self.timerType != nil {
+                map["TimerType"] = self.timerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BatchId"] as? String {
+                self.batchId = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["FailedCount"] as? Int32 {
+                self.failedCount = value
+            }
+            if let value = dict["RunningCount"] as? Int32 {
+                self.runningCount = value
+            }
+            if let value = dict["SkippedCount"] as? Int32 {
+                self.skippedCount = value
+            }
+            if let value = dict["SucceedCount"] as? Int32 {
+                self.succeedCount = value
+            }
+            if let value = dict["TimerType"] as? String {
+                self.timerType = value
+            }
+        }
+    }
+    public var count: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var results: [DescribeGlobalTimerBatchesResponseBody.Results]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            var tmp : [Any] = []
+            for k in self.results! {
+                tmp.append(k.toMap())
+            }
+            map["Results"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Results"] as? [Any?] {
+            var tmp : [DescribeGlobalTimerBatchesResponseBody.Results] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeGlobalTimerBatchesResponseBody.Results()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.results = tmp
+        }
+    }
+}
+
+public class DescribeGlobalTimerBatchesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGlobalTimerBatchesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeGlobalTimerBatchesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
+    public var batchId: String?
+
+    public var desktopIds: [String]?
+
+    public var groupId: String?
+
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resultCategory: String?
+
+    public var searchRegionId: String?
+
+    public var timerResult: String?
+
+    public var timerTypes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchId != nil {
+            map["BatchId"] = self.batchId!
+        }
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resultCategory != nil {
+            map["ResultCategory"] = self.resultCategory!
+        }
+        if self.searchRegionId != nil {
+            map["SearchRegionId"] = self.searchRegionId!
+        }
+        if self.timerResult != nil {
+            map["TimerResult"] = self.timerResult!
+        }
+        if self.timerTypes != nil {
+            map["TimerTypes"] = self.timerTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BatchId"] as? String {
+            self.batchId = value
+        }
+        if let value = dict["DesktopIds"] as? [String] {
+            self.desktopIds = value
+        }
+        if let value = dict["GroupId"] as? String {
+            self.groupId = value
+        }
+        if let value = dict["MaxResults"] as? String {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResultCategory"] as? String {
+            self.resultCategory = value
+        }
+        if let value = dict["SearchRegionId"] as? String {
+            self.searchRegionId = value
+        }
+        if let value = dict["TimerResult"] as? String {
+            self.timerResult = value
+        }
+        if let value = dict["TimerTypes"] as? [String] {
+            self.timerTypes = value
+        }
+    }
+}
+
+public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public var actionType: String?
+
+        public var batchId: String?
+
+        public var context: String?
+
+        public var createTime: String?
+
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var finishTime: String?
+
+        public var regionId: String?
+
+        public var timerGroupId: String?
+
+        public var timerResult: String?
+
+        public var timerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actionType != nil {
+                map["ActionType"] = self.actionType!
+            }
+            if self.batchId != nil {
+                map["BatchId"] = self.batchId!
+            }
+            if self.context != nil {
+                map["Context"] = self.context!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.finishTime != nil {
+                map["FinishTime"] = self.finishTime!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.timerGroupId != nil {
+                map["TimerGroupId"] = self.timerGroupId!
+            }
+            if self.timerResult != nil {
+                map["TimerResult"] = self.timerResult!
+            }
+            if self.timerType != nil {
+                map["TimerType"] = self.timerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActionType"] as? String {
+                self.actionType = value
+            }
+            if let value = dict["BatchId"] as? String {
+                self.batchId = value
+            }
+            if let value = dict["Context"] as? String {
+                self.context = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["DesktopId"] as? String {
+                self.desktopId = value
+            }
+            if let value = dict["DesktopName"] as? String {
+                self.desktopName = value
+            }
+            if let value = dict["FinishTime"] as? String {
+                self.finishTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["TimerGroupId"] as? String {
+                self.timerGroupId = value
+            }
+            if let value = dict["TimerResult"] as? String {
+                self.timerResult = value
+            }
+            if let value = dict["TimerType"] as? String {
+                self.timerType = value
+            }
+        }
+    }
+    public var count: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var results: [DescribeGlobalTimerRecordsResponseBody.Results]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            var tmp : [Any] = []
+            for k in self.results! {
+                tmp.append(k.toMap())
+            }
+            map["Results"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Results"] as? [Any?] {
+            var tmp : [DescribeGlobalTimerRecordsResponseBody.Results] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeGlobalTimerRecordsResponseBody.Results()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.results = tmp
+        }
+    }
+}
+
+public class DescribeGlobalTimerRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGlobalTimerRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeGlobalTimerRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeGuestApplicationsRequest : Tea.TeaModel {
     public var desktopId: String?
 
