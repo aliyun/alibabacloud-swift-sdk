@@ -9755,6 +9755,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCfwInstanceWithOptions(_ request: ModifyCfwInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCfwInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateList)) {
+            query["UpdateList"] = request.updateList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyCfwInstance",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyCfwInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCfwInstance(_ request: ModifyCfwInstanceRequest) async throws -> ModifyCfwInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyCfwInstanceWithOptions(request as! ModifyCfwInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyControlPolicyWithOptions(_ request: ModifyControlPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyControlPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
