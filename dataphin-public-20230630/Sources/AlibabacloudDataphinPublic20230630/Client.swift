@@ -6757,6 +6757,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncDepartmentWithOptions(_ tmpReq: SyncDepartmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncDepartmentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SyncDepartmentShrinkRequest = SyncDepartmentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.syncDepartmentCommand)) {
+            request.syncDepartmentCommandShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.syncDepartmentCommand, "SyncDepartmentCommand", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.syncDepartmentCommandShrink)) {
+            body["SyncDepartmentCommand"] = request.syncDepartmentCommandShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SyncDepartment",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SyncDepartmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncDepartment(_ request: SyncDepartmentRequest) async throws -> SyncDepartmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await syncDepartmentWithOptions(request as! SyncDepartmentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncDepartmentUserWithOptions(_ tmpReq: SyncDepartmentUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncDepartmentUserResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SyncDepartmentUserShrinkRequest = SyncDepartmentUserShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.syncDepartmentUserCommand)) {
+            request.syncDepartmentUserCommandShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.syncDepartmentUserCommand, "SyncDepartmentUserCommand", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.syncDepartmentUserCommandShrink)) {
+            body["SyncDepartmentUserCommand"] = request.syncDepartmentUserCommandShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SyncDepartmentUser",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SyncDepartmentUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncDepartmentUser(_ request: SyncDepartmentUserRequest) async throws -> SyncDepartmentUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await syncDepartmentUserWithOptions(request as! SyncDepartmentUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func transferOwnershipForAllObjectWithOptions(_ tmpReq: TransferOwnershipForAllObjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TransferOwnershipForAllObjectResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: TransferOwnershipForAllObjectShrinkRequest = TransferOwnershipForAllObjectShrinkRequest([:])
