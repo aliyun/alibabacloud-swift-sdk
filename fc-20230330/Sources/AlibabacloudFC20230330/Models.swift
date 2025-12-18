@@ -3716,6 +3716,8 @@ public class InstanceInfo : Tea.TeaModel {
 
     public var qualifier: String?
 
+    public var resourceType: String?
+
     public var status: String?
 
     public var versionId: String?
@@ -3746,6 +3748,9 @@ public class InstanceInfo : Tea.TeaModel {
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
         }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -3768,6 +3773,9 @@ public class InstanceInfo : Tea.TeaModel {
         }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
+        }
+        if let value = dict["resourceType"] as? String {
+            self.resourceType = value
         }
         if let value = dict["status"] as? String {
             self.status = value
@@ -6219,11 +6227,15 @@ public class PutProvisionConfigInput : Tea.TeaModel {
 }
 
 public class PutScalingConfigInput : Tea.TeaModel {
+    public var enableMixMode: Bool?
+
     public var enableOnDemandScaling: Bool?
 
     public var horizontalScalingPolicies: [ScalingPolicy]?
 
     public var minInstances: Int64?
+
+    public var requestDispatchPolicy: String?
 
     public var residentPoolId: String?
 
@@ -6243,6 +6255,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableMixMode != nil {
+            map["enableMixMode"] = self.enableMixMode!
+        }
         if self.enableOnDemandScaling != nil {
             map["enableOnDemandScaling"] = self.enableOnDemandScaling!
         }
@@ -6255,6 +6270,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
         }
         if self.minInstances != nil {
             map["minInstances"] = self.minInstances!
+        }
+        if self.requestDispatchPolicy != nil {
+            map["requestDispatchPolicy"] = self.requestDispatchPolicy!
         }
         if self.residentPoolId != nil {
             map["residentPoolId"] = self.residentPoolId!
@@ -6271,6 +6289,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["enableMixMode"] as? Bool {
+            self.enableMixMode = value
+        }
         if let value = dict["enableOnDemandScaling"] as? Bool {
             self.enableOnDemandScaling = value
         }
@@ -6289,6 +6310,9 @@ public class PutScalingConfigInput : Tea.TeaModel {
         }
         if let value = dict["minInstances"] as? Int64 {
             self.minInstances = value
+        }
+        if let value = dict["requestDispatchPolicy"] as? String {
+            self.requestDispatchPolicy = value
         }
         if let value = dict["residentPoolId"] as? String {
             self.residentPoolId = value
@@ -7299,6 +7323,8 @@ public class ScalingConfigStatus : Tea.TeaModel {
 
     public var currentInstances: Int64?
 
+    public var enableMixMode: Bool?
+
     public var enableOnDemandScaling: Bool?
 
     public var functionArn: String?
@@ -7306,6 +7332,8 @@ public class ScalingConfigStatus : Tea.TeaModel {
     public var horizontalScalingPolicies: [ScalingPolicy]?
 
     public var minInstances: Int64?
+
+    public var requestDispatchPolicy: String?
 
     public var residentPoolId: String?
 
@@ -7333,6 +7361,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         if self.currentInstances != nil {
             map["currentInstances"] = self.currentInstances!
         }
+        if self.enableMixMode != nil {
+            map["enableMixMode"] = self.enableMixMode!
+        }
         if self.enableOnDemandScaling != nil {
             map["enableOnDemandScaling"] = self.enableOnDemandScaling!
         }
@@ -7348,6 +7379,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         }
         if self.minInstances != nil {
             map["minInstances"] = self.minInstances!
+        }
+        if self.requestDispatchPolicy != nil {
+            map["requestDispatchPolicy"] = self.requestDispatchPolicy!
         }
         if self.residentPoolId != nil {
             map["residentPoolId"] = self.residentPoolId!
@@ -7373,6 +7407,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         if let value = dict["currentInstances"] as? Int64 {
             self.currentInstances = value
         }
+        if let value = dict["enableMixMode"] as? Bool {
+            self.enableMixMode = value
+        }
         if let value = dict["enableOnDemandScaling"] as? Bool {
             self.enableOnDemandScaling = value
         }
@@ -7394,6 +7431,9 @@ public class ScalingConfigStatus : Tea.TeaModel {
         }
         if let value = dict["minInstances"] as? Int64 {
             self.minInstances = value
+        }
+        if let value = dict["requestDispatchPolicy"] as? String {
+            self.requestDispatchPolicy = value
         }
         if let value = dict["residentPoolId"] as? String {
             self.residentPoolId = value
