@@ -2515,6 +2515,44 @@ public class CreateBackupPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateDBInstanceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var autoRenew: Bool?
 
     public var backupSetID: String?
@@ -2558,6 +2596,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var sourceDBClusterId: String?
+
+    public var tags: [CreateDBInstanceRequest.Tags]?
 
     public var usedTime: String?
 
@@ -2655,6 +2695,13 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.sourceDBClusterId != nil {
             map["SourceDBClusterId"] = self.sourceDBClusterId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -2749,6 +2796,19 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["SourceDBClusterId"] as? String {
             self.sourceDBClusterId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateDBInstanceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateDBInstanceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
