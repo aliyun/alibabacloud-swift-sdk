@@ -58072,6 +58072,8 @@ public class ListListsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var itemsUsage: Int64?
+
     public var lists: [ListListsResponseBody.Lists]?
 
     public var pageNumber: Int32?
@@ -58098,6 +58100,9 @@ public class ListListsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.itemsUsage != nil {
+            map["ItemsUsage"] = self.itemsUsage!
+        }
         if self.lists != nil {
             var tmp : [Any] = []
             for k in self.lists! {
@@ -58125,6 +58130,9 @@ public class ListListsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ItemsUsage"] as? Int64 {
+            self.itemsUsage = value
+        }
         if let value = dict["Lists"] as? [Any?] {
             var tmp : [ListListsResponseBody.Lists] = []
             for v in value {
