@@ -24,6 +24,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var createdAt: String?
 
+    public var credentialName: String?
+
     public var description_: String?
 
     public var environmentVariables: [String: String]?
@@ -98,6 +100,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.createdAt != nil {
             map["createdAt"] = self.createdAt!
+        }
+        if self.credentialName != nil {
+            map["credentialName"] = self.credentialName!
         }
         if self.description_ != nil {
             map["description"] = self.description_!
@@ -176,6 +181,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["createdAt"] as? String {
             self.createdAt = value
+        }
+        if let value = dict["credentialName"] as? String {
+            self.credentialName = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
