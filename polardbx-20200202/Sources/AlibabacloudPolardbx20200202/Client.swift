@@ -678,6 +678,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DNNodeCount)) {
             query["DNNodeCount"] = request.DNNodeCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dnClass)) {
             query["DnClass"] = request.dnClass ?? "";
         }

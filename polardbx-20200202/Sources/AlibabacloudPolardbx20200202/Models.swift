@@ -2361,6 +2361,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DNNodeCount: Int32?
 
+    public var description_: String?
+
     public var dnClass: String?
 
     public var dnStorageSpace: String?
@@ -2437,6 +2439,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.DNNodeCount != nil {
             map["DNNodeCount"] = self.DNNodeCount!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.dnClass != nil {
             map["DnClass"] = self.dnClass!
@@ -2527,6 +2532,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if let value = dict["DNNodeCount"] as? Int32 {
             self.DNNodeCount = value
         }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["DnClass"] as? String {
             self.dnClass = value
         }
@@ -2608,6 +2616,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DNNodeCount: Int32?
 
+    public var description_: String?
+
     public var dnClass: String?
 
     public var dnStorageSpace: String?
@@ -2684,6 +2694,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.DNNodeCount != nil {
             map["DNNodeCount"] = self.DNNodeCount!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.dnClass != nil {
             map["DnClass"] = self.dnClass!
@@ -2773,6 +2786,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DNNodeCount"] as? Int32 {
             self.DNNodeCount = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["DnClass"] as? String {
             self.dnClass = value
@@ -11094,6 +11110,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var engine: String?
 
+        public var engineVersion: String?
+
         public var expireDate: String?
 
         public var expired: String?
@@ -11250,6 +11268,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
+            }
+            if self.engineVersion != nil {
+                map["EngineVersion"] = self.engineVersion!
             }
             if self.expireDate != nil {
                 map["ExpireDate"] = self.expireDate!
@@ -11454,6 +11475,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["Engine"] as? String {
                 self.engine = value
+            }
+            if let value = dict["EngineVersion"] as? String {
+                self.engineVersion = value
             }
             if let value = dict["ExpireDate"] as? String {
                 self.expireDate = value
@@ -14156,6 +14180,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var engine: String?
 
+        public var engineVersion: String?
+
         public var expireTime: String?
 
         public var expired: Bool?
@@ -14277,6 +14303,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
+            }
+            if self.engineVersion != nil {
+                map["EngineVersion"] = self.engineVersion!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -14428,6 +14457,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Engine"] as? String {
                 self.engine = value
+            }
+            if let value = dict["EngineVersion"] as? String {
+                self.engineVersion = value
             }
             if let value = dict["ExpireTime"] as? String {
                 self.expireTime = value
