@@ -11487,6 +11487,8 @@ public class CreateHighReliablePhysicalConnectionRequest : Tea.TeaModel {
 
         public var name: String?
 
+        public var opticalModuleModel: String?
+
         public var peerLocation: String?
 
         public var portNum: Int32?
@@ -11527,6 +11529,9 @@ public class CreateHighReliablePhysicalConnectionRequest : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.opticalModuleModel != nil {
+                map["OpticalModuleModel"] = self.opticalModuleModel!
+            }
             if self.peerLocation != nil {
                 map["PeerLocation"] = self.peerLocation!
             }
@@ -11561,6 +11566,9 @@ public class CreateHighReliablePhysicalConnectionRequest : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["OpticalModuleModel"] as? String {
+                self.opticalModuleModel = value
             }
             if let value = dict["PeerLocation"] as? String {
                 self.peerLocation = value
@@ -15755,6 +15763,8 @@ public class CreatePhysicalConnectionRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var opticalModuleModel: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -15813,6 +15823,9 @@ public class CreatePhysicalConnectionRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.opticalModuleModel != nil {
+            map["OpticalModuleModel"] = self.opticalModuleModel!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -15879,6 +15892,9 @@ public class CreatePhysicalConnectionRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OpticalModuleModel"] as? String {
+            self.opticalModuleModel = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -53516,6 +53532,8 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var opticalModuleModel: String?
+
             public var orderMode: String?
 
             public var parentPhysicalConnectionAliUid: Int64?
@@ -53623,6 +53641,9 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.opticalModuleModel != nil {
+                    map["OpticalModuleModel"] = self.opticalModuleModel!
                 }
                 if self.orderMode != nil {
                     map["OrderMode"] = self.orderMode!
@@ -53742,6 +53763,9 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
+                }
+                if let value = dict["OpticalModuleModel"] as? String {
+                    self.opticalModuleModel = value
                 }
                 if let value = dict["OrderMode"] as? String {
                     self.orderMode = value
@@ -80174,6 +80198,44 @@ public class ListBusinessAccessPointsRequest : Tea.TeaModel {
 
 public class ListBusinessAccessPointsResponseBody : Tea.TeaModel {
     public class BusinessAccessPoints : Tea.TeaModel {
+        public class OpticalModuleModels : Tea.TeaModel {
+            public var opticalModuleModel: String?
+
+            public var portType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.opticalModuleModel != nil {
+                    map["OpticalModuleModel"] = self.opticalModuleModel!
+                }
+                if self.portType != nil {
+                    map["PortType"] = self.portType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OpticalModuleModel"] as? String {
+                    self.opticalModuleModel = value
+                }
+                if let value = dict["PortType"] as? String {
+                    self.portType = value
+                }
+            }
+        }
         public var accessPointId: String?
 
         public var accessPointName: String?
@@ -80183,6 +80245,8 @@ public class ListBusinessAccessPointsResponseBody : Tea.TeaModel {
         public var latitude: Double?
 
         public var longitude: Double?
+
+        public var opticalModuleModels: [ListBusinessAccessPointsResponseBody.BusinessAccessPoints.OpticalModuleModels]?
 
         public var supportLineOperator: String?
 
@@ -80217,6 +80281,13 @@ public class ListBusinessAccessPointsResponseBody : Tea.TeaModel {
             if self.longitude != nil {
                 map["Longitude"] = self.longitude!
             }
+            if self.opticalModuleModels != nil {
+                var tmp : [Any] = []
+                for k in self.opticalModuleModels! {
+                    tmp.append(k.toMap())
+                }
+                map["OpticalModuleModels"] = tmp
+            }
             if self.supportLineOperator != nil {
                 map["SupportLineOperator"] = self.supportLineOperator!
             }
@@ -80242,6 +80313,19 @@ public class ListBusinessAccessPointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Longitude"] as? Double {
                 self.longitude = value
+            }
+            if let value = dict["OpticalModuleModels"] as? [Any?] {
+                var tmp : [ListBusinessAccessPointsResponseBody.BusinessAccessPoints.OpticalModuleModels] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListBusinessAccessPointsResponseBody.BusinessAccessPoints.OpticalModuleModels()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.opticalModuleModels = tmp
             }
             if let value = dict["SupportLineOperator"] as? String {
                 self.supportLineOperator = value
