@@ -44038,6 +44038,438 @@ public class DescribePriceForRenewDesktopOversoldGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRecordFileRequest : Tea.TeaModel {
+    public var desktopId: String?
+
+    public var endTime: String?
+
+    public var endUserId: String?
+
+    public var fileName: String?
+
+    public var orderBy: String?
+
+    public var orderSort: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var recordType: String?
+
+    public var regionId: String?
+
+    public var startTime: String?
+
+    public var status: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.orderSort != nil {
+            map["OrderSort"] = self.orderSort!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.recordType != nil {
+            map["RecordType"] = self.recordType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesktopId"] as? String {
+            self.desktopId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["OrderSort"] as? String {
+            self.orderSort = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RecordType"] as? String {
+            self.recordType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+    }
+}
+
+public class DescribeRecordFileResponseBody : Tea.TeaModel {
+    public class RecordFiles : Tea.TeaModel {
+        public class EventDetails : Tea.TeaModel {
+            public var eventName: String?
+
+            public var eventTime: Int32?
+
+            public var eventType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.eventName != nil {
+                    map["EventName"] = self.eventName!
+                }
+                if self.eventTime != nil {
+                    map["EventTime"] = self.eventTime!
+                }
+                if self.eventType != nil {
+                    map["EventType"] = self.eventType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EventName"] as? String {
+                    self.eventName = value
+                }
+                if let value = dict["EventTime"] as? Int32 {
+                    self.eventTime = value
+                }
+                if let value = dict["EventType"] as? String {
+                    self.eventType = value
+                }
+            }
+        }
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var endUserId: String?
+
+        public var eventDetails: [DescribeRecordFileResponseBody.RecordFiles.EventDetails]?
+
+        public var fileName: String?
+
+        public var fileSize: Int64?
+
+        public var policyId: String?
+
+        public var recordEndTime: String?
+
+        public var recordExpire: Int64?
+
+        public var recordStartTime: String?
+
+        public var recordType: Int32?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceGroupName: String?
+
+        public var status: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.eventDetails != nil {
+                var tmp : [Any] = []
+                for k in self.eventDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["EventDetails"] = tmp
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.policyId != nil {
+                map["PolicyId"] = self.policyId!
+            }
+            if self.recordEndTime != nil {
+                map["RecordEndTime"] = self.recordEndTime!
+            }
+            if self.recordExpire != nil {
+                map["RecordExpire"] = self.recordExpire!
+            }
+            if self.recordStartTime != nil {
+                map["RecordStartTime"] = self.recordStartTime!
+            }
+            if self.recordType != nil {
+                map["RecordType"] = self.recordType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceGroupName != nil {
+                map["ResourceGroupName"] = self.resourceGroupName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DesktopId"] as? String {
+                self.desktopId = value
+            }
+            if let value = dict["DesktopName"] as? String {
+                self.desktopName = value
+            }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+            if let value = dict["EventDetails"] as? [Any?] {
+                var tmp : [DescribeRecordFileResponseBody.RecordFiles.EventDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRecordFileResponseBody.RecordFiles.EventDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.eventDetails = tmp
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FileSize"] as? Int64 {
+                self.fileSize = value
+            }
+            if let value = dict["PolicyId"] as? String {
+                self.policyId = value
+            }
+            if let value = dict["RecordEndTime"] as? String {
+                self.recordEndTime = value
+            }
+            if let value = dict["RecordExpire"] as? Int64 {
+                self.recordExpire = value
+            }
+            if let value = dict["RecordStartTime"] as? String {
+                self.recordStartTime = value
+            }
+            if let value = dict["RecordType"] as? Int32 {
+                self.recordType = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["ResourceGroupName"] as? String {
+                self.resourceGroupName = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+        }
+    }
+    public var recordFiles: [DescribeRecordFileResponseBody.RecordFiles]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recordFiles != nil {
+            var tmp : [Any] = []
+            for k in self.recordFiles! {
+                tmp.append(k.toMap())
+            }
+            map["RecordFiles"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecordFiles"] as? [Any?] {
+            var tmp : [DescribeRecordFileResponseBody.RecordFiles] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRecordFileResponseBody.RecordFiles()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recordFiles = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeRecordFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRecordFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRecordFileResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRecordingsRequest : Tea.TeaModel {
     public var desktopId: String?
 
