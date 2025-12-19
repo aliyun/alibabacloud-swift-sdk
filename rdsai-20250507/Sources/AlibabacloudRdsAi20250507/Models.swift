@@ -500,6 +500,8 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
 
     public var databasePassword: String?
 
+    public var initializeWithExistingData: Bool?
+
     public var instanceClass: String?
 
     public var publicEndpointEnabled: Bool?
@@ -551,6 +553,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if self.databasePassword != nil {
             map["DatabasePassword"] = self.databasePassword!
         }
+        if self.initializeWithExistingData != nil {
+            map["InitializeWithExistingData"] = self.initializeWithExistingData!
+        }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
         }
@@ -600,6 +605,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["DatabasePassword"] as? String {
             self.databasePassword = value
         }
+        if let value = dict["InitializeWithExistingData"] as? Bool {
+            self.initializeWithExistingData = value
+        }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
         }
@@ -637,6 +645,8 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
     public var dashboardUsername: String?
 
     public var databasePassword: String?
+
+    public var initializeWithExistingData: Bool?
 
     public var instanceClass: String?
 
@@ -688,6 +698,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         if self.databasePassword != nil {
             map["DatabasePassword"] = self.databasePassword!
         }
+        if self.initializeWithExistingData != nil {
+            map["InitializeWithExistingData"] = self.initializeWithExistingData!
+        }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
         }
@@ -734,6 +747,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DatabasePassword"] as? String {
             self.databasePassword = value
+        }
+        if let value = dict["InitializeWithExistingData"] as? Bool {
+            self.initializeWithExistingData = value
         }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value

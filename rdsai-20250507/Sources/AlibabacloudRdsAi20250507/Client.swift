@@ -132,6 +132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.databasePassword)) {
             query["DatabasePassword"] = request.databasePassword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.initializeWithExistingData)) {
+            query["InitializeWithExistingData"] = request.initializeWithExistingData!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceClass)) {
             query["InstanceClass"] = request.instanceClass ?? "";
         }
