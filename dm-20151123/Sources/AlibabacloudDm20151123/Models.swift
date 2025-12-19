@@ -8521,6 +8521,8 @@ public class GetValidateFileStatusResponseBody : Tea.TeaModel {
 
     public var doNotMailNum: String?
 
+    public var fileId: String?
+
     public var fileName: String?
 
     public var invalidNum: String?
@@ -8563,6 +8565,9 @@ public class GetValidateFileStatusResponseBody : Tea.TeaModel {
         }
         if self.doNotMailNum != nil {
             map["DoNotMailNum"] = self.doNotMailNum!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
         }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
@@ -8607,6 +8612,9 @@ public class GetValidateFileStatusResponseBody : Tea.TeaModel {
         }
         if let value = dict["DoNotMailNum"] as? String {
             self.doNotMailNum = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
         }
         if let value = dict["FileName"] as? String {
             self.fileName = value
@@ -9367,6 +9375,346 @@ public class ListUserSuppressionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListUserSuppressionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListValidateFileRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var fileKeyword: String?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fileKeyword != nil {
+            map["FileKeyword"] = self.fileKeyword!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["FileKeyword"] as? String {
+            self.fileKeyword = value
+        }
+        if let value = dict["Page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListValidateFileResponseBody : Tea.TeaModel {
+    public class Files : Tea.TeaModel {
+        public var catchAllNum: String?
+
+        public var completeTime: String?
+
+        public var doNotMailNum: String?
+
+        public var fileId: String?
+
+        public var fileName: String?
+
+        public var invalidNum: String?
+
+        public var isDownloadable: Bool?
+
+        public var percentage: String?
+
+        public var processedNum: String?
+
+        public var status: String?
+
+        public var totalNum: String?
+
+        public var unknownNum: String?
+
+        public var uploadTime: String?
+
+        public var validNum: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.catchAllNum != nil {
+                map["CatchAllNum"] = self.catchAllNum!
+            }
+            if self.completeTime != nil {
+                map["CompleteTime"] = self.completeTime!
+            }
+            if self.doNotMailNum != nil {
+                map["DoNotMailNum"] = self.doNotMailNum!
+            }
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.invalidNum != nil {
+                map["InvalidNum"] = self.invalidNum!
+            }
+            if self.isDownloadable != nil {
+                map["IsDownloadable"] = self.isDownloadable!
+            }
+            if self.percentage != nil {
+                map["Percentage"] = self.percentage!
+            }
+            if self.processedNum != nil {
+                map["ProcessedNum"] = self.processedNum!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalNum != nil {
+                map["TotalNum"] = self.totalNum!
+            }
+            if self.unknownNum != nil {
+                map["UnknownNum"] = self.unknownNum!
+            }
+            if self.uploadTime != nil {
+                map["UploadTime"] = self.uploadTime!
+            }
+            if self.validNum != nil {
+                map["ValidNum"] = self.validNum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CatchAllNum"] as? String {
+                self.catchAllNum = value
+            }
+            if let value = dict["CompleteTime"] as? String {
+                self.completeTime = value
+            }
+            if let value = dict["DoNotMailNum"] as? String {
+                self.doNotMailNum = value
+            }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["InvalidNum"] as? String {
+                self.invalidNum = value
+            }
+            if let value = dict["IsDownloadable"] as? Bool {
+                self.isDownloadable = value
+            }
+            if let value = dict["Percentage"] as? String {
+                self.percentage = value
+            }
+            if let value = dict["ProcessedNum"] as? String {
+                self.processedNum = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TotalNum"] as? String {
+                self.totalNum = value
+            }
+            if let value = dict["UnknownNum"] as? String {
+                self.unknownNum = value
+            }
+            if let value = dict["UploadTime"] as? String {
+                self.uploadTime = value
+            }
+            if let value = dict["ValidNum"] as? String {
+                self.validNum = value
+            }
+        }
+    }
+    public var files: [ListValidateFileResponseBody.Files]?
+
+    public var hasNext: Bool?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalPages: Int32?
+
+    public var totalSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.files != nil {
+            var tmp : [Any] = []
+            for k in self.files! {
+                tmp.append(k.toMap())
+            }
+            map["Files"] = tmp
+        }
+        if self.hasNext != nil {
+            map["HasNext"] = self.hasNext!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
+        if self.totalSize != nil {
+            map["TotalSize"] = self.totalSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Files"] as? [Any?] {
+            var tmp : [ListValidateFileResponseBody.Files] = []
+            for v in value {
+                if v != nil {
+                    var model = ListValidateFileResponseBody.Files()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.files = tmp
+        }
+        if let value = dict["HasNext"] as? Bool {
+            self.hasNext = value
+        }
+        if let value = dict["Page"] as? Int32 {
+            self.page = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
+        }
+        if let value = dict["TotalSize"] as? Int32 {
+            self.totalSize = value
+        }
+    }
+}
+
+public class ListValidateFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListValidateFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListValidateFileResponseBody()
             model.fromMap(value)
             self.body = model
         }
