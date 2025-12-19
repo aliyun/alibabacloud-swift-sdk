@@ -2819,6 +2819,8 @@ public class Node : Tea.TeaModel {
 
     public var selfQuotaWorkloadNum: Int64?
 
+    public var subNodes: [String]?
+
     public var systemReservedCPU: String?
 
     public var systemReservedMemory: String?
@@ -2955,6 +2957,9 @@ public class Node : Tea.TeaModel {
         }
         if self.selfQuotaWorkloadNum != nil {
             map["SelfQuotaWorkloadNum"] = self.selfQuotaWorkloadNum!
+        }
+        if self.subNodes != nil {
+            map["SubNodes"] = self.subNodes!
         }
         if self.systemReservedCPU != nil {
             map["SystemReservedCPU"] = self.systemReservedCPU!
@@ -3097,6 +3102,9 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["SelfQuotaWorkloadNum"] as? Int64 {
             self.selfQuotaWorkloadNum = value
+        }
+        if let value = dict["SubNodes"] as? [String] {
+            self.subNodes = value
         }
         if let value = dict["SystemReservedCPU"] as? String {
             self.systemReservedCPU = value
@@ -15163,6 +15171,82 @@ public class ListAlgorithmsResponse : Tea.TeaModel {
 }
 
 public class ListNodesRequest : Tea.TeaModel {
+    public class HealthCount : Tea.TeaModel {
+        public var operation: String?
+
+        public var value: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.operation != nil {
+                map["operation"] = self.operation!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["operation"] as? String {
+                self.operation = value
+            }
+            if let value = dict["value"] as? Int32 {
+                self.value = value
+            }
+        }
+    }
+    public class HealthRate : Tea.TeaModel {
+        public var operation: String?
+
+        public var value: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.operation != nil {
+                map["operation"] = self.operation!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["operation"] as? String {
+                self.operation = value
+            }
+            if let value = dict["value"] as? Int32 {
+                self.value = value
+            }
+        }
+    }
     public var acceleratorType: String?
 
     public var availabilityZone: String?
@@ -15175,9 +15259,15 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var GPUType: String?
 
+    public var healthCount: ListNodesRequest.HealthCount?
+
+    public var healthRate: ListNodesRequest.HealthRate?
+
     public var hyperNode: String?
 
     public var hyperZone: String?
+
+    public var layoutMode: String?
 
     public var machineGroupIds: String?
 
@@ -15221,6 +15311,8 @@ public class ListNodesRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.healthCount?.validate()
+        try self.healthRate?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15243,11 +15335,20 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.GPUType != nil {
             map["GPUType"] = self.GPUType!
         }
+        if self.healthCount != nil {
+            map["HealthCount"] = self.healthCount?.toMap()
+        }
+        if self.healthRate != nil {
+            map["HealthRate"] = self.healthRate?.toMap()
+        }
         if self.hyperNode != nil {
             map["HyperNode"] = self.hyperNode!
         }
         if self.hyperZone != nil {
             map["HyperZone"] = self.hyperZone!
+        }
+        if self.layoutMode != nil {
+            map["LayoutMode"] = self.layoutMode!
         }
         if self.machineGroupIds != nil {
             map["MachineGroupIds"] = self.machineGroupIds!
@@ -15320,11 +15421,263 @@ public class ListNodesRequest : Tea.TeaModel {
         if let value = dict["GPUType"] as? String {
             self.GPUType = value
         }
+        if let value = dict["HealthCount"] as? [String: Any?] {
+            var model = ListNodesRequest.HealthCount()
+            model.fromMap(value)
+            self.healthCount = model
+        }
+        if let value = dict["HealthRate"] as? [String: Any?] {
+            var model = ListNodesRequest.HealthRate()
+            model.fromMap(value)
+            self.healthRate = model
+        }
         if let value = dict["HyperNode"] as? String {
             self.hyperNode = value
         }
         if let value = dict["HyperZone"] as? String {
             self.hyperZone = value
+        }
+        if let value = dict["LayoutMode"] as? String {
+            self.layoutMode = value
+        }
+        if let value = dict["MachineGroupIds"] as? String {
+            self.machineGroupIds = value
+        }
+        if let value = dict["NodeNames"] as? String {
+            self.nodeNames = value
+        }
+        if let value = dict["NodeStatuses"] as? String {
+            self.nodeStatuses = value
+        }
+        if let value = dict["NodeTypes"] as? String {
+            self.nodeTypes = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["OrderInstanceIds"] as? String {
+            self.orderInstanceIds = value
+        }
+        if let value = dict["OrderStatuses"] as? String {
+            self.orderStatuses = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["QuotaId"] as? String {
+            self.quotaId = value
+        }
+        if let value = dict["ReasonCodes"] as? String {
+            self.reasonCodes = value
+        }
+        if let value = dict["ResourceGroupIds"] as? String {
+            self.resourceGroupIds = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["Verbose"] as? Bool {
+            self.verbose = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class ListNodesShrinkRequest : Tea.TeaModel {
+    public var acceleratorType: String?
+
+    public var availabilityZone: String?
+
+    public var cliqueID: String?
+
+    public var filterByQuotaId: String?
+
+    public var filterByResourceGroupIds: String?
+
+    public var GPUType: String?
+
+    public var healthCountShrink: String?
+
+    public var healthRateShrink: String?
+
+    public var hyperNode: String?
+
+    public var hyperZone: String?
+
+    public var layoutMode: String?
+
+    public var machineGroupIds: String?
+
+    public var nodeNames: String?
+
+    public var nodeStatuses: String?
+
+    public var nodeTypes: String?
+
+    public var order: String?
+
+    public var orderInstanceIds: String?
+
+    public var orderStatuses: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var paymentType: String?
+
+    public var quotaId: String?
+
+    public var reasonCodes: String?
+
+    public var resourceGroupIds: String?
+
+    public var sortBy: String?
+
+    public var verbose: Bool?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceleratorType != nil {
+            map["AcceleratorType"] = self.acceleratorType!
+        }
+        if self.availabilityZone != nil {
+            map["AvailabilityZone"] = self.availabilityZone!
+        }
+        if self.cliqueID != nil {
+            map["CliqueID"] = self.cliqueID!
+        }
+        if self.filterByQuotaId != nil {
+            map["FilterByQuotaId"] = self.filterByQuotaId!
+        }
+        if self.filterByResourceGroupIds != nil {
+            map["FilterByResourceGroupIds"] = self.filterByResourceGroupIds!
+        }
+        if self.GPUType != nil {
+            map["GPUType"] = self.GPUType!
+        }
+        if self.healthCountShrink != nil {
+            map["HealthCount"] = self.healthCountShrink!
+        }
+        if self.healthRateShrink != nil {
+            map["HealthRate"] = self.healthRateShrink!
+        }
+        if self.hyperNode != nil {
+            map["HyperNode"] = self.hyperNode!
+        }
+        if self.hyperZone != nil {
+            map["HyperZone"] = self.hyperZone!
+        }
+        if self.layoutMode != nil {
+            map["LayoutMode"] = self.layoutMode!
+        }
+        if self.machineGroupIds != nil {
+            map["MachineGroupIds"] = self.machineGroupIds!
+        }
+        if self.nodeNames != nil {
+            map["NodeNames"] = self.nodeNames!
+        }
+        if self.nodeStatuses != nil {
+            map["NodeStatuses"] = self.nodeStatuses!
+        }
+        if self.nodeTypes != nil {
+            map["NodeTypes"] = self.nodeTypes!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.orderInstanceIds != nil {
+            map["OrderInstanceIds"] = self.orderInstanceIds!
+        }
+        if self.orderStatuses != nil {
+            map["OrderStatuses"] = self.orderStatuses!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
+        }
+        if self.reasonCodes != nil {
+            map["ReasonCodes"] = self.reasonCodes!
+        }
+        if self.resourceGroupIds != nil {
+            map["ResourceGroupIds"] = self.resourceGroupIds!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.verbose != nil {
+            map["Verbose"] = self.verbose!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceleratorType"] as? String {
+            self.acceleratorType = value
+        }
+        if let value = dict["AvailabilityZone"] as? String {
+            self.availabilityZone = value
+        }
+        if let value = dict["CliqueID"] as? String {
+            self.cliqueID = value
+        }
+        if let value = dict["FilterByQuotaId"] as? String {
+            self.filterByQuotaId = value
+        }
+        if let value = dict["FilterByResourceGroupIds"] as? String {
+            self.filterByResourceGroupIds = value
+        }
+        if let value = dict["GPUType"] as? String {
+            self.GPUType = value
+        }
+        if let value = dict["HealthCount"] as? String {
+            self.healthCountShrink = value
+        }
+        if let value = dict["HealthRate"] as? String {
+            self.healthRateShrink = value
+        }
+        if let value = dict["HyperNode"] as? String {
+            self.hyperNode = value
+        }
+        if let value = dict["HyperZone"] as? String {
+            self.hyperZone = value
+        }
+        if let value = dict["LayoutMode"] as? String {
+            self.layoutMode = value
         }
         if let value = dict["MachineGroupIds"] as? String {
             self.machineGroupIds = value

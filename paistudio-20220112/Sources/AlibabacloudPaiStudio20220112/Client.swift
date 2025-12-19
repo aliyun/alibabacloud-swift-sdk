@@ -1236,8 +1236,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listNodesWithOptions(_ request: ListNodesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listNodesWithOptions(_ tmpReq: ListNodesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListNodesShrinkRequest = ListNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.healthCount)) {
+            request.healthCountShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthCount, "HealthCount", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.healthRate)) {
+            request.healthRateShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthRate, "HealthRate", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceleratorType)) {
             query["AcceleratorType"] = request.acceleratorType ?? "";
@@ -1257,11 +1265,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.GPUType)) {
             query["GPUType"] = request.GPUType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.healthCountShrink)) {
+            query["HealthCount"] = request.healthCountShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthRateShrink)) {
+            query["HealthRate"] = request.healthRateShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.hyperNode)) {
             query["HyperNode"] = request.hyperNode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hyperZone)) {
             query["HyperZone"] = request.hyperZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutMode)) {
+            query["LayoutMode"] = request.layoutMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.machineGroupIds)) {
             query["MachineGroupIds"] = request.machineGroupIds ?? "";
