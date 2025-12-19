@@ -69677,6 +69677,8 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
     }
     public var activationId: String?
 
+    public var connected: String?
+
     public var instanceId: [String]?
 
     public var instanceIp: String?
@@ -69725,6 +69727,9 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.activationId != nil {
             map["ActivationId"] = self.activationId!
+        }
+        if self.connected != nil {
+            map["Connected"] = self.connected!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -69785,6 +69790,9 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ActivationId"] as? String {
             self.activationId = value
+        }
+        if let value = dict["Connected"] as? String {
+            self.connected = value
         }
         if let value = dict["InstanceId"] as? [String] {
             self.instanceId = value

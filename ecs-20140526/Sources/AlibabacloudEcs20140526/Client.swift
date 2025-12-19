@@ -11170,6 +11170,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.activationId)) {
             query["ActivationId"] = request.activationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connected)) {
+            query["Connected"] = request.connected ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? [];
         }
