@@ -11666,6 +11666,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var accountId: String?
+
             public var apiLabels: String?
 
             public var apiRequestTime: String?
@@ -11703,6 +11705,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
             public var imageUrl: String?
 
             public var labels: String?
+
+            public var liveId: String?
 
             public var maliciousFileLevel: String?
 
@@ -11784,6 +11788,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountId != nil {
+                    map["AccountId"] = self.accountId!
+                }
                 if self.apiLabels != nil {
                     map["ApiLabels"] = self.apiLabels!
                 }
@@ -11840,6 +11847,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 }
                 if self.labels != nil {
                     map["Labels"] = self.labels!
+                }
+                if self.liveId != nil {
+                    map["LiveId"] = self.liveId!
                 }
                 if self.maliciousFileLevel != nil {
                     map["MaliciousFileLevel"] = self.maliciousFileLevel!
@@ -11949,6 +11959,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccountId"] as? String {
+                    self.accountId = value
+                }
                 if let value = dict["ApiLabels"] as? String {
                     self.apiLabels = value
                 }
@@ -12005,6 +12018,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Labels"] as? String {
                     self.labels = value
+                }
+                if let value = dict["LiveId"] as? String {
+                    self.liveId = value
                 }
                 if let value = dict["MaliciousFileLevel"] as? String {
                     self.maliciousFileLevel = value
