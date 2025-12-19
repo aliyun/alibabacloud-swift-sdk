@@ -723,6 +723,45 @@ public class IncludeImage : Tea.TeaModel {
     }
 }
 
+public class LocationInfo : Tea.TeaModel {
+    public var city: String?
+
+    public var ip: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.city != nil {
+            map["city"] = self.city!
+        }
+        if self.ip != nil {
+            map["ip"] = self.ip!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["city"] as? String {
+            self.city = value
+        }
+        if let value = dict["ip"] as? String {
+            self.ip = value
+        }
+    }
+}
+
 public class QueryContext : Tea.TeaModel {
     public class OriginalQuery : Tea.TeaModel {
         public var industry: String?
@@ -2004,6 +2043,8 @@ public class UnifiedSearchInput : Tea.TeaModel {
 
     public var location: String?
 
+    public var locationInfo: LocationInfo?
+
     public var query: String?
 
     public var timeRange: String?
@@ -2019,6 +2060,7 @@ public class UnifiedSearchInput : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.contents?.validate()
+        try self.locationInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2037,6 +2079,9 @@ public class UnifiedSearchInput : Tea.TeaModel {
         }
         if self.location != nil {
             map["location"] = self.location!
+        }
+        if self.locationInfo != nil {
+            map["locationInfo"] = self.locationInfo?.toMap()
         }
         if self.query != nil {
             map["query"] = self.query!
@@ -2065,6 +2110,11 @@ public class UnifiedSearchInput : Tea.TeaModel {
         }
         if let value = dict["location"] as? String {
             self.location = value
+        }
+        if let value = dict["locationInfo"] as? [String: Any?] {
+            var model = LocationInfo()
+            model.fromMap(value)
+            self.locationInfo = model
         }
         if let value = dict["query"] as? String {
             self.query = value
