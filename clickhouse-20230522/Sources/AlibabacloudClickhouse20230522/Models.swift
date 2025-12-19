@@ -1271,6 +1271,44 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var backupSetId: String?
 
     public var category: String?
@@ -1308,6 +1346,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var storageQuota: Int64?
 
     public var storageType: String?
+
+    public var tags: [CreateDBInstanceRequest.Tags]?
 
     public var vpcId: String?
 
@@ -1390,6 +1430,13 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.storageType != nil {
             map["StorageType"] = self.storageType!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -1471,6 +1518,19 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if let value = dict["StorageType"] as? String {
             self.storageType = value
         }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateDBInstanceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateDBInstanceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
         }
@@ -1484,6 +1544,44 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 }
 
 public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var backupSetId: String?
 
     public var category: String?
@@ -1521,6 +1619,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var storageQuota: Int64?
 
     public var storageType: String?
+
+    public var tags: [CreateDBInstanceShrinkRequest.Tags]?
 
     public var vpcId: String?
 
@@ -1599,6 +1699,13 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.storageType != nil {
             map["StorageType"] = self.storageType!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -1669,6 +1776,19 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["StorageType"] as? String {
             self.storageType = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateDBInstanceShrinkRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateDBInstanceShrinkRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -5455,6 +5575,44 @@ public class DescribeDBInstanceDataSourcesResponse : Tea.TeaModel {
 }
 
 public class DescribeDBInstancesRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var DBInstanceIds: String?
 
     public var DBInstanceStatus: String?
@@ -5468,6 +5626,8 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var tags: [DescribeDBInstancesRequest.Tags]?
 
     public override init() {
         super.init()
@@ -5504,6 +5664,13 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -5529,6 +5696,19 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [DescribeDBInstancesRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDBInstancesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
