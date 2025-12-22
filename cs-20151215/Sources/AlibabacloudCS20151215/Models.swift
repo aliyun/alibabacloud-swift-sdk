@@ -25471,6 +25471,228 @@ public class ListAddonsResponse : Tea.TeaModel {
     }
 }
 
+public class ListClusterAddonInstanceResourcesResponseBody : Tea.TeaModel {
+    public class HelmRelease : Tea.TeaModel {
+        public var chartName: String?
+
+        public var chartVersion: String?
+
+        public var namespace: String?
+
+        public var releaseName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chartName != nil {
+                map["chart_name"] = self.chartName!
+            }
+            if self.chartVersion != nil {
+                map["chart_version"] = self.chartVersion!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
+            }
+            if self.releaseName != nil {
+                map["release_name"] = self.releaseName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["chart_name"] as? String {
+                self.chartName = value
+            }
+            if let value = dict["chart_version"] as? String {
+                self.chartVersion = value
+            }
+            if let value = dict["namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["release_name"] as? String {
+                self.releaseName = value
+            }
+        }
+    }
+    public class KubernetesObjects : Tea.TeaModel {
+        public var group: String?
+
+        public var kind: String?
+
+        public var name: String?
+
+        public var namespace: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.group != nil {
+                map["group"] = self.group!
+            }
+            if self.kind != nil {
+                map["kind"] = self.kind!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["group"] as? String {
+                self.group = value
+            }
+            if let value = dict["kind"] as? String {
+                self.kind = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public var helmRelease: ListClusterAddonInstanceResourcesResponseBody.HelmRelease?
+
+    public var kubernetesObjects: [ListClusterAddonInstanceResourcesResponseBody.KubernetesObjects]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.helmRelease?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.helmRelease != nil {
+            map["helm_release"] = self.helmRelease?.toMap()
+        }
+        if self.kubernetesObjects != nil {
+            var tmp : [Any] = []
+            for k in self.kubernetesObjects! {
+                tmp.append(k.toMap())
+            }
+            map["kubernetes_objects"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["helm_release"] as? [String: Any?] {
+            var model = ListClusterAddonInstanceResourcesResponseBody.HelmRelease()
+            model.fromMap(value)
+            self.helmRelease = model
+        }
+        if let value = dict["kubernetes_objects"] as? [Any?] {
+            var tmp : [ListClusterAddonInstanceResourcesResponseBody.KubernetesObjects] = []
+            for v in value {
+                if v != nil {
+                    var model = ListClusterAddonInstanceResourcesResponseBody.KubernetesObjects()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.kubernetesObjects = tmp
+        }
+    }
+}
+
+public class ListClusterAddonInstanceResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListClusterAddonInstanceResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListClusterAddonInstanceResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListClusterAddonInstancesResponseBody : Tea.TeaModel {
     public class Addons : Tea.TeaModel {
         public var name: String?

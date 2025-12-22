@@ -3376,6 +3376,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterAddonInstanceResourcesWithOptions(_ clusterId: String, _ instanceName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterAddonInstanceResourcesResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListClusterAddonInstanceResources",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/addon_instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceName)) + "/resources",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterAddonInstanceResourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterAddonInstanceResources(_ clusterId: String, _ instanceName: String) async throws -> ListClusterAddonInstanceResourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listClusterAddonInstanceResourcesWithOptions(clusterId as! String, instanceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listClusterAddonInstancesWithOptions(_ clusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterAddonInstancesResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
