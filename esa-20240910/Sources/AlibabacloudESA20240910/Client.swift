@@ -3816,6 +3816,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteHttpDDoSIntelligentRuleWithOptions(_ request: DeleteHttpDDoSIntelligentRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHttpDDoSIntelligentRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.recordName)) {
+            query["RecordName"] = request.recordName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteHttpDDoSIntelligentRule",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteHttpDDoSIntelligentRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteHttpDDoSIntelligentRule(_ request: DeleteHttpDDoSIntelligentRuleRequest) async throws -> DeleteHttpDDoSIntelligentRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteHttpDDoSIntelligentRuleWithOptions(request as! DeleteHttpDDoSIntelligentRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteHttpIncomingRequestHeaderModificationRuleWithOptions(_ request: DeleteHttpIncomingRequestHeaderModificationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHttpIncomingRequestHeaderModificationRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -11056,6 +11093,80 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setHttpDDoSAttackProtection(_ request: SetHttpDDoSAttackProtectionRequest) async throws -> SetHttpDDoSAttackProtectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setHttpDDoSAttackProtectionWithOptions(request as! SetHttpDDoSAttackProtectionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setHttpDDoSAttackRuleActionWithOptions(_ request: SetHttpDDoSAttackRuleActionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetHttpDDoSAttackRuleActionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ruleAction)) {
+            query["RuleAction"] = request.ruleAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleIds)) {
+            query["RuleIds"] = request.ruleIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetHttpDDoSAttackRuleAction",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetHttpDDoSAttackRuleActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setHttpDDoSAttackRuleAction(_ request: SetHttpDDoSAttackRuleActionRequest) async throws -> SetHttpDDoSAttackRuleActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setHttpDDoSAttackRuleActionWithOptions(request as! SetHttpDDoSAttackRuleActionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setHttpDDoSAttackRuleStatusWithOptions(_ request: SetHttpDDoSAttackRuleStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetHttpDDoSAttackRuleStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ruleIds)) {
+            query["RuleIds"] = request.ruleIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetHttpDDoSAttackRuleStatus",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetHttpDDoSAttackRuleStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setHttpDDoSAttackRuleStatus(_ request: SetHttpDDoSAttackRuleStatusRequest) async throws -> SetHttpDDoSAttackRuleStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setHttpDDoSAttackRuleStatusWithOptions(request as! SetHttpDDoSAttackRuleStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
