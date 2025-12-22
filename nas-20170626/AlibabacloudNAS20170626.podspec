@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudNAS20170626"
-  spec.version      = "2.1.3"
+  spec.version      = "2.1.4"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Apsara File Storage NAS (20170626) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/nas-20170626" 

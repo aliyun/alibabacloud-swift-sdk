@@ -3668,6 +3668,10 @@ public class CreateFileSystemRequest : Tea.TeaModel {
 
     public var protocolType: String?
 
+    public var redundancyType: String?
+
+    public var redundancyVSwitchIds: [String]?
+
     public var resourceGroupId: String?
 
     public var snapshotId: String?
@@ -3728,6 +3732,12 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         }
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
+        }
+        if self.redundancyType != nil {
+            map["RedundancyType"] = self.redundancyType!
+        }
+        if self.redundancyVSwitchIds != nil {
+            map["RedundancyVSwitchIds"] = self.redundancyVSwitchIds!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -3791,6 +3801,12 @@ public class CreateFileSystemRequest : Tea.TeaModel {
         }
         if let value = dict["ProtocolType"] as? String {
             self.protocolType = value
+        }
+        if let value = dict["RedundancyType"] as? String {
+            self.redundancyType = value
+        }
+        if let value = dict["RedundancyVSwitchIds"] as? [String] {
+            self.redundancyVSwitchIds = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -4912,6 +4928,8 @@ public class CreateProtocolMountTargetRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var vSwitchIds: [String]?
+
     public var vpcId: String?
 
     public override init() {
@@ -4955,6 +4973,9 @@ public class CreateProtocolMountTargetRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -4989,6 +5010,9 @@ public class CreateProtocolMountTargetRequest : Tea.TeaModel {
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
+        }
+        if let value = dict["VSwitchIds"] as? [String] {
+            self.vSwitchIds = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -12901,6 +12925,36 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RedundancyVSwitchIds : Tea.TeaModel {
+                public var redundancyVSwitchId: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.redundancyVSwitchId != nil {
+                        map["RedundancyVSwitchId"] = self.redundancyVSwitchId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RedundancyVSwitchId"] as? [String] {
+                        self.redundancyVSwitchId = value
+                    }
+                }
+            }
             public class SupportedFeatures : Tea.TeaModel {
                 public var supportedFeature: [String]?
 
@@ -13085,6 +13139,10 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
             public var quorumVswId: String?
 
+            public var redundancyType: String?
+
+            public var redundancyVSwitchIds: DescribeFileSystemsResponseBody.FileSystems.FileSystem.RedundancyVSwitchIds?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -13121,6 +13179,7 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 try self.mountTargets?.validate()
                 try self.options?.validate()
                 try self.packages?.validate()
+                try self.redundancyVSwitchIds?.validate()
                 try self.supportedFeatures?.validate()
                 try self.tags?.validate()
                 try self.vswIds?.validate()
@@ -13190,6 +13249,12 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if self.quorumVswId != nil {
                     map["QuorumVswId"] = self.quorumVswId!
+                }
+                if self.redundancyType != nil {
+                    map["RedundancyType"] = self.redundancyType!
+                }
+                if self.redundancyVSwitchIds != nil {
+                    map["RedundancyVSwitchIds"] = self.redundancyVSwitchIds?.toMap()
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -13299,6 +13364,14 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["QuorumVswId"] as? String {
                     self.quorumVswId = value
+                }
+                if let value = dict["RedundancyType"] as? String {
+                    self.redundancyType = value
+                }
+                if let value = dict["RedundancyVSwitchIds"] as? [String: Any?] {
+                    var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.RedundancyVSwitchIds()
+                    model.fromMap(value)
+                    self.redundancyVSwitchIds = model
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
@@ -15782,6 +15855,8 @@ public class DescribeProtocolMountTargetRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var protocolServiceIds: String?
+
     public override init() {
         super.init()
     }
@@ -15815,6 +15890,9 @@ public class DescribeProtocolMountTargetRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.protocolServiceIds != nil {
+            map["ProtocolServiceIds"] = self.protocolServiceIds!
+        }
         return map
     }
 
@@ -15845,6 +15923,9 @@ public class DescribeProtocolMountTargetRequest : Tea.TeaModel {
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["ProtocolServiceIds"] as? String {
+            self.protocolServiceIds = value
+        }
     }
 }
 
@@ -15871,6 +15952,8 @@ public class DescribeProtocolMountTargetResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var vSwitchId: String?
+
+        public var vSwitchIds: [String]?
 
         public var vpcId: String?
 
@@ -15921,6 +16004,9 @@ public class DescribeProtocolMountTargetResponseBody : Tea.TeaModel {
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -15961,6 +16047,9 @@ public class DescribeProtocolMountTargetResponseBody : Tea.TeaModel {
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
+            }
+            if let value = dict["VSwitchIds"] as? [String] {
+                self.vSwitchIds = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
@@ -16184,6 +16273,10 @@ public class DescribeProtocolServiceResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var vSwitchId: String?
+
+        public var vpcId: String?
+
         public override init() {
             super.init()
         }
@@ -16237,6 +16330,12 @@ public class DescribeProtocolServiceResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             return map
         }
 
@@ -16280,6 +16379,12 @@ public class DescribeProtocolServiceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
             }
         }
     }
