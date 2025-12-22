@@ -349,6 +349,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createImageDetectionTaskWithOptions(_ workspaceId: String, _ request: CreateImageDetectionTaskRequest, _ headers: CreateImageDetectionTaskHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateImageDetectionTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileInfo)) {
+            body["fileInfo"] = request.fileInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["fileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateImageDetectionTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/imageDetect/task/submit",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateImageDetectionTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createImageDetectionTask(_ workspaceId: String, _ request: CreateImageDetectionTaskRequest) async throws -> CreateImageDetectionTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateImageDetectionTaskHeaders = CreateImageDetectionTaskHeaders([:])
+        return try await createImageDetectionTaskWithOptions(workspaceId as! String, request as! CreateImageDetectionTaskRequest, headers as! CreateImageDetectionTaskHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createLibraryWithOptions(_ workspaceId: String, _ request: CreateLibraryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLibraryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -523,6 +572,58 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createQualityCheckTaskWithOptions(workspaceId as! String, request as! CreateQualityCheckTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVideoCreationTaskWithOptions(_ workspaceId: String, _ request: CreateVideoCreationTaskRequest, _ headers: CreateVideoCreationTaskHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVideoCreationTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.creationInstruction)) {
+            body["creationInstruction"] = request.creationInstruction!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileInfo)) {
+            body["fileInfo"] = request.fileInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageDetectionTaskId)) {
+            body["imageDetectionTaskId"] = request.imageDetectionTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVideoCreationTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/videoCreation/task/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVideoCreationTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVideoCreationTask(_ workspaceId: String, _ request: CreateVideoCreationTaskRequest) async throws -> CreateVideoCreationTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateVideoCreationTaskHeaders = CreateVideoCreationTaskHeaders([:])
+        return try await createVideoCreationTaskWithOptions(workspaceId as! String, request as! CreateVideoCreationTaskRequest, headers as! CreateVideoCreationTaskHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1123,6 +1224,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getImageDetectionTaskResultWithOptions(_ workspaceId: String, _ request: GetImageDetectionTaskResultRequest, _ headers: GetImageDetectionTaskResultHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetImageDetectionTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetImageDetectionTaskResult",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/imageDetect/task/query",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetImageDetectionTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getImageDetectionTaskResult(_ workspaceId: String, _ request: GetImageDetectionTaskResultRequest) async throws -> GetImageDetectionTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetImageDetectionTaskResultHeaders = GetImageDetectionTaskResultHeaders([:])
+        return try await getImageDetectionTaskResultWithOptions(workspaceId as! String, request as! GetImageDetectionTaskResultRequest, headers as! GetImageDetectionTaskResultHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getLibraryWithOptions(_ workspaceId: String, _ request: GetLibraryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLibraryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1363,6 +1507,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getTaskStatusWithOptions(workspaceId as! String, request as! GetTaskStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoCreationTaskResultWithOptions(_ workspaceId: String, _ request: GetVideoCreationTaskResultRequest, _ headers: GetVideoCreationTaskResultHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoCreationTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoCreationTaskResult",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/videoCreation/task/query",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoCreationTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoCreationTaskResult(_ workspaceId: String, _ request: GetVideoCreationTaskResultRequest) async throws -> GetVideoCreationTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetVideoCreationTaskResultHeaders = GetVideoCreationTaskResultHeaders([:])
+        return try await getVideoCreationTaskResultWithOptions(workspaceId as! String, request as! GetVideoCreationTaskResultRequest, headers as! GetVideoCreationTaskResultHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
