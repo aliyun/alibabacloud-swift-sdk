@@ -449,6 +449,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.liveness)) {
             query["Liveness"] = request.liveness ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lokiConfigs)) {
+            query["LokiConfigs"] = request.lokiConfigs ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.memory)) {
             query["Memory"] = request.memory!;
         }
@@ -1948,6 +1951,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.liveness)) {
             query["Liveness"] = request.liveness ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lokiConfigs)) {
+            query["LokiConfigs"] = request.lokiConfigs ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxSurgeInstanceRatio)) {
             query["MaxSurgeInstanceRatio"] = request.maxSurgeInstanceRatio!;
@@ -6492,6 +6498,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.slsConfigs)) {
             query["SlsConfigs"] = request.slsConfigs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slsLogEnvTags)) {
+            query["SlsLogEnvTags"] = request.slsLogEnvTags ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

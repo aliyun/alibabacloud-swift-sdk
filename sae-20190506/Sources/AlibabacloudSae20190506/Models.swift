@@ -15322,6 +15322,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var lokiConfigs: String?
+
     public var memory: Int32?
 
     public var microRegistration: String?
@@ -15549,6 +15551,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.lokiConfigs != nil {
+            map["LokiConfigs"] = self.lokiConfigs!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -15824,6 +15829,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["Liveness"] as? String {
             self.liveness = value
         }
+        if let value = dict["LokiConfigs"] as? String {
+            self.lokiConfigs = value
+        }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
         }
@@ -16053,6 +16061,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var lokiConfigs: String?
+
     public var memory: Int32?
 
     public var microRegistration: String?
@@ -16276,6 +16286,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.lokiConfigs != nil {
+            map["LokiConfigs"] = self.lokiConfigs!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -16536,6 +16549,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
+        }
+        if let value = dict["LokiConfigs"] as? String {
+            self.lokiConfigs = value
         }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
@@ -22900,6 +22916,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var lokiConfigs: String?
+
     public var maxSurgeInstanceRatio: Int32?
 
     public var maxSurgeInstances: Int32?
@@ -23120,6 +23138,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.lokiConfigs != nil {
+            map["LokiConfigs"] = self.lokiConfigs!
         }
         if self.maxSurgeInstanceRatio != nil {
             map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
@@ -23389,6 +23410,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["Liveness"] as? String {
             self.liveness = value
         }
+        if let value = dict["LokiConfigs"] as? String {
+            self.lokiConfigs = value
+        }
         if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
             self.maxSurgeInstanceRatio = value
         }
@@ -23615,6 +23639,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var lokiConfigs: String?
+
     public var maxSurgeInstanceRatio: Int32?
 
     public var maxSurgeInstances: Int32?
@@ -23831,6 +23857,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.lokiConfigs != nil {
+            map["LokiConfigs"] = self.lokiConfigs!
         }
         if self.maxSurgeInstanceRatio != nil {
             map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
@@ -24085,6 +24114,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
+        }
+        if let value = dict["LokiConfigs"] as? String {
+            self.lokiConfigs = value
         }
         if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
             self.maxSurgeInstanceRatio = value
@@ -25737,6 +25769,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var liveness: String?
 
+        public var lokiConfigs: String?
+
         public var maxSurgeInstanceRatio: Int32?
 
         public var maxSurgeInstances: Int32?
@@ -26005,6 +26039,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.liveness != nil {
                 map["Liveness"] = self.liveness!
+            }
+            if self.lokiConfigs != nil {
+                map["LokiConfigs"] = self.lokiConfigs!
             }
             if self.maxSurgeInstanceRatio != nil {
                 map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
@@ -26357,6 +26394,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["Liveness"] as? String {
                 self.liveness = value
+            }
+            if let value = dict["LokiConfigs"] as? String {
+                self.lokiConfigs = value
             }
             if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
                 self.maxSurgeInstanceRatio = value
@@ -58971,6 +59011,8 @@ public class UpdateNamespaceSlsConfigsRequest : Tea.TeaModel {
 
     public var slsConfigs: String?
 
+    public var slsLogEnvTags: String?
+
     public override init() {
         super.init()
     }
@@ -58994,6 +59036,9 @@ public class UpdateNamespaceSlsConfigsRequest : Tea.TeaModel {
         if self.slsConfigs != nil {
             map["SlsConfigs"] = self.slsConfigs!
         }
+        if self.slsLogEnvTags != nil {
+            map["SlsLogEnvTags"] = self.slsLogEnvTags!
+        }
         return map
     }
 
@@ -59007,6 +59052,9 @@ public class UpdateNamespaceSlsConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["SlsConfigs"] as? String {
             self.slsConfigs = value
+        }
+        if let value = dict["SlsLogEnvTags"] as? String {
+            self.slsLogEnvTags = value
         }
     }
 }
