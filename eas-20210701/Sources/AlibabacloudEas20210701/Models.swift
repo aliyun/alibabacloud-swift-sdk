@@ -7722,6 +7722,44 @@ public class DescribeBenchmarkTaskReportResponse : Tea.TeaModel {
 }
 
 public class DescribeGatewayResponseBody : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var labelKey: String?
+
+        public var labelValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.labelKey != nil {
+                map["LabelKey"] = self.labelKey!
+            }
+            if self.labelValue != nil {
+                map["LabelValue"] = self.labelValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LabelKey"] as? String {
+                self.labelKey = value
+            }
+            if let value = dict["LabelValue"] as? String {
+                self.labelValue = value
+            }
+        }
+    }
     public var chargeType: String?
 
     public var createTime: String?
@@ -7745,6 +7783,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
     public var intranetEnabled: Bool?
 
     public var isDefault: Bool?
+
+    public var labels: [DescribeGatewayResponseBody.Labels]?
 
     public var replicas: Int32?
 
@@ -7806,6 +7846,13 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
         }
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["Labels"] = tmp
+        }
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
         }
@@ -7861,6 +7908,19 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if let value = dict["IsDefault"] as? Bool {
             self.isDefault = value
+        }
+        if let value = dict["Labels"] as? [Any?] {
+            var tmp : [DescribeGatewayResponseBody.Labels] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeGatewayResponseBody.Labels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.labels = tmp
         }
         if let value = dict["Replicas"] as? Int32 {
             self.replicas = value
@@ -12257,6 +12317,8 @@ public class ListGatewayRequest : Tea.TeaModel {
 
     public var internetEnabled: Bool?
 
+    public var label: [String: String]?
+
     public var order: String?
 
     public var pageNumber: Int32?
@@ -12298,6 +12360,9 @@ public class ListGatewayRequest : Tea.TeaModel {
         if self.internetEnabled != nil {
             map["InternetEnabled"] = self.internetEnabled!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -12336,6 +12401,128 @@ public class ListGatewayRequest : Tea.TeaModel {
         if let value = dict["InternetEnabled"] as? Bool {
             self.internetEnabled = value
         }
+        if let value = dict["Label"] as? [String: String] {
+            self.label = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceName"] as? String {
+            self.resourceName = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class ListGatewayShrinkRequest : Tea.TeaModel {
+    public var chargeType: String?
+
+    public var gatewayId: String?
+
+    public var gatewayName: String?
+
+    public var gatewayType: String?
+
+    public var internetEnabled: Bool?
+
+    public var labelShrink: String?
+
+    public var order: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceName: String?
+
+    public var sort: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayName != nil {
+            map["GatewayName"] = self.gatewayName!
+        }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
+        }
+        if self.internetEnabled != nil {
+            map["InternetEnabled"] = self.internetEnabled!
+        }
+        if self.labelShrink != nil {
+            map["Label"] = self.labelShrink!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["GatewayId"] as? String {
+            self.gatewayId = value
+        }
+        if let value = dict["GatewayName"] as? String {
+            self.gatewayName = value
+        }
+        if let value = dict["GatewayType"] as? String {
+            self.gatewayType = value
+        }
+        if let value = dict["InternetEnabled"] as? Bool {
+            self.internetEnabled = value
+        }
+        if let value = dict["Label"] as? String {
+            self.labelShrink = value
+        }
         if let value = dict["Order"] as? String {
             self.order = value
         }
@@ -12359,6 +12546,44 @@ public class ListGatewayRequest : Tea.TeaModel {
 
 public class ListGatewayResponseBody : Tea.TeaModel {
     public class Gateways : Tea.TeaModel {
+        public class Labels : Tea.TeaModel {
+            public var labelKey: String?
+
+            public var labelValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.labelKey != nil {
+                    map["LabelKey"] = self.labelKey!
+                }
+                if self.labelValue != nil {
+                    map["LabelValue"] = self.labelValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LabelKey"] as? String {
+                    self.labelKey = value
+                }
+                if let value = dict["LabelValue"] as? String {
+                    self.labelValue = value
+                }
+            }
+        }
         public var chargeType: String?
 
         public var createTime: String?
@@ -12378,6 +12603,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
         public var intranetEnabled: Bool?
 
         public var isDefault: Bool?
+
+        public var labels: [ListGatewayResponseBody.Gateways.Labels]?
 
         public var replicas: Int32?
 
@@ -12431,6 +12658,13 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
+            if self.labels != nil {
+                var tmp : [Any] = []
+                for k in self.labels! {
+                    tmp.append(k.toMap())
+                }
+                map["Labels"] = tmp
+            }
             if self.replicas != nil {
                 map["Replicas"] = self.replicas!
             }
@@ -12477,6 +12711,19 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsDefault"] as? Bool {
                 self.isDefault = value
+            }
+            if let value = dict["Labels"] as? [Any?] {
+                var tmp : [ListGatewayResponseBody.Gateways.Labels] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListGatewayResponseBody.Gateways.Labels()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.labels = tmp
             }
             if let value = dict["Replicas"] as? Int32 {
                 self.replicas = value

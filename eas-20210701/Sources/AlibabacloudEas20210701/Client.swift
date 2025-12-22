@@ -2237,8 +2237,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewayWithOptions(_ request: ListGatewayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listGatewayWithOptions(_ tmpReq: ListGatewayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListGatewayShrinkRequest = ListGatewayShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.label)) {
+            request.labelShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.label, "Label", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
@@ -2254,6 +2259,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.internetEnabled)) {
             query["InternetEnabled"] = request.internetEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.labelShrink)) {
+            query["Label"] = request.labelShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
