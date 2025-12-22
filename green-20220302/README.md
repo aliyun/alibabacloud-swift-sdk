@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudGreen20220302` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/green-20220302" "3.0.1"
+github "alibabacloud-sdk-swift/green-20220302" "3.1.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudGreen20220302` into your Xcode project using [Swift Pa
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/green-20220302.git", from: "3.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/green-20220302.git", from: "3.1.0")
 ]
 ```
 

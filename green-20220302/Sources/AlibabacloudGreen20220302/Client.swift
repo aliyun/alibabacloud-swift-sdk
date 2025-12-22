@@ -544,6 +544,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardForBase64WithOptions(_ request: MultiModalGuardForBase64Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultiModalGuardForBase64Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.service)) {
+            query["Service"] = request.service ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageBase64Str)) {
+            body["ImageBase64Str"] = request.imageBase64Str ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            body["ServiceParameters"] = request.serviceParameters ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MultiModalGuardForBase64",
+            "version": "2022-03-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MultiModalGuardForBase64Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardForBase64(_ request: MultiModalGuardForBase64Request) async throws -> MultiModalGuardForBase64Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await multiModalGuardForBase64WithOptions(request as! MultiModalGuardForBase64Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func multimodalAsyncModerationWithOptions(_ request: MultimodalAsyncModerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultimodalAsyncModerationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
