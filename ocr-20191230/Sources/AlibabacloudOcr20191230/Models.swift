@@ -1016,11 +1016,51 @@ public class RecognizeCharacterResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Results : Tea.TeaModel {
             public class TextRectangles : Tea.TeaModel {
+                public class Pos : Tea.TeaModel {
+                    public var x: Int32?
+
+                    public var y: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.x != nil {
+                            map["x"] = self.x!
+                        }
+                        if self.y != nil {
+                            map["y"] = self.y!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["x"] as? Int32 {
+                            self.x = value
+                        }
+                        if let value = dict["y"] as? Int32 {
+                            self.y = value
+                        }
+                    }
+                }
                 public var angle: Int32?
 
                 public var height: Int32?
 
                 public var left_: Int32?
+
+                public var pos: [RecognizeCharacterResponseBody.Data.Results.TextRectangles.Pos]?
 
                 public var top: Int32?
 
@@ -1049,6 +1089,13 @@ public class RecognizeCharacterResponseBody : Tea.TeaModel {
                     if self.left_ != nil {
                         map["Left"] = self.left_!
                     }
+                    if self.pos != nil {
+                        var tmp : [Any] = []
+                        for k in self.pos! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Pos"] = tmp
+                    }
                     if self.top != nil {
                         map["Top"] = self.top!
                     }
@@ -1068,6 +1115,19 @@ public class RecognizeCharacterResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Left"] as? Int32 {
                         self.left_ = value
+                    }
+                    if let value = dict["Pos"] as? [Any?] {
+                        var tmp : [RecognizeCharacterResponseBody.Data.Results.TextRectangles.Pos] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RecognizeCharacterResponseBody.Data.Results.TextRectangles.Pos()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.pos = tmp
                     }
                     if let value = dict["Top"] as? Int32 {
                         self.top = value
