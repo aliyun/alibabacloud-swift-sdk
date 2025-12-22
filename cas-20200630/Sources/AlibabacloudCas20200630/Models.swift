@@ -190,6 +190,8 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
 
     public var country: String?
 
+    public var customIdentifier: String?
+
     public var days: Int32?
 
     public var enableCrl: Int64?
@@ -246,6 +248,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if self.country != nil {
             map["Country"] = self.country!
+        }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
         }
         if self.days != nil {
             map["Days"] = self.days!
@@ -312,6 +317,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Country"] as? String {
             self.country = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Days"] as? Int32 {
             self.days = value
@@ -532,6 +540,8 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
 
     public var csr: String?
 
+    public var customIdentifier: String?
+
     public var days: Int32?
 
     public var enableCrl: Int64?
@@ -591,6 +601,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if self.csr != nil {
             map["Csr"] = self.csr!
+        }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
         }
         if self.days != nil {
             map["Days"] = self.days!
@@ -660,6 +673,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Days"] as? Int32 {
             self.days = value
@@ -1277,6 +1293,8 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
 
     public var validity: String?
 
+    public var customIdentifier: String?
+
     public override init() {
         super.init()
     }
@@ -1320,6 +1338,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         if self.validity != nil {
             map["Validity"] = self.validity!
         }
+        if self.customIdentifier != nil {
+            map["customIdentifier"] = self.customIdentifier!
+        }
         return map
     }
 
@@ -1360,6 +1381,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Validity"] as? String {
             self.validity = value
+        }
+        if let value = dict["customIdentifier"] as? String {
+            self.customIdentifier = value
         }
     }
 }
@@ -2412,6 +2436,8 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
 
     public var country: String?
 
+    public var customIdentifier: String?
+
     public var days: Int32?
 
     public var domain: String?
@@ -2466,6 +2492,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         }
         if self.country != nil {
             map["Country"] = self.country!
+        }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
         }
         if self.days != nil {
             map["Days"] = self.days!
@@ -2529,6 +2558,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Country"] as? String {
             self.country = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Days"] as? Int32 {
             self.days = value
@@ -2746,6 +2778,8 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
 
     public var csr: String?
 
+    public var customIdentifier: String?
+
     public var days: Int32?
 
     public var domain: String?
@@ -2803,6 +2837,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         }
         if self.csr != nil {
             map["Csr"] = self.csr!
+        }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
         }
         if self.days != nil {
             map["Days"] = self.days!
@@ -2869,6 +2906,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Days"] as? Int32 {
             self.days = value
@@ -4694,11 +4734,15 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
 
         public var beforeDate: Int64?
 
+        public var certChain: String?
+
         public var certificateType: String?
 
         public var commonName: String?
 
         public var countryCode: String?
+
+        public var customIdentifier: String?
 
         public var days: Int32?
 
@@ -4759,6 +4803,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
             }
+            if self.certChain != nil {
+                map["CertChain"] = self.certChain!
+            }
             if self.certificateType != nil {
                 map["CertificateType"] = self.certificateType!
             }
@@ -4767,6 +4814,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if self.countryCode != nil {
                 map["CountryCode"] = self.countryCode!
+            }
+            if self.customIdentifier != nil {
+                map["CustomIdentifier"] = self.customIdentifier!
             }
             if self.days != nil {
                 map["Days"] = self.days!
@@ -4840,6 +4890,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
             }
+            if let value = dict["CertChain"] as? String {
+                self.certChain = value
+            }
             if let value = dict["CertificateType"] as? String {
                 self.certificateType = value
             }
@@ -4848,6 +4901,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["CountryCode"] as? String {
                 self.countryCode = value
+            }
+            if let value = dict["CustomIdentifier"] as? String {
+                self.customIdentifier = value
             }
             if let value = dict["Days"] as? Int32 {
                 self.days = value
@@ -6815,6 +6871,8 @@ public class ListCertResponseBody : Tea.TeaModel {
 
         public var commonName: String?
 
+        public var customIdentifier: String?
+
         public var extra: String?
 
         public var id: String?
@@ -6872,6 +6930,9 @@ public class ListCertResponseBody : Tea.TeaModel {
             }
             if self.commonName != nil {
                 map["CommonName"] = self.commonName!
+            }
+            if self.customIdentifier != nil {
+                map["CustomIdentifier"] = self.customIdentifier!
             }
             if self.extra != nil {
                 map["Extra"] = self.extra!
@@ -6931,6 +6992,9 @@ public class ListCertResponseBody : Tea.TeaModel {
             }
             if let value = dict["CommonName"] as? String {
                 self.commonName = value
+            }
+            if let value = dict["CustomIdentifier"] as? String {
+                self.customIdentifier = value
             }
             if let value = dict["Extra"] as? String {
                 self.extra = value
@@ -7183,6 +7247,8 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
 
         public var countryCode: String?
 
+        public var customIdentifier: String?
+
         public var days: Int32?
 
         public var identifier: String?
@@ -7248,6 +7314,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             }
             if self.countryCode != nil {
                 map["CountryCode"] = self.countryCode!
+            }
+            if self.customIdentifier != nil {
+                map["CustomIdentifier"] = self.customIdentifier!
             }
             if self.days != nil {
                 map["Days"] = self.days!
@@ -7322,6 +7391,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["CountryCode"] as? String {
                 self.countryCode = value
+            }
+            if let value = dict["CustomIdentifier"] as? String {
+                self.customIdentifier = value
             }
             if let value = dict["Days"] as? Int32 {
                 self.days = value
@@ -7807,6 +7879,8 @@ public class ListRevokeCertificateResponseBody : Tea.TeaModel {
 
         public var countryCode: String?
 
+        public var customIdentifier: String?
+
         public var identifier: String?
 
         public var keySize: Int32?
@@ -7868,6 +7942,9 @@ public class ListRevokeCertificateResponseBody : Tea.TeaModel {
             }
             if self.countryCode != nil {
                 map["CountryCode"] = self.countryCode!
+            }
+            if self.customIdentifier != nil {
+                map["CustomIdentifier"] = self.customIdentifier!
             }
             if self.identifier != nil {
                 map["Identifier"] = self.identifier!
@@ -7936,6 +8013,9 @@ public class ListRevokeCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["CountryCode"] as? String {
                 self.countryCode = value
+            }
+            if let value = dict["CustomIdentifier"] as? String {
+                self.customIdentifier = value
             }
             if let value = dict["Identifier"] as? String {
                 self.identifier = value

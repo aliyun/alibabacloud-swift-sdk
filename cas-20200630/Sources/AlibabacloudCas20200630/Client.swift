@@ -129,6 +129,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.country)) {
             query["Country"] = request.country ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customIdentifier)) {
+            query["CustomIdentifier"] = request.customIdentifier ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
         }
@@ -216,6 +219,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.csr)) {
             query["Csr"] = request.csr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customIdentifier)) {
+            query["CustomIdentifier"] = request.customIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
@@ -310,6 +316,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.validity)) {
             query["Validity"] = request.validity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customIdentifier)) {
+            query["customIdentifier"] = request.customIdentifier ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -497,6 +506,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.country)) {
             query["Country"] = request.country ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customIdentifier)) {
+            query["CustomIdentifier"] = request.customIdentifier ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
         }
@@ -581,6 +593,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.csr)) {
             query["Csr"] = request.csr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customIdentifier)) {
+            query["CustomIdentifier"] = request.customIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
