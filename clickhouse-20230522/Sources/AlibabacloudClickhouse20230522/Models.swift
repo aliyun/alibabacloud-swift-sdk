@@ -2084,6 +2084,235 @@ public class CreateEndpointResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWhitelistTemplateRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public var securityIPList: String?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.securityIPList != nil {
+            map["SecurityIPList"] = self.securityIPList!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SecurityIPList"] as? String {
+            self.securityIPList = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class CreateWhitelistTemplateResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Templates : Tea.TeaModel {
+            public var securityIPList: String?
+
+            public var templateId: String?
+
+            public var templateName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityIPList != nil {
+                    map["SecurityIPList"] = self.securityIPList!
+                }
+                if self.templateId != nil {
+                    map["TemplateId"] = self.templateId!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityIPList"] as? String {
+                    self.securityIPList = value
+                }
+                if let value = dict["TemplateId"] as? String {
+                    self.templateId = value
+                }
+                if let value = dict["TemplateName"] as? String {
+                    self.templateName = value
+                }
+            }
+        }
+        public var templates: [CreateWhitelistTemplateResponseBody.Data.Templates]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.templates != nil {
+                var tmp : [Any] = []
+                for k in self.templates! {
+                    tmp.append(k.toMap())
+                }
+                map["Templates"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Templates"] as? [Any?] {
+                var tmp : [CreateWhitelistTemplateResponseBody.Data.Templates] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateWhitelistTemplateResponseBody.Data.Templates()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.templates = tmp
+            }
+        }
+    }
+    public var data: CreateWhitelistTemplateResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreateWhitelistTemplateResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateWhitelistTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWhitelistTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateWhitelistTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAccountRequest : Tea.TeaModel {
     public var account: String?
 
