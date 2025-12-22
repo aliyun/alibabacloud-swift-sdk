@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAlikafka20190916"
-  spec.version      = "1.11.0"
+  spec.version      = "1.12.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud MQ for Kafka (20190916) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/alikafka-20190916" 
