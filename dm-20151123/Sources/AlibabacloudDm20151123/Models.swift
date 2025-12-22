@@ -14562,6 +14562,8 @@ public class SingleSendMailRequest : Tea.TeaModel {
 
     public var attachments: [SingleSendMailRequest.Attachments]?
 
+    public var bccAddress: String?
+
     public var clickTrace: String?
 
     public var fromAlias: String?
@@ -14625,6 +14627,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Attachments"] = tmp
+        }
+        if self.bccAddress != nil {
+            map["BccAddress"] = self.bccAddress!
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
@@ -14703,6 +14708,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
                 }
             }
             self.attachments = tmp
+        }
+        if let value = dict["BccAddress"] as? String {
+            self.bccAddress = value
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
@@ -14846,6 +14854,8 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
 
     public var attachments: [SingleSendMailAdvanceRequest.Attachments]?
 
+    public var bccAddress: String?
+
     public var clickTrace: String?
 
     public var fromAlias: String?
@@ -14909,6 +14919,9 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Attachments"] = tmp
+        }
+        if self.bccAddress != nil {
+            map["BccAddress"] = self.bccAddress!
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
@@ -14987,6 +15000,9 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
                 }
             }
             self.attachments = tmp
+        }
+        if let value = dict["BccAddress"] as? String {
+            self.bccAddress = value
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
@@ -15092,6 +15108,8 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
 
     public var attachments: [SingleSendMailShrinkRequest.Attachments]?
 
+    public var bccAddress: String?
+
     public var clickTrace: String?
 
     public var fromAlias: String?
@@ -15154,6 +15172,9 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Attachments"] = tmp
+        }
+        if self.bccAddress != nil {
+            map["BccAddress"] = self.bccAddress!
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
@@ -15232,6 +15253,9 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
                 }
             }
             self.attachments = tmp
+        }
+        if let value = dict["BccAddress"] as? String {
+            self.bccAddress = value
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value

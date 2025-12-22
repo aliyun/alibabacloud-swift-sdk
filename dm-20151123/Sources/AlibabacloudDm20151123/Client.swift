@@ -3204,6 +3204,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.attachments)) {
             body["Attachments"] = request.attachments ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.bccAddress)) {
+            body["BccAddress"] = request.bccAddress ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clickTrace)) {
             body["ClickTrace"] = request.clickTrace ?? "";
         }
