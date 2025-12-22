@@ -8313,7 +8313,11 @@ public class GetImageDetectionTaskResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var description_: String?
+
             public var detectionDetails: [GetImageDetectionTaskResultResponseBody.Data.DetectionResult.DetectionDetails]?
+
+            public var portraitType: String?
 
             public var suggestions: [String]?
 
@@ -8331,12 +8335,18 @@ public class GetImageDetectionTaskResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
                 if self.detectionDetails != nil {
                     var tmp : [Any] = []
                     for k in self.detectionDetails! {
                         tmp.append(k.toMap())
                     }
                     map["detectionDetails"] = tmp
+                }
+                if self.portraitType != nil {
+                    map["portraitType"] = self.portraitType!
                 }
                 if self.suggestions != nil {
                     map["suggestions"] = self.suggestions!
@@ -8346,6 +8356,9 @@ public class GetImageDetectionTaskResultResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
                 if let value = dict["detectionDetails"] as? [Any?] {
                     var tmp : [GetImageDetectionTaskResultResponseBody.Data.DetectionResult.DetectionDetails] = []
                     for v in value {
@@ -8358,6 +8371,9 @@ public class GetImageDetectionTaskResultResponseBody : Tea.TeaModel {
                         }
                     }
                     self.detectionDetails = tmp
+                }
+                if let value = dict["portraitType"] as? String {
+                    self.portraitType = value
                 }
                 if let value = dict["suggestions"] as? [String] {
                     self.suggestions = value
