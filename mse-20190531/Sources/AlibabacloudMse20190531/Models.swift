@@ -56294,7 +56294,11 @@ public class ListNacosConfigsResponseBody : Tea.TeaModel {
     public class Configurations : Tea.TeaModel {
         public var appName: String?
 
+        public var configTags: String?
+
         public var dataId: String?
+
+        public var description_: String?
 
         public var group: String?
 
@@ -56317,8 +56321,14 @@ public class ListNacosConfigsResponseBody : Tea.TeaModel {
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
+            if self.configTags != nil {
+                map["ConfigTags"] = self.configTags!
+            }
             if self.dataId != nil {
                 map["DataId"] = self.dataId!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.group != nil {
                 map["Group"] = self.group!
@@ -56334,8 +56344,14 @@ public class ListNacosConfigsResponseBody : Tea.TeaModel {
             if let value = dict["AppName"] as? String {
                 self.appName = value
             }
+            if let value = dict["ConfigTags"] as? String {
+                self.configTags = value
+            }
             if let value = dict["DataId"] as? String {
                 self.dataId = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["Group"] as? String {
                 self.group = value
@@ -65893,7 +65909,49 @@ public class QueryConfigRequest : Tea.TeaModel {
 public class QueryConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class NacosRunningEnv : Tea.TeaModel {
+            public class FencePolicy : Tea.TeaModel {
+                public var enabledModules: [String]?
+
+                public var interceptPolicy: [String: String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabledModules != nil {
+                        map["enabledModules"] = self.enabledModules!
+                    }
+                    if self.interceptPolicy != nil {
+                        map["interceptPolicy"] = self.interceptPolicy!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["enabledModules"] as? [String] {
+                        self.enabledModules = value
+                    }
+                    if let value = dict["interceptPolicy"] as? [String: String] {
+                        self.interceptPolicy = value
+                    }
+                }
+            }
             public var emptyProtect: Bool?
+
+            public var fenceEnabled: Bool?
+
+            public var fencePolicy: QueryConfigResponseBody.Data.NacosRunningEnv.FencePolicy?
 
             public var grayAuth: String?
 
@@ -65907,12 +65965,19 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.fencePolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.emptyProtect != nil {
                     map["emptyProtect"] = self.emptyProtect!
+                }
+                if self.fenceEnabled != nil {
+                    map["fenceEnabled"] = self.fenceEnabled!
+                }
+                if self.fencePolicy != nil {
+                    map["fencePolicy"] = self.fencePolicy?.toMap()
                 }
                 if self.grayAuth != nil {
                     map["grayAuth"] = self.grayAuth!
@@ -65924,6 +65989,14 @@ public class QueryConfigResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["emptyProtect"] as? Bool {
                     self.emptyProtect = value
+                }
+                if let value = dict["fenceEnabled"] as? Bool {
+                    self.fenceEnabled = value
+                }
+                if let value = dict["fencePolicy"] as? [String: Any?] {
+                    var model = QueryConfigResponseBody.Data.NacosRunningEnv.FencePolicy()
+                    model.fromMap(value)
+                    self.fencePolicy = model
                 }
                 if let value = dict["grayAuth"] as? String {
                     self.grayAuth = value
@@ -65983,6 +66056,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
         public var openSuperAcl: Bool?
 
         public var passWord: String?
+
+        public var prometheusSdProtocolEnabled: String?
 
         public var restartFlag: Bool?
 
@@ -66092,6 +66167,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             if self.passWord != nil {
                 map["PassWord"] = self.passWord!
             }
+            if self.prometheusSdProtocolEnabled != nil {
+                map["PrometheusSdProtocolEnabled"] = self.prometheusSdProtocolEnabled!
+            }
             if self.restartFlag != nil {
                 map["RestartFlag"] = self.restartFlag!
             }
@@ -66197,6 +66275,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["PassWord"] as? String {
                 self.passWord = value
+            }
+            if let value = dict["PrometheusSdProtocolEnabled"] as? String {
+                self.prometheusSdProtocolEnabled = value
             }
             if let value = dict["RestartFlag"] as? Bool {
                 self.restartFlag = value
