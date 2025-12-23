@@ -1342,6 +1342,8 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
 
     public var loadWhiteList: Bool?
 
+    public var logQueryOpJson: String?
+
     public var logSource: String?
 
     public var memberAccount: String?
@@ -1421,6 +1423,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if self.loadWhiteList != nil {
             map["LoadWhiteList"] = self.loadWhiteList!
+        }
+        if self.logQueryOpJson != nil {
+            map["LogQueryOpJson"] = self.logQueryOpJson!
         }
         if self.logSource != nil {
             map["LogSource"] = self.logSource!
@@ -1507,6 +1512,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if let value = dict["LoadWhiteList"] as? Bool {
             self.loadWhiteList = value
+        }
+        if let value = dict["LogQueryOpJson"] as? String {
+            self.logQueryOpJson = value
         }
         if let value = dict["LogSource"] as? String {
             self.logSource = value

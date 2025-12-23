@@ -466,6 +466,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.loadWhiteList)) {
             query["LoadWhiteList"] = request.loadWhiteList!;
         }
+        if (!TeaUtils.Client.isUnset(request.logQueryOpJson)) {
+            query["LogQueryOpJson"] = request.logQueryOpJson ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.logSource)) {
             query["LogSource"] = request.logSource ?? "";
         }
