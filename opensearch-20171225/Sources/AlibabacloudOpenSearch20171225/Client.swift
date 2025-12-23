@@ -228,6 +228,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cluster)) {
             body["cluster"] = request.cluster!;
         }
+        if (!TeaUtils.Client.isUnset(request.configItems)) {
+            body["configItems"] = request.configItems ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.dataSources)) {
             body["dataSources"] = request.dataSources ?? [];
         }
@@ -243,11 +246,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.firstRanks)) {
             body["firstRanks"] = request.firstRanks ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.interpretations)) {
+            body["interpretations"] = request.interpretations ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.networkType)) {
             body["networkType"] = request.networkType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.prompts)) {
+            body["prompts"] = request.prompts ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.queryProcessors)) {
             body["queryProcessors"] = request.queryProcessors ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.realtimeShared)) {
+            body["realtimeShared"] = request.realtimeShared!;
         }
         if (!TeaUtils.Client.isUnset(request.schema)) {
             body["schema"] = request.schema!;
@@ -3078,6 +3090,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyAppGroupQuotaWithOptions(_ appGroupIdentity: String, _ request: ModifyAppGroupQuotaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAppGroupQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["dryRun"] = request.dryRun!;
         }
