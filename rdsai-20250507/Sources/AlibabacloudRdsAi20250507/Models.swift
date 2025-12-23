@@ -1981,6 +1981,8 @@ public class DescribeEventsListResponseBody : Tea.TeaModel {
 
         public var recoveryTime: String?
 
+        public var regionId: String?
+
         public override init() {
             super.init()
         }
@@ -2013,6 +2015,9 @@ public class DescribeEventsListResponseBody : Tea.TeaModel {
             if self.recoveryTime != nil {
                 map["RecoveryTime"] = self.recoveryTime!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
             return map
         }
 
@@ -2035,6 +2040,9 @@ public class DescribeEventsListResponseBody : Tea.TeaModel {
             }
             if let value = dict["RecoveryTime"] as? String {
                 self.recoveryTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
             }
         }
     }
@@ -2473,6 +2481,52 @@ public class DescribeInstanceEndpointsRequest : Tea.TeaModel {
 }
 
 public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
+    public class DBInstanceEndpoints : Tea.TeaModel {
+        public var connectionString: String?
+
+        public var ipType: String?
+
+        public var port: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectionString != nil {
+                map["ConnectionString"] = self.connectionString!
+            }
+            if self.ipType != nil {
+                map["IpType"] = self.ipType!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectionString"] as? String {
+                self.connectionString = value
+            }
+            if let value = dict["IpType"] as? String {
+                self.ipType = value
+            }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+        }
+    }
     public class InstanceEndpoints : Tea.TeaModel {
         public var connectionString: String?
 
@@ -2527,6 +2581,8 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var DBInstanceEndpoints: [DescribeInstanceEndpointsResponseBody.DBInstanceEndpoints]?
+
     public var instanceEndpoints: [DescribeInstanceEndpointsResponseBody.InstanceEndpoints]?
 
     public var instanceName: String?
@@ -2547,6 +2603,13 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.DBInstanceEndpoints != nil {
+            var tmp : [Any] = []
+            for k in self.DBInstanceEndpoints! {
+                tmp.append(k.toMap())
+            }
+            map["DBInstanceEndpoints"] = tmp
+        }
         if self.instanceEndpoints != nil {
             var tmp : [Any] = []
             for k in self.instanceEndpoints! {
@@ -2565,6 +2628,19 @@ public class DescribeInstanceEndpointsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DBInstanceEndpoints"] as? [Any?] {
+            var tmp : [DescribeInstanceEndpointsResponseBody.DBInstanceEndpoints] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeInstanceEndpointsResponseBody.DBInstanceEndpoints()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.DBInstanceEndpoints = tmp
+        }
         if let value = dict["InstanceEndpoints"] as? [Any?] {
             var tmp : [DescribeInstanceEndpointsResponseBody.InstanceEndpoints] = []
             for v in value {
