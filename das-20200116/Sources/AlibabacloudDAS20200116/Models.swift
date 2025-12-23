@@ -8542,6 +8542,112 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class LargeKeys : Tea.TeaModel {
+            public class LargeKey : Tea.TeaModel {
+                public var dataSize: String?
+
+                public var db: String?
+
+                public var key: String?
+
+                public var keyType: String?
+
+                public var nodeId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dataSize != nil {
+                        map["DataSize"] = self.dataSize!
+                    }
+                    if self.db != nil {
+                        map["Db"] = self.db!
+                    }
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.keyType != nil {
+                        map["KeyType"] = self.keyType!
+                    }
+                    if self.nodeId != nil {
+                        map["NodeId"] = self.nodeId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DataSize"] as? String {
+                        self.dataSize = value
+                    }
+                    if let value = dict["Db"] as? String {
+                        self.db = value
+                    }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["KeyType"] as? String {
+                        self.keyType = value
+                    }
+                    if let value = dict["NodeId"] as? String {
+                        self.nodeId = value
+                    }
+                }
+            }
+            public var largeKey: [DescribeHotBigKeysResponseBody.Data.LargeKeys.LargeKey]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.largeKey != nil {
+                    var tmp : [Any] = []
+                    for k in self.largeKey! {
+                        tmp.append(k.toMap())
+                    }
+                    map["LargeKey"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LargeKey"] as? [Any?] {
+                    var tmp : [DescribeHotBigKeysResponseBody.Data.LargeKeys.LargeKey] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeHotBigKeysResponseBody.Data.LargeKeys.LargeKey()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.largeKey = tmp
+                }
+            }
+        }
         public var bigKeyMsg: String?
 
         public var bigKeys: DescribeHotBigKeysResponseBody.Data.BigKeys?
@@ -8553,6 +8659,10 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
         public var hotKeyMsg: String?
 
         public var hotKeys: DescribeHotBigKeysResponseBody.Data.HotKeys?
+
+        public var largeKeyMsg: String?
+
+        public var largeKeys: DescribeHotBigKeysResponseBody.Data.LargeKeys?
 
         public override init() {
             super.init()
@@ -8567,6 +8677,7 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
             try self.bigKeys?.validate()
             try self.highTrafficKeys?.validate()
             try self.hotKeys?.validate()
+            try self.largeKeys?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8588,6 +8699,12 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
             }
             if self.hotKeys != nil {
                 map["HotKeys"] = self.hotKeys?.toMap()
+            }
+            if self.largeKeyMsg != nil {
+                map["LargeKeyMsg"] = self.largeKeyMsg!
+            }
+            if self.largeKeys != nil {
+                map["LargeKeys"] = self.largeKeys?.toMap()
             }
             return map
         }
@@ -8617,6 +8734,14 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                 var model = DescribeHotBigKeysResponseBody.Data.HotKeys()
                 model.fromMap(value)
                 self.hotKeys = model
+            }
+            if let value = dict["LargeKeyMsg"] as? String {
+                self.largeKeyMsg = value
+            }
+            if let value = dict["LargeKeys"] as? [String: Any?] {
+                var model = DescribeHotBigKeysResponseBody.Data.LargeKeys()
+                model.fromMap(value)
+                self.largeKeys = model
             }
         }
     }
