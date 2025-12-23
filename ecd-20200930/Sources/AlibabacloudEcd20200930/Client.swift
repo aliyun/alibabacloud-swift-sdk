@@ -7385,6 +7385,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeOfficeSitesWithOptions(_ request: DescribeOfficeSitesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOfficeSitesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountType)) {
+            query["AccountType"] = request.accountType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }

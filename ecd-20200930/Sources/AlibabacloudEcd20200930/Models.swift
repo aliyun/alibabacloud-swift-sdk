@@ -9626,11 +9626,17 @@ public class CreateCloudDriveUsersResponse : Tea.TeaModel {
 public class CreateConfigGroupRequest : Tea.TeaModel {
     public class ConfigTimers : Tea.TeaModel {
         public class SegmentTimers : Tea.TeaModel {
+            public var appointmentTimer: Int64?
+
             public var endCronExpression: String?
 
             public var enforce: Bool?
 
+            public var imageId: String?
+
             public var interval: Int32?
+
+            public var lockScreenTime: Int32?
 
             public var notificationTime: Int32?
 
@@ -9662,14 +9668,23 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appointmentTimer != nil {
+                    map["AppointmentTimer"] = self.appointmentTimer!
+                }
                 if self.endCronExpression != nil {
                     map["EndCronExpression"] = self.endCronExpression!
                 }
                 if self.enforce != nil {
                     map["Enforce"] = self.enforce!
                 }
+                if self.imageId != nil {
+                    map["ImageId"] = self.imageId!
+                }
                 if self.interval != nil {
                     map["Interval"] = self.interval!
+                }
+                if self.lockScreenTime != nil {
+                    map["LockScreenTime"] = self.lockScreenTime!
                 }
                 if self.notificationTime != nil {
                     map["NotificationTime"] = self.notificationTime!
@@ -9700,14 +9715,23 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AppointmentTimer"] as? Int64 {
+                    self.appointmentTimer = value
+                }
                 if let value = dict["EndCronExpression"] as? String {
                     self.endCronExpression = value
                 }
                 if let value = dict["Enforce"] as? Bool {
                     self.enforce = value
                 }
+                if let value = dict["ImageId"] as? String {
+                    self.imageId = value
+                }
                 if let value = dict["Interval"] as? Int32 {
                     self.interval = value
+                }
+                if let value = dict["LockScreenTime"] as? Int32 {
+                    self.lockScreenTime = value
                 }
                 if let value = dict["NotificationTime"] as? Int32 {
                     self.notificationTime = value
@@ -25964,6 +25988,14 @@ public class DescribeConfigGroupResponseBody : Tea.TeaModel {
 
         public var groupId: String?
 
+        public var innerTimerDesc: String?
+
+        public var innerTimerName: String?
+
+        public var isBind: Bool?
+
+        public var isUpdate: Bool?
+
         public var name: String?
 
         public var productType: String?
@@ -25998,6 +26030,18 @@ public class DescribeConfigGroupResponseBody : Tea.TeaModel {
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
             }
+            if self.innerTimerDesc != nil {
+                map["InnerTimerDesc"] = self.innerTimerDesc!
+            }
+            if self.innerTimerName != nil {
+                map["InnerTimerName"] = self.innerTimerName!
+            }
+            if self.isBind != nil {
+                map["IsBind"] = self.isBind!
+            }
+            if self.isUpdate != nil {
+                map["IsUpdate"] = self.isUpdate!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -26026,6 +26070,18 @@ public class DescribeConfigGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["GroupId"] as? String {
                 self.groupId = value
+            }
+            if let value = dict["InnerTimerDesc"] as? String {
+                self.innerTimerDesc = value
+            }
+            if let value = dict["InnerTimerName"] as? String {
+                self.innerTimerName = value
+            }
+            if let value = dict["IsBind"] as? Bool {
+                self.isBind = value
+            }
+            if let value = dict["IsUpdate"] as? Bool {
+                self.isUpdate = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -40542,6 +40598,8 @@ public class DescribeNetworkPackagesResponse : Tea.TeaModel {
 }
 
 public class DescribeOfficeSitesRequest : Tea.TeaModel {
+    public var accountType: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -40572,6 +40630,9 @@ public class DescribeOfficeSitesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -40601,6 +40662,9 @@ public class DescribeOfficeSitesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccountType"] as? String {
+            self.accountType = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -49140,11 +49204,17 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ConfigTimers : Tea.TeaModel {
             public class SegmentTimers : Tea.TeaModel {
+                public var appointmentTimer: Int64?
+
                 public var endCronExpression: String?
 
                 public var enforce: Bool?
 
+                public var imageId: String?
+
                 public var interval: Int32?
+
+                public var lockScreenTime: Int32?
 
                 public var notificationTime: Int32?
 
@@ -49176,14 +49246,23 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.appointmentTimer != nil {
+                        map["AppointmentTimer"] = self.appointmentTimer!
+                    }
                     if self.endCronExpression != nil {
                         map["EndCronExpression"] = self.endCronExpression!
                     }
                     if self.enforce != nil {
                         map["Enforce"] = self.enforce!
                     }
+                    if self.imageId != nil {
+                        map["ImageId"] = self.imageId!
+                    }
                     if self.interval != nil {
                         map["Interval"] = self.interval!
+                    }
+                    if self.lockScreenTime != nil {
+                        map["LockScreenTime"] = self.lockScreenTime!
                     }
                     if self.notificationTime != nil {
                         map["NotificationTime"] = self.notificationTime!
@@ -49214,14 +49293,23 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AppointmentTimer"] as? Int64 {
+                        self.appointmentTimer = value
+                    }
                     if let value = dict["EndCronExpression"] as? String {
                         self.endCronExpression = value
                     }
                     if let value = dict["Enforce"] as? Bool {
                         self.enforce = value
                     }
+                    if let value = dict["ImageId"] as? String {
+                        self.imageId = value
+                    }
                     if let value = dict["Interval"] as? Int32 {
                         self.interval = value
+                    }
+                    if let value = dict["LockScreenTime"] as? Int32 {
+                        self.lockScreenTime = value
                     }
                     if let value = dict["NotificationTime"] as? Int32 {
                         self.notificationTime = value
@@ -49382,6 +49470,14 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
         public var groupId: String?
 
+        public var innerTimerDesc: String?
+
+        public var innerTimerName: String?
+
+        public var isBind: Bool?
+
+        public var isUpdate: Bool?
+
         public var name: String?
 
         public var productType: String?
@@ -49422,6 +49518,18 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
             }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
+            }
+            if self.innerTimerDesc != nil {
+                map["InnerTimerDesc"] = self.innerTimerDesc!
+            }
+            if self.innerTimerName != nil {
+                map["InnerTimerName"] = self.innerTimerName!
+            }
+            if self.isBind != nil {
+                map["IsBind"] = self.isBind!
+            }
+            if self.isUpdate != nil {
+                map["IsUpdate"] = self.isUpdate!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -49464,6 +49572,18 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["GroupId"] as? String {
                 self.groupId = value
+            }
+            if let value = dict["InnerTimerDesc"] as? String {
+                self.innerTimerDesc = value
+            }
+            if let value = dict["InnerTimerName"] as? String {
+                self.innerTimerName = value
+            }
+            if let value = dict["IsBind"] as? Bool {
+                self.isBind = value
+            }
+            if let value = dict["IsUpdate"] as? Bool {
+                self.isUpdate = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -68739,11 +68859,17 @@ public class ModifyTemplateBaseInfoResponse : Tea.TeaModel {
 public class ModifyTimerGroupRequest : Tea.TeaModel {
     public class ConfigTimers : Tea.TeaModel {
         public class SegmentTimers : Tea.TeaModel {
+            public var appointmentTimer: Int64?
+
             public var endCronExpression: String?
 
             public var enforce: Bool?
 
+            public var imageId: String?
+
             public var interval: Int32?
+
+            public var lockScreenTime: Int32?
 
             public var notificationTime: Int32?
 
@@ -68775,14 +68901,23 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appointmentTimer != nil {
+                    map["AppointmentTimer"] = self.appointmentTimer!
+                }
                 if self.endCronExpression != nil {
                     map["EndCronExpression"] = self.endCronExpression!
                 }
                 if self.enforce != nil {
                     map["Enforce"] = self.enforce!
                 }
+                if self.imageId != nil {
+                    map["ImageId"] = self.imageId!
+                }
                 if self.interval != nil {
                     map["Interval"] = self.interval!
+                }
+                if self.lockScreenTime != nil {
+                    map["LockScreenTime"] = self.lockScreenTime!
                 }
                 if self.notificationTime != nil {
                     map["NotificationTime"] = self.notificationTime!
@@ -68813,14 +68948,23 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AppointmentTimer"] as? Int64 {
+                    self.appointmentTimer = value
+                }
                 if let value = dict["EndCronExpression"] as? String {
                     self.endCronExpression = value
                 }
                 if let value = dict["Enforce"] as? Bool {
                     self.enforce = value
                 }
+                if let value = dict["ImageId"] as? String {
+                    self.imageId = value
+                }
                 if let value = dict["Interval"] as? Int32 {
                     self.interval = value
+                }
+                if let value = dict["LockScreenTime"] as? Int32 {
+                    self.lockScreenTime = value
                 }
                 if let value = dict["NotificationTime"] as? Int32 {
                     self.notificationTime = value
