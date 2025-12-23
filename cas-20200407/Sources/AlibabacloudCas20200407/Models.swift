@@ -1272,6 +1272,8 @@ public class DecryptRequest : Tea.TeaModel {
 
     public var ciphertextBlob: String?
 
+    public var customIdentifier: String?
+
     public var messageType: String?
 
     public override init() {
@@ -1297,6 +1299,9 @@ public class DecryptRequest : Tea.TeaModel {
         if self.ciphertextBlob != nil {
             map["CiphertextBlob"] = self.ciphertextBlob!
         }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
+        }
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
@@ -1313,6 +1318,9 @@ public class DecryptRequest : Tea.TeaModel {
         }
         if let value = dict["CiphertextBlob"] as? String {
             self.ciphertextBlob = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["MessageType"] as? String {
             self.messageType = value
@@ -3218,6 +3226,8 @@ public class EncryptRequest : Tea.TeaModel {
 
     public var certIdentifier: String?
 
+    public var customIdentifier: String?
+
     public var messageType: String?
 
     public var plaintext: String?
@@ -3242,6 +3252,9 @@ public class EncryptRequest : Tea.TeaModel {
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
+        }
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
@@ -3258,6 +3271,9 @@ public class EncryptRequest : Tea.TeaModel {
         }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["MessageType"] as? String {
             self.messageType = value
@@ -8128,6 +8144,8 @@ public class RenewCertificateOrderForPackageRequestResponse : Tea.TeaModel {
 public class SignRequest : Tea.TeaModel {
     public var certIdentifier: String?
 
+    public var customIdentifier: String?
+
     public var message: String?
 
     public var messageType: String?
@@ -8151,6 +8169,9 @@ public class SignRequest : Tea.TeaModel {
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -8167,6 +8188,9 @@ public class SignRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Message"] as? String {
             self.message = value
@@ -9188,6 +9212,8 @@ public class UploadUserCertificateResponse : Tea.TeaModel {
 public class VerifyRequest : Tea.TeaModel {
     public var certIdentifier: String?
 
+    public var customIdentifier: String?
+
     public var message: String?
 
     public var messageType: String?
@@ -9213,6 +9239,9 @@ public class VerifyRequest : Tea.TeaModel {
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
+        if self.customIdentifier != nil {
+            map["CustomIdentifier"] = self.customIdentifier!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -9232,6 +9261,9 @@ public class VerifyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
+        }
+        if let value = dict["CustomIdentifier"] as? String {
+            self.customIdentifier = value
         }
         if let value = dict["Message"] as? String {
             self.message = value

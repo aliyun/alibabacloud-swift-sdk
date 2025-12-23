@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudCas20200407` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/cas-20200407" "3.0.3"
+github "alibabacloud-sdk-swift/cas-20200407" "3.0.4"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudCas20200407` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/cas-20200407.git", from: "3.0.3")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/cas-20200407.git", from: "3.0.4")
 ]
 ```
 
