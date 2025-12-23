@@ -603,26 +603,26 @@ public class ChangeResourceGroupInput : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.newResourceGroupId != nil {
-            map["newResourceGroupId"] = self.newResourceGroupId!
+            map["NewResourceGroupId"] = self.newResourceGroupId!
         }
         if self.resourceId != nil {
-            map["resourceId"] = self.resourceId!
+            map["ResourceId"] = self.resourceId!
         }
         if self.resourceType != nil {
-            map["resourceType"] = self.resourceType!
+            map["ResourceType"] = self.resourceType!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["newResourceGroupId"] as? String {
+        if let value = dict["NewResourceGroupId"] as? String {
             self.newResourceGroupId = value
         }
-        if let value = dict["resourceId"] as? String {
+        if let value = dict["ResourceId"] as? String {
             self.resourceId = value
         }
-        if let value = dict["resourceType"] as? String {
+        if let value = dict["ResourceType"] as? String {
             self.resourceType = value
         }
     }
@@ -650,26 +650,26 @@ public class ChangeResourceGroupOutput : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.newResourceGroupId != nil {
-            map["newResourceGroupId"] = self.newResourceGroupId!
+            map["NewResourceGroupId"] = self.newResourceGroupId!
         }
         if self.oldResourceGroupId != nil {
-            map["oldResourceGroupId"] = self.oldResourceGroupId!
+            map["OldResourceGroupId"] = self.oldResourceGroupId!
         }
         if self.resourceId != nil {
-            map["resourceId"] = self.resourceId!
+            map["ResourceId"] = self.resourceId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["newResourceGroupId"] as? String {
+        if let value = dict["NewResourceGroupId"] as? String {
             self.newResourceGroupId = value
         }
-        if let value = dict["oldResourceGroupId"] as? String {
+        if let value = dict["OldResourceGroupId"] as? String {
             self.oldResourceGroupId = value
         }
-        if let value = dict["resourceId"] as? String {
+        if let value = dict["ResourceId"] as? String {
             self.resourceId = value
         }
     }
@@ -1326,6 +1326,10 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public var nasConfig: NASConfig?
 
+    public var ossMountConfig: OSSMountConfig?
+
+    public var polarFsConfig: PolarFsConfig?
+
     public var sessionId: String?
 
     public var sessionIdleTimeoutInSeconds: Int64?
@@ -1343,6 +1347,8 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.nasConfig?.validate()
+        try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1352,6 +1358,12 @@ public class CreateSessionInput : Tea.TeaModel {
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
@@ -1374,6 +1386,16 @@ public class CreateSessionInput : Tea.TeaModel {
             var model = NASConfig()
             model.fromMap(value)
             self.nasConfig = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["sessionId"] as? String {
             self.sessionId = value
@@ -7738,6 +7760,10 @@ public class Session : Tea.TeaModel {
 
     public var nasConfig: NASConfig?
 
+    public var ossMountConfig: OSSMountConfig?
+
+    public var polarFsConfig: PolarFsConfig?
+
     public var qualifier: String?
 
     public var sessionAffinityType: String?
@@ -7761,6 +7787,8 @@ public class Session : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.nasConfig?.validate()
+        try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7782,6 +7810,12 @@ public class Session : Tea.TeaModel {
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
@@ -7825,6 +7859,16 @@ public class Session : Tea.TeaModel {
             var model = NASConfig()
             model.fromMap(value)
             self.nasConfig = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
