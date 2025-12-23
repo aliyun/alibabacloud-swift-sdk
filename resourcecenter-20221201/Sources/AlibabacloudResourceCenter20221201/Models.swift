@@ -5002,6 +5002,10 @@ public class GetResourceCountsRequest : Tea.TeaModel {
 
     public var groupByKey: String?
 
+    public var includeDeletedResources: Bool?
+
+    public var searchExpression: String?
+
     public override init() {
         super.init()
     }
@@ -5026,6 +5030,12 @@ public class GetResourceCountsRequest : Tea.TeaModel {
         if self.groupByKey != nil {
             map["GroupByKey"] = self.groupByKey!
         }
+        if self.includeDeletedResources != nil {
+            map["IncludeDeletedResources"] = self.includeDeletedResources!
+        }
+        if self.searchExpression != nil {
+            map["SearchExpression"] = self.searchExpression!
+        }
         return map
     }
 
@@ -5046,6 +5056,12 @@ public class GetResourceCountsRequest : Tea.TeaModel {
         }
         if let value = dict["GroupByKey"] as? String {
             self.groupByKey = value
+        }
+        if let value = dict["IncludeDeletedResources"] as? Bool {
+            self.includeDeletedResources = value
+        }
+        if let value = dict["SearchExpression"] as? String {
+            self.searchExpression = value
         }
     }
 }
@@ -8926,11 +8942,15 @@ public class SearchResourcesRequest : Tea.TeaModel {
     }
     public var filter: [SearchResourcesRequest.Filter]?
 
+    public var includeDeletedResources: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
 
     public var resourceGroupId: String?
+
+    public var searchExpression: String?
 
     public var sortCriterion: SearchResourcesRequest.SortCriterion?
 
@@ -8956,6 +8976,9 @@ public class SearchResourcesRequest : Tea.TeaModel {
             }
             map["Filter"] = tmp
         }
+        if self.includeDeletedResources != nil {
+            map["IncludeDeletedResources"] = self.includeDeletedResources!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -8964,6 +8987,9 @@ public class SearchResourcesRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.searchExpression != nil {
+            map["SearchExpression"] = self.searchExpression!
         }
         if self.sortCriterion != nil {
             map["SortCriterion"] = self.sortCriterion?.toMap()
@@ -8986,6 +9012,9 @@ public class SearchResourcesRequest : Tea.TeaModel {
             }
             self.filter = tmp
         }
+        if let value = dict["IncludeDeletedResources"] as? Bool {
+            self.includeDeletedResources = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -8994,6 +9023,9 @@ public class SearchResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SearchExpression"] as? String {
+            self.searchExpression = value
         }
         if let value = dict["SortCriterion"] as? [String: Any?] {
             var model = SearchResourcesRequest.SortCriterion()
@@ -9139,6 +9171,8 @@ public class SearchResourcesResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var deleted: Bool?
+
         public var expireTime: String?
 
         public var ipAddressAttributes: [SearchResourcesResponseBody.Resources.IpAddressAttributes]?
@@ -9178,6 +9212,9 @@ public class SearchResourcesResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.deleted != nil {
+                map["Deleted"] = self.deleted!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -9227,6 +9264,9 @@ public class SearchResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["Deleted"] as? Bool {
+                self.deleted = value
             }
             if let value = dict["ExpireTime"] as? String {
                 self.expireTime = value
