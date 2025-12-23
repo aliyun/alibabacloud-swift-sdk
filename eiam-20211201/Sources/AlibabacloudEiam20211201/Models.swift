@@ -37276,6 +37276,8 @@ public class ListUserAuthnSourceMappingsResponseBody : Tea.TeaModel {
 
         public var createTime: Int64?
 
+        public var externalData: String?
+
         public var identityProviderId: String?
 
         public var instanceId: String?
@@ -37306,6 +37308,9 @@ public class ListUserAuthnSourceMappingsResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.externalData != nil {
+                map["ExternalData"] = self.externalData!
+            }
             if self.identityProviderId != nil {
                 map["IdentityProviderId"] = self.identityProviderId!
             }
@@ -37331,6 +37336,9 @@ public class ListUserAuthnSourceMappingsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
+            }
+            if let value = dict["ExternalData"] as? String {
+                self.externalData = value
             }
             if let value = dict["IdentityProviderId"] as? String {
                 self.identityProviderId = value
