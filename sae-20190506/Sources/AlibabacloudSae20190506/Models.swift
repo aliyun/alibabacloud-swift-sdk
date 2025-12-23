@@ -30161,11 +30161,15 @@ public class DescribeApplicationSlbsRequest : Tea.TeaModel {
 public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Internet : Tea.TeaModel {
+            public var connectionDrainTimeout: Int32?
+
             public var cookie: String?
 
             public var cookieTimeout: Int32?
 
             public var createTime: Int64?
+
+            public var enableConnectionDrain: Bool?
 
             public var httpsCaCertId: String?
 
@@ -30181,6 +30185,8 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public var targetPort: Int32?
 
+            public var VServerGroupId: String?
+
             public override init() {
                 super.init()
             }
@@ -30195,6 +30201,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.connectionDrainTimeout != nil {
+                    map["ConnectionDrainTimeout"] = self.connectionDrainTimeout!
+                }
                 if self.cookie != nil {
                     map["Cookie"] = self.cookie!
                 }
@@ -30203,6 +30212,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.enableConnectionDrain != nil {
+                    map["EnableConnectionDrain"] = self.enableConnectionDrain!
                 }
                 if self.httpsCaCertId != nil {
                     map["HttpsCaCertId"] = self.httpsCaCertId!
@@ -30225,11 +30237,17 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 if self.targetPort != nil {
                     map["TargetPort"] = self.targetPort!
                 }
+                if self.VServerGroupId != nil {
+                    map["VServerGroupId"] = self.VServerGroupId!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ConnectionDrainTimeout"] as? Int32 {
+                    self.connectionDrainTimeout = value
+                }
                 if let value = dict["Cookie"] as? String {
                     self.cookie = value
                 }
@@ -30238,6 +30256,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
+                }
+                if let value = dict["EnableConnectionDrain"] as? Bool {
+                    self.enableConnectionDrain = value
                 }
                 if let value = dict["HttpsCaCertId"] as? String {
                     self.httpsCaCertId = value
@@ -30259,15 +30280,22 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TargetPort"] as? Int32 {
                     self.targetPort = value
+                }
+                if let value = dict["VServerGroupId"] as? String {
+                    self.VServerGroupId = value
                 }
             }
         }
         public class Intranet : Tea.TeaModel {
+            public var connectionDrainTimeout: Int32?
+
             public var cookie: String?
 
             public var cookieTimeout: Int32?
 
             public var createTime: Int64?
+
+            public var enableConnectionDrain: Bool?
 
             public var httpsCaCertId: String?
 
@@ -30283,6 +30311,8 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public var targetPort: Int32?
 
+            public var VServerGroupId: String?
+
             public override init() {
                 super.init()
             }
@@ -30297,6 +30327,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.connectionDrainTimeout != nil {
+                    map["ConnectionDrainTimeout"] = self.connectionDrainTimeout!
+                }
                 if self.cookie != nil {
                     map["Cookie"] = self.cookie!
                 }
@@ -30305,6 +30338,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.enableConnectionDrain != nil {
+                    map["EnableConnectionDrain"] = self.enableConnectionDrain!
                 }
                 if self.httpsCaCertId != nil {
                     map["HttpsCaCertId"] = self.httpsCaCertId!
@@ -30327,11 +30363,17 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 if self.targetPort != nil {
                     map["TargetPort"] = self.targetPort!
                 }
+                if self.VServerGroupId != nil {
+                    map["VServerGroupId"] = self.VServerGroupId!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ConnectionDrainTimeout"] as? Int32 {
+                    self.connectionDrainTimeout = value
+                }
                 if let value = dict["Cookie"] as? String {
                     self.cookie = value
                 }
@@ -30340,6 +30382,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
+                }
+                if let value = dict["EnableConnectionDrain"] as? Bool {
+                    self.enableConnectionDrain = value
                 }
                 if let value = dict["HttpsCaCertId"] as? String {
                     self.httpsCaCertId = value
@@ -30361,6 +30406,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TargetPort"] as? Int32 {
                     self.targetPort = value
+                }
+                if let value = dict["VServerGroupId"] as? String {
+                    self.VServerGroupId = value
                 }
             }
         }
