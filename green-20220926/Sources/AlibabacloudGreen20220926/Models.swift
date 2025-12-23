@@ -14022,9 +14022,13 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var accountId: String?
+
             public var bailianRequestId: String?
 
             public var content: String?
+
+            public var dataId: String?
 
             public var extFeedback: String?
 
@@ -14066,11 +14070,17 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountId != nil {
+                    map["AccountId"] = self.accountId!
+                }
                 if self.bailianRequestId != nil {
                     map["BailianRequestId"] = self.bailianRequestId!
                 }
                 if self.content != nil {
                     map["Content"] = self.content!
+                }
+                if self.dataId != nil {
+                    map["DataId"] = self.dataId!
                 }
                 if self.extFeedback != nil {
                     map["ExtFeedback"] = self.extFeedback!
@@ -14120,11 +14130,17 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccountId"] as? String {
+                    self.accountId = value
+                }
                 if let value = dict["BailianRequestId"] as? String {
                     self.bailianRequestId = value
                 }
                 if let value = dict["Content"] as? String {
                     self.content = value
+                }
+                if let value = dict["DataId"] as? String {
+                    self.dataId = value
                 }
                 if let value = dict["ExtFeedback"] as? String {
                     self.extFeedback = value
