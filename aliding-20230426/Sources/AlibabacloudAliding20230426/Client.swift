@@ -3315,6 +3315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientEnum)) {
+            body["clientEnum"] = request.clientEnum ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
             body["extLoginUser"] = request.extLoginUser!;
         }
@@ -9651,6 +9654,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientEnum)) {
+            body["clientEnum"] = request.clientEnum ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.extLoginUser)) {
             body["extLoginUser"] = request.extLoginUser!;
         }
@@ -10951,6 +10957,34 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.start)) {
             request.startShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.start, "Start", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.categories)) {
+            request.categoriesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.categories, "categories", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.onlineMeetingInfo)) {
+            request.onlineMeetingInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.onlineMeetingInfo, "onlineMeetingInfo", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.richTextDescription)) {
+            request.richTextDescriptionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.richTextDescription, "richTextDescription", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.uiConfigs)) {
+            request.uiConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.uiConfigs, "uiConfigs", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoriesShrink)) {
+            query["categories"] = request.categoriesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.freeBusyStatus)) {
+            query["freeBusyStatus"] = request.freeBusyStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onlineMeetingInfoShrink)) {
+            query["onlineMeetingInfo"] = request.onlineMeetingInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.richTextDescriptionShrink)) {
+            query["richTextDescription"] = request.richTextDescriptionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uiConfigsShrink)) {
+            query["uiConfigs"] = request.uiConfigsShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.attendeesShrink)) {
             body["Attendees"] = request.attendeesShrink ?? "";
@@ -11000,6 +11034,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -11392,9 +11427,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
             body["TenantContext"] = request.tenantContextShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.unionId)) {
-            body["UnionId"] = request.unionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.withThumbnail)) {
             body["WithThumbnail"] = request.withThumbnail!;

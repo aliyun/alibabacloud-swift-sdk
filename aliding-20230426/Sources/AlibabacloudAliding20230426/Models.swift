@@ -26918,6 +26918,8 @@ public class CreateThreadRequest : Tea.TeaModel {
     }
     public var assistantId: String?
 
+    public var clientEnum: String?
+
     public var extLoginUser: CreateThreadRequest.ExtLoginUser?
 
     public var originalAssistantId: String?
@@ -26944,6 +26946,9 @@ public class CreateThreadRequest : Tea.TeaModel {
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
         }
+        if self.clientEnum != nil {
+            map["clientEnum"] = self.clientEnum!
+        }
         if self.extLoginUser != nil {
             map["extLoginUser"] = self.extLoginUser?.toMap()
         }
@@ -26963,6 +26968,9 @@ public class CreateThreadRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["clientEnum"] as? String {
+            self.clientEnum = value
         }
         if let value = dict["extLoginUser"] as? [String: Any?] {
             var model = CreateThreadRequest.ExtLoginUser()
@@ -76106,6 +76114,8 @@ public class InvokeAssistantRequest : Tea.TeaModel {
     }
     public var assistantId: String?
 
+    public var clientEnum: String?
+
     public var extLoginUser: InvokeAssistantRequest.ExtLoginUser?
 
     public var messages: [InvokeAssistantRequest.Messages]?
@@ -76137,6 +76147,9 @@ public class InvokeAssistantRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
+        }
+        if self.clientEnum != nil {
+            map["clientEnum"] = self.clientEnum!
         }
         if self.extLoginUser != nil {
             map["extLoginUser"] = self.extLoginUser?.toMap()
@@ -76170,6 +76183,9 @@ public class InvokeAssistantRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
+        }
+        if let value = dict["clientEnum"] as? String {
+            self.clientEnum = value
         }
         if let value = dict["extLoginUser"] as? [String: Any?] {
             var model = InvokeAssistantRequest.ExtLoginUser()
@@ -89821,6 +89837,142 @@ public class PatchEventRequest : Tea.TeaModel {
             }
         }
     }
+    public class Categories : Tea.TeaModel {
+        public var categoryId: String?
+
+        public var displayName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.categoryId != nil {
+                map["categoryId"] = self.categoryId!
+            }
+            if self.displayName != nil {
+                map["displayName"] = self.displayName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["categoryId"] as? String {
+                self.categoryId = value
+            }
+            if let value = dict["displayName"] as? String {
+                self.displayName = value
+            }
+        }
+    }
+    public class OnlineMeetingInfo : Tea.TeaModel {
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public class RichTextDescription : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public class UiConfigs : Tea.TeaModel {
+        public var uiName: String?
+
+        public var uiStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.uiName != nil {
+                map["uiName"] = self.uiName!
+            }
+            if self.uiStatus != nil {
+                map["uiStatus"] = self.uiStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["uiName"] as? String {
+                self.uiName = value
+            }
+            if let value = dict["uiStatus"] as? String {
+                self.uiStatus = value
+            }
+        }
+    }
     public var attendees: [PatchEventRequest.Attendees]?
 
     public var calendarId: String?
@@ -89847,6 +89999,16 @@ public class PatchEventRequest : Tea.TeaModel {
 
     public var summary: String?
 
+    public var categories: [PatchEventRequest.Categories]?
+
+    public var freeBusyStatus: String?
+
+    public var onlineMeetingInfo: PatchEventRequest.OnlineMeetingInfo?
+
+    public var richTextDescription: PatchEventRequest.RichTextDescription?
+
+    public var uiConfigs: [PatchEventRequest.UiConfigs]?
+
     public override init() {
         super.init()
     }
@@ -89861,6 +90023,8 @@ public class PatchEventRequest : Tea.TeaModel {
         try self.location?.validate()
         try self.recurrence?.validate()
         try self.start?.validate()
+        try self.onlineMeetingInfo?.validate()
+        try self.richTextDescription?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -89915,6 +90079,29 @@ public class PatchEventRequest : Tea.TeaModel {
         }
         if self.summary != nil {
             map["Summary"] = self.summary!
+        }
+        if self.categories != nil {
+            var tmp : [Any] = []
+            for k in self.categories! {
+                tmp.append(k.toMap())
+            }
+            map["categories"] = tmp
+        }
+        if self.freeBusyStatus != nil {
+            map["freeBusyStatus"] = self.freeBusyStatus!
+        }
+        if self.onlineMeetingInfo != nil {
+            map["onlineMeetingInfo"] = self.onlineMeetingInfo?.toMap()
+        }
+        if self.richTextDescription != nil {
+            map["richTextDescription"] = self.richTextDescription?.toMap()
+        }
+        if self.uiConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.uiConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["uiConfigs"] = tmp
         }
         return map
     }
@@ -89998,6 +90185,45 @@ public class PatchEventRequest : Tea.TeaModel {
         if let value = dict["Summary"] as? String {
             self.summary = value
         }
+        if let value = dict["categories"] as? [Any?] {
+            var tmp : [PatchEventRequest.Categories] = []
+            for v in value {
+                if v != nil {
+                    var model = PatchEventRequest.Categories()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.categories = tmp
+        }
+        if let value = dict["freeBusyStatus"] as? String {
+            self.freeBusyStatus = value
+        }
+        if let value = dict["onlineMeetingInfo"] as? [String: Any?] {
+            var model = PatchEventRequest.OnlineMeetingInfo()
+            model.fromMap(value)
+            self.onlineMeetingInfo = model
+        }
+        if let value = dict["richTextDescription"] as? [String: Any?] {
+            var model = PatchEventRequest.RichTextDescription()
+            model.fromMap(value)
+            self.richTextDescription = model
+        }
+        if let value = dict["uiConfigs"] as? [Any?] {
+            var tmp : [PatchEventRequest.UiConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = PatchEventRequest.UiConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.uiConfigs = tmp
+        }
     }
 }
 
@@ -90027,6 +90253,16 @@ public class PatchEventShrinkRequest : Tea.TeaModel {
     public var startShrink: String?
 
     public var summary: String?
+
+    public var categoriesShrink: String?
+
+    public var freeBusyStatus: String?
+
+    public var onlineMeetingInfoShrink: String?
+
+    public var richTextDescriptionShrink: String?
+
+    public var uiConfigsShrink: String?
 
     public override init() {
         super.init()
@@ -90081,6 +90317,21 @@ public class PatchEventShrinkRequest : Tea.TeaModel {
         if self.summary != nil {
             map["Summary"] = self.summary!
         }
+        if self.categoriesShrink != nil {
+            map["categories"] = self.categoriesShrink!
+        }
+        if self.freeBusyStatus != nil {
+            map["freeBusyStatus"] = self.freeBusyStatus!
+        }
+        if self.onlineMeetingInfoShrink != nil {
+            map["onlineMeetingInfo"] = self.onlineMeetingInfoShrink!
+        }
+        if self.richTextDescriptionShrink != nil {
+            map["richTextDescription"] = self.richTextDescriptionShrink!
+        }
+        if self.uiConfigsShrink != nil {
+            map["uiConfigs"] = self.uiConfigsShrink!
+        }
         return map
     }
 
@@ -90124,6 +90375,21 @@ public class PatchEventShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Summary"] as? String {
             self.summary = value
+        }
+        if let value = dict["categories"] as? String {
+            self.categoriesShrink = value
+        }
+        if let value = dict["freeBusyStatus"] as? String {
+            self.freeBusyStatus = value
+        }
+        if let value = dict["onlineMeetingInfo"] as? String {
+            self.onlineMeetingInfoShrink = value
+        }
+        if let value = dict["richTextDescription"] as? String {
+            self.richTextDescriptionShrink = value
+        }
+        if let value = dict["uiConfigs"] as? String {
+            self.uiConfigsShrink = value
         }
     }
 }
@@ -90188,6 +90454,82 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
             if let value = dict["Self"] as? Bool {
                 self.self_ = value
+            }
+        }
+    }
+    public class CardInstances : Tea.TeaModel {
+        public var outTrackId: String?
+
+        public var scenario: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.outTrackId != nil {
+                map["outTrackId"] = self.outTrackId!
+            }
+            if self.scenario != nil {
+                map["scenario"] = self.scenario!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["outTrackId"] as? String {
+                self.outTrackId = value
+            }
+            if let value = dict["scenario"] as? String {
+                self.scenario = value
+            }
+        }
+    }
+    public class Categories : Tea.TeaModel {
+        public var categoryId: String?
+
+        public var displayName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.categoryId != nil {
+                map["categoryId"] = self.categoryId!
+            }
+            if self.displayName != nil {
+                map["displayName"] = self.displayName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["categoryId"] as? String {
+                self.categoryId = value
+            }
+            if let value = dict["displayName"] as? String {
+                self.displayName = value
             }
         }
     }
@@ -90272,6 +90614,52 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
             if let value = dict["MeetingRooms"] as? [String] {
                 self.meetingRooms = value
+            }
+        }
+    }
+    public class OnlineMeetingInfo : Tea.TeaModel {
+        public var conferenceId: String?
+
+        public var type: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conferenceId != nil {
+                map["conferenceId"] = self.conferenceId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.url != nil {
+                map["url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["conferenceId"] as? String {
+                self.conferenceId = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+            if let value = dict["url"] as? String {
+                self.url = value
             }
         }
     }
@@ -90519,6 +90907,36 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RichTextDescription : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["text"] as? String {
+                self.text = value
+            }
+        }
+    }
     public class Start : Tea.TeaModel {
         public var date: String?
 
@@ -90565,7 +90983,49 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class UiConfigs : Tea.TeaModel {
+        public var uiName: String?
+
+        public var uiStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.uiName != nil {
+                map["uiName"] = self.uiName!
+            }
+            if self.uiStatus != nil {
+                map["uiStatus"] = self.uiStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["uiName"] as? String {
+                self.uiName = value
+            }
+            if let value = dict["uiStatus"] as? String {
+                self.uiStatus = value
+            }
+        }
+    }
     public var attendees: [PatchEventResponseBody.Attendees]?
+
+    public var cardInstances: [PatchEventResponseBody.CardInstances]?
+
+    public var categories: [PatchEventResponseBody.Categories]?
 
     public var createTime: String?
 
@@ -90573,11 +91033,15 @@ public class PatchEventResponseBody : Tea.TeaModel {
 
     public var end: PatchEventResponseBody.End?
 
+    public var freeBusyStatus: String?
+
     public var id: String?
 
     public var isAllDay: Bool?
 
     public var location: PatchEventResponseBody.Location?
+
+    public var onlineMeetingInfo: PatchEventResponseBody.OnlineMeetingInfo?
 
     public var organizer: PatchEventResponseBody.Organizer?
 
@@ -90587,9 +91051,13 @@ public class PatchEventResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var richTextDescription: PatchEventResponseBody.RichTextDescription?
+
     public var start: PatchEventResponseBody.Start?
 
     public var summary: String?
+
+    public var uiConfigs: [PatchEventResponseBody.UiConfigs]?
 
     public var updateTime: String?
 
@@ -90605,8 +91073,10 @@ public class PatchEventResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.end?.validate()
         try self.location?.validate()
+        try self.onlineMeetingInfo?.validate()
         try self.organizer?.validate()
         try self.recurrence?.validate()
+        try self.richTextDescription?.validate()
         try self.start?.validate()
     }
 
@@ -90619,6 +91089,20 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
             map["attendees"] = tmp
         }
+        if self.cardInstances != nil {
+            var tmp : [Any] = []
+            for k in self.cardInstances! {
+                tmp.append(k.toMap())
+            }
+            map["cardInstances"] = tmp
+        }
+        if self.categories != nil {
+            var tmp : [Any] = []
+            for k in self.categories! {
+                tmp.append(k.toMap())
+            }
+            map["categories"] = tmp
+        }
         if self.createTime != nil {
             map["createTime"] = self.createTime!
         }
@@ -90628,6 +91112,9 @@ public class PatchEventResponseBody : Tea.TeaModel {
         if self.end != nil {
             map["end"] = self.end?.toMap()
         }
+        if self.freeBusyStatus != nil {
+            map["freeBusyStatus"] = self.freeBusyStatus!
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -90636,6 +91123,9 @@ public class PatchEventResponseBody : Tea.TeaModel {
         }
         if self.location != nil {
             map["location"] = self.location?.toMap()
+        }
+        if self.onlineMeetingInfo != nil {
+            map["onlineMeetingInfo"] = self.onlineMeetingInfo?.toMap()
         }
         if self.organizer != nil {
             map["organizer"] = self.organizer?.toMap()
@@ -90653,11 +91143,21 @@ public class PatchEventResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.richTextDescription != nil {
+            map["richTextDescription"] = self.richTextDescription?.toMap()
+        }
         if self.start != nil {
             map["start"] = self.start?.toMap()
         }
         if self.summary != nil {
             map["summary"] = self.summary!
+        }
+        if self.uiConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.uiConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["uiConfigs"] = tmp
         }
         if self.updateTime != nil {
             map["updateTime"] = self.updateTime!
@@ -90680,6 +91180,32 @@ public class PatchEventResponseBody : Tea.TeaModel {
             }
             self.attendees = tmp
         }
+        if let value = dict["cardInstances"] as? [Any?] {
+            var tmp : [PatchEventResponseBody.CardInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = PatchEventResponseBody.CardInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cardInstances = tmp
+        }
+        if let value = dict["categories"] as? [Any?] {
+            var tmp : [PatchEventResponseBody.Categories] = []
+            for v in value {
+                if v != nil {
+                    var model = PatchEventResponseBody.Categories()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.categories = tmp
+        }
         if let value = dict["createTime"] as? String {
             self.createTime = value
         }
@@ -90691,6 +91217,9 @@ public class PatchEventResponseBody : Tea.TeaModel {
             model.fromMap(value)
             self.end = model
         }
+        if let value = dict["freeBusyStatus"] as? String {
+            self.freeBusyStatus = value
+        }
         if let value = dict["id"] as? String {
             self.id = value
         }
@@ -90701,6 +91230,11 @@ public class PatchEventResponseBody : Tea.TeaModel {
             var model = PatchEventResponseBody.Location()
             model.fromMap(value)
             self.location = model
+        }
+        if let value = dict["onlineMeetingInfo"] as? [String: Any?] {
+            var model = PatchEventResponseBody.OnlineMeetingInfo()
+            model.fromMap(value)
+            self.onlineMeetingInfo = model
         }
         if let value = dict["organizer"] as? [String: Any?] {
             var model = PatchEventResponseBody.Organizer()
@@ -90728,6 +91262,11 @@ public class PatchEventResponseBody : Tea.TeaModel {
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["richTextDescription"] as? [String: Any?] {
+            var model = PatchEventResponseBody.RichTextDescription()
+            model.fromMap(value)
+            self.richTextDescription = model
+        }
         if let value = dict["start"] as? [String: Any?] {
             var model = PatchEventResponseBody.Start()
             model.fromMap(value)
@@ -90735,6 +91274,19 @@ public class PatchEventResponseBody : Tea.TeaModel {
         }
         if let value = dict["summary"] as? String {
             self.summary = value
+        }
+        if let value = dict["uiConfigs"] as? [Any?] {
+            var tmp : [PatchEventResponseBody.UiConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = PatchEventResponseBody.UiConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.uiConfigs = tmp
         }
         if let value = dict["updateTime"] as? String {
             self.updateTime = value
@@ -93737,8 +94289,6 @@ public class QueryDentriesInfoRequest : Tea.TeaModel {
 
     public var tenantContext: QueryDentriesInfoRequest.TenantContext?
 
-    public var unionId: String?
-
     public var withThumbnail: Bool?
 
     public override init() {
@@ -93768,9 +94318,6 @@ public class QueryDentriesInfoRequest : Tea.TeaModel {
         if self.tenantContext != nil {
             map["TenantContext"] = self.tenantContext?.toMap()
         }
-        if self.unionId != nil {
-            map["UnionId"] = self.unionId!
-        }
         if self.withThumbnail != nil {
             map["WithThumbnail"] = self.withThumbnail!
         }
@@ -93793,9 +94340,6 @@ public class QueryDentriesInfoRequest : Tea.TeaModel {
             model.fromMap(value)
             self.tenantContext = model
         }
-        if let value = dict["UnionId"] as? String {
-            self.unionId = value
-        }
         if let value = dict["WithThumbnail"] as? Bool {
             self.withThumbnail = value
         }
@@ -93810,8 +94354,6 @@ public class QueryDentriesInfoShrinkRequest : Tea.TeaModel {
     public var spaceId: String?
 
     public var tenantContextShrink: String?
-
-    public var unionId: String?
 
     public var withThumbnail: Bool?
 
@@ -93841,9 +94383,6 @@ public class QueryDentriesInfoShrinkRequest : Tea.TeaModel {
         if self.tenantContextShrink != nil {
             map["TenantContext"] = self.tenantContextShrink!
         }
-        if self.unionId != nil {
-            map["UnionId"] = self.unionId!
-        }
         if self.withThumbnail != nil {
             map["WithThumbnail"] = self.withThumbnail!
         }
@@ -93863,9 +94402,6 @@ public class QueryDentriesInfoShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TenantContext"] as? String {
             self.tenantContextShrink = value
-        }
-        if let value = dict["UnionId"] as? String {
-            self.unionId = value
         }
         if let value = dict["WithThumbnail"] as? Bool {
             self.withThumbnail = value
