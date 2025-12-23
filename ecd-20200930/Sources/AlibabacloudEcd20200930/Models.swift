@@ -28036,6 +28036,386 @@ public class DescribeDesktopInfoResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDesktopMetadataRequest : Tea.TeaModel {
+    public var creationTimeStart: String?
+
+    public var desktopIds: [String]?
+
+    public var groupId: String?
+
+    public var hostName: String?
+
+    public var imageId: String?
+
+    public var includeDesktopGroup: Bool?
+
+    public var keyword: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var officeSiteId: String?
+
+    public var operationTimeStart: String?
+
+    public var regionId: String?
+
+    public var searchRegionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creationTimeStart != nil {
+            map["CreationTimeStart"] = self.creationTimeStart!
+        }
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.includeDesktopGroup != nil {
+            map["IncludeDesktopGroup"] = self.includeDesktopGroup!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.operationTimeStart != nil {
+            map["OperationTimeStart"] = self.operationTimeStart!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.searchRegionId != nil {
+            map["SearchRegionId"] = self.searchRegionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreationTimeStart"] as? String {
+            self.creationTimeStart = value
+        }
+        if let value = dict["DesktopIds"] as? [String] {
+            self.desktopIds = value
+        }
+        if let value = dict["GroupId"] as? String {
+            self.groupId = value
+        }
+        if let value = dict["HostName"] as? String {
+            self.hostName = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["IncludeDesktopGroup"] as? Bool {
+            self.includeDesktopGroup = value
+        }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
+        if let value = dict["OperationTimeStart"] as? String {
+            self.operationTimeStart = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SearchRegionId"] as? String {
+            self.searchRegionId = value
+        }
+    }
+}
+
+public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
+    public class Desktops : Tea.TeaModel {
+        public var chargeType: String?
+
+        public var creationTime: String?
+
+        public var desktopGroupId: String?
+
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var desktopStatus: String?
+
+        public var expiredTime: String?
+
+        public var imageId: String?
+
+        public var localName: String?
+
+        public var managementFlags: [String]?
+
+        public var officeSiteId: String?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceGroupName: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.desktopGroupId != nil {
+                map["DesktopGroupId"] = self.desktopGroupId!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.desktopStatus != nil {
+                map["DesktopStatus"] = self.desktopStatus!
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.localName != nil {
+                map["LocalName"] = self.localName!
+            }
+            if self.managementFlags != nil {
+                map["ManagementFlags"] = self.managementFlags!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceGroupName != nil {
+                map["ResourceGroupName"] = self.resourceGroupName!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
+            }
+            if let value = dict["DesktopGroupId"] as? String {
+                self.desktopGroupId = value
+            }
+            if let value = dict["DesktopId"] as? String {
+                self.desktopId = value
+            }
+            if let value = dict["DesktopName"] as? String {
+                self.desktopName = value
+            }
+            if let value = dict["DesktopStatus"] as? String {
+                self.desktopStatus = value
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
+            }
+            if let value = dict["ImageId"] as? String {
+                self.imageId = value
+            }
+            if let value = dict["LocalName"] as? String {
+                self.localName = value
+            }
+            if let value = dict["ManagementFlags"] as? [String] {
+                self.managementFlags = value
+            }
+            if let value = dict["OfficeSiteId"] as? String {
+                self.officeSiteId = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["ResourceGroupName"] as? String {
+                self.resourceGroupName = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+        }
+    }
+    public var desktops: [DescribeDesktopMetadataResponseBody.Desktops]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktops != nil {
+            var tmp : [Any] = []
+            for k in self.desktops! {
+                tmp.append(k.toMap())
+            }
+            map["Desktops"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Desktops"] as? [Any?] {
+            var tmp : [DescribeDesktopMetadataResponseBody.Desktops] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDesktopMetadataResponseBody.Desktops()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.desktops = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeDesktopMetadataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDesktopMetadataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDesktopMetadataResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDesktopOversoldGroupRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
