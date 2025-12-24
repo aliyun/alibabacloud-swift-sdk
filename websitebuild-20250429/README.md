@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudWebsiteBuild20250429` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/websitebuild-20250429" "2.7.0"
+github "alibabacloud-sdk-swift/websitebuild-20250429" "2.7.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudWebsiteBuild20250429` into your Xcode project using [S
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/websitebuild-20250429.git", from: "2.7.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/websitebuild-20250429.git", from: "2.7.1")
 ]
 ```
 
