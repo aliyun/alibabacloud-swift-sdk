@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudHitsdb20200615"
-  spec.version      = "1.10.0"
+  spec.version      = "1.11.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Time  Series and Spatial-Temporal  Database (20200615) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/hitsdb-20200615" 
