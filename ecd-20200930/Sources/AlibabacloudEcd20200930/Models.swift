@@ -36444,6 +36444,8 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
 
     public var desktopIds: [String]?
 
+    public var displayResultName: String?
+
     public var groupId: String?
 
     public var maxResults: String?
@@ -36453,6 +36455,8 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resultCategory: String?
+
+    public var retryable: Bool?
 
     public var searchRegionId: String?
 
@@ -36480,6 +36484,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         if self.desktopIds != nil {
             map["DesktopIds"] = self.desktopIds!
         }
+        if self.displayResultName != nil {
+            map["DisplayResultName"] = self.displayResultName!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -36494,6 +36501,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         }
         if self.resultCategory != nil {
             map["ResultCategory"] = self.resultCategory!
+        }
+        if self.retryable != nil {
+            map["Retryable"] = self.retryable!
         }
         if self.searchRegionId != nil {
             map["SearchRegionId"] = self.searchRegionId!
@@ -36515,6 +36525,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         if let value = dict["DesktopIds"] as? [String] {
             self.desktopIds = value
         }
+        if let value = dict["DisplayResultName"] as? String {
+            self.displayResultName = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
         }
@@ -36529,6 +36542,9 @@ public class DescribeGlobalTimerRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["ResultCategory"] as? String {
             self.resultCategory = value
+        }
+        if let value = dict["Retryable"] as? Bool {
+            self.retryable = value
         }
         if let value = dict["SearchRegionId"] as? String {
             self.searchRegionId = value
@@ -36556,11 +36572,17 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
 
         public var desktopName: String?
 
+        public var displayResultName: String?
+
         public var finishTime: String?
 
         public var regionId: String?
 
+        public var retryable: Bool?
+
         public var timerGroupId: String?
+
+        public var timerRecordId: String?
 
         public var timerResult: String?
 
@@ -36598,14 +36620,23 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
             if self.desktopName != nil {
                 map["DesktopName"] = self.desktopName!
             }
+            if self.displayResultName != nil {
+                map["DisplayResultName"] = self.displayResultName!
+            }
             if self.finishTime != nil {
                 map["FinishTime"] = self.finishTime!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.retryable != nil {
+                map["Retryable"] = self.retryable!
+            }
             if self.timerGroupId != nil {
                 map["TimerGroupId"] = self.timerGroupId!
+            }
+            if self.timerRecordId != nil {
+                map["TimerRecordId"] = self.timerRecordId!
             }
             if self.timerResult != nil {
                 map["TimerResult"] = self.timerResult!
@@ -36636,14 +36667,23 @@ public class DescribeGlobalTimerRecordsResponseBody : Tea.TeaModel {
             if let value = dict["DesktopName"] as? String {
                 self.desktopName = value
             }
+            if let value = dict["DisplayResultName"] as? String {
+                self.displayResultName = value
+            }
             if let value = dict["FinishTime"] as? String {
                 self.finishTime = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
             }
+            if let value = dict["Retryable"] as? Bool {
+                self.retryable = value
+            }
             if let value = dict["TimerGroupId"] as? String {
                 self.timerGroupId = value
+            }
+            if let value = dict["TimerRecordId"] as? String {
+                self.timerRecordId = value
             }
             if let value = dict["TimerResult"] as? String {
                 self.timerResult = value
