@@ -1851,6 +1851,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.excessCapacityTerminationPolicy)) {
             query["ExcessCapacityTerminationPolicy"] = request.excessCapacityTerminationPolicy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.executionMode)) {
+            query["ExecutionMode"] = request.executionMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.hibernationOptionsConfigured)) {
             query["HibernationOptionsConfigured"] = request.hibernationOptionsConfigured!;
         }

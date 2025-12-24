@@ -7978,6 +7978,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
     public var excessCapacityTerminationPolicy: String?
 
+    public var executionMode: String?
+
     public var hibernationOptionsConfigured: Bool?
 
     public var launchTemplateConfig: [CreateAutoProvisioningGroupRequest.LaunchTemplateConfig]?
@@ -8076,6 +8078,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
         }
         if self.excessCapacityTerminationPolicy != nil {
             map["ExcessCapacityTerminationPolicy"] = self.excessCapacityTerminationPolicy!
+        }
+        if self.executionMode != nil {
+            map["ExecutionMode"] = self.executionMode!
         }
         if self.hibernationOptionsConfigured != nil {
             map["HibernationOptionsConfigured"] = self.hibernationOptionsConfigured!
@@ -8210,6 +8215,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ExcessCapacityTerminationPolicy"] as? String {
             self.excessCapacityTerminationPolicy = value
+        }
+        if let value = dict["ExecutionMode"] as? String {
+            self.executionMode = value
         }
         if let value = dict["HibernationOptionsConfigured"] as? Bool {
             self.hibernationOptionsConfigured = value
@@ -9483,6 +9491,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
     public var excessCapacityTerminationPolicy: String?
 
+    public var executionMode: String?
+
     public var hibernationOptionsConfigured: Bool?
 
     public var launchTemplateConfig: [CreateAutoProvisioningGroupShrinkRequest.LaunchTemplateConfig]?
@@ -9580,6 +9590,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
         }
         if self.excessCapacityTerminationPolicy != nil {
             map["ExcessCapacityTerminationPolicy"] = self.excessCapacityTerminationPolicy!
+        }
+        if self.executionMode != nil {
+            map["ExecutionMode"] = self.executionMode!
         }
         if self.hibernationOptionsConfigured != nil {
             map["HibernationOptionsConfigured"] = self.hibernationOptionsConfigured!
@@ -9714,6 +9727,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ExcessCapacityTerminationPolicy"] as? String {
             self.excessCapacityTerminationPolicy = value
+        }
+        if let value = dict["ExecutionMode"] as? String {
+            self.executionMode = value
         }
         if let value = dict["HibernationOptionsConfigured"] as? Bool {
             self.hibernationOptionsConfigured = value
