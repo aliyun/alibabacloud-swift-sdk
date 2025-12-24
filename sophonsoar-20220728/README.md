@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudSophonsoar20220728` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/sophonsoar-20220728" "3.0.0"
+github "alibabacloud-sdk-swift/sophonsoar-20220728" "4.0.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudSophonsoar20220728` into your Xcode project using [Swi
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/sophonsoar-20220728.git", from: "3.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/sophonsoar-20220728.git", from: "4.0.0")
 ]
 ```
 
