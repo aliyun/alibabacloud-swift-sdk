@@ -19156,6 +19156,8 @@ public class DescribeVServerGroupsResponse : Tea.TeaModel {
 }
 
 public class DescribeZonesRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -19180,6 +19182,9 @@ public class DescribeZonesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -19200,6 +19205,9 @@ public class DescribeZonesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
