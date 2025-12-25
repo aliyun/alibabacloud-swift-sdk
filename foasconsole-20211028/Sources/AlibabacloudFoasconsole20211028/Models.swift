@@ -2460,6 +2460,10 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceName: String?
+
+    public var namespaceName: String?
+
     public var pageIndex: Int32?
 
     public var pageSize: Int32?
@@ -2493,6 +2497,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -2525,6 +2535,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["NamespaceName"] as? String {
+            self.namespaceName = value
         }
         if let value = dict["PageIndex"] as? Int32 {
             self.pageIndex = value
@@ -2561,6 +2577,10 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceName: String?
+
+    public var namespaceName: String?
+
     public var pageIndex: Int32?
 
     public var pageSize: Int32?
@@ -2594,6 +2614,12 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -2622,6 +2648,12 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["NamespaceName"] as? String {
+            self.namespaceName = value
         }
         if let value = dict["PageIndex"] as? Int32 {
             self.pageIndex = value
@@ -3750,6 +3782,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var elastic: Bool?
 
+        public var elasticInstanceId: String?
+
         public var elasticOrderState: String?
 
         public var elasticResourceSpec: DescribeInstancesResponseBody.Instances.ElasticResourceSpec?
@@ -3853,6 +3887,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.elastic != nil {
                 map["Elastic"] = self.elastic!
+            }
+            if self.elasticInstanceId != nil {
+                map["ElasticInstanceId"] = self.elasticInstanceId!
             }
             if self.elasticOrderState != nil {
                 map["ElasticOrderState"] = self.elasticOrderState!
@@ -3988,6 +4025,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Elastic"] as? Bool {
                 self.elastic = value
+            }
+            if let value = dict["ElasticInstanceId"] as? String {
+                self.elasticInstanceId = value
             }
             if let value = dict["ElasticOrderState"] as? String {
                 self.elasticOrderState = value
@@ -7360,6 +7400,8 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
 
         public var isContractActivity: Bool?
 
+        public var lxRequestId: String?
+
         public var message: String?
 
         public var optionalPromotions: [QueryConvertInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
@@ -7403,6 +7445,9 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.isContractActivity != nil {
                 map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.lxRequestId != nil {
+                map["LxRequestId"] = self.lxRequestId!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -7454,6 +7499,9 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsContractActivity"] as? Bool {
                 self.isContractActivity = value
+            }
+            if let value = dict["LxRequestId"] as? String {
+                self.lxRequestId = value
             }
             if let value = dict["Message"] as? String {
                 self.message = value
@@ -7810,6 +7858,8 @@ public class QueryConvertPrepayInstancePriceResponseBody : Tea.TeaModel {
 
         public var isContractActivity: Bool?
 
+        public var lxRequestId: String?
+
         public var message: String?
 
         public var optionalPromotions: [QueryConvertPrepayInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
@@ -7853,6 +7903,9 @@ public class QueryConvertPrepayInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.isContractActivity != nil {
                 map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.lxRequestId != nil {
+                map["LxRequestId"] = self.lxRequestId!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -7904,6 +7957,9 @@ public class QueryConvertPrepayInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsContractActivity"] as? Bool {
                 self.isContractActivity = value
+            }
+            if let value = dict["LxRequestId"] as? String {
+                self.lxRequestId = value
             }
             if let value = dict["Message"] as? String {
                 self.message = value
@@ -8671,6 +8727,8 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
 
         public var isContractActivity: Bool?
 
+        public var lxRequestId: String?
+
         public var message: String?
 
         public var optionalPromotions: [QueryCreateInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
@@ -8714,6 +8772,9 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.isContractActivity != nil {
                 map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.lxRequestId != nil {
+                map["LxRequestId"] = self.lxRequestId!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -8765,6 +8826,9 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsContractActivity"] as? Bool {
                 self.isContractActivity = value
+            }
+            if let value = dict["LxRequestId"] as? String {
+                self.lxRequestId = value
             }
             if let value = dict["Message"] as? String {
                 self.message = value
@@ -9338,6 +9402,8 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
 
         public var isContractActivity: Bool?
 
+        public var lxRequestId: String?
+
         public var message: String?
 
         public var optionalPromotions: [QueryModifyInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
@@ -9381,6 +9447,9 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.isContractActivity != nil {
                 map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.lxRequestId != nil {
+                map["LxRequestId"] = self.lxRequestId!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -9432,6 +9501,9 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsContractActivity"] as? Bool {
                 self.isContractActivity = value
+            }
+            if let value = dict["LxRequestId"] as? String {
+                self.lxRequestId = value
             }
             if let value = dict["Message"] as? String {
                 self.message = value
@@ -9820,6 +9892,8 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
 
         public var isContractActivity: Bool?
 
+        public var lxRequestId: String?
+
         public var message: String?
 
         public var optionalPromotions: [QueryRenewInstancePriceResponseBody.PriceInfo.OptionalPromotions]?
@@ -9863,6 +9937,9 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
             }
             if self.isContractActivity != nil {
                 map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.lxRequestId != nil {
+                map["LxRequestId"] = self.lxRequestId!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -9914,6 +9991,9 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsContractActivity"] as? Bool {
                 self.isContractActivity = value
+            }
+            if let value = dict["LxRequestId"] as? String {
+                self.lxRequestId = value
             }
             if let value = dict["Message"] as? String {
                 self.message = value
