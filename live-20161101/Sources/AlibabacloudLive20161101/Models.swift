@@ -94615,6 +94615,8 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
 
             public var format: String?
 
+            public var sliceDuration: Int64?
+
             public var sliceNamePattern: String?
 
             public override init() {
@@ -94640,6 +94642,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
                 if self.format != nil {
                     map["Format"] = self.format!
                 }
+                if self.sliceDuration != nil {
+                    map["SliceDuration"] = self.sliceDuration!
+                }
                 if self.sliceNamePattern != nil {
                     map["SliceNamePattern"] = self.sliceNamePattern!
                 }
@@ -94656,6 +94661,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
                 }
                 if let value = dict["Format"] as? String {
                     self.format = value
+                }
+                if let value = dict["SliceDuration"] as? Int64 {
+                    self.sliceDuration = value
                 }
                 if let value = dict["SliceNamePattern"] as? String {
                     self.sliceNamePattern = value
