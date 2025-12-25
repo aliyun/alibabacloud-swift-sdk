@@ -165,6 +165,8 @@ public class BatchTranslateRequest : Tea.TeaModel {
 
         public var examples: [BatchTranslateRequest.Ext.Examples]?
 
+        public var paramMap: Any?
+
         public var sensitives: [String]?
 
         public var terminologies: [BatchTranslateRequest.Ext.Terminologies]?
@@ -199,6 +201,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -238,6 +243,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
@@ -3018,6 +3026,8 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
 
         public var domainHint: String?
 
+        public var paramMap: Any?
+
         public var terminologies: [SubmitDocTranslateTaskRequest.Ext.Terminologies]?
 
         public override init() {
@@ -3041,6 +3051,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
+            }
             if self.terminologies != nil {
                 var tmp : [Any] = []
                 for k in self.terminologies! {
@@ -3060,6 +3073,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
             }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["terminologies"] as? [Any?] {
                 var tmp : [SubmitDocTranslateTaskRequest.Ext.Terminologies] = []
@@ -3566,6 +3582,8 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
 
         public var examples: [SubmitHtmlTranslateTaskRequest.Ext.Examples]?
 
+        public var paramMap: Any?
+
         public var sensitives: [String]?
 
         public var terminologies: [SubmitHtmlTranslateTaskRequest.Ext.Terminologies]?
@@ -3600,6 +3618,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -3639,6 +3660,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
@@ -4113,6 +4137,8 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
 
         public var examples: [SubmitImageTranslateTaskRequest.Ext.Examples]?
 
+        public var paramMap: Any?
+
         public var sensitives: [String]?
 
         public var terminologies: [SubmitImageTranslateTaskRequest.Ext.Terminologies]?
@@ -4143,6 +4169,9 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -4177,6 +4206,9 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
@@ -4683,6 +4715,8 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
 
         public var examples: [SubmitLongTextTranslateTaskRequest.Ext.Examples]?
 
+        public var paramMap: Any?
+
         public var sensitives: [String]?
 
         public var terminologies: [SubmitLongTextTranslateTaskRequest.Ext.Terminologies]?
@@ -4717,6 +4751,9 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -4756,6 +4793,9 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
@@ -5150,6 +5190,8 @@ public class TermEditRequest : Tea.TeaModel {
                 }
             }
         }
+        public var paramMap: Any?
+
         public var terms: [TermEditRequest.Ext.Terms]?
 
         public override init() {
@@ -5166,6 +5208,9 @@ public class TermEditRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
+            }
             if self.terms != nil {
                 var tmp : [Any] = []
                 for k in self.terms! {
@@ -5178,6 +5223,9 @@ public class TermEditRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
+            }
             if let value = dict["terms"] as? [Any?] {
                 var tmp : [TermEditRequest.Ext.Terms] = []
                 for v in value {
@@ -5560,6 +5608,112 @@ public class TermEditResponse : Tea.TeaModel {
 }
 
 public class TermQueryRequest : Tea.TeaModel {
+    public class Ext : Tea.TeaModel {
+        public var paramMap: Any?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
+            }
+        }
+    }
+    public var ext: TermQueryRequest.Ext?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var text: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ext != nil {
+            map["ext"] = self.ext?.toMap()
+        }
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ext"] as? [String: Any?] {
+            var model = TermQueryRequest.Ext()
+            model.fromMap(value)
+            self.ext = model
+        }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["text"] as? String {
+            self.text = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class TermQueryShrinkRequest : Tea.TeaModel {
+    public var extShrink: String?
+
     public var scene: String?
 
     public var sourceLanguage: String?
@@ -5584,6 +5738,9 @@ public class TermQueryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.extShrink != nil {
+            map["ext"] = self.extShrink!
+        }
         if self.scene != nil {
             map["scene"] = self.scene!
         }
@@ -5604,6 +5761,9 @@ public class TermQueryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ext"] as? String {
+            self.extShrink = value
+        }
         if let value = dict["scene"] as? String {
             self.scene = value
         }
@@ -6006,6 +6166,8 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public var examples: [TextTranslateRequest.Ext.Examples]?
 
+        public var paramMap: Any?
+
         public var prefix_: String?
 
         public var sensitives: [String]?
@@ -6045,6 +6207,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.paramMap != nil {
+                map["paramMap"] = self.paramMap!
             }
             if self.prefix_ != nil {
                 map["prefix"] = self.prefix_!
@@ -6090,6 +6255,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["paramMap"] as? Any {
+                self.paramMap = value
             }
             if let value = dict["prefix"] as? String {
                 self.prefix_ = value

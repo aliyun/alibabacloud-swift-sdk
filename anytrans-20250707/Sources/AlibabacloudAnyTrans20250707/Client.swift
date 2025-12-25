@@ -572,9 +572,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func termQueryWithOptions(_ request: TermQueryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TermQueryResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func termQueryWithOptions(_ tmpReq: TermQueryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TermQueryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TermQueryShrinkRequest = TermQueryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "ext", "json")
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["ext"] = request.extShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scene)) {
             body["scene"] = request.scene ?? "";
         }
