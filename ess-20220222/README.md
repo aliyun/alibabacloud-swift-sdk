@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEss20220222` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ess-20220222" "1.26.0"
+github "alibabacloud-sdk-swift/ess-20220222" "1.27.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEss20220222` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ess-20220222.git", from: "1.26.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ess-20220222.git", from: "1.27.0")
 ]
 ```
 
