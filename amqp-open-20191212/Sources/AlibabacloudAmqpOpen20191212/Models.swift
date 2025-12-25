@@ -3997,6 +3997,8 @@ public class ListExchangesResponseBody : Tea.TeaModel {
 
             public var exchangeType: String?
 
+            public var internal_: Bool?
+
             public var name: String?
 
             public var VHostName: String?
@@ -4027,6 +4029,9 @@ public class ListExchangesResponseBody : Tea.TeaModel {
                 if self.exchangeType != nil {
                     map["ExchangeType"] = self.exchangeType!
                 }
+                if self.internal_ != nil {
+                    map["Internal"] = self.internal_!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -4049,6 +4054,9 @@ public class ListExchangesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ExchangeType"] as? String {
                     self.exchangeType = value
+                }
+                if let value = dict["Internal"] as? Bool {
+                    self.internal_ = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
