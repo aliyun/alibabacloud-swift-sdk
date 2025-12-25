@@ -1122,6 +1122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.needDesensitization)) {
             query["NeedDesensitization"] = request.needDesensitization!;
         }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.presencePenalty)) {
             query["PresencePenalty"] = request.presencePenalty ?? "";
         }

@@ -7869,6 +7869,8 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
 
     public var needDesensitization: Bool?
 
+    public var parameters: String?
+
     public var presencePenalty: String?
 
     public var responseFormat: String?
@@ -7953,6 +7955,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         }
         if self.needDesensitization != nil {
             map["NeedDesensitization"] = self.needDesensitization!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
         }
         if self.presencePenalty != nil {
             map["PresencePenalty"] = self.presencePenalty!
@@ -8043,6 +8048,9 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         if let value = dict["NeedDesensitization"] as? Bool {
             self.needDesensitization = value
         }
+        if let value = dict["Parameters"] as? String {
+            self.parameters = value
+        }
         if let value = dict["PresencePenalty"] as? String {
             self.presencePenalty = value
         }
@@ -8115,6 +8123,8 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
     public var model: String?
 
     public var needDesensitization: Bool?
+
+    public var parameters: String?
 
     public var presencePenalty: String?
 
@@ -8200,6 +8210,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         }
         if self.needDesensitization != nil {
             map["NeedDesensitization"] = self.needDesensitization!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
         }
         if self.presencePenalty != nil {
             map["PresencePenalty"] = self.presencePenalty!
@@ -8289,6 +8302,9 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NeedDesensitization"] as? Bool {
             self.needDesensitization = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parameters = value
         }
         if let value = dict["PresencePenalty"] as? String {
             self.presencePenalty = value
