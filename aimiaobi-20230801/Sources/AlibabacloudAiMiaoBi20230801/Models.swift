@@ -64701,6 +64701,8 @@ public class RunSummaryGenerateResponse : Tea.TeaModel {
 public class RunTextPolishingRequest : Tea.TeaModel {
     public var content: String?
 
+    public var originContent: String?
+
     public var prompt: String?
 
     public var workspaceId: String?
@@ -64722,6 +64724,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.originContent != nil {
+            map["OriginContent"] = self.originContent!
+        }
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
@@ -64735,6 +64740,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["OriginContent"] as? String {
+            self.originContent = value
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value

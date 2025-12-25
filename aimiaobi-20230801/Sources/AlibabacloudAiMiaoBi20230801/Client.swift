@@ -6988,6 +6988,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["Content"] = request.content ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originContent)) {
+            body["OriginContent"] = request.originContent ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             body["Prompt"] = request.prompt ?? "";
         }
