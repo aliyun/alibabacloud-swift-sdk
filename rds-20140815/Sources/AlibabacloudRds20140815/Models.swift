@@ -57238,6 +57238,8 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var attachedTime: String?
+
         public var category: String?
 
         public var creationTime: String?
@@ -57304,6 +57306,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attachedTime != nil {
+                map["AttachedTime"] = self.attachedTime!
+            }
             if self.category != nil {
                 map["Category"] = self.category!
             }
@@ -57391,6 +57396,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AttachedTime"] as? String {
+                self.attachedTime = value
+            }
             if let value = dict["Category"] as? String {
                 self.category = value
             }
@@ -90210,6 +90218,206 @@ public class ModifyParameterGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyParameterGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyRCDiskChargeTypeRequest : Tea.TeaModel {
+    public var autoRenew: String?
+
+    public var autoUseCoupon: Bool?
+
+    public var businessInfo: String?
+
+    public var clientToken: String?
+
+    public var instanceId: String?
+
+    public var payType: String?
+
+    public var promotionCode: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRenew"] as? String {
+            self.autoRenew = value
+        }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
+        if let value = dict["BusinessInfo"] as? String {
+            self.businessInfo = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ModifyRCDiskChargeTypeResponseBody : Tea.TeaModel {
+    public var chargeType: String?
+
+    public var expiredTime: [String]?
+
+    public var instanceIds: [String]?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.expiredTime != nil {
+            map["ExpiredTime"] = self.expiredTime!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["ExpiredTime"] as? [String] {
+            self.expiredTime = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyRCDiskChargeTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyRCDiskChargeTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyRCDiskChargeTypeResponseBody()
             model.fromMap(value)
             self.body = model
         }
