@@ -672,6 +672,10 @@ public class PushTask : Tea.TeaModel {
 
             public var slotType: String?
 
+            public var sound: String?
+
+            public var soundDuration: Int32?
+
             public var testMessage: Bool?
 
             public var uri: String?
@@ -732,6 +736,12 @@ public class PushTask : Tea.TeaModel {
                 if self.slotType != nil {
                     map["SlotType"] = self.slotType!
                 }
+                if self.sound != nil {
+                    map["Sound"] = self.sound!
+                }
+                if self.soundDuration != nil {
+                    map["SoundDuration"] = self.soundDuration!
+                }
                 if self.testMessage != nil {
                     map["TestMessage"] = self.testMessage!
                 }
@@ -784,6 +794,12 @@ public class PushTask : Tea.TeaModel {
                 }
                 if let value = dict["SlotType"] as? String {
                     self.slotType = value
+                }
+                if let value = dict["Sound"] as? String {
+                    self.sound = value
+                }
+                if let value = dict["SoundDuration"] as? Int32 {
+                    self.soundDuration = value
                 }
                 if let value = dict["TestMessage"] as? Bool {
                     self.testMessage = value
