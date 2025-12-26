@@ -2338,6 +2338,8 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var maxPrice: Double?
+
     public var networkStrategyType: String?
 
     public var officeSiteId: String?
@@ -2355,6 +2357,8 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
     public var serverInstanceType: String?
 
     public var serverPortRange: String?
+
+    public var subPayType: String?
 
     public var systemDiskCategory: String?
 
@@ -2416,6 +2420,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.maxPrice != nil {
+            map["MaxPrice"] = self.maxPrice!
+        }
         if self.networkStrategyType != nil {
             map["NetworkStrategyType"] = self.networkStrategyType!
         }
@@ -2442,6 +2449,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         }
         if self.serverPortRange != nil {
             map["ServerPortRange"] = self.serverPortRange!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
         }
         if self.systemDiskCategory != nil {
             map["SystemDiskCategory"] = self.systemDiskCategory!
@@ -2506,6 +2516,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
+        if let value = dict["MaxPrice"] as? Double {
+            self.maxPrice = value
+        }
         if let value = dict["NetworkStrategyType"] as? String {
             self.networkStrategyType = value
         }
@@ -2532,6 +2545,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         }
         if let value = dict["ServerPortRange"] as? String {
             self.serverPortRange = value
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
         }
         if let value = dict["SystemDiskCategory"] as? String {
             self.systemDiskCategory = value
@@ -11025,6 +11041,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var instanceInfoList: [ListWuyingServerResponseBody.WuyingServerList.InstanceInfoList]?
 
+        public var maxPrice: Double?
+
         public var networkInterfaceIp: String?
 
         public var officeSiteId: String?
@@ -11040,6 +11058,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var serverInstanceTypeInfo: ListWuyingServerResponseBody.WuyingServerList.ServerInstanceTypeInfo?
 
         public var status: String?
+
+        public var subPayType: String?
 
         public var systemDiskCategory: String?
 
@@ -11103,6 +11123,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
                 map["InstanceInfoList"] = tmp
             }
+            if self.maxPrice != nil {
+                map["MaxPrice"] = self.maxPrice!
+            }
             if self.networkInterfaceIp != nil {
                 map["NetworkInterfaceIp"] = self.networkInterfaceIp!
             }
@@ -11126,6 +11149,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
             }
             if self.systemDiskCategory != nil {
                 map["SystemDiskCategory"] = self.systemDiskCategory!
@@ -11197,6 +11223,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
                 self.instanceInfoList = tmp
             }
+            if let value = dict["MaxPrice"] as? Double {
+                self.maxPrice = value
+            }
             if let value = dict["NetworkInterfaceIp"] as? String {
                 self.networkInterfaceIp = value
             }
@@ -11222,6 +11251,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SubPayType"] as? String {
+                self.subPayType = value
             }
             if let value = dict["SystemDiskCategory"] as? String {
                 self.systemDiskCategory = value
