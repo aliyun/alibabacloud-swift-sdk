@@ -4645,6 +4645,8 @@ public class QuotaConfig : Tea.TeaModel {
 
     public var enablePreemptSubquotaWorkloads: Bool?
 
+    public var enableSelfQuotaPreemption: Bool?
+
     public var enableSubQuotaPreemption: Bool?
 
     public var eniCacheConfig: EniCacheConfig?
@@ -4702,6 +4704,9 @@ public class QuotaConfig : Tea.TeaModel {
         }
         if self.enablePreemptSubquotaWorkloads != nil {
             map["EnablePreemptSubquotaWorkloads"] = self.enablePreemptSubquotaWorkloads!
+        }
+        if self.enableSelfQuotaPreemption != nil {
+            map["EnableSelfQuotaPreemption"] = self.enableSelfQuotaPreemption!
         }
         if self.enableSubQuotaPreemption != nil {
             map["EnableSubQuotaPreemption"] = self.enableSubQuotaPreemption!
@@ -4761,6 +4766,9 @@ public class QuotaConfig : Tea.TeaModel {
         }
         if let value = dict["EnablePreemptSubquotaWorkloads"] as? Bool {
             self.enablePreemptSubquotaWorkloads = value
+        }
+        if let value = dict["EnableSelfQuotaPreemption"] as? Bool {
+            self.enableSelfQuotaPreemption = value
         }
         if let value = dict["EnableSubQuotaPreemption"] as? Bool {
             self.enableSubQuotaPreemption = value
