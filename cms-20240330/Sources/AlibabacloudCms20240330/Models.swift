@@ -12689,6 +12689,44 @@ public class CreatePrometheusVirtualInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateServiceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var attributes: String?
 
     public var description_: String?
@@ -12697,11 +12735,15 @@ public class CreateServiceRequest : Tea.TeaModel {
 
     public var pid: String?
 
+    public var resourceGroupId: String?
+
     public var serviceName: String?
 
     public var serviceStatus: String?
 
     public var serviceType: String?
+
+    public var tags: [CreateServiceRequest.Tags]?
 
     public override init() {
         super.init()
@@ -12729,6 +12771,9 @@ public class CreateServiceRequest : Tea.TeaModel {
         if self.pid != nil {
             map["pid"] = self.pid!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.serviceName != nil {
             map["serviceName"] = self.serviceName!
         }
@@ -12737,6 +12782,13 @@ public class CreateServiceRequest : Tea.TeaModel {
         }
         if self.serviceType != nil {
             map["serviceType"] = self.serviceType!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         return map
     }
@@ -12755,6 +12807,9 @@ public class CreateServiceRequest : Tea.TeaModel {
         if let value = dict["pid"] as? String {
             self.pid = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["serviceName"] as? String {
             self.serviceName = value
         }
@@ -12763,6 +12818,19 @@ public class CreateServiceRequest : Tea.TeaModel {
         }
         if let value = dict["serviceType"] as? String {
             self.serviceType = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [CreateServiceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateServiceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -20184,6 +20252,44 @@ public class GetPrometheusViewResponse : Tea.TeaModel {
 
 public class GetServiceResponseBody : Tea.TeaModel {
     public class Service : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var attributes: String?
 
         public var createTime: String?
@@ -20196,6 +20302,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var serviceId: String?
 
         public var serviceName: String?
@@ -20203,6 +20311,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
         public var serviceStatus: String?
 
         public var serviceType: String?
+
+        public var tags: [GetServiceResponseBody.Service.Tags]?
 
         public var workspace: String?
 
@@ -20238,6 +20348,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
             if self.serviceId != nil {
                 map["serviceId"] = self.serviceId!
             }
@@ -20249,6 +20362,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if self.serviceType != nil {
                 map["serviceType"] = self.serviceType!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
             }
             if self.workspace != nil {
                 map["workspace"] = self.workspace!
@@ -20276,6 +20396,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
             if let value = dict["regionId"] as? String {
                 self.regionId = value
             }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["serviceId"] as? String {
                 self.serviceId = value
             }
@@ -20287,6 +20410,19 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if let value = dict["serviceType"] as? String {
                 self.serviceType = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [GetServiceResponseBody.Service.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetServiceResponseBody.Service.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["workspace"] as? String {
                 self.workspace = value
@@ -30582,11 +30718,55 @@ public class ListPrometheusVirtualInstancesResponse : Tea.TeaModel {
 }
 
 public class ListServicesRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var maxResults: Int32?
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
+    public var serviceName: String?
+
     public var serviceType: String?
+
+    public var tags: [ListServicesRequest.Tags]?
 
     public override init() {
         super.init()
@@ -30608,8 +30788,21 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.serviceName != nil {
+            map["serviceName"] = self.serviceName!
+        }
         if self.serviceType != nil {
             map["serviceType"] = self.serviceType!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         return map
     }
@@ -30622,8 +30815,98 @@ public class ListServicesRequest : Tea.TeaModel {
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["serviceName"] as? String {
+            self.serviceName = value
+        }
         if let value = dict["serviceType"] as? String {
             self.serviceType = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [ListServicesRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = ListServicesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class ListServicesShrinkRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var resourceGroupId: String?
+
+    public var serviceName: String?
+
+    public var serviceType: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.serviceName != nil {
+            map["serviceName"] = self.serviceName!
+        }
+        if self.serviceType != nil {
+            map["serviceType"] = self.serviceType!
+        }
+        if self.tagsShrink != nil {
+            map["tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["serviceName"] as? String {
+            self.serviceName = value
+        }
+        if let value = dict["serviceType"] as? String {
+            self.serviceType = value
+        }
+        if let value = dict["tags"] as? String {
+            self.tagsShrink = value
         }
     }
 }
@@ -30639,6 +30922,8 @@ public class ListServicesResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var pid: String?
+
+        public var resourceGroupId: String?
 
         public var serviceId: String?
 
@@ -30679,6 +30964,9 @@ public class ListServicesResponseBody : Tea.TeaModel {
             if self.pid != nil {
                 map["pid"] = self.pid!
             }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
             if self.serviceId != nil {
                 map["serviceId"] = self.serviceId!
             }
@@ -30713,6 +31001,9 @@ public class ListServicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["pid"] as? String {
                 self.pid = value
+            }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["serviceId"] as? String {
                 self.serviceId = value
