@@ -479,6 +479,8 @@ public class SearchInfoRequest : Tea.TeaModel {
         }
     }
     public class WebFilters : Tea.TeaModel {
+        public var category: String?
+
         public var includeSites: [String]?
 
         public var query: String?
@@ -501,6 +503,9 @@ public class SearchInfoRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
             if self.includeSites != nil {
                 map["IncludeSites"] = self.includeSites!
             }
@@ -518,6 +523,9 @@ public class SearchInfoRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Category"] as? String {
+                self.category = value
+            }
             if let value = dict["IncludeSites"] as? [String] {
                 self.includeSites = value
             }
