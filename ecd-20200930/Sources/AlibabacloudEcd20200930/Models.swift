@@ -28233,6 +28233,8 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
 
         public var desktopStatus: String?
 
+        public var desktopType: String?
+
         public var expiredTime: String?
 
         public var imageId: String?
@@ -28241,7 +28243,11 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
 
         public var managementFlags: [String]?
 
+        public var memberEniIp: String?
+
         public var officeSiteId: String?
+
+        public var platform: String?
 
         public var regionId: String?
 
@@ -28283,6 +28289,9 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
             if self.desktopStatus != nil {
                 map["DesktopStatus"] = self.desktopStatus!
             }
+            if self.desktopType != nil {
+                map["DesktopType"] = self.desktopType!
+            }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
@@ -28295,8 +28304,14 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
             if self.managementFlags != nil {
                 map["ManagementFlags"] = self.managementFlags!
             }
+            if self.memberEniIp != nil {
+                map["MemberEniIp"] = self.memberEniIp!
+            }
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.platform != nil {
+                map["Platform"] = self.platform!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -28333,6 +28348,9 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
             if let value = dict["DesktopStatus"] as? String {
                 self.desktopStatus = value
             }
+            if let value = dict["DesktopType"] as? String {
+                self.desktopType = value
+            }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
             }
@@ -28345,8 +28363,14 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
             if let value = dict["ManagementFlags"] as? [String] {
                 self.managementFlags = value
             }
+            if let value = dict["MemberEniIp"] as? String {
+                self.memberEniIp = value
+            }
             if let value = dict["OfficeSiteId"] as? String {
                 self.officeSiteId = value
+            }
+            if let value = dict["Platform"] as? String {
+                self.platform = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
@@ -30058,6 +30082,8 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
 
         public var dataDiskSize: String?
 
+        public var description_: String?
+
         public var desktopTypeId: String?
 
         public var desktopTypeStatus: String?
@@ -30099,6 +30125,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if self.dataDiskSize != nil {
                 map["DataDiskSize"] = self.dataDiskSize!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.desktopTypeId != nil {
                 map["DesktopTypeId"] = self.desktopTypeId!
@@ -30143,6 +30172,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if let value = dict["DataDiskSize"] as? String {
                 self.dataDiskSize = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["DesktopTypeId"] as? String {
                 self.desktopTypeId = value
