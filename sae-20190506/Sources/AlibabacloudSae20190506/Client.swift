@@ -6064,6 +6064,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deploy)) {
             query["Deploy"] = request.deploy!;
         }
+        if (!TeaUtils.Client.isUnset(request.minReadyInstanceRatio)) {
+            query["MinReadyInstanceRatio"] = request.minReadyInstanceRatio!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minReadyInstances)) {
+            query["MinReadyInstances"] = request.minReadyInstances!;
+        }
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
         }

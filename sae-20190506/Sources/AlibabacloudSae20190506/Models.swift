@@ -27444,6 +27444,44 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var createTimeStamp: Int64?
 
             public var debugStatus: Bool?
@@ -27471,6 +27509,8 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
             public var packageVersion: String?
 
             public var sidecarContainersStatus: [DescribeApplicationInstancesResponseBody.Data.Instances.SidecarContainersStatus]?
+
+            public var tags: [DescribeApplicationInstancesResponseBody.Data.Instances.Tags]?
 
             public var timestamp: Int64?
 
@@ -27540,6 +27580,13 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
                     }
                     map["SidecarContainersStatus"] = tmp
                 }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
                 if self.timestamp != nil {
                     map["Timestamp"] = self.timestamp!
                 }
@@ -27608,6 +27655,19 @@ public class DescribeApplicationInstancesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.sidecarContainersStatus = tmp
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [DescribeApplicationInstancesResponseBody.Data.Instances.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationInstancesResponseBody.Data.Instances.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
                 }
                 if let value = dict["Timestamp"] as? Int64 {
                     self.timestamp = value
@@ -57284,6 +57344,10 @@ public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
 
     public var deploy: Bool?
 
+    public var minReadyInstanceRatio: Int32?
+
+    public var minReadyInstances: Int32?
+
     public var vSwitchId: String?
 
     public override init() {
@@ -57306,6 +57370,12 @@ public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
         if self.deploy != nil {
             map["Deploy"] = self.deploy!
         }
+        if self.minReadyInstanceRatio != nil {
+            map["MinReadyInstanceRatio"] = self.minReadyInstanceRatio!
+        }
+        if self.minReadyInstances != nil {
+            map["MinReadyInstances"] = self.minReadyInstances!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -57319,6 +57389,12 @@ public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
         }
         if let value = dict["Deploy"] as? Bool {
             self.deploy = value
+        }
+        if let value = dict["MinReadyInstanceRatio"] as? Int32 {
+            self.minReadyInstanceRatio = value
+        }
+        if let value = dict["MinReadyInstances"] as? Int32 {
+            self.minReadyInstances = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
