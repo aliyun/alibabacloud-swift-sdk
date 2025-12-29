@@ -4479,6 +4479,539 @@ public class ListHotlineTransferRegisterFileResponse : Tea.TeaModel {
     }
 }
 
+public class ListServiceInstanceForPageRequest : Tea.TeaModel {
+    public class Pager : Tea.TeaModel {
+        public var pageIndex: Int64?
+
+        public var pageSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageIndex != nil {
+                map["PageIndex"] = self.pageIndex!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PageIndex"] as? Int64 {
+                self.pageIndex = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var ownerId: Int64?
+
+    public var pager: ListServiceInstanceForPageRequest.Pager?
+
+    public var relationNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sceneId: Int64?
+
+    public var usageId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pager?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pager != nil {
+            map["Pager"] = self.pager?.toMap()
+        }
+        if self.relationNumber != nil {
+            map["RelationNumber"] = self.relationNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
+        if self.usageId != nil {
+            map["UsageId"] = self.usageId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Pager"] as? [String: Any?] {
+            var model = ListServiceInstanceForPageRequest.Pager()
+            model.fromMap(value)
+            self.pager = model
+        }
+        if let value = dict["RelationNumber"] as? String {
+            self.relationNumber = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SceneId"] as? Int64 {
+            self.sceneId = value
+        }
+        if let value = dict["UsageId"] as? Int64 {
+            self.usageId = value
+        }
+    }
+}
+
+public class ListServiceInstanceForPageShrinkRequest : Tea.TeaModel {
+    public var code: String?
+
+    public var ownerId: Int64?
+
+    public var pagerShrink: String?
+
+    public var relationNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sceneId: Int64?
+
+    public var usageId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pagerShrink != nil {
+            map["Pager"] = self.pagerShrink!
+        }
+        if self.relationNumber != nil {
+            map["RelationNumber"] = self.relationNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
+        if self.usageId != nil {
+            map["UsageId"] = self.usageId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Pager"] as? String {
+            self.pagerShrink = value
+        }
+        if let value = dict["RelationNumber"] as? String {
+            self.relationNumber = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SceneId"] as? Int64 {
+            self.sceneId = value
+        }
+        if let value = dict["UsageId"] as? Int64 {
+            self.usageId = value
+        }
+    }
+}
+
+public class ListServiceInstanceForPageResponseBody : Tea.TeaModel {
+    public class Model : Tea.TeaModel {
+        public class Records : Tea.TeaModel {
+            public var aliUid: Int64?
+
+            public var code: String?
+
+            public var gmtCreate: String?
+
+            public var instanceStatus: String?
+
+            public var name: String?
+
+            public var relationAvailableCount: Int64?
+
+            public var relationTotalCount: Int64?
+
+            public var sceneId: Int64?
+
+            public var sceneName: String?
+
+            public var status: String?
+
+            public var usageId: Int64?
+
+            public var usageName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliUid != nil {
+                    map["AliUid"] = self.aliUid!
+                }
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.instanceStatus != nil {
+                    map["InstanceStatus"] = self.instanceStatus!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.relationAvailableCount != nil {
+                    map["RelationAvailableCount"] = self.relationAvailableCount!
+                }
+                if self.relationTotalCount != nil {
+                    map["RelationTotalCount"] = self.relationTotalCount!
+                }
+                if self.sceneId != nil {
+                    map["SceneId"] = self.sceneId!
+                }
+                if self.sceneName != nil {
+                    map["SceneName"] = self.sceneName!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.usageId != nil {
+                    map["UsageId"] = self.usageId!
+                }
+                if self.usageName != nil {
+                    map["UsageName"] = self.usageName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AliUid"] as? Int64 {
+                    self.aliUid = value
+                }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["GmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["InstanceStatus"] as? String {
+                    self.instanceStatus = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["RelationAvailableCount"] as? Int64 {
+                    self.relationAvailableCount = value
+                }
+                if let value = dict["RelationTotalCount"] as? Int64 {
+                    self.relationTotalCount = value
+                }
+                if let value = dict["SceneId"] as? Int64 {
+                    self.sceneId = value
+                }
+                if let value = dict["SceneName"] as? String {
+                    self.sceneName = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["UsageId"] as? Int64 {
+                    self.usageId = value
+                }
+                if let value = dict["UsageName"] as? String {
+                    self.usageName = value
+                }
+            }
+        }
+        public var pageNo: Int64?
+
+        public var pageSize: Int64?
+
+        public var records: [ListServiceInstanceForPageResponseBody.Model.Records]?
+
+        public var totalCount: Int64?
+
+        public var totalPage: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNo != nil {
+                map["PageNo"] = self.pageNo!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.records != nil {
+                var tmp : [Any] = []
+                for k in self.records! {
+                    tmp.append(k.toMap())
+                }
+                map["Records"] = tmp
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            if self.totalPage != nil {
+                map["TotalPage"] = self.totalPage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PageNo"] as? Int64 {
+                self.pageNo = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["Records"] as? [Any?] {
+                var tmp : [ListServiceInstanceForPageResponseBody.Model.Records] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListServiceInstanceForPageResponseBody.Model.Records()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.records = tmp
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+            if let value = dict["TotalPage"] as? Int64 {
+                self.totalPage = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var model: ListServiceInstanceForPageResponseBody.Model?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.model?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.model != nil {
+            map["Model"] = self.model?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Model"] as? [String: Any?] {
+            var model = ListServiceInstanceForPageResponseBody.Model()
+            model.fromMap(value)
+            self.model = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListServiceInstanceForPageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListServiceInstanceForPageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListServiceInstanceForPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class PauseVideoFileRequest : Tea.TeaModel {
     public var callId: String?
 
