@@ -714,6 +714,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSortScriptWithOptions(_ appGroupIdentity: String, _ appVersionId: String, _ request: CreateSortScriptRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSortScriptResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scope)) {
             body["scope"] = request.scope ?? "";
         }
@@ -4198,9 +4201,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateSortScriptWithOptions(_ appGroupIdentity: String, _ appVersionId: String, _ scriptName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSortScriptResponse {
+    public func updateSortScriptWithOptions(_ appGroupIdentity: String, _ appVersionId: String, _ scriptName: String, _ request: UpdateSortScriptRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSortScriptResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateSortScript",
@@ -4218,10 +4227,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateSortScript(_ appGroupIdentity: String, _ appVersionId: String, _ scriptName: String) async throws -> UpdateSortScriptResponse {
+    public func updateSortScript(_ appGroupIdentity: String, _ appVersionId: String, _ scriptName: String, _ request: UpdateSortScriptRequest) async throws -> UpdateSortScriptResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateSortScriptWithOptions(appGroupIdentity as! String, appVersionId as! String, scriptName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateSortScriptWithOptions(appGroupIdentity as! String, appVersionId as! String, scriptName as! String, request as! UpdateSortScriptRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

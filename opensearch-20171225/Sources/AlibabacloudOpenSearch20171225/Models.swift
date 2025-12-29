@@ -8045,6 +8045,8 @@ public class CreateSecondRankResponse : Tea.TeaModel {
 }
 
 public class CreateSortScriptRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var scope: String?
 
     public var scriptName: String?
@@ -8065,6 +8067,9 @@ public class CreateSortScriptRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.scope != nil {
             map["scope"] = self.scope!
         }
@@ -8079,6 +8084,9 @@ public class CreateSortScriptRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["scope"] as? String {
             self.scope = value
         }
@@ -17346,6 +17354,8 @@ public class GetSortScriptResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var createTime: String?
 
+        public var description_: String?
+
         public var modifyTime: String?
 
         public var scope: String?
@@ -17373,6 +17383,9 @@ public class GetSortScriptResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
             }
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
             if self.modifyTime != nil {
                 map["modifyTime"] = self.modifyTime!
             }
@@ -17395,6 +17408,9 @@ public class GetSortScriptResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["createTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["description"] as? String {
+                self.description_ = value
             }
             if let value = dict["modifyTime"] as? String {
                 self.modifyTime = value
@@ -26755,7 +26771,39 @@ public class PushUserAnalyzerEntriesResponse : Tea.TeaModel {
 }
 
 public class ReleaseSortScriptResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var version: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["version"] as? Int64 {
+                self.version = value
+            }
+        }
+    }
     public var requestId: String?
+
+    public var result: ReleaseSortScriptResponseBody.Result?
 
     public override init() {
         super.init()
@@ -26767,12 +26815,16 @@ public class ReleaseSortScriptResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.result?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["result"] = self.result?.toMap()
         }
         return map
     }
@@ -26781,6 +26833,11 @@ public class ReleaseSortScriptResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["result"] as? [String: Any?] {
+            var model = ReleaseSortScriptResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
         }
     }
 }
@@ -30939,6 +30996,37 @@ public class UpdateSearchStrategyResponse : Tea.TeaModel {
             var model = UpdateSearchStrategyResponseBody()
             model.fromMap(value)
             self.body = model
+        }
+    }
+}
+
+public class UpdateSortScriptRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
     }
 }
