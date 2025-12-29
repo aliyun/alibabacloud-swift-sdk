@@ -25219,6 +25219,292 @@ public class InstallClusterAddonsResponse : Tea.TeaModel {
     }
 }
 
+public class InstallNodePoolComponentsRequest : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var customConfig: [String: String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customConfig != nil {
+                    map["customConfig"] = self.customConfig!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["customConfig"] as? [String: String] {
+                    self.customConfig = value
+                }
+            }
+        }
+        public var config: InstallNodePoolComponentsRequest.Components.Config?
+
+        public var name: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.config?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = InstallNodePoolComponentsRequest.Components.Config()
+                model.fromMap(value)
+                self.config = model
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public class RollingPolicy : Tea.TeaModel {
+        public var batchInterval: Int64?
+
+        public var maxParallelism: Int64?
+
+        public var pausePolicy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchInterval != nil {
+                map["batchInterval"] = self.batchInterval!
+            }
+            if self.maxParallelism != nil {
+                map["maxParallelism"] = self.maxParallelism!
+            }
+            if self.pausePolicy != nil {
+                map["pausePolicy"] = self.pausePolicy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["batchInterval"] as? Int64 {
+                self.batchInterval = value
+            }
+            if let value = dict["maxParallelism"] as? Int64 {
+                self.maxParallelism = value
+            }
+            if let value = dict["pausePolicy"] as? String {
+                self.pausePolicy = value
+            }
+        }
+    }
+    public var components: [InstallNodePoolComponentsRequest.Components]?
+
+    public var nodeNames: [String]?
+
+    public var rollingPolicy: InstallNodePoolComponentsRequest.RollingPolicy?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.rollingPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["components"] = tmp
+        }
+        if self.nodeNames != nil {
+            map["nodeNames"] = self.nodeNames!
+        }
+        if self.rollingPolicy != nil {
+            map["rollingPolicy"] = self.rollingPolicy?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["components"] as? [Any?] {
+            var tmp : [InstallNodePoolComponentsRequest.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = InstallNodePoolComponentsRequest.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
+        if let value = dict["nodeNames"] as? [String] {
+            self.nodeNames = value
+        }
+        if let value = dict["rollingPolicy"] as? [String: Any?] {
+            var model = InstallNodePoolComponentsRequest.RollingPolicy()
+            model.fromMap(value)
+            self.rollingPolicy = model
+        }
+    }
+}
+
+public class InstallNodePoolComponentsResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["clusterId"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class InstallNodePoolComponentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InstallNodePoolComponentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InstallNodePoolComponentsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAddonsRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -33584,6 +33870,256 @@ public class UpdateK8sClusterUserConfigExpireResponse : Tea.TeaModel {
         }
         if let value = dict["statusCode"] as? Int32 {
             self.statusCode = value
+        }
+    }
+}
+
+public class UpdateNodePoolComponentRequest : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var customConfig: [String: String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customConfig != nil {
+                map["customConfig"] = self.customConfig!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["customConfig"] as? [String: String] {
+                self.customConfig = value
+            }
+        }
+    }
+    public class RollingPolicy : Tea.TeaModel {
+        public var batchInterval: Int64?
+
+        public var maxParallelism: Int64?
+
+        public var pausePolicy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.batchInterval != nil {
+                map["batchInterval"] = self.batchInterval!
+            }
+            if self.maxParallelism != nil {
+                map["maxParallelism"] = self.maxParallelism!
+            }
+            if self.pausePolicy != nil {
+                map["pausePolicy"] = self.pausePolicy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["batchInterval"] as? Int64 {
+                self.batchInterval = value
+            }
+            if let value = dict["maxParallelism"] as? Int64 {
+                self.maxParallelism = value
+            }
+            if let value = dict["pausePolicy"] as? String {
+                self.pausePolicy = value
+            }
+        }
+    }
+    public var config: UpdateNodePoolComponentRequest.Config?
+
+    public var disableRolling: Bool?
+
+    public var name: String?
+
+    public var nodeNames: [String]?
+
+    public var rollingPolicy: UpdateNodePoolComponentRequest.RollingPolicy?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+        try self.rollingPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["config"] = self.config?.toMap()
+        }
+        if self.disableRolling != nil {
+            map["disableRolling"] = self.disableRolling!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.nodeNames != nil {
+            map["nodeNames"] = self.nodeNames!
+        }
+        if self.rollingPolicy != nil {
+            map["rollingPolicy"] = self.rollingPolicy?.toMap()
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["config"] as? [String: Any?] {
+            var model = UpdateNodePoolComponentRequest.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["disableRolling"] as? Bool {
+            self.disableRolling = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["nodeNames"] as? [String] {
+            self.nodeNames = value
+        }
+        if let value = dict["rollingPolicy"] as? [String: Any?] {
+            var model = UpdateNodePoolComponentRequest.RollingPolicy()
+            model.fromMap(value)
+            self.rollingPolicy = model
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+    }
+}
+
+public class UpdateNodePoolComponentResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["clusterId"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["taskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class UpdateNodePoolComponentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateNodePoolComponentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateNodePoolComponentResponseBody()
+            model.fromMap(value)
+            self.body = model
         }
     }
 }
