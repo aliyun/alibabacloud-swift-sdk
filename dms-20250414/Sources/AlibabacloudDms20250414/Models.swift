@@ -12013,6 +12013,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
         public var language: String?
 
+        public var reportWaterMark: String?
+
         public override init() {
             super.init()
         }
@@ -12036,6 +12038,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.reportWaterMark != nil {
+                map["ReportWaterMark"] = self.reportWaterMark!
+            }
             return map
         }
 
@@ -12049,6 +12054,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
             }
             if let value = dict["Language"] as? String {
                 self.language = value
+            }
+            if let value = dict["ReportWaterMark"] as? String {
+                self.reportWaterMark = value
             }
         }
     }
