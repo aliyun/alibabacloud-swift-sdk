@@ -64705,6 +64705,8 @@ public class RunTextPolishingRequest : Tea.TeaModel {
 
     public var prompt: String?
 
+    public var taskId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -64730,6 +64732,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -64746,6 +64751,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
