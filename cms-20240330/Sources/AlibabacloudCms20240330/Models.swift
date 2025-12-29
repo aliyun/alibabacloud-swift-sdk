@@ -14230,8 +14230,6 @@ public class DeleteServiceResponse : Tea.TeaModel {
 }
 
 public class DeleteThreadResponseBody : Tea.TeaModel {
-    public var deleted: Bool?
-
     public var requestId: String?
 
     public override init() {
@@ -14248,9 +14246,6 @@ public class DeleteThreadResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.deleted != nil {
-            map["deleted"] = self.deleted!
-        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -14259,9 +14254,6 @@ public class DeleteThreadResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["deleted"] as? Bool {
-            self.deleted = value
-        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
