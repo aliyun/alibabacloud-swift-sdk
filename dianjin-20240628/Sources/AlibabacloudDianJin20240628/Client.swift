@@ -627,6 +627,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dashscopeAsyncTaskFinishEventWithOptions(_ workspaceId: String, _ request: DashscopeAsyncTaskFinishEventRequest, _ headers: DashscopeAsyncTaskFinishEventHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DashscopeAsyncTaskFinishEventResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.body)) {
+            body["body"] = request.body ?? [:];
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DashscopeAsyncTaskFinishEvent",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/event/dashscopeAsyncTaskFinish",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DashscopeAsyncTaskFinishEventResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dashscopeAsyncTaskFinishEvent(_ workspaceId: String, _ request: DashscopeAsyncTaskFinishEventRequest) async throws -> DashscopeAsyncTaskFinishEventResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DashscopeAsyncTaskFinishEventHeaders = DashscopeAsyncTaskFinishEventHeaders([:])
+        return try await dashscopeAsyncTaskFinishEventWithOptions(workspaceId as! String, request as! DashscopeAsyncTaskFinishEventRequest, headers as! DashscopeAsyncTaskFinishEventHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteDocumentWithOptions(_ workspaceId: String, _ request: DeleteDocumentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDocumentResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
