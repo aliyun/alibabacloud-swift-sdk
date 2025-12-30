@@ -1452,8 +1452,20 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listHyperNodesWithOptions(_ request: ListHyperNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHyperNodesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listHyperNodesWithOptions(_ tmpReq: ListHyperNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHyperNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListHyperNodesShrinkRequest = ListHyperNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.operatingStates)) {
+            request.operatingStatesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operatingStates, "OperatingStates", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["CommodityCode"] = request.commodityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatingStatesShrink)) {
+            query["OperatingStates"] = request.operatingStatesShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clusterName)) {
             body["ClusterName"] = request.clusterName ?? "";
@@ -1486,6 +1498,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["ZoneId"] = request.zoneId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

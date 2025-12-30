@@ -12962,6 +12962,8 @@ public class ListHyperNodesRequest : Tea.TeaModel {
     }
     public var clusterName: String?
 
+    public var commodityCode: String?
+
     public var hpnZone: String?
 
     public var hyperNodeId: String?
@@ -12973,6 +12975,8 @@ public class ListHyperNodesRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var nodeGroupName: String?
+
+    public var operatingStates: [String]?
 
     public var resourceGroupId: String?
 
@@ -12997,6 +13001,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         if self.clusterName != nil {
             map["ClusterName"] = self.clusterName!
         }
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
         if self.hpnZone != nil {
             map["HpnZone"] = self.hpnZone!
         }
@@ -13014,6 +13021,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         }
         if self.nodeGroupName != nil {
             map["NodeGroupName"] = self.nodeGroupName!
+        }
+        if self.operatingStates != nil {
+            map["OperatingStates"] = self.operatingStates!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -13036,6 +13046,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         if let value = dict["ClusterName"] as? String {
             self.clusterName = value
         }
+        if let value = dict["CommodityCode"] as? String {
+            self.commodityCode = value
+        }
         if let value = dict["HpnZone"] as? String {
             self.hpnZone = value
         }
@@ -13054,6 +13067,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         if let value = dict["NodeGroupName"] as? String {
             self.nodeGroupName = value
         }
+        if let value = dict["OperatingStates"] as? [String] {
+            self.operatingStates = value
+        }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
@@ -13062,6 +13078,177 @@ public class ListHyperNodesRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = ListHyperNodesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class ListHyperNodesShrinkRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clusterName: String?
+
+    public var commodityCode: String?
+
+    public var hpnZone: String?
+
+    public var hyperNodeId: String?
+
+    public var machineType: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nodeGroupName: String?
+
+    public var operatingStatesShrink: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [ListHyperNodesShrinkRequest.Tags]?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
+        }
+        if self.hyperNodeId != nil {
+            map["HyperNodeId"] = self.hyperNodeId!
+        }
+        if self.machineType != nil {
+            map["MachineType"] = self.machineType!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nodeGroupName != nil {
+            map["NodeGroupName"] = self.nodeGroupName!
+        }
+        if self.operatingStatesShrink != nil {
+            map["OperatingStates"] = self.operatingStatesShrink!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["CommodityCode"] as? String {
+            self.commodityCode = value
+        }
+        if let value = dict["HpnZone"] as? String {
+            self.hpnZone = value
+        }
+        if let value = dict["HyperNodeId"] as? String {
+            self.hyperNodeId = value
+        }
+        if let value = dict["MachineType"] as? String {
+            self.machineType = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NodeGroupName"] as? String {
+            self.nodeGroupName = value
+        }
+        if let value = dict["OperatingStates"] as? String {
+            self.operatingStatesShrink = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [ListHyperNodesShrinkRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = ListHyperNodesShrinkRequest.Tags()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
