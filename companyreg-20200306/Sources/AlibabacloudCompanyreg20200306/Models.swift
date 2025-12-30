@@ -6476,6 +6476,8 @@ public class SubmitIntentionForPartnerRequest : Tea.TeaModel {
 public class SubmitIntentionForPartnerResponseBody : Tea.TeaModel {
     public var errorMsg: String?
 
+    public var extInfo: String?
+
     public var intentionBizId: String?
 
     public var requestId: String?
@@ -6499,6 +6501,9 @@ public class SubmitIntentionForPartnerResponseBody : Tea.TeaModel {
         if self.errorMsg != nil {
             map["ErrorMsg"] = self.errorMsg!
         }
+        if self.extInfo != nil {
+            map["ExtInfo"] = self.extInfo!
+        }
         if self.intentionBizId != nil {
             map["IntentionBizId"] = self.intentionBizId!
         }
@@ -6515,6 +6520,9 @@ public class SubmitIntentionForPartnerResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ErrorMsg"] as? String {
             self.errorMsg = value
+        }
+        if let value = dict["ExtInfo"] as? String {
+            self.extInfo = value
         }
         if let value = dict["IntentionBizId"] as? String {
             self.intentionBizId = value
