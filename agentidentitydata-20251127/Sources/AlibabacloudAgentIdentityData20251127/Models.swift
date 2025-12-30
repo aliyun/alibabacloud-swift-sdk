@@ -6,7 +6,7 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class AssumeRoleForWorkloadIdentityRequest : Tea.TeaModel {
-    public var durationSeconds: String?
+    public var durationSeconds: Int64?
 
     public var policy: String?
 
@@ -45,7 +45,7 @@ public class AssumeRoleForWorkloadIdentityRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["DurationSeconds"] as? String {
+        if let value = dict["DurationSeconds"] as? Int64 {
             self.durationSeconds = value
         }
         if let value = dict["Policy"] as? String {

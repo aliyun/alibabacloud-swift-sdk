@@ -28,7 +28,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.durationSeconds)) {
-            body["DurationSeconds"] = request.durationSeconds ?? "";
+            body["DurationSeconds"] = request.durationSeconds!;
         }
         if (!TeaUtils.Client.isUnset(request.policy)) {
             body["Policy"] = request.policy ?? "";
