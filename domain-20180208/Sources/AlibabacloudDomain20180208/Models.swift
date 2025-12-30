@@ -6468,6 +6468,10 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
 
         public var freezeAmount: Double?
 
+        public var icpNumber: String?
+
+        public var icpStatus: Bool?
+
         public var introduction: String?
 
         public var isPremium: Bool?
@@ -6586,6 +6590,12 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
             }
             if self.freezeAmount != nil {
                 map["FreezeAmount"] = self.freezeAmount!
+            }
+            if self.icpNumber != nil {
+                map["IcpNumber"] = self.icpNumber!
+            }
+            if self.icpStatus != nil {
+                map["IcpStatus"] = self.icpStatus!
             }
             if self.introduction != nil {
                 map["Introduction"] = self.introduction!
@@ -6717,6 +6727,12 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
             }
             if let value = dict["FreezeAmount"] as? Double {
                 self.freezeAmount = value
+            }
+            if let value = dict["IcpNumber"] as? String {
+                self.icpNumber = value
+            }
+            if let value = dict["IcpStatus"] as? Bool {
+                self.icpStatus = value
             }
             if let value = dict["Introduction"] as? String {
                 self.introduction = value
