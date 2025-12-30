@@ -783,6 +783,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addRspDomainServerHoldStatusForGatewayWithOptions(_ request: AddRspDomainServerHoldStatusForGatewayRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddRspDomainServerHoldStatusForGatewayResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusMsg)) {
+            query["StatusMsg"] = request.statusMsg ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddRspDomainServerHoldStatusForGateway",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddRspDomainServerHoldStatusForGatewayResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addRspDomainServerHoldStatusForGateway(_ request: AddRspDomainServerHoldStatusForGatewayRequest) async throws -> AddRspDomainServerHoldStatusForGatewayResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addRspDomainServerHoldStatusForGatewayWithOptions(request as! AddRspDomainServerHoldStatusForGatewayRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func bindInstanceDomainsWithOptions(_ request: BindInstanceDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindInstanceDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
