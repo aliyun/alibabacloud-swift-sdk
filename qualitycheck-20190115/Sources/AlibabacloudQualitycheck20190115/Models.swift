@@ -14757,6 +14757,8 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var comment: String?
+
                     public var hitId: String?
 
                     public var reviewResult: Int32?
@@ -14784,6 +14786,9 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.comment != nil {
+                            map["Comment"] = self.comment!
+                        }
                         if self.hitId != nil {
                             map["HitId"] = self.hitId!
                         }
@@ -14807,6 +14812,9 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["Comment"] as? String {
+                            self.comment = value
+                        }
                         if let value = dict["HitId"] as? String {
                             self.hitId = value
                         }
