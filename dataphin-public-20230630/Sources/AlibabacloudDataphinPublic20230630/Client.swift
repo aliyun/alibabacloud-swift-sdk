@@ -712,6 +712,47 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createBizMetricWithOptions(_ tmpReq: CreateBizMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBizMetricResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateBizMetricShrinkRequest = CreateBizMetricShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.createBizMetricCommand)) {
+            request.createBizMetricCommandShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.createBizMetricCommand, "CreateBizMetricCommand", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createBizMetricCommandShrink)) {
+            body["CreateBizMetricCommand"] = request.createBizMetricCommandShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateBizMetric",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateBizMetricResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createBizMetric(_ request: CreateBizMetricRequest) async throws -> CreateBizMetricResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createBizMetricWithOptions(request as! CreateBizMetricRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createBizUnitWithOptions(_ tmpReq: CreateBizUnitRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBizUnitResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateBizUnitShrinkRequest = CreateBizUnitShrinkRequest([:])
@@ -1457,6 +1498,47 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteBizEntity(_ request: DeleteBizEntityRequest) async throws -> DeleteBizEntityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteBizEntityWithOptions(request as! DeleteBizEntityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBizMetricWithOptions(_ tmpReq: DeleteBizMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBizMetricResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteBizMetricShrinkRequest = DeleteBizMetricShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.deleteBizMetricCommand)) {
+            request.deleteBizMetricCommandShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deleteBizMetricCommand, "DeleteBizMetricCommand", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteBizMetricCommandShrink)) {
+            body["DeleteBizMetricCommand"] = request.deleteBizMetricCommandShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteBizMetric",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteBizMetricResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBizMetric(_ request: DeleteBizMetricRequest) async throws -> DeleteBizMetricResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteBizMetricWithOptions(request as! DeleteBizMetricRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2397,6 +2479,47 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBizMetricByNameWithOptions(_ tmpReq: GetBizMetricByNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBizMetricByNameResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetBizMetricByNameShrinkRequest = GetBizMetricByNameShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.bizMetricByNameQuery)) {
+            request.bizMetricByNameQueryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bizMetricByNameQuery, "BizMetricByNameQuery", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizMetricByNameQueryShrink)) {
+            body["BizMetricByNameQuery"] = request.bizMetricByNameQueryShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBizMetricByName",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBizMetricByNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBizMetricByName(_ request: GetBizMetricByNameRequest) async throws -> GetBizMetricByNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getBizMetricByNameWithOptions(request as! GetBizMetricByNameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getBizUnitInfoWithOptions(_ request: GetBizUnitInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBizUnitInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2428,6 +2551,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getBizUnitInfo(_ request: GetBizUnitInfoRequest) async throws -> GetBizUnitInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getBizUnitInfoWithOptions(request as! GetBizUnitInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCheckConnectivityJobsWithOptions(_ request: GetCheckConnectivityJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCheckConnectivityJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataSourceId)) {
+            query["DataSourceId"] = request.dataSourceId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCheckConnectivityJobs",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCheckConnectivityJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCheckConnectivityJobs(_ request: GetCheckConnectivityJobsRequest) async throws -> GetCheckConnectivityJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCheckConnectivityJobsWithOptions(request as! GetCheckConnectivityJobsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7041,6 +7198,47 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateBizEntity(_ request: UpdateBizEntityRequest) async throws -> UpdateBizEntityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateBizEntityWithOptions(request as! UpdateBizEntityRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateBizMetricWithOptions(_ tmpReq: UpdateBizMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateBizMetricResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateBizMetricShrinkRequest = UpdateBizMetricShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.updateBizMetricCommand)) {
+            request.updateBizMetricCommandShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.updateBizMetricCommand, "UpdateBizMetricCommand", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.updateBizMetricCommandShrink)) {
+            body["UpdateBizMetricCommand"] = request.updateBizMetricCommandShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateBizMetric",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateBizMetricResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateBizMetric(_ request: UpdateBizMetricRequest) async throws -> UpdateBizMetricResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateBizMetricWithOptions(request as! UpdateBizMetricRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
