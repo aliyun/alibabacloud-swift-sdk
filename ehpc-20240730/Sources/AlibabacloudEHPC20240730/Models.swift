@@ -2620,6 +2620,8 @@ public class CreateNodesRequest : Tea.TeaModel {
 
     public var hostnameSuffix: String?
 
+    public var hostnames: [String]?
+
     public var keepAlive: String?
 
     public var queueName: String?
@@ -2666,6 +2668,9 @@ public class CreateNodesRequest : Tea.TeaModel {
         if self.hostnameSuffix != nil {
             map["HostnameSuffix"] = self.hostnameSuffix!
         }
+        if self.hostnames != nil {
+            map["Hostnames"] = self.hostnames!
+        }
         if self.keepAlive != nil {
             map["KeepAlive"] = self.keepAlive!
         }
@@ -2709,6 +2714,9 @@ public class CreateNodesRequest : Tea.TeaModel {
         if let value = dict["HostnameSuffix"] as? String {
             self.hostnameSuffix = value
         }
+        if let value = dict["Hostnames"] as? [String] {
+            self.hostnames = value
+        }
         if let value = dict["KeepAlive"] as? String {
             self.keepAlive = value
         }
@@ -2741,6 +2749,8 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
     public var hostnamePrefix: String?
 
     public var hostnameSuffix: String?
+
+    public var hostnamesShrink: String?
 
     public var keepAlive: String?
 
@@ -2787,6 +2797,9 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
         if self.hostnameSuffix != nil {
             map["HostnameSuffix"] = self.hostnameSuffix!
         }
+        if self.hostnamesShrink != nil {
+            map["Hostnames"] = self.hostnamesShrink!
+        }
         if self.keepAlive != nil {
             map["KeepAlive"] = self.keepAlive!
         }
@@ -2827,6 +2840,9 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["HostnameSuffix"] as? String {
             self.hostnameSuffix = value
+        }
+        if let value = dict["Hostnames"] as? String {
+            self.hostnamesShrink = value
         }
         if let value = dict["KeepAlive"] as? String {
             self.keepAlive = value
@@ -5898,6 +5914,8 @@ public class GetClusterResponseBody : Tea.TeaModel {
         }
     }
     public class SchedulerSpec : Tea.TeaModel {
+        public var enablePowerSaving: Bool?
+
         public var enableTopologyAwareness: Bool?
 
         public override init() {
@@ -5914,6 +5932,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enablePowerSaving != nil {
+                map["EnablePowerSaving"] = self.enablePowerSaving!
+            }
             if self.enableTopologyAwareness != nil {
                 map["EnableTopologyAwareness"] = self.enableTopologyAwareness!
             }
@@ -5922,6 +5943,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnablePowerSaving"] as? Bool {
+                self.enablePowerSaving = value
+            }
             if let value = dict["EnableTopologyAwareness"] as? Bool {
                 self.enableTopologyAwareness = value
             }

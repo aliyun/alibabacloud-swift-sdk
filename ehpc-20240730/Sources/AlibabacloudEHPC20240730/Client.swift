@@ -271,6 +271,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.computeNode)) {
             request.computeNodeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.computeNode, "ComputeNode", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.hostnames)) {
+            request.hostnamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hostnames, "Hostnames", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
@@ -292,6 +295,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.hostnameSuffix)) {
             query["HostnameSuffix"] = request.hostnameSuffix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hostnamesShrink)) {
+            query["Hostnames"] = request.hostnamesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keepAlive)) {
             query["KeepAlive"] = request.keepAlive ?? "";
