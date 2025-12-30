@@ -1957,6 +1957,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.priorityForwardConfigs)) {
+            query["PriorityForwardConfigs"] = request.priorityForwardConfigs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             query["RuleId"] = request.ruleId ?? "";
         }

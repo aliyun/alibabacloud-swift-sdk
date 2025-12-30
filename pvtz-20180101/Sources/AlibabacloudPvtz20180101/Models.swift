@@ -5737,6 +5737,68 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PriorityForwardConfigs : Tea.TeaModel {
+            public var alidnsServiceAddresses: [String]?
+
+            public var customAddresses: [String]?
+
+            public var enableStatus: String?
+
+            public var priority: Int32?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alidnsServiceAddresses != nil {
+                    map["AlidnsServiceAddresses"] = self.alidnsServiceAddresses!
+                }
+                if self.customAddresses != nil {
+                    map["CustomAddresses"] = self.customAddresses!
+                }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AlidnsServiceAddresses"] as? [String] {
+                    self.alidnsServiceAddresses = value
+                }
+                if let value = dict["CustomAddresses"] as? [String] {
+                    self.customAddresses = value
+                }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
         public var bindEdgeDnsClusters: [DescribeResolverRulesResponseBody.Rules.BindEdgeDnsClusters]?
 
         public var bindVpcs: [DescribeResolverRulesResponseBody.Rules.BindVpcs]?
@@ -5754,6 +5816,8 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
         public var id: String?
 
         public var name: String?
+
+        public var priorityForwardConfigs: [DescribeResolverRulesResponseBody.Rules.PriorityForwardConfigs]?
 
         public var type: String?
 
@@ -5815,6 +5879,13 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.priorityForwardConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.priorityForwardConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["PriorityForwardConfigs"] = tmp
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -5889,6 +5960,19 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PriorityForwardConfigs"] as? [Any?] {
+                var tmp : [DescribeResolverRulesResponseBody.Rules.PriorityForwardConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeResolverRulesResponseBody.Rules.PriorityForwardConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.priorityForwardConfigs = tmp
             }
             if let value = dict["Type"] as? String {
                 self.type = value
@@ -11467,6 +11551,68 @@ public class UpdateResolverRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class PriorityForwardConfigs : Tea.TeaModel {
+        public var alidnsServiceAddresses: [String]?
+
+        public var customAddresses: [String]?
+
+        public var enableStatus: String?
+
+        public var priority: Int32?
+
+        public var protocol_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alidnsServiceAddresses != nil {
+                map["AlidnsServiceAddresses"] = self.alidnsServiceAddresses!
+            }
+            if self.customAddresses != nil {
+                map["CustomAddresses"] = self.customAddresses!
+            }
+            if self.enableStatus != nil {
+                map["EnableStatus"] = self.enableStatus!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AlidnsServiceAddresses"] as? [String] {
+                self.alidnsServiceAddresses = value
+            }
+            if let value = dict["CustomAddresses"] as? [String] {
+                self.customAddresses = value
+            }
+            if let value = dict["EnableStatus"] as? String {
+                self.enableStatus = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+        }
+    }
     public var endpointId: String?
 
     public var forwardIp: [UpdateResolverRuleRequest.ForwardIp]?
@@ -11474,6 +11620,8 @@ public class UpdateResolverRuleRequest : Tea.TeaModel {
     public var lang: String?
 
     public var name: String?
+
+    public var priorityForwardConfigs: [UpdateResolverRuleRequest.PriorityForwardConfigs]?
 
     public var ruleId: String?
 
@@ -11507,6 +11655,13 @@ public class UpdateResolverRuleRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.priorityForwardConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.priorityForwardConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["PriorityForwardConfigs"] = tmp
+        }
         if self.ruleId != nil {
             map["RuleId"] = self.ruleId!
         }
@@ -11536,6 +11691,19 @@ public class UpdateResolverRuleRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PriorityForwardConfigs"] as? [Any?] {
+            var tmp : [UpdateResolverRuleRequest.PriorityForwardConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateResolverRuleRequest.PriorityForwardConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.priorityForwardConfigs = tmp
         }
         if let value = dict["RuleId"] as? String {
             self.ruleId = value
