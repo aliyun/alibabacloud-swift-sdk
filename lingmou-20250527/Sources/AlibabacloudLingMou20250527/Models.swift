@@ -2837,6 +2837,8 @@ public class GetTTSVoiceByIdCustomResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var errorCode: String?
+
         public var errorDetail: String?
 
         public var gender: String?
@@ -2885,6 +2887,9 @@ public class GetTTSVoiceByIdCustomResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["description"] = self.description_!
+            }
+            if self.errorCode != nil {
+                map["errorCode"] = self.errorCode!
             }
             if self.errorDetail != nil {
                 map["errorDetail"] = self.errorDetail!
@@ -2935,6 +2940,9 @@ public class GetTTSVoiceByIdCustomResponseBody : Tea.TeaModel {
             }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["errorCode"] as? String {
+                self.errorCode = value
             }
             if let value = dict["errorDetail"] as? String {
                 self.errorDetail = value
@@ -4061,6 +4069,8 @@ public class ListPrivateTTSVoicesCustomResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var errorCode: String?
+
             public var errorDetail: String?
 
             public var gender: String?
@@ -4109,6 +4119,9 @@ public class ListPrivateTTSVoicesCustomResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["description"] = self.description_!
+                }
+                if self.errorCode != nil {
+                    map["errorCode"] = self.errorCode!
                 }
                 if self.errorDetail != nil {
                     map["errorDetail"] = self.errorDetail!
@@ -4159,6 +4172,9 @@ public class ListPrivateTTSVoicesCustomResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["errorCode"] as? String {
+                    self.errorCode = value
                 }
                 if let value = dict["errorDetail"] as? String {
                     self.errorDetail = value
