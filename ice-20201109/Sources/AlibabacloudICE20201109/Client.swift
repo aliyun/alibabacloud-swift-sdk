@@ -569,6 +569,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func alterSearchLibWithOptions(_ request: AlterSearchLibRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AlterSearchLibResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.searchLibConfig)) {
+            query["SearchLibConfig"] = request.searchLibConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchLibName)) {
+            query["SearchLibName"] = request.searchLibName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AlterSearchLib",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AlterSearchLibResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func alterSearchLib(_ request: AlterSearchLibRequest) async throws -> AlterSearchLibResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await alterSearchLibWithOptions(request as! AlterSearchLibRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchCreateVodPackagingAssetWithOptions(_ tmpReq: BatchCreateVodPackagingAssetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateVodPackagingAssetResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BatchCreateVodPackagingAssetShrinkRequest = BatchCreateVodPackagingAssetShrinkRequest([:])
@@ -2006,6 +2040,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSearchLibWithOptions(_ request: CreateSearchLibRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSearchLibResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.searchLibConfig)) {
+            query["SearchLibConfig"] = request.searchLibConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.searchLibName)) {
             query["SearchLibName"] = request.searchLibName ?? "";
         }
