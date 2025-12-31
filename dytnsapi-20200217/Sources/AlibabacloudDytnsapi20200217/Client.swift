@@ -1868,6 +1868,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveContactsWithOptions(_ request: SaveContactsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveContactsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactEmail)) {
+            query["ContactEmail"] = request.contactEmail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            query["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactPhone)) {
+            query["ContactPhone"] = request.contactPhone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mailStatus)) {
+            query["MailStatus"] = request.mailStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.openStatusWarning)) {
+            query["OpenStatusWarning"] = request.openStatusWarning!;
+        }
+        if (!TeaUtils.Client.isUnset(request.opentAttributionWarning)) {
+            query["OpentAttributionWarning"] = request.opentAttributionWarning!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneStatus)) {
+            query["PhoneStatus"] = request.phoneStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveContacts",
+            "version": "2020-02-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveContactsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveContacts(_ request: SaveContactsRequest) async throws -> SaveContactsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveContactsWithOptions(request as! SaveContactsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func threeElementsVerificationWithOptions(_ request: ThreeElementsVerificationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ThreeElementsVerificationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
