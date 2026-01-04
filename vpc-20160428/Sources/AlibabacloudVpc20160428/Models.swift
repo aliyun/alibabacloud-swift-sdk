@@ -17679,6 +17679,302 @@ public class CreateRouteTableResponse : Tea.TeaModel {
     }
 }
 
+public class CreateRouteTargetGroupRequest : Tea.TeaModel {
+    public class RouteTargetMemberList : Tea.TeaModel {
+        public var memberId: String?
+
+        public var memberType: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.memberId != nil {
+                map["MemberId"] = self.memberId!
+            }
+            if self.memberType != nil {
+                map["MemberType"] = self.memberType!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MemberId"] as? String {
+                self.memberId = value
+            }
+            if let value = dict["MemberType"] as? String {
+                self.memberType = value
+            }
+            if let value = dict["Weight"] as? Int32 {
+                self.weight = value
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var configMode: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var routeTargetGroupDescription: String?
+
+    public var routeTargetGroupName: String?
+
+    public var routeTargetMemberList: [CreateRouteTargetGroupRequest.RouteTargetMemberList]?
+
+    public var tag: [CreateRouteTargetGroupRequest.Tag]?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.routeTargetGroupDescription != nil {
+            map["RouteTargetGroupDescription"] = self.routeTargetGroupDescription!
+        }
+        if self.routeTargetGroupName != nil {
+            map["RouteTargetGroupName"] = self.routeTargetGroupName!
+        }
+        if self.routeTargetMemberList != nil {
+            var tmp : [Any] = []
+            for k in self.routeTargetMemberList! {
+                tmp.append(k.toMap())
+            }
+            map["RouteTargetMemberList"] = tmp
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["RouteTargetGroupDescription"] as? String {
+            self.routeTargetGroupDescription = value
+        }
+        if let value = dict["RouteTargetGroupName"] as? String {
+            self.routeTargetGroupName = value
+        }
+        if let value = dict["RouteTargetMemberList"] as? [Any?] {
+            var tmp : [CreateRouteTargetGroupRequest.RouteTargetMemberList] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateRouteTargetGroupRequest.RouteTargetMemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routeTargetMemberList = tmp
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateRouteTargetGroupRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateRouteTargetGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class CreateRouteTargetGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var routeTargetGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+    }
+}
+
+public class CreateRouteTargetGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRouteTargetGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRouteTargetGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateRouterInterfaceRequest : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
         public var key: String?
@@ -31183,6 +31479,194 @@ public class DeleteRouteTableResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteRouteTableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRouteTargetGroupRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var routeTargetGroupId: String?
+
+    public var tag: [DeleteRouteTargetGroupRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DeleteRouteTargetGroupRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DeleteRouteTargetGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class DeleteRouteTargetGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRouteTargetGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRouteTargetGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRouteTargetGroupResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -77898,6 +78382,410 @@ public class GetPublicIpAddressPoolServiceStatusResponse : Tea.TeaModel {
     }
 }
 
+public class GetRouteTargetGroupRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var routeTargetGroupId: String?
+
+    public var tag: [GetRouteTargetGroupRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [GetRouteTargetGroupRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRouteTargetGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class GetRouteTargetGroupResponseBody : Tea.TeaModel {
+    public class RouteTargetMemberList : Tea.TeaModel {
+        public var enableStatus: String?
+
+        public var healthCheckStatus: String?
+
+        public var memberId: String?
+
+        public var memberType: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableStatus != nil {
+                map["EnableStatus"] = self.enableStatus!
+            }
+            if self.healthCheckStatus != nil {
+                map["HealthCheckStatus"] = self.healthCheckStatus!
+            }
+            if self.memberId != nil {
+                map["MemberId"] = self.memberId!
+            }
+            if self.memberType != nil {
+                map["MemberType"] = self.memberType!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableStatus"] as? String {
+                self.enableStatus = value
+            }
+            if let value = dict["HealthCheckStatus"] as? String {
+                self.healthCheckStatus = value
+            }
+            if let value = dict["MemberId"] as? String {
+                self.memberId = value
+            }
+            if let value = dict["MemberType"] as? String {
+                self.memberType = value
+            }
+            if let value = dict["Weight"] as? Int32 {
+                self.weight = value
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var configMode: String?
+
+    public var createTime: String?
+
+    public var regionId: String?
+
+    public var requestId: String?
+
+    public var resourceGroupId: String?
+
+    public var routeTargetGroupDescription: String?
+
+    public var routeTargetGroupId: String?
+
+    public var routeTargetGroupName: String?
+
+    public var routeTargetMemberList: [GetRouteTargetGroupResponseBody.RouteTargetMemberList]?
+
+    public var status: String?
+
+    public var tags: [GetRouteTargetGroupResponseBody.Tags]?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.routeTargetGroupDescription != nil {
+            map["RouteTargetGroupDescription"] = self.routeTargetGroupDescription!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        if self.routeTargetGroupName != nil {
+            map["RouteTargetGroupName"] = self.routeTargetGroupName!
+        }
+        if self.routeTargetMemberList != nil {
+            var tmp : [Any] = []
+            for k in self.routeTargetMemberList! {
+                tmp.append(k.toMap())
+            }
+            map["RouteTargetMemberList"] = tmp
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["RouteTargetGroupDescription"] as? String {
+            self.routeTargetGroupDescription = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+        if let value = dict["RouteTargetGroupName"] as? String {
+            self.routeTargetGroupName = value
+        }
+        if let value = dict["RouteTargetMemberList"] as? [Any?] {
+            var tmp : [GetRouteTargetGroupResponseBody.RouteTargetMemberList] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRouteTargetGroupResponseBody.RouteTargetMemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routeTargetMemberList = tmp
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [GetRouteTargetGroupResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRouteTargetGroupResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class GetRouteTargetGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRouteTargetGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRouteTargetGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetTrafficMirrorServiceStatusRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -85655,6 +86543,518 @@ public class ListPublicIpAddressPoolsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListPublicIpAddressPoolsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRouteTargetGroupsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var maxResults: Int32?
+
+    public var memberId: String?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var routeTargetGroupIds: [String]?
+
+    public var tag: [ListRouteTargetGroupsRequest.Tag]?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.memberId != nil {
+            map["MemberId"] = self.memberId!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.routeTargetGroupIds != nil {
+            map["RouteTargetGroupIds"] = self.routeTargetGroupIds!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MemberId"] as? String {
+            self.memberId = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["RouteTargetGroupIds"] as? [String] {
+            self.routeTargetGroupIds = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [ListRouteTargetGroupsRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRouteTargetGroupsRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class ListRouteTargetGroupsResponseBody : Tea.TeaModel {
+    public class RouteTargetGroups : Tea.TeaModel {
+        public class RouteTargetMemberList : Tea.TeaModel {
+            public var enableStatus: String?
+
+            public var healthCheckStatus: String?
+
+            public var memberId: String?
+
+            public var memberType: String?
+
+            public var weight: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
+                if self.healthCheckStatus != nil {
+                    map["HealthCheckStatus"] = self.healthCheckStatus!
+                }
+                if self.memberId != nil {
+                    map["MemberId"] = self.memberId!
+                }
+                if self.memberType != nil {
+                    map["MemberType"] = self.memberType!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
+                }
+                if let value = dict["HealthCheckStatus"] as? String {
+                    self.healthCheckStatus = value
+                }
+                if let value = dict["MemberId"] as? String {
+                    self.memberId = value
+                }
+                if let value = dict["MemberType"] as? String {
+                    self.memberType = value
+                }
+                if let value = dict["Weight"] as? Int32 {
+                    self.weight = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var configMode: String?
+
+        public var createTime: String?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
+
+        public var routeTargetGroupDescription: String?
+
+        public var routeTargetGroupId: String?
+
+        public var routeTargetGroupName: String?
+
+        public var routeTargetMemberList: [ListRouteTargetGroupsResponseBody.RouteTargetGroups.RouteTargetMemberList]?
+
+        public var status: String?
+
+        public var tags: [ListRouteTargetGroupsResponseBody.RouteTargetGroups.Tags]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configMode != nil {
+                map["ConfigMode"] = self.configMode!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.routeTargetGroupDescription != nil {
+                map["RouteTargetGroupDescription"] = self.routeTargetGroupDescription!
+            }
+            if self.routeTargetGroupId != nil {
+                map["RouteTargetGroupId"] = self.routeTargetGroupId!
+            }
+            if self.routeTargetGroupName != nil {
+                map["RouteTargetGroupName"] = self.routeTargetGroupName!
+            }
+            if self.routeTargetMemberList != nil {
+                var tmp : [Any] = []
+                for k in self.routeTargetMemberList! {
+                    tmp.append(k.toMap())
+                }
+                map["RouteTargetMemberList"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigMode"] as? String {
+                self.configMode = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["RouteTargetGroupDescription"] as? String {
+                self.routeTargetGroupDescription = value
+            }
+            if let value = dict["RouteTargetGroupId"] as? String {
+                self.routeTargetGroupId = value
+            }
+            if let value = dict["RouteTargetGroupName"] as? String {
+                self.routeTargetGroupName = value
+            }
+            if let value = dict["RouteTargetMemberList"] as? [Any?] {
+                var tmp : [ListRouteTargetGroupsResponseBody.RouteTargetGroups.RouteTargetMemberList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListRouteTargetGroupsResponseBody.RouteTargetGroups.RouteTargetMemberList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.routeTargetMemberList = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListRouteTargetGroupsResponseBody.RouteTargetGroups.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListRouteTargetGroupsResponseBody.RouteTargetGroups.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var routeTargetGroups: [ListRouteTargetGroupsResponseBody.RouteTargetGroups]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.routeTargetGroups != nil {
+            var tmp : [Any] = []
+            for k in self.routeTargetGroups! {
+                tmp.append(k.toMap())
+            }
+            map["RouteTargetGroups"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RouteTargetGroups"] as? [Any?] {
+            var tmp : [ListRouteTargetGroupsResponseBody.RouteTargetGroups] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRouteTargetGroupsResponseBody.RouteTargetGroups()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routeTargetGroups = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRouteTargetGroupsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRouteTargetGroupsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRouteTargetGroupsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -108926,6 +110326,194 @@ public class StopFailoverTestJobResponse : Tea.TeaModel {
     }
 }
 
+public class SwitchActiveRouteTargetRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var routeTargetGroupId: String?
+
+    public var tag: [SwitchActiveRouteTargetRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [SwitchActiveRouteTargetRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = SwitchActiveRouteTargetRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class SwitchActiveRouteTargetResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SwitchActiveRouteTargetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SwitchActiveRouteTargetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SwitchActiveRouteTargetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class TagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -113260,6 +114848,218 @@ public class UpdatePublicIpAddressPoolAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdatePublicIpAddressPoolAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRouteTargetGroupRequest : Tea.TeaModel {
+    public class RouteTargetMemberList : Tea.TeaModel {
+        public var memberId: String?
+
+        public var memberType: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.memberId != nil {
+                map["MemberId"] = self.memberId!
+            }
+            if self.memberType != nil {
+                map["MemberType"] = self.memberType!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MemberId"] as? String {
+                self.memberId = value
+            }
+            if let value = dict["MemberType"] as? String {
+                self.memberType = value
+            }
+            if let value = dict["Weight"] as? Int32 {
+                self.weight = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var routeTargetGroupDescription: String?
+
+    public var routeTargetGroupId: String?
+
+    public var routeTargetGroupName: String?
+
+    public var routeTargetMemberList: [UpdateRouteTargetGroupRequest.RouteTargetMemberList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.routeTargetGroupDescription != nil {
+            map["RouteTargetGroupDescription"] = self.routeTargetGroupDescription!
+        }
+        if self.routeTargetGroupId != nil {
+            map["RouteTargetGroupId"] = self.routeTargetGroupId!
+        }
+        if self.routeTargetGroupName != nil {
+            map["RouteTargetGroupName"] = self.routeTargetGroupName!
+        }
+        if self.routeTargetMemberList != nil {
+            var tmp : [Any] = []
+            for k in self.routeTargetMemberList! {
+                tmp.append(k.toMap())
+            }
+            map["RouteTargetMemberList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RouteTargetGroupDescription"] as? String {
+            self.routeTargetGroupDescription = value
+        }
+        if let value = dict["RouteTargetGroupId"] as? String {
+            self.routeTargetGroupId = value
+        }
+        if let value = dict["RouteTargetGroupName"] as? String {
+            self.routeTargetGroupName = value
+        }
+        if let value = dict["RouteTargetMemberList"] as? [Any?] {
+            var tmp : [UpdateRouteTargetGroupRequest.RouteTargetMemberList] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateRouteTargetGroupRequest.RouteTargetMemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routeTargetMemberList = tmp
+        }
+    }
+}
+
+public class UpdateRouteTargetGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRouteTargetGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRouteTargetGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRouteTargetGroupResponseBody()
             model.fromMap(value)
             self.body = model
         }
