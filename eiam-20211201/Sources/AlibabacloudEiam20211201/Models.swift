@@ -13340,6 +13340,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
     public class Application : Tea.TeaModel {
         public var apiInvokeStatus: String?
 
+        public var applicationCreationType: String?
+
         public var applicationId: String?
 
         public var applicationName: String?
@@ -13372,6 +13374,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var resourceServerIdentifier: String?
 
+        public var resourceServerSourceType: String?
+
         public var resourceServerStatus: String?
 
         public var serviceManaged: Bool?
@@ -13398,6 +13402,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.apiInvokeStatus != nil {
                 map["ApiInvokeStatus"] = self.apiInvokeStatus!
+            }
+            if self.applicationCreationType != nil {
+                map["ApplicationCreationType"] = self.applicationCreationType!
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
@@ -13447,6 +13454,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.resourceServerIdentifier != nil {
                 map["ResourceServerIdentifier"] = self.resourceServerIdentifier!
             }
+            if self.resourceServerSourceType != nil {
+                map["ResourceServerSourceType"] = self.resourceServerSourceType!
+            }
             if self.resourceServerStatus != nil {
                 map["ResourceServerStatus"] = self.resourceServerStatus!
             }
@@ -13469,6 +13479,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ApiInvokeStatus"] as? String {
                 self.apiInvokeStatus = value
+            }
+            if let value = dict["ApplicationCreationType"] as? String {
+                self.applicationCreationType = value
             }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
@@ -13517,6 +13530,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceServerIdentifier"] as? String {
                 self.resourceServerIdentifier = value
+            }
+            if let value = dict["ResourceServerSourceType"] as? String {
+                self.resourceServerSourceType = value
             }
             if let value = dict["ResourceServerStatus"] as? String {
                 self.resourceServerStatus = value
@@ -26768,6 +26784,8 @@ public class ListApplicationTokensResponse : Tea.TeaModel {
 }
 
 public class ListApplicationsRequest : Tea.TeaModel {
+    public var applicationCreationType: String?
+
     public var applicationIds: [String]?
 
     public var applicationName: String?
@@ -26802,6 +26820,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationCreationType != nil {
+            map["ApplicationCreationType"] = self.applicationCreationType!
+        }
         if self.applicationIds != nil {
             map["ApplicationIds"] = self.applicationIds!
         }
@@ -26837,6 +26858,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationCreationType"] as? String {
+            self.applicationCreationType = value
+        }
         if let value = dict["ApplicationIds"] as? [String] {
             self.applicationIds = value
         }
@@ -26872,6 +26896,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
 public class ListApplicationsResponseBody : Tea.TeaModel {
     public class Applications : Tea.TeaModel {
+        public var applicationCreationType: String?
+
         public var applicationId: String?
 
         public var applicationName: String?
@@ -26893,6 +26919,12 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
         public var logoUrl: String?
 
         public var managedServiceCode: String?
+
+        public var resourceServerIdentifier: String?
+
+        public var resourceServerSourceType: String?
+
+        public var resourceServerStatus: String?
 
         public var serviceManaged: Bool?
 
@@ -26916,6 +26948,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.applicationCreationType != nil {
+                map["ApplicationCreationType"] = self.applicationCreationType!
+            }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
@@ -26949,6 +26984,15 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             if self.managedServiceCode != nil {
                 map["ManagedServiceCode"] = self.managedServiceCode!
             }
+            if self.resourceServerIdentifier != nil {
+                map["ResourceServerIdentifier"] = self.resourceServerIdentifier!
+            }
+            if self.resourceServerSourceType != nil {
+                map["ResourceServerSourceType"] = self.resourceServerSourceType!
+            }
+            if self.resourceServerStatus != nil {
+                map["ResourceServerStatus"] = self.resourceServerStatus!
+            }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
             }
@@ -26966,6 +27010,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApplicationCreationType"] as? String {
+                self.applicationCreationType = value
+            }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
             }
@@ -26998,6 +27045,15 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ManagedServiceCode"] as? String {
                 self.managedServiceCode = value
+            }
+            if let value = dict["ResourceServerIdentifier"] as? String {
+                self.resourceServerIdentifier = value
+            }
+            if let value = dict["ResourceServerSourceType"] as? String {
+                self.resourceServerSourceType = value
+            }
+            if let value = dict["ResourceServerStatus"] as? String {
+                self.resourceServerStatus = value
             }
             if let value = dict["ServiceManaged"] as? Bool {
                 self.serviceManaged = value

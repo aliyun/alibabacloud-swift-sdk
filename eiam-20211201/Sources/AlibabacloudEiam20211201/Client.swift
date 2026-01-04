@@ -4512,6 +4512,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listApplicationsWithOptions(_ request: ListApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationCreationType)) {
+            query["ApplicationCreationType"] = request.applicationCreationType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applicationIds)) {
             query["ApplicationIds"] = request.applicationIds ?? [];
         }
