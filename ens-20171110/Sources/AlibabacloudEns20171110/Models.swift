@@ -61033,6 +61033,231 @@ public class ListAICPublicKeysResponse : Tea.TeaModel {
     }
 }
 
+public class ListAddonsResponseBody : Tea.TeaModel {
+    public class Addons : Tea.TeaModel {
+        public class ConfigSchema : Tea.TeaModel {
+            public var appVersion: String?
+
+            public var configVersion: String?
+
+            public var name: String?
+
+            public var params: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appVersion != nil {
+                    map["AppVersion"] = self.appVersion!
+                }
+                if self.configVersion != nil {
+                    map["ConfigVersion"] = self.configVersion!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.params != nil {
+                    map["Params"] = self.params!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppVersion"] as? String {
+                    self.appVersion = value
+                }
+                if let value = dict["ConfigVersion"] as? String {
+                    self.configVersion = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Params"] as? [String: Any] {
+                    self.params = value
+                }
+            }
+        }
+        public var cleanupCloudResources: Bool?
+
+        public var configSchema: [ListAddonsResponseBody.Addons.ConfigSchema]?
+
+        public var name: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cleanupCloudResources != nil {
+                map["CleanupCloudResources"] = self.cleanupCloudResources!
+            }
+            if self.configSchema != nil {
+                var tmp : [Any] = []
+                for k in self.configSchema! {
+                    tmp.append(k.toMap())
+                }
+                map["ConfigSchema"] = tmp
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CleanupCloudResources"] as? Bool {
+                self.cleanupCloudResources = value
+            }
+            if let value = dict["ConfigSchema"] as? [Any?] {
+                var tmp : [ListAddonsResponseBody.Addons.ConfigSchema] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAddonsResponseBody.Addons.ConfigSchema()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configSchema = tmp
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public var addons: [ListAddonsResponseBody.Addons]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addons != nil {
+            var tmp : [Any] = []
+            for k in self.addons! {
+                tmp.append(k.toMap())
+            }
+            map["Addons"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Addons"] as? [Any?] {
+            var tmp : [ListAddonsResponseBody.Addons] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAddonsResponseBody.Addons()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addons = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListAddonsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAddonsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAddonsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListApplicationsRequest : Tea.TeaModel {
     public var appVersions: String?
 
@@ -61633,6 +61858,270 @@ public class ListBucketsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListBucketsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListClusterAddonInstancesRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+    }
+}
+
+public class ListClusterAddonInstancesResponseBody : Tea.TeaModel {
+    public class Addons : Tea.TeaModel {
+        public class ConfigSchema : Tea.TeaModel {
+            public var appVersion: String?
+
+            public var configVersion: String?
+
+            public var name: String?
+
+            public var params: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appVersion != nil {
+                    map["AppVersion"] = self.appVersion!
+                }
+                if self.configVersion != nil {
+                    map["ConfigVersion"] = self.configVersion!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.params != nil {
+                    map["Params"] = self.params!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AppVersion"] as? String {
+                    self.appVersion = value
+                }
+                if let value = dict["ConfigVersion"] as? String {
+                    self.configVersion = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Params"] as? String {
+                    self.params = value
+                }
+            }
+        }
+        public var cleanupCloudResources: Bool?
+
+        public var configSchema: [ListClusterAddonInstancesResponseBody.Addons.ConfigSchema]?
+
+        public var name: String?
+
+        public var status: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cleanupCloudResources != nil {
+                map["CleanupCloudResources"] = self.cleanupCloudResources!
+            }
+            if self.configSchema != nil {
+                var tmp : [Any] = []
+                for k in self.configSchema! {
+                    tmp.append(k.toMap())
+                }
+                map["ConfigSchema"] = tmp
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CleanupCloudResources"] as? Bool {
+                self.cleanupCloudResources = value
+            }
+            if let value = dict["ConfigSchema"] as? [Any?] {
+                var tmp : [ListClusterAddonInstancesResponseBody.Addons.ConfigSchema] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListClusterAddonInstancesResponseBody.Addons.ConfigSchema()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configSchema = tmp
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Version"] as? String {
+                self.version = value
+            }
+        }
+    }
+    public var addons: [ListClusterAddonInstancesResponseBody.Addons]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addons != nil {
+            var tmp : [Any] = []
+            for k in self.addons! {
+                tmp.append(k.toMap())
+            }
+            map["Addons"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Addons"] as? [Any?] {
+            var tmp : [ListClusterAddonInstancesResponseBody.Addons] = []
+            for v in value {
+                if v != nil {
+                    var model = ListClusterAddonInstancesResponseBody.Addons()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addons = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListClusterAddonInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListClusterAddonInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListClusterAddonInstancesResponseBody()
             model.fromMap(value)
             self.body = model
         }
