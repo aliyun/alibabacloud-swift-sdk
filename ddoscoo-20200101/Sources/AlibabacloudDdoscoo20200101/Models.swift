@@ -10409,6 +10409,250 @@ public class DescribeDomainBpsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDomainCcProtectSwitchRequest : Tea.TeaModel {
+    public var domains: [String]?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domains != nil {
+            map["Domains"] = self.domains!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Domains"] as? [String] {
+            self.domains = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class DescribeDomainCcProtectSwitchResponseBody : Tea.TeaModel {
+    public class ProtectSwitchList : Tea.TeaModel {
+        public var aiMode: String?
+
+        public var aiRuleEnable: Int32?
+
+        public var aiTemplate: String?
+
+        public var blackWhiteListEnable: Int32?
+
+        public var ccCustomRuleEnable: Int32?
+
+        public var ccEnable: Int32?
+
+        public var ccTemplate: String?
+
+        public var domain: String?
+
+        public var preciseRuleEnable: Int32?
+
+        public var regionBlockEnable: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aiMode != nil {
+                map["AiMode"] = self.aiMode!
+            }
+            if self.aiRuleEnable != nil {
+                map["AiRuleEnable"] = self.aiRuleEnable!
+            }
+            if self.aiTemplate != nil {
+                map["AiTemplate"] = self.aiTemplate!
+            }
+            if self.blackWhiteListEnable != nil {
+                map["BlackWhiteListEnable"] = self.blackWhiteListEnable!
+            }
+            if self.ccCustomRuleEnable != nil {
+                map["CcCustomRuleEnable"] = self.ccCustomRuleEnable!
+            }
+            if self.ccEnable != nil {
+                map["CcEnable"] = self.ccEnable!
+            }
+            if self.ccTemplate != nil {
+                map["CcTemplate"] = self.ccTemplate!
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.preciseRuleEnable != nil {
+                map["PreciseRuleEnable"] = self.preciseRuleEnable!
+            }
+            if self.regionBlockEnable != nil {
+                map["RegionBlockEnable"] = self.regionBlockEnable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AiMode"] as? String {
+                self.aiMode = value
+            }
+            if let value = dict["AiRuleEnable"] as? Int32 {
+                self.aiRuleEnable = value
+            }
+            if let value = dict["AiTemplate"] as? String {
+                self.aiTemplate = value
+            }
+            if let value = dict["BlackWhiteListEnable"] as? Int32 {
+                self.blackWhiteListEnable = value
+            }
+            if let value = dict["CcCustomRuleEnable"] as? Int32 {
+                self.ccCustomRuleEnable = value
+            }
+            if let value = dict["CcEnable"] as? Int32 {
+                self.ccEnable = value
+            }
+            if let value = dict["CcTemplate"] as? String {
+                self.ccTemplate = value
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
+            }
+            if let value = dict["PreciseRuleEnable"] as? Int32 {
+                self.preciseRuleEnable = value
+            }
+            if let value = dict["RegionBlockEnable"] as? Int32 {
+                self.regionBlockEnable = value
+            }
+        }
+    }
+    public var protectSwitchList: [DescribeDomainCcProtectSwitchResponseBody.ProtectSwitchList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.protectSwitchList != nil {
+            var tmp : [Any] = []
+            for k in self.protectSwitchList! {
+                tmp.append(k.toMap())
+            }
+            map["ProtectSwitchList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ProtectSwitchList"] as? [Any?] {
+            var tmp : [DescribeDomainCcProtectSwitchResponseBody.ProtectSwitchList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDomainCcProtectSwitchResponseBody.ProtectSwitchList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.protectSwitchList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeDomainCcProtectSwitchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDomainCcProtectSwitchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDomainCcProtectSwitchResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDomainH2FingerprintRequest : Tea.TeaModel {
     public var domain: String?
 

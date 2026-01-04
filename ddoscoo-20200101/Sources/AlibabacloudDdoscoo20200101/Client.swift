@@ -2467,6 +2467,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDomainCcProtectSwitchWithOptions(_ request: DescribeDomainCcProtectSwitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDomainCcProtectSwitchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domains)) {
+            query["Domains"] = request.domains ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDomainCcProtectSwitch",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDomainCcProtectSwitchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDomainCcProtectSwitch(_ request: DescribeDomainCcProtectSwitchRequest) async throws -> DescribeDomainCcProtectSwitchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDomainCcProtectSwitchWithOptions(request as! DescribeDomainCcProtectSwitchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDomainH2FingerprintWithOptions(_ request: DescribeDomainH2FingerprintRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDomainH2FingerprintResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
