@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudLive20161101"
-  spec.version      = "2.5.1"
+  spec.version      = "2.6.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ApsaraVideo for Live (20161101) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/live-20161101" 
