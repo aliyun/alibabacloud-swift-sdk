@@ -4350,6 +4350,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var autoCreatePolarFs: Bool?
+
     public var autoRenew: Bool?
 
     public var autoUseCoupon: Bool?
@@ -4403,6 +4405,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.autoCreatePolarFs != nil {
+            map["AutoCreatePolarFs"] = self.autoCreatePolarFs!
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
@@ -4473,6 +4478,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AutoCreatePolarFs"] as? Bool {
+            self.autoCreatePolarFs = value
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
@@ -4553,6 +4561,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var autoCreatePolarFs: Bool?
+
     public var autoRenew: Bool?
 
     public var autoUseCoupon: Bool?
@@ -4606,6 +4616,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.autoCreatePolarFs != nil {
+            map["AutoCreatePolarFs"] = self.autoCreatePolarFs!
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
@@ -4668,6 +4681,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AutoCreatePolarFs"] as? Bool {
+            self.autoCreatePolarFs = value
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
