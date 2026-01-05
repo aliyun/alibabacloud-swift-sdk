@@ -13687,7 +13687,7 @@ public class CreateFunctionRequest : Tea.TeaModel {
 }
 
 public class CreateFunctionResponseBody : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var requestId: String?
 
@@ -13716,7 +13716,7 @@ public class CreateFunctionResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["RequestId"] as? String {
@@ -14426,7 +14426,7 @@ public class CreateNetworkResponse : Tea.TeaModel {
 }
 
 public class CreateNodeRequest : Tea.TeaModel {
-    public var containerId: Int64?
+    public var containerId: String?
 
     public var projectId: Int64?
 
@@ -14465,7 +14465,7 @@ public class CreateNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ContainerId"] as? Int64 {
+        if let value = dict["ContainerId"] as? String {
             self.containerId = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -14481,7 +14481,7 @@ public class CreateNodeRequest : Tea.TeaModel {
 }
 
 public class CreateNodeResponseBody : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var requestId: String?
 
@@ -14510,7 +14510,7 @@ public class CreateNodeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["RequestId"] as? String {
@@ -15361,7 +15361,7 @@ public class CreateResourceAdvanceRequest : Tea.TeaModel {
 }
 
 public class CreateResourceResponseBody : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var requestId: String?
 
@@ -15390,7 +15390,7 @@ public class CreateResourceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["RequestId"] as? String {
@@ -16644,7 +16644,7 @@ public class CreateWorkflowDefinitionRequest : Tea.TeaModel {
 }
 
 public class CreateWorkflowDefinitionResponseBody : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var requestId: String?
 
@@ -16673,7 +16673,7 @@ public class CreateWorkflowDefinitionResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["RequestId"] as? String {
@@ -20168,7 +20168,7 @@ public class DeleteFolderResponse : Tea.TeaModel {
 }
 
 public class DeleteFunctionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -20197,7 +20197,7 @@ public class DeleteFunctionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -20648,7 +20648,7 @@ public class DeleteNetworkResponse : Tea.TeaModel {
 }
 
 public class DeleteNodeRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -20677,7 +20677,7 @@ public class DeleteNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -21008,7 +21008,7 @@ public class DeleteProjectMemberResponse : Tea.TeaModel {
 }
 
 public class DeleteResourceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -21037,7 +21037,7 @@ public class DeleteResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -21640,7 +21640,7 @@ public class DeleteWorkflowResponse : Tea.TeaModel {
 }
 
 public class DeleteWorkflowDefinitionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -21669,7 +21669,7 @@ public class DeleteWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -34132,7 +34132,7 @@ public class GetFolderResponse : Tea.TeaModel {
 }
 
 public class GetFunctionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -34161,7 +34161,7 @@ public class GetFunctionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -34174,7 +34174,7 @@ public class GetFunctionResponseBody : Tea.TeaModel {
     public class Function : Tea.TeaModel {
         public var createTime: Int64?
 
-        public var id: Int64?
+        public var id: String?
 
         public var modifyTime: Int64?
 
@@ -34229,7 +34229,7 @@ public class GetFunctionResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
-            if let value = dict["Id"] as? Int64 {
+            if let value = dict["Id"] as? String {
                 self.id = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
@@ -36014,7 +36014,7 @@ public class GetNetworkResponse : Tea.TeaModel {
 }
 
 public class GetNodeRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -36043,7 +36043,7 @@ public class GetNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -36056,7 +36056,7 @@ public class GetNodeResponseBody : Tea.TeaModel {
     public class Node : Tea.TeaModel {
         public var createTime: Int64?
 
-        public var id: Int64?
+        public var id: String?
 
         public var modifyTime: Int64?
 
@@ -36116,7 +36116,7 @@ public class GetNodeResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
-            if let value = dict["Id"] as? Int64 {
+            if let value = dict["Id"] as? String {
                 self.id = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
@@ -37571,7 +37571,7 @@ public class GetRerunWorkflowInstancesResultResponse : Tea.TeaModel {
 }
 
 public class GetResourceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -37600,7 +37600,7 @@ public class GetResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -37613,7 +37613,7 @@ public class GetResourceResponseBody : Tea.TeaModel {
     public class Resource : Tea.TeaModel {
         public var createTime: Int64?
 
-        public var id: Int64?
+        public var id: String?
 
         public var modifyTime: Int64?
 
@@ -37668,7 +37668,7 @@ public class GetResourceResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
-            if let value = dict["Id"] as? Int64 {
+            if let value = dict["Id"] as? String {
                 self.id = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
@@ -41808,7 +41808,7 @@ public class GetWorkflowResponse : Tea.TeaModel {
 }
 
 public class GetWorkflowDefinitionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var includeScriptContent: Bool?
 
@@ -41842,7 +41842,7 @@ public class GetWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["IncludeScriptContent"] as? Bool {
@@ -41858,7 +41858,7 @@ public class GetWorkflowDefinitionResponseBody : Tea.TeaModel {
     public class WorkflowDefinition : Tea.TeaModel {
         public var createTime: Int64?
 
-        public var id: Int64?
+        public var id: String?
 
         public var modifyTime: Int64?
 
@@ -41918,7 +41918,7 @@ public class GetWorkflowDefinitionResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
-            if let value = dict["Id"] as? Int64 {
+            if let value = dict["Id"] as? String {
                 self.id = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
@@ -60717,7 +60717,7 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var id: Int64?
+                public var id: String?
 
                 public var path: String?
 
@@ -60752,7 +60752,7 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["Path"] as? String {
@@ -60789,7 +60789,7 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
 
             public var fileResource: String?
 
-            public var id: Int64?
+            public var id: String?
 
             public var modifyTime: Int64?
 
@@ -60935,7 +60935,7 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
                 if let value = dict["FileResource"] as? String {
                     self.fileResource = value
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["ModifyTime"] as? Int64 {
@@ -62380,7 +62380,7 @@ public class ListNetworksResponse : Tea.TeaModel {
 }
 
 public class ListNodeDependenciesRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var pageNumber: Int32?
 
@@ -62419,7 +62419,7 @@ public class ListNodeDependenciesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["PageNumber"] as? Int32 {
@@ -62569,7 +62569,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                     }
                     public var artifactType: String?
 
-                    public var id: Int64?
+                    public var id: String?
 
                     public var name: String?
 
@@ -62625,7 +62625,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                         if let value = dict["ArtifactType"] as? String {
                             self.artifactType = value
                         }
-                        if let value = dict["Id"] as? Int64 {
+                        if let value = dict["Id"] as? String {
                             self.id = value
                         }
                         if let value = dict["Name"] as? String {
@@ -62828,7 +62828,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                     }
                     public var artifactType: String?
 
-                    public var id: Int64?
+                    public var id: String?
 
                     public var name: String?
 
@@ -62884,7 +62884,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                         if let value = dict["ArtifactType"] as? String {
                             self.artifactType = value
                         }
-                        if let value = dict["Id"] as? Int64 {
+                        if let value = dict["Id"] as? String {
                             self.id = value
                         }
                         if let value = dict["Name"] as? String {
@@ -63054,7 +63054,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var id: Int64?
+                public var id: String?
 
                 public var path: String?
 
@@ -63089,7 +63089,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["Path"] as? String {
@@ -63207,7 +63207,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
 
                 public var endTime: String?
 
-                public var id: Int64?
+                public var id: String?
 
                 public var startTime: String?
 
@@ -63258,7 +63258,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                     if let value = dict["EndTime"] as? String {
                         self.endTime = value
                     }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["StartTime"] as? String {
@@ -63278,7 +63278,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
-            public var id: Int64?
+            public var id: String?
 
             public var inputs: ListNodeDependenciesResponseBody.PagingInfo.Nodes.Inputs?
 
@@ -63398,7 +63398,7 @@ public class ListNodeDependenciesResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["Inputs"] as? [String: Any?] {
@@ -63623,7 +63623,7 @@ public class ListNodeDependenciesResponse : Tea.TeaModel {
 }
 
 public class ListNodesRequest : Tea.TeaModel {
-    public var containerId: Int64?
+    public var containerId: String?
 
     public var name: String?
 
@@ -63682,7 +63682,7 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ContainerId"] as? Int64 {
+        if let value = dict["ContainerId"] as? String {
             self.containerId = value
         }
         if let value = dict["Name"] as? String {
@@ -63844,7 +63844,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                     }
                     public var artifactType: String?
 
-                    public var id: Int64?
+                    public var id: String?
 
                     public var name: String?
 
@@ -63900,7 +63900,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                         if let value = dict["ArtifactType"] as? String {
                             self.artifactType = value
                         }
-                        if let value = dict["Id"] as? Int64 {
+                        if let value = dict["Id"] as? String {
                             self.id = value
                         }
                         if let value = dict["Name"] as? String {
@@ -64103,7 +64103,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                     }
                     public var artifactType: String?
 
-                    public var id: Int64?
+                    public var id: String?
 
                     public var name: String?
 
@@ -64159,7 +64159,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                         if let value = dict["ArtifactType"] as? String {
                             self.artifactType = value
                         }
-                        if let value = dict["Id"] as? Int64 {
+                        if let value = dict["Id"] as? String {
                             self.id = value
                         }
                         if let value = dict["Name"] as? String {
@@ -64337,7 +64337,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var id: Int64?
+                public var id: String?
 
                 public var path: String?
 
@@ -64372,7 +64372,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["Path"] as? String {
@@ -64490,7 +64490,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
 
                 public var endTime: String?
 
-                public var id: Int64?
+                public var id: String?
 
                 public var startTime: String?
 
@@ -64541,7 +64541,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                     if let value = dict["EndTime"] as? String {
                         self.endTime = value
                     }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["StartTime"] as? String {
@@ -64561,7 +64561,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
-            public var id: Int64?
+            public var id: String?
 
             public var inputs: ListNodesResponseBody.PagingInfo.Nodes.Inputs?
 
@@ -64681,7 +64681,7 @@ public class ListNodesResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["Inputs"] as? [String: Any?] {
@@ -65204,7 +65204,7 @@ public class ListPipelineRunItemsResponseBody : Tea.TeaModel {
         public class PipelineRunItems : Tea.TeaModel {
             public var createTime: Int64?
 
-            public var id: Int64?
+            public var id: String?
 
             public var message: String?
 
@@ -65269,7 +65269,7 @@ public class ListPipelineRunItemsResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["Message"] as? String {
@@ -68415,7 +68415,7 @@ public class ListResourcesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var id: Int64?
+                public var id: String?
 
                 public var path: String?
 
@@ -68450,7 +68450,7 @@ public class ListResourcesResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["Path"] as? String {
@@ -68467,7 +68467,7 @@ public class ListResourcesResponseBody : Tea.TeaModel {
 
             public var dataSource: ListResourcesResponseBody.PagingInfo.Resources.DataSource?
 
-            public var id: Int64?
+            public var id: String?
 
             public var modifyTime: Int64?
 
@@ -68557,7 +68557,7 @@ public class ListResourcesResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.dataSource = model
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["ModifyTime"] as? Int64 {
@@ -74250,7 +74250,7 @@ public class ListWorkflowDefinitionsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var id: Int64?
+                public var id: String?
 
                 public var path: String?
 
@@ -74285,7 +74285,7 @@ public class ListWorkflowDefinitionsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
-                    if let value = dict["Id"] as? Int64 {
+                    if let value = dict["Id"] as? String {
                         self.id = value
                     }
                     if let value = dict["Path"] as? String {
@@ -74302,7 +74302,7 @@ public class ListWorkflowDefinitionsResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
-            public var id: Int64?
+            public var id: String?
 
             public var modifyTime: Int64?
 
@@ -74369,7 +74369,7 @@ public class ListWorkflowDefinitionsResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
-                if let value = dict["Id"] as? Int64 {
+                if let value = dict["Id"] as? String {
                     self.id = value
                 }
                 if let value = dict["ModifyTime"] as? Int64 {
@@ -75810,7 +75810,7 @@ public class ListWorkflowsResponse : Tea.TeaModel {
 }
 
 public class MoveFunctionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var path: String?
 
@@ -75844,7 +75844,7 @@ public class MoveFunctionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Path"] as? String {
@@ -75946,7 +75946,7 @@ public class MoveFunctionResponse : Tea.TeaModel {
 }
 
 public class MoveNodeRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var path: String?
 
@@ -75980,7 +75980,7 @@ public class MoveNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Path"] as? String {
@@ -76082,7 +76082,7 @@ public class MoveNodeResponse : Tea.TeaModel {
 }
 
 public class MoveResourceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var path: String?
 
@@ -76116,7 +76116,7 @@ public class MoveResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Path"] as? String {
@@ -76218,7 +76218,7 @@ public class MoveResourceResponse : Tea.TeaModel {
 }
 
 public class MoveWorkflowDefinitionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var path: String?
 
@@ -76252,7 +76252,7 @@ public class MoveWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Path"] as? String {
@@ -76842,7 +76842,7 @@ public class RemoveTaskInstanceDependenciesResponse : Tea.TeaModel {
 }
 
 public class RenameFunctionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var name: String?
 
@@ -76876,7 +76876,7 @@ public class RenameFunctionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Name"] as? String {
@@ -76978,7 +76978,7 @@ public class RenameFunctionResponse : Tea.TeaModel {
 }
 
 public class RenameNodeRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var name: String?
 
@@ -77012,7 +77012,7 @@ public class RenameNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Name"] as? String {
@@ -77114,7 +77114,7 @@ public class RenameNodeResponse : Tea.TeaModel {
 }
 
 public class RenameResourceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var name: String?
 
@@ -77148,7 +77148,7 @@ public class RenameResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Name"] as? String {
@@ -77250,7 +77250,7 @@ public class RenameResourceResponse : Tea.TeaModel {
 }
 
 public class RenameWorkflowDefinitionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var name: String?
 
@@ -77284,7 +77284,7 @@ public class RenameWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["Name"] as? String {
@@ -88002,7 +88002,7 @@ public class UpdateFolderResponse : Tea.TeaModel {
 }
 
 public class UpdateFunctionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -88036,7 +88036,7 @@ public class UpdateFunctionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -88465,7 +88465,7 @@ public class UpdateMetaCollectionResponse : Tea.TeaModel {
 }
 
 public class UpdateNodeRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -88499,7 +88499,7 @@ public class UpdateNodeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -88761,7 +88761,7 @@ public class UpdateProjectResponse : Tea.TeaModel {
 }
 
 public class UpdateResourceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -88800,7 +88800,7 @@ public class UpdateResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -88816,7 +88816,7 @@ public class UpdateResourceRequest : Tea.TeaModel {
 }
 
 public class UpdateResourceAdvanceRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -88855,7 +88855,7 @@ public class UpdateResourceAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
@@ -92156,7 +92156,7 @@ public class UpdateWorkflowResponse : Tea.TeaModel {
 }
 
 public class UpdateWorkflowDefinitionRequest : Tea.TeaModel {
-    public var id: Int64?
+    public var id: String?
 
     public var projectId: Int64?
 
@@ -92190,7 +92190,7 @@ public class UpdateWorkflowDefinitionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Id"] as? Int64 {
+        if let value = dict["Id"] as? String {
             self.id = value
         }
         if let value = dict["ProjectId"] as? Int64 {
