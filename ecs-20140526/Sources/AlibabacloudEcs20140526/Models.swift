@@ -56572,6 +56572,8 @@ public class DescribeInstanceAutoRenewAttributeResponseBody : Tea.TeaModel {
 
             public var duration: Int32?
 
+            public var enableExpectedRenewDay: Bool?
+
             public var instanceId: String?
 
             public var periodUnit: String?
@@ -56598,6 +56600,9 @@ public class DescribeInstanceAutoRenewAttributeResponseBody : Tea.TeaModel {
                 if self.duration != nil {
                     map["Duration"] = self.duration!
                 }
+                if self.enableExpectedRenewDay != nil {
+                    map["EnableExpectedRenewDay"] = self.enableExpectedRenewDay!
+                }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
@@ -56617,6 +56622,9 @@ public class DescribeInstanceAutoRenewAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Duration"] as? Int32 {
                     self.duration = value
+                }
+                if let value = dict["EnableExpectedRenewDay"] as? Bool {
+                    self.enableExpectedRenewDay = value
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
@@ -69646,6 +69654,306 @@ public class DescribeLimitationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeLimitationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeLockedSnapshotsRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
+    public var lockStatus: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var snapshotIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.lockStatus != nil {
+            map["LockStatus"] = self.lockStatus!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.snapshotIds != nil {
+            map["SnapshotIds"] = self.snapshotIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["LockStatus"] as? String {
+            self.lockStatus = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SnapshotIds"] as? [String] {
+            self.snapshotIds = value
+        }
+    }
+}
+
+public class DescribeLockedSnapshotsResponseBody : Tea.TeaModel {
+    public class LockedSnapshotsInfo : Tea.TeaModel {
+        public var coolOffPeriod: Int32?
+
+        public var coolOffPeriodExpiredTime: String?
+
+        public var lockCreationTime: String?
+
+        public var lockDuration: Int32?
+
+        public var lockDurationStartTime: String?
+
+        public var lockExpiredTime: String?
+
+        public var lockStatus: String?
+
+        public var snapshotId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.coolOffPeriod != nil {
+                map["CoolOffPeriod"] = self.coolOffPeriod!
+            }
+            if self.coolOffPeriodExpiredTime != nil {
+                map["CoolOffPeriodExpiredTime"] = self.coolOffPeriodExpiredTime!
+            }
+            if self.lockCreationTime != nil {
+                map["LockCreationTime"] = self.lockCreationTime!
+            }
+            if self.lockDuration != nil {
+                map["LockDuration"] = self.lockDuration!
+            }
+            if self.lockDurationStartTime != nil {
+                map["LockDurationStartTime"] = self.lockDurationStartTime!
+            }
+            if self.lockExpiredTime != nil {
+                map["LockExpiredTime"] = self.lockExpiredTime!
+            }
+            if self.lockStatus != nil {
+                map["LockStatus"] = self.lockStatus!
+            }
+            if self.snapshotId != nil {
+                map["SnapshotId"] = self.snapshotId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CoolOffPeriod"] as? Int32 {
+                self.coolOffPeriod = value
+            }
+            if let value = dict["CoolOffPeriodExpiredTime"] as? String {
+                self.coolOffPeriodExpiredTime = value
+            }
+            if let value = dict["LockCreationTime"] as? String {
+                self.lockCreationTime = value
+            }
+            if let value = dict["LockDuration"] as? Int32 {
+                self.lockDuration = value
+            }
+            if let value = dict["LockDurationStartTime"] as? String {
+                self.lockDurationStartTime = value
+            }
+            if let value = dict["LockExpiredTime"] as? String {
+                self.lockExpiredTime = value
+            }
+            if let value = dict["LockStatus"] as? String {
+                self.lockStatus = value
+            }
+            if let value = dict["SnapshotId"] as? String {
+                self.snapshotId = value
+            }
+        }
+    }
+    public var lockedSnapshotsInfo: [DescribeLockedSnapshotsResponseBody.LockedSnapshotsInfo]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lockedSnapshotsInfo != nil {
+            var tmp : [Any] = []
+            for k in self.lockedSnapshotsInfo! {
+                tmp.append(k.toMap())
+            }
+            map["LockedSnapshotsInfo"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LockedSnapshotsInfo"] as? [Any?] {
+            var tmp : [DescribeLockedSnapshotsResponseBody.LockedSnapshotsInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeLockedSnapshotsResponseBody.LockedSnapshotsInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.lockedSnapshotsInfo = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeLockedSnapshotsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLockedSnapshotsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeLockedSnapshotsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -100900,6 +101208,295 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class LockSnapshotRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var coolOffPeriod: Int32?
+
+    public var dryRun: Bool?
+
+    public var lockDuration: Int32?
+
+    public var lockMode: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var snapshotId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.coolOffPeriod != nil {
+            map["CoolOffPeriod"] = self.coolOffPeriod!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.lockDuration != nil {
+            map["LockDuration"] = self.lockDuration!
+        }
+        if self.lockMode != nil {
+            map["LockMode"] = self.lockMode!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.snapshotId != nil {
+            map["SnapshotId"] = self.snapshotId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CoolOffPeriod"] as? Int32 {
+            self.coolOffPeriod = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["LockDuration"] as? Int32 {
+            self.lockDuration = value
+        }
+        if let value = dict["LockMode"] as? String {
+            self.lockMode = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SnapshotId"] as? String {
+            self.snapshotId = value
+        }
+    }
+}
+
+public class LockSnapshotResponseBody : Tea.TeaModel {
+    public class LockedSnapshotInfo : Tea.TeaModel {
+        public var coolOffPeriod: Int32?
+
+        public var coolOffPeriodExpiredTime: String?
+
+        public var lockCreationTime: String?
+
+        public var lockDuration: Int32?
+
+        public var lockDurationStartTime: String?
+
+        public var lockExpiredTime: String?
+
+        public var lockStatus: String?
+
+        public var snapshotId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.coolOffPeriod != nil {
+                map["CoolOffPeriod"] = self.coolOffPeriod!
+            }
+            if self.coolOffPeriodExpiredTime != nil {
+                map["CoolOffPeriodExpiredTime"] = self.coolOffPeriodExpiredTime!
+            }
+            if self.lockCreationTime != nil {
+                map["LockCreationTime"] = self.lockCreationTime!
+            }
+            if self.lockDuration != nil {
+                map["LockDuration"] = self.lockDuration!
+            }
+            if self.lockDurationStartTime != nil {
+                map["LockDurationStartTime"] = self.lockDurationStartTime!
+            }
+            if self.lockExpiredTime != nil {
+                map["LockExpiredTime"] = self.lockExpiredTime!
+            }
+            if self.lockStatus != nil {
+                map["LockStatus"] = self.lockStatus!
+            }
+            if self.snapshotId != nil {
+                map["SnapshotId"] = self.snapshotId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CoolOffPeriod"] as? Int32 {
+                self.coolOffPeriod = value
+            }
+            if let value = dict["CoolOffPeriodExpiredTime"] as? String {
+                self.coolOffPeriodExpiredTime = value
+            }
+            if let value = dict["LockCreationTime"] as? String {
+                self.lockCreationTime = value
+            }
+            if let value = dict["LockDuration"] as? Int32 {
+                self.lockDuration = value
+            }
+            if let value = dict["LockDurationStartTime"] as? String {
+                self.lockDurationStartTime = value
+            }
+            if let value = dict["LockExpiredTime"] as? String {
+                self.lockExpiredTime = value
+            }
+            if let value = dict["LockStatus"] as? String {
+                self.lockStatus = value
+            }
+            if let value = dict["SnapshotId"] as? String {
+                self.snapshotId = value
+            }
+        }
+    }
+    public var lockedSnapshotInfo: LockSnapshotResponseBody.LockedSnapshotInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lockedSnapshotInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lockedSnapshotInfo != nil {
+            map["LockedSnapshotInfo"] = self.lockedSnapshotInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LockedSnapshotInfo"] as? [String: Any?] {
+            var model = LockSnapshotResponseBody.LockedSnapshotInfo()
+            model.fromMap(value)
+            self.lockedSnapshotInfo = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class LockSnapshotResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LockSnapshotResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = LockSnapshotResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyAutoProvisioningGroupRequest : Tea.TeaModel {
     public class LaunchTemplateConfig : Tea.TeaModel {
         public var instanceType: String?
@@ -128504,6 +129101,174 @@ public class UnassociateHaVipResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UnassociateHaVipResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UnlockSnapshotRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var snapshotId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.snapshotId != nil {
+            map["SnapshotId"] = self.snapshotId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SnapshotId"] as? String {
+            self.snapshotId = value
+        }
+    }
+}
+
+public class UnlockSnapshotResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UnlockSnapshotResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnlockSnapshotResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UnlockSnapshotResponseBody()
             model.fromMap(value)
             self.body = model
         }
