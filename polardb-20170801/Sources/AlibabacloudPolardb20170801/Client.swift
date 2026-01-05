@@ -844,6 +844,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clonePolarFsBasicSnapshotWithOptions(_ request: ClonePolarFsBasicSnapshotRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClonePolarFsBasicSnapshotResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarFsInstanceId)) {
+            query["PolarFsInstanceId"] = request.polarFsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourcePath)) {
+            query["SourcePath"] = request.sourcePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetPath)) {
+            query["TargetPath"] = request.targetPath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClonePolarFsBasicSnapshot",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClonePolarFsBasicSnapshotResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clonePolarFsBasicSnapshot(_ request: ClonePolarFsBasicSnapshotRequest) async throws -> ClonePolarFsBasicSnapshotResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clonePolarFsBasicSnapshotWithOptions(request as! ClonePolarFsBasicSnapshotRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func closeAITaskWithOptions(_ request: CloseAITaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloseAITaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

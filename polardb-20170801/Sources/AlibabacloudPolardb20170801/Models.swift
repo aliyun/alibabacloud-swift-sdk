@@ -2841,6 +2841,174 @@ public class CheckServiceLinkedRoleResponse : Tea.TeaModel {
     }
 }
 
+public class ClonePolarFsBasicSnapshotRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var sourcePath: String?
+
+    public var targetPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.sourcePath != nil {
+            map["SourcePath"] = self.sourcePath!
+        }
+        if self.targetPath != nil {
+            map["TargetPath"] = self.targetPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["SourcePath"] as? String {
+            self.sourcePath = value
+        }
+        if let value = dict["TargetPath"] as? String {
+            self.targetPath = value
+        }
+    }
+}
+
+public class ClonePolarFsBasicSnapshotResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public var sourcePath: String?
+
+    public var targetPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sourcePath != nil {
+            map["SourcePath"] = self.sourcePath!
+        }
+        if self.targetPath != nil {
+            map["TargetPath"] = self.targetPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SourcePath"] as? String {
+            self.sourcePath = value
+        }
+        if let value = dict["TargetPath"] as? String {
+            self.targetPath = value
+        }
+    }
+}
+
+public class ClonePolarFsBasicSnapshotResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ClonePolarFsBasicSnapshotResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ClonePolarFsBasicSnapshotResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CloseAITaskRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
