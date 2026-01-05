@@ -23682,6 +23682,8 @@ public class DescribeDomainsRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var domainId: String?
+
     public var instanceId: String?
 
     public var pageNumber: Int64?
@@ -23713,6 +23715,9 @@ public class DescribeDomainsRequest : Tea.TeaModel {
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
+        }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -23746,6 +23751,9 @@ public class DescribeDomainsRequest : Tea.TeaModel {
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
