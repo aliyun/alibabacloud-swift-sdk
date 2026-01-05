@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAPIG20240327` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/apig-20240327" "5.5.0"
+github "alibabacloud-sdk-swift/apig-20240327" "5.6.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAPIG20240327` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/apig-20240327.git", from: "5.5.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/apig-20240327.git", from: "5.6.0")
 ]
 ```
 
