@@ -8447,6 +8447,251 @@ public class DeleteServerGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCapacityReservationRequest : Tea.TeaModel {
+    public var loadBalancerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LoadBalancerId"] as? String {
+            self.loadBalancerId = value
+        }
+    }
+}
+
+public class DescribeCapacityReservationResponseBody : Tea.TeaModel {
+    public class CapacityReservationState : Tea.TeaModel {
+        public var availabilityZone: String?
+
+        public var effectiveCapacityUnits: Double?
+
+        public var reason: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.availabilityZone != nil {
+                map["AvailabilityZone"] = self.availabilityZone!
+            }
+            if self.effectiveCapacityUnits != nil {
+                map["EffectiveCapacityUnits"] = self.effectiveCapacityUnits!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AvailabilityZone"] as? String {
+                self.availabilityZone = value
+            }
+            if let value = dict["EffectiveCapacityUnits"] as? Double {
+                self.effectiveCapacityUnits = value
+            }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public class MinimumLoadBalancerCapacity : Tea.TeaModel {
+        public var capacityUnits: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Int32 {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public var capacityReservationState: [DescribeCapacityReservationResponseBody.CapacityReservationState]?
+
+    public var decreaseRequestsRemaining: Int32?
+
+    public var lastModifiedTime: String?
+
+    public var minimumLoadBalancerCapacity: DescribeCapacityReservationResponseBody.MinimumLoadBalancerCapacity?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.minimumLoadBalancerCapacity?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capacityReservationState != nil {
+            var tmp : [Any] = []
+            for k in self.capacityReservationState! {
+                tmp.append(k.toMap())
+            }
+            map["CapacityReservationState"] = tmp
+        }
+        if self.decreaseRequestsRemaining != nil {
+            map["DecreaseRequestsRemaining"] = self.decreaseRequestsRemaining!
+        }
+        if self.lastModifiedTime != nil {
+            map["LastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.minimumLoadBalancerCapacity != nil {
+            map["MinimumLoadBalancerCapacity"] = self.minimumLoadBalancerCapacity?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CapacityReservationState"] as? [Any?] {
+            var tmp : [DescribeCapacityReservationResponseBody.CapacityReservationState] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeCapacityReservationResponseBody.CapacityReservationState()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.capacityReservationState = tmp
+        }
+        if let value = dict["DecreaseRequestsRemaining"] as? Int32 {
+            self.decreaseRequestsRemaining = value
+        }
+        if let value = dict["LastModifiedTime"] as? String {
+            self.lastModifiedTime = value
+        }
+        if let value = dict["MinimumLoadBalancerCapacity"] as? [String: Any?] {
+            var model = DescribeCapacityReservationResponseBody.MinimumLoadBalancerCapacity()
+            model.fromMap(value)
+            self.minimumLoadBalancerCapacity = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeCapacityReservationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCapacityReservationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeCapacityReservationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRegionsRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -21088,6 +21333,183 @@ public class LoadBalancerLeaveSecurityGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = LoadBalancerLeaveSecurityGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyCapacityReservationRequest : Tea.TeaModel {
+    public class MinimumLoadBalancerCapacity : Tea.TeaModel {
+        public var capacityUnits: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacityUnits != nil {
+                map["CapacityUnits"] = self.capacityUnits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CapacityUnits"] as? Int32 {
+                self.capacityUnits = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var loadBalancerId: String?
+
+    public var minimumLoadBalancerCapacity: ModifyCapacityReservationRequest.MinimumLoadBalancerCapacity?
+
+    public var resetCapacityReservation: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.minimumLoadBalancerCapacity?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.minimumLoadBalancerCapacity != nil {
+            map["MinimumLoadBalancerCapacity"] = self.minimumLoadBalancerCapacity?.toMap()
+        }
+        if self.resetCapacityReservation != nil {
+            map["ResetCapacityReservation"] = self.resetCapacityReservation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["LoadBalancerId"] as? String {
+            self.loadBalancerId = value
+        }
+        if let value = dict["MinimumLoadBalancerCapacity"] as? [String: Any?] {
+            var model = ModifyCapacityReservationRequest.MinimumLoadBalancerCapacity()
+            model.fromMap(value)
+            self.minimumLoadBalancerCapacity = model
+        }
+        if let value = dict["ResetCapacityReservation"] as? Bool {
+            self.resetCapacityReservation = value
+        }
+    }
+}
+
+public class ModifyCapacityReservationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyCapacityReservationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyCapacityReservationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyCapacityReservationResponseBody()
             model.fromMap(value)
             self.body = model
         }
