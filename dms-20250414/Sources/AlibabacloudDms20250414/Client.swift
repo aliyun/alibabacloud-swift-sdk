@@ -770,6 +770,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFileUploadWithOptions(_ request: DeleteFileUploadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFileUploadResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callFrom)) {
+            query["CallFrom"] = request.callFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileId)) {
+            query["FileId"] = request.fileId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFileUpload",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFileUploadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFileUpload(_ request: DeleteFileUploadRequest) async throws -> DeleteFileUploadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteFileUploadWithOptions(request as! DeleteFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeCustomAgentWithOptions(_ request: DescribeCustomAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCustomAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -838,6 +875,83 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDataAgentSession(_ request: DescribeDataAgentSessionRequest) async throws -> DescribeDataAgentSessionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeDataAgentSessionWithOptions(request as! DescribeDataAgentSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFileUploadSignatureWithOptions(_ request: DescribeFileUploadSignatureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFileUploadSignatureResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callFrom)) {
+            query["CallFrom"] = request.callFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFileUploadSignature",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFileUploadSignatureResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFileUploadSignature(_ request: DescribeFileUploadSignatureRequest) async throws -> DescribeFileUploadSignatureResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFileUploadSignatureWithOptions(request as! DescribeFileUploadSignatureRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func fileUploadCallbackWithOptions(_ request: FileUploadCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FileUploadCallbackResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callFrom)) {
+            query["CallFrom"] = request.callFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
+            query["DmsUnit"] = request.dmsUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSize)) {
+            query["FileSize"] = request.fileSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filename)) {
+            query["Filename"] = request.filename ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadLocation)) {
+            query["UploadLocation"] = request.uploadLocation ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FileUploadCallback",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FileUploadCallbackResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func fileUploadCallback(_ request: FileUploadCallbackRequest) async throws -> FileUploadCallbackResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await fileUploadCallbackWithOptions(request as! FileUploadCallbackRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

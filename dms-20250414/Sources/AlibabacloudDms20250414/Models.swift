@@ -5655,6 +5655,199 @@ public class DeleteDataLakeTableResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteFileUploadRequest : Tea.TeaModel {
+    public var callFrom: String?
+
+    public var dmsUnit: String?
+
+    public var fileId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callFrom != nil {
+            map["CallFrom"] = self.callFrom!
+        }
+        if self.dmsUnit != nil {
+            map["DmsUnit"] = self.dmsUnit!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallFrom"] as? String {
+            self.callFrom = value
+        }
+        if let value = dict["DmsUnit"] as? String {
+            self.dmsUnit = value
+        }
+        if let value = dict["FileId"] as? String {
+            self.fileId = value
+        }
+    }
+}
+
+public class DeleteFileUploadResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+        }
+    }
+    public var data: DeleteFileUploadResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteFileUploadResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteFileUploadResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteFileUploadResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteFileUploadResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCustomAgentRequest : Tea.TeaModel {
     public var customAgentId: String?
 
@@ -6441,6 +6634,456 @@ public class DescribeDataAgentSessionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeDataAgentSessionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeFileUploadSignatureRequest : Tea.TeaModel {
+    public var callFrom: String?
+
+    public var dmsUnit: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callFrom != nil {
+            map["CallFrom"] = self.callFrom!
+        }
+        if self.dmsUnit != nil {
+            map["DmsUnit"] = self.dmsUnit!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallFrom"] as? String {
+            self.callFrom = value
+        }
+        if let value = dict["DmsUnit"] as? String {
+            self.dmsUnit = value
+        }
+    }
+}
+
+public class DescribeFileUploadSignatureResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var ossCredential: String?
+
+        public var ossDate: String?
+
+        public var ossSecurityToken: String?
+
+        public var ossSignature: String?
+
+        public var ossSignatureVersion: String?
+
+        public var policy: String?
+
+        public var uploadDir: String?
+
+        public var uploadHost: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ossCredential != nil {
+                map["OssCredential"] = self.ossCredential!
+            }
+            if self.ossDate != nil {
+                map["OssDate"] = self.ossDate!
+            }
+            if self.ossSecurityToken != nil {
+                map["OssSecurityToken"] = self.ossSecurityToken!
+            }
+            if self.ossSignature != nil {
+                map["OssSignature"] = self.ossSignature!
+            }
+            if self.ossSignatureVersion != nil {
+                map["OssSignatureVersion"] = self.ossSignatureVersion!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.uploadDir != nil {
+                map["UploadDir"] = self.uploadDir!
+            }
+            if self.uploadHost != nil {
+                map["UploadHost"] = self.uploadHost!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OssCredential"] as? String {
+                self.ossCredential = value
+            }
+            if let value = dict["OssDate"] as? String {
+                self.ossDate = value
+            }
+            if let value = dict["OssSecurityToken"] as? String {
+                self.ossSecurityToken = value
+            }
+            if let value = dict["OssSignature"] as? String {
+                self.ossSignature = value
+            }
+            if let value = dict["OssSignatureVersion"] as? String {
+                self.ossSignatureVersion = value
+            }
+            if let value = dict["Policy"] as? String {
+                self.policy = value
+            }
+            if let value = dict["UploadDir"] as? String {
+                self.uploadDir = value
+            }
+            if let value = dict["UploadHost"] as? String {
+                self.uploadHost = value
+            }
+        }
+    }
+    public var data: DescribeFileUploadSignatureResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeFileUploadSignatureResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeFileUploadSignatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeFileUploadSignatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeFileUploadSignatureResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class FileUploadCallbackRequest : Tea.TeaModel {
+    public var callFrom: String?
+
+    public var dmsUnit: String?
+
+    public var fileSize: Int64?
+
+    public var filename: String?
+
+    public var uploadLocation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callFrom != nil {
+            map["CallFrom"] = self.callFrom!
+        }
+        if self.dmsUnit != nil {
+            map["DmsUnit"] = self.dmsUnit!
+        }
+        if self.fileSize != nil {
+            map["FileSize"] = self.fileSize!
+        }
+        if self.filename != nil {
+            map["Filename"] = self.filename!
+        }
+        if self.uploadLocation != nil {
+            map["UploadLocation"] = self.uploadLocation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallFrom"] as? String {
+            self.callFrom = value
+        }
+        if let value = dict["DmsUnit"] as? String {
+            self.dmsUnit = value
+        }
+        if let value = dict["FileSize"] as? Int64 {
+            self.fileSize = value
+        }
+        if let value = dict["Filename"] as? String {
+            self.filename = value
+        }
+        if let value = dict["UploadLocation"] as? String {
+            self.uploadLocation = value
+        }
+    }
+}
+
+public class FileUploadCallbackResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+        }
+    }
+    public var data: FileUploadCallbackResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = FileUploadCallbackResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class FileUploadCallbackResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: FileUploadCallbackResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = FileUploadCallbackResponseBody()
             model.fromMap(value)
             self.body = model
         }
