@@ -34881,6 +34881,10 @@ public class DescribeDBInstanceReplicationRequest : Tea.TeaModel {
 public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
     public var externalReplication: String?
 
+    public var gtidExecuted: String?
+
+    public var importStatus: String?
+
     public var replicationDelay: String?
 
     public var replicationErrorMessage: String?
@@ -34912,6 +34916,12 @@ public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
         if self.externalReplication != nil {
             map["ExternalReplication"] = self.externalReplication!
         }
+        if self.gtidExecuted != nil {
+            map["GtidExecuted"] = self.gtidExecuted!
+        }
+        if self.importStatus != nil {
+            map["ImportStatus"] = self.importStatus!
+        }
         if self.replicationDelay != nil {
             map["ReplicationDelay"] = self.replicationDelay!
         }
@@ -34940,6 +34950,12 @@ public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ExternalReplication"] as? String {
             self.externalReplication = value
+        }
+        if let value = dict["GtidExecuted"] as? String {
+            self.gtidExecuted = value
+        }
+        if let value = dict["ImportStatus"] as? String {
+            self.importStatus = value
         }
         if let value = dict["ReplicationDelay"] as? String {
             self.replicationDelay = value
@@ -61857,6 +61873,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var ecsHostName: String?
+
         public var expiredTime: String?
 
         public var gmtCreated: String?
@@ -61881,6 +61899,10 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public var nodeType: String?
 
+        public var OSName: String?
+
+        public var OSType: String?
+
         public var publicIp: String?
 
         public var regionId: String?
@@ -61889,7 +61911,11 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public var spotStrategy: String?
 
+        public var startTime: String?
+
         public var status: String?
+
+        public var stoppedMode: String?
 
         public var tagResources: [DescribeRCInstancesResponseBody.RCInstances.TagResources]?
 
@@ -61934,6 +61960,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.ecsHostName != nil {
+                map["EcsHostName"] = self.ecsHostName!
+            }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
@@ -61970,6 +61999,12 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if self.nodeType != nil {
                 map["NodeType"] = self.nodeType!
             }
+            if self.OSName != nil {
+                map["OSName"] = self.OSName!
+            }
+            if self.OSType != nil {
+                map["OSType"] = self.OSType!
+            }
             if self.publicIp != nil {
                 map["PublicIp"] = self.publicIp!
             }
@@ -61982,8 +62017,14 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if self.spotStrategy != nil {
                 map["SpotStrategy"] = self.spotStrategy!
             }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.stoppedMode != nil {
+                map["StoppedMode"] = self.stoppedMode!
             }
             if self.tagResources != nil {
                 var tmp : [Any] = []
@@ -62031,6 +62072,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EcsHostName"] as? String {
+                self.ecsHostName = value
+            }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
             }
@@ -62067,6 +62111,12 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if let value = dict["NodeType"] as? String {
                 self.nodeType = value
             }
+            if let value = dict["OSName"] as? String {
+                self.OSName = value
+            }
+            if let value = dict["OSType"] as? String {
+                self.OSType = value
+            }
             if let value = dict["PublicIp"] as? String {
                 self.publicIp = value
             }
@@ -62079,8 +62129,14 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if let value = dict["SpotStrategy"] as? String {
                 self.spotStrategy = value
             }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["StoppedMode"] as? String {
+                self.stoppedMode = value
             }
             if let value = dict["TagResources"] as? [Any?] {
                 var tmp : [DescribeRCInstancesResponseBody.RCInstances.TagResources] = []
@@ -90225,6 +90281,8 @@ public class ModifyParameterGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyRCDiskChargeTypeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var autoRenew: String?
 
     public var autoUseCoupon: Bool?
@@ -90255,6 +90313,9 @@ public class ModifyRCDiskChargeTypeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -90284,6 +90345,9 @@ public class ModifyRCDiskChargeTypeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["AutoRenew"] as? String {
             self.autoRenew = value
         }
@@ -102114,6 +102178,8 @@ public class StopRCInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var stoppedMode: String?
+
     public override init() {
         super.init()
     }
@@ -102137,6 +102203,9 @@ public class StopRCInstanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stoppedMode != nil {
+            map["StoppedMode"] = self.stoppedMode!
+        }
         return map
     }
 
@@ -102150,6 +102219,9 @@ public class StopRCInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["StoppedMode"] as? String {
+            self.stoppedMode = value
         }
     }
 }
@@ -102244,6 +102316,8 @@ public class StopRCInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var stoppedMode: String?
+
     public override init() {
         super.init()
     }
@@ -102270,6 +102344,9 @@ public class StopRCInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stoppedMode != nil {
+            map["StoppedMode"] = self.stoppedMode!
+        }
         return map
     }
 
@@ -102287,6 +102364,9 @@ public class StopRCInstancesRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["StoppedMode"] as? String {
+            self.stoppedMode = value
+        }
     }
 }
 
@@ -102298,6 +102378,8 @@ public class StopRCInstancesShrinkRequest : Tea.TeaModel {
     public var instanceIdsShrink: String?
 
     public var regionId: String?
+
+    public var stoppedMode: String?
 
     public override init() {
         super.init()
@@ -102325,6 +102407,9 @@ public class StopRCInstancesShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stoppedMode != nil {
+            map["StoppedMode"] = self.stoppedMode!
+        }
         return map
     }
 
@@ -102341,6 +102426,9 @@ public class StopRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["StoppedMode"] as? String {
+            self.stoppedMode = value
         }
     }
 }

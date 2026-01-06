@@ -16391,6 +16391,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyRCDiskChargeTypeWithOptions(_ request: ModifyRCDiskChargeTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyRCDiskChargeTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew ?? "";
         }
@@ -19376,6 +19379,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.stoppedMode)) {
+            query["StoppedMode"] = request.stoppedMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -19420,6 +19426,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stoppedMode)) {
+            query["StoppedMode"] = request.stoppedMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
