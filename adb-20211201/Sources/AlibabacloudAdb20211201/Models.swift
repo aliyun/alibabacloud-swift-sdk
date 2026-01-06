@@ -20856,6 +20856,8 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
 
         public var executeTimestamp: Int64?
 
+        public var hasDiagnosticInfo: Bool?
+
         public var hostAddress: String?
 
         public var processID: String?
@@ -20896,6 +20898,9 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
             if self.executeTimestamp != nil {
                 map["ExecuteTimestamp"] = self.executeTimestamp!
             }
+            if self.hasDiagnosticInfo != nil {
+                map["HasDiagnosticInfo"] = self.hasDiagnosticInfo!
+            }
             if self.hostAddress != nil {
                 map["HostAddress"] = self.hostAddress!
             }
@@ -20933,6 +20938,9 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExecuteTimestamp"] as? Int64 {
                 self.executeTimestamp = value
+            }
+            if let value = dict["HasDiagnosticInfo"] as? Bool {
+                self.hasDiagnosticInfo = value
             }
             if let value = dict["HostAddress"] as? String {
                 self.hostAddress = value
