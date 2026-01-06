@@ -19115,6 +19115,577 @@ public class GetDirectoryOrFilePropertiesResponse : Tea.TeaModel {
     }
 }
 
+public class GetFilesetRequest : Tea.TeaModel {
+    public var fileSystemId: String?
+
+    public var fsetId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.fsetId != nil {
+            map["FsetId"] = self.fsetId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+        if let value = dict["FsetId"] as? String {
+            self.fsetId = value
+        }
+    }
+}
+
+public class GetFilesetResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Quota : Tea.TeaModel {
+            public var fileCountLimit: Int64?
+
+            public var sizeLimit: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileCountLimit != nil {
+                    map["FileCountLimit"] = self.fileCountLimit!
+                }
+                if self.sizeLimit != nil {
+                    map["SizeLimit"] = self.sizeLimit!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileCountLimit"] as? Int64 {
+                    self.fileCountLimit = value
+                }
+                if let value = dict["SizeLimit"] as? Int64 {
+                    self.sizeLimit = value
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var deletionProtection: Bool?
+
+        public var description_: String?
+
+        public var fileCountUsage: Int64?
+
+        public var fileSystemId: String?
+
+        public var fileSystemPath: String?
+
+        public var fsetId: String?
+
+        public var quota: GetFilesetResponseBody.Data.Quota?
+
+        public var spaceUsage: Int64?
+
+        public var status: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.quota?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.deletionProtection != nil {
+                map["DeletionProtection"] = self.deletionProtection!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.fileCountUsage != nil {
+                map["FileCountUsage"] = self.fileCountUsage!
+            }
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.fileSystemPath != nil {
+                map["FileSystemPath"] = self.fileSystemPath!
+            }
+            if self.fsetId != nil {
+                map["FsetId"] = self.fsetId!
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota?.toMap()
+            }
+            if self.spaceUsage != nil {
+                map["SpaceUsage"] = self.spaceUsage!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["DeletionProtection"] as? Bool {
+                self.deletionProtection = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["FileCountUsage"] as? Int64 {
+                self.fileCountUsage = value
+            }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+            if let value = dict["FileSystemPath"] as? String {
+                self.fileSystemPath = value
+            }
+            if let value = dict["FsetId"] as? String {
+                self.fsetId = value
+            }
+            if let value = dict["Quota"] as? [String: Any?] {
+                var model = GetFilesetResponseBody.Data.Quota()
+                model.fromMap(value)
+                self.quota = model
+            }
+            if let value = dict["SpaceUsage"] as? Int64 {
+                self.spaceUsage = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
+            }
+        }
+    }
+    public var data: GetFilesetResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetFilesetResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetFilesetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetFilesetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetFilesetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetProtocolMountTargetRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var exportId: String?
+
+    public var fileSystemId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var protocolServiceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.exportId != nil {
+            map["ExportId"] = self.exportId!
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.protocolServiceId != nil {
+            map["ProtocolServiceId"] = self.protocolServiceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ExportId"] as? String {
+            self.exportId = value
+        }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ProtocolServiceId"] as? String {
+            self.protocolServiceId = value
+        }
+    }
+}
+
+public class GetProtocolMountTargetResponseBody : Tea.TeaModel {
+    public class ProtocolMountTarget : Tea.TeaModel {
+        public var accessGroupName: String?
+
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var exportId: String?
+
+        public var fsetId: String?
+
+        public var path: String?
+
+        public var protocolMountTargetDomain: String?
+
+        public var protocolType: String?
+
+        public var status: String?
+
+        public var vSwitchId: String?
+
+        public var vSwitchIds: [String]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessGroupName != nil {
+                map["AccessGroupName"] = self.accessGroupName!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.exportId != nil {
+                map["ExportId"] = self.exportId!
+            }
+            if self.fsetId != nil {
+                map["FsetId"] = self.fsetId!
+            }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
+            if self.protocolMountTargetDomain != nil {
+                map["ProtocolMountTargetDomain"] = self.protocolMountTargetDomain!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessGroupName"] as? String {
+                self.accessGroupName = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ExportId"] as? String {
+                self.exportId = value
+            }
+            if let value = dict["FsetId"] as? String {
+                self.fsetId = value
+            }
+            if let value = dict["Path"] as? String {
+                self.path = value
+            }
+            if let value = dict["ProtocolMountTargetDomain"] as? String {
+                self.protocolMountTargetDomain = value
+            }
+            if let value = dict["ProtocolType"] as? String {
+                self.protocolType = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["VSwitchIds"] as? [String] {
+                self.vSwitchIds = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var protocolMountTarget: GetProtocolMountTargetResponseBody.ProtocolMountTarget?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.protocolMountTarget?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.protocolMountTarget != nil {
+            map["ProtocolMountTarget"] = self.protocolMountTarget?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ProtocolMountTarget"] as? [String: Any?] {
+            var model = GetProtocolMountTargetResponseBody.ProtocolMountTarget()
+            model.fromMap(value)
+            self.protocolMountTarget = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetProtocolMountTargetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetProtocolMountTargetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetProtocolMountTargetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRecycleBinAttributeRequest : Tea.TeaModel {
     public var fileSystemId: String?
 
