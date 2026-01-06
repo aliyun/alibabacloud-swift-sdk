@@ -1276,6 +1276,8 @@ public class DecryptRequest : Tea.TeaModel {
 
     public var messageType: String?
 
+    public var warehouseId: Int64?
+
     public override init() {
         super.init()
     }
@@ -1305,6 +1307,9 @@ public class DecryptRequest : Tea.TeaModel {
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
+        if self.warehouseId != nil {
+            map["WarehouseId"] = self.warehouseId!
+        }
         return map
     }
 
@@ -1324,6 +1329,9 @@ public class DecryptRequest : Tea.TeaModel {
         }
         if let value = dict["MessageType"] as? String {
             self.messageType = value
+        }
+        if let value = dict["WarehouseId"] as? Int64 {
+            self.warehouseId = value
         }
     }
 }
@@ -3232,6 +3240,8 @@ public class EncryptRequest : Tea.TeaModel {
 
     public var plaintext: String?
 
+    public var warehouseId: Int64?
+
     public override init() {
         super.init()
     }
@@ -3261,6 +3271,9 @@ public class EncryptRequest : Tea.TeaModel {
         if self.plaintext != nil {
             map["Plaintext"] = self.plaintext!
         }
+        if self.warehouseId != nil {
+            map["WarehouseId"] = self.warehouseId!
+        }
         return map
     }
 
@@ -3280,6 +3293,9 @@ public class EncryptRequest : Tea.TeaModel {
         }
         if let value = dict["Plaintext"] as? String {
             self.plaintext = value
+        }
+        if let value = dict["WarehouseId"] as? Int64 {
+            self.warehouseId = value
         }
     }
 }
@@ -3382,6 +3398,10 @@ public class EncryptResponse : Tea.TeaModel {
 }
 
 public class GetCertWarehouseQuotaResponseBody : Tea.TeaModel {
+    public var appTotalQuota: Int64?
+
+    public var appUseCount: Int64?
+
     public var requestId: String?
 
     public var totalQuota: Int64?
@@ -3402,6 +3422,12 @@ public class GetCertWarehouseQuotaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appTotalQuota != nil {
+            map["AppTotalQuota"] = self.appTotalQuota!
+        }
+        if self.appUseCount != nil {
+            map["AppUseCount"] = self.appUseCount!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -3416,6 +3442,12 @@ public class GetCertWarehouseQuotaResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppTotalQuota"] as? Int64 {
+            self.appTotalQuota = value
+        }
+        if let value = dict["AppUseCount"] as? Int64 {
+            self.appUseCount = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -8152,6 +8184,8 @@ public class SignRequest : Tea.TeaModel {
 
     public var signingAlgorithm: String?
 
+    public var warehouseId: Int64?
+
     public override init() {
         super.init()
     }
@@ -8181,6 +8215,9 @@ public class SignRequest : Tea.TeaModel {
         if self.signingAlgorithm != nil {
             map["SigningAlgorithm"] = self.signingAlgorithm!
         }
+        if self.warehouseId != nil {
+            map["WarehouseId"] = self.warehouseId!
+        }
         return map
     }
 
@@ -8200,6 +8237,9 @@ public class SignRequest : Tea.TeaModel {
         }
         if let value = dict["SigningAlgorithm"] as? String {
             self.signingAlgorithm = value
+        }
+        if let value = dict["WarehouseId"] as? Int64 {
+            self.warehouseId = value
         }
     }
 }
@@ -9222,6 +9262,8 @@ public class VerifyRequest : Tea.TeaModel {
 
     public var signingAlgorithm: String?
 
+    public var warehouseId: String?
+
     public override init() {
         super.init()
     }
@@ -9254,6 +9296,9 @@ public class VerifyRequest : Tea.TeaModel {
         if self.signingAlgorithm != nil {
             map["SigningAlgorithm"] = self.signingAlgorithm!
         }
+        if self.warehouseId != nil {
+            map["WarehouseId"] = self.warehouseId!
+        }
         return map
     }
 
@@ -9276,6 +9321,9 @@ public class VerifyRequest : Tea.TeaModel {
         }
         if let value = dict["SigningAlgorithm"] as? String {
             self.signingAlgorithm = value
+        }
+        if let value = dict["WarehouseId"] as? String {
+            self.warehouseId = value
         }
     }
 }

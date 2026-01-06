@@ -414,6 +414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.messageType)) {
             query["MessageType"] = request.messageType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.warehouseId)) {
+            query["WarehouseId"] = request.warehouseId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -800,6 +803,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.plaintext)) {
             query["Plaintext"] = request.plaintext ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.warehouseId)) {
+            query["WarehouseId"] = request.warehouseId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1464,6 +1470,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.signingAlgorithm)) {
             query["SigningAlgorithm"] = request.signingAlgorithm ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.warehouseId)) {
+            query["WarehouseId"] = request.warehouseId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1752,6 +1761,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.signingAlgorithm)) {
             query["SigningAlgorithm"] = request.signingAlgorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.warehouseId)) {
+            query["WarehouseId"] = request.warehouseId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
