@@ -27,6 +27,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigCreateWithOptions(_ request: ChatBIConfigCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigCreateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -61,6 +67,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigDeleteWithOptions(_ request: ChatBIConfigDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigDeleteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -95,6 +107,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigDeleteEntryWithOptions(_ request: ChatBIConfigDeleteEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigDeleteEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -132,6 +150,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigQueryEntriesWithOptions(_ request: ChatBIConfigQueryEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigQueryEntriesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -175,6 +199,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigQueryTablesWithOptions(_ request: ChatBIConfigQueryTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigQueryTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -212,6 +242,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIConfigUpdateEntryWithOptions(_ request: ChatBIConfigUpdateEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigUpdateEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -267,6 +303,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIFileTemplateDownloadWithOptions(_ request: ChatBIFileTemplateDownloadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIFileTemplateDownloadResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
         }
@@ -301,6 +343,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIFileUploadWithOptions(_ request: ChatBIFileUploadRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIFileUploadResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
@@ -335,6 +383,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIFileUploadCallbackWithOptions(_ request: ChatBIFileUploadCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIFileUploadCallbackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.characterSetName)) {
             query["CharacterSetName"] = request.characterSetName ?? "";
         }
@@ -381,6 +435,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternCreateWithOptions(_ request: ChatBIPatternCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternCreateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -418,6 +478,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternDeleteWithOptions(_ request: ChatBIPatternDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternDeleteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -455,6 +521,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternDeleteEntryWithOptions(_ request: ChatBIPatternDeleteEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternDeleteEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -495,6 +567,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternIndexCreateWithOptions(_ request: ChatBIPatternIndexCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternIndexCreateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -535,6 +613,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternIndexDeleteWithOptions(_ request: ChatBIPatternIndexDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternIndexDeleteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -572,6 +656,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternIndexQueryTablesWithOptions(_ request: ChatBIPatternIndexQueryTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternIndexQueryTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -615,6 +705,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternQueryEntriesWithOptions(_ request: ChatBIPatternQueryEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternQueryEntriesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -661,6 +757,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternQueryTablesWithOptions(_ request: ChatBIPatternQueryTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternQueryTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -704,6 +806,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIPatternUpdateEntryWithOptions(_ request: ChatBIPatternUpdateEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIPatternUpdateEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -761,6 +869,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -787,6 +901,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.selectData)) {
             query["SelectData"] = request.selectData!;
+        }
+        if (!TeaUtils.Client.isUnset(request.thinkingMode)) {
+            query["ThinkingMode"] = request.thinkingMode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -816,6 +933,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBISchemaIndexCreateWithOptions(_ request: ChatBISchemaIndexCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBISchemaIndexCreateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.columnsExcluded)) {
             query["ColumnsExcluded"] = request.columnsExcluded ?? "";
         }
@@ -862,6 +985,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBISchemaIndexDeleteWithOptions(_ request: ChatBISchemaIndexDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBISchemaIndexDeleteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -899,6 +1028,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBISchemaIndexQueryTablesWithOptions(_ request: ChatBISchemaIndexQueryTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBISchemaIndexQueryTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -942,6 +1077,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatBIUpdateTableValidationColumnsWithOptions(_ request: ChatBIUpdateTableValidationColumnsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIUpdateTableValidationColumnsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
@@ -1206,6 +1347,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUserTokenWithOptions(_ request: GetUserTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetUserToken",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUserTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUserToken(_ request: GetUserTokenRequest) async throws -> GetUserTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getUserTokenWithOptions(request as! GetUserTokenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listMultimodalDatasetWithOptions(_ request: ListMultimodalDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalDatasetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1320,6 +1498,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalSearchTaskResultWithOptions(_ request: ListMultimodalSearchTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalSearchTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMultimodalSearchTaskResult",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMultimodalSearchTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalSearchTaskResult(_ request: ListMultimodalSearchTaskResultRequest) async throws -> ListMultimodalSearchTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMultimodalSearchTaskResultWithOptions(request as! ListMultimodalSearchTaskResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateMultimodalDatasetWithOptions(_ request: UpdateMultimodalDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultimodalDatasetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1394,5 +1612,82 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadOSSMultimodalDataset(_ request: UploadOSSMultimodalDatasetRequest) async throws -> UploadOSSMultimodalDatasetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await uploadOSSMultimodalDatasetWithOptions(request as! UploadOSSMultimodalDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateDatabaseUserTokenWithOptions(_ request: ValidateDatabaseUserTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateDatabaseUserTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBName)) {
+            query["DBName"] = request.DBName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateDatabaseUserToken",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateDatabaseUserTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateDatabaseUserToken(_ request: ValidateDatabaseUserTokenRequest) async throws -> ValidateDatabaseUserTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await validateDatabaseUserTokenWithOptions(request as! ValidateDatabaseUserTokenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateUserTokenWithOptions(_ request: ValidateUserTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateUserTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authMessage)) {
+            query["AuthMessage"] = request.authMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            query["AuthType"] = request.authType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateUserToken",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateUserTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateUserToken(_ request: ValidateUserTokenRequest) async throws -> ValidateUserTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await validateUserTokenWithOptions(request as! ValidateUserTokenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }

@@ -6,6 +6,10 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class ChatBIConfigCreateRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -24,6 +28,12 @@ public class ChatBIConfigCreateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -35,6 +45,12 @@ public class ChatBIConfigCreateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -158,6 +174,10 @@ public class ChatBIConfigCreateResponse : Tea.TeaModel {
 }
 
 public class ChatBIConfigDeleteRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -176,6 +196,12 @@ public class ChatBIConfigDeleteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -187,6 +213,12 @@ public class ChatBIConfigDeleteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -310,6 +342,10 @@ public class ChatBIConfigDeleteResponse : Tea.TeaModel {
 }
 
 public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var id: String?
@@ -330,6 +366,12 @@ public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -344,6 +386,12 @@ public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -470,6 +518,10 @@ public class ChatBIConfigDeleteEntryResponse : Tea.TeaModel {
 }
 
 public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var id: Int32?
@@ -494,6 +546,12 @@ public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -514,6 +572,12 @@ public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -646,6 +710,10 @@ public class ChatBIConfigQueryEntriesResponse : Tea.TeaModel {
 }
 
 public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var inputField: String?
@@ -666,6 +734,12 @@ public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -680,6 +754,12 @@ public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -806,6 +886,10 @@ public class ChatBIConfigQueryTablesResponse : Tea.TeaModel {
 }
 
 public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var formulaFunction: String?
@@ -838,6 +922,12 @@ public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -870,6 +960,12 @@ public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -1014,6 +1110,10 @@ public class ChatBIConfigUpdateEntryResponse : Tea.TeaModel {
 }
 
 public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var instanceName: String?
 
     public var tableType: String?
@@ -1032,6 +1132,12 @@ public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -1043,6 +1149,12 @@ public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
@@ -1166,6 +1278,10 @@ public class ChatBIFileTemplateDownloadResponse : Tea.TeaModel {
 }
 
 public class ChatBIFileUploadRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var fileName: String?
 
     public var instanceName: String?
@@ -1184,6 +1300,12 @@ public class ChatBIFileUploadRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -1195,6 +1317,12 @@ public class ChatBIFileUploadRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -1318,6 +1446,10 @@ public class ChatBIFileUploadResponse : Tea.TeaModel {
 }
 
 public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var characterSetName: String?
 
     public var dbName: String?
@@ -1344,6 +1476,12 @@ public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.characterSetName != nil {
             map["CharacterSetName"] = self.characterSetName!
         }
@@ -1367,6 +1505,12 @@ public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["CharacterSetName"] as? String {
             self.characterSetName = value
         }
@@ -1502,6 +1646,10 @@ public class ChatBIFileUploadCallbackResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternCreateRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -1522,6 +1670,12 @@ public class ChatBIPatternCreateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -1536,6 +1690,12 @@ public class ChatBIPatternCreateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -1662,6 +1822,10 @@ public class ChatBIPatternCreateResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternDeleteRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -1682,6 +1846,12 @@ public class ChatBIPatternDeleteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -1696,6 +1866,12 @@ public class ChatBIPatternDeleteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -1822,6 +1998,10 @@ public class ChatBIPatternDeleteResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var id: String?
@@ -1844,6 +2024,12 @@ public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -1861,6 +2047,12 @@ public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -1990,6 +2182,10 @@ public class ChatBIPatternDeleteEntryResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -2012,6 +2208,12 @@ public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2029,6 +2231,12 @@ public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -2158,6 +2366,10 @@ public class ChatBIPatternIndexCreateResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -2178,6 +2390,12 @@ public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2192,6 +2410,12 @@ public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -2318,6 +2542,10 @@ public class ChatBIPatternIndexDeleteResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var inputField: String?
@@ -2342,6 +2570,12 @@ public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2362,6 +2596,12 @@ public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -2494,6 +2734,10 @@ public class ChatBIPatternIndexQueryTablesResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var id: Int32?
@@ -2520,6 +2764,12 @@ public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2543,6 +2793,12 @@ public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -2678,6 +2934,10 @@ public class ChatBIPatternQueryEntriesResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var inputField: String?
@@ -2702,6 +2962,12 @@ public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2722,6 +2988,12 @@ public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -2854,6 +3126,10 @@ public class ChatBIPatternQueryTablesResponse : Tea.TeaModel {
 }
 
 public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var id: Int32?
@@ -2884,6 +3160,12 @@ public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -2913,6 +3195,12 @@ public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -3100,6 +3388,10 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
             }
         }
     }
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var generateChart: Bool?
@@ -3118,6 +3410,8 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
 
     public var selectData: Bool?
 
+    public var thinkingMode: Bool?
+
     public override init() {
         super.init()
     }
@@ -3133,6 +3427,12 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -3160,11 +3460,20 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
         if self.selectData != nil {
             map["SelectData"] = self.selectData!
         }
+        if self.thinkingMode != nil {
+            map["ThinkingMode"] = self.thinkingMode!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -3194,10 +3503,17 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
         if let value = dict["SelectData"] as? Bool {
             self.selectData = value
         }
+        if let value = dict["ThinkingMode"] as? Bool {
+            self.thinkingMode = value
+        }
     }
 }
 
 public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var generateChart: Bool?
@@ -3216,6 +3532,8 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
 
     public var selectData: Bool?
 
+    public var thinkingMode: Bool?
+
     public override init() {
         super.init()
     }
@@ -3230,6 +3548,12 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -3257,11 +3581,20 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
         if self.selectData != nil {
             map["SelectData"] = self.selectData!
         }
+        if self.thinkingMode != nil {
+            map["ThinkingMode"] = self.thinkingMode!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -3288,6 +3621,9 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SelectData"] as? Bool {
             self.selectData = value
+        }
+        if let value = dict["ThinkingMode"] as? Bool {
+            self.thinkingMode = value
         }
     }
 }
@@ -3406,6 +3742,10 @@ public class ChatBIPredictSseResponse : Tea.TeaModel {
 }
 
 public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var columnsExcluded: String?
 
     public var dbName: String?
@@ -3432,6 +3772,12 @@ public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.columnsExcluded != nil {
             map["ColumnsExcluded"] = self.columnsExcluded!
         }
@@ -3455,6 +3801,12 @@ public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["ColumnsExcluded"] as? String {
             self.columnsExcluded = value
         }
@@ -3590,6 +3942,10 @@ public class ChatBISchemaIndexCreateResponse : Tea.TeaModel {
 }
 
 public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -3610,6 +3966,12 @@ public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -3624,6 +3986,12 @@ public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -3750,6 +4118,10 @@ public class ChatBISchemaIndexDeleteResponse : Tea.TeaModel {
 }
 
 public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var inputField: String?
@@ -3774,6 +4146,12 @@ public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -3794,6 +4172,12 @@ public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -3926,6 +4310,10 @@ public class ChatBISchemaIndexQueryTablesResponse : Tea.TeaModel {
 }
 
 public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
     public var dbName: String?
 
     public var instanceName: String?
@@ -3948,6 +4336,12 @@ public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
         if self.dbName != nil {
             map["DbName"] = self.dbName!
         }
@@ -3965,6 +4359,12 @@ public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
         if let value = dict["DbName"] as? String {
             self.dbName = value
         }
@@ -5124,6 +5524,166 @@ public class DownloadMultimodalSearchTaskResultMetadataResponse : Tea.TeaModel {
     }
 }
 
+public class GetUserTokenRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var password: String?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class GetUserTokenResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetUserTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetUserTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetUserTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListMultimodalDatasetRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -5612,6 +6172,174 @@ public class ListMultimodalSearchTaskResponse : Tea.TeaModel {
     }
 }
 
+public class ListMultimodalSearchTaskResultRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class ListMultimodalSearchTaskResultResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListMultimodalSearchTaskResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMultimodalSearchTaskResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMultimodalSearchTaskResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateMultimodalDatasetRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -5934,6 +6662,334 @@ public class UploadOSSMultimodalDatasetResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UploadOSSMultimodalDatasetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ValidateDatabaseUserTokenRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
+    public var DBClusterId: String?
+
+    public var DBName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.DBName != nil {
+            map["DBName"] = self.DBName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DBName"] as? String {
+            self.DBName = value
+        }
+    }
+}
+
+public class ValidateDatabaseUserTokenResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ValidateDatabaseUserTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ValidateDatabaseUserTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ValidateDatabaseUserTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ValidateUserTokenRequest : Tea.TeaModel {
+    public var authMessage: String?
+
+    public var authType: String?
+
+    public var DBClusterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authMessage != nil {
+            map["AuthMessage"] = self.authMessage!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthMessage"] as? String {
+            self.authMessage = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+    }
+}
+
+public class ValidateUserTokenResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ValidateUserTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ValidateUserTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ValidateUserTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
