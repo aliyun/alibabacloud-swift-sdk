@@ -42931,6 +42931,603 @@ public class DescribeHALogsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeHistoryEventsRequest : Tea.TeaModel {
+    public var archiveStatus: String?
+
+    public var eventCategory: String?
+
+    public var eventId: String?
+
+    public var eventLevel: String?
+
+    public var eventStatus: String?
+
+    public var eventType: String?
+
+    public var fromStartTime: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceType: String?
+
+    public var taskId: String?
+
+    public var toStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.archiveStatus != nil {
+            map["ArchiveStatus"] = self.archiveStatus!
+        }
+        if self.eventCategory != nil {
+            map["EventCategory"] = self.eventCategory!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.eventLevel != nil {
+            map["EventLevel"] = self.eventLevel!
+        }
+        if self.eventStatus != nil {
+            map["EventStatus"] = self.eventStatus!
+        }
+        if self.eventType != nil {
+            map["EventType"] = self.eventType!
+        }
+        if self.fromStartTime != nil {
+            map["FromStartTime"] = self.fromStartTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.toStartTime != nil {
+            map["ToStartTime"] = self.toStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ArchiveStatus"] as? String {
+            self.archiveStatus = value
+        }
+        if let value = dict["EventCategory"] as? String {
+            self.eventCategory = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["EventLevel"] as? String {
+            self.eventLevel = value
+        }
+        if let value = dict["EventStatus"] as? String {
+            self.eventStatus = value
+        }
+        if let value = dict["EventType"] as? String {
+            self.eventType = value
+        }
+        if let value = dict["FromStartTime"] as? String {
+            self.fromStartTime = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["ToStartTime"] as? String {
+            self.toStartTime = value
+        }
+    }
+}
+
+public class DescribeHistoryEventsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public var cmsProduct: String?
+
+            public var dbType: String?
+
+            public var detailImpact: String?
+
+            public var detailReason: String?
+
+            public var endTime: String?
+
+            public var eventCategory: String?
+
+            public var eventCode: String?
+
+            public var eventDetail: String?
+
+            public var eventId: String?
+
+            public var eventImpact: String?
+
+            public var eventLevel: String?
+
+            public var eventReason: String?
+
+            public var eventStatus: String?
+
+            public var eventType: String?
+
+            public var gmtCreated: String?
+
+            public var gmtModified: String?
+
+            public var handleStatus: String?
+
+            public var hasLifeCycle: Int32?
+
+            public var instanceId: String?
+
+            public var instanceName: String?
+
+            public var isClosed: Int32?
+
+            public var product: String?
+
+            public var regionId: String?
+
+            public var resourceType: String?
+
+            public var sourceType: String?
+
+            public var startTime: String?
+
+            public var uid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cmsProduct != nil {
+                    map["CmsProduct"] = self.cmsProduct!
+                }
+                if self.dbType != nil {
+                    map["DbType"] = self.dbType!
+                }
+                if self.detailImpact != nil {
+                    map["DetailImpact"] = self.detailImpact!
+                }
+                if self.detailReason != nil {
+                    map["DetailReason"] = self.detailReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.eventCategory != nil {
+                    map["EventCategory"] = self.eventCategory!
+                }
+                if self.eventCode != nil {
+                    map["EventCode"] = self.eventCode!
+                }
+                if self.eventDetail != nil {
+                    map["EventDetail"] = self.eventDetail!
+                }
+                if self.eventId != nil {
+                    map["EventId"] = self.eventId!
+                }
+                if self.eventImpact != nil {
+                    map["EventImpact"] = self.eventImpact!
+                }
+                if self.eventLevel != nil {
+                    map["EventLevel"] = self.eventLevel!
+                }
+                if self.eventReason != nil {
+                    map["EventReason"] = self.eventReason!
+                }
+                if self.eventStatus != nil {
+                    map["EventStatus"] = self.eventStatus!
+                }
+                if self.eventType != nil {
+                    map["EventType"] = self.eventType!
+                }
+                if self.gmtCreated != nil {
+                    map["GmtCreated"] = self.gmtCreated!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.handleStatus != nil {
+                    map["HandleStatus"] = self.handleStatus!
+                }
+                if self.hasLifeCycle != nil {
+                    map["HasLifeCycle"] = self.hasLifeCycle!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.instanceName != nil {
+                    map["InstanceName"] = self.instanceName!
+                }
+                if self.isClosed != nil {
+                    map["IsClosed"] = self.isClosed!
+                }
+                if self.product != nil {
+                    map["Product"] = self.product!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.sourceType != nil {
+                    map["SourceType"] = self.sourceType!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.uid != nil {
+                    map["Uid"] = self.uid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CmsProduct"] as? String {
+                    self.cmsProduct = value
+                }
+                if let value = dict["DbType"] as? String {
+                    self.dbType = value
+                }
+                if let value = dict["DetailImpact"] as? String {
+                    self.detailImpact = value
+                }
+                if let value = dict["DetailReason"] as? String {
+                    self.detailReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["EventCategory"] as? String {
+                    self.eventCategory = value
+                }
+                if let value = dict["EventCode"] as? String {
+                    self.eventCode = value
+                }
+                if let value = dict["EventDetail"] as? String {
+                    self.eventDetail = value
+                }
+                if let value = dict["EventId"] as? String {
+                    self.eventId = value
+                }
+                if let value = dict["EventImpact"] as? String {
+                    self.eventImpact = value
+                }
+                if let value = dict["EventLevel"] as? String {
+                    self.eventLevel = value
+                }
+                if let value = dict["EventReason"] as? String {
+                    self.eventReason = value
+                }
+                if let value = dict["EventStatus"] as? String {
+                    self.eventStatus = value
+                }
+                if let value = dict["EventType"] as? String {
+                    self.eventType = value
+                }
+                if let value = dict["GmtCreated"] as? String {
+                    self.gmtCreated = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["HandleStatus"] as? String {
+                    self.handleStatus = value
+                }
+                if let value = dict["HasLifeCycle"] as? Int32 {
+                    self.hasLifeCycle = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["InstanceName"] as? String {
+                    self.instanceName = value
+                }
+                if let value = dict["IsClosed"] as? Int32 {
+                    self.isClosed = value
+                }
+                if let value = dict["Product"] as? String {
+                    self.product = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["ResourceType"] as? String {
+                    self.resourceType = value
+                }
+                if let value = dict["SourceType"] as? String {
+                    self.sourceType = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Uid"] as? String {
+                    self.uid = value
+                }
+            }
+        }
+        public var data: DescribeHistoryEventsResponseBody.Items.Data?
+
+        public var id: String?
+
+        public var region: String?
+
+        public var source: String?
+
+        public var specversion: String?
+
+        public var subject: String?
+
+        public var time: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.data?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                map["Data"] = self.data?.toMap()
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.source != nil {
+                map["Source"] = self.source!
+            }
+            if self.specversion != nil {
+                map["Specversion"] = self.specversion!
+            }
+            if self.subject != nil {
+                map["Subject"] = self.subject!
+            }
+            if self.time != nil {
+                map["Time"] = self.time!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Data"] as? [String: Any?] {
+                var model = DescribeHistoryEventsResponseBody.Items.Data()
+                model.fromMap(value)
+                self.data = model
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Region"] as? String {
+                self.region = value
+            }
+            if let value = dict["Source"] as? String {
+                self.source = value
+            }
+            if let value = dict["Specversion"] as? String {
+                self.specversion = value
+            }
+            if let value = dict["Subject"] as? String {
+                self.subject = value
+            }
+            if let value = dict["Time"] as? String {
+                self.time = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var items: [DescribeHistoryEventsResponseBody.Items]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeHistoryEventsResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeHistoryEventsResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeHistoryEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHistoryEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHistoryEventsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeHistoryTasksRequest : Tea.TeaModel {
     public var fromExecTime: Int32?
 
