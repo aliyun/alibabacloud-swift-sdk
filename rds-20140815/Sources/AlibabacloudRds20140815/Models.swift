@@ -45325,7 +45325,7 @@ public class DescribeHistoryTasksRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
-    public var resourceOwnerAccount: Int64?
+    public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
 
@@ -45438,7 +45438,7 @@ public class DescribeHistoryTasksRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
-        if let value = dict["ResourceOwnerAccount"] as? Int64 {
+        if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
@@ -45787,7 +45787,7 @@ public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
-    public var resourceOwnerAccount: Int64?
+    public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
 
@@ -45882,7 +45882,7 @@ public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
-        if let value = dict["ResourceOwnerAccount"] as? Int64 {
+        if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
