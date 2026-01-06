@@ -536,6 +536,8 @@ public class AddUsersToGroupResponse : Tea.TeaModel {
 public class AuthorizeApplicationToGroupsRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var groupIds: [String]?
 
     public var instanceId: String?
@@ -557,6 +559,9 @@ public class AuthorizeApplicationToGroupsRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.groupIds != nil {
             map["GroupIds"] = self.groupIds!
         }
@@ -570,6 +575,9 @@ public class AuthorizeApplicationToGroupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["GroupIds"] as? [String] {
             self.groupIds = value
@@ -664,6 +672,8 @@ public class AuthorizeApplicationToGroupsResponse : Tea.TeaModel {
 public class AuthorizeApplicationToOrganizationalUnitsRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var organizationalUnitIds: [String]?
@@ -685,6 +695,9 @@ public class AuthorizeApplicationToOrganizationalUnitsRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -698,6 +711,9 @@ public class AuthorizeApplicationToOrganizationalUnitsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -792,6 +808,8 @@ public class AuthorizeApplicationToOrganizationalUnitsResponse : Tea.TeaModel {
 public class AuthorizeApplicationToUsersRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var userIds: [String]?
@@ -813,6 +831,9 @@ public class AuthorizeApplicationToUsersRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -826,6 +847,9 @@ public class AuthorizeApplicationToUsersRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -27244,7 +27268,39 @@ public class ListApplicationsForGroupRequest : Tea.TeaModel {
 
 public class ListApplicationsForGroupResponseBody : Tea.TeaModel {
     public class Applications : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+            }
+        }
         public var applicationId: String?
+
+        public var applicationRoles: [ListApplicationsForGroupResponseBody.Applications.ApplicationRoles]?
 
         public var hasDirectAuthorization: Bool?
 
@@ -27267,6 +27323,13 @@ public class ListApplicationsForGroupResponseBody : Tea.TeaModel {
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             if self.hasDirectAuthorization != nil {
                 map["HasDirectAuthorization"] = self.hasDirectAuthorization!
             }
@@ -27280,6 +27343,19 @@ public class ListApplicationsForGroupResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListApplicationsForGroupResponseBody.Applications.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListApplicationsForGroupResponseBody.Applications.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
             }
             if let value = dict["HasDirectAuthorization"] as? Bool {
                 self.hasDirectAuthorization = value
@@ -27928,7 +28004,39 @@ public class ListApplicationsForOrganizationalUnitRequest : Tea.TeaModel {
 
 public class ListApplicationsForOrganizationalUnitResponseBody : Tea.TeaModel {
     public class Applications : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+            }
+        }
         public var applicationId: String?
+
+        public var applicationRoles: [ListApplicationsForOrganizationalUnitResponseBody.Applications.ApplicationRoles]?
 
         public override init() {
             super.init()
@@ -27947,6 +28055,13 @@ public class ListApplicationsForOrganizationalUnitResponseBody : Tea.TeaModel {
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             return map
         }
 
@@ -27954,6 +28069,19 @@ public class ListApplicationsForOrganizationalUnitResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListApplicationsForOrganizationalUnitResponseBody.Applications.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListApplicationsForOrganizationalUnitResponseBody.Applications.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
             }
         }
     }
@@ -28140,7 +28268,55 @@ public class ListApplicationsForUserRequest : Tea.TeaModel {
 
 public class ListApplicationsForUserResponseBody : Tea.TeaModel {
     public class Applications : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public var hasDirectAuthorization: Bool?
+
+            public var hasInheritAuthorization: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                if self.hasDirectAuthorization != nil {
+                    map["HasDirectAuthorization"] = self.hasDirectAuthorization!
+                }
+                if self.hasInheritAuthorization != nil {
+                    map["HasInheritAuthorization"] = self.hasInheritAuthorization!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+                if let value = dict["HasDirectAuthorization"] as? Bool {
+                    self.hasDirectAuthorization = value
+                }
+                if let value = dict["HasInheritAuthorization"] as? Bool {
+                    self.hasInheritAuthorization = value
+                }
+            }
+        }
         public var applicationId: String?
+
+        public var applicationRoles: [ListApplicationsForUserResponseBody.Applications.ApplicationRoles]?
 
         public var hasDirectAuthorization: Bool?
 
@@ -28163,6 +28339,13 @@ public class ListApplicationsForUserResponseBody : Tea.TeaModel {
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             if self.hasDirectAuthorization != nil {
                 map["HasDirectAuthorization"] = self.hasDirectAuthorization!
             }
@@ -28176,6 +28359,19 @@ public class ListApplicationsForUserResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListApplicationsForUserResponseBody.Applications.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListApplicationsForUserResponseBody.Applications.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
             }
             if let value = dict["HasDirectAuthorization"] as? Bool {
                 self.hasDirectAuthorization = value
@@ -33145,6 +33341,8 @@ public class ListGroupsResponse : Tea.TeaModel {
 public class ListGroupsForApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var groupIds: [String]?
 
     public var instanceId: String?
@@ -33170,6 +33368,9 @@ public class ListGroupsForApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.groupIds != nil {
             map["GroupIds"] = self.groupIds!
         }
@@ -33190,6 +33391,9 @@ public class ListGroupsForApplicationRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
+        }
         if let value = dict["GroupIds"] as? [String] {
             self.groupIds = value
         }
@@ -33207,6 +33411,38 @@ public class ListGroupsForApplicationRequest : Tea.TeaModel {
 
 public class ListGroupsForApplicationResponseBody : Tea.TeaModel {
     public class Groups : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+            }
+        }
+        public var applicationRoles: [ListGroupsForApplicationResponseBody.Groups.ApplicationRoles]?
+
         public var groupId: String?
 
         public override init() {
@@ -33223,6 +33459,13 @@ public class ListGroupsForApplicationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
             }
@@ -33231,6 +33474,19 @@ public class ListGroupsForApplicationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListGroupsForApplicationResponseBody.Groups.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListGroupsForApplicationResponseBody.Groups.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
+            }
             if let value = dict["GroupId"] as? String {
                 self.groupId = value
             }
@@ -36027,6 +36283,8 @@ public class ListOrganizationalUnitsResponse : Tea.TeaModel {
 public class ListOrganizationalUnitsForApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var organizationalUnitIds: [String]?
@@ -36052,6 +36310,9 @@ public class ListOrganizationalUnitsForApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -36072,6 +36333,9 @@ public class ListOrganizationalUnitsForApplicationRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -36089,6 +36353,38 @@ public class ListOrganizationalUnitsForApplicationRequest : Tea.TeaModel {
 
 public class ListOrganizationalUnitsForApplicationResponseBody : Tea.TeaModel {
     public class OrganizationalUnits : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+            }
+        }
+        public var applicationRoles: [ListOrganizationalUnitsForApplicationResponseBody.OrganizationalUnits.ApplicationRoles]?
+
         public var organizationalUnitId: String?
 
         public override init() {
@@ -36105,6 +36401,13 @@ public class ListOrganizationalUnitsForApplicationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             if self.organizationalUnitId != nil {
                 map["OrganizationalUnitId"] = self.organizationalUnitId!
             }
@@ -36113,6 +36416,19 @@ public class ListOrganizationalUnitsForApplicationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListOrganizationalUnitsForApplicationResponseBody.OrganizationalUnits.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListOrganizationalUnitsForApplicationResponseBody.OrganizationalUnits.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
+            }
             if let value = dict["OrganizationalUnitId"] as? String {
                 self.organizationalUnitId = value
             }
@@ -39306,6 +39622,8 @@ public class ListUsersResponse : Tea.TeaModel {
 public class ListUsersForApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var pageNumber: Int64?
@@ -39331,6 +39649,9 @@ public class ListUsersForApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -39351,6 +39672,9 @@ public class ListUsersForApplicationRequest : Tea.TeaModel {
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
         }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -39368,6 +39692,38 @@ public class ListUsersForApplicationRequest : Tea.TeaModel {
 
 public class ListUsersForApplicationResponseBody : Tea.TeaModel {
     public class Users : Tea.TeaModel {
+        public class ApplicationRoles : Tea.TeaModel {
+            public var applicationRoleId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationRoleId != nil {
+                    map["ApplicationRoleId"] = self.applicationRoleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationRoleId"] as? String {
+                    self.applicationRoleId = value
+                }
+            }
+        }
+        public var applicationRoles: [ListUsersForApplicationResponseBody.Users.ApplicationRoles]?
+
         public var userId: String?
 
         public override init() {
@@ -39384,6 +39740,13 @@ public class ListUsersForApplicationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.applicationRoles != nil {
+                var tmp : [Any] = []
+                for k in self.applicationRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationRoles"] = tmp
+            }
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
@@ -39392,6 +39755,19 @@ public class ListUsersForApplicationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApplicationRoles"] as? [Any?] {
+                var tmp : [ListUsersForApplicationResponseBody.Users.ApplicationRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListUsersForApplicationResponseBody.Users.ApplicationRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applicationRoles = tmp
+            }
             if let value = dict["UserId"] as? String {
                 self.userId = value
             }
@@ -40933,6 +41309,8 @@ public class RemoveUsersFromGroupResponse : Tea.TeaModel {
 public class RevokeApplicationFromGroupsRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var groupIds: [String]?
 
     public var instanceId: String?
@@ -40954,6 +41332,9 @@ public class RevokeApplicationFromGroupsRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.groupIds != nil {
             map["GroupIds"] = self.groupIds!
         }
@@ -40967,6 +41348,9 @@ public class RevokeApplicationFromGroupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["GroupIds"] as? [String] {
             self.groupIds = value
@@ -41061,6 +41445,8 @@ public class RevokeApplicationFromGroupsResponse : Tea.TeaModel {
 public class RevokeApplicationFromOrganizationalUnitsRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var organizationalUnitIds: [String]?
@@ -41082,6 +41468,9 @@ public class RevokeApplicationFromOrganizationalUnitsRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -41095,6 +41484,9 @@ public class RevokeApplicationFromOrganizationalUnitsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -41189,6 +41581,8 @@ public class RevokeApplicationFromOrganizationalUnitsResponse : Tea.TeaModel {
 public class RevokeApplicationFromUsersRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var applicationRoleId: String?
+
     public var instanceId: String?
 
     public var userIds: [String]?
@@ -41210,6 +41604,9 @@ public class RevokeApplicationFromUsersRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.applicationRoleId != nil {
+            map["ApplicationRoleId"] = self.applicationRoleId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -41223,6 +41620,9 @@ public class RevokeApplicationFromUsersRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ApplicationRoleId"] as? String {
+            self.applicationRoleId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value

@@ -181,6 +181,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupIds)) {
             query["GroupIds"] = request.groupIds ?? [];
         }
@@ -218,6 +221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -254,6 +260,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -5280,6 +5289,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupIds)) {
             query["GroupIds"] = request.groupIds ?? [];
         }
@@ -5747,6 +5759,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -5996,6 +6011,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -6345,6 +6363,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupIds)) {
             query["GroupIds"] = request.groupIds ?? [];
         }
@@ -6382,6 +6403,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -6418,6 +6442,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationRoleId)) {
+            query["ApplicationRoleId"] = request.applicationRoleId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
