@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEventbridge20200401` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/eventbridge-20200401" "7.0.2"
+github "alibabacloud-sdk-swift/eventbridge-20200401" "7.0.3"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEventbridge20200401` into your Xcode project using [Sw
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/eventbridge-20200401.git", from: "7.0.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/eventbridge-20200401.git", from: "7.0.3")
 ]
 ```
 
