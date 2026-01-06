@@ -15964,6 +15964,8 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 
     public var queryType: String?
 
+    public var queryVideo: String?
+
     public var scoreThreshold: Double?
 
     public var sortBy: String?
@@ -16048,6 +16050,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         if self.queryType != nil {
             map["QueryType"] = self.queryType!
         }
+        if self.queryVideo != nil {
+            map["QueryVideo"] = self.queryVideo!
+        }
         if self.scoreThreshold != nil {
             map["ScoreThreshold"] = self.scoreThreshold!
         }
@@ -16131,6 +16136,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         if let value = dict["QueryType"] as? String {
             self.queryType = value
         }
+        if let value = dict["QueryVideo"] as? String {
+            self.queryVideo = value
+        }
         if let value = dict["ScoreThreshold"] as? Double {
             self.scoreThreshold = value
         }
@@ -16194,6 +16202,8 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
     public var queryText: String?
 
     public var queryType: String?
+
+    public var queryVideo: String?
 
     public var scoreThreshold: Double?
 
@@ -16279,6 +16289,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         if self.queryType != nil {
             map["QueryType"] = self.queryType!
         }
+        if self.queryVideo != nil {
+            map["QueryVideo"] = self.queryVideo!
+        }
         if self.scoreThreshold != nil {
             map["ScoreThreshold"] = self.scoreThreshold!
         }
@@ -16361,6 +16374,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["QueryType"] as? String {
             self.queryType = value
+        }
+        if let value = dict["QueryVideo"] as? String {
+            self.queryVideo = value
         }
         if let value = dict["ScoreThreshold"] as? Double {
             self.scoreThreshold = value

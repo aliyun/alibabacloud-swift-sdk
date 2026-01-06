@@ -2795,6 +2795,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.queryType)) {
             query["QueryType"] = request.queryType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queryVideo)) {
+            query["QueryVideo"] = request.queryVideo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scoreThreshold)) {
             query["ScoreThreshold"] = request.scoreThreshold!;
         }
