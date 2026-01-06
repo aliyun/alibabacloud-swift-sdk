@@ -36500,6 +36500,8 @@ public class GetPipelineRunResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var description_: String?
+
         public var id: String?
 
         public var message: String?
@@ -36531,6 +36533,9 @@ public class GetPipelineRunResponseBody : Tea.TeaModel {
             }
             if self.creator != nil {
                 map["Creator"] = self.creator!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -36564,6 +36569,9 @@ public class GetPipelineRunResponseBody : Tea.TeaModel {
             }
             if let value = dict["Creator"] as? String {
                 self.creator = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["Id"] as? String {
                 self.id = value
@@ -65456,6 +65464,8 @@ public class ListPipelineRunItemsResponse : Tea.TeaModel {
 public class ListPipelineRunsRequest : Tea.TeaModel {
     public var creator: String?
 
+    public var objectId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -65481,6 +65491,9 @@ public class ListPipelineRunsRequest : Tea.TeaModel {
         if self.creator != nil {
             map["Creator"] = self.creator!
         }
+        if self.objectId != nil {
+            map["ObjectId"] = self.objectId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -65500,6 +65513,9 @@ public class ListPipelineRunsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Creator"] as? String {
             self.creator = value
+        }
+        if let value = dict["ObjectId"] as? String {
+            self.objectId = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -65609,6 +65625,8 @@ public class ListPipelineRunsResponseBody : Tea.TeaModel {
 
             public var creator: String?
 
+            public var description_: String?
+
             public var id: String?
 
             public var message: String?
@@ -65640,6 +65658,9 @@ public class ListPipelineRunsResponseBody : Tea.TeaModel {
                 }
                 if self.creator != nil {
                     map["Creator"] = self.creator!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
                 }
                 if self.id != nil {
                     map["Id"] = self.id!
@@ -65673,6 +65694,9 @@ public class ListPipelineRunsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Creator"] as? String {
                     self.creator = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
                 }
                 if let value = dict["Id"] as? String {
                     self.id = value
