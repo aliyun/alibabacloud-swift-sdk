@@ -12066,6 +12066,8 @@ public class DescribeCrossAccountsResponseBody : Tea.TeaModel {
 
             public var crossAccountRoleName: String?
 
+            public var crossAccountType: String?
+
             public var crossAccountUserId: Int64?
 
             public var id: Int64?
@@ -12097,6 +12099,9 @@ public class DescribeCrossAccountsResponseBody : Tea.TeaModel {
                 if self.crossAccountRoleName != nil {
                     map["CrossAccountRoleName"] = self.crossAccountRoleName!
                 }
+                if self.crossAccountType != nil {
+                    map["CrossAccountType"] = self.crossAccountType!
+                }
                 if self.crossAccountUserId != nil {
                     map["CrossAccountUserId"] = self.crossAccountUserId!
                 }
@@ -12122,6 +12127,9 @@ public class DescribeCrossAccountsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CrossAccountRoleName"] as? String {
                     self.crossAccountRoleName = value
+                }
+                if let value = dict["CrossAccountType"] as? String {
+                    self.crossAccountType = value
                 }
                 if let value = dict["CrossAccountUserId"] as? Int64 {
                     self.crossAccountUserId = value
