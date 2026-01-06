@@ -11691,6 +11691,8 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
 
         public var clusterId: String?
 
+        public var clusterNamespace: String?
+
         public var disablePolicyShare: Bool?
 
         public var entityGroupId: String?
@@ -11719,6 +11721,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             if self.clusterId != nil {
                 map["clusterId"] = self.clusterId!
             }
+            if self.clusterNamespace != nil {
+                map["clusterNamespace"] = self.clusterNamespace!
+            }
             if self.disablePolicyShare != nil {
                 map["disablePolicyShare"] = self.disablePolicyShare!
             }
@@ -11741,6 +11746,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["clusterId"] as? String {
                 self.clusterId = value
+            }
+            if let value = dict["clusterNamespace"] as? String {
+                self.clusterNamespace = value
             }
             if let value = dict["disablePolicyShare"] as? Bool {
                 self.disablePolicyShare = value
@@ -13054,6 +13062,87 @@ public class CreateServiceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateServiceObservabilityResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateServiceObservabilityResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateServiceObservabilityResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateServiceObservabilityResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17745,6 +17834,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public var displayName: String?
 
+    public var employeeType: String?
+
     public var knowledges: GetDigitalEmployeeResponseBody.Knowledges?
 
     public var name: String?
@@ -17784,6 +17875,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         if self.displayName != nil {
             map["displayName"] = self.displayName!
         }
+        if self.employeeType != nil {
+            map["employeeType"] = self.employeeType!
+        }
         if self.knowledges != nil {
             map["knowledges"] = self.knowledges?.toMap()
         }
@@ -17818,6 +17912,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         }
         if let value = dict["displayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["employeeType"] as? String {
+            self.employeeType = value
         }
         if let value = dict["knowledges"] as? [String: Any?] {
             var model = GetDigitalEmployeeResponseBody.Knowledges()
@@ -24743,6 +24840,8 @@ public class ListBizTracesResponse : Tea.TeaModel {
 }
 
 public class ListDigitalEmployeesRequest : Tea.TeaModel {
+    public var employeeType: String?
+
     public var maxResults: Int32?
 
     public var name: String?
@@ -24763,6 +24862,9 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.employeeType != nil {
+            map["employeeType"] = self.employeeType!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -24777,6 +24879,9 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["employeeType"] as? String {
+            self.employeeType = value
+        }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -24897,6 +25002,8 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
 
         public var displayName: String?
 
+        public var employeeType: String?
+
         public var knowledges: ListDigitalEmployeesResponseBody.DigitalEmployees.Knowledges?
 
         public var name: String?
@@ -24932,6 +25039,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             if self.displayName != nil {
                 map["displayName"] = self.displayName!
             }
+            if self.employeeType != nil {
+                map["employeeType"] = self.employeeType!
+            }
             if self.knowledges != nil {
                 map["knowledges"] = self.knowledges?.toMap()
             }
@@ -24960,6 +25070,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             }
             if let value = dict["displayName"] as? String {
                 self.displayName = value
+            }
+            if let value = dict["employeeType"] as? String {
+                self.employeeType = value
             }
             if let value = dict["knowledges"] as? [String: Any?] {
                 var model = ListDigitalEmployeesResponseBody.DigitalEmployees.Knowledges()
