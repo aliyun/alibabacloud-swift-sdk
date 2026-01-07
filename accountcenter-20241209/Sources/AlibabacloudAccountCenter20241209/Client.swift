@@ -24,6 +24,289 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactAddWithOptions(_ request: AccountContactAddRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AccountContactAddResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncEmailVerify)) {
+            body["AsyncEmailVerify"] = request.asyncEmailVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncMobileVerify)) {
+            body["AsyncMobileVerify"] = request.asyncMobileVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactEmail)) {
+            body["ContactEmail"] = request.contactEmail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactMobile)) {
+            body["ContactMobile"] = request.contactMobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactPosition)) {
+            body["ContactPosition"] = request.contactPosition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.emailCode)) {
+            body["EmailCode"] = request.emailCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileCode)) {
+            body["MobileCode"] = request.mobileCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AccountContactAdd",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AccountContactAddResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactAdd(_ request: AccountContactAddRequest) async throws -> AccountContactAddResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await accountContactAddWithOptions(request as! AccountContactAddRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactDeleteWithOptions(_ request: AccountContactDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AccountContactDeleteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AccountContactDelete",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AccountContactDeleteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactDelete(_ request: AccountContactDeleteRequest) async throws -> AccountContactDeleteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await accountContactDeleteWithOptions(request as! AccountContactDeleteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactEditWithOptions(_ request: AccountContactEditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AccountContactEditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncEmailVerify)) {
+            body["AsyncEmailVerify"] = request.asyncEmailVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncMobileVerify)) {
+            body["AsyncMobileVerify"] = request.asyncMobileVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactEmail)) {
+            body["ContactEmail"] = request.contactEmail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactMobile)) {
+            body["ContactMobile"] = request.contactMobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactPosition)) {
+            body["ContactPosition"] = request.contactPosition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.emailCode)) {
+            body["EmailCode"] = request.emailCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileCode)) {
+            body["MobileCode"] = request.mobileCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AccountContactEdit",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AccountContactEditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactEdit(_ request: AccountContactEditRequest) async throws -> AccountContactEditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await accountContactEditWithOptions(request as! AccountContactEditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactQueryDetailWithOptions(_ request: AccountContactQueryDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AccountContactQueryDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AccountContactQueryDetail",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AccountContactQueryDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactQueryDetail(_ request: AccountContactQueryDetailRequest) async throws -> AccountContactQueryDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await accountContactQueryDetailWithOptions(request as! AccountContactQueryDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactQueryPageListWithOptions(_ request: AccountContactQueryPageListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AccountContactQueryPageListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.showCompleteInfo)) {
+            query["ShowCompleteInfo"] = request.showCompleteInfo!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.privateContact)) {
+            body["PrivateContact"] = request.privateContact!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AccountContactQueryPageList",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AccountContactQueryPageListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func accountContactQueryPageList(_ request: AccountContactQueryPageListRequest) async throws -> AccountContactQueryPageListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await accountContactQueryPageListWithOptions(request as! AccountContactQueryPageListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enterpriseAccountChangeLoginPasswordWithOptions(_ request: EnterpriseAccountChangeLoginPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseAccountChangeLoginPasswordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -746,6 +1029,289 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactAddWithOptions(_ request: EnterpriseContactAddRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseContactAddResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncEmailVerify)) {
+            body["AsyncEmailVerify"] = request.asyncEmailVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncMobileVerify)) {
+            body["AsyncMobileVerify"] = request.asyncMobileVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactEmail)) {
+            body["ContactEmail"] = request.contactEmail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactMobile)) {
+            body["ContactMobile"] = request.contactMobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactPosition)) {
+            body["ContactPosition"] = request.contactPosition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.emailCode)) {
+            body["EmailCode"] = request.emailCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileCode)) {
+            body["MobileCode"] = request.mobileCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseContactAdd",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseContactAddResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactAdd(_ request: EnterpriseContactAddRequest) async throws -> EnterpriseContactAddResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseContactAddWithOptions(request as! EnterpriseContactAddRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactDeleteWithOptions(_ request: EnterpriseContactDeleteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseContactDeleteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseContactDelete",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseContactDeleteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactDelete(_ request: EnterpriseContactDeleteRequest) async throws -> EnterpriseContactDeleteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseContactDeleteWithOptions(request as! EnterpriseContactDeleteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactEditWithOptions(_ request: EnterpriseContactEditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseContactEditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncEmailVerify)) {
+            body["AsyncEmailVerify"] = request.asyncEmailVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncMobileVerify)) {
+            body["AsyncMobileVerify"] = request.asyncMobileVerify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactEmail)) {
+            body["ContactEmail"] = request.contactEmail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactMobile)) {
+            body["ContactMobile"] = request.contactMobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            body["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactPosition)) {
+            body["ContactPosition"] = request.contactPosition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.emailCode)) {
+            body["EmailCode"] = request.emailCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileCode)) {
+            body["MobileCode"] = request.mobileCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseContactEdit",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseContactEditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactEdit(_ request: EnterpriseContactEditRequest) async throws -> EnterpriseContactEditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseContactEditWithOptions(request as! EnterpriseContactEditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactQueryDetailWithOptions(_ request: EnterpriseContactQueryDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseContactQueryDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            body["ContactId"] = request.contactId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseContactQueryDetail",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseContactQueryDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactQueryDetail(_ request: EnterpriseContactQueryDetailRequest) async throws -> EnterpriseContactQueryDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseContactQueryDetailWithOptions(request as! EnterpriseContactQueryDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactQueryPageListWithOptions(_ request: EnterpriseContactQueryPageListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseContactQueryPageListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.showCompleteInfo)) {
+            query["ShowCompleteInfo"] = request.showCompleteInfo!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedEcId)) {
+            body["OrientedEcId"] = request.orientedEcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedLeId)) {
+            body["OrientedLeId"] = request.orientedLeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orientedNbId)) {
+            body["OrientedNbId"] = request.orientedNbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            body["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.privateContact)) {
+            body["PrivateContact"] = request.privateContact!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharedContact)) {
+            body["SharedContact"] = request.sharedContact!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnterpriseContactQueryPageList",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnterpriseContactQueryPageListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enterpriseContactQueryPageList(_ request: EnterpriseContactQueryPageListRequest) async throws -> EnterpriseContactQueryPageListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enterpriseContactQueryPageListWithOptions(request as! EnterpriseContactQueryPageListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enterpriseOrgQueryLoadTreeWithOptions(_ request: EnterpriseOrgQueryLoadTreeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnterpriseOrgQueryLoadTreeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1408,5 +1974,79 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enterpriseUninvitedAdminInviteJoinEnterprise(_ request: EnterpriseUninvitedAdminInviteJoinEnterpriseRequest) async throws -> EnterpriseUninvitedAdminInviteJoinEnterpriseResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await enterpriseUninvitedAdminInviteJoinEnterpriseWithOptions(request as! EnterpriseUninvitedAdminInviteJoinEnterpriseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendAsyncEmailCaptchaWithOptions(_ request: SendAsyncEmailCaptchaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendAsyncEmailCaptchaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactInfo)) {
+            body["ContactInfo"] = request.contactInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactorId)) {
+            body["ContactorId"] = request.contactorId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendAsyncEmailCaptcha",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendAsyncEmailCaptchaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendAsyncEmailCaptcha(_ request: SendAsyncEmailCaptchaRequest) async throws -> SendAsyncEmailCaptchaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendAsyncEmailCaptchaWithOptions(request as! SendAsyncEmailCaptchaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendAsyncMobileCaptchaWithOptions(_ request: SendAsyncMobileCaptchaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendAsyncMobileCaptchaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactInfo)) {
+            body["ContactInfo"] = request.contactInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactorId)) {
+            body["ContactorId"] = request.contactorId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendAsyncMobileCaptcha",
+            "version": "2024-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendAsyncMobileCaptchaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendAsyncMobileCaptcha(_ request: SendAsyncMobileCaptchaRequest) async throws -> SendAsyncMobileCaptchaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendAsyncMobileCaptchaWithOptions(request as! SendAsyncMobileCaptchaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
