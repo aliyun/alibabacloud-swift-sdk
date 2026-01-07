@@ -13854,6 +13854,10 @@ public class RealTimeDialogResponse : Tea.TeaModel {
 
 public class RealtimeDialogAssistRequest : Tea.TeaModel {
     public class ConversationModel : Tea.TeaModel {
+        public var begin: Int32?
+
+        public var beginTime: String?
+
         public var content: String?
 
         public var customerId: String?
@@ -13861,6 +13865,8 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
         public var customerServiceId: String?
 
         public var customerServiceType: String?
+
+        public var end: Int32?
 
         public var role: Int32?
 
@@ -13880,6 +13886,12 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.begin != nil {
+                map["begin"] = self.begin!
+            }
+            if self.beginTime != nil {
+                map["beginTime"] = self.beginTime!
+            }
             if self.content != nil {
                 map["content"] = self.content!
             }
@@ -13892,6 +13904,9 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
             if self.customerServiceType != nil {
                 map["customerServiceType"] = self.customerServiceType!
             }
+            if self.end != nil {
+                map["end"] = self.end!
+            }
             if self.role != nil {
                 map["role"] = self.role!
             }
@@ -13903,6 +13918,12 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["begin"] as? Int32 {
+                self.begin = value
+            }
+            if let value = dict["beginTime"] as? String {
+                self.beginTime = value
+            }
             if let value = dict["content"] as? String {
                 self.content = value
             }
@@ -13914,6 +13935,9 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
             }
             if let value = dict["customerServiceType"] as? String {
                 self.customerServiceType = value
+            }
+            if let value = dict["end"] as? Int32 {
+                self.end = value
             }
             if let value = dict["role"] as? Int32 {
                 self.role = value
@@ -13937,7 +13961,11 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var scriptContentPlayed: String?
+
     public var sessionId: String?
+
+    public var userVad: Bool?
 
     public override init() {
         super.init()
@@ -13978,8 +14006,14 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.scriptContentPlayed != nil {
+            map["scriptContentPlayed"] = self.scriptContentPlayed!
+        }
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
+        }
+        if self.userVad != nil {
+            map["userVad"] = self.userVad!
         }
         return map
     }
@@ -14017,8 +14051,14 @@ public class RealtimeDialogAssistRequest : Tea.TeaModel {
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["scriptContentPlayed"] as? String {
+            self.scriptContentPlayed = value
+        }
         if let value = dict["sessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["userVad"] as? Bool {
+            self.userVad = value
         }
     }
 }
@@ -14219,6 +14259,8 @@ public class RealtimeDialogAssistResponseBody : Tea.TeaModel {
 
         public var conversationModel: [RealtimeDialogAssistResponseBody.Data.ConversationModel]?
 
+        public var interrupt: Bool?
+
         public var requestId: String?
 
         public var sessionId: String?
@@ -14260,6 +14302,9 @@ public class RealtimeDialogAssistResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["conversationModel"] = tmp
+            }
+            if self.interrupt != nil {
+                map["interrupt"] = self.interrupt!
             }
             if self.requestId != nil {
                 map["requestId"] = self.requestId!
@@ -14313,6 +14358,9 @@ public class RealtimeDialogAssistResponseBody : Tea.TeaModel {
                     }
                 }
                 self.conversationModel = tmp
+            }
+            if let value = dict["interrupt"] as? Bool {
+                self.interrupt = value
             }
             if let value = dict["requestId"] as? String {
                 self.requestId = value

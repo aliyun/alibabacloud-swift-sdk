@@ -1782,8 +1782,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.requestId)) {
             body["requestId"] = request.requestId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scriptContentPlayed)) {
+            body["scriptContentPlayed"] = request.scriptContentPlayed ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["sessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userVad)) {
+            body["userVad"] = request.userVad!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
