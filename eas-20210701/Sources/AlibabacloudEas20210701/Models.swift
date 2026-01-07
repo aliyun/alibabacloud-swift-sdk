@@ -14182,6 +14182,8 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
 
     public var sort: String?
 
+    public var zone: String?
+
     public override init() {
         super.init()
     }
@@ -14229,6 +14231,9 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.zone != nil {
+            map["Zone"] = self.zone!
+        }
         return map
     }
 
@@ -14267,6 +14272,9 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
         if let value = dict["Sort"] as? String {
             self.sort = value
         }
+        if let value = dict["Zone"] as? String {
+            self.zone = value
+        }
     }
 }
 
@@ -14292,6 +14300,8 @@ public class ListResourceInstancesShrinkRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var sort: String?
+
+    public var zone: String?
 
     public override init() {
         super.init()
@@ -14340,6 +14350,9 @@ public class ListResourceInstancesShrinkRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.zone != nil {
+            map["Zone"] = self.zone!
+        }
         return map
     }
 
@@ -14377,6 +14390,9 @@ public class ListResourceInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Sort"] as? String {
             self.sort = value
+        }
+        if let value = dict["Zone"] as? String {
+            self.zone = value
         }
     }
 }
@@ -15214,7 +15230,11 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var quotaId: String?
+
     public var replicaName: String?
+
+    public var resource: String?
 
     public var resourceType: String?
 
@@ -15272,8 +15292,14 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
+        }
         if self.replicaName != nil {
             map["ReplicaName"] = self.replicaName!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
         }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
@@ -15325,8 +15351,14 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["QuotaId"] as? String {
+            self.quotaId = value
+        }
         if let value = dict["ReplicaName"] as? String {
             self.replicaName = value
+        }
+        if let value = dict["Resource"] as? String {
+            self.resource = value
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
@@ -15706,6 +15738,8 @@ public class ListServiceVersionsResponse : Tea.TeaModel {
 public class ListServicesRequest : Tea.TeaModel {
     public var autoscalerEnabled: Bool?
 
+    public var callerUid: String?
+
     public var cronscalerEnabled: Bool?
 
     public var filter: String?
@@ -15770,6 +15804,9 @@ public class ListServicesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoscalerEnabled != nil {
             map["AutoscalerEnabled"] = self.autoscalerEnabled!
+        }
+        if self.callerUid != nil {
+            map["CallerUid"] = self.callerUid!
         }
         if self.cronscalerEnabled != nil {
             map["CronscalerEnabled"] = self.cronscalerEnabled!
@@ -15851,6 +15888,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if let value = dict["AutoscalerEnabled"] as? Bool {
             self.autoscalerEnabled = value
         }
+        if let value = dict["CallerUid"] as? String {
+            self.callerUid = value
+        }
         if let value = dict["CronscalerEnabled"] as? Bool {
             self.cronscalerEnabled = value
         }
@@ -15929,6 +15969,8 @@ public class ListServicesRequest : Tea.TeaModel {
 public class ListServicesShrinkRequest : Tea.TeaModel {
     public var autoscalerEnabled: Bool?
 
+    public var callerUid: String?
+
     public var cronscalerEnabled: Bool?
 
     public var filter: String?
@@ -15993,6 +16035,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoscalerEnabled != nil {
             map["AutoscalerEnabled"] = self.autoscalerEnabled!
+        }
+        if self.callerUid != nil {
+            map["CallerUid"] = self.callerUid!
         }
         if self.cronscalerEnabled != nil {
             map["CronscalerEnabled"] = self.cronscalerEnabled!
@@ -16073,6 +16118,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoscalerEnabled"] as? Bool {
             self.autoscalerEnabled = value
+        }
+        if let value = dict["CallerUid"] as? String {
+            self.callerUid = value
         }
         if let value = dict["CronscalerEnabled"] as? Bool {
             self.cronscalerEnabled = value
