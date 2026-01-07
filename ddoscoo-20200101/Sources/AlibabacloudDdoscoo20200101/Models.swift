@@ -10462,6 +10462,8 @@ public class DescribeDomainCcProtectSwitchResponseBody : Tea.TeaModel {
 
         public var ccEnable: Int32?
 
+        public var ccGlobalSwitch: String?
+
         public var ccTemplate: String?
 
         public var domain: String?
@@ -10502,6 +10504,9 @@ public class DescribeDomainCcProtectSwitchResponseBody : Tea.TeaModel {
             if self.ccEnable != nil {
                 map["CcEnable"] = self.ccEnable!
             }
+            if self.ccGlobalSwitch != nil {
+                map["CcGlobalSwitch"] = self.ccGlobalSwitch!
+            }
             if self.ccTemplate != nil {
                 map["CcTemplate"] = self.ccTemplate!
             }
@@ -10536,6 +10541,9 @@ public class DescribeDomainCcProtectSwitchResponseBody : Tea.TeaModel {
             }
             if let value = dict["CcEnable"] as? Int32 {
                 self.ccEnable = value
+            }
+            if let value = dict["CcGlobalSwitch"] as? String {
+                self.ccGlobalSwitch = value
             }
             if let value = dict["CcTemplate"] as? String {
                 self.ccTemplate = value
