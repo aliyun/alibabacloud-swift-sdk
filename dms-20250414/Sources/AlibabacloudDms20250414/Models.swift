@@ -6532,7 +6532,13 @@ public class DescribeCustomAgentRequest : Tea.TeaModel {
 public class DescribeCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ExecutionConfig : Tea.TeaModel {
+            public var skipAskHuman: Bool?
+
             public var skipPlan: Bool?
+
+            public var skipSqlConfirm: Bool?
+
+            public var skipWebReportConfirm: Bool?
 
             public override init() {
                 super.init()
@@ -6548,16 +6554,34 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.skipAskHuman != nil {
+                    map["SkipAskHuman"] = self.skipAskHuman!
+                }
                 if self.skipPlan != nil {
                     map["SkipPlan"] = self.skipPlan!
+                }
+                if self.skipSqlConfirm != nil {
+                    map["SkipSqlConfirm"] = self.skipSqlConfirm!
+                }
+                if self.skipWebReportConfirm != nil {
+                    map["SkipWebReportConfirm"] = self.skipWebReportConfirm!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["SkipAskHuman"] as? Bool {
+                    self.skipAskHuman = value
+                }
                 if let value = dict["SkipPlan"] as? Bool {
                     self.skipPlan = value
+                }
+                if let value = dict["SkipSqlConfirm"] as? Bool {
+                    self.skipSqlConfirm = value
+                }
+                if let value = dict["SkipWebReportConfirm"] as? Bool {
+                    self.skipWebReportConfirm = value
                 }
             }
         }
@@ -10646,7 +10670,13 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Content : Tea.TeaModel {
             public class ExecutionConfig : Tea.TeaModel {
+                public var skipAskHuman: Bool?
+
                 public var skipPlan: Bool?
+
+                public var skipSqlConfirm: Bool?
+
+                public var skipWebReportConfirm: Bool?
 
                 public override init() {
                     super.init()
@@ -10662,16 +10692,34 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.skipAskHuman != nil {
+                        map["SkipAskHuman"] = self.skipAskHuman!
+                    }
                     if self.skipPlan != nil {
                         map["SkipPlan"] = self.skipPlan!
+                    }
+                    if self.skipSqlConfirm != nil {
+                        map["SkipSqlConfirm"] = self.skipSqlConfirm!
+                    }
+                    if self.skipWebReportConfirm != nil {
+                        map["SkipWebReportConfirm"] = self.skipWebReportConfirm!
                     }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["SkipAskHuman"] as? Bool {
+                        self.skipAskHuman = value
+                    }
                     if let value = dict["SkipPlan"] as? Bool {
                         self.skipPlan = value
+                    }
+                    if let value = dict["SkipSqlConfirm"] as? Bool {
+                        self.skipSqlConfirm = value
+                    }
+                    if let value = dict["SkipWebReportConfirm"] as? Bool {
+                        self.skipWebReportConfirm = value
                     }
                 }
             }
