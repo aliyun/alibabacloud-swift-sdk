@@ -57256,6 +57256,8 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
         }
         public var attachedTime: String?
 
+        public var burstingEnabled: Bool?
+
         public var category: String?
 
         public var creationTime: String?
@@ -57285,6 +57287,8 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
         public var instanceId: String?
 
         public var performanceLevel: String?
+
+        public var portable: Bool?
 
         public var regionId: String?
 
@@ -57324,6 +57328,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.attachedTime != nil {
                 map["AttachedTime"] = self.attachedTime!
+            }
+            if self.burstingEnabled != nil {
+                map["BurstingEnabled"] = self.burstingEnabled!
             }
             if self.category != nil {
                 map["Category"] = self.category!
@@ -57370,6 +57377,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
+            if self.portable != nil {
+                map["Portable"] = self.portable!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -57415,6 +57425,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
             if let value = dict["AttachedTime"] as? String {
                 self.attachedTime = value
             }
+            if let value = dict["BurstingEnabled"] as? Bool {
+                self.burstingEnabled = value
+            }
             if let value = dict["Category"] as? String {
                 self.category = value
             }
@@ -57459,6 +57472,9 @@ public class DescribeRCDisksResponseBody : Tea.TeaModel {
             }
             if let value = dict["PerformanceLevel"] as? String {
                 self.performanceLevel = value
+            }
+            if let value = dict["Portable"] as? Bool {
+                self.portable = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
