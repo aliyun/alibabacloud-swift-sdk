@@ -47870,6 +47870,8 @@ public class ListDIJobsRequest : Tea.TeaModel {
 
     public var sourceDataSourceType: String?
 
+    public var specType: String?
+
     public override init() {
         super.init()
     }
@@ -47905,6 +47907,9 @@ public class ListDIJobsRequest : Tea.TeaModel {
         if self.sourceDataSourceType != nil {
             map["SourceDataSourceType"] = self.sourceDataSourceType!
         }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
         return map
     }
 
@@ -47930,6 +47935,9 @@ public class ListDIJobsRequest : Tea.TeaModel {
         }
         if let value = dict["SourceDataSourceType"] as? String {
             self.sourceDataSourceType = value
+        }
+        if let value = dict["SpecType"] as? String {
+            self.specType = value
         }
     }
 }
