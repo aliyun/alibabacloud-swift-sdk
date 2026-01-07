@@ -17047,6 +17047,8 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
     public class Tasks : Tea.TeaModel {
         public var answer: String?
 
+        public var customId: String?
+
         public var grade: String?
 
         public var otherReviewPoints: String?
@@ -17074,6 +17076,9 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
             if self.answer != nil {
                 map["answer"] = self.answer!
             }
+            if self.customId != nil {
+                map["customId"] = self.customId!
+            }
             if self.grade != nil {
                 map["grade"] = self.grade!
             }
@@ -17096,6 +17101,9 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["answer"] as? String {
                 self.answer = value
+            }
+            if let value = dict["customId"] as? String {
+                self.customId = value
             }
             if let value = dict["grade"] as? String {
                 self.grade = value
