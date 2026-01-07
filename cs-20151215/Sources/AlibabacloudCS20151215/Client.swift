@@ -3544,6 +3544,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listClusterKubeconfigStatesWithOptions(_ ClusterId: String, _ request: ListClusterKubeconfigStatesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterKubeconfigStatesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudServiceKubeConfig)) {
+            query["cloudServiceKubeConfig"] = request.cloudServiceKubeConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }

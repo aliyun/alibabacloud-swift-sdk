@@ -26602,6 +26602,8 @@ public class ListClusterInspectReportsResponse : Tea.TeaModel {
 }
 
 public class ListClusterKubeconfigStatesRequest : Tea.TeaModel {
+    public var cloudServiceKubeConfig: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -26620,6 +26622,9 @@ public class ListClusterKubeconfigStatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudServiceKubeConfig != nil {
+            map["cloudServiceKubeConfig"] = self.cloudServiceKubeConfig!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -26631,6 +26636,9 @@ public class ListClusterKubeconfigStatesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["cloudServiceKubeConfig"] as? Bool {
+            self.cloudServiceKubeConfig = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -26688,6 +26696,60 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
         }
     }
     public class States : Tea.TeaModel {
+        public class CloudServiceRoles : Tea.TeaModel {
+            public var isDefaultTemplate: Bool?
+
+            public var roleName: String?
+
+            public var roleNamespace: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.isDefaultTemplate != nil {
+                    map["is_default_template"] = self.isDefaultTemplate!
+                }
+                if self.roleName != nil {
+                    map["role_name"] = self.roleName!
+                }
+                if self.roleNamespace != nil {
+                    map["role_namespace"] = self.roleNamespace!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["is_default_template"] as? Bool {
+                    self.isDefaultTemplate = value
+                }
+                if let value = dict["role_name"] as? String {
+                    self.roleName = value
+                }
+                if let value = dict["role_namespace"] as? String {
+                    self.roleNamespace = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var accountDisplayName: String?
 
         public var accountId: String?
@@ -26701,6 +26763,8 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
         public var certExpireTime: String?
 
         public var certState: String?
+
+        public var cloudServiceRoles: [ListClusterKubeconfigStatesResponseBody.States.CloudServiceRoles]?
 
         public var revokable: Bool?
 
@@ -26739,6 +26803,13 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
             if self.certState != nil {
                 map["cert_state"] = self.certState!
             }
+            if self.cloudServiceRoles != nil {
+                var tmp : [Any] = []
+                for k in self.cloudServiceRoles! {
+                    tmp.append(k.toMap())
+                }
+                map["cloud_service_roles"] = tmp
+            }
             if self.revokable != nil {
                 map["revokable"] = self.revokable!
             }
@@ -26767,6 +26838,19 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["cert_state"] as? String {
                 self.certState = value
+            }
+            if let value = dict["cloud_service_roles"] as? [Any?] {
+                var tmp : [ListClusterKubeconfigStatesResponseBody.States.CloudServiceRoles] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListClusterKubeconfigStatesResponseBody.States.CloudServiceRoles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.cloudServiceRoles = tmp
             }
             if let value = dict["revokable"] as? Bool {
                 self.revokable = value
