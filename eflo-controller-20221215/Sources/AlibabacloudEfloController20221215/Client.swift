@@ -1456,12 +1456,18 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListHyperNodesShrinkRequest = ListHyperNodesShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.hyperNodeIds)) {
+            request.hyperNodeIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hyperNodeIds, "HyperNodeIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.operatingStates)) {
             request.operatingStatesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operatingStates, "OperatingStates", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.commodityCode)) {
             query["CommodityCode"] = request.commodityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hyperNodeIdsShrink)) {
+            query["HyperNodeIds"] = request.hyperNodeIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.operatingStatesShrink)) {
             query["OperatingStates"] = request.operatingStatesShrink ?? "";

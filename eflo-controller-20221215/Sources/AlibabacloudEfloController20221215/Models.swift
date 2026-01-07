@@ -12968,6 +12968,8 @@ public class ListHyperNodesRequest : Tea.TeaModel {
 
     public var hyperNodeId: String?
 
+    public var hyperNodeIds: [String]?
+
     public var machineType: String?
 
     public var maxResults: Int32?
@@ -13009,6 +13011,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         }
         if self.hyperNodeId != nil {
             map["HyperNodeId"] = self.hyperNodeId!
+        }
+        if self.hyperNodeIds != nil {
+            map["HyperNodeIds"] = self.hyperNodeIds!
         }
         if self.machineType != nil {
             map["MachineType"] = self.machineType!
@@ -13054,6 +13059,9 @@ public class ListHyperNodesRequest : Tea.TeaModel {
         }
         if let value = dict["HyperNodeId"] as? String {
             self.hyperNodeId = value
+        }
+        if let value = dict["HyperNodeIds"] as? [String] {
+            self.hyperNodeIds = value
         }
         if let value = dict["MachineType"] as? String {
             self.machineType = value
@@ -13139,6 +13147,8 @@ public class ListHyperNodesShrinkRequest : Tea.TeaModel {
 
     public var hyperNodeId: String?
 
+    public var hyperNodeIdsShrink: String?
+
     public var machineType: String?
 
     public var maxResults: Int32?
@@ -13180,6 +13190,9 @@ public class ListHyperNodesShrinkRequest : Tea.TeaModel {
         }
         if self.hyperNodeId != nil {
             map["HyperNodeId"] = self.hyperNodeId!
+        }
+        if self.hyperNodeIdsShrink != nil {
+            map["HyperNodeIds"] = self.hyperNodeIdsShrink!
         }
         if self.machineType != nil {
             map["MachineType"] = self.machineType!
@@ -13225,6 +13238,9 @@ public class ListHyperNodesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["HyperNodeId"] as? String {
             self.hyperNodeId = value
+        }
+        if let value = dict["HyperNodeIds"] as? String {
+            self.hyperNodeIdsShrink = value
         }
         if let value = dict["MachineType"] as? String {
             self.machineType = value
