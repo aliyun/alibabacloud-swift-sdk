@@ -6722,6 +6722,8 @@ public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
         public var certifyId: String?
 
+        public var guardRiskScore: Double?
+
         public var riskExtends: String?
 
         public var riskTags: String?
@@ -6743,6 +6745,9 @@ public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
             if self.certifyId != nil {
                 map["CertifyId"] = self.certifyId!
             }
+            if self.guardRiskScore != nil {
+                map["GuardRiskScore"] = self.guardRiskScore!
+            }
             if self.riskExtends != nil {
                 map["RiskExtends"] = self.riskExtends!
             }
@@ -6756,6 +6761,9 @@ public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CertifyId"] as? String {
                 self.certifyId = value
+            }
+            if let value = dict["GuardRiskScore"] as? Double {
+                self.guardRiskScore = value
             }
             if let value = dict["RiskExtends"] as? String {
                 self.riskExtends = value
