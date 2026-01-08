@@ -84664,6 +84664,8 @@ public class ListNatIpsRequest : Tea.TeaModel {
 
     public var ipOrigin: String?
 
+    public var ipv4Prefix: String?
+
     public var maxResults: String?
 
     public var natGatewayId: String?
@@ -84710,6 +84712,9 @@ public class ListNatIpsRequest : Tea.TeaModel {
         }
         if self.ipOrigin != nil {
             map["IpOrigin"] = self.ipOrigin!
+        }
+        if self.ipv4Prefix != nil {
+            map["Ipv4Prefix"] = self.ipv4Prefix!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -84760,6 +84765,9 @@ public class ListNatIpsRequest : Tea.TeaModel {
         }
         if let value = dict["IpOrigin"] as? String {
             self.ipOrigin = value
+        }
+        if let value = dict["Ipv4Prefix"] as? String {
+            self.ipv4Prefix = value
         }
         if let value = dict["MaxResults"] as? String {
             self.maxResults = value

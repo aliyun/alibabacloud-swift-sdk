@@ -16065,6 +16065,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ipOrigin)) {
             query["IpOrigin"] = request.ipOrigin ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipv4Prefix)) {
+            query["Ipv4Prefix"] = request.ipv4Prefix ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults ?? "";
         }
