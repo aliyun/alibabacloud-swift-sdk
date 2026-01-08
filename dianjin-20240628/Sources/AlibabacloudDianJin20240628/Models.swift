@@ -12445,6 +12445,8 @@ public class GetVideoCreationTaskResultResponseBody : Tea.TeaModel {
 
         public var startTime: String?
 
+        public var statusReason: String?
+
         public var taskId: String?
 
         public var taskStatus: String?
@@ -12482,6 +12484,9 @@ public class GetVideoCreationTaskResultResponseBody : Tea.TeaModel {
             if self.startTime != nil {
                 map["startTime"] = self.startTime!
             }
+            if self.statusReason != nil {
+                map["statusReason"] = self.statusReason!
+            }
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
@@ -12514,6 +12519,9 @@ public class GetVideoCreationTaskResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["startTime"] as? String {
                 self.startTime = value
+            }
+            if let value = dict["statusReason"] as? String {
+                self.statusReason = value
             }
             if let value = dict["taskId"] as? String {
                 self.taskId = value
