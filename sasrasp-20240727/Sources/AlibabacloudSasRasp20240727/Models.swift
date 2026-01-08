@@ -202,6 +202,8 @@ public class DescribeAttacksRequest : Tea.TeaModel {
 
     public var endTimestamp: Int64?
 
+    public var handleStatus: Int32?
+
     public var handlerType: String?
 
     public var hostname: String?
@@ -259,6 +261,9 @@ public class DescribeAttacksRequest : Tea.TeaModel {
         }
         if self.endTimestamp != nil {
             map["EndTimestamp"] = self.endTimestamp!
+        }
+        if self.handleStatus != nil {
+            map["HandleStatus"] = self.handleStatus!
         }
         if self.handlerType != nil {
             map["HandlerType"] = self.handlerType!
@@ -321,6 +326,9 @@ public class DescribeAttacksRequest : Tea.TeaModel {
         }
         if let value = dict["EndTimestamp"] as? Int64 {
             self.endTimestamp = value
+        }
+        if let value = dict["HandleStatus"] as? Int32 {
+            self.handleStatus = value
         }
         if let value = dict["HandlerType"] as? String {
             self.handlerType = value

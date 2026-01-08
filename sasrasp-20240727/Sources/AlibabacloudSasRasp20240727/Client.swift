@@ -82,6 +82,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
             query["EndTimestamp"] = request.endTimestamp!;
         }
+        if (!TeaUtils.Client.isUnset(request.handleStatus)) {
+            query["HandleStatus"] = request.handleStatus!;
+        }
         if (!TeaUtils.Client.isUnset(request.handlerType)) {
             query["HandlerType"] = request.handlerType ?? "";
         }
