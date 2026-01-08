@@ -25751,6 +25751,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var html: String?
 
+        public var idleHour: String?
+
         public var imagePullSecrets: String?
 
         public var imageUrl: String?
@@ -26008,6 +26010,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.html != nil {
                 map["Html"] = self.html!
+            }
+            if self.idleHour != nil {
+                map["IdleHour"] = self.idleHour!
             }
             if self.imagePullSecrets != nil {
                 map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -26357,6 +26362,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["Html"] as? String {
                 self.html = value
+            }
+            if let value = dict["IdleHour"] as? String {
+                self.idleHour = value
             }
             if let value = dict["ImagePullSecrets"] as? String {
                 self.imagePullSecrets = value
@@ -56279,6 +56287,8 @@ public class UpdateAppModeRequest : Tea.TeaModel {
 
     public var enableIdle: Bool?
 
+    public var idleHour: String?
+
     public var namespaceId: String?
 
     public override init() {
@@ -56304,6 +56314,9 @@ public class UpdateAppModeRequest : Tea.TeaModel {
         if self.enableIdle != nil {
             map["EnableIdle"] = self.enableIdle!
         }
+        if self.idleHour != nil {
+            map["IdleHour"] = self.idleHour!
+        }
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
         }
@@ -56320,6 +56333,9 @@ public class UpdateAppModeRequest : Tea.TeaModel {
         }
         if let value = dict["EnableIdle"] as? Bool {
             self.enableIdle = value
+        }
+        if let value = dict["IdleHour"] as? String {
+            self.idleHour = value
         }
         if let value = dict["NamespaceId"] as? String {
             self.namespaceId = value

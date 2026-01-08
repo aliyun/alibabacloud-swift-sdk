@@ -5902,6 +5902,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableIdle)) {
             query["EnableIdle"] = request.enableIdle!;
         }
+        if (!TeaUtils.Client.isUnset(request.idleHour)) {
+            query["IdleHour"] = request.idleHour ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
         }
