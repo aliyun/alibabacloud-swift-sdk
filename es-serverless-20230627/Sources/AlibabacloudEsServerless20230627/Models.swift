@@ -5997,6 +5997,422 @@ public class UpdateNetworkResponse : Tea.TeaModel {
     }
 }
 
+public class UpdatePrivateNetwrokRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public class WhiteIpGroup : Tea.TeaModel {
+            public var groupName: String?
+
+            public var ips: [String]?
+
+            public var modifyMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.ips != nil {
+                    map["ips"] = self.ips!
+                }
+                if self.modifyMode != nil {
+                    map["modifyMode"] = self.modifyMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["groupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["ips"] as? [String] {
+                    self.ips = value
+                }
+                if let value = dict["modifyMode"] as? String {
+                    self.modifyMode = value
+                }
+            }
+        }
+        public var domain: String?
+
+        public var enabled: Bool?
+
+        public var port: Int32?
+
+        public var pvlEndpointId: String?
+
+        public var type: String?
+
+        public var vpcId: String?
+
+        public var whiteIpGroup: [UpdatePrivateNetwrokRequest.Body.WhiteIpGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domain != nil {
+                map["domain"] = self.domain!
+            }
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.port != nil {
+                map["port"] = self.port!
+            }
+            if self.pvlEndpointId != nil {
+                map["pvlEndpointId"] = self.pvlEndpointId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            if self.whiteIpGroup != nil {
+                var tmp : [Any] = []
+                for k in self.whiteIpGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["whiteIpGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["domain"] as? String {
+                self.domain = value
+            }
+            if let value = dict["enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["port"] as? Int32 {
+                self.port = value
+            }
+            if let value = dict["pvlEndpointId"] as? String {
+                self.pvlEndpointId = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+            if let value = dict["vpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["whiteIpGroup"] as? [Any?] {
+                var tmp : [UpdatePrivateNetwrokRequest.Body.WhiteIpGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdatePrivateNetwrokRequest.Body.WhiteIpGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.whiteIpGroup = tmp
+            }
+        }
+    }
+    public var body: [UpdatePrivateNetwrokRequest.Body]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            var tmp : [Any] = []
+            for k in self.body! {
+                tmp.append(k.toMap())
+            }
+            map["body"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [Any?] {
+            var tmp : [UpdatePrivateNetwrokRequest.Body] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdatePrivateNetwrokRequest.Body()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.body = tmp
+        }
+    }
+}
+
+public class UpdatePrivateNetwrokResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class WhiteIpGroup : Tea.TeaModel {
+            public var groupName: String?
+
+            public var ips: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.ips != nil {
+                    map["ips"] = self.ips!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["groupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["ips"] as? [String] {
+                    self.ips = value
+                }
+            }
+        }
+        public var domain: String?
+
+        public var enabled: String?
+
+        public var port: String?
+
+        public var pvlEndpointId: String?
+
+        public var type: String?
+
+        public var vpcId: String?
+
+        public var whiteIpGroup: [UpdatePrivateNetwrokResponseBody.Result.WhiteIpGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domain != nil {
+                map["domain"] = self.domain!
+            }
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.port != nil {
+                map["port"] = self.port!
+            }
+            if self.pvlEndpointId != nil {
+                map["pvlEndpointId"] = self.pvlEndpointId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            if self.whiteIpGroup != nil {
+                var tmp : [Any] = []
+                for k in self.whiteIpGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["whiteIpGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["domain"] as? String {
+                self.domain = value
+            }
+            if let value = dict["enabled"] as? String {
+                self.enabled = value
+            }
+            if let value = dict["port"] as? String {
+                self.port = value
+            }
+            if let value = dict["pvlEndpointId"] as? String {
+                self.pvlEndpointId = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+            if let value = dict["vpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["whiteIpGroup"] as? [Any?] {
+                var tmp : [UpdatePrivateNetwrokResponseBody.Result.WhiteIpGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdatePrivateNetwrokResponseBody.Result.WhiteIpGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.whiteIpGroup = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [UpdatePrivateNetwrokResponseBody.Result]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["result"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["result"] as? [Any?] {
+            var tmp : [UpdatePrivateNetwrokResponseBody.Result] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdatePrivateNetwrokResponseBody.Result()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.result = tmp
+        }
+    }
+}
+
+public class UpdatePrivateNetwrokResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdatePrivateNetwrokResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdatePrivateNetwrokResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateSnapshotSettingRequest : Tea.TeaModel {
     public var enable: Bool?
 

@@ -909,6 +909,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePrivateNetwrokWithOptions(_ appName: String, _ request: UpdatePrivateNetwrokRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePrivateNetwrokResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": TeaUtils.Client.toArray(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdatePrivateNetwrok",
+            "version": "2023-06-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/es-serverless/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/private-networks",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdatePrivateNetwrokResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updatePrivateNetwrok(_ appName: String, _ request: UpdatePrivateNetwrokRequest) async throws -> UpdatePrivateNetwrokResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updatePrivateNetwrokWithOptions(appName as! String, request as! UpdatePrivateNetwrokRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateSnapshotSettingWithOptions(_ appName: String, _ request: UpdateSnapshotSettingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSnapshotSettingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
