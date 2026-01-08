@@ -124630,6 +124630,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
         public var rxQueueSize: Int32?
 
+        public var secondaryPrivateIpAddressCount: Int32?
+
         public var securityGroupId: String?
 
         public var securityGroupIds: [String]?
@@ -124693,6 +124695,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             if self.rxQueueSize != nil {
                 map["RxQueueSize"] = self.rxQueueSize!
             }
+            if self.secondaryPrivateIpAddressCount != nil {
+                map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+            }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
@@ -124751,6 +124756,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["RxQueueSize"] as? Int32 {
                 self.rxQueueSize = value
+            }
+            if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                self.secondaryPrivateIpAddressCount = value
             }
             if let value = dict["SecurityGroupId"] as? String {
                 self.securityGroupId = value
