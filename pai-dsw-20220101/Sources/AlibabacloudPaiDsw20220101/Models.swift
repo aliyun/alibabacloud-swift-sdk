@@ -3940,6 +3940,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
     }
     public class Datasets : Tea.TeaModel {
+        public var actualMountAccess: String?
+
         public var datasetId: String?
 
         public var datasetVersion: String?
@@ -3970,6 +3972,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.actualMountAccess != nil {
+                map["ActualMountAccess"] = self.actualMountAccess!
+            }
             if self.datasetId != nil {
                 map["DatasetId"] = self.datasetId!
             }
@@ -3999,6 +4004,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ActualMountAccess"] as? String {
+                self.actualMountAccess = value
+            }
             if let value = dict["DatasetId"] as? String {
                 self.datasetId = value
             }
