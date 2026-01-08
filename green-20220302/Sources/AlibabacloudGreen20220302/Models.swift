@@ -7451,6 +7451,69 @@ public class TextModerationRequest : Tea.TeaModel {
 
 public class TextModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Ext : Tea.TeaModel {
+            public class LlmContent : Tea.TeaModel {
+                public var outputText: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.outputText != nil {
+                        map["outputText"] = self.outputText!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["outputText"] as? String {
+                        self.outputText = value
+                    }
+                }
+            }
+            public var llmContent: TextModerationResponseBody.Data.Ext.LlmContent?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.llmContent?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.llmContent != nil {
+                    map["llmContent"] = self.llmContent?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["llmContent"] as? [String: Any?] {
+                    var model = TextModerationResponseBody.Data.Ext.LlmContent()
+                    model.fromMap(value)
+                    self.llmContent = model
+                }
+            }
+        }
         public var accountId: String?
 
         public var dataId: String?
@@ -7458,6 +7521,8 @@ public class TextModerationResponseBody : Tea.TeaModel {
         public var descriptions: String?
 
         public var deviceId: String?
+
+        public var ext: TextModerationResponseBody.Data.Ext?
 
         public var labels: String?
 
@@ -7475,6 +7540,7 @@ public class TextModerationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.ext?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -7490,6 +7556,9 @@ public class TextModerationResponseBody : Tea.TeaModel {
             }
             if self.deviceId != nil {
                 map["deviceId"] = self.deviceId!
+            }
+            if self.ext != nil {
+                map["ext"] = self.ext?.toMap()
             }
             if self.labels != nil {
                 map["labels"] = self.labels!
@@ -7516,6 +7585,11 @@ public class TextModerationResponseBody : Tea.TeaModel {
             }
             if let value = dict["deviceId"] as? String {
                 self.deviceId = value
+            }
+            if let value = dict["ext"] as? [String: Any?] {
+                var model = TextModerationResponseBody.Data.Ext()
+                model.fromMap(value)
+                self.ext = model
             }
             if let value = dict["labels"] as? String {
                 self.labels = value
@@ -7776,6 +7850,69 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Ext : Tea.TeaModel {
+            public class LlmContent : Tea.TeaModel {
+                public var outputText: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.outputText != nil {
+                        map["OutputText"] = self.outputText!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["OutputText"] as? String {
+                        self.outputText = value
+                    }
+                }
+            }
+            public var llmContent: TextModerationPlusResponseBody.Data.Ext.LlmContent?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.llmContent?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.llmContent != nil {
+                    map["LlmContent"] = self.llmContent?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LlmContent"] as? [String: Any?] {
+                    var model = TextModerationPlusResponseBody.Data.Ext.LlmContent()
+                    model.fromMap(value)
+                    self.llmContent = model
+                }
+            }
+        }
         public class Result : Tea.TeaModel {
             public class CustomizedHit : Tea.TeaModel {
                 public var keyWords: String?
@@ -7956,6 +8093,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
 
         public var detectedLanguage: String?
 
+        public var ext: TextModerationPlusResponseBody.Data.Ext?
+
         public var manualTaskId: String?
 
         public var result: [TextModerationPlusResponseBody.Data.Result]?
@@ -7980,6 +8119,7 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.ext?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8009,6 +8149,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             }
             if self.detectedLanguage != nil {
                 map["DetectedLanguage"] = self.detectedLanguage!
+            }
+            if self.ext != nil {
+                map["Ext"] = self.ext?.toMap()
             }
             if self.manualTaskId != nil {
                 map["ManualTaskId"] = self.manualTaskId!
@@ -8081,6 +8224,11 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             }
             if let value = dict["DetectedLanguage"] as? String {
                 self.detectedLanguage = value
+            }
+            if let value = dict["Ext"] as? [String: Any?] {
+                var model = TextModerationPlusResponseBody.Data.Ext()
+                model.fromMap(value)
+                self.ext = model
             }
             if let value = dict["ManualTaskId"] as? String {
                 self.manualTaskId = value
