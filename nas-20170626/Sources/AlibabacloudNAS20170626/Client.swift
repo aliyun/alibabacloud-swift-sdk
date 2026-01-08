@@ -1217,11 +1217,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLifecyclePolicyWithOptions(_ request: CreateLifecyclePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLifecyclePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lifecyclePolicyName)) {
             query["LifecyclePolicyName"] = request.lifecyclePolicyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifecyclePolicyType)) {
+            query["LifecyclePolicyType"] = request.lifecyclePolicyType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lifecycleRuleName)) {
             query["LifecycleRuleName"] = request.lifecycleRuleName ?? "";
@@ -1232,8 +1238,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.paths)) {
             query["Paths"] = request.paths ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.retrieveRules)) {
+            query["RetrieveRules"] = request.retrieveRules ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.storageType)) {
             query["StorageType"] = request.storageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transitRules)) {
+            query["TransitRules"] = request.transitRules ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1878,6 +1890,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifecyclePolicyId)) {
+            query["LifecyclePolicyId"] = request.lifecyclePolicyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lifecyclePolicyName)) {
             query["LifecyclePolicyName"] = request.lifecyclePolicyName ?? "";
@@ -4159,6 +4174,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifecyclePolicyId)) {
+            query["LifecyclePolicyId"] = request.lifecyclePolicyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lifecyclePolicyName)) {
             query["LifecyclePolicyName"] = request.lifecyclePolicyName ?? "";
