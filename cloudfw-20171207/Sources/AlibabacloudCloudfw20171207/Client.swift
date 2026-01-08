@@ -9040,6 +9040,131 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallDomainListWithOptions(_ request: DescribeVpcFirewallDomainListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcFirewallDomainListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAITraffic)) {
+            query["IsAITraffic"] = request.isAITraffic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcIP)) {
+            query["SrcIP"] = request.srcIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcVpcId)) {
+            query["SrcVpcId"] = request.srcVpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVpcFirewallDomainList",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVpcFirewallDomainListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallDomainList(_ request: DescribeVpcFirewallDomainListRequest) async throws -> DescribeVpcFirewallDomainListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVpcFirewallDomainListWithOptions(request as! DescribeVpcFirewallDomainListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallDomainRelationListWithOptions(_ request: DescribeVpcFirewallDomainRelationListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcFirewallDomainRelationListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainList)) {
+            query["DomainList"] = request.domainList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dstIP)) {
+            query["DstIP"] = request.dstIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstVpcId)) {
+            query["DstVpcId"] = request.dstVpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcIP)) {
+            query["SrcIP"] = request.srcIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcVpcId)) {
+            query["SrcVpcId"] = request.srcVpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVpcFirewallDomainRelationList",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVpcFirewallDomainRelationListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcFirewallDomainRelationList(_ request: DescribeVpcFirewallDomainRelationListRequest) async throws -> DescribeVpcFirewallDomainRelationListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVpcFirewallDomainRelationListWithOptions(request as! DescribeVpcFirewallDomainRelationListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVpcFirewallDropTrafficTrendWithOptions(_ request: DescribeVpcFirewallDropTrafficTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcFirewallDropTrafficTrendResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
