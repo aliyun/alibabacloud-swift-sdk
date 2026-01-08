@@ -2803,7 +2803,688 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
         }
+        public class AiSecurityGuardConfig : Tea.TeaModel {
+            public class ConsumerRequestCheckService : Tea.TeaModel {
+                public var matchType: String?
+
+                public var modalityType: String?
+
+                public var name: String?
+
+                public var requestCheckService: String?
+
+                public var requestImageCheckService: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.matchType != nil {
+                        map["matchType"] = self.matchType!
+                    }
+                    if self.modalityType != nil {
+                        map["modalityType"] = self.modalityType!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.requestCheckService != nil {
+                        map["requestCheckService"] = self.requestCheckService!
+                    }
+                    if self.requestImageCheckService != nil {
+                        map["requestImageCheckService"] = self.requestImageCheckService!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["matchType"] as? String {
+                        self.matchType = value
+                    }
+                    if let value = dict["modalityType"] as? String {
+                        self.modalityType = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["requestCheckService"] as? String {
+                        self.requestCheckService = value
+                    }
+                    if let value = dict["requestImageCheckService"] as? String {
+                        self.requestImageCheckService = value
+                    }
+                }
+            }
+            public class ConsumerResponseCheckService : Tea.TeaModel {
+                public var matchType: String?
+
+                public var modalityType: String?
+
+                public var name: String?
+
+                public var responseCheckService: String?
+
+                public var responseImageCheckService: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.matchType != nil {
+                        map["matchType"] = self.matchType!
+                    }
+                    if self.modalityType != nil {
+                        map["modalityType"] = self.modalityType!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.responseCheckService != nil {
+                        map["responseCheckService"] = self.responseCheckService!
+                    }
+                    if self.responseImageCheckService != nil {
+                        map["responseImageCheckService"] = self.responseImageCheckService!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["matchType"] as? String {
+                        self.matchType = value
+                    }
+                    if let value = dict["modalityType"] as? String {
+                        self.modalityType = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["responseCheckService"] as? String {
+                        self.responseCheckService = value
+                    }
+                    if let value = dict["responseImageCheckService"] as? String {
+                        self.responseImageCheckService = value
+                    }
+                }
+            }
+            public class ConsumerRiskLevel : Tea.TeaModel {
+                public var level: String?
+
+                public var matchType: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.level != nil {
+                        map["level"] = self.level!
+                    }
+                    if self.matchType != nil {
+                        map["matchType"] = self.matchType!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["level"] as? String {
+                        self.level = value
+                    }
+                    if let value = dict["matchType"] as? String {
+                        self.matchType = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class RiskConfig : Tea.TeaModel {
+                public class ConsumerRules : Tea.TeaModel {
+                    public var matchType: String?
+
+                    public var pattern: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.matchType != nil {
+                            map["matchType"] = self.matchType!
+                        }
+                        if self.pattern != nil {
+                            map["pattern"] = self.pattern!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["matchType"] as? String {
+                            self.matchType = value
+                        }
+                        if let value = dict["pattern"] as? String {
+                            self.pattern = value
+                        }
+                    }
+                }
+                public var consumerRules: HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.RiskConfig.ConsumerRules?
+
+                public var level: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.consumerRules?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.consumerRules != nil {
+                        map["consumerRules"] = self.consumerRules?.toMap()
+                    }
+                    if self.level != nil {
+                        map["level"] = self.level!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["consumerRules"] as? [String: Any?] {
+                        var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.RiskConfig.ConsumerRules()
+                        model.fromMap(value)
+                        self.consumerRules = model
+                    }
+                    if let value = dict["level"] as? String {
+                        self.level = value
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var bufferLimit: Int32?
+
+            public var checkRequest: Bool?
+
+            public var checkRequestImage: Bool?
+
+            public var checkResponse: Bool?
+
+            public var checkResponseImage: Bool?
+
+            public var consumerRequestCheckService: [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRequestCheckService]?
+
+            public var consumerResponseCheckService: [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerResponseCheckService]?
+
+            public var consumerRiskLevel: [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRiskLevel]?
+
+            public var requestCheckService: String?
+
+            public var requestImageCheckService: String?
+
+            public var responseCheckService: String?
+
+            public var responseImageCheckService: String?
+
+            public var riskAlertLevel: String?
+
+            public var riskConfig: [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.RiskConfig]?
+
+            public var serviceAddress: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bufferLimit != nil {
+                    map["bufferLimit"] = self.bufferLimit!
+                }
+                if self.checkRequest != nil {
+                    map["checkRequest"] = self.checkRequest!
+                }
+                if self.checkRequestImage != nil {
+                    map["checkRequestImage"] = self.checkRequestImage!
+                }
+                if self.checkResponse != nil {
+                    map["checkResponse"] = self.checkResponse!
+                }
+                if self.checkResponseImage != nil {
+                    map["checkResponseImage"] = self.checkResponseImage!
+                }
+                if self.consumerRequestCheckService != nil {
+                    var tmp : [Any] = []
+                    for k in self.consumerRequestCheckService! {
+                        tmp.append(k.toMap())
+                    }
+                    map["consumerRequestCheckService"] = tmp
+                }
+                if self.consumerResponseCheckService != nil {
+                    var tmp : [Any] = []
+                    for k in self.consumerResponseCheckService! {
+                        tmp.append(k.toMap())
+                    }
+                    map["consumerResponseCheckService"] = tmp
+                }
+                if self.consumerRiskLevel != nil {
+                    var tmp : [Any] = []
+                    for k in self.consumerRiskLevel! {
+                        tmp.append(k.toMap())
+                    }
+                    map["consumerRiskLevel"] = tmp
+                }
+                if self.requestCheckService != nil {
+                    map["requestCheckService"] = self.requestCheckService!
+                }
+                if self.requestImageCheckService != nil {
+                    map["requestImageCheckService"] = self.requestImageCheckService!
+                }
+                if self.responseCheckService != nil {
+                    map["responseCheckService"] = self.responseCheckService!
+                }
+                if self.responseImageCheckService != nil {
+                    map["responseImageCheckService"] = self.responseImageCheckService!
+                }
+                if self.riskAlertLevel != nil {
+                    map["riskAlertLevel"] = self.riskAlertLevel!
+                }
+                if self.riskConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.riskConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["riskConfig"] = tmp
+                }
+                if self.serviceAddress != nil {
+                    map["serviceAddress"] = self.serviceAddress!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["bufferLimit"] as? Int32 {
+                    self.bufferLimit = value
+                }
+                if let value = dict["checkRequest"] as? Bool {
+                    self.checkRequest = value
+                }
+                if let value = dict["checkRequestImage"] as? Bool {
+                    self.checkRequestImage = value
+                }
+                if let value = dict["checkResponse"] as? Bool {
+                    self.checkResponse = value
+                }
+                if let value = dict["checkResponseImage"] as? Bool {
+                    self.checkResponseImage = value
+                }
+                if let value = dict["consumerRequestCheckService"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRequestCheckService] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRequestCheckService()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.consumerRequestCheckService = tmp
+                }
+                if let value = dict["consumerResponseCheckService"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerResponseCheckService] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerResponseCheckService()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.consumerResponseCheckService = tmp
+                }
+                if let value = dict["consumerRiskLevel"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRiskLevel] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.ConsumerRiskLevel()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.consumerRiskLevel = tmp
+                }
+                if let value = dict["requestCheckService"] as? String {
+                    self.requestCheckService = value
+                }
+                if let value = dict["requestImageCheckService"] as? String {
+                    self.requestImageCheckService = value
+                }
+                if let value = dict["responseCheckService"] as? String {
+                    self.responseCheckService = value
+                }
+                if let value = dict["responseImageCheckService"] as? String {
+                    self.responseImageCheckService = value
+                }
+                if let value = dict["riskAlertLevel"] as? String {
+                    self.riskAlertLevel = value
+                }
+                if let value = dict["riskConfig"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.RiskConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig.RiskConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.riskConfig = tmp
+                }
+                if let value = dict["serviceAddress"] as? String {
+                    self.serviceAddress = value
+                }
+            }
+        }
+        public class AiTokenRateLimitConfig : Tea.TeaModel {
+            public class GlobalRules : Tea.TeaModel {
+                public var limitMode: String?
+
+                public var limitType: String?
+
+                public var limitValue: Int32?
+
+                public var matchKey: String?
+
+                public var matchType: String?
+
+                public var matchValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.limitMode != nil {
+                        map["limitMode"] = self.limitMode!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.limitValue != nil {
+                        map["limitValue"] = self.limitValue!
+                    }
+                    if self.matchKey != nil {
+                        map["matchKey"] = self.matchKey!
+                    }
+                    if self.matchType != nil {
+                        map["matchType"] = self.matchType!
+                    }
+                    if self.matchValue != nil {
+                        map["matchValue"] = self.matchValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["limitMode"] as? String {
+                        self.limitMode = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["limitValue"] as? Int32 {
+                        self.limitValue = value
+                    }
+                    if let value = dict["matchKey"] as? String {
+                        self.matchKey = value
+                    }
+                    if let value = dict["matchType"] as? String {
+                        self.matchType = value
+                    }
+                    if let value = dict["matchValue"] as? String {
+                        self.matchValue = value
+                    }
+                }
+            }
+            public class Rules : Tea.TeaModel {
+                public var limitMode: String?
+
+                public var limitType: String?
+
+                public var limitValue: Int32?
+
+                public var matchKey: String?
+
+                public var matchType: String?
+
+                public var matchValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.limitMode != nil {
+                        map["limitMode"] = self.limitMode!
+                    }
+                    if self.limitType != nil {
+                        map["limitType"] = self.limitType!
+                    }
+                    if self.limitValue != nil {
+                        map["limitValue"] = self.limitValue!
+                    }
+                    if self.matchKey != nil {
+                        map["matchKey"] = self.matchKey!
+                    }
+                    if self.matchType != nil {
+                        map["matchType"] = self.matchType!
+                    }
+                    if self.matchValue != nil {
+                        map["matchValue"] = self.matchValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["limitMode"] as? String {
+                        self.limitMode = value
+                    }
+                    if let value = dict["limitType"] as? String {
+                        self.limitType = value
+                    }
+                    if let value = dict["limitValue"] as? Int32 {
+                        self.limitValue = value
+                    }
+                    if let value = dict["matchKey"] as? String {
+                        self.matchKey = value
+                    }
+                    if let value = dict["matchType"] as? String {
+                        self.matchType = value
+                    }
+                    if let value = dict["matchValue"] as? String {
+                        self.matchValue = value
+                    }
+                }
+            }
+            public var enableGlobalRules: Bool?
+
+            public var globalRules: [HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.GlobalRules]?
+
+            public var rules: [HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.Rules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableGlobalRules != nil {
+                    map["enableGlobalRules"] = self.enableGlobalRules!
+                }
+                if self.globalRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.globalRules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["globalRules"] = tmp
+                }
+                if self.rules != nil {
+                    var tmp : [Any] = []
+                    for k in self.rules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["rules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enableGlobalRules"] as? Bool {
+                    self.enableGlobalRules = value
+                }
+                if let value = dict["globalRules"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.GlobalRules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.GlobalRules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.globalRules = tmp
+                }
+                if let value = dict["rules"] as? [Any?] {
+                    var tmp : [HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.Rules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig.Rules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.rules = tmp
+                }
+            }
+        }
         public var aiFallbackConfig: HttpApiDeployConfig.PolicyConfigs.AiFallbackConfig?
+
+        public var aiSecurityGuardConfig: HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig?
+
+        public var aiTokenRateLimitConfig: HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig?
 
         public var enable: Bool?
 
@@ -2820,12 +3501,20 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.aiFallbackConfig?.validate()
+            try self.aiSecurityGuardConfig?.validate()
+            try self.aiTokenRateLimitConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.aiFallbackConfig != nil {
                 map["aiFallbackConfig"] = self.aiFallbackConfig?.toMap()
+            }
+            if self.aiSecurityGuardConfig != nil {
+                map["aiSecurityGuardConfig"] = self.aiSecurityGuardConfig?.toMap()
+            }
+            if self.aiTokenRateLimitConfig != nil {
+                map["aiTokenRateLimitConfig"] = self.aiTokenRateLimitConfig?.toMap()
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
@@ -2842,6 +3531,16 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 var model = HttpApiDeployConfig.PolicyConfigs.AiFallbackConfig()
                 model.fromMap(value)
                 self.aiFallbackConfig = model
+            }
+            if let value = dict["aiSecurityGuardConfig"] as? [String: Any?] {
+                var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig()
+                model.fromMap(value)
+                self.aiSecurityGuardConfig = model
+            }
+            if let value = dict["aiTokenRateLimitConfig"] as? [String: Any?] {
+                var model = HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig()
+                model.fromMap(value)
+                self.aiTokenRateLimitConfig = model
             }
             if let value = dict["enable"] as? Bool {
                 self.enable = value
