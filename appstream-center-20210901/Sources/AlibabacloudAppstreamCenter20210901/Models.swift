@@ -8551,6 +8551,44 @@ public class ListImageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TagList : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var aliUid: Int64?
 
         public var appList: [ListImageResponseBody.Data.AppList]?
@@ -8571,6 +8609,8 @@ public class ListImageResponseBody : Tea.TeaModel {
 
         public var driverList: [String]?
 
+        public var environmentId: String?
+
         public var featureList: [String]?
 
         public var fotaChannel: String?
@@ -8582,6 +8622,8 @@ public class ListImageResponseBody : Tea.TeaModel {
         public var gmtModified: String?
 
         public var imageCreateMode: String?
+
+        public var imageIconUrl: String?
 
         public var imageId: String?
 
@@ -8617,6 +8659,8 @@ public class ListImageResponseBody : Tea.TeaModel {
 
         public var protocolType: String?
 
+        public var rating: Int32?
+
         public var resourceInstanceCategory: String?
 
         public var scene: String?
@@ -8628,6 +8672,8 @@ public class ListImageResponseBody : Tea.TeaModel {
         public var supportedLanguageList: [String]?
 
         public var systemDiskSize: Int32?
+
+        public var tagList: [ListImageResponseBody.Data.TagList]?
 
         public var versionId: String?
 
@@ -8685,6 +8731,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             if self.driverList != nil {
                 map["DriverList"] = self.driverList!
             }
+            if self.environmentId != nil {
+                map["EnvironmentId"] = self.environmentId!
+            }
             if self.featureList != nil {
                 map["FeatureList"] = self.featureList!
             }
@@ -8702,6 +8751,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if self.imageCreateMode != nil {
                 map["ImageCreateMode"] = self.imageCreateMode!
+            }
+            if self.imageIconUrl != nil {
+                map["ImageIconUrl"] = self.imageIconUrl!
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -8758,6 +8810,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             if self.protocolType != nil {
                 map["ProtocolType"] = self.protocolType!
             }
+            if self.rating != nil {
+                map["Rating"] = self.rating!
+            }
             if self.resourceInstanceCategory != nil {
                 map["ResourceInstanceCategory"] = self.resourceInstanceCategory!
             }
@@ -8775,6 +8830,13 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if self.systemDiskSize != nil {
                 map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            if self.tagList != nil {
+                var tmp : [Any] = []
+                for k in self.tagList! {
+                    tmp.append(k.toMap())
+                }
+                map["TagList"] = tmp
             }
             if self.versionId != nil {
                 map["VersionId"] = self.versionId!
@@ -8833,6 +8895,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             if let value = dict["DriverList"] as? [String] {
                 self.driverList = value
             }
+            if let value = dict["EnvironmentId"] as? String {
+                self.environmentId = value
+            }
             if let value = dict["FeatureList"] as? [String] {
                 self.featureList = value
             }
@@ -8850,6 +8915,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if let value = dict["ImageCreateMode"] as? String {
                 self.imageCreateMode = value
+            }
+            if let value = dict["ImageIconUrl"] as? String {
+                self.imageIconUrl = value
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
@@ -8912,6 +8980,9 @@ public class ListImageResponseBody : Tea.TeaModel {
             if let value = dict["ProtocolType"] as? String {
                 self.protocolType = value
             }
+            if let value = dict["Rating"] as? Int32 {
+                self.rating = value
+            }
             if let value = dict["ResourceInstanceCategory"] as? String {
                 self.resourceInstanceCategory = value
             }
@@ -8929,6 +9000,19 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if let value = dict["SystemDiskSize"] as? Int32 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["TagList"] as? [Any?] {
+                var tmp : [ListImageResponseBody.Data.TagList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListImageResponseBody.Data.TagList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tagList = tmp
             }
             if let value = dict["VersionId"] as? String {
                 self.versionId = value
