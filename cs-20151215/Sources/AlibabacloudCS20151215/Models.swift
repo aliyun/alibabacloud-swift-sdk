@@ -4390,6 +4390,69 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class ControlPlaneEndpointsConfig : Tea.TeaModel {
+        public class InternalDnsConfig : Tea.TeaModel {
+            public var bindVpcs: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bindVpcs != nil {
+                    map["bind_vpcs"] = self.bindVpcs!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["bind_vpcs"] as? [String] {
+                    self.bindVpcs = value
+                }
+            }
+        }
+        public var internalDnsConfig: CreateClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.internalDnsConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.internalDnsConfig != nil {
+                map["internal_dns_config"] = self.internalDnsConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["internal_dns_config"] as? [String: Any?] {
+                var model = CreateClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig()
+                model.fromMap(value)
+                self.internalDnsConfig = model
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -4574,6 +4637,8 @@ public class CreateClusterRequest : Tea.TeaModel {
     public var containerCidr: String?
 
     public var controlPlaneConfig: CreateClusterRequest.ControlPlaneConfig?
+
+    public var controlPlaneEndpointsConfig: CreateClusterRequest.ControlPlaneEndpointsConfig?
 
     public var controlplaneLogComponents: [String]?
 
@@ -4762,6 +4827,7 @@ public class CreateClusterRequest : Tea.TeaModel {
         try self.auditLogConfig?.validate()
         try self.autoMode?.validate()
         try self.controlPlaneConfig?.validate()
+        try self.controlPlaneEndpointsConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.rrsaConfig?.validate()
@@ -4818,6 +4884,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.controlPlaneConfig != nil {
             map["control_plane_config"] = self.controlPlaneConfig?.toMap()
+        }
+        if self.controlPlaneEndpointsConfig != nil {
+            map["control_plane_endpoints_config"] = self.controlPlaneEndpointsConfig?.toMap()
         }
         if self.controlplaneLogComponents != nil {
             map["controlplane_log_components"] = self.controlplaneLogComponents!
@@ -5161,6 +5230,11 @@ public class CreateClusterRequest : Tea.TeaModel {
             var model = CreateClusterRequest.ControlPlaneConfig()
             model.fromMap(value)
             self.controlPlaneConfig = model
+        }
+        if let value = dict["control_plane_endpoints_config"] as? [String: Any?] {
+            var model = CreateClusterRequest.ControlPlaneEndpointsConfig()
+            model.fromMap(value)
+            self.controlPlaneEndpointsConfig = model
         }
         if let value = dict["controlplane_log_components"] as? [String] {
             self.controlplaneLogComponents = value
@@ -10740,6 +10814,77 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ControlPlaneEndpointsConfig : Tea.TeaModel {
+        public class InternalDnsConfig : Tea.TeaModel {
+            public var bindVpcs: [String]?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bindVpcs != nil {
+                    map["bind_vpcs"] = self.bindVpcs!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["bind_vpcs"] as? [String] {
+                    self.bindVpcs = value
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
+        public var internalDnsConfig: DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.internalDnsConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.internalDnsConfig != nil {
+                map["internal_dns_config"] = self.internalDnsConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["internal_dns_config"] as? [String: Any?] {
+                var model = DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig.InternalDnsConfig()
+                model.fromMap(value)
+                self.internalDnsConfig = model
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -10911,6 +11056,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var controlPlaneConfig: DescribeClusterDetailResponseBody.ControlPlaneConfig?
 
+    public var controlPlaneEndpointsConfig: DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig?
+
     public var created: String?
 
     public var currentVersion: String?
@@ -10995,6 +11142,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.autoMode?.validate()
         try self.controlPlaneConfig?.validate()
+        try self.controlPlaneEndpointsConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.rrsaConfig?.validate()
@@ -11022,6 +11170,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.controlPlaneConfig != nil {
             map["control_plane_config"] = self.controlPlaneConfig?.toMap()
+        }
+        if self.controlPlaneEndpointsConfig != nil {
+            map["control_plane_endpoints_config"] = self.controlPlaneEndpointsConfig?.toMap()
         }
         if self.created != nil {
             map["created"] = self.created!
@@ -11164,6 +11315,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             var model = DescribeClusterDetailResponseBody.ControlPlaneConfig()
             model.fromMap(value)
             self.controlPlaneConfig = model
+        }
+        if let value = dict["control_plane_endpoints_config"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.ControlPlaneEndpointsConfig()
+            model.fromMap(value)
+            self.controlPlaneEndpointsConfig = model
         }
         if let value = dict["created"] as? String {
             self.created = value
@@ -28471,6 +28627,77 @@ public class ModifyClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class ControlPlaneEndpointsConfig : Tea.TeaModel {
+        public class InternalDnsConfig : Tea.TeaModel {
+            public var bindVpcs: [String]?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bindVpcs != nil {
+                    map["bind_vpcs"] = self.bindVpcs!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["bind_vpcs"] as? [String] {
+                    self.bindVpcs = value
+                }
+                if let value = dict["enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
+        public var internalDnsConfig: ModifyClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.internalDnsConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.internalDnsConfig != nil {
+                map["internal_dns_config"] = self.internalDnsConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["internal_dns_config"] as? [String: Any?] {
+                var model = ModifyClusterRequest.ControlPlaneEndpointsConfig.InternalDnsConfig()
+                model.fromMap(value)
+                self.internalDnsConfig = model
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -28592,6 +28819,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var controlPlaneConfig: ModifyClusterRequest.ControlPlaneConfig?
 
+    public var controlPlaneEndpointsConfig: ModifyClusterRequest.ControlPlaneEndpointsConfig?
+
     public var deletionProtection: Bool?
 
     public var enableRrsa: Bool?
@@ -28628,6 +28857,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.apiServerCustomCertSans?.validate()
         try self.controlPlaneConfig?.validate()
+        try self.controlPlaneEndpointsConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.systemEventsLogging?.validate()
@@ -28652,6 +28882,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.controlPlaneConfig != nil {
             map["control_plane_config"] = self.controlPlaneConfig?.toMap()
+        }
+        if self.controlPlaneEndpointsConfig != nil {
+            map["control_plane_endpoints_config"] = self.controlPlaneEndpointsConfig?.toMap()
         }
         if self.deletionProtection != nil {
             map["deletion_protection"] = self.deletionProtection!
@@ -28715,6 +28948,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
             var model = ModifyClusterRequest.ControlPlaneConfig()
             model.fromMap(value)
             self.controlPlaneConfig = model
+        }
+        if let value = dict["control_plane_endpoints_config"] as? [String: Any?] {
+            var model = ModifyClusterRequest.ControlPlaneEndpointsConfig()
+            model.fromMap(value)
+            self.controlPlaneEndpointsConfig = model
         }
         if let value = dict["deletion_protection"] as? Bool {
             self.deletionProtection = value
