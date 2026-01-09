@@ -5884,6 +5884,8 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var resourceOwnerId: Int64?
+
     public var tag: [DescribeDBInstancesRequest.Tag]?
 
     public override init() {
@@ -5921,6 +5923,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -5954,6 +5959,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [DescribeDBInstancesRequest.Tag] = []
             for v in value {
@@ -5984,6 +5992,8 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var resourceOwnerId: Int64?
 
     public var tagShrink: String?
 
@@ -6022,6 +6032,9 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.tagShrink != nil {
             map["Tag"] = self.tagShrink!
         }
@@ -6050,6 +6063,9 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
         }
         if let value = dict["Tag"] as? String {
             self.tagShrink = value
