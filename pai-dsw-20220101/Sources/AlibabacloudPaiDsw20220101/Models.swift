@@ -7067,9 +7067,13 @@ public class GetSanityCheckTaskResponse : Tea.TeaModel {
 }
 
 public class GetTokenRequest : Tea.TeaModel {
+    public var audience: String?
+
     public var expireTime: Int32?
 
     public var instanceId: String?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -7085,22 +7089,34 @@ public class GetTokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audience != nil {
+            map["Audience"] = self.audience!
+        }
         if self.expireTime != nil {
             map["ExpireTime"] = self.expireTime!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Audience"] as? String {
+            self.audience = value
+        }
         if let value = dict["ExpireTime"] as? Int32 {
             self.expireTime = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
