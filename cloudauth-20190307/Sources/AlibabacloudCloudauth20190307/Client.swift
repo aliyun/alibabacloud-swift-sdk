@@ -508,6 +508,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkFileName)) {
             query["CheckFileName"] = request.checkFileName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deviceRiskPlus)) {
+            query["DeviceRiskPlus"] = request.deviceRiskPlus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.miniProgramName)) {
             query["MiniProgramName"] = request.miniProgramName ?? "";
         }
@@ -4149,6 +4152,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobileRecycledMetaVerifyWithOptions(_ request: MobileRecycledMetaVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MobileRecycledMetaVerifyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.registerDate)) {
+            query["RegisterDate"] = request.registerDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MobileRecycledMetaVerify",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MobileRecycledMetaVerifyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobileRecycledMetaVerify(_ request: MobileRecycledMetaVerifyRequest) async throws -> MobileRecycledMetaVerifyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await mobileRecycledMetaVerifyWithOptions(request as! MobileRecycledMetaVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyBlackListStrategyWithOptions(_ tmpReq: ModifyBlackListStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyBlackListStrategyResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyBlackListStrategyShrinkRequest = ModifyBlackListStrategyShrinkRequest([:])
@@ -4661,6 +4701,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.checkFileName)) {
             query["CheckFileName"] = request.checkFileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceRiskPlus)) {
+            query["DeviceRiskPlus"] = request.deviceRiskPlus ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.miniProgramName)) {
             query["MiniProgramName"] = request.miniProgramName ?? "";
