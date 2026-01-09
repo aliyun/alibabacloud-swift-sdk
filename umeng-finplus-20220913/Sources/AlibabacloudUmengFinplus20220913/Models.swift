@@ -1543,6 +1543,214 @@ public class CreateDataSet2Response : Tea.TeaModel {
     }
 }
 
+public class CreateInstanceTaskRequest : Tea.TeaModel {
+    public var appId: Int64?
+
+    public var calbackUrl: String?
+
+    public var clientId: Int64?
+
+    public var datasetIds: String?
+
+    public var monitorType: String?
+
+    public var name: String?
+
+    public var outputConfig: String?
+
+    public var requestId: String?
+
+    public var scoreStrategyConfig: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.calbackUrl != nil {
+            map["CalbackUrl"] = self.calbackUrl!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.datasetIds != nil {
+            map["DatasetIds"] = self.datasetIds!
+        }
+        if self.monitorType != nil {
+            map["MonitorType"] = self.monitorType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.outputConfig != nil {
+            map["OutputConfig"] = self.outputConfig!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.scoreStrategyConfig != nil {
+            map["ScoreStrategyConfig"] = self.scoreStrategyConfig!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? Int64 {
+            self.appId = value
+        }
+        if let value = dict["CalbackUrl"] as? String {
+            self.calbackUrl = value
+        }
+        if let value = dict["ClientId"] as? Int64 {
+            self.clientId = value
+        }
+        if let value = dict["DatasetIds"] as? String {
+            self.datasetIds = value
+        }
+        if let value = dict["MonitorType"] as? String {
+            self.monitorType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OutputConfig"] as? String {
+            self.outputConfig = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ScoreStrategyConfig"] as? String {
+            self.scoreStrategyConfig = value
+        }
+    }
+}
+
+public class CreateInstanceTaskResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var errCode: Int32?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? Int32 {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateInstanceTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateInstanceTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateInstanceTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateKnowLedgeRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public var appId: String?

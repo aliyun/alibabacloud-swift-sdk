@@ -331,6 +331,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstanceTaskWithOptions(_ request: CreateInstanceTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["AppId"] = request.appId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.calbackUrl)) {
+            body["CalbackUrl"] = request.calbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            body["ClientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetIds)) {
+            body["DatasetIds"] = request.datasetIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.monitorType)) {
+            body["MonitorType"] = request.monitorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputConfig)) {
+            body["OutputConfig"] = request.outputConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scoreStrategyConfig)) {
+            body["ScoreStrategyConfig"] = request.scoreStrategyConfig ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateInstanceTask",
+            "version": "2022-09-13",
+            "protocol": "HTTPS",
+            "pathname": "/CreateInstanceTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateInstanceTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstanceTask(_ request: CreateInstanceTaskRequest) async throws -> CreateInstanceTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createInstanceTaskWithOptions(request as! CreateInstanceTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createKnowLedgeWithOptions(_ tmpReq: CreateKnowLedgeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKnowLedgeResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateKnowLedgeShrinkRequest = CreateKnowLedgeShrinkRequest([:])

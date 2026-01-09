@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudUmengFinplus20220913"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud umeng-finplus (20220913) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/umeng-finplus-20220913" 
