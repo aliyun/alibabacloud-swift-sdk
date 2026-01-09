@@ -31922,6 +31922,8 @@ public class PageQueryAgentListResponseBody : Tea.TeaModel {
 
             public var status: Int64?
 
+            public var withActivePrompt: Bool?
+
             public var withConfig: Bool?
 
             public override init() {
@@ -31971,6 +31973,9 @@ public class PageQueryAgentListResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.withActivePrompt != nil {
+                    map["WithActivePrompt"] = self.withActivePrompt!
+                }
                 if self.withConfig != nil {
                     map["WithConfig"] = self.withConfig!
                 }
@@ -32011,6 +32016,9 @@ public class PageQueryAgentListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? Int64 {
                     self.status = value
+                }
+                if let value = dict["WithActivePrompt"] as? Bool {
+                    self.withActivePrompt = value
                 }
                 if let value = dict["WithConfig"] as? Bool {
                     self.withConfig = value
@@ -32584,6 +32592,8 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
 
             public var options: String?
 
+            public var outId: String?
+
             public var recordingFilePath: String?
 
             public var status: Int64?
@@ -32640,6 +32650,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 if self.options != nil {
                     map["Options"] = self.options!
                 }
+                if self.outId != nil {
+                    map["OutId"] = self.outId!
+                }
                 if self.recordingFilePath != nil {
                     map["RecordingFilePath"] = self.recordingFilePath!
                 }
@@ -32689,6 +32702,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Options"] as? String {
                     self.options = value
+                }
+                if let value = dict["OutId"] as? String {
+                    self.outId = value
                 }
                 if let value = dict["RecordingFilePath"] as? String {
                     self.recordingFilePath = value
