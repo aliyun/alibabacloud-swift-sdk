@@ -15394,6 +15394,8 @@ public class CreateOrderRequest : Tea.TeaModel {
 
     public var pluginType: String?
 
+    public var realLoginUserUid: String?
+
     public var relatedUserList: String?
 
     public var tid: Int64?
@@ -15424,6 +15426,9 @@ public class CreateOrderRequest : Tea.TeaModel {
         if self.pluginType != nil {
             map["PluginType"] = self.pluginType!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.relatedUserList != nil {
             map["RelatedUserList"] = self.relatedUserList!
         }
@@ -15447,6 +15452,9 @@ public class CreateOrderRequest : Tea.TeaModel {
         if let value = dict["PluginType"] as? String {
             self.pluginType = value
         }
+        if let value = dict["RealLoginUserUid"] as? String {
+            self.realLoginUserUid = value
+        }
         if let value = dict["RelatedUserList"] as? String {
             self.relatedUserList = value
         }
@@ -15464,6 +15472,8 @@ public class CreateOrderShrinkRequest : Tea.TeaModel {
     public var pluginParamShrink: String?
 
     public var pluginType: String?
+
+    public var realLoginUserUid: String?
 
     public var relatedUserList: String?
 
@@ -15495,6 +15505,9 @@ public class CreateOrderShrinkRequest : Tea.TeaModel {
         if self.pluginType != nil {
             map["PluginType"] = self.pluginType!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.relatedUserList != nil {
             map["RelatedUserList"] = self.relatedUserList!
         }
@@ -15517,6 +15530,9 @@ public class CreateOrderShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PluginType"] as? String {
             self.pluginType = value
+        }
+        if let value = dict["RealLoginUserUid"] as? String {
+            self.realLoginUserUid = value
         }
         if let value = dict["RelatedUserList"] as? String {
             self.relatedUserList = value
@@ -56191,6 +56207,8 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
 
             public var createdTime: String?
 
+            public var description_: String?
+
             public var edition: String?
 
             public var enterpriseInternetUrl: String?
@@ -56207,7 +56225,11 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
 
             public var majorVersion: String?
 
+            public var regionCode: String?
+
             public var securityGroupId: String?
+
+            public var status: String?
 
             public var vSwitchId: String?
 
@@ -56237,6 +56259,9 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 if self.createdTime != nil {
                     map["CreatedTime"] = self.createdTime!
                 }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
                 if self.edition != nil {
                     map["Edition"] = self.edition!
                 }
@@ -56261,8 +56286,14 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 if self.majorVersion != nil {
                     map["MajorVersion"] = self.majorVersion!
                 }
+                if self.regionCode != nil {
+                    map["RegionCode"] = self.regionCode!
+                }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
                 }
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
@@ -56286,6 +56317,9 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreatedTime"] as? String {
                     self.createdTime = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
                 }
                 if let value = dict["Edition"] as? String {
                     self.edition = value
@@ -56311,8 +56345,14 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["MajorVersion"] as? String {
                     self.majorVersion = value
                 }
+                if let value = dict["RegionCode"] as? String {
+                    self.regionCode = value
+                }
                 if let value = dict["SecurityGroupId"] as? String {
                     self.securityGroupId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
                 }
                 if let value = dict["VSwitchId"] as? String {
                     self.vSwitchId = value
