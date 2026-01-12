@@ -2856,6 +2856,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func llmStreamChatWithOptions(_ request: LlmStreamChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmStreamChatResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            body["Channel"] = request.channel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.messages)) {
             body["Messages"] = request.messages!;
         }

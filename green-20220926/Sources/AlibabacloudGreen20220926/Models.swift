@@ -11678,6 +11678,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
 
             public var apiTaskId: String?
 
+            public var appId: String?
+
             public var attackLevel: String?
 
             public var content: String?
@@ -11703,6 +11705,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
             public var imageService: String?
 
             public var imageUrl: String?
+
+            public var imageUrls: [String]?
 
             public var labels: String?
 
@@ -11806,6 +11810,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 if self.apiTaskId != nil {
                     map["ApiTaskId"] = self.apiTaskId!
                 }
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
                 if self.attackLevel != nil {
                     map["AttackLevel"] = self.attackLevel!
                 }
@@ -11844,6 +11851,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 }
                 if self.imageUrl != nil {
                     map["ImageUrl"] = self.imageUrl!
+                }
+                if self.imageUrls != nil {
+                    map["ImageUrls"] = self.imageUrls!
                 }
                 if self.labels != nil {
                     map["Labels"] = self.labels!
@@ -11977,6 +11987,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 if let value = dict["ApiTaskId"] as? String {
                     self.apiTaskId = value
                 }
+                if let value = dict["AppId"] as? String {
+                    self.appId = value
+                }
                 if let value = dict["AttackLevel"] as? String {
                     self.attackLevel = value
                 }
@@ -12015,6 +12028,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ImageUrl"] as? String {
                     self.imageUrl = value
+                }
+                if let value = dict["ImageUrls"] as? [String] {
+                    self.imageUrls = value
                 }
                 if let value = dict["Labels"] as? String {
                     self.labels = value
@@ -17630,6 +17646,8 @@ public class ListServiceConfigsResponse : Tea.TeaModel {
 }
 
 public class LlmStreamChatRequest : Tea.TeaModel {
+    public var channel: String?
+
     public var messages: Any?
 
     public var temperature: Double?
@@ -17652,6 +17670,9 @@ public class LlmStreamChatRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channel != nil {
+            map["Channel"] = self.channel!
+        }
         if self.messages != nil {
             map["Messages"] = self.messages!
         }
@@ -17669,6 +17690,9 @@ public class LlmStreamChatRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Channel"] as? String {
+            self.channel = value
+        }
         if let value = dict["Messages"] as? Any {
             self.messages = value
         }
