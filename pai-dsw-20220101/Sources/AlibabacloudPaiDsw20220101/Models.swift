@@ -8664,6 +8664,10 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var accessibility: String?
 
+    public var createTimeAfter: String?
+
+    public var createTimeBefore: String?
+
     public var createUserId: String?
 
     public var gpuType: String?
@@ -8733,6 +8737,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.createTimeAfter != nil {
+            map["CreateTimeAfter"] = self.createTimeAfter!
+        }
+        if self.createTimeBefore != nil {
+            map["CreateTimeBefore"] = self.createTimeBefore!
         }
         if self.createUserId != nil {
             map["CreateUserId"] = self.createUserId!
@@ -8823,6 +8833,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["CreateTimeAfter"] as? String {
+            self.createTimeAfter = value
+        }
+        if let value = dict["CreateTimeBefore"] as? String {
+            self.createTimeBefore = value
         }
         if let value = dict["CreateUserId"] as? String {
             self.createUserId = value
@@ -8917,6 +8933,10 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
 
     public var accessibility: String?
 
+    public var createTimeAfter: String?
+
+    public var createTimeBefore: String?
+
     public var createUserId: String?
 
     public var gpuType: String?
@@ -8986,6 +9006,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.createTimeAfter != nil {
+            map["CreateTimeAfter"] = self.createTimeAfter!
+        }
+        if self.createTimeBefore != nil {
+            map["CreateTimeBefore"] = self.createTimeBefore!
         }
         if self.createUserId != nil {
             map["CreateUserId"] = self.createUserId!
@@ -9072,6 +9098,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["CreateTimeAfter"] as? String {
+            self.createTimeAfter = value
+        }
+        if let value = dict["CreateTimeBefore"] as? String {
+            self.createTimeBefore = value
         }
         if let value = dict["CreateUserId"] as? String {
             self.createUserId = value

@@ -1130,6 +1130,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             query["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createTimeAfter)) {
+            query["CreateTimeAfter"] = request.createTimeAfter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeBefore)) {
+            query["CreateTimeBefore"] = request.createTimeBefore ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.createUserId)) {
             query["CreateUserId"] = request.createUserId ?? "";
         }
