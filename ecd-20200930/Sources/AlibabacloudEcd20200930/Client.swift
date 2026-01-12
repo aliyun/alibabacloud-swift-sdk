@@ -3547,6 +3547,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.eid)) {
+            query["Eid"] = request.eid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableAdminAccess)) {
             query["EnableAdminAccess"] = request.enableAdminAccess!;
         }
@@ -8282,6 +8285,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSubnetsWithOptions(_ request: DescribeSubnetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSubnetsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eid)) {
+            query["Eid"] = request.eid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }

@@ -15774,6 +15774,8 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var eid: String?
+
     public var enableAdminAccess: Bool?
 
     public var enableInternetAccess: Bool?
@@ -15839,6 +15841,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.eid != nil {
+            map["Eid"] = self.eid!
+        }
         if self.enableAdminAccess != nil {
             map["EnableAdminAccess"] = self.enableAdminAccess!
         }
@@ -15903,6 +15908,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["Eid"] as? String {
+            self.eid = value
         }
         if let value = dict["EnableAdminAccess"] as? Bool {
             self.enableAdminAccess = value
@@ -40980,6 +40988,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var domainUserName: String?
 
+        public var eid: String?
+
         public var enableAdminAccess: Bool?
 
         public var enableCrossDesktopAccess: Bool?
@@ -40987,6 +40997,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         public var enableInternetAccess: Bool?
 
         public var enableServiceRoute: Bool?
+
+        public var envType: String?
 
         public var fileSystemIds: [String]?
 
@@ -41150,6 +41162,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if self.domainUserName != nil {
                 map["DomainUserName"] = self.domainUserName!
             }
+            if self.eid != nil {
+                map["Eid"] = self.eid!
+            }
             if self.enableAdminAccess != nil {
                 map["EnableAdminAccess"] = self.enableAdminAccess!
             }
@@ -41161,6 +41176,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.enableServiceRoute != nil {
                 map["EnableServiceRoute"] = self.enableServiceRoute!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
             }
             if self.fileSystemIds != nil {
                 map["FileSystemIds"] = self.fileSystemIds!
@@ -41362,6 +41380,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if let value = dict["DomainUserName"] as? String {
                 self.domainUserName = value
             }
+            if let value = dict["Eid"] as? String {
+                self.eid = value
+            }
             if let value = dict["EnableAdminAccess"] as? Bool {
                 self.enableAdminAccess = value
             }
@@ -41373,6 +41394,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableServiceRoute"] as? Bool {
                 self.enableServiceRoute = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["FileSystemIds"] as? [String] {
                 self.fileSystemIds = value
@@ -48194,6 +48218,8 @@ public class DescribeSnatTableEntriesResponse : Tea.TeaModel {
 }
 
 public class DescribeSubnetsRequest : Tea.TeaModel {
+    public var eid: String?
+
     public var maxResults: Int32?
 
     public var name: String?
@@ -48220,6 +48246,9 @@ public class DescribeSubnetsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eid != nil {
+            map["Eid"] = self.eid!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -48243,6 +48272,9 @@ public class DescribeSubnetsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Eid"] as? String {
+            self.eid = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
