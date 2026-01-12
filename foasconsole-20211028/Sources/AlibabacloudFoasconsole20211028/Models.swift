@@ -2458,6 +2458,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var elastic: Bool?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -2493,6 +2495,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.elastic != nil {
+            map["Elastic"] = self.elastic!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -2532,6 +2537,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["Elastic"] as? Bool {
+            self.elastic = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -2575,6 +2583,8 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var elastic: Bool?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -2611,6 +2621,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
+        if self.elastic != nil {
+            map["Elastic"] = self.elastic!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2645,6 +2658,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["Elastic"] as? Bool {
+            self.elastic = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -5872,6 +5888,359 @@ public class ModifyElasticResourceSpecResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyElasticResourceSpecResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstanceSpecRequest : Tea.TeaModel {
+    public class HaResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["MemoryGB"] as? Int32 {
+                self.memoryGB = value
+            }
+        }
+    }
+    public class ResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["MemoryGB"] as? Int32 {
+                self.memoryGB = value
+            }
+        }
+    }
+    public var ha: Bool?
+
+    public var haResourceSpec: ModifyInstanceSpecRequest.HaResourceSpec?
+
+    public var haVSwitchIds: [String]?
+
+    public var instanceId: String?
+
+    public var promotionCode: String?
+
+    public var region: String?
+
+    public var resourceSpec: ModifyInstanceSpecRequest.ResourceSpec?
+
+    public var usePromotionCode: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.haResourceSpec?.validate()
+        try self.resourceSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpec != nil {
+            map["HaResourceSpec"] = self.haResourceSpec?.toMap()
+        }
+        if self.haVSwitchIds != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIds!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.resourceSpec != nil {
+            map["ResourceSpec"] = self.resourceSpec?.toMap()
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Ha"] as? Bool {
+            self.ha = value
+        }
+        if let value = dict["HaResourceSpec"] as? [String: Any?] {
+            var model = ModifyInstanceSpecRequest.HaResourceSpec()
+            model.fromMap(value)
+            self.haResourceSpec = model
+        }
+        if let value = dict["HaVSwitchIds"] as? [String] {
+            self.haVSwitchIds = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
+        if let value = dict["ResourceSpec"] as? [String: Any?] {
+            var model = ModifyInstanceSpecRequest.ResourceSpec()
+            model.fromMap(value)
+            self.resourceSpec = model
+        }
+        if let value = dict["UsePromotionCode"] as? Bool {
+            self.usePromotionCode = value
+        }
+    }
+}
+
+public class ModifyInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var ha: Bool?
+
+    public var haResourceSpecShrink: String?
+
+    public var haVSwitchIdsShrink: String?
+
+    public var instanceId: String?
+
+    public var promotionCode: String?
+
+    public var region: String?
+
+    public var resourceSpecShrink: String?
+
+    public var usePromotionCode: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpecShrink != nil {
+            map["HaResourceSpec"] = self.haResourceSpecShrink!
+        }
+        if self.haVSwitchIdsShrink != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.resourceSpecShrink != nil {
+            map["ResourceSpec"] = self.resourceSpecShrink!
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Ha"] as? Bool {
+            self.ha = value
+        }
+        if let value = dict["HaResourceSpec"] as? String {
+            self.haResourceSpecShrink = value
+        }
+        if let value = dict["HaVSwitchIds"] as? String {
+            self.haVSwitchIdsShrink = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
+        if let value = dict["ResourceSpec"] as? String {
+            self.resourceSpecShrink = value
+        }
+        if let value = dict["UsePromotionCode"] as? Bool {
+            self.usePromotionCode = value
+        }
+    }
+}
+
+public class ModifyInstanceSpecResponseBody : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OrderId"] as? Int64 {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModifyInstanceSpecResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceSpecResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyInstanceSpecResponseBody()
             model.fromMap(value)
             self.body = model
         }

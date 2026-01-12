@@ -587,6 +587,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceSpecWithOptions(_ tmpReq: ModifyInstanceSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceSpecResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyInstanceSpecShrinkRequest = ModifyInstanceSpecShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
+            request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.haVSwitchIds)) {
+            request.haVSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haVSwitchIds, "HaVSwitchIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceSpec)) {
+            request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
+        if (!TeaUtils.Client.isUnset(request.haResourceSpecShrink)) {
+            body["HaResourceSpec"] = request.haResourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haVSwitchIdsShrink)) {
+            body["HaVSwitchIds"] = request.haVSwitchIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            body["PromotionCode"] = request.promotionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceSpecShrink)) {
+            body["ResourceSpec"] = request.resourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyInstanceSpec",
+            "version": "2021-10-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyInstanceSpecResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceSpec(_ request: ModifyInstanceSpecRequest) async throws -> ModifyInstanceSpecResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyInstanceSpecWithOptions(request as! ModifyInstanceSpecRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyInstanceVswitchWithOptions(_ tmpReq: ModifyInstanceVswitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceVswitchResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyInstanceVswitchShrinkRequest = ModifyInstanceVswitchShrinkRequest([:])
