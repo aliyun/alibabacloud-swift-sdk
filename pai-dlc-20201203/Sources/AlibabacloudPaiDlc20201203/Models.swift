@@ -132,9 +132,13 @@ public class AliyunAccounts : Tea.TeaModel {
 }
 
 public class AssignNodeSpec : Tea.TeaModel {
+    public var antiAffinityHyperNodes: [HyperNodeSpec]?
+
     public var antiAffinityNodeNames: String?
 
     public var enableAssignNode: Bool?
+
+    public var hyperNodes: [HyperNodeSpec]?
 
     public var nodeNames: String?
 
@@ -152,11 +156,25 @@ public class AssignNodeSpec : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.antiAffinityHyperNodes != nil {
+            var tmp : [Any] = []
+            for k in self.antiAffinityHyperNodes! {
+                tmp.append(k.toMap())
+            }
+            map["AntiAffinityHyperNodes"] = tmp
+        }
         if self.antiAffinityNodeNames != nil {
             map["AntiAffinityNodeNames"] = self.antiAffinityNodeNames!
         }
         if self.enableAssignNode != nil {
             map["EnableAssignNode"] = self.enableAssignNode!
+        }
+        if self.hyperNodes != nil {
+            var tmp : [Any] = []
+            for k in self.hyperNodes! {
+                tmp.append(k.toMap())
+            }
+            map["HyperNodes"] = tmp
         }
         if self.nodeNames != nil {
             map["NodeNames"] = self.nodeNames!
@@ -166,11 +184,37 @@ public class AssignNodeSpec : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AntiAffinityHyperNodes"] as? [Any?] {
+            var tmp : [HyperNodeSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = HyperNodeSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.antiAffinityHyperNodes = tmp
+        }
         if let value = dict["AntiAffinityNodeNames"] as? String {
             self.antiAffinityNodeNames = value
         }
         if let value = dict["EnableAssignNode"] as? Bool {
             self.enableAssignNode = value
+        }
+        if let value = dict["HyperNodes"] as? [Any?] {
+            var tmp : [HyperNodeSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = HyperNodeSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.hyperNodes = tmp
         }
         if let value = dict["NodeNames"] as? String {
             self.nodeNames = value
@@ -736,7 +780,11 @@ public class CredentialRole : Tea.TeaModel {
 public class DataJuicerConfig : Tea.TeaModel {
     public var commandType: String?
 
+    public var enableResourceEstimation: Bool?
+
     public var executionMode: String?
+
+    public var resourceLimit: ResourceLimit?
 
     public override init() {
         super.init()
@@ -748,6 +796,7 @@ public class DataJuicerConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.resourceLimit?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -755,8 +804,14 @@ public class DataJuicerConfig : Tea.TeaModel {
         if self.commandType != nil {
             map["CommandType"] = self.commandType!
         }
+        if self.enableResourceEstimation != nil {
+            map["EnableResourceEstimation"] = self.enableResourceEstimation!
+        }
         if self.executionMode != nil {
             map["ExecutionMode"] = self.executionMode!
+        }
+        if self.resourceLimit != nil {
+            map["ResourceLimit"] = self.resourceLimit?.toMap()
         }
         return map
     }
@@ -766,8 +821,16 @@ public class DataJuicerConfig : Tea.TeaModel {
         if let value = dict["CommandType"] as? String {
             self.commandType = value
         }
+        if let value = dict["EnableResourceEstimation"] as? Bool {
+            self.enableResourceEstimation = value
+        }
         if let value = dict["ExecutionMode"] as? String {
             self.executionMode = value
+        }
+        if let value = dict["ResourceLimit"] as? [String: Any?] {
+            var model = ResourceLimit()
+            model.fromMap(value)
+            self.resourceLimit = model
         }
     }
 }
@@ -1854,6 +1917,45 @@ public class GPUDetail : Tea.TeaModel {
     }
 }
 
+public class HyperNodeSpec : Tea.TeaModel {
+    public var hyperNodeName: String?
+
+    public var nodeNames: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.hyperNodeName != nil {
+            map["HyperNodeName"] = self.hyperNodeName!
+        }
+        if self.nodeNames != nil {
+            map["NodeNames"] = self.nodeNames!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["HyperNodeName"] as? String {
+            self.hyperNodeName = value
+        }
+        if let value = dict["NodeNames"] as? String {
+            self.nodeNames = value
+        }
+    }
+}
+
 public class ImageConfig : Tea.TeaModel {
     public var auth: String?
 
@@ -2385,7 +2487,7 @@ public class JobItem : Tea.TeaModel {
 
     public var jobMaxRunningTimeMinutes: Int64?
 
-    public var jobReplicaStatuses: JobReplicaStatus?
+    public var jobReplicaStatuses: [JobReplicaStatus]?
 
     public var jobSpecs: [JobSpec]?
 
@@ -2468,7 +2570,6 @@ public class JobItem : Tea.TeaModel {
         try self.codeSource?.validate()
         try self.credentialConfig?.validate()
         try self.elasticSpec?.validate()
-        try self.jobReplicaStatuses?.validate()
         try self.settings?.validate()
         try self.userVpc?.validate()
     }
@@ -2546,7 +2647,11 @@ public class JobItem : Tea.TeaModel {
             map["JobMaxRunningTimeMinutes"] = self.jobMaxRunningTimeMinutes!
         }
         if self.jobReplicaStatuses != nil {
-            map["JobReplicaStatuses"] = self.jobReplicaStatuses?.toMap()
+            var tmp : [Any] = []
+            for k in self.jobReplicaStatuses! {
+                tmp.append(k.toMap())
+            }
+            map["JobReplicaStatuses"] = tmp
         }
         if self.jobSpecs != nil {
             var tmp : [Any] = []
@@ -2749,10 +2854,18 @@ public class JobItem : Tea.TeaModel {
         if let value = dict["JobMaxRunningTimeMinutes"] as? Int64 {
             self.jobMaxRunningTimeMinutes = value
         }
-        if let value = dict["JobReplicaStatuses"] as? [String: Any?] {
-            var model = JobReplicaStatus()
-            model.fromMap(value)
-            self.jobReplicaStatuses = model
+        if let value = dict["JobReplicaStatuses"] as? [Any?] {
+            var tmp : [JobReplicaStatus] = []
+            for v in value {
+                if v != nil {
+                    var model = JobReplicaStatus()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobReplicaStatuses = tmp
         }
         if let value = dict["JobSpecs"] as? [Any?] {
             var tmp : [JobSpec] = []
@@ -2896,6 +3009,16 @@ public class JobItem : Tea.TeaModel {
 public class JobReplicaStatus : Tea.TeaModel {
     public var active: Int32?
 
+    public var dequeued: Int32?
+
+    public var estimatedAutoScalingSpec: AutoScalingSpec?
+
+    public var estimatedPodCount: Int64?
+
+    public var estimatedResourceConfig: ResourceConfig?
+
+    public var queuing: Int32?
+
     public var type: String?
 
     public override init() {
@@ -2908,12 +3031,29 @@ public class JobReplicaStatus : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.estimatedAutoScalingSpec?.validate()
+        try self.estimatedResourceConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.active != nil {
             map["Active"] = self.active!
+        }
+        if self.dequeued != nil {
+            map["Dequeued"] = self.dequeued!
+        }
+        if self.estimatedAutoScalingSpec != nil {
+            map["EstimatedAutoScalingSpec"] = self.estimatedAutoScalingSpec?.toMap()
+        }
+        if self.estimatedPodCount != nil {
+            map["EstimatedPodCount"] = self.estimatedPodCount!
+        }
+        if self.estimatedResourceConfig != nil {
+            map["EstimatedResourceConfig"] = self.estimatedResourceConfig?.toMap()
+        }
+        if self.queuing != nil {
+            map["Queuing"] = self.queuing!
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -2925,6 +3065,25 @@ public class JobReplicaStatus : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Active"] as? Int32 {
             self.active = value
+        }
+        if let value = dict["Dequeued"] as? Int32 {
+            self.dequeued = value
+        }
+        if let value = dict["EstimatedAutoScalingSpec"] as? [String: Any?] {
+            var model = AutoScalingSpec()
+            model.fromMap(value)
+            self.estimatedAutoScalingSpec = model
+        }
+        if let value = dict["EstimatedPodCount"] as? Int64 {
+            self.estimatedPodCount = value
+        }
+        if let value = dict["EstimatedResourceConfig"] as? [String: Any?] {
+            var model = ResourceConfig()
+            model.fromMap(value)
+            self.estimatedResourceConfig = model
+        }
+        if let value = dict["Queuing"] as? Int32 {
+            self.queuing = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -3166,6 +3325,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var spotSpec: SpotSpec?
 
+    public var startupDependencies: [StartupDependency]?
+
     public var systemDisk: SystemDisk?
 
     public var type: String?
@@ -3239,6 +3400,13 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.spotSpec != nil {
             map["SpotSpec"] = self.spotSpec?.toMap()
+        }
+        if self.startupDependencies != nil {
+            var tmp : [Any] = []
+            for k in self.startupDependencies! {
+                tmp.append(k.toMap())
+            }
+            map["StartupDependencies"] = tmp
         }
         if self.systemDisk != nil {
             map["SystemDisk"] = self.systemDisk?.toMap()
@@ -3319,6 +3487,19 @@ public class JobSpec : Tea.TeaModel {
             var model = SpotSpec()
             model.fromMap(value)
             self.spotSpec = model
+        }
+        if let value = dict["StartupDependencies"] as? [Any?] {
+            var tmp : [StartupDependency] = []
+            for v in value {
+                if v != nil {
+                    var model = StartupDependency()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.startupDependencies = tmp
         }
         if let value = dict["SystemDisk"] as? [String: Any?] {
             var model = SystemDisk()
@@ -4369,6 +4550,53 @@ public class ResourceConfig : Tea.TeaModel {
     }
 }
 
+public class ResourceLimit : Tea.TeaModel {
+    public var CPU: String?
+
+    public var GPU: String?
+
+    public var memory: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.CPU != nil {
+            map["CPU"] = self.CPU!
+        }
+        if self.GPU != nil {
+            map["GPU"] = self.GPU!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CPU"] as? String {
+            self.CPU = value
+        }
+        if let value = dict["GPU"] as? String {
+            self.GPU = value
+        }
+        if let value = dict["Memory"] as? String {
+            self.memory = value
+        }
+    }
+}
+
 public class ResourceRequirements : Tea.TeaModel {
     public var limits: [String: String]?
 
@@ -5001,6 +5229,53 @@ public class SpotSpec : Tea.TeaModel {
         }
         if let value = dict["SpotStrategy"] as? String {
             self.spotStrategy = value
+        }
+    }
+}
+
+public class StartupDependency : Tea.TeaModel {
+    public var minReplicas: String?
+
+    public var onPhase: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.minReplicas != nil {
+            map["MinReplicas"] = self.minReplicas!
+        }
+        if self.onPhase != nil {
+            map["OnPhase"] = self.onPhase!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MinReplicas"] as? String {
+            self.minReplicas = value
+        }
+        if let value = dict["OnPhase"] as? String {
+            self.onPhase = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
