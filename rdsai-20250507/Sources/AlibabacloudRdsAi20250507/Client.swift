@@ -485,6 +485,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInstanceIpWhitelistWithOptions(_ request: DescribeInstanceIpWhitelistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceIpWhitelistResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.groupName)) {
+            query["GroupName"] = request.groupName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
         }

@@ -2714,6 +2714,8 @@ public class DescribeInstanceEndpointsResponse : Tea.TeaModel {
 }
 
 public class DescribeInstanceIpWhitelistRequest : Tea.TeaModel {
+    public var groupName: String?
+
     public var instanceName: String?
 
     public var regionId: String?
@@ -2732,6 +2734,9 @@ public class DescribeInstanceIpWhitelistRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -2743,6 +2748,9 @@ public class DescribeInstanceIpWhitelistRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["GroupName"] as? String {
+            self.groupName = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
