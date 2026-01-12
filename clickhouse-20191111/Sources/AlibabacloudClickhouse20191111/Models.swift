@@ -15214,6 +15214,8 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
 
             public var subJob: String?
 
+            public var subJobMessage: String?
+
             public var subJobStatus: String?
 
             public var targetControlVersion: String?
@@ -15262,6 +15264,9 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
                 if self.subJob != nil {
                     map["SubJob"] = self.subJob!
                 }
+                if self.subJobMessage != nil {
+                    map["SubJobMessage"] = self.subJobMessage!
+                }
                 if self.subJobStatus != nil {
                     map["SubJobStatus"] = self.subJobStatus!
                 }
@@ -15305,6 +15310,9 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubJob"] as? String {
                     self.subJob = value
+                }
+                if let value = dict["SubJobMessage"] as? String {
+                    self.subJobMessage = value
                 }
                 if let value = dict["SubJobStatus"] as? String {
                     self.subJobStatus = value
