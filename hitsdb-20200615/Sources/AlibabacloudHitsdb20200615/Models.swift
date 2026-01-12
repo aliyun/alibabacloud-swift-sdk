@@ -13771,6 +13771,10 @@ public class ListLdpsComputeGroupsResponseBody : Tea.TeaModel {
 
         public var properties: [String: Any]?
 
+        public var rayInteractiveAccessAddr: String?
+
+        public var rayVpcWebUIAddr: String?
+
         public var state: String?
 
         public var webUI: String?
@@ -13801,6 +13805,12 @@ public class ListLdpsComputeGroupsResponseBody : Tea.TeaModel {
             if self.properties != nil {
                 map["Properties"] = self.properties!
             }
+            if self.rayInteractiveAccessAddr != nil {
+                map["RayInteractiveAccessAddr"] = self.rayInteractiveAccessAddr!
+            }
+            if self.rayVpcWebUIAddr != nil {
+                map["RayVpcWebUIAddr"] = self.rayVpcWebUIAddr!
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -13823,6 +13833,12 @@ public class ListLdpsComputeGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Properties"] as? [String: Any] {
                 self.properties = value
+            }
+            if let value = dict["RayInteractiveAccessAddr"] as? String {
+                self.rayInteractiveAccessAddr = value
+            }
+            if let value = dict["RayVpcWebUIAddr"] as? String {
+                self.rayVpcWebUIAddr = value
             }
             if let value = dict["State"] as? String {
                 self.state = value
