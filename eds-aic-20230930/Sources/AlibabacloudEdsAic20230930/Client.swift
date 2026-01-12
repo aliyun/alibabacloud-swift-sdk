@@ -95,6 +95,95 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func backupAndroidInstanceWithOptions(_ request: BackupAndroidInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BackupAndroidInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
+            query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFileName)) {
+            query["BackupFileName"] = request.backupFileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
+            query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadEndpoint)) {
+            query["UploadEndpoint"] = request.uploadEndpoint ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BackupAndroidInstance",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BackupAndroidInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func backupAndroidInstance(_ request: BackupAndroidInstanceRequest) async throws -> BackupAndroidInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await backupAndroidInstanceWithOptions(request as! BackupAndroidInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func backupAppWithOptions(_ request: BackupAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BackupAppResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
+            query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFileName)) {
+            query["BackupFileName"] = request.backupFileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
+            query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceAppList)) {
+            query["SourceAppList"] = request.sourceAppList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadEndpoint)) {
+            query["UploadEndpoint"] = request.uploadEndpoint ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BackupApp",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BackupAppResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func backupApp(_ request: BackupAppRequest) async throws -> BackupAppResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await backupAppWithOptions(request as! BackupAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func backupFileWithOptions(_ request: BackupFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BackupFileResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3122,6 +3211,92 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rebootAndroidInstancesInGroup(_ request: RebootAndroidInstancesInGroupRequest) async throws -> RebootAndroidInstancesInGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await rebootAndroidInstancesInGroupWithOptions(request as! RebootAndroidInstancesInGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recoverAndroidInstanceWithOptions(_ request: RecoverAndroidInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecoverAndroidInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
+            query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFileId)) {
+            query["BackupFileId"] = request.backupFileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
+            query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadEndpoint)) {
+            query["UploadEndpoint"] = request.uploadEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadType)) {
+            query["UploadType"] = request.uploadType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecoverAndroidInstance",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecoverAndroidInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recoverAndroidInstance(_ request: RecoverAndroidInstanceRequest) async throws -> RecoverAndroidInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recoverAndroidInstanceWithOptions(request as! RecoverAndroidInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recoverAppWithOptions(_ request: RecoverAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecoverAppResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
+            query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFileId)) {
+            query["BackupFileId"] = request.backupFileId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backupFilePath)) {
+            query["BackupFilePath"] = request.backupFilePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadEndpoint)) {
+            query["UploadEndpoint"] = request.uploadEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadType)) {
+            query["UploadType"] = request.uploadType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecoverApp",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecoverAppResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recoverApp(_ request: RecoverAppRequest) async throws -> RecoverAppResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recoverAppWithOptions(request as! RecoverAppRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

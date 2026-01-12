@@ -357,6 +357,486 @@ public class AuthorizeAndroidInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class BackupAndroidInstanceRequest : Tea.TeaModel {
+    public var androidInstanceIdList: [String]?
+
+    public var backupFileName: String?
+
+    public var backupFilePath: String?
+
+    public var description_: String?
+
+    public var uploadEndpoint: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIdList != nil {
+            map["AndroidInstanceIdList"] = self.androidInstanceIdList!
+        }
+        if self.backupFileName != nil {
+            map["BackupFileName"] = self.backupFileName!
+        }
+        if self.backupFilePath != nil {
+            map["BackupFilePath"] = self.backupFilePath!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.uploadEndpoint != nil {
+            map["UploadEndpoint"] = self.uploadEndpoint!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIdList"] as? [String] {
+            self.androidInstanceIdList = value
+        }
+        if let value = dict["BackupFileName"] as? String {
+            self.backupFileName = value
+        }
+        if let value = dict["BackupFilePath"] as? String {
+            self.backupFilePath = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["UploadEndpoint"] as? String {
+            self.uploadEndpoint = value
+        }
+    }
+}
+
+public class BackupAndroidInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var androidInstanceId: String?
+
+        public var backupFileId: String?
+
+        public var backupFileName: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.androidInstanceId != nil {
+                map["AndroidInstanceId"] = self.androidInstanceId!
+            }
+            if self.backupFileId != nil {
+                map["BackupFileId"] = self.backupFileId!
+            }
+            if self.backupFileName != nil {
+                map["BackupFileName"] = self.backupFileName!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AndroidInstanceId"] as? String {
+                self.androidInstanceId = value
+            }
+            if let value = dict["BackupFileId"] as? String {
+                self.backupFileId = value
+            }
+            if let value = dict["BackupFileName"] as? String {
+                self.backupFileName = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var count: Int64?
+
+    public var data: [BackupAndroidInstanceResponseBody.Data]?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [BackupAndroidInstanceResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = BackupAndroidInstanceResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class BackupAndroidInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BackupAndroidInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BackupAndroidInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class BackupAppRequest : Tea.TeaModel {
+    public var androidInstanceIdList: [String]?
+
+    public var backupFileName: String?
+
+    public var backupFilePath: String?
+
+    public var description_: String?
+
+    public var sourceAppList: [String]?
+
+    public var uploadEndpoint: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIdList != nil {
+            map["AndroidInstanceIdList"] = self.androidInstanceIdList!
+        }
+        if self.backupFileName != nil {
+            map["BackupFileName"] = self.backupFileName!
+        }
+        if self.backupFilePath != nil {
+            map["BackupFilePath"] = self.backupFilePath!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.sourceAppList != nil {
+            map["SourceAppList"] = self.sourceAppList!
+        }
+        if self.uploadEndpoint != nil {
+            map["UploadEndpoint"] = self.uploadEndpoint!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIdList"] as? [String] {
+            self.androidInstanceIdList = value
+        }
+        if let value = dict["BackupFileName"] as? String {
+            self.backupFileName = value
+        }
+        if let value = dict["BackupFilePath"] as? String {
+            self.backupFilePath = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["SourceAppList"] as? [String] {
+            self.sourceAppList = value
+        }
+        if let value = dict["UploadEndpoint"] as? String {
+            self.uploadEndpoint = value
+        }
+    }
+}
+
+public class BackupAppResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var androidInstanceId: String?
+
+        public var backupFileId: String?
+
+        public var backupFileName: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.androidInstanceId != nil {
+                map["AndroidInstanceId"] = self.androidInstanceId!
+            }
+            if self.backupFileId != nil {
+                map["BackupFileId"] = self.backupFileId!
+            }
+            if self.backupFileName != nil {
+                map["BackupFileName"] = self.backupFileName!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AndroidInstanceId"] as? String {
+                self.androidInstanceId = value
+            }
+            if let value = dict["BackupFileId"] as? String {
+                self.backupFileId = value
+            }
+            if let value = dict["BackupFileName"] as? String {
+                self.backupFileName = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var count: Int64?
+
+    public var data: [BackupAppResponseBody.Data]?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [BackupAppResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = BackupAppResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class BackupAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BackupAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BackupAppResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BackupFileRequest : Tea.TeaModel {
     public var androidInstanceIdList: [String]?
 
@@ -19207,6 +19687,446 @@ public class RebootAndroidInstancesInGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RebootAndroidInstancesInGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RecoverAndroidInstanceRequest : Tea.TeaModel {
+    public var androidInstanceIdList: [String]?
+
+    public var backupFileId: String?
+
+    public var backupFilePath: String?
+
+    public var uploadEndpoint: String?
+
+    public var uploadType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIdList != nil {
+            map["AndroidInstanceIdList"] = self.androidInstanceIdList!
+        }
+        if self.backupFileId != nil {
+            map["BackupFileId"] = self.backupFileId!
+        }
+        if self.backupFilePath != nil {
+            map["BackupFilePath"] = self.backupFilePath!
+        }
+        if self.uploadEndpoint != nil {
+            map["UploadEndpoint"] = self.uploadEndpoint!
+        }
+        if self.uploadType != nil {
+            map["UploadType"] = self.uploadType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIdList"] as? [String] {
+            self.androidInstanceIdList = value
+        }
+        if let value = dict["BackupFileId"] as? String {
+            self.backupFileId = value
+        }
+        if let value = dict["BackupFilePath"] as? String {
+            self.backupFilePath = value
+        }
+        if let value = dict["UploadEndpoint"] as? String {
+            self.uploadEndpoint = value
+        }
+        if let value = dict["UploadType"] as? String {
+            self.uploadType = value
+        }
+    }
+}
+
+public class RecoverAndroidInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var androidInstanceId: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.androidInstanceId != nil {
+                map["AndroidInstanceId"] = self.androidInstanceId!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AndroidInstanceId"] as? String {
+                self.androidInstanceId = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var count: Int64?
+
+    public var data: [RecoverAndroidInstanceResponseBody.Data]?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [RecoverAndroidInstanceResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = RecoverAndroidInstanceResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class RecoverAndroidInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RecoverAndroidInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RecoverAndroidInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RecoverAppRequest : Tea.TeaModel {
+    public var androidInstanceIdList: [String]?
+
+    public var backupFileId: String?
+
+    public var backupFilePath: String?
+
+    public var uploadEndpoint: String?
+
+    public var uploadType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIdList != nil {
+            map["AndroidInstanceIdList"] = self.androidInstanceIdList!
+        }
+        if self.backupFileId != nil {
+            map["BackupFileId"] = self.backupFileId!
+        }
+        if self.backupFilePath != nil {
+            map["BackupFilePath"] = self.backupFilePath!
+        }
+        if self.uploadEndpoint != nil {
+            map["UploadEndpoint"] = self.uploadEndpoint!
+        }
+        if self.uploadType != nil {
+            map["UploadType"] = self.uploadType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIdList"] as? [String] {
+            self.androidInstanceIdList = value
+        }
+        if let value = dict["BackupFileId"] as? String {
+            self.backupFileId = value
+        }
+        if let value = dict["BackupFilePath"] as? String {
+            self.backupFilePath = value
+        }
+        if let value = dict["UploadEndpoint"] as? String {
+            self.uploadEndpoint = value
+        }
+        if let value = dict["UploadType"] as? String {
+            self.uploadType = value
+        }
+    }
+}
+
+public class RecoverAppResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var androidInstanceId: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.androidInstanceId != nil {
+                map["AndroidInstanceId"] = self.androidInstanceId!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AndroidInstanceId"] as? String {
+                self.androidInstanceId = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var count: Int64?
+
+    public var data: [RecoverAppResponseBody.Data]?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [RecoverAppResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = RecoverAppResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class RecoverAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RecoverAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RecoverAppResponseBody()
             model.fromMap(value)
             self.body = model
         }
