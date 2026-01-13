@@ -8378,6 +8378,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeENSECKServiceRoleWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> InitializeENSECKServiceRoleResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitializeENSECKServiceRole",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitializeENSECKServiceRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeENSECKServiceRole() async throws -> InitializeENSECKServiceRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await initializeENSECKServiceRoleWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func joinPublicIpsToEpnInstanceWithOptions(_ request: JoinPublicIpsToEpnInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> JoinPublicIpsToEpnInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

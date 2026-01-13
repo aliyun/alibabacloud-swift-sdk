@@ -21448,6 +21448,8 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public var serviceCidr: String?
 
+        public var state: String?
+
         public var vpcId: String?
 
         public var vswitchIds: [String]?
@@ -21506,6 +21508,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             if self.serviceCidr != nil {
                 map["ServiceCidr"] = self.serviceCidr!
             }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -21557,6 +21562,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceCidr"] as? String {
                 self.serviceCidr = value
+            }
+            if let value = dict["State"] as? String {
+                self.state = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
@@ -60384,6 +60392,87 @@ public class ImportKeyPairResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ImportKeyPairResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class InitializeENSECKServiceRoleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class InitializeENSECKServiceRoleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InitializeENSECKServiceRoleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InitializeENSECKServiceRoleResponseBody()
             model.fromMap(value)
             self.body = model
         }
