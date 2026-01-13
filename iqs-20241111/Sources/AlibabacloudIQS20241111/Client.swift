@@ -182,6 +182,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getIqsUsageWithOptions(_ request: GetIqsUsageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIqsUsageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callerId)) {
+            query["callerId"] = request.callerId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["endDate"] = request.endDate ?? "";
         }

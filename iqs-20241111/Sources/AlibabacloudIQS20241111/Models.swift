@@ -3085,6 +3085,8 @@ public class GenericSearchResponse : Tea.TeaModel {
 }
 
 public class GetIqsUsageRequest : Tea.TeaModel {
+    public var callerId: String?
+
     public var endDate: String?
 
     public var startDate: String?
@@ -3103,6 +3105,9 @@ public class GetIqsUsageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callerId != nil {
+            map["callerId"] = self.callerId!
+        }
         if self.endDate != nil {
             map["endDate"] = self.endDate!
         }
@@ -3114,6 +3119,9 @@ public class GetIqsUsageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["callerId"] as? String {
+            self.callerId = value
+        }
         if let value = dict["endDate"] as? String {
             self.endDate = value
         }
