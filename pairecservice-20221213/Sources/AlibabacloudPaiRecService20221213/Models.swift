@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 public class TrafficControlTaskTrafficInfoTargetTrafficsDataValue : Tea.TeaModel {
     public var traffic: Double?
 
-    public var recordTime: Int64?
+    public var recorfTime: Int64?
 
     public override init() {
         super.init()
@@ -27,8 +27,8 @@ public class TrafficControlTaskTrafficInfoTargetTrafficsDataValue : Tea.TeaModel
         if self.traffic != nil {
             map["Traffic"] = self.traffic!
         }
-        if self.recordTime != nil {
-            map["RecordTime"] = self.recordTime!
+        if self.recorfTime != nil {
+            map["RecorfTime"] = self.recorfTime!
         }
         return map
     }
@@ -38,8 +38,8 @@ public class TrafficControlTaskTrafficInfoTargetTrafficsDataValue : Tea.TeaModel
         if let value = dict["Traffic"] as? Double {
             self.traffic = value
         }
-        if let value = dict["RecordTime"] as? Int64 {
-            self.recordTime = value
+        if let value = dict["RecorfTime"] as? Int64 {
+            self.recorfTime = value
         }
     }
 }
@@ -412,6 +412,126 @@ public class BackflowFeatureConsistencyCheckJobDataResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = BackflowFeatureConsistencyCheckJobDataResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ChangeRecallManagementServiceVersionRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var recallManagementServiceVersionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.recallManagementServiceVersionId != nil {
+            map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RecallManagementServiceVersionId"] as? String {
+            self.recallManagementServiceVersionId = value
+        }
+    }
+}
+
+public class ChangeRecallManagementServiceVersionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ChangeRecallManagementServiceVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeRecallManagementServiceVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeRecallManagementServiceVersionResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -4174,6 +4294,1918 @@ public class CreateParamResponse : Tea.TeaModel {
     }
 }
 
+public class CreateRecallManagementConfigRequest : Tea.TeaModel {
+    public class NetworkConfigs : Tea.TeaModel {
+        public var vSwitchIds: [String: String]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VSwitchIds"] as? [String: String] {
+                self.vSwitchIds = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var networkConfigs: [CreateRecallManagementConfigRequest.NetworkConfigs]?
+
+    public var password: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.networkConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.networkConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkConfigs"] = tmp
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["NetworkConfigs"] as? [Any?] {
+            var tmp : [CreateRecallManagementConfigRequest.NetworkConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateRecallManagementConfigRequest.NetworkConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.networkConfigs = tmp
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class CreateRecallManagementConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateRecallManagementConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRecallManagementConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRecallManagementConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateRecallManagementServiceRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var instanceId: String?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class CreateRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var recallManagementServiceId: String?
+
+    public var recallManagementServiceVersionId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementServiceId != nil {
+            map["RecallManagementServiceId"] = self.recallManagementServiceId!
+        }
+        if self.recallManagementServiceVersionId != nil {
+            map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementServiceId"] as? String {
+            self.recallManagementServiceId = value
+        }
+        if let value = dict["RecallManagementServiceVersionId"] as? String {
+            self.recallManagementServiceVersionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class MergeConfig : Tea.TeaModel {
+            public var extendedConfig: String?
+
+            public var filterExpression: String?
+
+            public var filterRecallManagementTableIds: [String]?
+
+            public var itemRecallManagementTableId: String?
+
+            public var itemTableFields: [String]?
+
+            public var mergeType: String?
+
+            public var recallManagementServiceVersionConfigId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.extendedConfig != nil {
+                    map["ExtendedConfig"] = self.extendedConfig!
+                }
+                if self.filterExpression != nil {
+                    map["FilterExpression"] = self.filterExpression!
+                }
+                if self.filterRecallManagementTableIds != nil {
+                    map["FilterRecallManagementTableIds"] = self.filterRecallManagementTableIds!
+                }
+                if self.itemRecallManagementTableId != nil {
+                    map["ItemRecallManagementTableId"] = self.itemRecallManagementTableId!
+                }
+                if self.itemTableFields != nil {
+                    map["ItemTableFields"] = self.itemTableFields!
+                }
+                if self.mergeType != nil {
+                    map["MergeType"] = self.mergeType!
+                }
+                if self.recallManagementServiceVersionConfigId != nil {
+                    map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExtendedConfig"] as? String {
+                    self.extendedConfig = value
+                }
+                if let value = dict["FilterExpression"] as? String {
+                    self.filterExpression = value
+                }
+                if let value = dict["FilterRecallManagementTableIds"] as? [String] {
+                    self.filterRecallManagementTableIds = value
+                }
+                if let value = dict["ItemRecallManagementTableId"] as? String {
+                    self.itemRecallManagementTableId = value
+                }
+                if let value = dict["ItemTableFields"] as? [String] {
+                    self.itemTableFields = value
+                }
+                if let value = dict["MergeType"] as? String {
+                    self.mergeType = value
+                }
+                if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                    self.recallManagementServiceVersionConfigId = value
+                }
+            }
+        }
+        public class RecallConfigs : Tea.TeaModel {
+            public class Operators : Tea.TeaModel {
+                public class FeatureConfig : Tea.TeaModel {
+                    public var expression: String?
+
+                    public var name: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.expression != nil {
+                            map["Expression"] = self.expression!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Expression"] as? String {
+                            self.expression = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public class FilterConfig : Tea.TeaModel {
+                    public var experession: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.experession != nil {
+                            map["Experession"] = self.experession!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Experession"] as? String {
+                            self.experession = value
+                        }
+                    }
+                }
+                public class JoinConfig : Tea.TeaModel {
+                    public var field: String?
+
+                    public var outputFields: [String]?
+
+                    public var recallManagementTableId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.field != nil {
+                            map["Field"] = self.field!
+                        }
+                        if self.outputFields != nil {
+                            map["OutputFields"] = self.outputFields!
+                        }
+                        if self.recallManagementTableId != nil {
+                            map["RecallManagementTableId"] = self.recallManagementTableId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Field"] as? String {
+                            self.field = value
+                        }
+                        if let value = dict["OutputFields"] as? [String] {
+                            self.outputFields = value
+                        }
+                        if let value = dict["RecallManagementTableId"] as? String {
+                            self.recallManagementTableId = value
+                        }
+                    }
+                }
+                public class TriggerConfig : Tea.TeaModel {
+                    public var field: String?
+
+                    public var fieldQuantityLimit: String?
+
+                    public var isRandSort: String?
+
+                    public var sortField: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.field != nil {
+                            map["Field"] = self.field!
+                        }
+                        if self.fieldQuantityLimit != nil {
+                            map["FieldQuantityLimit"] = self.fieldQuantityLimit!
+                        }
+                        if self.isRandSort != nil {
+                            map["IsRandSort"] = self.isRandSort!
+                        }
+                        if self.sortField != nil {
+                            map["SortField"] = self.sortField!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Field"] as? String {
+                            self.field = value
+                        }
+                        if let value = dict["FieldQuantityLimit"] as? String {
+                            self.fieldQuantityLimit = value
+                        }
+                        if let value = dict["IsRandSort"] as? String {
+                            self.isRandSort = value
+                        }
+                        if let value = dict["SortField"] as? String {
+                            self.sortField = value
+                        }
+                    }
+                }
+                public var featureConfig: CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.FeatureConfig?
+
+                public var filterConfig: CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.FilterConfig?
+
+                public var joinConfig: CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.JoinConfig?
+
+                public var operatorType: String?
+
+                public var triggerConfig: CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.TriggerConfig?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.featureConfig?.validate()
+                    try self.filterConfig?.validate()
+                    try self.joinConfig?.validate()
+                    try self.triggerConfig?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.featureConfig != nil {
+                        map["FeatureConfig"] = self.featureConfig?.toMap()
+                    }
+                    if self.filterConfig != nil {
+                        map["FilterConfig"] = self.filterConfig?.toMap()
+                    }
+                    if self.joinConfig != nil {
+                        map["JoinConfig"] = self.joinConfig?.toMap()
+                    }
+                    if self.operatorType != nil {
+                        map["OperatorType"] = self.operatorType!
+                    }
+                    if self.triggerConfig != nil {
+                        map["TriggerConfig"] = self.triggerConfig?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["FeatureConfig"] as? [String: Any?] {
+                        var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.FeatureConfig()
+                        model.fromMap(value)
+                        self.featureConfig = model
+                    }
+                    if let value = dict["FilterConfig"] as? [String: Any?] {
+                        var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.FilterConfig()
+                        model.fromMap(value)
+                        self.filterConfig = model
+                    }
+                    if let value = dict["JoinConfig"] as? [String: Any?] {
+                        var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.JoinConfig()
+                        model.fromMap(value)
+                        self.joinConfig = model
+                    }
+                    if let value = dict["OperatorType"] as? String {
+                        self.operatorType = value
+                    }
+                    if let value = dict["TriggerConfig"] as? [String: Any?] {
+                        var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators.TriggerConfig()
+                        model.fromMap(value)
+                        self.triggerConfig = model
+                    }
+                }
+            }
+            public var description_: String?
+
+            public var extendedConfig: String?
+
+            public var itemConditionArray: String?
+
+            public var itemVectorField: String?
+
+            public var itemVectorRecallManagementTableId: String?
+
+            public var name: String?
+
+            public var operators: [CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators]?
+
+            public var priority: Int64?
+
+            public var recallManagementTableId: String?
+
+            public var recallType: String?
+
+            public var userVectorField: String?
+
+            public var userVectorRecallManagementTableId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.extendedConfig != nil {
+                    map["ExtendedConfig"] = self.extendedConfig!
+                }
+                if self.itemConditionArray != nil {
+                    map["ItemConditionArray"] = self.itemConditionArray!
+                }
+                if self.itemVectorField != nil {
+                    map["ItemVectorField"] = self.itemVectorField!
+                }
+                if self.itemVectorRecallManagementTableId != nil {
+                    map["ItemVectorRecallManagementTableId"] = self.itemVectorRecallManagementTableId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.operators != nil {
+                    var tmp : [Any] = []
+                    for k in self.operators! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Operators"] = tmp
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.recallManagementTableId != nil {
+                    map["RecallManagementTableId"] = self.recallManagementTableId!
+                }
+                if self.recallType != nil {
+                    map["RecallType"] = self.recallType!
+                }
+                if self.userVectorField != nil {
+                    map["UserVectorField"] = self.userVectorField!
+                }
+                if self.userVectorRecallManagementTableId != nil {
+                    map["UserVectorRecallManagementTableId"] = self.userVectorRecallManagementTableId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["ExtendedConfig"] as? String {
+                    self.extendedConfig = value
+                }
+                if let value = dict["ItemConditionArray"] as? String {
+                    self.itemConditionArray = value
+                }
+                if let value = dict["ItemVectorField"] as? String {
+                    self.itemVectorField = value
+                }
+                if let value = dict["ItemVectorRecallManagementTableId"] as? String {
+                    self.itemVectorRecallManagementTableId = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Operators"] as? [Any?] {
+                    var tmp : [CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs.Operators()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.operators = tmp
+                }
+                if let value = dict["Priority"] as? Int64 {
+                    self.priority = value
+                }
+                if let value = dict["RecallManagementTableId"] as? String {
+                    self.recallManagementTableId = value
+                }
+                if let value = dict["RecallType"] as? String {
+                    self.recallType = value
+                }
+                if let value = dict["UserVectorField"] as? String {
+                    self.userVectorField = value
+                }
+                if let value = dict["UserVectorRecallManagementTableId"] as? String {
+                    self.userVectorRecallManagementTableId = value
+                }
+            }
+        }
+        public var mergeConfig: CreateRecallManagementServiceVersionRequest.Configs.MergeConfig?
+
+        public var recallConfigs: [CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.mergeConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mergeConfig != nil {
+                map["MergeConfig"] = self.mergeConfig?.toMap()
+            }
+            if self.recallConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.recallConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["RecallConfigs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MergeConfig"] as? [String: Any?] {
+                var model = CreateRecallManagementServiceVersionRequest.Configs.MergeConfig()
+                model.fromMap(value)
+                self.mergeConfig = model
+            }
+            if let value = dict["RecallConfigs"] as? [Any?] {
+                var tmp : [CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateRecallManagementServiceVersionRequest.Configs.RecallConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.recallConfigs = tmp
+            }
+        }
+    }
+    public var configs: CreateRecallManagementServiceVersionRequest.Configs?
+
+    public var sourceRecallManagementServiceVersionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            map["Configs"] = self.configs?.toMap()
+        }
+        if self.sourceRecallManagementServiceVersionId != nil {
+            map["SourceRecallManagementServiceVersionId"] = self.sourceRecallManagementServiceVersionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceVersionRequest.Configs()
+            model.fromMap(value)
+            self.configs = model
+        }
+        if let value = dict["SourceRecallManagementServiceVersionId"] as? String {
+            self.sourceRecallManagementServiceVersionId = value
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionResponseBody : Tea.TeaModel {
+    public var recallManagementServiceVersionId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementServiceVersionId != nil {
+            map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementServiceVersionId"] as? String {
+            self.recallManagementServiceVersionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRecallManagementServiceVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
+    public class MergeConfig : Tea.TeaModel {
+        public var extendedConfig: String?
+
+        public var filterExpression: String?
+
+        public var filterRecallManagementTableIds: [String]?
+
+        public var itemRecallManagementTableId: String?
+
+        public var itemTableFields: [String]?
+
+        public var mergeType: String?
+
+        public var recallManagementServiceVersionConfigId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.filterExpression != nil {
+                map["FilterExpression"] = self.filterExpression!
+            }
+            if self.filterRecallManagementTableIds != nil {
+                map["FilterRecallManagementTableIds"] = self.filterRecallManagementTableIds!
+            }
+            if self.itemRecallManagementTableId != nil {
+                map["ItemRecallManagementTableId"] = self.itemRecallManagementTableId!
+            }
+            if self.itemTableFields != nil {
+                map["ItemTableFields"] = self.itemTableFields!
+            }
+            if self.mergeType != nil {
+                map["MergeType"] = self.mergeType!
+            }
+            if self.recallManagementServiceVersionConfigId != nil {
+                map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["FilterExpression"] as? String {
+                self.filterExpression = value
+            }
+            if let value = dict["FilterRecallManagementTableIds"] as? [String] {
+                self.filterRecallManagementTableIds = value
+            }
+            if let value = dict["ItemRecallManagementTableId"] as? String {
+                self.itemRecallManagementTableId = value
+            }
+            if let value = dict["ItemTableFields"] as? [String] {
+                self.itemTableFields = value
+            }
+            if let value = dict["MergeType"] as? String {
+                self.mergeType = value
+            }
+            if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                self.recallManagementServiceVersionConfigId = value
+            }
+        }
+    }
+    public class RecallConfig : Tea.TeaModel {
+        public class Operators : Tea.TeaModel {
+            public class FeatureConfig : Tea.TeaModel {
+                public var expression: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["Expression"] = self.expression!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class FilterConfig : Tea.TeaModel {
+                public var experession: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.experession != nil {
+                        map["Experession"] = self.experession!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Experession"] as? String {
+                        self.experession = value
+                    }
+                }
+            }
+            public class JoinConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var outputFields: [String]?
+
+                public var recallManagementTableId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.outputFields != nil {
+                        map["OutputFields"] = self.outputFields!
+                    }
+                    if self.recallManagementTableId != nil {
+                        map["RecallManagementTableId"] = self.recallManagementTableId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["OutputFields"] as? [String] {
+                        self.outputFields = value
+                    }
+                    if let value = dict["RecallManagementTableId"] as? String {
+                        self.recallManagementTableId = value
+                    }
+                }
+            }
+            public class TriggerConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var fieldQuantityLimit: String?
+
+                public var isRandSort: String?
+
+                public var sortField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.fieldQuantityLimit != nil {
+                        map["FieldQuantityLimit"] = self.fieldQuantityLimit!
+                    }
+                    if self.isRandSort != nil {
+                        map["IsRandSort"] = self.isRandSort!
+                    }
+                    if self.sortField != nil {
+                        map["SortField"] = self.sortField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["FieldQuantityLimit"] as? String {
+                        self.fieldQuantityLimit = value
+                    }
+                    if let value = dict["IsRandSort"] as? String {
+                        self.isRandSort = value
+                    }
+                    if let value = dict["SortField"] as? String {
+                        self.sortField = value
+                    }
+                }
+            }
+            public var featureConfig: CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FeatureConfig?
+
+            public var filterConfig: CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FilterConfig?
+
+            public var joinConfig: CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.JoinConfig?
+
+            public var operatorType: String?
+
+            public var triggerConfig: CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.featureConfig?.validate()
+                try self.filterConfig?.validate()
+                try self.joinConfig?.validate()
+                try self.triggerConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.featureConfig != nil {
+                    map["FeatureConfig"] = self.featureConfig?.toMap()
+                }
+                if self.filterConfig != nil {
+                    map["FilterConfig"] = self.filterConfig?.toMap()
+                }
+                if self.joinConfig != nil {
+                    map["JoinConfig"] = self.joinConfig?.toMap()
+                }
+                if self.operatorType != nil {
+                    map["OperatorType"] = self.operatorType!
+                }
+                if self.triggerConfig != nil {
+                    map["TriggerConfig"] = self.triggerConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FeatureConfig"] as? [String: Any?] {
+                    var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FeatureConfig()
+                    model.fromMap(value)
+                    self.featureConfig = model
+                }
+                if let value = dict["FilterConfig"] as? [String: Any?] {
+                    var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FilterConfig()
+                    model.fromMap(value)
+                    self.filterConfig = model
+                }
+                if let value = dict["JoinConfig"] as? [String: Any?] {
+                    var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.JoinConfig()
+                    model.fromMap(value)
+                    self.joinConfig = model
+                }
+                if let value = dict["OperatorType"] as? String {
+                    self.operatorType = value
+                }
+                if let value = dict["TriggerConfig"] as? [String: Any?] {
+                    var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig()
+                    model.fromMap(value)
+                    self.triggerConfig = model
+                }
+            }
+        }
+        public var description_: String?
+
+        public var extendedConfig: String?
+
+        public var itemConditionArray: String?
+
+        public var itemVectorField: String?
+
+        public var itemVectorRecallManagementTableId: String?
+
+        public var name: String?
+
+        public var operators: [CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators]?
+
+        public var priority: Int64?
+
+        public var recallManagementTableId: String?
+
+        public var recallType: String?
+
+        public var userVectorField: String?
+
+        public var userVectorRecallManagementTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.itemConditionArray != nil {
+                map["ItemConditionArray"] = self.itemConditionArray!
+            }
+            if self.itemVectorField != nil {
+                map["ItemVectorField"] = self.itemVectorField!
+            }
+            if self.itemVectorRecallManagementTableId != nil {
+                map["ItemVectorRecallManagementTableId"] = self.itemVectorRecallManagementTableId!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.operators != nil {
+                var tmp : [Any] = []
+                for k in self.operators! {
+                    tmp.append(k.toMap())
+                }
+                map["Operators"] = tmp
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.recallManagementTableId != nil {
+                map["RecallManagementTableId"] = self.recallManagementTableId!
+            }
+            if self.recallType != nil {
+                map["RecallType"] = self.recallType!
+            }
+            if self.userVectorField != nil {
+                map["UserVectorField"] = self.userVectorField!
+            }
+            if self.userVectorRecallManagementTableId != nil {
+                map["UserVectorRecallManagementTableId"] = self.userVectorRecallManagementTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["ItemConditionArray"] as? String {
+                self.itemConditionArray = value
+            }
+            if let value = dict["ItemVectorField"] as? String {
+                self.itemVectorField = value
+            }
+            if let value = dict["ItemVectorRecallManagementTableId"] as? String {
+                self.itemVectorRecallManagementTableId = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Operators"] as? [Any?] {
+                var tmp : [CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.operators = tmp
+            }
+            if let value = dict["Priority"] as? Int64 {
+                self.priority = value
+            }
+            if let value = dict["RecallManagementTableId"] as? String {
+                self.recallManagementTableId = value
+            }
+            if let value = dict["RecallType"] as? String {
+                self.recallType = value
+            }
+            if let value = dict["UserVectorField"] as? String {
+                self.userVectorField = value
+            }
+            if let value = dict["UserVectorRecallManagementTableId"] as? String {
+                self.userVectorRecallManagementTableId = value
+            }
+        }
+    }
+    public var configType: String?
+
+    public var instanceId: String?
+
+    public var mergeConfig: CreateRecallManagementServiceVersionConfigRequest.MergeConfig?
+
+    public var recallConfig: CreateRecallManagementServiceVersionConfigRequest.RecallConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.mergeConfig?.validate()
+        try self.recallConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mergeConfig != nil {
+            map["MergeConfig"] = self.mergeConfig?.toMap()
+        }
+        if self.recallConfig != nil {
+            map["RecallConfig"] = self.recallConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigType"] as? String {
+            self.configType = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MergeConfig"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceVersionConfigRequest.MergeConfig()
+            model.fromMap(value)
+            self.mergeConfig = model
+        }
+        if let value = dict["RecallConfig"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceVersionConfigRequest.RecallConfig()
+            model.fromMap(value)
+            self.recallConfig = model
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel {
+    public var recallManagementServiceVersionConfigId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementServiceVersionConfigId != nil {
+            map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+            self.recallManagementServiceVersionConfigId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateRecallManagementServiceVersionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRecallManagementServiceVersionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRecallManagementServiceVersionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateRecallManagementTableRequest : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public var attributes: [String]?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var vectorDimension: Int32?
+
+        public var vectorMetricType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributes != nil {
+                map["Attributes"] = self.attributes!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.vectorDimension != nil {
+                map["VectorDimension"] = self.vectorDimension!
+            }
+            if self.vectorMetricType != nil {
+                map["VectorMetricType"] = self.vectorMetricType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attributes"] as? [String] {
+                self.attributes = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["VectorDimension"] as? Int32 {
+                self.vectorDimension = value
+            }
+            if let value = dict["VectorMetricType"] as? String {
+                self.vectorMetricType = value
+            }
+        }
+    }
+    public var config: String?
+
+    public var dataSource: String?
+
+    public var description_: String?
+
+    public var enableDataSizeFluctuationThreshold: Bool?
+
+    public var enableRowCountFluctuationThreshold: Bool?
+
+    public var fields: [CreateRecallManagementTableRequest.Fields]?
+
+    public var instanceId: String?
+
+    public var maxDataSizeFluctuationThreshold: Int64?
+
+    public var maxRowCountFluctuationThreshold: Int64?
+
+    public var maxcomputeProjectName: String?
+
+    public var maxcomputeSchema: String?
+
+    public var maxcomputeTableName: String?
+
+    public var minDataSizeFluctuationThreshold: Int64?
+
+    public var minRowCountFluctuationThreshold: Int64?
+
+    public var name: String?
+
+    public var recallType: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.dataSource != nil {
+            map["DataSource"] = self.dataSource!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enableDataSizeFluctuationThreshold != nil {
+            map["EnableDataSizeFluctuationThreshold"] = self.enableDataSizeFluctuationThreshold!
+        }
+        if self.enableRowCountFluctuationThreshold != nil {
+            map["EnableRowCountFluctuationThreshold"] = self.enableRowCountFluctuationThreshold!
+        }
+        if self.fields != nil {
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["Fields"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxDataSizeFluctuationThreshold != nil {
+            map["MaxDataSizeFluctuationThreshold"] = self.maxDataSizeFluctuationThreshold!
+        }
+        if self.maxRowCountFluctuationThreshold != nil {
+            map["MaxRowCountFluctuationThreshold"] = self.maxRowCountFluctuationThreshold!
+        }
+        if self.maxcomputeProjectName != nil {
+            map["MaxcomputeProjectName"] = self.maxcomputeProjectName!
+        }
+        if self.maxcomputeSchema != nil {
+            map["MaxcomputeSchema"] = self.maxcomputeSchema!
+        }
+        if self.maxcomputeTableName != nil {
+            map["MaxcomputeTableName"] = self.maxcomputeTableName!
+        }
+        if self.minDataSizeFluctuationThreshold != nil {
+            map["MinDataSizeFluctuationThreshold"] = self.minDataSizeFluctuationThreshold!
+        }
+        if self.minRowCountFluctuationThreshold != nil {
+            map["MinRowCountFluctuationThreshold"] = self.minRowCountFluctuationThreshold!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.recallType != nil {
+            map["RecallType"] = self.recallType!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
+        if let value = dict["DataSource"] as? String {
+            self.dataSource = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnableDataSizeFluctuationThreshold"] as? Bool {
+            self.enableDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["EnableRowCountFluctuationThreshold"] as? Bool {
+            self.enableRowCountFluctuationThreshold = value
+        }
+        if let value = dict["Fields"] as? [Any?] {
+            var tmp : [CreateRecallManagementTableRequest.Fields] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateRecallManagementTableRequest.Fields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fields = tmp
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxDataSizeFluctuationThreshold"] as? Int64 {
+            self.maxDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MaxRowCountFluctuationThreshold"] as? Int64 {
+            self.maxRowCountFluctuationThreshold = value
+        }
+        if let value = dict["MaxcomputeProjectName"] as? String {
+            self.maxcomputeProjectName = value
+        }
+        if let value = dict["MaxcomputeSchema"] as? String {
+            self.maxcomputeSchema = value
+        }
+        if let value = dict["MaxcomputeTableName"] as? String {
+            self.maxcomputeTableName = value
+        }
+        if let value = dict["MinDataSizeFluctuationThreshold"] as? Int64 {
+            self.minDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MinRowCountFluctuationThreshold"] as? Int64 {
+            self.minRowCountFluctuationThreshold = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RecallType"] as? String {
+            self.recallType = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class CreateRecallManagementTableResponseBody : Tea.TeaModel {
+    public var recallManagementTableId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementTableId != nil {
+            map["RecallManagementTableId"] = self.recallManagementTableId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementTableId"] as? String {
+            self.recallManagementTableId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateRecallManagementTableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateResourceRuleRequest : Tea.TeaModel {
     public class RuleItems : Tea.TeaModel {
         public var description_: String?
@@ -7368,6 +9400,454 @@ public class DeleteParamResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteParamResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecallManagementServiceVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecallManagementServiceVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementServiceVersionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecallManagementServiceVersionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecallManagementServiceVersionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecallManagementTableRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementTableResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecallManagementTableResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -11763,6 +14243,2284 @@ public class GetLayerResponse : Tea.TeaModel {
     }
 }
 
+public class GetRecallManagementConfigRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementConfigResponseBody : Tea.TeaModel {
+    public class NetworkConfigs : Tea.TeaModel {
+        public var privateLinkAddress: String?
+
+        public var status: String?
+
+        public var vpcId: String?
+
+        public var vswitchIds: [String: String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.privateLinkAddress != nil {
+                map["PrivateLinkAddress"] = self.privateLinkAddress!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.vswitchIds != nil {
+                map["VswitchIds"] = self.vswitchIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PrivateLinkAddress"] as? String {
+                self.privateLinkAddress = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["VswitchIds"] as? [String: String] {
+                self.vswitchIds = value
+            }
+        }
+    }
+    public var networkConfigs: [GetRecallManagementConfigResponseBody.NetworkConfigs]?
+
+    public var requestId: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.networkConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkConfigs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkConfigs"] as? [Any?] {
+            var tmp : [GetRecallManagementConfigResponseBody.NetworkConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRecallManagementConfigResponseBody.NetworkConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.networkConfigs = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class GetRecallManagementConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRecallManagementJobRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementJobResponseBody : Tea.TeaModel {
+    public class RecallManagerTableInfo : Tea.TeaModel {
+        public var dataVersion: String?
+
+        public var recallManagerTableVersionId: String?
+
+        public var sourceTableDataSize: String?
+
+        public var sourceTableRowCount: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataVersion != nil {
+                map["DataVersion"] = self.dataVersion!
+            }
+            if self.recallManagerTableVersionId != nil {
+                map["RecallManagerTableVersionId"] = self.recallManagerTableVersionId!
+            }
+            if self.sourceTableDataSize != nil {
+                map["SourceTableDataSize"] = self.sourceTableDataSize!
+            }
+            if self.sourceTableRowCount != nil {
+                map["SourceTableRowCount"] = self.sourceTableRowCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataVersion"] as? String {
+                self.dataVersion = value
+            }
+            if let value = dict["RecallManagerTableVersionId"] as? String {
+                self.recallManagerTableVersionId = value
+            }
+            if let value = dict["SourceTableDataSize"] as? String {
+                self.sourceTableDataSize = value
+            }
+            if let value = dict["SourceTableRowCount"] as? String {
+                self.sourceTableRowCount = value
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var log: String?
+
+    public var recallManagementJobId: String?
+
+    public var recallManagerTableInfo: GetRecallManagementJobResponseBody.RecallManagerTableInfo?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.recallManagerTableInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.log != nil {
+            map["Log"] = self.log!
+        }
+        if self.recallManagementJobId != nil {
+            map["RecallManagementJobId"] = self.recallManagementJobId!
+        }
+        if self.recallManagerTableInfo != nil {
+            map["RecallManagerTableInfo"] = self.recallManagerTableInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Log"] as? String {
+            self.log = value
+        }
+        if let value = dict["RecallManagementJobId"] as? String {
+            self.recallManagementJobId = value
+        }
+        if let value = dict["RecallManagerTableInfo"] as? [String: Any?] {
+            var model = GetRecallManagementJobResponseBody.RecallManagerTableInfo()
+            model.fromMap(value)
+            self.recallManagerTableInfo = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class GetRecallManagementJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRecallManagementServiceRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var currentRecallManagementServiceVersionId: String?
+
+    public var currentRecallManagementServiceVersionName: String?
+
+    public var description_: String?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var name: String?
+
+    public var recallManagementServiceId: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentRecallManagementServiceVersionId != nil {
+            map["CurrentRecallManagementServiceVersionId"] = self.currentRecallManagementServiceVersionId!
+        }
+        if self.currentRecallManagementServiceVersionName != nil {
+            map["CurrentRecallManagementServiceVersionName"] = self.currentRecallManagementServiceVersionName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.recallManagementServiceId != nil {
+            map["RecallManagementServiceId"] = self.recallManagementServiceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentRecallManagementServiceVersionId"] as? String {
+            self.currentRecallManagementServiceVersionId = value
+        }
+        if let value = dict["CurrentRecallManagementServiceVersionName"] as? String {
+            self.currentRecallManagementServiceVersionName = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GmtCreateTime"] as? String {
+            self.gmtCreateTime = value
+        }
+        if let value = dict["GmtModifiedTime"] as? String {
+            self.gmtModifiedTime = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RecallManagementServiceId"] as? String {
+            self.recallManagementServiceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class MergeConfig : Tea.TeaModel {
+            public var extendedConfig: String?
+
+            public var filterExpression: String?
+
+            public var filterRecallManagementTableIds: [String]?
+
+            public var itemRecallManagementTableId: String?
+
+            public var itemTableFields: [String]?
+
+            public var mergeType: String?
+
+            public var recallManagementServiceVersionConfigId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.extendedConfig != nil {
+                    map["ExtendedConfig"] = self.extendedConfig!
+                }
+                if self.filterExpression != nil {
+                    map["FilterExpression"] = self.filterExpression!
+                }
+                if self.filterRecallManagementTableIds != nil {
+                    map["FilterRecallManagementTableIds"] = self.filterRecallManagementTableIds!
+                }
+                if self.itemRecallManagementTableId != nil {
+                    map["ItemRecallManagementTableId"] = self.itemRecallManagementTableId!
+                }
+                if self.itemTableFields != nil {
+                    map["ItemTableFields"] = self.itemTableFields!
+                }
+                if self.mergeType != nil {
+                    map["MergeType"] = self.mergeType!
+                }
+                if self.recallManagementServiceVersionConfigId != nil {
+                    map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExtendedConfig"] as? String {
+                    self.extendedConfig = value
+                }
+                if let value = dict["FilterExpression"] as? String {
+                    self.filterExpression = value
+                }
+                if let value = dict["FilterRecallManagementTableIds"] as? [String] {
+                    self.filterRecallManagementTableIds = value
+                }
+                if let value = dict["ItemRecallManagementTableId"] as? String {
+                    self.itemRecallManagementTableId = value
+                }
+                if let value = dict["ItemTableFields"] as? [String] {
+                    self.itemTableFields = value
+                }
+                if let value = dict["MergeType"] as? String {
+                    self.mergeType = value
+                }
+                if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                    self.recallManagementServiceVersionConfigId = value
+                }
+            }
+        }
+        public class RecallConfigs : Tea.TeaModel {
+            public class Operators : Tea.TeaModel {
+                public class FeatureConfig : Tea.TeaModel {
+                    public var expression: String?
+
+                    public var name: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.expression != nil {
+                            map["Expression"] = self.expression!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Expression"] as? String {
+                            self.expression = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public class FilterConfig : Tea.TeaModel {
+                    public var experession: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.experession != nil {
+                            map["Experession"] = self.experession!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Experession"] as? String {
+                            self.experession = value
+                        }
+                    }
+                }
+                public class JoinConfig : Tea.TeaModel {
+                    public var field: String?
+
+                    public var outputFields: [String]?
+
+                    public var recallManagementTableId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.field != nil {
+                            map["Field"] = self.field!
+                        }
+                        if self.outputFields != nil {
+                            map["OutputFields"] = self.outputFields!
+                        }
+                        if self.recallManagementTableId != nil {
+                            map["RecallManagementTableId"] = self.recallManagementTableId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Field"] as? String {
+                            self.field = value
+                        }
+                        if let value = dict["OutputFields"] as? [String] {
+                            self.outputFields = value
+                        }
+                        if let value = dict["RecallManagementTableId"] as? String {
+                            self.recallManagementTableId = value
+                        }
+                    }
+                }
+                public class TriggerConfig : Tea.TeaModel {
+                    public var field: String?
+
+                    public var fieldQuantityLimit: String?
+
+                    public var isRandSort: String?
+
+                    public var sortField: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.field != nil {
+                            map["Field"] = self.field!
+                        }
+                        if self.fieldQuantityLimit != nil {
+                            map["FieldQuantityLimit"] = self.fieldQuantityLimit!
+                        }
+                        if self.isRandSort != nil {
+                            map["IsRandSort"] = self.isRandSort!
+                        }
+                        if self.sortField != nil {
+                            map["SortField"] = self.sortField!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Field"] as? String {
+                            self.field = value
+                        }
+                        if let value = dict["FieldQuantityLimit"] as? String {
+                            self.fieldQuantityLimit = value
+                        }
+                        if let value = dict["IsRandSort"] as? String {
+                            self.isRandSort = value
+                        }
+                        if let value = dict["SortField"] as? String {
+                            self.sortField = value
+                        }
+                    }
+                }
+                public var featureConfig: GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.FeatureConfig?
+
+                public var filterConfig: GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.FilterConfig?
+
+                public var joinConfig: GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.JoinConfig?
+
+                public var operatorType: String?
+
+                public var triggerConfig: GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.TriggerConfig?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.featureConfig?.validate()
+                    try self.filterConfig?.validate()
+                    try self.joinConfig?.validate()
+                    try self.triggerConfig?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.featureConfig != nil {
+                        map["FeatureConfig"] = self.featureConfig?.toMap()
+                    }
+                    if self.filterConfig != nil {
+                        map["FilterConfig"] = self.filterConfig?.toMap()
+                    }
+                    if self.joinConfig != nil {
+                        map["JoinConfig"] = self.joinConfig?.toMap()
+                    }
+                    if self.operatorType != nil {
+                        map["OperatorType"] = self.operatorType!
+                    }
+                    if self.triggerConfig != nil {
+                        map["TriggerConfig"] = self.triggerConfig?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["FeatureConfig"] as? [String: Any?] {
+                        var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.FeatureConfig()
+                        model.fromMap(value)
+                        self.featureConfig = model
+                    }
+                    if let value = dict["FilterConfig"] as? [String: Any?] {
+                        var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.FilterConfig()
+                        model.fromMap(value)
+                        self.filterConfig = model
+                    }
+                    if let value = dict["JoinConfig"] as? [String: Any?] {
+                        var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.JoinConfig()
+                        model.fromMap(value)
+                        self.joinConfig = model
+                    }
+                    if let value = dict["OperatorType"] as? String {
+                        self.operatorType = value
+                    }
+                    if let value = dict["TriggerConfig"] as? [String: Any?] {
+                        var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators.TriggerConfig()
+                        model.fromMap(value)
+                        self.triggerConfig = model
+                    }
+                }
+            }
+            public var description_: String?
+
+            public var extendedConfig: String?
+
+            public var itemConditionArray: String?
+
+            public var itemVectorField: String?
+
+            public var itemVectorRecallManagementTableId: String?
+
+            public var name: String?
+
+            public var operators: [GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators]?
+
+            public var priority: Int64?
+
+            public var recallManagementServiceVersionConfigId: String?
+
+            public var recallManagementTableId: String?
+
+            public var recallType: String?
+
+            public var userVectorField: String?
+
+            public var userVectorRecallManagementTableId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.extendedConfig != nil {
+                    map["ExtendedConfig"] = self.extendedConfig!
+                }
+                if self.itemConditionArray != nil {
+                    map["ItemConditionArray"] = self.itemConditionArray!
+                }
+                if self.itemVectorField != nil {
+                    map["ItemVectorField"] = self.itemVectorField!
+                }
+                if self.itemVectorRecallManagementTableId != nil {
+                    map["ItemVectorRecallManagementTableId"] = self.itemVectorRecallManagementTableId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.operators != nil {
+                    var tmp : [Any] = []
+                    for k in self.operators! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Operators"] = tmp
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.recallManagementServiceVersionConfigId != nil {
+                    map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+                }
+                if self.recallManagementTableId != nil {
+                    map["RecallManagementTableId"] = self.recallManagementTableId!
+                }
+                if self.recallType != nil {
+                    map["RecallType"] = self.recallType!
+                }
+                if self.userVectorField != nil {
+                    map["UserVectorField"] = self.userVectorField!
+                }
+                if self.userVectorRecallManagementTableId != nil {
+                    map["UserVectorRecallManagementTableId"] = self.userVectorRecallManagementTableId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["ExtendedConfig"] as? String {
+                    self.extendedConfig = value
+                }
+                if let value = dict["ItemConditionArray"] as? String {
+                    self.itemConditionArray = value
+                }
+                if let value = dict["ItemVectorField"] as? String {
+                    self.itemVectorField = value
+                }
+                if let value = dict["ItemVectorRecallManagementTableId"] as? String {
+                    self.itemVectorRecallManagementTableId = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Operators"] as? [Any?] {
+                    var tmp : [GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs.Operators()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.operators = tmp
+                }
+                if let value = dict["Priority"] as? Int64 {
+                    self.priority = value
+                }
+                if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                    self.recallManagementServiceVersionConfigId = value
+                }
+                if let value = dict["RecallManagementTableId"] as? String {
+                    self.recallManagementTableId = value
+                }
+                if let value = dict["RecallType"] as? String {
+                    self.recallType = value
+                }
+                if let value = dict["UserVectorField"] as? String {
+                    self.userVectorField = value
+                }
+                if let value = dict["UserVectorRecallManagementTableId"] as? String {
+                    self.userVectorRecallManagementTableId = value
+                }
+            }
+        }
+        public var mergeConfig: GetRecallManagementServiceVersionResponseBody.Configs.MergeConfig?
+
+        public var recallConfigs: [GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.mergeConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mergeConfig != nil {
+                map["MergeConfig"] = self.mergeConfig?.toMap()
+            }
+            if self.recallConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.recallConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["RecallConfigs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MergeConfig"] as? [String: Any?] {
+                var model = GetRecallManagementServiceVersionResponseBody.Configs.MergeConfig()
+                model.fromMap(value)
+                self.mergeConfig = model
+            }
+            if let value = dict["RecallConfigs"] as? [Any?] {
+                var tmp : [GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRecallManagementServiceVersionResponseBody.Configs.RecallConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.recallConfigs = tmp
+            }
+        }
+    }
+    public var configs: GetRecallManagementServiceVersionResponseBody.Configs?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var isDefault: String?
+
+    public var name: String?
+
+    public var recallManagementServiceVersionId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.configs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            map["Configs"] = self.configs?.toMap()
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.recallManagementServiceVersionId != nil {
+            map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [String: Any?] {
+            var model = GetRecallManagementServiceVersionResponseBody.Configs()
+            model.fromMap(value)
+            self.configs = model
+        }
+        if let value = dict["GmtCreateTime"] as? String {
+            self.gmtCreateTime = value
+        }
+        if let value = dict["GmtModifiedTime"] as? String {
+            self.gmtModifiedTime = value
+        }
+        if let value = dict["IsDefault"] as? String {
+            self.isDefault = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RecallManagementServiceVersionId"] as? String {
+            self.recallManagementServiceVersionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementServiceVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementServiceVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel {
+    public class MergeConfig : Tea.TeaModel {
+        public var extendedConfig: String?
+
+        public var filterExpression: String?
+
+        public var filterRecallManagementTableIds: [String]?
+
+        public var itemRecallManagementTableId: String?
+
+        public var itemTableFields: [String]?
+
+        public var mergeType: String?
+
+        public var recallManagementServiceVersionConfigId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.filterExpression != nil {
+                map["FilterExpression"] = self.filterExpression!
+            }
+            if self.filterRecallManagementTableIds != nil {
+                map["FilterRecallManagementTableIds"] = self.filterRecallManagementTableIds!
+            }
+            if self.itemRecallManagementTableId != nil {
+                map["ItemRecallManagementTableId"] = self.itemRecallManagementTableId!
+            }
+            if self.itemTableFields != nil {
+                map["ItemTableFields"] = self.itemTableFields!
+            }
+            if self.mergeType != nil {
+                map["MergeType"] = self.mergeType!
+            }
+            if self.recallManagementServiceVersionConfigId != nil {
+                map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["FilterExpression"] as? String {
+                self.filterExpression = value
+            }
+            if let value = dict["FilterRecallManagementTableIds"] as? [String] {
+                self.filterRecallManagementTableIds = value
+            }
+            if let value = dict["ItemRecallManagementTableId"] as? String {
+                self.itemRecallManagementTableId = value
+            }
+            if let value = dict["ItemTableFields"] as? [String] {
+                self.itemTableFields = value
+            }
+            if let value = dict["MergeType"] as? String {
+                self.mergeType = value
+            }
+            if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                self.recallManagementServiceVersionConfigId = value
+            }
+        }
+    }
+    public class RecallConfig : Tea.TeaModel {
+        public class Operators : Tea.TeaModel {
+            public class FeatureConfig : Tea.TeaModel {
+                public var expression: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["Expression"] = self.expression!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class FilterConfig : Tea.TeaModel {
+                public var expression: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["Expression"] = self.expression!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Expression"] as? String {
+                        self.expression = value
+                    }
+                }
+            }
+            public class JoinConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var outputFields: [String]?
+
+                public var recallManagementTableId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.outputFields != nil {
+                        map["OutputFields"] = self.outputFields!
+                    }
+                    if self.recallManagementTableId != nil {
+                        map["RecallManagementTableId"] = self.recallManagementTableId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["OutputFields"] as? [String] {
+                        self.outputFields = value
+                    }
+                    if let value = dict["RecallManagementTableId"] as? String {
+                        self.recallManagementTableId = value
+                    }
+                }
+            }
+            public class TriggerConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var fieldQuantityLimit: Int32?
+
+                public var isRandSort: Bool?
+
+                public var sortField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.fieldQuantityLimit != nil {
+                        map["FieldQuantityLimit"] = self.fieldQuantityLimit!
+                    }
+                    if self.isRandSort != nil {
+                        map["IsRandSort"] = self.isRandSort!
+                    }
+                    if self.sortField != nil {
+                        map["SortField"] = self.sortField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["FieldQuantityLimit"] as? Int32 {
+                        self.fieldQuantityLimit = value
+                    }
+                    if let value = dict["IsRandSort"] as? Bool {
+                        self.isRandSort = value
+                    }
+                    if let value = dict["SortField"] as? String {
+                        self.sortField = value
+                    }
+                }
+            }
+            public var featureConfig: GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.FeatureConfig?
+
+            public var filterConfig: GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.FilterConfig?
+
+            public var joinConfig: GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.JoinConfig?
+
+            public var operatorType: String?
+
+            public var triggerConfig: GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.TriggerConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.featureConfig?.validate()
+                try self.filterConfig?.validate()
+                try self.joinConfig?.validate()
+                try self.triggerConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.featureConfig != nil {
+                    map["FeatureConfig"] = self.featureConfig?.toMap()
+                }
+                if self.filterConfig != nil {
+                    map["FilterConfig"] = self.filterConfig?.toMap()
+                }
+                if self.joinConfig != nil {
+                    map["JoinConfig"] = self.joinConfig?.toMap()
+                }
+                if self.operatorType != nil {
+                    map["OperatorType"] = self.operatorType!
+                }
+                if self.triggerConfig != nil {
+                    map["TriggerConfig"] = self.triggerConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FeatureConfig"] as? [String: Any?] {
+                    var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.FeatureConfig()
+                    model.fromMap(value)
+                    self.featureConfig = model
+                }
+                if let value = dict["FilterConfig"] as? [String: Any?] {
+                    var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.FilterConfig()
+                    model.fromMap(value)
+                    self.filterConfig = model
+                }
+                if let value = dict["JoinConfig"] as? [String: Any?] {
+                    var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.JoinConfig()
+                    model.fromMap(value)
+                    self.joinConfig = model
+                }
+                if let value = dict["OperatorType"] as? String {
+                    self.operatorType = value
+                }
+                if let value = dict["TriggerConfig"] as? [String: Any?] {
+                    var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators.TriggerConfig()
+                    model.fromMap(value)
+                    self.triggerConfig = model
+                }
+            }
+        }
+        public var description_: String?
+
+        public var extendedConfig: String?
+
+        public var itemConditionArray: String?
+
+        public var itemVectorField: String?
+
+        public var itemVectorRecallManagementTableId: String?
+
+        public var name: String?
+
+        public var operators: [GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators]?
+
+        public var priority: Int64?
+
+        public var recallManagementTableId: String?
+
+        public var recallType: String?
+
+        public var userVectorField: String?
+
+        public var userVectorRecallManagementTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.itemConditionArray != nil {
+                map["ItemConditionArray"] = self.itemConditionArray!
+            }
+            if self.itemVectorField != nil {
+                map["ItemVectorField"] = self.itemVectorField!
+            }
+            if self.itemVectorRecallManagementTableId != nil {
+                map["ItemVectorRecallManagementTableId"] = self.itemVectorRecallManagementTableId!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.operators != nil {
+                var tmp : [Any] = []
+                for k in self.operators! {
+                    tmp.append(k.toMap())
+                }
+                map["Operators"] = tmp
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.recallManagementTableId != nil {
+                map["RecallManagementTableId"] = self.recallManagementTableId!
+            }
+            if self.recallType != nil {
+                map["RecallType"] = self.recallType!
+            }
+            if self.userVectorField != nil {
+                map["UserVectorField"] = self.userVectorField!
+            }
+            if self.userVectorRecallManagementTableId != nil {
+                map["UserVectorRecallManagementTableId"] = self.userVectorRecallManagementTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["ItemConditionArray"] as? String {
+                self.itemConditionArray = value
+            }
+            if let value = dict["ItemVectorField"] as? String {
+                self.itemVectorField = value
+            }
+            if let value = dict["ItemVectorRecallManagementTableId"] as? String {
+                self.itemVectorRecallManagementTableId = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Operators"] as? [Any?] {
+                var tmp : [GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig.Operators()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.operators = tmp
+            }
+            if let value = dict["Priority"] as? Int64 {
+                self.priority = value
+            }
+            if let value = dict["RecallManagementTableId"] as? String {
+                self.recallManagementTableId = value
+            }
+            if let value = dict["RecallType"] as? String {
+                self.recallType = value
+            }
+            if let value = dict["UserVectorField"] as? String {
+                self.userVectorField = value
+            }
+            if let value = dict["UserVectorRecallManagementTableId"] as? String {
+                self.userVectorRecallManagementTableId = value
+            }
+        }
+    }
+    public var configType: String?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var mergeConfig: GetRecallManagementServiceVersionConfigResponseBody.MergeConfig?
+
+    public var recallConfig: GetRecallManagementServiceVersionConfigResponseBody.RecallConfig?
+
+    public var recallManagementServiceId: String?
+
+    public var recallManagementServiceVersionConfigId: String?
+
+    public var recallManagementServiceVersionId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.mergeConfig?.validate()
+        try self.recallConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.mergeConfig != nil {
+            map["MergeConfig"] = self.mergeConfig?.toMap()
+        }
+        if self.recallConfig != nil {
+            map["RecallConfig"] = self.recallConfig?.toMap()
+        }
+        if self.recallManagementServiceId != nil {
+            map["RecallManagementServiceId"] = self.recallManagementServiceId!
+        }
+        if self.recallManagementServiceVersionConfigId != nil {
+            map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+        }
+        if self.recallManagementServiceVersionId != nil {
+            map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigType"] as? String {
+            self.configType = value
+        }
+        if let value = dict["GmtCreateTime"] as? String {
+            self.gmtCreateTime = value
+        }
+        if let value = dict["GmtModifiedTime"] as? String {
+            self.gmtModifiedTime = value
+        }
+        if let value = dict["MergeConfig"] as? [String: Any?] {
+            var model = GetRecallManagementServiceVersionConfigResponseBody.MergeConfig()
+            model.fromMap(value)
+            self.mergeConfig = model
+        }
+        if let value = dict["RecallConfig"] as? [String: Any?] {
+            var model = GetRecallManagementServiceVersionConfigResponseBody.RecallConfig()
+            model.fromMap(value)
+            self.recallConfig = model
+        }
+        if let value = dict["RecallManagementServiceId"] as? String {
+            self.recallManagementServiceId = value
+        }
+        if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+            self.recallManagementServiceVersionConfigId = value
+        }
+        if let value = dict["RecallManagementServiceVersionId"] as? String {
+            self.recallManagementServiceVersionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetRecallManagementServiceVersionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementServiceVersionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementServiceVersionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetRecallManagementTableRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetRecallManagementTableResponseBody : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public var attributes: [String]?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var vectorDimension: Int32?
+
+        public var vectorMetricType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributes != nil {
+                map["Attributes"] = self.attributes!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.vectorDimension != nil {
+                map["VectorDimension"] = self.vectorDimension!
+            }
+            if self.vectorMetricType != nil {
+                map["VectorMetricType"] = self.vectorMetricType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attributes"] as? [String] {
+                self.attributes = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["VectorDimension"] as? Int32 {
+                self.vectorDimension = value
+            }
+            if let value = dict["VectorMetricType"] as? String {
+                self.vectorMetricType = value
+            }
+        }
+    }
+    public var canDelete: Bool?
+
+    public var config: String?
+
+    public var dataSource: String?
+
+    public var description_: String?
+
+    public var enableDataSizeFluctuationThreshold: Bool?
+
+    public var enableRowCountFluctuationThreshold: Bool?
+
+    public var fields: GetRecallManagementTableResponseBody.Fields?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var indexEffectiveTime: String?
+
+    public var indexVersionId: String?
+
+    public var maxDataSizeFluctuationThreshold: Int32?
+
+    public var maxRowCountFluctuationThreshold: Int32?
+
+    public var maxcomputeProjectName: String?
+
+    public var maxcomputeSchema: String?
+
+    public var maxcomputeTableName: String?
+
+    public var minDataSizeFluctuationThreshold: Int32?
+
+    public var minRowCountFluctuationThreshold: Int32?
+
+    public var name: String?
+
+    public var partitionFields: String?
+
+    public var recallManagementTableId: String?
+
+    public var recallType: String?
+
+    public var requestId: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.fields?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.canDelete != nil {
+            map["CanDelete"] = self.canDelete!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.dataSource != nil {
+            map["DataSource"] = self.dataSource!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enableDataSizeFluctuationThreshold != nil {
+            map["EnableDataSizeFluctuationThreshold"] = self.enableDataSizeFluctuationThreshold!
+        }
+        if self.enableRowCountFluctuationThreshold != nil {
+            map["EnableRowCountFluctuationThreshold"] = self.enableRowCountFluctuationThreshold!
+        }
+        if self.fields != nil {
+            map["Fields"] = self.fields?.toMap()
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.indexEffectiveTime != nil {
+            map["IndexEffectiveTime"] = self.indexEffectiveTime!
+        }
+        if self.indexVersionId != nil {
+            map["IndexVersionId"] = self.indexVersionId!
+        }
+        if self.maxDataSizeFluctuationThreshold != nil {
+            map["MaxDataSizeFluctuationThreshold"] = self.maxDataSizeFluctuationThreshold!
+        }
+        if self.maxRowCountFluctuationThreshold != nil {
+            map["MaxRowCountFluctuationThreshold"] = self.maxRowCountFluctuationThreshold!
+        }
+        if self.maxcomputeProjectName != nil {
+            map["MaxcomputeProjectName"] = self.maxcomputeProjectName!
+        }
+        if self.maxcomputeSchema != nil {
+            map["MaxcomputeSchema"] = self.maxcomputeSchema!
+        }
+        if self.maxcomputeTableName != nil {
+            map["MaxcomputeTableName"] = self.maxcomputeTableName!
+        }
+        if self.minDataSizeFluctuationThreshold != nil {
+            map["MinDataSizeFluctuationThreshold"] = self.minDataSizeFluctuationThreshold!
+        }
+        if self.minRowCountFluctuationThreshold != nil {
+            map["MinRowCountFluctuationThreshold"] = self.minRowCountFluctuationThreshold!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.partitionFields != nil {
+            map["PartitionFields"] = self.partitionFields!
+        }
+        if self.recallManagementTableId != nil {
+            map["RecallManagementTableId"] = self.recallManagementTableId!
+        }
+        if self.recallType != nil {
+            map["RecallType"] = self.recallType!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CanDelete"] as? Bool {
+            self.canDelete = value
+        }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
+        if let value = dict["DataSource"] as? String {
+            self.dataSource = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnableDataSizeFluctuationThreshold"] as? Bool {
+            self.enableDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["EnableRowCountFluctuationThreshold"] as? Bool {
+            self.enableRowCountFluctuationThreshold = value
+        }
+        if let value = dict["Fields"] as? [String: Any?] {
+            var model = GetRecallManagementTableResponseBody.Fields()
+            model.fromMap(value)
+            self.fields = model
+        }
+        if let value = dict["GmtCreateTime"] as? String {
+            self.gmtCreateTime = value
+        }
+        if let value = dict["GmtModifiedTime"] as? String {
+            self.gmtModifiedTime = value
+        }
+        if let value = dict["IndexEffectiveTime"] as? String {
+            self.indexEffectiveTime = value
+        }
+        if let value = dict["IndexVersionId"] as? String {
+            self.indexVersionId = value
+        }
+        if let value = dict["MaxDataSizeFluctuationThreshold"] as? Int32 {
+            self.maxDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MaxRowCountFluctuationThreshold"] as? Int32 {
+            self.maxRowCountFluctuationThreshold = value
+        }
+        if let value = dict["MaxcomputeProjectName"] as? String {
+            self.maxcomputeProjectName = value
+        }
+        if let value = dict["MaxcomputeSchema"] as? String {
+            self.maxcomputeSchema = value
+        }
+        if let value = dict["MaxcomputeTableName"] as? String {
+            self.maxcomputeTableName = value
+        }
+        if let value = dict["MinDataSizeFluctuationThreshold"] as? Int32 {
+            self.minDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MinRowCountFluctuationThreshold"] as? Int32 {
+            self.minRowCountFluctuationThreshold = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PartitionFields"] as? String {
+            self.partitionFields = value
+        }
+        if let value = dict["RecallManagementTableId"] as? String {
+            self.recallManagementTableId = value
+        }
+        if let value = dict["RecallType"] as? String {
+            self.recallType = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class GetRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRecallManagementTableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetResourceRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -14194,7 +18952,7 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
         public class TargetTraffics : Tea.TeaModel {
             public var data: [String: TrafficControlTaskTrafficInfoTargetTrafficsDataValue]?
 
-            public var trafficContorlTargetId: String?
+            public var trafficControlTargetId: String?
 
             public override init() {
                 super.init()
@@ -14217,8 +18975,8 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
                     }
                     map["Data"] = tmp
                 }
-                if self.trafficContorlTargetId != nil {
-                    map["TrafficContorlTargetId"] = self.trafficContorlTargetId!
+                if self.trafficControlTargetId != nil {
+                    map["TrafficControlTargetId"] = self.trafficControlTargetId!
                 }
                 return map
             }
@@ -14236,8 +18994,8 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
                     }
                     self.data = tmp
                 }
-                if let value = dict["TrafficContorlTargetId"] as? String {
-                    self.trafficContorlTargetId = value
+                if let value = dict["TrafficControlTargetId"] as? String {
+                    self.trafficControlTargetId = value
                 }
             }
         }
@@ -19600,6 +24358,1499 @@ public class ListParamsResponse : Tea.TeaModel {
     }
 }
 
+public class ListRecallManagementJobsRequest : Tea.TeaModel {
+    public var condition: [String: Any]?
+
+    public var instanceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var order: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sortBy: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.condition != nil {
+            map["Condition"] = self.condition!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Condition"] as? [String: Any] {
+            self.condition = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
+    public class RecallManagementJobs : Tea.TeaModel {
+        public class RecallManagerTableInfo : Tea.TeaModel {
+            public var dataVersion: String?
+
+            public var recallManagementTableVersionId: String?
+
+            public var sourceTableDataSize: String?
+
+            public var sourceTableRowCount: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataVersion != nil {
+                    map["DataVersion"] = self.dataVersion!
+                }
+                if self.recallManagementTableVersionId != nil {
+                    map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+                }
+                if self.sourceTableDataSize != nil {
+                    map["SourceTableDataSize"] = self.sourceTableDataSize!
+                }
+                if self.sourceTableRowCount != nil {
+                    map["SourceTableRowCount"] = self.sourceTableRowCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataVersion"] as? String {
+                    self.dataVersion = value
+                }
+                if let value = dict["RecallManagementTableVersionId"] as? String {
+                    self.recallManagementTableVersionId = value
+                }
+                if let value = dict["SourceTableDataSize"] as? String {
+                    self.sourceTableDataSize = value
+                }
+                if let value = dict["SourceTableRowCount"] as? String {
+                    self.sourceTableRowCount = value
+                }
+            }
+        }
+        public var endTime: String?
+
+        public var recallManagementJobId: String?
+
+        public var recallManagerTableInfo: ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagerTableInfo?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.recallManagerTableInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.recallManagementJobId != nil {
+                map["RecallManagementJobId"] = self.recallManagementJobId!
+            }
+            if self.recallManagerTableInfo != nil {
+                map["RecallManagerTableInfo"] = self.recallManagerTableInfo?.toMap()
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["RecallManagementJobId"] as? String {
+                self.recallManagementJobId = value
+            }
+            if let value = dict["RecallManagerTableInfo"] as? [String: Any?] {
+                var model = ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagerTableInfo()
+                model.fromMap(value)
+                self.recallManagerTableInfo = model
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var recallManagementJobs: [ListRecallManagementJobsResponseBody.RecallManagementJobs]?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.recallManagementJobs != nil {
+            var tmp : [Any] = []
+            for k in self.recallManagementJobs! {
+                tmp.append(k.toMap())
+            }
+            map["RecallManagementJobs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RecallManagementJobs"] as? [Any?] {
+            var tmp : [ListRecallManagementJobsResponseBody.RecallManagementJobs] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRecallManagementJobsResponseBody.RecallManagementJobs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recallManagementJobs = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? String {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRecallManagementJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecallManagementJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecallManagementJobsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecallManagementServiceVersionsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var order: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var sortBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+    }
+}
+
+public class ListRecallManagementServiceVersionsResponseBody : Tea.TeaModel {
+    public class RecallManagementServiceVersions : Tea.TeaModel {
+        public var gmtCreateTime: String?
+
+        public var gmtModifiedTime: String?
+
+        public var isDefault: String?
+
+        public var name: String?
+
+        public var recallManagementServiceVersionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gmtCreateTime != nil {
+                map["GmtCreateTime"] = self.gmtCreateTime!
+            }
+            if self.gmtModifiedTime != nil {
+                map["GmtModifiedTime"] = self.gmtModifiedTime!
+            }
+            if self.isDefault != nil {
+                map["IsDefault"] = self.isDefault!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.recallManagementServiceVersionId != nil {
+                map["RecallManagementServiceVersionId"] = self.recallManagementServiceVersionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GmtCreateTime"] as? String {
+                self.gmtCreateTime = value
+            }
+            if let value = dict["GmtModifiedTime"] as? String {
+                self.gmtModifiedTime = value
+            }
+            if let value = dict["IsDefault"] as? String {
+                self.isDefault = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["RecallManagementServiceVersionId"] as? String {
+                self.recallManagementServiceVersionId = value
+            }
+        }
+    }
+    public var recallManagementServiceVersions: [ListRecallManagementServiceVersionsResponseBody.RecallManagementServiceVersions]?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementServiceVersions != nil {
+            var tmp : [Any] = []
+            for k in self.recallManagementServiceVersions! {
+                tmp.append(k.toMap())
+            }
+            map["RecallManagementServiceVersions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementServiceVersions"] as? [Any?] {
+            var tmp : [ListRecallManagementServiceVersionsResponseBody.RecallManagementServiceVersions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRecallManagementServiceVersionsResponseBody.RecallManagementServiceVersions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recallManagementServiceVersions = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? String {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRecallManagementServiceVersionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecallManagementServiceVersionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecallManagementServiceVersionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecallManagementServicesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var order: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var sortBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+    }
+}
+
+public class ListRecallManagementServicesResponseBody : Tea.TeaModel {
+    public class RecallManagementServices : Tea.TeaModel {
+        public var currentRecallManagementServiceVersionId: String?
+
+        public var currentRecallManagementServiceVersionName: String?
+
+        public var description_: String?
+
+        public var gmtCreateTime: String?
+
+        public var gmtModifiedTime: String?
+
+        public var name: String?
+
+        public var recallManagementServiceId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currentRecallManagementServiceVersionId != nil {
+                map["CurrentRecallManagementServiceVersionId"] = self.currentRecallManagementServiceVersionId!
+            }
+            if self.currentRecallManagementServiceVersionName != nil {
+                map["CurrentRecallManagementServiceVersionName"] = self.currentRecallManagementServiceVersionName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.gmtCreateTime != nil {
+                map["GmtCreateTime"] = self.gmtCreateTime!
+            }
+            if self.gmtModifiedTime != nil {
+                map["GmtModifiedTime"] = self.gmtModifiedTime!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.recallManagementServiceId != nil {
+                map["RecallManagementServiceId"] = self.recallManagementServiceId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CurrentRecallManagementServiceVersionId"] as? String {
+                self.currentRecallManagementServiceVersionId = value
+            }
+            if let value = dict["CurrentRecallManagementServiceVersionName"] as? String {
+                self.currentRecallManagementServiceVersionName = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["GmtCreateTime"] as? String {
+                self.gmtCreateTime = value
+            }
+            if let value = dict["GmtModifiedTime"] as? String {
+                self.gmtModifiedTime = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["RecallManagementServiceId"] as? String {
+                self.recallManagementServiceId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var recallManagementServices: [ListRecallManagementServicesResponseBody.RecallManagementServices]?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.recallManagementServices != nil {
+            var tmp : [Any] = []
+            for k in self.recallManagementServices! {
+                tmp.append(k.toMap())
+            }
+            map["RecallManagementServices"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RecallManagementServices"] as? [Any?] {
+            var tmp : [ListRecallManagementServicesResponseBody.RecallManagementServices] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRecallManagementServicesResponseBody.RecallManagementServices()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recallManagementServices = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? String {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRecallManagementServicesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecallManagementServicesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecallManagementServicesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecallManagementTableVersionsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var order: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sortBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+    }
+}
+
+public class ListRecallManagementTableVersionsResponseBody : Tea.TeaModel {
+    public class RecallManagementTableVersions : Tea.TeaModel {
+        public var dataVersion: String?
+
+        public var effectiveTime: String?
+
+        public var publishEndTime: String?
+
+        public var publishStartTime: String?
+
+        public var recallManagementTableVersionId: String?
+
+        public var sourceTableDataSize: Int64?
+
+        public var sourceTableRowCount: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataVersion != nil {
+                map["DataVersion"] = self.dataVersion!
+            }
+            if self.effectiveTime != nil {
+                map["EffectiveTime"] = self.effectiveTime!
+            }
+            if self.publishEndTime != nil {
+                map["PublishEndTime"] = self.publishEndTime!
+            }
+            if self.publishStartTime != nil {
+                map["PublishStartTime"] = self.publishStartTime!
+            }
+            if self.recallManagementTableVersionId != nil {
+                map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+            }
+            if self.sourceTableDataSize != nil {
+                map["SourceTableDataSize"] = self.sourceTableDataSize!
+            }
+            if self.sourceTableRowCount != nil {
+                map["SourceTableRowCount"] = self.sourceTableRowCount!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataVersion"] as? String {
+                self.dataVersion = value
+            }
+            if let value = dict["EffectiveTime"] as? String {
+                self.effectiveTime = value
+            }
+            if let value = dict["PublishEndTime"] as? String {
+                self.publishEndTime = value
+            }
+            if let value = dict["PublishStartTime"] as? String {
+                self.publishStartTime = value
+            }
+            if let value = dict["RecallManagementTableVersionId"] as? String {
+                self.recallManagementTableVersionId = value
+            }
+            if let value = dict["SourceTableDataSize"] as? Int64 {
+                self.sourceTableDataSize = value
+            }
+            if let value = dict["SourceTableRowCount"] as? Int64 {
+                self.sourceTableRowCount = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var recallManagementTableVersions: [ListRecallManagementTableVersionsResponseBody.RecallManagementTableVersions]?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementTableVersions != nil {
+            var tmp : [Any] = []
+            for k in self.recallManagementTableVersions! {
+                tmp.append(k.toMap())
+            }
+            map["RecallManagementTableVersions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementTableVersions"] as? [Any?] {
+            var tmp : [ListRecallManagementTableVersionsResponseBody.RecallManagementTableVersions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRecallManagementTableVersionsResponseBody.RecallManagementTableVersions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recallManagementTableVersions = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRecallManagementTableVersionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecallManagementTableVersionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecallManagementTableVersionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecallManagementTablesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var maxResults: Int32?
+
+    public var name: String?
+
+    public var nextToken: String?
+
+    public var order: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sortBy: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class ListRecallManagementTablesResponseBody : Tea.TeaModel {
+    public class RecallManagementTables : Tea.TeaModel {
+        public var canDelete: Bool?
+
+        public var dataSource: String?
+
+        public var description_: String?
+
+        public var gmtCreateTime: String?
+
+        public var gmtModifiedTime: String?
+
+        public var indexEffectiveTime: String?
+
+        public var indexVersionId: String?
+
+        public var maxcomputeProjectName: String?
+
+        public var maxcomputeSchema: String?
+
+        public var maxcomputeTableName: String?
+
+        public var name: String?
+
+        public var partitionFields: String?
+
+        public var recallManagementTableId: String?
+
+        public var recallType: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.canDelete != nil {
+                map["CanDelete"] = self.canDelete!
+            }
+            if self.dataSource != nil {
+                map["DataSource"] = self.dataSource!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.gmtCreateTime != nil {
+                map["GmtCreateTime"] = self.gmtCreateTime!
+            }
+            if self.gmtModifiedTime != nil {
+                map["GmtModifiedTime"] = self.gmtModifiedTime!
+            }
+            if self.indexEffectiveTime != nil {
+                map["IndexEffectiveTime"] = self.indexEffectiveTime!
+            }
+            if self.indexVersionId != nil {
+                map["IndexVersionId"] = self.indexVersionId!
+            }
+            if self.maxcomputeProjectName != nil {
+                map["MaxcomputeProjectName"] = self.maxcomputeProjectName!
+            }
+            if self.maxcomputeSchema != nil {
+                map["MaxcomputeSchema"] = self.maxcomputeSchema!
+            }
+            if self.maxcomputeTableName != nil {
+                map["MaxcomputeTableName"] = self.maxcomputeTableName!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.partitionFields != nil {
+                map["PartitionFields"] = self.partitionFields!
+            }
+            if self.recallManagementTableId != nil {
+                map["RecallManagementTableId"] = self.recallManagementTableId!
+            }
+            if self.recallType != nil {
+                map["RecallType"] = self.recallType!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CanDelete"] as? Bool {
+                self.canDelete = value
+            }
+            if let value = dict["DataSource"] as? String {
+                self.dataSource = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["GmtCreateTime"] as? String {
+                self.gmtCreateTime = value
+            }
+            if let value = dict["GmtModifiedTime"] as? String {
+                self.gmtModifiedTime = value
+            }
+            if let value = dict["IndexEffectiveTime"] as? String {
+                self.indexEffectiveTime = value
+            }
+            if let value = dict["IndexVersionId"] as? String {
+                self.indexVersionId = value
+            }
+            if let value = dict["MaxcomputeProjectName"] as? String {
+                self.maxcomputeProjectName = value
+            }
+            if let value = dict["MaxcomputeSchema"] as? String {
+                self.maxcomputeSchema = value
+            }
+            if let value = dict["MaxcomputeTableName"] as? String {
+                self.maxcomputeTableName = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["PartitionFields"] as? String {
+                self.partitionFields = value
+            }
+            if let value = dict["RecallManagementTableId"] as? String {
+                self.recallManagementTableId = value
+            }
+            if let value = dict["RecallType"] as? String {
+                self.recallType = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var recallManagementTables: [ListRecallManagementTablesResponseBody.RecallManagementTables]?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.recallManagementTables != nil {
+            var tmp : [Any] = []
+            for k in self.recallManagementTables! {
+                tmp.append(k.toMap())
+            }
+            map["RecallManagementTables"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RecallManagementTables"] as? [Any?] {
+            var tmp : [ListRecallManagementTablesResponseBody.RecallManagementTables] = []
+            for v in value {
+                if v != nil {
+                    var model = ListRecallManagementTablesResponseBody.RecallManagementTables()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recallManagementTables = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? String {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListRecallManagementTablesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecallManagementTablesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecallManagementTablesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListResourceRulesRequest : Tea.TeaModel {
     public var all: Bool?
 
@@ -21836,6 +28087,8 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
 
         public var statisBehaviorConditionArray: String?
 
+        public var statisBehaviorConditionExpress: String?
+
         public var statisBehaviorConditionType: String?
 
         public var trafficControlTargets: [ListTrafficControlTasksResponseBody.TrafficControlTasks.TrafficControlTargets]?
@@ -21959,6 +28212,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if self.statisBehaviorConditionArray != nil {
                 map["StatisBehaviorConditionArray"] = self.statisBehaviorConditionArray!
+            }
+            if self.statisBehaviorConditionExpress != nil {
+                map["StatisBehaviorConditionExpress"] = self.statisBehaviorConditionExpress!
             }
             if self.statisBehaviorConditionType != nil {
                 map["StatisBehaviorConditionType"] = self.statisBehaviorConditionType!
@@ -22085,6 +28341,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["StatisBehaviorConditionArray"] as? String {
                 self.statisBehaviorConditionArray = value
+            }
+            if let value = dict["StatisBehaviorConditionExpress"] as? String {
+                self.statisBehaviorConditionExpress = value
             }
             if let value = dict["StatisBehaviorConditionType"] as? String {
                 self.statisBehaviorConditionType = value
@@ -22565,6 +28824,118 @@ public class OfflineLaboratoryResponse : Tea.TeaModel {
     }
 }
 
+public class OfflineRecallManagementServiceRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class OfflineRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class OfflineRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OfflineRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OfflineRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class OnlineExperimentRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -22895,6 +29266,262 @@ public class OnlineLaboratoryResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = OnlineLaboratoryResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class OnlineRecallManagementServiceRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class OnlineRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class OnlineRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OnlineRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OnlineRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class PublishRecallManagementTableRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var mode: String?
+
+    public var partition: [String: String]?
+
+    public var skipThresholdCheck: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.partition != nil {
+            map["Partition"] = self.partition!
+        }
+        if self.skipThresholdCheck != nil {
+            map["SkipThresholdCheck"] = self.skipThresholdCheck!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["Partition"] as? [String: String] {
+            self.partition = value
+        }
+        if let value = dict["SkipThresholdCheck"] as? Bool {
+            self.skipThresholdCheck = value
+        }
+    }
+}
+
+public class PublishRecallManagementTableResponseBody : Tea.TeaModel {
+    public var recallManagementJobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementJobId != nil {
+            map["RecallManagementJobId"] = self.recallManagementJobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementJobId"] as? String {
+            self.recallManagementJobId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class PublishRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PublishRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PublishRecallManagementTableResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -27621,6 +34248,1076 @@ public class UpdateParamResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateRecallManagementConfigRequest : Tea.TeaModel {
+    public class NetworkConfigs : Tea.TeaModel {
+        public var vpcId: String?
+
+        public var vswitchIds: [String: String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.vswitchIds != nil {
+                map["VswitchIds"] = self.vswitchIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["VswitchIds"] as? [String: String] {
+                self.vswitchIds = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var networkConfigs: [UpdateRecallManagementConfigRequest.NetworkConfigs]?
+
+    public var password: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.networkConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.networkConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkConfigs"] = tmp
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["NetworkConfigs"] as? [Any?] {
+            var tmp : [UpdateRecallManagementConfigRequest.NetworkConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateRecallManagementConfigRequest.NetworkConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.networkConfigs = tmp
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+    }
+}
+
+public class UpdateRecallManagementConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecallManagementConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecallManagementConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecallManagementConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecallManagementServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecallManagementServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
+    public class MergeConfig : Tea.TeaModel {
+        public var extendedConfig: String?
+
+        public var filterExpression: String?
+
+        public var filterRecallManagementTableIds: [String]?
+
+        public var itemRecallManagementTableId: String?
+
+        public var itemTableFields: [String]?
+
+        public var mergeType: String?
+
+        public var recallManagementServiceVersionConfigId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.filterExpression != nil {
+                map["FilterExpression"] = self.filterExpression!
+            }
+            if self.filterRecallManagementTableIds != nil {
+                map["FilterRecallManagementTableIds"] = self.filterRecallManagementTableIds!
+            }
+            if self.itemRecallManagementTableId != nil {
+                map["ItemRecallManagementTableId"] = self.itemRecallManagementTableId!
+            }
+            if self.itemTableFields != nil {
+                map["ItemTableFields"] = self.itemTableFields!
+            }
+            if self.mergeType != nil {
+                map["MergeType"] = self.mergeType!
+            }
+            if self.recallManagementServiceVersionConfigId != nil {
+                map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["FilterExpression"] as? String {
+                self.filterExpression = value
+            }
+            if let value = dict["FilterRecallManagementTableIds"] as? [String] {
+                self.filterRecallManagementTableIds = value
+            }
+            if let value = dict["ItemRecallManagementTableId"] as? String {
+                self.itemRecallManagementTableId = value
+            }
+            if let value = dict["ItemTableFields"] as? [String] {
+                self.itemTableFields = value
+            }
+            if let value = dict["MergeType"] as? String {
+                self.mergeType = value
+            }
+            if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                self.recallManagementServiceVersionConfigId = value
+            }
+        }
+    }
+    public class RecallConfig : Tea.TeaModel {
+        public class Operators : Tea.TeaModel {
+            public class FeatureConfig : Tea.TeaModel {
+                public var expression: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expression != nil {
+                        map["Expression"] = self.expression!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Expression"] as? String {
+                        self.expression = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class FilterConfig : Tea.TeaModel {
+                public var experession: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.experession != nil {
+                        map["Experession"] = self.experession!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Experession"] as? String {
+                        self.experession = value
+                    }
+                }
+            }
+            public class JoinConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var outputFields: String?
+
+                public var recallManagementTableId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.outputFields != nil {
+                        map["OutputFields"] = self.outputFields!
+                    }
+                    if self.recallManagementTableId != nil {
+                        map["RecallManagementTableId"] = self.recallManagementTableId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["OutputFields"] as? String {
+                        self.outputFields = value
+                    }
+                    if let value = dict["RecallManagementTableId"] as? String {
+                        self.recallManagementTableId = value
+                    }
+                }
+            }
+            public class TriggerConfig : Tea.TeaModel {
+                public var field: String?
+
+                public var fieldQuantityLimit: String?
+
+                public var isRandSort: String?
+
+                public var sortField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.fieldQuantityLimit != nil {
+                        map["FieldQuantityLimit"] = self.fieldQuantityLimit!
+                    }
+                    if self.isRandSort != nil {
+                        map["IsRandSort"] = self.isRandSort!
+                    }
+                    if self.sortField != nil {
+                        map["SortField"] = self.sortField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Field"] as? String {
+                        self.field = value
+                    }
+                    if let value = dict["FieldQuantityLimit"] as? String {
+                        self.fieldQuantityLimit = value
+                    }
+                    if let value = dict["IsRandSort"] as? String {
+                        self.isRandSort = value
+                    }
+                    if let value = dict["SortField"] as? String {
+                        self.sortField = value
+                    }
+                }
+            }
+            public var featureConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FeatureConfig?
+
+            public var filterConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FilterConfig?
+
+            public var joinConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.JoinConfig?
+
+            public var operatorsType: String?
+
+            public var triggerConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.featureConfig?.validate()
+                try self.filterConfig?.validate()
+                try self.joinConfig?.validate()
+                try self.triggerConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.featureConfig != nil {
+                    map["FeatureConfig"] = self.featureConfig?.toMap()
+                }
+                if self.filterConfig != nil {
+                    map["FilterConfig"] = self.filterConfig?.toMap()
+                }
+                if self.joinConfig != nil {
+                    map["JoinConfig"] = self.joinConfig?.toMap()
+                }
+                if self.operatorsType != nil {
+                    map["OperatorsType"] = self.operatorsType!
+                }
+                if self.triggerConfig != nil {
+                    map["TriggerConfig"] = self.triggerConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FeatureConfig"] as? [String: Any?] {
+                    var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FeatureConfig()
+                    model.fromMap(value)
+                    self.featureConfig = model
+                }
+                if let value = dict["FilterConfig"] as? [String: Any?] {
+                    var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.FilterConfig()
+                    model.fromMap(value)
+                    self.filterConfig = model
+                }
+                if let value = dict["JoinConfig"] as? [String: Any?] {
+                    var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.JoinConfig()
+                    model.fromMap(value)
+                    self.joinConfig = model
+                }
+                if let value = dict["OperatorsType"] as? String {
+                    self.operatorsType = value
+                }
+                if let value = dict["TriggerConfig"] as? [String: Any?] {
+                    var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig()
+                    model.fromMap(value)
+                    self.triggerConfig = model
+                }
+            }
+        }
+        public var description_: String?
+
+        public var extendedConfig: String?
+
+        public var itemVectorField: String?
+
+        public var itemVectorRecallManagementTableId: String?
+
+        public var name: String?
+
+        public var operators: [UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators]?
+
+        public var priority: Int64?
+
+        public var recallManagementTableId: String?
+
+        public var recallType: String?
+
+        public var userVectorField: String?
+
+        public var userVectorRecallManagementTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.extendedConfig != nil {
+                map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.itemVectorField != nil {
+                map["ItemVectorField"] = self.itemVectorField!
+            }
+            if self.itemVectorRecallManagementTableId != nil {
+                map["ItemVectorRecallManagementTableId"] = self.itemVectorRecallManagementTableId!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.operators != nil {
+                var tmp : [Any] = []
+                for k in self.operators! {
+                    tmp.append(k.toMap())
+                }
+                map["Operators"] = tmp
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.recallManagementTableId != nil {
+                map["RecallManagementTableId"] = self.recallManagementTableId!
+            }
+            if self.recallType != nil {
+                map["RecallType"] = self.recallType!
+            }
+            if self.userVectorField != nil {
+                map["UserVectorField"] = self.userVectorField!
+            }
+            if self.userVectorRecallManagementTableId != nil {
+                map["UserVectorRecallManagementTableId"] = self.userVectorRecallManagementTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ExtendedConfig"] as? String {
+                self.extendedConfig = value
+            }
+            if let value = dict["ItemVectorField"] as? String {
+                self.itemVectorField = value
+            }
+            if let value = dict["ItemVectorRecallManagementTableId"] as? String {
+                self.itemVectorRecallManagementTableId = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Operators"] as? [Any?] {
+                var tmp : [UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.operators = tmp
+            }
+            if let value = dict["Priority"] as? Int64 {
+                self.priority = value
+            }
+            if let value = dict["RecallManagementTableId"] as? String {
+                self.recallManagementTableId = value
+            }
+            if let value = dict["RecallType"] as? String {
+                self.recallType = value
+            }
+            if let value = dict["UserVectorField"] as? String {
+                self.userVectorField = value
+            }
+            if let value = dict["UserVectorRecallManagementTableId"] as? String {
+                self.userVectorRecallManagementTableId = value
+            }
+        }
+    }
+    public var regionId: String?
+
+    public var configType: String?
+
+    public var instanceId: String?
+
+    public var mergeConfig: UpdateRecallManagementServiceVersionConfigRequest.MergeConfig?
+
+    public var recallConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.mergeConfig?.validate()
+        try self.recallConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mergeConfig != nil {
+            map["MergeConfig"] = self.mergeConfig?.toMap()
+        }
+        if self.recallConfig != nil {
+            map["RecallConfig"] = self.recallConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ConfigType"] as? String {
+            self.configType = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MergeConfig"] as? [String: Any?] {
+            var model = UpdateRecallManagementServiceVersionConfigRequest.MergeConfig()
+            model.fromMap(value)
+            self.mergeConfig = model
+        }
+        if let value = dict["RecallConfig"] as? [String: Any?] {
+            var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig()
+            model.fromMap(value)
+            self.recallConfig = model
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecallManagementServiceVersionConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecallManagementServiceVersionConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecallManagementServiceVersionConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecallManagementTableRequest : Tea.TeaModel {
+    public var enableDataSizeFluctuationThreshold: Bool?
+
+    public var enableRowCountFluctuationThreshold: Bool?
+
+    public var indexVersionId: String?
+
+    public var instanceId: String?
+
+    public var maxDataSizeFluctuationThreshold: Int32?
+
+    public var maxRowCountFluctuationThreshold: Int32?
+
+    public var minDataSizeFluctuationThreshold: Int32?
+
+    public var minRowCountFluctuationThreshold: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableDataSizeFluctuationThreshold != nil {
+            map["EnableDataSizeFluctuationThreshold"] = self.enableDataSizeFluctuationThreshold!
+        }
+        if self.enableRowCountFluctuationThreshold != nil {
+            map["EnableRowCountFluctuationThreshold"] = self.enableRowCountFluctuationThreshold!
+        }
+        if self.indexVersionId != nil {
+            map["IndexVersionId"] = self.indexVersionId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxDataSizeFluctuationThreshold != nil {
+            map["MaxDataSizeFluctuationThreshold"] = self.maxDataSizeFluctuationThreshold!
+        }
+        if self.maxRowCountFluctuationThreshold != nil {
+            map["MaxRowCountFluctuationThreshold"] = self.maxRowCountFluctuationThreshold!
+        }
+        if self.minDataSizeFluctuationThreshold != nil {
+            map["MinDataSizeFluctuationThreshold"] = self.minDataSizeFluctuationThreshold!
+        }
+        if self.minRowCountFluctuationThreshold != nil {
+            map["MinRowCountFluctuationThreshold"] = self.minRowCountFluctuationThreshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableDataSizeFluctuationThreshold"] as? Bool {
+            self.enableDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["EnableRowCountFluctuationThreshold"] as? Bool {
+            self.enableRowCountFluctuationThreshold = value
+        }
+        if let value = dict["IndexVersionId"] as? String {
+            self.indexVersionId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxDataSizeFluctuationThreshold"] as? Int32 {
+            self.maxDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MaxRowCountFluctuationThreshold"] as? Int32 {
+            self.maxRowCountFluctuationThreshold = value
+        }
+        if let value = dict["MinDataSizeFluctuationThreshold"] as? Int32 {
+            self.minDataSizeFluctuationThreshold = value
+        }
+        if let value = dict["MinRowCountFluctuationThreshold"] as? Int32 {
+            self.minRowCountFluctuationThreshold = value
+        }
+    }
+}
+
+public class UpdateRecallManagementTableResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecallManagementTableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateResourceRuleRequest : Tea.TeaModel {
     public var description_: String?
 
@@ -28752,6 +36449,8 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
 
     public var statisBaeaviorConditionArray: String?
 
+    public var statisBehaviorConditionArray: String?
+
     public var statisBehaviorConditionExpress: String?
 
     public var statisBehaviorConditionType: String?
@@ -28845,6 +36544,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if self.statisBaeaviorConditionArray != nil {
             map["StatisBaeaviorConditionArray"] = self.statisBaeaviorConditionArray!
+        }
+        if self.statisBehaviorConditionArray != nil {
+            map["StatisBehaviorConditionArray"] = self.statisBehaviorConditionArray!
         }
         if self.statisBehaviorConditionExpress != nil {
             map["StatisBehaviorConditionExpress"] = self.statisBehaviorConditionExpress!
@@ -28941,6 +36643,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if let value = dict["StatisBaeaviorConditionArray"] as? String {
             self.statisBaeaviorConditionArray = value
+        }
+        if let value = dict["StatisBehaviorConditionArray"] as? String {
+            self.statisBehaviorConditionArray = value
         }
         if let value = dict["StatisBehaviorConditionExpress"] as? String {
             self.statisBehaviorConditionExpress = value
