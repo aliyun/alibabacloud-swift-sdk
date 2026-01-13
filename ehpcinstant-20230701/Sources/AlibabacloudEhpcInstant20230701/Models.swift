@@ -492,6 +492,8 @@ public class CreateActionPlanRequest : Tea.TeaModel {
 
     public var desiredCapacity: Double?
 
+    public var intervalMinutes: Int32?
+
     public var level: String?
 
     public var prologScript: String?
@@ -529,6 +531,9 @@ public class CreateActionPlanRequest : Tea.TeaModel {
         }
         if self.desiredCapacity != nil {
             map["DesiredCapacity"] = self.desiredCapacity!
+        }
+        if self.intervalMinutes != nil {
+            map["IntervalMinutes"] = self.intervalMinutes!
         }
         if self.level != nil {
             map["Level"] = self.level!
@@ -572,6 +577,9 @@ public class CreateActionPlanRequest : Tea.TeaModel {
         }
         if let value = dict["DesiredCapacity"] as? Double {
             self.desiredCapacity = value
+        }
+        if let value = dict["IntervalMinutes"] as? Int32 {
+            self.intervalMinutes = value
         }
         if let value = dict["Level"] as? String {
             self.level = value
@@ -623,6 +631,8 @@ public class CreateActionPlanShrinkRequest : Tea.TeaModel {
 
     public var desiredCapacity: Double?
 
+    public var intervalMinutes: Int32?
+
     public var level: String?
 
     public var prologScript: String?
@@ -661,6 +671,9 @@ public class CreateActionPlanShrinkRequest : Tea.TeaModel {
         if self.desiredCapacity != nil {
             map["DesiredCapacity"] = self.desiredCapacity!
         }
+        if self.intervalMinutes != nil {
+            map["IntervalMinutes"] = self.intervalMinutes!
+        }
         if self.level != nil {
             map["Level"] = self.level!
         }
@@ -695,6 +708,9 @@ public class CreateActionPlanShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DesiredCapacity"] as? Double {
             self.desiredCapacity = value
+        }
+        if let value = dict["IntervalMinutes"] as? Int32 {
+            self.intervalMinutes = value
         }
         if let value = dict["Level"] as? String {
             self.level = value
@@ -3597,6 +3613,8 @@ public class GetActionPlanResponseBody : Tea.TeaModel {
 
     public var desiredCapacity: Double?
 
+    public var intervalMinutes: Int32?
+
     public var level: String?
 
     public var prologScript: String?
@@ -3646,6 +3664,9 @@ public class GetActionPlanResponseBody : Tea.TeaModel {
         }
         if self.desiredCapacity != nil {
             map["DesiredCapacity"] = self.desiredCapacity!
+        }
+        if self.intervalMinutes != nil {
+            map["IntervalMinutes"] = self.intervalMinutes!
         }
         if self.level != nil {
             map["Level"] = self.level!
@@ -3704,6 +3725,9 @@ public class GetActionPlanResponseBody : Tea.TeaModel {
         }
         if let value = dict["DesiredCapacity"] as? Double {
             self.desiredCapacity = value
+        }
+        if let value = dict["IntervalMinutes"] as? Int32 {
+            self.intervalMinutes = value
         }
         if let value = dict["Level"] as? String {
             self.level = value
@@ -10336,6 +10360,8 @@ public class UpdateActionPlanRequest : Tea.TeaModel {
 
     public var enabled: String?
 
+    public var intervalMinutes: Int32?
+
     public override init() {
         super.init()
     }
@@ -10359,6 +10385,9 @@ public class UpdateActionPlanRequest : Tea.TeaModel {
         if self.enabled != nil {
             map["Enabled"] = self.enabled!
         }
+        if self.intervalMinutes != nil {
+            map["IntervalMinutes"] = self.intervalMinutes!
+        }
         return map
     }
 
@@ -10372,6 +10401,9 @@ public class UpdateActionPlanRequest : Tea.TeaModel {
         }
         if let value = dict["Enabled"] as? String {
             self.enabled = value
+        }
+        if let value = dict["IntervalMinutes"] as? Int32 {
+            self.intervalMinutes = value
         }
     }
 }
