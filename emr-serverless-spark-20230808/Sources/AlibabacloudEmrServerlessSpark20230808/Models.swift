@@ -9400,6 +9400,8 @@ public class ListCatalogsRequest : Tea.TeaModel {
 
 public class ListCatalogsResponseBody : Tea.TeaModel {
     public class Catalogs : Tea.TeaModel {
+        public var alias: String?
+
         public var catalogId: String?
 
         public var catalogProvider: String?
@@ -9432,6 +9434,9 @@ public class ListCatalogsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alias != nil {
+                map["alias"] = self.alias!
+            }
             if self.catalogId != nil {
                 map["catalogId"] = self.catalogId!
             }
@@ -9464,6 +9469,9 @@ public class ListCatalogsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["alias"] as? String {
+                self.alias = value
+            }
             if let value = dict["catalogId"] as? String {
                 self.catalogId = value
             }
@@ -11403,6 +11411,8 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
 
         public var state: String?
 
+        public var tags: [Tag]?
+
         public var vcoreSeconds: Int64?
 
         public var webUI: String?
@@ -11458,6 +11468,13 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             if self.state != nil {
                 map["state"] = self.state!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
+            }
             if self.vcoreSeconds != nil {
                 map["vcoreSeconds"] = self.vcoreSeconds!
             }
@@ -11506,6 +11523,19 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["state"] as? String {
                 self.state = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [Tag] = []
+                for v in value {
+                    if v != nil {
+                        var model = Tag()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["vcoreSeconds"] as? Int64 {
                 self.vcoreSeconds = value
