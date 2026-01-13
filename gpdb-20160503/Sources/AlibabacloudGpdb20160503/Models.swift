@@ -2559,36 +2559,6 @@ public class ChatWithKnowledgeBaseResponseBody : Tea.TeaModel {
     }
     public class MultiCollectionRecallResult : Tea.TeaModel {
         public class Matches : Tea.TeaModel {
-            public class Metadata : Tea.TeaModel {
-                public var source: Int64?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.source != nil {
-                        map["Source"] = self.source!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                    guard let dict else { return }
-                    if let value = dict["Source"] as? Int64 {
-                        self.source = value
-                    }
-                }
-            }
             public var content: String?
 
             public var fileName: String?
@@ -2599,7 +2569,7 @@ public class ChatWithKnowledgeBaseResponseBody : Tea.TeaModel {
 
             public var loaderMetadata: Any?
 
-            public var metadata: ChatWithKnowledgeBaseResponseBody.MultiCollectionRecallResult.Matches.Metadata?
+            public var metadata: [String: Any]?
 
             public var rerankScore: Double?
 
@@ -2619,7 +2589,6 @@ public class ChatWithKnowledgeBaseResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.metadata?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -2640,7 +2609,7 @@ public class ChatWithKnowledgeBaseResponseBody : Tea.TeaModel {
                     map["LoaderMetadata"] = self.loaderMetadata!
                 }
                 if self.metadata != nil {
-                    map["Metadata"] = self.metadata?.toMap()
+                    map["Metadata"] = self.metadata!
                 }
                 if self.rerankScore != nil {
                     map["RerankScore"] = self.rerankScore!
@@ -2674,10 +2643,8 @@ public class ChatWithKnowledgeBaseResponseBody : Tea.TeaModel {
                 if let value = dict["LoaderMetadata"] as? Any {
                     self.loaderMetadata = value
                 }
-                if let value = dict["Metadata"] as? [String: Any?] {
-                    var model = ChatWithKnowledgeBaseResponseBody.MultiCollectionRecallResult.Matches.Metadata()
-                    model.fromMap(value)
-                    self.metadata = model
+                if let value = dict["Metadata"] as? [String: Any] {
+                    self.metadata = value
                 }
                 if let value = dict["RerankScore"] as? Double {
                     self.rerankScore = value
@@ -4094,36 +4061,6 @@ public class ChatWithKnowledgeBaseStreamResponseBody : Tea.TeaModel {
     }
     public class MultiCollectionRecallResult : Tea.TeaModel {
         public class Matches : Tea.TeaModel {
-            public class Metadata : Tea.TeaModel {
-                public var source: Int64?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.source != nil {
-                        map["Source"] = self.source!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                    guard let dict else { return }
-                    if let value = dict["Source"] as? Int64 {
-                        self.source = value
-                    }
-                }
-            }
             public var content: String?
 
             public var fileName: String?
@@ -4134,7 +4071,7 @@ public class ChatWithKnowledgeBaseStreamResponseBody : Tea.TeaModel {
 
             public var loaderMetadata: Any?
 
-            public var metadata: ChatWithKnowledgeBaseStreamResponseBody.MultiCollectionRecallResult.Matches.Metadata?
+            public var metadata: [String: Any]?
 
             public var rerankScore: Double?
 
@@ -4154,7 +4091,6 @@ public class ChatWithKnowledgeBaseStreamResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.metadata?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -4175,7 +4111,7 @@ public class ChatWithKnowledgeBaseStreamResponseBody : Tea.TeaModel {
                     map["LoaderMetadata"] = self.loaderMetadata!
                 }
                 if self.metadata != nil {
-                    map["Metadata"] = self.metadata?.toMap()
+                    map["Metadata"] = self.metadata!
                 }
                 if self.rerankScore != nil {
                     map["RerankScore"] = self.rerankScore!
@@ -4209,10 +4145,8 @@ public class ChatWithKnowledgeBaseStreamResponseBody : Tea.TeaModel {
                 if let value = dict["LoaderMetadata"] as? Any {
                     self.loaderMetadata = value
                 }
-                if let value = dict["Metadata"] as? [String: Any?] {
-                    var model = ChatWithKnowledgeBaseStreamResponseBody.MultiCollectionRecallResult.Matches.Metadata()
-                    model.fromMap(value)
-                    self.metadata = model
+                if let value = dict["Metadata"] as? [String: Any] {
+                    self.metadata = value
                 }
                 if let value = dict["RerankScore"] as? Double {
                     self.rerankScore = value
