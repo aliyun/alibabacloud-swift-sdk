@@ -29932,6 +29932,8 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var memorySize: Int32?
 
+    public var officeSiteId: String?
+
     public var orderBy: String?
 
     public var orderType: String?
@@ -29995,6 +29997,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if self.memorySize != nil {
             map["MemorySize"] = self.memorySize!
         }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
         if self.orderBy != nil {
             map["OrderBy"] = self.orderBy!
         }
@@ -30057,6 +30062,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if let value = dict["MemorySize"] as? Int32 {
             self.memorySize = value
         }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
         if let value = dict["OrderBy"] as? String {
             self.orderBy = value
         }
@@ -30095,6 +30103,10 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
         public var desktopTypeId: String?
 
         public var desktopTypeStatus: String?
+
+        public var envId: String?
+
+        public var envType: String?
 
         public var gpuCount: Double?
 
@@ -30143,6 +30155,12 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             if self.desktopTypeStatus != nil {
                 map["DesktopTypeStatus"] = self.desktopTypeStatus!
             }
+            if self.envId != nil {
+                map["EnvId"] = self.envId!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
+            }
             if self.gpuCount != nil {
                 map["GpuCount"] = self.gpuCount!
             }
@@ -30189,6 +30207,12 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if let value = dict["DesktopTypeStatus"] as? String {
                 self.desktopTypeStatus = value
+            }
+            if let value = dict["EnvId"] as? String {
+                self.envId = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["GpuCount"] as? Double {
                 self.gpuCount = value
@@ -31220,6 +31244,10 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var entraDomainName: String?
 
+        public var envId: String?
+
+        public var envType: String?
+
         public var expiredTime: String?
 
         public var fotaUpdate: DescribeDesktopsResponseBody.Desktops.FotaUpdate?
@@ -31403,6 +31431,12 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.entraDomainName != nil {
                 map["EntraDomainName"] = self.entraDomainName!
+            }
+            if self.envId != nil {
+                map["EnvId"] = self.envId!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -31644,6 +31678,12 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EntraDomainName"] as? String {
                 self.entraDomainName = value
+            }
+            if let value = dict["EnvId"] as? String {
+                self.envId = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -35628,11 +35668,15 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
 
     public var desktopName: String?
 
+    public var desktopStatusList: [String]?
+
     public var desktopType: String?
 
     public var endTime: String?
 
     public var endUserId: String?
+
+    public var excludeDesktopStatusList: [String]?
 
     public var officeSiteId: String?
 
@@ -35674,6 +35718,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         if self.desktopName != nil {
             map["DesktopName"] = self.desktopName!
         }
+        if self.desktopStatusList != nil {
+            map["DesktopStatusList"] = self.desktopStatusList!
+        }
         if self.desktopType != nil {
             map["DesktopType"] = self.desktopType!
         }
@@ -35682,6 +35729,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
+        }
+        if self.excludeDesktopStatusList != nil {
+            map["ExcludeDesktopStatusList"] = self.excludeDesktopStatusList!
         }
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
@@ -35724,6 +35774,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         if let value = dict["DesktopName"] as? String {
             self.desktopName = value
         }
+        if let value = dict["DesktopStatusList"] as? [String] {
+            self.desktopStatusList = value
+        }
         if let value = dict["DesktopType"] as? String {
             self.desktopType = value
         }
@@ -35732,6 +35785,9 @@ public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
+        }
+        if let value = dict["ExcludeDesktopStatusList"] as? [String] {
+            self.excludeDesktopStatusList = value
         }
         if let value = dict["OfficeSiteId"] as? String {
             self.officeSiteId = value
@@ -47642,6 +47698,10 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
         public var diskStatus: String?
 
+        public var envId: String?
+
+        public var envType: String?
+
         public var osType: String?
 
         public var progress: String?
@@ -47707,6 +47767,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.diskStatus != nil {
                 map["DiskStatus"] = self.diskStatus!
+            }
+            if self.envId != nil {
+                map["EnvId"] = self.envId!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -47778,6 +47844,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DiskStatus"] as? String {
                 self.diskStatus = value
+            }
+            if let value = dict["EnvId"] as? String {
+                self.envId = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["OsType"] as? String {
                 self.osType = value
