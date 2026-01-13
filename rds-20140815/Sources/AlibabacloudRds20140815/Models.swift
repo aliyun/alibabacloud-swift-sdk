@@ -64811,6 +64811,8 @@ public class DescribeRCSnapshotsRequest : Tea.TeaModel {
     }
     public var diskId: String?
 
+    public var instanceId: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -64838,6 +64840,9 @@ public class DescribeRCSnapshotsRequest : Tea.TeaModel {
         if self.diskId != nil {
             map["DiskId"] = self.diskId!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -64864,6 +64869,9 @@ public class DescribeRCSnapshotsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DiskId"] as? String {
             self.diskId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
@@ -64945,6 +64953,8 @@ public class DescribeRCSnapshotsResponseBody : Tea.TeaModel {
 
         public var instantAccess: Bool?
 
+        public var lastModifiedTime: String?
+
         public var progress: String?
 
         public var regionId: String?
@@ -65002,6 +65012,9 @@ public class DescribeRCSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.instantAccess != nil {
                 map["InstantAccess"] = self.instantAccess!
+            }
+            if self.lastModifiedTime != nil {
+                map["LastModifiedTime"] = self.lastModifiedTime!
             }
             if self.progress != nil {
                 map["Progress"] = self.progress!
@@ -65068,6 +65081,9 @@ public class DescribeRCSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstantAccess"] as? Bool {
                 self.instantAccess = value
+            }
+            if let value = dict["LastModifiedTime"] as? String {
+                self.lastModifiedTime = value
             }
             if let value = dict["Progress"] as? String {
                 self.progress = value
@@ -90290,6 +90306,158 @@ public class ModifyParameterGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyParameterGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyRCDiskAttributeRequest : Tea.TeaModel {
+    public var burstingEnabled: Bool?
+
+    public var deleteWithInstance: Bool?
+
+    public var description_: String?
+
+    public var diskId: String?
+
+    public var diskName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
+        }
+        if self.deleteWithInstance != nil {
+            map["DeleteWithInstance"] = self.deleteWithInstance!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.diskId != nil {
+            map["DiskId"] = self.diskId!
+        }
+        if self.diskName != nil {
+            map["DiskName"] = self.diskName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BurstingEnabled"] as? Bool {
+            self.burstingEnabled = value
+        }
+        if let value = dict["DeleteWithInstance"] as? Bool {
+            self.deleteWithInstance = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DiskId"] as? String {
+            self.diskId = value
+        }
+        if let value = dict["DiskName"] as? String {
+            self.diskName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ModifyRCDiskAttributeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyRCDiskAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyRCDiskAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyRCDiskAttributeResponseBody()
             model.fromMap(value)
             self.body = model
         }
