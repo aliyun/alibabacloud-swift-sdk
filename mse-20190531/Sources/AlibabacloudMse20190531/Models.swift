@@ -16697,6 +16697,295 @@ public class DeleteAuthResourceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteBlackWhiteListRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["GatewayId"] as? Int64 {
+            self.gatewayId = value
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class DeleteBlackWhiteListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var content: String?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: Int64?
+
+        public var isWhite: Bool?
+
+        public var resourceId: Int64?
+
+        public var resourceType: String?
+
+        public var status: Bool?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.isWhite != nil {
+                map["IsWhite"] = self.isWhite!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+            if let value = dict["GatewayId"] as? Int64 {
+                self.gatewayId = value
+            }
+            if let value = dict["GatewayUniqueId"] as? String {
+                self.gatewayUniqueId = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["IsWhite"] as? Bool {
+                self.isWhite = value
+            }
+            if let value = dict["ResourceId"] as? Int64 {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["Status"] as? Bool {
+                self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: DeleteBlackWhiteListResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteBlackWhiteListResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteBlackWhiteListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteBlackWhiteListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteBlackWhiteListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteCircuitBreakerRulesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -17770,6 +18059,367 @@ public class DeleteGatewayResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteGatewayResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteGatewayAuthRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+    }
+}
+
+public class DeleteGatewayAuthResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var clientId: String?
+
+        public var clientSecret: String?
+
+        public var cookieDomain: String?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: Int64?
+
+        public var isWhite: Bool?
+
+        public var issuer: String?
+
+        public var jwks: String?
+
+        public var loginUrl: String?
+
+        public var name: String?
+
+        public var redirectUrl: String?
+
+        public var scopesList: [String]?
+
+        public var status: Bool?
+
+        public var tokenName: String?
+
+        public var tokenNamePrefix: String?
+
+        public var tokenPass: Bool?
+
+        public var tokenPosition: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientId != nil {
+                map["ClientId"] = self.clientId!
+            }
+            if self.clientSecret != nil {
+                map["ClientSecret"] = self.clientSecret!
+            }
+            if self.cookieDomain != nil {
+                map["CookieDomain"] = self.cookieDomain!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.isWhite != nil {
+                map["IsWhite"] = self.isWhite!
+            }
+            if self.issuer != nil {
+                map["Issuer"] = self.issuer!
+            }
+            if self.jwks != nil {
+                map["Jwks"] = self.jwks!
+            }
+            if self.loginUrl != nil {
+                map["LoginUrl"] = self.loginUrl!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.redirectUrl != nil {
+                map["RedirectUrl"] = self.redirectUrl!
+            }
+            if self.scopesList != nil {
+                map["ScopesList"] = self.scopesList!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tokenName != nil {
+                map["TokenName"] = self.tokenName!
+            }
+            if self.tokenNamePrefix != nil {
+                map["TokenNamePrefix"] = self.tokenNamePrefix!
+            }
+            if self.tokenPass != nil {
+                map["TokenPass"] = self.tokenPass!
+            }
+            if self.tokenPosition != nil {
+                map["TokenPosition"] = self.tokenPosition!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClientId"] as? String {
+                self.clientId = value
+            }
+            if let value = dict["ClientSecret"] as? String {
+                self.clientSecret = value
+            }
+            if let value = dict["CookieDomain"] as? String {
+                self.cookieDomain = value
+            }
+            if let value = dict["GatewayId"] as? Int64 {
+                self.gatewayId = value
+            }
+            if let value = dict["GatewayUniqueId"] as? String {
+                self.gatewayUniqueId = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["IsWhite"] as? Bool {
+                self.isWhite = value
+            }
+            if let value = dict["Issuer"] as? String {
+                self.issuer = value
+            }
+            if let value = dict["Jwks"] as? String {
+                self.jwks = value
+            }
+            if let value = dict["LoginUrl"] as? String {
+                self.loginUrl = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["RedirectUrl"] as? String {
+                self.redirectUrl = value
+            }
+            if let value = dict["ScopesList"] as? [String] {
+                self.scopesList = value
+            }
+            if let value = dict["Status"] as? Bool {
+                self.status = value
+            }
+            if let value = dict["TokenName"] as? String {
+                self.tokenName = value
+            }
+            if let value = dict["TokenNamePrefix"] as? String {
+                self.tokenNamePrefix = value
+            }
+            if let value = dict["TokenPass"] as? Bool {
+                self.tokenPass = value
+            }
+            if let value = dict["TokenPosition"] as? String {
+                self.tokenPosition = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: DeleteGatewayAuthResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteGatewayAuthResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteGatewayAuthResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteGatewayAuthResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteGatewayAuthResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -48216,6 +48866,789 @@ public class ListGatewayResponse : Tea.TeaModel {
     }
 }
 
+public class ListGatewayAuthRequest : Tea.TeaModel {
+    public class FilterParams : Tea.TeaModel {
+        public var gatewayUniqueId: String?
+
+        public var isWhite: Bool?
+
+        public var name: String?
+
+        public var status: Bool?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.isWhite != nil {
+                map["IsWhite"] = self.isWhite!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GatewayUniqueId"] as? String {
+                self.gatewayUniqueId = value
+            }
+            if let value = dict["IsWhite"] as? Bool {
+                self.isWhite = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Status"] as? Bool {
+                self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var acceptLanguage: String?
+
+    public var descSort: Bool?
+
+    public var filterParams: ListGatewayAuthRequest.FilterParams?
+
+    public var orderItem: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParams?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.descSort != nil {
+            map["DescSort"] = self.descSort!
+        }
+        if self.filterParams != nil {
+            map["FilterParams"] = self.filterParams?.toMap()
+        }
+        if self.orderItem != nil {
+            map["OrderItem"] = self.orderItem!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["DescSort"] as? Bool {
+            self.descSort = value
+        }
+        if let value = dict["FilterParams"] as? [String: Any?] {
+            var model = ListGatewayAuthRequest.FilterParams()
+            model.fromMap(value)
+            self.filterParams = model
+        }
+        if let value = dict["OrderItem"] as? String {
+            self.orderItem = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListGatewayAuthShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var descSort: Bool?
+
+    public var filterParamsShrink: String?
+
+    public var orderItem: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.descSort != nil {
+            map["DescSort"] = self.descSort!
+        }
+        if self.filterParamsShrink != nil {
+            map["FilterParams"] = self.filterParamsShrink!
+        }
+        if self.orderItem != nil {
+            map["OrderItem"] = self.orderItem!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["DescSort"] as? Bool {
+            self.descSort = value
+        }
+        if let value = dict["FilterParams"] as? String {
+            self.filterParamsShrink = value
+        }
+        if let value = dict["OrderItem"] as? String {
+            self.orderItem = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListGatewayAuthResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class ExternalAuthZ : Tea.TeaModel {
+                public class Service : Tea.TeaModel {
+                    public var groupName: String?
+
+                    public var name: String?
+
+                    public var namespace: String?
+
+                    public var sourceType: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.groupName != nil {
+                            map["GroupName"] = self.groupName!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.namespace != nil {
+                            map["Namespace"] = self.namespace!
+                        }
+                        if self.sourceType != nil {
+                            map["SourceType"] = self.sourceType!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["GroupName"] as? String {
+                            self.groupName = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["Namespace"] as? String {
+                            self.namespace = value
+                        }
+                        if let value = dict["SourceType"] as? String {
+                            self.sourceType = value
+                        }
+                    }
+                }
+                public var allowRequestHeaders: [String]?
+
+                public var allowUpstreamHeaders: [String]?
+
+                public var bodyMaxBytes: Int32?
+
+                public var isRestrict: Bool?
+
+                public var prefixPath: String?
+
+                public var service: ListGatewayAuthResponseBody.Data.Result.ExternalAuthZ.Service?
+
+                public var serviceId: Int64?
+
+                public var timeout: Int32?
+
+                public var tokenKey: String?
+
+                public var withRematchRoute: Bool?
+
+                public var withRequestBody: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.service?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allowRequestHeaders != nil {
+                        map["AllowRequestHeaders"] = self.allowRequestHeaders!
+                    }
+                    if self.allowUpstreamHeaders != nil {
+                        map["AllowUpstreamHeaders"] = self.allowUpstreamHeaders!
+                    }
+                    if self.bodyMaxBytes != nil {
+                        map["BodyMaxBytes"] = self.bodyMaxBytes!
+                    }
+                    if self.isRestrict != nil {
+                        map["IsRestrict"] = self.isRestrict!
+                    }
+                    if self.prefixPath != nil {
+                        map["PrefixPath"] = self.prefixPath!
+                    }
+                    if self.service != nil {
+                        map["Service"] = self.service?.toMap()
+                    }
+                    if self.serviceId != nil {
+                        map["ServiceId"] = self.serviceId!
+                    }
+                    if self.timeout != nil {
+                        map["Timeout"] = self.timeout!
+                    }
+                    if self.tokenKey != nil {
+                        map["TokenKey"] = self.tokenKey!
+                    }
+                    if self.withRematchRoute != nil {
+                        map["WithRematchRoute"] = self.withRematchRoute!
+                    }
+                    if self.withRequestBody != nil {
+                        map["WithRequestBody"] = self.withRequestBody!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllowRequestHeaders"] as? [String] {
+                        self.allowRequestHeaders = value
+                    }
+                    if let value = dict["AllowUpstreamHeaders"] as? [String] {
+                        self.allowUpstreamHeaders = value
+                    }
+                    if let value = dict["BodyMaxBytes"] as? Int32 {
+                        self.bodyMaxBytes = value
+                    }
+                    if let value = dict["IsRestrict"] as? Bool {
+                        self.isRestrict = value
+                    }
+                    if let value = dict["PrefixPath"] as? String {
+                        self.prefixPath = value
+                    }
+                    if let value = dict["Service"] as? [String: Any?] {
+                        var model = ListGatewayAuthResponseBody.Data.Result.ExternalAuthZ.Service()
+                        model.fromMap(value)
+                        self.service = model
+                    }
+                    if let value = dict["ServiceId"] as? Int64 {
+                        self.serviceId = value
+                    }
+                    if let value = dict["Timeout"] as? Int32 {
+                        self.timeout = value
+                    }
+                    if let value = dict["TokenKey"] as? String {
+                        self.tokenKey = value
+                    }
+                    if let value = dict["WithRematchRoute"] as? Bool {
+                        self.withRematchRoute = value
+                    }
+                    if let value = dict["WithRequestBody"] as? Bool {
+                        self.withRequestBody = value
+                    }
+                }
+            }
+            public var authResourceMode: Int32?
+
+            public var clientId: String?
+
+            public var clientSecret: String?
+
+            public var cookieDomain: String?
+
+            public var externalAuthZ: ListGatewayAuthResponseBody.Data.Result.ExternalAuthZ?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var isWhite: Bool?
+
+            public var issuer: String?
+
+            public var jwks: String?
+
+            public var loginUrl: String?
+
+            public var name: String?
+
+            public var redirectUrl: String?
+
+            public var scopesList: String?
+
+            public var status: Bool?
+
+            public var sub: String?
+
+            public var tokenName: String?
+
+            public var tokenNamePrefix: String?
+
+            public var tokenPass: Bool?
+
+            public var tokenPosition: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.externalAuthZ?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authResourceMode != nil {
+                    map["AuthResourceMode"] = self.authResourceMode!
+                }
+                if self.clientId != nil {
+                    map["ClientId"] = self.clientId!
+                }
+                if self.clientSecret != nil {
+                    map["ClientSecret"] = self.clientSecret!
+                }
+                if self.cookieDomain != nil {
+                    map["CookieDomain"] = self.cookieDomain!
+                }
+                if self.externalAuthZ != nil {
+                    map["ExternalAuthZ"] = self.externalAuthZ?.toMap()
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isWhite != nil {
+                    map["IsWhite"] = self.isWhite!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.jwks != nil {
+                    map["Jwks"] = self.jwks!
+                }
+                if self.loginUrl != nil {
+                    map["LoginUrl"] = self.loginUrl!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.redirectUrl != nil {
+                    map["RedirectUrl"] = self.redirectUrl!
+                }
+                if self.scopesList != nil {
+                    map["ScopesList"] = self.scopesList!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.sub != nil {
+                    map["Sub"] = self.sub!
+                }
+                if self.tokenName != nil {
+                    map["TokenName"] = self.tokenName!
+                }
+                if self.tokenNamePrefix != nil {
+                    map["TokenNamePrefix"] = self.tokenNamePrefix!
+                }
+                if self.tokenPass != nil {
+                    map["TokenPass"] = self.tokenPass!
+                }
+                if self.tokenPosition != nil {
+                    map["TokenPosition"] = self.tokenPosition!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AuthResourceMode"] as? Int32 {
+                    self.authResourceMode = value
+                }
+                if let value = dict["ClientId"] as? String {
+                    self.clientId = value
+                }
+                if let value = dict["ClientSecret"] as? String {
+                    self.clientSecret = value
+                }
+                if let value = dict["CookieDomain"] as? String {
+                    self.cookieDomain = value
+                }
+                if let value = dict["ExternalAuthZ"] as? [String: Any?] {
+                    var model = ListGatewayAuthResponseBody.Data.Result.ExternalAuthZ()
+                    model.fromMap(value)
+                    self.externalAuthZ = model
+                }
+                if let value = dict["GatewayId"] as? Int64 {
+                    self.gatewayId = value
+                }
+                if let value = dict["GatewayUniqueId"] as? String {
+                    self.gatewayUniqueId = value
+                }
+                if let value = dict["GmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["IsWhite"] as? Bool {
+                    self.isWhite = value
+                }
+                if let value = dict["Issuer"] as? String {
+                    self.issuer = value
+                }
+                if let value = dict["Jwks"] as? String {
+                    self.jwks = value
+                }
+                if let value = dict["LoginUrl"] as? String {
+                    self.loginUrl = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["RedirectUrl"] as? String {
+                    self.redirectUrl = value
+                }
+                if let value = dict["ScopesList"] as? String {
+                    self.scopesList = value
+                }
+                if let value = dict["Status"] as? Bool {
+                    self.status = value
+                }
+                if let value = dict["Sub"] as? String {
+                    self.sub = value
+                }
+                if let value = dict["TokenName"] as? String {
+                    self.tokenName = value
+                }
+                if let value = dict["TokenNamePrefix"] as? String {
+                    self.tokenNamePrefix = value
+                }
+                if let value = dict["TokenPass"] as? Bool {
+                    self.tokenPass = value
+                }
+                if let value = dict["TokenPosition"] as? String {
+                    self.tokenPosition = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListGatewayAuthResponseBody.Data.Result]?
+
+        public var totalSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["Result"] as? [Any?] {
+                var tmp : [ListGatewayAuthResponseBody.Data.Result] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListGatewayAuthResponseBody.Data.Result()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.result = tmp
+            }
+            if let value = dict["TotalSize"] as? Int64 {
+                self.totalSize = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: ListGatewayAuthResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListGatewayAuthResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListGatewayAuthResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayAuthResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListGatewayAuthResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListGatewayAuthConsumerRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -72675,6 +74108,822 @@ public class UpdateFlowRuleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateFlowRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGatewayAuthRequest : Tea.TeaModel {
+    public class AuthResourceList : Tea.TeaModel {
+        public class AuthResourceHeaderList : Tea.TeaModel {
+            public var headerKey: String?
+
+            public var headerMethod: String?
+
+            public var headerValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.headerKey != nil {
+                    map["HeaderKey"] = self.headerKey!
+                }
+                if self.headerMethod != nil {
+                    map["HeaderMethod"] = self.headerMethod!
+                }
+                if self.headerValue != nil {
+                    map["HeaderValue"] = self.headerValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["HeaderKey"] as? String {
+                    self.headerKey = value
+                }
+                if let value = dict["HeaderMethod"] as? String {
+                    self.headerMethod = value
+                }
+                if let value = dict["HeaderValue"] as? String {
+                    self.headerValue = value
+                }
+            }
+        }
+        public var authResourceHeaderList: [UpdateGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList]?
+
+        public var domainId: Int64?
+
+        public var id: Int64?
+
+        public var ignoreCase: Bool?
+
+        public var matchType: String?
+
+        public var path: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authResourceHeaderList != nil {
+                var tmp : [Any] = []
+                for k in self.authResourceHeaderList! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthResourceHeaderList"] = tmp
+            }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.ignoreCase != nil {
+                map["IgnoreCase"] = self.ignoreCase!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthResourceHeaderList"] as? [Any?] {
+                var tmp : [UpdateGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.authResourceHeaderList = tmp
+            }
+            if let value = dict["DomainId"] as? Int64 {
+                self.domainId = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["IgnoreCase"] as? Bool {
+                self.ignoreCase = value
+            }
+            if let value = dict["MatchType"] as? String {
+                self.matchType = value
+            }
+            if let value = dict["Path"] as? String {
+                self.path = value
+            }
+        }
+    }
+    public class ExternalAuthZJSON : Tea.TeaModel {
+        public var allowRequestHeaders: [String]?
+
+        public var allowUpstreamHeaders: [String]?
+
+        public var bodyMaxBytes: Int32?
+
+        public var isRestrict: Bool?
+
+        public var prefixPath: String?
+
+        public var serviceId: Int64?
+
+        public var timeout: Int32?
+
+        public var tokenKey: String?
+
+        public var withRematchRoute: Bool?
+
+        public var withRequestBody: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowRequestHeaders != nil {
+                map["AllowRequestHeaders"] = self.allowRequestHeaders!
+            }
+            if self.allowUpstreamHeaders != nil {
+                map["AllowUpstreamHeaders"] = self.allowUpstreamHeaders!
+            }
+            if self.bodyMaxBytes != nil {
+                map["BodyMaxBytes"] = self.bodyMaxBytes!
+            }
+            if self.isRestrict != nil {
+                map["IsRestrict"] = self.isRestrict!
+            }
+            if self.prefixPath != nil {
+                map["PrefixPath"] = self.prefixPath!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.timeout != nil {
+                map["Timeout"] = self.timeout!
+            }
+            if self.tokenKey != nil {
+                map["TokenKey"] = self.tokenKey!
+            }
+            if self.withRematchRoute != nil {
+                map["WithRematchRoute"] = self.withRematchRoute!
+            }
+            if self.withRequestBody != nil {
+                map["WithRequestBody"] = self.withRequestBody!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowRequestHeaders"] as? [String] {
+                self.allowRequestHeaders = value
+            }
+            if let value = dict["AllowUpstreamHeaders"] as? [String] {
+                self.allowUpstreamHeaders = value
+            }
+            if let value = dict["BodyMaxBytes"] as? Int32 {
+                self.bodyMaxBytes = value
+            }
+            if let value = dict["IsRestrict"] as? Bool {
+                self.isRestrict = value
+            }
+            if let value = dict["PrefixPath"] as? String {
+                self.prefixPath = value
+            }
+            if let value = dict["ServiceId"] as? Int64 {
+                self.serviceId = value
+            }
+            if let value = dict["Timeout"] as? Int32 {
+                self.timeout = value
+            }
+            if let value = dict["TokenKey"] as? String {
+                self.tokenKey = value
+            }
+            if let value = dict["WithRematchRoute"] as? Bool {
+                self.withRematchRoute = value
+            }
+            if let value = dict["WithRequestBody"] as? Bool {
+                self.withRequestBody = value
+            }
+        }
+    }
+    public var acceptLanguage: String?
+
+    public var authResourceConfig: String?
+
+    public var authResourceList: [UpdateGatewayAuthRequest.AuthResourceList]?
+
+    public var authResourceMode: Int32?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
+    public var cookieDomain: String?
+
+    public var deleteResourceIdList: [Int64]?
+
+    public var externalAuthZJSON: UpdateGatewayAuthRequest.ExternalAuthZJSON?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public var isWhite: Bool?
+
+    public var issuer: String?
+
+    public var jwks: String?
+
+    public var loginUrl: String?
+
+    public var name: String?
+
+    public var redirectUrl: String?
+
+    public var scopesList: [String]?
+
+    public var status: Bool?
+
+    public var sub: String?
+
+    public var tokenName: String?
+
+    public var tokenNamePrefix: String?
+
+    public var tokenPass: Bool?
+
+    public var tokenPosition: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.externalAuthZJSON?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.authResourceConfig != nil {
+            map["AuthResourceConfig"] = self.authResourceConfig!
+        }
+        if self.authResourceList != nil {
+            var tmp : [Any] = []
+            for k in self.authResourceList! {
+                tmp.append(k.toMap())
+            }
+            map["AuthResourceList"] = tmp
+        }
+        if self.authResourceMode != nil {
+            map["AuthResourceMode"] = self.authResourceMode!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
+        if self.cookieDomain != nil {
+            map["CookieDomain"] = self.cookieDomain!
+        }
+        if self.deleteResourceIdList != nil {
+            map["DeleteResourceIdList"] = self.deleteResourceIdList!
+        }
+        if self.externalAuthZJSON != nil {
+            map["ExternalAuthZJSON"] = self.externalAuthZJSON?.toMap()
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.isWhite != nil {
+            map["IsWhite"] = self.isWhite!
+        }
+        if self.issuer != nil {
+            map["Issuer"] = self.issuer!
+        }
+        if self.jwks != nil {
+            map["Jwks"] = self.jwks!
+        }
+        if self.loginUrl != nil {
+            map["LoginUrl"] = self.loginUrl!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.redirectUrl != nil {
+            map["RedirectUrl"] = self.redirectUrl!
+        }
+        if self.scopesList != nil {
+            map["ScopesList"] = self.scopesList!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.sub != nil {
+            map["Sub"] = self.sub!
+        }
+        if self.tokenName != nil {
+            map["TokenName"] = self.tokenName!
+        }
+        if self.tokenNamePrefix != nil {
+            map["TokenNamePrefix"] = self.tokenNamePrefix!
+        }
+        if self.tokenPass != nil {
+            map["TokenPass"] = self.tokenPass!
+        }
+        if self.tokenPosition != nil {
+            map["TokenPosition"] = self.tokenPosition!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["AuthResourceConfig"] as? String {
+            self.authResourceConfig = value
+        }
+        if let value = dict["AuthResourceList"] as? [Any?] {
+            var tmp : [UpdateGatewayAuthRequest.AuthResourceList] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateGatewayAuthRequest.AuthResourceList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.authResourceList = tmp
+        }
+        if let value = dict["AuthResourceMode"] as? Int32 {
+            self.authResourceMode = value
+        }
+        if let value = dict["ClientId"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["ClientSecret"] as? String {
+            self.clientSecret = value
+        }
+        if let value = dict["CookieDomain"] as? String {
+            self.cookieDomain = value
+        }
+        if let value = dict["DeleteResourceIdList"] as? [Int64] {
+            self.deleteResourceIdList = value
+        }
+        if let value = dict["ExternalAuthZJSON"] as? [String: Any?] {
+            var model = UpdateGatewayAuthRequest.ExternalAuthZJSON()
+            model.fromMap(value)
+            self.externalAuthZJSON = model
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["IsWhite"] as? Bool {
+            self.isWhite = value
+        }
+        if let value = dict["Issuer"] as? String {
+            self.issuer = value
+        }
+        if let value = dict["Jwks"] as? String {
+            self.jwks = value
+        }
+        if let value = dict["LoginUrl"] as? String {
+            self.loginUrl = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RedirectUrl"] as? String {
+            self.redirectUrl = value
+        }
+        if let value = dict["ScopesList"] as? [String] {
+            self.scopesList = value
+        }
+        if let value = dict["Status"] as? Bool {
+            self.status = value
+        }
+        if let value = dict["Sub"] as? String {
+            self.sub = value
+        }
+        if let value = dict["TokenName"] as? String {
+            self.tokenName = value
+        }
+        if let value = dict["TokenNamePrefix"] as? String {
+            self.tokenNamePrefix = value
+        }
+        if let value = dict["TokenPass"] as? Bool {
+            self.tokenPass = value
+        }
+        if let value = dict["TokenPosition"] as? String {
+            self.tokenPosition = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class UpdateGatewayAuthShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var authResourceConfig: String?
+
+    public var authResourceListShrink: String?
+
+    public var authResourceMode: Int32?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
+    public var cookieDomain: String?
+
+    public var deleteResourceIdListShrink: String?
+
+    public var externalAuthZJSONShrink: String?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public var isWhite: Bool?
+
+    public var issuer: String?
+
+    public var jwks: String?
+
+    public var loginUrl: String?
+
+    public var name: String?
+
+    public var redirectUrl: String?
+
+    public var scopesListShrink: String?
+
+    public var status: Bool?
+
+    public var sub: String?
+
+    public var tokenName: String?
+
+    public var tokenNamePrefix: String?
+
+    public var tokenPass: Bool?
+
+    public var tokenPosition: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.authResourceConfig != nil {
+            map["AuthResourceConfig"] = self.authResourceConfig!
+        }
+        if self.authResourceListShrink != nil {
+            map["AuthResourceList"] = self.authResourceListShrink!
+        }
+        if self.authResourceMode != nil {
+            map["AuthResourceMode"] = self.authResourceMode!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
+        if self.cookieDomain != nil {
+            map["CookieDomain"] = self.cookieDomain!
+        }
+        if self.deleteResourceIdListShrink != nil {
+            map["DeleteResourceIdList"] = self.deleteResourceIdListShrink!
+        }
+        if self.externalAuthZJSONShrink != nil {
+            map["ExternalAuthZJSON"] = self.externalAuthZJSONShrink!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.isWhite != nil {
+            map["IsWhite"] = self.isWhite!
+        }
+        if self.issuer != nil {
+            map["Issuer"] = self.issuer!
+        }
+        if self.jwks != nil {
+            map["Jwks"] = self.jwks!
+        }
+        if self.loginUrl != nil {
+            map["LoginUrl"] = self.loginUrl!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.redirectUrl != nil {
+            map["RedirectUrl"] = self.redirectUrl!
+        }
+        if self.scopesListShrink != nil {
+            map["ScopesList"] = self.scopesListShrink!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.sub != nil {
+            map["Sub"] = self.sub!
+        }
+        if self.tokenName != nil {
+            map["TokenName"] = self.tokenName!
+        }
+        if self.tokenNamePrefix != nil {
+            map["TokenNamePrefix"] = self.tokenNamePrefix!
+        }
+        if self.tokenPass != nil {
+            map["TokenPass"] = self.tokenPass!
+        }
+        if self.tokenPosition != nil {
+            map["TokenPosition"] = self.tokenPosition!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["AuthResourceConfig"] as? String {
+            self.authResourceConfig = value
+        }
+        if let value = dict["AuthResourceList"] as? String {
+            self.authResourceListShrink = value
+        }
+        if let value = dict["AuthResourceMode"] as? Int32 {
+            self.authResourceMode = value
+        }
+        if let value = dict["ClientId"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["ClientSecret"] as? String {
+            self.clientSecret = value
+        }
+        if let value = dict["CookieDomain"] as? String {
+            self.cookieDomain = value
+        }
+        if let value = dict["DeleteResourceIdList"] as? String {
+            self.deleteResourceIdListShrink = value
+        }
+        if let value = dict["ExternalAuthZJSON"] as? String {
+            self.externalAuthZJSONShrink = value
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["IsWhite"] as? Bool {
+            self.isWhite = value
+        }
+        if let value = dict["Issuer"] as? String {
+            self.issuer = value
+        }
+        if let value = dict["Jwks"] as? String {
+            self.jwks = value
+        }
+        if let value = dict["LoginUrl"] as? String {
+            self.loginUrl = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RedirectUrl"] as? String {
+            self.redirectUrl = value
+        }
+        if let value = dict["ScopesList"] as? String {
+            self.scopesListShrink = value
+        }
+        if let value = dict["Status"] as? Bool {
+            self.status = value
+        }
+        if let value = dict["Sub"] as? String {
+            self.sub = value
+        }
+        if let value = dict["TokenName"] as? String {
+            self.tokenName = value
+        }
+        if let value = dict["TokenNamePrefix"] as? String {
+            self.tokenNamePrefix = value
+        }
+        if let value = dict["TokenPass"] as? Bool {
+            self.tokenPass = value
+        }
+        if let value = dict["TokenPosition"] as? String {
+            self.tokenPosition = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class UpdateGatewayAuthResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Int64?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Int64 {
+            self.data = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateGatewayAuthResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayAuthResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateGatewayAuthResponseBody()
             model.fromMap(value)
             self.body = model
         }
