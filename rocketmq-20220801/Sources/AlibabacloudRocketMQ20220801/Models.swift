@@ -1435,6 +1435,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
         public var storageSecretKey: String?
 
+        public var traceOn: Bool?
+
         public override init() {
             super.init()
         }
@@ -1473,6 +1475,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.storageSecretKey != nil {
                 map["storageSecretKey"] = self.storageSecretKey!
             }
+            if self.traceOn != nil {
+                map["traceOn"] = self.traceOn!
+            }
             return map
         }
 
@@ -1501,6 +1506,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["storageSecretKey"] as? String {
                 self.storageSecretKey = value
+            }
+            if let value = dict["traceOn"] as? Bool {
+                self.traceOn = value
             }
         }
     }
