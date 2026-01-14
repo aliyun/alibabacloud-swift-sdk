@@ -6585,6 +6585,44 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class KnowledgeConfigList : Tea.TeaModel {
+            public var accessType: String?
+
+            public var mcpServerId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessType != nil {
+                    map["AccessType"] = self.accessType!
+                }
+                if self.mcpServerId != nil {
+                    map["McpServerId"] = self.mcpServerId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessType"] as? String {
+                    self.accessType = value
+                }
+                if let value = dict["McpServerId"] as? String {
+                    self.mcpServerId = value
+                }
+            }
+        }
         public var aliyunParentUid: String?
 
         public var aliyunUid: String?
@@ -6608,6 +6646,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
         public var instruction: String?
 
         public var knowledge: String?
+
+        public var knowledgeConfigList: [DescribeCustomAgentResponseBody.Data.KnowledgeConfigList]?
 
         public var modifier: String?
 
@@ -6679,6 +6719,13 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.knowledge != nil {
                 map["Knowledge"] = self.knowledge!
+            }
+            if self.knowledgeConfigList != nil {
+                var tmp : [Any] = []
+                for k in self.knowledgeConfigList! {
+                    tmp.append(k.toMap())
+                }
+                map["KnowledgeConfigList"] = tmp
             }
             if self.modifier != nil {
                 map["Modifier"] = self.modifier!
@@ -6752,6 +6799,19 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["Knowledge"] as? String {
                 self.knowledge = value
+            }
+            if let value = dict["KnowledgeConfigList"] as? [Any?] {
+                var tmp : [DescribeCustomAgentResponseBody.Data.KnowledgeConfigList] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCustomAgentResponseBody.Data.KnowledgeConfigList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.knowledgeConfigList = tmp
             }
             if let value = dict["Modifier"] as? String {
                 self.modifier = value
@@ -10723,6 +10783,44 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class KnowledgeConfigList : Tea.TeaModel {
+                public var accessType: String?
+
+                public var mcpServerId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessType != nil {
+                        map["AccessType"] = self.accessType!
+                    }
+                    if self.mcpServerId != nil {
+                        map["McpServerId"] = self.mcpServerId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AccessType"] as? String {
+                        self.accessType = value
+                    }
+                    if let value = dict["McpServerId"] as? String {
+                        self.mcpServerId = value
+                    }
+                }
+            }
             public var aliyunParentId: String?
 
             public var aliyunUid: String?
@@ -10746,6 +10844,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             public var instruction: String?
 
             public var knowledge: String?
+
+            public var knowledgeConfigList: [ListCustomAgentResponseBody.Data.Content.KnowledgeConfigList]?
 
             public var modifier: String?
 
@@ -10817,6 +10917,13 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.knowledge != nil {
                     map["Knowledge"] = self.knowledge!
+                }
+                if self.knowledgeConfigList != nil {
+                    var tmp : [Any] = []
+                    for k in self.knowledgeConfigList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KnowledgeConfigList"] = tmp
                 }
                 if self.modifier != nil {
                     map["Modifier"] = self.modifier!
@@ -10890,6 +10997,19 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Knowledge"] as? String {
                     self.knowledge = value
+                }
+                if let value = dict["KnowledgeConfigList"] as? [Any?] {
+                    var tmp : [ListCustomAgentResponseBody.Data.Content.KnowledgeConfigList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListCustomAgentResponseBody.Data.Content.KnowledgeConfigList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.knowledgeConfigList = tmp
                 }
                 if let value = dict["Modifier"] as? String {
                     self.modifier = value
