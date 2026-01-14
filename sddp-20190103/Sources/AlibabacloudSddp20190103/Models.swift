@@ -13014,6 +13014,8 @@ public class DescribeRulesRequest : Tea.TeaModel {
 
 public class DescribeRulesResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var auditMode: Int32?
+
         public var category: Int32?
 
         public var categoryName: String?
@@ -13066,6 +13068,8 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
 
         public var templateRuleIds: String?
 
+        public var threatAnalysisStatus: Int32?
+
         public var userId: Int64?
 
         public var warnLevel: Int32?
@@ -13084,6 +13088,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.auditMode != nil {
+                map["AuditMode"] = self.auditMode!
+            }
             if self.category != nil {
                 map["Category"] = self.category!
             }
@@ -13162,6 +13169,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             if self.templateRuleIds != nil {
                 map["TemplateRuleIds"] = self.templateRuleIds!
             }
+            if self.threatAnalysisStatus != nil {
+                map["ThreatAnalysisStatus"] = self.threatAnalysisStatus!
+            }
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
@@ -13173,6 +13183,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuditMode"] as? Int32 {
+                self.auditMode = value
+            }
             if let value = dict["Category"] as? Int32 {
                 self.category = value
             }
@@ -13250,6 +13263,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TemplateRuleIds"] as? String {
                 self.templateRuleIds = value
+            }
+            if let value = dict["ThreatAnalysisStatus"] as? Int32 {
+                self.threatAnalysisStatus = value
             }
             if let value = dict["UserId"] as? Int64 {
                 self.userId = value
