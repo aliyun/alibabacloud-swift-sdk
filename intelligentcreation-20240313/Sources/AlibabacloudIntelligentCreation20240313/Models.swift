@@ -12160,6 +12160,8 @@ public class ListAICoachTaskPageResponseBody : Tea.TeaModel {
 
     public var taskList: [ListAICoachTaskPageResponseBody.TaskList]?
 
+    public var total: Int64?
+
     public override init() {
         super.init()
     }
@@ -12184,6 +12186,9 @@ public class ListAICoachTaskPageResponseBody : Tea.TeaModel {
             }
             map["taskList"] = tmp
         }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
         return map
     }
 
@@ -12204,6 +12209,9 @@ public class ListAICoachTaskPageResponseBody : Tea.TeaModel {
                 }
             }
             self.taskList = tmp
+        }
+        if let value = dict["total"] as? Int64 {
+            self.total = value
         }
     }
 }

@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudIntelligentCreation20240313` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/intelligentcreation-20240313" "2.22.1"
+github "alibabacloud-sdk-swift/intelligentcreation-20240313" "2.22.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudIntelligentCreation20240313` into your Xcode project u
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/intelligentcreation-20240313.git", from: "2.22.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/intelligentcreation-20240313.git", from: "2.22.2")
 ]
 ```
 
