@@ -1631,6 +1631,8 @@ public class CreateAppInstanceResponseBody : Tea.TeaModel {
 
         public var orderId: String?
 
+        public var siteHost: String?
+
         public override init() {
             super.init()
         }
@@ -1654,6 +1656,9 @@ public class CreateAppInstanceResponseBody : Tea.TeaModel {
             if self.orderId != nil {
                 map["OrderId"] = self.orderId!
             }
+            if self.siteHost != nil {
+                map["SiteHost"] = self.siteHost!
+            }
             return map
         }
 
@@ -1667,6 +1672,9 @@ public class CreateAppInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["OrderId"] as? String {
                 self.orderId = value
+            }
+            if let value = dict["SiteHost"] as? String {
+                self.siteHost = value
             }
         }
     }
