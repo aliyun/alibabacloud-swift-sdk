@@ -285,6 +285,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseChunksWithOptions(_ KnowledgeBaseId: String, _ request: ListKnowledgeBaseChunksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseChunksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chunkStatus)) {
+            query["ChunkStatus"] = request.chunkStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaData)) {
+            query["MetaData"] = request.metaData!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.versionName)) {
+            query["VersionName"] = request.versionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKnowledgeBaseChunks",
+            "version": "2024-07-10",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/langstudio/knowledgebases/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(KnowledgeBaseId)) + "/knowledgebasechunks",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKnowledgeBaseChunksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKnowledgeBaseChunks(_ KnowledgeBaseId: String, _ request: ListKnowledgeBaseChunksRequest) async throws -> ListKnowledgeBaseChunksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listKnowledgeBaseChunksWithOptions(KnowledgeBaseId as! String, request as! ListKnowledgeBaseChunksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listKnowledgeBaseJobsWithOptions(_ KnowledgeBaseId: String, _ request: ListKnowledgeBaseJobsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -513,6 +558,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateKnowledgeBaseWithOptions(KnowledgeBaseId as! String, request as! UpdateKnowledgeBaseRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBaseChunkWithOptions(_ KnowledgeBaseId: String, _ KnowledgeBaseChunkId: String, _ request: UpdateKnowledgeBaseChunkRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKnowledgeBaseChunkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chunkContent)) {
+            body["ChunkContent"] = request.chunkContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chunkStatus)) {
+            body["ChunkStatus"] = request.chunkStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKnowledgeBaseChunk",
+            "version": "2024-07-10",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/langstudio/knowledgebases/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(KnowledgeBaseId)) + "/knowledgebasechunks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(KnowledgeBaseChunkId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKnowledgeBaseChunkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKnowledgeBaseChunk(_ KnowledgeBaseId: String, _ KnowledgeBaseChunkId: String, _ request: UpdateKnowledgeBaseChunkRequest) async throws -> UpdateKnowledgeBaseChunkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateKnowledgeBaseChunkWithOptions(KnowledgeBaseId as! String, KnowledgeBaseChunkId as! String, request as! UpdateKnowledgeBaseChunkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

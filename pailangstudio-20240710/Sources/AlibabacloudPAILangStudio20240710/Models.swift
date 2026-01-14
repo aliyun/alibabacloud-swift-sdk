@@ -801,6 +801,92 @@ public class Deployment : Tea.TeaModel {
             }
         }
     }
+    public class DeploymentStages : Tea.TeaModel {
+        public var description_: String?
+
+        public var errorMessage: String?
+
+        public var gmtEndTime: String?
+
+        public var gmtStartTime: String?
+
+        public var stage: Int32?
+
+        public var stageInfo: String?
+
+        public var stageName: String?
+
+        public var stageStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.gmtEndTime != nil {
+                map["GmtEndTime"] = self.gmtEndTime!
+            }
+            if self.gmtStartTime != nil {
+                map["GmtStartTime"] = self.gmtStartTime!
+            }
+            if self.stage != nil {
+                map["Stage"] = self.stage!
+            }
+            if self.stageInfo != nil {
+                map["StageInfo"] = self.stageInfo!
+            }
+            if self.stageName != nil {
+                map["StageName"] = self.stageName!
+            }
+            if self.stageStatus != nil {
+                map["StageStatus"] = self.stageStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["GmtEndTime"] as? String {
+                self.gmtEndTime = value
+            }
+            if let value = dict["GmtStartTime"] as? String {
+                self.gmtStartTime = value
+            }
+            if let value = dict["Stage"] as? Int32 {
+                self.stage = value
+            }
+            if let value = dict["StageInfo"] as? String {
+                self.stageInfo = value
+            }
+            if let value = dict["StageName"] as? String {
+                self.stageName = value
+            }
+            if let value = dict["StageStatus"] as? String {
+                self.stageStatus = value
+            }
+        }
+    }
     public class EcsSpec : Tea.TeaModel {
         public class ComputingInstanceConfig : Tea.TeaModel {
             public class ComputingInstances : Tea.TeaModel {
@@ -1160,6 +1246,8 @@ public class Deployment : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var autoApproval: Bool?
+
     public var chatHistoryConfig: Deployment.ChatHistoryConfig?
 
     public var contentModerationConfig: Deployment.ContentModerationConfig?
@@ -1174,7 +1262,7 @@ public class Deployment : Tea.TeaModel {
 
     public var deploymentId: String?
 
-    public var deploymentStages: String?
+    public var deploymentStages: [Deployment.DeploymentStages]?
 
     public var deploymentStatus: String?
 
@@ -1234,6 +1322,9 @@ public class Deployment : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.autoApproval != nil {
+            map["AutoApproval"] = self.autoApproval!
+        }
         if self.chatHistoryConfig != nil {
             map["ChatHistoryConfig"] = self.chatHistoryConfig?.toMap()
         }
@@ -1260,7 +1351,11 @@ public class Deployment : Tea.TeaModel {
             map["DeploymentId"] = self.deploymentId!
         }
         if self.deploymentStages != nil {
-            map["DeploymentStages"] = self.deploymentStages!
+            var tmp : [Any] = []
+            for k in self.deploymentStages! {
+                tmp.append(k.toMap())
+            }
+            map["DeploymentStages"] = tmp
         }
         if self.deploymentStatus != nil {
             map["DeploymentStatus"] = self.deploymentStatus!
@@ -1332,6 +1427,9 @@ public class Deployment : Tea.TeaModel {
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
         }
+        if let value = dict["AutoApproval"] as? Bool {
+            self.autoApproval = value
+        }
         if let value = dict["ChatHistoryConfig"] as? [String: Any?] {
             var model = Deployment.ChatHistoryConfig()
             model.fromMap(value)
@@ -1369,8 +1467,18 @@ public class Deployment : Tea.TeaModel {
         if let value = dict["DeploymentId"] as? String {
             self.deploymentId = value
         }
-        if let value = dict["DeploymentStages"] as? String {
-            self.deploymentStages = value
+        if let value = dict["DeploymentStages"] as? [Any?] {
+            var tmp : [Deployment.DeploymentStages] = []
+            for v in value {
+                if v != nil {
+                    var model = Deployment.DeploymentStages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.deploymentStages = tmp
         }
         if let value = dict["DeploymentStatus"] as? String {
             self.deploymentStatus = value
@@ -8944,6 +9052,472 @@ public class GetKnowledgeBaseJobResponse : Tea.TeaModel {
     }
 }
 
+public class ListKnowledgeBaseChunksRequest : Tea.TeaModel {
+    public class MetaData : Tea.TeaModel {
+        public var fileMetaId: String?
+
+        public var fileUri: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileMetaId != nil {
+                map["FileMetaId"] = self.fileMetaId!
+            }
+            if self.fileUri != nil {
+                map["FileUri"] = self.fileUri!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileMetaId"] as? String {
+                self.fileMetaId = value
+            }
+            if let value = dict["FileUri"] as? String {
+                self.fileUri = value
+            }
+        }
+    }
+    public var chunkStatus: String?
+
+    public var metaData: ListKnowledgeBaseChunksRequest.MetaData?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var versionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.metaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chunkStatus != nil {
+            map["ChunkStatus"] = self.chunkStatus!
+        }
+        if self.metaData != nil {
+            map["MetaData"] = self.metaData?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.versionName != nil {
+            map["VersionName"] = self.versionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChunkStatus"] as? String {
+            self.chunkStatus = value
+        }
+        if let value = dict["MetaData"] as? [String: Any?] {
+            var model = ListKnowledgeBaseChunksRequest.MetaData()
+            model.fromMap(value)
+            self.metaData = model
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["VersionName"] as? String {
+            self.versionName = value
+        }
+    }
+}
+
+public class ListKnowledgeBaseChunksResponseBody : Tea.TeaModel {
+    public class KnowledgeBaseChunks : Tea.TeaModel {
+        public class ChunkAttachment : Tea.TeaModel {
+            public var downloadUrl: String?
+
+            public var placeholderId: String?
+
+            public var type: String?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.downloadUrl != nil {
+                    map["DownloadUrl"] = self.downloadUrl!
+                }
+                if self.placeholderId != nil {
+                    map["PlaceholderId"] = self.placeholderId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DownloadUrl"] as? String {
+                    self.downloadUrl = value
+                }
+                if let value = dict["PlaceholderId"] as? String {
+                    self.placeholderId = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
+        public class MetaData : Tea.TeaModel {
+            public var fileMetaId: String?
+
+            public var fileName: String?
+
+            public var fileUri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileMetaId != nil {
+                    map["FileMetaId"] = self.fileMetaId!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.fileUri != nil {
+                    map["FileUri"] = self.fileUri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileMetaId"] as? String {
+                    self.fileMetaId = value
+                }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+                if let value = dict["FileUri"] as? String {
+                    self.fileUri = value
+                }
+            }
+        }
+        public var chunkAttachment: [ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks.ChunkAttachment]?
+
+        public var chunkContent: String?
+
+        public var chunkEnd: Int32?
+
+        public var chunkSequence: Int32?
+
+        public var chunkSize: Int32?
+
+        public var chunkStart: Int32?
+
+        public var chunkStatus: String?
+
+        public var downloadUrl: String?
+
+        public var knowledgeBaseChunkId: String?
+
+        public var knowledgeBaseId: String?
+
+        public var metaData: ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks.MetaData?
+
+        public var thumbnailUrl: String?
+
+        public var versionName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.metaData?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chunkAttachment != nil {
+                var tmp : [Any] = []
+                for k in self.chunkAttachment! {
+                    tmp.append(k.toMap())
+                }
+                map["ChunkAttachment"] = tmp
+            }
+            if self.chunkContent != nil {
+                map["ChunkContent"] = self.chunkContent!
+            }
+            if self.chunkEnd != nil {
+                map["ChunkEnd"] = self.chunkEnd!
+            }
+            if self.chunkSequence != nil {
+                map["ChunkSequence"] = self.chunkSequence!
+            }
+            if self.chunkSize != nil {
+                map["ChunkSize"] = self.chunkSize!
+            }
+            if self.chunkStart != nil {
+                map["ChunkStart"] = self.chunkStart!
+            }
+            if self.chunkStatus != nil {
+                map["ChunkStatus"] = self.chunkStatus!
+            }
+            if self.downloadUrl != nil {
+                map["DownloadUrl"] = self.downloadUrl!
+            }
+            if self.knowledgeBaseChunkId != nil {
+                map["KnowledgeBaseChunkId"] = self.knowledgeBaseChunkId!
+            }
+            if self.knowledgeBaseId != nil {
+                map["KnowledgeBaseId"] = self.knowledgeBaseId!
+            }
+            if self.metaData != nil {
+                map["MetaData"] = self.metaData?.toMap()
+            }
+            if self.thumbnailUrl != nil {
+                map["ThumbnailUrl"] = self.thumbnailUrl!
+            }
+            if self.versionName != nil {
+                map["VersionName"] = self.versionName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChunkAttachment"] as? [Any?] {
+                var tmp : [ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks.ChunkAttachment] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks.ChunkAttachment()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.chunkAttachment = tmp
+            }
+            if let value = dict["ChunkContent"] as? String {
+                self.chunkContent = value
+            }
+            if let value = dict["ChunkEnd"] as? Int32 {
+                self.chunkEnd = value
+            }
+            if let value = dict["ChunkSequence"] as? Int32 {
+                self.chunkSequence = value
+            }
+            if let value = dict["ChunkSize"] as? Int32 {
+                self.chunkSize = value
+            }
+            if let value = dict["ChunkStart"] as? Int32 {
+                self.chunkStart = value
+            }
+            if let value = dict["ChunkStatus"] as? String {
+                self.chunkStatus = value
+            }
+            if let value = dict["DownloadUrl"] as? String {
+                self.downloadUrl = value
+            }
+            if let value = dict["KnowledgeBaseChunkId"] as? String {
+                self.knowledgeBaseChunkId = value
+            }
+            if let value = dict["KnowledgeBaseId"] as? String {
+                self.knowledgeBaseId = value
+            }
+            if let value = dict["MetaData"] as? [String: Any?] {
+                var model = ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks.MetaData()
+                model.fromMap(value)
+                self.metaData = model
+            }
+            if let value = dict["ThumbnailUrl"] as? String {
+                self.thumbnailUrl = value
+            }
+            if let value = dict["VersionName"] as? String {
+                self.versionName = value
+            }
+        }
+    }
+    public var knowledgeBaseChunks: [ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks]?
+
+    public var maxResults: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.knowledgeBaseChunks != nil {
+            var tmp : [Any] = []
+            for k in self.knowledgeBaseChunks! {
+                tmp.append(k.toMap())
+            }
+            map["KnowledgeBaseChunks"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["KnowledgeBaseChunks"] as? [Any?] {
+            var tmp : [ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks] = []
+            for v in value {
+                if v != nil {
+                    var model = ListKnowledgeBaseChunksResponseBody.KnowledgeBaseChunks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.knowledgeBaseChunks = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListKnowledgeBaseChunksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListKnowledgeBaseChunksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListKnowledgeBaseChunksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListKnowledgeBaseJobsRequest : Tea.TeaModel {
     public var jobAction: String?
 
@@ -10066,6 +10640,126 @@ public class UpdateKnowledgeBaseResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateKnowledgeBaseResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateKnowledgeBaseChunkRequest : Tea.TeaModel {
+    public var chunkContent: String?
+
+    public var chunkStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chunkContent != nil {
+            map["ChunkContent"] = self.chunkContent!
+        }
+        if self.chunkStatus != nil {
+            map["ChunkStatus"] = self.chunkStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChunkContent"] as? String {
+            self.chunkContent = value
+        }
+        if let value = dict["ChunkStatus"] as? String {
+            self.chunkStatus = value
+        }
+    }
+}
+
+public class UpdateKnowledgeBaseChunkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateKnowledgeBaseChunkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateKnowledgeBaseChunkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateKnowledgeBaseChunkResponseBody()
             model.fromMap(value)
             self.body = model
         }
