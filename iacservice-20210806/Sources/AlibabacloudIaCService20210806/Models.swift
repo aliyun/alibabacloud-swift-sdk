@@ -11140,6 +11140,8 @@ public class ListRegistryModulesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var status: String?
+
     public var type: String?
 
     public override init() {
@@ -11168,6 +11170,9 @@ public class ListRegistryModulesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -11187,6 +11192,9 @@ public class ListRegistryModulesRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
         }
         if let value = dict["type"] as? String {
             self.type = value
