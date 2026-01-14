@@ -5,6 +5,53 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ModelUsage : Tea.TeaModel {
+    public var inputTokens: Int64?
+
+    public var outputTokens: Int64?
+
+    public var totalTokens: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inputTokens != nil {
+            map["inputTokens"] = self.inputTokens!
+        }
+        if self.outputTokens != nil {
+            map["outputTokens"] = self.outputTokens!
+        }
+        if self.totalTokens != nil {
+            map["totalTokens"] = self.totalTokens!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["inputTokens"] as? Int64 {
+            self.inputTokens = value
+        }
+        if let value = dict["outputTokens"] as? Int64 {
+            self.outputTokens = value
+        }
+        if let value = dict["totalTokens"] as? Int64 {
+            self.totalTokens = value
+        }
+    }
+}
+
 public class CancelAsyncTaskRequest : Tea.TeaModel {
     public var taskId: String?
 
@@ -1623,6 +1670,8 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
 
             public var score: Int32?
 
+            public var usage: ModelUsage?
+
             public override init() {
                 super.init()
             }
@@ -1633,6 +1682,7 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.usage?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -1645,6 +1695,9 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
                 }
                 if self.score != nil {
                     map["score"] = self.score!
+                }
+                if self.usage != nil {
+                    map["usage"] = self.usage?.toMap()
                 }
                 return map
             }
@@ -1660,6 +1713,11 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
                 if let value = dict["score"] as? Int32 {
                     self.score = value
                 }
+                if let value = dict["usage"] as? [String: Any?] {
+                    var model = ModelUsage()
+                    model.fromMap(value)
+                    self.usage = model
+                }
             }
         }
         public var errorMessage: String?
@@ -1667,6 +1725,8 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
         public var results: [GetEssayCorrectionTaskResponseBody.Data.Results]?
 
         public var status: String?
+
+        public var totalUsage: ModelUsage?
 
         public override init() {
             super.init()
@@ -1678,6 +1738,7 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.totalUsage?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1694,6 +1755,9 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.totalUsage != nil {
+                map["totalUsage"] = self.totalUsage?.toMap()
             }
             return map
         }
@@ -1718,6 +1782,11 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["totalUsage"] as? [String: Any?] {
+                var model = ModelUsage()
+                model.fromMap(value)
+                self.totalUsage = model
             }
         }
     }
