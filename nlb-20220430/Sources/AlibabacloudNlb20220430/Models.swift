@@ -2335,6 +2335,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var healthCheckConfig: CreateServerGroupRequest.HealthCheckConfig?
 
+    public var ipVersionAffinityMode: String?
+
     public var preserveClientIpEnabled: Bool?
 
     public var protocol_: String?
@@ -2388,6 +2390,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if self.healthCheckConfig != nil {
             map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+        }
+        if self.ipVersionAffinityMode != nil {
+            map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
         }
         if self.preserveClientIpEnabled != nil {
             map["PreserveClientIpEnabled"] = self.preserveClientIpEnabled!
@@ -2447,6 +2452,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             var model = CreateServerGroupRequest.HealthCheckConfig()
             model.fromMap(value)
             self.healthCheckConfig = model
+        }
+        if let value = dict["IpVersionAffinityMode"] as? String {
+            self.ipVersionAffinityMode = value
         }
         if let value = dict["PreserveClientIpEnabled"] as? Bool {
             self.preserveClientIpEnabled = value
@@ -8959,6 +8967,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
         public var healthCheck: ListServerGroupsResponseBody.ServerGroups.HealthCheck?
 
+        public var ipVersionAffinityMode: String?
+
         public var preserveClientIpEnabled: Bool?
 
         public var protocol_: String?
@@ -9017,6 +9027,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if self.healthCheck != nil {
                 map["HealthCheck"] = self.healthCheck?.toMap()
+            }
+            if self.ipVersionAffinityMode != nil {
+                map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
             }
             if self.preserveClientIpEnabled != nil {
                 map["PreserveClientIpEnabled"] = self.preserveClientIpEnabled!
@@ -9085,6 +9098,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 var model = ListServerGroupsResponseBody.ServerGroups.HealthCheck()
                 model.fromMap(value)
                 self.healthCheck = model
+            }
+            if let value = dict["IpVersionAffinityMode"] as? String {
+                self.ipVersionAffinityMode = value
             }
             if let value = dict["PreserveClientIpEnabled"] as? Bool {
                 self.preserveClientIpEnabled = value
@@ -13097,6 +13113,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var healthCheckConfig: UpdateServerGroupAttributeRequest.HealthCheckConfig?
 
+    public var ipVersionAffinityMode: String?
+
     public var preserveClientIpEnabled: Bool?
 
     public var regionId: String?
@@ -13137,6 +13155,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.healthCheckConfig != nil {
             map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
         }
+        if self.ipVersionAffinityMode != nil {
+            map["IpVersionAffinityMode"] = self.ipVersionAffinityMode!
+        }
         if self.preserveClientIpEnabled != nil {
             map["PreserveClientIpEnabled"] = self.preserveClientIpEnabled!
         }
@@ -13173,6 +13194,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             var model = UpdateServerGroupAttributeRequest.HealthCheckConfig()
             model.fromMap(value)
             self.healthCheckConfig = model
+        }
+        if let value = dict["IpVersionAffinityMode"] as? String {
+            self.ipVersionAffinityMode = value
         }
         if let value = dict["PreserveClientIpEnabled"] as? Bool {
             self.preserveClientIpEnabled = value
