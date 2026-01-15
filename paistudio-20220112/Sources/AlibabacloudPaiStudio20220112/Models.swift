@@ -3131,6 +3131,92 @@ public class Node : Tea.TeaModel {
     }
 }
 
+public class NodeCordonParameters : Tea.TeaModel {
+    public var comment: String?
+
+    public var quotaId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["QuotaId"] as? String {
+            self.quotaId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class NodeDrainParameters : Tea.TeaModel {
+    public var podFromSubProducts: [String]?
+
+    public var podNames: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.podFromSubProducts != nil {
+            map["PodFromSubProducts"] = self.podFromSubProducts!
+        }
+        if self.podNames != nil {
+            map["PodNames"] = self.podNames!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PodFromSubProducts"] as? [String] {
+            self.podFromSubProducts = value
+        }
+        if let value = dict["PodNames"] as? [String] {
+            self.podNames = value
+        }
+    }
+}
+
 public class NodeGPUMetric : Tea.TeaModel {
     public var acceleratorType: String?
 
@@ -3297,6 +3383,62 @@ public class NodeMetric : Tea.TeaModel {
         }
         if let value = dict["NodeID"] as? String {
             self.nodeID = value
+        }
+    }
+}
+
+public class NodeOperationParameters : Tea.TeaModel {
+    public var cordonParameters: NodeCordonParameters?
+
+    public var drainParameters: NodeDrainParameters?
+
+    public var uncordonParameters: NodeUncordonParameters?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.cordonParameters?.validate()
+        try self.drainParameters?.validate()
+        try self.uncordonParameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cordonParameters != nil {
+            map["CordonParameters"] = self.cordonParameters?.toMap()
+        }
+        if self.drainParameters != nil {
+            map["DrainParameters"] = self.drainParameters?.toMap()
+        }
+        if self.uncordonParameters != nil {
+            map["UncordonParameters"] = self.uncordonParameters?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CordonParameters"] as? [String: Any?] {
+            var model = NodeCordonParameters()
+            model.fromMap(value)
+            self.cordonParameters = model
+        }
+        if let value = dict["DrainParameters"] as? [String: Any?] {
+            var model = NodeDrainParameters()
+            model.fromMap(value)
+            self.drainParameters = model
+        }
+        if let value = dict["UncordonParameters"] as? [String: Any?] {
+            var model = NodeUncordonParameters()
+            model.fromMap(value)
+            self.uncordonParameters = model
         }
     }
 }
@@ -3797,6 +3939,45 @@ public class NodeTypeStatistic : Tea.TeaModel {
         }
         if let value = dict["TotalCount"] as? Int32 {
             self.totalCount = value
+        }
+    }
+}
+
+public class NodeUncordonParameters : Tea.TeaModel {
+    public var quotaId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["QuotaId"] as? String {
+            self.quotaId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -4639,6 +4820,8 @@ public class QuotaConfig : Tea.TeaModel {
 
     public var clusterId: String?
 
+    public var controlPlaneClusterId: String?
+
     public var defaultGPUDriver: String?
 
     public var enableGPUShare: Bool?
@@ -4651,7 +4834,7 @@ public class QuotaConfig : Tea.TeaModel {
 
     public var eniCacheConfig: EniCacheConfig?
 
-    public var oversoldUsageInfo: OversoldUsageConfig?
+    public var oversoldUsageConfig: OversoldUsageConfig?
 
     public var resourceSpecs: [WorkspaceSpecs]?
 
@@ -4681,7 +4864,7 @@ public class QuotaConfig : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.ACS?.validate()
         try self.eniCacheConfig?.validate()
-        try self.oversoldUsageInfo?.validate()
+        try self.oversoldUsageConfig?.validate()
         try self.sandboxCacheConfig?.validate()
         try self.selfQuotaPreemptionConfig?.validate()
         try self.subQuotaPreemptionConfig?.validate()
@@ -4695,6 +4878,9 @@ public class QuotaConfig : Tea.TeaModel {
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
+        }
+        if self.controlPlaneClusterId != nil {
+            map["ControlPlaneClusterId"] = self.controlPlaneClusterId!
         }
         if self.defaultGPUDriver != nil {
             map["DefaultGPUDriver"] = self.defaultGPUDriver!
@@ -4714,8 +4900,8 @@ public class QuotaConfig : Tea.TeaModel {
         if self.eniCacheConfig != nil {
             map["EniCacheConfig"] = self.eniCacheConfig?.toMap()
         }
-        if self.oversoldUsageInfo != nil {
-            map["OversoldUsageInfo"] = self.oversoldUsageInfo?.toMap()
+        if self.oversoldUsageConfig != nil {
+            map["OversoldUsageConfig"] = self.oversoldUsageConfig?.toMap()
         }
         if self.resourceSpecs != nil {
             var tmp : [Any] = []
@@ -4758,6 +4944,9 @@ public class QuotaConfig : Tea.TeaModel {
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
         }
+        if let value = dict["ControlPlaneClusterId"] as? String {
+            self.controlPlaneClusterId = value
+        }
         if let value = dict["DefaultGPUDriver"] as? String {
             self.defaultGPUDriver = value
         }
@@ -4778,10 +4967,10 @@ public class QuotaConfig : Tea.TeaModel {
             model.fromMap(value)
             self.eniCacheConfig = model
         }
-        if let value = dict["OversoldUsageInfo"] as? [String: Any?] {
+        if let value = dict["OversoldUsageConfig"] as? [String: Any?] {
             var model = OversoldUsageConfig()
             model.fromMap(value)
-            self.oversoldUsageInfo = model
+            self.oversoldUsageConfig = model
         }
         if let value = dict["ResourceSpecs"] as? [Any?] {
             var tmp : [WorkspaceSpecs] = []
