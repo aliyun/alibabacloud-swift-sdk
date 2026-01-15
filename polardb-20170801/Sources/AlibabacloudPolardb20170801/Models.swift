@@ -52773,6 +52773,10 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var regionId: String?
 
     public var resourceOwnerAccount: String?
@@ -52804,6 +52808,12 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -52830,6 +52840,12 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -52850,7 +52866,15 @@ public class DescribeUserEncryptionKeyListResponseBody : Tea.TeaModel {
 
     public var keyList: [String]?
 
+    public var pageNumber: Int32?
+
+    public var pageRecordCount: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
+
+    public var totalRecordCount: Int32?
 
     public override init() {
         super.init()
@@ -52872,8 +52896,20 @@ public class DescribeUserEncryptionKeyListResponseBody : Tea.TeaModel {
         if self.keyList != nil {
             map["KeyList"] = self.keyList!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
         }
         return map
     }
@@ -52886,8 +52922,20 @@ public class DescribeUserEncryptionKeyListResponseBody : Tea.TeaModel {
         if let value = dict["KeyList"] as? [String] {
             self.keyList = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? Int32 {
+            self.totalRecordCount = value
         }
     }
 }
