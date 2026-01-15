@@ -27453,6 +27453,8 @@ public class GetHDMLastAliyunResourceSyncResultResponse : Tea.TeaModel {
 }
 
 public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
+    public var agentId: String?
+
     public var reportId: String?
 
     public override init() {
@@ -27469,6 +27471,9 @@ public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.reportId != nil {
             map["ReportId"] = self.reportId!
         }
@@ -27477,6 +27482,9 @@ public class GetInstanceGroupInspectReportDetailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["ReportId"] as? String {
             self.reportId = value
         }
