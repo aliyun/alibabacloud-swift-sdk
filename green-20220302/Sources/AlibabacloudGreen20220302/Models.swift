@@ -8262,6 +8262,52 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RiskPositions : Tea.TeaModel {
+                public var endPos: Int32?
+
+                public var riskWord: String?
+
+                public var startPos: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endPos != nil {
+                        map["EndPos"] = self.endPos!
+                    }
+                    if self.riskWord != nil {
+                        map["RiskWord"] = self.riskWord!
+                    }
+                    if self.startPos != nil {
+                        map["StartPos"] = self.startPos!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndPos"] as? Int32 {
+                        self.endPos = value
+                    }
+                    if let value = dict["RiskWord"] as? String {
+                        self.riskWord = value
+                    }
+                    if let value = dict["StartPos"] as? Int32 {
+                        self.startPos = value
+                    }
+                }
+            }
             public var confidence: Double?
 
             public var customizedHit: [TextModerationPlusResponseBody.Data.Result.CustomizedHit]?
@@ -8269,6 +8315,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             public var description_: String?
 
             public var label: String?
+
+            public var riskPositions: [TextModerationPlusResponseBody.Data.Result.RiskPositions]?
 
             public var riskWords: String?
 
@@ -8302,6 +8350,13 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
+                if self.riskPositions != nil {
+                    var tmp : [Any] = []
+                    for k in self.riskPositions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RiskPositions"] = tmp
+                }
                 if self.riskWords != nil {
                     map["RiskWords"] = self.riskWords!
                 }
@@ -8331,6 +8386,19 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Label"] as? String {
                     self.label = value
+                }
+                if let value = dict["RiskPositions"] as? [Any?] {
+                    var tmp : [TextModerationPlusResponseBody.Data.Result.RiskPositions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = TextModerationPlusResponseBody.Data.Result.RiskPositions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.riskPositions = tmp
                 }
                 if let value = dict["RiskWords"] as? String {
                     self.riskWords = value
