@@ -2208,6 +2208,8 @@ public class ContainerConfiguration : Tea.TeaModel {
 
     public var imageRegistryType: String?
 
+    public var port: Int32?
+
     public override init() {
         super.init()
     }
@@ -2234,6 +2236,9 @@ public class ContainerConfiguration : Tea.TeaModel {
         if self.imageRegistryType != nil {
             map["imageRegistryType"] = self.imageRegistryType!
         }
+        if self.port != nil {
+            map["port"] = self.port!
+        }
         return map
     }
 
@@ -2250,6 +2255,9 @@ public class ContainerConfiguration : Tea.TeaModel {
         }
         if let value = dict["imageRegistryType"] as? String {
             self.imageRegistryType = value
+        }
+        if let value = dict["port"] as? Int32 {
+            self.port = value
         }
     }
 }
