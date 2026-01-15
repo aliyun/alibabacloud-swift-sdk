@@ -4660,6 +4660,8 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
 
     public var model: String?
 
+    public var modelMode: String?
+
     public override init() {
         super.init()
     }
@@ -4683,6 +4685,9 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
         if self.model != nil {
             map["Model"] = self.model!
         }
+        if self.modelMode != nil {
+            map["ModelMode"] = self.modelMode!
+        }
         return map
     }
 
@@ -4696,6 +4701,9 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["ModelMode"] as? String {
+            self.modelMode = value
         }
     }
 }
@@ -4820,6 +4828,8 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
 
     public var embeddingModel: String?
 
+    public var modelMode: String?
+
     public var query: String?
 
     public var searchModel: String?
@@ -4849,6 +4859,9 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
         if self.embeddingModel != nil {
             map["EmbeddingModel"] = self.embeddingModel!
         }
+        if self.modelMode != nil {
+            map["ModelMode"] = self.modelMode!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -4872,6 +4885,9 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
         if let value = dict["EmbeddingModel"] as? String {
             self.embeddingModel = value
         }
+        if let value = dict["ModelMode"] as? String {
+            self.modelMode = value
+        }
         if let value = dict["Query"] as? String {
             self.query = value
         }
@@ -4890,6 +4906,8 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
     public var datasetIdsShrink: String?
 
     public var embeddingModel: String?
+
+    public var modelMode: String?
 
     public var query: String?
 
@@ -4920,6 +4938,9 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         if self.embeddingModel != nil {
             map["EmbeddingModel"] = self.embeddingModel!
         }
+        if self.modelMode != nil {
+            map["ModelMode"] = self.modelMode!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -4942,6 +4963,9 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EmbeddingModel"] as? String {
             self.embeddingModel = value
+        }
+        if let value = dict["ModelMode"] as? String {
+            self.modelMode = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
@@ -6006,6 +6030,310 @@ public class ListMultimodalEmbeddingModelResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListMultimodalEmbeddingModelResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListMultimodalEmbeddingModelModeRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+    }
+}
+
+public class ListMultimodalEmbeddingModelModeResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListMultimodalEmbeddingModelModeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMultimodalEmbeddingModelModeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMultimodalEmbeddingModelModeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListMultimodalSearchModelRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListMultimodalSearchModelResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListMultimodalSearchModelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMultimodalSearchModelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMultimodalSearchModelResponseBody()
             model.fromMap(value)
             self.body = model
         }
