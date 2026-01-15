@@ -3553,6 +3553,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
     public class ServiceConfigs : Tea.TeaModel {
         public var intentCode: String?
 
+        public var match: HttpApiBackendMatchConditions?
+
         public var modelName: String?
 
         public var modelNamePattern: String?
@@ -3571,12 +3573,16 @@ public class HttpApiDeployConfig : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.match?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.intentCode != nil {
                 map["intentCode"] = self.intentCode!
+            }
+            if self.match != nil {
+                map["match"] = self.match?.toMap()
             }
             if self.modelName != nil {
                 map["modelName"] = self.modelName!
@@ -3597,6 +3603,11 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["intentCode"] as? String {
                 self.intentCode = value
+            }
+            if let value = dict["match"] as? [String: Any?] {
+                var model = HttpApiBackendMatchConditions()
+                model.fromMap(value)
+                self.match = model
             }
             if let value = dict["modelName"] as? String {
                 self.modelName = value
@@ -20732,6 +20743,211 @@ public class GetResourceOverviewResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetResourceOverviewResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetSecretResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var createTimestamp: Int64?
+
+        public var gatewayType: String?
+
+        public var kmsConfig: KMSConfig?
+
+        public var name: String?
+
+        public var referenceCount: Int32?
+
+        public var secretId: String?
+
+        public var secretSource: String?
+
+        public var status: String?
+
+        public var updateTimestamp: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.kmsConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTimestamp != nil {
+                map["createTimestamp"] = self.createTimestamp!
+            }
+            if self.gatewayType != nil {
+                map["gatewayType"] = self.gatewayType!
+            }
+            if self.kmsConfig != nil {
+                map["kmsConfig"] = self.kmsConfig?.toMap()
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.referenceCount != nil {
+                map["referenceCount"] = self.referenceCount!
+            }
+            if self.secretId != nil {
+                map["secretId"] = self.secretId!
+            }
+            if self.secretSource != nil {
+                map["secretSource"] = self.secretSource!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.updateTimestamp != nil {
+                map["updateTimestamp"] = self.updateTimestamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["createTimestamp"] as? Int64 {
+                self.createTimestamp = value
+            }
+            if let value = dict["gatewayType"] as? String {
+                self.gatewayType = value
+            }
+            if let value = dict["kmsConfig"] as? [String: Any?] {
+                var model = KMSConfig()
+                model.fromMap(value)
+                self.kmsConfig = model
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["referenceCount"] as? Int32 {
+                self.referenceCount = value
+            }
+            if let value = dict["secretId"] as? String {
+                self.secretId = value
+            }
+            if let value = dict["secretSource"] as? String {
+                self.secretSource = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["updateTimestamp"] as? Int64 {
+                self.updateTimestamp = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetSecretResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetSecretResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetSecretResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSecretResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetSecretResponseBody()
             model.fromMap(value)
             self.body = model
         }
