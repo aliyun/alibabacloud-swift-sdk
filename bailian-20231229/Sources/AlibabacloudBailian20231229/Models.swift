@@ -5069,6 +5069,8 @@ public class DescribeFileResponseBody : Tea.TeaModel {
 
         public var fileType: String?
 
+        public var parseResultDownloadUrl: String?
+
         public var parser: String?
 
         public var sizeInBytes: Int64?
@@ -5106,6 +5108,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             if self.fileType != nil {
                 map["FileType"] = self.fileType!
             }
+            if self.parseResultDownloadUrl != nil {
+                map["ParseResultDownloadUrl"] = self.parseResultDownloadUrl!
+            }
             if self.parser != nil {
                 map["Parser"] = self.parser!
             }
@@ -5137,6 +5142,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileType"] as? String {
                 self.fileType = value
+            }
+            if let value = dict["ParseResultDownloadUrl"] as? String {
+                self.parseResultDownloadUrl = value
             }
             if let value = dict["Parser"] as? String {
                 self.parser = value
