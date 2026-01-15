@@ -120,6 +120,105 @@ public class GenerateTraceability : Tea.TeaModel {
     }
 }
 
+public class HottopicNews : Tea.TeaModel {
+    public class Comments : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public var comments: [HottopicNews.Comments]?
+
+    public var content: String?
+
+    public var title: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comments != nil {
+            var tmp : [Any] = []
+            for k in self.comments! {
+                tmp.append(k.toMap())
+            }
+            map["Comments"] = tmp
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Comments"] as? [Any?] {
+            var tmp : [HottopicNews.Comments] = []
+            for v in value {
+                if v != nil {
+                    var model = HottopicNews.Comments()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.comments = tmp
+        }
+        if let value = dict["Content"] as? String {
+            self.content = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+    }
+}
+
 public class OutlineSearchResult : Tea.TeaModel {
     public var articles: [OutlineWritingArticle]?
 
@@ -10930,6 +11029,8 @@ public class ExportAuditContentResultResponse : Tea.TeaModel {
 }
 
 public class ExportCustomSourceAnalysisTaskRequest : Tea.TeaModel {
+    public var exportType: String?
+
     public var taskId: String?
 
     public var workspaceId: String?
@@ -10948,6 +11049,9 @@ public class ExportCustomSourceAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.exportType != nil {
+            map["ExportType"] = self.exportType!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -10959,6 +11063,9 @@ public class ExportCustomSourceAnalysisTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExportType"] as? String {
+            self.exportType = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -72634,6 +72741,58 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public class Topics : Tea.TeaModel {
+        public var news: [HottopicNews]?
+
+        public var topic: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.news != nil {
+                var tmp : [Any] = []
+                for k in self.news! {
+                    tmp.append(k.toMap())
+                }
+                map["News"] = tmp
+            }
+            if self.topic != nil {
+                map["Topic"] = self.topic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["News"] as? [Any?] {
+                var tmp : [HottopicNews] = []
+                for v in value {
+                    if v != nil {
+                        var model = HottopicNews()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.news = tmp
+            }
+            if let value = dict["Topic"] as? String {
+                self.topic = value
+            }
+        }
+    }
     public var analysisTypes: [String]?
 
     public var fileType: String?
@@ -72643,6 +72802,10 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
     public var maxTopicSize: Int32?
 
     public var news: [SubmitCustomSourceTopicAnalysisRequest.News]?
+
+    public var topics: [SubmitCustomSourceTopicAnalysisRequest.Topics]?
+
+    public var topicsFileUrl: String?
 
     public var workspaceId: String?
 
@@ -72679,6 +72842,16 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             }
             map["News"] = tmp
         }
+        if self.topics != nil {
+            var tmp : [Any] = []
+            for k in self.topics! {
+                tmp.append(k.toMap())
+            }
+            map["Topics"] = tmp
+        }
+        if self.topicsFileUrl != nil {
+            map["TopicsFileUrl"] = self.topicsFileUrl!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -72712,6 +72885,22 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             }
             self.news = tmp
         }
+        if let value = dict["Topics"] as? [Any?] {
+            var tmp : [SubmitCustomSourceTopicAnalysisRequest.Topics] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitCustomSourceTopicAnalysisRequest.Topics()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.topics = tmp
+        }
+        if let value = dict["TopicsFileUrl"] as? String {
+            self.topicsFileUrl = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -72728,6 +72917,10 @@ public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
     public var maxTopicSize: Int32?
 
     public var newsShrink: String?
+
+    public var topicsShrink: String?
+
+    public var topicsFileUrl: String?
 
     public var workspaceId: String?
 
@@ -72760,6 +72953,12 @@ public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
         if self.newsShrink != nil {
             map["News"] = self.newsShrink!
         }
+        if self.topicsShrink != nil {
+            map["Topics"] = self.topicsShrink!
+        }
+        if self.topicsFileUrl != nil {
+            map["TopicsFileUrl"] = self.topicsFileUrl!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -72782,6 +72981,12 @@ public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["News"] as? String {
             self.newsShrink = value
+        }
+        if let value = dict["Topics"] as? String {
+            self.topicsShrink = value
+        }
+        if let value = dict["TopicsFileUrl"] as? String {
+            self.topicsFileUrl = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value

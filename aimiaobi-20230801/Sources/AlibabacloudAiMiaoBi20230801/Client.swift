@@ -1637,6 +1637,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func exportCustomSourceAnalysisTaskWithOptions(_ request: ExportCustomSourceAnalysisTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportCustomSourceAnalysisTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exportType)) {
+            body["ExportType"] = request.exportType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
         }
@@ -7942,6 +7945,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.news)) {
             request.newsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.news, "News", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.topics)) {
+            request.topicsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.topics, "Topics", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.analysisTypesShrink)) {
             body["AnalysisTypes"] = request.analysisTypesShrink ?? "";
@@ -7957,6 +7963,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.newsShrink)) {
             body["News"] = request.newsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicsShrink)) {
+            body["Topics"] = request.topicsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicsFileUrl)) {
+            body["TopicsFileUrl"] = request.topicsFileUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
