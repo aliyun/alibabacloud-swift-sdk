@@ -2073,6 +2073,8 @@ public class AddFolderResponse : Tea.TeaModel {
 }
 
 public class AnalyzeVlRealtimeRequest : Tea.TeaModel {
+    public var fileName: String?
+
     public var fileUrl: String?
 
     public var language: String?
@@ -2093,6 +2095,9 @@ public class AnalyzeVlRealtimeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileName != nil {
+            map["fileName"] = self.fileName!
+        }
         if self.fileUrl != nil {
             map["fileUrl"] = self.fileUrl!
         }
@@ -2107,6 +2112,9 @@ public class AnalyzeVlRealtimeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["fileName"] as? String {
+            self.fileName = value
+        }
         if let value = dict["fileUrl"] as? String {
             self.fileUrl = value
         }
@@ -2120,6 +2128,8 @@ public class AnalyzeVlRealtimeRequest : Tea.TeaModel {
 }
 
 public class AnalyzeVlRealtimeAdvanceRequest : Tea.TeaModel {
+    public var fileName: String?
+
     public var fileUrlObject: InputStream?
 
     public var language: String?
@@ -2140,6 +2150,9 @@ public class AnalyzeVlRealtimeAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileName != nil {
+            map["fileName"] = self.fileName!
+        }
         if self.fileUrlObject != nil {
             map["fileUrl"] = self.fileUrlObject!
         }
@@ -2154,6 +2167,9 @@ public class AnalyzeVlRealtimeAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["fileName"] as? String {
+            self.fileName = value
+        }
         if let value = dict["fileUrl"] as? InputStream {
             self.fileUrlObject = value
         }

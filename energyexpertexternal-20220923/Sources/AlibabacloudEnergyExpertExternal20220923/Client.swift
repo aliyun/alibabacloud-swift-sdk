@@ -151,6 +151,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func analyzeVlRealtimeWithOptions(_ request: AnalyzeVlRealtimeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeVlRealtimeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["fileName"] = request.fileName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["fileUrl"] = request.fileUrl ?? "";
         }
