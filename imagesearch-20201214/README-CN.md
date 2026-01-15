@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudImageSearch20201214` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/imagesearch-20201214" "1.1.2"
+github "alibabacloud-sdk-swift/imagesearch-20201214" "1.1.3"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/imagesearch-20201214" "1.1.2"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/imagesearch-20201214.git", from: "1.1.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/imagesearch-20201214.git", from: "1.1.3")
 ]
 ```
 
