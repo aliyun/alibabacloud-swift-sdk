@@ -10156,6 +10156,8 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
 
             public var smsNotice: Bool?
 
+            public var threshold: Int32?
+
             public override init() {
                 super.init()
             }
@@ -10182,6 +10184,9 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
                 if self.smsNotice != nil {
                     map["SmsNotice"] = self.smsNotice!
                 }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
                 return map
             }
 
@@ -10198,6 +10203,9 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SmsNotice"] as? Bool {
                     self.smsNotice = value
+                }
+                if let value = dict["Threshold"] as? Int32 {
+                    self.threshold = value
                 }
             }
         }
@@ -30753,13 +30761,19 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
             }
             public var dnsMsgId: String?
 
+            public var flags: String?
+
             public var logTime: Int64?
 
             public var protocol_: String?
 
+            public var queryFlags: String?
+
             public var queryName: String?
 
             public var queryType: String?
+
+            public var responseTimestamp: String?
 
             public var rt: Int32?
 
@@ -30793,17 +30807,26 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
                 if self.dnsMsgId != nil {
                     map["DnsMsgId"] = self.dnsMsgId!
                 }
+                if self.flags != nil {
+                    map["Flags"] = self.flags!
+                }
                 if self.logTime != nil {
                     map["LogTime"] = self.logTime!
                 }
                 if self.protocol_ != nil {
                     map["Protocol"] = self.protocol_!
                 }
+                if self.queryFlags != nil {
+                    map["QueryFlags"] = self.queryFlags!
+                }
                 if self.queryName != nil {
                     map["QueryName"] = self.queryName!
                 }
                 if self.queryType != nil {
                     map["QueryType"] = self.queryType!
+                }
+                if self.responseTimestamp != nil {
+                    map["ResponseTimestamp"] = self.responseTimestamp!
                 }
                 if self.rt != nil {
                     map["Rt"] = self.rt!
@@ -30834,17 +30857,26 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
                 if let value = dict["DnsMsgId"] as? String {
                     self.dnsMsgId = value
                 }
+                if let value = dict["Flags"] as? String {
+                    self.flags = value
+                }
                 if let value = dict["LogTime"] as? Int64 {
                     self.logTime = value
                 }
                 if let value = dict["Protocol"] as? String {
                     self.protocol_ = value
                 }
+                if let value = dict["QueryFlags"] as? String {
+                    self.queryFlags = value
+                }
                 if let value = dict["QueryName"] as? String {
                     self.queryName = value
                 }
                 if let value = dict["QueryType"] as? String {
                     self.queryType = value
+                }
+                if let value = dict["ResponseTimestamp"] as? String {
+                    self.responseTimestamp = value
                 }
                 if let value = dict["Rt"] as? Int32 {
                     self.rt = value
@@ -40668,6 +40700,8 @@ public class ListCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
 
             public var configId: String?
 
+            public var configLoggingSwitchStatus: String?
+
             public var createTime: String?
 
             public var createTimestamp: Int64?
@@ -40729,6 +40763,9 @@ public class ListCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
                 }
                 if self.configId != nil {
                     map["ConfigId"] = self.configId!
+                }
+                if self.configLoggingSwitchStatus != nil {
+                    map["ConfigLoggingSwitchStatus"] = self.configLoggingSwitchStatus!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -40799,6 +40836,9 @@ public class ListCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ConfigId"] as? String {
                     self.configId = value
+                }
+                if let value = dict["ConfigLoggingSwitchStatus"] as? String {
+                    self.configLoggingSwitchStatus = value
                 }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
@@ -47979,6 +48019,8 @@ public class SearchCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
 
             public var configId: String?
 
+            public var configLoggingSwitchStatus: String?
+
             public var createTime: String?
 
             public var createTimestamp: Int64?
@@ -48040,6 +48082,9 @@ public class SearchCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
                 }
                 if self.configId != nil {
                     map["ConfigId"] = self.configId!
+                }
+                if self.configLoggingSwitchStatus != nil {
+                    map["ConfigLoggingSwitchStatus"] = self.configLoggingSwitchStatus!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -48110,6 +48155,9 @@ public class SearchCloudGtmInstanceConfigsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ConfigId"] as? String {
                     self.configId = value
+                }
+                if let value = dict["ConfigLoggingSwitchStatus"] as? String {
+                    self.configLoggingSwitchStatus = value
                 }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
@@ -53778,6 +53826,8 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
 
         public var smsNotice: Bool?
 
+        public var threshold: Int32?
+
         public override init() {
             super.init()
         }
@@ -53804,6 +53854,9 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
             if self.smsNotice != nil {
                 map["SmsNotice"] = self.smsNotice!
             }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
             return map
         }
 
@@ -53820,6 +53873,9 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
             }
             if let value = dict["SmsNotice"] as? Bool {
                 self.smsNotice = value
+            }
+            if let value = dict["Threshold"] as? Int32 {
+                self.threshold = value
             }
         }
     }
