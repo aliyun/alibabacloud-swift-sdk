@@ -6633,6 +6633,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var dataJson: String?
 
+        public var defaultAgent: Int32?
+
         public var description_: String?
 
         public var dmsUnit: String?
@@ -6698,6 +6700,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.dataJson != nil {
                 map["DataJson"] = self.dataJson!
+            }
+            if self.defaultAgent != nil {
+                map["DefaultAgent"] = self.defaultAgent!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -6776,6 +6781,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["DataJson"] as? String {
                 self.dataJson = value
+            }
+            if let value = dict["DefaultAgent"] as? Int32 {
+                self.defaultAgent = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
@@ -10831,6 +10839,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var dataJson: String?
 
+            public var defaultAgent: Int32?
+
             public var description_: String?
 
             public var dmsUnit: String?
@@ -10896,6 +10906,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.dataJson != nil {
                     map["DataJson"] = self.dataJson!
+                }
+                if self.defaultAgent != nil {
+                    map["DefaultAgent"] = self.defaultAgent!
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
@@ -10974,6 +10987,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DataJson"] as? String {
                     self.dataJson = value
+                }
+                if let value = dict["DefaultAgent"] as? Int32 {
+                    self.defaultAgent = value
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
