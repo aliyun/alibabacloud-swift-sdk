@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
@@ -17,6 +16,91 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpoint = try getEndpoint("energyexpertexternal", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
 
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func _postOSSObject(_ bucketName: String, _ data: [String: Any], _ runtime: TeaUtils.RuntimeOptions) async throws -> [String: Any] {
+        try runtime.validate()
+        var _runtime: [String: Any] = [
+            "timeouted": "retry",
+            "key": TeaUtils.Client.defaultString(runtime.key, self._key),
+            "cert": TeaUtils.Client.defaultString(runtime.cert, self._cert),
+            "ca": TeaUtils.Client.defaultString(runtime.ca, self._ca),
+            "readTimeout": TeaUtils.Client.defaultNumber(runtime.readTimeout, self._readTimeout),
+            "connectTimeout": TeaUtils.Client.defaultNumber(runtime.connectTimeout, self._connectTimeout),
+            "httpProxy": TeaUtils.Client.defaultString(runtime.httpProxy, self._httpProxy),
+            "httpsProxy": TeaUtils.Client.defaultString(runtime.httpsProxy, self._httpsProxy),
+            "noProxy": TeaUtils.Client.defaultString(runtime.noProxy, self._noProxy),
+            "socks5Proxy": TeaUtils.Client.defaultString(runtime.socks5Proxy, self._socks5Proxy),
+            "socks5NetWork": TeaUtils.Client.defaultString(runtime.socks5NetWork, self._socks5NetWork),
+            "maxIdleConns": TeaUtils.Client.defaultNumber(runtime.maxIdleConns, self._maxIdleConns),
+            "retry": [
+                "retryable": runtime.autoretry!,
+                "maxAttempts": TeaUtils.Client.defaultNumber(runtime.maxAttempts, 3)
+            ],
+            "backoff": [
+                "policy": TeaUtils.Client.defaultString(runtime.backoffPolicy, "no"),
+                "period": TeaUtils.Client.defaultNumber(runtime.backoffPeriod, 1)
+            ],
+            "ignoreSSL": AlibabacloudOpenApi.Client.defaultAny(runtime.ignoreSSL, false),
+            "tlsMinVersion": self._tlsMinVersion ?? ""
+        ]
+        var _lastRequest: Tea.TeaRequest? = nil
+        var _lastException: Tea.TeaError? = nil
+        var _now: Int32 = Tea.TeaCore.timeNow()
+        var _retryTimes: Int32 = 0
+        while (Tea.TeaCore.allowRetry(_runtime["retry"], _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                var _backoffTime: Int32 = Tea.TeaCore.getBackoffTime(_runtime["backoff"], _retryTimes)
+                if (_backoffTime > 0) {
+                    Tea.TeaCore.sleep(_backoffTime)
+                }
+            }
+            _retryTimes = _retryTimes + 1
+            do {
+                var _request: Tea.TeaRequest = Tea.TeaRequest()
+                var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
+                var boundary: String = TeaFileForm.Client.getBoundary()
+                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                _request.protocol_ = "HTTPS"
+                _request.method = "POST"
+                _request.pathname = "/"
+                _request.headers = [
+                    "host": host as! String,
+                    "date": TeaUtils.Client.getDateUTCString(),
+                    "user-agent": TeaUtils.Client.getUserAgent("")
+                ]
+                _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
+                _request.body = TeaFileForm.Client.toFileForm(form, boundary)
+                _lastRequest = _request
+                var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request, _runtime)
+                var respMap: [String: Any]? = nil
+                var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
+                if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
+                    respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                    var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
+                    throw Tea.ReuqestError([
+                        "code": err["Code"]!,
+                        "message": err["Message"]!,
+                        "data": [
+                            "httpCode": _response.statusCode,
+                            "requestId": err["RequestId"]!,
+                            "hostId": err["HostId"]!
+                        ]
+                    ])
+                }
+                respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                return Tea.TeaConverter.merge([:], respMap)
+            }
+            catch {
+                if (Tea.TeaCore.isRetryable(error)) {
+                    _lastException = error as! Tea.RetryableError
+                    continue
+                }
+                throw error
+            }
+        }
+        throw Tea.UnretryableError(_lastRequest, _lastException)
+    }
+
     public func getEndpoint(_ productId: String, _ regionId: String, _ endpointRule: String, _ network: String, _ suffix: String, _ endpointMap: [String: String], _ endpoint: String) throws -> String {
         if (!TeaUtils.Client.empty(endpoint)) {
             return endpoint as! String
@@ -25,6 +109,42 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addFolderWithOptions(_ request: AddFolderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddFolderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.folderName)) {
+            body["folderName"] = request.folderName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentFolderId)) {
+            body["parentFolderId"] = request.parentFolderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddFolder",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aidoc/folder/add",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddFolderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addFolder(_ request: AddFolderRequest) async throws -> AddFolderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addFolderWithOptions(request as! AddFolderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -68,10 +188,18 @@ open class Client : AlibabacloudOpenApi.Client {
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func analyzeVlRealtimeAdvance(_ request: AnalyzeVlRealtimeAdvanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeVlRealtimeResponse {
-        var accessKeyId: String = try await self._credential!.getAccessKeyId()
-        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
-        var securityToken: String = try await self._credential!.getSecurityToken()
-        var credentialType: String = self._credential!.getType()
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
         var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
         if (TeaUtils.Client.empty(openPlatformEndpoint)) {
             openPlatformEndpoint = "openplatform.aliyuncs.com"
@@ -88,51 +216,55 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": self._protocol ?? "",
             "regionId": self._regionId ?? ""
         ])
-        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
-        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
-            "product": "energyExpertExternal",
-            "regionId": self._regionId ?? ""
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "energyExpertExternal",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
         ])
-        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
-        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "type": "access_key",
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
         ])
-        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var authResponse: [String: Any] = [:]
         var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
-        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
-        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
-        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
         var analyzeVlRealtimeReq: AnalyzeVlRealtimeRequest = AnalyzeVlRealtimeRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, analyzeVlRealtimeReq)
         if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
-            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
-            ossConfig.accessKeyId = authResponse.body!.accessKeyId
-            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
-            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
             fileObj = TeaFileForm.FileField([
-                "filename": authResponse.body!.objectKey ?? "",
+                "filename": authResponseBody["ObjectKey"] ?? "",
                 "content": request.fileUrlObject!,
                 "contentType": ""
             ])
-            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
-                "accessKeyId": authResponse.body!.accessKeyId ?? "",
-                "policy": authResponse.body!.encodedPolicy ?? "",
-                "signature": authResponse.body!.signature ?? "",
-                "key": authResponse.body!.objectKey ?? "",
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
                 "file": fileObj as! TeaFileForm.FileField,
-                "successActionStatus": "201"
-            ])
-            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
-                "bucketName": authResponse.body!.bucket ?? "",
-                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
-            ])
-            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            analyzeVlRealtimeReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            analyzeVlRealtimeReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var analyzeVlRealtimeResp: AnalyzeVlRealtimeResponse = try await analyzeVlRealtimeWithOptions(analyzeVlRealtimeReq as! AnalyzeVlRealtimeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return analyzeVlRealtimeResp as! AnalyzeVlRealtimeResponse
@@ -253,6 +385,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func chatWithOptions(_ request: ChatRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.documentIds)) {
+            body["documentIds"] = request.documentIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.question)) {
             body["question"] = request.question ?? "";
         }
@@ -283,6 +418,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await chatWithOptions(request as! ChatRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatStreamWithOptions(_ request: ChatStreamRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.documentIds)) {
+            body["documentIds"] = request.documentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.question)) {
+            body["question"] = request.question ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["sessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChatStream",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/aidoc/document/chat/stream",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatStream(_ request: ChatStreamRequest) async throws -> ChatStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await chatStreamWithOptions(request as! ChatStreamRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -322,6 +496,105 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createChatSessionWithOptions(request as! CreateChatSessionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDocumentWithOptions(_ request: DeleteDocumentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDocumentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDocument",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aidoc/document/delete",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDocumentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDocument(_ request: DeleteDocumentRequest) async throws -> DeleteDocumentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDocumentWithOptions(request as! DeleteDocumentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFolderWithOptions(_ request: DeleteFolderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFolderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.folderId)) {
+            query["folderId"] = request.folderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFolder",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aidoc/folder/delete",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFolderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFolder(_ request: DeleteFolderRequest) async throws -> DeleteFolderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteFolderWithOptions(request as! DeleteFolderRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detailDocumentWithOptions(_ request: DetailDocumentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DetailDocumentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DetailDocument",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aidoc/document/detail",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DetailDocumentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detailDocument(_ request: DetailDocumentRequest) async throws -> DetailDocumentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await detailDocumentWithOptions(request as! DetailDocumentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1735,6 +2008,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retrieveWithOptions(_ request: RetrieveRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RetrieveResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.documentIds)) {
+            body["documentIds"] = request.documentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.folderIds)) {
+            body["folderIds"] = request.folderIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.preRetrieveTopK)) {
+            body["preRetrieveTopK"] = request.preRetrieveTopK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankerThreshold)) {
+            body["rerankerThreshold"] = request.rerankerThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            body["topK"] = request.topK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useReranker)) {
+            body["useReranker"] = request.useReranker!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Retrieve",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/aidoc/knowledgebase/retrieve",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetrieveResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retrieve(_ request: RetrieveRequest) async throws -> RetrieveResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await retrieveWithOptions(request as! RetrieveRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sendDocumentAskQuestionWithOptions(_ request: SendDocumentAskQuestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SendDocumentAskQuestionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1898,10 +2222,18 @@ open class Client : AlibabacloudOpenApi.Client {
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitDocExtractionTaskAdvance(_ request: SubmitDocExtractionTaskAdvanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocExtractionTaskResponse {
-        var accessKeyId: String = try await self._credential!.getAccessKeyId()
-        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
-        var securityToken: String = try await self._credential!.getSecurityToken()
-        var credentialType: String = self._credential!.getType()
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
         var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
         if (TeaUtils.Client.empty(openPlatformEndpoint)) {
             openPlatformEndpoint = "openplatform.aliyuncs.com"
@@ -1918,51 +2250,55 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": self._protocol ?? "",
             "regionId": self._regionId ?? ""
         ])
-        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
-        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
-            "product": "energyExpertExternal",
-            "regionId": self._regionId ?? ""
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "energyExpertExternal",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
         ])
-        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
-        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "type": "access_key",
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
         ])
-        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var authResponse: [String: Any] = [:]
         var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
-        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
-        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
-        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
         var submitDocExtractionTaskReq: SubmitDocExtractionTaskRequest = SubmitDocExtractionTaskRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, submitDocExtractionTaskReq)
         if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
-            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
-            ossConfig.accessKeyId = authResponse.body!.accessKeyId
-            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
-            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
             fileObj = TeaFileForm.FileField([
-                "filename": authResponse.body!.objectKey ?? "",
+                "filename": authResponseBody["ObjectKey"] ?? "",
                 "content": request.fileUrlObject!,
                 "contentType": ""
             ])
-            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
-                "accessKeyId": authResponse.body!.accessKeyId ?? "",
-                "policy": authResponse.body!.encodedPolicy ?? "",
-                "signature": authResponse.body!.signature ?? "",
-                "key": authResponse.body!.objectKey ?? "",
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
                 "file": fileObj as! TeaFileForm.FileField,
-                "successActionStatus": "201"
-            ])
-            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
-                "bucketName": authResponse.body!.bucket ?? "",
-                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
-            ])
-            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            submitDocExtractionTaskReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            submitDocExtractionTaskReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocExtractionTaskResp: SubmitDocExtractionTaskResponse = try await submitDocExtractionTaskWithOptions(submitDocExtractionTaskReq as! SubmitDocExtractionTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return submitDocExtractionTaskResp as! SubmitDocExtractionTaskResponse
@@ -2012,10 +2348,18 @@ open class Client : AlibabacloudOpenApi.Client {
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitDocParsingTaskAdvance(_ request: SubmitDocParsingTaskAdvanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParsingTaskResponse {
-        var accessKeyId: String = try await self._credential!.getAccessKeyId()
-        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
-        var securityToken: String = try await self._credential!.getSecurityToken()
-        var credentialType: String = self._credential!.getType()
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
         var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
         if (TeaUtils.Client.empty(openPlatformEndpoint)) {
             openPlatformEndpoint = "openplatform.aliyuncs.com"
@@ -2032,51 +2376,55 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": self._protocol ?? "",
             "regionId": self._regionId ?? ""
         ])
-        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
-        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
-            "product": "energyExpertExternal",
-            "regionId": self._regionId ?? ""
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "energyExpertExternal",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
         ])
-        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
-        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "type": "access_key",
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
         ])
-        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var authResponse: [String: Any] = [:]
         var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
-        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
-        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
-        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
         var submitDocParsingTaskReq: SubmitDocParsingTaskRequest = SubmitDocParsingTaskRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, submitDocParsingTaskReq)
         if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
-            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
-            ossConfig.accessKeyId = authResponse.body!.accessKeyId
-            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
-            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
             fileObj = TeaFileForm.FileField([
-                "filename": authResponse.body!.objectKey ?? "",
+                "filename": authResponseBody["ObjectKey"] ?? "",
                 "content": request.fileUrlObject!,
                 "contentType": ""
             ])
-            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
-                "accessKeyId": authResponse.body!.accessKeyId ?? "",
-                "policy": authResponse.body!.encodedPolicy ?? "",
-                "signature": authResponse.body!.signature ?? "",
-                "key": authResponse.body!.objectKey ?? "",
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
                 "file": fileObj as! TeaFileForm.FileField,
-                "successActionStatus": "201"
-            ])
-            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
-                "bucketName": authResponse.body!.bucket ?? "",
-                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
-            ])
-            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            submitDocParsingTaskReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            submitDocParsingTaskReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocParsingTaskResp: SubmitDocParsingTaskResponse = try await submitDocParsingTaskWithOptions(submitDocParsingTaskReq as! SubmitDocParsingTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return submitDocParsingTaskResp as! SubmitDocParsingTaskResponse
@@ -2129,10 +2477,18 @@ open class Client : AlibabacloudOpenApi.Client {
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitDocumentAnalyzeJobAdvance(_ request: SubmitDocumentAnalyzeJobAdvanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocumentAnalyzeJobResponse {
-        var accessKeyId: String = try await self._credential!.getAccessKeyId()
-        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
-        var securityToken: String = try await self._credential!.getSecurityToken()
-        var credentialType: String = self._credential!.getType()
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
         var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
         if (TeaUtils.Client.empty(openPlatformEndpoint)) {
             openPlatformEndpoint = "openplatform.aliyuncs.com"
@@ -2149,51 +2505,55 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": self._protocol ?? "",
             "regionId": self._regionId ?? ""
         ])
-        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
-        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
-            "product": "energyExpertExternal",
-            "regionId": self._regionId ?? ""
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "energyExpertExternal",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
         ])
-        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
-        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "type": "access_key",
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
         ])
-        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var authResponse: [String: Any] = [:]
         var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
-        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
-        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
-        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
         var submitDocumentAnalyzeJobReq: SubmitDocumentAnalyzeJobRequest = SubmitDocumentAnalyzeJobRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, submitDocumentAnalyzeJobReq)
         if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
-            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
-            ossConfig.accessKeyId = authResponse.body!.accessKeyId
-            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
-            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
             fileObj = TeaFileForm.FileField([
-                "filename": authResponse.body!.objectKey ?? "",
+                "filename": authResponseBody["ObjectKey"] ?? "",
                 "content": request.fileUrlObject!,
                 "contentType": ""
             ])
-            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
-                "accessKeyId": authResponse.body!.accessKeyId ?? "",
-                "policy": authResponse.body!.encodedPolicy ?? "",
-                "signature": authResponse.body!.signature ?? "",
-                "key": authResponse.body!.objectKey ?? "",
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
                 "file": fileObj as! TeaFileForm.FileField,
-                "successActionStatus": "201"
-            ])
-            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
-                "bucketName": authResponse.body!.bucket ?? "",
-                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
-            ])
-            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            submitDocumentAnalyzeJobReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            submitDocumentAnalyzeJobReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitDocumentAnalyzeJobResp: SubmitDocumentAnalyzeJobResponse = try await submitDocumentAnalyzeJobWithOptions(submitDocumentAnalyzeJobReq as! SubmitDocumentAnalyzeJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return submitDocumentAnalyzeJobResp as! SubmitDocumentAnalyzeJobResponse
@@ -2243,10 +2603,18 @@ open class Client : AlibabacloudOpenApi.Client {
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitVLExtractionTaskAdvance(_ request: SubmitVLExtractionTaskAdvanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVLExtractionTaskResponse {
-        var accessKeyId: String = try await self._credential!.getAccessKeyId()
-        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
-        var securityToken: String = try await self._credential!.getSecurityToken()
-        var credentialType: String = self._credential!.getType()
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
         var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
         if (TeaUtils.Client.empty(openPlatformEndpoint)) {
             openPlatformEndpoint = "openplatform.aliyuncs.com"
@@ -2263,51 +2631,55 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": self._protocol ?? "",
             "regionId": self._regionId ?? ""
         ])
-        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
-        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
-            "product": "energyExpertExternal",
-            "regionId": self._regionId ?? ""
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "energyExpertExternal",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
         ])
-        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
-        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "type": "access_key",
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
         ])
-        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var authResponse: [String: Any] = [:]
         var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
-        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
-        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
-        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
         var submitVLExtractionTaskReq: SubmitVLExtractionTaskRequest = SubmitVLExtractionTaskRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, submitVLExtractionTaskReq)
         if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
-            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
-            ossConfig.accessKeyId = authResponse.body!.accessKeyId
-            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
-            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
             fileObj = TeaFileForm.FileField([
-                "filename": authResponse.body!.objectKey ?? "",
+                "filename": authResponseBody["ObjectKey"] ?? "",
                 "content": request.fileUrlObject!,
                 "contentType": ""
             ])
-            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
-                "accessKeyId": authResponse.body!.accessKeyId ?? "",
-                "policy": authResponse.body!.encodedPolicy ?? "",
-                "signature": authResponse.body!.signature ?? "",
-                "key": authResponse.body!.objectKey ?? "",
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
                 "file": fileObj as! TeaFileForm.FileField,
-                "successActionStatus": "201"
-            ])
-            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
-                "bucketName": authResponse.body!.bucket ?? "",
-                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
-            ])
-            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            submitVLExtractionTaskReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
+            submitVLExtractionTaskReq.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var submitVLExtractionTaskResp: SubmitVLExtractionTaskResponse = try await submitVLExtractionTaskWithOptions(submitVLExtractionTaskReq as! SubmitVLExtractionTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return submitVLExtractionTaskResp as! SubmitVLExtractionTaskResponse
