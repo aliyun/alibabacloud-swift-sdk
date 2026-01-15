@@ -1152,6 +1152,8 @@ public class BatchGetAcpConnectionTicketRequest : Tea.TeaModel {
             }
         }
     }
+    public var connectionMode: String?
+
     public var endUserId: String?
 
     public var instanceGroupId: String?
@@ -1174,6 +1176,9 @@ public class BatchGetAcpConnectionTicketRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.connectionMode != nil {
+            map["ConnectionMode"] = self.connectionMode!
+        }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
@@ -1195,6 +1200,9 @@ public class BatchGetAcpConnectionTicketRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ConnectionMode"] as? String {
+            self.connectionMode = value
+        }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
         }
@@ -1232,6 +1240,8 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
 
         public var persistentAppInstanceId: String?
 
+        public var port: Int32?
+
         public var taskId: String?
 
         public var taskStatus: String?
@@ -1267,6 +1277,9 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
             if self.persistentAppInstanceId != nil {
                 map["PersistentAppInstanceId"] = self.persistentAppInstanceId!
             }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -1295,6 +1308,9 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
             }
             if let value = dict["PersistentAppInstanceId"] as? String {
                 self.persistentAppInstanceId = value
+            }
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
@@ -19570,6 +19586,8 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
 
     public var forceStop: Bool?
 
+    public var ignoreParamValidation: Bool?
+
     public var saleMode: String?
 
     public override init() {
@@ -19592,6 +19610,9 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.forceStop != nil {
             map["ForceStop"] = self.forceStop!
         }
+        if self.ignoreParamValidation != nil {
+            map["IgnoreParamValidation"] = self.ignoreParamValidation!
+        }
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
@@ -19605,6 +19626,9 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ForceStop"] as? Bool {
             self.forceStop = value
+        }
+        if let value = dict["IgnoreParamValidation"] as? Bool {
+            self.ignoreParamValidation = value
         }
         if let value = dict["SaleMode"] as? String {
             self.saleMode = value
@@ -20676,6 +20700,8 @@ public class RenewCloudPhoneNodesResponse : Tea.TeaModel {
 public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
     public var androidInstanceIds: [String]?
 
+    public var ignoreParamValidation: Bool?
+
     public var saleMode: String?
 
     public var settingResetType: Int32?
@@ -20697,6 +20723,9 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.androidInstanceIds != nil {
             map["AndroidInstanceIds"] = self.androidInstanceIds!
         }
+        if self.ignoreParamValidation != nil {
+            map["IgnoreParamValidation"] = self.ignoreParamValidation!
+        }
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
@@ -20710,6 +20739,9 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AndroidInstanceIds"] as? [String] {
             self.androidInstanceIds = value
+        }
+        if let value = dict["IgnoreParamValidation"] as? Bool {
+            self.ignoreParamValidation = value
         }
         if let value = dict["SaleMode"] as? String {
             self.saleMode = value
@@ -22831,6 +22863,8 @@ public class UpdateInstanceGroupImageResponse : Tea.TeaModel {
 }
 
 public class UpdateInstanceImageRequest : Tea.TeaModel {
+    public var ignoreParamValidation: Bool?
+
     public var imageId: String?
 
     public var instanceIdList: [String]?
@@ -22851,6 +22885,9 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ignoreParamValidation != nil {
+            map["IgnoreParamValidation"] = self.ignoreParamValidation!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -22865,6 +22902,9 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["IgnoreParamValidation"] as? Bool {
+            self.ignoreParamValidation = value
+        }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }

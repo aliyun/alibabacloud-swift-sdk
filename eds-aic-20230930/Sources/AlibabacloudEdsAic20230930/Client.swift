@@ -245,6 +245,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchGetAcpConnectionTicketWithOptions(_ request: BatchGetAcpConnectionTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetAcpConnectionTicketResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectionMode)) {
+            query["ConnectionMode"] = request.connectionMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserId)) {
             query["EndUserId"] = request.endUserId ?? "";
         }
@@ -3186,6 +3189,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.forceStop)) {
             query["ForceStop"] = request.forceStop!;
         }
+        if (!TeaUtils.Client.isUnset(request.ignoreParamValidation)) {
+            query["IgnoreParamValidation"] = request.ignoreParamValidation!;
+        }
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
         }
@@ -3442,6 +3448,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
             query["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreParamValidation)) {
+            query["IgnoreParamValidation"] = request.ignoreParamValidation!;
         }
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
@@ -3991,6 +4000,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateInstanceImageWithOptions(_ request: UpdateInstanceImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ignoreParamValidation)) {
+            query["IgnoreParamValidation"] = request.ignoreParamValidation!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";
         }
