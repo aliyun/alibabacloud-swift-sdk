@@ -5120,6 +5120,8 @@ public class ListVpcBindingsOutput : Tea.TeaModel {
 public class LogConfig : Tea.TeaModel {
     public var enableInstanceMetrics: Bool?
 
+    public var enableLlmMetrics: Bool?
+
     public var enableRequestMetrics: Bool?
 
     public var logBeginRule: String?
@@ -5145,6 +5147,9 @@ public class LogConfig : Tea.TeaModel {
         if self.enableInstanceMetrics != nil {
             map["enableInstanceMetrics"] = self.enableInstanceMetrics!
         }
+        if self.enableLlmMetrics != nil {
+            map["enableLlmMetrics"] = self.enableLlmMetrics!
+        }
         if self.enableRequestMetrics != nil {
             map["enableRequestMetrics"] = self.enableRequestMetrics!
         }
@@ -5164,6 +5169,9 @@ public class LogConfig : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["enableInstanceMetrics"] as? Bool {
             self.enableInstanceMetrics = value
+        }
+        if let value = dict["enableLlmMetrics"] as? Bool {
+            self.enableLlmMetrics = value
         }
         if let value = dict["enableRequestMetrics"] as? Bool {
             self.enableRequestMetrics = value
