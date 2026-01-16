@@ -10112,15 +10112,25 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var displayNameSearchMode: String?
 
+    public var enableAssignNode: String?
+
     public var endTime: String?
 
     public var fromAllWorkspaces: Bool?
+
+    public var imageSearch: String?
 
     public var jobId: String?
 
     public var jobIds: String?
 
     public var jobType: String?
+
+    public var numericRangeField: String?
+
+    public var numericRangeMax: Int64?
+
+    public var numericRangeMin: Int64?
 
     public var order: String?
 
@@ -10133,6 +10143,8 @@ public class ListJobsRequest : Tea.TeaModel {
     public var paymentType: String?
 
     public var pipelineId: String?
+
+    public var reasonSearch: String?
 
     public var resourceId: String?
 
@@ -10147,6 +10159,10 @@ public class ListJobsRequest : Tea.TeaModel {
     public var status: String?
 
     public var tags: [String: String]?
+
+    public var timeRangeField: String?
+
+    public var userCommandSearch: String?
 
     public var userIdForFilter: String?
 
@@ -10183,11 +10199,17 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.displayNameSearchMode != nil {
             map["DisplayNameSearchMode"] = self.displayNameSearchMode!
         }
+        if self.enableAssignNode != nil {
+            map["EnableAssignNode"] = self.enableAssignNode!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
         if self.fromAllWorkspaces != nil {
             map["FromAllWorkspaces"] = self.fromAllWorkspaces!
+        }
+        if self.imageSearch != nil {
+            map["ImageSearch"] = self.imageSearch!
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
@@ -10197,6 +10219,15 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
+        }
+        if self.numericRangeField != nil {
+            map["NumericRangeField"] = self.numericRangeField!
+        }
+        if self.numericRangeMax != nil {
+            map["NumericRangeMax"] = self.numericRangeMax!
+        }
+        if self.numericRangeMin != nil {
+            map["NumericRangeMin"] = self.numericRangeMin!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -10215,6 +10246,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.pipelineId != nil {
             map["PipelineId"] = self.pipelineId!
+        }
+        if self.reasonSearch != nil {
+            map["ReasonSearch"] = self.reasonSearch!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -10236,6 +10270,12 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.tags != nil {
             map["Tags"] = self.tags!
+        }
+        if self.timeRangeField != nil {
+            map["TimeRangeField"] = self.timeRangeField!
+        }
+        if self.userCommandSearch != nil {
+            map["UserCommandSearch"] = self.userCommandSearch!
         }
         if self.userIdForFilter != nil {
             map["UserIdForFilter"] = self.userIdForFilter!
@@ -10266,11 +10306,17 @@ public class ListJobsRequest : Tea.TeaModel {
         if let value = dict["DisplayNameSearchMode"] as? String {
             self.displayNameSearchMode = value
         }
+        if let value = dict["EnableAssignNode"] as? String {
+            self.enableAssignNode = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
         if let value = dict["FromAllWorkspaces"] as? Bool {
             self.fromAllWorkspaces = value
+        }
+        if let value = dict["ImageSearch"] as? String {
+            self.imageSearch = value
         }
         if let value = dict["JobId"] as? String {
             self.jobId = value
@@ -10280,6 +10326,15 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
+        }
+        if let value = dict["NumericRangeField"] as? String {
+            self.numericRangeField = value
+        }
+        if let value = dict["NumericRangeMax"] as? Int64 {
+            self.numericRangeMax = value
+        }
+        if let value = dict["NumericRangeMin"] as? Int64 {
+            self.numericRangeMin = value
         }
         if let value = dict["Order"] as? String {
             self.order = value
@@ -10298,6 +10353,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["PipelineId"] as? String {
             self.pipelineId = value
+        }
+        if let value = dict["ReasonSearch"] as? String {
+            self.reasonSearch = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
@@ -10319,6 +10377,12 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["Tags"] as? [String: String] {
             self.tags = value
+        }
+        if let value = dict["TimeRangeField"] as? String {
+            self.timeRangeField = value
+        }
+        if let value = dict["UserCommandSearch"] as? String {
+            self.userCommandSearch = value
         }
         if let value = dict["UserIdForFilter"] as? String {
             self.userIdForFilter = value
@@ -10343,15 +10407,25 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
     public var displayNameSearchMode: String?
 
+    public var enableAssignNode: String?
+
     public var endTime: String?
 
     public var fromAllWorkspaces: Bool?
+
+    public var imageSearch: String?
 
     public var jobId: String?
 
     public var jobIds: String?
 
     public var jobType: String?
+
+    public var numericRangeField: String?
+
+    public var numericRangeMax: Int64?
+
+    public var numericRangeMin: Int64?
 
     public var order: String?
 
@@ -10364,6 +10438,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var paymentType: String?
 
     public var pipelineId: String?
+
+    public var reasonSearch: String?
 
     public var resourceId: String?
 
@@ -10378,6 +10454,10 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var status: String?
 
     public var tagsShrink: String?
+
+    public var timeRangeField: String?
+
+    public var userCommandSearch: String?
 
     public var userIdForFilter: String?
 
@@ -10414,11 +10494,17 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.displayNameSearchMode != nil {
             map["DisplayNameSearchMode"] = self.displayNameSearchMode!
         }
+        if self.enableAssignNode != nil {
+            map["EnableAssignNode"] = self.enableAssignNode!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
         if self.fromAllWorkspaces != nil {
             map["FromAllWorkspaces"] = self.fromAllWorkspaces!
+        }
+        if self.imageSearch != nil {
+            map["ImageSearch"] = self.imageSearch!
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
@@ -10428,6 +10514,15 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
+        }
+        if self.numericRangeField != nil {
+            map["NumericRangeField"] = self.numericRangeField!
+        }
+        if self.numericRangeMax != nil {
+            map["NumericRangeMax"] = self.numericRangeMax!
+        }
+        if self.numericRangeMin != nil {
+            map["NumericRangeMin"] = self.numericRangeMin!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -10446,6 +10541,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.pipelineId != nil {
             map["PipelineId"] = self.pipelineId!
+        }
+        if self.reasonSearch != nil {
+            map["ReasonSearch"] = self.reasonSearch!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -10467,6 +10565,12 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
+        }
+        if self.timeRangeField != nil {
+            map["TimeRangeField"] = self.timeRangeField!
+        }
+        if self.userCommandSearch != nil {
+            map["UserCommandSearch"] = self.userCommandSearch!
         }
         if self.userIdForFilter != nil {
             map["UserIdForFilter"] = self.userIdForFilter!
@@ -10497,11 +10601,17 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if let value = dict["DisplayNameSearchMode"] as? String {
             self.displayNameSearchMode = value
         }
+        if let value = dict["EnableAssignNode"] as? String {
+            self.enableAssignNode = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
         if let value = dict["FromAllWorkspaces"] as? Bool {
             self.fromAllWorkspaces = value
+        }
+        if let value = dict["ImageSearch"] as? String {
+            self.imageSearch = value
         }
         if let value = dict["JobId"] as? String {
             self.jobId = value
@@ -10511,6 +10621,15 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
+        }
+        if let value = dict["NumericRangeField"] as? String {
+            self.numericRangeField = value
+        }
+        if let value = dict["NumericRangeMax"] as? Int64 {
+            self.numericRangeMax = value
+        }
+        if let value = dict["NumericRangeMin"] as? Int64 {
+            self.numericRangeMin = value
         }
         if let value = dict["Order"] as? String {
             self.order = value
@@ -10529,6 +10648,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PipelineId"] as? String {
             self.pipelineId = value
+        }
+        if let value = dict["ReasonSearch"] as? String {
+            self.reasonSearch = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
@@ -10550,6 +10672,12 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
+        }
+        if let value = dict["TimeRangeField"] as? String {
+            self.timeRangeField = value
+        }
+        if let value = dict["UserCommandSearch"] as? String {
+            self.userCommandSearch = value
         }
         if let value = dict["UserIdForFilter"] as? String {
             self.userIdForFilter = value
