@@ -2640,6 +2640,21 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.riskBizScenario)) {
+            query["RiskBizScenario"] = request.riskBizScenario!;
+        }
+        if (!TeaUtils.Client.isUnset(request.riskDevice)) {
+            query["RiskDevice"] = request.riskDevice!;
+        }
+        if (!TeaUtils.Client.isUnset(request.riskDeviceToken)) {
+            query["RiskDeviceToken"] = request.riskDeviceToken!;
+        }
+        if (!TeaUtils.Client.isUnset(request.riskGeneric)) {
+            query["RiskGeneric"] = request.riskGeneric!;
+        }
+        if (!TeaUtils.Client.isUnset(request.riskModelMining)) {
+            query["RiskModelMining"] = request.riskModelMining!;
+        }
         if (!TeaUtils.Client.isUnset(request.root)) {
             query["Root"] = request.root!;
         }

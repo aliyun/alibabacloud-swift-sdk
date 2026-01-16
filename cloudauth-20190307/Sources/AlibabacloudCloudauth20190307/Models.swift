@@ -13274,6 +13274,16 @@ public class DescribeVerifySearchPageListRequest : Tea.TeaModel {
 
     public var productCode: String?
 
+    public var riskBizScenario: Int32?
+
+    public var riskDevice: Int32?
+
+    public var riskDeviceToken: Int32?
+
+    public var riskGeneric: Int32?
+
+    public var riskModelMining: Int32?
+
     public var root: Int32?
 
     public var sceneId: String?
@@ -13332,6 +13342,21 @@ public class DescribeVerifySearchPageListRequest : Tea.TeaModel {
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
+        if self.riskBizScenario != nil {
+            map["RiskBizScenario"] = self.riskBizScenario!
+        }
+        if self.riskDevice != nil {
+            map["RiskDevice"] = self.riskDevice!
+        }
+        if self.riskDeviceToken != nil {
+            map["RiskDeviceToken"] = self.riskDeviceToken!
+        }
+        if self.riskGeneric != nil {
+            map["RiskGeneric"] = self.riskGeneric!
+        }
+        if self.riskModelMining != nil {
+            map["RiskModelMining"] = self.riskModelMining!
+        }
         if self.root != nil {
             map["Root"] = self.root!
         }
@@ -13387,6 +13412,21 @@ public class DescribeVerifySearchPageListRequest : Tea.TeaModel {
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
+        }
+        if let value = dict["RiskBizScenario"] as? Int32 {
+            self.riskBizScenario = value
+        }
+        if let value = dict["RiskDevice"] as? Int32 {
+            self.riskDevice = value
+        }
+        if let value = dict["RiskDeviceToken"] as? Int32 {
+            self.riskDeviceToken = value
+        }
+        if let value = dict["RiskGeneric"] as? Int32 {
+            self.riskGeneric = value
+        }
+        if let value = dict["RiskModelMining"] as? Int32 {
+            self.riskModelMining = value
         }
         if let value = dict["Root"] as? Int32 {
             self.root = value
@@ -13572,6 +13612,16 @@ public class DescribeVerifySearchPageListResponseBody : Tea.TeaModel {
 
         public var productCode: String?
 
+        public var riskBizScenario: Int32?
+
+        public var riskDevice: Int32?
+
+        public var riskDeviceToken: Int32?
+
+        public var riskGeneric: Int32?
+
+        public var riskModelMining: Int32?
+
         public var root: Int32?
 
         public var sceneId: Int64?
@@ -13623,6 +13673,21 @@ public class DescribeVerifySearchPageListResponseBody : Tea.TeaModel {
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
             }
+            if self.riskBizScenario != nil {
+                map["RiskBizScenario"] = self.riskBizScenario!
+            }
+            if self.riskDevice != nil {
+                map["RiskDevice"] = self.riskDevice!
+            }
+            if self.riskDeviceToken != nil {
+                map["RiskDeviceToken"] = self.riskDeviceToken!
+            }
+            if self.riskGeneric != nil {
+                map["RiskGeneric"] = self.riskGeneric!
+            }
+            if self.riskModelMining != nil {
+                map["RiskModelMining"] = self.riskModelMining!
+            }
             if self.root != nil {
                 map["Root"] = self.root!
             }
@@ -13671,6 +13736,21 @@ public class DescribeVerifySearchPageListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProductCode"] as? String {
                 self.productCode = value
+            }
+            if let value = dict["RiskBizScenario"] as? Int32 {
+                self.riskBizScenario = value
+            }
+            if let value = dict["RiskDevice"] as? Int32 {
+                self.riskDevice = value
+            }
+            if let value = dict["RiskDeviceToken"] as? Int32 {
+                self.riskDeviceToken = value
+            }
+            if let value = dict["RiskGeneric"] as? Int32 {
+                self.riskGeneric = value
+            }
+            if let value = dict["RiskModelMining"] as? Int32 {
+                self.riskModelMining = value
             }
             if let value = dict["Root"] as? Int32 {
                 self.root = value
