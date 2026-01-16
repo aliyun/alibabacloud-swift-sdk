@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDm20151123"
-  spec.version      = "1.8.1"
+  spec.version      = "1.8.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Dm (20151123) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/dm-20151123" 
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'TeaFileForm',  '~> 1.0.3'
   spec.dependency 'DarabonbaNumber',  '~> 1.0.0'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
-  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
   spec.swift_version='5.6'

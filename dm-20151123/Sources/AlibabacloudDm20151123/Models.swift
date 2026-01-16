@@ -296,6 +296,8 @@ public class BatchSendMailRequest : Tea.TeaModel {
 
     public var clickTrace: String?
 
+    public var domainAuth: Bool?
+
     public var headers: String?
 
     public var ipPoolId: String?
@@ -342,6 +344,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
+        }
+        if self.domainAuth != nil {
+            map["DomainAuth"] = self.domainAuth!
         }
         if self.headers != nil {
             map["Headers"] = self.headers!
@@ -392,6 +397,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
+        }
+        if let value = dict["DomainAuth"] as? Bool {
+            self.domainAuth = value
         }
         if let value = dict["Headers"] as? String {
             self.headers = value
@@ -14566,6 +14574,8 @@ public class SingleSendMailRequest : Tea.TeaModel {
 
     public var clickTrace: String?
 
+    public var domainAuth: Bool?
+
     public var fromAlias: String?
 
     public var headers: String?
@@ -14633,6 +14643,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
+        }
+        if self.domainAuth != nil {
+            map["DomainAuth"] = self.domainAuth!
         }
         if self.fromAlias != nil {
             map["FromAlias"] = self.fromAlias!
@@ -14714,6 +14727,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
+        }
+        if let value = dict["DomainAuth"] as? Bool {
+            self.domainAuth = value
         }
         if let value = dict["FromAlias"] as? String {
             self.fromAlias = value
@@ -14858,6 +14874,8 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
 
     public var clickTrace: String?
 
+    public var domainAuth: Bool?
+
     public var fromAlias: String?
 
     public var headers: String?
@@ -14925,6 +14943,9 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
+        }
+        if self.domainAuth != nil {
+            map["DomainAuth"] = self.domainAuth!
         }
         if self.fromAlias != nil {
             map["FromAlias"] = self.fromAlias!
@@ -15006,6 +15027,9 @@ public class SingleSendMailAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
+        }
+        if let value = dict["DomainAuth"] as? Bool {
+            self.domainAuth = value
         }
         if let value = dict["FromAlias"] as? String {
             self.fromAlias = value
@@ -15112,6 +15136,8 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
 
     public var clickTrace: String?
 
+    public var domainAuth: Bool?
+
     public var fromAlias: String?
 
     public var headers: String?
@@ -15178,6 +15204,9 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
+        }
+        if self.domainAuth != nil {
+            map["DomainAuth"] = self.domainAuth!
         }
         if self.fromAlias != nil {
             map["FromAlias"] = self.fromAlias!
@@ -15259,6 +15288,9 @@ public class SingleSendMailShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
+        }
+        if let value = dict["DomainAuth"] as? Bool {
+            self.domainAuth = value
         }
         if let value = dict["FromAlias"] as? String {
             self.fromAlias = value

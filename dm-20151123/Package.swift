@@ -22,7 +22,7 @@ let package = Package(
             .package(url: "https://github.com/alibabacloud-sdk-swift/tea-fileform", from: "1.0.3"),
             .package(url: "https://github.com/alibabacloud-sdk-swift/darabonba-number", from: "1.0.0"),
             .package(url: "https://github.com/alibabacloud-sdk-swift/darabonba-openapi", from: "1.0.7"),
-            .package(url: "https://github.com/alibabacloud-sdk-swift/openapi-util", from: "1.0.1"),
+            .package(url: "https://github.com/alibabacloud-sdk-swift/openapi-util", from: "1.0.2"),
             .package(url: "https://github.com/alibabacloud-sdk-swift/endpoint-util", from: "1.0.0"),
         ],
         targets: [
