@@ -370,6 +370,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func creatStockOssCheckTaskWithOptions(_ request: CreatStockOssCheckTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatStockOssCheckTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketPrefixFilterConfig)) {
+            query["BucketPrefixFilterConfig"] = request.bucketPrefixFilterConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.buckets)) {
             query["Buckets"] = request.buckets ?? "";
         }
@@ -616,6 +619,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["RegionId"] = request.regionId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketPrefixFilterConfig)) {
+            body["BucketPrefixFilterConfig"] = request.bucketPrefixFilterConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.buckets)) {
             body["Buckets"] = request.buckets ?? "";
         }

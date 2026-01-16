@@ -5,6 +5,45 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ConfigBucketPrefixFilterConfigValue : Tea.TeaModel {
+    public var prefixFilterType: String?
+
+    public var prefixFilters: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.prefixFilterType != nil {
+            map["PrefixFilterType"] = self.prefixFilterType!
+        }
+        if self.prefixFilters != nil {
+            map["PrefixFilters"] = self.prefixFilters!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PrefixFilterType"] as? String {
+            self.prefixFilterType = value
+        }
+        if let value = dict["PrefixFilters"] as? [String] {
+            self.prefixFilters = value
+        }
+    }
+}
+
 public class AddAnswerSampleRequest : Tea.TeaModel {
     public var libId: String?
 
@@ -1870,6 +1909,8 @@ public class CopyServiceConfigResponse : Tea.TeaModel {
 }
 
 public class CreatStockOssCheckTaskRequest : Tea.TeaModel {
+    public var bucketPrefixFilterConfig: String?
+
     public var buckets: String?
 
     public var callbackId: String?
@@ -1940,6 +1981,9 @@ public class CreatStockOssCheckTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bucketPrefixFilterConfig != nil {
+            map["BucketPrefixFilterConfig"] = self.bucketPrefixFilterConfig!
+        }
         if self.buckets != nil {
             map["Buckets"] = self.buckets!
         }
@@ -2029,6 +2073,9 @@ public class CreatStockOssCheckTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BucketPrefixFilterConfig"] as? String {
+            self.bucketPrefixFilterConfig = value
+        }
         if let value = dict["Buckets"] as? String {
             self.buckets = value
         }
@@ -2799,6 +2846,8 @@ public class CreateOnlineTestResponse : Tea.TeaModel {
 }
 
 public class CreatePreCheckRequest : Tea.TeaModel {
+    public var bucketPrefixFilterConfig: String?
+
     public var buckets: String?
 
     public var distinctHistoryTasks: Bool?
@@ -2841,6 +2890,9 @@ public class CreatePreCheckRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bucketPrefixFilterConfig != nil {
+            map["BucketPrefixFilterConfig"] = self.bucketPrefixFilterConfig!
+        }
         if self.buckets != nil {
             map["Buckets"] = self.buckets!
         }
@@ -2888,6 +2940,9 @@ public class CreatePreCheckRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BucketPrefixFilterConfig"] as? String {
+            self.bucketPrefixFilterConfig = value
+        }
         if let value = dict["Buckets"] as? String {
             self.buckets = value
         }
@@ -10850,6 +10905,8 @@ public class GetOssCheckTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var bucketPrefixFilterConfig: [String: ConfigBucketPrefixFilterConfigValue]?
+
         public var callbackId: Int64?
 
         public var distinctHistoryTasks: Bool?
@@ -10913,6 +10970,13 @@ public class GetOssCheckTaskInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bucketPrefixFilterConfig != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.bucketPrefixFilterConfig! {
+                    tmp[k] = v.toMap()
+                }
+                map["BucketPrefixFilterConfig"] = tmp
+            }
             if self.callbackId != nil {
                 map["CallbackId"] = self.callbackId!
             }
@@ -10994,6 +11058,17 @@ public class GetOssCheckTaskInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BucketPrefixFilterConfig"] as? [String: Any?] {
+                var tmp : [String: ConfigBucketPrefixFilterConfigValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = ConfigBucketPrefixFilterConfigValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.bucketPrefixFilterConfig = tmp
+            }
             if let value = dict["CallbackId"] as? Int64 {
                 self.callbackId = value
             }
