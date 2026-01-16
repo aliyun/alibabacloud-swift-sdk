@@ -929,6 +929,60 @@ public class NextNodeSituations : Tea.TeaModel {
 
 public class OperatorBasicInfo : Tea.TeaModel {
     public class Param : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var desc: String?
+
+            public var dimension: String?
+
+            public var excludeCondition: String?
+
+            public var includeCondition: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["Desc"] = self.desc!
+                }
+                if self.dimension != nil {
+                    map["Dimension"] = self.dimension!
+                }
+                if self.excludeCondition != nil {
+                    map["ExcludeCondition"] = self.excludeCondition!
+                }
+                if self.includeCondition != nil {
+                    map["IncludeCondition"] = self.includeCondition!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Desc"] as? String {
+                    self.desc = value
+                }
+                if let value = dict["Dimension"] as? String {
+                    self.dimension = value
+                }
+                if let value = dict["ExcludeCondition"] as? String {
+                    self.excludeCondition = value
+                }
+                if let value = dict["IncludeCondition"] as? String {
+                    self.includeCondition = value
+                }
+            }
+        }
         public var answerThreshold: String?
 
         public var antModelInfo: [String: String]?
@@ -957,6 +1011,8 @@ public class OperatorBasicInfo : Tea.TeaModel {
 
         public var differentRole: Bool?
 
+        public var dimensions: [OperatorBasicInfo.Param.Dimensions]?
+
         public var endType: String?
 
         public var excludes: [String]?
@@ -964,6 +1020,8 @@ public class OperatorBasicInfo : Tea.TeaModel {
         public var from: Int32?
 
         public var fromEnd: Bool?
+
+        public var hitCondition: String?
 
         public var hitTime: Int32?
 
@@ -989,7 +1047,11 @@ public class OperatorBasicInfo : Tea.TeaModel {
 
         public var knowledgeTargetType: Int32?
 
+        public var knowledges: String?
+
         public var lgfSentences: [String]?
+
+        public var llmModelCode: String?
 
         public var maxEmotionChangeValue: Int32?
 
@@ -1014,6 +1076,8 @@ public class OperatorBasicInfo : Tea.TeaModel {
         public var regex: String?
 
         public var roleId: Int32?
+
+        public var sceneName: String?
 
         public var score: Int32?
 
@@ -1092,6 +1156,13 @@ public class OperatorBasicInfo : Tea.TeaModel {
             if self.differentRole != nil {
                 map["Different_role"] = self.differentRole!
             }
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
             if self.endType != nil {
                 map["EndType"] = self.endType!
             }
@@ -1103,6 +1174,9 @@ public class OperatorBasicInfo : Tea.TeaModel {
             }
             if self.fromEnd != nil {
                 map["From_end"] = self.fromEnd!
+            }
+            if self.hitCondition != nil {
+                map["HitCondition"] = self.hitCondition!
             }
             if self.hitTime != nil {
                 map["Hit_time"] = self.hitTime!
@@ -1140,8 +1214,14 @@ public class OperatorBasicInfo : Tea.TeaModel {
             if self.knowledgeTargetType != nil {
                 map["KnowledgeTargetType"] = self.knowledgeTargetType!
             }
+            if self.knowledges != nil {
+                map["Knowledges"] = self.knowledges!
+            }
             if self.lgfSentences != nil {
                 map["LgfSentences"] = self.lgfSentences!
+            }
+            if self.llmModelCode != nil {
+                map["LlmModelCode"] = self.llmModelCode!
             }
             if self.maxEmotionChangeValue != nil {
                 map["MaxEmotionChangeValue"] = self.maxEmotionChangeValue!
@@ -1178,6 +1258,9 @@ public class OperatorBasicInfo : Tea.TeaModel {
             }
             if self.roleId != nil {
                 map["RoleId"] = self.roleId!
+            }
+            if self.sceneName != nil {
+                map["SceneName"] = self.sceneName!
             }
             if self.score != nil {
                 map["Score"] = self.score!
@@ -1258,6 +1341,19 @@ public class OperatorBasicInfo : Tea.TeaModel {
             if let value = dict["Different_role"] as? Bool {
                 self.differentRole = value
             }
+            if let value = dict["Dimensions"] as? [Any?] {
+                var tmp : [OperatorBasicInfo.Param.Dimensions] = []
+                for v in value {
+                    if v != nil {
+                        var model = OperatorBasicInfo.Param.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensions = tmp
+            }
             if let value = dict["EndType"] as? String {
                 self.endType = value
             }
@@ -1269,6 +1365,9 @@ public class OperatorBasicInfo : Tea.TeaModel {
             }
             if let value = dict["From_end"] as? Bool {
                 self.fromEnd = value
+            }
+            if let value = dict["HitCondition"] as? String {
+                self.hitCondition = value
             }
             if let value = dict["Hit_time"] as? Int32 {
                 self.hitTime = value
@@ -1306,8 +1405,14 @@ public class OperatorBasicInfo : Tea.TeaModel {
             if let value = dict["KnowledgeTargetType"] as? Int32 {
                 self.knowledgeTargetType = value
             }
+            if let value = dict["Knowledges"] as? String {
+                self.knowledges = value
+            }
             if let value = dict["LgfSentences"] as? [String] {
                 self.lgfSentences = value
+            }
+            if let value = dict["LlmModelCode"] as? String {
+                self.llmModelCode = value
             }
             if let value = dict["MaxEmotionChangeValue"] as? Int32 {
                 self.maxEmotionChangeValue = value
@@ -1344,6 +1449,9 @@ public class OperatorBasicInfo : Tea.TeaModel {
             }
             if let value = dict["RoleId"] as? Int32 {
                 self.roleId = value
+            }
+            if let value = dict["SceneName"] as? String {
+                self.sceneName = value
             }
             if let value = dict["Score"] as? Int32 {
                 self.score = value
@@ -12600,9 +12708,15 @@ public class GetResultResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var artificialRule: String?
+
                     public var conditions: GetResultResponseBody.Data.ResultInfo.HitResult.HitResult.Conditions?
 
+                    public var finalHitResult: String?
+
                     public var hits: GetResultResponseBody.Data.ResultInfo.HitResult.HitResult.Hits?
+
+                    public var machineHitResult: String?
 
                     public var name: String?
 
@@ -12634,11 +12748,20 @@ public class GetResultResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.artificialRule != nil {
+                            map["ArtificialRule"] = self.artificialRule!
+                        }
                         if self.conditions != nil {
                             map["Conditions"] = self.conditions?.toMap()
                         }
+                        if self.finalHitResult != nil {
+                            map["FinalHitResult"] = self.finalHitResult!
+                        }
                         if self.hits != nil {
                             map["Hits"] = self.hits?.toMap()
+                        }
+                        if self.machineHitResult != nil {
+                            map["MachineHitResult"] = self.machineHitResult!
                         }
                         if self.name != nil {
                             map["Name"] = self.name!
@@ -12666,15 +12789,24 @@ public class GetResultResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["ArtificialRule"] as? String {
+                            self.artificialRule = value
+                        }
                         if let value = dict["Conditions"] as? [String: Any?] {
                             var model = GetResultResponseBody.Data.ResultInfo.HitResult.HitResult.Conditions()
                             model.fromMap(value)
                             self.conditions = model
                         }
+                        if let value = dict["FinalHitResult"] as? String {
+                            self.finalHitResult = value
+                        }
                         if let value = dict["Hits"] as? [String: Any?] {
                             var model = GetResultResponseBody.Data.ResultInfo.HitResult.HitResult.Hits()
                             model.fromMap(value)
                             self.hits = model
+                        }
+                        if let value = dict["MachineHitResult"] as? String {
+                            self.machineHitResult = value
                         }
                         if let value = dict["Name"] as? String {
                             self.name = value
