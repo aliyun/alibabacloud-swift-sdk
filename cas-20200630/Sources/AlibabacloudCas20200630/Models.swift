@@ -184,7 +184,11 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
 
     public var algorithm: String?
 
+    public var aliasName: String?
+
     public var beforeTime: Int64?
+
+    public var clientToken: String?
 
     public var commonName: String?
 
@@ -240,8 +244,14 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
         }
+        if self.aliasName != nil {
+            map["AliasName"] = self.aliasName!
+        }
         if self.beforeTime != nil {
             map["BeforeTime"] = self.beforeTime!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.commonName != nil {
             map["CommonName"] = self.commonName!
@@ -309,8 +319,14 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
         }
+        if let value = dict["AliasName"] as? String {
+            self.aliasName = value
+        }
         if let value = dict["BeforeTime"] as? Int64 {
             self.beforeTime = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["CommonName"] as? String {
             self.commonName = value
@@ -4732,6 +4748,8 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
 
         public var algorithm: String?
 
+        public var aliasName: String?
+
         public var beforeDate: Int64?
 
         public var certChain: String?
@@ -4745,6 +4763,10 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
         public var customIdentifier: String?
 
         public var days: Int32?
+
+        public var fullAlgorithm: String?
+
+        public var id: Int64?
 
         public var identifier: String?
 
@@ -4778,6 +4800,8 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
 
         public var tags: [DescribeClientCertificateResponseBody.Certificate.Tags]?
 
+        public var uploadFlag: Int32?
+
         public var x509Certificate: String?
 
         public override init() {
@@ -4800,6 +4824,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             if self.algorithm != nil {
                 map["Algorithm"] = self.algorithm!
             }
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
             }
@@ -4820,6 +4847,12 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if self.days != nil {
                 map["Days"] = self.days!
+            }
+            if self.fullAlgorithm != nil {
+                map["FullAlgorithm"] = self.fullAlgorithm!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
             }
             if self.identifier != nil {
                 map["Identifier"] = self.identifier!
@@ -4873,6 +4906,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
                 }
                 map["Tags"] = tmp
             }
+            if self.uploadFlag != nil {
+                map["UploadFlag"] = self.uploadFlag!
+            }
             if self.x509Certificate != nil {
                 map["X509Certificate"] = self.x509Certificate!
             }
@@ -4886,6 +4922,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["Algorithm"] as? String {
                 self.algorithm = value
+            }
+            if let value = dict["AliasName"] as? String {
+                self.aliasName = value
             }
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
@@ -4907,6 +4946,12 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["Days"] as? Int32 {
                 self.days = value
+            }
+            if let value = dict["FullAlgorithm"] as? String {
+                self.fullAlgorithm = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
             }
             if let value = dict["Identifier"] as? String {
                 self.identifier = value
@@ -4965,6 +5010,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["UploadFlag"] as? Int32 {
+                self.uploadFlag = value
             }
             if let value = dict["X509Certificate"] as? String {
                 self.x509Certificate = value
@@ -6771,6 +6819,8 @@ public class ListCertRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var parentIdentifier: String?
+
     public var showSize: Int32?
 
     public var status: String?
@@ -6809,6 +6859,9 @@ public class ListCertRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.parentIdentifier != nil {
+            map["ParentIdentifier"] = self.parentIdentifier!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -6840,6 +6893,9 @@ public class ListCertRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["ParentIdentifier"] as? String {
+            self.parentIdentifier = value
         }
         if let value = dict["ShowSize"] as? Int32 {
             self.showSize = value
@@ -6875,7 +6931,7 @@ public class ListCertResponseBody : Tea.TeaModel {
 
         public var extra: String?
 
-        public var id: String?
+        public var id: Int64?
 
         public var identifier: String?
 
@@ -6999,7 +7055,7 @@ public class ListCertResponseBody : Tea.TeaModel {
             if let value = dict["Extra"] as? String {
                 self.extra = value
             }
-            if let value = dict["Id"] as? String {
+            if let value = dict["Id"] as? Int64 {
                 self.id = value
             }
             if let value = dict["Identifier"] as? String {
@@ -7239,6 +7295,8 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
 
         public var algorithm: String?
 
+        public var aliasName: String?
+
         public var beforeDate: Int64?
 
         public var certificateType: String?
@@ -7250,6 +7308,8 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
         public var customIdentifier: String?
 
         public var days: Int32?
+
+        public var id: Int64?
 
         public var identifier: String?
 
@@ -7303,6 +7363,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             if self.algorithm != nil {
                 map["Algorithm"] = self.algorithm!
             }
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
             }
@@ -7320,6 +7383,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             }
             if self.days != nil {
                 map["Days"] = self.days!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
             }
             if self.identifier != nil {
                 map["Identifier"] = self.identifier!
@@ -7380,6 +7446,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             if let value = dict["Algorithm"] as? String {
                 self.algorithm = value
             }
+            if let value = dict["AliasName"] as? String {
+                self.aliasName = value
+            }
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
             }
@@ -7397,6 +7466,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["Days"] as? Int32 {
                 self.days = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
             }
             if let value = dict["Identifier"] as? String {
                 self.identifier = value
@@ -7452,6 +7524,8 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
 
     public var currentPage: Int32?
 
+    public var maxResults: Int32?
+
     public var pageCount: Int32?
 
     public var requestId: String?
@@ -7483,6 +7557,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
         }
         if self.pageCount != nil {
             map["PageCount"] = self.pageCount!
@@ -7516,6 +7593,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
         }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
         }
         if let value = dict["PageCount"] as? Int32 {
             self.pageCount = value

@@ -120,6 +120,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.algorithm)) {
             query["Algorithm"] = request.algorithm ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.aliasName)) {
+            query["AliasName"] = request.aliasName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.beforeTime)) {
             query["BeforeTime"] = request.beforeTime!;
         }
@@ -174,8 +177,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.years)) {
             query["Years"] = request.years!;
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateClientCertificate",
@@ -1203,6 +1211,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentIdentifier)) {
+            query["ParentIdentifier"] = request.parentIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.showSize)) {
             query["ShowSize"] = request.showSize!;
