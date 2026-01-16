@@ -2838,6 +2838,10 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var chunkMode: String?
 
+    public var database: String?
+
+    public var datasourceCode: String?
+
     public var enableHeaders: Bool?
 
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
@@ -2847,6 +2851,8 @@ public class CreateIndexRequest : Tea.TeaModel {
     public var pipelineCommercialType: String?
 
     public var pipelineRetrieveRateLimitStrategy: String?
+
+    public var table: String?
 
     public override init() {
         super.init()
@@ -2930,6 +2936,12 @@ public class CreateIndexRequest : Tea.TeaModel {
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
         }
+        if self.database != nil {
+            map["database"] = self.database!
+        }
+        if self.datasourceCode != nil {
+            map["datasourceCode"] = self.datasourceCode!
+        }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
         }
@@ -2948,6 +2960,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.pipelineRetrieveRateLimitStrategy != nil {
             map["pipelineRetrieveRateLimitStrategy"] = self.pipelineRetrieveRateLimitStrategy!
+        }
+        if self.table != nil {
+            map["table"] = self.table!
         }
         return map
     }
@@ -3029,6 +3044,12 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
+        if let value = dict["database"] as? String {
+            self.database = value
+        }
+        if let value = dict["datasourceCode"] as? String {
+            self.datasourceCode = value
+        }
         if let value = dict["enableHeaders"] as? Bool {
             self.enableHeaders = value
         }
@@ -3053,6 +3074,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if let value = dict["pipelineRetrieveRateLimitStrategy"] as? String {
             self.pipelineRetrieveRateLimitStrategy = value
+        }
+        if let value = dict["table"] as? String {
+            self.table = value
         }
     }
 }
@@ -3100,6 +3124,10 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var chunkMode: String?
 
+    public var database: String?
+
+    public var datasourceCode: String?
+
     public var enableHeaders: Bool?
 
     public var metaExtractColumnsShrink: String?
@@ -3109,6 +3137,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var pipelineCommercialType: String?
 
     public var pipelineRetrieveRateLimitStrategy: String?
+
+    public var table: String?
 
     public override init() {
         super.init()
@@ -3187,6 +3217,12 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
         }
+        if self.database != nil {
+            map["database"] = self.database!
+        }
+        if self.datasourceCode != nil {
+            map["datasourceCode"] = self.datasourceCode!
+        }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
         }
@@ -3201,6 +3237,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.pipelineRetrieveRateLimitStrategy != nil {
             map["pipelineRetrieveRateLimitStrategy"] = self.pipelineRetrieveRateLimitStrategy!
+        }
+        if self.table != nil {
+            map["table"] = self.table!
         }
         return map
     }
@@ -3270,6 +3309,12 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
+        if let value = dict["database"] as? String {
+            self.database = value
+        }
+        if let value = dict["datasourceCode"] as? String {
+            self.datasourceCode = value
+        }
         if let value = dict["enableHeaders"] as? Bool {
             self.enableHeaders = value
         }
@@ -3284,6 +3329,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["pipelineRetrieveRateLimitStrategy"] as? String {
             self.pipelineRetrieveRateLimitStrategy = value
+        }
+        if let value = dict["table"] as? String {
+            self.table = value
         }
     }
 }
