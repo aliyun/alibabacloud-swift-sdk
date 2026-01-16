@@ -914,6 +914,8 @@ public class CreateSlrRoleRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var serviceName: String?
+
     public var sourceIp: String?
 
     public override init() {
@@ -936,6 +938,9 @@ public class CreateSlrRoleRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
         if self.sourceIp != nil {
             map["SourceIp"] = self.sourceIp!
         }
@@ -949,6 +954,9 @@ public class CreateSlrRoleRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["ServiceName"] as? String {
+            self.serviceName = value
         }
         if let value = dict["SourceIp"] as? String {
             self.sourceIp = value
@@ -14096,6 +14104,8 @@ public class DescribeUserStatusResponseBody : Tea.TeaModel {
     public class UserStatus : Tea.TeaModel {
         public var accessKeyId: String?
 
+        public var assetRoleAuthed: Bool?
+
         public var auditClosable: Bool?
 
         public var auditReleasable: Bool?
@@ -14150,6 +14160,9 @@ public class DescribeUserStatusResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.accessKeyId != nil {
                 map["AccessKeyId"] = self.accessKeyId!
+            }
+            if self.assetRoleAuthed != nil {
+                map["AssetRoleAuthed"] = self.assetRoleAuthed!
             }
             if self.auditClosable != nil {
                 map["AuditClosable"] = self.auditClosable!
@@ -14215,6 +14228,9 @@ public class DescribeUserStatusResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessKeyId"] as? String {
                 self.accessKeyId = value
+            }
+            if let value = dict["AssetRoleAuthed"] as? Bool {
+                self.assetRoleAuthed = value
             }
             if let value = dict["AuditClosable"] as? Bool {
                 self.auditClosable = value
