@@ -295,6 +295,179 @@ public class AppInstance : Tea.TeaModel {
 }
 
 public class AppInstanceAggregate : Tea.TeaModel {
+    public class PartnerDetail : Tea.TeaModel {
+        public class BindData : Tea.TeaModel {
+            public var bizId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: String?
+
+            public var mobile: String?
+
+            public var parentPk: String?
+
+            public var partnerId: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bizId != nil {
+                    map["BizId"] = self.bizId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.mobile != nil {
+                    map["Mobile"] = self.mobile!
+                }
+                if self.parentPk != nil {
+                    map["ParentPk"] = self.parentPk!
+                }
+                if self.partnerId != nil {
+                    map["PartnerId"] = self.partnerId!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BizId"] as? String {
+                    self.bizId = value
+                }
+                if let value = dict["GmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["Mobile"] as? String {
+                    self.mobile = value
+                }
+                if let value = dict["ParentPk"] as? String {
+                    self.parentPk = value
+                }
+                if let value = dict["PartnerId"] as? String {
+                    self.partnerId = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
+        public var bindData: AppInstanceAggregate.PartnerDetail.BindData?
+
+        public var partnerId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.bindData?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bindData != nil {
+                map["BindData"] = self.bindData?.toMap()
+            }
+            if self.partnerId != nil {
+                map["PartnerId"] = self.partnerId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BindData"] as? [String: Any?] {
+                var model = AppInstanceAggregate.PartnerDetail.BindData()
+                model.fromMap(value)
+                self.bindData = model
+            }
+            if let value = dict["PartnerId"] as? String {
+                self.partnerId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var aiStaffList: [AppAiStaff]?
 
     public var appOperationAddress: AppOperationAddress?
@@ -335,7 +508,11 @@ public class AppInstanceAggregate : Tea.TeaModel {
 
     public var name: String?
 
+    public var partnerDetail: AppInstanceAggregate.PartnerDetail?
+
     public var profile: AppInstanceProfile?
+
+    public var resourceGroupId: String?
 
     public var siteHost: String?
 
@@ -348,6 +525,8 @@ public class AppInstanceAggregate : Tea.TeaModel {
     public var status: String?
 
     public var statusText: String?
+
+    public var tags: [AppInstanceAggregate.Tags]?
 
     public var thumbnailUrl: String?
 
@@ -364,6 +543,7 @@ public class AppInstanceAggregate : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.appOperationAddress?.validate()
+        try self.partnerDetail?.validate()
         try self.profile?.validate()
     }
 
@@ -437,8 +617,14 @@ public class AppInstanceAggregate : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.partnerDetail != nil {
+            map["PartnerDetail"] = self.partnerDetail?.toMap()
+        }
         if self.profile != nil {
             map["Profile"] = self.profile?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.siteHost != nil {
             map["SiteHost"] = self.siteHost!
@@ -457,6 +643,13 @@ public class AppInstanceAggregate : Tea.TeaModel {
         }
         if self.statusText != nil {
             map["StatusText"] = self.statusText!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.thumbnailUrl != nil {
             map["ThumbnailUrl"] = self.thumbnailUrl!
@@ -551,10 +744,18 @@ public class AppInstanceAggregate : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["PartnerDetail"] as? [String: Any?] {
+            var model = AppInstanceAggregate.PartnerDetail()
+            model.fromMap(value)
+            self.partnerDetail = model
+        }
         if let value = dict["Profile"] as? [String: Any?] {
             var model = AppInstanceProfile()
             model.fromMap(value)
             self.profile = model
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["SiteHost"] as? String {
             self.siteHost = value
@@ -573,6 +774,19 @@ public class AppInstanceAggregate : Tea.TeaModel {
         }
         if let value = dict["StatusText"] as? String {
             self.statusText = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [AppInstanceAggregate.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = AppInstanceAggregate.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["ThumbnailUrl"] as? String {
             self.thumbnailUrl = value
@@ -1521,6 +1735,44 @@ public class BindAppDomainResponse : Tea.TeaModel {
 }
 
 public class CreateAppInstanceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var applicationType: String?
 
     public var autoRenew: Bool?
@@ -1539,7 +1791,11 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
 
     public var quantity: Int32?
 
+    public var resourceGroupId: String?
+
     public var siteVersion: String?
+
+    public var tags: [CreateAppInstanceRequest.Tags]?
 
     public override init() {
         super.init()
@@ -1582,8 +1838,18 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if self.quantity != nil {
             map["Quantity"] = self.quantity!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.siteVersion != nil {
             map["SiteVersion"] = self.siteVersion!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         return map
     }
@@ -1617,8 +1883,143 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["Quantity"] as? Int32 {
             self.quantity = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["SiteVersion"] as? String {
             self.siteVersion = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateAppInstanceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAppInstanceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
+    public var applicationType: String?
+
+    public var autoRenew: Bool?
+
+    public var clientToken: String?
+
+    public var deployArea: String?
+
+    public var duration: Int32?
+
+    public var extend: String?
+
+    public var paymentType: String?
+
+    public var pricingCycle: String?
+
+    public var quantity: Int32?
+
+    public var resourceGroupId: String?
+
+    public var siteVersion: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.deployArea != nil {
+            map["DeployArea"] = self.deployArea!
+        }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.pricingCycle != nil {
+            map["PricingCycle"] = self.pricingCycle!
+        }
+        if self.quantity != nil {
+            map["Quantity"] = self.quantity!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.siteVersion != nil {
+            map["SiteVersion"] = self.siteVersion!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DeployArea"] as? String {
+            self.deployArea = value
+        }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
+        if let value = dict["Extend"] as? String {
+            self.extend = value
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["PricingCycle"] as? String {
+            self.pricingCycle = value
+        }
+        if let value = dict["Quantity"] as? Int32 {
+            self.quantity = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["SiteVersion"] as? String {
+            self.siteVersion = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
     }
 }
