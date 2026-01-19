@@ -12217,6 +12217,290 @@ public class ListLivyComputeResponse : Tea.TeaModel {
     }
 }
 
+public class ListLivyComputeSessionsRequest : Tea.TeaModel {
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNum != nil {
+            map["pageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["pageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListLivyComputeSessionsResponseBody : Tea.TeaModel {
+    public class Sessions : Tea.TeaModel {
+        public var computeId: String?
+
+        public var createTime: Int64?
+
+        public var cuHours: Double?
+
+        public var endTime: Int64?
+
+        public var info: String?
+
+        public var mbSeconds: Int64?
+
+        public var name: String?
+
+        public var queue: String?
+
+        public var sessionId: String?
+
+        public var sparkConf: String?
+
+        public var state: String?
+
+        public var vcoreSeconds: Int64?
+
+        public var webUI: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.computeId != nil {
+                map["computeId"] = self.computeId!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.cuHours != nil {
+                map["cuHours"] = self.cuHours!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.info != nil {
+                map["info"] = self.info!
+            }
+            if self.mbSeconds != nil {
+                map["mbSeconds"] = self.mbSeconds!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.queue != nil {
+                map["queue"] = self.queue!
+            }
+            if self.sessionId != nil {
+                map["sessionId"] = self.sessionId!
+            }
+            if self.sparkConf != nil {
+                map["sparkConf"] = self.sparkConf!
+            }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
+            if self.vcoreSeconds != nil {
+                map["vcoreSeconds"] = self.vcoreSeconds!
+            }
+            if self.webUI != nil {
+                map["webUI"] = self.webUI!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["computeId"] as? String {
+                self.computeId = value
+            }
+            if let value = dict["createTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["cuHours"] as? Double {
+                self.cuHours = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
+            }
+            if let value = dict["info"] as? String {
+                self.info = value
+            }
+            if let value = dict["mbSeconds"] as? Int64 {
+                self.mbSeconds = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["queue"] as? String {
+                self.queue = value
+            }
+            if let value = dict["sessionId"] as? String {
+                self.sessionId = value
+            }
+            if let value = dict["sparkConf"] as? String {
+                self.sparkConf = value
+            }
+            if let value = dict["state"] as? String {
+                self.state = value
+            }
+            if let value = dict["vcoreSeconds"] as? Int64 {
+                self.vcoreSeconds = value
+            }
+            if let value = dict["webUI"] as? String {
+                self.webUI = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var sessions: [ListLivyComputeSessionsResponseBody.Sessions]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessions != nil {
+            var tmp : [Any] = []
+            for k in self.sessions! {
+                tmp.append(k.toMap())
+            }
+            map["sessions"] = tmp
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["sessions"] as? [Any?] {
+            var tmp : [ListLivyComputeSessionsResponseBody.Sessions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListLivyComputeSessionsResponseBody.Sessions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.sessions = tmp
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListLivyComputeSessionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListLivyComputeSessionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListLivyComputeSessionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListLivyComputeTokenRequest : Tea.TeaModel {
     public var regionId: String?
 
