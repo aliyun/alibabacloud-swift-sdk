@@ -7851,6 +7851,8 @@ public class RefreshAppInstanceTicketResponse : Tea.TeaModel {
 public class RefundAppInstanceForPartnerRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var clientToken: String?
+
     public var refundReason: String?
 
     public var userId: String?
@@ -7872,6 +7874,9 @@ public class RefundAppInstanceForPartnerRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.refundReason != nil {
             map["RefundReason"] = self.refundReason!
         }
@@ -7885,6 +7890,9 @@ public class RefundAppInstanceForPartnerRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["RefundReason"] as? String {
             self.refundReason = value

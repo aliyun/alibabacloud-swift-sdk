@@ -888,6 +888,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.refundReason)) {
             query["RefundReason"] = request.refundReason ?? "";
         }
