@@ -5123,6 +5123,295 @@ public class ListUsersForGroupResponse : Tea.TeaModel {
     }
 }
 
+public class ObtainCloudAccountRoleAccessCredentialHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var authorization: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.authorization != nil {
+            map["Authorization"] = self.authorization!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["Authorization"] as? String {
+            self.authorization = value
+        }
+    }
+}
+
+public class ObtainCloudAccountRoleAccessCredentialRequest : Tea.TeaModel {
+    public var cloudAccountRoleExternalId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountRoleExternalId != nil {
+            map["cloudAccountRoleExternalId"] = self.cloudAccountRoleExternalId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cloudAccountRoleExternalId"] as? String {
+            self.cloudAccountRoleExternalId = value
+        }
+    }
+}
+
+public class ObtainCloudAccountRoleAccessCredentialResponseBody : Tea.TeaModel {
+    public class CloudAccountRoleAccessCredential : Tea.TeaModel {
+        public class AlibabaCloudStsToken : Tea.TeaModel {
+            public var accessKeyId: String?
+
+            public var accessKeySecret: String?
+
+            public var expiration: String?
+
+            public var securityToken: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessKeyId != nil {
+                    map["accessKeyId"] = self.accessKeyId!
+                }
+                if self.accessKeySecret != nil {
+                    map["accessKeySecret"] = self.accessKeySecret!
+                }
+                if self.expiration != nil {
+                    map["expiration"] = self.expiration!
+                }
+                if self.securityToken != nil {
+                    map["securityToken"] = self.securityToken!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["accessKeyId"] as? String {
+                    self.accessKeyId = value
+                }
+                if let value = dict["accessKeySecret"] as? String {
+                    self.accessKeySecret = value
+                }
+                if let value = dict["expiration"] as? String {
+                    self.expiration = value
+                }
+                if let value = dict["securityToken"] as? String {
+                    self.securityToken = value
+                }
+            }
+        }
+        public var accessCredentialExpiresAt: Int64?
+
+        public var alibabaCloudStsToken: ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.AlibabaCloudStsToken?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.alibabaCloudStsToken?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessCredentialExpiresAt != nil {
+                map["accessCredentialExpiresAt"] = self.accessCredentialExpiresAt!
+            }
+            if self.alibabaCloudStsToken != nil {
+                map["alibabaCloudStsToken"] = self.alibabaCloudStsToken?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accessCredentialExpiresAt"] as? Int64 {
+                self.accessCredentialExpiresAt = value
+            }
+            if let value = dict["alibabaCloudStsToken"] as? [String: Any?] {
+                var model = ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential.AlibabaCloudStsToken()
+                model.fromMap(value)
+                self.alibabaCloudStsToken = model
+            }
+        }
+    }
+    public var cloudAccountId: String?
+
+    public var cloudAccountRoleAccessCredential: ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential?
+
+    public var cloudAccountRoleExternalId: String?
+
+    public var cloudAccountRoleId: String?
+
+    public var cloudAccountRoleName: String?
+
+    public var cloudAccountVendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.cloudAccountRoleAccessCredential?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cloudAccountId != nil {
+            map["cloudAccountId"] = self.cloudAccountId!
+        }
+        if self.cloudAccountRoleAccessCredential != nil {
+            map["cloudAccountRoleAccessCredential"] = self.cloudAccountRoleAccessCredential?.toMap()
+        }
+        if self.cloudAccountRoleExternalId != nil {
+            map["cloudAccountRoleExternalId"] = self.cloudAccountRoleExternalId!
+        }
+        if self.cloudAccountRoleId != nil {
+            map["cloudAccountRoleId"] = self.cloudAccountRoleId!
+        }
+        if self.cloudAccountRoleName != nil {
+            map["cloudAccountRoleName"] = self.cloudAccountRoleName!
+        }
+        if self.cloudAccountVendorType != nil {
+            map["cloudAccountVendorType"] = self.cloudAccountVendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cloudAccountId"] as? String {
+            self.cloudAccountId = value
+        }
+        if let value = dict["cloudAccountRoleAccessCredential"] as? [String: Any?] {
+            var model = ObtainCloudAccountRoleAccessCredentialResponseBody.CloudAccountRoleAccessCredential()
+            model.fromMap(value)
+            self.cloudAccountRoleAccessCredential = model
+        }
+        if let value = dict["cloudAccountRoleExternalId"] as? String {
+            self.cloudAccountRoleExternalId = value
+        }
+        if let value = dict["cloudAccountRoleId"] as? String {
+            self.cloudAccountRoleId = value
+        }
+        if let value = dict["cloudAccountRoleName"] as? String {
+            self.cloudAccountRoleName = value
+        }
+        if let value = dict["cloudAccountVendorType"] as? String {
+            self.cloudAccountVendorType = value
+        }
+    }
+}
+
+public class ObtainCloudAccountRoleAccessCredentialResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ObtainCloudAccountRoleAccessCredentialResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ObtainCloudAccountRoleAccessCredentialResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class PatchGroupHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

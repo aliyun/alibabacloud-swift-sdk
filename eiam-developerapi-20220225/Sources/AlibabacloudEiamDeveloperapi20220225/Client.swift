@@ -1181,6 +1181,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func obtainCloudAccountRoleAccessCredentialWithOptions(_ instanceId: String, _ request: ObtainCloudAccountRoleAccessCredentialRequest, _ headers: ObtainCloudAccountRoleAccessCredentialHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ObtainCloudAccountRoleAccessCredentialResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudAccountRoleExternalId)) {
+            query["cloudAccountRoleExternalId"] = request.cloudAccountRoleExternalId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.authorization)) {
+            realHeaders["Authorization"] = TeaUtils.Client.toJSONString(headers.authorization);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ObtainCloudAccountRoleAccessCredential",
+            "version": "2022-02-25",
+            "protocol": "HTTPS",
+            "pathname": "/v2/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/cloudAccountRoles/_/actions/obtainAccessCredential",
+            "method": "GET",
+            "authType": "Anonymous",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await doROARequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.pathname ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ObtainCloudAccountRoleAccessCredentialResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func obtainCloudAccountRoleAccessCredential(_ instanceId: String, _ request: ObtainCloudAccountRoleAccessCredentialRequest) async throws -> ObtainCloudAccountRoleAccessCredentialResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ObtainCloudAccountRoleAccessCredentialHeaders = ObtainCloudAccountRoleAccessCredentialHeaders([:])
+        return try await obtainCloudAccountRoleAccessCredentialWithOptions(instanceId as! String, request as! ObtainCloudAccountRoleAccessCredentialRequest, headers as! ObtainCloudAccountRoleAccessCredentialHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func patchGroupWithOptions(_ instanceId: String, _ applicationId: String, _ groupId: String, _ request: PatchGroupRequest, _ headers: PatchGroupHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> PatchGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
