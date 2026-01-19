@@ -41122,6 +41122,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var vpcType: String?
 
+        public var vplVersion: String?
+
         public override init() {
             super.init()
         }
@@ -41342,6 +41344,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.vpcType != nil {
                 map["VpcType"] = self.vpcType!
+            }
+            if self.vplVersion != nil {
+                map["VplVersion"] = self.vplVersion!
             }
             return map
         }
@@ -41572,6 +41577,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["VpcType"] as? String {
                 self.vpcType = value
+            }
+            if let value = dict["VplVersion"] as? String {
+                self.vplVersion = value
             }
         }
     }
