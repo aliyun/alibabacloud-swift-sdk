@@ -12969,6 +12969,8 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
             public var certificateValidStart: Int64?
 
+            public var clientCertSDnPassThrough: Bool?
+
             public var customDomainType: String?
 
             public var domainBindingStatus: String?
@@ -12984,6 +12986,12 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
             public var domainWebSocketStatus: String?
 
             public var isHttpRedirectToHttps: Bool?
+
+            public var sslOcspCacheEnable: Bool?
+
+            public var sslOcspEnable: Bool?
+
+            public var sslVerifyDepth: Int32?
 
             public var wildcardDomainPatterns: String?
 
@@ -13019,6 +13027,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 if self.certificateValidStart != nil {
                     map["CertificateValidStart"] = self.certificateValidStart!
                 }
+                if self.clientCertSDnPassThrough != nil {
+                    map["ClientCertSDnPassThrough"] = self.clientCertSDnPassThrough!
+                }
                 if self.customDomainType != nil {
                     map["CustomDomainType"] = self.customDomainType!
                 }
@@ -13042,6 +13053,15 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 }
                 if self.isHttpRedirectToHttps != nil {
                     map["IsHttpRedirectToHttps"] = self.isHttpRedirectToHttps!
+                }
+                if self.sslOcspCacheEnable != nil {
+                    map["SslOcspCacheEnable"] = self.sslOcspCacheEnable!
+                }
+                if self.sslOcspEnable != nil {
+                    map["SslOcspEnable"] = self.sslOcspEnable!
+                }
+                if self.sslVerifyDepth != nil {
+                    map["SslVerifyDepth"] = self.sslVerifyDepth!
                 }
                 if self.wildcardDomainPatterns != nil {
                     map["WildcardDomainPatterns"] = self.wildcardDomainPatterns!
@@ -13069,6 +13089,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 if let value = dict["CertificateValidStart"] as? Int64 {
                     self.certificateValidStart = value
                 }
+                if let value = dict["ClientCertSDnPassThrough"] as? Bool {
+                    self.clientCertSDnPassThrough = value
+                }
                 if let value = dict["CustomDomainType"] as? String {
                     self.customDomainType = value
                 }
@@ -13092,6 +13115,15 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsHttpRedirectToHttps"] as? Bool {
                     self.isHttpRedirectToHttps = value
+                }
+                if let value = dict["SslOcspCacheEnable"] as? Bool {
+                    self.sslOcspCacheEnable = value
+                }
+                if let value = dict["SslOcspEnable"] as? Bool {
+                    self.sslOcspEnable = value
+                }
+                if let value = dict["SslVerifyDepth"] as? Int32 {
+                    self.sslVerifyDepth = value
                 }
                 if let value = dict["WildcardDomainPatterns"] as? String {
                     self.wildcardDomainPatterns = value
