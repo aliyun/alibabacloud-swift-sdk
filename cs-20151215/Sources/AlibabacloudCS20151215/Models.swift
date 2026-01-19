@@ -26920,6 +26920,8 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
 
         public var certState: String?
 
+        public var cloudServiceName: String?
+
         public var cloudServiceRoles: [ListClusterKubeconfigStatesResponseBody.States.CloudServiceRoles]?
 
         public var revokable: Bool?
@@ -26959,6 +26961,9 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
             if self.certState != nil {
                 map["cert_state"] = self.certState!
             }
+            if self.cloudServiceName != nil {
+                map["cloud_service_name"] = self.cloudServiceName!
+            }
             if self.cloudServiceRoles != nil {
                 var tmp : [Any] = []
                 for k in self.cloudServiceRoles! {
@@ -26994,6 +26999,9 @@ public class ListClusterKubeconfigStatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["cert_state"] as? String {
                 self.certState = value
+            }
+            if let value = dict["cloud_service_name"] as? String {
+                self.cloudServiceName = value
             }
             if let value = dict["cloud_service_roles"] as? [Any?] {
                 var tmp : [ListClusterKubeconfigStatesResponseBody.States.CloudServiceRoles] = []
