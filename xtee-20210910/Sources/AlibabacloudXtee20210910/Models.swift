@@ -31310,6 +31310,10 @@ public class DescribeListPocRequest : Tea.TeaModel {
 
     public var regId: String?
 
+    public var taskName: String?
+
+    public var taskStatus: String?
+
     public var type: String?
 
     public override init() {
@@ -31338,6 +31342,12 @@ public class DescribeListPocRequest : Tea.TeaModel {
         if self.regId != nil {
             map["RegId"] = self.regId!
         }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        if self.taskStatus != nil {
+            map["TaskStatus"] = self.taskStatus!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -31357,6 +31367,12 @@ public class DescribeListPocRequest : Tea.TeaModel {
         }
         if let value = dict["RegId"] as? String {
             self.regId = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+        if let value = dict["TaskStatus"] as? String {
+            self.taskStatus = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
