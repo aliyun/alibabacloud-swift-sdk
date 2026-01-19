@@ -744,6 +744,8 @@ public class ResourceInstance : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var instancePhase: String?
+
     public var instanceStatus: String?
 
     public var instanceSystemDiskSize: Int32?
@@ -817,6 +819,9 @@ public class ResourceInstance : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.instancePhase != nil {
+            map["InstancePhase"] = self.instancePhase!
         }
         if self.instanceStatus != nil {
             map["InstanceStatus"] = self.instanceStatus!
@@ -898,6 +903,9 @@ public class ResourceInstance : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["InstancePhase"] as? String {
+            self.instancePhase = value
         }
         if let value = dict["InstanceStatus"] as? String {
             self.instanceStatus = value
@@ -18635,6 +18643,8 @@ public class UpdateResourceDLinkResponse : Tea.TeaModel {
 public class UpdateResourceInstanceRequest : Tea.TeaModel {
     public var action: String?
 
+    public var newDiskSize: String?
+
     public override init() {
         super.init()
     }
@@ -18652,6 +18662,9 @@ public class UpdateResourceInstanceRequest : Tea.TeaModel {
         if self.action != nil {
             map["Action"] = self.action!
         }
+        if self.newDiskSize != nil {
+            map["NewDiskSize"] = self.newDiskSize!
+        }
         return map
     }
 
@@ -18659,6 +18672,9 @@ public class UpdateResourceInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Action"] as? String {
             self.action = value
+        }
+        if let value = dict["NewDiskSize"] as? String {
+            self.newDiskSize = value
         }
     }
 }
