@@ -15389,6 +15389,680 @@ public class DescribeAIDBClusterPerformanceResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAIDBClusterTaskLogFilesRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var endTime: String?
+
+    public var logType: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var relativeDBClusterId: String?
+
+    public var reverse: Bool?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.logType != nil {
+            map["LogType"] = self.logType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.relativeDBClusterId != nil {
+            map["RelativeDBClusterId"] = self.relativeDBClusterId!
+        }
+        if self.reverse != nil {
+            map["Reverse"] = self.reverse!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["LogType"] as? String {
+            self.logType = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RelativeDBClusterId"] as? String {
+            self.relativeDBClusterId = value
+        }
+        if let value = dict["Reverse"] as? Bool {
+            self.reverse = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAIDBClusterTaskLogFilesResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class SlsLogItems : Tea.TeaModel {
+            public var logTime: String?
+
+            public var message: String?
+
+            public var timestamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logTime != nil {
+                    map["LogTime"] = self.logTime!
+                }
+                if self.message != nil {
+                    map["Message"] = self.message!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogTime"] as? String {
+                    self.logTime = value
+                }
+                if let value = dict["Message"] as? String {
+                    self.message = value
+                }
+                if let value = dict["Timestamp"] as? String {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var slsLogItems: [DescribeAIDBClusterTaskLogFilesResponseBody.Items.SlsLogItems]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.slsLogItems != nil {
+                var tmp : [Any] = []
+                for k in self.slsLogItems! {
+                    tmp.append(k.toMap())
+                }
+                map["SlsLogItems"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SlsLogItems"] as? [Any?] {
+                var tmp : [DescribeAIDBClusterTaskLogFilesResponseBody.Items.SlsLogItems] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAIDBClusterTaskLogFilesResponseBody.Items.SlsLogItems()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.slsLogItems = tmp
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var items: DescribeAIDBClusterTaskLogFilesResponseBody.Items?
+
+    public var pageNumber: Int64?
+
+    public var pageRecordCount: Int32?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeAIDBClusterTaskLogFilesResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAIDBClusterTaskLogFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAIDBClusterTaskLogFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeAIDBClusterTaskLogFilesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeAIDBClusterTaskMetricsRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var endTime: String?
+
+    public var metricType: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var relativeDBClusterId: String?
+
+    public var reverse: Bool?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.relativeDBClusterId != nil {
+            map["RelativeDBClusterId"] = self.relativeDBClusterId!
+        }
+        if self.reverse != nil {
+            map["Reverse"] = self.reverse!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["MetricType"] as? String {
+            self.metricType = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RelativeDBClusterId"] as? String {
+            self.relativeDBClusterId = value
+        }
+        if let value = dict["Reverse"] as? Bool {
+            self.reverse = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAIDBClusterTaskMetricsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class SlsMetricsItems : Tea.TeaModel {
+            public var currentStep: Int32?
+
+            public var epoch: Double?
+
+            public var globalStep: Int32?
+
+            public var logTime: String?
+
+            public var metric: [String: Any]?
+
+            public var metricType: String?
+
+            public var timestamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currentStep != nil {
+                    map["CurrentStep"] = self.currentStep!
+                }
+                if self.epoch != nil {
+                    map["Epoch"] = self.epoch!
+                }
+                if self.globalStep != nil {
+                    map["GlobalStep"] = self.globalStep!
+                }
+                if self.logTime != nil {
+                    map["LogTime"] = self.logTime!
+                }
+                if self.metric != nil {
+                    map["Metric"] = self.metric!
+                }
+                if self.metricType != nil {
+                    map["MetricType"] = self.metricType!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CurrentStep"] as? Int32 {
+                    self.currentStep = value
+                }
+                if let value = dict["Epoch"] as? Double {
+                    self.epoch = value
+                }
+                if let value = dict["GlobalStep"] as? Int32 {
+                    self.globalStep = value
+                }
+                if let value = dict["LogTime"] as? String {
+                    self.logTime = value
+                }
+                if let value = dict["Metric"] as? [String: Any] {
+                    self.metric = value
+                }
+                if let value = dict["MetricType"] as? String {
+                    self.metricType = value
+                }
+                if let value = dict["Timestamp"] as? String {
+                    self.timestamp = value
+                }
+            }
+        }
+        public var slsMetricsItems: [DescribeAIDBClusterTaskMetricsResponseBody.Items.SlsMetricsItems]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.slsMetricsItems != nil {
+                var tmp : [Any] = []
+                for k in self.slsMetricsItems! {
+                    tmp.append(k.toMap())
+                }
+                map["SlsMetricsItems"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SlsMetricsItems"] as? [Any?] {
+                var tmp : [DescribeAIDBClusterTaskMetricsResponseBody.Items.SlsMetricsItems] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAIDBClusterTaskMetricsResponseBody.Items.SlsMetricsItems()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.slsMetricsItems = tmp
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var endTime: String?
+
+    public var items: DescribeAIDBClusterTaskMetricsResponseBody.Items?
+
+    public var metricType: String?
+
+    public var pageNumber: Int64?
+
+    public var pageRecordCount: Int32?
+
+    public var pageSize: Int64?
+
+    public var relativeDbClusterId: String?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.relativeDbClusterId != nil {
+            map["RelativeDbClusterId"] = self.relativeDbClusterId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeAIDBClusterTaskMetricsResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["MetricType"] as? String {
+            self.metricType = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RelativeDbClusterId"] as? String {
+            self.relativeDbClusterId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeAIDBClusterTaskMetricsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAIDBClusterTaskMetricsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeAIDBClusterTaskMetricsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeAIDBClustersRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
