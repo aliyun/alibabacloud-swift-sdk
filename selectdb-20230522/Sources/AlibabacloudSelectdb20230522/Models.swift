@@ -1433,6 +1433,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var clusterNodeType: String?
 
+    public var configPatternType: String?
+
     public var connectionString: String?
 
     public var DBInstanceClass: String?
@@ -1502,6 +1504,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.clusterNodeType != nil {
             map["ClusterNodeType"] = self.clusterNodeType!
+        }
+        if self.configPatternType != nil {
+            map["ConfigPatternType"] = self.configPatternType!
         }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
@@ -1590,6 +1595,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ClusterNodeType"] as? String {
             self.clusterNodeType = value
+        }
+        if let value = dict["ConfigPatternType"] as? String {
+            self.configPatternType = value
         }
         if let value = dict["ConnectionString"] as? String {
             self.connectionString = value
@@ -1684,6 +1692,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var clusterNodeType: String?
 
+    public var configPatternType: String?
+
     public var connectionString: String?
 
     public var DBInstanceClass: String?
@@ -1753,6 +1763,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.clusterNodeType != nil {
             map["ClusterNodeType"] = self.clusterNodeType!
+        }
+        if self.configPatternType != nil {
+            map["ConfigPatternType"] = self.configPatternType!
         }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
@@ -1833,6 +1846,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClusterNodeType"] as? String {
             self.clusterNodeType = value
+        }
+        if let value = dict["ConfigPatternType"] as? String {
+            self.configPatternType = value
         }
         if let value = dict["ConnectionString"] as? String {
             self.connectionString = value
@@ -4987,6 +5003,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var configPatternType: String?
+
     public var createTime: String?
 
     public var DBClusterList: [DescribeDBInstanceAttributeResponseBody.DBClusterList]?
@@ -5066,6 +5084,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.configPatternType != nil {
+            map["ConfigPatternType"] = self.configPatternType!
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
@@ -5183,6 +5204,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["ConfigPatternType"] as? String {
+            self.configPatternType = value
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value

@@ -401,6 +401,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterNodeType)) {
             query["ClusterNodeType"] = request.clusterNodeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.configPatternType)) {
+            query["ConfigPatternType"] = request.configPatternType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionString)) {
             query["ConnectionString"] = request.connectionString ?? "";
         }
