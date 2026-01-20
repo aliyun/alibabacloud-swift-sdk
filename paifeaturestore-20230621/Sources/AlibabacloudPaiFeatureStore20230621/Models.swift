@@ -6,6 +6,56 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class FeatureViewConfigValue : Tea.TeaModel {
+    public class Snapshot : Tea.TeaModel {
+        public var partitions: [String: FeatureViewConfigValueSnapshotPartitionsValue]?
+
+        public var table: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.partitions != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.partitions! {
+                    tmp[k] = v.toMap()
+                }
+                map["Partitions"] = tmp
+            }
+            if self.table != nil {
+                map["Table"] = self.table!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Partitions"] as? [String: Any?] {
+                var tmp : [String: FeatureViewConfigValueSnapshotPartitionsValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = FeatureViewConfigValueSnapshotPartitionsValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.partitions = tmp
+            }
+            if let value = dict["Table"] as? String {
+                self.table = value
+            }
+        }
+    }
     public var partitions: [String: FeatureViewConfigValuePartitionsValue]?
 
     public var eventTime: String?
@@ -13,6 +63,8 @@ public class FeatureViewConfigValue : Tea.TeaModel {
     public var equal: Bool?
 
     public var useMock: Bool?
+
+    public var snapshot: FeatureViewConfigValue.Snapshot?
 
     public override init() {
         super.init()
@@ -24,6 +76,7 @@ public class FeatureViewConfigValue : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.snapshot?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -43,6 +96,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         }
         if self.useMock != nil {
             map["UseMock"] = self.useMock!
+        }
+        if self.snapshot != nil {
+            map["Snapshot"] = self.snapshot?.toMap()
         }
         return map
     }
@@ -69,10 +125,70 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         if let value = dict["UseMock"] as? Bool {
             self.useMock = value
         }
+        if let value = dict["Snapshot"] as? [String: Any?] {
+            var model = FeatureViewConfigValue.Snapshot()
+            model.fromMap(value)
+            self.snapshot = model
+        }
     }
 }
 
 public class FeatureViewConfigValuePartitionsValue : Tea.TeaModel {
+    public var value: String?
+
+    public var values: [String]?
+
+    public var startValue: String?
+
+    public var endValue: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.values != nil {
+            map["Values"] = self.values!
+        }
+        if self.startValue != nil {
+            map["StartValue"] = self.startValue!
+        }
+        if self.endValue != nil {
+            map["EndValue"] = self.endValue!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["Values"] as? [String] {
+            self.values = value
+        }
+        if let value = dict["StartValue"] as? String {
+            self.startValue = value
+        }
+        if let value = dict["EndValue"] as? String {
+            self.endValue = value
+        }
+    }
+}
+
+public class FeatureViewConfigValueSnapshotPartitionsValue : Tea.TeaModel {
     public var value: String?
 
     public var values: [String]?
