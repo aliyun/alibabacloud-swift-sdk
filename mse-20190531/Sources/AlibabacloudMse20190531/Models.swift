@@ -67347,6 +67347,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
 
                 public var interceptPolicy: [String: String]?
 
+                public var serviceName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -67367,6 +67369,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
                     if self.interceptPolicy != nil {
                         map["interceptPolicy"] = self.interceptPolicy!
                     }
+                    if self.serviceName != nil {
+                        map["serviceName"] = self.serviceName!
+                    }
                     return map
                 }
 
@@ -67377,6 +67382,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["interceptPolicy"] as? [String: String] {
                         self.interceptPolicy = value
+                    }
+                    if let value = dict["serviceName"] as? String {
+                        self.serviceName = value
                     }
                 }
             }
