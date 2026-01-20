@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudPaiStudio20220112"
-  spec.version      = "1.1.4"
+  spec.version      = "1.1.5"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud PaiStudio (20220112) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/paistudio-20220112" 
@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
-  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
   spec.swift_version='5.6'

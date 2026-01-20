@@ -4182,7 +4182,7 @@ public class NodeViewMetric : Tea.TeaModel {
 }
 
 public class OversoldUsageConfig : Tea.TeaModel {
-    public var disabled: String?
+    public var disabled: Bool?
 
     public var disabledBy: String?
 
@@ -4211,7 +4211,7 @@ public class OversoldUsageConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Disabled"] as? String {
+        if let value = dict["Disabled"] as? Bool {
             self.disabled = value
         }
         if let value = dict["DisabledBy"] as? String {
