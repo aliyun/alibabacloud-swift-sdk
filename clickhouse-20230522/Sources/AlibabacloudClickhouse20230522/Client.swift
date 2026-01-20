@@ -1044,6 +1044,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeEndpointsWithOptions(_ request: DescribeEndpointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEndpointsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }

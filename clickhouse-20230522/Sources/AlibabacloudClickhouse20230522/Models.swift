@@ -6369,6 +6369,8 @@ public class DescribeDBInstancesResponse : Tea.TeaModel {
 }
 
 public class DescribeEndpointsRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var regionId: String?
@@ -6387,6 +6389,9 @@ public class DescribeEndpointsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -6398,6 +6403,9 @@ public class DescribeEndpointsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -6452,6 +6460,8 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
 
             public var connectionString: String?
 
+            public var endpointName: String?
+
             public var IPAddress: String?
 
             public var netType: String?
@@ -6485,6 +6495,9 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
                 }
                 if self.connectionString != nil {
                     map["ConnectionString"] = self.connectionString!
+                }
+                if self.endpointName != nil {
+                    map["EndpointName"] = self.endpointName!
                 }
                 if self.IPAddress != nil {
                     map["IPAddress"] = self.IPAddress!
@@ -6521,6 +6534,9 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ConnectionString"] as? String {
                     self.connectionString = value
+                }
+                if let value = dict["EndpointName"] as? String {
+                    self.endpointName = value
                 }
                 if let value = dict["IPAddress"] as? String {
                     self.IPAddress = value
