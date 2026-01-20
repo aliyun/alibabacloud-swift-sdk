@@ -323,6 +323,44 @@ public class AcceptResourceShareInvitationResponse : Tea.TeaModel {
 }
 
 public class AssociateResourceShareRequest : Tea.TeaModel {
+    public class ResourceProperties : Tea.TeaModel {
+        public var property: String?
+
+        public var resourceArn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.property != nil {
+                map["Property"] = self.property!
+            }
+            if self.resourceArn != nil {
+                map["ResourceArn"] = self.resourceArn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Property"] as? String {
+                self.property = value
+            }
+            if let value = dict["ResourceArn"] as? String {
+                self.resourceArn = value
+            }
+        }
+    }
     public class Resources : Tea.TeaModel {
         public var resourceId: String?
 
@@ -403,6 +441,8 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
 
     public var resourceArns: [String]?
 
+    public var resourceProperties: [AssociateResourceShareRequest.ResourceProperties]?
+
     public var resourceShareId: String?
 
     public var resources: [AssociateResourceShareRequest.Resources]?
@@ -430,6 +470,13 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
         }
         if self.resourceArns != nil {
             map["ResourceArns"] = self.resourceArns!
+        }
+        if self.resourceProperties != nil {
+            var tmp : [Any] = []
+            for k in self.resourceProperties! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceProperties"] = tmp
         }
         if self.resourceShareId != nil {
             map["ResourceShareId"] = self.resourceShareId!
@@ -461,6 +508,19 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceArns"] as? [String] {
             self.resourceArns = value
+        }
+        if let value = dict["ResourceProperties"] as? [Any?] {
+            var tmp : [AssociateResourceShareRequest.ResourceProperties] = []
+            for v in value {
+                if v != nil {
+                    var model = AssociateResourceShareRequest.ResourceProperties()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceProperties = tmp
         }
         if let value = dict["ResourceShareId"] as? String {
             self.resourceShareId = value
@@ -513,6 +573,8 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
 
         public var resourceArn: String?
 
+        public var resourceProperty: String?
+
         public var resourceShareId: String?
 
         public var resourceShareName: String?
@@ -556,6 +618,9 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
             if self.resourceArn != nil {
                 map["ResourceArn"] = self.resourceArn!
             }
+            if self.resourceProperty != nil {
+                map["ResourceProperty"] = self.resourceProperty!
+            }
             if self.resourceShareId != nil {
                 map["ResourceShareId"] = self.resourceShareId!
             }
@@ -593,6 +658,9 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceArn"] as? String {
                 self.resourceArn = value
+            }
+            if let value = dict["ResourceProperty"] as? String {
+                self.resourceProperty = value
             }
             if let value = dict["ResourceShareId"] as? String {
                 self.resourceShareId = value
@@ -1056,6 +1124,44 @@ public class CheckSharingWithResourceDirectoryStatusResponse : Tea.TeaModel {
 }
 
 public class CreateResourceShareRequest : Tea.TeaModel {
+    public class ResourceProperties : Tea.TeaModel {
+        public var property: String?
+
+        public var resourceArn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.property != nil {
+                map["Property"] = self.property!
+            }
+            if self.resourceArn != nil {
+                map["ResourceArn"] = self.resourceArn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Property"] as? String {
+                self.property = value
+            }
+            if let value = dict["ResourceArn"] as? String {
+                self.resourceArn = value
+            }
+        }
+    }
     public class Resources : Tea.TeaModel {
         public var resourceId: String?
 
@@ -1178,6 +1284,8 @@ public class CreateResourceShareRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var resourceProperties: [CreateResourceShareRequest.ResourceProperties]?
+
     public var resourceShareName: String?
 
     public var resources: [CreateResourceShareRequest.Resources]?
@@ -1213,6 +1321,13 @@ public class CreateResourceShareRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceProperties != nil {
+            var tmp : [Any] = []
+            for k in self.resourceProperties! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceProperties"] = tmp
         }
         if self.resourceShareName != nil {
             map["ResourceShareName"] = self.resourceShareName!
@@ -1257,6 +1372,19 @@ public class CreateResourceShareRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["ResourceProperties"] as? [Any?] {
+            var tmp : [CreateResourceShareRequest.ResourceProperties] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateResourceShareRequest.ResourceProperties()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceProperties = tmp
         }
         if let value = dict["ResourceShareName"] as? String {
             self.resourceShareName = value
@@ -1899,6 +2027,8 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
 
         public var resourceArn: String?
 
+        public var resourceProperty: String?
+
         public var resourceShareId: String?
 
         public var resourceShareName: String?
@@ -1942,6 +2072,9 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
             if self.resourceArn != nil {
                 map["ResourceArn"] = self.resourceArn!
             }
+            if self.resourceProperty != nil {
+                map["ResourceProperty"] = self.resourceProperty!
+            }
             if self.resourceShareId != nil {
                 map["ResourceShareId"] = self.resourceShareId!
             }
@@ -1979,6 +2112,9 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceArn"] as? String {
                 self.resourceArn = value
+            }
+            if let value = dict["ResourceProperty"] as? String {
+                self.resourceProperty = value
             }
             if let value = dict["ResourceShareId"] as? String {
                 self.resourceShareId = value
@@ -3187,6 +3323,8 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
 
         public var resourceArn: String?
 
+        public var resourceProperty: String?
+
         public var resourceShareId: String?
 
         public var resourceShareName: String?
@@ -3239,6 +3377,9 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
             }
             if self.resourceArn != nil {
                 map["ResourceArn"] = self.resourceArn!
+            }
+            if self.resourceProperty != nil {
+                map["ResourceProperty"] = self.resourceProperty!
             }
             if self.resourceShareId != nil {
                 map["ResourceShareId"] = self.resourceShareId!
@@ -3293,6 +3434,9 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceArn"] as? String {
                 self.resourceArn = value
+            }
+            if let value = dict["ResourceProperty"] as? String {
+                self.resourceProperty = value
             }
             if let value = dict["ResourceShareId"] as? String {
                 self.resourceShareId = value

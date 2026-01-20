@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudResourceSharing20200110"
-  spec.version      = "1.2.1"
+  spec.version      = "1.2.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ResourceSharing (20200110) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/resourcesharing-20200110" 
@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
-  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.2'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
   spec.swift_version='5.6'
