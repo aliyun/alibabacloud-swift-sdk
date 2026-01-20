@@ -2298,6 +2298,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDigitalEmployeesWithOptions(_ request: ListDigitalEmployeesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDigitalEmployeesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            query["displayName"] = request.displayName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.employeeType)) {
             query["employeeType"] = request.employeeType ?? "";
         }

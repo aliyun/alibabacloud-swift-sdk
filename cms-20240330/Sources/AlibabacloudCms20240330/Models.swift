@@ -4175,6 +4175,85 @@ public class EntityGroupBase : Tea.TeaModel {
     }
 }
 
+public class Evaluator : Tea.TeaModel {
+    public var config: [String: Any]?
+
+    public var dataScope: String?
+
+    public var filters: [String: String]?
+
+    public var name: String?
+
+    public var resultName: String?
+
+    public var resultType: String?
+
+    public var variableMapping: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["config"] = self.config!
+        }
+        if self.dataScope != nil {
+            map["dataScope"] = self.dataScope!
+        }
+        if self.filters != nil {
+            map["filters"] = self.filters!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.resultName != nil {
+            map["resultName"] = self.resultName!
+        }
+        if self.resultType != nil {
+            map["resultType"] = self.resultType!
+        }
+        if self.variableMapping != nil {
+            map["variableMapping"] = self.variableMapping!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["config"] as? [String: Any] {
+            self.config = value
+        }
+        if let value = dict["dataScope"] as? String {
+            self.dataScope = value
+        }
+        if let value = dict["filters"] as? [String: String] {
+            self.filters = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["resultName"] as? String {
+            self.resultName = value
+        }
+        if let value = dict["resultType"] as? String {
+            self.resultType = value
+        }
+        if let value = dict["variableMapping"] as? [String: String] {
+            self.variableMapping = value
+        }
+    }
+}
+
 public class EventResourceForEventView : Tea.TeaModel {
     public class Entity : Tea.TeaModel {
         public var domain: String?
@@ -11045,11 +11124,15 @@ public class CreateChatResponseBody : Tea.TeaModel {
     public class Messages : Tea.TeaModel {
         public var agents: [[String: Any]]?
 
+        public var artifacts: [[String: Any]]?
+
         public var callId: String?
 
         public var contents: [[String: Any]]?
 
         public var detail: String?
+
+        public var events: [[String: Any]]?
 
         public var parentCallId: String?
 
@@ -11057,11 +11140,13 @@ public class CreateChatResponseBody : Tea.TeaModel {
 
         public var seq: Int32?
 
-        public var timestamp: Int64?
+        public var timestamp: String?
 
         public var tools: [[String: Any]]?
 
         public var type: String?
+
+        public var version: String?
 
         public override init() {
             super.init()
@@ -11080,6 +11165,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             if self.agents != nil {
                 map["agents"] = self.agents!
             }
+            if self.artifacts != nil {
+                map["artifacts"] = self.artifacts!
+            }
             if self.callId != nil {
                 map["callId"] = self.callId!
             }
@@ -11088,6 +11176,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             }
             if self.detail != nil {
                 map["detail"] = self.detail!
+            }
+            if self.events != nil {
+                map["events"] = self.events!
             }
             if self.parentCallId != nil {
                 map["parentCallId"] = self.parentCallId!
@@ -11107,6 +11198,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             if self.type != nil {
                 map["type"] = self.type!
             }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
             return map
         }
 
@@ -11114,6 +11208,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["agents"] as? [[String: Any]] {
                 self.agents = value
+            }
+            if let value = dict["artifacts"] as? [[String: Any]] {
+                self.artifacts = value
             }
             if let value = dict["callId"] as? String {
                 self.callId = value
@@ -11124,6 +11221,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             if let value = dict["detail"] as? String {
                 self.detail = value
             }
+            if let value = dict["events"] as? [[String: Any]] {
+                self.events = value
+            }
             if let value = dict["parentCallId"] as? String {
                 self.parentCallId = value
             }
@@ -11133,7 +11233,7 @@ public class CreateChatResponseBody : Tea.TeaModel {
             if let value = dict["seq"] as? Int32 {
                 self.seq = value
             }
-            if let value = dict["timestamp"] as? Int64 {
+            if let value = dict["timestamp"] as? String {
                 self.timestamp = value
             }
             if let value = dict["tools"] as? [[String: Any]] {
@@ -11141,6 +11241,9 @@ public class CreateChatResponseBody : Tea.TeaModel {
             }
             if let value = dict["type"] as? String {
                 self.type = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
             }
         }
     }
@@ -11393,6 +11496,8 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         }
         public var bailian: [CreateDigitalEmployeeRequest.Knowledges.Bailian]?
 
+        public var sop: [[String: Any]]?
+
         public override init() {
             super.init()
         }
@@ -11414,6 +11519,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                 }
                 map["bailian"] = tmp
             }
+            if self.sop != nil {
+                map["sop"] = self.sop!
+            }
             return map
         }
 
@@ -11431,6 +11539,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
                     }
                 }
                 self.bailian = tmp
+            }
+            if let value = dict["sop"] as? [[String: Any]] {
+                self.sop = value
             }
         }
     }
@@ -17785,6 +17896,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         }
         public var bailian: [GetDigitalEmployeeResponseBody.Knowledges.Bailian]?
 
+        public var sop: [[String: Any]]?
+
         public override init() {
             super.init()
         }
@@ -17806,6 +17919,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                 }
                 map["bailian"] = tmp
             }
+            if self.sop != nil {
+                map["sop"] = self.sop!
+            }
             return map
         }
 
@@ -17823,6 +17939,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
                     }
                 }
                 self.bailian = tmp
+            }
+            if let value = dict["sop"] as? [[String: Any]] {
+                self.sop = value
             }
         }
     }
@@ -21165,32 +21284,138 @@ public class GetThreadDataRequest : Tea.TeaModel {
 }
 
 public class GetThreadDataResponseBody : Tea.TeaModel {
-    public class Messages : Tea.TeaModel {
-        public var callerUid: String?
+    public class Data : Tea.TeaModel {
+        public class Messages : Tea.TeaModel {
+            public var agents: [[String: Any]]?
 
-        public var digitalEmployeeName: String?
+            public var artifacts: [[String: Any]]?
 
-        public var items: [[String: Any]]?
+            public var callId: String?
 
-        public var messageId: String?
+            public var contents: [[String: Any]]?
 
-        public var ownerUid: String?
+            public var detail: String?
 
-        public var parentMessageId: String?
+            public var events: [[String: Any]]?
 
-        public var region: String?
+            public var parentCallId: String?
 
-        public var role: String?
+            public var role: String?
 
-        public var runId: String?
+            public var seq: Int32?
 
-        public var threadId: String?
+            public var timestamp: String?
 
-        public var timestamp: String?
+            public var tools: [[String: Any]]?
+
+            public var type: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agents != nil {
+                    map["agents"] = self.agents!
+                }
+                if self.artifacts != nil {
+                    map["artifacts"] = self.artifacts!
+                }
+                if self.callId != nil {
+                    map["callId"] = self.callId!
+                }
+                if self.contents != nil {
+                    map["contents"] = self.contents!
+                }
+                if self.detail != nil {
+                    map["detail"] = self.detail!
+                }
+                if self.events != nil {
+                    map["events"] = self.events!
+                }
+                if self.parentCallId != nil {
+                    map["parentCallId"] = self.parentCallId!
+                }
+                if self.role != nil {
+                    map["role"] = self.role!
+                }
+                if self.seq != nil {
+                    map["seq"] = self.seq!
+                }
+                if self.timestamp != nil {
+                    map["timestamp"] = self.timestamp!
+                }
+                if self.tools != nil {
+                    map["tools"] = self.tools!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["agents"] as? [[String: Any]] {
+                    self.agents = value
+                }
+                if let value = dict["artifacts"] as? [[String: Any]] {
+                    self.artifacts = value
+                }
+                if let value = dict["callId"] as? String {
+                    self.callId = value
+                }
+                if let value = dict["contents"] as? [[String: Any]] {
+                    self.contents = value
+                }
+                if let value = dict["detail"] as? String {
+                    self.detail = value
+                }
+                if let value = dict["events"] as? [[String: Any]] {
+                    self.events = value
+                }
+                if let value = dict["parentCallId"] as? String {
+                    self.parentCallId = value
+                }
+                if let value = dict["role"] as? String {
+                    self.role = value
+                }
+                if let value = dict["seq"] as? Int32 {
+                    self.seq = value
+                }
+                if let value = dict["timestamp"] as? String {
+                    self.timestamp = value
+                }
+                if let value = dict["tools"] as? [[String: Any]] {
+                    self.tools = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+            }
+        }
+        public var messages: [GetThreadDataResponseBody.Data.Messages]?
+
+        public var requestId: String?
 
         public var traceId: String?
-
-        public var variables: [String: String]?
 
         public override init() {
             super.init()
@@ -21206,96 +21431,50 @@ public class GetThreadDataResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.callerUid != nil {
-                map["callerUid"] = self.callerUid!
+            if self.messages != nil {
+                var tmp : [Any] = []
+                for k in self.messages! {
+                    tmp.append(k.toMap())
+                }
+                map["messages"] = tmp
             }
-            if self.digitalEmployeeName != nil {
-                map["digitalEmployeeName"] = self.digitalEmployeeName!
-            }
-            if self.items != nil {
-                map["items"] = self.items!
-            }
-            if self.messageId != nil {
-                map["messageId"] = self.messageId!
-            }
-            if self.ownerUid != nil {
-                map["ownerUid"] = self.ownerUid!
-            }
-            if self.parentMessageId != nil {
-                map["parentMessageId"] = self.parentMessageId!
-            }
-            if self.region != nil {
-                map["region"] = self.region!
-            }
-            if self.role != nil {
-                map["role"] = self.role!
-            }
-            if self.runId != nil {
-                map["runId"] = self.runId!
-            }
-            if self.threadId != nil {
-                map["threadId"] = self.threadId!
-            }
-            if self.timestamp != nil {
-                map["timestamp"] = self.timestamp!
+            if self.requestId != nil {
+                map["requestId"] = self.requestId!
             }
             if self.traceId != nil {
                 map["traceId"] = self.traceId!
-            }
-            if self.variables != nil {
-                map["variables"] = self.variables!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["callerUid"] as? String {
-                self.callerUid = value
+            if let value = dict["messages"] as? [Any?] {
+                var tmp : [GetThreadDataResponseBody.Data.Messages] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetThreadDataResponseBody.Data.Messages()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.messages = tmp
             }
-            if let value = dict["digitalEmployeeName"] as? String {
-                self.digitalEmployeeName = value
-            }
-            if let value = dict["items"] as? [[String: Any]] {
-                self.items = value
-            }
-            if let value = dict["messageId"] as? String {
-                self.messageId = value
-            }
-            if let value = dict["ownerUid"] as? String {
-                self.ownerUid = value
-            }
-            if let value = dict["parentMessageId"] as? String {
-                self.parentMessageId = value
-            }
-            if let value = dict["region"] as? String {
-                self.region = value
-            }
-            if let value = dict["role"] as? String {
-                self.role = value
-            }
-            if let value = dict["runId"] as? String {
-                self.runId = value
-            }
-            if let value = dict["threadId"] as? String {
-                self.threadId = value
-            }
-            if let value = dict["timestamp"] as? String {
-                self.timestamp = value
+            if let value = dict["requestId"] as? String {
+                self.requestId = value
             }
             if let value = dict["traceId"] as? String {
                 self.traceId = value
             }
-            if let value = dict["variables"] as? [String: String] {
-                self.variables = value
-            }
         }
     }
+    public var data: [GetThreadDataResponseBody.Data]?
+
     public var digitalEmployeeName: String?
 
     public var maxResults: Int64?
-
-    public var messages: [GetThreadDataResponseBody.Messages]?
 
     public var nextToken: String?
 
@@ -21317,18 +21496,18 @@ public class GetThreadDataResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
         if self.digitalEmployeeName != nil {
             map["digitalEmployeeName"] = self.digitalEmployeeName!
         }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
-        }
-        if self.messages != nil {
-            var tmp : [Any] = []
-            for k in self.messages! {
-                tmp.append(k.toMap())
-            }
-            map["messages"] = tmp
         }
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
@@ -21344,24 +21523,24 @@ public class GetThreadDataResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["digitalEmployeeName"] as? String {
-            self.digitalEmployeeName = value
-        }
-        if let value = dict["maxResults"] as? Int64 {
-            self.maxResults = value
-        }
-        if let value = dict["messages"] as? [Any?] {
-            var tmp : [GetThreadDataResponseBody.Messages] = []
+        if let value = dict["data"] as? [Any?] {
+            var tmp : [GetThreadDataResponseBody.Data] = []
             for v in value {
                 if v != nil {
-                    var model = GetThreadDataResponseBody.Messages()
+                    var model = GetThreadDataResponseBody.Data()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
                     tmp.append(model)
                 }
             }
-            self.messages = tmp
+            self.data = tmp
+        }
+        if let value = dict["digitalEmployeeName"] as? String {
+            self.digitalEmployeeName = value
+        }
+        if let value = dict["maxResults"] as? Int64 {
+            self.maxResults = value
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
@@ -24840,6 +25019,8 @@ public class ListBizTracesResponse : Tea.TeaModel {
 }
 
 public class ListDigitalEmployeesRequest : Tea.TeaModel {
+    public var displayName: String?
+
     public var employeeType: String?
 
     public var maxResults: Int32?
@@ -24862,6 +25043,9 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.displayName != nil {
+            map["displayName"] = self.displayName!
+        }
         if self.employeeType != nil {
             map["employeeType"] = self.employeeType!
         }
@@ -24879,6 +25063,9 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["displayName"] as? String {
+            self.displayName = value
+        }
         if let value = dict["employeeType"] as? String {
             self.employeeType = value
         }
@@ -24953,6 +25140,8 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             }
             public var bailian: [ListDigitalEmployeesResponseBody.DigitalEmployees.Knowledges.Bailian]?
 
+            public var sop: [[String: Any]]?
+
             public override init() {
                 super.init()
             }
@@ -24974,6 +25163,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
                     }
                     map["bailian"] = tmp
                 }
+                if self.sop != nil {
+                    map["sop"] = self.sop!
+                }
                 return map
             }
 
@@ -24991,6 +25183,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.bailian = tmp
+                }
+                if let value = dict["sop"] as? [[String: Any]] {
+                    self.sop = value
                 }
             }
         }
@@ -33751,6 +33946,8 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
         }
         public var bailian: [UpdateDigitalEmployeeRequest.Knowledges.Bailian]?
 
+        public var sop: [[String: Any]]?
+
         public override init() {
             super.init()
         }
@@ -33772,6 +33969,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
                 }
                 map["bailian"] = tmp
             }
+            if self.sop != nil {
+                map["sop"] = self.sop!
+            }
             return map
         }
 
@@ -33789,6 +33989,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
                     }
                 }
                 self.bailian = tmp
+            }
+            if let value = dict["sop"] as? [[String: Any]] {
+                self.sop = value
             }
         }
     }
