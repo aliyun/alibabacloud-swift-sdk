@@ -1374,6 +1374,8 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
 
     public var ruleID: String?
 
+    public var ruleId: String?
+
     public var ruleName: String?
 
     public var sqlText: String?
@@ -1468,6 +1470,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         if self.ruleID != nil {
             map["RuleID"] = self.ruleID!
         }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
         if self.ruleName != nil {
             map["RuleName"] = self.ruleName!
         }
@@ -1556,6 +1561,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if let value = dict["RuleID"] as? String {
             self.ruleID = value
+        }
+        if let value = dict["RuleId"] as? String {
+            self.ruleId = value
         }
         if let value = dict["RuleName"] as? String {
             self.ruleName = value
