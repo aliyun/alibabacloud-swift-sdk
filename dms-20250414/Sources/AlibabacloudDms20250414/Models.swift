@@ -6623,6 +6623,52 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ScheduleTaskConfig : Tea.TeaModel {
+            public var cronExpression: String?
+
+            public var query: String?
+
+            public var relatedSessionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cronExpression != nil {
+                    map["CronExpression"] = self.cronExpression!
+                }
+                if self.query != nil {
+                    map["Query"] = self.query!
+                }
+                if self.relatedSessionId != nil {
+                    map["RelatedSessionId"] = self.relatedSessionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CronExpression"] as? String {
+                    self.cronExpression = value
+                }
+                if let value = dict["Query"] as? String {
+                    self.query = value
+                }
+                if let value = dict["RelatedSessionId"] as? String {
+                    self.relatedSessionId = value
+                }
+            }
+        }
         public var aliyunParentUid: String?
 
         public var aliyunUid: String?
@@ -6630,6 +6676,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
         public var creatorUserName: String?
 
         public var customAgentId: String?
+
+        public var DMSUnit: String?
 
         public var dataJson: String?
 
@@ -6647,6 +6695,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var instruction: String?
 
+        public var isScheduleTask: Bool?
+
         public var knowledge: String?
 
         public var knowledgeConfigList: [DescribeCustomAgentResponseBody.Data.KnowledgeConfigList]?
@@ -6657,11 +6707,15 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var nextRuntime: Int64?
+
         public var offlineTime: String?
 
         public var region: String?
 
         public var releaseTime: String?
+
+        public var scheduleTaskConfig: DescribeCustomAgentResponseBody.Data.ScheduleTaskConfig?
 
         public var status: String?
 
@@ -6682,6 +6736,7 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.executionConfig?.validate()
+            try self.scheduleTaskConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6697,6 +6752,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.customAgentId != nil {
                 map["CustomAgentId"] = self.customAgentId!
+            }
+            if self.DMSUnit != nil {
+                map["DMSUnit"] = self.DMSUnit!
             }
             if self.dataJson != nil {
                 map["DataJson"] = self.dataJson!
@@ -6722,6 +6780,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             if self.instruction != nil {
                 map["Instruction"] = self.instruction!
             }
+            if self.isScheduleTask != nil {
+                map["IsScheduleTask"] = self.isScheduleTask!
+            }
             if self.knowledge != nil {
                 map["Knowledge"] = self.knowledge!
             }
@@ -6741,6 +6802,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.nextRuntime != nil {
+                map["NextRuntime"] = self.nextRuntime!
+            }
             if self.offlineTime != nil {
                 map["OfflineTime"] = self.offlineTime!
             }
@@ -6749,6 +6813,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.releaseTime != nil {
                 map["ReleaseTime"] = self.releaseTime!
+            }
+            if self.scheduleTaskConfig != nil {
+                map["ScheduleTaskConfig"] = self.scheduleTaskConfig?.toMap()
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -6779,6 +6846,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["CustomAgentId"] as? String {
                 self.customAgentId = value
             }
+            if let value = dict["DMSUnit"] as? String {
+                self.DMSUnit = value
+            }
             if let value = dict["DataJson"] as? String {
                 self.dataJson = value
             }
@@ -6805,6 +6875,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["Instruction"] as? String {
                 self.instruction = value
             }
+            if let value = dict["IsScheduleTask"] as? Bool {
+                self.isScheduleTask = value
+            }
             if let value = dict["Knowledge"] as? String {
                 self.knowledge = value
             }
@@ -6830,6 +6903,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             if let value = dict["Name"] as? String {
                 self.name = value
             }
+            if let value = dict["NextRuntime"] as? Int64 {
+                self.nextRuntime = value
+            }
             if let value = dict["OfflineTime"] as? String {
                 self.offlineTime = value
             }
@@ -6838,6 +6914,11 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["ReleaseTime"] as? String {
                 self.releaseTime = value
+            }
+            if let value = dict["ScheduleTaskConfig"] as? [String: Any?] {
+                var model = DescribeCustomAgentResponseBody.Data.ScheduleTaskConfig()
+                model.fromMap(value)
+                self.scheduleTaskConfig = model
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -10829,6 +10910,52 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ScheduleTaskConfig : Tea.TeaModel {
+                public var cronExpression: String?
+
+                public var query: String?
+
+                public var relatedSessionId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cronExpression != nil {
+                        map["CronExpression"] = self.cronExpression!
+                    }
+                    if self.query != nil {
+                        map["Query"] = self.query!
+                    }
+                    if self.relatedSessionId != nil {
+                        map["RelatedSessionId"] = self.relatedSessionId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CronExpression"] as? String {
+                        self.cronExpression = value
+                    }
+                    if let value = dict["Query"] as? String {
+                        self.query = value
+                    }
+                    if let value = dict["RelatedSessionId"] as? String {
+                        self.relatedSessionId = value
+                    }
+                }
+            }
             public var aliyunParentId: String?
 
             public var aliyunUid: String?
@@ -10836,6 +10963,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             public var creatorUserName: String?
 
             public var customAgentId: String?
+
+            public var DMSUnit: String?
 
             public var dataJson: String?
 
@@ -10853,6 +10982,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var instruction: String?
 
+            public var isScheduleTask: Bool?
+
             public var knowledge: String?
 
             public var knowledgeConfigList: [ListCustomAgentResponseBody.Data.Content.KnowledgeConfigList]?
@@ -10863,11 +10994,15 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var nextRuntime: Int64?
+
             public var offlineTime: String?
 
             public var region: String?
 
             public var releaseTime: String?
+
+            public var scheduleTaskConfig: ListCustomAgentResponseBody.Data.Content.ScheduleTaskConfig?
 
             public var status: String?
 
@@ -10888,6 +11023,7 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.executionConfig?.validate()
+                try self.scheduleTaskConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -10903,6 +11039,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.customAgentId != nil {
                     map["CustomAgentId"] = self.customAgentId!
+                }
+                if self.DMSUnit != nil {
+                    map["DMSUnit"] = self.DMSUnit!
                 }
                 if self.dataJson != nil {
                     map["DataJson"] = self.dataJson!
@@ -10928,6 +11067,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 if self.instruction != nil {
                     map["Instruction"] = self.instruction!
                 }
+                if self.isScheduleTask != nil {
+                    map["IsScheduleTask"] = self.isScheduleTask!
+                }
                 if self.knowledge != nil {
                     map["Knowledge"] = self.knowledge!
                 }
@@ -10947,6 +11089,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.nextRuntime != nil {
+                    map["NextRuntime"] = self.nextRuntime!
+                }
                 if self.offlineTime != nil {
                     map["OfflineTime"] = self.offlineTime!
                 }
@@ -10955,6 +11100,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.releaseTime != nil {
                     map["ReleaseTime"] = self.releaseTime!
+                }
+                if self.scheduleTaskConfig != nil {
+                    map["ScheduleTaskConfig"] = self.scheduleTaskConfig?.toMap()
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -10985,6 +11133,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 if let value = dict["CustomAgentId"] as? String {
                     self.customAgentId = value
                 }
+                if let value = dict["DMSUnit"] as? String {
+                    self.DMSUnit = value
+                }
                 if let value = dict["DataJson"] as? String {
                     self.dataJson = value
                 }
@@ -11011,6 +11162,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 if let value = dict["Instruction"] as? String {
                     self.instruction = value
                 }
+                if let value = dict["IsScheduleTask"] as? Bool {
+                    self.isScheduleTask = value
+                }
                 if let value = dict["Knowledge"] as? String {
                     self.knowledge = value
                 }
@@ -11036,6 +11190,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 if let value = dict["Name"] as? String {
                     self.name = value
                 }
+                if let value = dict["NextRuntime"] as? Int64 {
+                    self.nextRuntime = value
+                }
                 if let value = dict["OfflineTime"] as? String {
                     self.offlineTime = value
                 }
@@ -11044,6 +11201,11 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ReleaseTime"] as? String {
                     self.releaseTime = value
+                }
+                if let value = dict["ScheduleTaskConfig"] as? [String: Any?] {
+                    var model = ListCustomAgentResponseBody.Data.Content.ScheduleTaskConfig()
+                    model.fromMap(value)
+                    self.scheduleTaskConfig = model
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
