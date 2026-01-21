@@ -27962,6 +27962,8 @@ public class DescribeWebInstanceRelationsResponse : Tea.TeaModel {
 public class DescribeWebPreciseAccessRuleRequest : Tea.TeaModel {
     public var domains: [String]?
 
+    public var owner: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -27981,6 +27983,9 @@ public class DescribeWebPreciseAccessRuleRequest : Tea.TeaModel {
         if self.domains != nil {
             map["Domains"] = self.domains!
         }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -27991,6 +27996,9 @@ public class DescribeWebPreciseAccessRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Domains"] as? [String] {
             self.domains = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -28067,6 +28075,8 @@ public class DescribeWebPreciseAccessRuleResponseBody : Tea.TeaModel {
 
             public var conditionList: [DescribeWebPreciseAccessRuleResponseBody.PreciseAccessConfigList.RuleList.ConditionList]?
 
+            public var expirePeriod: Int64?
+
             public var expires: Int64?
 
             public var name: String?
@@ -28097,6 +28107,9 @@ public class DescribeWebPreciseAccessRuleResponseBody : Tea.TeaModel {
                     }
                     map["ConditionList"] = tmp
                 }
+                if self.expirePeriod != nil {
+                    map["ExpirePeriod"] = self.expirePeriod!
+                }
                 if self.expires != nil {
                     map["Expires"] = self.expires!
                 }
@@ -28126,6 +28139,9 @@ public class DescribeWebPreciseAccessRuleResponseBody : Tea.TeaModel {
                         }
                     }
                     self.conditionList = tmp
+                }
+                if let value = dict["ExpirePeriod"] as? Int64 {
+                    self.expirePeriod = value
                 }
                 if let value = dict["Expires"] as? Int64 {
                     self.expires = value
