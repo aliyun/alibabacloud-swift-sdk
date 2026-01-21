@@ -16357,6 +16357,8 @@ public class CreateEventResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var encryptedId: String?
+
     public var end: CreateEventResponseBody.End?
 
     public var id: String?
@@ -16418,6 +16420,9 @@ public class CreateEventResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.encryptedId != nil {
+            map["encryptedId"] = self.encryptedId!
         }
         if self.end != nil {
             map["end"] = self.end?.toMap()
@@ -16492,6 +16497,9 @@ public class CreateEventResponseBody : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["encryptedId"] as? String {
+            self.encryptedId = value
         }
         if let value = dict["end"] as? [String: Any?] {
             var model = CreateEventResponseBody.End()
@@ -45687,6 +45695,8 @@ public class GetDingtalkMeetingMemberEventShrinkRequest : Tea.TeaModel {
 
 public class GetDingtalkMeetingMemberEventResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var confModule: String?
+
         public var eventId: String?
 
         public var eventName: String?
@@ -45709,6 +45719,9 @@ public class GetDingtalkMeetingMemberEventResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.confModule != nil {
+                map["confModule"] = self.confModule!
+            }
             if self.eventId != nil {
                 map["eventId"] = self.eventId!
             }
@@ -45726,6 +45739,9 @@ public class GetDingtalkMeetingMemberEventResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["confModule"] as? String {
+                self.confModule = value
+            }
             if let value = dict["eventId"] as? String {
                 self.eventId = value
             }
