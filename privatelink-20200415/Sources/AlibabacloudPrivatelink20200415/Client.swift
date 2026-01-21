@@ -296,6 +296,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.crossRegionBandwidth)) {
+            query["CrossRegionBandwidth"] = request.crossRegionBandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -331,6 +334,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
@@ -410,6 +416,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceSupportIPv6)) {
             query["ServiceSupportIPv6"] = request.serviceSupportIPv6!;
+        }
+        if (!TeaUtils.Client.isUnset(request.supportedRegionList)) {
+            query["SupportedRegionList"] = request.supportedRegionList ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
@@ -1315,6 +1324,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceType)) {
             query["ServiceType"] = request.serviceType ?? "";
         }
@@ -1427,6 +1439,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
@@ -1696,6 +1711,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.crossRegionBandwidth)) {
+            query["CrossRegionBandwidth"] = request.crossRegionBandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -1803,6 +1821,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateVpcEndpointServiceAttributeWithOptions(_ request: UpdateVpcEndpointServiceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVpcEndpointServiceAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addSupportedRegionSet)) {
+            query["AddSupportedRegionSet"] = request.addSupportedRegionSet ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
             query["AddressIpVersion"] = request.addressIpVersion ?? "";
         }
@@ -1814,6 +1835,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.connectBandwidth)) {
             query["ConnectBandwidth"] = request.connectBandwidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.deleteSupportedRegionSet)) {
+            query["DeleteSupportedRegionSet"] = request.deleteSupportedRegionSet ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;

@@ -943,6 +943,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var crossRegionBandwidth: Int32?
+
     public var dryRun: Bool?
 
     public var endpointDescription: String?
@@ -964,6 +966,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
     public var serviceId: String?
 
     public var serviceName: String?
+
+    public var serviceRegionId: String?
 
     public var tag: [CreateVpcEndpointRequest.Tag]?
 
@@ -994,6 +998,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.crossRegionBandwidth != nil {
+            map["CrossRegionBandwidth"] = self.crossRegionBandwidth!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -1027,6 +1034,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -1062,6 +1072,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["CrossRegionBandwidth"] as? Int32 {
+            self.crossRegionBandwidth = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -1094,6 +1107,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateVpcEndpointRequest.Tag] = []
@@ -1142,6 +1158,8 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var crossRegionBandwidth: Int32?
+
     public var endpointBusinessStatus: String?
 
     public var endpointDescription: String?
@@ -1159,6 +1177,8 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
     public var serviceId: String?
 
     public var serviceName: String?
+
+    public var serviceRegionId: String?
 
     public var vpcId: String?
 
@@ -1190,6 +1210,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.crossRegionBandwidth != nil {
+            map["CrossRegionBandwidth"] = self.crossRegionBandwidth!
+        }
         if self.endpointBusinessStatus != nil {
             map["EndpointBusinessStatus"] = self.endpointBusinessStatus!
         }
@@ -1217,6 +1240,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -1239,6 +1265,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CrossRegionBandwidth"] as? Int32 {
+            self.crossRegionBandwidth = value
         }
         if let value = dict["EndpointBusinessStatus"] as? String {
             self.endpointBusinessStatus = value
@@ -1266,6 +1295,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -1433,6 +1465,8 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
 
     public var serviceSupportIPv6: Bool?
 
+    public var supportedRegionList: [String]?
+
     public var tag: [CreateVpcEndpointServiceRequest.Tag]?
 
     public var zoneAffinityEnabled: Bool?
@@ -1487,6 +1521,9 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
         }
         if self.serviceSupportIPv6 != nil {
             map["ServiceSupportIPv6"] = self.serviceSupportIPv6!
+        }
+        if self.supportedRegionList != nil {
+            map["SupportedRegionList"] = self.supportedRegionList!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -1546,6 +1583,9 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
         if let value = dict["ServiceSupportIPv6"] as? Bool {
             self.serviceSupportIPv6 = value
         }
+        if let value = dict["SupportedRegionList"] as? [String] {
+            self.supportedRegionList = value
+        }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateVpcEndpointServiceRequest.Tag] = []
             for v in value {
@@ -1566,6 +1606,52 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
 }
 
 public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
+    public class SupportedRegionSet : Tea.TeaModel {
+        public var regionBusinessStatus: String?
+
+        public var regionServiceStatus: String?
+
+        public var serviceRegionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionBusinessStatus != nil {
+                map["RegionBusinessStatus"] = self.regionBusinessStatus!
+            }
+            if self.regionServiceStatus != nil {
+                map["RegionServiceStatus"] = self.regionServiceStatus!
+            }
+            if self.serviceRegionId != nil {
+                map["ServiceRegionId"] = self.serviceRegionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionBusinessStatus"] as? String {
+                self.regionBusinessStatus = value
+            }
+            if let value = dict["RegionServiceStatus"] as? String {
+                self.regionServiceStatus = value
+            }
+            if let value = dict["ServiceRegionId"] as? String {
+                self.serviceRegionId = value
+            }
+        }
+    }
     public var addressIpVersion: String?
 
     public var autoAcceptEnabled: Bool?
@@ -1589,6 +1675,8 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
     public var serviceStatus: String?
 
     public var serviceSupportIPv6: Bool?
+
+    public var supportedRegionSet: [CreateVpcEndpointServiceResponseBody.SupportedRegionSet]?
 
     public var zoneAffinityEnabled: Bool?
 
@@ -1642,6 +1730,13 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
         if self.serviceSupportIPv6 != nil {
             map["ServiceSupportIPv6"] = self.serviceSupportIPv6!
         }
+        if self.supportedRegionSet != nil {
+            var tmp : [Any] = []
+            for k in self.supportedRegionSet! {
+                tmp.append(k.toMap())
+            }
+            map["SupportedRegionSet"] = tmp
+        }
         if self.zoneAffinityEnabled != nil {
             map["ZoneAffinityEnabled"] = self.zoneAffinityEnabled!
         }
@@ -1685,6 +1780,19 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceSupportIPv6"] as? Bool {
             self.serviceSupportIPv6 = value
+        }
+        if let value = dict["SupportedRegionSet"] as? [Any?] {
+            var tmp : [CreateVpcEndpointServiceResponseBody.SupportedRegionSet] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateVpcEndpointServiceResponseBody.SupportedRegionSet()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.supportedRegionSet = tmp
         }
         if let value = dict["ZoneAffinityEnabled"] as? Bool {
             self.zoneAffinityEnabled = value
@@ -3457,6 +3565,8 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var crossRegionBandwidth: Int32?
+
     public var endpointBusinessStatus: String?
 
     public var endpointDescription: String?
@@ -3486,6 +3596,8 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
     public var serviceId: String?
 
     public var serviceName: String?
+
+    public var serviceRegionId: String?
 
     public var vpcId: String?
 
@@ -3518,6 +3630,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.crossRegionBandwidth != nil {
+            map["CrossRegionBandwidth"] = self.crossRegionBandwidth!
         }
         if self.endpointBusinessStatus != nil {
             map["EndpointBusinessStatus"] = self.endpointBusinessStatus!
@@ -3564,6 +3679,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -3589,6 +3707,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CrossRegionBandwidth"] as? Int32 {
+            self.crossRegionBandwidth = value
         }
         if let value = dict["EndpointBusinessStatus"] as? String {
             self.endpointBusinessStatus = value
@@ -3634,6 +3755,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -3737,6 +3861,52 @@ public class GetVpcEndpointServiceAttributeRequest : Tea.TeaModel {
 }
 
 public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
+    public class SupportedRegionSet : Tea.TeaModel {
+        public var regionBusinessStatus: String?
+
+        public var regionServiceStatus: String?
+
+        public var serviceRegionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionBusinessStatus != nil {
+                map["RegionBusinessStatus"] = self.regionBusinessStatus!
+            }
+            if self.regionServiceStatus != nil {
+                map["RegionServiceStatus"] = self.regionServiceStatus!
+            }
+            if self.serviceRegionId != nil {
+                map["ServiceRegionId"] = self.serviceRegionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionBusinessStatus"] as? String {
+                self.regionBusinessStatus = value
+            }
+            if let value = dict["RegionServiceStatus"] as? String {
+                self.regionServiceStatus = value
+            }
+            if let value = dict["ServiceRegionId"] as? String {
+                self.serviceRegionId = value
+            }
+        }
+    }
     public var addressIpVersion: String?
 
     public var autoAcceptEnabled: Bool?
@@ -3774,6 +3944,8 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
     public var serviceSupportIPv6: Bool?
 
     public var serviceType: String?
+
+    public var supportedRegionSet: [GetVpcEndpointServiceAttributeResponseBody.SupportedRegionSet]?
 
     public var zoneAffinityEnabled: Bool?
 
@@ -3850,6 +4022,13 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
         if self.serviceType != nil {
             map["ServiceType"] = self.serviceType!
         }
+        if self.supportedRegionSet != nil {
+            var tmp : [Any] = []
+            for k in self.supportedRegionSet! {
+                tmp.append(k.toMap())
+            }
+            map["SupportedRegionSet"] = tmp
+        }
         if self.zoneAffinityEnabled != nil {
             map["ZoneAffinityEnabled"] = self.zoneAffinityEnabled!
         }
@@ -3917,6 +4096,19 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceType"] as? String {
             self.serviceType = value
+        }
+        if let value = dict["SupportedRegionSet"] as? [Any?] {
+            var tmp : [GetVpcEndpointServiceAttributeResponseBody.SupportedRegionSet] = []
+            for v in value {
+                if v != nil {
+                    var model = GetVpcEndpointServiceAttributeResponseBody.SupportedRegionSet()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.supportedRegionSet = tmp
         }
         if let value = dict["ZoneAffinityEnabled"] as? Bool {
             self.zoneAffinityEnabled = value
@@ -4472,6 +4664,8 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
 
         public var endpointOwnerId: Int64?
 
+        public var endpointRegionId: String?
+
         public var endpointVpcId: String?
 
         public var modifiedTime: String?
@@ -4481,6 +4675,8 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
         public var resourceOwner: Bool?
 
         public var serviceId: String?
+
+        public var serviceRegionId: String?
 
         public var trafficControlMode: String?
 
@@ -4512,6 +4708,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             if self.endpointOwnerId != nil {
                 map["EndpointOwnerId"] = self.endpointOwnerId!
             }
+            if self.endpointRegionId != nil {
+                map["EndpointRegionId"] = self.endpointRegionId!
+            }
             if self.endpointVpcId != nil {
                 map["EndpointVpcId"] = self.endpointVpcId!
             }
@@ -4526,6 +4725,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             }
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceRegionId != nil {
+                map["ServiceRegionId"] = self.serviceRegionId!
             }
             if self.trafficControlMode != nil {
                 map["TrafficControlMode"] = self.trafficControlMode!
@@ -4554,6 +4756,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             if let value = dict["EndpointOwnerId"] as? Int64 {
                 self.endpointOwnerId = value
             }
+            if let value = dict["EndpointRegionId"] as? String {
+                self.endpointRegionId = value
+            }
             if let value = dict["EndpointVpcId"] as? String {
                 self.endpointVpcId = value
             }
@@ -4568,6 +4773,9 @@ public class ListVpcEndpointConnectionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["ServiceRegionId"] as? String {
+                self.serviceRegionId = value
             }
             if let value = dict["TrafficControlMode"] as? String {
                 self.trafficControlMode = value
@@ -5686,6 +5894,52 @@ public class ListVpcEndpointServicesRequest : Tea.TeaModel {
 
 public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
     public class Services : Tea.TeaModel {
+        public class SupportedRegionSet : Tea.TeaModel {
+            public var regionBusinessStatus: String?
+
+            public var regionServiceStatus: String?
+
+            public var serviceRegionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.regionBusinessStatus != nil {
+                    map["RegionBusinessStatus"] = self.regionBusinessStatus!
+                }
+                if self.regionServiceStatus != nil {
+                    map["RegionServiceStatus"] = self.regionServiceStatus!
+                }
+                if self.serviceRegionId != nil {
+                    map["ServiceRegionId"] = self.serviceRegionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RegionBusinessStatus"] as? String {
+                    self.regionBusinessStatus = value
+                }
+                if let value = dict["RegionServiceStatus"] as? String {
+                    self.regionServiceStatus = value
+                }
+                if let value = dict["ServiceRegionId"] as? String {
+                    self.serviceRegionId = value
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -5760,6 +6014,8 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
 
         public var serviceType: String?
 
+        public var supportedRegionSet: [ListVpcEndpointServicesResponseBody.Services.SupportedRegionSet]?
+
         public var tags: [ListVpcEndpointServicesResponseBody.Services.Tags]?
 
         public var zoneAffinityEnabled: Bool?
@@ -5832,6 +6088,13 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
             if self.serviceType != nil {
                 map["ServiceType"] = self.serviceType!
             }
+            if self.supportedRegionSet != nil {
+                var tmp : [Any] = []
+                for k in self.supportedRegionSet! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportedRegionSet"] = tmp
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -5900,6 +6163,19 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceType"] as? String {
                 self.serviceType = value
+            }
+            if let value = dict["SupportedRegionSet"] as? [Any?] {
+                var tmp : [ListVpcEndpointServicesResponseBody.Services.SupportedRegionSet] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListVpcEndpointServicesResponseBody.Services.SupportedRegionSet()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.supportedRegionSet = tmp
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [ListVpcEndpointServicesResponseBody.Services.Tags] = []
@@ -6096,6 +6372,8 @@ public class ListVpcEndpointServicesByEndUserRequest : Tea.TeaModel {
 
     public var serviceName: String?
 
+    public var serviceRegionId: String?
+
     public var serviceType: String?
 
     public var tag: [ListVpcEndpointServicesByEndUserRequest.Tag]?
@@ -6132,6 +6410,9 @@ public class ListVpcEndpointServicesByEndUserRequest : Tea.TeaModel {
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
         if self.serviceType != nil {
             map["ServiceType"] = self.serviceType!
         }
@@ -6164,6 +6445,9 @@ public class ListVpcEndpointServicesByEndUserRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["ServiceType"] as? String {
             self.serviceType = value
@@ -6826,6 +7110,8 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
 
     public var serviceName: String?
 
+    public var serviceRegionId: String?
+
     public var tag: [ListVpcEndpointsRequest.Tag]?
 
     public var vpcId: String?
@@ -6877,6 +7163,9 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -6924,6 +7213,9 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [ListVpcEndpointsRequest.Tag] = []
@@ -6992,6 +7284,8 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var crossRegionBandwidth: Int32?
+
         public var endpointBusinessStatus: String?
 
         public var endpointDescription: String?
@@ -7017,6 +7311,8 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
         public var serviceId: String?
 
         public var serviceName: String?
+
+        public var serviceRegionId: String?
 
         public var tags: [ListVpcEndpointsResponseBody.Endpoints.Tags]?
 
@@ -7049,6 +7345,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.crossRegionBandwidth != nil {
+                map["CrossRegionBandwidth"] = self.crossRegionBandwidth!
             }
             if self.endpointBusinessStatus != nil {
                 map["EndpointBusinessStatus"] = self.endpointBusinessStatus!
@@ -7089,6 +7388,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             if self.serviceName != nil {
                 map["ServiceName"] = self.serviceName!
             }
+            if self.serviceRegionId != nil {
+                map["ServiceRegionId"] = self.serviceRegionId!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -7118,6 +7420,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["CrossRegionBandwidth"] as? Int32 {
+                self.crossRegionBandwidth = value
             }
             if let value = dict["EndpointBusinessStatus"] as? String {
                 self.endpointBusinessStatus = value
@@ -7157,6 +7462,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceName"] as? String {
                 self.serviceName = value
+            }
+            if let value = dict["ServiceRegionId"] as? String {
+                self.serviceRegionId = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [ListVpcEndpointsResponseBody.Endpoints.Tags] = []
@@ -8090,6 +8398,8 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var crossRegionBandwidth: Int32?
+
     public var dryRun: Bool?
 
     public var endpointDescription: String?
@@ -8126,6 +8436,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.crossRegionBandwidth != nil {
+            map["CrossRegionBandwidth"] = self.crossRegionBandwidth!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -8160,6 +8473,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["CrossRegionBandwidth"] as? Int32 {
+            self.crossRegionBandwidth = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
@@ -8430,6 +8746,8 @@ public class UpdateVpcEndpointConnectionAttributeResponse : Tea.TeaModel {
 }
 
 public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
+    public var addSupportedRegionSet: [String]?
+
     public var addressIpVersion: String?
 
     public var autoAcceptEnabled: Bool?
@@ -8437,6 +8755,8 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
     public var clientToken: String?
 
     public var connectBandwidth: Int32?
+
+    public var deleteSupportedRegionSet: [String]?
 
     public var dryRun: Bool?
 
@@ -8464,6 +8784,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addSupportedRegionSet != nil {
+            map["AddSupportedRegionSet"] = self.addSupportedRegionSet!
+        }
         if self.addressIpVersion != nil {
             map["AddressIpVersion"] = self.addressIpVersion!
         }
@@ -8475,6 +8798,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
         }
         if self.connectBandwidth != nil {
             map["ConnectBandwidth"] = self.connectBandwidth!
+        }
+        if self.deleteSupportedRegionSet != nil {
+            map["DeleteSupportedRegionSet"] = self.deleteSupportedRegionSet!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -8499,6 +8825,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddSupportedRegionSet"] as? [String] {
+            self.addSupportedRegionSet = value
+        }
         if let value = dict["AddressIpVersion"] as? String {
             self.addressIpVersion = value
         }
@@ -8510,6 +8839,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["ConnectBandwidth"] as? Int32 {
             self.connectBandwidth = value
+        }
+        if let value = dict["DeleteSupportedRegionSet"] as? [String] {
+            self.deleteSupportedRegionSet = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
