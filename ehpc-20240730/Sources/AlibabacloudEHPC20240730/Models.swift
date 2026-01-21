@@ -2624,6 +2624,8 @@ public class CreateNodesRequest : Tea.TeaModel {
 
     public var keepAlive: String?
 
+    public var minCount: Int32?
+
     public var queueName: String?
 
     public var ramRole: String?
@@ -2674,6 +2676,9 @@ public class CreateNodesRequest : Tea.TeaModel {
         if self.keepAlive != nil {
             map["KeepAlive"] = self.keepAlive!
         }
+        if self.minCount != nil {
+            map["MinCount"] = self.minCount!
+        }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
@@ -2720,6 +2725,9 @@ public class CreateNodesRequest : Tea.TeaModel {
         if let value = dict["KeepAlive"] as? String {
             self.keepAlive = value
         }
+        if let value = dict["MinCount"] as? Int32 {
+            self.minCount = value
+        }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
         }
@@ -2753,6 +2761,8 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
     public var hostnamesShrink: String?
 
     public var keepAlive: String?
+
+    public var minCount: Int32?
 
     public var queueName: String?
 
@@ -2803,6 +2813,9 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
         if self.keepAlive != nil {
             map["KeepAlive"] = self.keepAlive!
         }
+        if self.minCount != nil {
+            map["MinCount"] = self.minCount!
+        }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
@@ -2846,6 +2859,9 @@ public class CreateNodesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KeepAlive"] as? String {
             self.keepAlive = value
+        }
+        if let value = dict["MinCount"] as? Int32 {
+            self.minCount = value
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value

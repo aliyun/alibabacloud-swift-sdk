@@ -302,6 +302,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keepAlive)) {
             query["KeepAlive"] = request.keepAlive ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.minCount)) {
+            query["MinCount"] = request.minCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.queueName)) {
             query["QueueName"] = request.queueName ?? "";
         }
