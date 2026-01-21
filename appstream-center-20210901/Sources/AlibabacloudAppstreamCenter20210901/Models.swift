@@ -12723,6 +12723,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
             public var clipboardScope: String?
 
+            public var clipboardSizeUnit: String?
+
             public var clipboardWriteLimit: Int32?
 
             public var fileClipboard: String?
@@ -12754,6 +12756,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 if self.clipboardScope != nil {
                     map["ClipboardScope"] = self.clipboardScope!
                 }
+                if self.clipboardSizeUnit != nil {
+                    map["ClipboardSizeUnit"] = self.clipboardSizeUnit!
+                }
                 if self.clipboardWriteLimit != nil {
                     map["ClipboardWriteLimit"] = self.clipboardWriteLimit!
                 }
@@ -12779,6 +12784,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["ClipboardScope"] as? String {
                     self.clipboardScope = value
+                }
+                if let value = dict["ClipboardSizeUnit"] as? String {
+                    self.clipboardSizeUnit = value
                 }
                 if let value = dict["ClipboardWriteLimit"] as? Int32 {
                     self.clipboardWriteLimit = value
