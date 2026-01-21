@@ -39840,6 +39840,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var port: Int32?
 
+            public var privateCrtFileName: String?
+
             public var protocol_: String?
 
             public var quicEnabled: Bool?
@@ -39877,6 +39879,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
             public var trafficHijackElementCount: Int32?
 
             public var trafficHijackElementWhitelist: DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.TrafficHijackElementWhitelist?
+
+            public var usePrivateCrt: Bool?
 
             public var username: String?
 
@@ -40023,6 +40027,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if self.port != nil {
                     map["port"] = self.port!
                 }
+                if self.privateCrtFileName != nil {
+                    map["private_crt_file_name"] = self.privateCrtFileName!
+                }
                 if self.protocol_ != nil {
                     map["protocol"] = self.protocol_!
                 }
@@ -40079,6 +40086,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.trafficHijackElementWhitelist != nil {
                     map["traffic_hijack_element_whitelist"] = self.trafficHijackElementWhitelist?.toMap()
+                }
+                if self.usePrivateCrt != nil {
+                    map["use_private_crt"] = self.usePrivateCrt!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -40223,6 +40233,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if let value = dict["port"] as? Int32 {
                     self.port = value
                 }
+                if let value = dict["private_crt_file_name"] as? String {
+                    self.privateCrtFileName = value
+                }
                 if let value = dict["protocol"] as? String {
                     self.protocol_ = value
                 }
@@ -40287,6 +40300,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                     var model = DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.TrafficHijackElementWhitelist()
                     model.fromMap(value)
                     self.trafficHijackElementWhitelist = model
+                }
+                if let value = dict["use_private_crt"] as? Bool {
+                    self.usePrivateCrt = value
                 }
                 if let value = dict["username"] as? String {
                     self.username = value
