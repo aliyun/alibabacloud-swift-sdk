@@ -24,6 +24,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgentPlatformWithOptions(_ tmpReq: CreateAgentPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAgentPlatformResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAgentPlatformShrinkRequest = CreateAgentPlatformShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.aiPlatformConfig)) {
+            request.aiPlatformConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.aiPlatformConfig, "AiPlatformConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiPlatformConfigShrink)) {
+            query["AiPlatformConfig"] = request.aiPlatformConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAgentPlatform",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAgentPlatformResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAgentPlatform(_ request: CreateAgentPlatformRequest) async throws -> CreateAgentPlatformResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAgentPlatformWithOptions(request as! CreateAgentPlatformRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createEmbodiedAIPlatformWithOptions(_ tmpReq: CreateEmbodiedAIPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEmbodiedAIPlatformResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateEmbodiedAIPlatformShrinkRequest = CreateEmbodiedAIPlatformShrinkRequest([:])
