@@ -76,11 +76,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverGroupId)) {
             query["ServerGroupId"] = request.serverGroupId ?? "";
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.servers)) {
-            query["Servers"] = request.servers ?? [];
+            bodyFlat["Servers"] = request.servers ?? [];
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "AddServersToServerGroup",
@@ -2795,9 +2799,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func replaceServersInServerGroupWithOptions(_ request: ReplaceServersInServerGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReplaceServersInServerGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.addedServers)) {
-            query["AddedServers"] = request.addedServers ?? [];
-        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -2810,8 +2811,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverGroupId)) {
             query["ServerGroupId"] = request.serverGroupId ?? "";
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addedServers)) {
+            bodyFlat["AddedServers"] = request.addedServers ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ReplaceServersInServerGroup",
@@ -3676,11 +3684,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverGroupId)) {
             query["ServerGroupId"] = request.serverGroupId ?? "";
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.servers)) {
-            query["Servers"] = request.servers ?? [];
+            bodyFlat["Servers"] = request.servers ?? [];
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateServerGroupServersAttribute",
