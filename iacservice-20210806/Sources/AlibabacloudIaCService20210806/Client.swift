@@ -2284,6 +2284,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func manageTerraformStateWithOptions(_ request: ManageTerraformStateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ManageTerraformStateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.action)) {
+            body["action"] = request.action ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["clientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.identifier)) {
+            body["identifier"] = request.identifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.importResourceId)) {
+            body["importResourceId"] = request.importResourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIdentifier)) {
+            body["resourceIdentifier"] = request.resourceIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ManageTerraformState",
+            "version": "2021-08-06",
+            "protocol": "HTTPS",
+            "pathname": "/terraformState/manage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ManageTerraformStateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func manageTerraformState(_ request: ManageTerraformStateRequest) async throws -> ManageTerraformStateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await manageTerraformStateWithOptions(request as! ManageTerraformStateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func operateJobWithOptions(_ taskId: String, _ jobId: String, _ operationType: String, _ request: OperateJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
