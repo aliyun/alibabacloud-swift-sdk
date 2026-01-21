@@ -14025,6 +14025,8 @@ public class GetInstanceTwoFactorResponse : Tea.TeaModel {
 }
 
 public class GetNetworkDomainRequest : Tea.TeaModel {
+    public var checkProxyState: String?
+
     public var instanceId: String?
 
     public var networkDomainId: String?
@@ -14045,6 +14047,9 @@ public class GetNetworkDomainRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkProxyState != nil {
+            map["CheckProxyState"] = self.checkProxyState!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -14059,6 +14064,9 @@ public class GetNetworkDomainRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CheckProxyState"] as? String {
+            self.checkProxyState = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -32532,6 +32540,10 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
 
             public var diskRedirection: String?
 
+            public var diskRedirectionDownload: String?
+
+            public var diskRedirectionUpload: String?
+
             public var recordKeyboard: String?
 
             public override init() {
@@ -32557,6 +32569,12 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
                 if self.diskRedirection != nil {
                     map["DiskRedirection"] = self.diskRedirection!
                 }
+                if self.diskRedirectionDownload != nil {
+                    map["DiskRedirectionDownload"] = self.diskRedirectionDownload!
+                }
+                if self.diskRedirectionUpload != nil {
+                    map["DiskRedirectionUpload"] = self.diskRedirectionUpload!
+                }
                 if self.recordKeyboard != nil {
                     map["RecordKeyboard"] = self.recordKeyboard!
                 }
@@ -32574,12 +32592,22 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
                 if let value = dict["DiskRedirection"] as? String {
                     self.diskRedirection = value
                 }
+                if let value = dict["DiskRedirectionDownload"] as? String {
+                    self.diskRedirectionDownload = value
+                }
+                if let value = dict["DiskRedirectionUpload"] as? String {
+                    self.diskRedirectionUpload = value
+                }
                 if let value = dict["RecordKeyboard"] as? String {
                     self.recordKeyboard = value
                 }
             }
         }
         public class SSH : Tea.TeaModel {
+            public var allowDirectTcp: String?
+
+            public var allowTcpForwarding: String?
+
             public var execCommand: String?
 
             public var SFTPChannel: String?
@@ -32614,6 +32642,12 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.allowDirectTcp != nil {
+                    map["AllowDirectTcp"] = self.allowDirectTcp!
+                }
+                if self.allowTcpForwarding != nil {
+                    map["AllowTcpForwarding"] = self.allowTcpForwarding!
+                }
                 if self.execCommand != nil {
                     map["ExecCommand"] = self.execCommand!
                 }
@@ -32649,6 +32683,12 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AllowDirectTcp"] as? String {
+                    self.allowDirectTcp = value
+                }
+                if let value = dict["AllowTcpForwarding"] as? String {
+                    self.allowTcpForwarding = value
+                }
                 if let value = dict["ExecCommand"] as? String {
                     self.execCommand = value
                 }

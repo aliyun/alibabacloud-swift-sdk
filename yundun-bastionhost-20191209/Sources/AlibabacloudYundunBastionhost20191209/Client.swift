@@ -2818,6 +2818,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getNetworkDomainWithOptions(_ request: GetNetworkDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNetworkDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkProxyState)) {
+            query["CheckProxyState"] = request.checkProxyState ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
