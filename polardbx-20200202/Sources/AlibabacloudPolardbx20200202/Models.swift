@@ -13954,6 +13954,8 @@ public class DescribeDBInstanceViaEndpointResponse : Tea.TeaModel {
 public class DescribeDBInstancesRequest : Tea.TeaModel {
     public var dbVersion: String?
 
+    public var description_: String?
+
     public var instanceId: String?
 
     public var mustHasCdc: Bool?
@@ -13987,6 +13989,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         if self.dbVersion != nil {
             map["DbVersion"] = self.dbVersion!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -14018,6 +14023,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DbVersion"] as? String {
             self.dbVersion = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
