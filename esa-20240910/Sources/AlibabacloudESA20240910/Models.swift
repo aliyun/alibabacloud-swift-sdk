@@ -32865,6 +32865,8 @@ public class GetCertificateResponseBody : Tea.TeaModel {
 
         public var issuerCN: String?
 
+        public var keyServerId: String?
+
         public var name: String?
 
         public var notAfter: String?
@@ -32934,6 +32936,9 @@ public class GetCertificateResponseBody : Tea.TeaModel {
             }
             if self.issuerCN != nil {
                 map["IssuerCN"] = self.issuerCN!
+            }
+            if self.keyServerId != nil {
+                map["KeyServerId"] = self.keyServerId!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -33012,6 +33017,9 @@ public class GetCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["IssuerCN"] as? String {
                 self.issuerCN = value
+            }
+            if let value = dict["KeyServerId"] as? String {
+                self.keyServerId = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -52485,6 +52493,8 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
 
         public var issuerCN: String?
 
+        public var keyServerId: String?
+
         public var name: String?
 
         public var notAfter: String?
@@ -52554,6 +52564,9 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
             }
             if self.issuerCN != nil {
                 map["IssuerCN"] = self.issuerCN!
+            }
+            if self.keyServerId != nil {
+                map["KeyServerId"] = self.keyServerId!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -52632,6 +52645,9 @@ public class ListCertificatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["IssuerCN"] as? String {
                 self.issuerCN = value
+            }
+            if let value = dict["KeyServerId"] as? String {
+                self.keyServerId = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -52882,6 +52898,8 @@ public class ListCertificatesByRecordResponseBody : Tea.TeaModel {
 
             public var issuerCN: String?
 
+            public var keyServerId: String?
+
             public var name: String?
 
             public var notAfter: String?
@@ -52938,6 +52956,9 @@ public class ListCertificatesByRecordResponseBody : Tea.TeaModel {
                 }
                 if self.issuerCN != nil {
                     map["IssuerCN"] = self.issuerCN!
+                }
+                if self.keyServerId != nil {
+                    map["KeyServerId"] = self.keyServerId!
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
@@ -52997,6 +53018,9 @@ public class ListCertificatesByRecordResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IssuerCN"] as? String {
                     self.issuerCN = value
+                }
+                if let value = dict["KeyServerId"] as? String {
+                    self.keyServerId = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
@@ -76985,6 +77009,8 @@ public class SetCertificateRequest : Tea.TeaModel {
 
     public var id: String?
 
+    public var keyServerId: String?
+
     public var name: String?
 
     public var ownerId: Int64?
@@ -77022,6 +77048,9 @@ public class SetCertificateRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.keyServerId != nil {
+            map["KeyServerId"] = self.keyServerId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -77056,6 +77085,9 @@ public class SetCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? String {
             self.id = value
+        }
+        if let value = dict["KeyServerId"] as? String {
+            self.keyServerId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
