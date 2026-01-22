@@ -2073,6 +2073,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateIndexWithOptions(_ WorkspaceId: String, _ request: UpdateIndexRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIndexResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.denseSimilarityTopK)) {
+            query["DenseSimilarityTopK"] = request.denseSimilarityTopK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineCommercialCu)) {
+            query["PipelineCommercialCu"] = request.pipelineCommercialCu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineCommercialType)) {
+            query["PipelineCommercialType"] = request.pipelineCommercialType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankMinScore)) {
+            query["RerankMinScore"] = request.rerankMinScore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sparseSimilarityTopK)) {
+            query["SparseSimilarityTopK"] = request.sparseSimilarityTopK!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateIndex",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/index/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateIndexResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateIndex(_ WorkspaceId: String, _ request: UpdateIndexRequest) async throws -> UpdateIndexResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateIndexWithOptions(WorkspaceId as! String, request as! UpdateIndexRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateMemoryWithOptions(_ workspaceId: String, _ memoryId: String, _ request: UpdateMemoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMemoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
