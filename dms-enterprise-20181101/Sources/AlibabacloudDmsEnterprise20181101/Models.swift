@@ -3120,6 +3120,8 @@ public class AddInstanceRequest : Tea.TeaModel {
 
     public var queryTimeout: Int32?
 
+    public var roleArn: String?
+
     public var safeRule: String?
 
     public var sid: String?
@@ -3212,6 +3214,9 @@ public class AddInstanceRequest : Tea.TeaModel {
         if self.queryTimeout != nil {
             map["QueryTimeout"] = self.queryTimeout!
         }
+        if self.roleArn != nil {
+            map["RoleArn"] = self.roleArn!
+        }
         if self.safeRule != nil {
             map["SafeRule"] = self.safeRule!
         }
@@ -3303,6 +3308,9 @@ public class AddInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["QueryTimeout"] as? Int32 {
             self.queryTimeout = value
+        }
+        if let value = dict["RoleArn"] as? String {
+            self.roleArn = value
         }
         if let value = dict["SafeRule"] as? String {
             self.safeRule = value
@@ -13582,6 +13590,8 @@ public class CreateDatabaseExportOrderResponse : Tea.TeaModel {
 public class CreateDifyInstanceRequest : Tea.TeaModel {
     public var adbpgInstanceMode: String?
 
+    public var autoRenew: Bool?
+
     public var backupVSwitchId: String?
 
     public var clientToken: String?
@@ -13714,6 +13724,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.adbpgInstanceMode != nil {
             map["AdbpgInstanceMode"] = self.adbpgInstanceMode!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
         }
         if self.backupVSwitchId != nil {
             map["BackupVSwitchId"] = self.backupVSwitchId!
@@ -13896,6 +13909,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdbpgInstanceMode"] as? String {
             self.adbpgInstanceMode = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
         }
         if let value = dict["BackupVSwitchId"] as? String {
             self.backupVSwitchId = value

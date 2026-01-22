@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudDmsEnterprise20181101` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/dms-enterprise-20181101" "2.1.4"
+github "alibabacloud-sdk-swift/dms-enterprise-20181101" "2.1.5"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudDmsEnterprise20181101` into your Xcode project using [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/dms-enterprise-20181101.git", from: "2.1.4")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/dms-enterprise-20181101.git", from: "2.1.5")
 ]
 ```
 
