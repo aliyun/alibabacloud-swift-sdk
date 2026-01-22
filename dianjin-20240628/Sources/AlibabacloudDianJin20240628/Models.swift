@@ -13234,6 +13234,8 @@ public class RealTimeDialogRequest : Tea.TeaModel {
 
         public var end: Int32?
 
+        public var intentionCode: String?
+
         public var role: Int32?
 
         public var type: String?
@@ -13273,6 +13275,9 @@ public class RealTimeDialogRequest : Tea.TeaModel {
             if self.end != nil {
                 map["end"] = self.end!
             }
+            if self.intentionCode != nil {
+                map["intentionCode"] = self.intentionCode!
+            }
             if self.role != nil {
                 map["role"] = self.role!
             }
@@ -13304,6 +13309,9 @@ public class RealTimeDialogRequest : Tea.TeaModel {
             }
             if let value = dict["end"] as? Int32 {
                 self.end = value
+            }
+            if let value = dict["intentionCode"] as? String {
+                self.intentionCode = value
             }
             if let value = dict["role"] as? Int32 {
                 self.role = value
