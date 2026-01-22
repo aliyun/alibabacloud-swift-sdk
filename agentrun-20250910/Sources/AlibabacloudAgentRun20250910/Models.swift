@@ -46,6 +46,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var protocolConfiguration: ProtocolConfiguration?
 
+    public var resourceGroupId: String?
+
     public var sessionConcurrencyLimitPerInstance: Int?
 
     public var sessionIdleTimeoutSeconds: Int32?
@@ -133,6 +135,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.protocolConfiguration != nil {
             map["protocolConfiguration"] = self.protocolConfiguration?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
         }
         if self.sessionConcurrencyLimitPerInstance != nil {
             map["sessionConcurrencyLimitPerInstance"] = self.sessionConcurrencyLimitPerInstance!
@@ -222,6 +227,9 @@ public class AgentRuntime : Tea.TeaModel {
             var model = ProtocolConfiguration()
             model.fromMap(value)
             self.protocolConfiguration = model
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["sessionConcurrencyLimitPerInstance"] as? Int {
             self.sessionConcurrencyLimitPerInstance = value
@@ -1675,6 +1683,100 @@ public class CertConfig : Tea.TeaModel {
     }
 }
 
+public class ChangeResourceGroupInput : Tea.TeaModel {
+    public var newResourceGroupId: String?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.newResourceGroupId != nil {
+            map["newResourceGroupId"] = self.newResourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["resourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["newResourceGroupId"] as? String {
+            self.newResourceGroupId = value
+        }
+        if let value = dict["resourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["resourceType"] as? String {
+            self.resourceType = value
+        }
+    }
+}
+
+public class ChangeResourceGroupOutput : Tea.TeaModel {
+    public var newResourceGroupId: String?
+
+    public var oldResourceGroupId: String?
+
+    public var resourceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.newResourceGroupId != nil {
+            map["newResourceGroupId"] = self.newResourceGroupId!
+        }
+        if self.oldResourceGroupId != nil {
+            map["oldResourceGroupId"] = self.oldResourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["resourceId"] = self.resourceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["newResourceGroupId"] as? String {
+            self.newResourceGroupId = value
+        }
+        if let value = dict["oldResourceGroupId"] as? String {
+            self.oldResourceGroupId = value
+        }
+        if let value = dict["resourceId"] as? String {
+            self.resourceId = value
+        }
+    }
+}
+
 public class CodeConfiguration : Tea.TeaModel {
     public var checksum: String?
 
@@ -2353,6 +2455,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var protocolConfiguration: ProtocolConfiguration?
 
+    public var resourceGroupId: String?
+
     public var sessionConcurrencyLimitPerInstance: Int32?
 
     public var sessionIdleTimeoutSeconds: Int32?
@@ -2425,6 +2529,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if self.protocolConfiguration != nil {
             map["protocolConfiguration"] = self.protocolConfiguration?.toMap()
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.sessionConcurrencyLimitPerInstance != nil {
             map["sessionConcurrencyLimitPerInstance"] = self.sessionConcurrencyLimitPerInstance!
         }
@@ -2495,6 +2602,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
             var model = ProtocolConfiguration()
             model.fromMap(value)
             self.protocolConfiguration = model
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["sessionConcurrencyLimitPerInstance"] as? Int32 {
             self.sessionConcurrencyLimitPerInstance = value
@@ -17249,6 +17359,8 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var resourceGroupId: String?
+
     public var searchMode: String?
 
     public var status: String?
@@ -17276,6 +17388,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.searchMode != nil {
             map["searchMode"] = self.searchMode!
         }
@@ -17295,6 +17410,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["searchMode"] as? String {
             self.searchMode = value
