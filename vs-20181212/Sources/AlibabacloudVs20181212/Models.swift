@@ -15660,6 +15660,8 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public var hostname: String?
 
+    public var instanceChargeType: String?
+
     public var internalIp: String?
 
     public var isp: String?
@@ -15716,6 +15718,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
         }
         if self.internalIp != nil {
             map["InternalIp"] = self.internalIp!
@@ -15782,6 +15787,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
+        }
+        if let value = dict["InstanceChargeType"] as? String {
+            self.instanceChargeType = value
         }
         if let value = dict["InternalIp"] as? String {
             self.internalIp = value
