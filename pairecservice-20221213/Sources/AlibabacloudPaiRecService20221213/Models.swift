@@ -4963,6 +4963,8 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
 
             public var itemConditionArray: String?
 
+            public var itemConditionExpression: String?
+
             public var itemVectorField: String?
 
             public var itemVectorRecallManagementTableId: String?
@@ -5003,6 +5005,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                 }
                 if self.itemConditionArray != nil {
                     map["ItemConditionArray"] = self.itemConditionArray!
+                }
+                if self.itemConditionExpression != nil {
+                    map["ItemConditionExpression"] = self.itemConditionExpression!
                 }
                 if self.itemVectorField != nil {
                     map["ItemVectorField"] = self.itemVectorField!
@@ -5048,6 +5053,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                 }
                 if let value = dict["ItemConditionArray"] as? String {
                     self.itemConditionArray = value
+                }
+                if let value = dict["ItemConditionExpression"] as? String {
+                    self.itemConditionExpression = value
                 }
                 if let value = dict["ItemVectorField"] as? String {
                     self.itemVectorField = value
@@ -5608,6 +5616,8 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
         public var itemConditionArray: String?
 
+        public var itemConditionExpression: String?
+
         public var itemVectorField: String?
 
         public var itemVectorRecallManagementTableId: String?
@@ -5648,6 +5658,9 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if self.itemConditionArray != nil {
                 map["ItemConditionArray"] = self.itemConditionArray!
+            }
+            if self.itemConditionExpression != nil {
+                map["ItemConditionExpression"] = self.itemConditionExpression!
             }
             if self.itemVectorField != nil {
                 map["ItemVectorField"] = self.itemVectorField!
@@ -5693,6 +5706,9 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if let value = dict["ItemConditionArray"] as? String {
                 self.itemConditionArray = value
+            }
+            if let value = dict["ItemConditionExpression"] as? String {
+                self.itemConditionExpression = value
             }
             if let value = dict["ItemVectorField"] as? String {
                 self.itemVectorField = value
@@ -15200,6 +15216,8 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
 
             public var itemConditionArray: String?
 
+            public var itemConditionExpression: String?
+
             public var itemVectorField: String?
 
             public var itemVectorRecallManagementTableId: String?
@@ -15242,6 +15260,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                 }
                 if self.itemConditionArray != nil {
                     map["ItemConditionArray"] = self.itemConditionArray!
+                }
+                if self.itemConditionExpression != nil {
+                    map["ItemConditionExpression"] = self.itemConditionExpression!
                 }
                 if self.itemVectorField != nil {
                     map["ItemVectorField"] = self.itemVectorField!
@@ -15290,6 +15311,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ItemConditionArray"] as? String {
                     self.itemConditionArray = value
+                }
+                if let value = dict["ItemConditionExpression"] as? String {
+                    self.itemConditionExpression = value
                 }
                 if let value = dict["ItemVectorField"] as? String {
                     self.itemVectorField = value
@@ -15395,6 +15419,8 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
 
     public var isDefault: String?
 
+    public var isEffective: Bool?
+
     public var name: String?
 
     public var recallManagementServiceVersionId: String?
@@ -15428,6 +15454,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
         }
+        if self.isEffective != nil {
+            map["IsEffective"] = self.isEffective!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -15455,6 +15484,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["IsDefault"] as? String {
             self.isDefault = value
+        }
+        if let value = dict["IsEffective"] as? Bool {
+            self.isEffective = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -15885,6 +15917,8 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
 
         public var itemConditionArray: String?
 
+        public var itemConditionExpression: String?
+
         public var itemVectorField: String?
 
         public var itemVectorRecallManagementTableId: String?
@@ -15925,6 +15959,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             }
             if self.itemConditionArray != nil {
                 map["ItemConditionArray"] = self.itemConditionArray!
+            }
+            if self.itemConditionExpression != nil {
+                map["ItemConditionExpression"] = self.itemConditionExpression!
             }
             if self.itemVectorField != nil {
                 map["ItemVectorField"] = self.itemVectorField!
@@ -15970,6 +16007,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             }
             if let value = dict["ItemConditionArray"] as? String {
                 self.itemConditionArray = value
+            }
+            if let value = dict["ItemConditionExpression"] as? String {
+                self.itemConditionExpression = value
             }
             if let value = dict["ItemVectorField"] as? String {
                 self.itemVectorField = value
@@ -34882,6 +34922,10 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
         public var extendedConfig: String?
 
+        public var itemConditionArray: String?
+
+        public var itemConditionExpression: String?
+
         public var itemVectorField: String?
 
         public var itemVectorRecallManagementTableId: String?
@@ -34919,6 +34963,12 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if self.extendedConfig != nil {
                 map["ExtendedConfig"] = self.extendedConfig!
+            }
+            if self.itemConditionArray != nil {
+                map["ItemConditionArray"] = self.itemConditionArray!
+            }
+            if self.itemConditionExpression != nil {
+                map["ItemConditionExpression"] = self.itemConditionExpression!
             }
             if self.itemVectorField != nil {
                 map["ItemVectorField"] = self.itemVectorField!
@@ -34961,6 +35011,12 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if let value = dict["ExtendedConfig"] as? String {
                 self.extendedConfig = value
+            }
+            if let value = dict["ItemConditionArray"] as? String {
+                self.itemConditionArray = value
+            }
+            if let value = dict["ItemConditionExpression"] as? String {
+                self.itemConditionExpression = value
             }
             if let value = dict["ItemVectorField"] as? String {
                 self.itemVectorField = value
