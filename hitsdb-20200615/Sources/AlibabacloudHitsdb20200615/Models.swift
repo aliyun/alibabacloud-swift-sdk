@@ -9096,6 +9096,10 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
 
     public var enableCompute: Bool?
 
+    public var enableFS: Bool?
+
+    public var enableStoreTDE: Bool?
+
     public var engineList: [GetLindormV2InstanceResponseBody.EngineList]?
 
     public var expiredMilliseconds: Int64?
@@ -9196,6 +9200,12 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
         }
         if self.enableCompute != nil {
             map["EnableCompute"] = self.enableCompute!
+        }
+        if self.enableFS != nil {
+            map["EnableFS"] = self.enableFS!
+        }
+        if self.enableStoreTDE != nil {
+            map["EnableStoreTDE"] = self.enableStoreTDE!
         }
         if self.engineList != nil {
             var tmp : [Any] = []
@@ -9320,6 +9330,12 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["EnableCompute"] as? Bool {
             self.enableCompute = value
+        }
+        if let value = dict["EnableFS"] as? Bool {
+            self.enableFS = value
+        }
+        if let value = dict["EnableStoreTDE"] as? Bool {
+            self.enableStoreTDE = value
         }
         if let value = dict["EngineList"] as? [Any?] {
             var tmp : [GetLindormV2InstanceResponseBody.EngineList] = []
@@ -9897,6 +9913,10 @@ public class GetLindormV2InstanceDetailsResponseBody : Tea.TeaModel {
 
     public var enableCompute: Bool?
 
+    public var enableFs: String?
+
+    public var enableStoreTDE: String?
+
     public var engineList: [GetLindormV2InstanceDetailsResponseBody.EngineList]?
 
     public var expiredMilliseconds: Int64?
@@ -9997,6 +10017,12 @@ public class GetLindormV2InstanceDetailsResponseBody : Tea.TeaModel {
         }
         if self.enableCompute != nil {
             map["EnableCompute"] = self.enableCompute!
+        }
+        if self.enableFs != nil {
+            map["EnableFs"] = self.enableFs!
+        }
+        if self.enableStoreTDE != nil {
+            map["EnableStoreTDE"] = self.enableStoreTDE!
         }
         if self.engineList != nil {
             var tmp : [Any] = []
@@ -10121,6 +10147,12 @@ public class GetLindormV2InstanceDetailsResponseBody : Tea.TeaModel {
         }
         if let value = dict["EnableCompute"] as? Bool {
             self.enableCompute = value
+        }
+        if let value = dict["EnableFs"] as? String {
+            self.enableFs = value
+        }
+        if let value = dict["EnableStoreTDE"] as? String {
+            self.enableStoreTDE = value
         }
         if let value = dict["EngineList"] as? [Any?] {
             var tmp : [GetLindormV2InstanceDetailsResponseBody.EngineList] = []
