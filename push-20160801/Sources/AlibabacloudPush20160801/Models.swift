@@ -156,6 +156,8 @@ public class PushTask : Tea.TeaModel {
                     }
                 }
                 public class Huawei : Tea.TeaModel {
+                    public var businessType: Int32?
+
                     public var category: String?
 
                     public var importance: Int32?
@@ -180,6 +182,9 @@ public class PushTask : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.businessType != nil {
+                            map["BusinessType"] = self.businessType!
+                        }
                         if self.category != nil {
                             map["Category"] = self.category!
                         }
@@ -200,6 +205,9 @@ public class PushTask : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["BusinessType"] as? Int32 {
+                            self.businessType = value
+                        }
                         if let value = dict["Category"] as? String {
                             self.category = value
                         }
@@ -3099,6 +3107,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidHonorTargetUserType: Int32?
 
+        public var androidHuaweiBusinessType: Int32?
+
         public var androidHuaweiLiveNotificationPayload: String?
 
         public var androidHuaweiReceiptId: String?
@@ -3337,6 +3347,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidHonorTargetUserType != nil {
                 map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+            }
+            if self.androidHuaweiBusinessType != nil {
+                map["AndroidHuaweiBusinessType"] = self.androidHuaweiBusinessType!
             }
             if self.androidHuaweiLiveNotificationPayload != nil {
                 map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
@@ -3666,6 +3679,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
                 self.androidHonorTargetUserType = value
+            }
+            if let value = dict["AndroidHuaweiBusinessType"] as? Int32 {
+                self.androidHuaweiBusinessType = value
             }
             if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
                 self.androidHuaweiLiveNotificationPayload = value
@@ -4364,6 +4380,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidHonorTargetUserType: Int32?
 
+    public var androidHuaweiBusinessType: Int32?
+
     public var androidHuaweiLiveNotificationPayload: String?
 
     public var androidHuaweiReceiptId: String?
@@ -4616,6 +4634,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidHonorTargetUserType != nil {
             map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
+        if self.androidHuaweiBusinessType != nil {
+            map["AndroidHuaweiBusinessType"] = self.androidHuaweiBusinessType!
         }
         if self.androidHuaweiLiveNotificationPayload != nil {
             map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
@@ -4967,6 +4988,9 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
             self.androidHonorTargetUserType = value
         }
+        if let value = dict["AndroidHuaweiBusinessType"] as? Int32 {
+            self.androidHuaweiBusinessType = value
+        }
         if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
             self.androidHuaweiLiveNotificationPayload = value
         }
@@ -5307,6 +5331,8 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidHonorTargetUserType: Int32?
 
+    public var androidHuaweiBusinessType: Int32?
+
     public var androidHuaweiLiveNotificationPayload: String?
 
     public var androidHuaweiReceiptId: String?
@@ -5559,6 +5585,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidHonorTargetUserType != nil {
             map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
+        if self.androidHuaweiBusinessType != nil {
+            map["AndroidHuaweiBusinessType"] = self.androidHuaweiBusinessType!
         }
         if self.androidHuaweiLiveNotificationPayload != nil {
             map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
@@ -5909,6 +5938,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
             self.androidHonorTargetUserType = value
+        }
+        if let value = dict["AndroidHuaweiBusinessType"] as? Int32 {
+            self.androidHuaweiBusinessType = value
         }
         if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
             self.androidHuaweiLiveNotificationPayload = value

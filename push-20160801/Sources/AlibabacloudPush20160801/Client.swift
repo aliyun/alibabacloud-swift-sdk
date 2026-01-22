@@ -575,6 +575,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidHonorTargetUserType)) {
             query["AndroidHonorTargetUserType"] = request.androidHonorTargetUserType!;
         }
+        if (!TeaUtils.Client.isUnset(request.androidHuaweiBusinessType)) {
+            query["AndroidHuaweiBusinessType"] = request.androidHuaweiBusinessType!;
+        }
         if (!TeaUtils.Client.isUnset(request.androidHuaweiLiveNotificationPayload)) {
             query["AndroidHuaweiLiveNotificationPayload"] = request.androidHuaweiLiveNotificationPayload ?? "";
         }
