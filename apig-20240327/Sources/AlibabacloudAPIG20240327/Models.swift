@@ -12150,6 +12150,44 @@ public class CreateMcpServerRequest : Tea.TeaModel {
             }
         }
     }
+    public class McpServerConfig : Tea.TeaModel {
+        public var mcpServerSpec: String?
+
+        public var swaggerConfig: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mcpServerSpec != nil {
+                map["mcpServerSpec"] = self.mcpServerSpec!
+            }
+            if self.swaggerConfig != nil {
+                map["swaggerConfig"] = self.swaggerConfig!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["mcpServerSpec"] as? String {
+                self.mcpServerSpec = value
+            }
+            if let value = dict["swaggerConfig"] as? String {
+                self.swaggerConfig = value
+            }
+        }
+    }
     public var assembledSources: [CreateMcpServerRequest.AssembledSources]?
 
     public var backendConfig: CreateMcpServerRequest.BackendConfig?
@@ -12167,6 +12205,8 @@ public class CreateMcpServerRequest : Tea.TeaModel {
     public var grayMcpServerConfigs: [CreateMcpServerRequest.GrayMcpServerConfigs]?
 
     public var match: HttpRouteMatch?
+
+    public var mcpServerConfig: CreateMcpServerRequest.McpServerConfig?
 
     public var mcpStatisticsEnable: Bool?
 
@@ -12188,6 +12228,7 @@ public class CreateMcpServerRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.backendConfig?.validate()
         try self.match?.validate()
+        try self.mcpServerConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12226,6 +12267,9 @@ public class CreateMcpServerRequest : Tea.TeaModel {
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
+        }
+        if self.mcpServerConfig != nil {
+            map["mcpServerConfig"] = self.mcpServerConfig?.toMap()
         }
         if self.mcpStatisticsEnable != nil {
             map["mcpStatisticsEnable"] = self.mcpStatisticsEnable!
@@ -12294,6 +12338,11 @@ public class CreateMcpServerRequest : Tea.TeaModel {
             var model = HttpRouteMatch()
             model.fromMap(value)
             self.match = model
+        }
+        if let value = dict["mcpServerConfig"] as? [String: Any?] {
+            var model = CreateMcpServerRequest.McpServerConfig()
+            model.fromMap(value)
+            self.mcpServerConfig = model
         }
         if let value = dict["mcpStatisticsEnable"] as? Bool {
             self.mcpStatisticsEnable = value
@@ -36131,6 +36180,44 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
             }
         }
     }
+    public class McpServerConfig : Tea.TeaModel {
+        public var mcpServerSpec: String?
+
+        public var swaggerConfig: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mcpServerSpec != nil {
+                map["mcpServerSpec"] = self.mcpServerSpec!
+            }
+            if self.swaggerConfig != nil {
+                map["swaggerConfig"] = self.swaggerConfig!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["mcpServerSpec"] as? String {
+                self.mcpServerSpec = value
+            }
+            if let value = dict["swaggerConfig"] as? String {
+                self.swaggerConfig = value
+            }
+        }
+    }
     public var assembledSources: [UpdateMcpServerRequest.AssembledSources]?
 
     public var backendConfig: UpdateMcpServerRequest.BackendConfig?
@@ -36146,6 +36233,8 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
     public var grayMcpServerConfigs: [UpdateMcpServerRequest.GrayMcpServerConfigs]?
 
     public var match: HttpRouteMatch?
+
+    public var mcpServerConfig: UpdateMcpServerRequest.McpServerConfig?
 
     public var mcpStatisticsEnable: Bool?
 
@@ -36165,6 +36254,7 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.backendConfig?.validate()
         try self.match?.validate()
+        try self.mcpServerConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -36200,6 +36290,9 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
+        }
+        if self.mcpServerConfig != nil {
+            map["mcpServerConfig"] = self.mcpServerConfig?.toMap()
         }
         if self.mcpStatisticsEnable != nil {
             map["mcpStatisticsEnable"] = self.mcpStatisticsEnable!
@@ -36262,6 +36355,11 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
             var model = HttpRouteMatch()
             model.fromMap(value)
             self.match = model
+        }
+        if let value = dict["mcpServerConfig"] as? [String: Any?] {
+            var model = UpdateMcpServerRequest.McpServerConfig()
+            model.fromMap(value)
+            self.mcpServerConfig = model
         }
         if let value = dict["mcpStatisticsEnable"] as? Bool {
             self.mcpStatisticsEnable = value
