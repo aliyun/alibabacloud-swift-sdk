@@ -2703,6 +2703,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.hardExpire)) {
             query["HardExpire"] = request.hardExpire!;
         }
+        if (!TeaUtils.Client.isUnset(request.initialPasswordAge)) {
+            query["InitialPasswordAge"] = request.initialPasswordAge!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxLoginAttemps)) {
             query["MaxLoginAttemps"] = request.maxLoginAttemps!;
         }
@@ -2792,6 +2795,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.MFAOperationForLogin)) {
             query["MFAOperationForLogin"] = request.MFAOperationForLogin ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxIdleDaysForAccessKeys)) {
+            query["MaxIdleDaysForAccessKeys"] = request.maxIdleDaysForAccessKeys!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxIdleDaysForUsers)) {
+            query["MaxIdleDaysForUsers"] = request.maxIdleDaysForUsers!;
         }
         if (!TeaUtils.Client.isUnset(request.operationForRiskLogin)) {
             query["OperationForRiskLogin"] = request.operationForRiskLogin ?? "";

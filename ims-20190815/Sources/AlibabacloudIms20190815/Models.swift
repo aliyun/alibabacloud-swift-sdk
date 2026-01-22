@@ -1991,6 +1991,8 @@ public class CreateLoginProfileResponseBody : Tea.TeaModel {
 
         public var passwordResetRequired: Bool?
 
+        public var passwordStatus: String?
+
         public var status: String?
 
         public var updateDate: String?
@@ -2017,6 +2019,9 @@ public class CreateLoginProfileResponseBody : Tea.TeaModel {
             if self.passwordResetRequired != nil {
                 map["PasswordResetRequired"] = self.passwordResetRequired!
             }
+            if self.passwordStatus != nil {
+                map["PasswordStatus"] = self.passwordStatus!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -2036,6 +2041,9 @@ public class CreateLoginProfileResponseBody : Tea.TeaModel {
             }
             if let value = dict["PasswordResetRequired"] as? Bool {
                 self.passwordResetRequired = value
+            }
+            if let value = dict["PasswordStatus"] as? String {
+                self.passwordStatus = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -8340,6 +8348,8 @@ public class GetLoginProfileResponseBody : Tea.TeaModel {
 
         public var passwordResetRequired: Bool?
 
+        public var passwordStatus: String?
+
         public var status: String?
 
         public var updateDate: String?
@@ -8372,6 +8382,9 @@ public class GetLoginProfileResponseBody : Tea.TeaModel {
             if self.passwordResetRequired != nil {
                 map["PasswordResetRequired"] = self.passwordResetRequired!
             }
+            if self.passwordStatus != nil {
+                map["PasswordStatus"] = self.passwordStatus!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -8397,6 +8410,9 @@ public class GetLoginProfileResponseBody : Tea.TeaModel {
             }
             if let value = dict["PasswordResetRequired"] as? Bool {
                 self.passwordResetRequired = value
+            }
+            if let value = dict["PasswordStatus"] as? String {
+                self.passwordStatus = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -8737,6 +8753,8 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
     public class PasswordPolicy : Tea.TeaModel {
         public var hardExpire: Bool?
 
+        public var initialPasswordAge: Int32?
+
         public var maxLoginAttemps: Int32?
 
         public var maxPasswordAge: Int32?
@@ -8773,6 +8791,9 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.hardExpire != nil {
                 map["HardExpire"] = self.hardExpire!
+            }
+            if self.initialPasswordAge != nil {
+                map["InitialPasswordAge"] = self.initialPasswordAge!
             }
             if self.maxLoginAttemps != nil {
                 map["MaxLoginAttemps"] = self.maxLoginAttemps!
@@ -8811,6 +8832,9 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["HardExpire"] as? Bool {
                 self.hardExpire = value
+            }
+            if let value = dict["InitialPasswordAge"] as? Int32 {
+                self.initialPasswordAge = value
             }
             if let value = dict["MaxLoginAttemps"] as? Int32 {
                 self.maxLoginAttemps = value
@@ -17597,6 +17621,8 @@ public class SetDefaultDomainResponse : Tea.TeaModel {
 public class SetPasswordPolicyRequest : Tea.TeaModel {
     public var hardExpire: Bool?
 
+    public var initialPasswordAge: Int32?
+
     public var maxLoginAttemps: Int32?
 
     public var maxPasswordAge: Int32?
@@ -17633,6 +17659,9 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.hardExpire != nil {
             map["HardExpire"] = self.hardExpire!
+        }
+        if self.initialPasswordAge != nil {
+            map["InitialPasswordAge"] = self.initialPasswordAge!
         }
         if self.maxLoginAttemps != nil {
             map["MaxLoginAttemps"] = self.maxLoginAttemps!
@@ -17672,6 +17701,9 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
         if let value = dict["HardExpire"] as? Bool {
             self.hardExpire = value
         }
+        if let value = dict["InitialPasswordAge"] as? Int32 {
+            self.initialPasswordAge = value
+        }
         if let value = dict["MaxLoginAttemps"] as? Int32 {
             self.maxLoginAttemps = value
         }
@@ -17708,6 +17740,8 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
 public class SetPasswordPolicyResponseBody : Tea.TeaModel {
     public class PasswordPolicy : Tea.TeaModel {
         public var hardExpire: Bool?
+
+        public var initialPasswordAge: Int32?
 
         public var maxLoginAttemps: Int32?
 
@@ -17746,6 +17780,9 @@ public class SetPasswordPolicyResponseBody : Tea.TeaModel {
             if self.hardExpire != nil {
                 map["HardExpire"] = self.hardExpire!
             }
+            if self.initialPasswordAge != nil {
+                map["InitialPasswordAge"] = self.initialPasswordAge!
+            }
             if self.maxLoginAttemps != nil {
                 map["MaxLoginAttemps"] = self.maxLoginAttemps!
             }
@@ -17783,6 +17820,9 @@ public class SetPasswordPolicyResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["HardExpire"] as? Bool {
                 self.hardExpire = value
+            }
+            if let value = dict["InitialPasswordAge"] as? Int32 {
+                self.initialPasswordAge = value
             }
             if let value = dict["MaxLoginAttemps"] as? Int32 {
                 self.maxLoginAttemps = value
@@ -17926,6 +17966,10 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
 
     public var MFAOperationForLogin: String?
 
+    public var maxIdleDaysForAccessKeys: Int32?
+
+    public var maxIdleDaysForUsers: Int32?
+
     public var operationForRiskLogin: String?
 
     public var verificationTypes: [String]?
@@ -17971,6 +18015,12 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if self.MFAOperationForLogin != nil {
             map["MFAOperationForLogin"] = self.MFAOperationForLogin!
         }
+        if self.maxIdleDaysForAccessKeys != nil {
+            map["MaxIdleDaysForAccessKeys"] = self.maxIdleDaysForAccessKeys!
+        }
+        if self.maxIdleDaysForUsers != nil {
+            map["MaxIdleDaysForUsers"] = self.maxIdleDaysForUsers!
+        }
         if self.operationForRiskLogin != nil {
             map["OperationForRiskLogin"] = self.operationForRiskLogin!
         }
@@ -18009,6 +18059,12 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if let value = dict["MFAOperationForLogin"] as? String {
             self.MFAOperationForLogin = value
         }
+        if let value = dict["MaxIdleDaysForAccessKeys"] as? Int32 {
+            self.maxIdleDaysForAccessKeys = value
+        }
+        if let value = dict["MaxIdleDaysForUsers"] as? Int32 {
+            self.maxIdleDaysForUsers = value
+        }
         if let value = dict["OperationForRiskLogin"] as? String {
             self.operationForRiskLogin = value
         }
@@ -18036,6 +18092,10 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
     public var loginSessionDuration: Int32?
 
     public var MFAOperationForLogin: String?
+
+    public var maxIdleDaysForAccessKeys: Int32?
+
+    public var maxIdleDaysForUsers: Int32?
 
     public var operationForRiskLogin: String?
 
@@ -18082,6 +18142,12 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
         if self.MFAOperationForLogin != nil {
             map["MFAOperationForLogin"] = self.MFAOperationForLogin!
         }
+        if self.maxIdleDaysForAccessKeys != nil {
+            map["MaxIdleDaysForAccessKeys"] = self.maxIdleDaysForAccessKeys!
+        }
+        if self.maxIdleDaysForUsers != nil {
+            map["MaxIdleDaysForUsers"] = self.maxIdleDaysForUsers!
+        }
         if self.operationForRiskLogin != nil {
             map["OperationForRiskLogin"] = self.operationForRiskLogin!
         }
@@ -18119,6 +18185,12 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MFAOperationForLogin"] as? String {
             self.MFAOperationForLogin = value
+        }
+        if let value = dict["MaxIdleDaysForAccessKeys"] as? Int32 {
+            self.maxIdleDaysForAccessKeys = value
+        }
+        if let value = dict["MaxIdleDaysForUsers"] as? Int32 {
+            self.maxIdleDaysForUsers = value
         }
         if let value = dict["OperationForRiskLogin"] as? String {
             self.operationForRiskLogin = value
@@ -20415,6 +20487,8 @@ public class UpdateLoginProfileResponseBody : Tea.TeaModel {
 
         public var passwordResetRequired: Bool?
 
+        public var passwordStatus: String?
+
         public var status: String?
 
         public var updateDate: String?
@@ -20444,6 +20518,9 @@ public class UpdateLoginProfileResponseBody : Tea.TeaModel {
             if self.passwordResetRequired != nil {
                 map["PasswordResetRequired"] = self.passwordResetRequired!
             }
+            if self.passwordStatus != nil {
+                map["PasswordStatus"] = self.passwordStatus!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -20466,6 +20543,9 @@ public class UpdateLoginProfileResponseBody : Tea.TeaModel {
             }
             if let value = dict["PasswordResetRequired"] as? Bool {
                 self.passwordResetRequired = value
+            }
+            if let value = dict["PasswordStatus"] as? String {
+                self.passwordStatus = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
