@@ -9746,6 +9746,8 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
     public var nodeName: String?
 
+    public var nodeNameList: [String]?
+
     public var serverType: String?
 
     public var status: String?
@@ -9785,6 +9787,9 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
         }
+        if self.nodeNameList != nil {
+            map["NodeNameList"] = self.nodeNameList!
+        }
         if self.serverType != nil {
             map["ServerType"] = self.serverType!
         }
@@ -9816,6 +9821,9 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
+        }
+        if let value = dict["NodeNameList"] as? [String] {
+            self.nodeNameList = value
         }
         if let value = dict["ServerType"] as? String {
             self.serverType = value
@@ -15557,6 +15565,167 @@ public class GetInstancePropertiesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetInstancePropertiesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetNetworkBlacklistRequest : Tea.TeaModel {
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class GetNetworkBlacklistResponseBody : Tea.TeaModel {
+    public class NetworkBlacklistModel : Tea.TeaModel {
+        public var domainBlacklist: [String]?
+
+        public var ipBlacklist: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainBlacklist != nil {
+                map["DomainBlacklist"] = self.domainBlacklist!
+            }
+            if self.ipBlacklist != nil {
+                map["IpBlacklist"] = self.ipBlacklist!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DomainBlacklist"] as? [String] {
+                self.domainBlacklist = value
+            }
+            if let value = dict["IpBlacklist"] as? [String] {
+                self.ipBlacklist = value
+            }
+        }
+    }
+    public var networkBlacklistModel: GetNetworkBlacklistResponseBody.NetworkBlacklistModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.networkBlacklistModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkBlacklistModel != nil {
+            map["NetworkBlacklistModel"] = self.networkBlacklistModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkBlacklistModel"] as? [String: Any?] {
+            var model = GetNetworkBlacklistResponseBody.NetworkBlacklistModel()
+            model.fromMap(value)
+            self.networkBlacklistModel = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetNetworkBlacklistResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetNetworkBlacklistResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetNetworkBlacklistResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -21572,6 +21741,126 @@ public class SetAdbSecureResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetAdbSecureResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SetNetworkBlacklistRequest : Tea.TeaModel {
+    public var domainBlacklist: [String]?
+
+    public var ipBlacklist: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainBlacklist != nil {
+            map["DomainBlacklist"] = self.domainBlacklist!
+        }
+        if self.ipBlacklist != nil {
+            map["IpBlacklist"] = self.ipBlacklist!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainBlacklist"] as? [String] {
+            self.domainBlacklist = value
+        }
+        if let value = dict["IpBlacklist"] as? [String] {
+            self.ipBlacklist = value
+        }
+    }
+}
+
+public class SetNetworkBlacklistResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SetNetworkBlacklistResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetNetworkBlacklistResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SetNetworkBlacklistResponseBody()
             model.fromMap(value)
             self.body = model
         }

@@ -1501,6 +1501,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeName)) {
             query["NodeName"] = request.nodeName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeNameList)) {
+            query["NodeNameList"] = request.nodeNameList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.serverType)) {
             query["ServerType"] = request.serverType ?? "";
         }
@@ -2424,6 +2427,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getInstanceProperties(_ request: GetInstancePropertiesRequest) async throws -> GetInstancePropertiesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getInstancePropertiesWithOptions(request as! GetInstancePropertiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNetworkBlacklistWithOptions(_ request: GetNetworkBlacklistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNetworkBlacklistResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNetworkBlacklist",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNetworkBlacklistResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNetworkBlacklist(_ request: GetNetworkBlacklistRequest) async throws -> GetNetworkBlacklistResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNetworkBlacklistWithOptions(request as! GetNetworkBlacklistRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3645,6 +3679,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setAdbSecure(_ request: SetAdbSecureRequest) async throws -> SetAdbSecureResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setAdbSecureWithOptions(request as! SetAdbSecureRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setNetworkBlacklistWithOptions(_ request: SetNetworkBlacklistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetNetworkBlacklistResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainBlacklist)) {
+            query["DomainBlacklist"] = request.domainBlacklist ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ipBlacklist)) {
+            query["IpBlacklist"] = request.ipBlacklist ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetNetworkBlacklist",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetNetworkBlacklistResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setNetworkBlacklist(_ request: SetNetworkBlacklistRequest) async throws -> SetNetworkBlacklistResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setNetworkBlacklistWithOptions(request as! SetNetworkBlacklistRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
