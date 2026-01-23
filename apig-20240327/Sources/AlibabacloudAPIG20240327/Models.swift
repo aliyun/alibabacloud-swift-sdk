@@ -16469,7 +16469,7 @@ public class ExportHttpApiResponse : Tea.TeaModel {
 
 public class GetConsumerResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var akSkIdentityConfigs: AkSkIdentityConfig?
+        public var akSkIdentityConfigs: [AkSkIdentityConfig]?
 
         public var apiKeyIdentityConfig: ApiKeyIdentityConfig?
 
@@ -16499,7 +16499,6 @@ public class GetConsumerResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.akSkIdentityConfigs?.validate()
             try self.apiKeyIdentityConfig?.validate()
             try self.jwtIdentityConfig?.validate()
         }
@@ -16507,7 +16506,11 @@ public class GetConsumerResponseBody : Tea.TeaModel {
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.akSkIdentityConfigs != nil {
-                map["akSkIdentityConfigs"] = self.akSkIdentityConfigs?.toMap()
+                var tmp : [Any] = []
+                for k in self.akSkIdentityConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["akSkIdentityConfigs"] = tmp
             }
             if self.apiKeyIdentityConfig != nil {
                 map["apiKeyIdentityConfig"] = self.apiKeyIdentityConfig?.toMap()
@@ -16541,10 +16544,18 @@ public class GetConsumerResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["akSkIdentityConfigs"] as? [String: Any?] {
-                var model = AkSkIdentityConfig()
-                model.fromMap(value)
-                self.akSkIdentityConfigs = model
+            if let value = dict["akSkIdentityConfigs"] as? [Any?] {
+                var tmp : [AkSkIdentityConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = AkSkIdentityConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.akSkIdentityConfigs = tmp
             }
             if let value = dict["apiKeyIdentityConfig"] as? [String: Any?] {
                 var model = ApiKeyIdentityConfig()
