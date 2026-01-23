@@ -1860,6 +1860,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
             query["GpuAcceleration"] = request.gpuAcceleration ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hoverConfigMsg)) {
+            query["HoverConfigMsg"] = request.hoverConfigMsg ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.html5FileTransfer)) {
             query["Html5FileTransfer"] = request.html5FileTransfer ?? "";
         }
@@ -1913,6 +1916,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modelLibrary)) {
             query["ModelLibrary"] = request.modelLibrary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.multiScreen)) {
+            query["MultiScreen"] = request.multiScreen ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
@@ -1991,6 +1997,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resetDesktop)) {
             query["ResetDesktop"] = request.resetDesktop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolutionDpi)) {
+            query["ResolutionDpi"] = request.resolutionDpi!;
         }
         if (!TeaUtils.Client.isUnset(request.resolutionHeight)) {
             query["ResolutionHeight"] = request.resolutionHeight!;
@@ -10593,6 +10602,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
             query["GpuAcceleration"] = request.gpuAcceleration ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hoverConfigMsg)) {
+            query["HoverConfigMsg"] = request.hoverConfigMsg ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.html5FileTransfer)) {
             query["Html5FileTransfer"] = request.html5FileTransfer ?? "";
         }
@@ -10646,6 +10658,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modelLibrary)) {
             query["ModelLibrary"] = request.modelLibrary ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.multiScreen)) {
+            query["MultiScreen"] = request.multiScreen ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
@@ -10727,6 +10742,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resetDesktop)) {
             query["ResetDesktop"] = request.resetDesktop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolutionDpi)) {
+            query["ResolutionDpi"] = request.resolutionDpi!;
         }
         if (!TeaUtils.Client.isUnset(request.resolutionHeight)) {
             query["ResolutionHeight"] = request.resolutionHeight!;

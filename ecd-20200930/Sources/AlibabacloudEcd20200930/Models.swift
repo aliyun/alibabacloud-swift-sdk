@@ -7226,6 +7226,14 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
         public var grainedType: String?
 
+        public var inClipboardSize: Int32?
+
+        public var inClipboardSizeUnit: String?
+
+        public var outClipboardSize: Int32?
+
+        public var outClipboardSizeUnit: String?
+
         public override init() {
             super.init()
         }
@@ -7252,6 +7260,18 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             if self.grainedType != nil {
                 map["GrainedType"] = self.grainedType!
             }
+            if self.inClipboardSize != nil {
+                map["InClipboardSize"] = self.inClipboardSize!
+            }
+            if self.inClipboardSizeUnit != nil {
+                map["InClipboardSizeUnit"] = self.inClipboardSizeUnit!
+            }
+            if self.outClipboardSize != nil {
+                map["OutClipboardSize"] = self.outClipboardSize!
+            }
+            if self.outClipboardSizeUnit != nil {
+                map["OutClipboardSizeUnit"] = self.outClipboardSizeUnit!
+            }
             return map
         }
 
@@ -7268,6 +7288,18 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["GrainedType"] as? String {
                 self.grainedType = value
+            }
+            if let value = dict["InClipboardSize"] as? Int32 {
+                self.inClipboardSize = value
+            }
+            if let value = dict["InClipboardSizeUnit"] as? String {
+                self.inClipboardSizeUnit = value
+            }
+            if let value = dict["OutClipboardSize"] as? Int32 {
+                self.outClipboardSize = value
+            }
+            if let value = dict["OutClipboardSizeUnit"] as? String {
+                self.outClipboardSizeUnit = value
             }
         }
     }
@@ -7663,6 +7695,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var gpuAcceleration: String?
 
+    public var hoverConfigMsg: String?
+
     public var html5FileTransfer: String?
 
     public var internetCommunicationProtocol: String?
@@ -7698,6 +7732,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var mobileWyAssistant: String?
 
     public var modelLibrary: String?
+
+    public var multiScreen: String?
 
     public var name: String?
 
@@ -7750,6 +7786,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var remoteCoordinate: String?
 
     public var resetDesktop: String?
+
+    public var resolutionDpi: Int32?
 
     public var resolutionHeight: Int32?
 
@@ -7999,6 +8037,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
         }
+        if self.hoverConfigMsg != nil {
+            map["HoverConfigMsg"] = self.hoverConfigMsg!
+        }
         if self.html5FileTransfer != nil {
             map["Html5FileTransfer"] = self.html5FileTransfer!
         }
@@ -8052,6 +8093,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.modelLibrary != nil {
             map["ModelLibrary"] = self.modelLibrary!
+        }
+        if self.multiScreen != nil {
+            map["MultiScreen"] = self.multiScreen!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -8138,6 +8182,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.resetDesktop != nil {
             map["ResetDesktop"] = self.resetDesktop!
+        }
+        if self.resolutionDpi != nil {
+            map["ResolutionDpi"] = self.resolutionDpi!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -8464,6 +8511,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
         }
+        if let value = dict["HoverConfigMsg"] as? String {
+            self.hoverConfigMsg = value
+        }
         if let value = dict["Html5FileTransfer"] as? String {
             self.html5FileTransfer = value
         }
@@ -8517,6 +8567,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ModelLibrary"] as? String {
             self.modelLibrary = value
+        }
+        if let value = dict["MultiScreen"] as? String {
+            self.multiScreen = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -8615,6 +8668,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ResetDesktop"] as? String {
             self.resetDesktop = value
+        }
+        if let value = dict["ResolutionDpi"] as? Int32 {
+            self.resolutionDpi = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
@@ -22875,6 +22931,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var gpuAcceleration: String?
 
+        public var hoverConfigMsg: String?
+
         public var html5Access: String?
 
         public var html5FileTransfer: String?
@@ -22952,6 +23010,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var recordingUserNotifyMessage: String?
 
         public var remoteCoordinate: String?
+
+        public var resolutionDpi: Int32?
 
         public var resolutionHeight: Int32?
 
@@ -23159,6 +23219,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
             }
+            if self.hoverConfigMsg != nil {
+                map["HoverConfigMsg"] = self.hoverConfigMsg!
+            }
             if self.html5Access != nil {
                 map["Html5Access"] = self.html5Access!
             }
@@ -23279,6 +23342,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.remoteCoordinate != nil {
                 map["RemoteCoordinate"] = self.remoteCoordinate!
+            }
+            if self.resolutionDpi != nil {
+                map["ResolutionDpi"] = self.resolutionDpi!
             }
             if self.resolutionHeight != nil {
                 map["ResolutionHeight"] = self.resolutionHeight!
@@ -23553,6 +23619,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
             }
+            if let value = dict["HoverConfigMsg"] as? String {
+                self.hoverConfigMsg = value
+            }
             if let value = dict["Html5Access"] as? String {
                 self.html5Access = value
             }
@@ -23679,6 +23748,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["RemoteCoordinate"] as? String {
                 self.remoteCoordinate = value
+            }
+            if let value = dict["ResolutionDpi"] as? Int32 {
+                self.resolutionDpi = value
             }
             if let value = dict["ResolutionHeight"] as? Int32 {
                 self.resolutionHeight = value
@@ -42356,6 +42428,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var gpuAcceleration: String?
 
+        public var hoverConfigMsg: String?
+
         public var html5Access: String?
 
         public var html5FileTransfer: String?
@@ -42393,6 +42467,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var mobileWyAssistant: String?
 
         public var modelLibrary: String?
+
+        public var multiScreen: String?
 
         public var name: String?
 
@@ -42451,6 +42527,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var remoteCoordinate: String?
 
         public var resetDesktop: String?
+
+        public var resolutionDpi: Int32?
 
         public var resolutionHeight: Int32?
 
@@ -42688,6 +42766,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
             }
+            if self.hoverConfigMsg != nil {
+                map["HoverConfigMsg"] = self.hoverConfigMsg!
+            }
             if self.html5Access != nil {
                 map["Html5Access"] = self.html5Access!
             }
@@ -42744,6 +42825,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.modelLibrary != nil {
                 map["ModelLibrary"] = self.modelLibrary!
+            }
+            if self.multiScreen != nil {
+                map["MultiScreen"] = self.multiScreen!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -42839,6 +42923,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.resetDesktop != nil {
                 map["ResetDesktop"] = self.resetDesktop!
+            }
+            if self.resolutionDpi != nil {
+                map["ResolutionDpi"] = self.resolutionDpi!
             }
             if self.resolutionHeight != nil {
                 map["ResolutionHeight"] = self.resolutionHeight!
@@ -43146,6 +43233,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
             }
+            if let value = dict["HoverConfigMsg"] as? String {
+                self.hoverConfigMsg = value
+            }
             if let value = dict["Html5Access"] as? String {
                 self.html5Access = value
             }
@@ -43202,6 +43292,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModelLibrary"] as? String {
                 self.modelLibrary = value
+            }
+            if let value = dict["MultiScreen"] as? String {
+                self.multiScreen = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -43309,6 +43402,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResetDesktop"] as? String {
                 self.resetDesktop = value
+            }
+            if let value = dict["ResolutionDpi"] as? Int32 {
+                self.resolutionDpi = value
             }
             if let value = dict["ResolutionHeight"] as? Int32 {
                 self.resolutionHeight = value
@@ -60301,6 +60397,14 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
         public var grainedType: String?
 
+        public var inClipboardSize: Int32?
+
+        public var inClipboardSizeUnit: String?
+
+        public var outClipboardSize: Int32?
+
+        public var outClipboardSizeUnit: String?
+
         public override init() {
             super.init()
         }
@@ -60327,6 +60431,18 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             if self.grainedType != nil {
                 map["GrainedType"] = self.grainedType!
             }
+            if self.inClipboardSize != nil {
+                map["InClipboardSize"] = self.inClipboardSize!
+            }
+            if self.inClipboardSizeUnit != nil {
+                map["InClipboardSizeUnit"] = self.inClipboardSizeUnit!
+            }
+            if self.outClipboardSize != nil {
+                map["OutClipboardSize"] = self.outClipboardSize!
+            }
+            if self.outClipboardSizeUnit != nil {
+                map["OutClipboardSizeUnit"] = self.outClipboardSizeUnit!
+            }
             return map
         }
 
@@ -60343,6 +60459,18 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["GrainedType"] as? String {
                 self.grainedType = value
+            }
+            if let value = dict["InClipboardSize"] as? Int32 {
+                self.inClipboardSize = value
+            }
+            if let value = dict["InClipboardSizeUnit"] as? String {
+                self.inClipboardSizeUnit = value
+            }
+            if let value = dict["OutClipboardSize"] as? Int32 {
+                self.outClipboardSize = value
+            }
+            if let value = dict["OutClipboardSizeUnit"] as? String {
+                self.outClipboardSizeUnit = value
             }
         }
     }
@@ -60854,6 +60982,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var gpuAcceleration: String?
 
+    public var hoverConfigMsg: String?
+
     public var html5FileTransfer: String?
 
     public var internetCommunicationProtocol: String?
@@ -60889,6 +61019,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var mobileWyAssistant: String?
 
     public var modelLibrary: String?
+
+    public var multiScreen: String?
 
     public var name: String?
 
@@ -60943,6 +61075,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var remoteCoordinate: String?
 
     public var resetDesktop: String?
+
+    public var resolutionDpi: Int32?
 
     public var resolutionHeight: Int32?
 
@@ -61196,6 +61330,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
         }
+        if self.hoverConfigMsg != nil {
+            map["HoverConfigMsg"] = self.hoverConfigMsg!
+        }
         if self.html5FileTransfer != nil {
             map["Html5FileTransfer"] = self.html5FileTransfer!
         }
@@ -61249,6 +61386,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.modelLibrary != nil {
             map["ModelLibrary"] = self.modelLibrary!
+        }
+        if self.multiScreen != nil {
+            map["MultiScreen"] = self.multiScreen!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -61338,6 +61478,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.resetDesktop != nil {
             map["ResetDesktop"] = self.resetDesktop!
+        }
+        if self.resolutionDpi != nil {
+            map["ResolutionDpi"] = self.resolutionDpi!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -61678,6 +61821,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
         }
+        if let value = dict["HoverConfigMsg"] as? String {
+            self.hoverConfigMsg = value
+        }
         if let value = dict["Html5FileTransfer"] as? String {
             self.html5FileTransfer = value
         }
@@ -61731,6 +61877,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ModelLibrary"] as? String {
             self.modelLibrary = value
+        }
+        if let value = dict["MultiScreen"] as? String {
+            self.multiScreen = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -61832,6 +61981,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ResetDesktop"] as? String {
             self.resetDesktop = value
+        }
+        if let value = dict["ResolutionDpi"] as? Int32 {
+            self.resolutionDpi = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
