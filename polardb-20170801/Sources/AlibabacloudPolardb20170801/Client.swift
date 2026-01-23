@@ -11545,6 +11545,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterAndNodesParametersWithOptions(_ request: ModifyDBClusterAndNodesParametersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterAndNodesParametersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clearBinlog)) {
+            query["ClearBinlog"] = request.clearBinlog!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -12181,6 +12184,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBClusterParametersWithOptions(_ request: ModifyDBClusterParametersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterParametersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clearBinlog)) {
+            query["ClearBinlog"] = request.clearBinlog!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }

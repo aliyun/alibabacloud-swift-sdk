@@ -62865,6 +62865,8 @@ public class ModifyDBClusterAccessWhitelistResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterAndNodesParametersRequest : Tea.TeaModel {
+    public var clearBinlog: Bool?
+
     public var DBClusterId: String?
 
     public var DBNodeIds: String?
@@ -62903,6 +62905,9 @@ public class ModifyDBClusterAndNodesParametersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clearBinlog != nil {
+            map["ClearBinlog"] = self.clearBinlog!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -62944,6 +62949,9 @@ public class ModifyDBClusterAndNodesParametersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClearBinlog"] as? Bool {
+            self.clearBinlog = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
@@ -64945,6 +64953,8 @@ public class ModifyDBClusterMonitorResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterParametersRequest : Tea.TeaModel {
+    public var clearBinlog: Bool?
+
     public var DBClusterId: String?
 
     public var fromTimeService: Bool?
@@ -64979,6 +64989,9 @@ public class ModifyDBClusterParametersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clearBinlog != nil {
+            map["ClearBinlog"] = self.clearBinlog!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -65014,6 +65027,9 @@ public class ModifyDBClusterParametersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClearBinlog"] as? Bool {
+            self.clearBinlog = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
