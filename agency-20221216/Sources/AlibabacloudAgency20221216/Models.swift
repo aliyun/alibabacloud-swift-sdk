@@ -6761,6 +6761,8 @@ public class InviteSubAccountResponse : Tea.TeaModel {
 public class IssueCouponForCustomerRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var applicationReason: String?
+
     public var couponTemplateId: Int64?
 
     public var isUseBenefit: Bool?
@@ -6784,6 +6786,9 @@ public class IssueCouponForCustomerRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.applicationReason != nil {
+            map["ApplicationReason"] = self.applicationReason!
+        }
         if self.couponTemplateId != nil {
             map["CouponTemplateId"] = self.couponTemplateId!
         }
@@ -6800,6 +6805,9 @@ public class IssueCouponForCustomerRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
+        }
+        if let value = dict["ApplicationReason"] as? String {
+            self.applicationReason = value
         }
         if let value = dict["CouponTemplateId"] as? Int64 {
             self.couponTemplateId = value
@@ -7099,6 +7107,8 @@ public class ListCouponUsageRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var t2PartnerUid: Int64?
+
     public var uid: Int64?
 
     public override init() {
@@ -7130,6 +7140,9 @@ public class ListCouponUsageRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.t2PartnerUid != nil {
+            map["T2PartnerUid"] = self.t2PartnerUid!
+        }
         if self.uid != nil {
             map["Uid"] = self.uid!
         }
@@ -7152,6 +7165,9 @@ public class ListCouponUsageRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["T2PartnerUid"] as? Int64 {
+            self.t2PartnerUid = value
         }
         if let value = dict["Uid"] as? Int64 {
             self.uid = value
