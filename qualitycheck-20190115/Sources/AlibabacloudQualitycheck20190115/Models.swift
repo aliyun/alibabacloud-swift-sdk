@@ -2066,7 +2066,7 @@ public class RuleInfo : Tea.TeaModel {
 
     public var operationMode: Int32?
 
-    public var preqRule: [RuleInfo.PreqRule]?
+    public var preqRule: RuleInfo.PreqRule?
 
     public var qualityCheckType: Int32?
 
@@ -2132,6 +2132,7 @@ public class RuleInfo : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.preqRule?.validate()
         try self.schemeCheckType?.validate()
     }
 
@@ -2226,11 +2227,7 @@ public class RuleInfo : Tea.TeaModel {
             map["OperationMode"] = self.operationMode!
         }
         if self.preqRule != nil {
-            var tmp : [Any] = []
-            for k in self.preqRule! {
-                tmp.append(k.toMap())
-            }
-            map["PreqRule"] = tmp
+            map["PreqRule"] = self.preqRule?.toMap()
         }
         if self.qualityCheckType != nil {
             map["QualityCheckType"] = self.qualityCheckType!
@@ -2412,18 +2409,10 @@ public class RuleInfo : Tea.TeaModel {
         if let value = dict["OperationMode"] as? Int32 {
             self.operationMode = value
         }
-        if let value = dict["PreqRule"] as? [Any?] {
-            var tmp : [RuleInfo.PreqRule] = []
-            for v in value {
-                if v != nil {
-                    var model = RuleInfo.PreqRule()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.preqRule = tmp
+        if let value = dict["PreqRule"] as? [String: Any?] {
+            var model = RuleInfo.PreqRule()
+            model.fromMap(value)
+            self.preqRule = model
         }
         if let value = dict["QualityCheckType"] as? Int32 {
             self.qualityCheckType = value
