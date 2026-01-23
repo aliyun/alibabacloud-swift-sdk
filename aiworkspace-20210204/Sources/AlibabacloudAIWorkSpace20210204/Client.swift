@@ -2725,6 +2725,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListDatasetFileMetasShrinkRequest = ListDatasetFileMetasShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.datasetFileMetaIds)) {
+            request.datasetFileMetaIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetFileMetaIds, "DatasetFileMetaIds", "simple")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.queryContentTypeIncludeAny)) {
             request.queryContentTypeIncludeAnyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryContentTypeIncludeAny, "QueryContentTypeIncludeAny", "simple")
         }
@@ -2741,6 +2744,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.queryTagsIncludeAnyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryTagsIncludeAny, "QueryTagsIncludeAny", "simple")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetFileMetaIdsShrink)) {
+            query["DatasetFileMetaIds"] = request.datasetFileMetaIdsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.datasetVersion)) {
             query["DatasetVersion"] = request.datasetVersion ?? "";
         }

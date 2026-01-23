@@ -15928,6 +15928,8 @@ public class ListConnectionsResponse : Tea.TeaModel {
 }
 
 public class ListDatasetFileMetasRequest : Tea.TeaModel {
+    public var datasetFileMetaIds: [String]?
+
     public var datasetVersion: String?
 
     public var endFileUpdateTime: String?
@@ -15996,6 +15998,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetFileMetaIds != nil {
+            map["DatasetFileMetaIds"] = self.datasetFileMetaIds!
+        }
         if self.datasetVersion != nil {
             map["DatasetVersion"] = self.datasetVersion!
         }
@@ -16082,6 +16087,9 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetFileMetaIds"] as? [String] {
+            self.datasetFileMetaIds = value
+        }
         if let value = dict["DatasetVersion"] as? String {
             self.datasetVersion = value
         }
@@ -16167,6 +16175,8 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 }
 
 public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
+    public var datasetFileMetaIdsShrink: String?
+
     public var datasetVersion: String?
 
     public var endFileUpdateTime: String?
@@ -16235,6 +16245,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetFileMetaIdsShrink != nil {
+            map["DatasetFileMetaIds"] = self.datasetFileMetaIdsShrink!
+        }
         if self.datasetVersion != nil {
             map["DatasetVersion"] = self.datasetVersion!
         }
@@ -16321,6 +16334,9 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetFileMetaIds"] as? String {
+            self.datasetFileMetaIdsShrink = value
+        }
         if let value = dict["DatasetVersion"] as? String {
             self.datasetVersion = value
         }
