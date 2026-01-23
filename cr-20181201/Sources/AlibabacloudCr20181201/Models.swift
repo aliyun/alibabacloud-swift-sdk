@@ -19330,6 +19330,8 @@ public class ListRepoBuildRuleResponseBody : Tea.TeaModel {
 
         public var buildRuleId: String?
 
+        public var destArtifactType: String?
+
         public var dockerfileLocation: String?
 
         public var dockerfileName: String?
@@ -19362,6 +19364,9 @@ public class ListRepoBuildRuleResponseBody : Tea.TeaModel {
             if self.buildRuleId != nil {
                 map["BuildRuleId"] = self.buildRuleId!
             }
+            if self.destArtifactType != nil {
+                map["DestArtifactType"] = self.destArtifactType!
+            }
             if self.dockerfileLocation != nil {
                 map["DockerfileLocation"] = self.dockerfileLocation!
             }
@@ -19390,6 +19395,9 @@ public class ListRepoBuildRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["BuildRuleId"] as? String {
                 self.buildRuleId = value
+            }
+            if let value = dict["DestArtifactType"] as? String {
+                self.destArtifactType = value
             }
             if let value = dict["DockerfileLocation"] as? String {
                 self.dockerfileLocation = value
