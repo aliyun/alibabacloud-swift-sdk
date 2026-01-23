@@ -1980,6 +1980,36 @@ public class RuleCountInfo : Tea.TeaModel {
 }
 
 public class RuleInfo : Tea.TeaModel {
+    public class PreqRule : Tea.TeaModel {
+        public var rid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rid != nil {
+                map["Rid"] = self.rid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Rid"] as? String {
+                self.rid = value
+            }
+        }
+    }
     public var autoReview: Int32?
 
     public var businessCategoryNameList: [String]?
@@ -2035,6 +2065,8 @@ public class RuleInfo : Tea.TeaModel {
     public var name: String?
 
     public var operationMode: Int32?
+
+    public var preqRule: [RuleInfo.PreqRule]?
 
     public var qualityCheckType: Int32?
 
@@ -2192,6 +2224,13 @@ public class RuleInfo : Tea.TeaModel {
         }
         if self.operationMode != nil {
             map["OperationMode"] = self.operationMode!
+        }
+        if self.preqRule != nil {
+            var tmp : [Any] = []
+            for k in self.preqRule! {
+                tmp.append(k.toMap())
+            }
+            map["PreqRule"] = tmp
         }
         if self.qualityCheckType != nil {
             map["QualityCheckType"] = self.qualityCheckType!
@@ -2372,6 +2411,19 @@ public class RuleInfo : Tea.TeaModel {
         }
         if let value = dict["OperationMode"] as? Int32 {
             self.operationMode = value
+        }
+        if let value = dict["PreqRule"] as? [Any?] {
+            var tmp : [RuleInfo.PreqRule] = []
+            for v in value {
+                if v != nil {
+                    var model = RuleInfo.PreqRule()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.preqRule = tmp
         }
         if let value = dict["QualityCheckType"] as? Int32 {
             self.qualityCheckType = value
