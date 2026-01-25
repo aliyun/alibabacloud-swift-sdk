@@ -62,6 +62,8 @@ public class ChatMessagesRequest : Tea.TeaModel {
     }
     public var conversationId: String?
 
+    public var eventMode: String?
+
     public var inputs: ChatMessagesRequest.Inputs?
 
     public var parentMessageId: String?
@@ -86,6 +88,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
+        if self.eventMode != nil {
+            map["EventMode"] = self.eventMode!
+        }
         if self.inputs != nil {
             map["Inputs"] = self.inputs?.toMap()
         }
@@ -103,6 +108,9 @@ public class ChatMessagesRequest : Tea.TeaModel {
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
         }
+        if let value = dict["EventMode"] as? String {
+            self.eventMode = value
+        }
         if let value = dict["Inputs"] as? [String: Any?] {
             var model = ChatMessagesRequest.Inputs()
             model.fromMap(value)
@@ -119,6 +127,8 @@ public class ChatMessagesRequest : Tea.TeaModel {
 
 public class ChatMessagesShrinkRequest : Tea.TeaModel {
     public var conversationId: String?
+
+    public var eventMode: String?
 
     public var inputsShrink: String?
 
@@ -143,6 +153,9 @@ public class ChatMessagesShrinkRequest : Tea.TeaModel {
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
+        if self.eventMode != nil {
+            map["EventMode"] = self.eventMode!
+        }
         if self.inputsShrink != nil {
             map["Inputs"] = self.inputsShrink!
         }
@@ -159,6 +172,9 @@ public class ChatMessagesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
+        }
+        if let value = dict["EventMode"] as? String {
+            self.eventMode = value
         }
         if let value = dict["Inputs"] as? String {
             self.inputsShrink = value
@@ -3852,6 +3868,8 @@ public class GetCustomAgentResponse : Tea.TeaModel {
 public class GetMessagesRequest : Tea.TeaModel {
     public var conversationId: String?
 
+    public var eventMode: String?
+
     public var firstId: String?
 
     public var limit: Int64?
@@ -3873,6 +3891,9 @@ public class GetMessagesRequest : Tea.TeaModel {
         if self.conversationId != nil {
             map["ConversationId"] = self.conversationId!
         }
+        if self.eventMode != nil {
+            map["EventMode"] = self.eventMode!
+        }
         if self.firstId != nil {
             map["FirstId"] = self.firstId!
         }
@@ -3887,6 +3908,9 @@ public class GetMessagesRequest : Tea.TeaModel {
         if let value = dict["ConversationId"] as? String {
             self.conversationId = value
         }
+        if let value = dict["EventMode"] as? String {
+            self.eventMode = value
+        }
         if let value = dict["FirstId"] as? String {
             self.firstId = value
         }
@@ -3898,11 +3922,51 @@ public class GetMessagesRequest : Tea.TeaModel {
 
 public class GetMessagesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Events : Tea.TeaModel {
+            public var answer: String?
+
+            public var event: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.answer != nil {
+                    map["answer"] = self.answer!
+                }
+                if self.event != nil {
+                    map["event"] = self.event!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["answer"] as? String {
+                    self.answer = value
+                }
+                if let value = dict["event"] as? String {
+                    self.event = value
+                }
+            }
+        }
         public var answer: String?
 
         public var conversationId: String?
 
         public var createdAt: String?
+
+        public var events: [GetMessagesResponseBody.Data.Events]?
 
         public var feedback: String?
 
@@ -3935,6 +3999,13 @@ public class GetMessagesResponseBody : Tea.TeaModel {
             if self.createdAt != nil {
                 map["CreatedAt"] = self.createdAt!
             }
+            if self.events != nil {
+                var tmp : [Any] = []
+                for k in self.events! {
+                    tmp.append(k.toMap())
+                }
+                map["Events"] = tmp
+            }
             if self.feedback != nil {
                 map["Feedback"] = self.feedback!
             }
@@ -3960,6 +4031,19 @@ public class GetMessagesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreatedAt"] as? String {
                 self.createdAt = value
+            }
+            if let value = dict["Events"] as? [Any?] {
+                var tmp : [GetMessagesResponseBody.Data.Events] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetMessagesResponseBody.Data.Events()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.events = tmp
             }
             if let value = dict["Feedback"] as? String {
                 self.feedback = value
@@ -5729,6 +5813,237 @@ public class ModifyInstanceStorageConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyInstanceStorageConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstancesSSLRequest : Tea.TeaModel {
+    public var CAType: String?
+
+    public var instanceNames: [String]?
+
+    public var regionId: String?
+
+    public var SSLEnabled: Int32?
+
+    public var serverCert: String?
+
+    public var serverKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.CAType != nil {
+            map["CAType"] = self.CAType!
+        }
+        if self.instanceNames != nil {
+            map["InstanceNames"] = self.instanceNames!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.SSLEnabled != nil {
+            map["SSLEnabled"] = self.SSLEnabled!
+        }
+        if self.serverCert != nil {
+            map["ServerCert"] = self.serverCert!
+        }
+        if self.serverKey != nil {
+            map["ServerKey"] = self.serverKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CAType"] as? String {
+            self.CAType = value
+        }
+        if let value = dict["InstanceNames"] as? [String] {
+            self.instanceNames = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SSLEnabled"] as? Int32 {
+            self.SSLEnabled = value
+        }
+        if let value = dict["ServerCert"] as? String {
+            self.serverCert = value
+        }
+        if let value = dict["ServerKey"] as? String {
+            self.serverKey = value
+        }
+    }
+}
+
+public class ModifyInstancesSSLShrinkRequest : Tea.TeaModel {
+    public var CAType: String?
+
+    public var instanceNamesShrink: String?
+
+    public var regionId: String?
+
+    public var SSLEnabled: Int32?
+
+    public var serverCert: String?
+
+    public var serverKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.CAType != nil {
+            map["CAType"] = self.CAType!
+        }
+        if self.instanceNamesShrink != nil {
+            map["InstanceNames"] = self.instanceNamesShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.SSLEnabled != nil {
+            map["SSLEnabled"] = self.SSLEnabled!
+        }
+        if self.serverCert != nil {
+            map["ServerCert"] = self.serverCert!
+        }
+        if self.serverKey != nil {
+            map["ServerKey"] = self.serverKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CAType"] as? String {
+            self.CAType = value
+        }
+        if let value = dict["InstanceNames"] as? String {
+            self.instanceNamesShrink = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SSLEnabled"] as? Int32 {
+            self.SSLEnabled = value
+        }
+        if let value = dict["ServerCert"] as? String {
+            self.serverCert = value
+        }
+        if let value = dict["ServerKey"] as? String {
+            self.serverKey = value
+        }
+    }
+}
+
+public class ModifyInstancesSSLResponseBody : Tea.TeaModel {
+    public var instanceNames: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceNames != nil {
+            map["InstanceNames"] = self.instanceNames!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceNames"] as? [String] {
+            self.instanceNames = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyInstancesSSLResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstancesSSLResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyInstancesSSLResponseBody()
             model.fromMap(value)
             self.body = model
         }

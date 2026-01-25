@@ -35,6 +35,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
             query["ConversationId"] = request.conversationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.eventMode)) {
+            query["EventMode"] = request.eventMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.inputsShrink)) {
             query["Inputs"] = request.inputsShrink ?? "";
         }
@@ -698,6 +701,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
             query["ConversationId"] = request.conversationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.eventMode)) {
+            query["EventMode"] = request.eventMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.firstId)) {
             query["FirstId"] = request.firstId ?? "";
         }
@@ -1054,6 +1060,57 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceStorageConfig(_ request: ModifyInstanceStorageConfigRequest) async throws -> ModifyInstanceStorageConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyInstanceStorageConfigWithOptions(request as! ModifyInstanceStorageConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstancesSSLWithOptions(_ tmpReq: ModifyInstancesSSLRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstancesSSLResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyInstancesSSLShrinkRequest = ModifyInstancesSSLShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceNames)) {
+            request.instanceNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceNames, "InstanceNames", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.CAType)) {
+            query["CAType"] = request.CAType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceNamesShrink)) {
+            query["InstanceNames"] = request.instanceNamesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLEnabled)) {
+            query["SSLEnabled"] = request.SSLEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serverCert)) {
+            query["ServerCert"] = request.serverCert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverKey)) {
+            query["ServerKey"] = request.serverKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyInstancesSSL",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyInstancesSSLResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstancesSSL(_ request: ModifyInstancesSSLRequest) async throws -> ModifyInstancesSSLResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyInstancesSSLWithOptions(request as! ModifyInstancesSSLRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
