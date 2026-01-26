@@ -26496,7 +26496,7 @@ public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
             public class Condition : Tea.TeaModel {
                 public var content: String?
 
-                public var contentList: String?
+                public var contentList: [String]?
 
                 public var field: String?
 
@@ -26541,7 +26541,7 @@ public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
                     if let value = dict["Content"] as? String {
                         self.content = value
                     }
-                    if let value = dict["ContentList"] as? String {
+                    if let value = dict["ContentList"] as? [String] {
                         self.contentList = value
                     }
                     if let value = dict["Field"] as? String {
