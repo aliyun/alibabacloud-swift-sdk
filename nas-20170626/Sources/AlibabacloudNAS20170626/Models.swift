@@ -14150,6 +14150,277 @@ public class DescribeFilesetsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeFilesystemsAssociatedHpnZonesRequest : Tea.TeaModel {
+    public class Filesystems : Tea.TeaModel {
+        public var fileSystemId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+        }
+    }
+    public var filesystems: [DescribeFilesystemsAssociatedHpnZonesRequest.Filesystems]?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filesystems != nil {
+            var tmp : [Any] = []
+            for k in self.filesystems! {
+                tmp.append(k.toMap())
+            }
+            map["Filesystems"] = tmp
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Filesystems"] as? [Any?] {
+            var tmp : [DescribeFilesystemsAssociatedHpnZonesRequest.Filesystems] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeFilesystemsAssociatedHpnZonesRequest.Filesystems()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filesystems = tmp
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeFilesystemsAssociatedHpnZonesShrinkRequest : Tea.TeaModel {
+    public var filesystemsShrink: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filesystemsShrink != nil {
+            map["Filesystems"] = self.filesystemsShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Filesystems"] as? String {
+            self.filesystemsShrink = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeFilesystemsAssociatedHpnZonesResponseBody : Tea.TeaModel {
+    public class Filesystems : Tea.TeaModel {
+        public var associatedHpnZones: [String]?
+
+        public var fileSystemId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.associatedHpnZones != nil {
+                map["AssociatedHpnZones"] = self.associatedHpnZones!
+            }
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssociatedHpnZones"] as? [String] {
+                self.associatedHpnZones = value
+            }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var filesystems: [DescribeFilesystemsAssociatedHpnZonesResponseBody.Filesystems]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filesystems != nil {
+            var tmp : [Any] = []
+            for k in self.filesystems! {
+                tmp.append(k.toMap())
+            }
+            map["Filesystems"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Filesystems"] as? [Any?] {
+            var tmp : [DescribeFilesystemsAssociatedHpnZonesResponseBody.Filesystems] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeFilesystemsAssociatedHpnZonesResponseBody.Filesystems()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filesystems = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeFilesystemsAssociatedHpnZonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeFilesystemsAssociatedHpnZonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeFilesystemsAssociatedHpnZonesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeFilesystemsVscAttachInfoRequest : Tea.TeaModel {
     public class ResourceIds : Tea.TeaModel {
         public var fileSystemId: String?

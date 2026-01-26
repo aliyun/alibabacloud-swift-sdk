@@ -2679,6 +2679,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFilesystemsAssociatedHpnZonesWithOptions(_ tmpReq: DescribeFilesystemsAssociatedHpnZonesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFilesystemsAssociatedHpnZonesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeFilesystemsAssociatedHpnZonesShrinkRequest = DescribeFilesystemsAssociatedHpnZonesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filesystems)) {
+            request.filesystemsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filesystems, "Filesystems", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filesystemsShrink)) {
+            query["Filesystems"] = request.filesystemsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFilesystemsAssociatedHpnZones",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFilesystemsAssociatedHpnZonesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFilesystemsAssociatedHpnZones(_ request: DescribeFilesystemsAssociatedHpnZonesRequest) async throws -> DescribeFilesystemsAssociatedHpnZonesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFilesystemsAssociatedHpnZonesWithOptions(request as! DescribeFilesystemsAssociatedHpnZonesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeFilesystemsVscAttachInfoWithOptions(_ request: DescribeFilesystemsVscAttachInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFilesystemsVscAttachInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
