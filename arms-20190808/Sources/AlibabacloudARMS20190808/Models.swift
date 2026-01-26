@@ -8458,6 +8458,8 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
 
     public var tags: [CreateOrUpdateAlertRuleRequest.Tags]?
 
+    public var aliyunLang: String?
+
     public override init() {
         super.init()
     }
@@ -8569,6 +8571,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.aliyunLang != nil {
+            map["aliyunLang"] = self.aliyunLang!
         }
         return map
     }
@@ -8684,6 +8689,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["aliyunLang"] as? String {
+            self.aliyunLang = value
         }
     }
 }

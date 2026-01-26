@@ -1399,6 +1399,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tags)) {
             body["Tags"] = request.tags ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            body["aliyunLang"] = request.aliyunLang ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
