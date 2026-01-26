@@ -12252,6 +12252,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
             public var approvalRequired: Bool?
 
+            public var autoRepairPolicyId: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -12271,6 +12273,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 if self.approvalRequired != nil {
                     map["approval_required"] = self.approvalRequired!
                 }
+                if self.autoRepairPolicyId != nil {
+                    map["auto_repair_policy_id"] = self.autoRepairPolicyId!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -12281,6 +12286,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["approval_required"] as? Bool {
                     self.approvalRequired = value
+                }
+                if let value = dict["auto_repair_policy_id"] as? String {
+                    self.autoRepairPolicyId = value
                 }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
@@ -14138,6 +14146,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             public class AutoRepairPolicy : Tea.TeaModel {
                 public var approvalRequired: Bool?
 
+                public var autoRepairPolicyId: String?
+
                 public var restartNode: Bool?
 
                 public override init() {
@@ -14157,6 +14167,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     if self.approvalRequired != nil {
                         map["approval_required"] = self.approvalRequired!
                     }
+                    if self.autoRepairPolicyId != nil {
+                        map["auto_repair_policy_id"] = self.autoRepairPolicyId!
+                    }
                     if self.restartNode != nil {
                         map["restart_node"] = self.restartNode!
                     }
@@ -14167,6 +14180,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["approval_required"] as? Bool {
                         self.approvalRequired = value
+                    }
+                    if let value = dict["auto_repair_policy_id"] as? String {
+                        self.autoRepairPolicyId = value
                     }
                     if let value = dict["restart_node"] as? Bool {
                         self.restartNode = value
@@ -21406,6 +21422,194 @@ public class DescribePolicyInstancesStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePolicyInstancesStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRegionsRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var clusterType: String?
+
+    public var profile: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["acceptLanguage"] = self.acceptLanguage!
+        }
+        if self.clusterType != nil {
+            map["clusterType"] = self.clusterType!
+        }
+        if self.profile != nil {
+            map["profile"] = self.profile!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["acceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["clusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["profile"] as? String {
+            self.profile = value
+        }
+    }
+}
+
+public class DescribeRegionsResponseBody : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public var localName: String?
+
+        public var regionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.localName != nil {
+                map["localName"] = self.localName!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["localName"] as? String {
+                self.localName = value
+            }
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
+            }
+        }
+    }
+    public var regions: [DescribeRegionsResponseBody.Regions]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regions != nil {
+            var tmp : [Any] = []
+            for k in self.regions! {
+                tmp.append(k.toMap())
+            }
+            map["regions"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regions"] as? [Any?] {
+            var tmp : [DescribeRegionsResponseBody.Regions] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRegionsResponseBody.Regions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.regions = tmp
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRegionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -29387,6 +29591,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
             public var approvalRequired: Bool?
 
+            public var autoRepairPolicyId: String?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -29406,6 +29612,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 if self.approvalRequired != nil {
                     map["approval_required"] = self.approvalRequired!
                 }
+                if self.autoRepairPolicyId != nil {
+                    map["auto_repair_policy_id"] = self.autoRepairPolicyId!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -29416,6 +29625,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["approval_required"] as? Bool {
                     self.approvalRequired = value
+                }
+                if let value = dict["auto_repair_policy_id"] as? String {
+                    self.autoRepairPolicyId = value
                 }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
