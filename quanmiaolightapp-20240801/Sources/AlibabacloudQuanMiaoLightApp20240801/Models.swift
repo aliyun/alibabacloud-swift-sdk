@@ -13601,6 +13601,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public var videoUrl: String?
 
+    public var videoUrls: [String]?
+
     public override init() {
         super.init()
     }
@@ -13694,6 +13696,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         }
         if self.videoUrl != nil {
             map["videoUrl"] = self.videoUrl!
+        }
+        if self.videoUrls != nil {
+            map["videoUrls"] = self.videoUrls!
         }
         return map
     }
@@ -13795,6 +13800,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         if let value = dict["videoUrl"] as? String {
             self.videoUrl = value
         }
+        if let value = dict["videoUrls"] as? [String] {
+            self.videoUrls = value
+        }
     }
 }
 
@@ -13844,6 +13852,8 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
     public var videoShotFaceIdentityCount: Int32?
 
     public var videoUrl: String?
+
+    public var videoUrlsShrink: String?
 
     public override init() {
         super.init()
@@ -13928,6 +13938,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         if self.videoUrl != nil {
             map["videoUrl"] = self.videoUrl!
         }
+        if self.videoUrlsShrink != nil {
+            map["videoUrls"] = self.videoUrlsShrink!
+        }
         return map
     }
 
@@ -14001,6 +14014,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["videoUrl"] as? String {
             self.videoUrl = value
+        }
+        if let value = dict["videoUrls"] as? String {
+            self.videoUrlsShrink = value
         }
     }
 }
@@ -18356,6 +18372,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public var videoUrl: String?
 
+    public var videoUrls: [String]?
+
     public override init() {
         super.init()
     }
@@ -18446,6 +18464,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         }
         if self.videoUrl != nil {
             map["videoUrl"] = self.videoUrl!
+        }
+        if self.videoUrls != nil {
+            map["videoUrls"] = self.videoUrls!
         }
         return map
     }
@@ -18544,6 +18565,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         if let value = dict["videoUrl"] as? String {
             self.videoUrl = value
         }
+        if let value = dict["videoUrls"] as? [String] {
+            self.videoUrls = value
+        }
     }
 }
 
@@ -18591,6 +18615,8 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
     public var videoShotFaceIdentityCount: Int32?
 
     public var videoUrl: String?
+
+    public var videoUrlsShrink: String?
 
     public override init() {
         super.init()
@@ -18672,6 +18698,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.videoUrl != nil {
             map["videoUrl"] = self.videoUrl!
         }
+        if self.videoUrlsShrink != nil {
+            map["videoUrls"] = self.videoUrlsShrink!
+        }
         return map
     }
 
@@ -18742,6 +18771,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["videoUrl"] as? String {
             self.videoUrl = value
+        }
+        if let value = dict["videoUrls"] as? String {
+            self.videoUrlsShrink = value
         }
     }
 }

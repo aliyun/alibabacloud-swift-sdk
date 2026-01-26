@@ -1297,6 +1297,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.videoRoles)) {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.videoUrls)) {
+            request.videoUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoUrls, "videoUrls", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.addDocumentParamShrink)) {
             body["addDocumentParam"] = request.addDocumentParamShrink ?? "";
@@ -1366,6 +1369,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.videoUrl)) {
             body["videoUrl"] = request.videoUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoUrlsShrink)) {
+            body["videoUrls"] = request.videoUrlsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1694,6 +1700,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.videoRoles)) {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.videoUrls)) {
+            request.videoUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoUrls, "videoUrls", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.addDocumentParamShrink)) {
             body["addDocumentParam"] = request.addDocumentParamShrink ?? "";
@@ -1760,6 +1769,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.videoUrl)) {
             body["videoUrl"] = request.videoUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoUrlsShrink)) {
+            body["videoUrls"] = request.videoUrlsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
