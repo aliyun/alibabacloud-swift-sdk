@@ -5422,6 +5422,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.partition)) {
             body["Partition"] = request.partition ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.partitions)) {
+            body["Partitions"] = request.partitions ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.skipThresholdCheck)) {
             body["SkipThresholdCheck"] = request.skipThresholdCheck!;
         }

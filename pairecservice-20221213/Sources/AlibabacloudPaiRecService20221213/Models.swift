@@ -29431,6 +29431,8 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
 
     public var partition: [String: String]?
 
+    public var partitions: [String: String]?
+
     public var skipThresholdCheck: Bool?
 
     public override init() {
@@ -29456,6 +29458,9 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
         if self.partition != nil {
             map["Partition"] = self.partition!
         }
+        if self.partitions != nil {
+            map["Partitions"] = self.partitions!
+        }
         if self.skipThresholdCheck != nil {
             map["SkipThresholdCheck"] = self.skipThresholdCheck!
         }
@@ -29472,6 +29477,9 @@ public class PublishRecallManagementTableRequest : Tea.TeaModel {
         }
         if let value = dict["Partition"] as? [String: String] {
             self.partition = value
+        }
+        if let value = dict["Partitions"] as? [String: String] {
+            self.partitions = value
         }
         if let value = dict["SkipThresholdCheck"] as? Bool {
             self.skipThresholdCheck = value
