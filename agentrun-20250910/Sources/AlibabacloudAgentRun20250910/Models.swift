@@ -32,6 +32,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var executionRoleArn: String?
 
+    public var externalAgentEndpointUrl: String?
+
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
     public var lastUpdatedAt: String?
@@ -40,7 +42,11 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var memory: Int?
 
+    public var nasConfig: NASConfig?
+
     public var networkConfiguration: NetworkConfiguration?
+
+    public var ossMountConfig: OSSMountConfig?
 
     public var port: Int?
 
@@ -70,7 +76,9 @@ public class AgentRuntime : Tea.TeaModel {
         try self.containerConfiguration?.validate()
         try self.healthCheckConfiguration?.validate()
         try self.logConfiguration?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.ossMountConfig?.validate()
         try self.protocolConfiguration?.validate()
     }
 
@@ -115,6 +123,9 @@ public class AgentRuntime : Tea.TeaModel {
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
+        if self.externalAgentEndpointUrl != nil {
+            map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
         }
@@ -127,8 +138,14 @@ public class AgentRuntime : Tea.TeaModel {
         if self.memory != nil {
             map["memory"] = self.memory!
         }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
+        }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
         }
         if self.port != nil {
             map["port"] = self.port!
@@ -199,6 +216,9 @@ public class AgentRuntime : Tea.TeaModel {
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
         }
+        if let value = dict["externalAgentEndpointUrl"] as? String {
+            self.externalAgentEndpointUrl = value
+        }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
             model.fromMap(value)
@@ -215,10 +235,20 @@ public class AgentRuntime : Tea.TeaModel {
         if let value = dict["memory"] as? Int {
             self.memory = value
         }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
+        }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
             model.fromMap(value)
             self.networkConfiguration = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
         }
         if let value = dict["port"] as? Int {
             self.port = value
@@ -2443,13 +2473,19 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var executionRoleArn: String?
 
+    public var externalAgentEndpointUrl: String?
+
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
     public var logConfiguration: LogConfiguration?
 
     public var memory: Int32?
 
+    public var nasConfig: NASConfig?
+
     public var networkConfiguration: NetworkConfiguration?
+
+    public var ossMountConfig: OSSMountConfig?
 
     public var port: Int32?
 
@@ -2475,7 +2511,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         try self.containerConfiguration?.validate()
         try self.healthCheckConfiguration?.validate()
         try self.logConfiguration?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.ossMountConfig?.validate()
         try self.protocolConfiguration?.validate()
     }
 
@@ -2511,6 +2549,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
+        if self.externalAgentEndpointUrl != nil {
+            map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
         }
@@ -2520,8 +2561,14 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if self.memory != nil {
             map["memory"] = self.memory!
         }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
+        }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
         }
         if self.port != nil {
             map["port"] = self.port!
@@ -2577,6 +2624,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
         }
+        if let value = dict["externalAgentEndpointUrl"] as? String {
+            self.externalAgentEndpointUrl = value
+        }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
             model.fromMap(value)
@@ -2590,10 +2640,20 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["memory"] as? Int32 {
             self.memory = value
         }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
+        }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
             model.fromMap(value)
             self.networkConfiguration = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
         }
         if let value = dict["port"] as? Int32 {
             self.port = value
@@ -13167,13 +13227,19 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var executionRoleArn: String?
 
+    public var externalAgentEndpointUrl: String?
+
     public var healthCheckConfiguration: HealthCheckConfiguration?
 
     public var logConfiguration: LogConfiguration?
 
     public var memory: Int32?
 
+    public var nasConfig: NASConfig?
+
     public var networkConfiguration: NetworkConfiguration?
+
+    public var ossMountConfig: OSSMountConfig?
 
     public var port: Int32?
 
@@ -13197,7 +13263,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         try self.containerConfiguration?.validate()
         try self.healthCheckConfiguration?.validate()
         try self.logConfiguration?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.ossMountConfig?.validate()
         try self.protocolConfiguration?.validate()
     }
 
@@ -13230,6 +13298,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
+        if self.externalAgentEndpointUrl != nil {
+            map["externalAgentEndpointUrl"] = self.externalAgentEndpointUrl!
+        }
         if self.healthCheckConfiguration != nil {
             map["healthCheckConfiguration"] = self.healthCheckConfiguration?.toMap()
         }
@@ -13239,8 +13310,14 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if self.memory != nil {
             map["memory"] = self.memory!
         }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
+        }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
         }
         if self.port != nil {
             map["port"] = self.port!
@@ -13290,6 +13367,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
         }
+        if let value = dict["externalAgentEndpointUrl"] as? String {
+            self.externalAgentEndpointUrl = value
+        }
         if let value = dict["healthCheckConfiguration"] as? [String: Any?] {
             var model = HealthCheckConfiguration()
             model.fromMap(value)
@@ -13303,10 +13383,20 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         if let value = dict["memory"] as? Int32 {
             self.memory = value
         }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
+        }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
             model.fromMap(value)
             self.networkConfiguration = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
         }
         if let value = dict["port"] as? Int32 {
             self.port = value
@@ -17355,6 +17445,8 @@ public class ListAgentRuntimeVersionsResponse : Tea.TeaModel {
 public class ListAgentRuntimesRequest : Tea.TeaModel {
     public var agentRuntimeName: String?
 
+    public var discoveryResourceGroupId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -17382,6 +17474,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         if self.agentRuntimeName != nil {
             map["agentRuntimeName"] = self.agentRuntimeName!
         }
+        if self.discoveryResourceGroupId != nil {
+            map["discoveryResourceGroupId"] = self.discoveryResourceGroupId!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -17404,6 +17499,9 @@ public class ListAgentRuntimesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentRuntimeName"] as? String {
             self.agentRuntimeName = value
+        }
+        if let value = dict["discoveryResourceGroupId"] as? String {
+            self.discoveryResourceGroupId = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value

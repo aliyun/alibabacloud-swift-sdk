@@ -1185,6 +1185,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentRuntimeName)) {
             query["agentRuntimeName"] = request.agentRuntimeName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.discoveryResourceGroupId)) {
+            query["discoveryResourceGroupId"] = request.discoveryResourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
