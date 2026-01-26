@@ -208,6 +208,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyCustomHostnameCertificateWithOptions(_ request: ApplyCustomHostnameCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyCustomHostnameCertificateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hostnameId)) {
+            query["HostnameId"] = request.hostnameId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ApplyCustomHostnameCertificate",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyCustomHostnameCertificateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyCustomHostnameCertificate(_ request: ApplyCustomHostnameCertificateRequest) async throws -> ApplyCustomHostnameCertificateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await applyCustomHostnameCertificateWithOptions(request as! ApplyCustomHostnameCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchCreateRecordsWithOptions(_ tmpReq: BatchCreateRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateRecordsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BatchCreateRecordsShrinkRequest = BatchCreateRecordsShrinkRequest([:])
@@ -1132,6 +1163,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCompressionRule(_ request: CreateCompressionRuleRequest) async throws -> CreateCompressionRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createCompressionRuleWithOptions(request as! CreateCompressionRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomHostnameWithOptions(_ request: CreateCustomHostnameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomHostnameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.casId)) {
+            query["CasId"] = request.casId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.casRegion)) {
+            query["CasRegion"] = request.casRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certType)) {
+            query["CertType"] = request.certType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certificate)) {
+            query["Certificate"] = request.certificate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hostname)) {
+            query["Hostname"] = request.hostname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privateKey)) {
+            query["PrivateKey"] = request.privateKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordId)) {
+            query["RecordId"] = request.recordId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sslFlag)) {
+            query["SslFlag"] = request.sslFlag ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCustomHostname",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCustomHostnameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomHostname(_ request: CreateCustomHostnameRequest) async throws -> CreateCustomHostnameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCustomHostnameWithOptions(request as! CreateCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3717,6 +3803,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCompressionRule(_ request: DeleteCompressionRuleRequest) async throws -> DeleteCompressionRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCompressionRuleWithOptions(request as! DeleteCompressionRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomHostnameWithOptions(_ request: DeleteCustomHostnameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomHostnameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hostnameId)) {
+            query["HostnameId"] = request.hostnameId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCustomHostname",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCustomHostnameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomHostname(_ request: DeleteCustomHostnameRequest) async throws -> DeleteCustomHostnameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCustomHostnameWithOptions(request as! DeleteCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6425,6 +6542,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomHostnameWithOptions(_ request: GetCustomHostnameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomHostnameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hostnameId)) {
+            query["HostnameId"] = request.hostnameId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCustomHostname",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCustomHostnameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomHostname(_ request: GetCustomHostnameRequest) async throws -> GetCustomHostnameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCustomHostnameWithOptions(request as! GetCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDevelopmentModeWithOptions(_ request: GetDevelopmentModeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDevelopmentModeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -8753,6 +8901,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCompressionRules(_ request: ListCompressionRulesRequest) async throws -> ListCompressionRulesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listCompressionRulesWithOptions(request as! ListCompressionRulesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomHostnamesWithOptions(_ request: ListCustomHostnamesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomHostnamesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hostname)) {
+            query["Hostname"] = request.hostname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nameMatchType)) {
+            query["NameMatchType"] = request.nameMatchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recordId)) {
+            query["RecordId"] = request.recordId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCustomHostnames",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCustomHostnamesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomHostnames(_ request: ListCustomHostnamesRequest) async throws -> ListCustomHostnamesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCustomHostnamesWithOptions(request as! ListCustomHostnamesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12184,6 +12381,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomHostnameWithOptions(_ request: UpdateCustomHostnameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomHostnameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.casId)) {
+            query["CasId"] = request.casId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.casRegion)) {
+            query["CasRegion"] = request.casRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certType)) {
+            query["CertType"] = request.certType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certificate)) {
+            query["Certificate"] = request.certificate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hostnameId)) {
+            query["HostnameId"] = request.hostnameId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.privateKey)) {
+            query["PrivateKey"] = request.privateKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordId)) {
+            query["RecordId"] = request.recordId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sslFlag)) {
+            query["SslFlag"] = request.sslFlag ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCustomHostname",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCustomHostnameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomHostname(_ request: UpdateCustomHostnameRequest) async throws -> UpdateCustomHostnameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCustomHostnameWithOptions(request as! UpdateCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateCustomScenePolicyWithOptions(_ request: UpdateCustomScenePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomScenePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14917,6 +15166,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadSiteOriginClientCertificate(_ request: UploadSiteOriginClientCertificateRequest) async throws -> UploadSiteOriginClientCertificateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await uploadSiteOriginClientCertificateWithOptions(request as! UploadSiteOriginClientCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyCustomHostnameWithOptions(_ request: VerifyCustomHostnameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyCustomHostnameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hostnameId)) {
+            query["HostnameId"] = request.hostnameId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyCustomHostname",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyCustomHostnameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyCustomHostname(_ request: VerifyCustomHostnameRequest) async throws -> VerifyCustomHostnameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await verifyCustomHostnameWithOptions(request as! VerifyCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
