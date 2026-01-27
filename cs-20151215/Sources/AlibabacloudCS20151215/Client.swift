@@ -4193,6 +4193,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.kubeletConfig)) {
             body["kubelet_config"] = request.kubeletConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.nodeNames)) {
+            body["node_names"] = request.nodeNames ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.osConfig)) {
             body["os_config"] = request.osConfig!;
         }

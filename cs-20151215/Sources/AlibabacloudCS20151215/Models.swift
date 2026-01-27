@@ -33195,6 +33195,8 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
     public var kubeletConfig: KubeletConfig?
 
+    public var nodeNames: [String]?
+
     public var osConfig: ModifyNodePoolNodeConfigRequest.OsConfig?
 
     public var rollingPolicy: ModifyNodePoolNodeConfigRequest.RollingPolicy?
@@ -33223,6 +33225,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
         if self.kubeletConfig != nil {
             map["kubelet_config"] = self.kubeletConfig?.toMap()
         }
+        if self.nodeNames != nil {
+            map["node_names"] = self.nodeNames!
+        }
         if self.osConfig != nil {
             map["os_config"] = self.osConfig?.toMap()
         }
@@ -33243,6 +33248,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
             var model = KubeletConfig()
             model.fromMap(value)
             self.kubeletConfig = model
+        }
+        if let value = dict["node_names"] as? [String] {
+            self.nodeNames = value
         }
         if let value = dict["os_config"] as? [String: Any?] {
             var model = ModifyNodePoolNodeConfigRequest.OsConfig()
