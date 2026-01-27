@@ -11151,6 +11151,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var systemDiskSize: Int32?
 
+        public var virtualKubeletIp: String?
+
         public var virtualNodePoolId: String?
 
         public var wuyingServerId: String?
@@ -11245,6 +11247,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.systemDiskSize != nil {
                 map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            if self.virtualKubeletIp != nil {
+                map["VirtualKubeletIp"] = self.virtualKubeletIp!
             }
             if self.virtualNodePoolId != nil {
                 map["VirtualNodePoolId"] = self.virtualNodePoolId!
@@ -11347,6 +11352,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["SystemDiskSize"] as? Int32 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["VirtualKubeletIp"] as? String {
+                self.virtualKubeletIp = value
             }
             if let value = dict["VirtualNodePoolId"] as? String {
                 self.virtualNodePoolId = value
