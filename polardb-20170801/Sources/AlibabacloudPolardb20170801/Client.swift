@@ -1270,6 +1270,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.endpoints)) {
             request.endpointsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.endpoints, "Endpoints", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.memApplicationSpec)) {
+            request.memApplicationSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.memApplicationSpec, "MemApplicationSpec", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationType)) {
             query["ApplicationType"] = request.applicationType ?? "";
@@ -1301,6 +1304,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.memApplicationSpecShrink)) {
+            query["MemApplicationSpec"] = request.memApplicationSpecShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
         }
@@ -1318,6 +1324,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
+            query["SecurityGroupId"] = request.securityGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime ?? "";
@@ -4710,6 +4719,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationIds)) {
             query["ApplicationIds"] = request.applicationIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationTypes)) {
+            query["ApplicationTypes"] = request.applicationTypes ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";

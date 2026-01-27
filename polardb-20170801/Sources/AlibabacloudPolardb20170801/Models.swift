@@ -4514,6 +4514,84 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class MemApplicationSpec : Tea.TeaModel {
+        public var dbName: String?
+
+        public var dbPassword: String?
+
+        public var dbUser: String?
+
+        public var embedderModel: String?
+
+        public var llmModel: String?
+
+        public var projectName: String?
+
+        public var rerankerModel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbName != nil {
+                map["DbName"] = self.dbName!
+            }
+            if self.dbPassword != nil {
+                map["DbPassword"] = self.dbPassword!
+            }
+            if self.dbUser != nil {
+                map["DbUser"] = self.dbUser!
+            }
+            if self.embedderModel != nil {
+                map["EmbedderModel"] = self.embedderModel!
+            }
+            if self.llmModel != nil {
+                map["LlmModel"] = self.llmModel!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
+            if self.rerankerModel != nil {
+                map["RerankerModel"] = self.rerankerModel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["DbPassword"] as? String {
+                self.dbPassword = value
+            }
+            if let value = dict["DbUser"] as? String {
+                self.dbUser = value
+            }
+            if let value = dict["EmbedderModel"] as? String {
+                self.embedderModel = value
+            }
+            if let value = dict["LlmModel"] as? String {
+                self.llmModel = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
+            }
+            if let value = dict["RerankerModel"] as? String {
+                self.rerankerModel = value
+            }
+        }
+    }
     public var applicationType: String?
 
     public var architecture: String?
@@ -4534,6 +4612,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var endpoints: [CreateApplicationRequest.Endpoints]?
 
+    public var memApplicationSpec: CreateApplicationRequest.MemApplicationSpec?
+
     public var payType: String?
 
     public var period: String?
@@ -4545,6 +4625,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var securityGroupId: String?
 
     public var usedTime: String?
 
@@ -4564,6 +4646,7 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.memApplicationSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4606,6 +4689,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             map["Endpoints"] = tmp
         }
+        if self.memApplicationSpec != nil {
+            map["MemApplicationSpec"] = self.memApplicationSpec?.toMap()
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -4623,6 +4709,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
         }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
@@ -4691,6 +4780,11 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             self.endpoints = tmp
         }
+        if let value = dict["MemApplicationSpec"] as? [String: Any?] {
+            var model = CreateApplicationRequest.MemApplicationSpec()
+            model.fromMap(value)
+            self.memApplicationSpec = model
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -4708,6 +4802,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
         }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
@@ -4745,6 +4842,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var endpointsShrink: String?
 
+    public var memApplicationSpecShrink: String?
+
     public var payType: String?
 
     public var period: String?
@@ -4756,6 +4855,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var securityGroupId: String?
 
     public var usedTime: String?
 
@@ -4809,6 +4910,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
         }
+        if self.memApplicationSpecShrink != nil {
+            map["MemApplicationSpec"] = self.memApplicationSpecShrink!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -4826,6 +4930,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
         }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
@@ -4874,6 +4981,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value
         }
+        if let value = dict["MemApplicationSpec"] as? String {
+            self.memApplicationSpecShrink = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -4891,6 +5001,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
         }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
@@ -19315,6 +19428,76 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class MemApplicationAttribute : Tea.TeaModel {
+        public var dbName: String?
+
+        public var embedderModelName: String?
+
+        public var llmModelName: String?
+
+        public var projectName: String?
+
+        public var rerankerModelName: String?
+
+        public var userName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbName != nil {
+                map["DbName"] = self.dbName!
+            }
+            if self.embedderModelName != nil {
+                map["EmbedderModelName"] = self.embedderModelName!
+            }
+            if self.llmModelName != nil {
+                map["LlmModelName"] = self.llmModelName!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
+            if self.rerankerModelName != nil {
+                map["RerankerModelName"] = self.rerankerModelName!
+            }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["EmbedderModelName"] as? String {
+                self.embedderModelName = value
+            }
+            if let value = dict["LlmModelName"] as? String {
+                self.llmModelName = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
+            }
+            if let value = dict["RerankerModelName"] as? String {
+                self.rerankerModelName = value
+            }
+            if let value = dict["UserName"] as? String {
+                self.userName = value
+            }
+        }
+    }
     public class SecurityGroups : Tea.TeaModel {
         public var netType: String?
 
@@ -19457,6 +19640,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var maintainStartTime: String?
 
+    public var memApplicationAttribute: DescribeApplicationAttributeResponseBody.MemApplicationAttribute?
+
     public var payType: String?
 
     public var polarFSInstanceId: String?
@@ -19493,6 +19678,7 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.memApplicationAttribute?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -19543,6 +19729,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.maintainStartTime != nil {
             map["MaintainStartTime"] = self.maintainStartTime!
+        }
+        if self.memApplicationAttribute != nil {
+            map["MemApplicationAttribute"] = self.memApplicationAttribute?.toMap()
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -19654,6 +19843,11 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["MaintainStartTime"] as? String {
             self.maintainStartTime = value
+        }
+        if let value = dict["MemApplicationAttribute"] as? [String: Any?] {
+            var model = DescribeApplicationAttributeResponseBody.MemApplicationAttribute()
+            model.fromMap(value)
+            self.memApplicationAttribute = model
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
@@ -20519,6 +20713,8 @@ public class DescribeApplicationServerlessConfResponse : Tea.TeaModel {
 public class DescribeApplicationsRequest : Tea.TeaModel {
     public var applicationIds: String?
 
+    public var applicationTypes: String?
+
     public var DBClusterId: String?
 
     public var pageNumber: Int32?
@@ -20544,6 +20740,9 @@ public class DescribeApplicationsRequest : Tea.TeaModel {
         if self.applicationIds != nil {
             map["ApplicationIds"] = self.applicationIds!
         }
+        if self.applicationTypes != nil {
+            map["ApplicationTypes"] = self.applicationTypes!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -20563,6 +20762,9 @@ public class DescribeApplicationsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationIds"] as? String {
             self.applicationIds = value
+        }
+        if let value = dict["ApplicationTypes"] as? String {
+            self.applicationTypes = value
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
