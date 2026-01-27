@@ -14249,7 +14249,15 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
             public class SQLLogRecord : Tea.TeaModel {
                 public var accountName: String?
 
+                public var affectColumns: String?
+
+                public var clientIp: String?
+
+                public var clientPort: Int64?
+
                 public var collection: String?
+
+                public var connectionId: String?
 
                 public var consume: Int64?
 
@@ -14277,13 +14285,19 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
 
                 public var parallelQueueTime: String?
 
+                public var params: String?
+
                 public var physicAsyncRead: Int64?
 
                 public var physicRead: Int64?
 
                 public var physicSyncRead: Int64?
 
+                public var protocol_: String?
+
                 public var returnRows: Int64?
+
+                public var rowKey: String?
 
                 public var rows: Int64?
 
@@ -14332,8 +14346,20 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if self.accountName != nil {
                         map["AccountName"] = self.accountName!
                     }
+                    if self.affectColumns != nil {
+                        map["AffectColumns"] = self.affectColumns!
+                    }
+                    if self.clientIp != nil {
+                        map["ClientIp"] = self.clientIp!
+                    }
+                    if self.clientPort != nil {
+                        map["ClientPort"] = self.clientPort!
+                    }
                     if self.collection != nil {
                         map["Collection"] = self.collection!
+                    }
+                    if self.connectionId != nil {
+                        map["ConnectionId"] = self.connectionId!
                     }
                     if self.consume != nil {
                         map["Consume"] = self.consume!
@@ -14374,6 +14400,9 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if self.parallelQueueTime != nil {
                         map["ParallelQueueTime"] = self.parallelQueueTime!
                     }
+                    if self.params != nil {
+                        map["Params"] = self.params!
+                    }
                     if self.physicAsyncRead != nil {
                         map["PhysicAsyncRead"] = self.physicAsyncRead!
                     }
@@ -14383,8 +14412,14 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if self.physicSyncRead != nil {
                         map["PhysicSyncRead"] = self.physicSyncRead!
                     }
+                    if self.protocol_ != nil {
+                        map["Protocol"] = self.protocol_!
+                    }
                     if self.returnRows != nil {
                         map["ReturnRows"] = self.returnRows!
+                    }
+                    if self.rowKey != nil {
+                        map["RowKey"] = self.rowKey!
                     }
                     if self.rows != nil {
                         map["Rows"] = self.rows!
@@ -14439,8 +14474,20 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if let value = dict["AccountName"] as? String {
                         self.accountName = value
                     }
+                    if let value = dict["AffectColumns"] as? String {
+                        self.affectColumns = value
+                    }
+                    if let value = dict["ClientIp"] as? String {
+                        self.clientIp = value
+                    }
+                    if let value = dict["ClientPort"] as? Int64 {
+                        self.clientPort = value
+                    }
                     if let value = dict["Collection"] as? String {
                         self.collection = value
+                    }
+                    if let value = dict["ConnectionId"] as? String {
+                        self.connectionId = value
                     }
                     if let value = dict["Consume"] as? Int64 {
                         self.consume = value
@@ -14481,6 +14528,9 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if let value = dict["ParallelQueueTime"] as? String {
                         self.parallelQueueTime = value
                     }
+                    if let value = dict["Params"] as? String {
+                        self.params = value
+                    }
                     if let value = dict["PhysicAsyncRead"] as? Int64 {
                         self.physicAsyncRead = value
                     }
@@ -14490,8 +14540,14 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if let value = dict["PhysicSyncRead"] as? Int64 {
                         self.physicSyncRead = value
                     }
+                    if let value = dict["Protocol"] as? String {
+                        self.protocol_ = value
+                    }
                     if let value = dict["ReturnRows"] as? Int64 {
                         self.returnRows = value
+                    }
+                    if let value = dict["RowKey"] as? String {
+                        self.rowKey = value
                     }
                     if let value = dict["Rows"] as? Int64 {
                         self.rows = value
@@ -15093,7 +15149,15 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
         public class Queries : Tea.TeaModel {
             public var accountName: String?
 
+            public var affectColumns: String?
+
+            public var clientIp: String?
+
+            public var clientPort: Int64?
+
             public var collection: String?
+
+            public var connectionId: String?
 
             public var consume: Int64?
 
@@ -15121,13 +15185,19 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
 
             public var parallelQueueTime: String?
 
+            public var params: String?
+
             public var physicAsyncRead: Int64?
 
             public var physicRead: Int64?
 
             public var physicSyncRead: Int64?
 
+            public var protected: String?
+
             public var returnRows: Int64?
+
+            public var rowKey: String?
 
             public var rows: Int64?
 
@@ -15144,6 +15214,8 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
             public var sqlType: String?
 
             public var state: String?
+
+            public var tableName: String?
 
             public var threadId: Int64?
 
@@ -15176,8 +15248,20 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if self.accountName != nil {
                     map["AccountName"] = self.accountName!
                 }
+                if self.affectColumns != nil {
+                    map["AffectColumns"] = self.affectColumns!
+                }
+                if self.clientIp != nil {
+                    map["ClientIp"] = self.clientIp!
+                }
+                if self.clientPort != nil {
+                    map["ClientPort"] = self.clientPort!
+                }
                 if self.collection != nil {
                     map["Collection"] = self.collection!
+                }
+                if self.connectionId != nil {
+                    map["ConnectionId"] = self.connectionId!
                 }
                 if self.consume != nil {
                     map["Consume"] = self.consume!
@@ -15218,6 +15302,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if self.parallelQueueTime != nil {
                     map["ParallelQueueTime"] = self.parallelQueueTime!
                 }
+                if self.params != nil {
+                    map["Params"] = self.params!
+                }
                 if self.physicAsyncRead != nil {
                     map["PhysicAsyncRead"] = self.physicAsyncRead!
                 }
@@ -15227,8 +15314,14 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if self.physicSyncRead != nil {
                     map["PhysicSyncRead"] = self.physicSyncRead!
                 }
+                if self.protected != nil {
+                    map["Protected"] = self.protected!
+                }
                 if self.returnRows != nil {
                     map["ReturnRows"] = self.returnRows!
+                }
+                if self.rowKey != nil {
+                    map["RowKey"] = self.rowKey!
                 }
                 if self.rows != nil {
                     map["Rows"] = self.rows!
@@ -15253,6 +15346,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 }
                 if self.state != nil {
                     map["State"] = self.state!
+                }
+                if self.tableName != nil {
+                    map["TableName"] = self.tableName!
                 }
                 if self.threadId != nil {
                     map["ThreadId"] = self.threadId!
@@ -15283,8 +15379,20 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if let value = dict["AccountName"] as? String {
                     self.accountName = value
                 }
+                if let value = dict["AffectColumns"] as? String {
+                    self.affectColumns = value
+                }
+                if let value = dict["ClientIp"] as? String {
+                    self.clientIp = value
+                }
+                if let value = dict["ClientPort"] as? Int64 {
+                    self.clientPort = value
+                }
                 if let value = dict["Collection"] as? String {
                     self.collection = value
+                }
+                if let value = dict["ConnectionId"] as? String {
+                    self.connectionId = value
                 }
                 if let value = dict["Consume"] as? Int64 {
                     self.consume = value
@@ -15325,6 +15433,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if let value = dict["ParallelQueueTime"] as? String {
                     self.parallelQueueTime = value
                 }
+                if let value = dict["Params"] as? String {
+                    self.params = value
+                }
                 if let value = dict["PhysicAsyncRead"] as? Int64 {
                     self.physicAsyncRead = value
                 }
@@ -15334,8 +15445,14 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 if let value = dict["PhysicSyncRead"] as? Int64 {
                     self.physicSyncRead = value
                 }
+                if let value = dict["Protected"] as? String {
+                    self.protected = value
+                }
                 if let value = dict["ReturnRows"] as? Int64 {
                     self.returnRows = value
+                }
+                if let value = dict["RowKey"] as? String {
+                    self.rowKey = value
                 }
                 if let value = dict["Rows"] as? Int64 {
                     self.rows = value
@@ -15360,6 +15477,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["State"] as? String {
                     self.state = value
+                }
+                if let value = dict["TableName"] as? String {
+                    self.tableName = value
                 }
                 if let value = dict["ThreadId"] as? Int64 {
                     self.threadId = value
