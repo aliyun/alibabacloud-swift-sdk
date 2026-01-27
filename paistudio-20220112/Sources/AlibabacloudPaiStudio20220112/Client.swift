@@ -2040,6 +2040,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func operateNodeWithOptions(_ NodeId: String, _ request: OperateNodeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateNodeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            body["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationParameters)) {
+            body["OperationParameters"] = request.operationParameters!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OperateNode",
+            "version": "2022-01-12",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/nodes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(NodeId)),
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OperateNodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func operateNode(_ NodeId: String, _ request: OperateNodeRequest) async throws -> OperateNodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await operateNodeWithOptions(NodeId as! String, request as! OperateNodeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func scaleQuotaWithOptions(_ QuotaId: String, _ request: ScaleQuotaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ScaleQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPaiStudio20220112` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/paistudio-20220112" "1.1.5"
+github "alibabacloud-sdk-swift/paistudio-20220112" "1.2.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPaiStudio20220112` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/paistudio-20220112.git", from: "1.1.5")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/paistudio-20220112.git", from: "1.2.0")
 ]
 ```
 
