@@ -26573,6 +26573,44 @@ public class ListInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ZoneInfos : Tea.TeaModel {
+            public var status: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.zoneId != nil {
+                    map["zoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["zoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
         public var advancedDedicateMaster: Bool?
 
         public var archType: String?
@@ -26636,6 +26674,10 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         public var updatedAt: String?
 
         public var vpcInstanceId: String?
+
+        public var zoneCount: Int32?
+
+        public var zoneInfos: [ListInstanceResponseBody.Result.ZoneInfos]?
 
         public override init() {
             super.init()
@@ -26756,6 +26798,16 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if self.vpcInstanceId != nil {
                 map["vpcInstanceId"] = self.vpcInstanceId!
+            }
+            if self.zoneCount != nil {
+                map["zoneCount"] = self.zoneCount!
+            }
+            if self.zoneInfos != nil {
+                var tmp : [Any] = []
+                for k in self.zoneInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["zoneInfos"] = tmp
             }
             return map
         }
@@ -26879,6 +26931,22 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["vpcInstanceId"] as? String {
                 self.vpcInstanceId = value
+            }
+            if let value = dict["zoneCount"] as? Int32 {
+                self.zoneCount = value
+            }
+            if let value = dict["zoneInfos"] as? [Any?] {
+                var tmp : [ListInstanceResponseBody.Result.ZoneInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListInstanceResponseBody.Result.ZoneInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.zoneInfos = tmp
             }
         }
     }
