@@ -12942,6 +12942,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
             }
             public class Options : Tea.TeaModel {
+                public var enableABE: Bool?
+
                 public var enableOplock: Bool?
 
                 public override init() {
@@ -12958,6 +12960,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.enableABE != nil {
+                        map["EnableABE"] = self.enableABE!
+                    }
                     if self.enableOplock != nil {
                         map["EnableOplock"] = self.enableOplock!
                     }
@@ -12966,6 +12971,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["EnableABE"] as? Bool {
+                        self.enableABE = value
+                    }
                     if let value = dict["EnableOplock"] as? Bool {
                         self.enableOplock = value
                     }
@@ -19528,6 +19536,10 @@ public class GetDirectoryOrFilePropertiesResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var offlineDuration: Int64?
+
+        public var offlineUnchangedDuration: Int64?
+
         public var retrieveTime: String?
 
         public var size: Int64?
@@ -19571,6 +19583,12 @@ public class GetDirectoryOrFilePropertiesResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.offlineDuration != nil {
+                map["OfflineDuration"] = self.offlineDuration!
+            }
+            if self.offlineUnchangedDuration != nil {
+                map["OfflineUnchangedDuration"] = self.offlineUnchangedDuration!
+            }
             if self.retrieveTime != nil {
                 map["RetrieveTime"] = self.retrieveTime!
             }
@@ -19608,6 +19626,12 @@ public class GetDirectoryOrFilePropertiesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["OfflineDuration"] as? Int64 {
+                self.offlineDuration = value
+            }
+            if let value = dict["OfflineUnchangedDuration"] as? Int64 {
+                self.offlineUnchangedDuration = value
             }
             if let value = dict["RetrieveTime"] as? String {
                 self.retrieveTime = value
@@ -20567,6 +20591,10 @@ public class ListDirectoriesAndFilesResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var offlineDuration: Int64?
+
+        public var offlineUnchangedDuration: Int64?
+
         public var owner: String?
 
         public var retrieveTime: String?
@@ -20615,6 +20643,12 @@ public class ListDirectoriesAndFilesResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.offlineDuration != nil {
+                map["OfflineDuration"] = self.offlineDuration!
+            }
+            if self.offlineUnchangedDuration != nil {
+                map["OfflineUnchangedDuration"] = self.offlineUnchangedDuration!
+            }
             if self.owner != nil {
                 map["Owner"] = self.owner!
             }
@@ -20658,6 +20692,12 @@ public class ListDirectoriesAndFilesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["OfflineDuration"] as? Int64 {
+                self.offlineDuration = value
+            }
+            if let value = dict["OfflineUnchangedDuration"] as? Int64 {
+                self.offlineUnchangedDuration = value
             }
             if let value = dict["Owner"] as? String {
                 self.owner = value
@@ -23021,6 +23061,8 @@ public class ModifyDataFlowAutoRefreshResponse : Tea.TeaModel {
 
 public class ModifyFileSystemRequest : Tea.TeaModel {
     public class Options : Tea.TeaModel {
+        public var enableABE: Bool?
+
         public var enableOplock: Bool?
 
         public override init() {
@@ -23037,6 +23079,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableABE != nil {
+                map["EnableABE"] = self.enableABE!
+            }
             if self.enableOplock != nil {
                 map["EnableOplock"] = self.enableOplock!
             }
@@ -23045,6 +23090,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnableABE"] as? Bool {
+                self.enableABE = value
+            }
             if let value = dict["EnableOplock"] as? Bool {
                 self.enableOplock = value
             }
