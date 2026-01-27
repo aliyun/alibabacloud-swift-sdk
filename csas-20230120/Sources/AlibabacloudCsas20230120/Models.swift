@@ -5,6 +5,97 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AddressGroup : Tea.TeaModel {
+    public class Ports : Tea.TeaModel {
+        public var begin: Int32?
+
+        public var end: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.begin != nil {
+                map["Begin"] = self.begin!
+            }
+            if self.end != nil {
+                map["End"] = self.end!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Begin"] as? Int32 {
+                self.begin = value
+            }
+            if let value = dict["End"] as? Int32 {
+                self.end = value
+            }
+        }
+    }
+    public var addresses: [String]?
+
+    public var ports: [AddressGroup.Ports]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addresses != nil {
+            map["Addresses"] = self.addresses!
+        }
+        if self.ports != nil {
+            var tmp : [Any] = []
+            for k in self.ports! {
+                tmp.append(k.toMap())
+            }
+            map["Ports"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Addresses"] as? [String] {
+            self.addresses = value
+        }
+        if let value = dict["Ports"] as? [Any?] {
+            var tmp : [AddressGroup.Ports] = []
+            for v in value {
+                if v != nil {
+                    var model = AddressGroup.Ports()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ports = tmp
+        }
+    }
+}
+
 public class AuthReportInterval : Tea.TeaModel {
     public var timeUnit: String?
 
@@ -490,6 +581,224 @@ public class DisposalContent : Tea.TeaModel {
         }
         if let value = dict["ProhibitSoftwareIds"] as? [String] {
             self.prohibitSoftwareIds = value
+        }
+    }
+}
+
+public class ExecutePeriod : Tea.TeaModel {
+    public class EffectDay : Tea.TeaModel {
+        public var friday: Bool?
+
+        public var monday: Bool?
+
+        public var saturday: Bool?
+
+        public var sunday: Bool?
+
+        public var thursday: Bool?
+
+        public var tuesday: Bool?
+
+        public var wednesday: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.friday != nil {
+                map["Friday"] = self.friday!
+            }
+            if self.monday != nil {
+                map["Monday"] = self.monday!
+            }
+            if self.saturday != nil {
+                map["Saturday"] = self.saturday!
+            }
+            if self.sunday != nil {
+                map["Sunday"] = self.sunday!
+            }
+            if self.thursday != nil {
+                map["Thursday"] = self.thursday!
+            }
+            if self.tuesday != nil {
+                map["Tuesday"] = self.tuesday!
+            }
+            if self.wednesday != nil {
+                map["Wednesday"] = self.wednesday!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Friday"] as? Bool {
+                self.friday = value
+            }
+            if let value = dict["Monday"] as? Bool {
+                self.monday = value
+            }
+            if let value = dict["Saturday"] as? Bool {
+                self.saturday = value
+            }
+            if let value = dict["Sunday"] as? Bool {
+                self.sunday = value
+            }
+            if let value = dict["Thursday"] as? Bool {
+                self.thursday = value
+            }
+            if let value = dict["Tuesday"] as? Bool {
+                self.tuesday = value
+            }
+            if let value = dict["Wednesday"] as? Bool {
+                self.wednesday = value
+            }
+        }
+    }
+    public class EffectTime : Tea.TeaModel {
+        public var end: String?
+
+        public var start: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.end != nil {
+                map["End"] = self.end!
+            }
+            if self.start != nil {
+                map["Start"] = self.start!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["End"] as? String {
+                self.end = value
+            }
+            if let value = dict["Start"] as? String {
+                self.start = value
+            }
+        }
+    }
+    public class ScheduleEffect : Tea.TeaModel {
+        public var frequency: String?
+
+        public var interval: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.frequency != nil {
+                map["Frequency"] = self.frequency!
+            }
+            if self.interval != nil {
+                map["Interval"] = self.interval!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Frequency"] as? String {
+                self.frequency = value
+            }
+            if let value = dict["Interval"] as? Int64 {
+                self.interval = value
+            }
+        }
+    }
+    public var effectDay: ExecutePeriod.EffectDay?
+
+    public var effectTime: ExecutePeriod.EffectTime?
+
+    public var scheduleEffect: ExecutePeriod.ScheduleEffect?
+
+    public var validType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.effectDay?.validate()
+        try self.effectTime?.validate()
+        try self.scheduleEffect?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.effectDay != nil {
+            map["EffectDay"] = self.effectDay?.toMap()
+        }
+        if self.effectTime != nil {
+            map["EffectTime"] = self.effectTime?.toMap()
+        }
+        if self.scheduleEffect != nil {
+            map["ScheduleEffect"] = self.scheduleEffect?.toMap()
+        }
+        if self.validType != nil {
+            map["ValidType"] = self.validType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EffectDay"] as? [String: Any?] {
+            var model = ExecutePeriod.EffectDay()
+            model.fromMap(value)
+            self.effectDay = model
+        }
+        if let value = dict["EffectTime"] as? [String: Any?] {
+            var model = ExecutePeriod.EffectTime()
+            model.fromMap(value)
+            self.effectTime = model
+        }
+        if let value = dict["ScheduleEffect"] as? [String: Any?] {
+            var model = ExecutePeriod.ScheduleEffect()
+            model.fromMap(value)
+            self.scheduleEffect = model
+        }
+        if let value = dict["ValidType"] as? String {
+            self.validType = value
         }
     }
 }
@@ -5316,9 +5625,13 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressGroups: [AddressGroup]?
+
     public var addresses: [String]?
 
     public var browserAccessStatus: String?
+
+    public var configMode: String?
 
     public var description_: String?
 
@@ -5353,11 +5666,21 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressGroups != nil {
+            var tmp : [Any] = []
+            for k in self.addressGroups! {
+                tmp.append(k.toMap())
+            }
+            map["AddressGroups"] = tmp
+        }
         if self.addresses != nil {
             map["Addresses"] = self.addresses!
         }
         if self.browserAccessStatus != nil {
             map["BrowserAccessStatus"] = self.browserAccessStatus!
+        }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -5395,11 +5718,27 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddressGroups"] as? [Any?] {
+            var tmp : [AddressGroup] = []
+            for v in value {
+                if v != nil {
+                    var model = AddressGroup()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addressGroups = tmp
+        }
         if let value = dict["Addresses"] as? [String] {
             self.addresses = value
         }
         if let value = dict["BrowserAccessStatus"] as? String {
             self.browserAccessStatus = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -5482,9 +5821,13 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressGroups: [AddressGroup]?
+
     public var addresses: [String]?
 
     public var browserAccessStatus: String?
+
+    public var configMode: String?
 
     public var description_: String?
 
@@ -5518,11 +5861,21 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressGroups != nil {
+            var tmp : [Any] = []
+            for k in self.addressGroups! {
+                tmp.append(k.toMap())
+            }
+            map["AddressGroups"] = tmp
+        }
         if self.addresses != nil {
             map["Addresses"] = self.addresses!
         }
         if self.browserAccessStatus != nil {
             map["BrowserAccessStatus"] = self.browserAccessStatus!
+        }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -5560,11 +5913,27 @@ public class CreatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddressGroups"] as? [Any?] {
+            var tmp : [AddressGroup] = []
+            for v in value {
+                if v != nil {
+                    var model = AddressGroup()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addressGroups = tmp
+        }
         if let value = dict["Addresses"] as? [String] {
             self.addresses = value
         }
         if let value = dict["BrowserAccessStatus"] as? String {
             self.browserAccessStatus = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -15489,6 +15858,8 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addressGroups: [AddressGroup]?
+
         public var addresses: [String]?
 
         public var applicationId: String?
@@ -15496,6 +15867,8 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
         public var autoGenerated: Int32?
 
         public var browserAccessStatus: String?
+
+        public var configMode: String?
 
         public var connectorIds: [String]?
 
@@ -15536,6 +15909,13 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressGroups != nil {
+                var tmp : [Any] = []
+                for k in self.addressGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["AddressGroups"] = tmp
+            }
             if self.addresses != nil {
                 map["Addresses"] = self.addresses!
             }
@@ -15547,6 +15927,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if self.browserAccessStatus != nil {
                 map["BrowserAccessStatus"] = self.browserAccessStatus!
+            }
+            if self.configMode != nil {
+                map["ConfigMode"] = self.configMode!
             }
             if self.connectorIds != nil {
                 map["ConnectorIds"] = self.connectorIds!
@@ -15593,6 +15976,19 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AddressGroups"] as? [Any?] {
+                var tmp : [AddressGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddressGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.addressGroups = tmp
+            }
             if let value = dict["Addresses"] as? [String] {
                 self.addresses = value
             }
@@ -15604,6 +16000,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["BrowserAccessStatus"] as? String {
                 self.browserAccessStatus = value
+            }
+            if let value = dict["ConfigMode"] as? String {
+                self.configMode = value
             }
             if let value = dict["ConnectorIds"] as? [String] {
                 self.connectorIds = value
@@ -25590,6 +25989,8 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addressGroups: [AddressGroup]?
+
         public var addresses: [String]?
 
         public var applicationId: String?
@@ -25597,6 +25998,8 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
         public var autoGenerated: Int32?
 
         public var browserAccessStatus: String?
+
+        public var configMode: String?
 
         public var connectorIds: [String]?
 
@@ -25634,6 +26037,13 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressGroups != nil {
+                var tmp : [Any] = []
+                for k in self.addressGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["AddressGroups"] = tmp
+            }
             if self.addresses != nil {
                 map["Addresses"] = self.addresses!
             }
@@ -25645,6 +26055,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if self.browserAccessStatus != nil {
                 map["BrowserAccessStatus"] = self.browserAccessStatus!
+            }
+            if self.configMode != nil {
+                map["ConfigMode"] = self.configMode!
             }
             if self.connectorIds != nil {
                 map["ConnectorIds"] = self.connectorIds!
@@ -25688,6 +26101,19 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AddressGroups"] as? [Any?] {
+                var tmp : [AddressGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddressGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.addressGroups = tmp
+            }
             if let value = dict["Addresses"] as? [String] {
                 self.addresses = value
             }
@@ -25699,6 +26125,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["BrowserAccessStatus"] as? String {
                 self.browserAccessStatus = value
+            }
+            if let value = dict["ConfigMode"] as? String {
+                self.configMode = value
             }
             if let value = dict["ConnectorIds"] as? [String] {
                 self.connectorIds = value
@@ -29118,9 +29547,13 @@ public class ListUserApplicationsResponseBody : Tea.TeaModel {
         }
         public var action: String?
 
+        public var addressGroups: [AddressGroup]?
+
         public var addresses: [String]?
 
         public var applicationId: String?
+
+        public var configMode: String?
 
         public var name: String?
 
@@ -29145,11 +29578,21 @@ public class ListUserApplicationsResponseBody : Tea.TeaModel {
             if self.action != nil {
                 map["Action"] = self.action!
             }
+            if self.addressGroups != nil {
+                var tmp : [Any] = []
+                for k in self.addressGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["AddressGroups"] = tmp
+            }
             if self.addresses != nil {
                 map["Addresses"] = self.addresses!
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
+            }
+            if self.configMode != nil {
+                map["ConfigMode"] = self.configMode!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -29172,11 +29615,27 @@ public class ListUserApplicationsResponseBody : Tea.TeaModel {
             if let value = dict["Action"] as? String {
                 self.action = value
             }
+            if let value = dict["AddressGroups"] as? [Any?] {
+                var tmp : [AddressGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddressGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.addressGroups = tmp
+            }
             if let value = dict["Addresses"] as? [String] {
                 self.addresses = value
             }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ConfigMode"] as? String {
+                self.configMode = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -37021,9 +37480,13 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressGroups: [AddressGroup]?
+
     public var addresses: [String]?
 
     public var applicationId: String?
+
+    public var configMode: String?
 
     public var description_: String?
 
@@ -37036,6 +37499,8 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
     public var l7ProxyDomainPrivate: String?
 
     public var modifyType: String?
+
+    public var name: String?
 
     public var portRanges: [UpdatePrivateAccessApplicationRequest.PortRanges]?
 
@@ -37060,11 +37525,21 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressGroups != nil {
+            var tmp : [Any] = []
+            for k in self.addressGroups! {
+                tmp.append(k.toMap())
+            }
+            map["AddressGroups"] = tmp
+        }
         if self.addresses != nil {
             map["Addresses"] = self.addresses!
         }
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
+        }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -37083,6 +37558,9 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.portRanges != nil {
             var tmp : [Any] = []
@@ -37105,11 +37583,27 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddressGroups"] as? [Any?] {
+            var tmp : [AddressGroup] = []
+            for v in value {
+                if v != nil {
+                    var model = AddressGroup()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addressGroups = tmp
+        }
         if let value = dict["Addresses"] as? [String] {
             self.addresses = value
         }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -37130,6 +37624,9 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["ModifyType"] as? String {
             self.modifyType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PortRanges"] as? [Any?] {
             var tmp : [UpdatePrivateAccessApplicationRequest.PortRanges] = []
@@ -37195,9 +37692,13 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressGroups: [AddressGroup]?
+
     public var addresses: [String]?
 
     public var applicationId: String?
+
+    public var configMode: String?
 
     public var description_: String?
 
@@ -37210,6 +37711,8 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
     public var l7ProxyDomainPrivate: String?
 
     public var modifyType: String?
+
+    public var name: String?
 
     public var portRanges: [UpdatePrivateAccessApplicationShrinkRequest.PortRanges]?
 
@@ -37233,11 +37736,21 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressGroups != nil {
+            var tmp : [Any] = []
+            for k in self.addressGroups! {
+                tmp.append(k.toMap())
+            }
+            map["AddressGroups"] = tmp
+        }
         if self.addresses != nil {
             map["Addresses"] = self.addresses!
         }
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
+        }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -37256,6 +37769,9 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.portRanges != nil {
             var tmp : [Any] = []
@@ -37278,11 +37794,27 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddressGroups"] as? [Any?] {
+            var tmp : [AddressGroup] = []
+            for v in value {
+                if v != nil {
+                    var model = AddressGroup()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.addressGroups = tmp
+        }
         if let value = dict["Addresses"] as? [String] {
             self.addresses = value
         }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -37301,6 +37833,9 @@ public class UpdatePrivateAccessApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ModifyType"] as? String {
             self.modifyType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PortRanges"] as? [Any?] {
             var tmp : [UpdatePrivateAccessApplicationShrinkRequest.PortRanges] = []
@@ -37477,6 +38012,8 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var modifyType: String?
 
+    public var name: String?
+
     public var policyAction: String?
 
     public var policyId: String?
@@ -37543,6 +38080,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
         }
         if self.policyAction != nil {
             map["PolicyAction"] = self.policyAction!
@@ -37621,6 +38161,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ModifyType"] as? String {
             self.modifyType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PolicyAction"] as? String {
             self.policyAction = value

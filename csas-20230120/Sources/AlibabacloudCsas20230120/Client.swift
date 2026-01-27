@@ -390,11 +390,17 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var body: [String: Any] = [:]
         var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressGroups)) {
+            bodyFlat["AddressGroups"] = request.addressGroups ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.addresses)) {
             bodyFlat["Addresses"] = request.addresses ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.browserAccessStatus)) {
             body["BrowserAccessStatus"] = request.browserAccessStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configMode)) {
+            body["ConfigMode"] = request.configMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -3795,11 +3801,17 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var body: [String: Any] = [:]
         var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressGroups)) {
+            bodyFlat["AddressGroups"] = request.addressGroups ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.addresses)) {
             bodyFlat["Addresses"] = request.addresses ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             body["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configMode)) {
+            body["ConfigMode"] = request.configMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -3818,6 +3830,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modifyType)) {
             body["ModifyType"] = request.modifyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.portRanges)) {
             bodyFlat["PortRanges"] = request.portRanges ?? [];
@@ -3881,6 +3896,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.modifyType)) {
             body["ModifyType"] = request.modifyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.policyAction)) {
             body["PolicyAction"] = request.policyAction ?? "";
