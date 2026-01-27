@@ -5470,8 +5470,6 @@ public class CreateClusterRequest : Tea.TeaModel {
     }
     public var clusterType: String?
 
-    public var clusterVersion: String?
-
     public var containerCidr: String?
 
     public var controlPlaneConfig: CreateClusterRequest.ControlPlaneConfig?
@@ -5513,9 +5511,6 @@ public class CreateClusterRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
-        }
-        if self.clusterVersion != nil {
-            map["ClusterVersion"] = self.clusterVersion!
         }
         if self.containerCidr != nil {
             map["ContainerCidr"] = self.containerCidr!
@@ -5561,9 +5556,6 @@ public class CreateClusterRequest : Tea.TeaModel {
         if let value = dict["ClusterType"] as? String {
             self.clusterType = value
         }
-        if let value = dict["ClusterVersion"] as? String {
-            self.clusterVersion = value
-        }
         if let value = dict["ContainerCidr"] as? String {
             self.containerCidr = value
         }
@@ -5608,8 +5600,6 @@ public class CreateClusterRequest : Tea.TeaModel {
 public class CreateClusterShrinkRequest : Tea.TeaModel {
     public var clusterType: String?
 
-    public var clusterVersion: String?
-
     public var containerCidr: String?
 
     public var controlPlaneConfigShrink: String?
@@ -5650,9 +5640,6 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
-        }
-        if self.clusterVersion != nil {
-            map["ClusterVersion"] = self.clusterVersion!
         }
         if self.containerCidr != nil {
             map["ContainerCidr"] = self.containerCidr!
@@ -5697,9 +5684,6 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterType"] as? String {
             self.clusterType = value
-        }
-        if let value = dict["ClusterVersion"] as? String {
-            self.clusterVersion = value
         }
         if let value = dict["ContainerCidr"] as? String {
             self.containerCidr = value

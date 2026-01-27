@@ -938,9 +938,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterType)) {
             query["ClusterType"] = request.clusterType ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.clusterVersion)) {
-            query["ClusterVersion"] = request.clusterVersion ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.containerCidr)) {
             query["ContainerCidr"] = request.containerCidr ?? "";
         }
