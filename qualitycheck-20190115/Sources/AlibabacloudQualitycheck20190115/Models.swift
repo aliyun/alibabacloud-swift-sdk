@@ -34846,6 +34846,10 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
 
             public var score: Int32?
 
+            public var tyxmPlusCount: String?
+
+            public var tyxmTurboCount: String?
+
             public override init() {
                 super.init()
             }
@@ -34871,6 +34875,12 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                 if self.score != nil {
                     map["Score"] = self.score!
                 }
+                if self.tyxmPlusCount != nil {
+                    map["TyxmPlusCount"] = self.tyxmPlusCount!
+                }
+                if self.tyxmTurboCount != nil {
+                    map["TyxmTurboCount"] = self.tyxmTurboCount!
+                }
                 return map
             }
 
@@ -34888,6 +34898,12 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Score"] as? Int32 {
                     self.score = value
+                }
+                if let value = dict["TyxmPlusCount"] as? String {
+                    self.tyxmPlusCount = value
+                }
+                if let value = dict["TyxmTurboCount"] as? String {
+                    self.tyxmTurboCount = value
                 }
             }
         }
@@ -35578,6 +35594,10 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
             public var score: Int32?
 
+            public var tyxmPlusCount: String?
+
+            public var tyxmTurboCount: String?
+
             public override init() {
                 super.init()
             }
@@ -35599,6 +35619,12 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                 if self.score != nil {
                     map["Score"] = self.score!
                 }
+                if self.tyxmPlusCount != nil {
+                    map["TyxmPlusCount"] = self.tyxmPlusCount!
+                }
+                if self.tyxmTurboCount != nil {
+                    map["TyxmTurboCount"] = self.tyxmTurboCount!
+                }
                 return map
             }
 
@@ -35611,6 +35637,12 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Score"] as? Int32 {
                     self.score = value
+                }
+                if let value = dict["TyxmPlusCount"] as? String {
+                    self.tyxmPlusCount = value
+                }
+                if let value = dict["TyxmTurboCount"] as? String {
+                    self.tyxmTurboCount = value
                 }
             }
         }
