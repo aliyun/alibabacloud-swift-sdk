@@ -1598,6 +1598,470 @@ public class ForeignInstanceCredInfo : Tea.TeaModel {
     }
 }
 
+public class OneMetaDatabaseObject : Tea.TeaModel {
+    public var objectName: String?
+
+    public var objectQualifiedName: String?
+
+    public var objectType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.objectName != nil {
+            map["ObjectName"] = self.objectName!
+        }
+        if self.objectQualifiedName != nil {
+            map["ObjectQualifiedName"] = self.objectQualifiedName!
+        }
+        if self.objectType != nil {
+            map["ObjectType"] = self.objectType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ObjectName"] as? String {
+            self.objectName = value
+        }
+        if let value = dict["ObjectQualifiedName"] as? String {
+            self.objectQualifiedName = value
+        }
+        if let value = dict["ObjectType"] as? String {
+            self.objectType = value
+        }
+    }
+}
+
+public class OneMetaTableBaseInfo : Tea.TeaModel {
+    public var catalogType: String?
+
+    public var databaseUuid: String?
+
+    public var description_: String?
+
+    public var engineMeta: OneMetaTableEngineMeta?
+
+    public var name: String?
+
+    public var qualifiedName: String?
+
+    public var tableType: String?
+
+    public var tableUuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.engineMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogType != nil {
+            map["CatalogType"] = self.catalogType!
+        }
+        if self.databaseUuid != nil {
+            map["DatabaseUuid"] = self.databaseUuid!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.engineMeta != nil {
+            map["EngineMeta"] = self.engineMeta?.toMap()
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.qualifiedName != nil {
+            map["QualifiedName"] = self.qualifiedName!
+        }
+        if self.tableType != nil {
+            map["TableType"] = self.tableType!
+        }
+        if self.tableUuid != nil {
+            map["TableUuid"] = self.tableUuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CatalogType"] as? String {
+            self.catalogType = value
+        }
+        if let value = dict["DatabaseUuid"] as? String {
+            self.databaseUuid = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EngineMeta"] as? [String: Any?] {
+            var model = OneMetaTableEngineMeta()
+            model.fromMap(value)
+            self.engineMeta = model
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["QualifiedName"] as? String {
+            self.qualifiedName = value
+        }
+        if let value = dict["TableType"] as? String {
+            self.tableType = value
+        }
+        if let value = dict["TableUuid"] as? String {
+            self.tableUuid = value
+        }
+    }
+}
+
+public class OneMetaTableColumn : Tea.TeaModel {
+    public var columnName: String?
+
+    public var columnType: String?
+
+    public var description_: String?
+
+    public var engineMeta: OneMetaTableColumnEngineMeta?
+
+    public var position: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.engineMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columnName != nil {
+            map["ColumnName"] = self.columnName!
+        }
+        if self.columnType != nil {
+            map["ColumnType"] = self.columnType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.engineMeta != nil {
+            map["EngineMeta"] = self.engineMeta?.toMap()
+        }
+        if self.position != nil {
+            map["Position"] = self.position!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ColumnName"] as? String {
+            self.columnName = value
+        }
+        if let value = dict["ColumnType"] as? String {
+            self.columnType = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EngineMeta"] as? [String: Any?] {
+            var model = OneMetaTableColumnEngineMeta()
+            model.fromMap(value)
+            self.engineMeta = model
+        }
+        if let value = dict["Position"] as? Int32 {
+            self.position = value
+        }
+    }
+}
+
+public class OneMetaTableColumnEngineMeta : Tea.TeaModel {
+    public var autoIncrement: Bool?
+
+    public var dataLength: Int64?
+
+    public var dataPrecision: Int32?
+
+    public var dataScale: Int32?
+
+    public var defaultValue: String?
+
+    public var encoding: String?
+
+    public var extra: String?
+
+    public var generationColumn: Bool?
+
+    public var generationExpression: String?
+
+    public var nullable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoIncrement != nil {
+            map["AutoIncrement"] = self.autoIncrement!
+        }
+        if self.dataLength != nil {
+            map["DataLength"] = self.dataLength!
+        }
+        if self.dataPrecision != nil {
+            map["DataPrecision"] = self.dataPrecision!
+        }
+        if self.dataScale != nil {
+            map["DataScale"] = self.dataScale!
+        }
+        if self.defaultValue != nil {
+            map["DefaultValue"] = self.defaultValue!
+        }
+        if self.encoding != nil {
+            map["Encoding"] = self.encoding!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.generationColumn != nil {
+            map["GenerationColumn"] = self.generationColumn!
+        }
+        if self.generationExpression != nil {
+            map["GenerationExpression"] = self.generationExpression!
+        }
+        if self.nullable != nil {
+            map["Nullable"] = self.nullable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoIncrement"] as? Bool {
+            self.autoIncrement = value
+        }
+        if let value = dict["DataLength"] as? Int64 {
+            self.dataLength = value
+        }
+        if let value = dict["DataPrecision"] as? Int32 {
+            self.dataPrecision = value
+        }
+        if let value = dict["DataScale"] as? Int32 {
+            self.dataScale = value
+        }
+        if let value = dict["DefaultValue"] as? String {
+            self.defaultValue = value
+        }
+        if let value = dict["Encoding"] as? String {
+            self.encoding = value
+        }
+        if let value = dict["Extra"] as? String {
+            self.extra = value
+        }
+        if let value = dict["GenerationColumn"] as? Bool {
+            self.generationColumn = value
+        }
+        if let value = dict["GenerationExpression"] as? String {
+            self.generationExpression = value
+        }
+        if let value = dict["Nullable"] as? Bool {
+            self.nullable = value
+        }
+    }
+}
+
+public class OneMetaTableEngineMeta : Tea.TeaModel {
+    public var createTime: String?
+
+    public var dataBytes: Int64?
+
+    public var encoding: String?
+
+    public var engine: String?
+
+    public var indexBytes: Int64?
+
+    public var lastDdlTime: String?
+
+    public var numRows: Int64?
+
+    public var refInfo: String?
+
+    public var storageCapacity: Int64?
+
+    public var tableSchemaName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.dataBytes != nil {
+            map["DataBytes"] = self.dataBytes!
+        }
+        if self.encoding != nil {
+            map["Encoding"] = self.encoding!
+        }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
+        if self.indexBytes != nil {
+            map["IndexBytes"] = self.indexBytes!
+        }
+        if self.lastDdlTime != nil {
+            map["LastDdlTime"] = self.lastDdlTime!
+        }
+        if self.numRows != nil {
+            map["NumRows"] = self.numRows!
+        }
+        if self.refInfo != nil {
+            map["RefInfo"] = self.refInfo!
+        }
+        if self.storageCapacity != nil {
+            map["StorageCapacity"] = self.storageCapacity!
+        }
+        if self.tableSchemaName != nil {
+            map["TableSchemaName"] = self.tableSchemaName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["DataBytes"] as? Int64 {
+            self.dataBytes = value
+        }
+        if let value = dict["Encoding"] as? String {
+            self.encoding = value
+        }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
+        }
+        if let value = dict["IndexBytes"] as? Int64 {
+            self.indexBytes = value
+        }
+        if let value = dict["LastDdlTime"] as? String {
+            self.lastDdlTime = value
+        }
+        if let value = dict["NumRows"] as? Int64 {
+            self.numRows = value
+        }
+        if let value = dict["RefInfo"] as? String {
+            self.refInfo = value
+        }
+        if let value = dict["StorageCapacity"] as? Int64 {
+            self.storageCapacity = value
+        }
+        if let value = dict["TableSchemaName"] as? String {
+            self.tableSchemaName = value
+        }
+    }
+}
+
+public class OneMetaTableIndex : Tea.TeaModel {
+    public var columnNames: [String]?
+
+    public var description_: String?
+
+    public var indexName: String?
+
+    public var indexType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columnNames != nil {
+            map["ColumnNames"] = self.columnNames!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.indexName != nil {
+            map["IndexName"] = self.indexName!
+        }
+        if self.indexType != nil {
+            map["IndexType"] = self.indexType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ColumnNames"] as? [String] {
+            self.columnNames = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["IndexName"] as? String {
+            self.indexName = value
+        }
+        if let value = dict["IndexType"] as? String {
+            self.indexType = value
+        }
+    }
+}
+
 public class PartitionError : Tea.TeaModel {
     public var errorDetail: String?
 
@@ -3362,6 +3826,8 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
 
         public var mode: String?
 
+        public var userOssBucket: String?
+
         public override init() {
             super.init()
         }
@@ -3394,6 +3860,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if self.mode != nil {
                 map["Mode"] = self.mode!
             }
+            if self.userOssBucket != nil {
+                map["UserOssBucket"] = self.userOssBucket!
+            }
             return map
         }
 
@@ -3416,6 +3885,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if let value = dict["Mode"] as? String {
                 self.mode = value
+            }
+            if let value = dict["UserOssBucket"] as? String {
+                self.userOssBucket = value
             }
         }
     }
@@ -3562,6 +4034,8 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var mode: String?
 
+            public var userOssBucket: String?
+
             public override init() {
                 super.init()
             }
@@ -3594,6 +4068,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.mode != nil {
                     map["Mode"] = self.mode!
                 }
+                if self.userOssBucket != nil {
+                    map["UserOssBucket"] = self.userOssBucket!
+                }
                 return map
             }
 
@@ -3616,6 +4093,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
+                }
+                if let value = dict["UserOssBucket"] as? String {
+                    self.userOssBucket = value
                 }
             }
         }
@@ -7149,6 +7629,8 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var mode: String?
 
+            public var userOssBucket: String?
+
             public override init() {
                 super.init()
             }
@@ -7181,6 +7663,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.mode != nil {
                     map["Mode"] = self.mode!
                 }
+                if self.userOssBucket != nil {
+                    map["UserOssBucket"] = self.userOssBucket!
+                }
                 return map
             }
 
@@ -7203,6 +7688,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
+                }
+                if let value = dict["UserOssBucket"] as? String {
+                    self.userOssBucket = value
                 }
             }
         }
