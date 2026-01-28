@@ -9068,6 +9068,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var isExpired: String?
 
+        public var lbKind: String?
+
         public var lockMode: String?
 
         public var lockReason: String?
@@ -9226,6 +9228,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.isExpired != nil {
                 map["IsExpired"] = self.isExpired!
+            }
+            if self.lbKind != nil {
+                map["LbKind"] = self.lbKind!
             }
             if self.lockMode != nil {
                 map["LockMode"] = self.lockMode!
@@ -9399,6 +9404,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsExpired"] as? String {
                 self.isExpired = value
+            }
+            if let value = dict["LbKind"] as? String {
+                self.lbKind = value
             }
             if let value = dict["LockMode"] as? String {
                 self.lockMode = value
