@@ -14830,6 +14830,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
     }
     public var aiNodeType: String?
 
+    public var apiKey: String?
+
     public var creationTime: String?
 
     public var DBClusterDescription: String?
@@ -14902,6 +14904,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.aiNodeType != nil {
             map["AiNodeType"] = self.aiNodeType!
+        }
+        if self.apiKey != nil {
+            map["ApiKey"] = self.apiKey!
         }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
@@ -15006,6 +15011,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AiNodeType"] as? String {
             self.aiNodeType = value
+        }
+        if let value = dict["ApiKey"] as? String {
+            self.apiKey = value
         }
         if let value = dict["CreationTime"] as? String {
             self.creationTime = value
