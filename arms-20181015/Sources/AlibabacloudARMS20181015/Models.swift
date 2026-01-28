@@ -122,71 +122,74 @@ public class CallChainInfo : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AdditionalInfo") && dict["AdditionalInfo"] != nil {
-            self.additionalInfo = dict["AdditionalInfo"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalInfo"] as? String {
+            self.additionalInfo = value
         }
-        if dict.keys.contains("AppName") && dict["AppName"] != nil {
-            self.appName = dict["AppName"] as! String
+        if let value = dict["AppName"] as? String {
+            self.appName = value
         }
-        if dict.keys.contains("AppType") && dict["AppType"] != nil {
-            self.appType = dict["AppType"] as! String
+        if let value = dict["AppType"] as? String {
+            self.appType = value
         }
-        if dict.keys.contains("Children") && dict["Children"] != nil {
+        if let value = dict["Children"] as? [Any?] {
             var tmp : [CallChainInfo] = []
-            for v in dict["Children"] as! [Any] {
-                var model = CallChainInfo()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = CallChainInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.children = tmp
         }
-        if dict.keys.contains("HaveSpan") && dict["HaveSpan"] != nil {
-            self.haveSpan = dict["HaveSpan"] as! Bool
+        if let value = dict["HaveSpan"] as? Bool {
+            self.haveSpan = value
         }
-        if dict.keys.contains("LogMap") && dict["LogMap"] != nil {
-            self.logMap = dict["LogMap"] as! [String: [String: Any]]
+        if let value = dict["LogMap"] as? [String: [String: Any]] {
+            self.logMap = value
         }
-        if dict.keys.contains("LogTime") && dict["LogTime"] != nil {
-            self.logTime = dict["LogTime"] as! Int64
+        if let value = dict["LogTime"] as? Int64 {
+            self.logTime = value
         }
-        if dict.keys.contains("ParentSpanId") && dict["ParentSpanId"] != nil {
-            self.parentSpanId = dict["ParentSpanId"] as! String
+        if let value = dict["ParentSpanId"] as? String {
+            self.parentSpanId = value
         }
-        if dict.keys.contains("Pid") && dict["Pid"] != nil {
-            self.pid = dict["Pid"] as! String
+        if let value = dict["Pid"] as? String {
+            self.pid = value
         }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResultCode") && dict["ResultCode"] != nil {
-            self.resultCode = dict["ResultCode"] as! String
+        if let value = dict["ResultCode"] as? String {
+            self.resultCode = value
         }
-        if dict.keys.contains("Rpc") && dict["Rpc"] != nil {
-            self.rpc = dict["Rpc"] as! String
+        if let value = dict["Rpc"] as? String {
+            self.rpc = value
         }
-        if dict.keys.contains("RpcId") && dict["RpcId"] != nil {
-            self.rpcId = dict["RpcId"] as! String
+        if let value = dict["RpcId"] as? String {
+            self.rpcId = value
         }
-        if dict.keys.contains("RpcType") && dict["RpcType"] != nil {
-            self.rpcType = dict["RpcType"] as! Int64
+        if let value = dict["RpcType"] as? Int64 {
+            self.rpcType = value
         }
-        if dict.keys.contains("ServerIp") && dict["ServerIp"] != nil {
-            self.serverIp = dict["ServerIp"] as! String
+        if let value = dict["ServerIp"] as? String {
+            self.serverIp = value
         }
-        if dict.keys.contains("Span") && dict["Span"] != nil {
-            self.span = dict["Span"] as! Int64
+        if let value = dict["Span"] as? Int64 {
+            self.span = value
         }
-        if dict.keys.contains("SpanId") && dict["SpanId"] != nil {
-            self.spanId = dict["SpanId"] as! String
+        if let value = dict["SpanId"] as? String {
+            self.spanId = value
         }
-        if dict.keys.contains("TagMap") && dict["TagMap"] != nil {
-            self.tagMap = dict["TagMap"] as! [String: String]
+        if let value = dict["TagMap"] as? [String: String] {
+            self.tagMap = value
         }
-        if dict.keys.contains("TraceId") && dict["TraceId"] != nil {
-            self.traceId = dict["TraceId"] as! String
+        if let value = dict["TraceId"] as? String {
+            self.traceId = value
         }
     }
 }
@@ -220,12 +223,13 @@ public class GrafanaWorkspace : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("key") && dict["key"] != nil {
-                self.key = dict["key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("value") && dict["value"] != nil {
-                self.value = dict["value"] as! String
+            if let value = dict["value"] as? String {
+                self.value = value
             }
         }
     }
@@ -242,6 +246,8 @@ public class GrafanaWorkspace : Tea.TeaModel {
     public var grafanaVersion: String?
 
     public var grafanaWorkspaceDomain: String?
+
+    public var grafanaWorkspaceDomainStatus: String?
 
     public var grafanaWorkspaceEdition: String?
 
@@ -316,6 +322,9 @@ public class GrafanaWorkspace : Tea.TeaModel {
         if self.grafanaWorkspaceDomain != nil {
             map["grafanaWorkspaceDomain"] = self.grafanaWorkspaceDomain!
         }
+        if self.grafanaWorkspaceDomainStatus != nil {
+            map["grafanaWorkspaceDomainStatus"] = self.grafanaWorkspaceDomainStatus!
+        }
         if self.grafanaWorkspaceEdition != nil {
             map["grafanaWorkspaceEdition"] = self.grafanaWorkspaceEdition!
         }
@@ -380,92 +389,98 @@ public class GrafanaWorkspace : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("commercial") && dict["commercial"] != nil {
-            self.commercial = dict["commercial"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commercial"] as? Bool {
+            self.commercial = value
         }
-        if dict.keys.contains("deployType") && dict["deployType"] != nil {
-            self.deployType = dict["deployType"] as! String
+        if let value = dict["deployType"] as? String {
+            self.deployType = value
         }
-        if dict.keys.contains("description") && dict["description"] != nil {
-            self.description_ = dict["description"] as! String
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
-        if dict.keys.contains("endTime") && dict["endTime"] != nil {
-            self.endTime = dict["endTime"] as! Double
+        if let value = dict["endTime"] as? Double {
+            self.endTime = value
         }
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Double
+        if let value = dict["gmtCreate"] as? Double {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("grafanaVersion") && dict["grafanaVersion"] != nil {
-            self.grafanaVersion = dict["grafanaVersion"] as! String
+        if let value = dict["grafanaVersion"] as? String {
+            self.grafanaVersion = value
         }
-        if dict.keys.contains("grafanaWorkspaceDomain") && dict["grafanaWorkspaceDomain"] != nil {
-            self.grafanaWorkspaceDomain = dict["grafanaWorkspaceDomain"] as! String
+        if let value = dict["grafanaWorkspaceDomain"] as? String {
+            self.grafanaWorkspaceDomain = value
         }
-        if dict.keys.contains("grafanaWorkspaceEdition") && dict["grafanaWorkspaceEdition"] != nil {
-            self.grafanaWorkspaceEdition = dict["grafanaWorkspaceEdition"] as! String
+        if let value = dict["grafanaWorkspaceDomainStatus"] as? String {
+            self.grafanaWorkspaceDomainStatus = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceEdition"] as? String {
+            self.grafanaWorkspaceEdition = value
         }
-        if dict.keys.contains("grafanaWorkspaceIp") && dict["grafanaWorkspaceIp"] != nil {
-            self.grafanaWorkspaceIp = dict["grafanaWorkspaceIp"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("grafanaWorkspaceName") && dict["grafanaWorkspaceName"] != nil {
-            self.grafanaWorkspaceName = dict["grafanaWorkspaceName"] as! String
+        if let value = dict["grafanaWorkspaceIp"] as? String {
+            self.grafanaWorkspaceIp = value
         }
-        if dict.keys.contains("maxAccount") && dict["maxAccount"] != nil {
-            self.maxAccount = dict["maxAccount"] as! String
+        if let value = dict["grafanaWorkspaceName"] as? String {
+            self.grafanaWorkspaceName = value
         }
-        if dict.keys.contains("ntmId") && dict["ntmId"] != nil {
-            self.ntmId = dict["ntmId"] as! String
+        if let value = dict["maxAccount"] as? String {
+            self.maxAccount = value
         }
-        if dict.keys.contains("personalDomain") && dict["personalDomain"] != nil {
-            self.personalDomain = dict["personalDomain"] as! String
+        if let value = dict["ntmId"] as? String {
+            self.ntmId = value
         }
-        if dict.keys.contains("personalDomainPrefix") && dict["personalDomainPrefix"] != nil {
-            self.personalDomainPrefix = dict["personalDomainPrefix"] as! String
+        if let value = dict["personalDomain"] as? String {
+            self.personalDomain = value
         }
-        if dict.keys.contains("privateDomain") && dict["privateDomain"] != nil {
-            self.privateDomain = dict["privateDomain"] as! String
+        if let value = dict["personalDomainPrefix"] as? String {
+            self.personalDomainPrefix = value
         }
-        if dict.keys.contains("privateIp") && dict["privateIp"] != nil {
-            self.privateIp = dict["privateIp"] as! String
+        if let value = dict["privateDomain"] as? String {
+            self.privateDomain = value
         }
-        if dict.keys.contains("protocol") && dict["protocol"] != nil {
-            self.protocol_ = dict["protocol"] as! String
+        if let value = dict["privateIp"] as? String {
+            self.privateIp = value
         }
-        if dict.keys.contains("regionId") && dict["regionId"] != nil {
-            self.regionId = dict["regionId"] as! String
+        if let value = dict["protocol"] as? String {
+            self.protocol_ = value
         }
-        if dict.keys.contains("resourceGroupId") && dict["resourceGroupId"] != nil {
-            self.resourceGroupId = dict["resourceGroupId"] as! String
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("shareSynced") && dict["shareSynced"] != nil {
-            self.shareSynced = dict["shareSynced"] as! Bool
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("snatIp") && dict["snatIp"] != nil {
-            self.snatIp = dict["snatIp"] as! String
+        if let value = dict["shareSynced"] as? Bool {
+            self.shareSynced = value
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["snatIp"] as? String {
+            self.snatIp = value
         }
-        if dict.keys.contains("tags") && dict["tags"] != nil {
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["tags"] as? [Any?] {
             var tmp : [GrafanaWorkspace.Tags] = []
-            for v in dict["tags"] as! [Any] {
-                var model = GrafanaWorkspace.Tags()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspace.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.tags = tmp
         }
-        if dict.keys.contains("upgradeVersion") && dict["upgradeVersion"] != nil {
-            self.upgradeVersion = dict["upgradeVersion"] as! [String]
+        if let value = dict["upgradeVersion"] as? [String] {
+            self.upgradeVersion = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -522,30 +537,33 @@ public class GrafanaWorkspaceAccount : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("accountId") && dict["accountId"] != nil {
-            self.accountId = dict["accountId"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["accountId"] as? Int64 {
+            self.accountId = value
         }
-        if dict.keys.contains("accountNotes") && dict["accountNotes"] != nil {
-            self.accountNotes = dict["accountNotes"] as! String
+        if let value = dict["accountNotes"] as? String {
+            self.accountNotes = value
         }
-        if dict.keys.contains("aliyunUid") && dict["aliyunUid"] != nil {
-            self.aliyunUid = dict["aliyunUid"] as! String
+        if let value = dict["aliyunUid"] as? String {
+            self.aliyunUid = value
         }
-        if dict.keys.contains("aliyunUserName") && dict["aliyunUserName"] != nil {
-            self.aliyunUserName = dict["aliyunUserName"] as! String
+        if let value = dict["aliyunUserName"] as? String {
+            self.aliyunUserName = value
         }
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Double
+        if let value = dict["gmtCreate"] as? Double {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("orgs") && dict["orgs"] != nil {
+        if let value = dict["orgs"] as? [Any?] {
             var tmp : [GrafanaWorkspaceUserOrg] = []
-            for v in dict["orgs"] as! [Any] {
-                var model = GrafanaWorkspaceUserOrg()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspaceUserOrg()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.orgs = tmp
         }
@@ -610,30 +628,31 @@ public class GrafanaWorkspaceAlertNotification : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("isArms") && dict["isArms"] != nil {
-            self.isArms = dict["isArms"] as! Bool
+        if let value = dict["isArms"] as? Bool {
+            self.isArms = value
         }
-        if dict.keys.contains("isDefault") && dict["isDefault"] != nil {
-            self.isDefault = dict["isDefault"] as! Bool
+        if let value = dict["isDefault"] as? Bool {
+            self.isDefault = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("sendReminder") && dict["sendReminder"] != nil {
-            self.sendReminder = dict["sendReminder"] as! Bool
+        if let value = dict["sendReminder"] as? Bool {
+            self.sendReminder = value
         }
-        if dict.keys.contains("settings") && dict["settings"] != nil {
-            self.settings = dict["settings"] as! String
+        if let value = dict["settings"] as? String {
+            self.settings = value
         }
-        if dict.keys.contains("type") && dict["type"] != nil {
-            self.type = dict["type"] as! String
+        if let value = dict["type"] as? String {
+            self.type = value
         }
-        if dict.keys.contains("uid") && dict["uid"] != nil {
-            self.uid = dict["uid"] as! String
+        if let value = dict["uid"] as? String {
+            self.uid = value
         }
     }
 }
@@ -666,12 +685,13 @@ public class GrafanaWorkspaceArmsAlertConfig : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("armsAlertsEnable") && dict["armsAlertsEnable"] != nil {
-            self.armsAlertsEnable = dict["armsAlertsEnable"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["armsAlertsEnable"] as? String {
+            self.armsAlertsEnable = value
         }
-        if dict.keys.contains("armsAlertsWebhookUrl") && dict["armsAlertsWebhookUrl"] != nil {
-            self.armsAlertsWebhookUrl = dict["armsAlertsWebhookUrl"] as! String
+        if let value = dict["armsAlertsWebhookUrl"] as? String {
+            self.armsAlertsWebhookUrl = value
         }
     }
 }
@@ -744,36 +764,37 @@ public class GrafanaWorkspaceCustomDomain : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("cert") && dict["cert"] != nil {
-            self.cert = dict["cert"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cert"] as? String {
+            self.cert = value
         }
-        if dict.keys.contains("date") && dict["date"] != nil {
-            self.date = dict["date"] as! Int64
+        if let value = dict["date"] as? Int64 {
+            self.date = value
         }
-        if dict.keys.contains("domain") && dict["domain"] != nil {
-            self.domain = dict["domain"] as! String
+        if let value = dict["domain"] as? String {
+            self.domain = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("key") && dict["key"] != nil {
-            self.key = dict["key"] as! String
+        if let value = dict["key"] as? String {
+            self.key = value
         }
-        if dict.keys.contains("privateZone") && dict["privateZone"] != nil {
-            self.privateZone = dict["privateZone"] as! String
+        if let value = dict["privateZone"] as? String {
+            self.privateZone = value
         }
-        if dict.keys.contains("protocol") && dict["protocol"] != nil {
-            self.protocol_ = dict["protocol"] as! String
+        if let value = dict["protocol"] as? String {
+            self.protocol_ = value
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["status"] as? String {
+            self.status = value
         }
-        if dict.keys.contains("uri") && dict["uri"] != nil {
-            self.uri = dict["uri"] as! String
+        if let value = dict["uri"] as? String {
+            self.uri = value
         }
     }
 }
@@ -876,54 +897,55 @@ public class GrafanaWorkspaceDashboardReport : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["gmtCreate"] as? Int64 {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("lastSendTime") && dict["lastSendTime"] != nil {
-            self.lastSendTime = dict["lastSendTime"] as! Int64
+        if let value = dict["lastSendTime"] as? Int64 {
+            self.lastSendTime = value
         }
-        if dict.keys.contains("msg") && dict["msg"] != nil {
-            self.msg = dict["msg"] as! String
+        if let value = dict["msg"] as? String {
+            self.msg = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("reportChannelTarget") && dict["reportChannelTarget"] != nil {
-            self.reportChannelTarget = dict["reportChannelTarget"] as! String
+        if let value = dict["reportChannelTarget"] as? String {
+            self.reportChannelTarget = value
         }
-        if dict.keys.contains("reportChannelType") && dict["reportChannelType"] != nil {
-            self.reportChannelType = dict["reportChannelType"] as! String
+        if let value = dict["reportChannelType"] as? String {
+            self.reportChannelType = value
         }
-        if dict.keys.contains("reportStyle") && dict["reportStyle"] != nil {
-            self.reportStyle = dict["reportStyle"] as! String
+        if let value = dict["reportStyle"] as? String {
+            self.reportStyle = value
         }
-        if dict.keys.contains("reportType") && dict["reportType"] != nil {
-            self.reportType = dict["reportType"] as! String
+        if let value = dict["reportType"] as? String {
+            self.reportType = value
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["status"] as? String {
+            self.status = value
         }
-        if dict.keys.contains("triggerDay") && dict["triggerDay"] != nil {
-            self.triggerDay = dict["triggerDay"] as! String
+        if let value = dict["triggerDay"] as? String {
+            self.triggerDay = value
         }
-        if dict.keys.contains("triggerTime") && dict["triggerTime"] != nil {
-            self.triggerTime = dict["triggerTime"] as! String
+        if let value = dict["triggerTime"] as? String {
+            self.triggerTime = value
         }
-        if dict.keys.contains("triggerType") && dict["triggerType"] != nil {
-            self.triggerType = dict["triggerType"] as! String
+        if let value = dict["triggerType"] as? String {
+            self.triggerType = value
         }
-        if dict.keys.contains("url") && dict["url"] != nil {
-            self.url = dict["url"] as! String
+        if let value = dict["url"] as? String {
+            self.url = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -991,33 +1013,34 @@ public class GrafanaWorkspaceDataBackup : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["gmtCreate"] as? Int64 {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("gmtModified") && dict["gmtModified"] != nil {
-            self.gmtModified = dict["gmtModified"] as! Int64
+        if let value = dict["gmtModified"] as? Int64 {
+            self.gmtModified = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("msg") && dict["msg"] != nil {
-            self.msg = dict["msg"] as! String
+        if let value = dict["msg"] as? String {
+            self.msg = value
         }
-        if dict.keys.contains("processName") && dict["processName"] != nil {
-            self.processName = dict["processName"] as! String
+        if let value = dict["processName"] as? String {
+            self.processName = value
         }
-        if dict.keys.contains("processStatus") && dict["processStatus"] != nil {
-            self.processStatus = dict["processStatus"] as! String
+        if let value = dict["processStatus"] as? String {
+            self.processStatus = value
         }
-        if dict.keys.contains("subType") && dict["subType"] != nil {
-            self.subType = dict["subType"] as! String
+        if let value = dict["subType"] as? String {
+            self.subType = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -1090,36 +1113,37 @@ public class GrafanaWorkspaceIniBackup : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ext") && dict["ext"] != nil {
-            self.ext = dict["ext"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ext"] as? String {
+            self.ext = value
         }
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Int64
+        if let value = dict["gmtCreate"] as? Int64 {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("gmtModified") && dict["gmtModified"] != nil {
-            self.gmtModified = dict["gmtModified"] as! Int64
+        if let value = dict["gmtModified"] as? Int64 {
+            self.gmtModified = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("msg") && dict["msg"] != nil {
-            self.msg = dict["msg"] as! String
+        if let value = dict["msg"] as? String {
+            self.msg = value
         }
-        if dict.keys.contains("processName") && dict["processName"] != nil {
-            self.processName = dict["processName"] as! String
+        if let value = dict["processName"] as? String {
+            self.processName = value
         }
-        if dict.keys.contains("processStatus") && dict["processStatus"] != nil {
-            self.processStatus = dict["processStatus"] as! String
+        if let value = dict["processStatus"] as? String {
+            self.processStatus = value
         }
-        if dict.keys.contains("subType") && dict["subType"] != nil {
-            self.subType = dict["subType"] as! String
+        if let value = dict["subType"] as? String {
+            self.subType = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -1172,24 +1196,25 @@ public class GrafanaWorkspaceIniProperty : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("defaultValue") && dict["defaultValue"] != nil {
-            self.defaultValue = dict["defaultValue"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["defaultValue"] as? String {
+            self.defaultValue = value
         }
-        if dict.keys.contains("description") && dict["description"] != nil {
-            self.description_ = dict["description"] as! String
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
-        if dict.keys.contains("example") && dict["example"] != nil {
-            self.example = dict["example"] as! String
+        if let value = dict["example"] as? String {
+            self.example = value
         }
-        if dict.keys.contains("key") && dict["key"] != nil {
-            self.key = dict["key"] as! String
+        if let value = dict["key"] as? String {
+            self.key = value
         }
-        if dict.keys.contains("secret") && dict["secret"] != nil {
-            self.secret = dict["secret"] as! Bool
+        if let value = dict["secret"] as? Bool {
+            self.secret = value
         }
-        if dict.keys.contains("value") && dict["value"] != nil {
-            self.value = dict["value"] as! String
+        if let value = dict["value"] as? String {
+            self.value = value
         }
     }
 }
@@ -1226,20 +1251,23 @@ public class GrafanaWorkspaceIniSection : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("propertys") && dict["propertys"] != nil {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["propertys"] as? [Any?] {
             var tmp : [GrafanaWorkspaceIniProperty] = []
-            for v in dict["propertys"] as! [Any] {
-                var model = GrafanaWorkspaceIniProperty()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspaceIniProperty()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.propertys = tmp
         }
-        if dict.keys.contains("section") && dict["section"] != nil {
-            self.section = dict["section"] as! String
+        if let value = dict["section"] as? String {
+            self.section = value
         }
     }
 }
@@ -1296,32 +1324,35 @@ public class GrafanaWorkspaceIntegration : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("datasourceAmount") && dict["datasourceAmount"] != nil {
-            self.datasourceAmount = dict["datasourceAmount"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["datasourceAmount"] as? Int64 {
+            self.datasourceAmount = value
         }
-        if dict.keys.contains("integrationId") && dict["integrationId"] != nil {
-            self.integrationId = dict["integrationId"] as! String
+        if let value = dict["integrationId"] as? String {
+            self.integrationId = value
         }
-        if dict.keys.contains("integrationName") && dict["integrationName"] != nil {
-            self.integrationName = dict["integrationName"] as! String
+        if let value = dict["integrationName"] as? String {
+            self.integrationName = value
         }
-        if dict.keys.contains("previews") && dict["previews"] != nil {
+        if let value = dict["previews"] as? [Any?] {
             var tmp : [GrafanaWorkspaceIntegrationPreview] = []
-            for v in dict["previews"] as! [Any] {
-                var model = GrafanaWorkspaceIntegrationPreview()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspaceIntegrationPreview()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.previews = tmp
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["status"] as? String {
+            self.status = value
         }
-        if dict.keys.contains("supportRegions") && dict["supportRegions"] != nil {
-            self.supportRegions = dict["supportRegions"] as! [String]
+        if let value = dict["supportRegions"] as? [String] {
+            self.supportRegions = value
         }
     }
 }
@@ -1394,36 +1425,37 @@ public class GrafanaWorkspaceIntegrationDataSource : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("clusterType") && dict["clusterType"] != nil {
-            self.clusterType = dict["clusterType"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clusterType"] as? String {
+            self.clusterType = value
         }
-        if dict.keys.contains("datasourceId") && dict["datasourceId"] != nil {
-            self.datasourceId = dict["datasourceId"] as! String
+        if let value = dict["datasourceId"] as? String {
+            self.datasourceId = value
         }
-        if dict.keys.contains("datasourceName") && dict["datasourceName"] != nil {
-            self.datasourceName = dict["datasourceName"] as! String
+        if let value = dict["datasourceName"] as? String {
+            self.datasourceName = value
         }
-        if dict.keys.contains("datasourceUrl") && dict["datasourceUrl"] != nil {
-            self.datasourceUrl = dict["datasourceUrl"] as! String
+        if let value = dict["datasourceUrl"] as? String {
+            self.datasourceUrl = value
         }
-        if dict.keys.contains("description") && dict["description"] != nil {
-            self.description_ = dict["description"] as! String
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
-        if dict.keys.contains("exploreUrl") && dict["exploreUrl"] != nil {
-            self.exploreUrl = dict["exploreUrl"] as! String
+        if let value = dict["exploreUrl"] as? String {
+            self.exploreUrl = value
         }
-        if dict.keys.contains("folderUrl") && dict["folderUrl"] != nil {
-            self.folderUrl = dict["folderUrl"] as! String
+        if let value = dict["folderUrl"] as? String {
+            self.folderUrl = value
         }
-        if dict.keys.contains("regionId") && dict["regionId"] != nil {
-            self.regionId = dict["regionId"] as! String
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["status"] as? String {
+            self.status = value
         }
-        if dict.keys.contains("type") && dict["type"] != nil {
-            self.type = dict["type"] as! String
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
@@ -1465,23 +1497,26 @@ public class GrafanaWorkspaceIntegrationDetail : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("dataSources") && dict["dataSources"] != nil {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dataSources"] as? [Any?] {
             var tmp : [GrafanaWorkspaceIntegrationDataSource] = []
-            for v in dict["dataSources"] as! [Any] {
-                var model = GrafanaWorkspaceIntegrationDataSource()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspaceIntegrationDataSource()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.dataSources = tmp
         }
-        if dict.keys.contains("integrationId") && dict["integrationId"] != nil {
-            self.integrationId = dict["integrationId"] as! String
+        if let value = dict["integrationId"] as? String {
+            self.integrationId = value
         }
-        if dict.keys.contains("status") && dict["status"] != nil {
-            self.status = dict["status"] as! String
+        if let value = dict["status"] as? String {
+            self.status = value
         }
     }
 }
@@ -1524,18 +1559,19 @@ public class GrafanaWorkspaceIntegrationPreview : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("image") && dict["image"] != nil {
-            self.image = dict["image"] as! String
+        if let value = dict["image"] as? String {
+            self.image = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("thumbnail") && dict["thumbnail"] != nil {
-            self.thumbnail = dict["thumbnail"] as! String
+        if let value = dict["thumbnail"] as? String {
+            self.thumbnail = value
         }
     }
 }
@@ -1583,21 +1619,22 @@ public class GrafanaWorkspaceNews : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("date") && dict["date"] != nil {
-            self.date = dict["date"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["date"] as? Int64 {
+            self.date = value
         }
-        if dict.keys.contains("description") && dict["description"] != nil {
-            self.description_ = dict["description"] as! String
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
-        if dict.keys.contains("image") && dict["image"] != nil {
-            self.image = dict["image"] as! String
+        if let value = dict["image"] as? String {
+            self.image = value
         }
-        if dict.keys.contains("link") && dict["link"] != nil {
-            self.link = dict["link"] as! String
+        if let value = dict["link"] as? String {
+            self.link = value
         }
-        if dict.keys.contains("title") && dict["title"] != nil {
-            self.title = dict["title"] as! String
+        if let value = dict["title"] as? String {
+            self.title = value
         }
     }
 }
@@ -1645,21 +1682,22 @@ public class GrafanaWorkspaceOperateLog : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("date") && dict["date"] != nil {
-            self.date = dict["date"] as! Double
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["date"] as? Double {
+            self.date = value
         }
-        if dict.keys.contains("detail") && dict["detail"] != nil {
-            self.detail = dict["detail"] as! String
+        if let value = dict["detail"] as? String {
+            self.detail = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("operatorId") && dict["operatorId"] != nil {
-            self.operatorId = dict["operatorId"] as! String
+        if let value = dict["operatorId"] as? String {
+            self.operatorId = value
         }
     }
 }
@@ -1692,12 +1730,13 @@ public class GrafanaWorkspaceOrg : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
     }
 }
@@ -1774,44 +1813,47 @@ public class GrafanaWorkspaceTrans : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("apiUrl") && dict["apiUrl"] != nil {
-            self.apiUrl = dict["apiUrl"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["apiUrl"] as? String {
+            self.apiUrl = value
         }
-        if dict.keys.contains("authType") && dict["authType"] != nil {
-            self.authType = dict["authType"] as! String
+        if let value = dict["authType"] as? String {
+            self.authType = value
         }
-        if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
-            self.gmtCreate = dict["gmtCreate"] as! Double
+        if let value = dict["gmtCreate"] as? Double {
+            self.gmtCreate = value
         }
-        if dict.keys.contains("gmtModified") && dict["gmtModified"] != nil {
-            self.gmtModified = dict["gmtModified"] as! Double
+        if let value = dict["gmtModified"] as? Double {
+            self.gmtModified = value
         }
-        if dict.keys.contains("grafanaWorkspaceId") && dict["grafanaWorkspaceId"] != nil {
-            self.grafanaWorkspaceId = dict["grafanaWorkspaceId"] as! String
+        if let value = dict["grafanaWorkspaceId"] as? String {
+            self.grafanaWorkspaceId = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("msg") && dict["msg"] != nil {
-            self.msg = dict["msg"] as! String
+        if let value = dict["msg"] as? String {
+            self.msg = value
         }
-        if dict.keys.contains("processStatus") && dict["processStatus"] != nil {
-            self.processStatus = dict["processStatus"] as! String
+        if let value = dict["processStatus"] as? String {
+            self.processStatus = value
         }
-        if dict.keys.contains("transDetails") && dict["transDetails"] != nil {
+        if let value = dict["transDetails"] as? [Any?] {
             var tmp : [GrafanaWorkspaceTransDetail] = []
-            for v in dict["transDetails"] as! [Any] {
-                var model = GrafanaWorkspaceTransDetail()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = GrafanaWorkspaceTransDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.transDetails = tmp
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }
@@ -1864,24 +1906,25 @@ public class GrafanaWorkspaceTransDetail : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("dashboardAmount") && dict["dashboardAmount"] != nil {
-            self.dashboardAmount = dict["dashboardAmount"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dashboardAmount"] as? Int32 {
+            self.dashboardAmount = value
         }
-        if dict.keys.contains("dataSourceAmount") && dict["dataSourceAmount"] != nil {
-            self.dataSourceAmount = dict["dataSourceAmount"] as! Int32
+        if let value = dict["dataSourceAmount"] as? Int32 {
+            self.dataSourceAmount = value
         }
-        if dict.keys.contains("original") && dict["original"] != nil {
-            self.original = dict["original"] as! Int64
+        if let value = dict["original"] as? Int64 {
+            self.original = value
         }
-        if dict.keys.contains("originalName") && dict["originalName"] != nil {
-            self.originalName = dict["originalName"] as! String
+        if let value = dict["originalName"] as? String {
+            self.originalName = value
         }
-        if dict.keys.contains("target") && dict["target"] != nil {
-            self.target = dict["target"] as! Int64
+        if let value = dict["target"] as? Int64 {
+            self.target = value
         }
-        if dict.keys.contains("targetName") && dict["targetName"] != nil {
-            self.targetName = dict["targetName"] as! String
+        if let value = dict["targetName"] as? String {
+            self.targetName = value
         }
     }
 }
@@ -1914,12 +1957,13 @@ public class GrafanaWorkspaceUserCert : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
     }
 }
@@ -1957,15 +2001,16 @@ public class GrafanaWorkspaceUserOrg : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("orgId") && dict["orgId"] != nil {
-            self.orgId = dict["orgId"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["orgId"] as? Int64 {
+            self.orgId = value
         }
-        if dict.keys.contains("orgName") && dict["orgName"] != nil {
-            self.orgName = dict["orgName"] as! String
+        if let value = dict["orgName"] as? String {
+            self.orgName = value
         }
-        if dict.keys.contains("role") && dict["role"] != nil {
-            self.role = dict["role"] as! String
+        if let value = dict["role"] as? String {
+            self.role = value
         }
     }
 }
@@ -2038,36 +2083,37 @@ public class GrafanaWorkspaceVpcConfig : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("fcConfig") && dict["fcConfig"] != nil {
-            self.fcConfig = dict["fcConfig"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["fcConfig"] as? String {
+            self.fcConfig = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("installMsg") && dict["installMsg"] != nil {
-            self.installMsg = dict["installMsg"] as! String
+        if let value = dict["installMsg"] as? String {
+            self.installMsg = value
         }
-        if dict.keys.contains("installStatus") && dict["installStatus"] != nil {
-            self.installStatus = dict["installStatus"] as! String
+        if let value = dict["installStatus"] as? String {
+            self.installStatus = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("regionId") && dict["regionId"] != nil {
-            self.regionId = dict["regionId"] as! String
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("securityGroupId") && dict["securityGroupId"] != nil {
-            self.securityGroupId = dict["securityGroupId"] as! String
+        if let value = dict["securityGroupId"] as? String {
+            self.securityGroupId = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
-        if dict.keys.contains("vSwitchId") && dict["vSwitchId"] != nil {
-            self.vSwitchId = dict["vSwitchId"] as! String
+        if let value = dict["vSwitchId"] as? String {
+            self.vSwitchId = value
         }
-        if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
-            self.vpcId = dict["vpcId"] as! String
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
         }
     }
 }
@@ -2100,12 +2146,13 @@ public class GrafanaWorkspaceVpcRegion : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("regionId") && dict["regionId"] != nil {
-            self.regionId = dict["regionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("regionName") && dict["regionName"] != nil {
-            self.regionName = dict["regionName"] as! String
+        if let value = dict["regionName"] as? String {
+            self.regionName = value
         }
     }
 }
@@ -2183,39 +2230,40 @@ public class GrafanaWorkspaceVpcRegionDetail : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("fcConfig") && dict["fcConfig"] != nil {
-            self.fcConfig = dict["fcConfig"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["fcConfig"] as? String {
+            self.fcConfig = value
         }
-        if dict.keys.contains("id") && dict["id"] != nil {
-            self.id = dict["id"] as! Int64
+        if let value = dict["id"] as? Int64 {
+            self.id = value
         }
-        if dict.keys.contains("installStatus") && dict["installStatus"] != nil {
-            self.installStatus = dict["installStatus"] as! String
+        if let value = dict["installStatus"] as? String {
+            self.installStatus = value
         }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
+        if let value = dict["name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("regionId") && dict["regionId"] != nil {
-            self.regionId = dict["regionId"] as! String
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("securityGroupId") && dict["securityGroupId"] != nil {
-            self.securityGroupId = dict["securityGroupId"] as! String
+        if let value = dict["securityGroupId"] as? String {
+            self.securityGroupId = value
         }
-        if dict.keys.contains("securityGroupIds") && dict["securityGroupIds"] != nil {
-            self.securityGroupIds = dict["securityGroupIds"] as! [String]
+        if let value = dict["securityGroupIds"] as? [String] {
+            self.securityGroupIds = value
         }
-        if dict.keys.contains("userId") && dict["userId"] != nil {
-            self.userId = dict["userId"] as! String
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
-        if dict.keys.contains("vSwitchId") && dict["vSwitchId"] != nil {
-            self.vSwitchId = dict["vSwitchId"] as! String
+        if let value = dict["vSwitchId"] as? String {
+            self.vSwitchId = value
         }
-        if dict.keys.contains("vSwitchIds") && dict["vSwitchIds"] != nil {
-            self.vSwitchIds = dict["vSwitchIds"] as! [String]
+        if let value = dict["vSwitchIds"] as? [String] {
+            self.vSwitchIds = value
         }
-        if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
-            self.vpcId = dict["vpcId"] as! String
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
         }
     }
 }
@@ -2254,15 +2302,16 @@ public class ARMSQueryDataSetRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") && dict["Key"] != nil {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Type") && dict["Type"] != nil {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
-            if dict.keys.contains("Value") && dict["Value"] != nil {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -2299,15 +2348,16 @@ public class ARMSQueryDataSetRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") && dict["Key"] != nil {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Type") && dict["Type"] != nil {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
-            if dict.keys.contains("Value") && dict["Value"] != nil {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -2344,15 +2394,16 @@ public class ARMSQueryDataSetRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") && dict["Key"] != nil {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Type") && dict["Type"] != nil {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
-            if dict.keys.contains("Value") && dict["Value"] != nil {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -2465,78 +2516,85 @@ public class ARMSQueryDataSetRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DatasetId") && dict["DatasetId"] != nil {
-            self.datasetId = dict["DatasetId"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DatasetId"] as? Int64 {
+            self.datasetId = value
         }
-        if dict.keys.contains("DateStr") && dict["DateStr"] != nil {
-            self.dateStr = dict["DateStr"] as! String
+        if let value = dict["DateStr"] as? String {
+            self.dateStr = value
         }
-        if dict.keys.contains("Dimensions") && dict["Dimensions"] != nil {
+        if let value = dict["Dimensions"] as? [Any?] {
             var tmp : [ARMSQueryDataSetRequest.Dimensions] = []
-            for v in dict["Dimensions"] as! [Any] {
-                var model = ARMSQueryDataSetRequest.Dimensions()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ARMSQueryDataSetRequest.Dimensions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.dimensions = tmp
         }
-        if dict.keys.contains("HackerUserId") && dict["HackerUserId"] != nil {
-            self.hackerUserId = dict["HackerUserId"] as! String
+        if let value = dict["HackerUserId"] as? String {
+            self.hackerUserId = value
         }
-        if dict.keys.contains("HungryMode") && dict["HungryMode"] != nil {
-            self.hungryMode = dict["HungryMode"] as! Bool
+        if let value = dict["HungryMode"] as? Bool {
+            self.hungryMode = value
         }
-        if dict.keys.contains("IntervalInSec") && dict["IntervalInSec"] != nil {
-            self.intervalInSec = dict["IntervalInSec"] as! Int32
+        if let value = dict["IntervalInSec"] as? Int32 {
+            self.intervalInSec = value
         }
-        if dict.keys.contains("IsDrillDown") && dict["IsDrillDown"] != nil {
-            self.isDrillDown = dict["IsDrillDown"] as! Bool
+        if let value = dict["IsDrillDown"] as? Bool {
+            self.isDrillDown = value
         }
-        if dict.keys.contains("Limit") && dict["Limit"] != nil {
-            self.limit = dict["Limit"] as! Int32
+        if let value = dict["Limit"] as? Int32 {
+            self.limit = value
         }
-        if dict.keys.contains("MaxTime") && dict["MaxTime"] != nil {
-            self.maxTime = dict["MaxTime"] as! Int64
+        if let value = dict["MaxTime"] as? Int64 {
+            self.maxTime = value
         }
-        if dict.keys.contains("Measures") && dict["Measures"] != nil {
-            self.measures = dict["Measures"] as! [String]
+        if let value = dict["Measures"] as? [String] {
+            self.measures = value
         }
-        if dict.keys.contains("MinTime") && dict["MinTime"] != nil {
-            self.minTime = dict["MinTime"] as! Int64
+        if let value = dict["MinTime"] as? Int64 {
+            self.minTime = value
         }
-        if dict.keys.contains("OptionalDims") && dict["OptionalDims"] != nil {
+        if let value = dict["OptionalDims"] as? [Any?] {
             var tmp : [ARMSQueryDataSetRequest.OptionalDims] = []
-            for v in dict["OptionalDims"] as! [Any] {
-                var model = ARMSQueryDataSetRequest.OptionalDims()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ARMSQueryDataSetRequest.OptionalDims()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.optionalDims = tmp
         }
-        if dict.keys.contains("OrderByKey") && dict["OrderByKey"] != nil {
-            self.orderByKey = dict["OrderByKey"] as! String
+        if let value = dict["OrderByKey"] as? String {
+            self.orderByKey = value
         }
-        if dict.keys.contains("ReduceTail") && dict["ReduceTail"] != nil {
-            self.reduceTail = dict["ReduceTail"] as! Bool
+        if let value = dict["ReduceTail"] as? Bool {
+            self.reduceTail = value
         }
-        if dict.keys.contains("RequiredDims") && dict["RequiredDims"] != nil {
+        if let value = dict["RequiredDims"] as? [Any?] {
             var tmp : [ARMSQueryDataSetRequest.RequiredDims] = []
-            for v in dict["RequiredDims"] as! [Any] {
-                var model = ARMSQueryDataSetRequest.RequiredDims()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ARMSQueryDataSetRequest.RequiredDims()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.requiredDims = tmp
         }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
         }
     }
 }
@@ -2569,12 +2627,13 @@ public class ARMSQueryDataSetResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Data") && dict["Data"] != nil {
-            self.data = dict["Data"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -2596,9 +2655,6 @@ public class ARMSQueryDataSetResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2616,16 +2672,17 @@ public class ARMSQueryDataSetResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ARMSQueryDataSetResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -2660,12 +2717,13 @@ public class MetricQueryRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") && dict["Key"] != nil {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Value") && dict["Value"] != nil {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -2750,50 +2808,53 @@ public class MetricQueryRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Dimensions") && dict["Dimensions"] != nil {
-            self.dimensions = dict["Dimensions"] as! [String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Dimensions"] as? [String] {
+            self.dimensions = value
         }
-        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
-            self.endTime = dict["EndTime"] as! Int64
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
-        if dict.keys.contains("Filters") && dict["Filters"] != nil {
+        if let value = dict["Filters"] as? [Any?] {
             var tmp : [MetricQueryRequest.Filters] = []
-            for v in dict["Filters"] as! [Any] {
-                var model = MetricQueryRequest.Filters()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = MetricQueryRequest.Filters()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.filters = tmp
         }
-        if dict.keys.contains("HackerUserId") && dict["HackerUserId"] != nil {
-            self.hackerUserId = dict["HackerUserId"] as! String
+        if let value = dict["HackerUserId"] as? String {
+            self.hackerUserId = value
         }
-        if dict.keys.contains("IintervalInSec") && dict["IintervalInSec"] != nil {
-            self.iintervalInSec = dict["IintervalInSec"] as! Int32
+        if let value = dict["IintervalInSec"] as? Int32 {
+            self.iintervalInSec = value
         }
-        if dict.keys.contains("Limit") && dict["Limit"] != nil {
-            self.limit = dict["Limit"] as! Int32
+        if let value = dict["Limit"] as? Int32 {
+            self.limit = value
         }
-        if dict.keys.contains("Measures") && dict["Measures"] != nil {
-            self.measures = dict["Measures"] as! [String]
+        if let value = dict["Measures"] as? [String] {
+            self.measures = value
         }
-        if dict.keys.contains("Metric") && dict["Metric"] != nil {
-            self.metric = dict["Metric"] as! String
+        if let value = dict["Metric"] as? String {
+            self.metric = value
         }
-        if dict.keys.contains("Order") && dict["Order"] != nil {
-            self.order = dict["Order"] as! String
+        if let value = dict["Order"] as? String {
+            self.order = value
         }
-        if dict.keys.contains("OrderBy") && dict["OrderBy"] != nil {
-            self.orderBy = dict["OrderBy"] as! String
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
         }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
         }
-        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
-            self.startTime = dict["StartTime"] as! Int64
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
         }
     }
 }
@@ -2826,12 +2887,13 @@ public class MetricQueryResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Data") && dict["Data"] != nil {
-            self.data = dict["Data"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -2853,9 +2915,6 @@ public class MetricQueryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2873,16 +2932,17 @@ public class MetricQueryResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if let value = dict["body"] as? [String: Any?] {
             var model = MetricQueryResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
