@@ -14624,7 +14624,87 @@ public class VectorStoreConfig : Tea.TeaModel {
             }
         }
     }
+    public class MysqlConfig : Tea.TeaModel {
+        public var collectionName: String?
+
+        public var credentialName: String?
+
+        public var dbName: String?
+
+        public var host: String?
+
+        public var port: Int32?
+
+        public var user: String?
+
+        public var vectorDimension: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.collectionName != nil {
+                map["collectionName"] = self.collectionName!
+            }
+            if self.credentialName != nil {
+                map["credentialName"] = self.credentialName!
+            }
+            if self.dbName != nil {
+                map["dbName"] = self.dbName!
+            }
+            if self.host != nil {
+                map["host"] = self.host!
+            }
+            if self.port != nil {
+                map["port"] = self.port!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            if self.vectorDimension != nil {
+                map["vectorDimension"] = self.vectorDimension!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["collectionName"] as? String {
+                self.collectionName = value
+            }
+            if let value = dict["credentialName"] as? String {
+                self.credentialName = value
+            }
+            if let value = dict["dbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["host"] as? String {
+                self.host = value
+            }
+            if let value = dict["port"] as? Int32 {
+                self.port = value
+            }
+            if let value = dict["user"] as? String {
+                self.user = value
+            }
+            if let value = dict["vectorDimension"] as? Int32 {
+                self.vectorDimension = value
+            }
+        }
+    }
     public var config: VectorStoreConfig.Config?
+
+    public var mysqlConfig: VectorStoreConfig.MysqlConfig?
 
     public var provider: String?
 
@@ -14639,12 +14719,16 @@ public class VectorStoreConfig : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.config?.validate()
+        try self.mysqlConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.config != nil {
             map["config"] = self.config?.toMap()
+        }
+        if self.mysqlConfig != nil {
+            map["mysqlConfig"] = self.mysqlConfig?.toMap()
         }
         if self.provider != nil {
             map["provider"] = self.provider!
@@ -14658,6 +14742,11 @@ public class VectorStoreConfig : Tea.TeaModel {
             var model = VectorStoreConfig.Config()
             model.fromMap(value)
             self.config = model
+        }
+        if let value = dict["mysqlConfig"] as? [String: Any?] {
+            var model = VectorStoreConfig.MysqlConfig()
+            model.fromMap(value)
+            self.mysqlConfig = model
         }
         if let value = dict["provider"] as? String {
             self.provider = value
