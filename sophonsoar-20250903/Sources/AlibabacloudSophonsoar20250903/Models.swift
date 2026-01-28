@@ -865,6 +865,174 @@ public class DeletePlaybookResponse : Tea.TeaModel {
     }
 }
 
+public class ExecuteComponentRequest : Tea.TeaModel {
+    public var componentActionName: String?
+
+    public var componentAssetUuid: String?
+
+    public var componentInput: String?
+
+    public var componentName: String?
+
+    public var lang: String?
+
+    public var playBookNodeName: String?
+
+    public var playbookUuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentActionName != nil {
+            map["ComponentActionName"] = self.componentActionName!
+        }
+        if self.componentAssetUuid != nil {
+            map["ComponentAssetUuid"] = self.componentAssetUuid!
+        }
+        if self.componentInput != nil {
+            map["ComponentInput"] = self.componentInput!
+        }
+        if self.componentName != nil {
+            map["ComponentName"] = self.componentName!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.playBookNodeName != nil {
+            map["PlayBookNodeName"] = self.playBookNodeName!
+        }
+        if self.playbookUuid != nil {
+            map["PlaybookUuid"] = self.playbookUuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ComponentActionName"] as? String {
+            self.componentActionName = value
+        }
+        if let value = dict["ComponentAssetUuid"] as? String {
+            self.componentAssetUuid = value
+        }
+        if let value = dict["ComponentInput"] as? String {
+            self.componentInput = value
+        }
+        if let value = dict["ComponentName"] as? String {
+            self.componentName = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["PlayBookNodeName"] as? String {
+            self.playBookNodeName = value
+        }
+        if let value = dict["PlaybookUuid"] as? String {
+            self.playbookUuid = value
+        }
+    }
+}
+
+public class ExecuteComponentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var runResult: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.runResult != nil {
+            map["RunResult"] = self.runResult!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RunResult"] as? String {
+            self.runResult = value
+        }
+    }
+}
+
+public class ExecuteComponentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteComponentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExecuteComponentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPlaybookRequest : Tea.TeaModel {
     public var lang: String?
 

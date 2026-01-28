@@ -200,6 +200,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeComponentWithOptions(_ request: ExecuteComponentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteComponentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentActionName)) {
+            body["ComponentActionName"] = request.componentActionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentAssetUuid)) {
+            body["ComponentAssetUuid"] = request.componentAssetUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentInput)) {
+            body["ComponentInput"] = request.componentInput ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentName)) {
+            body["ComponentName"] = request.componentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.playBookNodeName)) {
+            body["PlayBookNodeName"] = request.playBookNodeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.playbookUuid)) {
+            body["PlaybookUuid"] = request.playbookUuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteComponent",
+            "version": "2025-09-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteComponentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeComponent(_ request: ExecuteComponentRequest) async throws -> ExecuteComponentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await executeComponentWithOptions(request as! ExecuteComponentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPlaybookWithOptions(_ request: GetPlaybookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPlaybookResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
