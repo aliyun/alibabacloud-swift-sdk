@@ -1220,6 +1220,8 @@ public class GetEmbodiedAIPlatformResourceUsageInfoRequest : Tea.TeaModel {
 
 public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
     public class GpuDetails : Tea.TeaModel {
+        public var allocatedUnit: Int32?
+
         public var gpuModel: String?
 
         public var totalCount: Int32?
@@ -1238,6 +1240,9 @@ public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allocatedUnit != nil {
+                map["AllocatedUnit"] = self.allocatedUnit!
+            }
             if self.gpuModel != nil {
                 map["GpuModel"] = self.gpuModel!
             }
@@ -1249,6 +1254,9 @@ public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllocatedUnit"] as? Int32 {
+                self.allocatedUnit = value
+            }
             if let value = dict["GpuModel"] as? String {
                 self.gpuModel = value
             }
