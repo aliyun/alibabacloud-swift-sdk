@@ -9643,6 +9643,10 @@ public class QueryDomainGroupListRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var orderByType: String?
+
+    public var orderKeyType: String?
+
     public var showDeletingGroup: Bool?
 
     public var userClientIp: String?
@@ -9667,6 +9671,12 @@ public class QueryDomainGroupListRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.orderByType != nil {
+            map["OrderByType"] = self.orderByType!
+        }
+        if self.orderKeyType != nil {
+            map["OrderKeyType"] = self.orderKeyType!
+        }
         if self.showDeletingGroup != nil {
             map["ShowDeletingGroup"] = self.showDeletingGroup!
         }
@@ -9683,6 +9693,12 @@ public class QueryDomainGroupListRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["OrderByType"] as? String {
+            self.orderByType = value
+        }
+        if let value = dict["OrderKeyType"] as? String {
+            self.orderKeyType = value
         }
         if let value = dict["ShowDeletingGroup"] as? Bool {
             self.showDeletingGroup = value
@@ -9948,6 +9964,8 @@ public class QueryDomainListRequest : Tea.TeaModel {
     }
     public var ccompany: String?
 
+    public var dns: String?
+
     public var domainGroupId: String?
 
     public var domainName: String?
@@ -9998,6 +10016,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.ccompany != nil {
             map["Ccompany"] = self.ccompany!
+        }
+        if self.dns != nil {
+            map["Dns"] = self.dns!
         }
         if self.domainGroupId != nil {
             map["DomainGroupId"] = self.domainGroupId!
@@ -10061,6 +10082,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Ccompany"] as? String {
             self.ccompany = value
+        }
+        if let value = dict["Dns"] as? String {
+            self.dns = value
         }
         if let value = dict["DomainGroupId"] as? String {
             self.domainGroupId = value
@@ -10129,6 +10153,36 @@ public class QueryDomainListRequest : Tea.TeaModel {
 public class QueryDomainListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Domain : Tea.TeaModel {
+            public class DnsList : Tea.TeaModel {
+                public var dnsList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dnsList != nil {
+                        map["DnsList"] = self.dnsList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DnsList"] as? [String] {
+                        self.dnsList = value
+                    }
+                }
+            }
             public class Tag : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var key: String?
@@ -10215,6 +10269,8 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
 
             public var chgholderStatus: String?
 
+            public var dnsList: QueryDomainListResponseBody.Data.Domain.DnsList?
+
             public var domainAuditStatus: String?
 
             public var domainGroupId: String?
@@ -10265,6 +10321,7 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dnsList?.validate()
                 try self.tag?.validate()
             }
 
@@ -10275,6 +10332,9 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
                 }
                 if self.chgholderStatus != nil {
                     map["ChgholderStatus"] = self.chgholderStatus!
+                }
+                if self.dnsList != nil {
+                    map["DnsList"] = self.dnsList?.toMap()
                 }
                 if self.domainAuditStatus != nil {
                     map["DomainAuditStatus"] = self.domainAuditStatus!
@@ -10346,6 +10406,11 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ChgholderStatus"] as? String {
                     self.chgholderStatus = value
+                }
+                if let value = dict["DnsList"] as? [String: Any?] {
+                    var model = QueryDomainListResponseBody.Data.Domain.DnsList()
+                    model.fromMap(value)
+                    self.dnsList = model
                 }
                 if let value = dict["DomainAuditStatus"] as? String {
                     self.domainAuditStatus = value
