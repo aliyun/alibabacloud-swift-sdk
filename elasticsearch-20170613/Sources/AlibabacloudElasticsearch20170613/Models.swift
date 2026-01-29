@@ -10743,6 +10743,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var ikHotDicts: [DescribeInstanceResponseBody.Result.IkHotDicts]?
 
+        public var inited: Bool?
+
         public var instanceCategory: String?
 
         public var instanceId: String?
@@ -10918,6 +10920,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ikHotDicts"] = tmp
+            }
+            if self.inited != nil {
+                map["inited"] = self.inited!
             }
             if self.instanceCategory != nil {
                 map["instanceCategory"] = self.instanceCategory!
@@ -11152,6 +11157,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                     }
                 }
                 self.ikHotDicts = tmp
+            }
+            if let value = dict["inited"] as? Bool {
+                self.inited = value
             }
             if let value = dict["instanceCategory"] as? String {
                 self.instanceCategory = value
