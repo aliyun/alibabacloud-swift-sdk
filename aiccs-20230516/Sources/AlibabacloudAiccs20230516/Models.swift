@@ -3961,13 +3961,27 @@ public class CallNumberDetailRequest : Tea.TeaModel {
 
 public class CallNumberDetailResponseBody : Tea.TeaModel {
     public class Model : Tea.TeaModel {
+        public var aiBill: Int64?
+
+        public var answerTransferType: Int64?
+
         public var batchId: String?
 
         public var bill: Int64?
 
+        public var bridgeBill: Int64?
+
         public var callId: String?
 
         public var callType: Int64?
+
+        public var clientUrl: String?
+
+        public var createTime: String?
+
+        public var duration: Int64?
+
+        public var gatewayId: Int64?
 
         public var id: Int64?
 
@@ -3979,7 +3993,13 @@ public class CallNumberDetailResponseBody : Tea.TeaModel {
 
         public var numberMd5: String?
 
+        public var params: String?
+
         public var personalityTag: String?
+
+        public var remark: String?
+
+        public var sid: Int64?
 
         public var statusCode: Int64?
 
@@ -4005,17 +4025,38 @@ public class CallNumberDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiBill != nil {
+                map["AiBill"] = self.aiBill!
+            }
+            if self.answerTransferType != nil {
+                map["AnswerTransferType"] = self.answerTransferType!
+            }
             if self.batchId != nil {
                 map["BatchId"] = self.batchId!
             }
             if self.bill != nil {
                 map["Bill"] = self.bill!
             }
+            if self.bridgeBill != nil {
+                map["BridgeBill"] = self.bridgeBill!
+            }
             if self.callId != nil {
                 map["CallId"] = self.callId!
             }
             if self.callType != nil {
                 map["CallType"] = self.callType!
+            }
+            if self.clientUrl != nil {
+                map["ClientUrl"] = self.clientUrl!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -4032,8 +4073,17 @@ public class CallNumberDetailResponseBody : Tea.TeaModel {
             if self.numberMd5 != nil {
                 map["NumberMd5"] = self.numberMd5!
             }
+            if self.params != nil {
+                map["Params"] = self.params!
+            }
             if self.personalityTag != nil {
                 map["PersonalityTag"] = self.personalityTag!
+            }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
+            if self.sid != nil {
+                map["Sid"] = self.sid!
             }
             if self.statusCode != nil {
                 map["StatusCode"] = self.statusCode!
@@ -4055,17 +4105,38 @@ public class CallNumberDetailResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiBill"] as? Int64 {
+                self.aiBill = value
+            }
+            if let value = dict["AnswerTransferType"] as? Int64 {
+                self.answerTransferType = value
+            }
             if let value = dict["BatchId"] as? String {
                 self.batchId = value
             }
             if let value = dict["Bill"] as? Int64 {
                 self.bill = value
             }
+            if let value = dict["BridgeBill"] as? Int64 {
+                self.bridgeBill = value
+            }
             if let value = dict["CallId"] as? String {
                 self.callId = value
             }
             if let value = dict["CallType"] as? Int64 {
                 self.callType = value
+            }
+            if let value = dict["ClientUrl"] as? String {
+                self.clientUrl = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["GatewayId"] as? Int64 {
+                self.gatewayId = value
             }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
@@ -4082,8 +4153,17 @@ public class CallNumberDetailResponseBody : Tea.TeaModel {
             if let value = dict["NumberMd5"] as? String {
                 self.numberMd5 = value
             }
+            if let value = dict["Params"] as? String {
+                self.params = value
+            }
             if let value = dict["PersonalityTag"] as? String {
                 self.personalityTag = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
+            }
+            if let value = dict["Sid"] as? Int64 {
+                self.sid = value
             }
             if let value = dict["StatusCode"] as? Int64 {
                 self.statusCode = value
