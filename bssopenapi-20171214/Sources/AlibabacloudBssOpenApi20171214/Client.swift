@@ -1485,14 +1485,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeSavingsPlansCoverageDetailWithOptions(_ request: DescribeSavingsPlansCoverageDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansCoverageDetailResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeSavingsPlansCoverageDetailWithOptions(_ tmpReq: DescribeSavingsPlansCoverageDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansCoverageDetailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeSavingsPlansCoverageDetailShrinkRequest = DescribeSavingsPlansCoverageDetailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterParam)) {
+            request.filterParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterParam, "FilterParam", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.billOwnerId)) {
             query["BillOwnerId"] = request.billOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.endPeriod)) {
             query["EndPeriod"] = request.endPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParamShrink)) {
+            query["FilterParam"] = request.filterParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -1531,14 +1539,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeSavingsPlansCoverageTotalWithOptions(_ request: DescribeSavingsPlansCoverageTotalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansCoverageTotalResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeSavingsPlansCoverageTotalWithOptions(_ tmpReq: DescribeSavingsPlansCoverageTotalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansCoverageTotalResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeSavingsPlansCoverageTotalShrinkRequest = DescribeSavingsPlansCoverageTotalShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterParam)) {
+            request.filterParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterParam, "FilterParam", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.billOwnerId)) {
             query["BillOwnerId"] = request.billOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.endPeriod)) {
             query["EndPeriod"] = request.endPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParamShrink)) {
+            query["FilterParam"] = request.filterParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.periodType)) {
             query["PeriodType"] = request.periodType ?? "";
@@ -1571,14 +1587,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeSavingsPlansUsageDetailWithOptions(_ request: DescribeSavingsPlansUsageDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansUsageDetailResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeSavingsPlansUsageDetailWithOptions(_ tmpReq: DescribeSavingsPlansUsageDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansUsageDetailResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeSavingsPlansUsageDetailShrinkRequest = DescribeSavingsPlansUsageDetailShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterParam)) {
+            request.filterParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterParam, "FilterParam", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.billOwnerId)) {
             query["BillOwnerId"] = request.billOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.endPeriod)) {
             query["EndPeriod"] = request.endPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParamShrink)) {
+            query["FilterParam"] = request.filterParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -1617,14 +1641,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeSavingsPlansUsageTotalWithOptions(_ request: DescribeSavingsPlansUsageTotalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansUsageTotalResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeSavingsPlansUsageTotalWithOptions(_ tmpReq: DescribeSavingsPlansUsageTotalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlansUsageTotalResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeSavingsPlansUsageTotalShrinkRequest = DescribeSavingsPlansUsageTotalShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterParam)) {
+            request.filterParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterParam, "FilterParam", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.billOwnerId)) {
             query["BillOwnerId"] = request.billOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.endPeriod)) {
             query["EndPeriod"] = request.endPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParamShrink)) {
+            query["FilterParam"] = request.filterParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.periodType)) {
             query["PeriodType"] = request.periodType ?? "";

@@ -11962,9 +11962,251 @@ public class DescribeResourceUsageTotalResponse : Tea.TeaModel {
 }
 
 public class DescribeSavingsPlansCoverageDetailRequest : Tea.TeaModel {
+    public class FilterParam : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public var dimensions: [DescribeSavingsPlansCoverageDetailRequest.FilterParam.Dimensions]?
+
+        public var tags: [DescribeSavingsPlansCoverageDetailRequest.FilterParam.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Dimensions"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansCoverageDetailRequest.FilterParam.Dimensions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansCoverageDetailRequest.FilterParam.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensions = tmp
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansCoverageDetailRequest.FilterParam.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansCoverageDetailRequest.FilterParam.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
     public var billOwnerId: Int64?
 
     public var endPeriod: String?
+
+    public var filterParam: DescribeSavingsPlansCoverageDetailRequest.FilterParam?
+
+    public var maxResults: Int32?
+
+    public var periodType: String?
+
+    public var startPeriod: String?
+
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParam?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerId != nil {
+            map["BillOwnerId"] = self.billOwnerId!
+        }
+        if self.endPeriod != nil {
+            map["EndPeriod"] = self.endPeriod!
+        }
+        if self.filterParam != nil {
+            map["FilterParam"] = self.filterParam?.toMap()
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.periodType != nil {
+            map["PeriodType"] = self.periodType!
+        }
+        if self.startPeriod != nil {
+            map["StartPeriod"] = self.startPeriod!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillOwnerId"] as? Int64 {
+            self.billOwnerId = value
+        }
+        if let value = dict["EndPeriod"] as? String {
+            self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? [String: Any?] {
+            var model = DescribeSavingsPlansCoverageDetailRequest.FilterParam()
+            model.fromMap(value)
+            self.filterParam = model
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["PeriodType"] as? String {
+            self.periodType = value
+        }
+        if let value = dict["StartPeriod"] as? String {
+            self.startPeriod = value
+        }
+        if let value = dict["Token"] as? String {
+            self.token = value
+        }
+    }
+}
+
+public class DescribeSavingsPlansCoverageDetailShrinkRequest : Tea.TeaModel {
+    public var billOwnerId: Int64?
+
+    public var endPeriod: String?
+
+    public var filterParamShrink: String?
 
     public var maxResults: Int32?
 
@@ -11994,6 +12236,9 @@ public class DescribeSavingsPlansCoverageDetailRequest : Tea.TeaModel {
         if self.endPeriod != nil {
             map["EndPeriod"] = self.endPeriod!
         }
+        if self.filterParamShrink != nil {
+            map["FilterParam"] = self.filterParamShrink!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -12016,6 +12261,9 @@ public class DescribeSavingsPlansCoverageDetailRequest : Tea.TeaModel {
         }
         if let value = dict["EndPeriod"] as? String {
             self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? String {
+            self.filterParamShrink = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -12335,9 +12583,235 @@ public class DescribeSavingsPlansCoverageDetailResponse : Tea.TeaModel {
 }
 
 public class DescribeSavingsPlansCoverageTotalRequest : Tea.TeaModel {
+    public class FilterParam : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public var dimensions: [DescribeSavingsPlansCoverageTotalRequest.FilterParam.Dimensions]?
+
+        public var tags: [DescribeSavingsPlansCoverageTotalRequest.FilterParam.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Dimensions"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansCoverageTotalRequest.FilterParam.Dimensions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansCoverageTotalRequest.FilterParam.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensions = tmp
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansCoverageTotalRequest.FilterParam.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansCoverageTotalRequest.FilterParam.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
     public var billOwnerId: Int64?
 
     public var endPeriod: String?
+
+    public var filterParam: DescribeSavingsPlansCoverageTotalRequest.FilterParam?
+
+    public var periodType: String?
+
+    public var startPeriod: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParam?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerId != nil {
+            map["BillOwnerId"] = self.billOwnerId!
+        }
+        if self.endPeriod != nil {
+            map["EndPeriod"] = self.endPeriod!
+        }
+        if self.filterParam != nil {
+            map["FilterParam"] = self.filterParam?.toMap()
+        }
+        if self.periodType != nil {
+            map["PeriodType"] = self.periodType!
+        }
+        if self.startPeriod != nil {
+            map["StartPeriod"] = self.startPeriod!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillOwnerId"] as? Int64 {
+            self.billOwnerId = value
+        }
+        if let value = dict["EndPeriod"] as? String {
+            self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? [String: Any?] {
+            var model = DescribeSavingsPlansCoverageTotalRequest.FilterParam()
+            model.fromMap(value)
+            self.filterParam = model
+        }
+        if let value = dict["PeriodType"] as? String {
+            self.periodType = value
+        }
+        if let value = dict["StartPeriod"] as? String {
+            self.startPeriod = value
+        }
+    }
+}
+
+public class DescribeSavingsPlansCoverageTotalShrinkRequest : Tea.TeaModel {
+    public var billOwnerId: Int64?
+
+    public var endPeriod: String?
+
+    public var filterParamShrink: String?
 
     public var periodType: String?
 
@@ -12363,6 +12837,9 @@ public class DescribeSavingsPlansCoverageTotalRequest : Tea.TeaModel {
         if self.endPeriod != nil {
             map["EndPeriod"] = self.endPeriod!
         }
+        if self.filterParamShrink != nil {
+            map["FilterParam"] = self.filterParamShrink!
+        }
         if self.periodType != nil {
             map["PeriodType"] = self.periodType!
         }
@@ -12379,6 +12856,9 @@ public class DescribeSavingsPlansCoverageTotalRequest : Tea.TeaModel {
         }
         if let value = dict["EndPeriod"] as? String {
             self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? String {
+            self.filterParamShrink = value
         }
         if let value = dict["PeriodType"] as? String {
             self.periodType = value
@@ -12637,9 +13117,251 @@ public class DescribeSavingsPlansCoverageTotalResponse : Tea.TeaModel {
 }
 
 public class DescribeSavingsPlansUsageDetailRequest : Tea.TeaModel {
+    public class FilterParam : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public var dimensions: [DescribeSavingsPlansUsageDetailRequest.FilterParam.Dimensions]?
+
+        public var tags: [DescribeSavingsPlansUsageDetailRequest.FilterParam.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Dimensions"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansUsageDetailRequest.FilterParam.Dimensions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansUsageDetailRequest.FilterParam.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensions = tmp
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansUsageDetailRequest.FilterParam.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansUsageDetailRequest.FilterParam.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
     public var billOwnerId: Int64?
 
     public var endPeriod: String?
+
+    public var filterParam: DescribeSavingsPlansUsageDetailRequest.FilterParam?
+
+    public var maxResults: Int32?
+
+    public var periodType: String?
+
+    public var startPeriod: String?
+
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParam?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerId != nil {
+            map["BillOwnerId"] = self.billOwnerId!
+        }
+        if self.endPeriod != nil {
+            map["EndPeriod"] = self.endPeriod!
+        }
+        if self.filterParam != nil {
+            map["FilterParam"] = self.filterParam?.toMap()
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.periodType != nil {
+            map["PeriodType"] = self.periodType!
+        }
+        if self.startPeriod != nil {
+            map["StartPeriod"] = self.startPeriod!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillOwnerId"] as? Int64 {
+            self.billOwnerId = value
+        }
+        if let value = dict["EndPeriod"] as? String {
+            self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? [String: Any?] {
+            var model = DescribeSavingsPlansUsageDetailRequest.FilterParam()
+            model.fromMap(value)
+            self.filterParam = model
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["PeriodType"] as? String {
+            self.periodType = value
+        }
+        if let value = dict["StartPeriod"] as? String {
+            self.startPeriod = value
+        }
+        if let value = dict["Token"] as? String {
+            self.token = value
+        }
+    }
+}
+
+public class DescribeSavingsPlansUsageDetailShrinkRequest : Tea.TeaModel {
+    public var billOwnerId: Int64?
+
+    public var endPeriod: String?
+
+    public var filterParamShrink: String?
 
     public var maxResults: Int32?
 
@@ -12669,6 +13391,9 @@ public class DescribeSavingsPlansUsageDetailRequest : Tea.TeaModel {
         if self.endPeriod != nil {
             map["EndPeriod"] = self.endPeriod!
         }
+        if self.filterParamShrink != nil {
+            map["FilterParam"] = self.filterParamShrink!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -12691,6 +13416,9 @@ public class DescribeSavingsPlansUsageDetailRequest : Tea.TeaModel {
         }
         if let value = dict["EndPeriod"] as? String {
             self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? String {
+            self.filterParamShrink = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -13010,9 +13738,235 @@ public class DescribeSavingsPlansUsageDetailResponse : Tea.TeaModel {
 }
 
 public class DescribeSavingsPlansUsageTotalRequest : Tea.TeaModel {
+    public class FilterParam : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public var dimensions: [DescribeSavingsPlansUsageTotalRequest.FilterParam.Dimensions]?
+
+        public var tags: [DescribeSavingsPlansUsageTotalRequest.FilterParam.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Dimensions"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansUsageTotalRequest.FilterParam.Dimensions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansUsageTotalRequest.FilterParam.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensions = tmp
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeSavingsPlansUsageTotalRequest.FilterParam.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSavingsPlansUsageTotalRequest.FilterParam.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
     public var billOwnerId: Int64?
 
     public var endPeriod: String?
+
+    public var filterParam: DescribeSavingsPlansUsageTotalRequest.FilterParam?
+
+    public var periodType: String?
+
+    public var startPeriod: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParam?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerId != nil {
+            map["BillOwnerId"] = self.billOwnerId!
+        }
+        if self.endPeriod != nil {
+            map["EndPeriod"] = self.endPeriod!
+        }
+        if self.filterParam != nil {
+            map["FilterParam"] = self.filterParam?.toMap()
+        }
+        if self.periodType != nil {
+            map["PeriodType"] = self.periodType!
+        }
+        if self.startPeriod != nil {
+            map["StartPeriod"] = self.startPeriod!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillOwnerId"] as? Int64 {
+            self.billOwnerId = value
+        }
+        if let value = dict["EndPeriod"] as? String {
+            self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? [String: Any?] {
+            var model = DescribeSavingsPlansUsageTotalRequest.FilterParam()
+            model.fromMap(value)
+            self.filterParam = model
+        }
+        if let value = dict["PeriodType"] as? String {
+            self.periodType = value
+        }
+        if let value = dict["StartPeriod"] as? String {
+            self.startPeriod = value
+        }
+    }
+}
+
+public class DescribeSavingsPlansUsageTotalShrinkRequest : Tea.TeaModel {
+    public var billOwnerId: Int64?
+
+    public var endPeriod: String?
+
+    public var filterParamShrink: String?
 
     public var periodType: String?
 
@@ -13038,6 +13992,9 @@ public class DescribeSavingsPlansUsageTotalRequest : Tea.TeaModel {
         if self.endPeriod != nil {
             map["EndPeriod"] = self.endPeriod!
         }
+        if self.filterParamShrink != nil {
+            map["FilterParam"] = self.filterParamShrink!
+        }
         if self.periodType != nil {
             map["PeriodType"] = self.periodType!
         }
@@ -13054,6 +14011,9 @@ public class DescribeSavingsPlansUsageTotalRequest : Tea.TeaModel {
         }
         if let value = dict["EndPeriod"] as? String {
             self.endPeriod = value
+        }
+        if let value = dict["FilterParam"] as? String {
+            self.filterParamShrink = value
         }
         if let value = dict["PeriodType"] as? String {
             self.periodType = value
