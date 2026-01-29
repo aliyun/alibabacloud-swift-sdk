@@ -20719,6 +20719,44 @@ public class DescribeApplicationServerlessConfResponse : Tea.TeaModel {
 }
 
 public class DescribeApplicationsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var applicationIds: String?
 
     public var applicationTypes: String?
@@ -20730,6 +20768,8 @@ public class DescribeApplicationsRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var regionId: String?
+
+    public var tag: [DescribeApplicationsRequest.Tag]?
 
     public override init() {
         super.init()
@@ -20763,6 +20803,13 @@ public class DescribeApplicationsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -20785,6 +20832,19 @@ public class DescribeApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DescribeApplicationsRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationsRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
     }
 }
@@ -20882,6 +20942,88 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var tag: [DescribeApplicationsResponseBody.Items.Applications.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Tag"] as? [Any?] {
+                        var tmp : [DescribeApplicationsResponseBody.Items.Applications.Tags.Tag] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeApplicationsResponseBody.Items.Applications.Tags.Tag()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public var applicationId: String?
 
             public var applicationType: String?
@@ -20908,6 +21050,8 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var tags: DescribeApplicationsResponseBody.Items.Applications.Tags?
+
             public var zoneId: String?
 
             public override init() {
@@ -20921,6 +21065,7 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.endpoints?.validate()
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -20963,6 +21108,9 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.zoneId != nil {
                     map["ZoneId"] = self.zoneId!
@@ -21012,6 +21160,11 @@ public class DescribeApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
+                }
+                if let value = dict["Tags"] as? [String: Any?] {
+                    var model = DescribeApplicationsResponseBody.Items.Applications.Tags()
+                    model.fromMap(value)
+                    self.tags = model
                 }
                 if let value = dict["ZoneId"] as? String {
                     self.zoneId = value
