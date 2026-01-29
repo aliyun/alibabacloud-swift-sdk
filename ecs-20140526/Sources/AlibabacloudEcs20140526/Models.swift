@@ -6557,6 +6557,8 @@ public class CreateActivationRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var description_: String?
 
     public var instanceCount: Int32?
@@ -6595,6 +6597,9 @@ public class CreateActivationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -6640,6 +6645,9 @@ public class CreateActivationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -10875,6 +10883,8 @@ public class CreateCommandRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandContent: String?
 
     public var contentEncoding: String?
@@ -10921,6 +10931,9 @@ public class CreateCommandRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -10978,6 +10991,9 @@ public class CreateCommandRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandContent"] as? String {
             self.commandContent = value
         }
@@ -29967,6 +29983,8 @@ public class DeleteVpcResponse : Tea.TeaModel {
 }
 
 public class DeregisterManagedInstanceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var instanceId: String?
 
     public var ownerAccount: String?
@@ -29993,6 +30011,9 @@ public class DeregisterManagedInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -30016,6 +30037,9 @@ public class DeregisterManagedInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -65801,6 +65825,10 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
 
                 public var ossOutputDelivery: String?
 
+                public var ossOutputErrorCode: String?
+
+                public var ossOutputErrorInfo: String?
+
                 public var ossOutputStatus: String?
 
                 public var ossOutputUri: String?
@@ -65876,6 +65904,12 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     if self.ossOutputDelivery != nil {
                         map["OssOutputDelivery"] = self.ossOutputDelivery!
                     }
+                    if self.ossOutputErrorCode != nil {
+                        map["OssOutputErrorCode"] = self.ossOutputErrorCode!
+                    }
+                    if self.ossOutputErrorInfo != nil {
+                        map["OssOutputErrorInfo"] = self.ossOutputErrorInfo!
+                    }
                     if self.ossOutputStatus != nil {
                         map["OssOutputStatus"] = self.ossOutputStatus!
                     }
@@ -65949,6 +65983,12 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["OssOutputDelivery"] as? String {
                         self.ossOutputDelivery = value
+                    }
+                    if let value = dict["OssOutputErrorCode"] as? String {
+                        self.ossOutputErrorCode = value
+                    }
+                    if let value = dict["OssOutputErrorInfo"] as? String {
+                        self.ossOutputErrorInfo = value
                     }
                     if let value = dict["OssOutputStatus"] as? String {
                         self.ossOutputStatus = value
@@ -66445,6 +66485,10 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
                     public var invocationStatus: String?
 
+                    public var ossOutputErrorCode: String?
+
+                    public var ossOutputErrorInfo: String?
+
                     public var ossOutputStatus: String?
 
                     public var ossOutputUri: String?
@@ -66502,6 +66546,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                         if self.invocationStatus != nil {
                             map["InvocationStatus"] = self.invocationStatus!
                         }
+                        if self.ossOutputErrorCode != nil {
+                            map["OssOutputErrorCode"] = self.ossOutputErrorCode!
+                        }
+                        if self.ossOutputErrorInfo != nil {
+                            map["OssOutputErrorInfo"] = self.ossOutputErrorInfo!
+                        }
                         if self.ossOutputStatus != nil {
                             map["OssOutputStatus"] = self.ossOutputStatus!
                         }
@@ -66557,6 +66607,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["InvocationStatus"] as? String {
                             self.invocationStatus = value
+                        }
+                        if let value = dict["OssOutputErrorCode"] as? String {
+                            self.ossOutputErrorCode = value
+                        }
+                        if let value = dict["OssOutputErrorInfo"] as? String {
+                            self.ossOutputErrorInfo = value
                         }
                         if let value = dict["OssOutputStatus"] as? String {
                             self.ossOutputStatus = value
@@ -110608,6 +110664,8 @@ public class ModifyInstanceVpcAttributeResponse : Tea.TeaModel {
 }
 
 public class ModifyInvocationAttributeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var commandContent: String?
 
     public var contentEncoding: String?
@@ -110646,6 +110704,9 @@ public class ModifyInvocationAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -110687,6 +110748,9 @@ public class ModifyInvocationAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandContent"] as? String {
             self.commandContent = value
         }
@@ -110727,6 +110791,8 @@ public class ModifyInvocationAttributeRequest : Tea.TeaModel {
 }
 
 public class ModifyInvocationAttributeShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var commandContent: String?
 
     public var contentEncoding: String?
@@ -110765,6 +110831,9 @@ public class ModifyInvocationAttributeShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -110806,6 +110875,9 @@ public class ModifyInvocationAttributeShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandContent"] as? String {
             self.commandContent = value
         }
@@ -125832,6 +125904,8 @@ public class SendFileRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var content: String?
 
     public var contentType: String?
@@ -125882,6 +125956,9 @@ public class SendFileRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -125945,6 +126022,9 @@ public class SendFileRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Content"] as? String {
             self.content = value
         }
@@ -126881,6 +126961,8 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandLine: String?
 
     public var connectionType: String?
@@ -126922,6 +127004,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandLine != nil {
             map["CommandLine"] = self.commandLine!
         }
@@ -126966,6 +127051,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandLine"] as? String {
             self.commandLine = value
         }
@@ -127011,6 +127099,8 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 }
 
 public class StartTerminalSessionShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var commandLine: String?
 
     public var connectionType: String?
@@ -127051,6 +127141,9 @@ public class StartTerminalSessionShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandLine != nil {
             map["CommandLine"] = self.commandLine!
         }
@@ -127095,6 +127188,9 @@ public class StartTerminalSessionShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["CommandLine"] as? String {
             self.commandLine = value
         }

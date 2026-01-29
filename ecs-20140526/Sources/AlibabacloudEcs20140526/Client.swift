@@ -1758,6 +1758,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createActivationWithOptions(_ request: CreateActivationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateActivationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -2118,6 +2121,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCommandWithOptions(_ request: CreateCommandRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCommandResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commandContent)) {
             query["CommandContent"] = request.commandContent ?? "";
         }
@@ -6719,6 +6725,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deregisterManagedInstanceWithOptions(_ request: DeregisterManagedInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeregisterManagedInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -18322,6 +18331,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commandContent)) {
             query["CommandContent"] = request.commandContent ?? "";
         }
@@ -22087,6 +22099,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendFileWithOptions(_ request: SendFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendFileResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
         }
@@ -22336,6 +22351,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionOptions, "EncryptionOptions", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commandLine)) {
             query["CommandLine"] = request.commandLine ?? "";
         }
