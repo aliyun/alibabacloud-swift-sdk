@@ -534,6 +534,77 @@ public class CDNTriggerConfig : Tea.TeaModel {
     }
 }
 
+public class CORSConfig : Tea.TeaModel {
+    public var allowCredentials: Bool?
+
+    public var allowHeaders: [String]?
+
+    public var allowMethods: [String]?
+
+    public var allowOrigins: [String]?
+
+    public var exposeHeaders: [String]?
+
+    public var maxAge: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowCredentials != nil {
+            map["allowCredentials"] = self.allowCredentials!
+        }
+        if self.allowHeaders != nil {
+            map["allowHeaders"] = self.allowHeaders!
+        }
+        if self.allowMethods != nil {
+            map["allowMethods"] = self.allowMethods!
+        }
+        if self.allowOrigins != nil {
+            map["allowOrigins"] = self.allowOrigins!
+        }
+        if self.exposeHeaders != nil {
+            map["exposeHeaders"] = self.exposeHeaders!
+        }
+        if self.maxAge != nil {
+            map["maxAge"] = self.maxAge!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allowCredentials"] as? Bool {
+            self.allowCredentials = value
+        }
+        if let value = dict["allowHeaders"] as? [String] {
+            self.allowHeaders = value
+        }
+        if let value = dict["allowMethods"] as? [String] {
+            self.allowMethods = value
+        }
+        if let value = dict["allowOrigins"] as? [String] {
+            self.allowOrigins = value
+        }
+        if let value = dict["exposeHeaders"] as? [String] {
+            self.exposeHeaders = value
+        }
+        if let value = dict["maxAge"] as? Int32 {
+            self.maxAge = value
+        }
+    }
+}
+
 public class CertConfig : Tea.TeaModel {
     public var certName: String?
 
@@ -829,6 +900,8 @@ public class CreateCustomDomainInput : Tea.TeaModel {
 
     public var certConfig: CertConfig?
 
+    public var corsConfig: CORSConfig?
+
     public var domainName: String?
 
     public var protocol_: String?
@@ -851,6 +924,7 @@ public class CreateCustomDomainInput : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.authConfig?.validate()
         try self.certConfig?.validate()
+        try self.corsConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
         try self.wafConfig?.validate()
@@ -863,6 +937,9 @@ public class CreateCustomDomainInput : Tea.TeaModel {
         }
         if self.certConfig != nil {
             map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.corsConfig != nil {
+            map["corsConfig"] = self.corsConfig?.toMap()
         }
         if self.domainName != nil {
             map["domainName"] = self.domainName!
@@ -893,6 +970,11 @@ public class CreateCustomDomainInput : Tea.TeaModel {
             var model = CertConfig()
             model.fromMap(value)
             self.certConfig = model
+        }
+        if let value = dict["corsConfig"] as? [String: Any?] {
+            var model = CORSConfig()
+            model.fromMap(value)
+            self.corsConfig = model
         }
         if let value = dict["domainName"] as? String {
             self.domainName = value
@@ -1701,6 +1783,8 @@ public class CustomDomain : Tea.TeaModel {
 
     public var certConfig: CertConfig?
 
+    public var corsConfig: CORSConfig?
+
     public var createdTime: String?
 
     public var domainName: String?
@@ -1729,6 +1813,7 @@ public class CustomDomain : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.authConfig?.validate()
         try self.certConfig?.validate()
+        try self.corsConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
         try self.wafConfig?.validate()
@@ -1747,6 +1832,9 @@ public class CustomDomain : Tea.TeaModel {
         }
         if self.certConfig != nil {
             map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.corsConfig != nil {
+            map["corsConfig"] = self.corsConfig?.toMap()
         }
         if self.createdTime != nil {
             map["createdTime"] = self.createdTime!
@@ -1792,6 +1880,11 @@ public class CustomDomain : Tea.TeaModel {
             var model = CertConfig()
             model.fromMap(value)
             self.certConfig = model
+        }
+        if let value = dict["corsConfig"] as? [String: Any?] {
+            var model = CORSConfig()
+            model.fromMap(value)
+            self.corsConfig = model
         }
         if let value = dict["createdTime"] as? String {
             self.createdTime = value
@@ -3484,6 +3577,8 @@ public class HTTPTriggerConfig : Tea.TeaModel {
 
     public var authType: String?
 
+    public var corsConfig: CORSConfig?
+
     public var disableURLInternet: Bool?
 
     public var methods: [String]?
@@ -3498,6 +3593,7 @@ public class HTTPTriggerConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.corsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3507,6 +3603,9 @@ public class HTTPTriggerConfig : Tea.TeaModel {
         }
         if self.authType != nil {
             map["authType"] = self.authType!
+        }
+        if self.corsConfig != nil {
+            map["corsConfig"] = self.corsConfig?.toMap()
         }
         if self.disableURLInternet != nil {
             map["disableURLInternet"] = self.disableURLInternet!
@@ -3524,6 +3623,11 @@ public class HTTPTriggerConfig : Tea.TeaModel {
         }
         if let value = dict["authType"] as? String {
             self.authType = value
+        }
+        if let value = dict["corsConfig"] as? [String: Any?] {
+            var model = CORSConfig()
+            model.fromMap(value)
+            self.corsConfig = model
         }
         if let value = dict["disableURLInternet"] as? Bool {
             self.disableURLInternet = value
@@ -9024,6 +9128,8 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
 
     public var certConfig: CertConfig?
 
+    public var corsConfig: CORSConfig?
+
     public var protocol_: String?
 
     public var routeConfig: RouteConfig?
@@ -9044,6 +9150,7 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.authConfig?.validate()
         try self.certConfig?.validate()
+        try self.corsConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
         try self.wafConfig?.validate()
@@ -9056,6 +9163,9 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
         }
         if self.certConfig != nil {
             map["certConfig"] = self.certConfig?.toMap()
+        }
+        if self.corsConfig != nil {
+            map["corsConfig"] = self.corsConfig?.toMap()
         }
         if self.protocol_ != nil {
             map["protocol"] = self.protocol_!
@@ -9083,6 +9193,11 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
             var model = CertConfig()
             model.fromMap(value)
             self.certConfig = model
+        }
+        if let value = dict["corsConfig"] as? [String: Any?] {
+            var model = CORSConfig()
+            model.fromMap(value)
+            self.corsConfig = model
         }
         if let value = dict["protocol"] as? String {
             self.protocol_ = value
