@@ -5016,6 +5016,288 @@ public class ChatappSyncPhoneNumberRequest : Tea.TeaModel {
 
 public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
     public class PhoneNumbers : Tea.TeaModel {
+        public class CallingConfigure : Tea.TeaModel {
+            public class Calling : Tea.TeaModel {
+                public class CallHours : Tea.TeaModel {
+                    public class HolidaySchedule : Tea.TeaModel {
+                        public var date: String?
+
+                        public var endTime: String?
+
+                        public var startTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.date != nil {
+                                map["Date"] = self.date!
+                            }
+                            if self.endTime != nil {
+                                map["EndTime"] = self.endTime!
+                            }
+                            if self.startTime != nil {
+                                map["StartTime"] = self.startTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Date"] as? String {
+                                self.date = value
+                            }
+                            if let value = dict["EndTime"] as? String {
+                                self.endTime = value
+                            }
+                            if let value = dict["StartTime"] as? String {
+                                self.startTime = value
+                            }
+                        }
+                    }
+                    public class WeeklyOperatingHours : Tea.TeaModel {
+                        public var closeTime: String?
+
+                        public var dayOfWeek: String?
+
+                        public var openTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.closeTime != nil {
+                                map["CloseTime"] = self.closeTime!
+                            }
+                            if self.dayOfWeek != nil {
+                                map["DayOfWeek"] = self.dayOfWeek!
+                            }
+                            if self.openTime != nil {
+                                map["OpenTime"] = self.openTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["CloseTime"] as? String {
+                                self.closeTime = value
+                            }
+                            if let value = dict["DayOfWeek"] as? String {
+                                self.dayOfWeek = value
+                            }
+                            if let value = dict["OpenTime"] as? String {
+                                self.openTime = value
+                            }
+                        }
+                    }
+                    public var holidaySchedule: [ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule]?
+
+                    public var status: String?
+
+                    public var timezoneId: String?
+
+                    public var weeklyOperatingHours: [ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.holidaySchedule != nil {
+                            var tmp : [Any] = []
+                            for k in self.holidaySchedule! {
+                                tmp.append(k.toMap())
+                            }
+                            map["HolidaySchedule"] = tmp
+                        }
+                        if self.status != nil {
+                            map["Status"] = self.status!
+                        }
+                        if self.timezoneId != nil {
+                            map["TimezoneId"] = self.timezoneId!
+                        }
+                        if self.weeklyOperatingHours != nil {
+                            var tmp : [Any] = []
+                            for k in self.weeklyOperatingHours! {
+                                tmp.append(k.toMap())
+                            }
+                            map["WeeklyOperatingHours"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["HolidaySchedule"] as? [Any?] {
+                            var tmp : [ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.holidaySchedule = tmp
+                        }
+                        if let value = dict["Status"] as? String {
+                            self.status = value
+                        }
+                        if let value = dict["TimezoneId"] as? String {
+                            self.timezoneId = value
+                        }
+                        if let value = dict["WeeklyOperatingHours"] as? [Any?] {
+                            var tmp : [ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.weeklyOperatingHours = tmp
+                        }
+                    }
+                }
+                public var callHours: ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours?
+
+                public var callIconVisibility: String?
+
+                public var callbackPermissionStatus: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.callHours?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callHours != nil {
+                        map["CallHours"] = self.callHours?.toMap()
+                    }
+                    if self.callIconVisibility != nil {
+                        map["CallIconVisibility"] = self.callIconVisibility!
+                    }
+                    if self.callbackPermissionStatus != nil {
+                        map["CallbackPermissionStatus"] = self.callbackPermissionStatus!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallHours"] as? [String: Any?] {
+                        var model = ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours()
+                        model.fromMap(value)
+                        self.callHours = model
+                    }
+                    if let value = dict["CallIconVisibility"] as? String {
+                        self.callIconVisibility = value
+                    }
+                    if let value = dict["CallbackPermissionStatus"] as? String {
+                        self.callbackPermissionStatus = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public var calling: ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling?
+
+            public var callingCallbackUrl: String?
+
+            public var maxTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.calling?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.calling != nil {
+                    map["Calling"] = self.calling?.toMap()
+                }
+                if self.callingCallbackUrl != nil {
+                    map["CallingCallbackUrl"] = self.callingCallbackUrl!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Calling"] as? [String: Any?] {
+                    var model = ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure.Calling()
+                    model.fromMap(value)
+                    self.calling = model
+                }
+                if let value = dict["CallingCallbackUrl"] as? String {
+                    self.callingCallbackUrl = value
+                }
+                if let value = dict["MaxTalkTime"] as? Int64 {
+                    self.maxTalkTime = value
+                }
+            }
+        }
+        public var callingConfigure: ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure?
+
         public var codeVerificationStatus: String?
 
         public var isOfficial: String?
@@ -5052,10 +5334,14 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.callingConfigure?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.callingConfigure != nil {
+                map["CallingConfigure"] = self.callingConfigure?.toMap()
+            }
             if self.codeVerificationStatus != nil {
                 map["CodeVerificationStatus"] = self.codeVerificationStatus!
             }
@@ -5100,6 +5386,11 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CallingConfigure"] as? [String: Any?] {
+                var model = ChatappSyncPhoneNumberResponseBody.PhoneNumbers.CallingConfigure()
+                model.fromMap(value)
+                self.callingConfigure = model
+            }
             if let value = dict["CodeVerificationStatus"] as? String {
                 self.codeVerificationStatus = value
             }
@@ -37941,6 +38232,288 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
 
 public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
     public class PhoneNumbers : Tea.TeaModel {
+        public class CallingConfigure : Tea.TeaModel {
+            public class Calling : Tea.TeaModel {
+                public class CallHours : Tea.TeaModel {
+                    public class HolidaySchedule : Tea.TeaModel {
+                        public var date: String?
+
+                        public var endTime: String?
+
+                        public var startTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.date != nil {
+                                map["Date"] = self.date!
+                            }
+                            if self.endTime != nil {
+                                map["EndTime"] = self.endTime!
+                            }
+                            if self.startTime != nil {
+                                map["StartTime"] = self.startTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Date"] as? String {
+                                self.date = value
+                            }
+                            if let value = dict["EndTime"] as? String {
+                                self.endTime = value
+                            }
+                            if let value = dict["StartTime"] as? String {
+                                self.startTime = value
+                            }
+                        }
+                    }
+                    public class WeeklyOperatingHours : Tea.TeaModel {
+                        public var closeTime: String?
+
+                        public var dayOfWeek: String?
+
+                        public var openTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.closeTime != nil {
+                                map["CloseTime"] = self.closeTime!
+                            }
+                            if self.dayOfWeek != nil {
+                                map["DayOfWeek"] = self.dayOfWeek!
+                            }
+                            if self.openTime != nil {
+                                map["OpenTime"] = self.openTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["CloseTime"] as? String {
+                                self.closeTime = value
+                            }
+                            if let value = dict["DayOfWeek"] as? String {
+                                self.dayOfWeek = value
+                            }
+                            if let value = dict["OpenTime"] as? String {
+                                self.openTime = value
+                            }
+                        }
+                    }
+                    public var callIconVisibility: String?
+
+                    public var callbackPermissionStatus: String?
+
+                    public var holidaySchedule: [QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule]?
+
+                    public var status: String?
+
+                    public var timezoneId: String?
+
+                    public var weeklyOperatingHours: [QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.callIconVisibility != nil {
+                            map["CallIconVisibility"] = self.callIconVisibility!
+                        }
+                        if self.callbackPermissionStatus != nil {
+                            map["CallbackPermissionStatus"] = self.callbackPermissionStatus!
+                        }
+                        if self.holidaySchedule != nil {
+                            var tmp : [Any] = []
+                            for k in self.holidaySchedule! {
+                                tmp.append(k.toMap())
+                            }
+                            map["HolidaySchedule"] = tmp
+                        }
+                        if self.status != nil {
+                            map["Status"] = self.status!
+                        }
+                        if self.timezoneId != nil {
+                            map["TimezoneId"] = self.timezoneId!
+                        }
+                        if self.weeklyOperatingHours != nil {
+                            var tmp : [Any] = []
+                            for k in self.weeklyOperatingHours! {
+                                tmp.append(k.toMap())
+                            }
+                            map["WeeklyOperatingHours"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["CallIconVisibility"] as? String {
+                            self.callIconVisibility = value
+                        }
+                        if let value = dict["CallbackPermissionStatus"] as? String {
+                            self.callbackPermissionStatus = value
+                        }
+                        if let value = dict["HolidaySchedule"] as? [Any?] {
+                            var tmp : [QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.HolidaySchedule()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.holidaySchedule = tmp
+                        }
+                        if let value = dict["Status"] as? String {
+                            self.status = value
+                        }
+                        if let value = dict["TimezoneId"] as? String {
+                            self.timezoneId = value
+                        }
+                        if let value = dict["WeeklyOperatingHours"] as? [Any?] {
+                            var tmp : [QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours.WeeklyOperatingHours()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.weeklyOperatingHours = tmp
+                        }
+                    }
+                }
+                public var callHours: QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.callHours?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callHours != nil {
+                        map["CallHours"] = self.callHours?.toMap()
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallHours"] as? [String: Any?] {
+                        var model = QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling.CallHours()
+                        model.fromMap(value)
+                        self.callHours = model
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                }
+            }
+            public var calling: QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling?
+
+            public var callingCallbackUrl: String?
+
+            public var maxTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.calling?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.calling != nil {
+                    map["Calling"] = self.calling?.toMap()
+                }
+                if self.callingCallbackUrl != nil {
+                    map["CallingCallbackUrl"] = self.callingCallbackUrl!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Calling"] as? [String: Any?] {
+                    var model = QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure.Calling()
+                    model.fromMap(value)
+                    self.calling = model
+                }
+                if let value = dict["CallingCallbackUrl"] as? String {
+                    self.callingCallbackUrl = value
+                }
+                if let value = dict["MaxTalkTime"] as? Int64 {
+                    self.maxTalkTime = value
+                }
+            }
+        }
+        public var callingConfigure: QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure?
+
         public var codeVerificationStatus: String?
 
         public var isOfficial: String?
@@ -37977,10 +38550,14 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.callingConfigure?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.callingConfigure != nil {
+                map["CallingConfigure"] = self.callingConfigure?.toMap()
+            }
             if self.codeVerificationStatus != nil {
                 map["CodeVerificationStatus"] = self.codeVerificationStatus!
             }
@@ -38025,6 +38602,11 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CallingConfigure"] as? [String: Any?] {
+                var model = QueryChatappPhoneNumbersResponseBody.PhoneNumbers.CallingConfigure()
+                model.fromMap(value)
+                self.callingConfigure = model
+            }
             if let value = dict["CodeVerificationStatus"] as? String {
                 self.codeVerificationStatus = value
             }
@@ -38070,6 +38652,8 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var data: String?
+
     public var message: String?
 
     public var phoneNumbers: [QueryChatappPhoneNumbersResponseBody.PhoneNumbers]?
@@ -38098,6 +38682,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -38124,6 +38711,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         }
         if let value = dict["Code"] as? String {
             self.code = value
+        }
+        if let value = dict["Data"] as? String {
+            self.data = value
         }
         if let value = dict["Message"] as? String {
             self.message = value
@@ -47829,6 +48419,391 @@ public class UpdateWabaMmlStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateWabaMmlStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class WhatsappCallRequest : Tea.TeaModel {
+    public class Session : Tea.TeaModel {
+        public var sdp: String?
+
+        public var sdpType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sdp != nil {
+                map["Sdp"] = self.sdp!
+            }
+            if self.sdpType != nil {
+                map["SdpType"] = self.sdpType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Sdp"] as? String {
+                self.sdp = value
+            }
+            if let value = dict["SdpType"] as? String {
+                self.sdpType = value
+            }
+        }
+    }
+    public var businessNumber: String?
+
+    public var callAction: String?
+
+    public var callId: String?
+
+    public var custSpaceId: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var session: WhatsappCallRequest.Session?
+
+    public var userNumber: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.session?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessNumber != nil {
+            map["BusinessNumber"] = self.businessNumber!
+        }
+        if self.callAction != nil {
+            map["CallAction"] = self.callAction!
+        }
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.custSpaceId != nil {
+            map["CustSpaceId"] = self.custSpaceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.session != nil {
+            map["Session"] = self.session?.toMap()
+        }
+        if self.userNumber != nil {
+            map["UserNumber"] = self.userNumber!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessNumber"] as? String {
+            self.businessNumber = value
+        }
+        if let value = dict["CallAction"] as? String {
+            self.callAction = value
+        }
+        if let value = dict["CallId"] as? String {
+            self.callId = value
+        }
+        if let value = dict["CustSpaceId"] as? String {
+            self.custSpaceId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Session"] as? [String: Any?] {
+            var model = WhatsappCallRequest.Session()
+            model.fromMap(value)
+            self.session = model
+        }
+        if let value = dict["UserNumber"] as? String {
+            self.userNumber = value
+        }
+    }
+}
+
+public class WhatsappCallShrinkRequest : Tea.TeaModel {
+    public var businessNumber: String?
+
+    public var callAction: String?
+
+    public var callId: String?
+
+    public var custSpaceId: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sessionShrink: String?
+
+    public var userNumber: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessNumber != nil {
+            map["BusinessNumber"] = self.businessNumber!
+        }
+        if self.callAction != nil {
+            map["CallAction"] = self.callAction!
+        }
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.custSpaceId != nil {
+            map["CustSpaceId"] = self.custSpaceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sessionShrink != nil {
+            map["Session"] = self.sessionShrink!
+        }
+        if self.userNumber != nil {
+            map["UserNumber"] = self.userNumber!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessNumber"] as? String {
+            self.businessNumber = value
+        }
+        if let value = dict["CallAction"] as? String {
+            self.callAction = value
+        }
+        if let value = dict["CallId"] as? String {
+            self.callId = value
+        }
+        if let value = dict["CustSpaceId"] as? String {
+            self.custSpaceId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Session"] as? String {
+            self.sessionShrink = value
+        }
+        if let value = dict["UserNumber"] as? String {
+            self.userNumber = value
+        }
+    }
+}
+
+public class WhatsappCallResponseBody : Tea.TeaModel {
+    public class Model : Tea.TeaModel {
+        public var callId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callId != nil {
+                map["CallId"] = self.callId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallId"] as? String {
+                self.callId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var model: WhatsappCallResponseBody.Model?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.model?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.model != nil {
+            map["Model"] = self.model?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Model"] as? [String: Any?] {
+            var model = WhatsappCallResponseBody.Model()
+            model.fromMap(value)
+            self.model = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class WhatsappCallResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: WhatsappCallResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = WhatsappCallResponseBody()
             model.fromMap(value)
             self.body = model
         }
