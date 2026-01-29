@@ -1355,6 +1355,8 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
 
     public var batchSize: Int32?
 
+    public var embeddingDimension: Int32?
+
     public var maxTokens: Int32?
 
     public var model: String?
@@ -1388,6 +1390,9 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
         if self.batchSize != nil {
             map["BatchSize"] = self.batchSize!
         }
+        if self.embeddingDimension != nil {
+            map["EmbeddingDimension"] = self.embeddingDimension!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
@@ -1416,6 +1421,9 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
         }
         if let value = dict["BatchSize"] as? Int32 {
             self.batchSize = value
+        }
+        if let value = dict["EmbeddingDimension"] as? Int32 {
+            self.embeddingDimension = value
         }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
@@ -4183,6 +4191,8 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
 
     public var batchSize: Int32?
 
+    public var embeddingDimension: Int32?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -4224,6 +4234,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         if self.batchSize != nil {
             map["BatchSize"] = self.batchSize!
         }
+        if self.embeddingDimension != nil {
+            map["EmbeddingDimension"] = self.embeddingDimension!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -4264,6 +4277,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["BatchSize"] as? Int32 {
             self.batchSize = value
+        }
+        if let value = dict["EmbeddingDimension"] as? Int32 {
+            self.embeddingDimension = value
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
@@ -8960,6 +8976,8 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
 
         public var batchSize: Int32?
 
+        public var embeddingDimension: Int32?
+
         public var gmtCreateTime: String?
 
         public var gmtModifiedTime: String?
@@ -9001,6 +9019,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             if self.batchSize != nil {
                 map["BatchSize"] = self.batchSize!
             }
+            if self.embeddingDimension != nil {
+                map["EmbeddingDimension"] = self.embeddingDimension!
+            }
             if self.gmtCreateTime != nil {
                 map["GmtCreateTime"] = self.gmtCreateTime!
             }
@@ -9041,6 +9062,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["BatchSize"] as? Int32 {
                 self.batchSize = value
+            }
+            if let value = dict["EmbeddingDimension"] as? Int32 {
+                self.embeddingDimension = value
             }
             if let value = dict["GmtCreateTime"] as? String {
                 self.gmtCreateTime = value
@@ -11986,6 +12010,8 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
 
     public var batchSize: Int32?
 
+    public var embeddingDimension: Int32?
+
     public var maxTokens: Int32?
 
     public var model: String?
@@ -12017,6 +12043,9 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
         if self.batchSize != nil {
             map["BatchSize"] = self.batchSize!
         }
+        if self.embeddingDimension != nil {
+            map["EmbeddingDimension"] = self.embeddingDimension!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
@@ -12042,6 +12071,9 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
         }
         if let value = dict["BatchSize"] as? Int32 {
             self.batchSize = value
+        }
+        if let value = dict["EmbeddingDimension"] as? Int32 {
+            self.embeddingDimension = value
         }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
