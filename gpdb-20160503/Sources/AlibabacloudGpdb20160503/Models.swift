@@ -7204,6 +7204,44 @@ public class CreateDatabaseResponse : Tea.TeaModel {
 }
 
 public class CreateDocumentCollectionRequest : Tea.TeaModel {
+    public class SparseVectorIndexConfig : Tea.TeaModel {
+        public var hnswEfConstruction: Int32?
+
+        public var hnswM: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hnswEfConstruction != nil {
+                map["HnswEfConstruction"] = self.hnswEfConstruction!
+            }
+            if self.hnswM != nil {
+                map["HnswM"] = self.hnswM!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["HnswEfConstruction"] as? Int32 {
+                self.hnswEfConstruction = value
+            }
+            if let value = dict["HnswM"] as? Int32 {
+                self.hnswM = value
+            }
+        }
+    }
     public var collection: String?
 
     public var DBInstanceId: String?
@@ -7250,6 +7288,12 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
 
     public var relationshipTypes: [String]?
 
+    public var sparseRetrievalFields: String?
+
+    public var sparseVectorIndexConfig: CreateDocumentCollectionRequest.SparseVectorIndexConfig?
+
+    public var supportSparse: Bool?
+
     public override init() {
         super.init()
     }
@@ -7260,6 +7304,7 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.sparseVectorIndexConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7332,6 +7377,15 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if self.relationshipTypes != nil {
             map["RelationshipTypes"] = self.relationshipTypes!
+        }
+        if self.sparseRetrievalFields != nil {
+            map["SparseRetrievalFields"] = self.sparseRetrievalFields!
+        }
+        if self.sparseVectorIndexConfig != nil {
+            map["SparseVectorIndexConfig"] = self.sparseVectorIndexConfig?.toMap()
+        }
+        if self.supportSparse != nil {
+            map["SupportSparse"] = self.supportSparse!
         }
         return map
     }
@@ -7407,6 +7461,17 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         if let value = dict["RelationshipTypes"] as? [String] {
             self.relationshipTypes = value
         }
+        if let value = dict["SparseRetrievalFields"] as? String {
+            self.sparseRetrievalFields = value
+        }
+        if let value = dict["SparseVectorIndexConfig"] as? [String: Any?] {
+            var model = CreateDocumentCollectionRequest.SparseVectorIndexConfig()
+            model.fromMap(value)
+            self.sparseVectorIndexConfig = model
+        }
+        if let value = dict["SupportSparse"] as? Bool {
+            self.supportSparse = value
+        }
     }
 }
 
@@ -7456,6 +7521,12 @@ public class CreateDocumentCollectionShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var relationshipTypesShrink: String?
+
+    public var sparseRetrievalFields: String?
+
+    public var sparseVectorIndexConfigShrink: String?
+
+    public var supportSparse: Bool?
 
     public override init() {
         super.init()
@@ -7540,6 +7611,15 @@ public class CreateDocumentCollectionShrinkRequest : Tea.TeaModel {
         if self.relationshipTypesShrink != nil {
             map["RelationshipTypes"] = self.relationshipTypesShrink!
         }
+        if self.sparseRetrievalFields != nil {
+            map["SparseRetrievalFields"] = self.sparseRetrievalFields!
+        }
+        if self.sparseVectorIndexConfigShrink != nil {
+            map["SparseVectorIndexConfig"] = self.sparseVectorIndexConfigShrink!
+        }
+        if self.supportSparse != nil {
+            map["SupportSparse"] = self.supportSparse!
+        }
         return map
     }
 
@@ -7613,6 +7693,15 @@ public class CreateDocumentCollectionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RelationshipTypes"] as? String {
             self.relationshipTypesShrink = value
+        }
+        if let value = dict["SparseRetrievalFields"] as? String {
+            self.sparseRetrievalFields = value
+        }
+        if let value = dict["SparseVectorIndexConfig"] as? String {
+            self.sparseVectorIndexConfigShrink = value
+        }
+        if let value = dict["SupportSparse"] as? Bool {
+            self.supportSparse = value
         }
     }
 }
@@ -40485,6 +40574,10 @@ public class ListDocumentCollectionsResponseBody : Tea.TeaModel {
 
             public var parser: String?
 
+            public var sparseRetrievalFields: String?
+
+            public var supportSparse: Bool?
+
             public override init() {
                 super.init()
             }
@@ -40520,6 +40613,12 @@ public class ListDocumentCollectionsResponseBody : Tea.TeaModel {
                 if self.parser != nil {
                     map["Parser"] = self.parser!
                 }
+                if self.sparseRetrievalFields != nil {
+                    map["SparseRetrievalFields"] = self.sparseRetrievalFields!
+                }
+                if self.supportSparse != nil {
+                    map["SupportSparse"] = self.supportSparse!
+                }
                 return map
             }
 
@@ -40545,6 +40644,12 @@ public class ListDocumentCollectionsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Parser"] as? String {
                     self.parser = value
+                }
+                if let value = dict["SparseRetrievalFields"] as? String {
+                    self.sparseRetrievalFields = value
+                }
+                if let value = dict["SupportSparse"] as? Bool {
+                    self.supportSparse = value
                 }
             }
         }

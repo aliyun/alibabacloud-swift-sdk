@@ -1255,6 +1255,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.relationshipTypes)) {
             request.relationshipTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.relationshipTypes, "RelationshipTypes", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sparseVectorIndexConfig)) {
+            request.sparseVectorIndexConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sparseVectorIndexConfig, "SparseVectorIndexConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.collection)) {
             query["Collection"] = request.collection ?? "";
@@ -1324,6 +1327,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.relationshipTypesShrink)) {
             query["RelationshipTypes"] = request.relationshipTypesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sparseRetrievalFields)) {
+            query["SparseRetrievalFields"] = request.sparseRetrievalFields ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sparseVectorIndexConfigShrink)) {
+            query["SparseVectorIndexConfig"] = request.sparseVectorIndexConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supportSparse)) {
+            query["SupportSparse"] = request.supportSparse!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
