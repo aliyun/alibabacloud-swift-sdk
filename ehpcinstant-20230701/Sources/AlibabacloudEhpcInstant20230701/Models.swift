@@ -5151,6 +5151,69 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SecurityPolicy : Tea.TeaModel {
+            public class SecurityGroup : Tea.TeaModel {
+                public var securityGroupIds: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityGroupIds != nil {
+                        map["SecurityGroupIds"] = self.securityGroupIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecurityGroupIds"] as? [String] {
+                        self.securityGroupIds = value
+                    }
+                }
+            }
+            public var securityGroup: GetJobResponseBody.JobInfo.SecurityPolicy.SecurityGroup?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.securityGroup?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroup != nil {
+                    map["SecurityGroup"] = self.securityGroup?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityGroup"] as? [String: Any?] {
+                    var model = GetJobResponseBody.JobInfo.SecurityPolicy.SecurityGroup()
+                    model.fromMap(value)
+                    self.securityGroup = model
+                }
+            }
+        }
         public class Tasks : Tea.TeaModel {
             public class ExecutorPolicy : Tea.TeaModel {
                 public class ArraySpec : Tea.TeaModel {
@@ -5601,11 +5664,59 @@ public class GetJobResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class VolumeMount : Tea.TeaModel {
+                    public var mountOptions: String?
+
+                    public var mountPath: String?
+
+                    public var volumeDriver: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.mountOptions != nil {
+                            map["MountOptions"] = self.mountOptions!
+                        }
+                        if self.mountPath != nil {
+                            map["MountPath"] = self.mountPath!
+                        }
+                        if self.volumeDriver != nil {
+                            map["VolumeDriver"] = self.volumeDriver!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["MountOptions"] as? String {
+                            self.mountOptions = value
+                        }
+                        if let value = dict["MountPath"] as? String {
+                            self.mountPath = value
+                        }
+                        if let value = dict["VolumeDriver"] as? String {
+                            self.volumeDriver = value
+                        }
+                    }
+                }
                 public var resource: GetJobResponseBody.JobInfo.Tasks.TaskSpec.Resource?
 
                 public var retryPolicy: GetJobResponseBody.JobInfo.Tasks.TaskSpec.RetryPolicy?
 
                 public var taskExecutor: [GetJobResponseBody.JobInfo.Tasks.TaskSpec.TaskExecutor]?
+
+                public var volumeMount: [GetJobResponseBody.JobInfo.Tasks.TaskSpec.VolumeMount]?
 
                 public override init() {
                     super.init()
@@ -5636,6 +5747,13 @@ public class GetJobResponseBody : Tea.TeaModel {
                         }
                         map["TaskExecutor"] = tmp
                     }
+                    if self.volumeMount != nil {
+                        var tmp : [Any] = []
+                        for k in self.volumeMount! {
+                            tmp.append(k.toMap())
+                        }
+                        map["VolumeMount"] = tmp
+                    }
                     return map
                 }
 
@@ -5663,6 +5781,19 @@ public class GetJobResponseBody : Tea.TeaModel {
                             }
                         }
                         self.taskExecutor = tmp
+                    }
+                    if let value = dict["VolumeMount"] as? [Any?] {
+                        var tmp : [GetJobResponseBody.JobInfo.Tasks.TaskSpec.VolumeMount] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetJobResponseBody.JobInfo.Tasks.TaskSpec.VolumeMount()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.volumeMount = tmp
                     }
                 }
             }
@@ -5765,6 +5896,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var jobScheduler: String?
 
+        public var securityPolicy: GetJobResponseBody.JobInfo.SecurityPolicy?
+
         public var startTime: String?
 
         public var status: String?
@@ -5783,6 +5916,7 @@ public class GetJobResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dependencyPolicy?.validate()
             try self.deploymentPolicy?.validate()
+            try self.securityPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5813,6 +5947,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if self.jobScheduler != nil {
                 map["JobScheduler"] = self.jobScheduler!
+            }
+            if self.securityPolicy != nil {
+                map["SecurityPolicy"] = self.securityPolicy?.toMap()
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -5862,6 +5999,11 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["JobScheduler"] as? String {
                 self.jobScheduler = value
+            }
+            if let value = dict["SecurityPolicy"] as? [String: Any?] {
+                var model = GetJobResponseBody.JobInfo.SecurityPolicy()
+                model.fromMap(value)
+                self.securityPolicy = model
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
