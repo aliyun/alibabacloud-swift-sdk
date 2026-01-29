@@ -100,6 +100,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addCrossAccountWithOptions(_ request: AddCrossAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddCrossAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alias)) {
+            query["Alias"] = request.alias ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crossAccountRoleName)) {
+            query["CrossAccountRoleName"] = request.crossAccountRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crossAccountType)) {
+            query["CrossAccountType"] = request.crossAccountType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crossAccountUserId)) {
+            query["CrossAccountUserId"] = request.crossAccountUserId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddCrossAccount",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddCrossAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addCrossAccount(_ request: AddCrossAccountRequest) async throws -> AddCrossAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addCrossAccountWithOptions(request as! AddCrossAccountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelBackupJobWithOptions(_ request: CancelBackupJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelBackupJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1303,6 +1343,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteClient(_ request: DeleteClientRequest) async throws -> DeleteClientResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteClientWithOptions(request as! DeleteClientRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCrossAccountWithOptions(_ request: DeleteCrossAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCrossAccountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.crossAccountRoleName)) {
+            query["CrossAccountRoleName"] = request.crossAccountRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crossAccountType)) {
+            query["CrossAccountType"] = request.crossAccountType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crossAccountUserId)) {
+            query["CrossAccountUserId"] = request.crossAccountUserId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCrossAccount",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCrossAccountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCrossAccount(_ request: DeleteCrossAccountRequest) async throws -> DeleteCrossAccountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCrossAccountWithOptions(request as! DeleteCrossAccountRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
