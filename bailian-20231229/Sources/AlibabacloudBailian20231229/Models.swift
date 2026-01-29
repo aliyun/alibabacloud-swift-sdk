@@ -2838,11 +2838,15 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var chunkMode: String?
 
+    public var connectId: String?
+
     public var database: String?
 
     public var datasourceCode: String?
 
     public var enableHeaders: Bool?
+
+    public var knowledgeScene: String?
 
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
 
@@ -2936,6 +2940,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
         }
+        if self.connectId != nil {
+            map["connectId"] = self.connectId!
+        }
         if self.database != nil {
             map["database"] = self.database!
         }
@@ -2944,6 +2951,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
+        }
+        if self.knowledgeScene != nil {
+            map["knowledgeScene"] = self.knowledgeScene!
         }
         if self.metaExtractColumns != nil {
             var tmp : [Any] = []
@@ -3044,6 +3054,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
+        if let value = dict["connectId"] as? String {
+            self.connectId = value
+        }
         if let value = dict["database"] as? String {
             self.database = value
         }
@@ -3052,6 +3065,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if let value = dict["enableHeaders"] as? Bool {
             self.enableHeaders = value
+        }
+        if let value = dict["knowledgeScene"] as? String {
+            self.knowledgeScene = value
         }
         if let value = dict["metaExtractColumns"] as? [Any?] {
             var tmp : [CreateIndexRequest.MetaExtractColumns] = []
@@ -3124,11 +3140,15 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var chunkMode: String?
 
+    public var connectId: String?
+
     public var database: String?
 
     public var datasourceCode: String?
 
     public var enableHeaders: Bool?
+
+    public var knowledgeScene: String?
 
     public var metaExtractColumnsShrink: String?
 
@@ -3217,6 +3237,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
         }
+        if self.connectId != nil {
+            map["connectId"] = self.connectId!
+        }
         if self.database != nil {
             map["database"] = self.database!
         }
@@ -3225,6 +3248,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
+        }
+        if self.knowledgeScene != nil {
+            map["knowledgeScene"] = self.knowledgeScene!
         }
         if self.metaExtractColumnsShrink != nil {
             map["metaExtractColumns"] = self.metaExtractColumnsShrink!
@@ -3309,6 +3335,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
+        if let value = dict["connectId"] as? String {
+            self.connectId = value
+        }
         if let value = dict["database"] as? String {
             self.database = value
         }
@@ -3317,6 +3346,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["enableHeaders"] as? Bool {
             self.enableHeaders = value
+        }
+        if let value = dict["knowledgeScene"] as? String {
+            self.knowledgeScene = value
         }
         if let value = dict["metaExtractColumns"] as? String {
             self.metaExtractColumnsShrink = value
