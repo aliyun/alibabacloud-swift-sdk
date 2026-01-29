@@ -96193,6 +96193,8 @@ public class PrecheckDuckDBDependencyRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var targetMode: String?
+
     public override init() {
         super.init()
     }
@@ -96219,6 +96221,9 @@ public class PrecheckDuckDBDependencyRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.targetMode != nil {
+            map["TargetMode"] = self.targetMode!
+        }
         return map
     }
 
@@ -96235,6 +96240,9 @@ public class PrecheckDuckDBDependencyRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["TargetMode"] as? String {
+            self.targetMode = value
         }
     }
 }
