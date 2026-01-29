@@ -5,6 +5,69 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class DiskInit : Tea.TeaModel {
+    public var diskName: String?
+
+    public var localDisk: Bool?
+
+    public var mkfsType: String?
+
+    public var mountForRuntime: Bool?
+
+    public var mountTarget: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskName != nil {
+            map["disk_name"] = self.diskName!
+        }
+        if self.localDisk != nil {
+            map["local_disk"] = self.localDisk!
+        }
+        if self.mkfsType != nil {
+            map["mkfs_type"] = self.mkfsType!
+        }
+        if self.mountForRuntime != nil {
+            map["mount_for_runtime"] = self.mountForRuntime!
+        }
+        if self.mountTarget != nil {
+            map["mount_target"] = self.mountTarget!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["disk_name"] as? String {
+            self.diskName = value
+        }
+        if let value = dict["local_disk"] as? Bool {
+            self.localDisk = value
+        }
+        if let value = dict["mkfs_type"] as? String {
+            self.mkfsType = value
+        }
+        if let value = dict["mount_for_runtime"] as? Bool {
+            self.mountForRuntime = value
+        }
+        if let value = dict["mount_target"] as? String {
+            self.mountTarget = value
+        }
+    }
+}
+
 public class Hugepage : Tea.TeaModel {
     public var khugepagedAllocSleepMillisecs: Int64?
 
@@ -1814,6 +1877,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var desiredSize: Int64?
 
+        public var diskInit: [DiskInit]?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -1928,6 +1993,13 @@ public class Nodepool : Tea.TeaModel {
             }
             if self.desiredSize != nil {
                 map["desired_size"] = self.desiredSize!
+            }
+            if self.diskInit != nil {
+                var tmp : [Any] = []
+                for k in self.diskInit! {
+                    tmp.append(k.toMap())
+                }
+                map["disk_init"] = tmp
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -2083,6 +2155,19 @@ public class Nodepool : Tea.TeaModel {
             }
             if let value = dict["desired_size"] as? Int64 {
                 self.desiredSize = value
+            }
+            if let value = dict["disk_init"] as? [Any?] {
+                var tmp : [DiskInit] = []
+                for v in value {
+                    if v != nil {
+                        var model = DiskInit()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.diskInit = tmp
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -7430,6 +7515,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var desiredSize: Int64?
 
+        public var diskInit: [DiskInit]?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -7555,6 +7642,13 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.desiredSize != nil {
                 map["desired_size"] = self.desiredSize!
+            }
+            if self.diskInit != nil {
+                var tmp : [Any] = []
+                for k in self.diskInit! {
+                    tmp.append(k.toMap())
+                }
+                map["disk_init"] = tmp
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -7729,6 +7823,19 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["desired_size"] as? Int64 {
                 self.desiredSize = value
+            }
+            if let value = dict["disk_init"] as? [Any?] {
+                var tmp : [DiskInit] = []
+                for v in value {
+                    if v != nil {
+                        var model = DiskInit()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.diskInit = tmp
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -14101,6 +14208,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var desiredSize: Int64?
 
+        public var diskInit: [DiskInit]?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -14230,6 +14339,13 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.desiredSize != nil {
                 map["desired_size"] = self.desiredSize!
+            }
+            if self.diskInit != nil {
+                var tmp : [Any] = []
+                for k in self.diskInit! {
+                    tmp.append(k.toMap())
+                }
+                map["disk_init"] = tmp
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -14410,6 +14526,19 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["desired_size"] as? Int64 {
                 self.desiredSize = value
+            }
+            if let value = dict["disk_init"] as? [Any?] {
+                var tmp : [DiskInit] = []
+                for v in value {
+                    if v != nil {
+                        var model = DiskInit()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.diskInit = tmp
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
@@ -15995,6 +16124,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var desiredSize: Int64?
 
+            public var diskInit: [DiskInit]?
+
             public var imageId: String?
 
             public var imageType: String?
@@ -16121,6 +16252,13 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.desiredSize != nil {
                     map["desired_size"] = self.desiredSize!
+                }
+                if self.diskInit != nil {
+                    var tmp : [Any] = []
+                    for k in self.diskInit! {
+                        tmp.append(k.toMap())
+                    }
+                    map["disk_init"] = tmp
                 }
                 if self.imageId != nil {
                     map["image_id"] = self.imageId!
@@ -16298,6 +16436,19 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["desired_size"] as? Int64 {
                     self.desiredSize = value
+                }
+                if let value = dict["disk_init"] as? [Any?] {
+                    var tmp : [DiskInit] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DiskInit()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.diskInit = tmp
                 }
                 if let value = dict["image_id"] as? String {
                     self.imageId = value
@@ -32397,6 +32548,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var desiredSize: Int64?
 
+        public var diskInit: [DiskInit]?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -32506,6 +32659,13 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.desiredSize != nil {
                 map["desired_size"] = self.desiredSize!
+            }
+            if self.diskInit != nil {
+                var tmp : [Any] = []
+                for k in self.diskInit! {
+                    tmp.append(k.toMap())
+                }
+                map["disk_init"] = tmp
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
@@ -32659,6 +32819,19 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["desired_size"] as? Int64 {
                 self.desiredSize = value
+            }
+            if let value = dict["disk_init"] as? [Any?] {
+                var tmp : [DiskInit] = []
+                for v in value {
+                    if v != nil {
+                        var model = DiskInit()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.diskInit = tmp
             }
             if let value = dict["image_id"] as? String {
                 self.imageId = value
