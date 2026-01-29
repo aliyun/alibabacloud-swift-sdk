@@ -846,8 +846,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func runMarketingInformationWritingWithOptions(_ workspaceId: String, _ request: RunMarketingInformationWritingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunMarketingInformationWritingResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func runMarketingInformationWritingWithOptions(_ workspaceId: String, _ tmpReq: RunMarketingInformationWritingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunMarketingInformationWritingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunMarketingInformationWritingShrinkRequest = RunMarketingInformationWritingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.extParameters)) {
+            request.extParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.extParameters, "extParameters", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.apiKey)) {
             body["apiKey"] = request.apiKey ?? "";
@@ -858,17 +863,38 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.customPrompt)) {
             body["customPrompt"] = request.customPrompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extParametersShrink)) {
+            body["extParameters"] = request.extParametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.generateCount)) {
+            body["generateCount"] = request.generateCount ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.inputExample)) {
             body["inputExample"] = request.inputExample ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keywords)) {
+            body["keywords"] = request.keywords ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["language"] = request.language ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modelId)) {
             body["modelId"] = request.modelId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.otherRequirements)) {
+            body["otherRequirements"] = request.otherRequirements ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outputExample)) {
             body["outputExample"] = request.outputExample ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceMaterial)) {
             body["sourceMaterial"] = request.sourceMaterial ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wordCountRange)) {
+            body["wordCountRange"] = request.wordCountRange ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.writingType)) {
             body["writingType"] = request.writingType ?? "";

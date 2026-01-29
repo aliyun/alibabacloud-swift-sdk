@@ -9465,13 +9465,27 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
 
     public var customPrompt: String?
 
+    public var extParameters: [String: String]?
+
+    public var generateCount: String?
+
     public var inputExample: String?
+
+    public var keywords: String?
+
+    public var language: String?
 
     public var modelId: String?
 
+    public var otherRequirements: String?
+
     public var outputExample: String?
 
+    public var prompt: String?
+
     public var sourceMaterial: String?
+
+    public var wordCountRange: String?
 
     public var writingType: String?
 
@@ -9498,17 +9512,38 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
         if self.customPrompt != nil {
             map["customPrompt"] = self.customPrompt!
         }
+        if self.extParameters != nil {
+            map["extParameters"] = self.extParameters!
+        }
+        if self.generateCount != nil {
+            map["generateCount"] = self.generateCount!
+        }
         if self.inputExample != nil {
             map["inputExample"] = self.inputExample!
+        }
+        if self.keywords != nil {
+            map["keywords"] = self.keywords!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
         }
         if self.modelId != nil {
             map["modelId"] = self.modelId!
         }
+        if self.otherRequirements != nil {
+            map["otherRequirements"] = self.otherRequirements!
+        }
         if self.outputExample != nil {
             map["outputExample"] = self.outputExample!
         }
+        if self.prompt != nil {
+            map["prompt"] = self.prompt!
+        }
         if self.sourceMaterial != nil {
             map["sourceMaterial"] = self.sourceMaterial!
+        }
+        if self.wordCountRange != nil {
+            map["wordCountRange"] = self.wordCountRange!
         }
         if self.writingType != nil {
             map["writingType"] = self.writingType!
@@ -9527,17 +9562,181 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
         if let value = dict["customPrompt"] as? String {
             self.customPrompt = value
         }
+        if let value = dict["extParameters"] as? [String: String] {
+            self.extParameters = value
+        }
+        if let value = dict["generateCount"] as? String {
+            self.generateCount = value
+        }
         if let value = dict["inputExample"] as? String {
             self.inputExample = value
+        }
+        if let value = dict["keywords"] as? String {
+            self.keywords = value
+        }
+        if let value = dict["language"] as? String {
+            self.language = value
         }
         if let value = dict["modelId"] as? String {
             self.modelId = value
         }
+        if let value = dict["otherRequirements"] as? String {
+            self.otherRequirements = value
+        }
         if let value = dict["outputExample"] as? String {
             self.outputExample = value
         }
+        if let value = dict["prompt"] as? String {
+            self.prompt = value
+        }
         if let value = dict["sourceMaterial"] as? String {
             self.sourceMaterial = value
+        }
+        if let value = dict["wordCountRange"] as? String {
+            self.wordCountRange = value
+        }
+        if let value = dict["writingType"] as? String {
+            self.writingType = value
+        }
+    }
+}
+
+public class RunMarketingInformationWritingShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
+    public var customLimitation: String?
+
+    public var customPrompt: String?
+
+    public var extParametersShrink: String?
+
+    public var generateCount: String?
+
+    public var inputExample: String?
+
+    public var keywords: String?
+
+    public var language: String?
+
+    public var modelId: String?
+
+    public var otherRequirements: String?
+
+    public var outputExample: String?
+
+    public var prompt: String?
+
+    public var sourceMaterial: String?
+
+    public var wordCountRange: String?
+
+    public var writingType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
+        if self.customLimitation != nil {
+            map["customLimitation"] = self.customLimitation!
+        }
+        if self.customPrompt != nil {
+            map["customPrompt"] = self.customPrompt!
+        }
+        if self.extParametersShrink != nil {
+            map["extParameters"] = self.extParametersShrink!
+        }
+        if self.generateCount != nil {
+            map["generateCount"] = self.generateCount!
+        }
+        if self.inputExample != nil {
+            map["inputExample"] = self.inputExample!
+        }
+        if self.keywords != nil {
+            map["keywords"] = self.keywords!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.otherRequirements != nil {
+            map["otherRequirements"] = self.otherRequirements!
+        }
+        if self.outputExample != nil {
+            map["outputExample"] = self.outputExample!
+        }
+        if self.prompt != nil {
+            map["prompt"] = self.prompt!
+        }
+        if self.sourceMaterial != nil {
+            map["sourceMaterial"] = self.sourceMaterial!
+        }
+        if self.wordCountRange != nil {
+            map["wordCountRange"] = self.wordCountRange!
+        }
+        if self.writingType != nil {
+            map["writingType"] = self.writingType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["apiKey"] as? String {
+            self.apiKey = value
+        }
+        if let value = dict["customLimitation"] as? String {
+            self.customLimitation = value
+        }
+        if let value = dict["customPrompt"] as? String {
+            self.customPrompt = value
+        }
+        if let value = dict["extParameters"] as? String {
+            self.extParametersShrink = value
+        }
+        if let value = dict["generateCount"] as? String {
+            self.generateCount = value
+        }
+        if let value = dict["inputExample"] as? String {
+            self.inputExample = value
+        }
+        if let value = dict["keywords"] as? String {
+            self.keywords = value
+        }
+        if let value = dict["language"] as? String {
+            self.language = value
+        }
+        if let value = dict["modelId"] as? String {
+            self.modelId = value
+        }
+        if let value = dict["otherRequirements"] as? String {
+            self.otherRequirements = value
+        }
+        if let value = dict["outputExample"] as? String {
+            self.outputExample = value
+        }
+        if let value = dict["prompt"] as? String {
+            self.prompt = value
+        }
+        if let value = dict["sourceMaterial"] as? String {
+            self.sourceMaterial = value
+        }
+        if let value = dict["wordCountRange"] as? String {
+            self.wordCountRange = value
         }
         if let value = dict["writingType"] as? String {
             self.writingType = value
