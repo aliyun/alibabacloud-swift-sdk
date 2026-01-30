@@ -6212,6 +6212,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
         public var networkInterfaceTrafficMode: String?
 
+        public var secondaryPrivateIpAddressCount: Int32?
+
         public var securityGroupIds: [String]?
 
         public override init() {
@@ -6237,6 +6239,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             if self.networkInterfaceTrafficMode != nil {
                 map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
             }
+            if self.secondaryPrivateIpAddressCount != nil {
+                map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
@@ -6253,6 +6258,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             }
             if let value = dict["NetworkInterfaceTrafficMode"] as? String {
                 self.networkInterfaceTrafficMode = value
+            }
+            if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                self.secondaryPrivateIpAddressCount = value
             }
             if let value = dict["SecurityGroupIds"] as? [String] {
                 self.securityGroupIds = value
@@ -7576,6 +7584,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
         public var networkInterfaceTrafficMode: String?
 
+        public var secondaryPrivateIpAddressCount: Int32?
+
         public var securityGroupIds: [String]?
 
         public override init() {
@@ -7601,6 +7611,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.networkInterfaceTrafficMode != nil {
                 map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
             }
+            if self.secondaryPrivateIpAddressCount != nil {
+                map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
@@ -7617,6 +7630,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["NetworkInterfaceTrafficMode"] as? String {
                 self.networkInterfaceTrafficMode = value
+            }
+            if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                self.secondaryPrivateIpAddressCount = value
             }
             if let value = dict["SecurityGroupIds"] as? [String] {
                 self.securityGroupIds = value
@@ -22403,6 +22419,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
             public var networkInterfaceTrafficMode: String?
 
+            public var secondaryPrivateIpAddressCount: Int32?
+
             public var securityGroupIds: [String]?
 
             public override init() {
@@ -22428,6 +22446,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 if self.networkInterfaceTrafficMode != nil {
                     map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
                 }
+                if self.secondaryPrivateIpAddressCount != nil {
+                    map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+                }
                 if self.securityGroupIds != nil {
                     map["SecurityGroupIds"] = self.securityGroupIds!
                 }
@@ -22444,6 +22465,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NetworkInterfaceTrafficMode"] as? String {
                     self.networkInterfaceTrafficMode = value
+                }
+                if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                    self.secondaryPrivateIpAddressCount = value
                 }
                 if let value = dict["SecurityGroupIds"] as? [String] {
                     self.securityGroupIds = value
@@ -35335,6 +35359,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
         public var networkInterfaceTrafficMode: String?
 
+        public var secondaryPrivateIpAddressCount: Int32?
+
         public var securityGroupIds: [String]?
 
         public override init() {
@@ -35360,6 +35386,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             if self.networkInterfaceTrafficMode != nil {
                 map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
             }
+            if self.secondaryPrivateIpAddressCount != nil {
+                map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
@@ -35376,6 +35405,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             }
             if let value = dict["NetworkInterfaceTrafficMode"] as? String {
                 self.networkInterfaceTrafficMode = value
+            }
+            if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                self.secondaryPrivateIpAddressCount = value
             }
             if let value = dict["SecurityGroupIds"] as? [String] {
                 self.securityGroupIds = value
@@ -36683,6 +36715,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
         public var networkInterfaceTrafficMode: String?
 
+        public var secondaryPrivateIpAddressCount: Int32?
+
         public var securityGroupIds: [String]?
 
         public override init() {
@@ -36708,6 +36742,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.networkInterfaceTrafficMode != nil {
                 map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
             }
+            if self.secondaryPrivateIpAddressCount != nil {
+                map["SecondaryPrivateIpAddressCount"] = self.secondaryPrivateIpAddressCount!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
@@ -36724,6 +36761,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["NetworkInterfaceTrafficMode"] as? String {
                 self.networkInterfaceTrafficMode = value
+            }
+            if let value = dict["SecondaryPrivateIpAddressCount"] as? Int32 {
+                self.secondaryPrivateIpAddressCount = value
             }
             if let value = dict["SecurityGroupIds"] as? [String] {
                 self.securityGroupIds = value
