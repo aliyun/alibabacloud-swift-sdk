@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudPaiRecService20221213` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/pairecservice-20221213" "4.0.2"
+github "alibabacloud-sdk-swift/pairecservice-20221213" "4.1.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/pairecservice-20221213" "4.0.2"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/pairecservice-20221213.git", from: "4.0.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/pairecservice-20221213.git", from: "4.1.0")
 ]
 ```
 
