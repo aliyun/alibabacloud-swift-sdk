@@ -5694,6 +5694,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyRenderingChargeTypeWithOptions(_ request: ModifyRenderingChargeTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyRenderingChargeTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceBillingCycle)) {
+            query["InstanceBillingCycle"] = request.instanceBillingCycle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
+            query["InstanceChargeType"] = request.instanceChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceId)) {
+            query["RenderingInstanceId"] = request.renderingInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyRenderingChargeType",
+            "version": "2018-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyRenderingChargeTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyRenderingChargeType(_ request: ModifyRenderingChargeTypeRequest) async throws -> ModifyRenderingChargeTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyRenderingChargeTypeWithOptions(request as! ModifyRenderingChargeTypeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyRenderingInstanceWithOptions(_ request: ModifyRenderingInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyRenderingInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

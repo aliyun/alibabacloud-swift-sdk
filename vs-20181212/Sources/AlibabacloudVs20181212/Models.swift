@@ -31600,6 +31600,158 @@ public class ModifyParentPlatformResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyRenderingChargeTypeRequest : Tea.TeaModel {
+    public var autoRenew: Bool?
+
+    public var instanceBillingCycle: String?
+
+    public var instanceChargeType: String?
+
+    public var period: String?
+
+    public var renderingInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["InstanceBillingCycle"] as? String {
+            self.instanceBillingCycle = value
+        }
+        if let value = dict["InstanceChargeType"] as? String {
+            self.instanceChargeType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
+    }
+}
+
+public class ModifyRenderingChargeTypeResponseBody : Tea.TeaModel {
+    public var renderingInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyRenderingChargeTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyRenderingChargeTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyRenderingChargeTypeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyRenderingInstanceRequest : Tea.TeaModel {
     public var renderingInstanceId: String?
 
