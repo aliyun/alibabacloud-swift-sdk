@@ -1822,7 +1822,7 @@ public class GetInstanceResponse : Tea.TeaModel {
 }
 
 public class ListClusterTypeResponseBody : Tea.TeaModel {
-    public class ClusterTypeDetailList : Tea.TeaModel {
+    public class ClusterTypeInfos : Tea.TeaModel {
         public var clusterType: String?
 
         public var isMultiAZ: Bool?
@@ -1860,9 +1860,9 @@ public class ListClusterTypeResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var clusterTypeDetailList: [ListClusterTypeResponseBody.ClusterTypeDetailList]?
+    public var clusterTypeInfos: [ListClusterTypeResponseBody.ClusterTypeInfos]?
 
-    public var clusterTypeList: [String]?
+    public var clusterTypes: [String]?
 
     public var requestId: String?
 
@@ -1880,15 +1880,15 @@ public class ListClusterTypeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.clusterTypeDetailList != nil {
+        if self.clusterTypeInfos != nil {
             var tmp : [Any] = []
-            for k in self.clusterTypeDetailList! {
+            for k in self.clusterTypeInfos! {
                 tmp.append(k.toMap())
             }
-            map["ClusterTypeDetailList"] = tmp
+            map["ClusterTypeInfos"] = tmp
         }
-        if self.clusterTypeList != nil {
-            map["ClusterTypeList"] = self.clusterTypeList!
+        if self.clusterTypes != nil {
+            map["ClusterTypes"] = self.clusterTypes!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -1898,21 +1898,21 @@ public class ListClusterTypeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ClusterTypeDetailList"] as? [Any?] {
-            var tmp : [ListClusterTypeResponseBody.ClusterTypeDetailList] = []
+        if let value = dict["ClusterTypeInfos"] as? [Any?] {
+            var tmp : [ListClusterTypeResponseBody.ClusterTypeInfos] = []
             for v in value {
                 if v != nil {
-                    var model = ListClusterTypeResponseBody.ClusterTypeDetailList()
+                    var model = ListClusterTypeResponseBody.ClusterTypeInfos()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
                     tmp.append(model)
                 }
             }
-            self.clusterTypeDetailList = tmp
+            self.clusterTypeInfos = tmp
         }
-        if let value = dict["ClusterTypeList"] as? [String] {
-            self.clusterTypeList = value
+        if let value = dict["ClusterTypes"] as? [String] {
+            self.clusterTypes = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
