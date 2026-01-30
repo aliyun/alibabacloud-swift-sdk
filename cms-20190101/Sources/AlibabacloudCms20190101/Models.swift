@@ -39828,6 +39828,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var matchRule: Int32?
 
+            public var maxTlsVersion: String?
+
             public var minTlsVersion: String?
 
             public var password: String?
@@ -39864,9 +39866,13 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var scrollEnd: Bool?
 
+            public var serverName: String?
+
             public var steps: DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.Steps?
 
             public var strictMode: Bool?
+
+            public var supportedCipherSuits: String?
 
             public var timeOut: Int64?
 
@@ -39881,6 +39887,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
             public var trafficHijackElementWhitelist: DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.TrafficHijackElementWhitelist?
 
             public var usePrivateCrt: Bool?
+
+            public var useSsl: Bool?
 
             public var username: String?
 
@@ -40009,6 +40017,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if self.matchRule != nil {
                     map["match_rule"] = self.matchRule!
                 }
+                if self.maxTlsVersion != nil {
+                    map["max_tls_version"] = self.maxTlsVersion!
+                }
                 if self.minTlsVersion != nil {
                     map["min_tls_version"] = self.minTlsVersion!
                 }
@@ -40063,11 +40074,17 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if self.scrollEnd != nil {
                     map["scroll_end"] = self.scrollEnd!
                 }
+                if self.serverName != nil {
+                    map["server_name"] = self.serverName!
+                }
                 if self.steps != nil {
                     map["steps"] = self.steps?.toMap()
                 }
                 if self.strictMode != nil {
                     map["strict_mode"] = self.strictMode!
+                }
+                if self.supportedCipherSuits != nil {
+                    map["supported_cipher_suits"] = self.supportedCipherSuits!
                 }
                 if self.timeOut != nil {
                     map["time_out"] = self.timeOut!
@@ -40089,6 +40106,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.usePrivateCrt != nil {
                     map["use_private_crt"] = self.usePrivateCrt!
+                }
+                if self.useSsl != nil {
+                    map["use_ssl"] = self.useSsl!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -40215,6 +40235,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if let value = dict["match_rule"] as? Int32 {
                     self.matchRule = value
                 }
+                if let value = dict["max_tls_version"] as? String {
+                    self.maxTlsVersion = value
+                }
                 if let value = dict["min_tls_version"] as? String {
                     self.minTlsVersion = value
                 }
@@ -40271,6 +40294,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if let value = dict["scroll_end"] as? Bool {
                     self.scrollEnd = value
                 }
+                if let value = dict["server_name"] as? String {
+                    self.serverName = value
+                }
                 if let value = dict["steps"] as? [String: Any?] {
                     var model = DescribeSiteMonitorAttributeResponseBody.SiteMonitors.OptionJson.Steps()
                     model.fromMap(value)
@@ -40278,6 +40304,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["strict_mode"] as? Bool {
                     self.strictMode = value
+                }
+                if let value = dict["supported_cipher_suits"] as? String {
+                    self.supportedCipherSuits = value
                 }
                 if let value = dict["time_out"] as? Int64 {
                     self.timeOut = value
@@ -40303,6 +40332,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["use_private_crt"] as? Bool {
                     self.usePrivateCrt = value
+                }
+                if let value = dict["use_ssl"] as? Bool {
+                    self.useSsl = value
                 }
                 if let value = dict["username"] as? String {
                     self.username = value
