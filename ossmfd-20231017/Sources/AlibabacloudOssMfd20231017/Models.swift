@@ -1755,9 +1755,13 @@ public class GetOssScanConfigResponse : Tea.TeaModel {
 }
 
 public class ListObjectScanEventRequest : Tea.TeaModel {
+    public var batchType: String?
+
     public var bucketName: String?
 
     public var currentPage: Int32?
+
+    public var eventId: Int64?
 
     public var eventName: String?
 
@@ -1774,6 +1778,8 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
     public var riskLevel: String?
 
     public var source: String?
+
+    public var status: Int32?
 
     public var timeEnd: Int64?
 
@@ -1793,11 +1799,17 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.batchType != nil {
+            map["BatchType"] = self.batchType!
+        }
         if self.bucketName != nil {
             map["BucketName"] = self.bucketName!
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
         }
         if self.eventName != nil {
             map["EventName"] = self.eventName!
@@ -1823,6 +1835,9 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.timeEnd != nil {
             map["TimeEnd"] = self.timeEnd!
         }
@@ -1834,11 +1849,17 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BatchType"] as? String {
+            self.batchType = value
+        }
         if let value = dict["BucketName"] as? String {
             self.bucketName = value
         }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["EventId"] as? Int64 {
+            self.eventId = value
         }
         if let value = dict["EventName"] as? String {
             self.eventName = value
@@ -1863,6 +1884,9 @@ public class ListObjectScanEventRequest : Tea.TeaModel {
         }
         if let value = dict["Source"] as? String {
             self.source = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
         }
         if let value = dict["TimeEnd"] as? Int64 {
             self.timeEnd = value
@@ -1943,6 +1967,8 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
 
         public var displaySandboxResult: String?
 
+        public var errorMsg: String?
+
         public var eventId: Int64?
 
         public var eventName: String?
@@ -1957,7 +1983,11 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
 
         public var md5: String?
 
+        public var operateResult: String?
+
         public var ossKey: String?
+
+        public var remark: String?
 
         public var riskLevel: String?
 
@@ -1966,6 +1996,8 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
         public var sha256: String?
 
         public var source: String?
+
+        public var status: Int32?
 
         public override init() {
             super.init()
@@ -1994,6 +2026,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             if self.displaySandboxResult != nil {
                 map["DisplaySandboxResult"] = self.displaySandboxResult!
             }
+            if self.errorMsg != nil {
+                map["ErrorMsg"] = self.errorMsg!
+            }
             if self.eventId != nil {
                 map["EventId"] = self.eventId!
             }
@@ -2015,8 +2050,14 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             if self.md5 != nil {
                 map["Md5"] = self.md5!
             }
+            if self.operateResult != nil {
+                map["OperateResult"] = self.operateResult!
+            }
             if self.ossKey != nil {
                 map["OssKey"] = self.ossKey!
+            }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
             }
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
@@ -2029,6 +2070,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             }
             if self.source != nil {
                 map["Source"] = self.source!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
             }
             return map
         }
@@ -2054,6 +2098,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             if let value = dict["DisplaySandboxResult"] as? String {
                 self.displaySandboxResult = value
             }
+            if let value = dict["ErrorMsg"] as? String {
+                self.errorMsg = value
+            }
             if let value = dict["EventId"] as? Int64 {
                 self.eventId = value
             }
@@ -2075,8 +2122,14 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             if let value = dict["Md5"] as? String {
                 self.md5 = value
             }
+            if let value = dict["OperateResult"] as? String {
+                self.operateResult = value
+            }
             if let value = dict["OssKey"] as? String {
                 self.ossKey = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
             if let value = dict["RiskLevel"] as? String {
                 self.riskLevel = value
@@ -2089,6 +2142,9 @@ public class ListObjectScanEventResponseBody : Tea.TeaModel {
             }
             if let value = dict["Source"] as? String {
                 self.source = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
             }
         }
     }

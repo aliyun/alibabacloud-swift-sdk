@@ -383,11 +383,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listObjectScanEventWithOptions(_ request: ListObjectScanEventRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListObjectScanEventResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchType)) {
+            query["BatchType"] = request.batchType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bucketName)) {
             query["BucketName"] = request.bucketName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eventId)) {
+            query["EventId"] = request.eventId!;
         }
         if (!TeaUtils.Client.isUnset(request.eventName)) {
             query["EventName"] = request.eventName ?? "";
@@ -412,6 +418,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
         }
         if (!TeaUtils.Client.isUnset(request.timeEnd)) {
             query["TimeEnd"] = request.timeEnd!;
