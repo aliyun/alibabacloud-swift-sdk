@@ -1594,6 +1594,8 @@ public class CheckResultResponseBody : Tea.TeaModel {
 
         public var extRiskInfo: String?
 
+        public var extSourceInfo: String?
+
         public var passed: String?
 
         public var subCode: String?
@@ -1630,6 +1632,9 @@ public class CheckResultResponseBody : Tea.TeaModel {
             if self.extRiskInfo != nil {
                 map["ExtRiskInfo"] = self.extRiskInfo!
             }
+            if self.extSourceInfo != nil {
+                map["ExtSourceInfo"] = self.extSourceInfo!
+            }
             if self.passed != nil {
                 map["Passed"] = self.passed!
             }
@@ -1658,6 +1663,9 @@ public class CheckResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExtRiskInfo"] as? String {
                 self.extRiskInfo = value
+            }
+            if let value = dict["ExtSourceInfo"] as? String {
+                self.extSourceInfo = value
             }
             if let value = dict["Passed"] as? String {
                 self.passed = value
@@ -7067,6 +7075,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var editOcrResult: String?
 
+    public var email: String?
+
     public var experienceCode: String?
 
     public var faceGroupCodes: String?
@@ -7094,6 +7104,8 @@ public class InitializeRequest : Tea.TeaModel {
     public var merchantUserId: String?
 
     public var metaInfo: String?
+
+    public var mobile: String?
 
     public var model: String?
 
@@ -7198,6 +7210,9 @@ public class InitializeRequest : Tea.TeaModel {
         if self.editOcrResult != nil {
             map["EditOcrResult"] = self.editOcrResult!
         }
+        if self.email != nil {
+            map["Email"] = self.email!
+        }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
         }
@@ -7239,6 +7254,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.metaInfo != nil {
             map["MetaInfo"] = self.metaInfo!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
         }
         if self.model != nil {
             map["Model"] = self.model!
@@ -7353,6 +7371,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["EditOcrResult"] as? String {
             self.editOcrResult = value
         }
+        if let value = dict["Email"] as? String {
+            self.email = value
+        }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
         }
@@ -7394,6 +7415,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if let value = dict["MetaInfo"] as? String {
             self.metaInfo = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
@@ -7490,6 +7514,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var editOcrResult: String?
 
+    public var email: String?
+
     public var experienceCode: String?
 
     public var faceGroupCodes: String?
@@ -7517,6 +7543,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var merchantUserId: String?
 
     public var metaInfo: String?
+
+    public var mobile: String?
 
     public var model: String?
 
@@ -7621,6 +7649,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.editOcrResult != nil {
             map["EditOcrResult"] = self.editOcrResult!
         }
+        if self.email != nil {
+            map["Email"] = self.email!
+        }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
         }
@@ -7662,6 +7693,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.metaInfo != nil {
             map["MetaInfo"] = self.metaInfo!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
         }
         if self.model != nil {
             map["Model"] = self.model!
@@ -7776,6 +7810,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if let value = dict["EditOcrResult"] as? String {
             self.editOcrResult = value
         }
+        if let value = dict["Email"] as? String {
+            self.email = value
+        }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
         }
@@ -7817,6 +7854,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MetaInfo"] as? String {
             self.metaInfo = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
