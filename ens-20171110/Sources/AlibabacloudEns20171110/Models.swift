@@ -23988,6 +23988,8 @@ public class DescribeClusterNodesResponse : Tea.TeaModel {
 public class DescribeClusterUserKubeconfigRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var privateIpAddress: Bool?
+
     public override init() {
         super.init()
     }
@@ -24005,6 +24007,9 @@ public class DescribeClusterUserKubeconfigRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.privateIpAddress != nil {
+            map["PrivateIpAddress"] = self.privateIpAddress!
+        }
         return map
     }
 
@@ -24012,6 +24017,9 @@ public class DescribeClusterUserKubeconfigRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["PrivateIpAddress"] as? Bool {
+            self.privateIpAddress = value
         }
     }
 }
