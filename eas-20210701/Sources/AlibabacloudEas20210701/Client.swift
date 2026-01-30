@@ -3617,6 +3617,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.newDiskSize)) {
             body["NewDiskSize"] = request.newDiskSize ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["Reason"] = request.reason ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

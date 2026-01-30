@@ -764,6 +764,10 @@ public class ResourceInstance : Tea.TeaModel {
 
     public var labels: [ResourceInstance.Labels]?
 
+    public var lastCordonOperator: String?
+
+    public var lastCordonReason: String?
+
     public var region: String?
 
     public var resourceId: String?
@@ -854,6 +858,12 @@ public class ResourceInstance : Tea.TeaModel {
             }
             map["Labels"] = tmp
         }
+        if self.lastCordonOperator != nil {
+            map["LastCordonOperator"] = self.lastCordonOperator!
+        }
+        if self.lastCordonReason != nil {
+            map["LastCordonReason"] = self.lastCordonReason!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -943,6 +953,12 @@ public class ResourceInstance : Tea.TeaModel {
                 }
             }
             self.labels = tmp
+        }
+        if let value = dict["LastCordonOperator"] as? String {
+            self.lastCordonOperator = value
+        }
+        if let value = dict["LastCordonReason"] as? String {
+            self.lastCordonReason = value
         }
         if let value = dict["Region"] as? String {
             self.region = value
@@ -18645,6 +18661,8 @@ public class UpdateResourceInstanceRequest : Tea.TeaModel {
 
     public var newDiskSize: String?
 
+    public var reason: String?
+
     public override init() {
         super.init()
     }
@@ -18665,6 +18683,9 @@ public class UpdateResourceInstanceRequest : Tea.TeaModel {
         if self.newDiskSize != nil {
             map["NewDiskSize"] = self.newDiskSize!
         }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
         return map
     }
 
@@ -18675,6 +18696,9 @@ public class UpdateResourceInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["NewDiskSize"] as? String {
             self.newDiskSize = value
+        }
+        if let value = dict["Reason"] as? String {
+            self.reason = value
         }
     }
 }
