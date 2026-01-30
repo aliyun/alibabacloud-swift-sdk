@@ -13970,6 +13970,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.taskAction)) {
             query["TaskAction"] = request.taskAction ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.taskGroupId)) {
+            query["TaskGroupId"] = request.taskGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskIds)) {
             query["TaskIds"] = request.taskIds ?? "";
         }

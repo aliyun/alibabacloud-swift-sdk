@@ -91234,6 +91234,8 @@ public class DescribeTasksRequest : Tea.TeaModel {
 
     public var taskAction: String?
 
+    public var taskGroupId: String?
+
     public var taskIds: String?
 
     public var taskStatus: String?
@@ -91285,6 +91287,9 @@ public class DescribeTasksRequest : Tea.TeaModel {
         if self.taskAction != nil {
             map["TaskAction"] = self.taskAction!
         }
+        if self.taskGroupId != nil {
+            map["TaskGroupId"] = self.taskGroupId!
+        }
         if self.taskIds != nil {
             map["TaskIds"] = self.taskIds!
         }
@@ -91328,6 +91333,9 @@ public class DescribeTasksRequest : Tea.TeaModel {
         }
         if let value = dict["TaskAction"] as? String {
             self.taskAction = value
+        }
+        if let value = dict["TaskGroupId"] as? String {
+            self.taskGroupId = value
         }
         if let value = dict["TaskIds"] as? String {
             self.taskIds = value
