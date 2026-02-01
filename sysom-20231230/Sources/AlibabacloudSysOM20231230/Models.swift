@@ -2168,6 +2168,10 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
         public class Jobs : Tea.TeaModel {
             public var error: String?
 
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
             public var instance: String?
 
             public var params: Any?
@@ -2195,6 +2199,12 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
                 if self.error != nil {
                     map["error"] = self.error!
                 }
+                if self.errorCode != nil {
+                    map["errorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["errorMessage"] = self.errorMessage!
+                }
                 if self.instance != nil {
                     map["instance"] = self.instance!
                 }
@@ -2217,6 +2227,12 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["error"] as? String {
                     self.error = value
+                }
+                if let value = dict["errorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["errorMessage"] as? String {
+                    self.errorMessage = value
                 }
                 if let value = dict["instance"] as? String {
                     self.instance = value
