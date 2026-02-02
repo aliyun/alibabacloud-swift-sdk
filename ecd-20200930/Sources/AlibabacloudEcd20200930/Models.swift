@@ -15327,6 +15327,166 @@ public class CreatePolicyGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreateQosRuleRequest : Tea.TeaModel {
+    public var authAndroidId: [String]?
+
+    public var authDesktopId: [String]?
+
+    public var download: Int32?
+
+    public var networkPackageId: String?
+
+    public var qosRuleName: String?
+
+    public var upload: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authAndroidId != nil {
+            map["AuthAndroidId"] = self.authAndroidId!
+        }
+        if self.authDesktopId != nil {
+            map["AuthDesktopId"] = self.authDesktopId!
+        }
+        if self.download != nil {
+            map["Download"] = self.download!
+        }
+        if self.networkPackageId != nil {
+            map["NetworkPackageId"] = self.networkPackageId!
+        }
+        if self.qosRuleName != nil {
+            map["QosRuleName"] = self.qosRuleName!
+        }
+        if self.upload != nil {
+            map["Upload"] = self.upload!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthAndroidId"] as? [String] {
+            self.authAndroidId = value
+        }
+        if let value = dict["AuthDesktopId"] as? [String] {
+            self.authDesktopId = value
+        }
+        if let value = dict["Download"] as? Int32 {
+            self.download = value
+        }
+        if let value = dict["NetworkPackageId"] as? String {
+            self.networkPackageId = value
+        }
+        if let value = dict["QosRuleName"] as? String {
+            self.qosRuleName = value
+        }
+        if let value = dict["Upload"] as? Int32 {
+            self.upload = value
+        }
+    }
+}
+
+public class CreateQosRuleResponseBody : Tea.TeaModel {
+    public var qosRuleId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["QosRuleId"] as? String {
+            self.qosRuleId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateQosRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateQosRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateQosRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateRAMDirectoryRequest : Tea.TeaModel {
     public var desktopAccessType: String?
 
@@ -19721,6 +19881,118 @@ public class DeletePolicyGroupsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeletePolicyGroupsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteQosRulesRequest : Tea.TeaModel {
+    public var qosRuleId: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["QosRuleId"] as? [String] {
+            self.qosRuleId = value
+        }
+    }
+}
+
+public class DeleteQosRulesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteQosRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteQosRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteQosRulesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -44738,6 +45010,218 @@ public class DescribePriceForRenewDesktopOversoldGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeQosRulesRequest : Tea.TeaModel {
+    public var networkPackageId: String?
+
+    public var qosRuleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkPackageId != nil {
+            map["NetworkPackageId"] = self.networkPackageId!
+        }
+        if self.qosRuleName != nil {
+            map["QosRuleName"] = self.qosRuleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkPackageId"] as? String {
+            self.networkPackageId = value
+        }
+        if let value = dict["QosRuleName"] as? String {
+            self.qosRuleName = value
+        }
+    }
+}
+
+public class DescribeQosRulesResponseBody : Tea.TeaModel {
+    public class QosRules : Tea.TeaModel {
+        public var desktopCount: String?
+
+        public var download: String?
+
+        public var networkPackageId: String?
+
+        public var qosRuleId: String?
+
+        public var qosRuleName: String?
+
+        public var upload: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopCount != nil {
+                map["DesktopCount"] = self.desktopCount!
+            }
+            if self.download != nil {
+                map["Download"] = self.download!
+            }
+            if self.networkPackageId != nil {
+                map["NetworkPackageId"] = self.networkPackageId!
+            }
+            if self.qosRuleId != nil {
+                map["QosRuleId"] = self.qosRuleId!
+            }
+            if self.qosRuleName != nil {
+                map["QosRuleName"] = self.qosRuleName!
+            }
+            if self.upload != nil {
+                map["Upload"] = self.upload!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DesktopCount"] as? String {
+                self.desktopCount = value
+            }
+            if let value = dict["Download"] as? String {
+                self.download = value
+            }
+            if let value = dict["NetworkPackageId"] as? String {
+                self.networkPackageId = value
+            }
+            if let value = dict["QosRuleId"] as? String {
+                self.qosRuleId = value
+            }
+            if let value = dict["QosRuleName"] as? String {
+                self.qosRuleName = value
+            }
+            if let value = dict["Upload"] as? String {
+                self.upload = value
+            }
+        }
+    }
+    public var qosRules: [DescribeQosRulesResponseBody.QosRules]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.qosRules != nil {
+            var tmp : [Any] = []
+            for k in self.qosRules! {
+                tmp.append(k.toMap())
+            }
+            map["QosRules"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["QosRules"] as? [Any?] {
+            var tmp : [DescribeQosRulesResponseBody.QosRules] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeQosRulesResponseBody.QosRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.qosRules = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeQosRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeQosRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeQosRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRecordFileRequest : Tea.TeaModel {
     public var desktopId: String?
 
@@ -67874,6 +68358,286 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPolicyGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyQosEntriesRequest : Tea.TeaModel {
+    public var authAndroidId: [String]?
+
+    public var authDesktopId: [String]?
+
+    public var qosRuleId: String?
+
+    public var revokeAndroidId: [String]?
+
+    public var revokeDesktopId: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authAndroidId != nil {
+            map["AuthAndroidId"] = self.authAndroidId!
+        }
+        if self.authDesktopId != nil {
+            map["AuthDesktopId"] = self.authDesktopId!
+        }
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
+        if self.revokeAndroidId != nil {
+            map["RevokeAndroidId"] = self.revokeAndroidId!
+        }
+        if self.revokeDesktopId != nil {
+            map["RevokeDesktopId"] = self.revokeDesktopId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthAndroidId"] as? [String] {
+            self.authAndroidId = value
+        }
+        if let value = dict["AuthDesktopId"] as? [String] {
+            self.authDesktopId = value
+        }
+        if let value = dict["QosRuleId"] as? String {
+            self.qosRuleId = value
+        }
+        if let value = dict["RevokeAndroidId"] as? [String] {
+            self.revokeAndroidId = value
+        }
+        if let value = dict["RevokeDesktopId"] as? [String] {
+            self.revokeDesktopId = value
+        }
+    }
+}
+
+public class ModifyQosEntriesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyQosEntriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyQosEntriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyQosEntriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyQosRuleRequest : Tea.TeaModel {
+    public var download: Int32?
+
+    public var qosRuleId: String?
+
+    public var qosRuleName: String?
+
+    public var upload: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.download != nil {
+            map["Download"] = self.download!
+        }
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
+        if self.qosRuleName != nil {
+            map["QosRuleName"] = self.qosRuleName!
+        }
+        if self.upload != nil {
+            map["Upload"] = self.upload!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Download"] as? Int32 {
+            self.download = value
+        }
+        if let value = dict["QosRuleId"] as? String {
+            self.qosRuleId = value
+        }
+        if let value = dict["QosRuleName"] as? String {
+            self.qosRuleName = value
+        }
+        if let value = dict["Upload"] as? Int32 {
+            self.upload = value
+        }
+    }
+}
+
+public class ModifyQosRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyQosRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyQosRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyQosRuleResponseBody()
             model.fromMap(value)
             self.body = model
         }
