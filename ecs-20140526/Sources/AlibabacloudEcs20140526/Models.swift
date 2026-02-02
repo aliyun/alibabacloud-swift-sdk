@@ -20380,6 +20380,431 @@ public class CreatePhysicalConnectionResponse : Tea.TeaModel {
     }
 }
 
+public class CreatePlanMaintenanceWindowRequest : Tea.TeaModel {
+    public class TargetResource : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var resourceGroupId: String?
+
+        public var scope: String?
+
+        public var tags: [CreatePlanMaintenanceWindowRequest.TargetResource.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["Scope"] as? String {
+                self.scope = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [CreatePlanMaintenanceWindowRequest.TargetResource.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreatePlanMaintenanceWindowRequest.TargetResource.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
+    public class TimePeriod : Tea.TeaModel {
+        public class RangeList : Tea.TeaModel {
+            public var endTime: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+            }
+        }
+        public var periodUnit: String?
+
+        public var rangeList: [CreatePlanMaintenanceWindowRequest.TimePeriod.RangeList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.rangeList != nil {
+                var tmp : [Any] = []
+                for k in self.rangeList! {
+                    tmp.append(k.toMap())
+                }
+                map["RangeList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PeriodUnit"] as? String {
+                self.periodUnit = value
+            }
+            if let value = dict["RangeList"] as? [Any?] {
+                var tmp : [CreatePlanMaintenanceWindowRequest.TimePeriod.RangeList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreatePlanMaintenanceWindowRequest.TimePeriod.RangeList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.rangeList = tmp
+            }
+        }
+    }
+    public var enable: Bool?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var supportMaintenanceAction: String?
+
+    public var targetResource: CreatePlanMaintenanceWindowRequest.TargetResource?
+
+    public var timePeriod: CreatePlanMaintenanceWindowRequest.TimePeriod?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.targetResource?.validate()
+        try self.timePeriod?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.supportMaintenanceAction != nil {
+            map["SupportMaintenanceAction"] = self.supportMaintenanceAction!
+        }
+        if self.targetResource != nil {
+            map["TargetResource"] = self.targetResource?.toMap()
+        }
+        if self.timePeriod != nil {
+            map["TimePeriod"] = self.timePeriod?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SupportMaintenanceAction"] as? String {
+            self.supportMaintenanceAction = value
+        }
+        if let value = dict["TargetResource"] as? [String: Any?] {
+            var model = CreatePlanMaintenanceWindowRequest.TargetResource()
+            model.fromMap(value)
+            self.targetResource = model
+        }
+        if let value = dict["TimePeriod"] as? [String: Any?] {
+            var model = CreatePlanMaintenanceWindowRequest.TimePeriod()
+            model.fromMap(value)
+            self.timePeriod = model
+        }
+    }
+}
+
+public class CreatePlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var supportMaintenanceAction: String?
+
+    public var targetResourceShrink: String?
+
+    public var timePeriodShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.supportMaintenanceAction != nil {
+            map["SupportMaintenanceAction"] = self.supportMaintenanceAction!
+        }
+        if self.targetResourceShrink != nil {
+            map["TargetResource"] = self.targetResourceShrink!
+        }
+        if self.timePeriodShrink != nil {
+            map["TimePeriod"] = self.timePeriodShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SupportMaintenanceAction"] as? String {
+            self.supportMaintenanceAction = value
+        }
+        if let value = dict["TargetResource"] as? String {
+            self.targetResourceShrink = value
+        }
+        if let value = dict["TimePeriod"] as? String {
+            self.timePeriodShrink = value
+        }
+    }
+}
+
+public class CreatePlanMaintenanceWindowResponseBody : Tea.TeaModel {
+    public var planWindowId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreatePlanMaintenanceWindowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreatePlanMaintenanceWindowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreatePlanMaintenanceWindowResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreatePortRangeListRequest : Tea.TeaModel {
     public class Entry : Tea.TeaModel {
         public var description_: String?
@@ -27994,6 +28419,126 @@ public class DeletePhysicalConnectionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeletePhysicalConnectionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeletePlanMaintenanceWindowRequest : Tea.TeaModel {
+    public var planWindowId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeletePlanMaintenanceWindowResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeletePlanMaintenanceWindowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePlanMaintenanceWindowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeletePlanMaintenanceWindowResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -43041,6 +43586,10 @@ public class DescribeDiagnosticReportAttributesResponseBody : Tea.TeaModel {
 
                     public var occurrenceTime: String?
 
+                    public var repairStatus: String?
+
+                    public var repairable: Bool?
+
                     public var severity: String?
 
                     public override init() {
@@ -43066,6 +43615,12 @@ public class DescribeDiagnosticReportAttributesResponseBody : Tea.TeaModel {
                         if self.occurrenceTime != nil {
                             map["OccurrenceTime"] = self.occurrenceTime!
                         }
+                        if self.repairStatus != nil {
+                            map["RepairStatus"] = self.repairStatus!
+                        }
+                        if self.repairable != nil {
+                            map["Repairable"] = self.repairable!
+                        }
                         if self.severity != nil {
                             map["Severity"] = self.severity!
                         }
@@ -43082,6 +43637,12 @@ public class DescribeDiagnosticReportAttributesResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["OccurrenceTime"] as? String {
                             self.occurrenceTime = value
+                        }
+                        if let value = dict["RepairStatus"] as? String {
+                            self.repairStatus = value
+                        }
+                        if let value = dict["Repairable"] as? Bool {
+                            self.repairable = value
                         }
                         if let value = dict["Severity"] as? String {
                             self.severity = value
@@ -45300,6 +45861,8 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public var size: Int32?
 
+            public var sourceDiskId: String?
+
             public var sourceSnapshotId: String?
 
             public var status: String?
@@ -45454,6 +46017,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if self.size != nil {
                     map["Size"] = self.size!
+                }
+                if self.sourceDiskId != nil {
+                    map["SourceDiskId"] = self.sourceDiskId!
                 }
                 if self.sourceSnapshotId != nil {
                     map["SourceSnapshotId"] = self.sourceSnapshotId!
@@ -45614,6 +46180,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Size"] as? Int32 {
                     self.size = value
+                }
+                if let value = dict["SourceDiskId"] as? String {
+                    self.sourceDiskId = value
                 }
                 if let value = dict["SourceSnapshotId"] as? String {
                     self.sourceSnapshotId = value
@@ -74956,6 +75525,628 @@ public class DescribePhysicalConnectionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribePhysicalConnectionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribePlanMaintenanceWindowsRequest : Tea.TeaModel {
+    public class TargetResourceTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var enable: Bool?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var planWindowId: String?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var targetResourceGroupId: String?
+
+    public var targetResourceTags: DescribePlanMaintenanceWindowsRequest.TargetResourceTags?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.targetResourceTags?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.targetResourceGroupId != nil {
+            map["TargetResourceGroupId"] = self.targetResourceGroupId!
+        }
+        if self.targetResourceTags != nil {
+            map["TargetResourceTags"] = self.targetResourceTags?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TargetResourceGroupId"] as? String {
+            self.targetResourceGroupId = value
+        }
+        if let value = dict["TargetResourceTags"] as? [String: Any?] {
+            var model = DescribePlanMaintenanceWindowsRequest.TargetResourceTags()
+            model.fromMap(value)
+            self.targetResourceTags = model
+        }
+    }
+}
+
+public class DescribePlanMaintenanceWindowsShrinkRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var planWindowId: String?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var targetResourceGroupId: String?
+
+    public var targetResourceTagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.targetResourceGroupId != nil {
+            map["TargetResourceGroupId"] = self.targetResourceGroupId!
+        }
+        if self.targetResourceTagsShrink != nil {
+            map["TargetResourceTags"] = self.targetResourceTagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TargetResourceGroupId"] as? String {
+            self.targetResourceGroupId = value
+        }
+        if let value = dict["TargetResourceTags"] as? String {
+            self.targetResourceTagsShrink = value
+        }
+    }
+}
+
+public class DescribePlanMaintenanceWindowsResponseBody : Tea.TeaModel {
+    public class PlanMaintenanceWindowList : Tea.TeaModel {
+        public class TargetResource : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var resourceGroupId: String?
+
+            public var scope: String?
+
+            public var tags: [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TargetResource.Tags]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.scope != nil {
+                    map["Scope"] = self.scope!
+                }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
+                }
+                if let value = dict["Scope"] as? String {
+                    self.scope = value
+                }
+                if let value = dict["Tags"] as? [Any?] {
+                    var tmp : [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TargetResource.Tags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TargetResource.Tags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.tags = tmp
+                }
+            }
+        }
+        public class TimePeriod : Tea.TeaModel {
+            public class RangeList : Tea.TeaModel {
+                public var endTime: String?
+
+                public var startTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndTime"] as? String {
+                        self.endTime = value
+                    }
+                    if let value = dict["StartTime"] as? String {
+                        self.startTime = value
+                    }
+                }
+            }
+            public var periodUnit: String?
+
+            public var rangeList: [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TimePeriod.RangeList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.periodUnit != nil {
+                    map["PeriodUnit"] = self.periodUnit!
+                }
+                if self.rangeList != nil {
+                    var tmp : [Any] = []
+                    for k in self.rangeList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RangeList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PeriodUnit"] as? String {
+                    self.periodUnit = value
+                }
+                if let value = dict["RangeList"] as? [Any?] {
+                    var tmp : [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TimePeriod.RangeList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TimePeriod.RangeList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.rangeList = tmp
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var enable: Bool?
+
+        public var modifiedTime: String?
+
+        public var planWindowId: String?
+
+        public var planWindowName: String?
+
+        public var supportMaintenanceAction: String?
+
+        public var targetResource: DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TargetResource?
+
+        public var timePeriod: DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TimePeriod?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.targetResource?.validate()
+            try self.timePeriod?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.planWindowId != nil {
+                map["PlanWindowId"] = self.planWindowId!
+            }
+            if self.planWindowName != nil {
+                map["PlanWindowName"] = self.planWindowName!
+            }
+            if self.supportMaintenanceAction != nil {
+                map["SupportMaintenanceAction"] = self.supportMaintenanceAction!
+            }
+            if self.targetResource != nil {
+                map["TargetResource"] = self.targetResource?.toMap()
+            }
+            if self.timePeriod != nil {
+                map["TimePeriod"] = self.timePeriod?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["ModifiedTime"] as? String {
+                self.modifiedTime = value
+            }
+            if let value = dict["PlanWindowId"] as? String {
+                self.planWindowId = value
+            }
+            if let value = dict["PlanWindowName"] as? String {
+                self.planWindowName = value
+            }
+            if let value = dict["SupportMaintenanceAction"] as? String {
+                self.supportMaintenanceAction = value
+            }
+            if let value = dict["TargetResource"] as? [String: Any?] {
+                var model = DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TargetResource()
+                model.fromMap(value)
+                self.targetResource = model
+            }
+            if let value = dict["TimePeriod"] as? [String: Any?] {
+                var model = DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList.TimePeriod()
+                model.fromMap(value)
+                self.timePeriod = model
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var planMaintenanceWindowList: [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.planMaintenanceWindowList != nil {
+            var tmp : [Any] = []
+            for k in self.planMaintenanceWindowList! {
+                tmp.append(k.toMap())
+            }
+            map["PlanMaintenanceWindowList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PlanMaintenanceWindowList"] as? [Any?] {
+            var tmp : [DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePlanMaintenanceWindowsResponseBody.PlanMaintenanceWindowList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.planMaintenanceWindowList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribePlanMaintenanceWindowsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePlanMaintenanceWindowsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePlanMaintenanceWindowsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -112036,6 +113227,439 @@ public class ModifyPhysicalConnectionAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPhysicalConnectionAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyPlanMaintenanceWindowRequest : Tea.TeaModel {
+    public class TargetResource : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var resourceGroupId: String?
+
+        public var scope: String?
+
+        public var tags: [ModifyPlanMaintenanceWindowRequest.TargetResource.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["Scope"] as? String {
+                self.scope = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ModifyPlanMaintenanceWindowRequest.TargetResource.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyPlanMaintenanceWindowRequest.TargetResource.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+        }
+    }
+    public class TimePeriod : Tea.TeaModel {
+        public class RangeList : Tea.TeaModel {
+            public var endTime: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+            }
+        }
+        public var periodUnit: String?
+
+        public var rangeList: [ModifyPlanMaintenanceWindowRequest.TimePeriod.RangeList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.rangeList != nil {
+                var tmp : [Any] = []
+                for k in self.rangeList! {
+                    tmp.append(k.toMap())
+                }
+                map["RangeList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PeriodUnit"] as? String {
+                self.periodUnit = value
+            }
+            if let value = dict["RangeList"] as? [Any?] {
+                var tmp : [ModifyPlanMaintenanceWindowRequest.TimePeriod.RangeList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyPlanMaintenanceWindowRequest.TimePeriod.RangeList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.rangeList = tmp
+            }
+        }
+    }
+    public var enable: Bool?
+
+    public var planWindowId: String?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var supportMaintenanceAction: String?
+
+    public var targetResource: ModifyPlanMaintenanceWindowRequest.TargetResource?
+
+    public var timePeriod: ModifyPlanMaintenanceWindowRequest.TimePeriod?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.targetResource?.validate()
+        try self.timePeriod?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.supportMaintenanceAction != nil {
+            map["SupportMaintenanceAction"] = self.supportMaintenanceAction!
+        }
+        if self.targetResource != nil {
+            map["TargetResource"] = self.targetResource?.toMap()
+        }
+        if self.timePeriod != nil {
+            map["TimePeriod"] = self.timePeriod?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SupportMaintenanceAction"] as? String {
+            self.supportMaintenanceAction = value
+        }
+        if let value = dict["TargetResource"] as? [String: Any?] {
+            var model = ModifyPlanMaintenanceWindowRequest.TargetResource()
+            model.fromMap(value)
+            self.targetResource = model
+        }
+        if let value = dict["TimePeriod"] as? [String: Any?] {
+            var model = ModifyPlanMaintenanceWindowRequest.TimePeriod()
+            model.fromMap(value)
+            self.timePeriod = model
+        }
+    }
+}
+
+public class ModifyPlanMaintenanceWindowShrinkRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var planWindowId: String?
+
+    public var planWindowName: String?
+
+    public var regionId: String?
+
+    public var supportMaintenanceAction: String?
+
+    public var targetResourceShrink: String?
+
+    public var timePeriodShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.planWindowId != nil {
+            map["PlanWindowId"] = self.planWindowId!
+        }
+        if self.planWindowName != nil {
+            map["PlanWindowName"] = self.planWindowName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.supportMaintenanceAction != nil {
+            map["SupportMaintenanceAction"] = self.supportMaintenanceAction!
+        }
+        if self.targetResourceShrink != nil {
+            map["TargetResource"] = self.targetResourceShrink!
+        }
+        if self.timePeriodShrink != nil {
+            map["TimePeriod"] = self.timePeriodShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? Bool {
+            self.enable = value
+        }
+        if let value = dict["PlanWindowId"] as? String {
+            self.planWindowId = value
+        }
+        if let value = dict["PlanWindowName"] as? String {
+            self.planWindowName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SupportMaintenanceAction"] as? String {
+            self.supportMaintenanceAction = value
+        }
+        if let value = dict["TargetResource"] as? String {
+            self.targetResourceShrink = value
+        }
+        if let value = dict["TimePeriod"] as? String {
+            self.timePeriodShrink = value
+        }
+    }
+}
+
+public class ModifyPlanMaintenanceWindowResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyPlanMaintenanceWindowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyPlanMaintenanceWindowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyPlanMaintenanceWindowResponseBody()
             model.fromMap(value)
             self.body = model
         }

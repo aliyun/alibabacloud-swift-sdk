@@ -4050,6 +4050,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPlanMaintenanceWindowWithOptions(_ tmpReq: CreatePlanMaintenanceWindowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePlanMaintenanceWindowResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePlanMaintenanceWindowShrinkRequest = CreatePlanMaintenanceWindowShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.targetResource)) {
+            request.targetResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.targetResource, "TargetResource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.timePeriod)) {
+            request.timePeriodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.timePeriod, "TimePeriod", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.planWindowName)) {
+            query["PlanWindowName"] = request.planWindowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supportMaintenanceAction)) {
+            query["SupportMaintenanceAction"] = request.supportMaintenanceAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetResourceShrink)) {
+            query["TargetResource"] = request.targetResourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timePeriodShrink)) {
+            query["TimePeriod"] = request.timePeriodShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePlanMaintenanceWindow",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePlanMaintenanceWindowResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPlanMaintenanceWindow(_ request: CreatePlanMaintenanceWindowRequest) async throws -> CreatePlanMaintenanceWindowResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createPlanMaintenanceWindowWithOptions(request as! CreatePlanMaintenanceWindowRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPortRangeListWithOptions(_ request: CreatePortRangeListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePortRangeListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -6183,6 +6237,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePhysicalConnection(_ request: DeletePhysicalConnectionRequest) async throws -> DeletePhysicalConnectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deletePhysicalConnectionWithOptions(request as! DeletePhysicalConnectionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deletePlanMaintenanceWindowWithOptions(_ request: DeletePlanMaintenanceWindowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePlanMaintenanceWindowResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.planWindowId)) {
+            query["PlanWindowId"] = request.planWindowId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeletePlanMaintenanceWindow",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeletePlanMaintenanceWindowResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deletePlanMaintenanceWindow(_ request: DeletePlanMaintenanceWindowRequest) async throws -> DeletePlanMaintenanceWindowResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deletePlanMaintenanceWindowWithOptions(request as! DeletePlanMaintenanceWindowRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11700,6 +11788,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describePhysicalConnections(_ request: DescribePhysicalConnectionsRequest) async throws -> DescribePhysicalConnectionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describePhysicalConnectionsWithOptions(request as! DescribePhysicalConnectionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePlanMaintenanceWindowsWithOptions(_ tmpReq: DescribePlanMaintenanceWindowsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePlanMaintenanceWindowsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribePlanMaintenanceWindowsShrinkRequest = DescribePlanMaintenanceWindowsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.targetResourceTags)) {
+            request.targetResourceTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.targetResourceTags, "TargetResourceTags", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.planWindowId)) {
+            query["PlanWindowId"] = request.planWindowId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.planWindowName)) {
+            query["PlanWindowName"] = request.planWindowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetResourceGroupId)) {
+            query["TargetResourceGroupId"] = request.targetResourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetResourceTagsShrink)) {
+            query["TargetResourceTags"] = request.targetResourceTagsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePlanMaintenanceWindows",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePlanMaintenanceWindowsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePlanMaintenanceWindows(_ request: DescribePlanMaintenanceWindowsRequest) async throws -> DescribePlanMaintenanceWindowsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePlanMaintenanceWindowsWithOptions(request as! DescribePlanMaintenanceWindowsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -18663,6 +18808,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyPhysicalConnectionAttribute(_ request: ModifyPhysicalConnectionAttributeRequest) async throws -> ModifyPhysicalConnectionAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyPhysicalConnectionAttributeWithOptions(request as! ModifyPhysicalConnectionAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyPlanMaintenanceWindowWithOptions(_ tmpReq: ModifyPlanMaintenanceWindowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPlanMaintenanceWindowResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyPlanMaintenanceWindowShrinkRequest = ModifyPlanMaintenanceWindowShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.targetResource)) {
+            request.targetResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.targetResource, "TargetResource", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.timePeriod)) {
+            request.timePeriodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.timePeriod, "TimePeriod", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.planWindowId)) {
+            query["PlanWindowId"] = request.planWindowId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.planWindowName)) {
+            query["PlanWindowName"] = request.planWindowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supportMaintenanceAction)) {
+            query["SupportMaintenanceAction"] = request.supportMaintenanceAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetResourceShrink)) {
+            query["TargetResource"] = request.targetResourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timePeriodShrink)) {
+            query["TimePeriod"] = request.timePeriodShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyPlanMaintenanceWindow",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyPlanMaintenanceWindowResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyPlanMaintenanceWindow(_ request: ModifyPlanMaintenanceWindowRequest) async throws -> ModifyPlanMaintenanceWindowResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyPlanMaintenanceWindowWithOptions(request as! ModifyPlanMaintenanceWindowRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
