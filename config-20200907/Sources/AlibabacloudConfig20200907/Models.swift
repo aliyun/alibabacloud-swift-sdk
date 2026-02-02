@@ -5945,6 +5945,313 @@ public class CreateRemediationResponse : Tea.TeaModel {
     }
 }
 
+public class CreateReportTemplateRequest : Tea.TeaModel {
+    public class ReportScope : Tea.TeaModel {
+        public var key: String?
+
+        public var matchType: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["MatchType"] as? String {
+                self.matchType = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var reportFileFormats: String?
+
+    public var reportGranularity: String?
+
+    public var reportLanguage: String?
+
+    public var reportScope: [CreateReportTemplateRequest.ReportScope]?
+
+    public var reportTemplateDescription: String?
+
+    public var reportTemplateName: String?
+
+    public var subscriptionFrequency: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportFileFormats != nil {
+            map["ReportFileFormats"] = self.reportFileFormats!
+        }
+        if self.reportGranularity != nil {
+            map["ReportGranularity"] = self.reportGranularity!
+        }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportScope != nil {
+            var tmp : [Any] = []
+            for k in self.reportScope! {
+                tmp.append(k.toMap())
+            }
+            map["ReportScope"] = tmp
+        }
+        if self.reportTemplateDescription != nil {
+            map["ReportTemplateDescription"] = self.reportTemplateDescription!
+        }
+        if self.reportTemplateName != nil {
+            map["ReportTemplateName"] = self.reportTemplateName!
+        }
+        if self.subscriptionFrequency != nil {
+            map["SubscriptionFrequency"] = self.subscriptionFrequency!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportFileFormats"] as? String {
+            self.reportFileFormats = value
+        }
+        if let value = dict["ReportGranularity"] as? String {
+            self.reportGranularity = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
+        }
+        if let value = dict["ReportScope"] as? [Any?] {
+            var tmp : [CreateReportTemplateRequest.ReportScope] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateReportTemplateRequest.ReportScope()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.reportScope = tmp
+        }
+        if let value = dict["ReportTemplateDescription"] as? String {
+            self.reportTemplateDescription = value
+        }
+        if let value = dict["ReportTemplateName"] as? String {
+            self.reportTemplateName = value
+        }
+        if let value = dict["SubscriptionFrequency"] as? String {
+            self.subscriptionFrequency = value
+        }
+    }
+}
+
+public class CreateReportTemplateShrinkRequest : Tea.TeaModel {
+    public var reportFileFormats: String?
+
+    public var reportGranularity: String?
+
+    public var reportLanguage: String?
+
+    public var reportScopeShrink: String?
+
+    public var reportTemplateDescription: String?
+
+    public var reportTemplateName: String?
+
+    public var subscriptionFrequency: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportFileFormats != nil {
+            map["ReportFileFormats"] = self.reportFileFormats!
+        }
+        if self.reportGranularity != nil {
+            map["ReportGranularity"] = self.reportGranularity!
+        }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportScopeShrink != nil {
+            map["ReportScope"] = self.reportScopeShrink!
+        }
+        if self.reportTemplateDescription != nil {
+            map["ReportTemplateDescription"] = self.reportTemplateDescription!
+        }
+        if self.reportTemplateName != nil {
+            map["ReportTemplateName"] = self.reportTemplateName!
+        }
+        if self.subscriptionFrequency != nil {
+            map["SubscriptionFrequency"] = self.subscriptionFrequency!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportFileFormats"] as? String {
+            self.reportFileFormats = value
+        }
+        if let value = dict["ReportGranularity"] as? String {
+            self.reportGranularity = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
+        }
+        if let value = dict["ReportScope"] as? String {
+            self.reportScopeShrink = value
+        }
+        if let value = dict["ReportTemplateDescription"] as? String {
+            self.reportTemplateDescription = value
+        }
+        if let value = dict["ReportTemplateName"] as? String {
+            self.reportTemplateName = value
+        }
+        if let value = dict["SubscriptionFrequency"] as? String {
+            self.subscriptionFrequency = value
+        }
+    }
+}
+
+public class CreateReportTemplateResponseBody : Tea.TeaModel {
+    public var reportTemplateId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportTemplateId != nil {
+            map["ReportTemplateId"] = self.reportTemplateId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportTemplateId"] as? String {
+            self.reportTemplateId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateReportTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateReportTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateReportTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeactiveAggregateConfigRulesRequest : Tea.TeaModel {
     public var aggregatorId: String?
 
@@ -22529,6 +22836,275 @@ public class GetReportFromTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetReportTemplateRequest : Tea.TeaModel {
+    public var reportTemplateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportTemplateId != nil {
+            map["ReportTemplateId"] = self.reportTemplateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportTemplateId"] as? String {
+            self.reportTemplateId = value
+        }
+    }
+}
+
+public class GetReportTemplateResponseBody : Tea.TeaModel {
+    public class ReportTemplate : Tea.TeaModel {
+        public class ReportScope : Tea.TeaModel {
+            public var key: String?
+
+            public var matchType: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.matchType != nil {
+                    map["MatchType"] = self.matchType!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["MatchType"] as? String {
+                    self.matchType = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var reportFileFormats: String?
+
+        public var reportGranularity: String?
+
+        public var reportLanguage: String?
+
+        public var reportScope: [GetReportTemplateResponseBody.ReportTemplate.ReportScope]?
+
+        public var reportTemplateDescription: String?
+
+        public var reportTemplateId: String?
+
+        public var reportTemplateName: String?
+
+        public var subscriptionFrequency: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reportFileFormats != nil {
+                map["ReportFileFormats"] = self.reportFileFormats!
+            }
+            if self.reportGranularity != nil {
+                map["ReportGranularity"] = self.reportGranularity!
+            }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
+            if self.reportScope != nil {
+                var tmp : [Any] = []
+                for k in self.reportScope! {
+                    tmp.append(k.toMap())
+                }
+                map["ReportScope"] = tmp
+            }
+            if self.reportTemplateDescription != nil {
+                map["ReportTemplateDescription"] = self.reportTemplateDescription!
+            }
+            if self.reportTemplateId != nil {
+                map["ReportTemplateId"] = self.reportTemplateId!
+            }
+            if self.reportTemplateName != nil {
+                map["ReportTemplateName"] = self.reportTemplateName!
+            }
+            if self.subscriptionFrequency != nil {
+                map["SubscriptionFrequency"] = self.subscriptionFrequency!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ReportFileFormats"] as? String {
+                self.reportFileFormats = value
+            }
+            if let value = dict["ReportGranularity"] as? String {
+                self.reportGranularity = value
+            }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
+            }
+            if let value = dict["ReportScope"] as? [Any?] {
+                var tmp : [GetReportTemplateResponseBody.ReportTemplate.ReportScope] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetReportTemplateResponseBody.ReportTemplate.ReportScope()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.reportScope = tmp
+            }
+            if let value = dict["ReportTemplateDescription"] as? String {
+                self.reportTemplateDescription = value
+            }
+            if let value = dict["ReportTemplateId"] as? String {
+                self.reportTemplateId = value
+            }
+            if let value = dict["ReportTemplateName"] as? String {
+                self.reportTemplateName = value
+            }
+            if let value = dict["SubscriptionFrequency"] as? String {
+                self.subscriptionFrequency = value
+            }
+        }
+    }
+    public var reportTemplate: GetReportTemplateResponseBody.ReportTemplate?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.reportTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportTemplate != nil {
+            map["ReportTemplate"] = self.reportTemplate?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportTemplate"] as? [String: Any?] {
+            var model = GetReportTemplateResponseBody.ReportTemplate()
+            model.fromMap(value)
+            self.reportTemplate = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetReportTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetReportTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetReportTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetResourceComplianceByConfigRuleRequest : Tea.TeaModel {
     public var complianceType: String?
 
@@ -35559,6 +36135,326 @@ public class ListRemediationsResponse : Tea.TeaModel {
     }
 }
 
+public class ListReportTemplatesRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListReportTemplatesResponseBody : Tea.TeaModel {
+    public class ReportTemplateList : Tea.TeaModel {
+        public class ReportScope : Tea.TeaModel {
+            public var key: String?
+
+            public var matchType: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.matchType != nil {
+                    map["MatchType"] = self.matchType!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["MatchType"] as? String {
+                    self.matchType = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var reportFileFormats: String?
+
+        public var reportGranularity: String?
+
+        public var reportLanguage: String?
+
+        public var reportScope: [ListReportTemplatesResponseBody.ReportTemplateList.ReportScope]?
+
+        public var reportTemplateDescription: String?
+
+        public var reportTemplateId: String?
+
+        public var reportTemplateName: String?
+
+        public var subscriptionFrequency: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.reportFileFormats != nil {
+                map["ReportFileFormats"] = self.reportFileFormats!
+            }
+            if self.reportGranularity != nil {
+                map["ReportGranularity"] = self.reportGranularity!
+            }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
+            if self.reportScope != nil {
+                var tmp : [Any] = []
+                for k in self.reportScope! {
+                    tmp.append(k.toMap())
+                }
+                map["ReportScope"] = tmp
+            }
+            if self.reportTemplateDescription != nil {
+                map["ReportTemplateDescription"] = self.reportTemplateDescription!
+            }
+            if self.reportTemplateId != nil {
+                map["ReportTemplateId"] = self.reportTemplateId!
+            }
+            if self.reportTemplateName != nil {
+                map["ReportTemplateName"] = self.reportTemplateName!
+            }
+            if self.subscriptionFrequency != nil {
+                map["SubscriptionFrequency"] = self.subscriptionFrequency!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ReportFileFormats"] as? String {
+                self.reportFileFormats = value
+            }
+            if let value = dict["ReportGranularity"] as? String {
+                self.reportGranularity = value
+            }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
+            }
+            if let value = dict["ReportScope"] as? [Any?] {
+                var tmp : [ListReportTemplatesResponseBody.ReportTemplateList.ReportScope] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListReportTemplatesResponseBody.ReportTemplateList.ReportScope()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.reportScope = tmp
+            }
+            if let value = dict["ReportTemplateDescription"] as? String {
+                self.reportTemplateDescription = value
+            }
+            if let value = dict["ReportTemplateId"] as? String {
+                self.reportTemplateId = value
+            }
+            if let value = dict["ReportTemplateName"] as? String {
+                self.reportTemplateName = value
+            }
+            if let value = dict["SubscriptionFrequency"] as? String {
+                self.subscriptionFrequency = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var reportTemplateList: [ListReportTemplatesResponseBody.ReportTemplateList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.reportTemplateList != nil {
+            var tmp : [Any] = []
+            for k in self.reportTemplateList! {
+                tmp.append(k.toMap())
+            }
+            map["ReportTemplateList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ReportTemplateList"] as? [Any?] {
+            var tmp : [ListReportTemplatesResponseBody.ReportTemplateList] = []
+            for v in value {
+                if v != nil {
+                    var model = ListReportTemplatesResponseBody.ReportTemplateList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.reportTemplateList = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListReportTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListReportTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListReportTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListResourceEvaluationResultsRequest : Tea.TeaModel {
     public var complianceType: String?
 
@@ -43807,6 +44703,329 @@ public class UpdateRemediationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateRemediationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateReportTemplateRequest : Tea.TeaModel {
+    public class ReportScope : Tea.TeaModel {
+        public var key: String?
+
+        public var matchType: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["MatchType"] as? String {
+                self.matchType = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var reportFileFormats: String?
+
+    public var reportGranularity: String?
+
+    public var reportLanguage: String?
+
+    public var reportScope: [UpdateReportTemplateRequest.ReportScope]?
+
+    public var reportTemplateDescription: String?
+
+    public var reportTemplateId: String?
+
+    public var reportTemplateName: String?
+
+    public var subscriptionFrequency: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportFileFormats != nil {
+            map["ReportFileFormats"] = self.reportFileFormats!
+        }
+        if self.reportGranularity != nil {
+            map["ReportGranularity"] = self.reportGranularity!
+        }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportScope != nil {
+            var tmp : [Any] = []
+            for k in self.reportScope! {
+                tmp.append(k.toMap())
+            }
+            map["ReportScope"] = tmp
+        }
+        if self.reportTemplateDescription != nil {
+            map["ReportTemplateDescription"] = self.reportTemplateDescription!
+        }
+        if self.reportTemplateId != nil {
+            map["ReportTemplateId"] = self.reportTemplateId!
+        }
+        if self.reportTemplateName != nil {
+            map["ReportTemplateName"] = self.reportTemplateName!
+        }
+        if self.subscriptionFrequency != nil {
+            map["SubscriptionFrequency"] = self.subscriptionFrequency!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportFileFormats"] as? String {
+            self.reportFileFormats = value
+        }
+        if let value = dict["ReportGranularity"] as? String {
+            self.reportGranularity = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
+        }
+        if let value = dict["ReportScope"] as? [Any?] {
+            var tmp : [UpdateReportTemplateRequest.ReportScope] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateReportTemplateRequest.ReportScope()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.reportScope = tmp
+        }
+        if let value = dict["ReportTemplateDescription"] as? String {
+            self.reportTemplateDescription = value
+        }
+        if let value = dict["ReportTemplateId"] as? String {
+            self.reportTemplateId = value
+        }
+        if let value = dict["ReportTemplateName"] as? String {
+            self.reportTemplateName = value
+        }
+        if let value = dict["SubscriptionFrequency"] as? String {
+            self.subscriptionFrequency = value
+        }
+    }
+}
+
+public class UpdateReportTemplateShrinkRequest : Tea.TeaModel {
+    public var reportFileFormats: String?
+
+    public var reportGranularity: String?
+
+    public var reportLanguage: String?
+
+    public var reportScopeShrink: String?
+
+    public var reportTemplateDescription: String?
+
+    public var reportTemplateId: String?
+
+    public var reportTemplateName: String?
+
+    public var subscriptionFrequency: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportFileFormats != nil {
+            map["ReportFileFormats"] = self.reportFileFormats!
+        }
+        if self.reportGranularity != nil {
+            map["ReportGranularity"] = self.reportGranularity!
+        }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportScopeShrink != nil {
+            map["ReportScope"] = self.reportScopeShrink!
+        }
+        if self.reportTemplateDescription != nil {
+            map["ReportTemplateDescription"] = self.reportTemplateDescription!
+        }
+        if self.reportTemplateId != nil {
+            map["ReportTemplateId"] = self.reportTemplateId!
+        }
+        if self.reportTemplateName != nil {
+            map["ReportTemplateName"] = self.reportTemplateName!
+        }
+        if self.subscriptionFrequency != nil {
+            map["SubscriptionFrequency"] = self.subscriptionFrequency!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportFileFormats"] as? String {
+            self.reportFileFormats = value
+        }
+        if let value = dict["ReportGranularity"] as? String {
+            self.reportGranularity = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
+        }
+        if let value = dict["ReportScope"] as? String {
+            self.reportScopeShrink = value
+        }
+        if let value = dict["ReportTemplateDescription"] as? String {
+            self.reportTemplateDescription = value
+        }
+        if let value = dict["ReportTemplateId"] as? String {
+            self.reportTemplateId = value
+        }
+        if let value = dict["ReportTemplateName"] as? String {
+            self.reportTemplateName = value
+        }
+        if let value = dict["SubscriptionFrequency"] as? String {
+            self.subscriptionFrequency = value
+        }
+    }
+}
+
+public class UpdateReportTemplateResponseBody : Tea.TeaModel {
+    public var reportTemplateId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportTemplateId != nil {
+            map["ReportTemplateId"] = self.reportTemplateId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReportTemplateId"] as? String {
+            self.reportTemplateId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateReportTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateReportTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateReportTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
