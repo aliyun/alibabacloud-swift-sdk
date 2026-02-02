@@ -383,6 +383,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTrainPicAvatarWithOptions(_ request: CreateTrainPicAvatarRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTrainPicAvatarResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["bizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gender)) {
             query["gender"] = request.gender ?? "";
         }

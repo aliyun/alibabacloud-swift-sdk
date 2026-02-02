@@ -2399,6 +2399,8 @@ public class CreateTTSVoiceCustomResponse : Tea.TeaModel {
 }
 
 public class CreateTrainPicAvatarRequest : Tea.TeaModel {
+    public var bizType: String?
+
     public var gender: String?
 
     public var generateAssets: Bool?
@@ -2425,6 +2427,9 @@ public class CreateTrainPicAvatarRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["bizType"] = self.bizType!
+        }
         if self.gender != nil {
             map["gender"] = self.gender!
         }
@@ -2448,6 +2453,9 @@ public class CreateTrainPicAvatarRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["bizType"] as? String {
+            self.bizType = value
+        }
         if let value = dict["gender"] as? String {
             self.gender = value
         }
