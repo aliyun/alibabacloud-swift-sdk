@@ -14487,6 +14487,60 @@ public class GetRecallManagementJobRequest : Tea.TeaModel {
 }
 
 public class GetRecallManagementJobResponseBody : Tea.TeaModel {
+    public class RecallManagementTableInfo : Tea.TeaModel {
+        public var dataVersion: String?
+
+        public var recallManagementTableVersionId: String?
+
+        public var sourceTableDataSize: String?
+
+        public var sourceTableRowCount: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataVersion != nil {
+                map["DataVersion"] = self.dataVersion!
+            }
+            if self.recallManagementTableVersionId != nil {
+                map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+            }
+            if self.sourceTableDataSize != nil {
+                map["SourceTableDataSize"] = self.sourceTableDataSize!
+            }
+            if self.sourceTableRowCount != nil {
+                map["SourceTableRowCount"] = self.sourceTableRowCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataVersion"] as? String {
+                self.dataVersion = value
+            }
+            if let value = dict["RecallManagementTableVersionId"] as? String {
+                self.recallManagementTableVersionId = value
+            }
+            if let value = dict["SourceTableDataSize"] as? String {
+                self.sourceTableDataSize = value
+            }
+            if let value = dict["SourceTableRowCount"] as? String {
+                self.sourceTableRowCount = value
+            }
+        }
+    }
     public class RecallManagerTableInfo : Tea.TeaModel {
         public var dataVersion: String?
 
@@ -14547,6 +14601,8 @@ public class GetRecallManagementJobResponseBody : Tea.TeaModel {
 
     public var recallManagementJobId: String?
 
+    public var recallManagementTableInfo: GetRecallManagementJobResponseBody.RecallManagementTableInfo?
+
     public var recallManagerTableInfo: GetRecallManagementJobResponseBody.RecallManagerTableInfo?
 
     public var requestId: String?
@@ -14565,6 +14621,7 @@ public class GetRecallManagementJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.recallManagementTableInfo?.validate()
         try self.recallManagerTableInfo?.validate()
     }
 
@@ -14578,6 +14635,9 @@ public class GetRecallManagementJobResponseBody : Tea.TeaModel {
         }
         if self.recallManagementJobId != nil {
             map["RecallManagementJobId"] = self.recallManagementJobId!
+        }
+        if self.recallManagementTableInfo != nil {
+            map["RecallManagementTableInfo"] = self.recallManagementTableInfo?.toMap()
         }
         if self.recallManagerTableInfo != nil {
             map["RecallManagerTableInfo"] = self.recallManagerTableInfo?.toMap()
@@ -14604,6 +14664,11 @@ public class GetRecallManagementJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["RecallManagementJobId"] as? String {
             self.recallManagementJobId = value
+        }
+        if let value = dict["RecallManagementTableInfo"] as? [String: Any?] {
+            var model = GetRecallManagementJobResponseBody.RecallManagementTableInfo()
+            model.fromMap(value)
+            self.recallManagementTableInfo = model
         }
         if let value = dict["RecallManagerTableInfo"] as? [String: Any?] {
             var model = GetRecallManagementJobResponseBody.RecallManagerTableInfo()
@@ -24839,6 +24904,60 @@ public class ListRecallManagementJobsRequest : Tea.TeaModel {
 
 public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
     public class RecallManagementJobs : Tea.TeaModel {
+        public class RecallManagementTableInfo : Tea.TeaModel {
+            public var dataVersion: String?
+
+            public var recallManagementTableVersionId: String?
+
+            public var sourceTableDataSize: String?
+
+            public var sourceTableRowCount: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataVersion != nil {
+                    map["DataVersion"] = self.dataVersion!
+                }
+                if self.recallManagementTableVersionId != nil {
+                    map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+                }
+                if self.sourceTableDataSize != nil {
+                    map["SourceTableDataSize"] = self.sourceTableDataSize!
+                }
+                if self.sourceTableRowCount != nil {
+                    map["SourceTableRowCount"] = self.sourceTableRowCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataVersion"] as? String {
+                    self.dataVersion = value
+                }
+                if let value = dict["RecallManagementTableVersionId"] as? String {
+                    self.recallManagementTableVersionId = value
+                }
+                if let value = dict["SourceTableDataSize"] as? String {
+                    self.sourceTableDataSize = value
+                }
+                if let value = dict["SourceTableRowCount"] as? String {
+                    self.sourceTableRowCount = value
+                }
+            }
+        }
         public class RecallManagerTableInfo : Tea.TeaModel {
             public var dataVersion: String?
 
@@ -24897,6 +25016,8 @@ public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
 
         public var recallManagementJobId: String?
 
+        public var recallManagementTableInfo: ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagementTableInfo?
+
         public var recallManagerTableInfo: ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagerTableInfo?
 
         public var startTime: String?
@@ -24913,6 +25034,7 @@ public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.recallManagementTableInfo?.validate()
             try self.recallManagerTableInfo?.validate()
         }
 
@@ -24923,6 +25045,9 @@ public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
             }
             if self.recallManagementJobId != nil {
                 map["RecallManagementJobId"] = self.recallManagementJobId!
+            }
+            if self.recallManagementTableInfo != nil {
+                map["RecallManagementTableInfo"] = self.recallManagementTableInfo?.toMap()
             }
             if self.recallManagerTableInfo != nil {
                 map["RecallManagerTableInfo"] = self.recallManagerTableInfo?.toMap()
@@ -24943,6 +25068,11 @@ public class ListRecallManagementJobsResponseBody : Tea.TeaModel {
             }
             if let value = dict["RecallManagementJobId"] as? String {
                 self.recallManagementJobId = value
+            }
+            if let value = dict["RecallManagementTableInfo"] as? [String: Any?] {
+                var model = ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagementTableInfo()
+                model.fromMap(value)
+                self.recallManagementTableInfo = model
             }
             if let value = dict["RecallManagerTableInfo"] as? [String: Any?] {
                 var model = ListRecallManagementJobsResponseBody.RecallManagementJobs.RecallManagerTableInfo()
