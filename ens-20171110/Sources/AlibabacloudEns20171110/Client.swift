@@ -9331,6 +9331,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAICInstanceTypeWithOptions(_ request: ModifyAICInstanceTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAICInstanceTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environmentVar)) {
+            query["EnvironmentVar"] = request.environmentVar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.frequency)) {
+            query["Frequency"] = request.frequency!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAICInstanceType",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAICInstanceTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAICInstanceType(_ request: ModifyAICInstanceTypeRequest) async throws -> ModifyAICInstanceTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAICInstanceTypeWithOptions(request as! ModifyAICInstanceTypeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyClusterAddonWithOptions(_ tmpReq: ModifyClusterAddonRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyClusterAddonResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyClusterAddonShrinkRequest = ModifyClusterAddonShrinkRequest([:])
