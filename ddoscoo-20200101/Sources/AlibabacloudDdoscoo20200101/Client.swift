@@ -6246,6 +6246,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.embeddedHeaders)) {
+            query["EmbeddedHeaders"] = request.embeddedHeaders ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }

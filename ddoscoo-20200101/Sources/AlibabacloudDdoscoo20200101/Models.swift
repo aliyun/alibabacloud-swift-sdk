@@ -15185,6 +15185,8 @@ public class DescribeHeadersResponseBody : Tea.TeaModel {
     }
     public var customHeader: DescribeHeadersResponseBody.CustomHeader?
 
+    public var embeddedHeaders: String?
+
     public var requestId: String?
 
     public override init() {
@@ -15205,6 +15207,9 @@ public class DescribeHeadersResponseBody : Tea.TeaModel {
         if self.customHeader != nil {
             map["CustomHeader"] = self.customHeader?.toMap()
         }
+        if self.embeddedHeaders != nil {
+            map["EmbeddedHeaders"] = self.embeddedHeaders!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -15217,6 +15222,9 @@ public class DescribeHeadersResponseBody : Tea.TeaModel {
             var model = DescribeHeadersResponseBody.CustomHeader()
             model.fromMap(value)
             self.customHeader = model
+        }
+        if let value = dict["EmbeddedHeaders"] as? String {
+            self.embeddedHeaders = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -31765,6 +31773,8 @@ public class ModifyHeadersRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var embeddedHeaders: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -31787,6 +31797,9 @@ public class ModifyHeadersRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.embeddedHeaders != nil {
+            map["EmbeddedHeaders"] = self.embeddedHeaders!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -31800,6 +31813,9 @@ public class ModifyHeadersRequest : Tea.TeaModel {
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["EmbeddedHeaders"] as? String {
+            self.embeddedHeaders = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
