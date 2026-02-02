@@ -5749,6 +5749,8 @@ public class GetDialogDetailResponseBody : Tea.TeaModel {
 
             public var intentName: String?
 
+            public var recordId: String?
+
             public var role: String?
 
             public var type: String?
@@ -5791,6 +5793,9 @@ public class GetDialogDetailResponseBody : Tea.TeaModel {
                 if self.intentName != nil {
                     map["intentName"] = self.intentName!
                 }
+                if self.recordId != nil {
+                    map["recordId"] = self.recordId!
+                }
                 if self.role != nil {
                     map["role"] = self.role!
                 }
@@ -5825,6 +5830,9 @@ public class GetDialogDetailResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["intentName"] as? String {
                     self.intentName = value
+                }
+                if let value = dict["recordId"] as? String {
+                    self.recordId = value
                 }
                 if let value = dict["role"] as? String {
                     self.role = value
