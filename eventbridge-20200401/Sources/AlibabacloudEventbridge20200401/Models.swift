@@ -1110,6 +1110,216 @@ public class SinkHttpsParameters : Tea.TeaModel {
     }
 }
 
+public class SinkMQTTParameters : Tea.TeaModel {
+    public class Mqtt5UserProperty : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class Payload : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class SubTopic : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var mqtt5UserProperty: SinkMQTTParameters.Mqtt5UserProperty?
+
+    public var parentTopic: String?
+
+    public var payload: SinkMQTTParameters.Payload?
+
+    public var subTopic: SinkMQTTParameters.SubTopic?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.mqtt5UserProperty?.validate()
+        try self.payload?.validate()
+        try self.subTopic?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mqtt5UserProperty != nil {
+            map["Mqtt5UserProperty"] = self.mqtt5UserProperty?.toMap()
+        }
+        if self.parentTopic != nil {
+            map["ParentTopic"] = self.parentTopic!
+        }
+        if self.payload != nil {
+            map["Payload"] = self.payload?.toMap()
+        }
+        if self.subTopic != nil {
+            map["SubTopic"] = self.subTopic?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Mqtt5UserProperty"] as? [String: Any?] {
+            var model = SinkMQTTParameters.Mqtt5UserProperty()
+            model.fromMap(value)
+            self.mqtt5UserProperty = model
+        }
+        if let value = dict["ParentTopic"] as? String {
+            self.parentTopic = value
+        }
+        if let value = dict["Payload"] as? [String: Any?] {
+            var model = SinkMQTTParameters.Payload()
+            model.fromMap(value)
+            self.payload = model
+        }
+        if let value = dict["SubTopic"] as? [String: Any?] {
+            var model = SinkMQTTParameters.SubTopic()
+            model.fromMap(value)
+            self.subTopic = model
+        }
+    }
+}
+
 public class SinkOSSParameters : Tea.TeaModel {
     public class ContentTransform : Tea.TeaModel {
         public var form: String?
@@ -11765,6 +11975,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: CreateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkMQTTParameters: SinkMQTTParameters?
+
         public var sinkOSSParameters: SinkOSSParameters?
 
         public var sinkOpenSourceRabbitMQParameters: CreateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters?
@@ -11808,6 +12020,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sinkHttpsParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkMQTTParameters?.validate()
             try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
@@ -11865,6 +12078,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkMQTTParameters != nil {
+                map["SinkMQTTParameters"] = self.sinkMQTTParameters?.toMap()
             }
             if self.sinkOSSParameters != nil {
                 map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
@@ -11972,6 +12188,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(value)
                 self.sinkMNSParameters = model
+            }
+            if let value = dict["SinkMQTTParameters"] as? [String: Any?] {
+                var model = SinkMQTTParameters()
+                model.fromMap(value)
+                self.sinkMQTTParameters = model
             }
             if let value = dict["SinkOSSParameters"] as? [String: Any?] {
                 var model = SinkOSSParameters()
@@ -25184,6 +25405,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sinkMNSParameters: GetEventStreamingResponseBody.Data.Sink.SinkMNSParameters?
 
+            public var sinkMQTTParameters: SinkMQTTParameters?
+
             public var sinkOSSParameters: SinkOSSParameters?
 
             public var sinkOpenSourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Sink.SinkOpenSourceRabbitMQParameters?
@@ -25225,6 +25448,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sinkHttpsParameters?.validate()
                 try self.sinkKafkaParameters?.validate()
                 try self.sinkMNSParameters?.validate()
+                try self.sinkMQTTParameters?.validate()
                 try self.sinkOSSParameters?.validate()
                 try self.sinkOpenSourceRabbitMQParameters?.validate()
                 try self.sinkRabbitMQMetaParameters?.validate()
@@ -25281,6 +25505,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sinkMNSParameters != nil {
                     map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+                }
+                if self.sinkMQTTParameters != nil {
+                    map["SinkMQTTParameters"] = self.sinkMQTTParameters?.toMap()
                 }
                 if self.sinkOSSParameters != nil {
                     map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
@@ -25385,6 +25612,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkMNSParameters()
                     model.fromMap(value)
                     self.sinkMNSParameters = model
+                }
+                if let value = dict["SinkMQTTParameters"] as? [String: Any?] {
+                    var model = SinkMQTTParameters()
+                    model.fromMap(value)
+                    self.sinkMQTTParameters = model
                 }
                 if let value = dict["SinkOSSParameters"] as? [String: Any?] {
                     var model = SinkOSSParameters()
@@ -35452,6 +35684,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sinkMNSParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkMNSParameters?
 
+                public var sinkMQTTParameters: SinkMQTTParameters?
+
                 public var sinkOSSParameters: SinkOSSParameters?
 
                 public var sinkOpenSourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkOpenSourceRabbitMQParameters?
@@ -35491,6 +35725,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sinkHttpsParameters?.validate()
                     try self.sinkKafkaParameters?.validate()
                     try self.sinkMNSParameters?.validate()
+                    try self.sinkMQTTParameters?.validate()
                     try self.sinkOSSParameters?.validate()
                     try self.sinkOpenSourceRabbitMQParameters?.validate()
                     try self.sinkRabbitMQMetaParameters?.validate()
@@ -35541,6 +35776,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sinkMNSParameters != nil {
                         map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+                    }
+                    if self.sinkMQTTParameters != nil {
+                        map["SinkMQTTParameters"] = self.sinkMQTTParameters?.toMap()
                     }
                     if self.sinkOSSParameters != nil {
                         map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
@@ -35635,6 +35873,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkMNSParameters()
                         model.fromMap(value)
                         self.sinkMNSParameters = model
+                    }
+                    if let value = dict["SinkMQTTParameters"] as? [String: Any?] {
+                        var model = SinkMQTTParameters()
+                        model.fromMap(value)
+                        self.sinkMQTTParameters = model
                     }
                     if let value = dict["SinkOSSParameters"] as? [String: Any?] {
                         var model = SinkOSSParameters()
@@ -50911,6 +51154,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: UpdateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkMQTTParameters: SinkMQTTParameters?
+
         public var sinkOSSParameters: SinkOSSParameters?
 
         public var sinkOpenSourceRabbitMQParameters: UpdateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters?
@@ -50954,6 +51199,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sinkHttpsParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkMQTTParameters?.validate()
             try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
@@ -51011,6 +51257,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkMQTTParameters != nil {
+                map["SinkMQTTParameters"] = self.sinkMQTTParameters?.toMap()
             }
             if self.sinkOSSParameters != nil {
                 map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
@@ -51118,6 +51367,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(value)
                 self.sinkMNSParameters = model
+            }
+            if let value = dict["SinkMQTTParameters"] as? [String: Any?] {
+                var model = SinkMQTTParameters()
+                model.fromMap(value)
+                self.sinkMQTTParameters = model
             }
             if let value = dict["SinkOSSParameters"] as? [String: Any?] {
                 var model = SinkOSSParameters()
