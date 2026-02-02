@@ -882,6 +882,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var skillIds: [String]?
+
     public var systemPrompt: String?
 
     public var tools: [String]?
@@ -906,6 +908,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.skillIds != nil {
+            map["SkillIds"] = self.skillIds!
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -923,6 +928,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["SkillIds"] as? [String] {
+            self.skillIds = value
+        }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
         }
@@ -936,6 +944,8 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
     public var enableTools: Bool?
 
     public var name: String?
+
+    public var skillIdsShrink: String?
 
     public var systemPrompt: String?
 
@@ -961,6 +971,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.skillIdsShrink != nil {
+            map["SkillIds"] = self.skillIdsShrink!
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -978,6 +991,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["SkillIds"] as? String {
+            self.skillIdsShrink = value
+        }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
         }
@@ -988,6 +1004,60 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateCustomAgentResponseBody : Tea.TeaModel {
+    public class Skills : Tea.TeaModel {
+        public var description_: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var skillType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.skillType != nil {
+                map["SkillType"] = self.skillType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SkillType"] as? String {
+                self.skillType = value
+            }
+        }
+    }
     public var createdAt: String?
 
     public var enableTools: Bool?
@@ -997,6 +1067,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
     public var name: String?
 
     public var requestId: String?
+
+    public var skills: [CreateCustomAgentResponseBody.Skills]?
 
     public var systemPrompt: String?
 
@@ -1031,6 +1103,13 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["Skills"] = tmp
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -1056,6 +1135,19 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Skills"] as? [Any?] {
+            var tmp : [CreateCustomAgentResponseBody.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCustomAgentResponseBody.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
         }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
@@ -3729,6 +3821,60 @@ public class GetCustomAgentRequest : Tea.TeaModel {
 }
 
 public class GetCustomAgentResponseBody : Tea.TeaModel {
+    public class Skills : Tea.TeaModel {
+        public var description_: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var skillType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.skillType != nil {
+                map["SkillType"] = self.skillType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SkillType"] as? String {
+                self.skillType = value
+            }
+        }
+    }
     public var createdAt: String?
 
     public var enableTools: Bool?
@@ -3738,6 +3884,8 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
     public var name: String?
 
     public var requestId: String?
+
+    public var skills: [GetCustomAgentResponseBody.Skills]?
 
     public var systemPrompt: String?
 
@@ -3774,6 +3922,13 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["Skills"] = tmp
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -3802,6 +3957,19 @@ public class GetCustomAgentResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Skills"] as? [Any?] {
+            var tmp : [GetCustomAgentResponseBody.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = GetCustomAgentResponseBody.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
         }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
@@ -4295,6 +4463,60 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Skills : Tea.TeaModel {
+        public var description_: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var skillType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.skillType != nil {
+                map["SkillType"] = self.skillType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SkillType"] as? String {
+                self.skillType = value
+            }
+        }
+    }
     public var data: [ListCustomAgentResponseBody.Data]?
 
     public var pageNumber: Int64?
@@ -4302,6 +4524,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
     public var pageSize: Int64?
 
     public var requestId: String?
+
+    public var skills: [ListCustomAgentResponseBody.Skills]?
 
     public var totalCount: Int32?
 
@@ -4335,6 +4559,13 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["Skills"] = tmp
+        }
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
         }
@@ -4364,6 +4595,19 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Skills"] as? [Any?] {
+            var tmp : [ListCustomAgentResponseBody.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = ListCustomAgentResponseBody.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
         }
         if let value = dict["TotalCount"] as? Int32 {
             self.totalCount = value
@@ -6721,6 +6965,8 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var skillIds: [String]?
+
     public var systemPrompt: String?
 
     public var tools: [String]?
@@ -6748,6 +6994,9 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.skillIds != nil {
+            map["SkillIds"] = self.skillIds!
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -6768,6 +7017,9 @@ public class UpdateCustomAgentRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["SkillIds"] as? [String] {
+            self.skillIds = value
+        }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
         }
@@ -6783,6 +7035,8 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
     public var enableTools: Bool?
 
     public var name: String?
+
+    public var skillIdsShrink: String?
 
     public var systemPrompt: String?
 
@@ -6811,6 +7065,9 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.skillIdsShrink != nil {
+            map["SkillIds"] = self.skillIdsShrink!
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -6831,6 +7088,9 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["SkillIds"] as? String {
+            self.skillIdsShrink = value
+        }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value
         }
@@ -6841,6 +7101,60 @@ public class UpdateCustomAgentShrinkRequest : Tea.TeaModel {
 }
 
 public class UpdateCustomAgentResponseBody : Tea.TeaModel {
+    public class Skills : Tea.TeaModel {
+        public var description_: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var skillType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.skillType != nil {
+                map["SkillType"] = self.skillType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SkillType"] as? String {
+                self.skillType = value
+            }
+        }
+    }
     public var enableTools: String?
 
     public var id: String?
@@ -6848,6 +7162,8 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
     public var name: String?
 
     public var requestId: String?
+
+    public var skills: [UpdateCustomAgentResponseBody.Skills]?
 
     public var systemPrompt: String?
 
@@ -6879,6 +7195,13 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.skills != nil {
+            var tmp : [Any] = []
+            for k in self.skills! {
+                tmp.append(k.toMap())
+            }
+            map["Skills"] = tmp
+        }
         if self.systemPrompt != nil {
             map["SystemPrompt"] = self.systemPrompt!
         }
@@ -6901,6 +7224,19 @@ public class UpdateCustomAgentResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Skills"] as? [Any?] {
+            var tmp : [UpdateCustomAgentResponseBody.Skills] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateCustomAgentResponseBody.Skills()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.skills = tmp
         }
         if let value = dict["SystemPrompt"] as? String {
             self.systemPrompt = value

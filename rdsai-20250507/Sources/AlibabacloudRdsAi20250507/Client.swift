@@ -185,6 +185,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateCustomAgentShrinkRequest = CreateCustomAgentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.skillIds)) {
+            request.skillIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.skillIds, "SkillIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tools)) {
             request.toolsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tools, "Tools", "json")
         }
@@ -194,6 +197,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillIdsShrink)) {
+            query["SkillIds"] = request.skillIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.systemPrompt)) {
             query["SystemPrompt"] = request.systemPrompt ?? "";
@@ -1297,6 +1303,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateCustomAgentShrinkRequest = UpdateCustomAgentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.skillIds)) {
+            request.skillIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.skillIds, "SkillIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tools)) {
             request.toolsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tools, "Tools", "json")
         }
@@ -1309,6 +1318,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillIdsShrink)) {
+            query["SkillIds"] = request.skillIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.systemPrompt)) {
             query["SystemPrompt"] = request.systemPrompt ?? "";
