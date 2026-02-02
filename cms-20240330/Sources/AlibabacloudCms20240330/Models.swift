@@ -8093,7 +8093,11 @@ public class NotifyStrategyForModify : Tea.TeaModel {
         }
         public var channels: [NotifyStrategyForModify.Routes.Channels]?
 
+        public var digitalEmployeeName: String?
+
         public var effectTimeRange: NotifyStrategyForModify.Routes.EffectTimeRange?
+
+        public var enableRca: Bool?
 
         public var filterSetting: FilterSetting?
 
@@ -8122,8 +8126,14 @@ public class NotifyStrategyForModify : Tea.TeaModel {
                 }
                 map["channels"] = tmp
             }
+            if self.digitalEmployeeName != nil {
+                map["digitalEmployeeName"] = self.digitalEmployeeName!
+            }
             if self.effectTimeRange != nil {
                 map["effectTimeRange"] = self.effectTimeRange?.toMap()
+            }
+            if self.enableRca != nil {
+                map["enableRca"] = self.enableRca!
             }
             if self.filterSetting != nil {
                 map["filterSetting"] = self.filterSetting?.toMap()
@@ -8149,10 +8159,16 @@ public class NotifyStrategyForModify : Tea.TeaModel {
                 }
                 self.channels = tmp
             }
+            if let value = dict["digitalEmployeeName"] as? String {
+                self.digitalEmployeeName = value
+            }
             if let value = dict["effectTimeRange"] as? [String: Any?] {
                 var model = NotifyStrategyForModify.Routes.EffectTimeRange()
                 model.fromMap(value)
                 self.effectTimeRange = model
+            }
+            if let value = dict["enableRca"] as? Bool {
+                self.enableRca = value
             }
             if let value = dict["filterSetting"] as? [String: Any?] {
                 var model = FilterSetting()
@@ -8613,7 +8629,11 @@ public class NotifyStrategyForView : Tea.TeaModel {
         }
         public var channels: [NotifyStrategyForView.Routes.Channels]?
 
+        public var digitalEmployeeName: String?
+
         public var effectTimeRange: NotifyStrategyForView.Routes.EffectTimeRange?
+
+        public var enableRca: Bool?
 
         public var filterSetting: FilterSetting?
 
@@ -8642,8 +8662,14 @@ public class NotifyStrategyForView : Tea.TeaModel {
                 }
                 map["channels"] = tmp
             }
+            if self.digitalEmployeeName != nil {
+                map["digitalEmployeeName"] = self.digitalEmployeeName!
+            }
             if self.effectTimeRange != nil {
                 map["effectTimeRange"] = self.effectTimeRange?.toMap()
+            }
+            if self.enableRca != nil {
+                map["enableRca"] = self.enableRca!
             }
             if self.filterSetting != nil {
                 map["filterSetting"] = self.filterSetting?.toMap()
@@ -8669,10 +8695,16 @@ public class NotifyStrategyForView : Tea.TeaModel {
                 }
                 self.channels = tmp
             }
+            if let value = dict["digitalEmployeeName"] as? String {
+                self.digitalEmployeeName = value
+            }
             if let value = dict["effectTimeRange"] as? [String: Any?] {
                 var model = NotifyStrategyForView.Routes.EffectTimeRange()
                 model.fromMap(value)
                 self.effectTimeRange = model
+            }
+            if let value = dict["enableRca"] as? Bool {
+                self.enableRca = value
             }
             if let value = dict["filterSetting"] as? [String: Any?] {
                 var model = FilterSetting()
@@ -9186,6 +9218,8 @@ public class SubscriptionForModify : Tea.TeaModel {
 
     public var subscriptionName: String?
 
+    public var workspaceFilterSetting: WorkspaceFilterSetting?
+
     public override init() {
         super.init()
     }
@@ -9198,6 +9232,7 @@ public class SubscriptionForModify : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.filterSetting?.validate()
         try self.pushingSetting?.validate()
+        try self.workspaceFilterSetting?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9216,6 +9251,9 @@ public class SubscriptionForModify : Tea.TeaModel {
         }
         if self.subscriptionName != nil {
             map["subscriptionName"] = self.subscriptionName!
+        }
+        if self.workspaceFilterSetting != nil {
+            map["workspaceFilterSetting"] = self.workspaceFilterSetting?.toMap()
         }
         return map
     }
@@ -9240,6 +9278,11 @@ public class SubscriptionForModify : Tea.TeaModel {
         }
         if let value = dict["subscriptionName"] as? String {
             self.subscriptionName = value
+        }
+        if let value = dict["workspaceFilterSetting"] as? [String: Any?] {
+            var model = WorkspaceFilterSetting()
+            model.fromMap(value)
+            self.workspaceFilterSetting = model
         }
     }
 }
@@ -9323,6 +9366,8 @@ public class SubscriptionForView : Tea.TeaModel {
 
     public var workspace: String?
 
+    public var workspaceFilterSetting: WorkspaceFilterSetting?
+
     public override init() {
         super.init()
     }
@@ -9335,6 +9380,7 @@ public class SubscriptionForView : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.filterSetting?.validate()
         try self.pushingSetting?.validate()
+        try self.workspaceFilterSetting?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9374,6 +9420,9 @@ public class SubscriptionForView : Tea.TeaModel {
         }
         if self.workspace != nil {
             map["workspace"] = self.workspace!
+        }
+        if self.workspaceFilterSetting != nil {
+            map["workspaceFilterSetting"] = self.workspaceFilterSetting?.toMap()
         }
         return map
     }
@@ -9419,6 +9468,11 @@ public class SubscriptionForView : Tea.TeaModel {
         }
         if let value = dict["workspace"] as? String {
             self.workspace = value
+        }
+        if let value = dict["workspaceFilterSetting"] as? [String: Any?] {
+            var model = WorkspaceFilterSetting()
+            model.fromMap(value)
+            self.workspaceFilterSetting = model
         }
     }
 }
@@ -11723,7 +11777,11 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
+
+    public var tags: [Tag]?
 
     public override init() {
         super.init()
@@ -11755,8 +11813,18 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         return map
     }
@@ -11780,8 +11848,24 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
         if let value = dict["name"] as? String {
             self.name = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -18274,7 +18358,11 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
+
+    public var tags: [Tag]?
 
     public var updateTime: String?
 
@@ -18320,8 +18408,18 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["roleArn"] = self.roleArn!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
         }
         if self.updateTime != nil {
             map["updateTime"] = self.updateTime!
@@ -18360,8 +18458,24 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["roleArn"] as? String {
             self.roleArn = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["updateTime"] as? String {
             self.updateTime = value
@@ -25595,6 +25709,10 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
+    public var tags: [Tag]?
+
     public override init() {
         super.init()
     }
@@ -25624,6 +25742,16 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         return map
     }
 
@@ -25643,6 +25771,101 @@ public class ListDigitalEmployeesRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class ListDigitalEmployeesShrinkRequest : Tea.TeaModel {
+    public var displayName: String?
+
+    public var employeeType: String?
+
+    public var maxResults: Int32?
+
+    public var name: String?
+
+    public var nextToken: String?
+
+    public var resourceGroupId: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayName != nil {
+            map["displayName"] = self.displayName!
+        }
+        if self.employeeType != nil {
+            map["employeeType"] = self.employeeType!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tagsShrink != nil {
+            map["tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["displayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["employeeType"] as? String {
+            self.employeeType = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? String {
+            self.tagsShrink = value
         }
     }
 }
@@ -25769,7 +25992,11 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var resourceGroupId: String?
+
         public var roleArn: String?
+
+        public var tags: [Tag]?
 
         public var updateTime: String?
 
@@ -25809,8 +26036,18 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
             if self.roleArn != nil {
                 map["roleArn"] = self.roleArn!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
             }
             if self.updateTime != nil {
                 map["updateTime"] = self.updateTime!
@@ -25843,8 +26080,24 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
             if let value = dict["name"] as? String {
                 self.name = value
             }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["roleArn"] as? String {
                 self.roleArn = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [Tag] = []
+                for v in value {
+                    if v != nil {
+                        var model = Tag()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["updateTime"] as? String {
                 self.updateTime = value
