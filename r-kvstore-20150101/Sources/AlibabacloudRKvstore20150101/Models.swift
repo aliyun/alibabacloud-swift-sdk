@@ -20003,6 +20003,8 @@ public class DescribeIntranetAttributeResponseBody : Tea.TeaModel {
 
     public var hasPrePaidBandWidthOrderRunning: Bool?
 
+    public var intranetBandWidthBurst: Int32?
+
     public var intranetBandwidth: Int32?
 
     public var requestId: String?
@@ -20036,6 +20038,9 @@ public class DescribeIntranetAttributeResponseBody : Tea.TeaModel {
         if self.hasPrePaidBandWidthOrderRunning != nil {
             map["HasPrePaidBandWidthOrderRunning"] = self.hasPrePaidBandWidthOrderRunning!
         }
+        if self.intranetBandWidthBurst != nil {
+            map["IntranetBandWidthBurst"] = self.intranetBandWidthBurst!
+        }
         if self.intranetBandwidth != nil {
             map["IntranetBandwidth"] = self.intranetBandwidth!
         }
@@ -20061,6 +20066,9 @@ public class DescribeIntranetAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["HasPrePaidBandWidthOrderRunning"] as? Bool {
             self.hasPrePaidBandWidthOrderRunning = value
+        }
+        if let value = dict["IntranetBandWidthBurst"] as? Int32 {
+            self.intranetBandWidthBurst = value
         }
         if let value = dict["IntranetBandwidth"] as? Int32 {
             self.intranetBandwidth = value
@@ -42397,6 +42405,8 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var couponNo: String?
+
     public var instanceId: String?
 
     public var ownerAccount: String?
@@ -42437,6 +42447,9 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
+        if self.couponNo != nil {
+            map["CouponNo"] = self.couponNo!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -42474,6 +42487,9 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["CouponNo"] as? String {
+            self.couponNo = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -42827,6 +42843,8 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
 
     public var autoRenewPeriod: Int64?
 
+    public var couponNo: String?
+
     public var instanceId: String?
 
     public var ownerAccount: String?
@@ -42864,6 +42882,9 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
         if self.autoRenewPeriod != nil {
             map["AutoRenewPeriod"] = self.autoRenewPeriod!
         }
+        if self.couponNo != nil {
+            map["CouponNo"] = self.couponNo!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -42898,6 +42919,9 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenewPeriod"] as? Int64 {
             self.autoRenewPeriod = value
+        }
+        if let value = dict["CouponNo"] as? String {
+            self.couponNo = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
