@@ -4123,11 +4123,60 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListDatasetDocumentsShrinkRequest = ListDatasetDocumentsShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.categoryUuids)) {
+            request.categoryUuidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.categoryUuids, "CategoryUuids", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.docIds)) {
+            request.docIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docIds, "DocIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.docUuids)) {
+            request.docUuidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docUuids, "DocUuids", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.excludeFields)) {
             request.excludeFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeFields, "ExcludeFields", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.includeFields)) {
             request.includeFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.includeFields, "IncludeFields", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryUuidsShrink)) {
+            query["CategoryUuids"] = request.categoryUuidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeEnd)) {
+            query["CreateTimeEnd"] = request.createTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeStart)) {
+            query["CreateTimeStart"] = request.createTimeStart!;
+        }
+        if (!TeaUtils.Client.isUnset(request.docIdsShrink)) {
+            query["DocIds"] = request.docIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docUuidsShrink)) {
+            query["DocUuids"] = request.docUuidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extend1)) {
+            query["Extend1"] = request.extend1 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extend2)) {
+            query["Extend2"] = request.extend2 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extend3)) {
+            query["Extend3"] = request.extend3 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["Tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetDescription)) {
@@ -4164,6 +4213,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -7657,8 +7707,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchDatasetDocumentsWithOptions(_ request: SearchDatasetDocumentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchDatasetDocumentsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func searchDatasetDocumentsWithOptions(_ tmpReq: SearchDatasetDocumentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchDatasetDocumentsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SearchDatasetDocumentsShrinkRequest = SearchDatasetDocumentsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.categoryUuids)) {
+            request.categoryUuidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.categoryUuids, "CategoryUuids", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.docIds)) {
+            request.docIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docIds, "DocIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.docTypes)) {
+            request.docTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docTypes, "DocTypes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.docUuids)) {
+            request.docUuidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docUuids, "DocUuids", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryUuidsShrink)) {
+            query["CategoryUuids"] = request.categoryUuidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeEnd)) {
+            query["CreateTimeEnd"] = request.createTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeStart)) {
+            query["CreateTimeStart"] = request.createTimeStart!;
+        }
+        if (!TeaUtils.Client.isUnset(request.docIdsShrink)) {
+            query["DocIds"] = request.docIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docTypesShrink)) {
+            query["DocTypes"] = request.docTypesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docUuidsShrink)) {
+            query["DocUuids"] = request.docUuidsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extend2)) {
+            query["Extend2"] = request.extend2 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extend3)) {
+            query["Extend3"] = request.extend3 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchMode)) {
+            query["SearchMode"] = request.searchMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["Tags"] = request.tagsShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.datasetId)) {
             body["DatasetId"] = request.datasetId!;
@@ -7682,6 +7786,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

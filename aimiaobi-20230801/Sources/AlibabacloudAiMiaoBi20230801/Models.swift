@@ -1337,6 +1337,44 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class KeyValues : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class VideoShots : Tea.TeaModel {
                 public var endTime: Int64?
 
@@ -1385,6 +1423,8 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
             }
             public var asrSentences: [AddDatasetDocumentRequest.Document.Metadata.AsrSentences]?
 
+            public var keyValues: [AddDatasetDocumentRequest.Document.Metadata.KeyValues]?
+
             public var text: String?
 
             public var videoShots: [AddDatasetDocumentRequest.Document.Metadata.VideoShots]?
@@ -1409,6 +1449,13 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["AsrSentences"] = tmp
+                }
+                if self.keyValues != nil {
+                    var tmp : [Any] = []
+                    for k in self.keyValues! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KeyValues"] = tmp
                 }
                 if self.text != nil {
                     map["Text"] = self.text!
@@ -1437,6 +1484,19 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
                         }
                     }
                     self.asrSentences = tmp
+                }
+                if let value = dict["KeyValues"] as? [Any?] {
+                    var tmp : [AddDatasetDocumentRequest.Document.Metadata.KeyValues] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AddDatasetDocumentRequest.Document.Metadata.KeyValues()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.keyValues = tmp
                 }
                 if let value = dict["Text"] as? String {
                     self.text = value
@@ -1502,6 +1562,8 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
                 }
             }
         }
+        public var categoryUuid: String?
+
         public var content: String?
 
         public var disableHandleMultimodalMedia: Bool?
@@ -1530,6 +1592,8 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
 
         public var summary: String?
 
+        public var tags: [String]?
+
         public var title: String?
 
         public var url: String?
@@ -1549,6 +1613,9 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.categoryUuid != nil {
+                map["CategoryUuid"] = self.categoryUuid!
+            }
             if self.content != nil {
                 map["Content"] = self.content!
             }
@@ -1595,6 +1662,9 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
             if self.summary != nil {
                 map["Summary"] = self.summary!
             }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
             if self.title != nil {
                 map["Title"] = self.title!
             }
@@ -1606,6 +1676,9 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CategoryUuid"] as? String {
+                self.categoryUuid = value
+            }
             if let value = dict["Content"] as? String {
                 self.content = value
             }
@@ -1659,6 +1732,9 @@ public class AddDatasetDocumentRequest : Tea.TeaModel {
             }
             if let value = dict["Summary"] as? String {
                 self.summary = value
+            }
+            if let value = dict["Tags"] as? [String] {
+                self.tags = value
             }
             if let value = dict["Title"] as? String {
                 self.title = value
@@ -5415,6 +5491,60 @@ public class ConfirmAndPostProcessAuditNoteResponse : Tea.TeaModel {
 
 public class CreateDatasetRequest : Tea.TeaModel {
     public class DatasetConfig : Tea.TeaModel {
+        public class SearchSourceConfig : Tea.TeaModel {
+            public var metadataKeyValueGenerateEnable: Bool?
+
+            public var metadataKeyValueSearchEnable: Bool?
+
+            public var tagGenerateEnable: Bool?
+
+            public var tagSearchEnable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.metadataKeyValueGenerateEnable != nil {
+                    map["MetadataKeyValueGenerateEnable"] = self.metadataKeyValueGenerateEnable!
+                }
+                if self.metadataKeyValueSearchEnable != nil {
+                    map["MetadataKeyValueSearchEnable"] = self.metadataKeyValueSearchEnable!
+                }
+                if self.tagGenerateEnable != nil {
+                    map["TagGenerateEnable"] = self.tagGenerateEnable!
+                }
+                if self.tagSearchEnable != nil {
+                    map["TagSearchEnable"] = self.tagSearchEnable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MetadataKeyValueGenerateEnable"] as? Bool {
+                    self.metadataKeyValueGenerateEnable = value
+                }
+                if let value = dict["MetadataKeyValueSearchEnable"] as? Bool {
+                    self.metadataKeyValueSearchEnable = value
+                }
+                if let value = dict["TagGenerateEnable"] as? Bool {
+                    self.tagGenerateEnable = value
+                }
+                if let value = dict["TagSearchEnable"] as? Bool {
+                    self.tagSearchEnable = value
+                }
+            }
+        }
         public class SearchSourceConfigs : Tea.TeaModel {
             public class SearchSourceRequestConfig : Tea.TeaModel {
                 public class Headers : Tea.TeaModel {
@@ -5923,6 +6053,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
                 }
             }
         }
+        public var searchSourceConfig: CreateDatasetRequest.DatasetConfig.SearchSourceConfig?
+
         public var searchSourceConfigs: [CreateDatasetRequest.DatasetConfig.SearchSourceConfigs]?
 
         public override init() {
@@ -5935,10 +6067,14 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.searchSourceConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.searchSourceConfig != nil {
+                map["SearchSourceConfig"] = self.searchSourceConfig?.toMap()
+            }
             if self.searchSourceConfigs != nil {
                 var tmp : [Any] = []
                 for k in self.searchSourceConfigs! {
@@ -5951,6 +6087,11 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["SearchSourceConfig"] as? [String: Any?] {
+                var model = CreateDatasetRequest.DatasetConfig.SearchSourceConfig()
+                model.fromMap(value)
+                self.searchSourceConfig = model
+            }
             if let value = dict["SearchSourceConfigs"] as? [Any?] {
                 var tmp : [CreateDatasetRequest.DatasetConfig.SearchSourceConfigs] = []
                 for v in value {
@@ -18042,6 +18183,60 @@ public class GetDatasetRequest : Tea.TeaModel {
 public class GetDatasetResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class DatasetConfig : Tea.TeaModel {
+            public class SearchSourceConfig : Tea.TeaModel {
+                public var metadataKeyValueGenerateEnable: String?
+
+                public var metadataKeyValueSearchEnable: String?
+
+                public var tagGenerateEnable: String?
+
+                public var tagSearchEnable: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.metadataKeyValueGenerateEnable != nil {
+                        map["MetadataKeyValueGenerateEnable"] = self.metadataKeyValueGenerateEnable!
+                    }
+                    if self.metadataKeyValueSearchEnable != nil {
+                        map["MetadataKeyValueSearchEnable"] = self.metadataKeyValueSearchEnable!
+                    }
+                    if self.tagGenerateEnable != nil {
+                        map["TagGenerateEnable"] = self.tagGenerateEnable!
+                    }
+                    if self.tagSearchEnable != nil {
+                        map["TagSearchEnable"] = self.tagSearchEnable!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MetadataKeyValueGenerateEnable"] as? String {
+                        self.metadataKeyValueGenerateEnable = value
+                    }
+                    if let value = dict["MetadataKeyValueSearchEnable"] as? String {
+                        self.metadataKeyValueSearchEnable = value
+                    }
+                    if let value = dict["TagGenerateEnable"] as? String {
+                        self.tagGenerateEnable = value
+                    }
+                    if let value = dict["TagSearchEnable"] as? String {
+                        self.tagSearchEnable = value
+                    }
+                }
+            }
             public class SearchSourceConfigs : Tea.TeaModel {
                 public class SearchSourceRequestConfig : Tea.TeaModel {
                     public class Headers : Tea.TeaModel {
@@ -18550,6 +18745,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var searchSourceConfig: GetDatasetResponseBody.Data.DatasetConfig.SearchSourceConfig?
+
             public var searchSourceConfigs: [GetDatasetResponseBody.Data.DatasetConfig.SearchSourceConfigs]?
 
             public override init() {
@@ -18562,10 +18759,14 @@ public class GetDatasetResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.searchSourceConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.searchSourceConfig != nil {
+                    map["SearchSourceConfig"] = self.searchSourceConfig?.toMap()
+                }
                 if self.searchSourceConfigs != nil {
                     var tmp : [Any] = []
                     for k in self.searchSourceConfigs! {
@@ -18578,6 +18779,11 @@ public class GetDatasetResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["SearchSourceConfig"] as? [String: Any?] {
+                    var model = GetDatasetResponseBody.Data.DatasetConfig.SearchSourceConfig()
+                    model.fromMap(value)
+                    self.searchSourceConfig = model
+                }
                 if let value = dict["SearchSourceConfigs"] as? [Any?] {
                     var tmp : [GetDatasetResponseBody.Data.DatasetConfig.SearchSourceConfigs] = []
                     for v in value {
@@ -19036,6 +19242,44 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class KeyValues : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class VideoShots : Tea.TeaModel {
                 public var endTime: Int64?
 
@@ -19084,6 +19328,8 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             }
             public var asrSentences: [GetDatasetDocumentResponseBody.Data.Metadata.AsrSentences]?
 
+            public var keyValues: [GetDatasetDocumentResponseBody.Data.Metadata.KeyValues]?
+
             public var text: String?
 
             public var videoShots: [GetDatasetDocumentResponseBody.Data.Metadata.VideoShots]?
@@ -19108,6 +19354,13 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["AsrSentences"] = tmp
+                }
+                if self.keyValues != nil {
+                    var tmp : [Any] = []
+                    for k in self.keyValues! {
+                        tmp.append(k.toMap())
+                    }
+                    map["KeyValues"] = tmp
                 }
                 if self.text != nil {
                     map["Text"] = self.text!
@@ -19137,6 +19390,19 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
                     }
                     self.asrSentences = tmp
                 }
+                if let value = dict["KeyValues"] as? [Any?] {
+                    var tmp : [GetDatasetDocumentResponseBody.Data.Metadata.KeyValues] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetDatasetDocumentResponseBody.Data.Metadata.KeyValues()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.keyValues = tmp
+                }
                 if let value = dict["Text"] as? String {
                     self.text = value
                 }
@@ -19155,6 +19421,8 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var categoryUuid: String?
+
         public var content: String?
 
         public var disableHandleMultimodalMedia: Bool?
@@ -19165,6 +19433,12 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
 
         public var docUuid: String?
 
+        public var extend1: String?
+
+        public var extend2: String?
+
+        public var extend3: String?
+
         public var metadata: GetDatasetDocumentResponseBody.Data.Metadata?
 
         public var pubTime: String?
@@ -19174,6 +19448,8 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
         public var status: Int32?
 
         public var summary: String?
+
+        public var tags: [String]?
 
         public var title: String?
 
@@ -19194,6 +19470,9 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.categoryUuid != nil {
+                map["CategoryUuid"] = self.categoryUuid!
+            }
             if self.content != nil {
                 map["Content"] = self.content!
             }
@@ -19208,6 +19487,15 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             }
             if self.docUuid != nil {
                 map["DocUuid"] = self.docUuid!
+            }
+            if self.extend1 != nil {
+                map["Extend1"] = self.extend1!
+            }
+            if self.extend2 != nil {
+                map["Extend2"] = self.extend2!
+            }
+            if self.extend3 != nil {
+                map["Extend3"] = self.extend3!
             }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata?.toMap()
@@ -19224,6 +19512,9 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             if self.summary != nil {
                 map["Summary"] = self.summary!
             }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
             if self.title != nil {
                 map["Title"] = self.title!
             }
@@ -19235,6 +19526,9 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CategoryUuid"] as? String {
+                self.categoryUuid = value
+            }
             if let value = dict["Content"] as? String {
                 self.content = value
             }
@@ -19249,6 +19543,15 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             }
             if let value = dict["DocUuid"] as? String {
                 self.docUuid = value
+            }
+            if let value = dict["Extend1"] as? String {
+                self.extend1 = value
+            }
+            if let value = dict["Extend2"] as? String {
+                self.extend2 = value
+            }
+            if let value = dict["Extend3"] as? String {
+                self.extend3 = value
             }
             if let value = dict["Metadata"] as? [String: Any?] {
                 var model = GetDatasetDocumentResponseBody.Data.Metadata()
@@ -19266,6 +19569,9 @@ public class GetDatasetDocumentResponseBody : Tea.TeaModel {
             }
             if let value = dict["Summary"] as? String {
                 self.summary = value
+            }
+            if let value = dict["Tags"] as? [String] {
+                self.tags = value
             }
             if let value = dict["Title"] as? String {
                 self.title = value
@@ -33194,15 +33500,33 @@ public class ListCustomViewPointsResponse : Tea.TeaModel {
 }
 
 public class ListDatasetDocumentsRequest : Tea.TeaModel {
+    public var categoryUuids: [String]?
+
+    public var createTimeEnd: Int64?
+
+    public var createTimeStart: Int64?
+
     public var datasetDescription: String?
 
     public var datasetId: Int64?
 
     public var datasetName: String?
 
+    public var docIds: [String]?
+
     public var docType: String?
 
+    public var docUuids: [String]?
+
+    public var endTime: Int64?
+
     public var excludeFields: [String]?
+
+    public var extend1: String?
+
+    public var extend2: String?
+
+    public var extend3: String?
 
     public var includeFields: [String]?
 
@@ -33212,7 +33536,13 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var startTime: Int64?
+
     public var status: Int32?
+
+    public var tags: [String]?
+
+    public var title: String?
 
     public var workspaceId: String?
 
@@ -33230,6 +33560,15 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryUuids != nil {
+            map["CategoryUuids"] = self.categoryUuids!
+        }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
         if self.datasetDescription != nil {
             map["DatasetDescription"] = self.datasetDescription!
         }
@@ -33239,11 +33578,29 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.docIds != nil {
+            map["DocIds"] = self.docIds!
+        }
         if self.docType != nil {
             map["DocType"] = self.docType!
         }
+        if self.docUuids != nil {
+            map["DocUuids"] = self.docUuids!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.excludeFields != nil {
             map["ExcludeFields"] = self.excludeFields!
+        }
+        if self.extend1 != nil {
+            map["Extend1"] = self.extend1!
+        }
+        if self.extend2 != nil {
+            map["Extend2"] = self.extend2!
+        }
+        if self.extend3 != nil {
+            map["Extend3"] = self.extend3!
         }
         if self.includeFields != nil {
             map["IncludeFields"] = self.includeFields!
@@ -33257,8 +33614,17 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -33268,6 +33634,15 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CategoryUuids"] as? [String] {
+            self.categoryUuids = value
+        }
+        if let value = dict["CreateTimeEnd"] as? Int64 {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? Int64 {
+            self.createTimeStart = value
+        }
         if let value = dict["DatasetDescription"] as? String {
             self.datasetDescription = value
         }
@@ -33277,11 +33652,29 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
         }
+        if let value = dict["DocIds"] as? [String] {
+            self.docIds = value
+        }
         if let value = dict["DocType"] as? String {
             self.docType = value
         }
+        if let value = dict["DocUuids"] as? [String] {
+            self.docUuids = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
         if let value = dict["ExcludeFields"] as? [String] {
             self.excludeFields = value
+        }
+        if let value = dict["Extend1"] as? String {
+            self.extend1 = value
+        }
+        if let value = dict["Extend2"] as? String {
+            self.extend2 = value
+        }
+        if let value = dict["Extend3"] as? String {
+            self.extend3 = value
         }
         if let value = dict["IncludeFields"] as? [String] {
             self.includeFields = value
@@ -33295,8 +33688,17 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
         if let value = dict["Query"] as? String {
             self.query = value
         }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
         if let value = dict["Status"] as? Int32 {
             self.status = value
+        }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -33305,15 +33707,33 @@ public class ListDatasetDocumentsRequest : Tea.TeaModel {
 }
 
 public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
+    public var categoryUuidsShrink: String?
+
+    public var createTimeEnd: Int64?
+
+    public var createTimeStart: Int64?
+
     public var datasetDescription: String?
 
     public var datasetId: Int64?
 
     public var datasetName: String?
 
+    public var docIdsShrink: String?
+
     public var docType: String?
 
+    public var docUuidsShrink: String?
+
+    public var endTime: Int64?
+
     public var excludeFieldsShrink: String?
+
+    public var extend1: String?
+
+    public var extend2: String?
+
+    public var extend3: String?
 
     public var includeFieldsShrink: String?
 
@@ -33323,7 +33743,13 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var startTime: Int64?
+
     public var status: Int32?
+
+    public var tagsShrink: String?
+
+    public var title: String?
 
     public var workspaceId: String?
 
@@ -33341,6 +33767,15 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryUuidsShrink != nil {
+            map["CategoryUuids"] = self.categoryUuidsShrink!
+        }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
         if self.datasetDescription != nil {
             map["DatasetDescription"] = self.datasetDescription!
         }
@@ -33350,11 +33785,29 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.docIdsShrink != nil {
+            map["DocIds"] = self.docIdsShrink!
+        }
         if self.docType != nil {
             map["DocType"] = self.docType!
         }
+        if self.docUuidsShrink != nil {
+            map["DocUuids"] = self.docUuidsShrink!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.excludeFieldsShrink != nil {
             map["ExcludeFields"] = self.excludeFieldsShrink!
+        }
+        if self.extend1 != nil {
+            map["Extend1"] = self.extend1!
+        }
+        if self.extend2 != nil {
+            map["Extend2"] = self.extend2!
+        }
+        if self.extend3 != nil {
+            map["Extend3"] = self.extend3!
         }
         if self.includeFieldsShrink != nil {
             map["IncludeFields"] = self.includeFieldsShrink!
@@ -33368,8 +33821,17 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -33379,6 +33841,15 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CategoryUuids"] as? String {
+            self.categoryUuidsShrink = value
+        }
+        if let value = dict["CreateTimeEnd"] as? Int64 {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? Int64 {
+            self.createTimeStart = value
+        }
         if let value = dict["DatasetDescription"] as? String {
             self.datasetDescription = value
         }
@@ -33388,11 +33859,29 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
         }
+        if let value = dict["DocIds"] as? String {
+            self.docIdsShrink = value
+        }
         if let value = dict["DocType"] as? String {
             self.docType = value
         }
+        if let value = dict["DocUuids"] as? String {
+            self.docUuidsShrink = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
         if let value = dict["ExcludeFields"] as? String {
             self.excludeFieldsShrink = value
+        }
+        if let value = dict["Extend1"] as? String {
+            self.extend1 = value
+        }
+        if let value = dict["Extend2"] as? String {
+            self.extend2 = value
+        }
+        if let value = dict["Extend3"] as? String {
+            self.extend3 = value
         }
         if let value = dict["IncludeFields"] as? String {
             self.includeFieldsShrink = value
@@ -33406,8 +33895,17 @@ public class ListDatasetDocumentsShrinkRequest : Tea.TeaModel {
         if let value = dict["Query"] as? String {
             self.query = value
         }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
         if let value = dict["Status"] as? Int32 {
             self.status = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -33469,6 +33967,8 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var createUser: String?
+
         public var disableHandleMultimodalMedia: Bool?
 
         public var docId: String?
@@ -33493,9 +33993,13 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
 
         public var summary: String?
 
+        public var tags: [String]?
+
         public var title: String?
 
         public var updateTime: String?
+
+        public var updateUser: String?
 
         public var url: String?
 
@@ -33521,6 +34025,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.createUser != nil {
+                map["CreateUser"] = self.createUser!
             }
             if self.disableHandleMultimodalMedia != nil {
                 map["DisableHandleMultimodalMedia"] = self.disableHandleMultimodalMedia!
@@ -33562,11 +34069,17 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             if self.summary != nil {
                 map["Summary"] = self.summary!
             }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
             if self.title != nil {
                 map["Title"] = self.title!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.updateUser != nil {
+                map["UpdateUser"] = self.updateUser!
             }
             if self.url != nil {
                 map["Url"] = self.url!
@@ -33584,6 +34097,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["CreateUser"] as? String {
+                self.createUser = value
             }
             if let value = dict["DisableHandleMultimodalMedia"] as? Bool {
                 self.disableHandleMultimodalMedia = value
@@ -33631,11 +34147,17 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             if let value = dict["Summary"] as? String {
                 self.summary = value
             }
+            if let value = dict["Tags"] as? [String] {
+                self.tags = value
+            }
             if let value = dict["Title"] as? String {
                 self.title = value
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
+            }
+            if let value = dict["UpdateUser"] as? String {
+                self.updateUser = value
             }
             if let value = dict["Url"] as? String {
                 self.url = value
@@ -56226,7 +56748,23 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var categoryUuids: [String]?
+
+            public var createTimeEnd: Int64?
+
+            public var createTimeStart: Int64?
+
+            public var docIds: [String]?
+
+            public var docUuids: [String]?
+
             public var endTime: Int64?
+
+            public var extend1: String?
+
+            public var extend2: String?
+
+            public var extend3: String?
 
             public var multimodalSearchTypes: [String]?
 
@@ -56242,6 +56780,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
             public var startTime: Int64?
 
+            public var tags: [String]?
+
             public override init() {
                 super.init()
             }
@@ -56256,8 +56796,32 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryUuids != nil {
+                    map["CategoryUuids"] = self.categoryUuids!
+                }
+                if self.createTimeEnd != nil {
+                    map["CreateTimeEnd"] = self.createTimeEnd!
+                }
+                if self.createTimeStart != nil {
+                    map["CreateTimeStart"] = self.createTimeStart!
+                }
+                if self.docIds != nil {
+                    map["DocIds"] = self.docIds!
+                }
+                if self.docUuids != nil {
+                    map["DocUuids"] = self.docUuids!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
+                }
+                if self.extend1 != nil {
+                    map["Extend1"] = self.extend1!
+                }
+                if self.extend2 != nil {
+                    map["Extend2"] = self.extend2!
+                }
+                if self.extend3 != nil {
+                    map["Extend3"] = self.extend3!
                 }
                 if self.multimodalSearchTypes != nil {
                     map["MultimodalSearchTypes"] = self.multimodalSearchTypes!
@@ -56284,13 +56848,40 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CategoryUuids"] as? [String] {
+                    self.categoryUuids = value
+                }
+                if let value = dict["CreateTimeEnd"] as? Int64 {
+                    self.createTimeEnd = value
+                }
+                if let value = dict["CreateTimeStart"] as? Int64 {
+                    self.createTimeStart = value
+                }
+                if let value = dict["DocIds"] as? [String] {
+                    self.docIds = value
+                }
+                if let value = dict["DocUuids"] as? [String] {
+                    self.docUuids = value
+                }
                 if let value = dict["EndTime"] as? Int64 {
                     self.endTime = value
+                }
+                if let value = dict["Extend1"] as? String {
+                    self.extend1 = value
+                }
+                if let value = dict["Extend2"] as? String {
+                    self.extend2 = value
+                }
+                if let value = dict["Extend3"] as? String {
+                    self.extend3 = value
                 }
                 if let value = dict["MultimodalSearchTypes"] as? [String] {
                     self.multimodalSearchTypes = value
@@ -56322,6 +56913,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 }
                 if let value = dict["StartTime"] as? Int64 {
                     self.startTime = value
+                }
+                if let value = dict["Tags"] as? [String] {
+                    self.tags = value
                 }
             }
         }
@@ -56695,13 +57289,23 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         public class AudioSearchResult : Tea.TeaModel {
                             public class SearchResult : Tea.TeaModel {
                                 public class Article : Tea.TeaModel {
+                                    public var categoryUuid: String?
+
                                     public var docId: String?
 
                                     public var docUuid: String?
 
+                                    public var extend1: String?
+
+                                    public var extend2: String?
+
+                                    public var extend3: String?
+
                                     public var searchSourceName: String?
 
                                     public var summary: String?
+
+                                    public var tags: [String]?
 
                                     public var title: String?
 
@@ -56721,17 +57325,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.categoryUuid != nil {
+                                            map["CategoryUuid"] = self.categoryUuid!
+                                        }
                                         if self.docId != nil {
                                             map["DocId"] = self.docId!
                                         }
                                         if self.docUuid != nil {
                                             map["DocUuid"] = self.docUuid!
                                         }
+                                        if self.extend1 != nil {
+                                            map["Extend1"] = self.extend1!
+                                        }
+                                        if self.extend2 != nil {
+                                            map["Extend2"] = self.extend2!
+                                        }
+                                        if self.extend3 != nil {
+                                            map["Extend3"] = self.extend3!
+                                        }
                                         if self.searchSourceName != nil {
                                             map["SearchSourceName"] = self.searchSourceName!
                                         }
                                         if self.summary != nil {
                                             map["Summary"] = self.summary!
+                                        }
+                                        if self.tags != nil {
+                                            map["Tags"] = self.tags!
                                         }
                                         if self.title != nil {
                                             map["Title"] = self.title!
@@ -56744,17 +57363,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CategoryUuid"] as? String {
+                                            self.categoryUuid = value
+                                        }
                                         if let value = dict["DocId"] as? String {
                                             self.docId = value
                                         }
                                         if let value = dict["DocUuid"] as? String {
                                             self.docUuid = value
                                         }
+                                        if let value = dict["Extend1"] as? String {
+                                            self.extend1 = value
+                                        }
+                                        if let value = dict["Extend2"] as? String {
+                                            self.extend2 = value
+                                        }
+                                        if let value = dict["Extend3"] as? String {
+                                            self.extend3 = value
+                                        }
                                         if let value = dict["SearchSourceName"] as? String {
                                             self.searchSourceName = value
                                         }
                                         if let value = dict["Summary"] as? String {
                                             self.summary = value
+                                        }
+                                        if let value = dict["Tags"] as? [String] {
+                                            self.tags = value
                                         }
                                         if let value = dict["Title"] as? String {
                                             self.title = value
@@ -56952,13 +57586,27 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public class AudioSearchResult : Tea.TeaModel {
                                     public class SearchResult : Tea.TeaModel {
                                         public class Article : Tea.TeaModel {
+                                            public var categoryUuid: String?
+
                                             public var docId: String?
 
                                             public var docUuid: String?
 
+                                            public var extend1: String?
+
+                                            public var extend2: String?
+
+                                            public var extend3: String?
+
+                                            public var searchSource: String?
+
                                             public var searchSourceName: String?
 
+                                            public var searchSourceType: String?
+
                                             public var summary: String?
+
+                                            public var tags: [String]?
 
                                             public var title: String?
 
@@ -56978,17 +57626,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func toMap() -> [String : Any] {
                                                 var map = super.toMap()
+                                                if self.categoryUuid != nil {
+                                                    map["CategoryUuid"] = self.categoryUuid!
+                                                }
                                                 if self.docId != nil {
                                                     map["DocId"] = self.docId!
                                                 }
                                                 if self.docUuid != nil {
                                                     map["DocUuid"] = self.docUuid!
                                                 }
+                                                if self.extend1 != nil {
+                                                    map["Extend1"] = self.extend1!
+                                                }
+                                                if self.extend2 != nil {
+                                                    map["Extend2"] = self.extend2!
+                                                }
+                                                if self.extend3 != nil {
+                                                    map["Extend3"] = self.extend3!
+                                                }
+                                                if self.searchSource != nil {
+                                                    map["SearchSource"] = self.searchSource!
+                                                }
                                                 if self.searchSourceName != nil {
                                                     map["SearchSourceName"] = self.searchSourceName!
                                                 }
+                                                if self.searchSourceType != nil {
+                                                    map["SearchSourceType"] = self.searchSourceType!
+                                                }
                                                 if self.summary != nil {
                                                     map["Summary"] = self.summary!
+                                                }
+                                                if self.tags != nil {
+                                                    map["Tags"] = self.tags!
                                                 }
                                                 if self.title != nil {
                                                     map["Title"] = self.title!
@@ -57001,17 +57670,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                                 guard let dict else { return }
+                                                if let value = dict["CategoryUuid"] as? String {
+                                                    self.categoryUuid = value
+                                                }
                                                 if let value = dict["DocId"] as? String {
                                                     self.docId = value
                                                 }
                                                 if let value = dict["DocUuid"] as? String {
                                                     self.docUuid = value
                                                 }
+                                                if let value = dict["Extend1"] as? String {
+                                                    self.extend1 = value
+                                                }
+                                                if let value = dict["Extend2"] as? String {
+                                                    self.extend2 = value
+                                                }
+                                                if let value = dict["Extend3"] as? String {
+                                                    self.extend3 = value
+                                                }
+                                                if let value = dict["SearchSource"] as? String {
+                                                    self.searchSource = value
+                                                }
                                                 if let value = dict["SearchSourceName"] as? String {
                                                     self.searchSourceName = value
                                                 }
+                                                if let value = dict["SearchSourceType"] as? String {
+                                                    self.searchSourceType = value
+                                                }
                                                 if let value = dict["Summary"] as? String {
                                                     self.summary = value
+                                                }
+                                                if let value = dict["Tags"] as? [String] {
+                                                    self.tags = value
                                                 }
                                                 if let value = dict["Title"] as? String {
                                                     self.title = value
@@ -57212,13 +57902,27 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public class ImageSearchResult : Tea.TeaModel {
                                     public class SearchResult : Tea.TeaModel {
                                         public class Article : Tea.TeaModel {
+                                            public var categoryUuid: String?
+
                                             public var docId: String?
 
                                             public var docUuid: String?
 
+                                            public var extend1: String?
+
+                                            public var extend2: String?
+
+                                            public var extend3: String?
+
+                                            public var searchSource: String?
+
                                             public var searchSourceName: String?
 
+                                            public var searchSourceType: String?
+
                                             public var summary: String?
+
+                                            public var tags: [String]?
 
                                             public var title: String?
 
@@ -57238,17 +57942,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func toMap() -> [String : Any] {
                                                 var map = super.toMap()
+                                                if self.categoryUuid != nil {
+                                                    map["CategoryUuid"] = self.categoryUuid!
+                                                }
                                                 if self.docId != nil {
                                                     map["DocId"] = self.docId!
                                                 }
                                                 if self.docUuid != nil {
                                                     map["DocUuid"] = self.docUuid!
                                                 }
+                                                if self.extend1 != nil {
+                                                    map["Extend1"] = self.extend1!
+                                                }
+                                                if self.extend2 != nil {
+                                                    map["Extend2"] = self.extend2!
+                                                }
+                                                if self.extend3 != nil {
+                                                    map["Extend3"] = self.extend3!
+                                                }
+                                                if self.searchSource != nil {
+                                                    map["SearchSource"] = self.searchSource!
+                                                }
                                                 if self.searchSourceName != nil {
                                                     map["SearchSourceName"] = self.searchSourceName!
                                                 }
+                                                if self.searchSourceType != nil {
+                                                    map["SearchSourceType"] = self.searchSourceType!
+                                                }
                                                 if self.summary != nil {
                                                     map["Summary"] = self.summary!
+                                                }
+                                                if self.tags != nil {
+                                                    map["Tags"] = self.tags!
                                                 }
                                                 if self.title != nil {
                                                     map["Title"] = self.title!
@@ -57261,17 +57986,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                                 guard let dict else { return }
+                                                if let value = dict["CategoryUuid"] as? String {
+                                                    self.categoryUuid = value
+                                                }
                                                 if let value = dict["DocId"] as? String {
                                                     self.docId = value
                                                 }
                                                 if let value = dict["DocUuid"] as? String {
                                                     self.docUuid = value
                                                 }
+                                                if let value = dict["Extend1"] as? String {
+                                                    self.extend1 = value
+                                                }
+                                                if let value = dict["Extend2"] as? String {
+                                                    self.extend2 = value
+                                                }
+                                                if let value = dict["Extend3"] as? String {
+                                                    self.extend3 = value
+                                                }
+                                                if let value = dict["SearchSource"] as? String {
+                                                    self.searchSource = value
+                                                }
                                                 if let value = dict["SearchSourceName"] as? String {
                                                     self.searchSourceName = value
                                                 }
+                                                if let value = dict["SearchSourceType"] as? String {
+                                                    self.searchSourceType = value
+                                                }
                                                 if let value = dict["Summary"] as? String {
                                                     self.summary = value
+                                                }
+                                                if let value = dict["Tags"] as? [String] {
+                                                    self.tags = value
                                                 }
                                                 if let value = dict["Title"] as? String {
                                                     self.title = value
@@ -57444,9 +58190,17 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                                 }
                                             }
                                         }
+                                        public var categoryUuid: String?
+
                                         public var docId: String?
 
                                         public var docUuid: String?
+
+                                        public var extend1: String?
+
+                                        public var extend2: String?
+
+                                        public var extend3: String?
 
                                         public var multimodalMedias: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.TextSearchResult.SearchResult.MultimodalMedias]?
 
@@ -57459,6 +58213,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         public var searchSourceType: String?
 
                                         public var summary: String?
+
+                                        public var tags: [String]?
 
                                         public var title: String?
 
@@ -57478,11 +58234,23 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func toMap() -> [String : Any] {
                                             var map = super.toMap()
+                                            if self.categoryUuid != nil {
+                                                map["CategoryUuid"] = self.categoryUuid!
+                                            }
                                             if self.docId != nil {
                                                 map["DocId"] = self.docId!
                                             }
                                             if self.docUuid != nil {
                                                 map["DocUuid"] = self.docUuid!
+                                            }
+                                            if self.extend1 != nil {
+                                                map["Extend1"] = self.extend1!
+                                            }
+                                            if self.extend2 != nil {
+                                                map["Extend2"] = self.extend2!
+                                            }
+                                            if self.extend3 != nil {
+                                                map["Extend3"] = self.extend3!
                                             }
                                             if self.multimodalMedias != nil {
                                                 var tmp : [Any] = []
@@ -57506,6 +58274,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                             if self.summary != nil {
                                                 map["Summary"] = self.summary!
                                             }
+                                            if self.tags != nil {
+                                                map["Tags"] = self.tags!
+                                            }
                                             if self.title != nil {
                                                 map["Title"] = self.title!
                                             }
@@ -57517,11 +58288,23 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                             guard let dict else { return }
+                                            if let value = dict["CategoryUuid"] as? String {
+                                                self.categoryUuid = value
+                                            }
                                             if let value = dict["DocId"] as? String {
                                                 self.docId = value
                                             }
                                             if let value = dict["DocUuid"] as? String {
                                                 self.docUuid = value
+                                            }
+                                            if let value = dict["Extend1"] as? String {
+                                                self.extend1 = value
+                                            }
+                                            if let value = dict["Extend2"] as? String {
+                                                self.extend2 = value
+                                            }
+                                            if let value = dict["Extend3"] as? String {
+                                                self.extend3 = value
                                             }
                                             if let value = dict["MultimodalMedias"] as? [Any?] {
                                                 var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.TextSearchResult.SearchResult.MultimodalMedias] = []
@@ -57550,6 +58333,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                             }
                                             if let value = dict["Summary"] as? String {
                                                 self.summary = value
+                                            }
+                                            if let value = dict["Tags"] as? [String] {
+                                                self.tags = value
                                             }
                                             if let value = dict["Title"] as? String {
                                                 self.title = value
@@ -57629,13 +58415,27 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public class VideoSearchResult : Tea.TeaModel {
                                     public class SearchResult : Tea.TeaModel {
                                         public class Article : Tea.TeaModel {
+                                            public var categoryUuid: String?
+
                                             public var docId: String?
 
                                             public var docUuid: String?
 
+                                            public var extend1: String?
+
+                                            public var extend2: String?
+
+                                            public var extend3: String?
+
+                                            public var searchSource: String?
+
                                             public var searchSourceName: String?
 
+                                            public var searchSourceType: String?
+
                                             public var summary: String?
+
+                                            public var tags: [String]?
 
                                             public var title: String?
 
@@ -57655,17 +58455,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func toMap() -> [String : Any] {
                                                 var map = super.toMap()
+                                                if self.categoryUuid != nil {
+                                                    map["CategoryUuid"] = self.categoryUuid!
+                                                }
                                                 if self.docId != nil {
                                                     map["DocId"] = self.docId!
                                                 }
                                                 if self.docUuid != nil {
                                                     map["DocUuid"] = self.docUuid!
                                                 }
+                                                if self.extend1 != nil {
+                                                    map["Extend1"] = self.extend1!
+                                                }
+                                                if self.extend2 != nil {
+                                                    map["Extend2"] = self.extend2!
+                                                }
+                                                if self.extend3 != nil {
+                                                    map["Extend3"] = self.extend3!
+                                                }
+                                                if self.searchSource != nil {
+                                                    map["SearchSource"] = self.searchSource!
+                                                }
                                                 if self.searchSourceName != nil {
                                                     map["SearchSourceName"] = self.searchSourceName!
                                                 }
+                                                if self.searchSourceType != nil {
+                                                    map["SearchSourceType"] = self.searchSourceType!
+                                                }
                                                 if self.summary != nil {
                                                     map["Summary"] = self.summary!
+                                                }
+                                                if self.tags != nil {
+                                                    map["Tags"] = self.tags!
                                                 }
                                                 if self.title != nil {
                                                     map["Title"] = self.title!
@@ -57678,17 +58499,38 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                                 guard let dict else { return }
+                                                if let value = dict["CategoryUuid"] as? String {
+                                                    self.categoryUuid = value
+                                                }
                                                 if let value = dict["DocId"] as? String {
                                                     self.docId = value
                                                 }
                                                 if let value = dict["DocUuid"] as? String {
                                                     self.docUuid = value
                                                 }
+                                                if let value = dict["Extend1"] as? String {
+                                                    self.extend1 = value
+                                                }
+                                                if let value = dict["Extend2"] as? String {
+                                                    self.extend2 = value
+                                                }
+                                                if let value = dict["Extend3"] as? String {
+                                                    self.extend3 = value
+                                                }
+                                                if let value = dict["SearchSource"] as? String {
+                                                    self.searchSource = value
+                                                }
                                                 if let value = dict["SearchSourceName"] as? String {
                                                     self.searchSourceName = value
                                                 }
+                                                if let value = dict["SearchSourceType"] as? String {
+                                                    self.searchSourceType = value
+                                                }
                                                 if let value = dict["Summary"] as? String {
                                                     self.summary = value
+                                                }
+                                                if let value = dict["Tags"] as? [String] {
+                                                    self.tags = value
                                                 }
                                                 if let value = dict["Title"] as? String {
                                                     self.title = value
@@ -58264,6 +59106,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                     }
                                 }
+                                public var categoryUuid: String?
+
                                 public var chunks: [String]?
 
                                 public var content: String?
@@ -58273,6 +59117,12 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var docUuid: String?
 
                                 public var excerpt: String?
+
+                                public var extend1: String?
+
+                                public var extend2: String?
+
+                                public var extend3: String?
 
                                 public var multimodalMedias: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult.MultimodalMedias]?
 
@@ -58289,6 +59139,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var select: Bool?
 
                                 public var summary: String?
+
+                                public var tags: [String]?
 
                                 public var textGenerateMultimodalMediaList: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult.TextGenerateMultimodalMediaList]?
 
@@ -58312,6 +59164,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func toMap() -> [String : Any] {
                                     var map = super.toMap()
+                                    if self.categoryUuid != nil {
+                                        map["CategoryUuid"] = self.categoryUuid!
+                                    }
                                     if self.chunks != nil {
                                         map["Chunks"] = self.chunks!
                                     }
@@ -58326,6 +59181,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if self.excerpt != nil {
                                         map["Excerpt"] = self.excerpt!
+                                    }
+                                    if self.extend1 != nil {
+                                        map["Extend1"] = self.extend1!
+                                    }
+                                    if self.extend2 != nil {
+                                        map["Extend2"] = self.extend2!
+                                    }
+                                    if self.extend3 != nil {
+                                        map["Extend3"] = self.extend3!
                                     }
                                     if self.multimodalMedias != nil {
                                         var tmp : [Any] = []
@@ -58355,6 +59219,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.summary != nil {
                                         map["Summary"] = self.summary!
                                     }
+                                    if self.tags != nil {
+                                        map["Tags"] = self.tags!
+                                    }
                                     if self.textGenerateMultimodalMediaList != nil {
                                         var tmp : [Any] = []
                                         for k in self.textGenerateMultimodalMediaList! {
@@ -58376,6 +59243,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                     guard let dict else { return }
+                                    if let value = dict["CategoryUuid"] as? String {
+                                        self.categoryUuid = value
+                                    }
                                     if let value = dict["Chunks"] as? [String] {
                                         self.chunks = value
                                     }
@@ -58390,6 +59260,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Excerpt"] as? String {
                                         self.excerpt = value
+                                    }
+                                    if let value = dict["Extend1"] as? String {
+                                        self.extend1 = value
+                                    }
+                                    if let value = dict["Extend2"] as? String {
+                                        self.extend2 = value
+                                    }
+                                    if let value = dict["Extend3"] as? String {
+                                        self.extend3 = value
                                     }
                                     if let value = dict["MultimodalMedias"] as? [Any?] {
                                         var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult.MultimodalMedias] = []
@@ -58424,6 +59303,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Summary"] as? String {
                                         self.summary = value
+                                    }
+                                    if let value = dict["Tags"] as? [String] {
+                                        self.tags = value
                                     }
                                     if let value = dict["TextGenerateMultimodalMediaList"] as? [Any?] {
                                         var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult.TextGenerateMultimodalMediaList] = []
@@ -58527,13 +59409,23 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         public class ImageSearchResult : Tea.TeaModel {
                             public class SearchResult : Tea.TeaModel {
                                 public class Article : Tea.TeaModel {
+                                    public var categoryUuid: String?
+
                                     public var docId: String?
 
                                     public var docUuid: String?
 
+                                    public var extend1: String?
+
+                                    public var extend2: String?
+
+                                    public var extend3: String?
+
                                     public var searchSourceName: String?
 
                                     public var summary: String?
+
+                                    public var tags: [String]?
 
                                     public var title: String?
 
@@ -58553,17 +59445,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.categoryUuid != nil {
+                                            map["CategoryUuid"] = self.categoryUuid!
+                                        }
                                         if self.docId != nil {
                                             map["DocId"] = self.docId!
                                         }
                                         if self.docUuid != nil {
                                             map["DocUuid"] = self.docUuid!
                                         }
+                                        if self.extend1 != nil {
+                                            map["Extend1"] = self.extend1!
+                                        }
+                                        if self.extend2 != nil {
+                                            map["Extend2"] = self.extend2!
+                                        }
+                                        if self.extend3 != nil {
+                                            map["Extend3"] = self.extend3!
+                                        }
                                         if self.searchSourceName != nil {
                                             map["SearchSourceName"] = self.searchSourceName!
                                         }
                                         if self.summary != nil {
                                             map["Summary"] = self.summary!
+                                        }
+                                        if self.tags != nil {
+                                            map["Tags"] = self.tags!
                                         }
                                         if self.title != nil {
                                             map["Title"] = self.title!
@@ -58576,17 +59483,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CategoryUuid"] as? String {
+                                            self.categoryUuid = value
+                                        }
                                         if let value = dict["DocId"] as? String {
                                             self.docId = value
                                         }
                                         if let value = dict["DocUuid"] as? String {
                                             self.docUuid = value
                                         }
+                                        if let value = dict["Extend1"] as? String {
+                                            self.extend1 = value
+                                        }
+                                        if let value = dict["Extend2"] as? String {
+                                            self.extend2 = value
+                                        }
+                                        if let value = dict["Extend3"] as? String {
+                                            self.extend3 = value
+                                        }
                                         if let value = dict["SearchSourceName"] as? String {
                                             self.searchSourceName = value
                                         }
                                         if let value = dict["Summary"] as? String {
                                             self.summary = value
+                                        }
+                                        if let value = dict["Tags"] as? [String] {
+                                            self.tags = value
                                         }
                                         if let value = dict["Title"] as? String {
                                             self.title = value
@@ -58698,11 +59620,19 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         public class NewsElementResult : Tea.TeaModel {
                             public class NewsElementArticleList : Tea.TeaModel {
                                 public class Article : Tea.TeaModel {
+                                    public var categoryUuid: String?
+
                                     public var content: String?
 
                                     public var docId: String?
 
                                     public var docUuid: String?
+
+                                    public var extend1: String?
+
+                                    public var extend2: String?
+
+                                    public var extend3: String?
 
                                     public var pubTime: String?
 
@@ -58717,6 +59647,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     public var select: Bool?
 
                                     public var summary: String?
+
+                                    public var tags: [String]?
 
                                     public var title: String?
 
@@ -58736,6 +59668,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.categoryUuid != nil {
+                                            map["CategoryUuid"] = self.categoryUuid!
+                                        }
                                         if self.content != nil {
                                             map["Content"] = self.content!
                                         }
@@ -58744,6 +59679,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                         if self.docUuid != nil {
                                             map["DocUuid"] = self.docUuid!
+                                        }
+                                        if self.extend1 != nil {
+                                            map["Extend1"] = self.extend1!
+                                        }
+                                        if self.extend2 != nil {
+                                            map["Extend2"] = self.extend2!
+                                        }
+                                        if self.extend3 != nil {
+                                            map["Extend3"] = self.extend3!
                                         }
                                         if self.pubTime != nil {
                                             map["PubTime"] = self.pubTime!
@@ -58766,6 +59710,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         if self.summary != nil {
                                             map["Summary"] = self.summary!
                                         }
+                                        if self.tags != nil {
+                                            map["Tags"] = self.tags!
+                                        }
                                         if self.title != nil {
                                             map["Title"] = self.title!
                                         }
@@ -58777,6 +59724,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CategoryUuid"] as? String {
+                                            self.categoryUuid = value
+                                        }
                                         if let value = dict["Content"] as? String {
                                             self.content = value
                                         }
@@ -58785,6 +59735,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                         if let value = dict["DocUuid"] as? String {
                                             self.docUuid = value
+                                        }
+                                        if let value = dict["Extend1"] as? String {
+                                            self.extend1 = value
+                                        }
+                                        if let value = dict["Extend2"] as? String {
+                                            self.extend2 = value
+                                        }
+                                        if let value = dict["Extend3"] as? String {
+                                            self.extend3 = value
                                         }
                                         if let value = dict["PubTime"] as? String {
                                             self.pubTime = value
@@ -58806,6 +59765,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                         if let value = dict["Summary"] as? String {
                                             self.summary = value
+                                        }
+                                        if let value = dict["Tags"] as? [String] {
+                                            self.tags = value
                                         }
                                         if let value = dict["Title"] as? String {
                                             self.title = value
@@ -59540,6 +60502,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
                             }
                             public class ReferenceList : Tea.TeaModel {
+                                public var categoryUuid: String?
+
                                 public var chunks: [String]?
 
                                 public var content: String?
@@ -59547,6 +60511,12 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var docId: String?
 
                                 public var docUuid: String?
+
+                                public var extend1: String?
+
+                                public var extend2: String?
+
+                                public var extend3: String?
 
                                 public var pubTime: String?
 
@@ -59563,6 +60533,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var source: String?
 
                                 public var summary: String?
+
+                                public var tags: [String]?
 
                                 public var title: String?
 
@@ -59584,6 +60556,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func toMap() -> [String : Any] {
                                     var map = super.toMap()
+                                    if self.categoryUuid != nil {
+                                        map["CategoryUuid"] = self.categoryUuid!
+                                    }
                                     if self.chunks != nil {
                                         map["Chunks"] = self.chunks!
                                     }
@@ -59595,6 +60570,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if self.docUuid != nil {
                                         map["DocUuid"] = self.docUuid!
+                                    }
+                                    if self.extend1 != nil {
+                                        map["Extend1"] = self.extend1!
+                                    }
+                                    if self.extend2 != nil {
+                                        map["Extend2"] = self.extend2!
+                                    }
+                                    if self.extend3 != nil {
+                                        map["Extend3"] = self.extend3!
                                     }
                                     if self.pubTime != nil {
                                         map["PubTime"] = self.pubTime!
@@ -59620,6 +60604,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.summary != nil {
                                         map["Summary"] = self.summary!
                                     }
+                                    if self.tags != nil {
+                                        map["Tags"] = self.tags!
+                                    }
                                     if self.title != nil {
                                         map["Title"] = self.title!
                                     }
@@ -59634,6 +60621,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                     guard let dict else { return }
+                                    if let value = dict["CategoryUuid"] as? String {
+                                        self.categoryUuid = value
+                                    }
                                     if let value = dict["Chunks"] as? [String] {
                                         self.chunks = value
                                     }
@@ -59645,6 +60635,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["DocUuid"] as? String {
                                         self.docUuid = value
+                                    }
+                                    if let value = dict["Extend1"] as? String {
+                                        self.extend1 = value
+                                    }
+                                    if let value = dict["Extend2"] as? String {
+                                        self.extend2 = value
+                                    }
+                                    if let value = dict["Extend3"] as? String {
+                                        self.extend3 = value
                                     }
                                     if let value = dict["PubTime"] as? String {
                                         self.pubTime = value
@@ -59669,6 +60668,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Summary"] as? String {
                                         self.summary = value
+                                    }
+                                    if let value = dict["Tags"] as? [String] {
+                                        self.tags = value
                                     }
                                     if let value = dict["Title"] as? String {
                                         self.title = value
@@ -60000,11 +61002,19 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         }
                         public class TextSearchResult : Tea.TeaModel {
                             public class SearchResult : Tea.TeaModel {
+                                public var categoryUuid: String?
+
                                 public var content: String?
 
                                 public var docId: String?
 
                                 public var docUuid: String?
+
+                                public var extend1: String?
+
+                                public var extend2: String?
+
+                                public var extend3: String?
 
                                 public var pubTime: String?
 
@@ -60015,6 +61025,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var searchSourceType: String?
 
                                 public var summary: String?
+
+                                public var tags: [String]?
 
                                 public var title: String?
 
@@ -60036,6 +61048,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func toMap() -> [String : Any] {
                                     var map = super.toMap()
+                                    if self.categoryUuid != nil {
+                                        map["CategoryUuid"] = self.categoryUuid!
+                                    }
                                     if self.content != nil {
                                         map["Content"] = self.content!
                                     }
@@ -60044,6 +61059,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if self.docUuid != nil {
                                         map["DocUuid"] = self.docUuid!
+                                    }
+                                    if self.extend1 != nil {
+                                        map["Extend1"] = self.extend1!
+                                    }
+                                    if self.extend2 != nil {
+                                        map["Extend2"] = self.extend2!
+                                    }
+                                    if self.extend3 != nil {
+                                        map["Extend3"] = self.extend3!
                                     }
                                     if self.pubTime != nil {
                                         map["PubTime"] = self.pubTime!
@@ -60060,6 +61084,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.summary != nil {
                                         map["Summary"] = self.summary!
                                     }
+                                    if self.tags != nil {
+                                        map["Tags"] = self.tags!
+                                    }
                                     if self.title != nil {
                                         map["Title"] = self.title!
                                     }
@@ -60074,6 +61101,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                     guard let dict else { return }
+                                    if let value = dict["CategoryUuid"] as? String {
+                                        self.categoryUuid = value
+                                    }
                                     if let value = dict["Content"] as? String {
                                         self.content = value
                                     }
@@ -60082,6 +61112,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["DocUuid"] as? String {
                                         self.docUuid = value
+                                    }
+                                    if let value = dict["Extend1"] as? String {
+                                        self.extend1 = value
+                                    }
+                                    if let value = dict["Extend2"] as? String {
+                                        self.extend2 = value
+                                    }
+                                    if let value = dict["Extend3"] as? String {
+                                        self.extend3 = value
                                     }
                                     if let value = dict["PubTime"] as? String {
                                         self.pubTime = value
@@ -60097,6 +61136,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Summary"] as? String {
                                         self.summary = value
+                                    }
+                                    if let value = dict["Tags"] as? [String] {
+                                        self.tags = value
                                     }
                                     if let value = dict["Title"] as? String {
                                         self.title = value
@@ -60637,6 +61679,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
                             }
                             public class ReferenceList : Tea.TeaModel {
+                                public var categoryUuid: String?
+
                                 public var chunks: [String]?
 
                                 public var content: String?
@@ -60644,6 +61688,12 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var docId: String?
 
                                 public var docUuid: String?
+
+                                public var extend1: String?
+
+                                public var extend2: String?
+
+                                public var extend3: String?
 
                                 public var pubTime: String?
 
@@ -60660,6 +61710,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 public var source: String?
 
                                 public var summary: String?
+
+                                public var tags: [String]?
 
                                 public var title: String?
 
@@ -60681,6 +61733,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func toMap() -> [String : Any] {
                                     var map = super.toMap()
+                                    if self.categoryUuid != nil {
+                                        map["CategoryUuid"] = self.categoryUuid!
+                                    }
                                     if self.chunks != nil {
                                         map["Chunks"] = self.chunks!
                                     }
@@ -60692,6 +61747,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if self.docUuid != nil {
                                         map["DocUuid"] = self.docUuid!
+                                    }
+                                    if self.extend1 != nil {
+                                        map["Extend1"] = self.extend1!
+                                    }
+                                    if self.extend2 != nil {
+                                        map["Extend2"] = self.extend2!
+                                    }
+                                    if self.extend3 != nil {
+                                        map["Extend3"] = self.extend3!
                                     }
                                     if self.pubTime != nil {
                                         map["PubTime"] = self.pubTime!
@@ -60717,6 +61781,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.summary != nil {
                                         map["Summary"] = self.summary!
                                     }
+                                    if self.tags != nil {
+                                        map["Tags"] = self.tags!
+                                    }
                                     if self.title != nil {
                                         map["Title"] = self.title!
                                     }
@@ -60731,6 +61798,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                     guard let dict else { return }
+                                    if let value = dict["CategoryUuid"] as? String {
+                                        self.categoryUuid = value
+                                    }
                                     if let value = dict["Chunks"] as? [String] {
                                         self.chunks = value
                                     }
@@ -60742,6 +61812,15 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["DocUuid"] as? String {
                                         self.docUuid = value
+                                    }
+                                    if let value = dict["Extend1"] as? String {
+                                        self.extend1 = value
+                                    }
+                                    if let value = dict["Extend2"] as? String {
+                                        self.extend2 = value
+                                    }
+                                    if let value = dict["Extend3"] as? String {
+                                        self.extend3 = value
                                     }
                                     if let value = dict["PubTime"] as? String {
                                         self.pubTime = value
@@ -60766,6 +61845,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Summary"] as? String {
                                         self.summary = value
+                                    }
+                                    if let value = dict["Tags"] as? [String] {
+                                        self.tags = value
                                     }
                                     if let value = dict["Title"] as? String {
                                         self.title = value
@@ -61090,13 +62172,23 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         public class VideoSearchResult : Tea.TeaModel {
                             public class SearchResult : Tea.TeaModel {
                                 public class Article : Tea.TeaModel {
+                                    public var categoryUuid: String?
+
                                     public var docId: String?
 
                                     public var docUuid: String?
 
+                                    public var extend1: String?
+
+                                    public var extend2: String?
+
+                                    public var extend3: String?
+
                                     public var searchSourceName: String?
 
                                     public var summary: String?
+
+                                    public var tags: [String]?
 
                                     public var title: String?
 
@@ -61116,17 +62208,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.categoryUuid != nil {
+                                            map["CategoryUuid"] = self.categoryUuid!
+                                        }
                                         if self.docId != nil {
                                             map["DocId"] = self.docId!
                                         }
                                         if self.docUuid != nil {
                                             map["DocUuid"] = self.docUuid!
                                         }
+                                        if self.extend1 != nil {
+                                            map["Extend1"] = self.extend1!
+                                        }
+                                        if self.extend2 != nil {
+                                            map["Extend2"] = self.extend2!
+                                        }
+                                        if self.extend3 != nil {
+                                            map["Extend3"] = self.extend3!
+                                        }
                                         if self.searchSourceName != nil {
                                             map["SearchSourceName"] = self.searchSourceName!
                                         }
                                         if self.summary != nil {
                                             map["Summary"] = self.summary!
+                                        }
+                                        if self.tags != nil {
+                                            map["Tags"] = self.tags!
                                         }
                                         if self.title != nil {
                                             map["Title"] = self.title!
@@ -61139,17 +62246,32 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CategoryUuid"] as? String {
+                                            self.categoryUuid = value
+                                        }
                                         if let value = dict["DocId"] as? String {
                                             self.docId = value
                                         }
                                         if let value = dict["DocUuid"] as? String {
                                             self.docUuid = value
                                         }
+                                        if let value = dict["Extend1"] as? String {
+                                            self.extend1 = value
+                                        }
+                                        if let value = dict["Extend2"] as? String {
+                                            self.extend2 = value
+                                        }
+                                        if let value = dict["Extend3"] as? String {
+                                            self.extend3 = value
+                                        }
                                         if let value = dict["SearchSourceName"] as? String {
                                             self.searchSourceName = value
                                         }
                                         if let value = dict["Summary"] as? String {
                                             self.summary = value
+                                        }
+                                        if let value = dict["Tags"] as? [String] {
+                                            self.tags = value
                                         }
                                         if let value = dict["Title"] as? String {
                                             self.title = value
@@ -62311,7 +63433,31 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var categoryUuids: [String]?
+
+            public var createTimeEnd: Int64?
+
+            public var createTimeStart: Int64?
+
+            public var docIds: [String]?
+
+            public var docTypes: [String]?
+
+            public var docUuids: [String]?
+
+            public var endTime: Int64?
+
+            public var extend1: String?
+
+            public var extend2: String?
+
+            public var extend3: String?
+
             public var searchSources: [RunSearchSimilarArticlesRequest.ChatConfig.SearchParam.SearchSources]?
+
+            public var startTime: Int64?
+
+            public var tags: [String]?
 
             public override init() {
                 super.init()
@@ -62327,6 +63473,36 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryUuids != nil {
+                    map["CategoryUuids"] = self.categoryUuids!
+                }
+                if self.createTimeEnd != nil {
+                    map["CreateTimeEnd"] = self.createTimeEnd!
+                }
+                if self.createTimeStart != nil {
+                    map["CreateTimeStart"] = self.createTimeStart!
+                }
+                if self.docIds != nil {
+                    map["DocIds"] = self.docIds!
+                }
+                if self.docTypes != nil {
+                    map["DocTypes"] = self.docTypes!
+                }
+                if self.docUuids != nil {
+                    map["DocUuids"] = self.docUuids!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.extend1 != nil {
+                    map["Extend1"] = self.extend1!
+                }
+                if self.extend2 != nil {
+                    map["Extend2"] = self.extend2!
+                }
+                if self.extend3 != nil {
+                    map["Extend3"] = self.extend3!
+                }
                 if self.searchSources != nil {
                     var tmp : [Any] = []
                     for k in self.searchSources! {
@@ -62334,11 +63510,47 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
                     }
                     map["SearchSources"] = tmp
                 }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CategoryUuids"] as? [String] {
+                    self.categoryUuids = value
+                }
+                if let value = dict["CreateTimeEnd"] as? Int64 {
+                    self.createTimeEnd = value
+                }
+                if let value = dict["CreateTimeStart"] as? Int64 {
+                    self.createTimeStart = value
+                }
+                if let value = dict["DocIds"] as? [String] {
+                    self.docIds = value
+                }
+                if let value = dict["DocTypes"] as? [String] {
+                    self.docTypes = value
+                }
+                if let value = dict["DocUuids"] as? [String] {
+                    self.docUuids = value
+                }
+                if let value = dict["EndTime"] as? Int64 {
+                    self.endTime = value
+                }
+                if let value = dict["Extend1"] as? String {
+                    self.extend1 = value
+                }
+                if let value = dict["Extend2"] as? String {
+                    self.extend2 = value
+                }
+                if let value = dict["Extend3"] as? String {
+                    self.extend3 = value
+                }
                 if let value = dict["SearchSources"] as? [Any?] {
                     var tmp : [RunSearchSimilarArticlesRequest.ChatConfig.SearchParam.SearchSources] = []
                     for v in value {
@@ -62351,6 +63563,12 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
                         }
                     }
                     self.searchSources = tmp
+                }
+                if let value = dict["StartTime"] as? Int64 {
+                    self.startTime = value
+                }
+                if let value = dict["Tags"] as? [String] {
+                    self.tags = value
                 }
             }
         }
@@ -62580,17 +63798,33 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
             public class Articles : Tea.TeaModel {
+                public var categoryUuid: String?
+
                 public var docId: String?
+
+                public var docType: String?
 
                 public var docUuid: String?
 
+                public var extend1: String?
+
+                public var extend2: String?
+
+                public var extend3: String?
+
                 public var pubTime: String?
 
+                public var searchSource: String?
+
                 public var searchSourceName: String?
+
+                public var searchSourceType: String?
 
                 public var source: String?
 
                 public var summary: String?
+
+                public var tags: [String]?
 
                 public var title: String?
 
@@ -62610,23 +63844,47 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.categoryUuid != nil {
+                        map["CategoryUuid"] = self.categoryUuid!
+                    }
                     if self.docId != nil {
                         map["DocId"] = self.docId!
+                    }
+                    if self.docType != nil {
+                        map["DocType"] = self.docType!
                     }
                     if self.docUuid != nil {
                         map["DocUuid"] = self.docUuid!
                     }
+                    if self.extend1 != nil {
+                        map["Extend1"] = self.extend1!
+                    }
+                    if self.extend2 != nil {
+                        map["Extend2"] = self.extend2!
+                    }
+                    if self.extend3 != nil {
+                        map["Extend3"] = self.extend3!
+                    }
                     if self.pubTime != nil {
                         map["PubTime"] = self.pubTime!
                     }
+                    if self.searchSource != nil {
+                        map["SearchSource"] = self.searchSource!
+                    }
                     if self.searchSourceName != nil {
                         map["SearchSourceName"] = self.searchSourceName!
+                    }
+                    if self.searchSourceType != nil {
+                        map["SearchSourceType"] = self.searchSourceType!
                     }
                     if self.source != nil {
                         map["Source"] = self.source!
                     }
                     if self.summary != nil {
                         map["Summary"] = self.summary!
+                    }
+                    if self.tags != nil {
+                        map["Tags"] = self.tags!
                     }
                     if self.title != nil {
                         map["Title"] = self.title!
@@ -62639,23 +63897,47 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CategoryUuid"] as? String {
+                        self.categoryUuid = value
+                    }
                     if let value = dict["DocId"] as? String {
                         self.docId = value
+                    }
+                    if let value = dict["DocType"] as? String {
+                        self.docType = value
                     }
                     if let value = dict["DocUuid"] as? String {
                         self.docUuid = value
                     }
+                    if let value = dict["Extend1"] as? String {
+                        self.extend1 = value
+                    }
+                    if let value = dict["Extend2"] as? String {
+                        self.extend2 = value
+                    }
+                    if let value = dict["Extend3"] as? String {
+                        self.extend3 = value
+                    }
                     if let value = dict["PubTime"] as? String {
                         self.pubTime = value
                     }
+                    if let value = dict["SearchSource"] as? String {
+                        self.searchSource = value
+                    }
                     if let value = dict["SearchSourceName"] as? String {
                         self.searchSourceName = value
+                    }
+                    if let value = dict["SearchSourceType"] as? String {
+                        self.searchSourceType = value
                     }
                     if let value = dict["Source"] as? String {
                         self.source = value
                     }
                     if let value = dict["Summary"] as? String {
                         self.summary = value
+                    }
+                    if let value = dict["Tags"] as? [String] {
+                        self.tags = value
                     }
                     if let value = dict["Title"] as? String {
                         self.title = value
@@ -70770,17 +72052,41 @@ public class SaveStyleLearningResultResponse : Tea.TeaModel {
 }
 
 public class SearchDatasetDocumentsRequest : Tea.TeaModel {
+    public var categoryUuids: [String]?
+
+    public var createTimeEnd: Int64?
+
+    public var createTimeStart: Int64?
+
     public var datasetId: Int64?
 
     public var datasetName: String?
 
+    public var docIds: [String]?
+
+    public var docTypes: [String]?
+
+    public var docUuids: [String]?
+
+    public var endTime: Int64?
+
     public var extend1: String?
+
+    public var extend2: String?
+
+    public var extend3: String?
 
     public var includeContent: Bool?
 
     public var pageSize: String?
 
     public var query: String?
+
+    public var searchMode: String?
+
+    public var startTime: Int64?
+
+    public var tags: [String]?
 
     public var workspaceId: String?
 
@@ -70798,14 +72104,41 @@ public class SearchDatasetDocumentsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryUuids != nil {
+            map["CategoryUuids"] = self.categoryUuids!
+        }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
         if self.datasetId != nil {
             map["DatasetId"] = self.datasetId!
         }
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.docIds != nil {
+            map["DocIds"] = self.docIds!
+        }
+        if self.docTypes != nil {
+            map["DocTypes"] = self.docTypes!
+        }
+        if self.docUuids != nil {
+            map["DocUuids"] = self.docUuids!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.extend1 != nil {
             map["Extend1"] = self.extend1!
+        }
+        if self.extend2 != nil {
+            map["Extend2"] = self.extend2!
+        }
+        if self.extend3 != nil {
+            map["Extend3"] = self.extend3!
         }
         if self.includeContent != nil {
             map["IncludeContent"] = self.includeContent!
@@ -70816,6 +72149,15 @@ public class SearchDatasetDocumentsRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.searchMode != nil {
+            map["SearchMode"] = self.searchMode!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -70824,14 +72166,41 @@ public class SearchDatasetDocumentsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CategoryUuids"] as? [String] {
+            self.categoryUuids = value
+        }
+        if let value = dict["CreateTimeEnd"] as? Int64 {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? Int64 {
+            self.createTimeStart = value
+        }
         if let value = dict["DatasetId"] as? Int64 {
             self.datasetId = value
         }
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
         }
+        if let value = dict["DocIds"] as? [String] {
+            self.docIds = value
+        }
+        if let value = dict["DocTypes"] as? [String] {
+            self.docTypes = value
+        }
+        if let value = dict["DocUuids"] as? [String] {
+            self.docUuids = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
         if let value = dict["Extend1"] as? String {
             self.extend1 = value
+        }
+        if let value = dict["Extend2"] as? String {
+            self.extend2 = value
+        }
+        if let value = dict["Extend3"] as? String {
+            self.extend3 = value
         }
         if let value = dict["IncludeContent"] as? Bool {
             self.includeContent = value
@@ -70842,6 +72211,190 @@ public class SearchDatasetDocumentsRequest : Tea.TeaModel {
         if let value = dict["Query"] as? String {
             self.query = value
         }
+        if let value = dict["SearchMode"] as? String {
+            self.searchMode = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class SearchDatasetDocumentsShrinkRequest : Tea.TeaModel {
+    public var categoryUuidsShrink: String?
+
+    public var createTimeEnd: Int64?
+
+    public var createTimeStart: Int64?
+
+    public var datasetId: Int64?
+
+    public var datasetName: String?
+
+    public var docIdsShrink: String?
+
+    public var docTypesShrink: String?
+
+    public var docUuidsShrink: String?
+
+    public var endTime: Int64?
+
+    public var extend1: String?
+
+    public var extend2: String?
+
+    public var extend3: String?
+
+    public var includeContent: Bool?
+
+    public var pageSize: String?
+
+    public var query: String?
+
+    public var searchMode: String?
+
+    public var startTime: Int64?
+
+    public var tagsShrink: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryUuidsShrink != nil {
+            map["CategoryUuids"] = self.categoryUuidsShrink!
+        }
+        if self.createTimeEnd != nil {
+            map["CreateTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["CreateTimeStart"] = self.createTimeStart!
+        }
+        if self.datasetId != nil {
+            map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.docIdsShrink != nil {
+            map["DocIds"] = self.docIdsShrink!
+        }
+        if self.docTypesShrink != nil {
+            map["DocTypes"] = self.docTypesShrink!
+        }
+        if self.docUuidsShrink != nil {
+            map["DocUuids"] = self.docUuidsShrink!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.extend1 != nil {
+            map["Extend1"] = self.extend1!
+        }
+        if self.extend2 != nil {
+            map["Extend2"] = self.extend2!
+        }
+        if self.extend3 != nil {
+            map["Extend3"] = self.extend3!
+        }
+        if self.includeContent != nil {
+            map["IncludeContent"] = self.includeContent!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
+        if self.searchMode != nil {
+            map["SearchMode"] = self.searchMode!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CategoryUuids"] as? String {
+            self.categoryUuidsShrink = value
+        }
+        if let value = dict["CreateTimeEnd"] as? Int64 {
+            self.createTimeEnd = value
+        }
+        if let value = dict["CreateTimeStart"] as? Int64 {
+            self.createTimeStart = value
+        }
+        if let value = dict["DatasetId"] as? Int64 {
+            self.datasetId = value
+        }
+        if let value = dict["DatasetName"] as? String {
+            self.datasetName = value
+        }
+        if let value = dict["DocIds"] as? String {
+            self.docIdsShrink = value
+        }
+        if let value = dict["DocTypes"] as? String {
+            self.docTypesShrink = value
+        }
+        if let value = dict["DocUuids"] as? String {
+            self.docUuidsShrink = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Extend1"] as? String {
+            self.extend1 = value
+        }
+        if let value = dict["Extend2"] as? String {
+            self.extend2 = value
+        }
+        if let value = dict["Extend3"] as? String {
+            self.extend3 = value
+        }
+        if let value = dict["IncludeContent"] as? Bool {
+            self.includeContent = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["Query"] as? String {
+            self.query = value
+        }
+        if let value = dict["SearchMode"] as? String {
+            self.searchMode = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -70851,17 +72404,79 @@ public class SearchDatasetDocumentsRequest : Tea.TeaModel {
 public class SearchDatasetDocumentsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Documents : Tea.TeaModel {
+            public class ChunkInfos : Tea.TeaModel {
+                public var chunk: String?
+
+                public var score: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.chunk != nil {
+                        map["Chunk"] = self.chunk!
+                    }
+                    if self.score != nil {
+                        map["Score"] = self.score!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Chunk"] as? String {
+                        self.chunk = value
+                    }
+                    if let value = dict["Score"] as? Double {
+                        self.score = value
+                    }
+                }
+            }
+            public var categoryUuid: String?
+
+            public var chunk: String?
+
+            public var chunkInfos: [SearchDatasetDocumentsResponseBody.Data.Documents.ChunkInfos]?
+
             public var content: String?
 
             public var docId: String?
 
+            public var docType: String?
+
             public var docUuid: String?
 
+            public var extend1: String?
+
+            public var extend2: String?
+
+            public var extend3: String?
+
             public var pubTime: String?
+
+            public var score: Double?
+
+            public var searchSource: String?
+
+            public var searchSourceName: String?
+
+            public var searchSourceType: String?
 
             public var sourceFrom: String?
 
             public var summary: String?
+
+            public var tags: [String]?
 
             public var title: String?
 
@@ -70881,23 +72496,63 @@ public class SearchDatasetDocumentsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryUuid != nil {
+                    map["CategoryUuid"] = self.categoryUuid!
+                }
+                if self.chunk != nil {
+                    map["Chunk"] = self.chunk!
+                }
+                if self.chunkInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.chunkInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ChunkInfos"] = tmp
+                }
                 if self.content != nil {
                     map["Content"] = self.content!
                 }
                 if self.docId != nil {
                     map["DocId"] = self.docId!
                 }
+                if self.docType != nil {
+                    map["DocType"] = self.docType!
+                }
                 if self.docUuid != nil {
                     map["DocUuid"] = self.docUuid!
                 }
+                if self.extend1 != nil {
+                    map["Extend1"] = self.extend1!
+                }
+                if self.extend2 != nil {
+                    map["Extend2"] = self.extend2!
+                }
+                if self.extend3 != nil {
+                    map["Extend3"] = self.extend3!
+                }
                 if self.pubTime != nil {
                     map["PubTime"] = self.pubTime!
+                }
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                if self.searchSource != nil {
+                    map["SearchSource"] = self.searchSource!
+                }
+                if self.searchSourceName != nil {
+                    map["SearchSourceName"] = self.searchSourceName!
+                }
+                if self.searchSourceType != nil {
+                    map["SearchSourceType"] = self.searchSourceType!
                 }
                 if self.sourceFrom != nil {
                     map["SourceFrom"] = self.sourceFrom!
                 }
                 if self.summary != nil {
                     map["Summary"] = self.summary!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
                 }
                 if self.title != nil {
                     map["Title"] = self.title!
@@ -70910,23 +72565,69 @@ public class SearchDatasetDocumentsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CategoryUuid"] as? String {
+                    self.categoryUuid = value
+                }
+                if let value = dict["Chunk"] as? String {
+                    self.chunk = value
+                }
+                if let value = dict["ChunkInfos"] as? [Any?] {
+                    var tmp : [SearchDatasetDocumentsResponseBody.Data.Documents.ChunkInfos] = []
+                    for v in value {
+                        if v != nil {
+                            var model = SearchDatasetDocumentsResponseBody.Data.Documents.ChunkInfos()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.chunkInfos = tmp
+                }
                 if let value = dict["Content"] as? String {
                     self.content = value
                 }
                 if let value = dict["DocId"] as? String {
                     self.docId = value
                 }
+                if let value = dict["DocType"] as? String {
+                    self.docType = value
+                }
                 if let value = dict["DocUuid"] as? String {
                     self.docUuid = value
                 }
+                if let value = dict["Extend1"] as? String {
+                    self.extend1 = value
+                }
+                if let value = dict["Extend2"] as? String {
+                    self.extend2 = value
+                }
+                if let value = dict["Extend3"] as? String {
+                    self.extend3 = value
+                }
                 if let value = dict["PubTime"] as? String {
                     self.pubTime = value
+                }
+                if let value = dict["Score"] as? Double {
+                    self.score = value
+                }
+                if let value = dict["SearchSource"] as? String {
+                    self.searchSource = value
+                }
+                if let value = dict["SearchSourceName"] as? String {
+                    self.searchSourceName = value
+                }
+                if let value = dict["SearchSourceType"] as? String {
+                    self.searchSourceType = value
                 }
                 if let value = dict["SourceFrom"] as? String {
                     self.sourceFrom = value
                 }
                 if let value = dict["Summary"] as? String {
                     self.summary = value
+                }
+                if let value = dict["Tags"] as? [String] {
+                    self.tags = value
                 }
                 if let value = dict["Title"] as? String {
                     self.title = value
@@ -77489,6 +79190,60 @@ public class UpdateCustomTextResponse : Tea.TeaModel {
 
 public class UpdateDatasetRequest : Tea.TeaModel {
     public class DatasetConfig : Tea.TeaModel {
+        public class SearchSourceConfig : Tea.TeaModel {
+            public var metadataKeyValueGenerateEnable: Bool?
+
+            public var metadataKeyValueSearchEnable: Bool?
+
+            public var tagGenerateEnable: Bool?
+
+            public var tagSearchEnable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.metadataKeyValueGenerateEnable != nil {
+                    map["MetadataKeyValueGenerateEnable"] = self.metadataKeyValueGenerateEnable!
+                }
+                if self.metadataKeyValueSearchEnable != nil {
+                    map["MetadataKeyValueSearchEnable"] = self.metadataKeyValueSearchEnable!
+                }
+                if self.tagGenerateEnable != nil {
+                    map["TagGenerateEnable"] = self.tagGenerateEnable!
+                }
+                if self.tagSearchEnable != nil {
+                    map["TagSearchEnable"] = self.tagSearchEnable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MetadataKeyValueGenerateEnable"] as? Bool {
+                    self.metadataKeyValueGenerateEnable = value
+                }
+                if let value = dict["MetadataKeyValueSearchEnable"] as? Bool {
+                    self.metadataKeyValueSearchEnable = value
+                }
+                if let value = dict["TagGenerateEnable"] as? Bool {
+                    self.tagGenerateEnable = value
+                }
+                if let value = dict["TagSearchEnable"] as? Bool {
+                    self.tagSearchEnable = value
+                }
+            }
+        }
         public class SearchSourceConfigs : Tea.TeaModel {
             public class SearchSourceRequestConfig : Tea.TeaModel {
                 public class Headers : Tea.TeaModel {
@@ -77997,6 +79752,8 @@ public class UpdateDatasetRequest : Tea.TeaModel {
                 }
             }
         }
+        public var searchSourceConfig: UpdateDatasetRequest.DatasetConfig.SearchSourceConfig?
+
         public var searchSourceConfigs: [UpdateDatasetRequest.DatasetConfig.SearchSourceConfigs]?
 
         public override init() {
@@ -78009,10 +79766,14 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.searchSourceConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.searchSourceConfig != nil {
+                map["SearchSourceConfig"] = self.searchSourceConfig?.toMap()
+            }
             if self.searchSourceConfigs != nil {
                 var tmp : [Any] = []
                 for k in self.searchSourceConfigs! {
@@ -78025,6 +79786,11 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["SearchSourceConfig"] as? [String: Any?] {
+                var model = UpdateDatasetRequest.DatasetConfig.SearchSourceConfig()
+                model.fromMap(value)
+                self.searchSourceConfig = model
+            }
             if let value = dict["SearchSourceConfigs"] as? [Any?] {
                 var tmp : [UpdateDatasetRequest.DatasetConfig.SearchSourceConfigs] = []
                 for v in value {
@@ -78548,9 +80314,19 @@ public class UpdateDatasetResponse : Tea.TeaModel {
 
 public class UpdateDatasetDocumentRequest : Tea.TeaModel {
     public class Document : Tea.TeaModel {
+        public var categoryUuid: String?
+
         public var docId: String?
 
         public var docUuid: String?
+
+        public var extend1: String?
+
+        public var extend2: String?
+
+        public var extend3: String?
+
+        public var tags: [String]?
 
         public var title: String?
 
@@ -78568,11 +80344,26 @@ public class UpdateDatasetDocumentRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.categoryUuid != nil {
+                map["CategoryUuid"] = self.categoryUuid!
+            }
             if self.docId != nil {
                 map["DocId"] = self.docId!
             }
             if self.docUuid != nil {
                 map["DocUuid"] = self.docUuid!
+            }
+            if self.extend1 != nil {
+                map["Extend1"] = self.extend1!
+            }
+            if self.extend2 != nil {
+                map["Extend2"] = self.extend2!
+            }
+            if self.extend3 != nil {
+                map["Extend3"] = self.extend3!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
             }
             if self.title != nil {
                 map["Title"] = self.title!
@@ -78582,11 +80373,26 @@ public class UpdateDatasetDocumentRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CategoryUuid"] as? String {
+                self.categoryUuid = value
+            }
             if let value = dict["DocId"] as? String {
                 self.docId = value
             }
             if let value = dict["DocUuid"] as? String {
                 self.docUuid = value
+            }
+            if let value = dict["Extend1"] as? String {
+                self.extend1 = value
+            }
+            if let value = dict["Extend2"] as? String {
+                self.extend2 = value
+            }
+            if let value = dict["Extend3"] as? String {
+                self.extend3 = value
+            }
+            if let value = dict["Tags"] as? [String] {
+                self.tags = value
             }
             if let value = dict["Title"] as? String {
                 self.title = value
@@ -78707,9 +80513,19 @@ public class UpdateDatasetDocumentShrinkRequest : Tea.TeaModel {
 
 public class UpdateDatasetDocumentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var categoryUuid: String?
+
         public var docId: String?
 
         public var docUuid: String?
+
+        public var extend1: String?
+
+        public var extend2: String?
+
+        public var extend3: String?
+
+        public var tags: [String]?
 
         public var title: String?
 
@@ -78727,11 +80543,26 @@ public class UpdateDatasetDocumentResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.categoryUuid != nil {
+                map["CategoryUuid"] = self.categoryUuid!
+            }
             if self.docId != nil {
                 map["DocId"] = self.docId!
             }
             if self.docUuid != nil {
                 map["DocUuid"] = self.docUuid!
+            }
+            if self.extend1 != nil {
+                map["Extend1"] = self.extend1!
+            }
+            if self.extend2 != nil {
+                map["Extend2"] = self.extend2!
+            }
+            if self.extend3 != nil {
+                map["Extend3"] = self.extend3!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
             }
             if self.title != nil {
                 map["Title"] = self.title!
@@ -78741,11 +80572,26 @@ public class UpdateDatasetDocumentResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CategoryUuid"] as? String {
+                self.categoryUuid = value
+            }
             if let value = dict["DocId"] as? String {
                 self.docId = value
             }
             if let value = dict["DocUuid"] as? String {
                 self.docUuid = value
+            }
+            if let value = dict["Extend1"] as? String {
+                self.extend1 = value
+            }
+            if let value = dict["Extend2"] as? String {
+                self.extend2 = value
+            }
+            if let value = dict["Extend3"] as? String {
+                self.extend3 = value
+            }
+            if let value = dict["Tags"] as? [String] {
+                self.tags = value
             }
             if let value = dict["Title"] as? String {
                 self.title = value
