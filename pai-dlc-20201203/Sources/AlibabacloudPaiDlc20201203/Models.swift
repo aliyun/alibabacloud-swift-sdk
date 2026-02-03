@@ -3893,6 +3893,52 @@ public class Metric : Tea.TeaModel {
 public class ModelConfig : Tea.TeaModel {
     public var modelName: String?
 
+    public var modelTemplate: ModelTemplate?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.modelTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
+        if self.modelTemplate != nil {
+            map["ModelTemplate"] = self.modelTemplate?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
+        if let value = dict["ModelTemplate"] as? [String: Any?] {
+            var model = ModelTemplate()
+            model.fromMap(value)
+            self.modelTemplate = model
+        }
+    }
+}
+
+public class ModelTemplate : Tea.TeaModel {
+    public var collections: String?
+
+    public var modelName: String?
+
+    public var provider: String?
+
     public override init() {
         super.init()
     }
@@ -3907,16 +3953,28 @@ public class ModelConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.collections != nil {
+            map["Collections"] = self.collections!
+        }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.provider != nil {
+            map["Provider"] = self.provider!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Collections"] as? String {
+            self.collections = value
+        }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["Provider"] as? String {
+            self.provider = value
         }
     }
 }
@@ -6007,6 +6065,52 @@ public class CreateJobRequest : Tea.TeaModel {
             }
         }
     }
+    public class CustomEnvs : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public var visible: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            if self.visible != nil {
+                map["Visible"] = self.visible!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+            if let value = dict["Visible"] as? String {
+                self.visible = value
+            }
+        }
+    }
     public class DataSources : Tea.TeaModel {
         public var dataSourceId: String?
 
@@ -6153,6 +6257,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var credentialConfig: CredentialConfig?
 
+    public var customEnvs: [CreateJobRequest.CustomEnvs]?
+
     public var dataSources: [CreateJobRequest.DataSources]?
 
     public var debuggerConfigContent: String?
@@ -6216,6 +6322,13 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.credentialConfig != nil {
             map["CredentialConfig"] = self.credentialConfig?.toMap()
+        }
+        if self.customEnvs != nil {
+            var tmp : [Any] = []
+            for k in self.customEnvs! {
+                tmp.append(k.toMap())
+            }
+            map["CustomEnvs"] = tmp
         }
         if self.dataSources != nil {
             var tmp : [Any] = []
@@ -6296,6 +6409,19 @@ public class CreateJobRequest : Tea.TeaModel {
             var model = CredentialConfig()
             model.fromMap(value)
             self.credentialConfig = model
+        }
+        if let value = dict["CustomEnvs"] as? [Any?] {
+            var tmp : [CreateJobRequest.CustomEnvs] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateJobRequest.CustomEnvs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customEnvs = tmp
         }
         if let value = dict["DataSources"] as? [Any?] {
             var tmp : [CreateJobRequest.DataSources] = []
@@ -7203,6 +7329,52 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class CustomEnvs : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public var visible: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            if self.visible != nil {
+                map["Visible"] = self.visible!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+            if let value = dict["Visible"] as? String {
+                self.visible = value
+            }
+        }
+    }
     public class DataSources : Tea.TeaModel {
         public var dataSourceId: String?
 
@@ -7823,6 +7995,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var credentialConfig: CredentialConfig?
 
+    public var customEnvs: [GetJobResponseBody.CustomEnvs]?
+
     public var dataSources: [GetJobResponseBody.DataSources]?
 
     public var displayName: String?
@@ -7931,6 +8105,13 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.credentialConfig != nil {
             map["CredentialConfig"] = self.credentialConfig?.toMap()
+        }
+        if self.customEnvs != nil {
+            var tmp : [Any] = []
+            for k in self.customEnvs! {
+                tmp.append(k.toMap())
+            }
+            map["CustomEnvs"] = tmp
         }
         if self.dataSources != nil {
             var tmp : [Any] = []
@@ -8093,6 +8274,19 @@ public class GetJobResponseBody : Tea.TeaModel {
             var model = CredentialConfig()
             model.fromMap(value)
             self.credentialConfig = model
+        }
+        if let value = dict["CustomEnvs"] as? [Any?] {
+            var tmp : [GetJobResponseBody.CustomEnvs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetJobResponseBody.CustomEnvs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customEnvs = tmp
         }
         if let value = dict["DataSources"] as? [Any?] {
             var tmp : [GetJobResponseBody.DataSources] = []
