@@ -48469,6 +48469,8 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
 
             public var vSwitchId: String?
 
+            public var vmncLearn: Bool?
+
             public override init() {
                 super.init()
             }
@@ -48534,6 +48536,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
                 }
+                if self.vmncLearn != nil {
+                    map["VmncLearn"] = self.vmncLearn!
+                }
                 return map
             }
 
@@ -48592,6 +48597,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["VSwitchId"] as? String {
                     self.vSwitchId = value
+                }
+                if let value = dict["VmncLearn"] as? Bool {
+                    self.vmncLearn = value
                 }
             }
         }
