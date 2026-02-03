@@ -15585,6 +15585,8 @@ public class SendChatMessageRequest : Tea.TeaModel {
 
     public var messageType: String?
 
+    public var parentSessionId: String?
+
     public var question: String?
 
     public var quotedMessage: String?
@@ -15626,6 +15628,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
+        if self.parentSessionId != nil {
+            map["ParentSessionId"] = self.parentSessionId!
+        }
         if self.question != nil {
             map["Question"] = self.question!
         }
@@ -15663,6 +15668,9 @@ public class SendChatMessageRequest : Tea.TeaModel {
         if let value = dict["MessageType"] as? String {
             self.messageType = value
         }
+        if let value = dict["ParentSessionId"] as? String {
+            self.parentSessionId = value
+        }
         if let value = dict["Question"] as? String {
             self.question = value
         }
@@ -15693,6 +15701,8 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
     public var message: String?
 
     public var messageType: String?
+
+    public var parentSessionId: String?
 
     public var question: String?
 
@@ -15733,6 +15743,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
+        if self.parentSessionId != nil {
+            map["ParentSessionId"] = self.parentSessionId!
+        }
         if self.question != nil {
             map["Question"] = self.question!
         }
@@ -15767,6 +15780,9 @@ public class SendChatMessageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MessageType"] as? String {
             self.messageType = value
+        }
+        if let value = dict["ParentSessionId"] as? String {
+            self.parentSessionId = value
         }
         if let value = dict["Question"] as? String {
             self.question = value

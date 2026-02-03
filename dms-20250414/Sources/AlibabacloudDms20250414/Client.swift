@@ -2317,6 +2317,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.messageType)) {
             query["MessageType"] = request.messageType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parentSessionId)) {
+            query["ParentSessionId"] = request.parentSessionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.question)) {
             query["Question"] = request.question ?? "";
         }
