@@ -45156,6 +45156,8 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
 
     public var routeMode: String?
 
+    public var trAttachmentId: String?
+
     public var trAttachmentMasterCidr: String?
 
     public var trAttachmentMasterZone: String?
@@ -45222,6 +45224,9 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         if self.routeMode != nil {
             map["RouteMode"] = self.routeMode!
         }
+        if self.trAttachmentId != nil {
+            map["TrAttachmentId"] = self.trAttachmentId!
+        }
         if self.trAttachmentMasterCidr != nil {
             map["TrAttachmentMasterCidr"] = self.trAttachmentMasterCidr!
         }
@@ -45283,6 +45288,9 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["RouteMode"] as? String {
             self.routeMode = value
+        }
+        if let value = dict["TrAttachmentId"] as? String {
+            self.trAttachmentId = value
         }
         if let value = dict["TrAttachmentMasterCidr"] as? String {
             self.trAttachmentMasterCidr = value
