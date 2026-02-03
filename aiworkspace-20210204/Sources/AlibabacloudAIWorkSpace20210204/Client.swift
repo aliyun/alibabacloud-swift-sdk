@@ -2446,6 +2446,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             query["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callerType)) {
+            query["CallerType"] = request.callerType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerUid)) {
+            query["CallerUid"] = request.callerUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creator)) {
             query["Creator"] = request.creator ?? "";
         }
@@ -2457,6 +2463,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resource)) {
             query["Resource"] = request.resource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -4914,5 +4923,53 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateWorkspaceResourceWithOptions(WorkspaceId as! String, request as! UpdateWorkspaceResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateConnectionWithOptions(_ request: ValidateConnectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateConnectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configs)) {
+            body["Configs"] = request.configs ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionId)) {
+            body["ConnectionId"] = request.connectionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionType)) {
+            body["ConnectionType"] = request.connectionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secrets)) {
+            body["Secrets"] = request.secrets ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.validateType)) {
+            body["ValidateType"] = request.validateType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateConnection",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/connections/validate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateConnectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateConnection(_ request: ValidateConnectionRequest) async throws -> ValidateConnectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await validateConnectionWithOptions(request as! ValidateConnectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
