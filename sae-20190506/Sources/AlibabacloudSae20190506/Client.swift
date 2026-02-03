@@ -2668,6 +2668,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             query["Cpu"] = request.cpu!;
         }
+        if (!TeaUtils.Client.isUnset(request.gpuA10)) {
+            query["GpuA10"] = request.gpuA10 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuPpu810e)) {
+            query["GpuPpu810e"] = request.gpuPpu810e ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.memory)) {
             query["Memory"] = request.memory!;
         }

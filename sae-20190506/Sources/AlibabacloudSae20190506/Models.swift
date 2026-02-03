@@ -32024,6 +32024,10 @@ public class DescribeConfigurationPriceRequest : Tea.TeaModel {
 
     public var cpu: Int32?
 
+    public var gpuA10: String?
+
+    public var gpuPpu810e: String?
+
     public var memory: Int32?
 
     public var newSaeVersion: String?
@@ -32052,6 +32056,12 @@ public class DescribeConfigurationPriceRequest : Tea.TeaModel {
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
+        if self.gpuA10 != nil {
+            map["GpuA10"] = self.gpuA10!
+        }
+        if self.gpuPpu810e != nil {
+            map["GpuPpu810e"] = self.gpuPpu810e!
+        }
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
@@ -32074,6 +32084,12 @@ public class DescribeConfigurationPriceRequest : Tea.TeaModel {
         }
         if let value = dict["Cpu"] as? Int32 {
             self.cpu = value
+        }
+        if let value = dict["GpuA10"] as? String {
+            self.gpuA10 = value
+        }
+        if let value = dict["GpuPpu810e"] as? String {
+            self.gpuPpu810e = value
         }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
