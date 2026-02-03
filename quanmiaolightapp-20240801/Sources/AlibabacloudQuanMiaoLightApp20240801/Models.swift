@@ -13357,7 +13357,101 @@ public class RunTagMiningAnalysisResponse : Tea.TeaModel {
 public class RunVideoAnalysisRequest : Tea.TeaModel {
     public class AddDocumentParam : Tea.TeaModel {
         public class Document : Tea.TeaModel {
+            public class Metadata : Tea.TeaModel {
+                public class KeyValues : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var keyValues: [RunVideoAnalysisRequest.AddDocumentParam.Document.Metadata.KeyValues]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.keyValues != nil {
+                        var tmp : [Any] = []
+                        for k in self.keyValues! {
+                            tmp.append(k.toMap())
+                        }
+                        map["keyValues"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["keyValues"] as? [Any?] {
+                        var tmp : [RunVideoAnalysisRequest.AddDocumentParam.Document.Metadata.KeyValues] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunVideoAnalysisRequest.AddDocumentParam.Document.Metadata.KeyValues()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.keyValues = tmp
+                    }
+                }
+            }
+            public var categoryUuid: String?
+
             public var docId: String?
+
+            public var extend1: String?
+
+            public var extend2: String?
+
+            public var extend3: String?
+
+            public var metadata: RunVideoAnalysisRequest.AddDocumentParam.Document.Metadata?
+
+            public var tags: [String]?
 
             public var title: String?
 
@@ -13371,12 +13465,31 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.metadata?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryUuid != nil {
+                    map["categoryUuid"] = self.categoryUuid!
+                }
                 if self.docId != nil {
                     map["docId"] = self.docId!
+                }
+                if self.extend1 != nil {
+                    map["extend1"] = self.extend1!
+                }
+                if self.extend2 != nil {
+                    map["extend2"] = self.extend2!
+                }
+                if self.extend3 != nil {
+                    map["extend3"] = self.extend3!
+                }
+                if self.metadata != nil {
+                    map["metadata"] = self.metadata?.toMap()
+                }
+                if self.tags != nil {
+                    map["tags"] = self.tags!
                 }
                 if self.title != nil {
                     map["title"] = self.title!
@@ -13386,8 +13499,28 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["categoryUuid"] as? String {
+                    self.categoryUuid = value
+                }
                 if let value = dict["docId"] as? String {
                     self.docId = value
+                }
+                if let value = dict["extend1"] as? String {
+                    self.extend1 = value
+                }
+                if let value = dict["extend2"] as? String {
+                    self.extend2 = value
+                }
+                if let value = dict["extend3"] as? String {
+                    self.extend3 = value
+                }
+                if let value = dict["metadata"] as? [String: Any?] {
+                    var model = RunVideoAnalysisRequest.AddDocumentParam.Document.Metadata()
+                    model.fromMap(value)
+                    self.metadata = model
+                }
+                if let value = dict["tags"] as? [String] {
+                    self.tags = value
                 }
                 if let value = dict["title"] as? String {
                     self.title = value
@@ -18130,7 +18263,101 @@ public class SubmitTagMiningAnalysisTaskResponse : Tea.TeaModel {
 public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
     public class AddDocumentParam : Tea.TeaModel {
         public class Document : Tea.TeaModel {
+            public class Metadata : Tea.TeaModel {
+                public class KeyValues : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var keyValues: [SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document.Metadata.KeyValues]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.keyValues != nil {
+                        var tmp : [Any] = []
+                        for k in self.keyValues! {
+                            tmp.append(k.toMap())
+                        }
+                        map["keyValues"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["keyValues"] as? [Any?] {
+                        var tmp : [SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document.Metadata.KeyValues] = []
+                        for v in value {
+                            if v != nil {
+                                var model = SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document.Metadata.KeyValues()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.keyValues = tmp
+                    }
+                }
+            }
+            public var categoryUuid: String?
+
             public var docId: String?
+
+            public var extend1: String?
+
+            public var extend2: String?
+
+            public var extend3: String?
+
+            public var metadata: SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document.Metadata?
+
+            public var tags: [String]?
 
             public var title: String?
 
@@ -18144,12 +18371,31 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.metadata?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryUuid != nil {
+                    map["categoryUuid"] = self.categoryUuid!
+                }
                 if self.docId != nil {
                     map["docId"] = self.docId!
+                }
+                if self.extend1 != nil {
+                    map["extend1"] = self.extend1!
+                }
+                if self.extend2 != nil {
+                    map["extend2"] = self.extend2!
+                }
+                if self.extend3 != nil {
+                    map["extend3"] = self.extend3!
+                }
+                if self.metadata != nil {
+                    map["metadata"] = self.metadata?.toMap()
+                }
+                if self.tags != nil {
+                    map["tags"] = self.tags!
                 }
                 if self.title != nil {
                     map["title"] = self.title!
@@ -18159,8 +18405,28 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["categoryUuid"] as? String {
+                    self.categoryUuid = value
+                }
                 if let value = dict["docId"] as? String {
                     self.docId = value
+                }
+                if let value = dict["extend1"] as? String {
+                    self.extend1 = value
+                }
+                if let value = dict["extend2"] as? String {
+                    self.extend2 = value
+                }
+                if let value = dict["extend3"] as? String {
+                    self.extend3 = value
+                }
+                if let value = dict["metadata"] as? [String: Any?] {
+                    var model = SubmitVideoAnalysisTaskRequest.AddDocumentParam.Document.Metadata()
+                    model.fromMap(value)
+                    self.metadata = model
+                }
+                if let value = dict["tags"] as? [String] {
+                    self.tags = value
                 }
                 if let value = dict["title"] as? String {
                     self.title = value
