@@ -5,6 +5,193 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CacheCluster : Tea.TeaModel {
+    public class VSwitches : Tea.TeaModel {
+        public var vSwitchId: String?
+
+        public var zone: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchId != nil {
+                map["vSwitchId"] = self.vSwitchId!
+            }
+            if self.zone != nil {
+                map["zone"] = self.zone!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["vSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["zone"] as? String {
+                self.zone = value
+            }
+        }
+    }
+    public var clusterId: String?
+
+    public var clusterName: String?
+
+    public var createdAt: Int64?
+
+    public var createdBy: String?
+
+    public var deployInstanceVersion: String?
+
+    public var deployOptionsVersion: Int64?
+
+    public var instanceVersion: String?
+
+    public var options: [String: String]?
+
+    public var optionsVersion: Int64?
+
+    public var status: String?
+
+    public var updatedAt: Int64?
+
+    public var updatedBy: String?
+
+    public var vSwitches: [CacheCluster.VSwitches]?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["clusterId"] = self.clusterId!
+        }
+        if self.clusterName != nil {
+            map["clusterName"] = self.clusterName!
+        }
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.createdBy != nil {
+            map["createdBy"] = self.createdBy!
+        }
+        if self.deployInstanceVersion != nil {
+            map["deployInstanceVersion"] = self.deployInstanceVersion!
+        }
+        if self.deployOptionsVersion != nil {
+            map["deployOptionsVersion"] = self.deployOptionsVersion!
+        }
+        if self.instanceVersion != nil {
+            map["instanceVersion"] = self.instanceVersion!
+        }
+        if self.options != nil {
+            map["options"] = self.options!
+        }
+        if self.optionsVersion != nil {
+            map["optionsVersion"] = self.optionsVersion!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.updatedAt != nil {
+            map["updatedAt"] = self.updatedAt!
+        }
+        if self.updatedBy != nil {
+            map["updatedBy"] = self.updatedBy!
+        }
+        if self.vSwitches != nil {
+            var tmp : [Any] = []
+            for k in self.vSwitches! {
+                tmp.append(k.toMap())
+            }
+            map["vSwitches"] = tmp
+        }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["clusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["clusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["createdAt"] as? Int64 {
+            self.createdAt = value
+        }
+        if let value = dict["createdBy"] as? String {
+            self.createdBy = value
+        }
+        if let value = dict["deployInstanceVersion"] as? String {
+            self.deployInstanceVersion = value
+        }
+        if let value = dict["deployOptionsVersion"] as? Int64 {
+            self.deployOptionsVersion = value
+        }
+        if let value = dict["instanceVersion"] as? String {
+            self.instanceVersion = value
+        }
+        if let value = dict["options"] as? [String: String] {
+            self.options = value
+        }
+        if let value = dict["optionsVersion"] as? Int64 {
+            self.optionsVersion = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["updatedAt"] as? Int64 {
+            self.updatedAt = value
+        }
+        if let value = dict["updatedBy"] as? String {
+            self.updatedBy = value
+        }
+        if let value = dict["vSwitches"] as? [Any?] {
+            var tmp : [CacheCluster.VSwitches] = []
+            for v in value {
+                if v != nil {
+                    var model = CacheCluster.VSwitches()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.vSwitches = tmp
+        }
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
 public class Catalog : Tea.TeaModel {
     public var createdAt: Int64?
 
@@ -151,6 +338,8 @@ public class CatalogSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: MoMValues?
 
+    public var totalMetaFileCount: MoMValues?
+
     public var totalMetaSizeInBytes: MoMValues?
 
     public override init() {
@@ -168,6 +357,7 @@ public class CatalogSummary : Tea.TeaModel {
         try self.tableCount?.validate()
         try self.totalFileCount?.validate()
         try self.totalFileSizeInBytes?.validate()
+        try self.totalMetaFileCount?.validate()
         try self.totalMetaSizeInBytes?.validate()
     }
 
@@ -211,6 +401,9 @@ public class CatalogSummary : Tea.TeaModel {
         }
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes?.toMap()
+        }
+        if self.totalMetaFileCount != nil {
+            map["totalMetaFileCount"] = self.totalMetaFileCount?.toMap()
         }
         if self.totalMetaSizeInBytes != nil {
             map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes?.toMap()
@@ -268,6 +461,11 @@ public class CatalogSummary : Tea.TeaModel {
             var model = MoMValues()
             model.fromMap(value)
             self.totalFileSizeInBytes = model
+        }
+        if let value = dict["totalMetaFileCount"] as? [String: Any?] {
+            var model = MoMValues()
+            model.fromMap(value)
+            self.totalMetaFileCount = model
         }
         if let value = dict["totalMetaSizeInBytes"] as? [String: Any?] {
             var model = MoMValues()
@@ -610,6 +808,8 @@ public class DatabaseSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: Int64?
 
+    public var totalMetaFileCount: Int64?
+
     public var totalMetaSizeInBytes: Int64?
 
     public override init() {
@@ -662,6 +862,9 @@ public class DatabaseSummary : Tea.TeaModel {
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes!
         }
+        if self.totalMetaFileCount != nil {
+            map["totalMetaFileCount"] = self.totalMetaFileCount!
+        }
         if self.totalMetaSizeInBytes != nil {
             map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes!
         }
@@ -705,6 +908,9 @@ public class DatabaseSummary : Tea.TeaModel {
         }
         if let value = dict["totalFileSizeInBytes"] as? Int64 {
             self.totalFileSizeInBytes = value
+        }
+        if let value = dict["totalMetaFileCount"] as? Int64 {
+            self.totalMetaFileCount = value
         }
         if let value = dict["totalMetaSizeInBytes"] as? Int64 {
             self.totalMetaSizeInBytes = value
@@ -852,6 +1058,56 @@ public class FailurePermission : Tea.TeaModel {
             var model = Permission()
             model.fromMap(value)
             self.permission = model
+        }
+    }
+}
+
+public class FieldRef : Tea.TeaModel {
+    public var index: Int32?
+
+    public var name: String?
+
+    public var type: FullDataType?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.type?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.index != nil {
+            map["index"] = self.index!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.type != nil {
+            map["type"] = self.type?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["index"] as? Int32 {
+            self.index = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["type"] as? [String: Any?] {
+            var model = FullDataType()
+            model.fromMap(value)
+            self.type = model
         }
     }
 }
@@ -2154,6 +2410,8 @@ public class Partition : Tea.TeaModel {
 
     public var storageClass: String?
 
+    public var totalBuckets: Int32?
+
     public var updatedAt: Int64?
 
     public var updatedBy: String?
@@ -2205,6 +2463,9 @@ public class Partition : Tea.TeaModel {
         if self.storageClass != nil {
             map["storageClass"] = self.storageClass!
         }
+        if self.totalBuckets != nil {
+            map["totalBuckets"] = self.totalBuckets!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
@@ -2248,6 +2509,9 @@ public class Partition : Tea.TeaModel {
         }
         if let value = dict["storageClass"] as? String {
             self.storageClass = value
+        }
+        if let value = dict["totalBuckets"] as? Int32 {
+            self.totalBuckets = value
         }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
@@ -2475,6 +2739,8 @@ public class Permission : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var rowFilter: RowFilter?
+
     public var table: String?
 
     public var view: String?
@@ -2490,6 +2756,7 @@ public class Permission : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.columns?.validate()
+        try self.rowFilter?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2514,6 +2781,9 @@ public class Permission : Tea.TeaModel {
         }
         if self.resourceType != nil {
             map["resourceType"] = self.resourceType!
+        }
+        if self.rowFilter != nil {
+            map["rowFilter"] = self.rowFilter?.toMap()
         }
         if self.table != nil {
             map["table"] = self.table!
@@ -2549,11 +2819,96 @@ public class Permission : Tea.TeaModel {
         if let value = dict["resourceType"] as? String {
             self.resourceType = value
         }
+        if let value = dict["rowFilter"] as? [String: Any?] {
+            var model = RowFilter()
+            model.fromMap(value)
+            self.rowFilter = model
+        }
         if let value = dict["table"] as? String {
             self.table = value
         }
         if let value = dict["view"] as? String {
             self.view = value
+        }
+    }
+}
+
+public class Predicate : Tea.TeaModel {
+    public var children: [Predicate]?
+
+    public var function: String?
+
+    public var kind: String?
+
+    public var literals: [Any]?
+
+    public var transform: Transform?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.transform?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.children != nil {
+            var tmp : [Any] = []
+            for k in self.children! {
+                tmp.append(k.toMap())
+            }
+            map["children"] = tmp
+        }
+        if self.function != nil {
+            map["function"] = self.function!
+        }
+        if self.kind != nil {
+            map["kind"] = self.kind!
+        }
+        if self.literals != nil {
+            map["literals"] = self.literals!
+        }
+        if self.transform != nil {
+            map["transform"] = self.transform?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["children"] as? [Any?] {
+            var tmp : [Predicate] = []
+            for v in value {
+                if v != nil {
+                    var model = Predicate()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.children = tmp
+        }
+        if let value = dict["function"] as? String {
+            self.function = value
+        }
+        if let value = dict["kind"] as? String {
+            self.kind = value
+        }
+        if let value = dict["literals"] as? [Any] {
+            self.literals = value
+        }
+        if let value = dict["transform"] as? [String: Any?] {
+            var model = Transform()
+            model.fromMap(value)
+            self.transform = model
         }
     }
 }
@@ -2940,6 +3295,45 @@ public class Role : Tea.TeaModel {
                 }
             }
             self.users = tmp
+        }
+    }
+}
+
+public class RowFilter : Tea.TeaModel {
+    public var expression: String?
+
+    public var predicate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expression != nil {
+            map["expression"] = self.expression!
+        }
+        if self.predicate != nil {
+            map["predicate"] = self.predicate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expression"] as? String {
+            self.expression = value
+        }
+        if let value = dict["predicate"] as? String {
+            self.predicate = value
         }
     }
 }
@@ -3799,6 +4193,8 @@ public class TableSnapshot : Tea.TeaModel {
 
     public var snapshot: Snapshot?
 
+    public var totalBuckets: Int32?
+
     public override init() {
         super.init()
     }
@@ -3829,6 +4225,9 @@ public class TableSnapshot : Tea.TeaModel {
         if self.snapshot != nil {
             map["snapshot"] = self.snapshot?.toMap()
         }
+        if self.totalBuckets != nil {
+            map["totalBuckets"] = self.totalBuckets!
+        }
         return map
     }
 
@@ -3850,6 +4249,9 @@ public class TableSnapshot : Tea.TeaModel {
             var model = Snapshot()
             model.fromMap(value)
             self.snapshot = model
+        }
+        if let value = dict["totalBuckets"] as? Int32 {
+            self.totalBuckets = value
         }
     }
 }
@@ -3887,7 +4289,13 @@ public class TableSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: Int64?
 
+    public var totalMetaFileCount: Int64?
+
     public var totalMetaSizeInBytes: Int64?
+
+    public var unaccessedStdIaPartitionCount180d: Int64?
+
+    public var unaccessedStdPartitionCount30d: Int64?
 
     public var updatedAt: Int64?
 
@@ -3953,8 +4361,17 @@ public class TableSummary : Tea.TeaModel {
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes!
         }
+        if self.totalMetaFileCount != nil {
+            map["totalMetaFileCount"] = self.totalMetaFileCount!
+        }
         if self.totalMetaSizeInBytes != nil {
             map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes!
+        }
+        if self.unaccessedStdIaPartitionCount180d != nil {
+            map["unaccessedStdIaPartitionCount180d"] = self.unaccessedStdIaPartitionCount180d!
+        }
+        if self.unaccessedStdPartitionCount30d != nil {
+            map["unaccessedStdPartitionCount30d"] = self.unaccessedStdPartitionCount30d!
         }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
@@ -4012,11 +4429,134 @@ public class TableSummary : Tea.TeaModel {
         if let value = dict["totalFileSizeInBytes"] as? Int64 {
             self.totalFileSizeInBytes = value
         }
+        if let value = dict["totalMetaFileCount"] as? Int64 {
+            self.totalMetaFileCount = value
+        }
         if let value = dict["totalMetaSizeInBytes"] as? Int64 {
             self.totalMetaSizeInBytes = value
         }
+        if let value = dict["unaccessedStdIaPartitionCount180d"] as? Int64 {
+            self.unaccessedStdIaPartitionCount180d = value
+        }
+        if let value = dict["unaccessedStdPartitionCount30d"] as? Int64 {
+            self.unaccessedStdPartitionCount30d = value
+        }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
+        }
+    }
+}
+
+public class Transform : Tea.TeaModel {
+    public var castType: FullDataType?
+
+    public var fieldRef: FieldRef?
+
+    public var inputs: [TransformInput]?
+
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.castType?.validate()
+        try self.fieldRef?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.castType != nil {
+            map["castType"] = self.castType?.toMap()
+        }
+        if self.fieldRef != nil {
+            map["fieldRef"] = self.fieldRef?.toMap()
+        }
+        if self.inputs != nil {
+            var tmp : [Any] = []
+            for k in self.inputs! {
+                tmp.append(k.toMap())
+            }
+            map["inputs"] = tmp
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["castType"] as? [String: Any?] {
+            var model = FullDataType()
+            model.fromMap(value)
+            self.castType = model
+        }
+        if let value = dict["fieldRef"] as? [String: Any?] {
+            var model = FieldRef()
+            model.fromMap(value)
+            self.fieldRef = model
+        }
+        if let value = dict["inputs"] as? [Any?] {
+            var tmp : [TransformInput] = []
+            for v in value {
+                if v != nil {
+                    var model = TransformInput()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.inputs = tmp
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+    }
+}
+
+public class TransformInput : Tea.TeaModel {
+    public var input: Any?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.input != nil {
+            map["input"] = self.input!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["input"] as? Any {
+            self.input = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
