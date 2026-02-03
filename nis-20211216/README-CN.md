@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudNis20211216` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/nis-20211216" "2.4.3"
+github "alibabacloud-sdk-swift/nis-20211216" "2.5.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/nis-20211216" "2.4.3"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/nis-20211216.git", from: "2.4.3")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/nis-20211216.git", from: "2.5.0")
 ]
 ```
 

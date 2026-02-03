@@ -2831,6 +2831,570 @@ public class DescribeNisInspectionTaskResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNisTrafficRankingRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nisTrafficRankingId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nisTrafficRankingId != nil {
+            map["NisTrafficRankingId"] = self.nisTrafficRankingId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NisTrafficRankingId"] as? String {
+            self.nisTrafficRankingId = value
+        }
+    }
+}
+
+public class DescribeNisTrafficRankingResponseBody : Tea.TeaModel {
+    public class FlowRankingList : Tea.TeaModel {
+        public var bindingResourceId: String?
+
+        public var bindingResourceType: String?
+
+        public var bytes: Double?
+
+        public var bytesRate: Double?
+
+        public var clientAsn: String?
+
+        public var clientCity: String?
+
+        public var clientCountry: String?
+
+        public var clientIsp: String?
+
+        public var clientProvince: String?
+
+        public var destinationIp: String?
+
+        public var destinationPort: String?
+
+        public var destinationRegionNo: String?
+
+        public var direction: String?
+
+        public var dscp: String?
+
+        public var ecsId: String?
+
+        public var instanceId: String?
+
+        public var networkInterfaceId: String?
+
+        public var packets: Double?
+
+        public var packetsLostBlackhole: Double?
+
+        public var packetsLostNoRoute: Double?
+
+        public var packetsLostTTLExpired: Double?
+
+        public var protocol_: String?
+
+        public var publicIpAddress: String?
+
+        public var regionId: String?
+
+        public var roundTripTime: Double?
+
+        public var sourceIp: String?
+
+        public var sourcePort: String?
+
+        public var sourceRegionNo: String?
+
+        public var trafficPath: String?
+
+        public var transitRouterAttachmentId: String?
+
+        public var transitRouterDestinationAccountId: String?
+
+        public var transitRouterDestinationAvailableZone: String?
+
+        public var transitRouterDestinationNetworkInterface: String?
+
+        public var transitRouterDestinationResourceId: String?
+
+        public var transitRouterDestinationVSwitchId: String?
+
+        public var transitRouterId: String?
+
+        public var transitRouterPairAttachmentId: String?
+
+        public var transitRouterSourceAccountId: String?
+
+        public var transitRouterSourceAvailableZone: String?
+
+        public var transitRouterSourceNetworkInterface: String?
+
+        public var transitRouterSourceResourceId: String?
+
+        public var transitRouterSourceVSwitchId: String?
+
+        public var vSwitchId: String?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bindingResourceId != nil {
+                map["BindingResourceId"] = self.bindingResourceId!
+            }
+            if self.bindingResourceType != nil {
+                map["BindingResourceType"] = self.bindingResourceType!
+            }
+            if self.bytes != nil {
+                map["Bytes"] = self.bytes!
+            }
+            if self.bytesRate != nil {
+                map["BytesRate"] = self.bytesRate!
+            }
+            if self.clientAsn != nil {
+                map["ClientAsn"] = self.clientAsn!
+            }
+            if self.clientCity != nil {
+                map["ClientCity"] = self.clientCity!
+            }
+            if self.clientCountry != nil {
+                map["ClientCountry"] = self.clientCountry!
+            }
+            if self.clientIsp != nil {
+                map["ClientIsp"] = self.clientIsp!
+            }
+            if self.clientProvince != nil {
+                map["ClientProvince"] = self.clientProvince!
+            }
+            if self.destinationIp != nil {
+                map["DestinationIp"] = self.destinationIp!
+            }
+            if self.destinationPort != nil {
+                map["DestinationPort"] = self.destinationPort!
+            }
+            if self.destinationRegionNo != nil {
+                map["DestinationRegionNo"] = self.destinationRegionNo!
+            }
+            if self.direction != nil {
+                map["Direction"] = self.direction!
+            }
+            if self.dscp != nil {
+                map["Dscp"] = self.dscp!
+            }
+            if self.ecsId != nil {
+                map["EcsId"] = self.ecsId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.networkInterfaceId != nil {
+                map["NetworkInterfaceId"] = self.networkInterfaceId!
+            }
+            if self.packets != nil {
+                map["Packets"] = self.packets!
+            }
+            if self.packetsLostBlackhole != nil {
+                map["PacketsLostBlackhole"] = self.packetsLostBlackhole!
+            }
+            if self.packetsLostNoRoute != nil {
+                map["PacketsLostNoRoute"] = self.packetsLostNoRoute!
+            }
+            if self.packetsLostTTLExpired != nil {
+                map["PacketsLostTTLExpired"] = self.packetsLostTTLExpired!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.publicIpAddress != nil {
+                map["PublicIpAddress"] = self.publicIpAddress!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.roundTripTime != nil {
+                map["RoundTripTime"] = self.roundTripTime!
+            }
+            if self.sourceIp != nil {
+                map["SourceIp"] = self.sourceIp!
+            }
+            if self.sourcePort != nil {
+                map["SourcePort"] = self.sourcePort!
+            }
+            if self.sourceRegionNo != nil {
+                map["SourceRegionNo"] = self.sourceRegionNo!
+            }
+            if self.trafficPath != nil {
+                map["TrafficPath"] = self.trafficPath!
+            }
+            if self.transitRouterAttachmentId != nil {
+                map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+            }
+            if self.transitRouterDestinationAccountId != nil {
+                map["TransitRouterDestinationAccountId"] = self.transitRouterDestinationAccountId!
+            }
+            if self.transitRouterDestinationAvailableZone != nil {
+                map["TransitRouterDestinationAvailableZone"] = self.transitRouterDestinationAvailableZone!
+            }
+            if self.transitRouterDestinationNetworkInterface != nil {
+                map["TransitRouterDestinationNetworkInterface"] = self.transitRouterDestinationNetworkInterface!
+            }
+            if self.transitRouterDestinationResourceId != nil {
+                map["TransitRouterDestinationResourceId"] = self.transitRouterDestinationResourceId!
+            }
+            if self.transitRouterDestinationVSwitchId != nil {
+                map["TransitRouterDestinationVSwitchId"] = self.transitRouterDestinationVSwitchId!
+            }
+            if self.transitRouterId != nil {
+                map["TransitRouterId"] = self.transitRouterId!
+            }
+            if self.transitRouterPairAttachmentId != nil {
+                map["TransitRouterPairAttachmentId"] = self.transitRouterPairAttachmentId!
+            }
+            if self.transitRouterSourceAccountId != nil {
+                map["TransitRouterSourceAccountId"] = self.transitRouterSourceAccountId!
+            }
+            if self.transitRouterSourceAvailableZone != nil {
+                map["TransitRouterSourceAvailableZone"] = self.transitRouterSourceAvailableZone!
+            }
+            if self.transitRouterSourceNetworkInterface != nil {
+                map["TransitRouterSourceNetworkInterface"] = self.transitRouterSourceNetworkInterface!
+            }
+            if self.transitRouterSourceResourceId != nil {
+                map["TransitRouterSourceResourceId"] = self.transitRouterSourceResourceId!
+            }
+            if self.transitRouterSourceVSwitchId != nil {
+                map["TransitRouterSourceVSwitchId"] = self.transitRouterSourceVSwitchId!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BindingResourceId"] as? String {
+                self.bindingResourceId = value
+            }
+            if let value = dict["BindingResourceType"] as? String {
+                self.bindingResourceType = value
+            }
+            if let value = dict["Bytes"] as? Double {
+                self.bytes = value
+            }
+            if let value = dict["BytesRate"] as? Double {
+                self.bytesRate = value
+            }
+            if let value = dict["ClientAsn"] as? String {
+                self.clientAsn = value
+            }
+            if let value = dict["ClientCity"] as? String {
+                self.clientCity = value
+            }
+            if let value = dict["ClientCountry"] as? String {
+                self.clientCountry = value
+            }
+            if let value = dict["ClientIsp"] as? String {
+                self.clientIsp = value
+            }
+            if let value = dict["ClientProvince"] as? String {
+                self.clientProvince = value
+            }
+            if let value = dict["DestinationIp"] as? String {
+                self.destinationIp = value
+            }
+            if let value = dict["DestinationPort"] as? String {
+                self.destinationPort = value
+            }
+            if let value = dict["DestinationRegionNo"] as? String {
+                self.destinationRegionNo = value
+            }
+            if let value = dict["Direction"] as? String {
+                self.direction = value
+            }
+            if let value = dict["Dscp"] as? String {
+                self.dscp = value
+            }
+            if let value = dict["EcsId"] as? String {
+                self.ecsId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["NetworkInterfaceId"] as? String {
+                self.networkInterfaceId = value
+            }
+            if let value = dict["Packets"] as? Double {
+                self.packets = value
+            }
+            if let value = dict["PacketsLostBlackhole"] as? Double {
+                self.packetsLostBlackhole = value
+            }
+            if let value = dict["PacketsLostNoRoute"] as? Double {
+                self.packetsLostNoRoute = value
+            }
+            if let value = dict["PacketsLostTTLExpired"] as? Double {
+                self.packetsLostTTLExpired = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+            if let value = dict["PublicIpAddress"] as? String {
+                self.publicIpAddress = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["RoundTripTime"] as? Double {
+                self.roundTripTime = value
+            }
+            if let value = dict["SourceIp"] as? String {
+                self.sourceIp = value
+            }
+            if let value = dict["SourcePort"] as? String {
+                self.sourcePort = value
+            }
+            if let value = dict["SourceRegionNo"] as? String {
+                self.sourceRegionNo = value
+            }
+            if let value = dict["TrafficPath"] as? String {
+                self.trafficPath = value
+            }
+            if let value = dict["TransitRouterAttachmentId"] as? String {
+                self.transitRouterAttachmentId = value
+            }
+            if let value = dict["TransitRouterDestinationAccountId"] as? String {
+                self.transitRouterDestinationAccountId = value
+            }
+            if let value = dict["TransitRouterDestinationAvailableZone"] as? String {
+                self.transitRouterDestinationAvailableZone = value
+            }
+            if let value = dict["TransitRouterDestinationNetworkInterface"] as? String {
+                self.transitRouterDestinationNetworkInterface = value
+            }
+            if let value = dict["TransitRouterDestinationResourceId"] as? String {
+                self.transitRouterDestinationResourceId = value
+            }
+            if let value = dict["TransitRouterDestinationVSwitchId"] as? String {
+                self.transitRouterDestinationVSwitchId = value
+            }
+            if let value = dict["TransitRouterId"] as? String {
+                self.transitRouterId = value
+            }
+            if let value = dict["TransitRouterPairAttachmentId"] as? String {
+                self.transitRouterPairAttachmentId = value
+            }
+            if let value = dict["TransitRouterSourceAccountId"] as? String {
+                self.transitRouterSourceAccountId = value
+            }
+            if let value = dict["TransitRouterSourceAvailableZone"] as? String {
+                self.transitRouterSourceAvailableZone = value
+            }
+            if let value = dict["TransitRouterSourceNetworkInterface"] as? String {
+                self.transitRouterSourceNetworkInterface = value
+            }
+            if let value = dict["TransitRouterSourceResourceId"] as? String {
+                self.transitRouterSourceResourceId = value
+            }
+            if let value = dict["TransitRouterSourceVSwitchId"] as? String {
+                self.transitRouterSourceVSwitchId = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var flowRankingList: [DescribeNisTrafficRankingResponseBody.FlowRankingList]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var nisTrafficRankingId: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.flowRankingList != nil {
+            var tmp : [Any] = []
+            for k in self.flowRankingList! {
+                tmp.append(k.toMap())
+            }
+            map["FlowRankingList"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.nisTrafficRankingId != nil {
+            map["NisTrafficRankingId"] = self.nisTrafficRankingId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FlowRankingList"] as? [Any?] {
+            var tmp : [DescribeNisTrafficRankingResponseBody.FlowRankingList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNisTrafficRankingResponseBody.FlowRankingList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.flowRankingList = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["NisTrafficRankingId"] as? String {
+            self.nisTrafficRankingId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeNisTrafficRankingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNisTrafficRankingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNisTrafficRankingResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetInternetTupleRequest : Tea.TeaModel {
     public var accountIds: [Int64]?
 
@@ -7018,6 +7582,457 @@ public class StartNisInspectionTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StartNisInspectionTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class StartNisTrafficRankingRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var key: String?
+
+        public var operator_: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.operator_ != nil {
+                map["Operator"] = self.operator_!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Operator"] as? String {
+                self.operator_ = value
+            }
+            if let value = dict["Value"] as? [String] {
+                self.value = value
+            }
+        }
+    }
+    public var beginTime: Int64?
+
+    public var direction: String?
+
+    public var endTime: Int64?
+
+    public var filter: [StartNisTrafficRankingRequest.Filter]?
+
+    public var groupBy: [String]?
+
+    public var language: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var regionNo: String?
+
+    public var sort: String?
+
+    public var storageInterval: Int32?
+
+    public var topN: Int32?
+
+    public var trafficAnalyzerId: String?
+
+    public var trafficScenario: String?
+
+    public var tupleDimension: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.groupBy != nil {
+            map["GroupBy"] = self.groupBy!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.storageInterval != nil {
+            map["StorageInterval"] = self.storageInterval!
+        }
+        if self.topN != nil {
+            map["TopN"] = self.topN!
+        }
+        if self.trafficAnalyzerId != nil {
+            map["TrafficAnalyzerId"] = self.trafficAnalyzerId!
+        }
+        if self.trafficScenario != nil {
+            map["TrafficScenario"] = self.trafficScenario!
+        }
+        if self.tupleDimension != nil {
+            map["TupleDimension"] = self.tupleDimension!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int64 {
+            self.beginTime = value
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Filter"] as? [Any?] {
+            var tmp : [StartNisTrafficRankingRequest.Filter] = []
+            for v in value {
+                if v != nil {
+                    var model = StartNisTrafficRankingRequest.Filter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filter = tmp
+        }
+        if let value = dict["GroupBy"] as? [String] {
+            self.groupBy = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["RegionNo"] as? String {
+            self.regionNo = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["StorageInterval"] as? Int32 {
+            self.storageInterval = value
+        }
+        if let value = dict["TopN"] as? Int32 {
+            self.topN = value
+        }
+        if let value = dict["TrafficAnalyzerId"] as? String {
+            self.trafficAnalyzerId = value
+        }
+        if let value = dict["TrafficScenario"] as? String {
+            self.trafficScenario = value
+        }
+        if let value = dict["TupleDimension"] as? String {
+            self.tupleDimension = value
+        }
+    }
+}
+
+public class StartNisTrafficRankingShrinkRequest : Tea.TeaModel {
+    public var beginTime: Int64?
+
+    public var direction: String?
+
+    public var endTime: Int64?
+
+    public var filterShrink: String?
+
+    public var groupByShrink: String?
+
+    public var language: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var regionNo: String?
+
+    public var sort: String?
+
+    public var storageInterval: Int32?
+
+    public var topN: Int32?
+
+    public var trafficAnalyzerId: String?
+
+    public var trafficScenario: String?
+
+    public var tupleDimension: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.groupByShrink != nil {
+            map["GroupBy"] = self.groupByShrink!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.storageInterval != nil {
+            map["StorageInterval"] = self.storageInterval!
+        }
+        if self.topN != nil {
+            map["TopN"] = self.topN!
+        }
+        if self.trafficAnalyzerId != nil {
+            map["TrafficAnalyzerId"] = self.trafficAnalyzerId!
+        }
+        if self.trafficScenario != nil {
+            map["TrafficScenario"] = self.trafficScenario!
+        }
+        if self.tupleDimension != nil {
+            map["TupleDimension"] = self.tupleDimension!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int64 {
+            self.beginTime = value
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filterShrink = value
+        }
+        if let value = dict["GroupBy"] as? String {
+            self.groupByShrink = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["RegionNo"] as? String {
+            self.regionNo = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["StorageInterval"] as? Int32 {
+            self.storageInterval = value
+        }
+        if let value = dict["TopN"] as? Int32 {
+            self.topN = value
+        }
+        if let value = dict["TrafficAnalyzerId"] as? String {
+            self.trafficAnalyzerId = value
+        }
+        if let value = dict["TrafficScenario"] as? String {
+            self.trafficScenario = value
+        }
+        if let value = dict["TupleDimension"] as? String {
+            self.tupleDimension = value
+        }
+    }
+}
+
+public class StartNisTrafficRankingResponseBody : Tea.TeaModel {
+    public var nisTrafficRankingId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nisTrafficRankingId != nil {
+            map["NisTrafficRankingId"] = self.nisTrafficRankingId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NisTrafficRankingId"] as? String {
+            self.nisTrafficRankingId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StartNisTrafficRankingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartNisTrafficRankingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StartNisTrafficRankingResponseBody()
             model.fromMap(value)
             self.body = model
         }

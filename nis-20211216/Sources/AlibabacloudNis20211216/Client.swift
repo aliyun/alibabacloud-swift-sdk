@@ -492,6 +492,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNisTrafficRankingWithOptions(_ request: DescribeNisTrafficRankingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNisTrafficRankingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nisTrafficRankingId)) {
+            query["NisTrafficRankingId"] = request.nisTrafficRankingId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeNisTrafficRanking",
+            "version": "2021-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeNisTrafficRankingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeNisTrafficRanking(_ request: DescribeNisTrafficRankingRequest) async throws -> DescribeNisTrafficRankingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeNisTrafficRankingWithOptions(request as! DescribeNisTrafficRankingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getInternetTupleWithOptions(_ tmpReq: GetInternetTupleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInternetTupleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetInternetTupleShrinkRequest = GetInternetTupleShrinkRequest([:])
@@ -1118,6 +1155,90 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startNisInspectionTask(_ request: StartNisInspectionTaskRequest) async throws -> StartNisInspectionTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await startNisInspectionTaskWithOptions(request as! StartNisInspectionTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startNisTrafficRankingWithOptions(_ tmpReq: StartNisTrafficRankingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartNisTrafficRankingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartNisTrafficRankingShrinkRequest = StartNisTrafficRankingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "Filter", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.groupBy)) {
+            request.groupByShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.groupBy, "GroupBy", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.beginTime)) {
+            query["BeginTime"] = request.beginTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.direction)) {
+            query["Direction"] = request.direction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["Filter"] = request.filterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByShrink)) {
+            query["GroupBy"] = request.groupByShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["OrderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionNo)) {
+            query["RegionNo"] = request.regionNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageInterval)) {
+            query["StorageInterval"] = request.storageInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topN)) {
+            query["TopN"] = request.topN!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficAnalyzerId)) {
+            query["TrafficAnalyzerId"] = request.trafficAnalyzerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficScenario)) {
+            query["TrafficScenario"] = request.trafficScenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tupleDimension)) {
+            query["TupleDimension"] = request.tupleDimension ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartNisTrafficRanking",
+            "version": "2021-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartNisTrafficRankingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startNisTrafficRanking(_ request: StartNisTrafficRankingRequest) async throws -> StartNisTrafficRankingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startNisTrafficRankingWithOptions(request as! StartNisTrafficRankingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
