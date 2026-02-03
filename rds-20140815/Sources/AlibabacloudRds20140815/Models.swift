@@ -71396,6 +71396,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var lastRowsAffectedCount: Int64?
 
+            public var lockTimeMS: Int64?
+
             public var lockTimes: Int64?
 
             public var logicalIORead: Int64?
@@ -71454,6 +71456,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.lastRowsAffectedCount != nil {
                     map["LastRowsAffectedCount"] = self.lastRowsAffectedCount!
+                }
+                if self.lockTimeMS != nil {
+                    map["LockTimeMS"] = self.lockTimeMS!
                 }
                 if self.lockTimes != nil {
                     map["LockTimes"] = self.lockTimes!
@@ -71516,6 +71521,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LastRowsAffectedCount"] as? Int64 {
                     self.lastRowsAffectedCount = value
+                }
+                if let value = dict["LockTimeMS"] as? Int64 {
+                    self.lockTimeMS = value
                 }
                 if let value = dict["LockTimes"] as? Int64 {
                     self.lockTimes = value
