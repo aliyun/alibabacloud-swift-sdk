@@ -138,6 +138,8 @@ public class AssociatePrincipalWithPortfolioRequest : Tea.TeaModel {
 
     public var principalId: String?
 
+    public var principalPattern: String?
+
     public var principalType: String?
 
     public override init() {
@@ -160,6 +162,9 @@ public class AssociatePrincipalWithPortfolioRequest : Tea.TeaModel {
         if self.principalId != nil {
             map["PrincipalId"] = self.principalId!
         }
+        if self.principalPattern != nil {
+            map["PrincipalPattern"] = self.principalPattern!
+        }
         if self.principalType != nil {
             map["PrincipalType"] = self.principalType!
         }
@@ -173,6 +178,9 @@ public class AssociatePrincipalWithPortfolioRequest : Tea.TeaModel {
         }
         if let value = dict["PrincipalId"] as? String {
             self.principalId = value
+        }
+        if let value = dict["PrincipalPattern"] as? String {
+            self.principalPattern = value
         }
         if let value = dict["PrincipalType"] as? String {
             self.principalType = value
@@ -2991,6 +2999,8 @@ public class DisassociatePrincipalFromPortfolioRequest : Tea.TeaModel {
 
     public var principalId: String?
 
+    public var principalPattern: String?
+
     public var principalType: String?
 
     public override init() {
@@ -3013,6 +3023,9 @@ public class DisassociatePrincipalFromPortfolioRequest : Tea.TeaModel {
         if self.principalId != nil {
             map["PrincipalId"] = self.principalId!
         }
+        if self.principalPattern != nil {
+            map["PrincipalPattern"] = self.principalPattern!
+        }
         if self.principalType != nil {
             map["PrincipalType"] = self.principalType!
         }
@@ -3026,6 +3039,9 @@ public class DisassociatePrincipalFromPortfolioRequest : Tea.TeaModel {
         }
         if let value = dict["PrincipalId"] as? String {
             self.principalId = value
+        }
+        if let value = dict["PrincipalPattern"] as? String {
+            self.principalPattern = value
         }
         if let value = dict["PrincipalType"] as? String {
             self.principalType = value
@@ -7664,6 +7680,8 @@ public class ListPrincipalsResponseBody : Tea.TeaModel {
     public class Principals : Tea.TeaModel {
         public var principalId: String?
 
+        public var principalPattern: String?
+
         public var principalType: String?
 
         public override init() {
@@ -7683,6 +7701,9 @@ public class ListPrincipalsResponseBody : Tea.TeaModel {
             if self.principalId != nil {
                 map["PrincipalId"] = self.principalId!
             }
+            if self.principalPattern != nil {
+                map["PrincipalPattern"] = self.principalPattern!
+            }
             if self.principalType != nil {
                 map["PrincipalType"] = self.principalType!
             }
@@ -7693,6 +7714,9 @@ public class ListPrincipalsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["PrincipalId"] as? String {
                 self.principalId = value
+            }
+            if let value = dict["PrincipalPattern"] as? String {
+                self.principalPattern = value
             }
             if let value = dict["PrincipalType"] as? String {
                 self.principalType = value
@@ -10459,6 +10483,10 @@ public class ListTagOptionsRequest : Tea.TeaModel {
     }
     public var filters: ListTagOptionsRequest.Filters?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -10485,6 +10513,12 @@ public class ListTagOptionsRequest : Tea.TeaModel {
         if self.filters != nil {
             map["Filters"] = self.filters?.toMap()
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -10507,6 +10541,12 @@ public class ListTagOptionsRequest : Tea.TeaModel {
             model.fromMap(value)
             self.filters = model
         }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -10524,6 +10564,10 @@ public class ListTagOptionsRequest : Tea.TeaModel {
 
 public class ListTagOptionsShrinkRequest : Tea.TeaModel {
     public var filtersShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
 
     public var pageNumber: Int32?
 
@@ -10550,6 +10594,12 @@ public class ListTagOptionsShrinkRequest : Tea.TeaModel {
         if self.filtersShrink != nil {
             map["Filters"] = self.filtersShrink!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -10569,6 +10619,12 @@ public class ListTagOptionsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Filters"] as? String {
             self.filtersShrink = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -10648,6 +10704,8 @@ public class ListTagOptionsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -10672,6 +10730,9 @@ public class ListTagOptionsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -10696,6 +10757,9 @@ public class ListTagOptionsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
