@@ -52678,6 +52678,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var hostAddress: String?
 
+            public var lockTimeMS: Int64?
+
             public var lockTimes: Int64?
 
             public var parseRowCounts: Int64?
@@ -52718,6 +52720,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.hostAddress != nil {
                     map["HostAddress"] = self.hostAddress!
                 }
+                if self.lockTimeMS != nil {
+                    map["LockTimeMS"] = self.lockTimeMS!
+                }
                 if self.lockTimes != nil {
                     map["LockTimes"] = self.lockTimes!
                 }
@@ -52755,6 +52760,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["HostAddress"] as? String {
                     self.hostAddress = value
+                }
+                if let value = dict["LockTimeMS"] as? Int64 {
+                    self.lockTimeMS = value
                 }
                 if let value = dict["LockTimes"] as? Int64 {
                     self.lockTimes = value
