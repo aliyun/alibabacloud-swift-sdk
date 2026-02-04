@@ -7224,6 +7224,8 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var backupInstance: String?
+
     public var coldStorage: Int32?
 
     public var coreDiskCategory: String?
@@ -7357,6 +7359,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
+        }
+        if self.backupInstance != nil {
+            map["BackupInstance"] = self.backupInstance!
         }
         if self.coldStorage != nil {
             map["ColdStorage"] = self.coldStorage!
@@ -7537,6 +7542,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
+        }
+        if let value = dict["BackupInstance"] as? String {
+            self.backupInstance = value
         }
         if let value = dict["ColdStorage"] as? Int32 {
             self.coldStorage = value
