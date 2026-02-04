@@ -5266,6 +5266,8 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
 
     public var feeType: String?
 
+    public var insightModule: Bool?
+
     public var instanceClass: String?
 
     public var jobId: String?
@@ -5334,6 +5336,9 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
         }
         if self.feeType != nil {
             map["FeeType"] = self.feeType!
+        }
+        if self.insightModule != nil {
+            map["InsightModule"] = self.insightModule!
         }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
@@ -5408,6 +5413,9 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["FeeType"] as? String {
             self.feeType = value
+        }
+        if let value = dict["InsightModule"] as? Bool {
+            self.insightModule = value
         }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
@@ -19503,6 +19511,8 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
     public var initCheckpoint: String?
 
+    public var insightModule: Bool?
+
     public var jobType: String?
 
     public var lastUpdateTime: String?
@@ -19677,6 +19687,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if self.initCheckpoint != nil {
             map["InitCheckpoint"] = self.initCheckpoint!
+        }
+        if self.insightModule != nil {
+            map["InsightModule"] = self.insightModule!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -19870,6 +19883,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["InitCheckpoint"] as? String {
             self.initCheckpoint = value
+        }
+        if let value = dict["InsightModule"] as? Bool {
+            self.insightModule = value
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value

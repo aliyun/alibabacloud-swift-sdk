@@ -1482,6 +1482,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.feeType)) {
             query["FeeType"] = request.feeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.insightModule)) {
+            query["InsightModule"] = request.insightModule!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceClass)) {
             query["InstanceClass"] = request.instanceClass ?? "";
         }
