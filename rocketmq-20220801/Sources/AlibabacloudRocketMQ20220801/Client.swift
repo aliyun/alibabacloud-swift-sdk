@@ -202,6 +202,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["clientToken"] = request.clientToken ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aclInfo)) {
+            body["aclInfo"] = request.aclInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["autoRenew"] = request.autoRenew!;
         }

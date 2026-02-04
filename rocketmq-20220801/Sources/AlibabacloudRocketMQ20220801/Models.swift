@@ -1222,6 +1222,36 @@ public class CreateDisasterRecoveryPlanResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class AclInfo : Tea.TeaModel {
+        public var defaultVpcAuthFree: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultVpcAuthFree != nil {
+                map["defaultVpcAuthFree"] = self.defaultVpcAuthFree!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["defaultVpcAuthFree"] as? Bool {
+                self.defaultVpcAuthFree = value
+            }
+        }
+    }
     public class NetworkInfo : Tea.TeaModel {
         public class InternetInfo : Tea.TeaModel {
             public var flowOutBandwidth: Int32?
@@ -1550,6 +1580,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var aclInfo: CreateInstanceRequest.AclInfo?
+
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int32?
@@ -1592,12 +1624,16 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.aclInfo?.validate()
         try self.networkInfo?.validate()
         try self.productInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aclInfo != nil {
+            map["aclInfo"] = self.aclInfo?.toMap()
+        }
         if self.autoRenew != nil {
             map["autoRenew"] = self.autoRenew!
         }
@@ -1655,6 +1691,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["aclInfo"] as? [String: Any?] {
+            var model = CreateInstanceRequest.AclInfo()
+            model.fromMap(value)
+            self.aclInfo = model
+        }
         if let value = dict["autoRenew"] as? Bool {
             self.autoRenew = value
         }
