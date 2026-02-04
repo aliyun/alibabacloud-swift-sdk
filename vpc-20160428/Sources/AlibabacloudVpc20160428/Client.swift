@@ -2150,55 +2150,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func convertBandwidthPackageWithOptions(_ request: ConvertBandwidthPackageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConvertBandwidthPackageResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.bandwidthPackageId)) {
-            query["BandwidthPackageId"] = request.bandwidthPackageId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.clientToken)) {
-            query["ClientToken"] = request.clientToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ConvertBandwidthPackage",
-            "version": "2016-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ConvertBandwidthPackageResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func convertBandwidthPackage(_ request: ConvertBandwidthPackageRequest) async throws -> ConvertBandwidthPackageResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await convertBandwidthPackageWithOptions(request as! ConvertBandwidthPackageRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func copyNetworkAclEntriesWithOptions(_ request: CopyNetworkAclEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CopyNetworkAclEntriesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3219,6 +3170,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createFullNatEntryWithOptions(_ request: CreateFullNatEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFullNatEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessDomain)) {
+            query["AccessDomain"] = request.accessDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.accessIp)) {
             query["AccessIp"] = request.accessIp ?? "";
         }
@@ -14209,46 +14163,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func disableNatGatewayEcsMetricWithOptions(_ request: DisableNatGatewayEcsMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableNatGatewayEcsMetricResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.dryRun)) {
-            query["DryRun"] = request.dryRun!;
-        }
-        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
-            query["NatGatewayId"] = request.natGatewayId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DisableNatGatewayEcsMetric",
-            "version": "2016-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DisableNatGatewayEcsMetricResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func disableNatGatewayEcsMetric(_ request: DisableNatGatewayEcsMetricRequest) async throws -> DisableNatGatewayEcsMetricResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await disableNatGatewayEcsMetricWithOptions(request as! DisableNatGatewayEcsMetricRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func disableVpcClassicLinkWithOptions(_ request: DisableVpcClassicLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableVpcClassicLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14503,46 +14417,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func downloadVpnConnectionConfig(_ request: DownloadVpnConnectionConfigRequest) async throws -> DownloadVpnConnectionConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await downloadVpnConnectionConfigWithOptions(request as! DownloadVpnConnectionConfigRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func enableNatGatewayEcsMetricWithOptions(_ request: EnableNatGatewayEcsMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableNatGatewayEcsMetricResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.dryRun)) {
-            query["DryRun"] = request.dryRun!;
-        }
-        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
-            query["NatGatewayId"] = request.natGatewayId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "EnableNatGatewayEcsMetric",
-            "version": "2016-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(EnableNatGatewayEcsMetricResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func enableNatGatewayEcsMetric(_ request: EnableNatGatewayEcsMetricRequest) async throws -> EnableNatGatewayEcsMetricResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await enableNatGatewayEcsMetricWithOptions(request as! EnableNatGatewayEcsMetricRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14895,119 +14769,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getNatGatewayAttribute(_ request: GetNatGatewayAttributeRequest) async throws -> GetNatGatewayAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getNatGatewayAttributeWithOptions(request as! GetNatGatewayAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getNatIpAttributeWithOptions(_ request: GetNatIpAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNatIpAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clientToken)) {
-            query["ClientToken"] = request.clientToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.dryRun)) {
-            query["DryRun"] = request.dryRun!;
-        }
-        if (!TeaUtils.Client.isUnset(request.natIpId)) {
-            query["NatIpId"] = request.natIpId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetNatIpAttribute",
-            "version": "2016-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetNatIpAttributeResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getNatIpAttribute(_ request: GetNatIpAttributeRequest) async throws -> GetNatIpAttributeResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getNatIpAttributeWithOptions(request as! GetNatIpAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getNatIpCidrAttributeWithOptions(_ request: GetNatIpCidrAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNatIpCidrAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clientToken)) {
-            query["ClientToken"] = request.clientToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.dryRun)) {
-            query["DryRun"] = request.dryRun!;
-        }
-        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
-            query["NatGatewayId"] = request.natGatewayId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.natIpCidr)) {
-            query["NatIpCidr"] = request.natIpCidr ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetNatIpCidrAttribute",
-            "version": "2016-04-28",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetNatIpCidrAttributeResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getNatIpCidrAttribute(_ request: GetNatIpCidrAttributeRequest) async throws -> GetNatIpCidrAttributeResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getNatIpCidrAttributeWithOptions(request as! GetNatIpCidrAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -18072,6 +17833,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyFullNatEntryAttributeWithOptions(_ request: ModifyFullNatEntryAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyFullNatEntryAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessDomain)) {
+            query["AccessDomain"] = request.accessDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.accessIp)) {
             query["AccessIp"] = request.accessIp ?? "";
         }
