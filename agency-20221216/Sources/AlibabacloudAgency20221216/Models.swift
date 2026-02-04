@@ -7535,6 +7535,8 @@ public class ListCouponUsageResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var t2PartnerUid: String?
+
         public var uid: Int64?
 
         public override init() {
@@ -7575,6 +7577,9 @@ public class ListCouponUsageResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.t2PartnerUid != nil {
+                map["T2PartnerUid"] = self.t2PartnerUid!
+            }
             if self.uid != nil {
                 map["Uid"] = self.uid!
             }
@@ -7606,6 +7611,9 @@ public class ListCouponUsageResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["T2PartnerUid"] as? String {
+                self.t2PartnerUid = value
             }
             if let value = dict["Uid"] as? Int64 {
                 self.uid = value
