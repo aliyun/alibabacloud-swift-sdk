@@ -474,6 +474,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.detailIdListShrink)) {
             query["DetailIdList"] = request.detailIdListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.encryptionType)) {
+            query["EncryptionType"] = request.encryptionType!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -696,6 +699,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             query["AgentId"] = request.agentId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationCode)) {
+            query["ApplicationCode"] = request.applicationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationName)) {
+            query["ApplicationName"] = request.applicationName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.callDayShrink)) {
             query["CallDay"] = request.callDayShrink ?? "";
         }
@@ -711,17 +720,29 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callTimeShrink)) {
             query["CallTime"] = request.callTimeShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lineEncoding)) {
+            query["LineEncoding"] = request.lineEncoding ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.linePhoneNum)) {
+            query["LinePhoneNum"] = request.linePhoneNum ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.missCallRetry)) {
             query["MissCallRetry"] = request.missCallRetry!;
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.phoneType)) {
+            query["PhoneType"] = request.phoneType!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source!;
         }
         if (!TeaUtils.Client.isUnset(request.startType)) {
             query["StartType"] = request.startType ?? "";
@@ -4086,6 +4107,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.variablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.variables, "Variables", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.encryptionType)) {
+            query["EncryptionType"] = request.encryptionType!;
+        }
         if (!TeaUtils.Client.isUnset(request.outId)) {
             query["OutId"] = request.outId ?? "";
         }
@@ -4142,6 +4166,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.dataType)) {
             query["DataType"] = request.dataType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encryptionType)) {
+            query["EncryptionType"] = request.encryptionType!;
         }
         if (!TeaUtils.Client.isUnset(request.ossFileName)) {
             query["OssFileName"] = request.ossFileName ?? "";
@@ -5179,6 +5206,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.detailIdsShrink)) {
             query["DetailIds"] = request.detailIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.encryptionType)) {
+            query["EncryptionType"] = request.encryptionType!;
+        }
         if (!TeaUtils.Client.isUnset(request.endCallingTime)) {
             query["EndCallingTime"] = request.endCallingTime!;
         }
@@ -5295,6 +5325,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentName)) {
             query["AgentName"] = request.agentName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationCode)) {
+            query["ApplicationCode"] = request.applicationCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -5309,6 +5342,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source!;
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
@@ -7075,17 +7111,29 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callTimeShrink)) {
             query["CallTime"] = request.callTimeShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lineEncoding)) {
+            query["LineEncoding"] = request.lineEncoding ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.linePhoneNum)) {
+            query["LinePhoneNum"] = request.linePhoneNum ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.missCallRetry)) {
             query["MissCallRetry"] = request.missCallRetry!;
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.phoneType)) {
+            query["PhoneType"] = request.phoneType!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source!;
         }
         if (!TeaUtils.Client.isUnset(request.startType)) {
             query["StartType"] = request.startType ?? "";

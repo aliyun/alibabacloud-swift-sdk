@@ -1961,6 +1961,8 @@ public class CancelAiCallDetailsRequest : Tea.TeaModel {
 
     public var detailIdList: [String]?
 
+    public var encryptionType: Int64?
+
     public var ownerId: Int64?
 
     public var phoneNumbers: [String]?
@@ -1991,6 +1993,9 @@ public class CancelAiCallDetailsRequest : Tea.TeaModel {
         if self.detailIdList != nil {
             map["DetailIdList"] = self.detailIdList!
         }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -2017,6 +2022,9 @@ public class CancelAiCallDetailsRequest : Tea.TeaModel {
         if let value = dict["DetailIdList"] as? [String] {
             self.detailIdList = value
         }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -2039,6 +2047,8 @@ public class CancelAiCallDetailsShrinkRequest : Tea.TeaModel {
     public var batchId: String?
 
     public var detailIdListShrink: String?
+
+    public var encryptionType: Int64?
 
     public var ownerId: Int64?
 
@@ -2070,6 +2080,9 @@ public class CancelAiCallDetailsShrinkRequest : Tea.TeaModel {
         if self.detailIdListShrink != nil {
             map["DetailIdList"] = self.detailIdListShrink!
         }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -2095,6 +2108,9 @@ public class CancelAiCallDetailsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DetailIdList"] as? String {
             self.detailIdListShrink = value
+        }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -2999,6 +3015,10 @@ public class CreateAgentResponse : Tea.TeaModel {
 public class CreateAiCallTaskRequest : Tea.TeaModel {
     public var agentId: String?
 
+    public var applicationCode: String?
+
+    public var applicationName: String?
+
     public var callDay: [String]?
 
     public var callRetryInterval: Int64?
@@ -3009,13 +3029,21 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
 
     public var callTime: [String]?
 
+    public var lineEncoding: String?
+
+    public var linePhoneNum: String?
+
     public var missCallRetry: Bool?
 
     public var ownerId: Int64?
 
+    public var phoneType: Int64?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var source: Int64?
 
     public var startType: String?
 
@@ -3044,6 +3072,12 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if self.agentId != nil {
             map["AgentId"] = self.agentId!
         }
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
         if self.callDay != nil {
             map["CallDay"] = self.callDay!
         }
@@ -3059,17 +3093,29 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if self.callTime != nil {
             map["CallTime"] = self.callTime!
         }
+        if self.lineEncoding != nil {
+            map["LineEncoding"] = self.lineEncoding!
+        }
+        if self.linePhoneNum != nil {
+            map["LinePhoneNum"] = self.linePhoneNum!
+        }
         if self.missCallRetry != nil {
             map["MissCallRetry"] = self.missCallRetry!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.phoneType != nil {
+            map["PhoneType"] = self.phoneType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.startType != nil {
             map["StartType"] = self.startType!
@@ -3094,6 +3140,12 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if let value = dict["AgentId"] as? String {
             self.agentId = value
         }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
         if let value = dict["CallDay"] as? [String] {
             self.callDay = value
         }
@@ -3109,17 +3161,29 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if let value = dict["CallTime"] as? [String] {
             self.callTime = value
         }
+        if let value = dict["LineEncoding"] as? String {
+            self.lineEncoding = value
+        }
+        if let value = dict["LinePhoneNum"] as? String {
+            self.linePhoneNum = value
+        }
         if let value = dict["MissCallRetry"] as? Bool {
             self.missCallRetry = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PhoneType"] as? Int64 {
+            self.phoneType = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? Int64 {
+            self.source = value
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
@@ -3142,6 +3206,10 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
 public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
     public var agentId: String?
 
+    public var applicationCode: String?
+
+    public var applicationName: String?
+
     public var callDayShrink: String?
 
     public var callRetryInterval: Int64?
@@ -3152,13 +3220,21 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
 
     public var callTimeShrink: String?
 
+    public var lineEncoding: String?
+
+    public var linePhoneNum: String?
+
     public var missCallRetry: Bool?
 
     public var ownerId: Int64?
 
+    public var phoneType: Int64?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var source: Int64?
 
     public var startType: String?
 
@@ -3187,6 +3263,12 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         if self.agentId != nil {
             map["AgentId"] = self.agentId!
         }
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
         if self.callDayShrink != nil {
             map["CallDay"] = self.callDayShrink!
         }
@@ -3202,17 +3284,29 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         if self.callTimeShrink != nil {
             map["CallTime"] = self.callTimeShrink!
         }
+        if self.lineEncoding != nil {
+            map["LineEncoding"] = self.lineEncoding!
+        }
+        if self.linePhoneNum != nil {
+            map["LinePhoneNum"] = self.linePhoneNum!
+        }
         if self.missCallRetry != nil {
             map["MissCallRetry"] = self.missCallRetry!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.phoneType != nil {
+            map["PhoneType"] = self.phoneType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.startType != nil {
             map["StartType"] = self.startType!
@@ -3237,6 +3331,12 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentId"] as? String {
             self.agentId = value
         }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
         if let value = dict["CallDay"] as? String {
             self.callDayShrink = value
         }
@@ -3252,17 +3352,29 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         if let value = dict["CallTime"] as? String {
             self.callTimeShrink = value
         }
+        if let value = dict["LineEncoding"] as? String {
+            self.lineEncoding = value
+        }
+        if let value = dict["LinePhoneNum"] as? String {
+            self.linePhoneNum = value
+        }
         if let value = dict["MissCallRetry"] as? Bool {
             self.missCallRetry = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PhoneType"] as? Int64 {
+            self.phoneType = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? Int64 {
+            self.source = value
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
@@ -25276,6 +25388,8 @@ public class HotlineSessionQueryResponse : Tea.TeaModel {
 }
 
 public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
+    public var encryptionType: Int64?
+
     public var outId: String?
 
     public var ownerId: Int64?
@@ -25304,6 +25418,9 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -25330,6 +25447,9 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["OutId"] as? String {
             self.outId = value
         }
@@ -25355,6 +25475,8 @@ public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
 }
 
 public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
+    public var encryptionType: Int64?
+
     public var outId: String?
 
     public var ownerId: Int64?
@@ -25383,6 +25505,9 @@ public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -25409,6 +25534,9 @@ public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["OutId"] as? String {
             self.outId = value
         }
@@ -25590,6 +25718,8 @@ public class ImportOneTaskPhoneNumberResponse : Tea.TeaModel {
 public class ImportTaskNumberDatasRequest : Tea.TeaModel {
     public var dataType: String?
 
+    public var encryptionType: Int64?
+
     public var ossFileName: String?
 
     public var ownerId: Int64?
@@ -25619,6 +25749,9 @@ public class ImportTaskNumberDatasRequest : Tea.TeaModel {
         if self.dataType != nil {
             map["DataType"] = self.dataType!
         }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.ossFileName != nil {
             map["OssFileName"] = self.ossFileName!
         }
@@ -25645,6 +25778,9 @@ public class ImportTaskNumberDatasRequest : Tea.TeaModel {
         if let value = dict["DataType"] as? String {
             self.dataType = value
         }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["OssFileName"] as? String {
             self.ossFileName = value
         }
@@ -25668,6 +25804,8 @@ public class ImportTaskNumberDatasRequest : Tea.TeaModel {
 
 public class ImportTaskNumberDatasShrinkRequest : Tea.TeaModel {
     public var dataType: String?
+
+    public var encryptionType: Int64?
 
     public var ossFileName: String?
 
@@ -25698,6 +25836,9 @@ public class ImportTaskNumberDatasShrinkRequest : Tea.TeaModel {
         if self.dataType != nil {
             map["DataType"] = self.dataType!
         }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
+        }
         if self.ossFileName != nil {
             map["OssFileName"] = self.ossFileName!
         }
@@ -25723,6 +25864,9 @@ public class ImportTaskNumberDatasShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DataType"] as? String {
             self.dataType = value
+        }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
         }
         if let value = dict["OssFileName"] as? String {
             self.ossFileName = value
@@ -32224,6 +32368,8 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
 
     public var detailIds: [Int64]?
 
+    public var encryptionType: Int64?
+
     public var endCallingTime: Int64?
 
     public var endImportedTime: Int64?
@@ -32279,6 +32425,9 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         }
         if self.detailIds != nil {
             map["DetailIds"] = self.detailIds!
+        }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
         }
         if self.endCallingTime != nil {
             map["EndCallingTime"] = self.endCallingTime!
@@ -32342,6 +32491,9 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         if let value = dict["DetailIds"] as? [Int64] {
             self.detailIds = value
         }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["EndCallingTime"] as? Int64 {
             self.endCallingTime = value
         }
@@ -32399,6 +32551,8 @@ public class QueryAiCallDetailPageShrinkRequest : Tea.TeaModel {
 
     public var detailIdsShrink: String?
 
+    public var encryptionType: Int64?
+
     public var endCallingTime: Int64?
 
     public var endImportedTime: Int64?
@@ -32454,6 +32608,9 @@ public class QueryAiCallDetailPageShrinkRequest : Tea.TeaModel {
         }
         if self.detailIdsShrink != nil {
             map["DetailIds"] = self.detailIdsShrink!
+        }
+        if self.encryptionType != nil {
+            map["EncryptionType"] = self.encryptionType!
         }
         if self.endCallingTime != nil {
             map["EndCallingTime"] = self.endCallingTime!
@@ -32517,6 +32674,9 @@ public class QueryAiCallDetailPageShrinkRequest : Tea.TeaModel {
         if let value = dict["DetailIds"] as? String {
             self.detailIdsShrink = value
         }
+        if let value = dict["EncryptionType"] as? Int64 {
+            self.encryptionType = value
+        }
         if let value = dict["EndCallingTime"] as? Int64 {
             self.endCallingTime = value
         }
@@ -32570,6 +32730,10 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
         public class List : Tea.TeaModel {
             public var batchId: String?
 
+            public var branchId: Int64?
+
+            public var branchVersionId: Int64?
+
             public var callResult: String?
 
             public var calledNumber: String?
@@ -32583,6 +32747,8 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
             public var conversationTurnCount: Int64?
 
             public var detailId: String?
+
+            public var encryptionType: Int64?
 
             public var failedReason: String?
 
@@ -32617,6 +32783,12 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 if self.batchId != nil {
                     map["BatchId"] = self.batchId!
                 }
+                if self.branchId != nil {
+                    map["BranchId"] = self.branchId!
+                }
+                if self.branchVersionId != nil {
+                    map["BranchVersionId"] = self.branchVersionId!
+                }
                 if self.callResult != nil {
                     map["CallResult"] = self.callResult!
                 }
@@ -32637,6 +32809,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 }
                 if self.detailId != nil {
                     map["DetailId"] = self.detailId!
+                }
+                if self.encryptionType != nil {
+                    map["EncryptionType"] = self.encryptionType!
                 }
                 if self.failedReason != nil {
                     map["FailedReason"] = self.failedReason!
@@ -32670,6 +32845,12 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 if let value = dict["BatchId"] as? String {
                     self.batchId = value
                 }
+                if let value = dict["BranchId"] as? Int64 {
+                    self.branchId = value
+                }
+                if let value = dict["BranchVersionId"] as? Int64 {
+                    self.branchVersionId = value
+                }
                 if let value = dict["CallResult"] as? String {
                     self.callResult = value
                 }
@@ -32690,6 +32871,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DetailId"] as? String {
                     self.detailId = value
+                }
+                if let value = dict["EncryptionType"] as? Int64 {
+                    self.encryptionType = value
                 }
                 if let value = dict["FailedReason"] as? String {
                     self.failedReason = value
@@ -33006,6 +33190,10 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
 
         public var agentName: String?
 
+        public var applicationCode: String?
+
+        public var applicationName: String?
+
         public var callDays: [String]?
 
         public var callTimes: [QueryAiCallTaskDetailResponseBody.Data.CallTimes]?
@@ -33013,6 +33201,12 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
         public var callerNumber: String?
 
         public var concurrentCount: Int64?
+
+        public var lineEncoding: String?
+
+        public var linePhoneNum: String?
+
+        public var phoneType: Int64?
 
         public var realStartTime: Int64?
 
@@ -33052,6 +33246,12 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
             if self.agentName != nil {
                 map["AgentName"] = self.agentName!
             }
+            if self.applicationCode != nil {
+                map["ApplicationCode"] = self.applicationCode!
+            }
+            if self.applicationName != nil {
+                map["ApplicationName"] = self.applicationName!
+            }
             if self.callDays != nil {
                 map["CallDays"] = self.callDays!
             }
@@ -33067,6 +33267,15 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
             }
             if self.concurrentCount != nil {
                 map["ConcurrentCount"] = self.concurrentCount!
+            }
+            if self.lineEncoding != nil {
+                map["LineEncoding"] = self.lineEncoding!
+            }
+            if self.linePhoneNum != nil {
+                map["LinePhoneNum"] = self.linePhoneNum!
+            }
+            if self.phoneType != nil {
+                map["PhoneType"] = self.phoneType!
             }
             if self.realStartTime != nil {
                 map["RealStartTime"] = self.realStartTime!
@@ -33106,6 +33315,12 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
             if let value = dict["AgentName"] as? String {
                 self.agentName = value
             }
+            if let value = dict["ApplicationCode"] as? String {
+                self.applicationCode = value
+            }
+            if let value = dict["ApplicationName"] as? String {
+                self.applicationName = value
+            }
             if let value = dict["CallDays"] as? [String] {
                 self.callDays = value
             }
@@ -33127,6 +33342,15 @@ public class QueryAiCallTaskDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConcurrentCount"] as? Int64 {
                 self.concurrentCount = value
+            }
+            if let value = dict["LineEncoding"] as? String {
+                self.lineEncoding = value
+            }
+            if let value = dict["LinePhoneNum"] as? String {
+                self.linePhoneNum = value
+            }
+            if let value = dict["PhoneType"] as? Int64 {
+                self.phoneType = value
             }
             if let value = dict["RealStartTime"] as? Int64 {
                 self.realStartTime = value
@@ -33283,6 +33507,8 @@ public class QueryAiCallTaskDetailResponse : Tea.TeaModel {
 public class QueryAiCallTaskPageRequest : Tea.TeaModel {
     public var agentName: String?
 
+    public var applicationCode: String?
+
     public var ownerId: Int64?
 
     public var pageNo: Int64?
@@ -33292,6 +33518,8 @@ public class QueryAiCallTaskPageRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var source: Int64?
 
     public var status: String?
 
@@ -33316,6 +33544,9 @@ public class QueryAiCallTaskPageRequest : Tea.TeaModel {
         if self.agentName != nil {
             map["AgentName"] = self.agentName!
         }
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -33330,6 +33561,9 @@ public class QueryAiCallTaskPageRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -33348,6 +33582,9 @@ public class QueryAiCallTaskPageRequest : Tea.TeaModel {
         if let value = dict["AgentName"] as? String {
             self.agentName = value
         }
+        if let value = dict["ApplicationCode"] as? String {
+            self.applicationCode = value
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -33362,6 +33599,9 @@ public class QueryAiCallTaskPageRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? Int64 {
+            self.source = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -33381,6 +33621,10 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
             public var agentId: String?
 
             public var agentName: String?
+
+            public var applicationCode: String?
+
+            public var applicationName: String?
 
             public var callingCount: Int64?
 
@@ -33437,6 +33681,12 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
                 }
                 if self.agentName != nil {
                     map["AgentName"] = self.agentName!
+                }
+                if self.applicationCode != nil {
+                    map["ApplicationCode"] = self.applicationCode!
+                }
+                if self.applicationName != nil {
+                    map["ApplicationName"] = self.applicationName!
                 }
                 if self.callingCount != nil {
                     map["CallingCount"] = self.callingCount!
@@ -33502,6 +33752,12 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AgentName"] as? String {
                     self.agentName = value
+                }
+                if let value = dict["ApplicationCode"] as? String {
+                    self.applicationCode = value
+                }
+                if let value = dict["ApplicationName"] as? String {
+                    self.applicationName = value
                 }
                 if let value = dict["CallingCount"] as? Int64 {
                     self.callingCount = value
@@ -35224,6 +35480,8 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
 
         public var duration: Int64?
 
+        public var encryptionType: String?
+
         public var failedReason: String?
 
         public var hangupDirection: String?
@@ -35279,6 +35537,9 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
             }
             if self.duration != nil {
                 map["Duration"] = self.duration!
+            }
+            if self.encryptionType != nil {
+                map["EncryptionType"] = self.encryptionType!
             }
             if self.failedReason != nil {
                 map["FailedReason"] = self.failedReason!
@@ -35346,6 +35607,9 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Duration"] as? Int64 {
                 self.duration = value
+            }
+            if let value = dict["EncryptionType"] as? String {
+                self.encryptionType = value
             }
             if let value = dict["FailedReason"] as? String {
                 self.failedReason = value
@@ -35751,6 +36015,8 @@ public class QueryConversationDetailInfoNewResponseBody : Tea.TeaModel {
 
         public var duration: Int64?
 
+        public var encryptionType: Int64?
+
         public var failedReason: String?
 
         public var hangupDirection: String?
@@ -35823,6 +36089,9 @@ public class QueryConversationDetailInfoNewResponseBody : Tea.TeaModel {
             }
             if self.duration != nil {
                 map["Duration"] = self.duration!
+            }
+            if self.encryptionType != nil {
+                map["EncryptionType"] = self.encryptionType!
             }
             if self.failedReason != nil {
                 map["FailedReason"] = self.failedReason!
@@ -35911,6 +36180,9 @@ public class QueryConversationDetailInfoNewResponseBody : Tea.TeaModel {
             }
             if let value = dict["Duration"] as? Int64 {
                 self.duration = value
+            }
+            if let value = dict["EncryptionType"] as? Int64 {
+                self.encryptionType = value
             }
             if let value = dict["FailedReason"] as? String {
                 self.failedReason = value
@@ -44014,13 +44286,21 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
 
     public var callTime: [String]?
 
+    public var lineEncoding: String?
+
+    public var linePhoneNum: String?
+
     public var missCallRetry: Bool?
 
     public var ownerId: Int64?
 
+    public var phoneType: Int64?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var source: Int64?
 
     public var startType: String?
 
@@ -44063,17 +44343,29 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
         if self.callTime != nil {
             map["CallTime"] = self.callTime!
         }
+        if self.lineEncoding != nil {
+            map["LineEncoding"] = self.lineEncoding!
+        }
+        if self.linePhoneNum != nil {
+            map["LinePhoneNum"] = self.linePhoneNum!
+        }
         if self.missCallRetry != nil {
             map["MissCallRetry"] = self.missCallRetry!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.phoneType != nil {
+            map["PhoneType"] = self.phoneType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.startType != nil {
             map["StartType"] = self.startType!
@@ -44113,17 +44405,29 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
         if let value = dict["CallTime"] as? [String] {
             self.callTime = value
         }
+        if let value = dict["LineEncoding"] as? String {
+            self.lineEncoding = value
+        }
+        if let value = dict["LinePhoneNum"] as? String {
+            self.linePhoneNum = value
+        }
         if let value = dict["MissCallRetry"] as? Bool {
             self.missCallRetry = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PhoneType"] as? Int64 {
+            self.phoneType = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? Int64 {
+            self.source = value
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
@@ -44157,13 +44461,21 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
 
     public var callTimeShrink: String?
 
+    public var lineEncoding: String?
+
+    public var linePhoneNum: String?
+
     public var missCallRetry: Bool?
 
     public var ownerId: Int64?
 
+    public var phoneType: Int64?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var source: Int64?
 
     public var startType: String?
 
@@ -44206,17 +44518,29 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
         if self.callTimeShrink != nil {
             map["CallTime"] = self.callTimeShrink!
         }
+        if self.lineEncoding != nil {
+            map["LineEncoding"] = self.lineEncoding!
+        }
+        if self.linePhoneNum != nil {
+            map["LinePhoneNum"] = self.linePhoneNum!
+        }
         if self.missCallRetry != nil {
             map["MissCallRetry"] = self.missCallRetry!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.phoneType != nil {
+            map["PhoneType"] = self.phoneType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
         }
         if self.startType != nil {
             map["StartType"] = self.startType!
@@ -44256,17 +44580,29 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
         if let value = dict["CallTime"] as? String {
             self.callTimeShrink = value
         }
+        if let value = dict["LineEncoding"] as? String {
+            self.lineEncoding = value
+        }
+        if let value = dict["LinePhoneNum"] as? String {
+            self.linePhoneNum = value
+        }
         if let value = dict["MissCallRetry"] as? Bool {
             self.missCallRetry = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["PhoneType"] as? Int64 {
+            self.phoneType = value
+        }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["Source"] as? Int64 {
+            self.source = value
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
