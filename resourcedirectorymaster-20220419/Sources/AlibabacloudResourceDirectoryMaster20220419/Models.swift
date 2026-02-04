@@ -9525,6 +9525,10 @@ public class ListDelegatedAdministratorsResponse : Tea.TeaModel {
 public class ListDelegatedServicesForAccountRequest : Tea.TeaModel {
     public var accountId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public override init() {
         super.init()
     }
@@ -9542,6 +9546,12 @@ public class ListDelegatedServicesForAccountRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         return map
     }
 
@@ -9549,6 +9559,12 @@ public class ListDelegatedServicesForAccountRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountId"] as? String {
             self.accountId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
     }
 }
@@ -9646,6 +9662,10 @@ public class ListDelegatedServicesForAccountResponseBody : Tea.TeaModel {
     }
     public var delegatedServices: ListDelegatedServicesForAccountResponseBody.DelegatedServices?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var requestId: String?
 
     public override init() {
@@ -9666,6 +9686,12 @@ public class ListDelegatedServicesForAccountResponseBody : Tea.TeaModel {
         if self.delegatedServices != nil {
             map["DelegatedServices"] = self.delegatedServices?.toMap()
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9678,6 +9704,12 @@ public class ListDelegatedServicesForAccountResponseBody : Tea.TeaModel {
             var model = ListDelegatedServicesForAccountResponseBody.DelegatedServices()
             model.fromMap(value)
             self.delegatedServices = model
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
