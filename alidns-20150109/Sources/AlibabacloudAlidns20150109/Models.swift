@@ -30912,6 +30912,8 @@ public class DescribeInternetDnsLogsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var preciseSort: Bool?
+
     public var queryCondition: String?
 
     public var recursionProtocolType: String?
@@ -30953,6 +30955,9 @@ public class DescribeInternetDnsLogsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.preciseSort != nil {
+            map["PreciseSort"] = self.preciseSort!
+        }
         if self.queryCondition != nil {
             map["QueryCondition"] = self.queryCondition!
         }
@@ -30987,6 +30992,9 @@ public class DescribeInternetDnsLogsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PreciseSort"] as? Bool {
+            self.preciseSort = value
         }
         if let value = dict["QueryCondition"] as? String {
             self.queryCondition = value
