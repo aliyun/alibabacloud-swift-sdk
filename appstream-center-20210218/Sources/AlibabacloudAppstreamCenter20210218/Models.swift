@@ -43,18 +43,19 @@ public class ExpireLoginTokenRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
-            self.endUserId = dict["EndUserId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
         }
-        if dict.keys.contains("LoginToken") && dict["LoginToken"] != nil {
-            self.loginToken = dict["LoginToken"] as! String
+        if let value = dict["LoginToken"] as? String {
+            self.loginToken = value
         }
-        if dict.keys.contains("OfficeSiteId") && dict["OfficeSiteId"] != nil {
-            self.officeSiteId = dict["OfficeSiteId"] as! String
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
         }
-        if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
-            self.sessionId = dict["SessionId"] as! String
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
     }
 }
@@ -82,9 +83,10 @@ public class ExpireLoginTokenResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -106,9 +108,6 @@ public class ExpireLoginTokenResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -126,16 +125,17 @@ public class ExpireLoginTokenResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ExpireLoginTokenResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -179,18 +179,19 @@ public class GetAuthCodeRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AutoCreateUser") && dict["AutoCreateUser"] != nil {
-            self.autoCreateUser = dict["AutoCreateUser"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoCreateUser"] as? Bool {
+            self.autoCreateUser = value
         }
-        if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
-            self.endUserId = dict["EndUserId"] as! String
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
         }
-        if dict.keys.contains("ExternalUserId") && dict["ExternalUserId"] != nil {
-            self.externalUserId = dict["ExternalUserId"] as! String
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
         }
-        if dict.keys.contains("Policy") && dict["Policy"] != nil {
-            self.policy = dict["Policy"] as! String
+        if let value = dict["Policy"] as? String {
+            self.policy = value
         }
     }
 }
@@ -229,15 +230,16 @@ public class GetAuthCodeResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthCode") && dict["AuthCode"] != nil {
-                self.authCode = dict["AuthCode"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthCode"] as? String {
+                self.authCode = value
             }
-            if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
-                self.endUserId = dict["EndUserId"] as! String
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
             }
-            if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
-                self.expireTime = dict["ExpireTime"] as! String
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
             }
         }
     }
@@ -269,14 +271,15 @@ public class GetAuthCodeResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AuthModel") && dict["AuthModel"] != nil {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthModel"] as? [String: Any?] {
             var model = GetAuthCodeResponseBody.AuthModel()
-            model.fromMap(dict["AuthModel"] as! [String: Any])
+            model.fromMap(value)
             self.authModel = model
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -298,9 +301,6 @@ public class GetAuthCodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -318,16 +318,210 @@ public class GetAuthCodeResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if let value = dict["body"] as? [String: Any?] {
             var model = GetAuthCodeResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetStsTokenRequest : Tea.TeaModel {
+    public var endUserId: String?
+
+    public var expiration: Int64?
+
+    public var externalId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.expiration != nil {
+            map["Expiration"] = self.expiration!
+        }
+        if self.externalId != nil {
+            map["ExternalId"] = self.externalId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["Expiration"] as? Int64 {
+            self.expiration = value
+        }
+        if let value = dict["ExternalId"] as? String {
+            self.externalId = value
+        }
+    }
+}
+
+public class GetStsTokenResponseBody : Tea.TeaModel {
+    public class StsTokenModel : Tea.TeaModel {
+        public var aliUid: Int64?
+
+        public var sessionId: String?
+
+        public var stsToken: String?
+
+        public var tenantId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            if self.stsToken != nil {
+                map["StsToken"] = self.stsToken!
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliUid"] as? Int64 {
+                self.aliUid = value
+            }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
+            if let value = dict["StsToken"] as? String {
+                self.stsToken = value
+            }
+            if let value = dict["TenantId"] as? Int64 {
+                self.tenantId = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var stsTokenModel: GetStsTokenResponseBody.StsTokenModel?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.stsTokenModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.stsTokenModel != nil {
+            map["StsTokenModel"] = self.stsTokenModel?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StsTokenModel"] as? [String: Any?] {
+            var model = GetStsTokenResponseBody.StsTokenModel()
+            model.fromMap(value)
+            self.stsTokenModel = model
+        }
+    }
+}
+
+public class GetStsTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetStsTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetStsTokenResponseBody()
+            model.fromMap(value)
             self.body = model
         }
     }

@@ -102,4 +102,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAuthCodeWithOptions(request as! GetAuthCodeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getStsTokenWithOptions(_ request: GetStsTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetStsTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            body["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expiration)) {
+            body["Expiration"] = request.expiration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.externalId)) {
+            body["ExternalId"] = request.externalId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetStsToken",
+            "version": "2021-02-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetStsTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getStsToken(_ request: GetStsTokenRequest) async throws -> GetStsTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getStsTokenWithOptions(request as! GetStsTokenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
