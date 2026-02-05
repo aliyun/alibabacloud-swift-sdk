@@ -28186,6 +28186,8 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
 
         public var sccMode: String?
 
+        public var serviceName: String?
+
         public override init() {
             super.init()
         }
@@ -28243,6 +28245,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if self.sccMode != nil {
                 map["SccMode"] = self.sccMode!
             }
+            if self.serviceName != nil {
+                map["ServiceName"] = self.serviceName!
+            }
             return map
         }
 
@@ -28296,6 +28301,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SccMode"] as? String {
                 self.sccMode = value
+            }
+            if let value = dict["ServiceName"] as? String {
+                self.serviceName = value
             }
         }
     }
