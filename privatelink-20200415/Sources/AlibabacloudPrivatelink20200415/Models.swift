@@ -1613,6 +1613,8 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
 
         public var serviceRegionId: String?
 
+        public var supportedRegionId: String?
+
         public override init() {
             super.init()
         }
@@ -1636,6 +1638,9 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
             if self.serviceRegionId != nil {
                 map["ServiceRegionId"] = self.serviceRegionId!
             }
+            if self.supportedRegionId != nil {
+                map["SupportedRegionId"] = self.supportedRegionId!
+            }
             return map
         }
 
@@ -1649,6 +1654,9 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceRegionId"] as? String {
                 self.serviceRegionId = value
+            }
+            if let value = dict["SupportedRegionId"] as? String {
+                self.supportedRegionId = value
             }
         }
     }
@@ -3868,6 +3876,8 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
 
         public var serviceRegionId: String?
 
+        public var supportedRegionId: String?
+
         public override init() {
             super.init()
         }
@@ -3891,6 +3901,9 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
             if self.serviceRegionId != nil {
                 map["ServiceRegionId"] = self.serviceRegionId!
             }
+            if self.supportedRegionId != nil {
+                map["SupportedRegionId"] = self.supportedRegionId!
+            }
             return map
         }
 
@@ -3904,6 +3917,9 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceRegionId"] as? String {
                 self.serviceRegionId = value
+            }
+            if let value = dict["SupportedRegionId"] as? String {
+                self.supportedRegionId = value
             }
         }
     }
@@ -5901,6 +5917,8 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
 
             public var serviceRegionId: String?
 
+            public var supportedRegionId: String?
+
             public override init() {
                 super.init()
             }
@@ -5924,6 +5942,9 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
                 if self.serviceRegionId != nil {
                     map["ServiceRegionId"] = self.serviceRegionId!
                 }
+                if self.supportedRegionId != nil {
+                    map["SupportedRegionId"] = self.supportedRegionId!
+                }
                 return map
             }
 
@@ -5937,6 +5958,9 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ServiceRegionId"] as? String {
                     self.serviceRegionId = value
+                }
+                if let value = dict["SupportedRegionId"] as? String {
+                    self.supportedRegionId = value
                 }
             }
         }
