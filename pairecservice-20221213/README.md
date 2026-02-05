@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPaiRecService20221213` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/pairecservice-20221213" "4.1.1"
+github "alibabacloud-sdk-swift/pairecservice-20221213" "5.0.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPaiRecService20221213` into your Xcode project using [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/pairecservice-20221213.git", from: "4.1.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/pairecservice-20221213.git", from: "5.0.0")
 ]
 ```
 

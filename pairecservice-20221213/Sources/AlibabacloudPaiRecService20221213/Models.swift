@@ -16371,7 +16371,7 @@ public class GetRecallManagementTableResponseBody : Tea.TeaModel {
 
     public var enableRowCountFluctuationThreshold: Bool?
 
-    public var fields: GetRecallManagementTableResponseBody.Fields?
+    public var fields: [GetRecallManagementTableResponseBody.Fields]?
 
     public var gmtCreateTime: String?
 
@@ -16417,7 +16417,6 @@ public class GetRecallManagementTableResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.fields?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -16441,7 +16440,11 @@ public class GetRecallManagementTableResponseBody : Tea.TeaModel {
             map["EnableRowCountFluctuationThreshold"] = self.enableRowCountFluctuationThreshold!
         }
         if self.fields != nil {
-            map["Fields"] = self.fields?.toMap()
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["Fields"] = tmp
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
@@ -16517,10 +16520,18 @@ public class GetRecallManagementTableResponseBody : Tea.TeaModel {
         if let value = dict["EnableRowCountFluctuationThreshold"] as? Bool {
             self.enableRowCountFluctuationThreshold = value
         }
-        if let value = dict["Fields"] as? [String: Any?] {
-            var model = GetRecallManagementTableResponseBody.Fields()
-            model.fromMap(value)
-            self.fields = model
+        if let value = dict["Fields"] as? [Any?] {
+            var tmp : [GetRecallManagementTableResponseBody.Fields] = []
+            for v in value {
+                if v != nil {
+                    var model = GetRecallManagementTableResponseBody.Fields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fields = tmp
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
