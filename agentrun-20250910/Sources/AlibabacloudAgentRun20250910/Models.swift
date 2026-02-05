@@ -3925,6 +3925,8 @@ public class CreateSandboxInput : Tea.TeaModel {
 
     public var sandboxId: String?
 
+    public var sandboxIdleTimeoutInSeconds: Int32?
+
     public var sandboxIdleTimeoutSeconds: Int32?
 
     public var templateName: String?
@@ -3954,6 +3956,9 @@ public class CreateSandboxInput : Tea.TeaModel {
         if self.sandboxId != nil {
             map["sandboxId"] = self.sandboxId!
         }
+        if self.sandboxIdleTimeoutInSeconds != nil {
+            map["sandboxIdleTimeoutInSeconds"] = self.sandboxIdleTimeoutInSeconds!
+        }
         if self.sandboxIdleTimeoutSeconds != nil {
             map["sandboxIdleTimeoutSeconds"] = self.sandboxIdleTimeoutSeconds!
         }
@@ -3977,6 +3982,9 @@ public class CreateSandboxInput : Tea.TeaModel {
         }
         if let value = dict["sandboxId"] as? String {
             self.sandboxId = value
+        }
+        if let value = dict["sandboxIdleTimeoutInSeconds"] as? Int32 {
+            self.sandboxIdleTimeoutInSeconds = value
         }
         if let value = dict["sandboxIdleTimeoutSeconds"] as? Int32 {
             self.sandboxIdleTimeoutSeconds = value
