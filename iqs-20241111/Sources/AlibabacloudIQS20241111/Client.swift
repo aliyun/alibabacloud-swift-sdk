@@ -260,6 +260,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multimodalSearchWithOptions(_ request: MultimodalSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> MultimodalSearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MultimodalSearch",
+            "version": "2024-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/linked-retrieval/linked-retrieval-entry/v1/iqs/multimodal/unified",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MultimodalSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multimodalSearch(_ request: MultimodalSearchRequest) async throws -> MultimodalSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await multimodalSearchWithOptions(request as! MultimodalSearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func readPageBasicWithOptions(_ request: ReadPageBasicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ReadPageBasicResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([

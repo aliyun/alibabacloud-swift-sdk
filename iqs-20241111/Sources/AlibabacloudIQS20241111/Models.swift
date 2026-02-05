@@ -762,6 +762,185 @@ public class LocationInfo : Tea.TeaModel {
     }
 }
 
+public class MultimodalOriginalQuery : Tea.TeaModel {
+    public var query: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["query"] as? String {
+            self.query = value
+        }
+    }
+}
+
+public class MultimodalQueryContext : Tea.TeaModel {
+    public var originalQuery: MultimodalOriginalQuery?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.originalQuery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originalQuery != nil {
+            map["originalQuery"] = self.originalQuery?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["originalQuery"] as? [String: Any?] {
+            var model = MultimodalOriginalQuery()
+            model.fromMap(value)
+            self.originalQuery = model
+        }
+    }
+}
+
+public class MultimodalSearchBody : Tea.TeaModel {
+    public var advancedParams: [String: Any]?
+
+    public var query: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.advancedParams != nil {
+            map["advancedParams"] = self.advancedParams!
+        }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["advancedParams"] as? [String: Any] {
+            self.advancedParams = value
+        }
+        if let value = dict["query"] as? String {
+            self.query = value
+        }
+    }
+}
+
+public class MultimodalSearchOutput : Tea.TeaModel {
+    public var imageItems: [UnifiedImageItem]?
+
+    public var queryContext: MultimodalQueryContext?
+
+    public var requestId: String?
+
+    public var searchInformation: SearchInformation?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryContext?.validate()
+        try self.searchInformation?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageItems != nil {
+            var tmp : [Any] = []
+            for k in self.imageItems! {
+                tmp.append(k.toMap())
+            }
+            map["imageItems"] = tmp
+        }
+        if self.queryContext != nil {
+            map["queryContext"] = self.queryContext?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.searchInformation != nil {
+            map["searchInformation"] = self.searchInformation?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["imageItems"] as? [Any?] {
+            var tmp : [UnifiedImageItem] = []
+            for v in value {
+                if v != nil {
+                    var model = UnifiedImageItem()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.imageItems = tmp
+        }
+        if let value = dict["queryContext"] as? [String: Any?] {
+            var model = MultimodalQueryContext()
+            model.fromMap(value)
+            self.queryContext = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["searchInformation"] as? [String: Any?] {
+            var model = SearchInformation()
+            model.fromMap(value)
+            self.searchInformation = model
+        }
+    }
+}
+
 public class QueryContext : Tea.TeaModel {
     public class OriginalQuery : Tea.TeaModel {
         public var industry: String?
@@ -1684,6 +1863,77 @@ public class UnifiedCostCredits : Tea.TeaModel {
             var model = ValueAddedCredits()
             model.fromMap(value)
             self.valueAdded = model
+        }
+    }
+}
+
+public class UnifiedImageItem : Tea.TeaModel {
+    public var height: Int32?
+
+    public var hostPageUrl: String?
+
+    public var imageUrl: String?
+
+    public var publishedTime: String?
+
+    public var title: String?
+
+    public var width: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.height != nil {
+            map["height"] = self.height!
+        }
+        if self.hostPageUrl != nil {
+            map["hostPageUrl"] = self.hostPageUrl!
+        }
+        if self.imageUrl != nil {
+            map["imageUrl"] = self.imageUrl!
+        }
+        if self.publishedTime != nil {
+            map["publishedTime"] = self.publishedTime!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        if self.width != nil {
+            map["width"] = self.width!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["hostPageUrl"] as? String {
+            self.hostPageUrl = value
+        }
+        if let value = dict["imageUrl"] as? String {
+            self.imageUrl = value
+        }
+        if let value = dict["publishedTime"] as? String {
+            self.publishedTime = value
+        }
+        if let value = dict["title"] as? String {
+            self.title = value
+        }
+        if let value = dict["width"] as? Int32 {
+            self.width = value
         }
     }
 }
@@ -3280,6 +3530,90 @@ public class GlobalSearchResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GlobalSearchResult()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MultimodalSearchRequest : Tea.TeaModel {
+    public var body: MultimodalSearchBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MultimodalSearchBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MultimodalSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MultimodalSearchOutput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MultimodalSearchOutput()
             model.fromMap(value)
             self.body = model
         }
