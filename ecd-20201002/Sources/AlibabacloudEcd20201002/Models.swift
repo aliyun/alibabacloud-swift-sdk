@@ -5413,6 +5413,8 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
 
     public var windowDisplayMode: String?
 
+    public var wyId: String?
+
     public override init() {
         super.init()
     }
@@ -5486,6 +5488,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         if self.windowDisplayMode != nil {
             map["WindowDisplayMode"] = self.windowDisplayMode!
         }
+        if self.wyId != nil {
+            map["WyId"] = self.wyId!
+        }
         return map
     }
 
@@ -5551,6 +5556,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if let value = dict["WindowDisplayMode"] as? String {
             self.windowDisplayMode = value
+        }
+        if let value = dict["WyId"] as? String {
+            self.wyId = value
         }
     }
 }
