@@ -10540,11 +10540,15 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var avgTalkTime: Int32?
+
         public var callFailedNum: Int32?
 
         public var callNum: Int32?
 
         public var creatorName: String?
+
+        public var durationDistribution: String?
 
         public var endTime: Int64?
 
@@ -10557,6 +10561,8 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
         public var noInteractionNum: Int32?
 
         public var startTime: Int64?
+
+        public var talkTurnsDistribution: String?
 
         public var transferByIntentNum: Int32?
 
@@ -10577,6 +10583,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.avgTalkTime != nil {
+                map["AvgTalkTime"] = self.avgTalkTime!
+            }
             if self.callFailedNum != nil {
                 map["CallFailedNum"] = self.callFailedNum!
             }
@@ -10585,6 +10594,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
             }
             if self.creatorName != nil {
                 map["CreatorName"] = self.creatorName!
+            }
+            if self.durationDistribution != nil {
+                map["DurationDistribution"] = self.durationDistribution!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
@@ -10604,6 +10616,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
+            if self.talkTurnsDistribution != nil {
+                map["TalkTurnsDistribution"] = self.talkTurnsDistribution!
+            }
             if self.transferByIntentNum != nil {
                 map["TransferByIntentNum"] = self.transferByIntentNum!
             }
@@ -10615,6 +10630,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AvgTalkTime"] as? Int32 {
+                self.avgTalkTime = value
+            }
             if let value = dict["CallFailedNum"] as? Int32 {
                 self.callFailedNum = value
             }
@@ -10623,6 +10641,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreatorName"] as? String {
                 self.creatorName = value
+            }
+            if let value = dict["DurationDistribution"] as? String {
+                self.durationDistribution = value
             }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
@@ -10643,6 +10664,9 @@ public class DescribeGroupExecutingInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
+            }
+            if let value = dict["TalkTurnsDistribution"] as? String {
+                self.talkTurnsDistribution = value
             }
             if let value = dict["TransferByIntentNum"] as? Int32 {
                 self.transferByIntentNum = value
@@ -13882,6 +13906,8 @@ public class DescribeJobGroupResponseBody : Tea.TeaModel {
 
         public var scriptName: String?
 
+        public var scriptNluEngine: String?
+
         public var scriptVersion: String?
 
         public var status: String?
@@ -13968,6 +13994,9 @@ public class DescribeJobGroupResponseBody : Tea.TeaModel {
             if self.scriptName != nil {
                 map["ScriptName"] = self.scriptName!
             }
+            if self.scriptNluEngine != nil {
+                map["ScriptNluEngine"] = self.scriptNluEngine!
+            }
             if self.scriptVersion != nil {
                 map["ScriptVersion"] = self.scriptVersion!
             }
@@ -14051,6 +14080,9 @@ public class DescribeJobGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["ScriptName"] as? String {
                 self.scriptName = value
+            }
+            if let value = dict["ScriptNluEngine"] as? String {
+                self.scriptNluEngine = value
             }
             if let value = dict["ScriptVersion"] as? String {
                 self.scriptVersion = value
