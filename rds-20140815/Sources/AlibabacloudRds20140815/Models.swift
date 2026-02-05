@@ -21005,6 +21005,247 @@ public class DescribeActionEventPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeActiveOperationMaintainConfRequest : Tea.TeaModel {
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class DescribeActiveOperationMaintainConfResponseBody : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var createdTime: String?
+
+        public var cycleTime: String?
+
+        public var cycleType: String?
+
+        public var maintainEndTime: String?
+
+        public var maintainStartTime: String?
+
+        public var modifiedTime: String?
+
+        public var status: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createdTime != nil {
+                map["CreatedTime"] = self.createdTime!
+            }
+            if self.cycleTime != nil {
+                map["CycleTime"] = self.cycleTime!
+            }
+            if self.cycleType != nil {
+                map["CycleType"] = self.cycleType!
+            }
+            if self.maintainEndTime != nil {
+                map["MaintainEndTime"] = self.maintainEndTime!
+            }
+            if self.maintainStartTime != nil {
+                map["MaintainStartTime"] = self.maintainStartTime!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreatedTime"] as? String {
+                self.createdTime = value
+            }
+            if let value = dict["CycleTime"] as? String {
+                self.cycleTime = value
+            }
+            if let value = dict["CycleType"] as? String {
+                self.cycleType = value
+            }
+            if let value = dict["MaintainEndTime"] as? String {
+                self.maintainEndTime = value
+            }
+            if let value = dict["MaintainStartTime"] as? String {
+                self.maintainStartTime = value
+            }
+            if let value = dict["ModifiedTime"] as? String {
+                self.modifiedTime = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+        }
+    }
+    public var config: DescribeActiveOperationMaintainConfResponseBody.Config?
+
+    public var hasConfig: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config?.toMap()
+        }
+        if self.hasConfig != nil {
+            map["HasConfig"] = self.hasConfig!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Config"] as? [String: Any?] {
+            var model = DescribeActiveOperationMaintainConfResponseBody.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["HasConfig"] as? Int32 {
+            self.hasConfig = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeActiveOperationMaintainConfResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeActiveOperationMaintainConfResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeActiveOperationMaintainConfResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeActiveOperationTasksRequest : Tea.TeaModel {
     public var allowCancel: Int32?
 
@@ -70601,6 +70842,453 @@ public class DescribeSQLLogReportListResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeSQLLogReportListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSQLServerUpgradeVersionsRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var DBInstanceId: String?
+
+    public var engineVersion: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["EngineVersion"] as? String {
+            self.engineVersion = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class DescribeSQLServerUpgradeVersionsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Item : Tea.TeaModel {
+            public class SQLServerUpgradeVersions : Tea.TeaModel {
+                public class SQLServerUpgradeVersion : Tea.TeaModel {
+                    public class DBInstanceClassItems : Tea.TeaModel {
+                        public class DBInstanceClassItem : Tea.TeaModel {
+                            public var CPU: String?
+
+                            public var DBInstanceClass: String?
+
+                            public var DBInstanceClassType: String?
+
+                            public var group: String?
+
+                            public var memory: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.CPU != nil {
+                                    map["CPU"] = self.CPU!
+                                }
+                                if self.DBInstanceClass != nil {
+                                    map["DBInstanceClass"] = self.DBInstanceClass!
+                                }
+                                if self.DBInstanceClassType != nil {
+                                    map["DBInstanceClassType"] = self.DBInstanceClassType!
+                                }
+                                if self.group != nil {
+                                    map["Group"] = self.group!
+                                }
+                                if self.memory != nil {
+                                    map["Memory"] = self.memory!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["CPU"] as? String {
+                                    self.CPU = value
+                                }
+                                if let value = dict["DBInstanceClass"] as? String {
+                                    self.DBInstanceClass = value
+                                }
+                                if let value = dict["DBInstanceClassType"] as? String {
+                                    self.DBInstanceClassType = value
+                                }
+                                if let value = dict["Group"] as? String {
+                                    self.group = value
+                                }
+                                if let value = dict["Memory"] as? String {
+                                    self.memory = value
+                                }
+                            }
+                        }
+                        public var DBInstanceClassItem: [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion.DBInstanceClassItems.DBInstanceClassItem]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.DBInstanceClassItem != nil {
+                                var tmp : [Any] = []
+                                for k in self.DBInstanceClassItem! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["DBInstanceClassItem"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["DBInstanceClassItem"] as? [Any?] {
+                                var tmp : [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion.DBInstanceClassItems.DBInstanceClassItem] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion.DBInstanceClassItems.DBInstanceClassItem()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.DBInstanceClassItem = tmp
+                            }
+                        }
+                    }
+                    public var DBInstanceClassItems: DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion.DBInstanceClassItems?
+
+                    public var enableUpgrade: String?
+
+                    public var version: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.DBInstanceClassItems?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.DBInstanceClassItems != nil {
+                            map["DBInstanceClassItems"] = self.DBInstanceClassItems?.toMap()
+                        }
+                        if self.enableUpgrade != nil {
+                            map["EnableUpgrade"] = self.enableUpgrade!
+                        }
+                        if self.version != nil {
+                            map["Version"] = self.version!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["DBInstanceClassItems"] as? [String: Any?] {
+                            var model = DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion.DBInstanceClassItems()
+                            model.fromMap(value)
+                            self.DBInstanceClassItems = model
+                        }
+                        if let value = dict["EnableUpgrade"] as? String {
+                            self.enableUpgrade = value
+                        }
+                        if let value = dict["Version"] as? String {
+                            self.version = value
+                        }
+                    }
+                }
+                public var SQLServerUpgradeVersion: [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.SQLServerUpgradeVersion != nil {
+                        var tmp : [Any] = []
+                        for k in self.SQLServerUpgradeVersion! {
+                            tmp.append(k.toMap())
+                        }
+                        map["SQLServerUpgradeVersion"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SQLServerUpgradeVersion"] as? [Any?] {
+                        var tmp : [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions.SQLServerUpgradeVersion()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.SQLServerUpgradeVersion = tmp
+                    }
+                }
+            }
+            public var currentVersion: String?
+
+            public var SQLServerUpgradeVersions: DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.SQLServerUpgradeVersions?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currentVersion != nil {
+                    map["CurrentVersion"] = self.currentVersion!
+                }
+                if self.SQLServerUpgradeVersions != nil {
+                    map["SQLServerUpgradeVersions"] = self.SQLServerUpgradeVersions?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CurrentVersion"] as? String {
+                    self.currentVersion = value
+                }
+                if let value = dict["SQLServerUpgradeVersions"] as? [String: Any?] {
+                    var model = DescribeSQLServerUpgradeVersionsResponseBody.Items.Item.SQLServerUpgradeVersions()
+                    model.fromMap(value)
+                    self.SQLServerUpgradeVersions = model
+                }
+            }
+        }
+        public var item: [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.item != nil {
+                var tmp : [Any] = []
+                for k in self.item! {
+                    tmp.append(k.toMap())
+                }
+                map["Item"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Item"] as? [Any?] {
+                var tmp : [DescribeSQLServerUpgradeVersionsResponseBody.Items.Item] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSQLServerUpgradeVersionsResponseBody.Items.Item()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.item = tmp
+            }
+        }
+    }
+    public var items: DescribeSQLServerUpgradeVersionsResponseBody.Items?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeSQLServerUpgradeVersionsResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeSQLServerUpgradeVersionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSQLServerUpgradeVersionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSQLServerUpgradeVersionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
