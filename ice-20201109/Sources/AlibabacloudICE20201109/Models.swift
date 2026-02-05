@@ -482,6 +482,112 @@ public class AIAgentConfig : Tea.TeaModel {
             }
         }
     }
+    public class BackChannelingConfigs : Tea.TeaModel {
+        public class Words : Tea.TeaModel {
+            public var probability: Double?
+
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.probability != nil {
+                    map["Probability"] = self.probability!
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Probability"] as? Double {
+                    self.probability = value
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var probability: Double?
+
+        public var triggerStage: String?
+
+        public var words: [AIAgentConfig.BackChannelingConfigs.Words]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.probability != nil {
+                map["Probability"] = self.probability!
+            }
+            if self.triggerStage != nil {
+                map["TriggerStage"] = self.triggerStage!
+            }
+            if self.words != nil {
+                var tmp : [Any] = []
+                for k in self.words! {
+                    tmp.append(k.toMap())
+                }
+                map["Words"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Probability"] as? Double {
+                self.probability = value
+            }
+            if let value = dict["TriggerStage"] as? String {
+                self.triggerStage = value
+            }
+            if let value = dict["Words"] as? [Any?] {
+                var tmp : [AIAgentConfig.BackChannelingConfigs.Words] = []
+                for v in value {
+                    if v != nil {
+                        var model = AIAgentConfig.BackChannelingConfigs.Words()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.words = tmp
+            }
+        }
+    }
     public class InterruptConfig : Tea.TeaModel {
         public var enableVoiceInterrupt: Bool?
 
@@ -1211,6 +1317,8 @@ public class AIAgentConfig : Tea.TeaModel {
         }
     }
     public class VoiceprintConfig : Tea.TeaModel {
+        public var registrationMode: String?
+
         public var useVoiceprint: Bool?
 
         public var voiceprintId: String?
@@ -1229,6 +1337,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.registrationMode != nil {
+                map["RegistrationMode"] = self.registrationMode!
+            }
             if self.useVoiceprint != nil {
                 map["UseVoiceprint"] = self.useVoiceprint!
             }
@@ -1240,6 +1351,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["RegistrationMode"] as? String {
+                self.registrationMode = value
+            }
             if let value = dict["UseVoiceprint"] as? Bool {
                 self.useVoiceprint = value
             }
@@ -1261,6 +1375,8 @@ public class AIAgentConfig : Tea.TeaModel {
     public var avatarUrlType: String?
 
     public var backChannelingConfig: [AIAgentConfig.BackChannelingConfig]?
+
+    public var backChannelingConfigs: [AIAgentConfig.BackChannelingConfigs]?
 
     public var enableIntelligentSegment: Bool?
 
@@ -1344,6 +1460,13 @@ public class AIAgentConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["BackChannelingConfig"] = tmp
+        }
+        if self.backChannelingConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.backChannelingConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["BackChannelingConfigs"] = tmp
         }
         if self.enableIntelligentSegment != nil {
             map["EnableIntelligentSegment"] = self.enableIntelligentSegment!
@@ -1439,6 +1562,19 @@ public class AIAgentConfig : Tea.TeaModel {
                 }
             }
             self.backChannelingConfig = tmp
+        }
+        if let value = dict["BackChannelingConfigs"] as? [Any?] {
+            var tmp : [AIAgentConfig.BackChannelingConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AIAgentConfig.BackChannelingConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.backChannelingConfigs = tmp
         }
         if let value = dict["EnableIntelligentSegment"] as? Bool {
             self.enableIntelligentSegment = value
@@ -1942,6 +2078,112 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             }
         }
     }
+    public class BackChannelingConfigs : Tea.TeaModel {
+        public class Words : Tea.TeaModel {
+            public var probability: Double?
+
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.probability != nil {
+                    map["Probability"] = self.probability!
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Probability"] as? Double {
+                    self.probability = value
+                }
+                if let value = dict["Text"] as? String {
+                    self.text = value
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var probability: Double?
+
+        public var triggerStage: String?
+
+        public var words: [AIAgentOutboundCallConfig.BackChannelingConfigs.Words]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.probability != nil {
+                map["Probability"] = self.probability!
+            }
+            if self.triggerStage != nil {
+                map["TriggerStage"] = self.triggerStage!
+            }
+            if self.words != nil {
+                var tmp : [Any] = []
+                for k in self.words! {
+                    tmp.append(k.toMap())
+                }
+                map["Words"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Probability"] as? Double {
+                self.probability = value
+            }
+            if let value = dict["TriggerStage"] as? String {
+                self.triggerStage = value
+            }
+            if let value = dict["Words"] as? [Any?] {
+                var tmp : [AIAgentOutboundCallConfig.BackChannelingConfigs.Words] = []
+                for v in value {
+                    if v != nil {
+                        var model = AIAgentOutboundCallConfig.BackChannelingConfigs.Words()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.words = tmp
+            }
+        }
+    }
     public class InterruptConfig : Tea.TeaModel {
         public var eagerness: String?
 
@@ -2402,6 +2644,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
     public var backChannelingConfig: AIAgentOutboundCallConfig.BackChannelingConfig?
 
+    public var backChannelingConfigs: [AIAgentOutboundCallConfig.BackChannelingConfigs]?
+
     public var enableIntelligentSegment: Bool?
 
     public var experimentalConfig: String?
@@ -2454,6 +2698,13 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
         if self.backChannelingConfig != nil {
             map["BackChannelingConfig"] = self.backChannelingConfig?.toMap()
         }
+        if self.backChannelingConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.backChannelingConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["BackChannelingConfigs"] = tmp
+        }
         if self.enableIntelligentSegment != nil {
             map["EnableIntelligentSegment"] = self.enableIntelligentSegment!
         }
@@ -2505,6 +2756,19 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             var model = AIAgentOutboundCallConfig.BackChannelingConfig()
             model.fromMap(value)
             self.backChannelingConfig = model
+        }
+        if let value = dict["BackChannelingConfigs"] as? [Any?] {
+            var tmp : [AIAgentOutboundCallConfig.BackChannelingConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AIAgentOutboundCallConfig.BackChannelingConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.backChannelingConfigs = tmp
         }
         if let value = dict["EnableIntelligentSegment"] as? Bool {
             self.enableIntelligentSegment = value
@@ -9204,6 +9468,8 @@ public class MediaQualityAnalysisJobVqaResult : Tea.TeaModel {
 
         public var noise: MediaQualityAnalysisJobVqaResult.ScoreResult.Noise?
 
+        public var score: Double?
+
         public var sharp: MediaQualityAnalysisJobVqaResult.ScoreResult.Sharp?
 
         public override init() {
@@ -9237,6 +9503,9 @@ public class MediaQualityAnalysisJobVqaResult : Tea.TeaModel {
             if self.noise != nil {
                 map["Noise"] = self.noise?.toMap()
             }
+            if self.score != nil {
+                map["Score"] = self.score!
+            }
             if self.sharp != nil {
                 map["Sharp"] = self.sharp?.toMap()
             }
@@ -9264,6 +9533,9 @@ public class MediaQualityAnalysisJobVqaResult : Tea.TeaModel {
                 var model = MediaQualityAnalysisJobVqaResult.ScoreResult.Noise()
                 model.fromMap(value)
                 self.noise = model
+            }
+            if let value = dict["Score"] as? Double {
+                self.score = value
             }
             if let value = dict["Sharp"] as? [String: Any?] {
                 var model = MediaQualityAnalysisJobVqaResult.ScoreResult.Sharp()
@@ -14690,6 +14962,8 @@ public class CancelIProductionJobResponse : Tea.TeaModel {
 }
 
 public class ClearAIAgentVoiceprintRequest : Tea.TeaModel {
+    public var registrationMode: String?
+
     public var voiceprintId: String?
 
     public override init() {
@@ -14706,6 +14980,9 @@ public class ClearAIAgentVoiceprintRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.registrationMode != nil {
+            map["RegistrationMode"] = self.registrationMode!
+        }
         if self.voiceprintId != nil {
             map["VoiceprintId"] = self.voiceprintId!
         }
@@ -14714,6 +14991,9 @@ public class ClearAIAgentVoiceprintRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["RegistrationMode"] as? String {
+            self.registrationMode = value
+        }
         if let value = dict["VoiceprintId"] as? String {
             self.voiceprintId = value
         }
@@ -58718,6 +58998,8 @@ public class ListAIAgentVoiceprintsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var registrationMode: String?
+
     public var voiceprintId: String?
 
     public override init() {
@@ -58740,6 +59022,9 @@ public class ListAIAgentVoiceprintsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.registrationMode != nil {
+            map["RegistrationMode"] = self.registrationMode!
+        }
         if self.voiceprintId != nil {
             map["VoiceprintId"] = self.voiceprintId!
         }
@@ -58753,6 +59038,9 @@ public class ListAIAgentVoiceprintsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["RegistrationMode"] as? String {
+            self.registrationMode = value
         }
         if let value = dict["VoiceprintId"] as? String {
             self.voiceprintId = value

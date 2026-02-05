@@ -790,6 +790,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func clearAIAgentVoiceprintWithOptions(_ request: ClearAIAgentVoiceprintRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClearAIAgentVoiceprintResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.registrationMode)) {
+            query["RegistrationMode"] = request.registrationMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.voiceprintId)) {
             query["VoiceprintId"] = request.voiceprintId ?? "";
         }
@@ -7051,6 +7054,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.registrationMode)) {
+            query["RegistrationMode"] = request.registrationMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.voiceprintId)) {
             query["VoiceprintId"] = request.voiceprintId ?? "";
