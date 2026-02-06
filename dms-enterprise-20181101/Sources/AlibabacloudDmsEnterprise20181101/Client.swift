@@ -8414,6 +8414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.searchKey)) {
+            query["SearchKey"] = request.searchKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
         }

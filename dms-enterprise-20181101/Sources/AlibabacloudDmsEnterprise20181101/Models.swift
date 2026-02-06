@@ -55152,6 +55152,8 @@ public class ListDatabasesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var searchKey: String?
+
     public var tid: Int64?
 
     public override init() {
@@ -55177,6 +55179,9 @@ public class ListDatabasesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.searchKey != nil {
+            map["SearchKey"] = self.searchKey!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -55193,6 +55198,9 @@ public class ListDatabasesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SearchKey"] as? String {
+            self.searchKey = value
         }
         if let value = dict["Tid"] as? Int64 {
             self.tid = value
