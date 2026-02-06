@@ -42638,6 +42638,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var clientCreateSnapshot: String?
 
+        public var clientHibernate: String?
+
+        public var clientRestart: String?
+
+        public var clientShutdown: String?
+
         public var clientTypes: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes]?
 
         public var clipboard: String?
@@ -42701,6 +42707,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var gpuAcceleration: String?
 
         public var hoverConfigMsg: String?
+
+        public var hoverHibernate: String?
+
+        public var hoverRestart: String?
+
+        public var hoverShutdown: String?
 
         public var html5Access: String?
 
@@ -42929,6 +42941,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.clientCreateSnapshot != nil {
                 map["ClientCreateSnapshot"] = self.clientCreateSnapshot!
             }
+            if self.clientHibernate != nil {
+                map["ClientHibernate"] = self.clientHibernate!
+            }
+            if self.clientRestart != nil {
+                map["ClientRestart"] = self.clientRestart!
+            }
+            if self.clientShutdown != nil {
+                map["ClientShutdown"] = self.clientShutdown!
+            }
             if self.clientTypes != nil {
                 var tmp : [Any] = []
                 for k in self.clientTypes! {
@@ -43040,6 +43061,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.hoverConfigMsg != nil {
                 map["HoverConfigMsg"] = self.hoverConfigMsg!
+            }
+            if self.hoverHibernate != nil {
+                map["HoverHibernate"] = self.hoverHibernate!
+            }
+            if self.hoverRestart != nil {
+                map["HoverRestart"] = self.hoverRestart!
+            }
+            if self.hoverShutdown != nil {
+                map["HoverShutdown"] = self.hoverShutdown!
             }
             if self.html5Access != nil {
                 map["Html5Access"] = self.html5Access!
@@ -43372,6 +43402,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["ClientCreateSnapshot"] as? String {
                 self.clientCreateSnapshot = value
             }
+            if let value = dict["ClientHibernate"] as? String {
+                self.clientHibernate = value
+            }
+            if let value = dict["ClientRestart"] as? String {
+                self.clientRestart = value
+            }
+            if let value = dict["ClientShutdown"] as? String {
+                self.clientShutdown = value
+            }
             if let value = dict["ClientTypes"] as? [Any?] {
                 var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes] = []
                 for v in value {
@@ -43507,6 +43546,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["HoverConfigMsg"] as? String {
                 self.hoverConfigMsg = value
+            }
+            if let value = dict["HoverHibernate"] as? String {
+                self.hoverHibernate = value
+            }
+            if let value = dict["HoverRestart"] as? String {
+                self.hoverRestart = value
+            }
+            if let value = dict["HoverShutdown"] as? String {
+                self.hoverShutdown = value
             }
             if let value = dict["Html5Access"] as? String {
                 self.html5Access = value
