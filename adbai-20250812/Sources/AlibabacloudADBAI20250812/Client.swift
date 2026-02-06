@@ -117,6 +117,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEmbodiedAIPlatformWithOptions(_ request: DeleteEmbodiedAIPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEmbodiedAIPlatformResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformName)) {
+            query["PlatformName"] = request.platformName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEmbodiedAIPlatform",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEmbodiedAIPlatformResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEmbodiedAIPlatform(_ request: DeleteEmbodiedAIPlatformRequest) async throws -> DeleteEmbodiedAIPlatformResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEmbodiedAIPlatformWithOptions(request as! DeleteEmbodiedAIPlatformRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeEmbodiedAIPlatformsWithOptions(_ request: DescribeEmbodiedAIPlatformsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEmbodiedAIPlatformsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
