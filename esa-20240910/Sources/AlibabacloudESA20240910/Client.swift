@@ -1221,6 +1221,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomResponseCodeRuleWithOptions(_ request: CreateCustomResponseCodeRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomResponseCodeRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageId)) {
+            query["PageId"] = request.pageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnCode)) {
+            query["ReturnCode"] = request.returnCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleEnable)) {
+            query["RuleEnable"] = request.ruleEnable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequence)) {
+            query["Sequence"] = request.sequence!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteVersion)) {
+            query["SiteVersion"] = request.siteVersion!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCustomResponseCodeRule",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCustomResponseCodeRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomResponseCodeRule(_ request: CreateCustomResponseCodeRuleRequest) async throws -> CreateCustomResponseCodeRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCustomResponseCodeRuleWithOptions(request as! CreateCustomResponseCodeRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createCustomScenePolicyWithOptions(_ request: CreateCustomScenePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomScenePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3834,6 +3886,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCustomHostname(_ request: DeleteCustomHostnameRequest) async throws -> DeleteCustomHostnameResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCustomHostnameWithOptions(request as! DeleteCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomResponseCodeRuleWithOptions(_ request: DeleteCustomResponseCodeRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomResponseCodeRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCustomResponseCodeRule",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCustomResponseCodeRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomResponseCodeRule(_ request: DeleteCustomResponseCodeRuleRequest) async throws -> DeleteCustomResponseCodeRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCustomResponseCodeRuleWithOptions(request as! DeleteCustomResponseCodeRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6573,6 +6659,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomResponseCodeRuleWithOptions(_ request: GetCustomResponseCodeRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomResponseCodeRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCustomResponseCodeRule",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCustomResponseCodeRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomResponseCodeRule(_ request: GetCustomResponseCodeRuleRequest) async throws -> GetCustomResponseCodeRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCustomResponseCodeRuleWithOptions(request as! GetCustomResponseCodeRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDevelopmentModeWithOptions(_ request: GetDevelopmentModeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDevelopmentModeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -8950,6 +9070,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCustomHostnames(_ request: ListCustomHostnamesRequest) async throws -> ListCustomHostnamesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listCustomHostnamesWithOptions(request as! ListCustomHostnamesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomResponseCodeRulesWithOptions(_ request: ListCustomResponseCodeRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCustomResponseCodeRulesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.configType)) {
+            query["ConfigType"] = request.configType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteVersion)) {
+            query["SiteVersion"] = request.siteVersion!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCustomResponseCodeRules",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCustomResponseCodeRulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCustomResponseCodeRules(_ request: ListCustomResponseCodeRulesRequest) async throws -> ListCustomResponseCodeRulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCustomResponseCodeRulesWithOptions(request as! ListCustomResponseCodeRulesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12430,6 +12599,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCustomHostname(_ request: UpdateCustomHostnameRequest) async throws -> UpdateCustomHostnameResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateCustomHostnameWithOptions(request as! UpdateCustomHostnameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomResponseCodeRuleWithOptions(_ request: UpdateCustomResponseCodeRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomResponseCodeRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageId)) {
+            query["PageId"] = request.pageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnCode)) {
+            query["ReturnCode"] = request.returnCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleEnable)) {
+            query["RuleEnable"] = request.ruleEnable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequence)) {
+            query["Sequence"] = request.sequence!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCustomResponseCodeRule",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCustomResponseCodeRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomResponseCodeRule(_ request: UpdateCustomResponseCodeRuleRequest) async throws -> UpdateCustomResponseCodeRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCustomResponseCodeRuleWithOptions(request as! UpdateCustomResponseCodeRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
