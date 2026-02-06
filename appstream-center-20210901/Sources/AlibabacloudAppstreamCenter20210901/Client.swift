@@ -271,6 +271,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createImageByInstanceWithOptions(_ request: CreateImageByInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateImageByInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagList)) {
+            query["TagList"] = request.tagList ?? [];
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoCleanUserdata)) {
             body["AutoCleanUserdata"] = request.autoCleanUserdata!;
@@ -300,6 +304,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["SubInstanceId"] = request.subInstanceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

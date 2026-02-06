@@ -1879,6 +1879,44 @@ public class CreateAppInstanceGroupResponse : Tea.TeaModel {
 }
 
 public class CreateImageByInstanceRequest : Tea.TeaModel {
+    public class TagList : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var autoCleanUserdata: Bool?
 
     public var bizType: Int32?
@@ -1896,6 +1934,8 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
     public var productType: String?
 
     public var subInstanceId: String?
+
+    public var tagList: [CreateImageByInstanceRequest.TagList]?
 
     public override init() {
         super.init()
@@ -1938,6 +1978,13 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
         if self.subInstanceId != nil {
             map["SubInstanceId"] = self.subInstanceId!
         }
+        if self.tagList != nil {
+            var tmp : [Any] = []
+            for k in self.tagList! {
+                tmp.append(k.toMap())
+            }
+            map["TagList"] = tmp
+        }
         return map
     }
 
@@ -1969,6 +2016,19 @@ public class CreateImageByInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["SubInstanceId"] as? String {
             self.subInstanceId = value
+        }
+        if let value = dict["TagList"] as? [Any?] {
+            var tmp : [CreateImageByInstanceRequest.TagList] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateImageByInstanceRequest.TagList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tagList = tmp
         }
     }
 }
