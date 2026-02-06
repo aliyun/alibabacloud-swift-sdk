@@ -8171,6 +8171,8 @@ public class CreateFlowRequest : Tea.TeaModel {
 
     public var custSpaceId: String?
 
+    public var endpointUri: String?
+
     public var flowName: String?
 
     public var ownerId: Int64?
@@ -8199,6 +8201,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.endpointUri != nil {
+            map["EndpointUri"] = self.endpointUri!
+        }
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
@@ -8222,6 +8227,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         if let value = dict["CustSpaceId"] as? String {
             self.custSpaceId = value
         }
+        if let value = dict["EndpointUri"] as? String {
+            self.endpointUri = value
+        }
         if let value = dict["FlowName"] as? String {
             self.flowName = value
         }
@@ -8241,6 +8249,8 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
     public var categoriesShrink: String?
 
     public var custSpaceId: String?
+
+    public var endpointUri: String?
 
     public var flowName: String?
 
@@ -8270,6 +8280,9 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.endpointUri != nil {
+            map["EndpointUri"] = self.endpointUri!
+        }
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
@@ -8292,6 +8305,9 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CustSpaceId"] as? String {
             self.custSpaceId = value
+        }
+        if let value = dict["EndpointUri"] as? String {
+            self.endpointUri = value
         }
         if let value = dict["FlowName"] as? String {
             self.flowName = value
@@ -20247,6 +20263,8 @@ public class GetFlowResponseBody : Tea.TeaModel {
 
         public var dataApiVersion: String?
 
+        public var endpointUri: String?
+
         public var flowId: String?
 
         public var flowName: String?
@@ -20279,6 +20297,9 @@ public class GetFlowResponseBody : Tea.TeaModel {
             if self.dataApiVersion != nil {
                 map["DataApiVersion"] = self.dataApiVersion!
             }
+            if self.endpointUri != nil {
+                map["EndpointUri"] = self.endpointUri!
+            }
             if self.flowId != nil {
                 map["FlowId"] = self.flowId!
             }
@@ -20307,6 +20328,9 @@ public class GetFlowResponseBody : Tea.TeaModel {
             }
             if let value = dict["DataApiVersion"] as? String {
                 self.dataApiVersion = value
+            }
+            if let value = dict["EndpointUri"] as? String {
+                self.endpointUri = value
             }
             if let value = dict["FlowId"] as? String {
                 self.flowId = value
@@ -35815,6 +35839,8 @@ public class ModifyFlowRequest : Tea.TeaModel {
 
     public var custSpaceId: String?
 
+    public var endpointUri: String?
+
     public var flowId: String?
 
     public var flowName: String?
@@ -35845,6 +35871,9 @@ public class ModifyFlowRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.endpointUri != nil {
+            map["EndpointUri"] = self.endpointUri!
+        }
         if self.flowId != nil {
             map["FlowId"] = self.flowId!
         }
@@ -35871,6 +35900,9 @@ public class ModifyFlowRequest : Tea.TeaModel {
         if let value = dict["CustSpaceId"] as? String {
             self.custSpaceId = value
         }
+        if let value = dict["EndpointUri"] as? String {
+            self.endpointUri = value
+        }
         if let value = dict["FlowId"] as? String {
             self.flowId = value
         }
@@ -35893,6 +35925,8 @@ public class ModifyFlowShrinkRequest : Tea.TeaModel {
     public var categoriesShrink: String?
 
     public var custSpaceId: String?
+
+    public var endpointUri: String?
 
     public var flowId: String?
 
@@ -35924,6 +35958,9 @@ public class ModifyFlowShrinkRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.endpointUri != nil {
+            map["EndpointUri"] = self.endpointUri!
+        }
         if self.flowId != nil {
             map["FlowId"] = self.flowId!
         }
@@ -35950,6 +35987,9 @@ public class ModifyFlowShrinkRequest : Tea.TeaModel {
         if let value = dict["CustSpaceId"] as? String {
             self.custSpaceId = value
         }
+        if let value = dict["EndpointUri"] as? String {
+            self.endpointUri = value
+        }
         if let value = dict["FlowId"] as? String {
             self.flowId = value
         }
@@ -35972,6 +36012,8 @@ public class ModifyFlowResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var categories: [String]?
 
+        public var endpointUri: String?
+
         public var flowId: String?
 
         public var flowName: String?
@@ -35993,6 +36035,9 @@ public class ModifyFlowResponseBody : Tea.TeaModel {
             if self.categories != nil {
                 map["Categories"] = self.categories!
             }
+            if self.endpointUri != nil {
+                map["EndpointUri"] = self.endpointUri!
+            }
             if self.flowId != nil {
                 map["FlowId"] = self.flowId!
             }
@@ -36006,6 +36051,9 @@ public class ModifyFlowResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Categories"] as? [String] {
                 self.categories = value
+            }
+            if let value = dict["EndpointUri"] as? String {
+                self.endpointUri = value
             }
             if let value = dict["FlowId"] as? String {
                 self.flowId = value
