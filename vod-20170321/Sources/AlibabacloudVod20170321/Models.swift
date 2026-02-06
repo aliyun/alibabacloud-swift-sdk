@@ -31695,6 +31695,8 @@ public class GetPlayInfoRequest : Tea.TeaModel {
 
     public var authTimeout: Int64?
 
+    public var codecName: String?
+
     public var definition: String?
 
     public var digitalWatermarkType: String?
@@ -31736,6 +31738,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         }
         if self.authTimeout != nil {
             map["AuthTimeout"] = self.authTimeout!
+        }
+        if self.codecName != nil {
+            map["CodecName"] = self.codecName!
         }
         if self.definition != nil {
             map["Definition"] = self.definition!
@@ -31780,6 +31785,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         }
         if let value = dict["AuthTimeout"] as? Int64 {
             self.authTimeout = value
+        }
+        if let value = dict["CodecName"] as? String {
+            self.codecName = value
         }
         if let value = dict["Definition"] as? String {
             self.definition = value
@@ -33847,6 +33855,8 @@ public class GetURLUploadInfosResponseBody : Tea.TeaModel {
 
         public var mediaId: String?
 
+        public var registeredMediaId: String?
+
         public var status: String?
 
         public var uploadURL: String?
@@ -33888,6 +33898,9 @@ public class GetURLUploadInfosResponseBody : Tea.TeaModel {
             if self.mediaId != nil {
                 map["MediaId"] = self.mediaId!
             }
+            if self.registeredMediaId != nil {
+                map["RegisteredMediaId"] = self.registeredMediaId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -33922,6 +33935,9 @@ public class GetURLUploadInfosResponseBody : Tea.TeaModel {
             }
             if let value = dict["MediaId"] as? String {
                 self.mediaId = value
+            }
+            if let value = dict["RegisteredMediaId"] as? String {
+                self.registeredMediaId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value

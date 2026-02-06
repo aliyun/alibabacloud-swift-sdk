@@ -4656,6 +4656,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authTimeout)) {
             query["AuthTimeout"] = request.authTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.codecName)) {
+            query["CodecName"] = request.codecName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.definition)) {
             query["Definition"] = request.definition ?? "";
         }
