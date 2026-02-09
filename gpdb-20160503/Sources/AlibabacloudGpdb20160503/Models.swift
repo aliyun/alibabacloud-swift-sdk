@@ -10793,6 +10793,10 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
 
     public var diskPerformanceLevel: String?
 
+    public var payType: String?
+
+    public var period: String?
+
     public var projectName: String?
 
     public var projectSpec: String?
@@ -10802,6 +10806,8 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
     public var securityIPList: String?
 
     public var storageSize: Int64?
+
+    public var usedTime: String?
 
     public var vSwitchId: String?
 
@@ -10832,6 +10838,12 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         if self.diskPerformanceLevel != nil {
             map["DiskPerformanceLevel"] = self.diskPerformanceLevel!
         }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
@@ -10846,6 +10858,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -10870,6 +10885,12 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         if let value = dict["DiskPerformanceLevel"] as? String {
             self.diskPerformanceLevel = value
         }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
         }
@@ -10885,6 +10906,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         if let value = dict["StorageSize"] as? Int64 {
             self.storageSize = value
         }
+        if let value = dict["UsedTime"] as? String {
+            self.usedTime = value
+        }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
@@ -10898,6 +10922,8 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
 }
 
 public class CreateSupabaseProjectResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
     public var projectId: String?
 
     public var requestId: String?
@@ -10916,6 +10942,9 @@ public class CreateSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -10927,6 +10956,9 @@ public class CreateSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
