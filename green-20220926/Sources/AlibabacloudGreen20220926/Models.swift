@@ -6983,6 +6983,8 @@ public class GetCipStatsRequest : Tea.TeaModel {
 
     public var label: String?
 
+    public var query: String?
+
     public var regionId: String?
 
     public var resourceType: String?
@@ -7018,6 +7020,9 @@ public class GetCipStatsRequest : Tea.TeaModel {
         if self.label != nil {
             map["Label"] = self.label!
         }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7049,6 +7054,9 @@ public class GetCipStatsRequest : Tea.TeaModel {
         }
         if let value = dict["Label"] as? String {
             self.label = value
+        }
+        if let value = dict["Query"] as? String {
+            self.query = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

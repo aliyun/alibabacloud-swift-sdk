@@ -1541,6 +1541,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCipStatsWithOptions(_ request: GetCipStatsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCipStatsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
