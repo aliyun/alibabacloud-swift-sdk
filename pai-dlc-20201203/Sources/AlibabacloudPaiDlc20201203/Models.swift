@@ -3096,6 +3096,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var allocateAllRDMADevices: Bool?
 
+    public var allowUnschedulableNodes: Bool?
+
     public var businessUserId: String?
 
     public var caller: String?
@@ -3157,6 +3159,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.allocateAllRDMADevices != nil {
             map["AllocateAllRDMADevices"] = self.allocateAllRDMADevices!
+        }
+        if self.allowUnschedulableNodes != nil {
+            map["AllowUnschedulableNodes"] = self.allowUnschedulableNodes!
         }
         if self.businessUserId != nil {
             map["BusinessUserId"] = self.businessUserId!
@@ -3228,6 +3233,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if let value = dict["AllocateAllRDMADevices"] as? Bool {
             self.allocateAllRDMADevices = value
+        }
+        if let value = dict["AllowUnschedulableNodes"] as? Bool {
+            self.allowUnschedulableNodes = value
         }
         if let value = dict["BusinessUserId"] as? String {
             self.businessUserId = value
