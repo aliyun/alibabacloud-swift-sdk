@@ -4144,6 +4144,8 @@ public class GetLicenseResponse : Tea.TeaModel {
 public class ListAivppResourcesRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
+    public var instanceType: String?
+
     public var maxResults: Int32?
 
     public override init() {
@@ -4163,6 +4165,9 @@ public class ListAivppResourcesRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -4174,6 +4179,9 @@ public class ListAivppResourcesRequest : Tea.TeaModel {
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -4182,6 +4190,8 @@ public class ListAivppResourcesRequest : Tea.TeaModel {
 
 public class ListAivppResourcesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var connectNum: Int32?
+
         public var detail: String?
 
         public var expireTime: String?
@@ -4191,6 +4201,8 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
         public var instanceType: String?
 
         public var leftQuantity: String?
+
+        public var messageTps: Int32?
 
         public var orderId: String?
 
@@ -4218,6 +4230,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.connectNum != nil {
+                map["ConnectNum"] = self.connectNum!
+            }
             if self.detail != nil {
                 map["Detail"] = self.detail!
             }
@@ -4232,6 +4247,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
             }
             if self.leftQuantity != nil {
                 map["LeftQuantity"] = self.leftQuantity!
+            }
+            if self.messageTps != nil {
+                map["MessageTps"] = self.messageTps!
             }
             if self.orderId != nil {
                 map["OrderId"] = self.orderId!
@@ -4256,6 +4274,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ConnectNum"] as? Int32 {
+                self.connectNum = value
+            }
             if let value = dict["Detail"] as? String {
                 self.detail = value
             }
@@ -4270,6 +4291,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["LeftQuantity"] as? String {
                 self.leftQuantity = value
+            }
+            if let value = dict["MessageTps"] as? Int32 {
+                self.messageTps = value
             }
             if let value = dict["OrderId"] as? String {
                 self.orderId = value

@@ -540,6 +540,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             body["CurrentPage"] = request.currentPage!;
         }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            body["InstanceType"] = request.instanceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
