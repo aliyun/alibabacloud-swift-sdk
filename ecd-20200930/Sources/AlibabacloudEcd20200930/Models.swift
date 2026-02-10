@@ -23139,6 +23139,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var academicProxy: String?
+
         public var adminAccess: String?
 
         public var appContentProtection: String?
@@ -23150,6 +23152,12 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var cameraRedirect: String?
 
         public var clientControlMenu: String?
+
+        public var clientHibernate: String?
+
+        public var clientRestart: String?
+
+        public var clientShutdown: String?
 
         public var clientTypes: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes]?
 
@@ -23205,6 +23213,12 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var hoverConfigMsg: String?
 
+        public var hoverHibernate: String?
+
+        public var hoverRestart: String?
+
+        public var hoverShutdown: String?
+
         public var html5Access: String?
 
         public var html5FileTransfer: String?
@@ -23231,7 +23245,17 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var mobileRestart: String?
 
+        public var mobileSafeMenu: String?
+
         public var mobileShutdown: String?
+
+        public var mobileWuyingKeeper: String?
+
+        public var mobileWyAssistant: String?
+
+        public var modelLibrary: String?
+
+        public var multiScreen: String?
 
         public var name: String?
 
@@ -23248,6 +23272,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var policyGroupType: String?
 
         public var policyStatus: String?
+
+        public var portProxy: String?
 
         public var printerRedirection: String?
 
@@ -23351,6 +23377,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var watermarkSecurity: String?
 
+        public var watermarkShadow: String?
+
         public var watermarkTransparencyValue: Int32?
 
         public var watermarkType: String?
@@ -23371,6 +23399,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.academicProxy != nil {
+                map["AcademicProxy"] = self.academicProxy!
+            }
             if self.adminAccess != nil {
                 map["AdminAccess"] = self.adminAccess!
             }
@@ -23396,6 +23427,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.clientControlMenu != nil {
                 map["ClientControlMenu"] = self.clientControlMenu!
+            }
+            if self.clientHibernate != nil {
+                map["ClientHibernate"] = self.clientHibernate!
+            }
+            if self.clientRestart != nil {
+                map["ClientRestart"] = self.clientRestart!
+            }
+            if self.clientShutdown != nil {
+                map["ClientShutdown"] = self.clientShutdown!
             }
             if self.clientTypes != nil {
                 var tmp : [Any] = []
@@ -23494,6 +23534,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.hoverConfigMsg != nil {
                 map["HoverConfigMsg"] = self.hoverConfigMsg!
             }
+            if self.hoverHibernate != nil {
+                map["HoverHibernate"] = self.hoverHibernate!
+            }
+            if self.hoverRestart != nil {
+                map["HoverRestart"] = self.hoverRestart!
+            }
+            if self.hoverShutdown != nil {
+                map["HoverShutdown"] = self.hoverShutdown!
+            }
             if self.html5Access != nil {
                 map["Html5Access"] = self.html5Access!
             }
@@ -23533,8 +23582,23 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.mobileRestart != nil {
                 map["MobileRestart"] = self.mobileRestart!
             }
+            if self.mobileSafeMenu != nil {
+                map["MobileSafeMenu"] = self.mobileSafeMenu!
+            }
             if self.mobileShutdown != nil {
                 map["MobileShutdown"] = self.mobileShutdown!
+            }
+            if self.mobileWuyingKeeper != nil {
+                map["MobileWuyingKeeper"] = self.mobileWuyingKeeper!
+            }
+            if self.mobileWyAssistant != nil {
+                map["MobileWyAssistant"] = self.mobileWyAssistant!
+            }
+            if self.modelLibrary != nil {
+                map["ModelLibrary"] = self.modelLibrary!
+            }
+            if self.multiScreen != nil {
+                map["MultiScreen"] = self.multiScreen!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -23563,6 +23627,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.policyStatus != nil {
                 map["PolicyStatus"] = self.policyStatus!
+            }
+            if self.portProxy != nil {
+                map["PortProxy"] = self.portProxy!
             }
             if self.printerRedirection != nil {
                 map["PrinterRedirection"] = self.printerRedirection!
@@ -23721,6 +23788,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.watermarkSecurity != nil {
                 map["WatermarkSecurity"] = self.watermarkSecurity!
             }
+            if self.watermarkShadow != nil {
+                map["WatermarkShadow"] = self.watermarkShadow!
+            }
             if self.watermarkTransparencyValue != nil {
                 map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
             }
@@ -23735,6 +23805,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AcademicProxy"] as? String {
+                self.academicProxy = value
+            }
             if let value = dict["AdminAccess"] as? String {
                 self.adminAccess = value
             }
@@ -23772,6 +23845,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientControlMenu"] as? String {
                 self.clientControlMenu = value
+            }
+            if let value = dict["ClientHibernate"] as? String {
+                self.clientHibernate = value
+            }
+            if let value = dict["ClientRestart"] as? String {
+                self.clientRestart = value
+            }
+            if let value = dict["ClientShutdown"] as? String {
+                self.clientShutdown = value
             }
             if let value = dict["ClientTypes"] as? [Any?] {
                 var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes] = []
@@ -23894,6 +23976,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["HoverConfigMsg"] as? String {
                 self.hoverConfigMsg = value
             }
+            if let value = dict["HoverHibernate"] as? String {
+                self.hoverHibernate = value
+            }
+            if let value = dict["HoverRestart"] as? String {
+                self.hoverRestart = value
+            }
+            if let value = dict["HoverShutdown"] as? String {
+                self.hoverShutdown = value
+            }
             if let value = dict["Html5Access"] as? String {
                 self.html5Access = value
             }
@@ -23933,8 +24024,23 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["MobileRestart"] as? String {
                 self.mobileRestart = value
             }
+            if let value = dict["MobileSafeMenu"] as? String {
+                self.mobileSafeMenu = value
+            }
             if let value = dict["MobileShutdown"] as? String {
                 self.mobileShutdown = value
+            }
+            if let value = dict["MobileWuyingKeeper"] as? String {
+                self.mobileWuyingKeeper = value
+            }
+            if let value = dict["MobileWyAssistant"] as? String {
+                self.mobileWyAssistant = value
+            }
+            if let value = dict["ModelLibrary"] as? String {
+                self.modelLibrary = value
+            }
+            if let value = dict["MultiScreen"] as? String {
+                self.multiScreen = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -23969,6 +24075,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["PolicyStatus"] as? String {
                 self.policyStatus = value
+            }
+            if let value = dict["PortProxy"] as? String {
+                self.portProxy = value
             }
             if let value = dict["PrinterRedirection"] as? String {
                 self.printerRedirection = value
@@ -24132,6 +24241,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["WatermarkSecurity"] as? String {
                 self.watermarkSecurity = value
+            }
+            if let value = dict["WatermarkShadow"] as? String {
+                self.watermarkShadow = value
             }
             if let value = dict["WatermarkTransparencyValue"] as? Int32 {
                 self.watermarkTransparencyValue = value
