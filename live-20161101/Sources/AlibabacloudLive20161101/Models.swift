@@ -42386,6 +42386,8 @@ public class DescribeLiveInteractionMetricDataRequest : Tea.TeaModel {
 
     public var beginTs: Int64?
 
+    public var channelId: String?
+
     public var endTs: Int64?
 
     public var metricType: String?
@@ -42414,6 +42416,9 @@ public class DescribeLiveInteractionMetricDataRequest : Tea.TeaModel {
         if self.beginTs != nil {
             map["BeginTs"] = self.beginTs!
         }
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
         if self.endTs != nil {
             map["EndTs"] = self.endTs!
         }
@@ -42436,6 +42441,9 @@ public class DescribeLiveInteractionMetricDataRequest : Tea.TeaModel {
         }
         if let value = dict["BeginTs"] as? Int64 {
             self.beginTs = value
+        }
+        if let value = dict["ChannelId"] as? String {
+            self.channelId = value
         }
         if let value = dict["EndTs"] as? Int64 {
             self.endTs = value
