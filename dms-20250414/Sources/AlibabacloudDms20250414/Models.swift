@@ -2016,6 +2016,12 @@ public class OneMetaTableIndex : Tea.TeaModel {
 
     public var indexType: String?
 
+    public var primary: Bool?
+
+    public var realColumnNames: [String]?
+
+    public var unique: Bool?
+
     public override init() {
         super.init()
     }
@@ -2042,6 +2048,15 @@ public class OneMetaTableIndex : Tea.TeaModel {
         if self.indexType != nil {
             map["IndexType"] = self.indexType!
         }
+        if self.primary != nil {
+            map["Primary"] = self.primary!
+        }
+        if self.realColumnNames != nil {
+            map["RealColumnNames"] = self.realColumnNames!
+        }
+        if self.unique != nil {
+            map["Unique"] = self.unique!
+        }
         return map
     }
 
@@ -2058,6 +2073,15 @@ public class OneMetaTableIndex : Tea.TeaModel {
         }
         if let value = dict["IndexType"] as? String {
             self.indexType = value
+        }
+        if let value = dict["Primary"] as? Bool {
+            self.primary = value
+        }
+        if let value = dict["RealColumnNames"] as? [String] {
+            self.realColumnNames = value
+        }
+        if let value = dict["Unique"] as? Bool {
+            self.unique = value
         }
     }
 }
@@ -3820,11 +3844,19 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
 
         public var enableSearch: Bool?
 
+        public var encryptKey: String?
+
+        public var encryptType: String?
+
         public var language: String?
 
         public var mcpServerIds: [String]?
 
         public var mode: String?
+
+        public var reportPageWidth: Int64?
+
+        public var reportWaterMark: String?
 
         public var userOssBucket: String?
 
@@ -3851,6 +3883,12 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if self.enableSearch != nil {
                 map["EnableSearch"] = self.enableSearch!
             }
+            if self.encryptKey != nil {
+                map["EncryptKey"] = self.encryptKey!
+            }
+            if self.encryptType != nil {
+                map["EncryptType"] = self.encryptType!
+            }
             if self.language != nil {
                 map["Language"] = self.language!
             }
@@ -3859,6 +3897,12 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if self.mode != nil {
                 map["Mode"] = self.mode!
+            }
+            if self.reportPageWidth != nil {
+                map["ReportPageWidth"] = self.reportPageWidth!
+            }
+            if self.reportWaterMark != nil {
+                map["ReportWaterMark"] = self.reportWaterMark!
             }
             if self.userOssBucket != nil {
                 map["UserOssBucket"] = self.userOssBucket!
@@ -3877,6 +3921,12 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if let value = dict["EnableSearch"] as? Bool {
                 self.enableSearch = value
             }
+            if let value = dict["EncryptKey"] as? String {
+                self.encryptKey = value
+            }
+            if let value = dict["EncryptType"] as? String {
+                self.encryptType = value
+            }
             if let value = dict["Language"] as? String {
                 self.language = value
             }
@@ -3885,6 +3935,12 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if let value = dict["Mode"] as? String {
                 self.mode = value
+            }
+            if let value = dict["ReportPageWidth"] as? Int64 {
+                self.reportPageWidth = value
+            }
+            if let value = dict["ReportWaterMark"] as? String {
+                self.reportWaterMark = value
             }
             if let value = dict["UserOssBucket"] as? String {
                 self.userOssBucket = value
@@ -4028,11 +4084,19 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var enableSearch: Bool?
 
+            public var encryptKey: String?
+
+            public var encryptType: String?
+
             public var language: String?
 
             public var mcpServerIds: [String]?
 
             public var mode: String?
+
+            public var reportPageWidth: Int64?
+
+            public var reportWaterMark: String?
 
             public var userOssBucket: String?
 
@@ -4059,6 +4123,12 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.enableSearch != nil {
                     map["EnableSearch"] = self.enableSearch!
                 }
+                if self.encryptKey != nil {
+                    map["EncryptKey"] = self.encryptKey!
+                }
+                if self.encryptType != nil {
+                    map["EncryptType"] = self.encryptType!
+                }
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
@@ -4067,6 +4137,12 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
+                }
+                if self.reportPageWidth != nil {
+                    map["ReportPageWidth"] = self.reportPageWidth!
+                }
+                if self.reportWaterMark != nil {
+                    map["ReportWaterMark"] = self.reportWaterMark!
                 }
                 if self.userOssBucket != nil {
                     map["UserOssBucket"] = self.userOssBucket!
@@ -4085,6 +4161,12 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 if let value = dict["EnableSearch"] as? Bool {
                     self.enableSearch = value
                 }
+                if let value = dict["EncryptKey"] as? String {
+                    self.encryptKey = value
+                }
+                if let value = dict["EncryptType"] as? String {
+                    self.encryptType = value
+                }
                 if let value = dict["Language"] as? String {
                     self.language = value
                 }
@@ -4093,6 +4175,12 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
+                }
+                if let value = dict["ReportPageWidth"] as? Int64 {
+                    self.reportPageWidth = value
+                }
+                if let value = dict["ReportWaterMark"] as? String {
+                    self.reportWaterMark = value
                 }
                 if let value = dict["UserOssBucket"] as? String {
                     self.userOssBucket = value
@@ -7623,11 +7711,19 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var enableSearch: Bool?
 
+            public var encryptKey: String?
+
+            public var encryptType: String?
+
             public var language: String?
 
             public var mcpServerIds: [String]?
 
             public var mode: String?
+
+            public var reportPageWidth: Int64?
+
+            public var reportWaterMark: String?
 
             public var userOssBucket: String?
 
@@ -7654,6 +7750,12 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.enableSearch != nil {
                     map["EnableSearch"] = self.enableSearch!
                 }
+                if self.encryptKey != nil {
+                    map["EncryptKey"] = self.encryptKey!
+                }
+                if self.encryptType != nil {
+                    map["EncryptType"] = self.encryptType!
+                }
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
@@ -7662,6 +7764,12 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
+                }
+                if self.reportPageWidth != nil {
+                    map["ReportPageWidth"] = self.reportPageWidth!
+                }
+                if self.reportWaterMark != nil {
+                    map["ReportWaterMark"] = self.reportWaterMark!
                 }
                 if self.userOssBucket != nil {
                     map["UserOssBucket"] = self.userOssBucket!
@@ -7680,6 +7788,12 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 if let value = dict["EnableSearch"] as? Bool {
                     self.enableSearch = value
                 }
+                if let value = dict["EncryptKey"] as? String {
+                    self.encryptKey = value
+                }
+                if let value = dict["EncryptType"] as? String {
+                    self.encryptType = value
+                }
                 if let value = dict["Language"] as? String {
                     self.language = value
                 }
@@ -7688,6 +7802,12 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
+                }
+                if let value = dict["ReportPageWidth"] as? Int64 {
+                    self.reportPageWidth = value
+                }
+                if let value = dict["ReportWaterMark"] as? String {
+                    self.reportWaterMark = value
                 }
                 if let value = dict["UserOssBucket"] as? String {
                     self.userOssBucket = value
