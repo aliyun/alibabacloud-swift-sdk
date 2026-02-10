@@ -18734,11 +18734,51 @@ public class DeployHttpApiRequest : Tea.TeaModel {
                 }
             }
         }
+        public class OperationDeployments : Tea.TeaModel {
+            public var action: String?
+
+            public var operationId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["action"] = self.action!
+                }
+                if self.operationId != nil {
+                    map["operationId"] = self.operationId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["action"] as? String {
+                    self.action = value
+                }
+                if let value = dict["operationId"] as? String {
+                    self.operationId = value
+                }
+            }
+        }
         public var description_: String?
 
         public var environment: DeployHttpApiRequest.RestApiConfig.Environment?
 
         public var gatewayId: String?
+
+        public var operationDeployments: [DeployHttpApiRequest.RestApiConfig.OperationDeployments]?
 
         public var operationIds: [String]?
 
@@ -18768,6 +18808,13 @@ public class DeployHttpApiRequest : Tea.TeaModel {
             if self.gatewayId != nil {
                 map["gatewayId"] = self.gatewayId!
             }
+            if self.operationDeployments != nil {
+                var tmp : [Any] = []
+                for k in self.operationDeployments! {
+                    tmp.append(k.toMap())
+                }
+                map["operationDeployments"] = tmp
+            }
             if self.operationIds != nil {
                 map["operationIds"] = self.operationIds!
             }
@@ -18789,6 +18836,19 @@ public class DeployHttpApiRequest : Tea.TeaModel {
             }
             if let value = dict["gatewayId"] as? String {
                 self.gatewayId = value
+            }
+            if let value = dict["operationDeployments"] as? [Any?] {
+                var tmp : [DeployHttpApiRequest.RestApiConfig.OperationDeployments] = []
+                for v in value {
+                    if v != nil {
+                        var model = DeployHttpApiRequest.RestApiConfig.OperationDeployments()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.operationDeployments = tmp
             }
             if let value = dict["operationIds"] as? [String] {
                 self.operationIds = value
