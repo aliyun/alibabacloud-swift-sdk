@@ -12001,6 +12001,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeRtcCloudTranscodeWithOptions(_ request: DescribeRtcCloudTranscodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRtcCloudTranscodeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeRtcCloudTranscode",
+            "version": "2016-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeRtcCloudTranscodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeRtcCloudTranscode(_ request: DescribeRtcCloudTranscodeRequest) async throws -> DescribeRtcCloudTranscodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeRtcCloudTranscodeWithOptions(request as! DescribeRtcCloudTranscodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeRtcMPUEventSubWithOptions(_ request: DescribeRtcMPUEventSubRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRtcMPUEventSubResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -17592,6 +17626,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startRtcCloudTranscodeWithOptions(_ tmpReq: StartRtcCloudTranscodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartRtcCloudTranscodeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartRtcCloudTranscodeShrinkRequest = StartRtcCloudTranscodeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.inputParam)) {
+            request.inputParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.inputParam, "InputParam", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.outputParams)) {
+            request.outputParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outputParams, "OutputParams", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputParamShrink)) {
+            query["InputParam"] = request.inputParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxIdleTime)) {
+            query["MaxIdleTime"] = request.maxIdleTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputParamsShrink)) {
+            query["OutputParams"] = request.outputParamsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartRtcCloudTranscode",
+            "version": "2016-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartRtcCloudTranscodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startRtcCloudTranscode(_ request: StartRtcCloudTranscodeRequest) async throws -> StartRtcCloudTranscodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startRtcCloudTranscodeWithOptions(request as! StartRtcCloudTranscodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopCasterWithOptions(_ request: StopCasterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopCasterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -17947,6 +18032,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopRtcCloudRecording(_ request: StopRtcCloudRecordingRequest) async throws -> StopRtcCloudRecordingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopRtcCloudRecordingWithOptions(request as! StopRtcCloudRecordingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopRtcCloudTranscodeWithOptions(_ request: StopRtcCloudTranscodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopRtcCloudTranscodeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopRtcCloudTranscode",
+            "version": "2016-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopRtcCloudTranscodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopRtcCloudTranscode(_ request: StopRtcCloudTranscodeRequest) async throws -> StopRtcCloudTranscodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopRtcCloudTranscodeWithOptions(request as! StopRtcCloudTranscodeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
