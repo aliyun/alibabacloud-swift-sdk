@@ -1728,6 +1728,633 @@ public class CreateCardSmsTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDigitalSignOrderRequest : Tea.TeaModel {
+    public var extendMessage: String?
+
+    public var orderContext: [String: Any]?
+
+    public var orderType: String?
+
+    public var ownerId: Int64?
+
+    public var qualificationId: Int64?
+
+    public var qualificationVersion: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var signId: Int64?
+
+    public var signIndustry: Int64?
+
+    public var signName: String?
+
+    public var signSource: Int64?
+
+    public var submitter: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extendMessage != nil {
+            map["ExtendMessage"] = self.extendMessage!
+        }
+        if self.orderContext != nil {
+            map["OrderContext"] = self.orderContext!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationVersion != nil {
+            map["QualificationVersion"] = self.qualificationVersion!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.signId != nil {
+            map["SignId"] = self.signId!
+        }
+        if self.signIndustry != nil {
+            map["SignIndustry"] = self.signIndustry!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.signSource != nil {
+            map["SignSource"] = self.signSource!
+        }
+        if self.submitter != nil {
+            map["Submitter"] = self.submitter!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExtendMessage"] as? String {
+            self.extendMessage = value
+        }
+        if let value = dict["OrderContext"] as? [String: Any] {
+            self.orderContext = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationVersion"] as? Int64 {
+            self.qualificationVersion = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SignId"] as? Int64 {
+            self.signId = value
+        }
+        if let value = dict["SignIndustry"] as? Int64 {
+            self.signIndustry = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["SignSource"] as? Int64 {
+            self.signSource = value
+        }
+        if let value = dict["Submitter"] as? String {
+            self.submitter = value
+        }
+    }
+}
+
+public class CreateDigitalSignOrderShrinkRequest : Tea.TeaModel {
+    public var extendMessage: String?
+
+    public var orderContextShrink: String?
+
+    public var orderType: String?
+
+    public var ownerId: Int64?
+
+    public var qualificationId: Int64?
+
+    public var qualificationVersion: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var signId: Int64?
+
+    public var signIndustry: Int64?
+
+    public var signName: String?
+
+    public var signSource: Int64?
+
+    public var submitter: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extendMessage != nil {
+            map["ExtendMessage"] = self.extendMessage!
+        }
+        if self.orderContextShrink != nil {
+            map["OrderContext"] = self.orderContextShrink!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationId != nil {
+            map["QualificationId"] = self.qualificationId!
+        }
+        if self.qualificationVersion != nil {
+            map["QualificationVersion"] = self.qualificationVersion!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.signId != nil {
+            map["SignId"] = self.signId!
+        }
+        if self.signIndustry != nil {
+            map["SignIndustry"] = self.signIndustry!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.signSource != nil {
+            map["SignSource"] = self.signSource!
+        }
+        if self.submitter != nil {
+            map["Submitter"] = self.submitter!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExtendMessage"] as? String {
+            self.extendMessage = value
+        }
+        if let value = dict["OrderContext"] as? String {
+            self.orderContextShrink = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["QualificationId"] as? Int64 {
+            self.qualificationId = value
+        }
+        if let value = dict["QualificationVersion"] as? Int64 {
+            self.qualificationVersion = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SignId"] as? Int64 {
+            self.signId = value
+        }
+        if let value = dict["SignIndustry"] as? Int64 {
+            self.signIndustry = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["SignSource"] as? Int64 {
+            self.signSource = value
+        }
+        if let value = dict["Submitter"] as? String {
+            self.submitter = value
+        }
+    }
+}
+
+public class CreateDigitalSignOrderResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateDigitalSignOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDigitalSignOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDigitalSignOrderResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateDigitalSmsTemplateRequest : Tea.TeaModel {
+    public class TemplateContents : Tea.TeaModel {
+        public var fileContents: String?
+
+        public var fileName: String?
+
+        public var fileSize: Int32?
+
+        public var fileSuffix: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileContents != nil {
+                map["FileContents"] = self.fileContents!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.fileSuffix != nil {
+                map["FileSuffix"] = self.fileSuffix!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileContents"] as? String {
+                self.fileContents = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FileSize"] as? Int32 {
+                self.fileSize = value
+            }
+            if let value = dict["FileSuffix"] as? String {
+                self.fileSuffix = value
+            }
+        }
+    }
+    public var ownerId: Int64?
+
+    public var remark: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var signName: String?
+
+    public var templateContents: [CreateDigitalSmsTemplateRequest.TemplateContents]?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        if self.templateContents != nil {
+            var tmp : [Any] = []
+            for k in self.templateContents! {
+                tmp.append(k.toMap())
+            }
+            map["TemplateContents"] = tmp
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+        if let value = dict["TemplateContents"] as? [Any?] {
+            var tmp : [CreateDigitalSmsTemplateRequest.TemplateContents] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateDigitalSmsTemplateRequest.TemplateContents()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.templateContents = tmp
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class CreateDigitalSmsTemplateResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TemplateCode"] as? String {
+            self.templateCode = value
+        }
+    }
+}
+
+public class CreateDigitalSmsTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDigitalSmsTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDigitalSmsTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateSmartShortUrlRequest : Tea.TeaModel {
     public var outId: String?
 
@@ -8722,6 +9349,182 @@ public class QueryCardSmsTemplateReportResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryCardSmsTemplateReportResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryDigitalSignByNameRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var signName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.signName != nil {
+            map["SignName"] = self.signName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SignName"] as? String {
+            self.signName = value
+        }
+    }
+}
+
+public class QueryDigitalSignByNameResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any] {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryDigitalSignByNameResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDigitalSignByNameResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryDigitalSignByNameResponseBody()
             model.fromMap(value)
             self.body = model
         }
