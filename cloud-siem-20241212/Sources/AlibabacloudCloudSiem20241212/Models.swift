@@ -16036,6 +16036,8 @@ public class ListTrafficStatisticsRequest : Tea.TeaModel {
 
     public var trafficStatisticType: String?
 
+    public var trafficType: String?
+
     public override init() {
         super.init()
     }
@@ -16077,6 +16079,9 @@ public class ListTrafficStatisticsRequest : Tea.TeaModel {
         if self.trafficStatisticType != nil {
             map["TrafficStatisticType"] = self.trafficStatisticType!
         }
+        if self.trafficType != nil {
+            map["TrafficType"] = self.trafficType!
+        }
         return map
     }
 
@@ -16109,6 +16114,9 @@ public class ListTrafficStatisticsRequest : Tea.TeaModel {
         if let value = dict["TrafficStatisticType"] as? String {
             self.trafficStatisticType = value
         }
+        if let value = dict["TrafficType"] as? String {
+            self.trafficType = value
+        }
     }
 }
 
@@ -16130,6 +16138,8 @@ public class ListTrafficStatisticsShrinkRequest : Tea.TeaModel {
     public var trafficStatisticPeriodType: String?
 
     public var trafficStatisticType: String?
+
+    public var trafficType: String?
 
     public override init() {
         super.init()
@@ -16172,6 +16182,9 @@ public class ListTrafficStatisticsShrinkRequest : Tea.TeaModel {
         if self.trafficStatisticType != nil {
             map["TrafficStatisticType"] = self.trafficStatisticType!
         }
+        if self.trafficType != nil {
+            map["TrafficType"] = self.trafficType!
+        }
         return map
     }
 
@@ -16203,6 +16216,9 @@ public class ListTrafficStatisticsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TrafficStatisticType"] as? String {
             self.trafficStatisticType = value
+        }
+        if let value = dict["TrafficType"] as? String {
+            self.trafficType = value
         }
     }
 }

@@ -2867,6 +2867,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.trafficStatisticType)) {
             body["TrafficStatisticType"] = request.trafficStatisticType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trafficType)) {
+            body["TrafficType"] = request.trafficType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
