@@ -24,6 +24,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addOSSMultimodalFineTuneDatasetWithOptions(_ request: AddOSSMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddOSSMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            query["DatasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossUrl)) {
+            query["OssUrl"] = request.ossUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddOSSMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddOSSMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addOSSMultimodalFineTuneDataset(_ request: AddOSSMultimodalFineTuneDatasetRequest) async throws -> AddOSSMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addOSSMultimodalFineTuneDatasetWithOptions(request as! AddOSSMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func chatBIConfigCreateWithOptions(_ request: ChatBIConfigCreateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatBIConfigCreateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1197,6 +1234,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalFineTuneDatasetWithOptions(_ request: CreateMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetDescription)) {
+            query["DatasetDescription"] = request.datasetDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetName)) {
+            query["DatasetName"] = request.datasetName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalFineTuneDataset(_ request: CreateMultimodalFineTuneDatasetRequest) async throws -> CreateMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMultimodalFineTuneDatasetWithOptions(request as! CreateMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalLabelStudioServiceWithOptions(_ tmpReq: CreateMultimodalLabelStudioServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultimodalLabelStudioServiceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateMultimodalLabelStudioServiceShrinkRequest = CreateMultimodalLabelStudioServiceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.datasetIds)) {
+            request.datasetIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetIds, "DatasetIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetIdsShrink)) {
+            query["DatasetIds"] = request.datasetIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultimodalLabelStudioService",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultimodalLabelStudioServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalLabelStudioService(_ request: CreateMultimodalLabelStudioServiceRequest) async throws -> CreateMultimodalLabelStudioServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMultimodalLabelStudioServiceWithOptions(request as! CreateMultimodalLabelStudioServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createMultimodalSearchTaskWithOptions(_ tmpReq: CreateMultimodalSearchTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultimodalSearchTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateMultimodalSearchTaskShrinkRequest = CreateMultimodalSearchTaskShrinkRequest([:])
@@ -1248,6 +1367,60 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMultimodalSearchTask(_ request: CreateMultimodalSearchTaskRequest) async throws -> CreateMultimodalSearchTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createMultimodalSearchTaskWithOptions(request as! CreateMultimodalSearchTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalSearchTaskResultFineTuneDatasetWithOptions(_ tmpReq: CreateMultimodalSearchTaskResultFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultimodalSearchTaskResultFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest = CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resultIndex)) {
+            request.resultIndexShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resultIndex, "ResultIndex", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetDescription)) {
+            query["DatasetDescription"] = request.datasetDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetName)) {
+            query["DatasetName"] = request.datasetName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultIndexShrink)) {
+            query["ResultIndex"] = request.resultIndexShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultMode)) {
+            query["ResultMode"] = request.resultMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topN)) {
+            query["TopN"] = request.topN!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultimodalSearchTaskResultFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultimodalSearchTaskResultFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultimodalSearchTaskResultFineTuneDataset(_ request: CreateMultimodalSearchTaskResultFineTuneDatasetRequest) async throws -> CreateMultimodalSearchTaskResultFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMultimodalSearchTaskResultFineTuneDatasetWithOptions(request as! CreateMultimodalSearchTaskResultFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1316,6 +1489,108 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMultimodalEmbedding(_ request: DeleteMultimodalEmbeddingRequest) async throws -> DeleteMultimodalEmbeddingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteMultimodalEmbeddingWithOptions(request as! DeleteMultimodalEmbeddingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultimodalFineTuneDatasetWithOptions(_ request: DeleteMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            query["DatasetId"] = request.datasetId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultimodalFineTuneDataset(_ request: DeleteMultimodalFineTuneDatasetRequest) async throws -> DeleteMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteMultimodalFineTuneDatasetWithOptions(request as! DeleteMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultimodalLabelStudioServiceWithOptions(_ request: DeleteMultimodalLabelStudioServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMultimodalLabelStudioServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMultimodalLabelStudioService",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMultimodalLabelStudioServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultimodalLabelStudioService(_ request: DeleteMultimodalLabelStudioServiceRequest) async throws -> DeleteMultimodalLabelStudioServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteMultimodalLabelStudioServiceWithOptions(request as! DeleteMultimodalLabelStudioServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOSSMultimodalFineTuneDatasetWithOptions(_ request: DeleteOSSMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOSSMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            query["DatasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossUrl)) {
+            query["OssUrl"] = request.ossUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteOSSMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteOSSMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOSSMultimodalFineTuneDataset(_ request: DeleteOSSMultimodalFineTuneDatasetRequest) async throws -> DeleteOSSMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteOSSMultimodalFineTuneDatasetWithOptions(request as! DeleteOSSMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1498,6 +1773,77 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalFineTuneDatasetWithOptions(_ request: ListMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputField)) {
+            query["InputField"] = request.inputField ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalFineTuneDataset(_ request: ListMultimodalFineTuneDatasetRequest) async throws -> ListMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMultimodalFineTuneDatasetWithOptions(request as! ListMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalLabelStudioServiceWithOptions(_ request: ListMultimodalLabelStudioServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalLabelStudioServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMultimodalLabelStudioService",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMultimodalLabelStudioServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMultimodalLabelStudioService(_ request: ListMultimodalLabelStudioServiceRequest) async throws -> ListMultimodalLabelStudioServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMultimodalLabelStudioServiceWithOptions(request as! ListMultimodalLabelStudioServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listMultimodalSearchModelWithOptions(_ request: ListMultimodalSearchModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalSearchModelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1535,11 +1881,25 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listMultimodalSearchTaskWithOptions(_ request: ListMultimodalSearchTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalSearchTaskResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listMultimodalSearchTaskWithOptions(_ tmpReq: ListMultimodalSearchTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultimodalSearchTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListMultimodalSearchTaskShrinkRequest = ListMultimodalSearchTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.datasetIds)) {
+            request.datasetIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetIds, "DatasetIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetIdsShrink)) {
+            query["DatasetIds"] = request.datasetIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputField)) {
+            query["InputField"] = request.inputField ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelMode)) {
+            query["ModelMode"] = request.modelMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
@@ -1649,6 +2009,85 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateMultimodalDataset(_ request: UpdateMultimodalDatasetRequest) async throws -> UpdateMultimodalDatasetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateMultimodalDatasetWithOptions(request as! UpdateMultimodalDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultimodalFineTuneDatasetWithOptions(_ request: UpdateMultimodalFineTuneDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultimodalFineTuneDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetDescription)) {
+            query["DatasetDescription"] = request.datasetDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            query["DatasetId"] = request.datasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetName)) {
+            query["DatasetName"] = request.datasetName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMultimodalFineTuneDataset",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMultimodalFineTuneDatasetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultimodalFineTuneDataset(_ request: UpdateMultimodalFineTuneDatasetRequest) async throws -> UpdateMultimodalFineTuneDatasetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMultimodalFineTuneDatasetWithOptions(request as! UpdateMultimodalFineTuneDatasetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultimodalLabelStudioServiceWhiteListWithOptions(_ tmpReq: UpdateMultimodalLabelStudioServiceWhiteListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultimodalLabelStudioServiceWhiteListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest = UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.whiteList)) {
+            request.whiteListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.whiteList, "WhiteList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.whiteListShrink)) {
+            query["WhiteList"] = request.whiteListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMultimodalLabelStudioServiceWhiteList",
+            "version": "2025-10-13",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMultimodalLabelStudioServiceWhiteListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultimodalLabelStudioServiceWhiteList(_ request: UpdateMultimodalLabelStudioServiceWhiteListRequest) async throws -> UpdateMultimodalLabelStudioServiceWhiteListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMultimodalLabelStudioServiceWhiteListWithOptions(request as! UpdateMultimodalLabelStudioServiceWhiteListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
