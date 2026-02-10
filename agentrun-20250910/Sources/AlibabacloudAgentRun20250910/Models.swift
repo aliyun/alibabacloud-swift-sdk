@@ -4010,6 +4010,8 @@ public class CreateTemplateInput : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var enableAgent: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -4017,6 +4019,8 @@ public class CreateTemplateInput : Tea.TeaModel {
     public var logConfiguration: LogConfiguration?
 
     public var memory: Int32?
+
+    public var nasConfig: NASConfig?
 
     public var networkConfiguration: NetworkConfiguration?
 
@@ -4046,6 +4050,7 @@ public class CreateTemplateInput : Tea.TeaModel {
         try self.containerConfiguration?.validate()
         try self.credentialConfiguration?.validate()
         try self.logConfiguration?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
     }
 
@@ -4072,6 +4077,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
         }
+        if self.enableAgent != nil {
+            map["enableAgent"] = self.enableAgent!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -4083,6 +4091,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if self.memory != nil {
             map["memory"] = self.memory!
+        }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
         }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
@@ -4141,6 +4152,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
         }
+        if let value = dict["enableAgent"] as? Bool {
+            self.enableAgent = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -4154,6 +4168,11 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["memory"] as? Int32 {
             self.memory = value
+        }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
         }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
@@ -12617,6 +12636,8 @@ public class Template : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var enableAgent: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -12630,6 +12651,8 @@ public class Template : Tea.TeaModel {
     public var mcpState: Template.McpState?
 
     public var memory: Int32?
+
+    public var nasConfig: NASConfig?
 
     public var networkConfiguration: NetworkConfiguration?
 
@@ -12672,6 +12695,7 @@ public class Template : Tea.TeaModel {
         try self.logConfiguration?.validate()
         try self.mcpOptions?.validate()
         try self.mcpState?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
     }
 
@@ -12698,6 +12722,9 @@ public class Template : Tea.TeaModel {
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
         }
+        if self.enableAgent != nil {
+            map["enableAgent"] = self.enableAgent!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -12718,6 +12745,9 @@ public class Template : Tea.TeaModel {
         }
         if self.memory != nil {
             map["memory"] = self.memory!
+        }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
         }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
@@ -12792,6 +12822,9 @@ public class Template : Tea.TeaModel {
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
         }
+        if let value = dict["enableAgent"] as? Bool {
+            self.enableAgent = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -12818,6 +12851,11 @@ public class Template : Tea.TeaModel {
         }
         if let value = dict["memory"] as? Int32 {
             self.memory = value
+        }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
         }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
@@ -14258,6 +14296,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableAgent: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -14265,6 +14305,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
     public var logConfiguration: LogConfiguration?
 
     public var memory: Int32?
+
+    public var nasConfig: NASConfig?
 
     public var networkConfiguration: NetworkConfiguration?
 
@@ -14290,6 +14332,7 @@ public class UpdateTemplateInput : Tea.TeaModel {
         try self.containerConfiguration?.validate()
         try self.credentialConfiguration?.validate()
         try self.logConfiguration?.validate()
+        try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
     }
 
@@ -14313,6 +14356,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.enableAgent != nil {
+            map["enableAgent"] = self.enableAgent!
+        }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
         }
@@ -14324,6 +14370,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if self.memory != nil {
             map["memory"] = self.memory!
+        }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
         }
         if self.networkConfiguration != nil {
             map["networkConfiguration"] = self.networkConfiguration?.toMap()
@@ -14373,6 +14422,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["enableAgent"] as? Bool {
+            self.enableAgent = value
+        }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
         }
@@ -14386,6 +14438,11 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["memory"] as? Int32 {
             self.memory = value
+        }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
         }
         if let value = dict["networkConfiguration"] as? [String: Any?] {
             var model = NetworkConfiguration()
