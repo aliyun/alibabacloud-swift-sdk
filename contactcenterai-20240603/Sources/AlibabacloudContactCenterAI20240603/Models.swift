@@ -3273,9 +3273,184 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Usage : Tea.TeaModel {
+            public class Rag : Tea.TeaModel {
+                public class Adaptive : Tea.TeaModel {
+                    public var inputTokens: Int32?
+
+                    public var invokeCount: Int32?
+
+                    public var outputTokens: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.inputTokens != nil {
+                            map["inputTokens"] = self.inputTokens!
+                        }
+                        if self.invokeCount != nil {
+                            map["invokeCount"] = self.invokeCount!
+                        }
+                        if self.outputTokens != nil {
+                            map["outputTokens"] = self.outputTokens!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["inputTokens"] as? Int32 {
+                            self.inputTokens = value
+                        }
+                        if let value = dict["invokeCount"] as? Int32 {
+                            self.invokeCount = value
+                        }
+                        if let value = dict["outputTokens"] as? Int32 {
+                            self.outputTokens = value
+                        }
+                    }
+                }
+                public class DialogSummary : Tea.TeaModel {
+                    public var inputTokens: Int32?
+
+                    public var invokeCount: Int32?
+
+                    public var outputTokens: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.inputTokens != nil {
+                            map["inputTokens"] = self.inputTokens!
+                        }
+                        if self.invokeCount != nil {
+                            map["invokeCount"] = self.invokeCount!
+                        }
+                        if self.outputTokens != nil {
+                            map["outputTokens"] = self.outputTokens!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["inputTokens"] as? Int32 {
+                            self.inputTokens = value
+                        }
+                        if let value = dict["invokeCount"] as? Int32 {
+                            self.invokeCount = value
+                        }
+                        if let value = dict["outputTokens"] as? Int32 {
+                            self.outputTokens = value
+                        }
+                    }
+                }
+                public var adaptive: GetTaskResultResponseBody.Data.Usage.Rag.Adaptive?
+
+                public var dialogSummary: GetTaskResultResponseBody.Data.Usage.Rag.DialogSummary?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adaptive?.validate()
+                    try self.dialogSummary?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adaptive != nil {
+                        map["adaptive"] = self.adaptive?.toMap()
+                    }
+                    if self.dialogSummary != nil {
+                        map["dialogSummary"] = self.dialogSummary?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["adaptive"] as? [String: Any?] {
+                        var model = GetTaskResultResponseBody.Data.Usage.Rag.Adaptive()
+                        model.fromMap(value)
+                        self.adaptive = model
+                    }
+                    if let value = dict["dialogSummary"] as? [String: Any?] {
+                        var model = GetTaskResultResponseBody.Data.Usage.Rag.DialogSummary()
+                        model.fromMap(value)
+                        self.dialogSummary = model
+                    }
+                }
+            }
+            public var rag: GetTaskResultResponseBody.Data.Usage.Rag?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.rag?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.rag != nil {
+                    map["rag"] = self.rag?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["rag"] as? [String: Any?] {
+                    var model = GetTaskResultResponseBody.Data.Usage.Rag()
+                    model.fromMap(value)
+                    self.rag = model
+                }
+            }
+        }
         public var asrResult: [GetTaskResultResponseBody.Data.AsrResult]?
 
         public var extra: String?
+
+        public var ragErrorMessage: String?
+
+        public var ragResult: String?
+
+        public var ragStatus: String?
 
         public var taskErrorMessage: String?
 
@@ -3284,6 +3459,8 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
         public var taskStatus: String?
 
         public var text: String?
+
+        public var usage: GetTaskResultResponseBody.Data.Usage?
 
         public override init() {
             super.init()
@@ -3295,6 +3472,7 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.usage?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3309,6 +3487,15 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
             if self.extra != nil {
                 map["extra"] = self.extra!
             }
+            if self.ragErrorMessage != nil {
+                map["ragErrorMessage"] = self.ragErrorMessage!
+            }
+            if self.ragResult != nil {
+                map["ragResult"] = self.ragResult!
+            }
+            if self.ragStatus != nil {
+                map["ragStatus"] = self.ragStatus!
+            }
             if self.taskErrorMessage != nil {
                 map["taskErrorMessage"] = self.taskErrorMessage!
             }
@@ -3320,6 +3507,9 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
             }
             if self.text != nil {
                 map["text"] = self.text!
+            }
+            if self.usage != nil {
+                map["usage"] = self.usage?.toMap()
             }
             return map
         }
@@ -3342,6 +3532,15 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
             if let value = dict["extra"] as? String {
                 self.extra = value
             }
+            if let value = dict["ragErrorMessage"] as? String {
+                self.ragErrorMessage = value
+            }
+            if let value = dict["ragResult"] as? String {
+                self.ragResult = value
+            }
+            if let value = dict["ragStatus"] as? String {
+                self.ragStatus = value
+            }
             if let value = dict["taskErrorMessage"] as? String {
                 self.taskErrorMessage = value
             }
@@ -3353,6 +3552,11 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["text"] as? String {
                 self.text = value
+            }
+            if let value = dict["usage"] as? [String: Any?] {
+                var model = GetTaskResultResponseBody.Data.Usage()
+                model.fromMap(value)
+                self.usage = model
             }
         }
     }
@@ -4426,6 +4630,175 @@ public class RunCompletionRequest : Tea.TeaModel {
 }
 
 public class RunCompletionResponseBody : Tea.TeaModel {
+    public class Usage : Tea.TeaModel {
+        public class Rag : Tea.TeaModel {
+            public class Adaptive : Tea.TeaModel {
+                public var inputTokens: Int32?
+
+                public var invokeCount: Int32?
+
+                public var outputTokens: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.inputTokens != nil {
+                        map["inputTokens"] = self.inputTokens!
+                    }
+                    if self.invokeCount != nil {
+                        map["invokeCount"] = self.invokeCount!
+                    }
+                    if self.outputTokens != nil {
+                        map["outputTokens"] = self.outputTokens!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["inputTokens"] as? Int32 {
+                        self.inputTokens = value
+                    }
+                    if let value = dict["invokeCount"] as? Int32 {
+                        self.invokeCount = value
+                    }
+                    if let value = dict["outputTokens"] as? Int32 {
+                        self.outputTokens = value
+                    }
+                }
+            }
+            public class DialogSummary : Tea.TeaModel {
+                public var inputTokens: Int32?
+
+                public var invokeCount: Int32?
+
+                public var outputTokens: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.inputTokens != nil {
+                        map["inputTokens"] = self.inputTokens!
+                    }
+                    if self.invokeCount != nil {
+                        map["invokeCount"] = self.invokeCount!
+                    }
+                    if self.outputTokens != nil {
+                        map["outputTokens"] = self.outputTokens!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["inputTokens"] as? Int32 {
+                        self.inputTokens = value
+                    }
+                    if let value = dict["invokeCount"] as? Int32 {
+                        self.invokeCount = value
+                    }
+                    if let value = dict["outputTokens"] as? Int32 {
+                        self.outputTokens = value
+                    }
+                }
+            }
+            public var adaptive: RunCompletionResponseBody.Usage.Rag.Adaptive?
+
+            public var dialogSummary: RunCompletionResponseBody.Usage.Rag.DialogSummary?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.adaptive?.validate()
+                try self.dialogSummary?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.adaptive != nil {
+                    map["adaptive"] = self.adaptive?.toMap()
+                }
+                if self.dialogSummary != nil {
+                    map["dialogSummary"] = self.dialogSummary?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["adaptive"] as? [String: Any?] {
+                    var model = RunCompletionResponseBody.Usage.Rag.Adaptive()
+                    model.fromMap(value)
+                    self.adaptive = model
+                }
+                if let value = dict["dialogSummary"] as? [String: Any?] {
+                    var model = RunCompletionResponseBody.Usage.Rag.DialogSummary()
+                    model.fromMap(value)
+                    self.dialogSummary = model
+                }
+            }
+        }
+        public var rag: RunCompletionResponseBody.Usage.Rag?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.rag?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rag != nil {
+                map["rag"] = self.rag?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["rag"] as? [String: Any?] {
+                var model = RunCompletionResponseBody.Usage.Rag()
+                model.fromMap(value)
+                self.rag = model
+            }
+        }
+    }
     public var finishReason: String?
 
     public var requestId: String?
@@ -4436,7 +4809,11 @@ public class RunCompletionResponseBody : Tea.TeaModel {
 
     public var outputTokens: String?
 
+    public var ragStatus: String?
+
     public var totalTokens: String?
+
+    public var usage: RunCompletionResponseBody.Usage?
 
     public override init() {
         super.init()
@@ -4448,6 +4825,7 @@ public class RunCompletionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.usage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4467,8 +4845,14 @@ public class RunCompletionResponseBody : Tea.TeaModel {
         if self.outputTokens != nil {
             map["outputTokens"] = self.outputTokens!
         }
+        if self.ragStatus != nil {
+            map["ragStatus"] = self.ragStatus!
+        }
         if self.totalTokens != nil {
             map["totalTokens"] = self.totalTokens!
+        }
+        if self.usage != nil {
+            map["usage"] = self.usage?.toMap()
         }
         return map
     }
@@ -4490,8 +4874,16 @@ public class RunCompletionResponseBody : Tea.TeaModel {
         if let value = dict["outputTokens"] as? String {
             self.outputTokens = value
         }
+        if let value = dict["ragStatus"] as? String {
+            self.ragStatus = value
+        }
         if let value = dict["totalTokens"] as? String {
             self.totalTokens = value
+        }
+        if let value = dict["usage"] as? [String: Any?] {
+            var model = RunCompletionResponseBody.Usage()
+            model.fromMap(value)
+            self.usage = model
         }
     }
 }
