@@ -12632,6 +12632,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scanRangeShrink)) {
             query["ScanRange"] = request.scanRangeShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sensitiveKeyList)) {
+            query["SensitiveKeyList"] = request.sensitiveKeyList ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -14081,6 +14084,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scaVersion)) {
             query["ScaVersion"] = request.scaVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchCriteriaList)) {
+            query["SearchCriteriaList"] = request.searchCriteriaList ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.searchInfo)) {
             query["SearchInfo"] = request.searchInfo ?? "";
@@ -19201,6 +19207,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.vpcInstanceIds)) {
             query["VpcInstanceIds"] = request.vpcInstanceIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vulEntityList)) {
+            query["VulEntityList"] = request.vulEntityList ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -20356,6 +20365,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCheckCountStatisticWithOptions(_ request: GetCheckCountStatisticRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCheckCountStatisticResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.statisticType)) {
             query["StatisticType"] = request.statisticType ?? "";
         }
