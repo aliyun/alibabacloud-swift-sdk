@@ -796,6 +796,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createApplicationWithOptions(_ request: CreateApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateApplicationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationIdentityType)) {
+            query["ApplicationIdentityType"] = request.applicationIdentityType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
         }
@@ -6978,6 +6981,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationCreationType)) {
             query["ApplicationCreationType"] = request.applicationCreationType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationIdentityType)) {
+            query["ApplicationIdentityType"] = request.applicationIdentityType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applicationIds)) {
             query["ApplicationIds"] = request.applicationIds ?? [];
         }
@@ -8247,6 +8253,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeId)) {
+            query["ResourceServerScopeId"] = request.resourceServerScopeId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -8760,6 +8769,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeId)) {
+            query["ResourceServerScopeId"] = request.resourceServerScopeId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -9184,6 +9196,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceServerScopeId)) {
+            query["ResourceServerScopeId"] = request.resourceServerScopeId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

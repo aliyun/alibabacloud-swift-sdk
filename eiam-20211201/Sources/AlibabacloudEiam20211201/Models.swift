@@ -2936,6 +2936,8 @@ public class CheckInstanceModuleStatusResponse : Tea.TeaModel {
 }
 
 public class CreateApplicationRequest : Tea.TeaModel {
+    public var applicationIdentityType: String?
+
     public var applicationName: String?
 
     public var applicationSourceType: String?
@@ -2964,6 +2966,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationIdentityType != nil {
+            map["ApplicationIdentityType"] = self.applicationIdentityType!
+        }
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
@@ -2990,6 +2995,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApplicationIdentityType"] as? String {
+            self.applicationIdentityType = value
+        }
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
         }
@@ -19962,6 +19970,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var applicationId: String?
 
+        public var applicationIdentityType: String?
+
         public var applicationName: String?
 
         public var applicationSourceType: String?
@@ -20026,6 +20036,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
+            }
+            if self.applicationIdentityType != nil {
+                map["ApplicationIdentityType"] = self.applicationIdentityType!
             }
             if self.applicationName != nil {
                 map["ApplicationName"] = self.applicationName!
@@ -20103,6 +20116,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ApplicationIdentityType"] as? String {
+                self.applicationIdentityType = value
             }
             if let value = dict["ApplicationName"] as? String {
                 self.applicationName = value
@@ -23199,6 +23215,12 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
 
         public var authorizationRuleName: String?
 
+        public var authorizationRuleSubjectId: String?
+
+        public var authorizationRuleSubjectScope: String?
+
+        public var authorizationRuleSubjectType: String?
+
         public var createTime: Int64?
 
         public var description_: String?
@@ -23237,6 +23259,15 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
             if self.authorizationRuleName != nil {
                 map["AuthorizationRuleName"] = self.authorizationRuleName!
             }
+            if self.authorizationRuleSubjectId != nil {
+                map["AuthorizationRuleSubjectId"] = self.authorizationRuleSubjectId!
+            }
+            if self.authorizationRuleSubjectScope != nil {
+                map["AuthorizationRuleSubjectScope"] = self.authorizationRuleSubjectScope!
+            }
+            if self.authorizationRuleSubjectType != nil {
+                map["AuthorizationRuleSubjectType"] = self.authorizationRuleSubjectType!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -23271,6 +23302,15 @@ public class GetAuthorizationRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthorizationRuleName"] as? String {
                 self.authorizationRuleName = value
+            }
+            if let value = dict["AuthorizationRuleSubjectId"] as? String {
+                self.authorizationRuleSubjectId = value
+            }
+            if let value = dict["AuthorizationRuleSubjectScope"] as? String {
+                self.authorizationRuleSubjectScope = value
+            }
+            if let value = dict["AuthorizationRuleSubjectType"] as? String {
+                self.authorizationRuleSubjectType = value
             }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
@@ -38327,6 +38367,8 @@ public class ListApplicationTokensResponse : Tea.TeaModel {
 public class ListApplicationsRequest : Tea.TeaModel {
     public var applicationCreationType: String?
 
+    public var applicationIdentityType: String?
+
     public var applicationIds: [String]?
 
     public var applicationName: String?
@@ -38363,6 +38405,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.applicationCreationType != nil {
             map["ApplicationCreationType"] = self.applicationCreationType!
+        }
+        if self.applicationIdentityType != nil {
+            map["ApplicationIdentityType"] = self.applicationIdentityType!
         }
         if self.applicationIds != nil {
             map["ApplicationIds"] = self.applicationIds!
@@ -38402,6 +38447,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if let value = dict["ApplicationCreationType"] as? String {
             self.applicationCreationType = value
         }
+        if let value = dict["ApplicationIdentityType"] as? String {
+            self.applicationIdentityType = value
+        }
         if let value = dict["ApplicationIds"] as? [String] {
             self.applicationIds = value
         }
@@ -38440,6 +38488,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
         public var applicationCreationType: String?
 
         public var applicationId: String?
+
+        public var applicationIdentityType: String?
 
         public var applicationName: String?
 
@@ -38494,6 +38544,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
+            }
+            if self.applicationIdentityType != nil {
+                map["ApplicationIdentityType"] = self.applicationIdentityType!
             }
             if self.applicationName != nil {
                 map["ApplicationName"] = self.applicationName!
@@ -38556,6 +38609,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ApplicationId"] as? String {
                 self.applicationId = value
+            }
+            if let value = dict["ApplicationIdentityType"] as? String {
+                self.applicationIdentityType = value
             }
             if let value = dict["ApplicationName"] as? String {
                 self.applicationName = value
@@ -40774,6 +40830,12 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
 
         public var authorizationRuleName: String?
 
+        public var authorizationRuleSubjectId: String?
+
+        public var authorizationRuleSubjectScope: String?
+
+        public var authorizationRuleSubjectType: String?
+
         public var createTime: Int64?
 
         public var description_: String?
@@ -40812,6 +40874,15 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
             if self.authorizationRuleName != nil {
                 map["AuthorizationRuleName"] = self.authorizationRuleName!
             }
+            if self.authorizationRuleSubjectId != nil {
+                map["AuthorizationRuleSubjectId"] = self.authorizationRuleSubjectId!
+            }
+            if self.authorizationRuleSubjectScope != nil {
+                map["AuthorizationRuleSubjectScope"] = self.authorizationRuleSubjectScope!
+            }
+            if self.authorizationRuleSubjectType != nil {
+                map["AuthorizationRuleSubjectType"] = self.authorizationRuleSubjectType!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -40846,6 +40917,15 @@ public class ListAuthorizationRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthorizationRuleName"] as? String {
                 self.authorizationRuleName = value
+            }
+            if let value = dict["AuthorizationRuleSubjectId"] as? String {
+                self.authorizationRuleSubjectId = value
+            }
+            if let value = dict["AuthorizationRuleSubjectScope"] as? String {
+                self.authorizationRuleSubjectScope = value
+            }
+            if let value = dict["AuthorizationRuleSubjectType"] as? String {
+                self.authorizationRuleSubjectType = value
             }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
@@ -48669,6 +48749,8 @@ public class ListGroupsForResourceServerRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceServerScopeId: String?
+
     public override init() {
         super.init()
     }
@@ -48702,6 +48784,9 @@ public class ListGroupsForResourceServerRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceServerScopeId != nil {
+            map["ResourceServerScopeId"] = self.resourceServerScopeId!
+        }
         return map
     }
 
@@ -48731,6 +48816,9 @@ public class ListGroupsForResourceServerRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["ResourceServerScopeId"] as? String {
+            self.resourceServerScopeId = value
         }
     }
 }
@@ -51951,6 +52039,8 @@ public class ListOrganizationalUnitsForResourceServerRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceServerScopeId: String?
+
     public override init() {
         super.init()
     }
@@ -51984,6 +52074,9 @@ public class ListOrganizationalUnitsForResourceServerRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceServerScopeId != nil {
+            map["ResourceServerScopeId"] = self.resourceServerScopeId!
+        }
         return map
     }
 
@@ -52013,6 +52106,9 @@ public class ListOrganizationalUnitsForResourceServerRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["ResourceServerScopeId"] as? String {
+            self.resourceServerScopeId = value
         }
     }
 }
@@ -56551,6 +56647,8 @@ public class ListUsersForResourceServerRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceServerScopeId: String?
+
     public override init() {
         super.init()
     }
@@ -56584,6 +56682,9 @@ public class ListUsersForResourceServerRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceServerScopeId != nil {
+            map["ResourceServerScopeId"] = self.resourceServerScopeId!
+        }
         return map
     }
 
@@ -56613,6 +56714,9 @@ public class ListUsersForResourceServerRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["ResourceServerScopeId"] as? String {
+            self.resourceServerScopeId = value
         }
     }
 }
