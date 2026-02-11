@@ -3713,6 +3713,54 @@ public class HttpApiDeployConfig : Tea.TeaModel {
         }
     }
     public class ServiceConfigs : Tea.TeaModel {
+        public class ObservabilityRouteConfig : Tea.TeaModel {
+            public var mode: String?
+
+            public var queueSize: Int32?
+
+            public var rateLimit: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mode != nil {
+                    map["mode"] = self.mode!
+                }
+                if self.queueSize != nil {
+                    map["queueSize"] = self.queueSize!
+                }
+                if self.rateLimit != nil {
+                    map["rateLimit"] = self.rateLimit!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["queueSize"] as? Int32 {
+                    self.queueSize = value
+                }
+                if let value = dict["rateLimit"] as? Double {
+                    self.rateLimit = value
+                }
+            }
+        }
+        public var gatewayServiceId: String?
+
         public var intentCode: String?
 
         public var match: HttpApiBackendMatchConditions?
@@ -3721,7 +3769,19 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public var modelNamePattern: String?
 
+        public var multiServiceRouteStrategy: String?
+
+        public var name: String?
+
+        public var observabilityRouteConfig: HttpApiDeployConfig.ServiceConfigs.ObservabilityRouteConfig?
+
+        public var port: Int32?
+
+        public var protocol_: String?
+
         public var serviceId: String?
+
+        public var version: String?
 
         public var weight: Int64?
 
@@ -3736,10 +3796,14 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.match?.validate()
+            try self.observabilityRouteConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.gatewayServiceId != nil {
+                map["gatewayServiceId"] = self.gatewayServiceId!
+            }
             if self.intentCode != nil {
                 map["intentCode"] = self.intentCode!
             }
@@ -3752,8 +3816,26 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             if self.modelNamePattern != nil {
                 map["modelNamePattern"] = self.modelNamePattern!
             }
+            if self.multiServiceRouteStrategy != nil {
+                map["multiServiceRouteStrategy"] = self.multiServiceRouteStrategy!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.observabilityRouteConfig != nil {
+                map["observabilityRouteConfig"] = self.observabilityRouteConfig?.toMap()
+            }
+            if self.port != nil {
+                map["port"] = self.port!
+            }
+            if self.protocol_ != nil {
+                map["protocol"] = self.protocol_!
+            }
             if self.serviceId != nil {
                 map["serviceId"] = self.serviceId!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
             }
             if self.weight != nil {
                 map["weight"] = self.weight!
@@ -3763,6 +3845,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["gatewayServiceId"] as? String {
+                self.gatewayServiceId = value
+            }
             if let value = dict["intentCode"] as? String {
                 self.intentCode = value
             }
@@ -3777,8 +3862,28 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             if let value = dict["modelNamePattern"] as? String {
                 self.modelNamePattern = value
             }
+            if let value = dict["multiServiceRouteStrategy"] as? String {
+                self.multiServiceRouteStrategy = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["observabilityRouteConfig"] as? [String: Any?] {
+                var model = HttpApiDeployConfig.ServiceConfigs.ObservabilityRouteConfig()
+                model.fromMap(value)
+                self.observabilityRouteConfig = model
+            }
+            if let value = dict["port"] as? Int32 {
+                self.port = value
+            }
+            if let value = dict["protocol"] as? String {
+                self.protocol_ = value
+            }
             if let value = dict["serviceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["version"] as? String {
+                self.version = value
             }
             if let value = dict["weight"] as? Int64 {
                 self.weight = value
@@ -13513,9 +13618,13 @@ public class CreateHttpApiRequest : Tea.TeaModel {
 
     public var basePath: String?
 
+    public var belongGatewayId: String?
+
     public var deployConfigs: [HttpApiDeployConfig]?
 
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var enableAuth: Bool?
 
@@ -13532,6 +13641,8 @@ public class CreateHttpApiRequest : Tea.TeaModel {
     public var removeBasePathOnForward: Bool?
 
     public var resourceGroupId: String?
+
+    public var strategy: String?
 
     public var type: String?
 
@@ -13566,6 +13677,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         if self.basePath != nil {
             map["basePath"] = self.basePath!
         }
+        if self.belongGatewayId != nil {
+            map["belongGatewayId"] = self.belongGatewayId!
+        }
         if self.deployConfigs != nil {
             var tmp : [Any] = []
             for k in self.deployConfigs! {
@@ -13575,6 +13689,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
         }
         if self.enableAuth != nil {
             map["enableAuth"] = self.enableAuth!
@@ -13599,6 +13716,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.strategy != nil {
+            map["strategy"] = self.strategy!
         }
         if self.type != nil {
             map["type"] = self.type!
@@ -13625,6 +13745,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         if let value = dict["basePath"] as? String {
             self.basePath = value
         }
+        if let value = dict["belongGatewayId"] as? String {
+            self.belongGatewayId = value
+        }
         if let value = dict["deployConfigs"] as? [Any?] {
             var tmp : [HttpApiDeployConfig] = []
             for v in value {
@@ -13640,6 +13763,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["dryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["enableAuth"] as? Bool {
             self.enableAuth = value
@@ -13666,6 +13792,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["strategy"] as? String {
+            self.strategy = value
         }
         if let value = dict["type"] as? String {
             self.type = value
