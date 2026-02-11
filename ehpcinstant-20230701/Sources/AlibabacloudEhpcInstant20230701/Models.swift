@@ -1482,6 +1482,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
                     public var image: String?
 
+                    public var imageRegistryOptions: String?
+
                     public var workingDir: String?
 
                     public override init() {
@@ -1517,6 +1519,9 @@ public class CreateJobRequest : Tea.TeaModel {
                         if self.image != nil {
                             map["Image"] = self.image!
                         }
+                        if self.imageRegistryOptions != nil {
+                            map["ImageRegistryOptions"] = self.imageRegistryOptions!
+                        }
                         if self.workingDir != nil {
                             map["WorkingDir"] = self.workingDir!
                         }
@@ -1549,6 +1554,9 @@ public class CreateJobRequest : Tea.TeaModel {
                         }
                         if let value = dict["Image"] as? String {
                             self.image = value
+                        }
+                        if let value = dict["ImageRegistryOptions"] as? String {
+                            self.imageRegistryOptions = value
                         }
                         if let value = dict["WorkingDir"] as? String {
                             self.workingDir = value
