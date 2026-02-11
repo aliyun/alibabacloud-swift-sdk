@@ -4074,6 +4074,8 @@ public class GetCreditInfoResponseBody : Tea.TeaModel {
 
         public var outstandingBalance: String?
 
+        public var PAYGFreezeStatus: String?
+
         public var zeroCreditShutdownPolicy: String?
 
         public var newBuyStatus: String?
@@ -4110,6 +4112,9 @@ public class GetCreditInfoResponseBody : Tea.TeaModel {
             if self.outstandingBalance != nil {
                 map["OutstandingBalance"] = self.outstandingBalance!
             }
+            if self.PAYGFreezeStatus != nil {
+                map["PAYGFreezeStatus"] = self.PAYGFreezeStatus!
+            }
             if self.zeroCreditShutdownPolicy != nil {
                 map["ZeroCreditShutdownPolicy"] = self.zeroCreditShutdownPolicy!
             }
@@ -4138,6 +4143,9 @@ public class GetCreditInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["OutstandingBalance"] as? String {
                 self.outstandingBalance = value
+            }
+            if let value = dict["PAYGFreezeStatus"] as? String {
+                self.PAYGFreezeStatus = value
             }
             if let value = dict["ZeroCreditShutdownPolicy"] as? String {
                 self.zeroCreditShutdownPolicy = value

@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAgency20221216` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/agency-20221216" "1.10.1"
+github "alibabacloud-sdk-swift/agency-20221216" "1.10.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAgency20221216` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/agency-20221216.git", from: "1.10.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/agency-20221216.git", from: "1.10.2")
 ]
 ```
 
