@@ -1520,6 +1520,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             body["BizRegionId"] = request.bizRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            body["BizType"] = request.bizType!;
+        }
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["ChargeType"] = request.chargeType ?? "";
         }
@@ -1535,11 +1538,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             body["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serverInstanceType)) {
             body["ServerInstanceType"] = request.serverInstanceType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.users)) {
+            bodyFlat["Users"] = request.users ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.virtualNodePoolId)) {
             body["VirtualNodePoolId"] = request.virtualNodePoolId ?? "";
@@ -1918,6 +1927,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.password)) {
             body["Password"] = request.password ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
             body["WuyingServerId"] = request.wuyingServerId ?? "";
         }
@@ -2095,6 +2107,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func restartWuyingServerWithOptions(_ request: RestartWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartWuyingServerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
+        }
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.wuyingServerIdList)) {
             bodyFlat["WuyingServerIdList"] = request.wuyingServerIdList ?? [];
@@ -2174,6 +2189,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startWuyingServerWithOptions(_ request: StartWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartWuyingServerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
+        }
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.wuyingServerIdList)) {
             bodyFlat["WuyingServerIdList"] = request.wuyingServerIdList ?? [];
@@ -2209,6 +2227,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.force)) {
             body["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
         }
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.wuyingServerIdList)) {

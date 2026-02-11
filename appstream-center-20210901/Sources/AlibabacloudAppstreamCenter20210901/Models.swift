@@ -8611,6 +8611,84 @@ public class ListImageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SnapshotList : Tea.TeaModel {
+            public var bindType: String?
+
+            public var diskCategory: String?
+
+            public var diskSubType: String?
+
+            public var diskType: String?
+
+            public var size: Int32?
+
+            public var snapshotId: String?
+
+            public var versionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bindType != nil {
+                    map["BindType"] = self.bindType!
+                }
+                if self.diskCategory != nil {
+                    map["DiskCategory"] = self.diskCategory!
+                }
+                if self.diskSubType != nil {
+                    map["DiskSubType"] = self.diskSubType!
+                }
+                if self.diskType != nil {
+                    map["DiskType"] = self.diskType!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.snapshotId != nil {
+                    map["SnapshotId"] = self.snapshotId!
+                }
+                if self.versionId != nil {
+                    map["VersionId"] = self.versionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BindType"] as? String {
+                    self.bindType = value
+                }
+                if let value = dict["DiskCategory"] as? String {
+                    self.diskCategory = value
+                }
+                if let value = dict["DiskSubType"] as? String {
+                    self.diskSubType = value
+                }
+                if let value = dict["DiskType"] as? String {
+                    self.diskType = value
+                }
+                if let value = dict["Size"] as? Int32 {
+                    self.size = value
+                }
+                if let value = dict["SnapshotId"] as? String {
+                    self.snapshotId = value
+                }
+                if let value = dict["VersionId"] as? String {
+                    self.versionId = value
+                }
+            }
+        }
         public class TagList : Tea.TeaModel {
             public var key: String?
 
@@ -8726,6 +8804,8 @@ public class ListImageResponseBody : Tea.TeaModel {
         public var scene: String?
 
         public var sessionType: String?
+
+        public var snapshotList: [ListImageResponseBody.Data.SnapshotList]?
 
         public var status: String?
 
@@ -8881,6 +8961,13 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
+            }
+            if self.snapshotList != nil {
+                var tmp : [Any] = []
+                for k in self.snapshotList! {
+                    tmp.append(k.toMap())
+                }
+                map["SnapshotList"] = tmp
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -9051,6 +9138,19 @@ public class ListImageResponseBody : Tea.TeaModel {
             }
             if let value = dict["SessionType"] as? String {
                 self.sessionType = value
+            }
+            if let value = dict["SnapshotList"] as? [Any?] {
+                var tmp : [ListImageResponseBody.Data.SnapshotList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListImageResponseBody.Data.SnapshotList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.snapshotList = tmp
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -10905,6 +11005,8 @@ public class ListWuyingServerRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var bizType: Int32?
+
     public var chargeType: String?
 
     public var imageId: String?
@@ -10915,9 +11017,13 @@ public class ListWuyingServerRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var productType: String?
+
     public var serverInstanceType: String?
 
     public var status: String?
+
+    public var users: [String]?
 
     public var virtualNodePoolId: String?
 
@@ -10945,6 +11051,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
@@ -10960,11 +11069,17 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.serverInstanceType != nil {
             map["ServerInstanceType"] = self.serverInstanceType!
         }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.users != nil {
+            map["Users"] = self.users!
         }
         if self.virtualNodePoolId != nil {
             map["VirtualNodePoolId"] = self.virtualNodePoolId!
@@ -10986,6 +11101,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
         }
+        if let value = dict["BizType"] as? Int32 {
+            self.bizType = value
+        }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
         }
@@ -11001,11 +11119,17 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
         if let value = dict["ServerInstanceType"] as? String {
             self.serverInstanceType = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Users"] as? [String] {
+            self.users = value
         }
         if let value = dict["VirtualNodePoolId"] as? String {
             self.virtualNodePoolId = value
@@ -11023,6 +11147,10 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
     public class WuyingServerList : Tea.TeaModel {
         public class DataDisk : Tea.TeaModel {
             public var dataDiskCategory: String?
+
+            public var dataDiskId: String?
+
+            public var dataDiskNo: String?
 
             public var dataDiskPerformanceLevel: String?
 
@@ -11045,6 +11173,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 if self.dataDiskCategory != nil {
                     map["DataDiskCategory"] = self.dataDiskCategory!
                 }
+                if self.dataDiskId != nil {
+                    map["DataDiskId"] = self.dataDiskId!
+                }
+                if self.dataDiskNo != nil {
+                    map["DataDiskNo"] = self.dataDiskNo!
+                }
                 if self.dataDiskPerformanceLevel != nil {
                     map["DataDiskPerformanceLevel"] = self.dataDiskPerformanceLevel!
                 }
@@ -11058,6 +11192,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["DataDiskCategory"] as? String {
                     self.dataDiskCategory = value
+                }
+                if let value = dict["DataDiskId"] as? String {
+                    self.dataDiskId = value
+                }
+                if let value = dict["DataDiskNo"] as? String {
+                    self.dataDiskNo = value
                 }
                 if let value = dict["DataDiskPerformanceLevel"] as? String {
                     self.dataDiskPerformanceLevel = value
@@ -11112,6 +11252,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
             public var gpuMemory: Int32?
 
+            public var gpuSpec: String?
+
             public var memory: Int32?
 
             public var serverInstanceType: String?
@@ -11139,6 +11281,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 if self.gpuMemory != nil {
                     map["GpuMemory"] = self.gpuMemory!
                 }
+                if self.gpuSpec != nil {
+                    map["GpuSpec"] = self.gpuSpec!
+                }
                 if self.memory != nil {
                     map["Memory"] = self.memory!
                 }
@@ -11159,6 +11304,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 if let value = dict["GpuMemory"] as? Int32 {
                     self.gpuMemory = value
                 }
+                if let value = dict["GpuSpec"] as? String {
+                    self.gpuSpec = value
+                }
                 if let value = dict["Memory"] as? Int32 {
                     self.memory = value
                 }
@@ -11167,7 +11315,49 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Sessions : Tea.TeaModel {
+            public var resourceSessionStartTime: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceSessionStartTime != nil {
+                    map["ResourceSessionStartTime"] = self.resourceSessionStartTime!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceSessionStartTime"] as? String {
+                    self.resourceSessionStartTime = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
         public var addVirtualNodePoolStatus: String?
+
+        public var aliUid: Int64?
+
+        public var bandwidth: Int32?
 
         public var bizRegionId: String?
 
@@ -11178,6 +11368,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var dataDisk: [ListWuyingServerResponseBody.WuyingServerList.DataDisk]?
 
         public var expiredTime: String?
+
+        public var fotaVersion: String?
 
         public var imageId: String?
 
@@ -11197,9 +11389,15 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var osType: String?
 
+        public var policyGroupIdList: [String]?
+
+        public var resourceSessionStatus: String?
+
         public var securityGroupIds: [String]?
 
         public var serverInstanceTypeInfo: ListWuyingServerResponseBody.WuyingServerList.ServerInstanceTypeInfo?
+
+        public var sessions: [ListWuyingServerResponseBody.WuyingServerList.Sessions]?
 
         public var status: String?
 
@@ -11207,9 +11405,15 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var systemDiskCategory: String?
 
+        public var systemDiskId: String?
+
         public var systemDiskPerformanceLevel: String?
 
         public var systemDiskSize: Int32?
+
+        public var timerGroupId: String?
+
+        public var users: [String]?
 
         public var virtualKubeletIp: String?
 
@@ -11237,6 +11441,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.addVirtualNodePoolStatus != nil {
                 map["AddVirtualNodePoolStatus"] = self.addVirtualNodePoolStatus!
             }
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
             if self.bizRegionId != nil {
                 map["BizRegionId"] = self.bizRegionId!
             }
@@ -11255,6 +11465,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.fotaVersion != nil {
+                map["FotaVersion"] = self.fotaVersion!
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -11287,11 +11500,24 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.osType != nil {
                 map["OsType"] = self.osType!
             }
+            if self.policyGroupIdList != nil {
+                map["PolicyGroupIdList"] = self.policyGroupIdList!
+            }
+            if self.resourceSessionStatus != nil {
+                map["ResourceSessionStatus"] = self.resourceSessionStatus!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
             if self.serverInstanceTypeInfo != nil {
                 map["ServerInstanceTypeInfo"] = self.serverInstanceTypeInfo?.toMap()
+            }
+            if self.sessions != nil {
+                var tmp : [Any] = []
+                for k in self.sessions! {
+                    tmp.append(k.toMap())
+                }
+                map["Sessions"] = tmp
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -11302,11 +11528,20 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.systemDiskCategory != nil {
                 map["SystemDiskCategory"] = self.systemDiskCategory!
             }
+            if self.systemDiskId != nil {
+                map["SystemDiskId"] = self.systemDiskId!
+            }
             if self.systemDiskPerformanceLevel != nil {
                 map["SystemDiskPerformanceLevel"] = self.systemDiskPerformanceLevel!
             }
             if self.systemDiskSize != nil {
                 map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            if self.timerGroupId != nil {
+                map["TimerGroupId"] = self.timerGroupId!
+            }
+            if self.users != nil {
+                map["Users"] = self.users!
             }
             if self.virtualKubeletIp != nil {
                 map["VirtualKubeletIp"] = self.virtualKubeletIp!
@@ -11327,6 +11562,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AddVirtualNodePoolStatus"] as? String {
                 self.addVirtualNodePoolStatus = value
+            }
+            if let value = dict["AliUid"] as? Int64 {
+                self.aliUid = value
+            }
+            if let value = dict["Bandwidth"] as? Int32 {
+                self.bandwidth = value
             }
             if let value = dict["BizRegionId"] as? String {
                 self.bizRegionId = value
@@ -11352,6 +11593,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
+            }
+            if let value = dict["FotaVersion"] as? String {
+                self.fotaVersion = value
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
@@ -11390,6 +11634,12 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if let value = dict["OsType"] as? String {
                 self.osType = value
             }
+            if let value = dict["PolicyGroupIdList"] as? [String] {
+                self.policyGroupIdList = value
+            }
+            if let value = dict["ResourceSessionStatus"] as? String {
+                self.resourceSessionStatus = value
+            }
             if let value = dict["SecurityGroupIds"] as? [String] {
                 self.securityGroupIds = value
             }
@@ -11397,6 +11647,19 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 var model = ListWuyingServerResponseBody.WuyingServerList.ServerInstanceTypeInfo()
                 model.fromMap(value)
                 self.serverInstanceTypeInfo = model
+            }
+            if let value = dict["Sessions"] as? [Any?] {
+                var tmp : [ListWuyingServerResponseBody.WuyingServerList.Sessions] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListWuyingServerResponseBody.WuyingServerList.Sessions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sessions = tmp
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -11407,11 +11670,20 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if let value = dict["SystemDiskCategory"] as? String {
                 self.systemDiskCategory = value
             }
+            if let value = dict["SystemDiskId"] as? String {
+                self.systemDiskId = value
+            }
             if let value = dict["SystemDiskPerformanceLevel"] as? String {
                 self.systemDiskPerformanceLevel = value
             }
             if let value = dict["SystemDiskSize"] as? Int32 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["TimerGroupId"] as? String {
+                self.timerGroupId = value
+            }
+            if let value = dict["Users"] as? [String] {
+                self.users = value
             }
             if let value = dict["VirtualKubeletIp"] as? String {
                 self.virtualKubeletIp = value
@@ -14167,6 +14439,8 @@ public class ModifyTenantConfigResponse : Tea.TeaModel {
 public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
     public var password: String?
 
+    public var productType: String?
+
     public var wuyingServerId: String?
 
     public var wuyingServerName: String?
@@ -14188,6 +14462,9 @@ public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.wuyingServerId != nil {
             map["WuyingServerId"] = self.wuyingServerId!
         }
@@ -14201,6 +14478,9 @@ public class ModifyWuyingServerAttributeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Password"] as? String {
             self.password = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
         }
         if let value = dict["WuyingServerId"] as? String {
             self.wuyingServerId = value
@@ -14884,6 +15164,8 @@ public class RenewWuyingServerResponse : Tea.TeaModel {
 }
 
 public class RestartWuyingServerRequest : Tea.TeaModel {
+    public var productType: String?
+
     public var wuyingServerIdList: [String]?
 
     public override init() {
@@ -14900,6 +15182,9 @@ public class RestartWuyingServerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.wuyingServerIdList != nil {
             map["WuyingServerIdList"] = self.wuyingServerIdList!
         }
@@ -14908,6 +15193,9 @@ public class RestartWuyingServerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
         if let value = dict["WuyingServerIdList"] as? [String] {
             self.wuyingServerIdList = value
         }
@@ -15180,6 +15468,8 @@ public class StartTaskForDistributeImageResponse : Tea.TeaModel {
 }
 
 public class StartWuyingServerRequest : Tea.TeaModel {
+    public var productType: String?
+
     public var wuyingServerIdList: [String]?
 
     public override init() {
@@ -15196,6 +15486,9 @@ public class StartWuyingServerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.wuyingServerIdList != nil {
             map["WuyingServerIdList"] = self.wuyingServerIdList!
         }
@@ -15204,6 +15497,9 @@ public class StartWuyingServerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
         if let value = dict["WuyingServerIdList"] as? [String] {
             self.wuyingServerIdList = value
         }
@@ -15294,6 +15590,8 @@ public class StartWuyingServerResponse : Tea.TeaModel {
 public class StopWuyingServerRequest : Tea.TeaModel {
     public var force: Bool?
 
+    public var productType: String?
+
     public var wuyingServerIdList: [String]?
 
     public override init() {
@@ -15313,6 +15611,9 @@ public class StopWuyingServerRequest : Tea.TeaModel {
         if self.force != nil {
             map["Force"] = self.force!
         }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.wuyingServerIdList != nil {
             map["WuyingServerIdList"] = self.wuyingServerIdList!
         }
@@ -15323,6 +15624,9 @@ public class StopWuyingServerRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Force"] as? Bool {
             self.force = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
         }
         if let value = dict["WuyingServerIdList"] as? [String] {
             self.wuyingServerIdList = value
