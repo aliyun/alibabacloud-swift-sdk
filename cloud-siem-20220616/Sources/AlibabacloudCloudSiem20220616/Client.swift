@@ -758,6 +758,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.alertName)) {
             body["AlertName"] = request.alertName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.alertStatus)) {
+            body["AlertStatus"] = request.alertStatus ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.alertTitle)) {
             body["AlertTitle"] = request.alertTitle ?? "";
         }
@@ -1137,49 +1140,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAutomateResponseConfigFeature(_ request: DescribeAutomateResponseConfigFeatureRequest) async throws -> DescribeAutomateResponseConfigFeatureResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAutomateResponseConfigFeatureWithOptions(request as! DescribeAutomateResponseConfigFeatureRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeAutomateResponseConfigPlayBooksWithOptions(_ request: DescribeAutomateResponseConfigPlayBooksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAutomateResponseConfigPlayBooksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.autoResponseType)) {
-            body["AutoResponseType"] = request.autoResponseType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.entityType)) {
-            body["EntityType"] = request.entityType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            body["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.roleFor)) {
-            body["RoleFor"] = request.roleFor!;
-        }
-        if (!TeaUtils.Client.isUnset(request.roleType)) {
-            body["RoleType"] = request.roleType!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeAutomateResponseConfigPlayBooks",
-            "version": "2022-06-16",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeAutomateResponseConfigPlayBooksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeAutomateResponseConfigPlayBooks(_ request: DescribeAutomateResponseConfigPlayBooksRequest) async throws -> DescribeAutomateResponseConfigPlayBooksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeAutomateResponseConfigPlayBooksWithOptions(request as! DescribeAutomateResponseConfigPlayBooksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3073,6 +3033,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             body["StartTime"] = request.startTime!;
         }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -3112,6 +3075,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.entityUuid)) {
             body["EntityUuid"] = request.entityUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityUuids)) {
+            body["EntityUuids"] = request.entityUuids ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.incidentUuid)) {
             body["IncidentUuid"] = request.incidentUuid ?? "";
@@ -3673,11 +3639,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func postEventDisposeAndWhiteruleListWithOptions(_ request: PostEventDisposeAndWhiteruleListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostEventDisposeAndWhiteruleListResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disposeStrategyIds)) {
+            body["DisposeStrategyIds"] = request.disposeStrategyIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.eventDispose)) {
             body["EventDispose"] = request.eventDispose ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.incidentUuid)) {
             body["IncidentUuid"] = request.incidentUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            body["Owner"] = request.owner ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.receiverInfo)) {
             body["ReceiverInfo"] = request.receiverInfo ?? "";
@@ -3687,6 +3659,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseSource)) {
+            body["ResponseSource"] = request.responseSource ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.roleFor)) {
             body["RoleFor"] = request.roleFor!;
