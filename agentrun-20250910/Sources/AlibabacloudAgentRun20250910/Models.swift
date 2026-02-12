@@ -3554,6 +3554,10 @@ public class CreateMemoryCollectionInput : Tea.TeaModel {
 
     public var embedderConfig: EmbedderConfig?
 
+    public var enableConversationHistory: Bool?
+
+    public var enableConversationState: Bool?
+
     public var executionRoleArn: String?
 
     public var llmConfig: LLMConfig?
@@ -3590,6 +3594,12 @@ public class CreateMemoryCollectionInput : Tea.TeaModel {
         if self.embedderConfig != nil {
             map["embedderConfig"] = self.embedderConfig?.toMap()
         }
+        if self.enableConversationHistory != nil {
+            map["enableConversationHistory"] = self.enableConversationHistory!
+        }
+        if self.enableConversationState != nil {
+            map["enableConversationState"] = self.enableConversationState!
+        }
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
@@ -3620,6 +3630,12 @@ public class CreateMemoryCollectionInput : Tea.TeaModel {
             var model = EmbedderConfig()
             model.fromMap(value)
             self.embedderConfig = model
+        }
+        if let value = dict["enableConversationHistory"] as? Bool {
+            self.enableConversationHistory = value
+        }
+        if let value = dict["enableConversationState"] as? Bool {
+            self.enableConversationState = value
         }
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
@@ -9601,6 +9617,10 @@ public class MemoryCollection : Tea.TeaModel {
 
     public var embedderConfig: EmbedderConfig?
 
+    public var enableConversationHistory: Bool?
+
+    public var enableConversationState: Bool?
+
     public var executionRoleArn: String?
 
     public var lastUpdatedAt: String?
@@ -9642,6 +9662,12 @@ public class MemoryCollection : Tea.TeaModel {
         if self.embedderConfig != nil {
             map["embedderConfig"] = self.embedderConfig?.toMap()
         }
+        if self.enableConversationHistory != nil {
+            map["enableConversationHistory"] = self.enableConversationHistory!
+        }
+        if self.enableConversationState != nil {
+            map["enableConversationState"] = self.enableConversationState!
+        }
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
@@ -9678,6 +9704,12 @@ public class MemoryCollection : Tea.TeaModel {
             var model = EmbedderConfig()
             model.fromMap(value)
             self.embedderConfig = model
+        }
+        if let value = dict["enableConversationHistory"] as? Bool {
+            self.enableConversationHistory = value
+        }
+        if let value = dict["enableConversationState"] as? Bool {
+            self.enableConversationState = value
         }
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
@@ -14340,6 +14372,10 @@ public class UpdateMemoryCollectionInput : Tea.TeaModel {
 
     public var embedderConfig: EmbedderConfig?
 
+    public var enableConversationHistory: Bool?
+
+    public var enableConversationState: Bool?
+
     public var executionRoleArn: String?
 
     public var llmConfig: LLMConfig?
@@ -14372,6 +14408,12 @@ public class UpdateMemoryCollectionInput : Tea.TeaModel {
         if self.embedderConfig != nil {
             map["embedderConfig"] = self.embedderConfig?.toMap()
         }
+        if self.enableConversationHistory != nil {
+            map["enableConversationHistory"] = self.enableConversationHistory!
+        }
+        if self.enableConversationState != nil {
+            map["enableConversationState"] = self.enableConversationState!
+        }
         if self.executionRoleArn != nil {
             map["executionRoleArn"] = self.executionRoleArn!
         }
@@ -14396,6 +14438,12 @@ public class UpdateMemoryCollectionInput : Tea.TeaModel {
             var model = EmbedderConfig()
             model.fromMap(value)
             self.embedderConfig = model
+        }
+        if let value = dict["enableConversationHistory"] as? Bool {
+            self.enableConversationHistory = value
+        }
+        if let value = dict["enableConversationState"] as? Bool {
+            self.enableConversationState = value
         }
         if let value = dict["executionRoleArn"] as? String {
             self.executionRoleArn = value
