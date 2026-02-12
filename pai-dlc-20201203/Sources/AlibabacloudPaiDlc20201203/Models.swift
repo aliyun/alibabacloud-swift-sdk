@@ -2533,6 +2533,10 @@ public class JobItem : Tea.TeaModel {
 
     public var systemEnvs: [String: String]?
 
+    public var templateId: String?
+
+    public var templateName: String?
+
     public var tenantId: String?
 
     public var thirdpartyLibDir: String?
@@ -2730,6 +2734,12 @@ public class JobItem : Tea.TeaModel {
         }
         if self.systemEnvs != nil {
             map["SystemEnvs"] = self.systemEnvs!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
@@ -2964,6 +2974,12 @@ public class JobItem : Tea.TeaModel {
         }
         if let value = dict["SystemEnvs"] as? [String: String] {
             self.systemEnvs = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
@@ -3519,6 +3535,69 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["UseSpotInstance"] as? Bool {
             self.useSpotInstance = value
+        }
+    }
+}
+
+public class JobTemplateVersionDetail : Tea.TeaModel {
+    public var constraints: [String: String]?
+
+    public var content: String?
+
+    public var createdBy: String?
+
+    public var gmtCreated: String?
+
+    public var version: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.constraints != nil {
+            map["Constraints"] = self.constraints!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.createdBy != nil {
+            map["CreatedBy"] = self.createdBy!
+        }
+        if self.gmtCreated != nil {
+            map["GmtCreated"] = self.gmtCreated!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Constraints"] as? [String: String] {
+            self.constraints = value
+        }
+        if let value = dict["Content"] as? String {
+            self.content = value
+        }
+        if let value = dict["CreatedBy"] as? String {
+            self.createdBy = value
+        }
+        if let value = dict["GmtCreated"] as? String {
+            self.gmtCreated = value
+        }
+        if let value = dict["Version"] as? Int32 {
+            self.version = value
         }
     }
 }
@@ -6293,6 +6372,10 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var successPolicy: String?
 
+    public var templateId: String?
+
+    public var templateVersion: Int32?
+
     public var thirdpartyLibDir: String?
 
     public var thirdpartyLibs: [String]?
@@ -6384,6 +6467,12 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.successPolicy != nil {
             map["SuccessPolicy"] = self.successPolicy!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateVersion != nil {
+            map["TemplateVersion"] = self.templateVersion!
         }
         if self.thirdpartyLibDir != nil {
             map["ThirdpartyLibDir"] = self.thirdpartyLibDir!
@@ -6493,6 +6582,12 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["SuccessPolicy"] as? String {
             self.successPolicy = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateVersion"] as? Int32 {
+            self.templateVersion = value
         }
         if let value = dict["ThirdpartyLibDir"] as? String {
             self.thirdpartyLibDir = value
@@ -10362,6 +10457,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var tags: [String: String]?
 
+    public var templateId: String?
+
     public var timeRangeField: String?
 
     public var userCommandSearch: String?
@@ -10473,6 +10570,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         if self.timeRangeField != nil {
             map["TimeRangeField"] = self.timeRangeField!
         }
@@ -10580,6 +10680,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if let value = dict["Tags"] as? [String: String] {
             self.tags = value
         }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
         if let value = dict["TimeRangeField"] as? String {
             self.timeRangeField = value
         }
@@ -10656,6 +10759,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var status: String?
 
     public var tagsShrink: String?
+
+    public var templateId: String?
 
     public var timeRangeField: String?
 
@@ -10768,6 +10873,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         if self.timeRangeField != nil {
             map["TimeRangeField"] = self.timeRangeField!
         }
@@ -10874,6 +10982,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
         }
         if let value = dict["TimeRangeField"] as? String {
             self.timeRangeField = value
