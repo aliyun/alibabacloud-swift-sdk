@@ -112,6 +112,206 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceAddWithOptions(_ request: AISearchResourceAddRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchResourceAddResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.data)) {
+            body["data"] = request.data!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AISearchResourceAdd",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiSearch/resource/add",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AISearchResourceAddResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceAdd(_ request: AISearchResourceAddRequest) async throws -> AISearchResourceAddResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aISearchResourceAddWithOptions(request as! AISearchResourceAddRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceDeleteWithOptions(_ request: AISearchResourceDeleteRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchResourceDeleteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["resourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AISearchResourceDelete",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiSearch/resource/delete",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AISearchResourceDeleteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceDelete(_ request: AISearchResourceDeleteRequest) async throws -> AISearchResourceDeleteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aISearchResourceDeleteWithOptions(request as! AISearchResourceDeleteRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceGetListWithOptions(_ tmpReq: AISearchResourceGetListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchResourceGetListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AISearchResourceGetListShrinkRequest = AISearchResourceGetListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceIds)) {
+            request.resourceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceIds, "resourceIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["currentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIdsShrink)) {
+            query["resourceIds"] = request.resourceIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AISearchResourceGetList",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiSearch/resource/list",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AISearchResourceGetListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceGetList(_ request: AISearchResourceGetListRequest) async throws -> AISearchResourceGetListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aISearchResourceGetListWithOptions(request as! AISearchResourceGetListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceUpdateWithOptions(_ request: AISearchResourceUpdateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchResourceUpdateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.data)) {
+            body["data"] = request.data!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            body["resourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AISearchResourceUpdate",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiSearch/resource/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AISearchResourceUpdateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchResourceUpdate(_ request: AISearchResourceUpdateRequest) async throws -> AISearchResourceUpdateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aISearchResourceUpdateWithOptions(request as! AISearchResourceUpdateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchStreamWithOptions(_ request: AISearchStreamRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.folderId)) {
+            body["folderId"] = request.folderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.message)) {
+            body["message"] = request.message ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.question)) {
+            body["question"] = request.question ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceTypeNeeded)) {
+            body["resourceTypeNeeded"] = request.resourceTypeNeeded ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AISearchStream",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiSearch/searchStream",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AISearchStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aISearchStream(_ request: AISearchStreamRequest) async throws -> AISearchStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aISearchStreamWithOptions(request as! AISearchStreamRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addFolderWithOptions(_ request: AddFolderRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddFolderResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
