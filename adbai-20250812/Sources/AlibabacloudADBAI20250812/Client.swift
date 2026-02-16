@@ -255,6 +255,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lockEmbodiedAIPlatformWithOptions(_ request: LockEmbodiedAIPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LockEmbodiedAIPlatformResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformName)) {
+            query["PlatformName"] = request.platformName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LockEmbodiedAIPlatform",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LockEmbodiedAIPlatformResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lockEmbodiedAIPlatform(_ request: LockEmbodiedAIPlatformRequest) async throws -> LockEmbodiedAIPlatformResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await lockEmbodiedAIPlatformWithOptions(request as! LockEmbodiedAIPlatformRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func resetEmbodiedAIPlatformPasswordWithOptions(_ request: ResetEmbodiedAIPlatformPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetEmbodiedAIPlatformPasswordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -292,5 +329,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetEmbodiedAIPlatformPassword(_ request: ResetEmbodiedAIPlatformPasswordRequest) async throws -> ResetEmbodiedAIPlatformPasswordResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await resetEmbodiedAIPlatformPasswordWithOptions(request as! ResetEmbodiedAIPlatformPasswordRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unlockEmbodiedAIPlatformWithOptions(_ request: UnlockEmbodiedAIPlatformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnlockEmbodiedAIPlatformResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformName)) {
+            query["PlatformName"] = request.platformName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnlockEmbodiedAIPlatform",
+            "version": "2025-08-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnlockEmbodiedAIPlatformResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unlockEmbodiedAIPlatform(_ request: UnlockEmbodiedAIPlatformRequest) async throws -> UnlockEmbodiedAIPlatformResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unlockEmbodiedAIPlatformWithOptions(request as! UnlockEmbodiedAIPlatformRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
