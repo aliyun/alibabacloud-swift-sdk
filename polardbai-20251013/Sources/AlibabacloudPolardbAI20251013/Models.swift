@@ -12,6 +12,8 @@ public class AddOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var ossUrl: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -35,6 +37,9 @@ public class AddOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.ossUrl != nil {
             map["OssUrl"] = self.ossUrl!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -48,6 +53,9 @@ public class AddOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["OssUrl"] as? String {
             self.ossUrl = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -174,6 +182,8 @@ public class ChatBIConfigCreateRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -200,6 +210,9 @@ public class ChatBIConfigCreateRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -216,6 +229,9 @@ public class ChatBIConfigCreateRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -342,6 +358,8 @@ public class ChatBIConfigDeleteRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -368,6 +386,9 @@ public class ChatBIConfigDeleteRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -384,6 +405,9 @@ public class ChatBIConfigDeleteRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -512,6 +536,8 @@ public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -541,6 +567,9 @@ public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -560,6 +589,9 @@ public class ChatBIConfigDeleteEntryRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -692,6 +724,8 @@ public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -727,6 +761,9 @@ public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -752,6 +789,9 @@ public class ChatBIConfigQueryEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -880,6 +920,8 @@ public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -909,6 +951,9 @@ public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -928,6 +973,9 @@ public class ChatBIConfigQueryTablesRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -1062,6 +1110,8 @@ public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
 
     public var queryFunction: String?
 
+    public var sourceRegionId: String?
+
     public var sqlCondition: String?
 
     public var sqlFunction: String?
@@ -1106,6 +1156,9 @@ public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
         if self.queryFunction != nil {
             map["QueryFunction"] = self.queryFunction!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.sqlCondition != nil {
             map["SqlCondition"] = self.sqlCondition!
         }
@@ -1143,6 +1196,9 @@ public class ChatBIConfigUpdateEntryRequest : Tea.TeaModel {
         }
         if let value = dict["QueryFunction"] as? String {
             self.queryFunction = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["SqlCondition"] as? String {
             self.sqlCondition = value
@@ -1276,6 +1332,8 @@ public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableType: String?
 
     public override init() {
@@ -1301,6 +1359,9 @@ public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableType != nil {
             map["TableType"] = self.tableType!
         }
@@ -1317,6 +1378,9 @@ public class ChatBIFileTemplateDownloadRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableType"] as? String {
             self.tableType = value
@@ -1446,6 +1510,8 @@ public class ChatBIFileUploadRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -1472,6 +1538,9 @@ public class ChatBIFileUploadRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -1488,6 +1557,9 @@ public class ChatBIFileUploadRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -1618,6 +1690,8 @@ public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public var tableType: String?
@@ -1654,6 +1728,9 @@ public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -1682,6 +1759,9 @@ public class ChatBIFileUploadCallbackRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -1814,6 +1894,8 @@ public class ChatBIPatternCreateRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableNameSuffix: String?
 
     public override init() {
@@ -1842,6 +1924,9 @@ public class ChatBIPatternCreateRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableNameSuffix != nil {
             map["TableNameSuffix"] = self.tableNameSuffix!
         }
@@ -1861,6 +1946,9 @@ public class ChatBIPatternCreateRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableNameSuffix"] as? String {
             self.tableNameSuffix = value
@@ -1990,6 +2078,8 @@ public class ChatBIPatternDeleteRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -2018,6 +2108,9 @@ public class ChatBIPatternDeleteRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -2037,6 +2130,9 @@ public class ChatBIPatternDeleteRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -2168,6 +2264,8 @@ public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -2199,6 +2297,9 @@ public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -2221,6 +2322,9 @@ public class ChatBIPatternDeleteEntryRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -2352,6 +2456,8 @@ public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
 
     public var patternTableName: String?
 
+    public var sourceRegionId: String?
+
     public var tableNameSuffix: String?
 
     public override init() {
@@ -2383,6 +2489,9 @@ public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
         if self.patternTableName != nil {
             map["PatternTableName"] = self.patternTableName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableNameSuffix != nil {
             map["TableNameSuffix"] = self.tableNameSuffix!
         }
@@ -2405,6 +2514,9 @@ public class ChatBIPatternIndexCreateRequest : Tea.TeaModel {
         }
         if let value = dict["PatternTableName"] as? String {
             self.patternTableName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableNameSuffix"] as? String {
             self.tableNameSuffix = value
@@ -2534,6 +2646,8 @@ public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -2562,6 +2676,9 @@ public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -2581,6 +2698,9 @@ public class ChatBIPatternIndexDeleteRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -2716,6 +2836,8 @@ public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -2751,6 +2873,9 @@ public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -2776,6 +2901,9 @@ public class ChatBIPatternIndexQueryTablesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -2908,6 +3036,8 @@ public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -2945,6 +3075,9 @@ public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -2973,6 +3106,9 @@ public class ChatBIPatternQueryEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -3108,6 +3244,8 @@ public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -3143,6 +3281,9 @@ public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -3168,6 +3309,9 @@ public class ChatBIPatternQueryTablesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -3304,6 +3448,8 @@ public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
 
     public var patternSql: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -3347,6 +3493,9 @@ public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
         if self.patternSql != nil {
             map["PatternSql"] = self.patternSql!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -3381,6 +3530,9 @@ public class ChatBIPatternUpdateEntryRequest : Tea.TeaModel {
         }
         if let value = dict["PatternSql"] as? String {
             self.patternSql = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -3570,6 +3722,8 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
 
     public var selectData: Bool?
 
+    public var sourceRegionId: String?
+
     public var thinkingMode: Bool?
 
     public override init() {
@@ -3620,6 +3774,9 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
         if self.selectData != nil {
             map["SelectData"] = self.selectData!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.thinkingMode != nil {
             map["ThinkingMode"] = self.thinkingMode!
         }
@@ -3663,6 +3820,9 @@ public class ChatBIPredictSseRequest : Tea.TeaModel {
         if let value = dict["SelectData"] as? Bool {
             self.selectData = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
         if let value = dict["ThinkingMode"] as? Bool {
             self.thinkingMode = value
         }
@@ -3691,6 +3851,8 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
     public var schemaIndexTableName: String?
 
     public var selectData: Bool?
+
+    public var sourceRegionId: String?
 
     public var thinkingMode: Bool?
 
@@ -3741,6 +3903,9 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
         if self.selectData != nil {
             map["SelectData"] = self.selectData!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.thinkingMode != nil {
             map["ThinkingMode"] = self.thinkingMode!
         }
@@ -3781,6 +3946,9 @@ public class ChatBIPredictSseShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SelectData"] as? Bool {
             self.selectData = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["ThinkingMode"] as? Bool {
             self.thinkingMode = value
@@ -3912,6 +4080,8 @@ public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableNameSuffix: String?
 
     public var tablesIncluded: String?
@@ -3947,6 +4117,9 @@ public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableNameSuffix != nil {
             map["TableNameSuffix"] = self.tableNameSuffix!
         }
@@ -3975,6 +4148,9 @@ public class ChatBISchemaIndexCreateRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableNameSuffix"] as? String {
             self.tableNameSuffix = value
@@ -4110,6 +4286,8 @@ public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public override init() {
@@ -4138,6 +4316,9 @@ public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -4157,6 +4338,9 @@ public class ChatBISchemaIndexDeleteRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -4292,6 +4476,8 @@ public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -4327,6 +4513,9 @@ public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -4352,6 +4541,9 @@ public class ChatBISchemaIndexQueryTablesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -4478,6 +4670,8 @@ public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var sourceRegionId: String?
+
     public var tableName: String?
 
     public var tableType: String?
@@ -4508,6 +4702,9 @@ public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -4530,6 +4727,9 @@ public class ChatBIUpdateTableValidationColumnsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TableName"] as? String {
             self.tableName = value
@@ -4660,6 +4860,8 @@ public class CreateMultimodalDatasetRequest : Tea.TeaModel {
 
     public var datasetName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -4683,6 +4885,9 @@ public class CreateMultimodalDatasetRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -4696,6 +4901,9 @@ public class CreateMultimodalDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -4822,6 +5030,8 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
 
     public var modelMode: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -4848,6 +5058,9 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
         if self.modelMode != nil {
             map["ModelMode"] = self.modelMode!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -4864,6 +5077,9 @@ public class CreateMultimodalDatasetEmbeddingRequest : Tea.TeaModel {
         }
         if let value = dict["ModelMode"] as? String {
             self.modelMode = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -4988,6 +5204,8 @@ public class CreateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var datasetName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -5011,6 +5229,9 @@ public class CreateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -5024,6 +5245,9 @@ public class CreateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -5148,6 +5372,8 @@ public class CreateMultimodalLabelStudioServiceRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var sourceRegionId: String?
+
     public var username: String?
 
     public override init() {
@@ -5173,6 +5399,9 @@ public class CreateMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -5190,6 +5419,9 @@ public class CreateMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         if let value = dict["Password"] as? String {
             self.password = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
         if let value = dict["Username"] as? String {
             self.username = value
         }
@@ -5202,6 +5434,8 @@ public class CreateMultimodalLabelStudioServiceShrinkRequest : Tea.TeaModel {
     public var datasetIdsShrink: String?
 
     public var password: String?
+
+    public var sourceRegionId: String?
 
     public var username: String?
 
@@ -5228,6 +5462,9 @@ public class CreateMultimodalLabelStudioServiceShrinkRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -5244,6 +5481,9 @@ public class CreateMultimodalLabelStudioServiceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Password"] as? String {
             self.password = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["Username"] as? String {
             self.username = value
@@ -5377,6 +5617,8 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
 
     public var searchModel: String?
 
+    public var sourceRegionId: String?
+
     public var topK: Int32?
 
     public override init() {
@@ -5411,6 +5653,9 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
         if self.searchModel != nil {
             map["SearchModel"] = self.searchModel!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -5437,6 +5682,9 @@ public class CreateMultimodalSearchTaskRequest : Tea.TeaModel {
         if let value = dict["SearchModel"] as? String {
             self.searchModel = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
         if let value = dict["TopK"] as? Int32 {
             self.topK = value
         }
@@ -5455,6 +5703,8 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
     public var query: String?
 
     public var searchModel: String?
+
+    public var sourceRegionId: String?
 
     public var topK: Int32?
 
@@ -5490,6 +5740,9 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         if self.searchModel != nil {
             map["SearchModel"] = self.searchModel!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -5515,6 +5768,9 @@ public class CreateMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SearchModel"] as? String {
             self.searchModel = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TopK"] as? Int32 {
             self.topK = value
@@ -5646,6 +5902,8 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetRequest : Tea.TeaMod
 
     public var resultMode: String?
 
+    public var sourceRegionId: String?
+
     public var taskId: String?
 
     public var topN: Int32?
@@ -5679,6 +5937,9 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetRequest : Tea.TeaMod
         if self.resultMode != nil {
             map["ResultMode"] = self.resultMode!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -5705,6 +5966,9 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetRequest : Tea.TeaMod
         if let value = dict["ResultMode"] as? String {
             self.resultMode = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -5724,6 +5988,8 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest : Tea.
     public var resultIndexShrink: String?
 
     public var resultMode: String?
+
+    public var sourceRegionId: String?
 
     public var taskId: String?
 
@@ -5758,6 +6024,9 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest : Tea.
         if self.resultMode != nil {
             map["ResultMode"] = self.resultMode!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -5783,6 +6052,9 @@ public class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest : Tea.
         }
         if let value = dict["ResultMode"] as? String {
             self.resultMode = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -5911,6 +6183,8 @@ public class DeleteMultimodalDatasetRequest : Tea.TeaModel {
 
     public var datasetId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -5931,6 +6205,9 @@ public class DeleteMultimodalDatasetRequest : Tea.TeaModel {
         if self.datasetId != nil {
             map["DatasetId"] = self.datasetId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -5941,6 +6218,9 @@ public class DeleteMultimodalDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetId"] as? String {
             self.datasetId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -6063,6 +6343,8 @@ public class DeleteMultimodalEmbeddingRequest : Tea.TeaModel {
 
     public var embedding: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -6083,6 +6365,9 @@ public class DeleteMultimodalEmbeddingRequest : Tea.TeaModel {
         if self.embedding != nil {
             map["Embedding"] = self.embedding!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -6093,6 +6378,9 @@ public class DeleteMultimodalEmbeddingRequest : Tea.TeaModel {
         }
         if let value = dict["Embedding"] as? String {
             self.embedding = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -6215,6 +6503,8 @@ public class DeleteMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var datasetId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -6235,6 +6525,9 @@ public class DeleteMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.datasetId != nil {
             map["DatasetId"] = self.datasetId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -6245,6 +6538,9 @@ public class DeleteMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetId"] as? String {
             self.datasetId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -6365,6 +6661,8 @@ public class DeleteMultimodalFineTuneDatasetResponse : Tea.TeaModel {
 public class DeleteMultimodalLabelStudioServiceRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -6382,6 +6680,9 @@ public class DeleteMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -6389,6 +6690,9 @@ public class DeleteMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -6513,6 +6817,8 @@ public class DeleteOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var ossUrl: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -6536,6 +6842,9 @@ public class DeleteOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.ossUrl != nil {
             map["OssUrl"] = self.ossUrl!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -6549,6 +6858,9 @@ public class DeleteOSSMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["OssUrl"] as? String {
             self.ossUrl = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -6669,6 +6981,8 @@ public class DeleteOSSMultimodalFineTuneDatasetResponse : Tea.TeaModel {
 public class DownloadMultimodalSearchTaskResultMetadataRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -6688,6 +7002,9 @@ public class DownloadMultimodalSearchTaskResultMetadataRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -6698,6 +7015,9 @@ public class DownloadMultimodalSearchTaskResultMetadataRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -6823,6 +7143,8 @@ public class GetUserTokenRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var sourceRegionId: String?
+
     public var username: String?
 
     public override init() {
@@ -6845,6 +7167,9 @@ public class GetUserTokenRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -6858,6 +7183,9 @@ public class GetUserTokenRequest : Tea.TeaModel {
         }
         if let value = dict["Password"] as? String {
             self.password = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["Username"] as? String {
             self.username = value
@@ -6987,6 +7315,8 @@ public class ListMultimodalDatasetRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7013,6 +7343,9 @@ public class ListMultimodalDatasetRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7029,6 +7362,9 @@ public class ListMultimodalDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7153,6 +7489,8 @@ public class ListMultimodalEmbeddingModelRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7176,6 +7514,9 @@ public class ListMultimodalEmbeddingModelRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7189,6 +7530,9 @@ public class ListMultimodalEmbeddingModelRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7309,6 +7653,8 @@ public class ListMultimodalEmbeddingModelResponse : Tea.TeaModel {
 public class ListMultimodalEmbeddingModelModeRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7326,6 +7672,9 @@ public class ListMultimodalEmbeddingModelModeRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7333,6 +7682,9 @@ public class ListMultimodalEmbeddingModelModeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7459,6 +7811,8 @@ public class ListMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7485,6 +7839,9 @@ public class ListMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7501,6 +7858,9 @@ public class ListMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7621,6 +7981,8 @@ public class ListMultimodalFineTuneDatasetResponse : Tea.TeaModel {
 public class ListMultimodalLabelStudioServiceRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7638,6 +8000,9 @@ public class ListMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7645,6 +8010,9 @@ public class ListMultimodalLabelStudioServiceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7769,6 +8137,8 @@ public class ListMultimodalSearchModelRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7792,6 +8162,9 @@ public class ListMultimodalSearchModelRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7805,6 +8178,9 @@ public class ListMultimodalSearchModelRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -7935,6 +8311,8 @@ public class ListMultimodalSearchTaskRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -7967,6 +8345,9 @@ public class ListMultimodalSearchTaskRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -7990,6 +8371,9 @@ public class ListMultimodalSearchTaskRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
     }
 }
 
@@ -8005,6 +8389,8 @@ public class ListMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var sourceRegionId: String?
 
     public override init() {
         super.init()
@@ -8038,6 +8424,9 @@ public class ListMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -8060,6 +8449,9 @@ public class ListMultimodalSearchTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -8184,6 +8576,8 @@ public class ListMultimodalSearchTaskResultRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sourceRegionId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -8209,6 +8603,9 @@ public class ListMultimodalSearchTaskResultRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -8225,6 +8622,9 @@ public class ListMultimodalSearchTaskResultRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -8354,6 +8754,8 @@ public class UpdateMultimodalDatasetRequest : Tea.TeaModel {
 
     public var datasetName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -8380,6 +8782,9 @@ public class UpdateMultimodalDatasetRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -8396,6 +8801,9 @@ public class UpdateMultimodalDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -8522,6 +8930,8 @@ public class UpdateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
 
     public var datasetName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -8548,6 +8958,9 @@ public class UpdateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         if self.datasetName != nil {
             map["DatasetName"] = self.datasetName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -8564,6 +8977,9 @@ public class UpdateMultimodalFineTuneDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["DatasetName"] as? String {
             self.datasetName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -8684,6 +9100,8 @@ public class UpdateMultimodalFineTuneDatasetResponse : Tea.TeaModel {
 public class UpdateMultimodalLabelStudioServiceWhiteListRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public var whiteList: [String]?
 
     public override init() {
@@ -8703,6 +9121,9 @@ public class UpdateMultimodalLabelStudioServiceWhiteListRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.whiteList != nil {
             map["WhiteList"] = self.whiteList!
         }
@@ -8714,6 +9135,9 @@ public class UpdateMultimodalLabelStudioServiceWhiteListRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
+        }
         if let value = dict["WhiteList"] as? [String] {
             self.whiteList = value
         }
@@ -8722,6 +9146,8 @@ public class UpdateMultimodalLabelStudioServiceWhiteListRequest : Tea.TeaModel {
 
 public class UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest : Tea.TeaModel {
     public var DBClusterId: String?
+
+    public var sourceRegionId: String?
 
     public var whiteListShrink: String?
 
@@ -8742,6 +9168,9 @@ public class UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest : Tea.TeaM
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         if self.whiteListShrink != nil {
             map["WhiteList"] = self.whiteListShrink!
         }
@@ -8752,6 +9181,9 @@ public class UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest : Tea.TeaM
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
         if let value = dict["WhiteList"] as? String {
             self.whiteListShrink = value
@@ -8879,6 +9311,8 @@ public class UploadOSSMultimodalDatasetRequest : Tea.TeaModel {
 
     public var ossUrl: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -8902,6 +9336,9 @@ public class UploadOSSMultimodalDatasetRequest : Tea.TeaModel {
         if self.ossUrl != nil {
             map["OssUrl"] = self.ossUrl!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -8915,6 +9352,9 @@ public class UploadOSSMultimodalDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["OssUrl"] as? String {
             self.ossUrl = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -9041,6 +9481,8 @@ public class ValidateDatabaseUserTokenRequest : Tea.TeaModel {
 
     public var DBName: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -9067,6 +9509,9 @@ public class ValidateDatabaseUserTokenRequest : Tea.TeaModel {
         if self.DBName != nil {
             map["DBName"] = self.DBName!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -9083,6 +9528,9 @@ public class ValidateDatabaseUserTokenRequest : Tea.TeaModel {
         }
         if let value = dict["DBName"] as? String {
             self.DBName = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
@@ -9207,6 +9655,8 @@ public class ValidateUserTokenRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var sourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -9230,6 +9680,9 @@ public class ValidateUserTokenRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
+        }
         return map
     }
 
@@ -9243,6 +9696,9 @@ public class ValidateUserTokenRequest : Tea.TeaModel {
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["SourceRegionId"] as? String {
+            self.sourceRegionId = value
         }
     }
 }
