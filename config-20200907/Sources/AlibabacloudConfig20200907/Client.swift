@@ -506,6 +506,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.conditions)) {
+            body["Conditions"] = request.conditions ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleName)) {
             body["ConfigRuleName"] = request.configRuleName ?? "";
         }
@@ -898,6 +901,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditions)) {
+            body["Conditions"] = request.conditions ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.configRuleName)) {
             body["ConfigRuleName"] = request.configRuleName ?? "";
@@ -5829,6 +5835,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.conditions)) {
+            body["Conditions"] = request.conditions ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleId)) {
             body["ConfigRuleId"] = request.configRuleId ?? "";
         }
@@ -6212,6 +6221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditions)) {
+            body["Conditions"] = request.conditions ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.configRuleId)) {
             body["ConfigRuleId"] = request.configRuleId ?? "";

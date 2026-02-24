@@ -2682,6 +2682,8 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleName: String?
 
     public var configRuleTriggerTypes: String?
@@ -2756,6 +2758,9 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleName != nil {
             map["ConfigRuleName"] = self.configRuleName!
@@ -2860,6 +2865,9 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleName"] as? String {
             self.configRuleName = value
@@ -3055,6 +3063,8 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleName: String?
 
     public var configRuleTriggerTypes: String?
@@ -3129,6 +3139,9 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleName != nil {
             map["ConfigRuleName"] = self.configRuleName!
@@ -3229,6 +3242,9 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleName"] as? String {
             self.configRuleName = value
@@ -5115,6 +5131,8 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleName: String?
 
     public var configRuleTriggerTypes: String?
@@ -5177,6 +5195,9 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleName != nil {
             map["ConfigRuleName"] = self.configRuleName!
@@ -5266,6 +5287,9 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleName"] as? String {
             self.configRuleName = value
@@ -5448,6 +5472,8 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleName: String?
 
     public var configRuleTriggerTypes: String?
@@ -5510,6 +5536,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleName != nil {
             map["ConfigRuleName"] = self.configRuleName!
@@ -5595,6 +5624,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleName"] as? String {
             self.configRuleName = value
@@ -41229,6 +41261,8 @@ public class UpdateAggregateConfigRuleRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleId: String?
 
     public var configRuleName: String?
@@ -41299,6 +41333,9 @@ public class UpdateAggregateConfigRuleRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
@@ -41397,6 +41434,9 @@ public class UpdateAggregateConfigRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleId"] as? String {
             self.configRuleId = value
@@ -41586,6 +41626,8 @@ public class UpdateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleId: String?
 
     public var configRuleName: String?
@@ -41656,6 +41698,9 @@ public class UpdateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
@@ -41750,6 +41795,9 @@ public class UpdateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleId"] as? String {
             self.configRuleId = value
@@ -43598,6 +43646,8 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleId: String?
 
     public var configRuleName: String?
@@ -43658,6 +43708,9 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
@@ -43744,6 +43797,9 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleId"] as? String {
             self.configRuleId = value
@@ -43923,6 +43979,8 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
     }
     public var clientToken: String?
 
+    public var conditions: String?
+
     public var configRuleId: String?
 
     public var configRuleName: String?
@@ -43983,6 +44041,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
         }
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
@@ -44065,6 +44126,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditions = value
         }
         if let value = dict["ConfigRuleId"] as? String {
             self.configRuleId = value
