@@ -428,6 +428,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDigitalEmployeeSkillWithOptions(_ name: String, _ request: CreateDigitalEmployeeSkillRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDigitalEmployeeSkillResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            body["enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.files)) {
+            body["files"] = request.files ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillName)) {
+            body["skillName"] = request.skillName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDigitalEmployeeSkill",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skill",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDigitalEmployeeSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDigitalEmployeeSkill(_ name: String, _ request: CreateDigitalEmployeeSkillRequest) async throws -> CreateDigitalEmployeeSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDigitalEmployeeSkillWithOptions(name as! String, request as! CreateDigitalEmployeeSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createEntityStoreWithOptions(_ workspaceName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEntityStoreResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1033,6 +1081,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteDigitalEmployeeWithOptions(name as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDigitalEmployeeSkillWithOptions(_ name: String, _ skillName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDigitalEmployeeSkillResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDigitalEmployeeSkill",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skill/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(skillName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDigitalEmployeeSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDigitalEmployeeSkill(_ name: String, _ skillName: String) async throws -> DeleteDigitalEmployeeSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDigitalEmployeeSkillWithOptions(name as! String, skillName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1684,6 +1759,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getDigitalEmployeeWithOptions(name as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDigitalEmployeeSkillWithOptions(_ name: String, _ skillName: String, _ request: GetDigitalEmployeeSkillRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDigitalEmployeeSkillResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDigitalEmployeeSkill",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skill/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(skillName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDigitalEmployeeSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDigitalEmployeeSkill(_ name: String, _ skillName: String, _ request: GetDigitalEmployeeSkillRequest) async throws -> GetDigitalEmployeeSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDigitalEmployeeSkillWithOptions(name as! String, skillName as! String, request as! GetDigitalEmployeeSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2434,6 +2542,72 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listBizTracesWithOptions(request as! ListBizTracesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDigitalEmployeeSkillVersionsWithOptions(_ name: String, _ skillName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDigitalEmployeeSkillVersionsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDigitalEmployeeSkillVersions",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skill/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(skillName)) + "/versions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDigitalEmployeeSkillVersionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDigitalEmployeeSkillVersions(_ name: String, _ skillName: String) async throws -> ListDigitalEmployeeSkillVersionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDigitalEmployeeSkillVersionsWithOptions(name as! String, skillName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDigitalEmployeeSkillsWithOptions(_ name: String, _ request: ListDigitalEmployeeSkillsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDigitalEmployeeSkillsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillName)) {
+            query["skillName"] = request.skillName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDigitalEmployeeSkills",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skills",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDigitalEmployeeSkillsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDigitalEmployeeSkills(_ name: String, _ request: ListDigitalEmployeeSkillsRequest) async throws -> ListDigitalEmployeeSkillsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDigitalEmployeeSkillsWithOptions(name as! String, request as! ListDigitalEmployeeSkillsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3649,6 +3823,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateDigitalEmployeeWithOptions(name as! String, request as! UpdateDigitalEmployeeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDigitalEmployeeSkillWithOptions(_ name: String, _ skillName: String, _ request: UpdateDigitalEmployeeSkillRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDigitalEmployeeSkillResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            body["enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.files)) {
+            body["files"] = request.files ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDigitalEmployeeSkill",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/digitalEmployee/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)) + "/skill/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(skillName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDigitalEmployeeSkillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDigitalEmployeeSkill(_ name: String, _ skillName: String, _ request: UpdateDigitalEmployeeSkillRequest) async throws -> UpdateDigitalEmployeeSkillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateDigitalEmployeeSkillWithOptions(name as! String, skillName as! String, request as! UpdateDigitalEmployeeSkillRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
