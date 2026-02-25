@@ -1355,6 +1355,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaActiveUserUsagesWithOptions(_ QuotaId: String, _ request: ListQuotaActiveUserUsagesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaActiveUserUsagesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.selfOnly)) {
+            query["SelfOnly"] = request.selfOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["Username"] = request.username ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListQuotaActiveUserUsages",
+            "version": "2022-01-12",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/quotas/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(QuotaId)) + "/activeuserusages",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListQuotaActiveUserUsagesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaActiveUserUsages(_ QuotaId: String, _ request: ListQuotaActiveUserUsagesRequest) async throws -> ListQuotaActiveUserUsagesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listQuotaActiveUserUsagesWithOptions(QuotaId as! String, request as! ListQuotaActiveUserUsagesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listQuotaWorkloadsWithOptions(_ QuotaId: String, _ request: ListQuotaWorkloadsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaWorkloadsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
