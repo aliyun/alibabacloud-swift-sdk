@@ -8035,6 +8035,53 @@ public class PolicyItem : Tea.TeaModel {
     }
 }
 
+public class PortProtocol : Tea.TeaModel {
+    public var port: Int32?
+
+    public var protocol_: String?
+
+    public var targetPort: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.targetPort != nil {
+            map["TargetPort"] = self.targetPort!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["TargetPort"] as? Int32 {
+            self.targetPort = value
+        }
+    }
+}
+
 public class PriceEstimateFeature : Tea.TeaModel {
     public var appCount: Int64?
 
@@ -15320,6 +15367,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var kafkaConfigs: String?
 
+    public var labels: [String: String]?
+
     public var liveness: String?
 
     public var lokiConfigs: String?
@@ -15548,6 +15597,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.kafkaConfigs != nil {
             map["KafkaConfigs"] = self.kafkaConfigs!
+        }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
@@ -15826,6 +15878,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["KafkaConfigs"] as? String {
             self.kafkaConfigs = value
         }
+        if let value = dict["Labels"] as? [String: String] {
+            self.labels = value
+        }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
         }
@@ -16059,6 +16114,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var kafkaConfigs: String?
 
+    public var labelsShrink: String?
+
     public var liveness: String?
 
     public var lokiConfigs: String?
@@ -16283,6 +16340,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.kafkaConfigs != nil {
             map["KafkaConfigs"] = self.kafkaConfigs!
+        }
+        if self.labelsShrink != nil {
+            map["Labels"] = self.labelsShrink!
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
@@ -16546,6 +16606,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KafkaConfigs"] as? String {
             self.kafkaConfigs = value
+        }
+        if let value = dict["Labels"] as? String {
+            self.labelsShrink = value
         }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
@@ -22914,6 +22977,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var kafkaConfigs: String?
 
+    public var labels: [String: String]?
+
     public var liveness: String?
 
     public var lokiConfigs: String?
@@ -23135,6 +23200,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.kafkaConfigs != nil {
             map["KafkaConfigs"] = self.kafkaConfigs!
+        }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
@@ -23407,6 +23475,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["KafkaConfigs"] as? String {
             self.kafkaConfigs = value
         }
+        if let value = dict["Labels"] as? [String: String] {
+            self.labels = value
+        }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
         }
@@ -23637,6 +23708,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var kafkaConfigs: String?
 
+    public var labelsShrink: String?
+
     public var liveness: String?
 
     public var lokiConfigs: String?
@@ -23854,6 +23927,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.kafkaConfigs != nil {
             map["KafkaConfigs"] = self.kafkaConfigs!
+        }
+        if self.labelsShrink != nil {
+            map["Labels"] = self.labelsShrink!
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
@@ -24111,6 +24187,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KafkaConfigs"] as? String {
             self.kafkaConfigs = value
+        }
+        if let value = dict["Labels"] as? String {
+            self.labelsShrink = value
         }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
@@ -25769,6 +25848,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var kafkaConfigs: String?
 
+        public var labels: [String: String]?
+
         public var liveness: String?
 
         public var lokiConfigs: String?
@@ -26041,6 +26122,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.kafkaConfigs != nil {
                 map["KafkaConfigs"] = self.kafkaConfigs!
+            }
+            if self.labels != nil {
+                map["Labels"] = self.labels!
             }
             if self.liveness != nil {
                 map["Liveness"] = self.liveness!
@@ -26399,6 +26483,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["KafkaConfigs"] as? String {
                 self.kafkaConfigs = value
+            }
+            if let value = dict["Labels"] as? [String: String] {
+                self.labels = value
             }
             if let value = dict["Liveness"] as? String {
                 self.liveness = value

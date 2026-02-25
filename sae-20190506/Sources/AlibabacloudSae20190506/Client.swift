@@ -346,6 +346,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.initContainersConfig)) {
             request.initContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.initContainersConfig, "InitContainersConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sidecarContainersConfig)) {
             request.sidecarContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sidecarContainersConfig, "SidecarContainersConfig", "json")
         }
@@ -445,6 +448,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.kafkaConfigs)) {
             query["KafkaConfigs"] = request.kafkaConfigs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["Labels"] = request.labelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.liveness)) {
             query["Liveness"] = request.liveness ?? "";
@@ -1855,6 +1861,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.initContainersConfig)) {
             request.initContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.initContainersConfig, "InitContainersConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sidecarContainersConfig)) {
             request.sidecarContainersConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sidecarContainersConfig, "SidecarContainersConfig", "json")
         }
@@ -1948,6 +1957,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.kafkaConfigs)) {
             query["KafkaConfigs"] = request.kafkaConfigs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["Labels"] = request.labelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.liveness)) {
             query["Liveness"] = request.liveness ?? "";
