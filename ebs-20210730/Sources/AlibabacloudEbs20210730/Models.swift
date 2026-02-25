@@ -10904,6 +10904,8 @@ public class ListReplicaEdgeSupportedRequest : Tea.TeaModel {
 public class ListReplicaEdgeSupportedResponseBody : Tea.TeaModel {
     public class SupportedRegions : Tea.TeaModel {
         public class Zones : Tea.TeaModel {
+            public var supportRtc: Bool?
+
             public var zoneId: String?
 
             public override init() {
@@ -10920,6 +10922,9 @@ public class ListReplicaEdgeSupportedResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.supportRtc != nil {
+                    map["SupportRtc"] = self.supportRtc!
+                }
                 if self.zoneId != nil {
                     map["ZoneId"] = self.zoneId!
                 }
@@ -10928,6 +10933,9 @@ public class ListReplicaEdgeSupportedResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["SupportRtc"] as? Bool {
+                    self.supportRtc = value
+                }
                 if let value = dict["ZoneId"] as? String {
                     self.zoneId = value
                 }
