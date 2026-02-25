@@ -24342,6 +24342,8 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
 
                     public var startTime: String?
 
+                    public var tags: [String: Any]?
+
                     public override init() {
                         super.init()
                     }
@@ -24380,6 +24382,9 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                         if self.startTime != nil {
                             map["StartTime"] = self.startTime!
                         }
+                        if self.tags != nil {
+                            map["Tags"] = self.tags!
+                        }
                         return map
                     }
 
@@ -24408,6 +24413,9 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["StartTime"] as? String {
                             self.startTime = value
+                        }
+                        if let value = dict["Tags"] as? [String: Any] {
+                            self.tags = value
                         }
                     }
                 }
@@ -24762,6 +24770,44 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                     }
                     public class VideoStreamList : Tea.TeaModel {
                         public class VideoStream : Tea.TeaModel {
+                            public class DolbyVision : Tea.TeaModel {
+                                public var level: String?
+
+                                public var profile: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.level != nil {
+                                        map["Level"] = self.level!
+                                    }
+                                    if self.profile != nil {
+                                        map["Profile"] = self.profile!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                    guard let dict else { return }
+                                    if let value = dict["Level"] as? String {
+                                        self.level = value
+                                    }
+                                    if let value = dict["Profile"] as? String {
+                                        self.profile = value
+                                    }
+                                }
+                            }
                             public class NetworkCost : Tea.TeaModel {
                                 public var avgBitrate: String?
 
@@ -24830,6 +24876,8 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
 
                             public var dar: String?
 
+                            public var dolbyVision: QueryMediaInfoJobListResponseBody.MediaInfoJobList.MediaInfoJob.Properties.Streams.VideoStreamList.VideoStream.DolbyVision?
+
                             public var duration: String?
 
                             public var durationInaccurate: String?
@@ -24874,6 +24922,7 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                             }
 
                             public override func validate() throws -> Void {
+                                try self.dolbyVision?.validate()
                                 try self.networkCost?.validate()
                             }
 
@@ -24911,6 +24960,9 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                                 }
                                 if self.dar != nil {
                                     map["Dar"] = self.dar!
+                                }
+                                if self.dolbyVision != nil {
+                                    map["DolbyVision"] = self.dolbyVision?.toMap()
                                 }
                                 if self.duration != nil {
                                     map["Duration"] = self.duration!
@@ -25000,6 +25052,11 @@ public class QueryMediaInfoJobListResponseBody : Tea.TeaModel {
                                 }
                                 if let value = dict["Dar"] as? String {
                                     self.dar = value
+                                }
+                                if let value = dict["DolbyVision"] as? [String: Any?] {
+                                    var model = QueryMediaInfoJobListResponseBody.MediaInfoJobList.MediaInfoJob.Properties.Streams.VideoStreamList.VideoStream.DolbyVision()
+                                    model.fromMap(value)
+                                    self.dolbyVision = model
                                 }
                                 if let value = dict["Duration"] as? String {
                                     self.duration = value
@@ -43507,6 +43564,8 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
 
                 public var startTime: String?
 
+                public var tags: [String: Any]?
+
                 public override init() {
                     super.init()
                 }
@@ -43545,6 +43604,9 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                     if self.startTime != nil {
                         map["StartTime"] = self.startTime!
                     }
+                    if self.tags != nil {
+                        map["Tags"] = self.tags!
+                    }
                     return map
                 }
 
@@ -43573,6 +43635,9 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["StartTime"] as? String {
                         self.startTime = value
+                    }
+                    if let value = dict["Tags"] as? [String: Any] {
+                        self.tags = value
                     }
                 }
             }
@@ -43927,6 +43992,44 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                 }
                 public class VideoStreamList : Tea.TeaModel {
                     public class VideoStream : Tea.TeaModel {
+                        public class DolbyVision : Tea.TeaModel {
+                            public var level: String?
+
+                            public var profile: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.level != nil {
+                                    map["Level"] = self.level!
+                                }
+                                if self.profile != nil {
+                                    map["Profile"] = self.profile!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Level"] as? String {
+                                    self.level = value
+                                }
+                                if let value = dict["Profile"] as? String {
+                                    self.profile = value
+                                }
+                            }
+                        }
                         public class NetworkCost : Tea.TeaModel {
                             public var avgBitrate: String?
 
@@ -43995,6 +44098,8 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
 
                         public var dar: String?
 
+                        public var dolbyVision: SubmitMediaInfoJobResponseBody.MediaInfoJob.Properties.Streams.VideoStreamList.VideoStream.DolbyVision?
+
                         public var duration: String?
 
                         public var durationInaccurate: String?
@@ -44039,6 +44144,7 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                         }
 
                         public override func validate() throws -> Void {
+                            try self.dolbyVision?.validate()
                             try self.networkCost?.validate()
                         }
 
@@ -44076,6 +44182,9 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                             }
                             if self.dar != nil {
                                 map["Dar"] = self.dar!
+                            }
+                            if self.dolbyVision != nil {
+                                map["DolbyVision"] = self.dolbyVision?.toMap()
                             }
                             if self.duration != nil {
                                 map["Duration"] = self.duration!
@@ -44165,6 +44274,11 @@ public class SubmitMediaInfoJobResponseBody : Tea.TeaModel {
                             }
                             if let value = dict["Dar"] as? String {
                                 self.dar = value
+                            }
+                            if let value = dict["DolbyVision"] as? [String: Any?] {
+                                var model = SubmitMediaInfoJobResponseBody.MediaInfoJob.Properties.Streams.VideoStreamList.VideoStream.DolbyVision()
+                                model.fromMap(value)
+                                self.dolbyVision = model
                             }
                             if let value = dict["Duration"] as? String {
                                 self.duration = value
