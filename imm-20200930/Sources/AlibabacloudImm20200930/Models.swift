@@ -954,6 +954,37 @@ public class Car : Tea.TeaModel {
     }
 }
 
+public class Clip : Tea.TeaModel {
+    public var timeRange: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.timeRange != nil {
+            map["TimeRange"] = self.timeRange!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TimeRange"] as? [Int64] {
+            self.timeRange = value
+        }
+    }
+}
+
 public class ClusterForReq : Tea.TeaModel {
     public class Cover : Tea.TeaModel {
         public class Figures : Tea.TeaModel {
@@ -1873,6 +1904,8 @@ public class Dataset : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var datasetConfig: DatasetConfig?
+
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -1909,6 +1942,7 @@ public class Dataset : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1918,6 +1952,9 @@ public class Dataset : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.datasetConfig != nil {
+            map["DatasetConfig"] = self.datasetConfig?.toMap()
         }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
@@ -1973,6 +2010,11 @@ public class Dataset : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["DatasetConfig"] as? [String: Any?] {
+            var model = DatasetConfig()
+            model.fromMap(value)
+            self.datasetConfig = model
+        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -2025,6 +2067,40 @@ public class Dataset : Tea.TeaModel {
     }
 }
 
+public class DatasetConfig : Tea.TeaModel {
+    public var insights: InsightsConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.insights?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.insights != nil {
+            map["Insights"] = self.insights?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Insights"] as? [String: Any?] {
+            var model = InsightsConfig()
+            model.fromMap(value)
+            self.insights = model
+        }
+    }
+}
+
 public class DatasetTaskStatus : Tea.TeaModel {
     public var lastSucceededTime: String?
 
@@ -2068,6 +2144,221 @@ public class DatasetTaskStatus : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+    }
+}
+
+public class DocumentParseKeywordOption : Tea.TeaModel {
+    public var count: Int32?
+
+    public var extract: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.extract != nil {
+            map["Extract"] = self.extract!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Extract"] as? Bool {
+            self.extract = value
+        }
+    }
+}
+
+public class DocumentParseNarratorOption : Tea.TeaModel {
+    public var narrate: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.narrate != nil {
+            map["Narrate"] = self.narrate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Narrate"] as? Bool {
+            self.narrate = value
+        }
+    }
+}
+
+public class DocumentParseOption : Tea.TeaModel {
+    public var keyword: DocumentParseKeywordOption?
+
+    public var narrator: DocumentParseNarratorOption?
+
+    public var question: DocumentParseQuestionOption?
+
+    public var summary: DocumentParseSummaryOption?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.keyword?.validate()
+        try self.narrator?.validate()
+        try self.question?.validate()
+        try self.summary?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword?.toMap()
+        }
+        if self.narrator != nil {
+            map["Narrator"] = self.narrator?.toMap()
+        }
+        if self.question != nil {
+            map["Question"] = self.question?.toMap()
+        }
+        if self.summary != nil {
+            map["Summary"] = self.summary?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Keyword"] as? [String: Any?] {
+            var model = DocumentParseKeywordOption()
+            model.fromMap(value)
+            self.keyword = model
+        }
+        if let value = dict["Narrator"] as? [String: Any?] {
+            var model = DocumentParseNarratorOption()
+            model.fromMap(value)
+            self.narrator = model
+        }
+        if let value = dict["Question"] as? [String: Any?] {
+            var model = DocumentParseQuestionOption()
+            model.fromMap(value)
+            self.question = model
+        }
+        if let value = dict["Summary"] as? [String: Any?] {
+            var model = DocumentParseSummaryOption()
+            model.fromMap(value)
+            self.summary = model
+        }
+    }
+}
+
+public class DocumentParseQuestionOption : Tea.TeaModel {
+    public var count: Int32?
+
+    public var extract: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.extract != nil {
+            map["Extract"] = self.extract!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Extract"] as? Bool {
+            self.extract = value
+        }
+    }
+}
+
+public class DocumentParseSummaryOption : Tea.TeaModel {
+    public var chapterSummarize: Bool?
+
+    public var summarize: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chapterSummarize != nil {
+            map["ChapterSummarize"] = self.chapterSummarize!
+        }
+        if self.summarize != nil {
+            map["Summarize"] = self.summarize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChapterSummarize"] as? Bool {
+            self.chapterSummarize = value
+        }
+        if let value = dict["Summarize"] as? Bool {
+            self.summarize = value
         }
     }
 }
@@ -4519,6 +4810,37 @@ public class Insights : Tea.TeaModel {
     }
 }
 
+public class InsightsConfig : Tea.TeaModel {
+    public var language: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+    }
+}
+
 public class KdtreeOption : Tea.TeaModel {
     public var compressionLevel: Int32?
 
@@ -4608,6 +4930,10 @@ public class KeyValuePair : Tea.TeaModel {
 public class Label : Tea.TeaModel {
     public var centricScore: Double?
 
+    public var clips: [Clip]?
+
+    public var labelAlias: String?
+
     public var labelConfidence: Double?
 
     public var labelLevel: Int64?
@@ -4635,6 +4961,16 @@ public class Label : Tea.TeaModel {
         if self.centricScore != nil {
             map["CentricScore"] = self.centricScore!
         }
+        if self.clips != nil {
+            var tmp : [Any] = []
+            for k in self.clips! {
+                tmp.append(k.toMap())
+            }
+            map["Clips"] = tmp
+        }
+        if self.labelAlias != nil {
+            map["LabelAlias"] = self.labelAlias!
+        }
         if self.labelConfidence != nil {
             map["LabelConfidence"] = self.labelConfidence!
         }
@@ -4657,6 +4993,22 @@ public class Label : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CentricScore"] as? Double {
             self.centricScore = value
+        }
+        if let value = dict["Clips"] as? [Any?] {
+            var tmp : [Clip] = []
+            for v in value {
+                if v != nil {
+                    var model = Clip()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.clips = tmp
+        }
+        if let value = dict["LabelAlias"] as? String {
+            self.labelAlias = value
         }
         if let value = dict["LabelConfidence"] as? Double {
             self.labelConfidence = value
@@ -5908,7 +6260,11 @@ public class Runtime : Tea.TeaModel {
 public class SceneElement : Tea.TeaModel {
     public var frameTimes: [Int64]?
 
+    public var labels: [Label]?
+
     public var timeRange: [Int64]?
+
+    public var videoStreamIndex: Int64?
 
     public override init() {
         super.init()
@@ -5927,8 +6283,18 @@ public class SceneElement : Tea.TeaModel {
         if self.frameTimes != nil {
             map["FrameTimes"] = self.frameTimes!
         }
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["Labels"] = tmp
+        }
         if self.timeRange != nil {
             map["TimeRange"] = self.timeRange!
+        }
+        if self.videoStreamIndex != nil {
+            map["VideoStreamIndex"] = self.videoStreamIndex!
         }
         return map
     }
@@ -5938,8 +6304,24 @@ public class SceneElement : Tea.TeaModel {
         if let value = dict["FrameTimes"] as? [Int64] {
             self.frameTimes = value
         }
+        if let value = dict["Labels"] as? [Any?] {
+            var tmp : [Label] = []
+            for v in value {
+                if v != nil {
+                    var model = Label()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.labels = tmp
+        }
         if let value = dict["TimeRange"] as? [Int64] {
             self.timeRange = value
+        }
+        if let value = dict["VideoStreamIndex"] as? Int64 {
+            self.videoStreamIndex = value
         }
     }
 }
@@ -13021,6 +13403,8 @@ public class CreateCustomizedStoryResponse : Tea.TeaModel {
 }
 
 public class CreateDatasetRequest : Tea.TeaModel {
+    public var datasetConfig: DatasetConfig?
+
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -13051,10 +13435,14 @@ public class CreateDatasetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetConfig != nil {
+            map["DatasetConfig"] = self.datasetConfig?.toMap()
+        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -13094,6 +13482,11 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetConfig"] as? [String: Any?] {
+            var model = DatasetConfig()
+            model.fromMap(value)
+            self.datasetConfig = model
+        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -13138,6 +13531,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 }
 
 public class CreateDatasetShrinkRequest : Tea.TeaModel {
+    public var datasetConfigShrink: String?
+
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -13172,6 +13567,9 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetConfigShrink != nil {
+            map["DatasetConfig"] = self.datasetConfigShrink!
+        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -13207,6 +13605,9 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetConfig"] as? String {
+            self.datasetConfigShrink = value
+        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -33195,6 +33596,8 @@ public class UpdateBatchResponse : Tea.TeaModel {
 }
 
 public class UpdateDatasetRequest : Tea.TeaModel {
+    public var datasetConfig: DatasetConfig?
+
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -33225,10 +33628,14 @@ public class UpdateDatasetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.datasetConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetConfig != nil {
+            map["DatasetConfig"] = self.datasetConfig?.toMap()
+        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -33268,6 +33675,11 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetConfig"] as? [String: Any?] {
+            var model = DatasetConfig()
+            model.fromMap(value)
+            self.datasetConfig = model
+        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
@@ -33312,6 +33724,8 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 }
 
 public class UpdateDatasetShrinkRequest : Tea.TeaModel {
+    public var datasetConfigShrink: String?
+
     public var datasetMaxBindCount: Int64?
 
     public var datasetMaxEntityCount: Int64?
@@ -33346,6 +33760,9 @@ public class UpdateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.datasetConfigShrink != nil {
+            map["DatasetConfig"] = self.datasetConfigShrink!
+        }
         if self.datasetMaxBindCount != nil {
             map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
         }
@@ -33381,6 +33798,9 @@ public class UpdateDatasetShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DatasetConfig"] as? String {
+            self.datasetConfigShrink = value
+        }
         if let value = dict["DatasetMaxBindCount"] as? Int64 {
             self.datasetMaxBindCount = value
         }
