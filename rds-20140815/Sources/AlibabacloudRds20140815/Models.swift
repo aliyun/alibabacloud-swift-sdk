@@ -8049,6 +8049,174 @@ public class CreateDBInstanceForRebuildResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDBInstanceReplicationRequest : Tea.TeaModel {
+    public var channelName: String?
+
+    public var dbInstanceId: String?
+
+    public var masterHost: String?
+
+    public var masterPassword: String?
+
+    public var masterPort: Int32?
+
+    public var masterUser: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.channelName != nil {
+            map["ChannelName"] = self.channelName!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.masterHost != nil {
+            map["MasterHost"] = self.masterHost!
+        }
+        if self.masterPassword != nil {
+            map["MasterPassword"] = self.masterPassword!
+        }
+        if self.masterPort != nil {
+            map["MasterPort"] = self.masterPort!
+        }
+        if self.masterUser != nil {
+            map["MasterUser"] = self.masterUser!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChannelName"] as? String {
+            self.channelName = value
+        }
+        if let value = dict["DbInstanceId"] as? String {
+            self.dbInstanceId = value
+        }
+        if let value = dict["MasterHost"] as? String {
+            self.masterHost = value
+        }
+        if let value = dict["MasterPassword"] as? String {
+            self.masterPassword = value
+        }
+        if let value = dict["MasterPort"] as? Int32 {
+            self.masterPort = value
+        }
+        if let value = dict["MasterUser"] as? String {
+            self.masterUser = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateDBInstanceReplicationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateDBInstanceReplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDBInstanceReplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDBInstanceReplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateDBInstanceSecurityGroupRuleRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -16334,6 +16502,142 @@ public class DeleteDBInstanceEndpointAddressResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteDBInstanceEndpointAddressResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDBInstanceReplicationRequest : Tea.TeaModel {
+    public var channelName: String?
+
+    public var dbInstanceId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.channelName != nil {
+            map["ChannelName"] = self.channelName!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChannelName"] as? String {
+            self.channelName = value
+        }
+        if let value = dict["DbInstanceId"] as? String {
+            self.dbInstanceId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteDBInstanceReplicationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteDBInstanceReplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDBInstanceReplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteDBInstanceReplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -35760,6 +36064,196 @@ public class DescribeDBInstanceReplicationRequest : Tea.TeaModel {
 }
 
 public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
+    public class SlaveStatusList : Tea.TeaModel {
+        public var channelName: String?
+
+        public var executedGtidSet: String?
+
+        public var lastErrno: Int32?
+
+        public var lastIoErrno: Int32?
+
+        public var lastIoError: String?
+
+        public var lastSqlErrno: Int32?
+
+        public var lastSqlError: String?
+
+        public var masterHost: String?
+
+        public var masterUser: String?
+
+        public var masterUuid: String?
+
+        public var replicateDoDb: String?
+
+        public var replicateDoTable: String?
+
+        public var replicateIgnoreDb: String?
+
+        public var replicateIgnoreTable: String?
+
+        public var replicateWildDoTable: String?
+
+        public var replicateWildIgnoreTable: String?
+
+        public var secondsBehindMaster: Int32?
+
+        public var slaveIoRunning: String?
+
+        public var slaveIoState: String?
+
+        public var slaveSqlRunning: String?
+
+        public var slaveSqlRunningState: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelName != nil {
+                map["ChannelName"] = self.channelName!
+            }
+            if self.executedGtidSet != nil {
+                map["ExecutedGtidSet"] = self.executedGtidSet!
+            }
+            if self.lastErrno != nil {
+                map["LastErrno"] = self.lastErrno!
+            }
+            if self.lastIoErrno != nil {
+                map["LastIoErrno"] = self.lastIoErrno!
+            }
+            if self.lastIoError != nil {
+                map["LastIoError"] = self.lastIoError!
+            }
+            if self.lastSqlErrno != nil {
+                map["LastSqlErrno"] = self.lastSqlErrno!
+            }
+            if self.lastSqlError != nil {
+                map["LastSqlError"] = self.lastSqlError!
+            }
+            if self.masterHost != nil {
+                map["MasterHost"] = self.masterHost!
+            }
+            if self.masterUser != nil {
+                map["MasterUser"] = self.masterUser!
+            }
+            if self.masterUuid != nil {
+                map["MasterUuid"] = self.masterUuid!
+            }
+            if self.replicateDoDb != nil {
+                map["ReplicateDoDb"] = self.replicateDoDb!
+            }
+            if self.replicateDoTable != nil {
+                map["ReplicateDoTable"] = self.replicateDoTable!
+            }
+            if self.replicateIgnoreDb != nil {
+                map["ReplicateIgnoreDb"] = self.replicateIgnoreDb!
+            }
+            if self.replicateIgnoreTable != nil {
+                map["ReplicateIgnoreTable"] = self.replicateIgnoreTable!
+            }
+            if self.replicateWildDoTable != nil {
+                map["ReplicateWildDoTable"] = self.replicateWildDoTable!
+            }
+            if self.replicateWildIgnoreTable != nil {
+                map["ReplicateWildIgnoreTable"] = self.replicateWildIgnoreTable!
+            }
+            if self.secondsBehindMaster != nil {
+                map["SecondsBehindMaster"] = self.secondsBehindMaster!
+            }
+            if self.slaveIoRunning != nil {
+                map["SlaveIoRunning"] = self.slaveIoRunning!
+            }
+            if self.slaveIoState != nil {
+                map["SlaveIoState"] = self.slaveIoState!
+            }
+            if self.slaveSqlRunning != nil {
+                map["SlaveSqlRunning"] = self.slaveSqlRunning!
+            }
+            if self.slaveSqlRunningState != nil {
+                map["SlaveSqlRunningState"] = self.slaveSqlRunningState!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChannelName"] as? String {
+                self.channelName = value
+            }
+            if let value = dict["ExecutedGtidSet"] as? String {
+                self.executedGtidSet = value
+            }
+            if let value = dict["LastErrno"] as? Int32 {
+                self.lastErrno = value
+            }
+            if let value = dict["LastIoErrno"] as? Int32 {
+                self.lastIoErrno = value
+            }
+            if let value = dict["LastIoError"] as? String {
+                self.lastIoError = value
+            }
+            if let value = dict["LastSqlErrno"] as? Int32 {
+                self.lastSqlErrno = value
+            }
+            if let value = dict["LastSqlError"] as? String {
+                self.lastSqlError = value
+            }
+            if let value = dict["MasterHost"] as? String {
+                self.masterHost = value
+            }
+            if let value = dict["MasterUser"] as? String {
+                self.masterUser = value
+            }
+            if let value = dict["MasterUuid"] as? String {
+                self.masterUuid = value
+            }
+            if let value = dict["ReplicateDoDb"] as? String {
+                self.replicateDoDb = value
+            }
+            if let value = dict["ReplicateDoTable"] as? String {
+                self.replicateDoTable = value
+            }
+            if let value = dict["ReplicateIgnoreDb"] as? String {
+                self.replicateIgnoreDb = value
+            }
+            if let value = dict["ReplicateIgnoreTable"] as? String {
+                self.replicateIgnoreTable = value
+            }
+            if let value = dict["ReplicateWildDoTable"] as? String {
+                self.replicateWildDoTable = value
+            }
+            if let value = dict["ReplicateWildIgnoreTable"] as? String {
+                self.replicateWildIgnoreTable = value
+            }
+            if let value = dict["SecondsBehindMaster"] as? Int32 {
+                self.secondsBehindMaster = value
+            }
+            if let value = dict["SlaveIoRunning"] as? String {
+                self.slaveIoRunning = value
+            }
+            if let value = dict["SlaveIoState"] as? String {
+                self.slaveIoState = value
+            }
+            if let value = dict["SlaveSqlRunning"] as? String {
+                self.slaveSqlRunning = value
+            }
+            if let value = dict["SlaveSqlRunningState"] as? String {
+                self.slaveSqlRunningState = value
+            }
+        }
+    }
     public var externalReplication: String?
 
     public var gtidExecuted: String?
@@ -35779,6 +36273,8 @@ public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
     public var replicationState: String?
 
     public var requestId: String?
+
+    public var slaveStatusList: [DescribeDBInstanceReplicationResponseBody.SlaveStatusList]?
 
     public override init() {
         super.init()
@@ -35824,6 +36320,13 @@ public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.slaveStatusList != nil {
+            var tmp : [Any] = []
+            for k in self.slaveStatusList! {
+                tmp.append(k.toMap())
+            }
+            map["SlaveStatusList"] = tmp
+        }
         return map
     }
 
@@ -35858,6 +36361,19 @@ public class DescribeDBInstanceReplicationResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SlaveStatusList"] as? [Any?] {
+            var tmp : [DescribeDBInstanceReplicationResponseBody.SlaveStatusList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDBInstanceReplicationResponseBody.SlaveStatusList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.slaveStatusList = tmp
         }
     }
 }
@@ -107729,6 +108245,182 @@ public class UntagResourcesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UntagResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDBInstanceReplicationRequest : Tea.TeaModel {
+    public var channelName: String?
+
+    public var dbInstanceId: String?
+
+    public var masterHost: String?
+
+    public var masterPassword: String?
+
+    public var masterPort: Int32?
+
+    public var masterUser: String?
+
+    public var operation: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.channelName != nil {
+            map["ChannelName"] = self.channelName!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.masterHost != nil {
+            map["MasterHost"] = self.masterHost!
+        }
+        if self.masterPassword != nil {
+            map["MasterPassword"] = self.masterPassword!
+        }
+        if self.masterPort != nil {
+            map["MasterPort"] = self.masterPort!
+        }
+        if self.masterUser != nil {
+            map["MasterUser"] = self.masterUser!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChannelName"] as? String {
+            self.channelName = value
+        }
+        if let value = dict["DbInstanceId"] as? String {
+            self.dbInstanceId = value
+        }
+        if let value = dict["MasterHost"] as? String {
+            self.masterHost = value
+        }
+        if let value = dict["MasterPassword"] as? String {
+            self.masterPassword = value
+        }
+        if let value = dict["MasterPort"] as? Int32 {
+            self.masterPort = value
+        }
+        if let value = dict["MasterUser"] as? String {
+            self.masterUser = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateDBInstanceReplicationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateDBInstanceReplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDBInstanceReplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateDBInstanceReplicationResponseBody()
             model.fromMap(value)
             self.body = model
         }
