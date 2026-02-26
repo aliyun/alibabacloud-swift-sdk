@@ -75,6 +75,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var description_: String?
 
+    public var diskSize: Int?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -165,6 +167,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.diskSize != nil {
+            map["diskSize"] = self.diskSize!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -261,6 +266,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["diskSize"] as? Int {
+            self.diskSize = value
         }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
@@ -2524,6 +2532,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var diskSize: Int32?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -2599,6 +2609,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.diskSize != nil {
+            map["diskSize"] = self.diskSize!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -2677,6 +2690,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["diskSize"] as? Int32 {
+            self.diskSize = value
         }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
@@ -4115,6 +4131,8 @@ public class CreateTemplateInput : Tea.TeaModel {
 
     public var templateType: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -4198,6 +4216,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if self.templateType != nil {
             map["templateType"] = self.templateType!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -4285,6 +4306,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["templateType"] as? String {
             self.templateType = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -6282,6 +6306,8 @@ public class GetCredentialOutput : Tea.TeaModel {
 }
 
 public class GetDiscoveryEndpointsOutput : Tea.TeaModel {
+    public var credentialName: String?
+
     public var discoveryEndpoints: [DiscoveryEndpoint]?
 
     public override init() {
@@ -6298,6 +6324,9 @@ public class GetDiscoveryEndpointsOutput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.credentialName != nil {
+            map["credentialName"] = self.credentialName!
+        }
         if self.discoveryEndpoints != nil {
             var tmp : [Any] = []
             for k in self.discoveryEndpoints! {
@@ -6310,6 +6339,9 @@ public class GetDiscoveryEndpointsOutput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["credentialName"] as? String {
+            self.credentialName = value
+        }
         if let value = dict["discoveryEndpoints"] as? [Any?] {
             var tmp : [DiscoveryEndpoint] = []
             for v in value {
@@ -13105,6 +13137,8 @@ public class Template : Tea.TeaModel {
 
     public var templateVersion: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -13216,6 +13250,9 @@ public class Template : Tea.TeaModel {
         }
         if self.templateVersion != nil {
             map["templateVersion"] = self.templateVersion!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -13332,6 +13369,9 @@ public class Template : Tea.TeaModel {
         }
         if let value = dict["templateVersion"] as? String {
             self.templateVersion = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -13694,6 +13734,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var diskSize: Int32?
+
     public var environmentVariables: [String: String]?
 
     public var executionRoleArn: String?
@@ -13764,6 +13806,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.diskSize != nil {
+            map["diskSize"] = self.diskSize!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -13836,6 +13881,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["diskSize"] as? Int32 {
+            self.diskSize = value
         }
         if let value = dict["environmentVariables"] as? [String: String] {
             self.environmentVariables = value
@@ -14229,6 +14277,8 @@ public class UpdateCustomDomainInput : Tea.TeaModel {
 }
 
 public class UpdateDiscoveryEndpointsInput : Tea.TeaModel {
+    public var credentialName: String?
+
     public var discoveryEndpoints: [DiscoveryEndpoint]?
 
     public override init() {
@@ -14245,6 +14295,9 @@ public class UpdateDiscoveryEndpointsInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.credentialName != nil {
+            map["credentialName"] = self.credentialName!
+        }
         if self.discoveryEndpoints != nil {
             var tmp : [Any] = []
             for k in self.discoveryEndpoints! {
@@ -14257,6 +14310,9 @@ public class UpdateDiscoveryEndpointsInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["credentialName"] as? String {
+            self.credentialName = value
+        }
         if let value = dict["discoveryEndpoints"] as? [Any?] {
             var tmp : [DiscoveryEndpoint] = []
             for v in value {
@@ -14812,6 +14868,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
 
     public var templateConfiguration: [String: Any]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -14886,6 +14944,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if self.templateConfiguration != nil {
             map["templateConfiguration"] = self.templateConfiguration!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -14964,6 +15025,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["templateConfiguration"] as? [String: Any] {
             self.templateConfiguration = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -19687,6 +19751,8 @@ public class ListTemplatesRequest : Tea.TeaModel {
 
     public var templateType: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -19716,6 +19782,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["templateType"] = self.templateType!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -19735,6 +19804,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["templateType"] as? String {
             self.templateType = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
