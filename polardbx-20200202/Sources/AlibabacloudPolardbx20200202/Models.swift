@@ -7098,6 +7098,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
         public var crossRegionDataBackupRetention: Int32?
 
+        public var crossRegionFilterValue: String?
+
         public var crossRegionLogBackupRetention: Int32?
 
         public var DBInstanceName: String?
@@ -7157,6 +7159,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
             }
             if self.crossRegionDataBackupRetention != nil {
                 map["CrossRegionDataBackupRetention"] = self.crossRegionDataBackupRetention!
+            }
+            if self.crossRegionFilterValue != nil {
+                map["CrossRegionFilterValue"] = self.crossRegionFilterValue!
             }
             if self.crossRegionLogBackupRetention != nil {
                 map["CrossRegionLogBackupRetention"] = self.crossRegionLogBackupRetention!
@@ -7219,6 +7224,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["CrossRegionDataBackupRetention"] as? Int32 {
                 self.crossRegionDataBackupRetention = value
+            }
+            if let value = dict["CrossRegionFilterValue"] as? String {
+                self.crossRegionFilterValue = value
             }
             if let value = dict["CrossRegionLogBackupRetention"] as? Int32 {
                 self.crossRegionLogBackupRetention = value
@@ -30485,6 +30493,8 @@ public class UpdateBackupPolicyRequest : Tea.TeaModel {
 
     public var crossRegionDataBackupRetention: Int32?
 
+    public var crossRegionFilterValue: String?
+
     public var crossRegionLogBackupRetention: Int32?
 
     public var DBInstanceName: String?
@@ -30546,6 +30556,9 @@ public class UpdateBackupPolicyRequest : Tea.TeaModel {
         }
         if self.crossRegionDataBackupRetention != nil {
             map["CrossRegionDataBackupRetention"] = self.crossRegionDataBackupRetention!
+        }
+        if self.crossRegionFilterValue != nil {
+            map["CrossRegionFilterValue"] = self.crossRegionFilterValue!
         }
         if self.crossRegionLogBackupRetention != nil {
             map["CrossRegionLogBackupRetention"] = self.crossRegionLogBackupRetention!
@@ -30612,6 +30625,9 @@ public class UpdateBackupPolicyRequest : Tea.TeaModel {
         if let value = dict["CrossRegionDataBackupRetention"] as? Int32 {
             self.crossRegionDataBackupRetention = value
         }
+        if let value = dict["CrossRegionFilterValue"] as? String {
+            self.crossRegionFilterValue = value
+        }
         if let value = dict["CrossRegionLogBackupRetention"] as? Int32 {
             self.crossRegionLogBackupRetention = value
         }
@@ -30668,6 +30684,8 @@ public class UpdateBackupPolicyResponseBody : Tea.TeaModel {
         public var coldDataBackupRetention: Int32?
 
         public var crossRegionDataBackupRetention: Int32?
+
+        public var crossRegionFilterValue: String?
 
         public var crossRegionLogBackupRetention: Int32?
 
@@ -30728,6 +30746,9 @@ public class UpdateBackupPolicyResponseBody : Tea.TeaModel {
             }
             if self.crossRegionDataBackupRetention != nil {
                 map["CrossRegionDataBackupRetention"] = self.crossRegionDataBackupRetention!
+            }
+            if self.crossRegionFilterValue != nil {
+                map["CrossRegionFilterValue"] = self.crossRegionFilterValue!
             }
             if self.crossRegionLogBackupRetention != nil {
                 map["CrossRegionLogBackupRetention"] = self.crossRegionLogBackupRetention!
@@ -30790,6 +30811,9 @@ public class UpdateBackupPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["CrossRegionDataBackupRetention"] as? Int32 {
                 self.crossRegionDataBackupRetention = value
+            }
+            if let value = dict["CrossRegionFilterValue"] as? String {
+                self.crossRegionFilterValue = value
             }
             if let value = dict["CrossRegionLogBackupRetention"] as? Int32 {
                 self.crossRegionLogBackupRetention = value

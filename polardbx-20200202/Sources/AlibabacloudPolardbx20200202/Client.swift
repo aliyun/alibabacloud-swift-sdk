@@ -5319,6 +5319,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crossRegionDataBackupRetention)) {
             query["CrossRegionDataBackupRetention"] = request.crossRegionDataBackupRetention!;
         }
+        if (!TeaUtils.Client.isUnset(request.crossRegionFilterValue)) {
+            query["CrossRegionFilterValue"] = request.crossRegionFilterValue ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.crossRegionLogBackupRetention)) {
             query["CrossRegionLogBackupRetention"] = request.crossRegionLogBackupRetention!;
         }
