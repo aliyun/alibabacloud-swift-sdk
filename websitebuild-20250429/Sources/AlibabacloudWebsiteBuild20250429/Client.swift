@@ -1529,6 +1529,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySupabaseInstanceInfoForAdminWithOptions(_ request: QuerySupabaseInstanceInfoForAdminRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySupabaseInstanceInfoForAdminResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QuerySupabaseInstanceInfoForAdmin",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QuerySupabaseInstanceInfoForAdminResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySupabaseInstanceInfoForAdmin(_ request: QuerySupabaseInstanceInfoForAdminRequest) async throws -> QuerySupabaseInstanceInfoForAdminResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await querySupabaseInstanceInfoForAdminWithOptions(request as! QuerySupabaseInstanceInfoForAdminRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func refreshAppInstanceTicketWithOptions(_ request: RefreshAppInstanceTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshAppInstanceTicketResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
