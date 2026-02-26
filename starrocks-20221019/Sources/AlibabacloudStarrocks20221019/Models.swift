@@ -3436,6 +3436,8 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
 
         public var useComputeNode: Bool?
 
+        public var supportCompactionService: Bool?
+
         public override init() {
             super.init()
         }
@@ -3507,6 +3509,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             if self.useComputeNode != nil {
                 map["UseComputeNode"] = self.useComputeNode!
             }
+            if self.supportCompactionService != nil {
+                map["supportCompactionService"] = self.supportCompactionService!
+            }
             return map
         }
 
@@ -3568,6 +3573,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             }
             if let value = dict["UseComputeNode"] as? Bool {
                 self.useComputeNode = value
+            }
+            if let value = dict["supportCompactionService"] as? Bool {
+                self.supportCompactionService = value
             }
         }
     }
