@@ -55,6 +55,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetResourceConfigurationsWithOptions(_ request: BatchGetResourceConfigurationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetResourceConfigurationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resources)) {
+            query["Resources"] = request.resources ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchGetResourceConfigurations",
+            "version": "2022-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchGetResourceConfigurationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetResourceConfigurations(_ request: BatchGetResourceConfigurationsRequest) async throws -> BatchGetResourceConfigurationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchGetResourceConfigurationsWithOptions(request as! BatchGetResourceConfigurationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDeliveryChannelWithOptions(_ request: CreateDeliveryChannelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeliveryChannelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
