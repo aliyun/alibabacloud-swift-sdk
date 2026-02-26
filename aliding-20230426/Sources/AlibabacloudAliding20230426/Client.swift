@@ -10262,6 +10262,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(headers.accountId)) {
             realHeaders["accountId"] = TeaUtils.Client.toJSONString(headers.accountId);
         }
+        if (!TeaUtils.Client.isUnset(headers.alidingSsoTicket)) {
+            realHeaders["alidingSsoTicket"] = TeaUtils.Client.toJSONString(headers.alidingSsoTicket);
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

@@ -79056,6 +79056,8 @@ public class InvokeAssistantHeaders : Tea.TeaModel {
 
     public var accountId: String?
 
+    public var alidingSsoTicket: String?
+
     public override init() {
         super.init()
     }
@@ -79076,6 +79078,9 @@ public class InvokeAssistantHeaders : Tea.TeaModel {
         if self.accountId != nil {
             map["accountId"] = self.accountId!
         }
+        if self.alidingSsoTicket != nil {
+            map["alidingSsoTicket"] = self.alidingSsoTicket!
+        }
         return map
     }
 
@@ -79086,6 +79091,9 @@ public class InvokeAssistantHeaders : Tea.TeaModel {
         }
         if let value = dict["accountId"] as? String {
             self.accountId = value
+        }
+        if let value = dict["alidingSsoTicket"] as? String {
+            self.alidingSsoTicket = value
         }
     }
 }
@@ -81397,6 +81405,8 @@ public class InvokeSkillHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
 
+        public var alidingSsoTicket: String?
+
         public var ssoTicket: String?
 
         public override init() {
@@ -81416,6 +81426,9 @@ public class InvokeSkillHeaders : Tea.TeaModel {
             if self.accountId != nil {
                 map["accountId"] = self.accountId!
             }
+            if self.alidingSsoTicket != nil {
+                map["alidingSsoTicket"] = self.alidingSsoTicket!
+            }
             if self.ssoTicket != nil {
                 map["ssoTicket"] = self.ssoTicket!
             }
@@ -81426,6 +81439,9 @@ public class InvokeSkillHeaders : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["accountId"] as? String {
                 self.accountId = value
+            }
+            if let value = dict["alidingSsoTicket"] as? String {
+                self.alidingSsoTicket = value
             }
             if let value = dict["ssoTicket"] as? String {
                 self.ssoTicket = value
