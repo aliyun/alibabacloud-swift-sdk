@@ -14647,6 +14647,414 @@ public class ListResourceTypesResponse : Tea.TeaModel {
     }
 }
 
+public class ListResourcesRequest : Tea.TeaModel {
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sourceType: String?
+
+    public var sourceValue: String?
+
+    public var specType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.sourceType != nil {
+            map["sourceType"] = self.sourceType!
+        }
+        if self.sourceValue != nil {
+            map["sourceValue"] = self.sourceValue!
+        }
+        if self.specType != nil {
+            map["specType"] = self.specType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["sourceType"] as? String {
+            self.sourceType = value
+        }
+        if let value = dict["sourceValue"] as? String {
+            self.sourceValue = value
+        }
+        if let value = dict["specType"] as? String {
+            self.specType = value
+        }
+    }
+}
+
+public class ListResourcesResponseBody : Tea.TeaModel {
+    public class Resources : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["tagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["tagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["tagKey"] as? String {
+                    self.tagKey = value
+                }
+                if let value = dict["tagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
+        public var accountId: String?
+
+        public var createTime: String?
+
+        public var dependsOnResourceIds: [String]?
+
+        public var productCode: String?
+
+        public var properties: [String: Any]?
+
+        public var propertyVariables: [String: Any]?
+
+        public var regionId: String?
+
+        public var resourceArn: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceId: String?
+
+        public var resourceName: String?
+
+        public var resourcePageUrl: String?
+
+        public var resourceType: String?
+
+        public var status: String?
+
+        public var tags: [ListResourcesResponseBody.Resources.Tags]?
+
+        public var terraformArn: String?
+
+        public var terraformCode: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.dependsOnResourceIds != nil {
+                map["dependsOnResourceIds"] = self.dependsOnResourceIds!
+            }
+            if self.productCode != nil {
+                map["productCode"] = self.productCode!
+            }
+            if self.properties != nil {
+                map["properties"] = self.properties!
+            }
+            if self.propertyVariables != nil {
+                map["propertyVariables"] = self.propertyVariables!
+            }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
+            if self.resourceArn != nil {
+                map["resourceArn"] = self.resourceArn!
+            }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceId != nil {
+                map["resourceId"] = self.resourceId!
+            }
+            if self.resourceName != nil {
+                map["resourceName"] = self.resourceName!
+            }
+            if self.resourcePageUrl != nil {
+                map["resourcePageUrl"] = self.resourcePageUrl!
+            }
+            if self.resourceType != nil {
+                map["resourceType"] = self.resourceType!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
+            }
+            if self.terraformArn != nil {
+                map["terraformArn"] = self.terraformArn!
+            }
+            if self.terraformCode != nil {
+                map["terraformCode"] = self.terraformCode!
+            }
+            if self.zoneId != nil {
+                map["zoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+            if let value = dict["createTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["dependsOnResourceIds"] as? [String] {
+                self.dependsOnResourceIds = value
+            }
+            if let value = dict["productCode"] as? String {
+                self.productCode = value
+            }
+            if let value = dict["properties"] as? [String: Any] {
+                self.properties = value
+            }
+            if let value = dict["propertyVariables"] as? [String: Any] {
+                self.propertyVariables = value
+            }
+            if let value = dict["regionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["resourceArn"] as? String {
+                self.resourceArn = value
+            }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["resourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["resourceName"] as? String {
+                self.resourceName = value
+            }
+            if let value = dict["resourcePageUrl"] as? String {
+                self.resourcePageUrl = value
+            }
+            if let value = dict["resourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+            if let value = dict["tags"] as? [Any?] {
+                var tmp : [ListResourcesResponseBody.Resources.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListResourcesResponseBody.Resources.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["terraformArn"] as? String {
+                self.terraformArn = value
+            }
+            if let value = dict["terraformCode"] as? String {
+                self.terraformCode = value
+            }
+            if let value = dict["zoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var resources: [ListResourcesResponseBody.Resources]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resources != nil {
+            var tmp : [Any] = []
+            for k in self.resources! {
+                tmp.append(k.toMap())
+            }
+            map["Resources"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Resources"] as? [Any?] {
+            var tmp : [ListResourcesResponseBody.Resources] = []
+            for v in value {
+                if v != nil {
+                    var model = ListResourcesResponseBody.Resources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resources = tmp
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["totalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTasksRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var tagKey: String?
