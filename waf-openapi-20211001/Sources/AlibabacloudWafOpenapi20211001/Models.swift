@@ -2851,6 +2851,12 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public var focusHttps: Bool?
 
+        public var hstsIncludeSubDomain: Bool?
+
+        public var hstsMaxAge: Int64?
+
+        public var hstsPreload: Bool?
+
         public var http2Enabled: Bool?
 
         public var httpPorts: [Int32]?
@@ -2904,6 +2910,15 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if self.focusHttps != nil {
                 map["FocusHttps"] = self.focusHttps!
+            }
+            if self.hstsIncludeSubDomain != nil {
+                map["HstsIncludeSubDomain"] = self.hstsIncludeSubDomain!
+            }
+            if self.hstsMaxAge != nil {
+                map["HstsMaxAge"] = self.hstsMaxAge!
+            }
+            if self.hstsPreload != nil {
+                map["HstsPreload"] = self.hstsPreload!
             }
             if self.http2Enabled != nil {
                 map["Http2Enabled"] = self.http2Enabled!
@@ -2960,6 +2975,15 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if let value = dict["FocusHttps"] as? Bool {
                 self.focusHttps = value
+            }
+            if let value = dict["HstsIncludeSubDomain"] as? Bool {
+                self.hstsIncludeSubDomain = value
+            }
+            if let value = dict["HstsMaxAge"] as? Int64 {
+                self.hstsMaxAge = value
+            }
+            if let value = dict["HstsPreload"] as? Bool {
+                self.hstsPreload = value
             }
             if let value = dict["Http2Enabled"] as? Bool {
                 self.http2Enabled = value
@@ -3107,6 +3131,8 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public var maxBodySize: Int32?
 
+        public var proxyProtocol: Bool?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [CreateDomainRequest.Redirect.RequestHeaders]?
@@ -3187,6 +3213,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if self.maxBodySize != nil {
                 map["MaxBodySize"] = self.maxBodySize!
+            }
+            if self.proxyProtocol != nil {
+                map["ProxyProtocol"] = self.proxyProtocol!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -3281,6 +3310,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if let value = dict["MaxBodySize"] as? Int32 {
                 self.maxBodySize = value
+            }
+            if let value = dict["ProxyProtocol"] as? Bool {
+                self.proxyProtocol = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -23306,6 +23338,12 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var focusHttps: Bool?
 
+        public var hstsIncludeSubDomain: Bool?
+
+        public var hstsMaxAge: Int64?
+
+        public var hstsPreload: Bool?
+
         public var http2Enabled: Bool?
 
         public var httpPorts: [Int64]?
@@ -23359,6 +23397,15 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.focusHttps != nil {
                 map["FocusHttps"] = self.focusHttps!
+            }
+            if self.hstsIncludeSubDomain != nil {
+                map["HstsIncludeSubDomain"] = self.hstsIncludeSubDomain!
+            }
+            if self.hstsMaxAge != nil {
+                map["HstsMaxAge"] = self.hstsMaxAge!
+            }
+            if self.hstsPreload != nil {
+                map["HstsPreload"] = self.hstsPreload!
             }
             if self.http2Enabled != nil {
                 map["Http2Enabled"] = self.http2Enabled!
@@ -23415,6 +23462,15 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["FocusHttps"] as? Bool {
                 self.focusHttps = value
+            }
+            if let value = dict["HstsIncludeSubDomain"] as? Bool {
+                self.hstsIncludeSubDomain = value
+            }
+            if let value = dict["HstsMaxAge"] as? Int64 {
+                self.hstsMaxAge = value
+            }
+            if let value = dict["HstsPreload"] as? Bool {
+                self.hstsPreload = value
             }
             if let value = dict["Http2Enabled"] as? Bool {
                 self.http2Enabled = value
@@ -23624,6 +23680,8 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var maxBodySize: Int32?
 
+        public var proxyProtocol: Bool?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [DescribeDomainDetailResponseBody.Redirect.RequestHeaders]?
@@ -23713,6 +23771,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.maxBodySize != nil {
                 map["MaxBodySize"] = self.maxBodySize!
+            }
+            if self.proxyProtocol != nil {
+                map["ProxyProtocol"] = self.proxyProtocol!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -23827,6 +23888,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["MaxBodySize"] as? Int32 {
                 self.maxBodySize = value
+            }
+            if let value = dict["ProxyProtocol"] as? Bool {
+                self.proxyProtocol = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -51236,6 +51300,12 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public var focusHttps: Bool?
 
+        public var hstsIncludeSubDomain: Bool?
+
+        public var hstsMaxAge: Int64?
+
+        public var hstsPreload: Bool?
+
         public var http2Enabled: Bool?
 
         public var httpPorts: [Int32]?
@@ -51289,6 +51359,15 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if self.focusHttps != nil {
                 map["FocusHttps"] = self.focusHttps!
+            }
+            if self.hstsIncludeSubDomain != nil {
+                map["HstsIncludeSubDomain"] = self.hstsIncludeSubDomain!
+            }
+            if self.hstsMaxAge != nil {
+                map["HstsMaxAge"] = self.hstsMaxAge!
+            }
+            if self.hstsPreload != nil {
+                map["HstsPreload"] = self.hstsPreload!
             }
             if self.http2Enabled != nil {
                 map["Http2Enabled"] = self.http2Enabled!
@@ -51345,6 +51424,15 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if let value = dict["FocusHttps"] as? Bool {
                 self.focusHttps = value
+            }
+            if let value = dict["HstsIncludeSubDomain"] as? Bool {
+                self.hstsIncludeSubDomain = value
+            }
+            if let value = dict["HstsMaxAge"] as? Int64 {
+                self.hstsMaxAge = value
+            }
+            if let value = dict["HstsPreload"] as? Bool {
+                self.hstsPreload = value
             }
             if let value = dict["Http2Enabled"] as? Bool {
                 self.http2Enabled = value
@@ -51492,6 +51580,8 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public var maxBodySize: Int32?
 
+        public var proxyProtocol: Bool?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [ModifyDomainRequest.Redirect.RequestHeaders]?
@@ -51572,6 +51662,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if self.maxBodySize != nil {
                 map["MaxBodySize"] = self.maxBodySize!
+            }
+            if self.proxyProtocol != nil {
+                map["ProxyProtocol"] = self.proxyProtocol!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -51666,6 +51759,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if let value = dict["MaxBodySize"] as? Int32 {
                 self.maxBodySize = value
+            }
+            if let value = dict["ProxyProtocol"] as? Bool {
+                self.proxyProtocol = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
