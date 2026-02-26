@@ -38874,6 +38874,12 @@ public class StartAggregateRemediationRequest : Tea.TeaModel {
 
     public var resourceAccountId: Int64?
 
+    public var resourceId: String?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -38897,6 +38903,15 @@ public class StartAggregateRemediationRequest : Tea.TeaModel {
         if self.resourceAccountId != nil {
             map["ResourceAccountId"] = self.resourceAccountId!
         }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -38910,6 +38925,15 @@ public class StartAggregateRemediationRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceAccountId"] as? Int64 {
             self.resourceAccountId = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
@@ -39392,6 +39416,12 @@ public class StartConfigurationRecorderResponse : Tea.TeaModel {
 public class StartRemediationRequest : Tea.TeaModel {
     public var configRuleId: String?
 
+    public var resourceId: String?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -39409,6 +39439,15 @@ public class StartRemediationRequest : Tea.TeaModel {
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
         }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -39416,6 +39455,15 @@ public class StartRemediationRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConfigRuleId"] as? String {
             self.configRuleId = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
