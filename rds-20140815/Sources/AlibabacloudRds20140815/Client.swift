@@ -19784,6 +19784,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dataDisk)) {
             request.dataDiskShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataDisk, "DataDisk", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.securityGroupIds)) {
+            request.securityGroupIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.securityGroupIds, "SecurityGroupIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.systemDisk)) {
             request.systemDiskShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.systemDisk, "SystemDisk", "json")
         }
@@ -19869,6 +19872,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.periodUnit)) {
             query["PeriodUnit"] = request.periodUnit ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.privateIpAddress)) {
+            query["PrivateIpAddress"] = request.privateIpAddress ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.promotionCode)) {
             query["PromotionCode"] = request.promotionCode ?? "";
         }
@@ -19886,6 +19892,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
             query["SecurityGroupId"] = request.securityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupIdsShrink)) {
+            query["SecurityGroupIds"] = request.securityGroupIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.spotStrategy)) {
             query["SpotStrategy"] = request.spotStrategy ?? "";

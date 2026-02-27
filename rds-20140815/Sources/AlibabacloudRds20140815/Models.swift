@@ -63870,6 +63870,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var autoRenew: Bool?
+
         public var clusterName: String?
 
         public var cpu: Int32?
@@ -63951,6 +63953,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
             if self.clusterName != nil {
                 map["ClusterName"] = self.clusterName!
             }
@@ -64063,6 +64068,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoRenew"] as? Bool {
+                self.autoRenew = value
+            }
             if let value = dict["ClusterName"] as? String {
                 self.clusterName = value
             }
@@ -104169,6 +104177,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var privateIpAddress: String?
+
     public var promotionCode: String?
 
     public var regionId: String?
@@ -104180,6 +104190,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
     public var securityEnhancementStrategy: String?
 
     public var securityGroupId: String?
+
+    public var securityGroupIds: [String]?
 
     public var spotStrategy: String?
 
@@ -104298,6 +104310,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.privateIpAddress != nil {
+            map["PrivateIpAddress"] = self.privateIpAddress!
+        }
         if self.promotionCode != nil {
             map["PromotionCode"] = self.promotionCode!
         }
@@ -104315,6 +104330,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.securityGroupIds != nil {
+            map["SecurityGroupIds"] = self.securityGroupIds!
         }
         if self.spotStrategy != nil {
             map["SpotStrategy"] = self.spotStrategy!
@@ -104442,6 +104460,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
         }
+        if let value = dict["PrivateIpAddress"] as? String {
+            self.privateIpAddress = value
+        }
         if let value = dict["PromotionCode"] as? String {
             self.promotionCode = value
         }
@@ -104459,6 +104480,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
+        }
+        if let value = dict["SecurityGroupIds"] as? [String] {
+            self.securityGroupIds = value
         }
         if let value = dict["SpotStrategy"] as? String {
             self.spotStrategy = value
@@ -104592,6 +104616,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var privateIpAddress: String?
+
     public var promotionCode: String?
 
     public var regionId: String?
@@ -104603,6 +104629,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
     public var securityEnhancementStrategy: String?
 
     public var securityGroupId: String?
+
+    public var securityGroupIdsShrink: String?
 
     public var spotStrategy: String?
 
@@ -104715,6 +104743,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.privateIpAddress != nil {
+            map["PrivateIpAddress"] = self.privateIpAddress!
+        }
         if self.promotionCode != nil {
             map["PromotionCode"] = self.promotionCode!
         }
@@ -104732,6 +104763,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.securityGroupIdsShrink != nil {
+            map["SecurityGroupIds"] = self.securityGroupIdsShrink!
         }
         if self.spotStrategy != nil {
             map["SpotStrategy"] = self.spotStrategy!
@@ -104847,6 +104881,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
         }
+        if let value = dict["PrivateIpAddress"] as? String {
+            self.privateIpAddress = value
+        }
         if let value = dict["PromotionCode"] as? String {
             self.promotionCode = value
         }
@@ -104864,6 +104901,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
+        }
+        if let value = dict["SecurityGroupIds"] as? String {
+            self.securityGroupIdsShrink = value
         }
         if let value = dict["SpotStrategy"] as? String {
             self.spotStrategy = value
