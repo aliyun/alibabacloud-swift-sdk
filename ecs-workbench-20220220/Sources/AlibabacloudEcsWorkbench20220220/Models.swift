@@ -1793,6 +1793,8 @@ public class SetInstanceRecordConfigRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceRegionId: String?
+
     public override init() {
         super.init()
     }
@@ -1822,6 +1824,9 @@ public class SetInstanceRecordConfigRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
         return map
     }
 
@@ -1841,6 +1846,9 @@ public class SetInstanceRecordConfigRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
         }
     }
 }
