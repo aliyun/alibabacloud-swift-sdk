@@ -47687,6 +47687,499 @@ public class QueryAuditTaskResponse : Tea.TeaModel {
     }
 }
 
+public class QueryVideoAuditResultRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class QueryVideoAuditResultResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ImageUrls : Tea.TeaModel {
+            public var id: String?
+
+            public var timestamp: Double?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["Timestamp"] as? Double {
+                    self.timestamp = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public class Results : Tea.TeaModel {
+            public class Result : Tea.TeaModel {
+                public var confidence: Double?
+
+                public var description_: String?
+
+                public var label: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confidence != nil {
+                        map["Confidence"] = self.confidence!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Confidence"] as? Double {
+                        self.confidence = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Label"] as? String {
+                        self.label = value
+                    }
+                }
+            }
+            public var dataId: String?
+
+            public var reqId: String?
+
+            public var result: [QueryVideoAuditResultResponseBody.Data.Results.Result]?
+
+            public var riskLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataId != nil {
+                    map["DataId"] = self.dataId!
+                }
+                if self.reqId != nil {
+                    map["ReqId"] = self.reqId!
+                }
+                if self.result != nil {
+                    var tmp : [Any] = []
+                    for k in self.result! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Result"] = tmp
+                }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataId"] as? String {
+                    self.dataId = value
+                }
+                if let value = dict["ReqId"] as? String {
+                    self.reqId = value
+                }
+                if let value = dict["Result"] as? [Any?] {
+                    var tmp : [QueryVideoAuditResultResponseBody.Data.Results.Result] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryVideoAuditResultResponseBody.Data.Results.Result()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.result = tmp
+                }
+                if let value = dict["RiskLevel"] as? String {
+                    self.riskLevel = value
+                }
+            }
+        }
+        public var duration: Double?
+
+        public var errorMessage: String?
+
+        public var fps: Double?
+
+        public var frameAudited: Int32?
+
+        public var height: Int32?
+
+        public var imageUrls: [QueryVideoAuditResultResponseBody.Data.ImageUrls]?
+
+        public var results: [QueryVideoAuditResultResponseBody.Data.Results]?
+
+        public var status: String?
+
+        public var text: String?
+
+        public var totalFrameAudit: Int32?
+
+        public var totalFrames: Int32?
+
+        public var totalShots: Int32?
+
+        public var videoFileKey: String?
+
+        public var videoUrl: String?
+
+        public var width: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.fps != nil {
+                map["Fps"] = self.fps!
+            }
+            if self.frameAudited != nil {
+                map["FrameAudited"] = self.frameAudited!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.imageUrls != nil {
+                var tmp : [Any] = []
+                for k in self.imageUrls! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageUrls"] = tmp
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            if self.totalFrameAudit != nil {
+                map["TotalFrameAudit"] = self.totalFrameAudit!
+            }
+            if self.totalFrames != nil {
+                map["TotalFrames"] = self.totalFrames!
+            }
+            if self.totalShots != nil {
+                map["TotalShots"] = self.totalShots!
+            }
+            if self.videoFileKey != nil {
+                map["VideoFileKey"] = self.videoFileKey!
+            }
+            if self.videoUrl != nil {
+                map["VideoUrl"] = self.videoUrl!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Double {
+                self.duration = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
+            }
+            if let value = dict["Fps"] as? Double {
+                self.fps = value
+            }
+            if let value = dict["FrameAudited"] as? Int32 {
+                self.frameAudited = value
+            }
+            if let value = dict["Height"] as? Int32 {
+                self.height = value
+            }
+            if let value = dict["ImageUrls"] as? [Any?] {
+                var tmp : [QueryVideoAuditResultResponseBody.Data.ImageUrls] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryVideoAuditResultResponseBody.Data.ImageUrls()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageUrls = tmp
+            }
+            if let value = dict["Results"] as? [Any?] {
+                var tmp : [QueryVideoAuditResultResponseBody.Data.Results] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryVideoAuditResultResponseBody.Data.Results()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.results = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+            if let value = dict["TotalFrameAudit"] as? Int32 {
+                self.totalFrameAudit = value
+            }
+            if let value = dict["TotalFrames"] as? Int32 {
+                self.totalFrames = value
+            }
+            if let value = dict["TotalShots"] as? Int32 {
+                self.totalShots = value
+            }
+            if let value = dict["VideoFileKey"] as? String {
+                self.videoFileKey = value
+            }
+            if let value = dict["VideoUrl"] as? String {
+                self.videoUrl = value
+            }
+            if let value = dict["Width"] as? Int32 {
+                self.width = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryVideoAuditResultResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = QueryVideoAuditResultResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryVideoAuditResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryVideoAuditResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryVideoAuditResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RunAbbreviationContentRequest : Tea.TeaModel {
     public var content: String?
 
@@ -81046,6 +81539,223 @@ public class SubmitTopicSelectionPerspectiveAnalysisTaskResponse : Tea.TeaModel 
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SubmitVideoAuditRequest : Tea.TeaModel {
+    public var ext: String?
+
+    public var fileKey: String?
+
+    public var snapshotInterval: Double?
+
+    public var url: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ext != nil {
+            map["Ext"] = self.ext!
+        }
+        if self.fileKey != nil {
+            map["FileKey"] = self.fileKey!
+        }
+        if self.snapshotInterval != nil {
+            map["SnapshotInterval"] = self.snapshotInterval!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Ext"] as? String {
+            self.ext = value
+        }
+        if let value = dict["FileKey"] as? String {
+            self.fileKey = value
+        }
+        if let value = dict["SnapshotInterval"] as? Double {
+            self.snapshotInterval = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class SubmitVideoAuditResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: SubmitVideoAuditResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = SubmitVideoAuditResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SubmitVideoAuditResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitVideoAuditResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitVideoAuditResponseBody()
             model.fromMap(value)
             self.body = model
         }
