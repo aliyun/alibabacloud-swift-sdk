@@ -16190,6 +16190,8 @@ public class ListResourceGroupCapabilityRequest : Tea.TeaModel {
 
 public class ListResourceGroupCapabilityResponseBody : Tea.TeaModel {
     public class Capabilities : Tea.TeaModel {
+        public var resourceCenterResourceType: String?
+
         public var resourceType: String?
 
         public var service: String?
@@ -16210,6 +16212,9 @@ public class ListResourceGroupCapabilityResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.resourceCenterResourceType != nil {
+                map["ResourceCenterResourceType"] = self.resourceCenterResourceType!
+            }
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
@@ -16224,6 +16229,9 @@ public class ListResourceGroupCapabilityResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ResourceCenterResourceType"] as? String {
+                self.resourceCenterResourceType = value
+            }
             if let value = dict["ResourceType"] as? String {
                 self.resourceType = value
             }
