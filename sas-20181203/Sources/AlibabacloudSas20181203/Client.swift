@@ -16332,6 +16332,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dealed)) {
             query["Dealed"] = request.dealed ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.detectSource)) {
+            query["DetectSource"] = request.detectSource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.eventNames)) {
             query["EventNames"] = request.eventNames ?? "";
         }
