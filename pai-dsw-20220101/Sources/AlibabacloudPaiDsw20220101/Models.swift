@@ -478,6 +478,8 @@ public class ForwardInfo : Tea.TeaModel {
 
     public var natGatewayId: String?
 
+    public var nlbGatewayId: String?
+
     public var SSHPublicKey: String?
 
     public override init() {
@@ -518,6 +520,9 @@ public class ForwardInfo : Tea.TeaModel {
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
         }
+        if self.nlbGatewayId != nil {
+            map["NlbGatewayId"] = self.nlbGatewayId!
+        }
         if self.SSHPublicKey != nil {
             map["SSHPublicKey"] = self.SSHPublicKey!
         }
@@ -549,6 +554,9 @@ public class ForwardInfo : Tea.TeaModel {
         }
         if let value = dict["NatGatewayId"] as? String {
             self.natGatewayId = value
+        }
+        if let value = dict["NlbGatewayId"] as? String {
+            self.nlbGatewayId = value
         }
         if let value = dict["SSHPublicKey"] as? String {
             self.SSHPublicKey = value
@@ -711,6 +719,8 @@ public class ForwardInfoResponse : Tea.TeaModel {
 
     public var natGatewayId: String?
 
+    public var nlbGatewayId: String?
+
     public var SSHPublicKey: String?
 
     public override init() {
@@ -755,6 +765,9 @@ public class ForwardInfoResponse : Tea.TeaModel {
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
         }
+        if self.nlbGatewayId != nil {
+            map["NlbGatewayId"] = self.nlbGatewayId!
+        }
         if self.SSHPublicKey != nil {
             map["SSHPublicKey"] = self.SSHPublicKey!
         }
@@ -791,6 +804,9 @@ public class ForwardInfoResponse : Tea.TeaModel {
         }
         if let value = dict["NatGatewayId"] as? String {
             self.natGatewayId = value
+        }
+        if let value = dict["NlbGatewayId"] as? String {
+            self.nlbGatewayId = value
         }
         if let value = dict["SSHPublicKey"] as? String {
             self.SSHPublicKey = value
