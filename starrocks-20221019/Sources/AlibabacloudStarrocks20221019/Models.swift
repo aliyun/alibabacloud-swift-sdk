@@ -2402,6 +2402,44 @@ public class DescribeInstancesResponse : Tea.TeaModel {
 }
 
 public class DescribeNodeGroupsRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var clusterId: String?
 
     public var pageNumber: Int32?
@@ -2417,6 +2455,8 @@ public class DescribeNodeGroupsRequest : Tea.TeaModel {
     public var nodeGroupName: String?
 
     public var status: String?
+
+    public var tags: [DescribeNodeGroupsRequest.Tags]?
 
     public override init() {
         super.init()
@@ -2456,6 +2496,13 @@ public class DescribeNodeGroupsRequest : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         return map
     }
 
@@ -2484,6 +2531,19 @@ public class DescribeNodeGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["status"] as? String {
             self.status = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [DescribeNodeGroupsRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNodeGroupsRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }

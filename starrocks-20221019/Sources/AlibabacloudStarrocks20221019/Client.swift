@@ -378,6 +378,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["tags"] = request.tags ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query),
