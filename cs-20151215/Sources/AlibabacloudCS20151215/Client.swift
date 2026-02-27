@@ -5267,6 +5267,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKMSEncryptionWithOptions(_ ClusterId: String, _ request: UpdateKMSEncryptionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKMSEncryptionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disableEncryption)) {
+            body["disable_encryption"] = request.disableEncryption!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            body["kms_key_id"] = request.kmsKeyId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKMSEncryption",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/kms",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKMSEncryptionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKMSEncryption(_ ClusterId: String, _ request: UpdateKMSEncryptionRequest) async throws -> UpdateKMSEncryptionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateKMSEncryptionWithOptions(ClusterId as! String, request as! UpdateKMSEncryptionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateNodePoolComponentWithOptions(_ clusterId: String, _ nodepoolId: String, _ request: UpdateNodePoolComponentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNodePoolComponentResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
