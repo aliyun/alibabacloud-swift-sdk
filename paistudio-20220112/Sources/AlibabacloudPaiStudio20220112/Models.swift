@@ -4679,6 +4679,8 @@ public class Quota : Tea.TeaModel {
 
     public var description_: String?
 
+    public var GPUType: String?
+
     public var gmtCreatedTime: String?
 
     public var gmtModifiedTime: String?
@@ -4747,6 +4749,9 @@ public class Quota : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.GPUType != nil {
+            map["GPUType"] = self.GPUType!
         }
         if self.gmtCreatedTime != nil {
             map["GmtCreatedTime"] = self.gmtCreatedTime!
@@ -4836,6 +4841,9 @@ public class Quota : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["GPUType"] as? String {
+            self.GPUType = value
         }
         if let value = dict["GmtCreatedTime"] as? String {
             self.gmtCreatedTime = value
@@ -15771,6 +15779,8 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var cliqueID: String?
 
+    public var diskPL: String?
+
     public var filterByQuotaId: String?
 
     public var filterByResourceGroupIds: String?
@@ -15807,15 +15817,21 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var podNum: Int32?
+
     public var quotaId: String?
 
     public var reasonCodes: String?
 
     public var resourceGroupIds: String?
 
+    public var resourceGroupName: String?
+
     public var sortBy: String?
 
     public var verbose: Bool?
+
+    public var workloadNum: Int32?
 
     public var workspaceId: String?
 
@@ -15843,6 +15859,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if self.cliqueID != nil {
             map["CliqueID"] = self.cliqueID!
+        }
+        if self.diskPL != nil {
+            map["DiskPL"] = self.diskPL!
         }
         if self.filterByQuotaId != nil {
             map["FilterByQuotaId"] = self.filterByQuotaId!
@@ -15898,6 +15917,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
         }
+        if self.podNum != nil {
+            map["PodNum"] = self.podNum!
+        }
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
@@ -15907,11 +15929,17 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.resourceGroupIds != nil {
             map["ResourceGroupIds"] = self.resourceGroupIds!
         }
+        if self.resourceGroupName != nil {
+            map["ResourceGroupName"] = self.resourceGroupName!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
+        }
+        if self.workloadNum != nil {
+            map["WorkloadNum"] = self.workloadNum!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -15929,6 +15957,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if let value = dict["CliqueID"] as? String {
             self.cliqueID = value
+        }
+        if let value = dict["DiskPL"] as? String {
+            self.diskPL = value
         }
         if let value = dict["FilterByQuotaId"] as? String {
             self.filterByQuotaId = value
@@ -15988,6 +16019,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
         }
+        if let value = dict["PodNum"] as? Int32 {
+            self.podNum = value
+        }
         if let value = dict["QuotaId"] as? String {
             self.quotaId = value
         }
@@ -15997,11 +16031,17 @@ public class ListNodesRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupIds"] as? String {
             self.resourceGroupIds = value
         }
+        if let value = dict["ResourceGroupName"] as? String {
+            self.resourceGroupName = value
+        }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["WorkloadNum"] as? Int32 {
+            self.workloadNum = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16015,6 +16055,8 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
     public var availabilityZone: String?
 
     public var cliqueID: String?
+
+    public var diskPL: String?
 
     public var filterByQuotaId: String?
 
@@ -16052,15 +16094,21 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var podNum: Int32?
+
     public var quotaId: String?
 
     public var reasonCodes: String?
 
     public var resourceGroupIds: String?
 
+    public var resourceGroupName: String?
+
     public var sortBy: String?
 
     public var verbose: Bool?
+
+    public var workloadNum: Int32?
 
     public var workspaceId: String?
 
@@ -16086,6 +16134,9 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         }
         if self.cliqueID != nil {
             map["CliqueID"] = self.cliqueID!
+        }
+        if self.diskPL != nil {
+            map["DiskPL"] = self.diskPL!
         }
         if self.filterByQuotaId != nil {
             map["FilterByQuotaId"] = self.filterByQuotaId!
@@ -16141,6 +16192,9 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
         }
+        if self.podNum != nil {
+            map["PodNum"] = self.podNum!
+        }
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
@@ -16150,11 +16204,17 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         if self.resourceGroupIds != nil {
             map["ResourceGroupIds"] = self.resourceGroupIds!
         }
+        if self.resourceGroupName != nil {
+            map["ResourceGroupName"] = self.resourceGroupName!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
+        }
+        if self.workloadNum != nil {
+            map["WorkloadNum"] = self.workloadNum!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -16172,6 +16232,9 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CliqueID"] as? String {
             self.cliqueID = value
+        }
+        if let value = dict["DiskPL"] as? String {
+            self.diskPL = value
         }
         if let value = dict["FilterByQuotaId"] as? String {
             self.filterByQuotaId = value
@@ -16227,6 +16290,9 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
         }
+        if let value = dict["PodNum"] as? Int32 {
+            self.podNum = value
+        }
         if let value = dict["QuotaId"] as? String {
             self.quotaId = value
         }
@@ -16236,11 +16302,17 @@ public class ListNodesShrinkRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupIds"] as? String {
             self.resourceGroupIds = value
         }
+        if let value = dict["ResourceGroupName"] as? String {
+            self.resourceGroupName = value
+        }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["WorkloadNum"] as? Int32 {
+            self.workloadNum = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16374,6 +16446,8 @@ public class ListQuotaActiveUserUsagesRequest : Tea.TeaModel {
 
     public var username: String?
 
+    public var workloadCount: Int32?
+
     public var workspaceId: String?
 
     public override init() {
@@ -16411,6 +16485,9 @@ public class ListQuotaActiveUserUsagesRequest : Tea.TeaModel {
         if self.username != nil {
             map["Username"] = self.username!
         }
+        if self.workloadCount != nil {
+            map["WorkloadCount"] = self.workloadCount!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -16439,6 +16516,9 @@ public class ListQuotaActiveUserUsagesRequest : Tea.TeaModel {
         }
         if let value = dict["Username"] as? String {
             self.username = value
+        }
+        if let value = dict["WorkloadCount"] as? Int32 {
+            self.workloadCount = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16566,6 +16646,8 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
 
     public var gmtPositionModifiedTimeRange: TimeRangeFilter?
 
+    public var instanceId: String?
+
     public var nodeName: String?
 
     public var order: String?
@@ -16573,6 +16655,10 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var position: Int32?
+
+    public var priority: Int32?
 
     public var showOwn: Bool?
 
@@ -16582,6 +16668,8 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
 
     public var subQuotaIds: String?
 
+    public var useOversoldResource: Bool?
+
     public var userIds: String?
 
     public var withHistoricalData: Bool?
@@ -16589,6 +16677,8 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
     public var workloadCreatedTimeRange: TimeRangeFilter?
 
     public var workloadIds: String?
+
+    public var workloadNames: String?
 
     public var workloadStatuses: String?
 
@@ -16626,6 +16716,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         if self.gmtPositionModifiedTimeRange != nil {
             map["GmtPositionModifiedTimeRange"] = self.gmtPositionModifiedTimeRange?.toMap()
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
         }
@@ -16637,6 +16730,12 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.position != nil {
+            map["Position"] = self.position!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.showOwn != nil {
             map["ShowOwn"] = self.showOwn!
@@ -16650,6 +16749,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         if self.subQuotaIds != nil {
             map["SubQuotaIds"] = self.subQuotaIds!
         }
+        if self.useOversoldResource != nil {
+            map["UseOversoldResource"] = self.useOversoldResource!
+        }
         if self.userIds != nil {
             map["UserIds"] = self.userIds!
         }
@@ -16661,6 +16763,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         }
         if self.workloadIds != nil {
             map["WorkloadIds"] = self.workloadIds!
+        }
+        if self.workloadNames != nil {
+            map["WorkloadNames"] = self.workloadNames!
         }
         if self.workloadStatuses != nil {
             map["WorkloadStatuses"] = self.workloadStatuses!
@@ -16694,6 +16799,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
             model.fromMap(value)
             self.gmtPositionModifiedTimeRange = model
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
         }
@@ -16706,6 +16814,12 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["Position"] as? Int32 {
+            self.position = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
         if let value = dict["ShowOwn"] as? Bool {
             self.showOwn = value
         }
@@ -16717,6 +16831,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         }
         if let value = dict["SubQuotaIds"] as? String {
             self.subQuotaIds = value
+        }
+        if let value = dict["UseOversoldResource"] as? Bool {
+            self.useOversoldResource = value
         }
         if let value = dict["UserIds"] as? String {
             self.userIds = value
@@ -16731,6 +16848,9 @@ public class ListQuotaWorkloadsRequest : Tea.TeaModel {
         }
         if let value = dict["WorkloadIds"] as? String {
             self.workloadIds = value
+        }
+        if let value = dict["WorkloadNames"] as? String {
+            self.workloadNames = value
         }
         if let value = dict["WorkloadStatuses"] as? String {
             self.workloadStatuses = value
@@ -16858,6 +16978,8 @@ public class ListQuotaWorkloadsResponse : Tea.TeaModel {
 public class ListQuotasRequest : Tea.TeaModel {
     public var clusterType: String?
 
+    public var GPUType: String?
+
     public var hasResource: String?
 
     public var labels: String?
@@ -16906,6 +17028,9 @@ public class ListQuotasRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.GPUType != nil {
+            map["GPUType"] = self.GPUType!
         }
         if self.hasResource != nil {
             map["HasResource"] = self.hasResource!
@@ -16962,6 +17087,9 @@ public class ListQuotasRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterType"] as? String {
             self.clusterType = value
+        }
+        if let value = dict["GPUType"] as? String {
+            self.GPUType = value
         }
         if let value = dict["HasResource"] as? String {
             self.hasResource = value
@@ -17128,6 +17256,8 @@ public class ListQuotasResponse : Tea.TeaModel {
 public class ListResourceGroupMachineGroupsRequest : Tea.TeaModel {
     public var creatorID: String?
 
+    public var diskPL: String?
+
     public var ecsSpec: String?
 
     public var machineGroupIDs: String?
@@ -17168,6 +17298,9 @@ public class ListResourceGroupMachineGroupsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.creatorID != nil {
             map["CreatorID"] = self.creatorID!
+        }
+        if self.diskPL != nil {
+            map["DiskPL"] = self.diskPL!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -17212,6 +17345,9 @@ public class ListResourceGroupMachineGroupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CreatorID"] as? String {
             self.creatorID = value
+        }
+        if let value = dict["DiskPL"] as? String {
+            self.diskPL = value
         }
         if let value = dict["EcsSpec"] as? String {
             self.ecsSpec = value
