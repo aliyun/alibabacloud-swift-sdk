@@ -912,6 +912,8 @@ public class IdpConfig : Tea.TeaModel {
 
     public var idpConfigId: String?
 
+    public var idpId: Int64?
+
     public var lastSyncTimeUnix: Int64?
 
     public var ldapConfig: IdpLdapSubConfig?
@@ -979,6 +981,9 @@ public class IdpConfig : Tea.TeaModel {
         }
         if self.idpConfigId != nil {
             map["IdpConfigId"] = self.idpConfigId!
+        }
+        if self.idpId != nil {
+            map["IdpId"] = self.idpId!
         }
         if self.lastSyncTimeUnix != nil {
             map["LastSyncTimeUnix"] = self.lastSyncTimeUnix!
@@ -1048,6 +1053,9 @@ public class IdpConfig : Tea.TeaModel {
         }
         if let value = dict["IdpConfigId"] as? String {
             self.idpConfigId = value
+        }
+        if let value = dict["IdpId"] as? Int64 {
+            self.idpId = value
         }
         if let value = dict["LastSyncTimeUnix"] as? Int64 {
             self.lastSyncTimeUnix = value
@@ -2182,7 +2190,11 @@ public class OpenStructIdpWuyingSubConfig : Tea.TeaModel {
 public class OpenStructSaseDepartment : Tea.TeaModel {
     public var departmentId: String?
 
+    public var fullDepartmentIdPath: String?
+
     public var fullDn: String?
+
+    public var idpId: Int64?
 
     public var name: String?
 
@@ -2205,8 +2217,14 @@ public class OpenStructSaseDepartment : Tea.TeaModel {
         if self.departmentId != nil {
             map["DepartmentId"] = self.departmentId!
         }
+        if self.fullDepartmentIdPath != nil {
+            map["FullDepartmentIdPath"] = self.fullDepartmentIdPath!
+        }
         if self.fullDn != nil {
             map["FullDn"] = self.fullDn!
+        }
+        if self.idpId != nil {
+            map["IdpId"] = self.idpId!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -2222,8 +2240,14 @@ public class OpenStructSaseDepartment : Tea.TeaModel {
         if let value = dict["DepartmentId"] as? String {
             self.departmentId = value
         }
+        if let value = dict["FullDepartmentIdPath"] as? String {
+            self.fullDepartmentIdPath = value
+        }
         if let value = dict["FullDn"] as? String {
             self.fullDn = value
+        }
+        if let value = dict["IdpId"] as? Int64 {
+            self.idpId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -29451,6 +29475,8 @@ public class ListUninstallApplicationsResponse : Tea.TeaModel {
 }
 
 public class ListUserApplicationsRequest : Tea.TeaModel {
+    public var address: String?
+
     public var currentPage: Int32?
 
     public var name: String?
@@ -29473,6 +29499,9 @@ public class ListUserApplicationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.address != nil {
+            map["Address"] = self.address!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
@@ -29490,6 +29519,9 @@ public class ListUserApplicationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Address"] as? String {
+            self.address = value
+        }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
         }
