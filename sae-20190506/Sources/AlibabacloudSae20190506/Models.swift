@@ -46180,6 +46180,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var isStateful: Bool?
 
+            public var labels: [String: String]?
+
             public var mem: Int32?
 
             public var mseEnabled: Bool?
@@ -46262,6 +46264,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.isStateful != nil {
                     map["IsStateful"] = self.isStateful!
+                }
+                if self.labels != nil {
+                    map["Labels"] = self.labels!
                 }
                 if self.mem != nil {
                     map["Mem"] = self.mem!
@@ -46359,6 +46364,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsStateful"] as? Bool {
                     self.isStateful = value
+                }
+                if let value = dict["Labels"] as? [String: String] {
+                    self.labels = value
                 }
                 if let value = dict["Mem"] as? Int32 {
                     self.mem = value
