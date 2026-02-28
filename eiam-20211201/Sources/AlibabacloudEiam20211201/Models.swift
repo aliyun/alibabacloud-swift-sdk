@@ -33342,6 +33342,10 @@ public class GetPasswordComplexityConfigurationResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var disabledWeakPasswordLogin: Bool?
+
+        public var disabledWeakPasswordLoginStartedAt: Int64?
+
         public var passwordComplexityRules: [GetPasswordComplexityConfigurationResponseBody.PasswordComplexityConfiguration.PasswordComplexityRules]?
 
         public var passwordMinLength: Int32?
@@ -33360,6 +33364,12 @@ public class GetPasswordComplexityConfigurationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.disabledWeakPasswordLogin != nil {
+                map["DisabledWeakPasswordLogin"] = self.disabledWeakPasswordLogin!
+            }
+            if self.disabledWeakPasswordLoginStartedAt != nil {
+                map["DisabledWeakPasswordLoginStartedAt"] = self.disabledWeakPasswordLoginStartedAt!
+            }
             if self.passwordComplexityRules != nil {
                 var tmp : [Any] = []
                 for k in self.passwordComplexityRules! {
@@ -33375,6 +33385,12 @@ public class GetPasswordComplexityConfigurationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DisabledWeakPasswordLogin"] as? Bool {
+                self.disabledWeakPasswordLogin = value
+            }
+            if let value = dict["DisabledWeakPasswordLoginStartedAt"] as? Int64 {
+                self.disabledWeakPasswordLoginStartedAt = value
+            }
             if let value = dict["PasswordComplexityRules"] as? [Any?] {
                 var tmp : [GetPasswordComplexityConfigurationResponseBody.PasswordComplexityConfiguration.PasswordComplexityRules] = []
                 for v in value {
@@ -65138,6 +65154,8 @@ public class SetPasswordComplexityConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public var disabledWeakPasswordLogin: Bool?
+
     public var instanceId: String?
 
     public var passwordComplexityRules: [SetPasswordComplexityConfigurationRequest.PasswordComplexityRules]?
@@ -65158,6 +65176,9 @@ public class SetPasswordComplexityConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disabledWeakPasswordLogin != nil {
+            map["DisabledWeakPasswordLogin"] = self.disabledWeakPasswordLogin!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -65176,6 +65197,9 @@ public class SetPasswordComplexityConfigurationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DisabledWeakPasswordLogin"] as? Bool {
+            self.disabledWeakPasswordLogin = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }

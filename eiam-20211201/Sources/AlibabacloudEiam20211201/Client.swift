@@ -10859,6 +10859,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setPasswordComplexityConfigurationWithOptions(_ request: SetPasswordComplexityConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetPasswordComplexityConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disabledWeakPasswordLogin)) {
+            query["DisabledWeakPasswordLogin"] = request.disabledWeakPasswordLogin!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
