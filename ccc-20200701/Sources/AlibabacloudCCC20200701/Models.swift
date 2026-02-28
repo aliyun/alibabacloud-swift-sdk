@@ -11127,6 +11127,8 @@ public class CreateUserRequest : Tea.TeaModel {
 
     public var mobile: String?
 
+    public var needEmailNotification: String?
+
     public var nickname: String?
 
     public var resetPassword: Bool?
@@ -11172,6 +11174,9 @@ public class CreateUserRequest : Tea.TeaModel {
         if self.mobile != nil {
             map["Mobile"] = self.mobile!
         }
+        if self.needEmailNotification != nil {
+            map["NeedEmailNotification"] = self.needEmailNotification!
+        }
         if self.nickname != nil {
             map["Nickname"] = self.nickname!
         }
@@ -11212,6 +11217,9 @@ public class CreateUserRequest : Tea.TeaModel {
         }
         if let value = dict["Mobile"] as? String {
             self.mobile = value
+        }
+        if let value = dict["NeedEmailNotification"] as? String {
+            self.needEmailNotification = value
         }
         if let value = dict["Nickname"] as? String {
             self.nickname = value
@@ -18509,6 +18517,8 @@ public class GetContactFlowResponse : Tea.TeaModel {
 }
 
 public class GetConversationDetailRequest : Tea.TeaModel {
+    public var agentId: String?
+
     public var contactId: String?
 
     public var instanceId: String?
@@ -18527,6 +18537,9 @@ public class GetConversationDetailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
         }
@@ -18538,6 +18551,9 @@ public class GetConversationDetailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["ContactId"] as? String {
             self.contactId = value
         }
@@ -55402,6 +55418,10 @@ public class ListLegacyQueueEventLogsResponse : Tea.TeaModel {
 }
 
 public class ListMonoRecordingsRequest : Tea.TeaModel {
+    public var agentChannelId: String?
+
+    public var agentId: String?
+
     public var contactId: String?
 
     public var instanceId: String?
@@ -55420,6 +55440,12 @@ public class ListMonoRecordingsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentChannelId != nil {
+            map["AgentChannelId"] = self.agentChannelId!
+        }
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
         }
@@ -55431,6 +55457,12 @@ public class ListMonoRecordingsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentChannelId"] as? String {
+            self.agentChannelId = value
+        }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["ContactId"] as? String {
             self.contactId = value
         }
@@ -55662,6 +55694,10 @@ public class ListMonoRecordingsResponse : Tea.TeaModel {
 }
 
 public class ListMultiChannelRecordingsRequest : Tea.TeaModel {
+    public var agentChannelId: String?
+
+    public var agentId: String?
+
     public var contactId: String?
 
     public var instanceId: String?
@@ -55680,6 +55716,12 @@ public class ListMultiChannelRecordingsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentChannelId != nil {
+            map["AgentChannelId"] = self.agentChannelId!
+        }
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
         }
@@ -55691,6 +55733,12 @@ public class ListMultiChannelRecordingsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentChannelId"] as? String {
+            self.agentChannelId = value
+        }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
         if let value = dict["ContactId"] as? String {
             self.contactId = value
         }

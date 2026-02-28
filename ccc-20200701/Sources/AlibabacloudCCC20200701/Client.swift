@@ -1727,6 +1727,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mobile)) {
             query["Mobile"] = request.mobile ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.needEmailNotification)) {
+            query["NeedEmailNotification"] = request.needEmailNotification ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nickname)) {
             query["Nickname"] = request.nickname ?? "";
         }
@@ -2911,6 +2914,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getConversationDetailWithOptions(_ request: GetConversationDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConversationDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactId)) {
             query["ContactId"] = request.contactId ?? "";
         }
@@ -6327,6 +6333,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listMonoRecordingsWithOptions(_ request: ListMonoRecordingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMonoRecordingsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentChannelId)) {
+            query["AgentChannelId"] = request.agentChannelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactId)) {
             query["ContactId"] = request.contactId ?? "";
         }
@@ -6361,6 +6373,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listMultiChannelRecordingsWithOptions(_ request: ListMultiChannelRecordingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMultiChannelRecordingsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentChannelId)) {
+            query["AgentChannelId"] = request.agentChannelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contactId)) {
             query["ContactId"] = request.contactId ?? "";
         }
