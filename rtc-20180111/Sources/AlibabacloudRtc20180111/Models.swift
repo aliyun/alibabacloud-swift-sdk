@@ -31408,6 +31408,10 @@ public class StartAgentRequest : Tea.TeaModel {
 
             public var temperature: Double?
 
+            public var toolExecutionConfig: Any?
+
+            public var tools: [Any]?
+
             public var topP: Double?
 
             public var url: String?
@@ -31452,6 +31456,12 @@ public class StartAgentRequest : Tea.TeaModel {
                 if self.temperature != nil {
                     map["Temperature"] = self.temperature!
                 }
+                if self.toolExecutionConfig != nil {
+                    map["ToolExecutionConfig"] = self.toolExecutionConfig!
+                }
+                if self.tools != nil {
+                    map["Tools"] = self.tools!
+                }
                 if self.topP != nil {
                     map["TopP"] = self.topP!
                 }
@@ -31489,6 +31499,12 @@ public class StartAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["Temperature"] as? Double {
                     self.temperature = value
+                }
+                if let value = dict["ToolExecutionConfig"] as? Any {
+                    self.toolExecutionConfig = value
+                }
+                if let value = dict["Tools"] as? [Any] {
+                    self.tools = value
                 }
                 if let value = dict["TopP"] as? Double {
                     self.topP = value
