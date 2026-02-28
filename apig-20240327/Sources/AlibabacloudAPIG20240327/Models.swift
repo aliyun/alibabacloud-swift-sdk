@@ -3428,6 +3428,44 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
         }
+        public class AiStatisticsConfig : Tea.TeaModel {
+            public var logRequestContent: Bool?
+
+            public var logResponseContent: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logRequestContent != nil {
+                    map["logRequestContent"] = self.logRequestContent!
+                }
+                if self.logResponseContent != nil {
+                    map["logResponseContent"] = self.logResponseContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["logRequestContent"] as? Bool {
+                    self.logRequestContent = value
+                }
+                if let value = dict["logResponseContent"] as? Bool {
+                    self.logResponseContent = value
+                }
+            }
+        }
         public class AiTokenRateLimitConfig : Tea.TeaModel {
             public class GlobalRules : Tea.TeaModel {
                 public var limitMode: String?
@@ -3646,6 +3684,8 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
         public var aiSecurityGuardConfig: HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig?
 
+        public var aiStatisticsConfig: HttpApiDeployConfig.PolicyConfigs.AiStatisticsConfig?
+
         public var aiTokenRateLimitConfig: HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig?
 
         public var enable: Bool?
@@ -3664,6 +3704,7 @@ public class HttpApiDeployConfig : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.aiFallbackConfig?.validate()
             try self.aiSecurityGuardConfig?.validate()
+            try self.aiStatisticsConfig?.validate()
             try self.aiTokenRateLimitConfig?.validate()
         }
 
@@ -3674,6 +3715,9 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             }
             if self.aiSecurityGuardConfig != nil {
                 map["aiSecurityGuardConfig"] = self.aiSecurityGuardConfig?.toMap()
+            }
+            if self.aiStatisticsConfig != nil {
+                map["aiStatisticsConfig"] = self.aiStatisticsConfig?.toMap()
             }
             if self.aiTokenRateLimitConfig != nil {
                 map["aiTokenRateLimitConfig"] = self.aiTokenRateLimitConfig?.toMap()
@@ -3698,6 +3742,11 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 var model = HttpApiDeployConfig.PolicyConfigs.AiSecurityGuardConfig()
                 model.fromMap(value)
                 self.aiSecurityGuardConfig = model
+            }
+            if let value = dict["aiStatisticsConfig"] as? [String: Any?] {
+                var model = HttpApiDeployConfig.PolicyConfigs.AiStatisticsConfig()
+                model.fromMap(value)
+                self.aiStatisticsConfig = model
             }
             if let value = dict["aiTokenRateLimitConfig"] as? [String: Any?] {
                 var model = HttpApiDeployConfig.PolicyConfigs.AiTokenRateLimitConfig()
@@ -10379,6 +10428,96 @@ public class Service : Tea.TeaModel {
             }
         }
     }
+    public class Versions : Tea.TeaModel {
+        public class Labels : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var labels: [Service.Versions.Labels]?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.labels != nil {
+                var tmp : [Any] = []
+                for k in self.labels! {
+                    tmp.append(k.toMap())
+                }
+                map["labels"] = tmp
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["labels"] as? [Any?] {
+                var tmp : [Service.Versions.Labels] = []
+                for v in value {
+                    if v != nil {
+                        var model = Service.Versions.Labels()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.labels = tmp
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+        }
+    }
     public var addresses: [String]?
 
     public var agentServiceConfig: AgentServiceConfig?
@@ -10420,6 +10559,8 @@ public class Service : Tea.TeaModel {
     public var unhealthyEndpoints: [String]?
 
     public var updateTimestamp: Int64?
+
+    public var versions: [Service.Versions]?
 
     public override init() {
         super.init()
@@ -10508,6 +10649,13 @@ public class Service : Tea.TeaModel {
         }
         if self.updateTimestamp != nil {
             map["updateTimestamp"] = self.updateTimestamp!
+        }
+        if self.versions != nil {
+            var tmp : [Any] = []
+            for k in self.versions! {
+                tmp.append(k.toMap())
+            }
+            map["versions"] = tmp
         }
         return map
     }
@@ -10602,6 +10750,19 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["updateTimestamp"] as? Int64 {
             self.updateTimestamp = value
+        }
+        if let value = dict["versions"] as? [Any?] {
+            var tmp : [Service.Versions] = []
+            for v in value {
+                if v != nil {
+                    var model = Service.Versions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.versions = tmp
         }
     }
 }
