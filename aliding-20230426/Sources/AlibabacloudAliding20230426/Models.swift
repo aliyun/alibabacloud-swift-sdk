@@ -24148,11 +24148,59 @@ public class CreateRunResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Thread : Tea.TeaModel {
+        public var createAt: Int64?
+
+        public var id: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createAt != nil {
+                map["createAt"] = self.createAt!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["createAt"] as? Int64 {
+                self.createAt = value
+            }
+            if let value = dict["id"] as? String {
+                self.id = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public var messages: [CreateRunResponseBody.Messages]?
 
     public var requestId: String?
 
     public var run: CreateRunResponseBody.Run?
+
+    public var thread: CreateRunResponseBody.Thread?
 
     public override init() {
         super.init()
@@ -24165,6 +24213,7 @@ public class CreateRunResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.run?.validate()
+        try self.thread?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -24181,6 +24230,9 @@ public class CreateRunResponseBody : Tea.TeaModel {
         }
         if self.run != nil {
             map["run"] = self.run?.toMap()
+        }
+        if self.thread != nil {
+            map["thread"] = self.thread?.toMap()
         }
         return map
     }
@@ -24207,6 +24259,11 @@ public class CreateRunResponseBody : Tea.TeaModel {
             var model = CreateRunResponseBody.Run()
             model.fromMap(value)
             self.run = model
+        }
+        if let value = dict["thread"] as? [String: Any?] {
+            var model = CreateRunResponseBody.Thread()
+            model.fromMap(value)
+            self.thread = model
         }
     }
 }
@@ -81289,6 +81346,8 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var sessionStatus: String?
+
     public var streamEnd: Bool?
 
     public override init() {
@@ -81318,6 +81377,9 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
         }
+        if self.sessionStatus != nil {
+            map["sessionStatus"] = self.sessionStatus!
+        }
         if self.streamEnd != nil {
             map["streamEnd"] = self.streamEnd!
         }
@@ -81344,6 +81406,9 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
         }
         if let value = dict["sessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["sessionStatus"] as? String {
+            self.sessionStatus = value
         }
         if let value = dict["streamEnd"] as? Bool {
             self.streamEnd = value
