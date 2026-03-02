@@ -3733,6 +3733,183 @@ public class EncryptResponse : Tea.TeaModel {
     }
 }
 
+public class GetAssetCountResponseBody : Tea.TeaModel {
+    public var aliyunAssetCount: Int32?
+
+    public var awsAssetCount: Int32?
+
+    public var buyCertificateCount: Int32?
+
+    public var domainAssetCount: Int32?
+
+    public var freeCertificateCount: Int32?
+
+    public var huaweiAssetCount: Int32?
+
+    public var lastPoint: Int32?
+
+    public var point: Int32?
+
+    public var pointRatio: Int32?
+
+    public var pointTime: Int64?
+
+    public var requestId: String?
+
+    public var tencentAssetCount: Int32?
+
+    public var uploadCertificateCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunAssetCount != nil {
+            map["AliyunAssetCount"] = self.aliyunAssetCount!
+        }
+        if self.awsAssetCount != nil {
+            map["AwsAssetCount"] = self.awsAssetCount!
+        }
+        if self.buyCertificateCount != nil {
+            map["BuyCertificateCount"] = self.buyCertificateCount!
+        }
+        if self.domainAssetCount != nil {
+            map["DomainAssetCount"] = self.domainAssetCount!
+        }
+        if self.freeCertificateCount != nil {
+            map["FreeCertificateCount"] = self.freeCertificateCount!
+        }
+        if self.huaweiAssetCount != nil {
+            map["HuaweiAssetCount"] = self.huaweiAssetCount!
+        }
+        if self.lastPoint != nil {
+            map["LastPoint"] = self.lastPoint!
+        }
+        if self.point != nil {
+            map["Point"] = self.point!
+        }
+        if self.pointRatio != nil {
+            map["PointRatio"] = self.pointRatio!
+        }
+        if self.pointTime != nil {
+            map["PointTime"] = self.pointTime!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tencentAssetCount != nil {
+            map["TencentAssetCount"] = self.tencentAssetCount!
+        }
+        if self.uploadCertificateCount != nil {
+            map["UploadCertificateCount"] = self.uploadCertificateCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AliyunAssetCount"] as? Int32 {
+            self.aliyunAssetCount = value
+        }
+        if let value = dict["AwsAssetCount"] as? Int32 {
+            self.awsAssetCount = value
+        }
+        if let value = dict["BuyCertificateCount"] as? Int32 {
+            self.buyCertificateCount = value
+        }
+        if let value = dict["DomainAssetCount"] as? Int32 {
+            self.domainAssetCount = value
+        }
+        if let value = dict["FreeCertificateCount"] as? Int32 {
+            self.freeCertificateCount = value
+        }
+        if let value = dict["HuaweiAssetCount"] as? Int32 {
+            self.huaweiAssetCount = value
+        }
+        if let value = dict["LastPoint"] as? Int32 {
+            self.lastPoint = value
+        }
+        if let value = dict["Point"] as? Int32 {
+            self.point = value
+        }
+        if let value = dict["PointRatio"] as? Int32 {
+            self.pointRatio = value
+        }
+        if let value = dict["PointTime"] as? Int64 {
+            self.pointTime = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TencentAssetCount"] as? Int32 {
+            self.tencentAssetCount = value
+        }
+        if let value = dict["UploadCertificateCount"] as? Int32 {
+            self.uploadCertificateCount = value
+        }
+    }
+}
+
+public class GetAssetCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAssetCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAssetCountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetCertWarehouseQuotaResponseBody : Tea.TeaModel {
     public var appTotalQuota: Int64?
 
@@ -5122,6 +5299,231 @@ public class GetInstanceSummaryResponse : Tea.TeaModel {
     }
 }
 
+public class GetRiskCountResponseBody : Tea.TeaModel {
+    public var aliyunAssetCertificateExpiredCount: Int32?
+
+    public var aliyunAssetCertificateWillExpiredCount: Int32?
+
+    public var buyCertificateExpireCount: Int32?
+
+    public var buyCertificateNotDeploymentCount: Int32?
+
+    public var buyCertificateNotTrusteeCount: Int32?
+
+    public var buyCertificateWillExpiredCount: Int32?
+
+    public var buyCheckedFailCount: Int32?
+
+    public var domainAssetNotMonitorCount: Int32?
+
+    public var freeCertificateExpireCount: Int32?
+
+    public var freeCertificateNotDeploymentCount: Int32?
+
+    public var freeCertificateWillExpiredCount: Int32?
+
+    public var freeCheckedFailCount: Int32?
+
+    public var multiCloudAssetCertificateExpiredCount: Int32?
+
+    public var multiCloudAssetCertificateWillExpiredCount: Int32?
+
+    public var requestId: String?
+
+    public var uploadCertificateExpireCount: Int32?
+
+    public var uploadCertificateNotDeploymentCount: Int32?
+
+    public var uploadCertificateNotNoticeCount: Int32?
+
+    public var uploadCertificateWillExpiredCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunAssetCertificateExpiredCount != nil {
+            map["AliyunAssetCertificateExpiredCount"] = self.aliyunAssetCertificateExpiredCount!
+        }
+        if self.aliyunAssetCertificateWillExpiredCount != nil {
+            map["AliyunAssetCertificateWillExpiredCount"] = self.aliyunAssetCertificateWillExpiredCount!
+        }
+        if self.buyCertificateExpireCount != nil {
+            map["BuyCertificateExpireCount"] = self.buyCertificateExpireCount!
+        }
+        if self.buyCertificateNotDeploymentCount != nil {
+            map["BuyCertificateNotDeploymentCount"] = self.buyCertificateNotDeploymentCount!
+        }
+        if self.buyCertificateNotTrusteeCount != nil {
+            map["BuyCertificateNotTrusteeCount"] = self.buyCertificateNotTrusteeCount!
+        }
+        if self.buyCertificateWillExpiredCount != nil {
+            map["BuyCertificateWillExpiredCount"] = self.buyCertificateWillExpiredCount!
+        }
+        if self.buyCheckedFailCount != nil {
+            map["BuyCheckedFailCount"] = self.buyCheckedFailCount!
+        }
+        if self.domainAssetNotMonitorCount != nil {
+            map["DomainAssetNotMonitorCount"] = self.domainAssetNotMonitorCount!
+        }
+        if self.freeCertificateExpireCount != nil {
+            map["FreeCertificateExpireCount"] = self.freeCertificateExpireCount!
+        }
+        if self.freeCertificateNotDeploymentCount != nil {
+            map["FreeCertificateNotDeploymentCount"] = self.freeCertificateNotDeploymentCount!
+        }
+        if self.freeCertificateWillExpiredCount != nil {
+            map["FreeCertificateWillExpiredCount"] = self.freeCertificateWillExpiredCount!
+        }
+        if self.freeCheckedFailCount != nil {
+            map["FreeCheckedFailCount"] = self.freeCheckedFailCount!
+        }
+        if self.multiCloudAssetCertificateExpiredCount != nil {
+            map["MultiCloudAssetCertificateExpiredCount"] = self.multiCloudAssetCertificateExpiredCount!
+        }
+        if self.multiCloudAssetCertificateWillExpiredCount != nil {
+            map["MultiCloudAssetCertificateWillExpiredCount"] = self.multiCloudAssetCertificateWillExpiredCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.uploadCertificateExpireCount != nil {
+            map["UploadCertificateExpireCount"] = self.uploadCertificateExpireCount!
+        }
+        if self.uploadCertificateNotDeploymentCount != nil {
+            map["UploadCertificateNotDeploymentCount"] = self.uploadCertificateNotDeploymentCount!
+        }
+        if self.uploadCertificateNotNoticeCount != nil {
+            map["UploadCertificateNotNoticeCount"] = self.uploadCertificateNotNoticeCount!
+        }
+        if self.uploadCertificateWillExpiredCount != nil {
+            map["UploadCertificateWillExpiredCount"] = self.uploadCertificateWillExpiredCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AliyunAssetCertificateExpiredCount"] as? Int32 {
+            self.aliyunAssetCertificateExpiredCount = value
+        }
+        if let value = dict["AliyunAssetCertificateWillExpiredCount"] as? Int32 {
+            self.aliyunAssetCertificateWillExpiredCount = value
+        }
+        if let value = dict["BuyCertificateExpireCount"] as? Int32 {
+            self.buyCertificateExpireCount = value
+        }
+        if let value = dict["BuyCertificateNotDeploymentCount"] as? Int32 {
+            self.buyCertificateNotDeploymentCount = value
+        }
+        if let value = dict["BuyCertificateNotTrusteeCount"] as? Int32 {
+            self.buyCertificateNotTrusteeCount = value
+        }
+        if let value = dict["BuyCertificateWillExpiredCount"] as? Int32 {
+            self.buyCertificateWillExpiredCount = value
+        }
+        if let value = dict["BuyCheckedFailCount"] as? Int32 {
+            self.buyCheckedFailCount = value
+        }
+        if let value = dict["DomainAssetNotMonitorCount"] as? Int32 {
+            self.domainAssetNotMonitorCount = value
+        }
+        if let value = dict["FreeCertificateExpireCount"] as? Int32 {
+            self.freeCertificateExpireCount = value
+        }
+        if let value = dict["FreeCertificateNotDeploymentCount"] as? Int32 {
+            self.freeCertificateNotDeploymentCount = value
+        }
+        if let value = dict["FreeCertificateWillExpiredCount"] as? Int32 {
+            self.freeCertificateWillExpiredCount = value
+        }
+        if let value = dict["FreeCheckedFailCount"] as? Int32 {
+            self.freeCheckedFailCount = value
+        }
+        if let value = dict["MultiCloudAssetCertificateExpiredCount"] as? Int32 {
+            self.multiCloudAssetCertificateExpiredCount = value
+        }
+        if let value = dict["MultiCloudAssetCertificateWillExpiredCount"] as? Int32 {
+            self.multiCloudAssetCertificateWillExpiredCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["UploadCertificateExpireCount"] as? Int32 {
+            self.uploadCertificateExpireCount = value
+        }
+        if let value = dict["UploadCertificateNotDeploymentCount"] as? Int32 {
+            self.uploadCertificateNotDeploymentCount = value
+        }
+        if let value = dict["UploadCertificateNotNoticeCount"] as? Int32 {
+            self.uploadCertificateNotNoticeCount = value
+        }
+        if let value = dict["UploadCertificateWillExpiredCount"] as? Int32 {
+            self.uploadCertificateWillExpiredCount = value
+        }
+    }
+}
+
+public class GetRiskCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRiskCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRiskCountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetTaskAttributeRequest : Tea.TeaModel {
     public var taskId: String?
 
@@ -5748,6 +6150,258 @@ public class GetUserCertificateDetailResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetUserCertificateDetailResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAssetCountRequest : Tea.TeaModel {
+    public var currentPage: Int64?
+
+    public var endDate: Int64?
+
+    public var showSize: Int64?
+
+    public var startDate: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.showSize != nil {
+            map["ShowSize"] = self.showSize!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["EndDate"] as? Int64 {
+            self.endDate = value
+        }
+        if let value = dict["ShowSize"] as? Int64 {
+            self.showSize = value
+        }
+        if let value = dict["StartDate"] as? Int64 {
+            self.startDate = value
+        }
+    }
+}
+
+public class ListAssetCountResponseBody : Tea.TeaModel {
+    public class AssetCountList : Tea.TeaModel {
+        public var aliyunAssetCount: Int64?
+
+        public var certificateCount: Int32?
+
+        public var countDate: Int64?
+
+        public var domainAssetCount: Int32?
+
+        public var multiCloudAssetCount: Int64?
+
+        public var points: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyunAssetCount != nil {
+                map["AliyunAssetCount"] = self.aliyunAssetCount!
+            }
+            if self.certificateCount != nil {
+                map["CertificateCount"] = self.certificateCount!
+            }
+            if self.countDate != nil {
+                map["CountDate"] = self.countDate!
+            }
+            if self.domainAssetCount != nil {
+                map["DomainAssetCount"] = self.domainAssetCount!
+            }
+            if self.multiCloudAssetCount != nil {
+                map["MultiCloudAssetCount"] = self.multiCloudAssetCount!
+            }
+            if self.points != nil {
+                map["Points"] = self.points!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliyunAssetCount"] as? Int64 {
+                self.aliyunAssetCount = value
+            }
+            if let value = dict["CertificateCount"] as? Int32 {
+                self.certificateCount = value
+            }
+            if let value = dict["CountDate"] as? Int64 {
+                self.countDate = value
+            }
+            if let value = dict["DomainAssetCount"] as? Int32 {
+                self.domainAssetCount = value
+            }
+            if let value = dict["MultiCloudAssetCount"] as? Int64 {
+                self.multiCloudAssetCount = value
+            }
+            if let value = dict["Points"] as? Int64 {
+                self.points = value
+            }
+        }
+    }
+    public var assetCountList: [ListAssetCountResponseBody.AssetCountList]?
+
+    public var currentPage: Int64?
+
+    public var requestId: String?
+
+    public var showSize: Int64?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assetCountList != nil {
+            var tmp : [Any] = []
+            for k in self.assetCountList! {
+                tmp.append(k.toMap())
+            }
+            map["AssetCountList"] = tmp
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.showSize != nil {
+            map["ShowSize"] = self.showSize!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetCountList"] as? [Any?] {
+            var tmp : [ListAssetCountResponseBody.AssetCountList] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAssetCountResponseBody.AssetCountList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.assetCountList = tmp
+        }
+        if let value = dict["CurrentPage"] as? Int64 {
+            self.currentPage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ShowSize"] as? Int64 {
+            self.showSize = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAssetCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAssetCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAssetCountResponseBody()
             model.fromMap(value)
             self.body = model
         }
