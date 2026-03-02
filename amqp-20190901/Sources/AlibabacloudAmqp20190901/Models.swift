@@ -10734,6 +10734,88 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Instances : Tea.TeaModel {
             public class InstancesVO : Tea.TeaModel {
+                public class PvlParams : Tea.TeaModel {
+                    public class PvlVO : Tea.TeaModel {
+                        public var key: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.key != nil {
+                                map["Key"] = self.key!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Key"] as? String {
+                                self.key = value
+                            }
+                            if let value = dict["Value"] as? String {
+                                self.value = value
+                            }
+                        }
+                    }
+                    public var pvlVO: [InstancePreivewResponseBody.Data.Instances.InstancesVO.PvlParams.PvlVO]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pvlVO != nil {
+                            var tmp : [Any] = []
+                            for k in self.pvlVO! {
+                                tmp.append(k.toMap())
+                            }
+                            map["PvlVO"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["PvlVO"] as? [Any?] {
+                            var tmp : [InstancePreivewResponseBody.Data.Instances.InstancesVO.PvlParams.PvlVO] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = InstancePreivewResponseBody.Data.Instances.InstancesVO.PvlParams.PvlVO()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.pvlVO = tmp
+                        }
+                    }
+                }
                 public class Tags : Tea.TeaModel {
                     public class TagsVO : Tea.TeaModel {
                         public var key: String?
@@ -10838,6 +10920,8 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
 
                 public var kmsKeyId: String?
 
+                public var listenerMode: String?
+
                 public var maxBindingCount: Int32?
 
                 public var maxConnectionChannelCount: Int32?
@@ -10874,7 +10958,11 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
 
                 public var privateEndpoint: String?
 
+                public var privateEndpointType: String?
+
                 public var publicEndpoint: String?
+
+                public var pvlParams: InstancePreivewResponseBody.Data.Instances.InstancesVO.PvlParams?
 
                 public var resourceGroupId: String?
 
@@ -10910,6 +10998,7 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.pvlParams?.validate()
                     try self.tags?.validate()
                 }
 
@@ -10947,6 +11036,9 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
                     }
                     if self.kmsKeyId != nil {
                         map["KmsKeyId"] = self.kmsKeyId!
+                    }
+                    if self.listenerMode != nil {
+                        map["ListenerMode"] = self.listenerMode!
                     }
                     if self.maxBindingCount != nil {
                         map["MaxBindingCount"] = self.maxBindingCount!
@@ -11002,8 +11094,14 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
                     if self.privateEndpoint != nil {
                         map["PrivateEndpoint"] = self.privateEndpoint!
                     }
+                    if self.privateEndpointType != nil {
+                        map["PrivateEndpointType"] = self.privateEndpointType!
+                    }
                     if self.publicEndpoint != nil {
                         map["PublicEndpoint"] = self.publicEndpoint!
+                    }
+                    if self.pvlParams != nil {
+                        map["PvlParams"] = self.pvlParams?.toMap()
                     }
                     if self.resourceGroupId != nil {
                         map["ResourceGroupId"] = self.resourceGroupId!
@@ -11079,6 +11177,9 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
                     if let value = dict["KmsKeyId"] as? String {
                         self.kmsKeyId = value
                     }
+                    if let value = dict["ListenerMode"] as? String {
+                        self.listenerMode = value
+                    }
                     if let value = dict["MaxBindingCount"] as? Int32 {
                         self.maxBindingCount = value
                     }
@@ -11133,8 +11234,16 @@ public class InstancePreivewResponseBody : Tea.TeaModel {
                     if let value = dict["PrivateEndpoint"] as? String {
                         self.privateEndpoint = value
                     }
+                    if let value = dict["PrivateEndpointType"] as? String {
+                        self.privateEndpointType = value
+                    }
                     if let value = dict["PublicEndpoint"] as? String {
                         self.publicEndpoint = value
+                    }
+                    if let value = dict["PvlParams"] as? [String: Any?] {
+                        var model = InstancePreivewResponseBody.Data.Instances.InstancesVO.PvlParams()
+                        model.fromMap(value)
+                        self.pvlParams = model
                     }
                     if let value = dict["ResourceGroupId"] as? String {
                         self.resourceGroupId = value
