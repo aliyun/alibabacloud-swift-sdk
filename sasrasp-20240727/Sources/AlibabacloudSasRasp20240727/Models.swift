@@ -462,6 +462,8 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
 
         public var languageVersion: String?
 
+        public var llmAsset: Bool?
+
         public var maxTimestamp: Int64?
 
         public var message: String?
@@ -590,6 +592,9 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
             }
             if self.languageVersion != nil {
                 map["LanguageVersion"] = self.languageVersion!
+            }
+            if self.llmAsset != nil {
+                map["LlmAsset"] = self.llmAsset!
             }
             if self.maxTimestamp != nil {
                 map["MaxTimestamp"] = self.maxTimestamp!
@@ -740,6 +745,9 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
             }
             if let value = dict["LanguageVersion"] as? String {
                 self.languageVersion = value
+            }
+            if let value = dict["LlmAsset"] as? Bool {
+                self.llmAsset = value
             }
             if let value = dict["MaxTimestamp"] as? Int64 {
                 self.maxTimestamp = value
