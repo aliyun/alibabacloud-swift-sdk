@@ -4192,6 +4192,8 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var connectNum: Int32?
 
+        public var consoleUrl: String?
+
         public var detail: String?
 
         public var expireTime: String?
@@ -4232,6 +4234,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.connectNum != nil {
                 map["ConnectNum"] = self.connectNum!
+            }
+            if self.consoleUrl != nil {
+                map["ConsoleUrl"] = self.consoleUrl!
             }
             if self.detail != nil {
                 map["Detail"] = self.detail!
@@ -4276,6 +4281,9 @@ public class ListAivppResourcesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ConnectNum"] as? Int32 {
                 self.connectNum = value
+            }
+            if let value = dict["ConsoleUrl"] as? String {
+                self.consoleUrl = value
             }
             if let value = dict["Detail"] as? String {
                 self.detail = value
