@@ -298,6 +298,8 @@ public class CreateImageCacheRequest : Tea.TeaModel {
 
     public var networkConfig: CreateImageCacheRequest.NetworkConfig?
 
+    public var platform: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -344,6 +346,9 @@ public class CreateImageCacheRequest : Tea.TeaModel {
         }
         if self.networkConfig != nil {
             map["NetworkConfig"] = self.networkConfig?.toMap()
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -402,6 +407,9 @@ public class CreateImageCacheRequest : Tea.TeaModel {
             var model = CreateImageCacheRequest.NetworkConfig()
             model.fromMap(value)
             self.networkConfig = model
+        }
+        if let value = dict["Platform"] as? String {
+            self.platform = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -576,6 +584,8 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
 
     public var networkConfigShrink: String?
 
+    public var platform: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -621,6 +631,9 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
         }
         if self.networkConfigShrink != nil {
             map["NetworkConfig"] = self.networkConfigShrink!
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -677,6 +690,9 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkConfig"] as? String {
             self.networkConfigShrink = value
+        }
+        if let value = dict["Platform"] as? String {
+            self.platform = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -1182,6 +1198,8 @@ public class GetImageCacheResponseBody : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var platform: String?
+
     public var readyTime: String?
 
     public var regionId: String?
@@ -1235,6 +1253,9 @@ public class GetImageCacheResponseBody : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
         }
         if self.readyTime != nil {
             map["ReadyTime"] = self.readyTime!
@@ -1298,6 +1319,9 @@ public class GetImageCacheResponseBody : Tea.TeaModel {
         }
         if let value = dict["PaymentType"] as? String {
             self.paymentType = value
+        }
+        if let value = dict["Platform"] as? String {
+            self.platform = value
         }
         if let value = dict["ReadyTime"] as? String {
             self.readyTime = value
@@ -1422,6 +1446,8 @@ public class ListImageCachesRequest : Tea.TeaModel {
             }
         }
     }
+    public var image: String?
+
     public var imageCacheName: String?
 
     public var maxResults: Int32?
@@ -1450,6 +1476,9 @@ public class ListImageCachesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
         if self.imageCacheName != nil {
             map["ImageCacheName"] = self.imageCacheName!
         }
@@ -1480,6 +1509,9 @@ public class ListImageCachesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
         if let value = dict["ImageCacheName"] as? String {
             self.imageCacheName = value
         }

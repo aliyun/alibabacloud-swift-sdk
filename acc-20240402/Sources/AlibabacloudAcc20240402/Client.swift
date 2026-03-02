@@ -88,6 +88,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.networkConfigShrink)) {
             query["NetworkConfig"] = request.networkConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -196,6 +199,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listImageCachesWithOptions(_ request: ListImageCachesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListImageCachesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            query["Image"] = request.image ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageCacheName)) {
             query["ImageCacheName"] = request.imageCacheName ?? "";
         }
