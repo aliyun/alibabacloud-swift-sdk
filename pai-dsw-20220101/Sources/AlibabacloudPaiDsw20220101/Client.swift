@@ -105,6 +105,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createInstanceWithOptions(_ request: CreateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessRestrictionRules)) {
+            body["AccessRestrictionRules"] = request.accessRestrictionRules ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
         }
@@ -122,6 +125,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.datasets)) {
             body["Datasets"] = request.datasets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dockerConfig)) {
+            body["DockerConfig"] = request.dockerConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.driver)) {
             body["Driver"] = request.driver ?? "";

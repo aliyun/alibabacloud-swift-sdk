@@ -1519,6 +1519,52 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class DockerConfig : Tea.TeaModel {
+        public var containersLimit: Int64?
+
+        public var enable: Bool?
+
+        public var mountAccessConfigPath: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.containersLimit != nil {
+                map["ContainersLimit"] = self.containersLimit!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.mountAccessConfigPath != nil {
+                map["MountAccessConfigPath"] = self.mountAccessConfigPath!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContainersLimit"] as? Int64 {
+                self.containersLimit = value
+            }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["MountAccessConfigPath"] as? String {
+                self.mountAccessConfigPath = value
+            }
+        }
+    }
     public class Labels : Tea.TeaModel {
         public var key: String?
 
@@ -1869,6 +1915,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var accessRestrictionRules: [String: String]?
+
     public var accessibility: String?
 
     public var affinity: CreateInstanceRequest.Affinity?
@@ -1880,6 +1928,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var credentialConfig: CredentialConfig?
 
     public var datasets: [CreateInstanceRequest.Datasets]?
+
+    public var dockerConfig: CreateInstanceRequest.DockerConfig?
 
     public var driver: String?
 
@@ -1936,6 +1986,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
         try self.affinity?.validate()
         try self.assignNodeSpec?.validate()
         try self.credentialConfig?.validate()
+        try self.dockerConfig?.validate()
         try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
         try self.spotSpec?.validate()
@@ -1945,6 +1996,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessRestrictionRules != nil {
+            map["AccessRestrictionRules"] = self.accessRestrictionRules!
+        }
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
@@ -1970,6 +2024,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Datasets"] = tmp
+        }
+        if self.dockerConfig != nil {
+            map["DockerConfig"] = self.dockerConfig?.toMap()
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
@@ -2047,6 +2104,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessRestrictionRules"] as? [String: String] {
+            self.accessRestrictionRules = value
+        }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
         }
@@ -2090,6 +2150,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 }
             }
             self.datasets = tmp
+        }
+        if let value = dict["DockerConfig"] as? [String: Any?] {
+            var model = CreateInstanceRequest.DockerConfig()
+            model.fromMap(value)
+            self.dockerConfig = model
         }
         if let value = dict["Driver"] as? String {
             self.driver = value
@@ -4049,6 +4114,52 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class DockerConfig : Tea.TeaModel {
+        public var containersLimit: Int64?
+
+        public var enable: Bool?
+
+        public var mountAccessConfigPath: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.containersLimit != nil {
+                map["ContainersLimit"] = self.containersLimit!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.mountAccessConfigPath != nil {
+                map["MountAccessConfigPath"] = self.mountAccessConfigPath!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ContainersLimit"] as? Int64 {
+                self.containersLimit = value
+            }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["MountAccessConfigPath"] as? String {
+                self.mountAccessConfigPath = value
+            }
+        }
+    }
     public class IdleInstanceCuller : Tea.TeaModel {
         public var cpuPercentThreshold: Int32?
 
@@ -4650,6 +4761,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     }
     public var acceleratorType: String?
 
+    public var accessRestrictionRules: [String: String]?
+
     public var accessibility: String?
 
     public var accumulatedRunningTimeInMs: Int64?
@@ -4663,6 +4776,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var credentialConfig: CredentialConfig?
 
     public var datasets: [GetInstanceResponseBody.Datasets]?
+
+    public var dockerConfig: GetInstanceResponseBody.DockerConfig?
 
     public var driver: String?
 
@@ -4768,6 +4883,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.affinity?.validate()
         try self.credentialConfig?.validate()
+        try self.dockerConfig?.validate()
         try self.dynamicMount?.validate()
         try self.idleInstanceCuller?.validate()
         try self.instanceShutdownTimer?.validate()
@@ -4782,6 +4898,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.acceleratorType != nil {
             map["AcceleratorType"] = self.acceleratorType!
+        }
+        if self.accessRestrictionRules != nil {
+            map["AccessRestrictionRules"] = self.accessRestrictionRules!
         }
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
@@ -4811,6 +4930,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Datasets"] = tmp
+        }
+        if self.dockerConfig != nil {
+            map["DockerConfig"] = self.dockerConfig?.toMap()
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
@@ -4974,6 +5096,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         if let value = dict["AcceleratorType"] as? String {
             self.acceleratorType = value
         }
+        if let value = dict["AccessRestrictionRules"] as? [String: String] {
+            self.accessRestrictionRules = value
+        }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
         }
@@ -5018,6 +5143,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
             }
             self.datasets = tmp
+        }
+        if let value = dict["DockerConfig"] as? [String: Any?] {
+            var model = GetInstanceResponseBody.DockerConfig()
+            model.fromMap(value)
+            self.dockerConfig = model
         }
         if let value = dict["Driver"] as? String {
             self.driver = value
