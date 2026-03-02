@@ -1465,6 +1465,70 @@ public class DeploymentTarget : Tea.TeaModel {
     }
 }
 
+public class DqlResult : Tea.TeaModel {
+    public var statementIndex: Int32?
+
+    public var submitPreviewResult: SubmitPreviewResult?
+
+    public var tableResults: [TableResult]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.submitPreviewResult?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.statementIndex != nil {
+            map["statementIndex"] = self.statementIndex!
+        }
+        if self.submitPreviewResult != nil {
+            map["submitPreviewResult"] = self.submitPreviewResult?.toMap()
+        }
+        if self.tableResults != nil {
+            var tmp : [Any] = []
+            for k in self.tableResults! {
+                tmp.append(k.toMap())
+            }
+            map["tableResults"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["statementIndex"] as? Int32 {
+            self.statementIndex = value
+        }
+        if let value = dict["submitPreviewResult"] as? [String: Any?] {
+            var model = SubmitPreviewResult()
+            model.fromMap(value)
+            self.submitPreviewResult = model
+        }
+        if let value = dict["tableResults"] as? [Any?] {
+            var tmp : [TableResult] = []
+            for v in value {
+                if v != nil {
+                    var model = TableResult()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tableResults = tmp
+        }
+    }
+}
+
 public class DraftDeployParams : Tea.TeaModel {
     public var deploymentDraftId: String?
 
@@ -6153,6 +6217,342 @@ public class SqlArtifact : Tea.TeaModel {
     }
 }
 
+public class SqlExecution : Tea.TeaModel {
+    public var batchMode: Bool?
+
+    public var description_: String?
+
+    public var message: String?
+
+    public var name: String?
+
+    public var namespace: String?
+
+    public var sessionClusterName: String?
+
+    public var sqlExecutionId: String?
+
+    public var sqlFileId: String?
+
+    public var sqlScript: String?
+
+    public var state: String?
+
+    public var statements: [SqlStatement]?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchMode != nil {
+            map["batchMode"] = self.batchMode!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.sessionClusterName != nil {
+            map["sessionClusterName"] = self.sessionClusterName!
+        }
+        if self.sqlExecutionId != nil {
+            map["sqlExecutionId"] = self.sqlExecutionId!
+        }
+        if self.sqlFileId != nil {
+            map["sqlFileId"] = self.sqlFileId!
+        }
+        if self.sqlScript != nil {
+            map["sqlScript"] = self.sqlScript!
+        }
+        if self.state != nil {
+            map["state"] = self.state!
+        }
+        if self.statements != nil {
+            var tmp : [Any] = []
+            for k in self.statements! {
+                tmp.append(k.toMap())
+            }
+            map["statements"] = tmp
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["batchMode"] as? Bool {
+            self.batchMode = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["sessionClusterName"] as? String {
+            self.sessionClusterName = value
+        }
+        if let value = dict["sqlExecutionId"] as? String {
+            self.sqlExecutionId = value
+        }
+        if let value = dict["sqlFileId"] as? String {
+            self.sqlFileId = value
+        }
+        if let value = dict["sqlScript"] as? String {
+            self.sqlScript = value
+        }
+        if let value = dict["state"] as? String {
+            self.state = value
+        }
+        if let value = dict["statements"] as? [Any?] {
+            var tmp : [SqlStatement] = []
+            for v in value {
+                if v != nil {
+                    var model = SqlStatement()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.statements = tmp
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class SqlExecutionFetchResult : Tea.TeaModel {
+    public var dqlResult: DqlResult?
+
+    public var sqlExecution: SqlExecution?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dqlResult?.validate()
+        try self.sqlExecution?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dqlResult != nil {
+            map["dqlResult"] = self.dqlResult?.toMap()
+        }
+        if self.sqlExecution != nil {
+            map["sqlExecution"] = self.sqlExecution?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dqlResult"] as? [String: Any?] {
+            var model = DqlResult()
+            model.fromMap(value)
+            self.dqlResult = model
+        }
+        if let value = dict["sqlExecution"] as? [String: Any?] {
+            var model = SqlExecution()
+            model.fromMap(value)
+            self.sqlExecution = model
+        }
+    }
+}
+
+public class SqlFile : Tea.TeaModel {
+    public var batchMode: String?
+
+    public var description_: String?
+
+    public var name: String?
+
+    public var namespace: String?
+
+    public var parentId: String?
+
+    public var sessionClusterName: String?
+
+    public var sqlFileId: String?
+
+    public var sqlScript: String?
+
+    public var workspace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchMode != nil {
+            map["batchMode"] = self.batchMode!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
+        if self.sessionClusterName != nil {
+            map["sessionClusterName"] = self.sessionClusterName!
+        }
+        if self.sqlFileId != nil {
+            map["sqlFileId"] = self.sqlFileId!
+        }
+        if self.sqlScript != nil {
+            map["sqlScript"] = self.sqlScript!
+        }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["batchMode"] as? String {
+            self.batchMode = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["parentId"] as? String {
+            self.parentId = value
+        }
+        if let value = dict["sessionClusterName"] as? String {
+            self.sessionClusterName = value
+        }
+        if let value = dict["sqlFileId"] as? String {
+            self.sqlFileId = value
+        }
+        if let value = dict["sqlScript"] as? String {
+            self.sqlScript = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
+    }
+}
+
+public class SqlStatement : Tea.TeaModel {
+    public var index: Int32?
+
+    public var message: String?
+
+    public var sqlScript: String?
+
+    public var statusState: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.index != nil {
+            map["index"] = self.index!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.sqlScript != nil {
+            map["sqlScript"] = self.sqlScript!
+        }
+        if self.statusState != nil {
+            map["statusState"] = self.statusState!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["index"] as? Int32 {
+            self.index = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["sqlScript"] as? String {
+            self.sqlScript = value
+        }
+        if let value = dict["statusState"] as? String {
+            self.statusState = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class SqlStatementExecuteResult : Tea.TeaModel {
     public var errorDetails: ErrorDetails?
 
@@ -6373,6 +6773,100 @@ public class StartJobRequestBody : Tea.TeaModel {
             var model = DeploymentRestoreStrategy()
             model.fromMap(value)
             self.restoreStrategy = model
+        }
+    }
+}
+
+public class StartSqlExecutionBody : Tea.TeaModel {
+    public var description_: String?
+
+    public var sqlFileId: String?
+
+    public var sqlScript: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.sqlFileId != nil {
+            map["sqlFileId"] = self.sqlFileId!
+        }
+        if self.sqlScript != nil {
+            map["sqlScript"] = self.sqlScript!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["sqlFileId"] as? String {
+            self.sqlFileId = value
+        }
+        if let value = dict["sqlScript"] as? String {
+            self.sqlScript = value
+        }
+    }
+}
+
+public class StartSqlExecutionResult : Tea.TeaModel {
+    public var newlyCreated: Bool?
+
+    public var sqlExecutionId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.newlyCreated != nil {
+            map["newlyCreated"] = self.newlyCreated!
+        }
+        if self.sqlExecutionId != nil {
+            map["sqlExecutionId"] = self.sqlExecutionId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["newlyCreated"] as? Bool {
+            self.newlyCreated = value
+        }
+        if let value = dict["sqlExecutionId"] as? String {
+            self.sqlExecutionId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
         }
     }
 }
@@ -6834,6 +7328,8 @@ public class TableMeta : Tea.TeaModel {
 }
 
 public class TableResult : Tea.TeaModel {
+    public var collectSinkOperatorId: String?
+
     public var rowUpdates: [RowUpdate]?
 
     public var tableName: String?
@@ -6852,6 +7348,9 @@ public class TableResult : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.collectSinkOperatorId != nil {
+            map["collectSinkOperatorId"] = self.collectSinkOperatorId!
+        }
         if self.rowUpdates != nil {
             var tmp : [Any] = []
             for k in self.rowUpdates! {
@@ -6867,6 +7366,9 @@ public class TableResult : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["collectSinkOperatorId"] as? String {
+            self.collectSinkOperatorId = value
+        }
         if let value = dict["rowUpdates"] as? [Any?] {
             var tmp : [RowUpdate] = []
             for v in value {
@@ -6887,6 +7389,8 @@ public class TableResult : Tea.TeaModel {
 }
 
 public class TableSchema : Tea.TeaModel {
+    public var collectSinkOperatorId: String?
+
     public var schema: Schema?
 
     public var tableName: String?
@@ -6906,6 +7410,9 @@ public class TableSchema : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.collectSinkOperatorId != nil {
+            map["collectSinkOperatorId"] = self.collectSinkOperatorId!
+        }
         if self.schema != nil {
             map["schema"] = self.schema?.toMap()
         }
@@ -6917,6 +7424,9 @@ public class TableSchema : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["collectSinkOperatorId"] as? String {
+            self.collectSinkOperatorId = value
+        }
         if let value = dict["schema"] as? [String: Any?] {
             var model = Schema()
             model.fromMap(value)
@@ -15199,6 +15709,8 @@ public class GetEventsHeaders : Tea.TeaModel {
 public class GetEventsRequest : Tea.TeaModel {
     public var deploymentId: String?
 
+    public var deploymentName: String?
+
     public var pageIndex: Int32?
 
     public var pageSize: Int32?
@@ -15220,6 +15732,9 @@ public class GetEventsRequest : Tea.TeaModel {
         if self.deploymentId != nil {
             map["deploymentId"] = self.deploymentId!
         }
+        if self.deploymentName != nil {
+            map["deploymentName"] = self.deploymentName!
+        }
         if self.pageIndex != nil {
             map["pageIndex"] = self.pageIndex!
         }
@@ -15233,6 +15748,9 @@ public class GetEventsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["deploymentId"] as? String {
             self.deploymentId = value
+        }
+        if let value = dict["deploymentName"] as? String {
+            self.deploymentName = value
         }
         if let value = dict["pageIndex"] as? Int32 {
             self.pageIndex = value
@@ -15444,6 +15962,8 @@ public class GetFolderHeaders : Tea.TeaModel {
 public class GetFolderRequest : Tea.TeaModel {
     public var folderId: String?
 
+    public var rootType: String?
+
     public override init() {
         super.init()
     }
@@ -15461,6 +15981,9 @@ public class GetFolderRequest : Tea.TeaModel {
         if self.folderId != nil {
             map["folderId"] = self.folderId!
         }
+        if self.rootType != nil {
+            map["rootType"] = self.rootType!
+        }
         return map
     }
 
@@ -15468,6 +15991,9 @@ public class GetFolderRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["folderId"] as? String {
             self.folderId = value
+        }
+        if let value = dict["rootType"] as? String {
+            self.rootType = value
         }
     }
 }
