@@ -8755,6 +8755,8 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
 
         public var initialPasswordAge: Int32?
 
+        public var interceptRiskPasswordOnApi: Bool?
+
         public var maxLoginAttemps: Int32?
 
         public var maxPasswordAge: Int32?
@@ -8794,6 +8796,9 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
             }
             if self.initialPasswordAge != nil {
                 map["InitialPasswordAge"] = self.initialPasswordAge!
+            }
+            if self.interceptRiskPasswordOnApi != nil {
+                map["InterceptRiskPasswordOnApi"] = self.interceptRiskPasswordOnApi!
             }
             if self.maxLoginAttemps != nil {
                 map["MaxLoginAttemps"] = self.maxLoginAttemps!
@@ -8835,6 +8840,9 @@ public class GetPasswordPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["InitialPasswordAge"] as? Int32 {
                 self.initialPasswordAge = value
+            }
+            if let value = dict["InterceptRiskPasswordOnApi"] as? Bool {
+                self.interceptRiskPasswordOnApi = value
             }
             if let value = dict["MaxLoginAttemps"] as? Int32 {
                 self.maxLoginAttemps = value
@@ -17623,6 +17631,8 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
 
     public var initialPasswordAge: Int32?
 
+    public var interceptRiskPasswordOnApi: Bool?
+
     public var maxLoginAttemps: Int32?
 
     public var maxPasswordAge: Int32?
@@ -17662,6 +17672,9 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
         }
         if self.initialPasswordAge != nil {
             map["InitialPasswordAge"] = self.initialPasswordAge!
+        }
+        if self.interceptRiskPasswordOnApi != nil {
+            map["InterceptRiskPasswordOnApi"] = self.interceptRiskPasswordOnApi!
         }
         if self.maxLoginAttemps != nil {
             map["MaxLoginAttemps"] = self.maxLoginAttemps!
@@ -17704,6 +17717,9 @@ public class SetPasswordPolicyRequest : Tea.TeaModel {
         if let value = dict["InitialPasswordAge"] as? Int32 {
             self.initialPasswordAge = value
         }
+        if let value = dict["InterceptRiskPasswordOnApi"] as? Bool {
+            self.interceptRiskPasswordOnApi = value
+        }
         if let value = dict["MaxLoginAttemps"] as? Int32 {
             self.maxLoginAttemps = value
         }
@@ -17742,6 +17758,8 @@ public class SetPasswordPolicyResponseBody : Tea.TeaModel {
         public var hardExpire: Bool?
 
         public var initialPasswordAge: Int32?
+
+        public var interceptRiskPasswordOnApi: Bool?
 
         public var maxLoginAttemps: Int32?
 
@@ -17783,6 +17801,9 @@ public class SetPasswordPolicyResponseBody : Tea.TeaModel {
             if self.initialPasswordAge != nil {
                 map["InitialPasswordAge"] = self.initialPasswordAge!
             }
+            if self.interceptRiskPasswordOnApi != nil {
+                map["InterceptRiskPasswordOnApi"] = self.interceptRiskPasswordOnApi!
+            }
             if self.maxLoginAttemps != nil {
                 map["MaxLoginAttemps"] = self.maxLoginAttemps!
             }
@@ -17823,6 +17844,9 @@ public class SetPasswordPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["InitialPasswordAge"] as? Int32 {
                 self.initialPasswordAge = value
+            }
+            if let value = dict["InterceptRiskPasswordOnApi"] as? Bool {
+                self.interceptRiskPasswordOnApi = value
             }
             if let value = dict["MaxLoginAttemps"] as? Int32 {
                 self.maxLoginAttemps = value

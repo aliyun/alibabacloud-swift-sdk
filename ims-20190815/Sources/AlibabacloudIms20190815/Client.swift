@@ -2706,6 +2706,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.initialPasswordAge)) {
             query["InitialPasswordAge"] = request.initialPasswordAge!;
         }
+        if (!TeaUtils.Client.isUnset(request.interceptRiskPasswordOnApi)) {
+            query["InterceptRiskPasswordOnApi"] = request.interceptRiskPasswordOnApi!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxLoginAttemps)) {
             query["MaxLoginAttemps"] = request.maxLoginAttemps!;
         }
