@@ -19106,6 +19106,8 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
 
         public var gmtModified: Int64?
 
+        public var instanceId: String?
+
         public var ownerUserId: String?
 
         public var pattern: String?
@@ -19161,6 +19163,9 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
             }
             if self.ownerUserId != nil {
                 map["OwnerUserId"] = self.ownerUserId!
@@ -19221,6 +19226,9 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtModified"] as? Int64 {
                 self.gmtModified = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
             if let value = dict["OwnerUserId"] as? String {
                 self.ownerUserId = value
@@ -20824,6 +20832,8 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
 
         public var gmtModified: Int64?
 
+        public var instanceId: String?
+
         public var ownerUserId: String?
 
         public var pattern: String?
@@ -20879,6 +20889,9 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
             }
             if self.ownerUserId != nil {
                 map["OwnerUserId"] = self.ownerUserId!
@@ -20939,6 +20952,9 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtModified"] as? Int64 {
                 self.gmtModified = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
             if let value = dict["OwnerUserId"] as? String {
                 self.ownerUserId = value
