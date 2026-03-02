@@ -2622,6 +2622,8 @@ public class DescribeColumnsRequest : Tea.TeaModel {
 
     public var sensLevelName: String?
 
+    public var serviceRegionId: String?
+
     public var tableId: Int64?
 
     public var tableName: String?
@@ -2686,6 +2688,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         if self.sensLevelName != nil {
             map["SensLevelName"] = self.sensLevelName!
         }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
         if self.tableId != nil {
             map["TableId"] = self.tableId!
         }
@@ -2744,6 +2749,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         }
         if let value = dict["SensLevelName"] as? String {
             self.sensLevelName = value
+        }
+        if let value = dict["ServiceRegionId"] as? String {
+            self.serviceRegionId = value
         }
         if let value = dict["TableId"] as? Int64 {
             self.tableId = value
@@ -7204,7 +7212,13 @@ public class DescribeDataObjectColumnDetailV2Response : Tea.TeaModel {
 }
 
 public class DescribeDataObjectsRequest : Tea.TeaModel {
+    public var APIVersion: Int32?
+
+    public var bucket: String?
+
     public var currentPage: Int32?
+
+    public var dbName: String?
 
     public var domainId: Int64?
 
@@ -7218,6 +7232,10 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var logStore: String?
+
+    public var logStoreFlag: Int32?
+
     public var memberAccount: Int64?
 
     public var modelIds: String?
@@ -7228,13 +7246,29 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var parentCategoryIds: String?
 
+    public var path: String?
+
+    public var productId: Int32?
+
     public var productIds: String?
+
+    public var project: String?
 
     public var queryName: String?
 
+    public var regionId: String?
+
+    public var riskLevelIdList: String?
+
     public var riskLevels: String?
 
+    public var ruleIds: String?
+
     public var serviceRegionId: String?
+
+    public var tableName: String?
+
+    public var taskId: Int64?
 
     public var templateId: Int64?
 
@@ -7252,8 +7286,17 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.APIVersion != nil {
+            map["APIVersion"] = self.APIVersion!
+        }
+        if self.bucket != nil {
+            map["Bucket"] = self.bucket!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
         }
         if self.domainId != nil {
             map["DomainId"] = self.domainId!
@@ -7273,6 +7316,12 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.logStore != nil {
+            map["LogStore"] = self.logStore!
+        }
+        if self.logStoreFlag != nil {
+            map["LogStoreFlag"] = self.logStoreFlag!
+        }
         if self.memberAccount != nil {
             map["MemberAccount"] = self.memberAccount!
         }
@@ -7288,17 +7337,41 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if self.parentCategoryIds != nil {
             map["ParentCategoryIds"] = self.parentCategoryIds!
         }
+        if self.path != nil {
+            map["Path"] = self.path!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
+        }
         if self.productIds != nil {
             map["ProductIds"] = self.productIds!
+        }
+        if self.project != nil {
+            map["Project"] = self.project!
         }
         if self.queryName != nil {
             map["QueryName"] = self.queryName!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.riskLevelIdList != nil {
+            map["RiskLevelIdList"] = self.riskLevelIdList!
+        }
         if self.riskLevels != nil {
             map["RiskLevels"] = self.riskLevels!
         }
+        if self.ruleIds != nil {
+            map["RuleIds"] = self.ruleIds!
+        }
         if self.serviceRegionId != nil {
             map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
@@ -7308,8 +7381,17 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["APIVersion"] as? Int32 {
+            self.APIVersion = value
+        }
+        if let value = dict["Bucket"] as? String {
+            self.bucket = value
+        }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["DbName"] as? String {
+            self.dbName = value
         }
         if let value = dict["DomainId"] as? Int64 {
             self.domainId = value
@@ -7329,6 +7411,12 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if let value = dict["Lang"] as? String {
             self.lang = value
         }
+        if let value = dict["LogStore"] as? String {
+            self.logStore = value
+        }
+        if let value = dict["LogStoreFlag"] as? Int32 {
+            self.logStoreFlag = value
+        }
         if let value = dict["MemberAccount"] as? Int64 {
             self.memberAccount = value
         }
@@ -7344,17 +7432,41 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if let value = dict["ParentCategoryIds"] as? String {
             self.parentCategoryIds = value
         }
+        if let value = dict["Path"] as? String {
+            self.path = value
+        }
+        if let value = dict["ProductId"] as? Int32 {
+            self.productId = value
+        }
         if let value = dict["ProductIds"] as? String {
             self.productIds = value
+        }
+        if let value = dict["Project"] as? String {
+            self.project = value
         }
         if let value = dict["QueryName"] as? String {
             self.queryName = value
         }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RiskLevelIdList"] as? String {
+            self.riskLevelIdList = value
+        }
         if let value = dict["RiskLevels"] as? String {
             self.riskLevels = value
         }
+        if let value = dict["RuleIds"] as? String {
+            self.ruleIds = value
+        }
         if let value = dict["ServiceRegionId"] as? String {
             self.serviceRegionId = value
+        }
+        if let value = dict["TableName"] as? String {
+            self.tableName = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
         }
         if let value = dict["TemplateId"] as? Int64 {
             self.templateId = value
@@ -7407,11 +7519,15 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
             public var riskLevelName: String?
 
+            public var ruleCategoryNameList: String?
+
             public var ruleCount: Int32?
 
             public var ruleId: Int64?
 
             public var ruleName: String?
+
+            public var sampleList: String?
 
             public override init() {
                 super.init()
@@ -7433,6 +7549,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
                 if self.riskLevelName != nil {
                     map["RiskLevelName"] = self.riskLevelName!
                 }
+                if self.ruleCategoryNameList != nil {
+                    map["RuleCategoryNameList"] = self.ruleCategoryNameList!
+                }
                 if self.ruleCount != nil {
                     map["RuleCount"] = self.ruleCount!
                 }
@@ -7441,6 +7560,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
                 }
                 if self.ruleName != nil {
                     map["RuleName"] = self.ruleName!
+                }
+                if self.sampleList != nil {
+                    map["SampleList"] = self.sampleList!
                 }
                 return map
             }
@@ -7453,6 +7575,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
                 if let value = dict["RiskLevelName"] as? String {
                     self.riskLevelName = value
                 }
+                if let value = dict["RuleCategoryNameList"] as? String {
+                    self.ruleCategoryNameList = value
+                }
                 if let value = dict["RuleCount"] as? Int32 {
                     self.ruleCount = value
                 }
@@ -7462,9 +7587,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
                 if let value = dict["RuleName"] as? String {
                     self.ruleName = value
                 }
+                if let value = dict["SampleList"] as? String {
+                    self.sampleList = value
+                }
             }
         }
         public var categories: [String]?
+
+        public var comment: String?
+
+        public var dataType: String?
+
+        public var dbName: String?
+
+        public var fileCategoryCode: Int32?
 
         public var id: String?
 
@@ -7472,9 +7608,15 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var isRevision: Int32?
+
         public var lastModifiedTime: Int64?
 
         public var lastScanTime: Int64?
+
+        public var logStore: String?
+
+        public var maskStatus: Int32?
 
         public var memberAccount: Int64?
 
@@ -7492,15 +7634,35 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
         public var productId: Int64?
 
+        public var project: String?
+
         public var regionId: String?
 
         public var regionName: String?
+
+        public var riskLevelId: Int32?
+
+        public var ruleCount: Int32?
 
         public var ruleList: [DescribeDataObjectsResponseBody.Items.RuleList]?
 
         public var sensitiveCount: Int32?
 
+        public var size: Int64?
+
+        public var sx: String?
+
+        public var tableName: String?
+
+        public var taskId: Int64?
+
+        public var taskName: String?
+
+        public var taskNumber: Int64?
+
         public var templateId: Int64?
+
+        public var templateName: String?
 
         public override init() {
             super.init()
@@ -7519,6 +7681,18 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if self.categories != nil {
                 map["Categories"] = self.categories!
             }
+            if self.comment != nil {
+                map["Comment"] = self.comment!
+            }
+            if self.dataType != nil {
+                map["DataType"] = self.dataType!
+            }
+            if self.dbName != nil {
+                map["DbName"] = self.dbName!
+            }
+            if self.fileCategoryCode != nil {
+                map["FileCategoryCode"] = self.fileCategoryCode!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -7528,11 +7702,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.isRevision != nil {
+                map["IsRevision"] = self.isRevision!
+            }
             if self.lastModifiedTime != nil {
                 map["LastModifiedTime"] = self.lastModifiedTime!
             }
             if self.lastScanTime != nil {
                 map["LastScanTime"] = self.lastScanTime!
+            }
+            if self.logStore != nil {
+                map["LogStore"] = self.logStore!
+            }
+            if self.maskStatus != nil {
+                map["MaskStatus"] = self.maskStatus!
             }
             if self.memberAccount != nil {
                 map["MemberAccount"] = self.memberAccount!
@@ -7562,11 +7745,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if self.productId != nil {
                 map["ProductId"] = self.productId!
             }
+            if self.project != nil {
+                map["Project"] = self.project!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
             if self.regionName != nil {
                 map["RegionName"] = self.regionName!
+            }
+            if self.riskLevelId != nil {
+                map["RiskLevelId"] = self.riskLevelId!
+            }
+            if self.ruleCount != nil {
+                map["RuleCount"] = self.ruleCount!
             }
             if self.ruleList != nil {
                 var tmp : [Any] = []
@@ -7578,8 +7770,29 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if self.sensitiveCount != nil {
                 map["SensitiveCount"] = self.sensitiveCount!
             }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.sx != nil {
+                map["Sx"] = self.sx!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.taskName != nil {
+                map["TaskName"] = self.taskName!
+            }
+            if self.taskNumber != nil {
+                map["TaskNumber"] = self.taskNumber!
+            }
             if self.templateId != nil {
                 map["TemplateId"] = self.templateId!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
             }
             return map
         }
@@ -7588,6 +7801,18 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Categories"] as? [String] {
                 self.categories = value
+            }
+            if let value = dict["Comment"] as? String {
+                self.comment = value
+            }
+            if let value = dict["DataType"] as? String {
+                self.dataType = value
+            }
+            if let value = dict["DbName"] as? String {
+                self.dbName = value
+            }
+            if let value = dict["FileCategoryCode"] as? Int32 {
+                self.fileCategoryCode = value
             }
             if let value = dict["Id"] as? String {
                 self.id = value
@@ -7598,11 +7823,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
+            if let value = dict["IsRevision"] as? Int32 {
+                self.isRevision = value
+            }
             if let value = dict["LastModifiedTime"] as? Int64 {
                 self.lastModifiedTime = value
             }
             if let value = dict["LastScanTime"] as? Int64 {
                 self.lastScanTime = value
+            }
+            if let value = dict["LogStore"] as? String {
+                self.logStore = value
+            }
+            if let value = dict["MaskStatus"] as? Int32 {
+                self.maskStatus = value
             }
             if let value = dict["MemberAccount"] as? Int64 {
                 self.memberAccount = value
@@ -7638,11 +7872,20 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if let value = dict["ProductId"] as? Int64 {
                 self.productId = value
             }
+            if let value = dict["Project"] as? String {
+                self.project = value
+            }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
             }
             if let value = dict["RegionName"] as? String {
                 self.regionName = value
+            }
+            if let value = dict["RiskLevelId"] as? Int32 {
+                self.riskLevelId = value
+            }
+            if let value = dict["RuleCount"] as? Int32 {
+                self.ruleCount = value
             }
             if let value = dict["RuleList"] as? [Any?] {
                 var tmp : [DescribeDataObjectsResponseBody.Items.RuleList] = []
@@ -7660,8 +7903,29 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             if let value = dict["SensitiveCount"] as? Int32 {
                 self.sensitiveCount = value
             }
+            if let value = dict["Size"] as? Int64 {
+                self.size = value
+            }
+            if let value = dict["Sx"] as? String {
+                self.sx = value
+            }
+            if let value = dict["TableName"] as? String {
+                self.tableName = value
+            }
+            if let value = dict["TaskId"] as? Int64 {
+                self.taskId = value
+            }
+            if let value = dict["TaskName"] as? String {
+                self.taskName = value
+            }
+            if let value = dict["TaskNumber"] as? Int64 {
+                self.taskNumber = value
+            }
             if let value = dict["TemplateId"] as? Int64 {
                 self.templateId = value
+            }
+            if let value = dict["TemplateName"] as? String {
+                self.templateName = value
             }
         }
     }
