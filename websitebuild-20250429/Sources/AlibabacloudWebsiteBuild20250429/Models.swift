@@ -1808,6 +1808,447 @@ public class AppServiceProfile : Tea.TeaModel {
     }
 }
 
+public class AllocateSupabaseForAdminRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var orderColumn: String?
+
+    public var orderType: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.orderColumn != nil {
+            map["OrderColumn"] = self.orderColumn!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["OrderColumn"] as? String {
+            self.orderColumn = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class AllocateSupabaseForAdminResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public var anonKey: String?
+
+        public var bizId: String?
+
+        public var dbInstanceCreateTime: String?
+
+        public var dbInstanceId: String?
+
+        public var dbPublicUrl: String?
+
+        public var dbType: String?
+
+        public var extra: String?
+
+        public var instanceCreateFinishedTime: String?
+
+        public var instanceCreateStatus: String?
+
+        public var isDeleted: Int32?
+
+        public var rdsDatabasePassword: String?
+
+        public var serviceKey: String?
+
+        public var status: Int32?
+
+        public var supabaseDashboardPassword: String?
+
+        public var supabaseDashboardUserName: String?
+
+        public var supabaseInstanceCreateTime: String?
+
+        public var supabaseInstanceId: String?
+
+        public var supabaseKongUrl: String?
+
+        public var supabasePrivateIp: String?
+
+        public var supabasePublicIp: String?
+
+        public var supabasePublicUrl: String?
+
+        public var tenantId: String?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.anonKey != nil {
+                map["AnonKey"] = self.anonKey!
+            }
+            if self.bizId != nil {
+                map["BizId"] = self.bizId!
+            }
+            if self.dbInstanceCreateTime != nil {
+                map["DbInstanceCreateTime"] = self.dbInstanceCreateTime!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.dbPublicUrl != nil {
+                map["DbPublicUrl"] = self.dbPublicUrl!
+            }
+            if self.dbType != nil {
+                map["DbType"] = self.dbType!
+            }
+            if self.extra != nil {
+                map["Extra"] = self.extra!
+            }
+            if self.instanceCreateFinishedTime != nil {
+                map["InstanceCreateFinishedTime"] = self.instanceCreateFinishedTime!
+            }
+            if self.instanceCreateStatus != nil {
+                map["InstanceCreateStatus"] = self.instanceCreateStatus!
+            }
+            if self.isDeleted != nil {
+                map["IsDeleted"] = self.isDeleted!
+            }
+            if self.rdsDatabasePassword != nil {
+                map["RdsDatabasePassword"] = self.rdsDatabasePassword!
+            }
+            if self.serviceKey != nil {
+                map["ServiceKey"] = self.serviceKey!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.supabaseDashboardPassword != nil {
+                map["SupabaseDashboardPassword"] = self.supabaseDashboardPassword!
+            }
+            if self.supabaseDashboardUserName != nil {
+                map["SupabaseDashboardUserName"] = self.supabaseDashboardUserName!
+            }
+            if self.supabaseInstanceCreateTime != nil {
+                map["SupabaseInstanceCreateTime"] = self.supabaseInstanceCreateTime!
+            }
+            if self.supabaseInstanceId != nil {
+                map["SupabaseInstanceId"] = self.supabaseInstanceId!
+            }
+            if self.supabaseKongUrl != nil {
+                map["SupabaseKongUrl"] = self.supabaseKongUrl!
+            }
+            if self.supabasePrivateIp != nil {
+                map["SupabasePrivateIp"] = self.supabasePrivateIp!
+            }
+            if self.supabasePublicIp != nil {
+                map["SupabasePublicIp"] = self.supabasePublicIp!
+            }
+            if self.supabasePublicUrl != nil {
+                map["SupabasePublicUrl"] = self.supabasePublicUrl!
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AnonKey"] as? String {
+                self.anonKey = value
+            }
+            if let value = dict["BizId"] as? String {
+                self.bizId = value
+            }
+            if let value = dict["DbInstanceCreateTime"] as? String {
+                self.dbInstanceCreateTime = value
+            }
+            if let value = dict["DbInstanceId"] as? String {
+                self.dbInstanceId = value
+            }
+            if let value = dict["DbPublicUrl"] as? String {
+                self.dbPublicUrl = value
+            }
+            if let value = dict["DbType"] as? String {
+                self.dbType = value
+            }
+            if let value = dict["Extra"] as? String {
+                self.extra = value
+            }
+            if let value = dict["InstanceCreateFinishedTime"] as? String {
+                self.instanceCreateFinishedTime = value
+            }
+            if let value = dict["InstanceCreateStatus"] as? String {
+                self.instanceCreateStatus = value
+            }
+            if let value = dict["IsDeleted"] as? Int32 {
+                self.isDeleted = value
+            }
+            if let value = dict["RdsDatabasePassword"] as? String {
+                self.rdsDatabasePassword = value
+            }
+            if let value = dict["ServiceKey"] as? String {
+                self.serviceKey = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+            if let value = dict["SupabaseDashboardPassword"] as? String {
+                self.supabaseDashboardPassword = value
+            }
+            if let value = dict["SupabaseDashboardUserName"] as? String {
+                self.supabaseDashboardUserName = value
+            }
+            if let value = dict["SupabaseInstanceCreateTime"] as? String {
+                self.supabaseInstanceCreateTime = value
+            }
+            if let value = dict["SupabaseInstanceId"] as? String {
+                self.supabaseInstanceId = value
+            }
+            if let value = dict["SupabaseKongUrl"] as? String {
+                self.supabaseKongUrl = value
+            }
+            if let value = dict["SupabasePrivateIp"] as? String {
+                self.supabasePrivateIp = value
+            }
+            if let value = dict["SupabasePublicIp"] as? String {
+                self.supabasePublicIp = value
+            }
+            if let value = dict["SupabasePublicUrl"] as? String {
+                self.supabasePublicUrl = value
+            }
+            if let value = dict["TenantId"] as? String {
+                self.tenantId = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var allowRetry: Bool?
+
+    public var appName: String?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var module: AllocateSupabaseForAdminResponseBody.Module?
+
+    public var requestId: String?
+
+    public var rootErrorCode: String?
+
+    public var rootErrorMsg: String?
+
+    public var synchro: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.module != nil {
+            map["Module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rootErrorCode != nil {
+            map["RootErrorCode"] = self.rootErrorCode!
+        }
+        if self.rootErrorMsg != nil {
+            map["RootErrorMsg"] = self.rootErrorMsg!
+        }
+        if self.synchro != nil {
+            map["Synchro"] = self.synchro!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["AllowRetry"] as? Bool {
+            self.allowRetry = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrorArgs"] as? [Any] {
+            self.errorArgs = value
+        }
+        if let value = dict["Module"] as? [String: Any?] {
+            var model = AllocateSupabaseForAdminResponseBody.Module()
+            model.fromMap(value)
+            self.module = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RootErrorCode"] as? String {
+            self.rootErrorCode = value
+        }
+        if let value = dict["RootErrorMsg"] as? String {
+            self.rootErrorMsg = value
+        }
+        if let value = dict["Synchro"] as? Bool {
+            self.synchro = value
+        }
+    }
+}
+
+public class AllocateSupabaseForAdminResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AllocateSupabaseForAdminResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AllocateSupabaseForAdminResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BindAppDomainRequest : Tea.TeaModel {
     public var bizId: String?
 
@@ -10650,6 +11091,278 @@ public class OperateAppServiceForPartnerResponse : Tea.TeaModel {
     }
 }
 
+public class OperateSupabaseForAdminRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var executeSql: String?
+
+    public var operateType: String?
+
+    public var orderByClause: String?
+
+    public var orderColumn: String?
+
+    public var orderType: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var tableName: String?
+
+    public var userId: String?
+
+    public var whereClause: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.executeSql != nil {
+            map["ExecuteSql"] = self.executeSql!
+        }
+        if self.operateType != nil {
+            map["OperateType"] = self.operateType!
+        }
+        if self.orderByClause != nil {
+            map["OrderByClause"] = self.orderByClause!
+        }
+        if self.orderColumn != nil {
+            map["OrderColumn"] = self.orderColumn!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        if self.whereClause != nil {
+            map["WhereClause"] = self.whereClause!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["ExecuteSql"] as? String {
+            self.executeSql = value
+        }
+        if let value = dict["OperateType"] as? String {
+            self.operateType = value
+        }
+        if let value = dict["OrderByClause"] as? String {
+            self.orderByClause = value
+        }
+        if let value = dict["OrderColumn"] as? String {
+            self.orderColumn = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["TableName"] as? String {
+            self.tableName = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+        if let value = dict["WhereClause"] as? String {
+            self.whereClause = value
+        }
+    }
+}
+
+public class OperateSupabaseForAdminResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var allowRetry: Bool?
+
+    public var appName: String?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var module: String?
+
+    public var requestId: String?
+
+    public var rootErrorCode: String?
+
+    public var rootErrorMsg: String?
+
+    public var synchro: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rootErrorCode != nil {
+            map["RootErrorCode"] = self.rootErrorCode!
+        }
+        if self.rootErrorMsg != nil {
+            map["RootErrorMsg"] = self.rootErrorMsg!
+        }
+        if self.synchro != nil {
+            map["Synchro"] = self.synchro!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["AllowRetry"] as? Bool {
+            self.allowRetry = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrorArgs"] as? [Any] {
+            self.errorArgs = value
+        }
+        if let value = dict["Module"] as? String {
+            self.module = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RootErrorCode"] as? String {
+            self.rootErrorCode = value
+        }
+        if let value = dict["RootErrorMsg"] as? String {
+            self.rootErrorMsg = value
+        }
+        if let value = dict["Synchro"] as? Bool {
+            self.synchro = value
+        }
+    }
+}
+
+public class OperateSupabaseForAdminResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OperateSupabaseForAdminResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OperateSupabaseForAdminResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryMaterialDirectoryTreeRequest : Tea.TeaModel {
     public var bizId: String?
 
@@ -12824,6 +13537,14 @@ public class QuerySupabaseInstanceInfoForAdminRequest : Tea.TeaModel {
 
     public var env: String?
 
+    public var orderColumn: String?
+
+    public var orderType: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
     public var userId: String?
 
     public override init() {
@@ -12846,6 +13567,18 @@ public class QuerySupabaseInstanceInfoForAdminRequest : Tea.TeaModel {
         if self.env != nil {
             map["Env"] = self.env!
         }
+        if self.orderColumn != nil {
+            map["OrderColumn"] = self.orderColumn!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -12859,6 +13592,18 @@ public class QuerySupabaseInstanceInfoForAdminRequest : Tea.TeaModel {
         }
         if let value = dict["Env"] as? String {
             self.env = value
+        }
+        if let value = dict["OrderColumn"] as? String {
+            self.orderColumn = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
