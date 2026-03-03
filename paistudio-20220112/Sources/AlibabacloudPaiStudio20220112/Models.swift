@@ -6392,6 +6392,10 @@ public class ResourceGroup : Tea.TeaModel {
 
     public var resourceGroupID: String?
 
+    public var resourceType: String?
+
+    public var status: String?
+
     public var userVpc: UserVpc?
 
     public var version: String?
@@ -6431,6 +6435,12 @@ public class ResourceGroup : Tea.TeaModel {
         if self.resourceGroupID != nil {
             map["ResourceGroupID"] = self.resourceGroupID!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.userVpc != nil {
             map["UserVpc"] = self.userVpc?.toMap()
         }
@@ -6462,6 +6472,12 @@ public class ResourceGroup : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupID"] as? String {
             self.resourceGroupID = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["UserVpc"] as? [String: Any?] {
             var model = UserVpc()
@@ -8127,6 +8143,8 @@ public class WorkloadDetails : Tea.TeaModel {
 public class WorkspaceIdName : Tea.TeaModel {
     public var workspaceId: String?
 
+    public var workspaceName: String?
+
     public override init() {
         super.init()
     }
@@ -8144,6 +8162,9 @@ public class WorkspaceIdName : Tea.TeaModel {
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
+        if self.workspaceName != nil {
+            map["WorkspaceName"] = self.workspaceName!
+        }
         return map
     }
 
@@ -8151,6 +8172,9 @@ public class WorkspaceIdName : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
+        }
+        if let value = dict["WorkspaceName"] as? String {
+            self.workspaceName = value
         }
     }
 }
@@ -16529,6 +16553,8 @@ public class ListQuotaActiveUserUsagesRequest : Tea.TeaModel {
 public class ListQuotaActiveUserUsagesResponseBody : Tea.TeaModel {
     public var quotaUserUsage: [QuotaUser]?
 
+    public var quotaUserUsages: [QuotaUser]?
+
     public var requestId: String?
 
     public var totalCount: Int32?
@@ -16554,6 +16580,13 @@ public class ListQuotaActiveUserUsagesResponseBody : Tea.TeaModel {
             }
             map["QuotaUserUsage"] = tmp
         }
+        if self.quotaUserUsages != nil {
+            var tmp : [Any] = []
+            for k in self.quotaUserUsages! {
+                tmp.append(k.toMap())
+            }
+            map["QuotaUserUsages"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -16577,6 +16610,19 @@ public class ListQuotaActiveUserUsagesResponseBody : Tea.TeaModel {
                 }
             }
             self.quotaUserUsage = tmp
+        }
+        if let value = dict["QuotaUserUsages"] as? [Any?] {
+            var tmp : [QuotaUser] = []
+            for v in value {
+                if v != nil {
+                    var model = QuotaUser()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.quotaUserUsages = tmp
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
