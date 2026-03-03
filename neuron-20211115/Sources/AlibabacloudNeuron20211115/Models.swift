@@ -27304,6 +27304,10 @@ public class GetForkReviewResponse : Tea.TeaModel {
 public class GetHistoryDeveloperRequest : Tea.TeaModel {
     public var enterpriseId: Int64?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public override init() {
         super.init()
     }
@@ -27321,6 +27325,12 @@ public class GetHistoryDeveloperRequest : Tea.TeaModel {
         if self.enterpriseId != nil {
             map["enterpriseId"] = self.enterpriseId!
         }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
         return map
     }
 
@@ -27328,6 +27338,12 @@ public class GetHistoryDeveloperRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["enterpriseId"] as? Int64 {
             self.enterpriseId = value
+        }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
         }
     }
 }
