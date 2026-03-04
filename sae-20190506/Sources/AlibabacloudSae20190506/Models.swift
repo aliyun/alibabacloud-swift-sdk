@@ -5846,6 +5846,8 @@ public class InitContainerConfig : Tea.TeaModel {
 
     public var name: String?
 
+    public var secretMountDesc: String?
+
     public override init() {
         super.init()
     }
@@ -5881,6 +5883,9 @@ public class InitContainerConfig : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.secretMountDesc != nil {
+            map["SecretMountDesc"] = self.secretMountDesc!
+        }
         return map
     }
 
@@ -5906,6 +5911,9 @@ public class InitContainerConfig : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["SecretMountDesc"] as? String {
+            self.secretMountDesc = value
         }
     }
 }
@@ -25247,6 +25255,60 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecretMountDesc : Tea.TeaModel {
+                public var key: String?
+
+                public var mountPath: String?
+
+                public var secretId: Int64?
+
+                public var secretName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.mountPath != nil {
+                        map["MountPath"] = self.mountPath!
+                    }
+                    if self.secretId != nil {
+                        map["SecretId"] = self.secretId!
+                    }
+                    if self.secretName != nil {
+                        map["SecretName"] = self.secretName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["MountPath"] as? String {
+                        self.mountPath = value
+                    }
+                    if let value = dict["SecretId"] as? Int64 {
+                        self.secretId = value
+                    }
+                    if let value = dict["SecretName"] as? String {
+                        self.secretName = value
+                    }
+                }
+            }
             public var command: String?
 
             public var commandArgs: String?
@@ -25260,6 +25322,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             public var imageUrl: String?
 
             public var name: String?
+
+            public var secretMountDesc: [DescribeApplicationConfigResponseBody.Data.InitContainersConfig.SecretMountDesc]?
 
             public override init() {
                 super.init()
@@ -25303,6 +25367,13 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.secretMountDesc != nil {
+                    var tmp : [Any] = []
+                    for k in self.secretMountDesc! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SecretMountDesc"] = tmp
                 }
                 return map
             }
@@ -25349,6 +25420,19 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
+                }
+                if let value = dict["SecretMountDesc"] as? [Any?] {
+                    var tmp : [DescribeApplicationConfigResponseBody.Data.InitContainersConfig.SecretMountDesc] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationConfigResponseBody.Data.InitContainersConfig.SecretMountDesc()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.secretMountDesc = tmp
                 }
             }
         }
