@@ -2377,6 +2377,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var networkType: String?
 
+    public var originMinorVersion: String?
+
     public var payType: String?
 
     public var period: String?
@@ -2392,6 +2394,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var secondaryZone: String?
 
     public var series: String?
+
+    public var storageType: String?
 
     public var tertiaryZone: String?
 
@@ -2464,6 +2468,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.networkType != nil {
             map["NetworkType"] = self.networkType!
         }
+        if self.originMinorVersion != nil {
+            map["OriginMinorVersion"] = self.originMinorVersion!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -2487,6 +2494,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.series != nil {
             map["Series"] = self.series!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
         }
         if self.tertiaryZone != nil {
             map["TertiaryZone"] = self.tertiaryZone!
@@ -2556,6 +2566,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if let value = dict["NetworkType"] as? String {
             self.networkType = value
         }
+        if let value = dict["OriginMinorVersion"] as? String {
+            self.originMinorVersion = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -2579,6 +2592,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["Series"] as? String {
             self.series = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
         if let value = dict["TertiaryZone"] as? String {
             self.tertiaryZone = value
@@ -2632,6 +2648,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var networkType: String?
 
+    public var originMinorVersion: String?
+
     public var payType: String?
 
     public var period: String?
@@ -2647,6 +2665,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var secondaryZone: String?
 
     public var series: String?
+
+    public var storageType: String?
 
     public var tertiaryZone: String?
 
@@ -2719,6 +2739,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.networkType != nil {
             map["NetworkType"] = self.networkType!
         }
+        if self.originMinorVersion != nil {
+            map["OriginMinorVersion"] = self.originMinorVersion!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -2742,6 +2765,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.series != nil {
             map["Series"] = self.series!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
         }
         if self.tertiaryZone != nil {
             map["TertiaryZone"] = self.tertiaryZone!
@@ -2811,6 +2837,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if let value = dict["NetworkType"] as? String {
             self.networkType = value
         }
+        if let value = dict["OriginMinorVersion"] as? String {
+            self.originMinorVersion = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -2834,6 +2863,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Series"] as? String {
             self.series = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
         if let value = dict["TertiaryZone"] as? String {
             self.tertiaryZone = value
