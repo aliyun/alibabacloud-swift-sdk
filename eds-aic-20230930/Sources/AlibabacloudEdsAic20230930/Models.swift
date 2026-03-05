@@ -1981,6 +1981,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
         public var periodUnit: String?
 
+        public var promotionId: String?
+
         public var visibleType: String?
 
         public override init() {
@@ -2030,6 +2032,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
             if self.periodUnit != nil {
                 map["PeriodUnit"] = self.periodUnit!
             }
+            if self.promotionId != nil {
+                map["PromotionId"] = self.promotionId!
+            }
             if self.visibleType != nil {
                 map["VisibleType"] = self.visibleType!
             }
@@ -2070,6 +2075,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["PeriodUnit"] as? String {
                 self.periodUnit = value
+            }
+            if let value = dict["PromotionId"] as? String {
+                self.promotionId = value
             }
             if let value = dict["VisibleType"] as? String {
                 self.visibleType = value
