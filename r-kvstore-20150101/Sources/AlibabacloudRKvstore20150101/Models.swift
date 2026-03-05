@@ -1948,6 +1948,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var instanceClass: String?
 
+    public var instanceEndpointType: String?
+
     public var instanceName: String?
 
     public var instanceType: String?
@@ -2075,6 +2077,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
+        }
+        if self.instanceEndpointType != nil {
+            map["InstanceEndpointType"] = self.instanceEndpointType!
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
@@ -2228,6 +2233,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
+        }
+        if let value = dict["InstanceEndpointType"] as? String {
+            self.instanceEndpointType = value
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
@@ -3573,6 +3581,8 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
 
     public var instanceClass: String?
 
+    public var instanceEndpointType: String?
+
     public var instanceName: String?
 
     public var instanceType: String?
@@ -3694,6 +3704,9 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
+        }
+        if self.instanceEndpointType != nil {
+            map["InstanceEndpointType"] = self.instanceEndpointType!
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
@@ -3841,6 +3854,9 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
+        }
+        if let value = dict["InstanceEndpointType"] as? String {
+            self.instanceEndpointType = value
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
