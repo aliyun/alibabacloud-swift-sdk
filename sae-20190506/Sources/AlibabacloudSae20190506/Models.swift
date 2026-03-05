@@ -9950,9 +9950,15 @@ public class SidecarContainerConfig : Tea.TeaModel {
 
     public var imageUrl: String?
 
+    public var liveness: String?
+
     public var memory: Int32?
 
     public var name: String?
+
+    public var readiness: String?
+
+    public var secretMountDesc: String?
 
     public override init() {
         super.init()
@@ -9992,11 +9998,20 @@ public class SidecarContainerConfig : Tea.TeaModel {
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
+        if self.liveness != nil {
+            map["Liveness"] = self.liveness!
+        }
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.readiness != nil {
+            map["Readiness"] = self.readiness!
+        }
+        if self.secretMountDesc != nil {
+            map["SecretMountDesc"] = self.secretMountDesc!
         }
         return map
     }
@@ -10027,11 +10042,20 @@ public class SidecarContainerConfig : Tea.TeaModel {
         if let value = dict["ImageUrl"] as? String {
             self.imageUrl = value
         }
+        if let value = dict["Liveness"] as? String {
+            self.liveness = value
+        }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Readiness"] as? String {
+            self.readiness = value
+        }
+        if let value = dict["SecretMountDesc"] as? String {
+            self.secretMountDesc = value
         }
     }
 }
@@ -25675,6 +25699,60 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecretMountDesc : Tea.TeaModel {
+                public var key: String?
+
+                public var mountPath: String?
+
+                public var secretId: Int64?
+
+                public var secretName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.mountPath != nil {
+                        map["MountPath"] = self.mountPath!
+                    }
+                    if self.secretId != nil {
+                        map["SecretId"] = self.secretId!
+                    }
+                    if self.secretName != nil {
+                        map["SecretName"] = self.secretName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["MountPath"] as? String {
+                        self.mountPath = value
+                    }
+                    if let value = dict["SecretId"] as? Int64 {
+                        self.secretId = value
+                    }
+                    if let value = dict["SecretName"] as? String {
+                        self.secretName = value
+                    }
+                }
+            }
             public var acrInstanceId: String?
 
             public var command: String?
@@ -25691,9 +25769,15 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
             public var imageUrl: String?
 
+            public var liveness: String?
+
             public var memory: Int32?
 
             public var name: String?
+
+            public var readiness: String?
+
+            public var secretMountDesc: [DescribeApplicationConfigResponseBody.Data.SidecarContainersConfig.SecretMountDesc]?
 
             public override init() {
                 super.init()
@@ -25741,11 +25825,24 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 if self.imageUrl != nil {
                     map["ImageUrl"] = self.imageUrl!
                 }
+                if self.liveness != nil {
+                    map["Liveness"] = self.liveness!
+                }
                 if self.memory != nil {
                     map["Memory"] = self.memory!
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.readiness != nil {
+                    map["Readiness"] = self.readiness!
+                }
+                if self.secretMountDesc != nil {
+                    var tmp : [Any] = []
+                    for k in self.secretMountDesc! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SecretMountDesc"] = tmp
                 }
                 return map
             }
@@ -25796,11 +25893,30 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 if let value = dict["ImageUrl"] as? String {
                     self.imageUrl = value
                 }
+                if let value = dict["Liveness"] as? String {
+                    self.liveness = value
+                }
                 if let value = dict["Memory"] as? Int32 {
                     self.memory = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
+                }
+                if let value = dict["Readiness"] as? String {
+                    self.readiness = value
+                }
+                if let value = dict["SecretMountDesc"] as? [Any?] {
+                    var tmp : [DescribeApplicationConfigResponseBody.Data.SidecarContainersConfig.SecretMountDesc] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationConfigResponseBody.Data.SidecarContainersConfig.SecretMountDesc()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.secretMountDesc = tmp
                 }
             }
         }
