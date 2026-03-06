@@ -1007,6 +1007,8 @@ public class DeleteApiMcpServerResponse : Tea.TeaModel {
 }
 
 public class GenerateCLICommandRequest : Tea.TeaModel {
+    public var aggregatePagination: Bool?
+
     public var api: String?
 
     public var apiParams: [String: Any]?
@@ -1033,6 +1035,9 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregatePagination != nil {
+            map["aggregatePagination"] = self.aggregatePagination!
+        }
         if self.api != nil {
             map["api"] = self.api!
         }
@@ -1056,6 +1061,9 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["aggregatePagination"] as? Bool {
+            self.aggregatePagination = value
+        }
         if let value = dict["api"] as? String {
             self.api = value
         }
@@ -1078,6 +1086,8 @@ public class GenerateCLICommandRequest : Tea.TeaModel {
 }
 
 public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
+    public var aggregatePagination: Bool?
+
     public var api: String?
 
     public var apiParamsShrink: String?
@@ -1104,6 +1114,9 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregatePagination != nil {
+            map["aggregatePagination"] = self.aggregatePagination!
+        }
         if self.api != nil {
             map["api"] = self.api!
         }
@@ -1127,6 +1140,9 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["aggregatePagination"] as? Bool {
+            self.aggregatePagination = value
+        }
         if let value = dict["api"] as? String {
             self.api = value
         }
@@ -1151,6 +1167,8 @@ public class GenerateCLICommandShrinkRequest : Tea.TeaModel {
 public class GenerateCLICommandResponseBody : Tea.TeaModel {
     public var cli: String?
 
+    public var requestId: String?
+
     public override init() {
         super.init()
     }
@@ -1168,6 +1186,9 @@ public class GenerateCLICommandResponseBody : Tea.TeaModel {
         if self.cli != nil {
             map["cli"] = self.cli!
         }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         return map
     }
 
@@ -1175,6 +1196,9 @@ public class GenerateCLICommandResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["cli"] as? String {
             self.cli = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
         }
     }
 }

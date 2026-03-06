@@ -186,6 +186,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.apiParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.apiParams, "apiParams", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregatePagination)) {
+            body["aggregatePagination"] = request.aggregatePagination!;
+        }
         if (!TeaUtils.Client.isUnset(request.api)) {
             body["api"] = request.api ?? "";
         }
