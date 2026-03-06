@@ -1045,6 +1045,8 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
 
     public var chatMode: Int32?
 
+    public var enableVideoUnderstanding: Bool?
+
     public var greeting: String?
 
     public var interruptConfig: CreateAppAgentTemplateRequest.InterruptConfig?
@@ -1054,6 +1056,8 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
     public var llmConfig: CreateAppAgentTemplateRequest.LlmConfig?
 
     public var name: String?
+
+    public var preferVideo: Int32?
 
     public var ttsConfig: CreateAppAgentTemplateRequest.TtsConfig?
 
@@ -1098,6 +1102,9 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
+        if self.enableVideoUnderstanding != nil {
+            map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+        }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
         }
@@ -1112,6 +1119,9 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.preferVideo != nil {
+            map["PreferVideo"] = self.preferVideo!
         }
         if self.ttsConfig != nil {
             map["TtsConfig"] = self.ttsConfig?.toMap()
@@ -1150,6 +1160,9 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
+        if let value = dict["EnableVideoUnderstanding"] as? Bool {
+            self.enableVideoUnderstanding = value
+        }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
         }
@@ -1168,6 +1181,9 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PreferVideo"] as? Int32 {
+            self.preferVideo = value
         }
         if let value = dict["TtsConfig"] as? [String: Any?] {
             var model = CreateAppAgentTemplateRequest.TtsConfig()
@@ -1193,6 +1209,8 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
 
     public var chatMode: Int32?
 
+    public var enableVideoUnderstanding: Bool?
+
     public var greeting: String?
 
     public var interruptConfigShrink: String?
@@ -1202,6 +1220,8 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
     public var llmConfigShrink: String?
 
     public var name: String?
+
+    public var preferVideo: Int32?
 
     public var ttsConfigShrink: String?
 
@@ -1239,6 +1259,9 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
+        if self.enableVideoUnderstanding != nil {
+            map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+        }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
         }
@@ -1253,6 +1276,9 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.preferVideo != nil {
+            map["PreferVideo"] = self.preferVideo!
         }
         if self.ttsConfigShrink != nil {
             map["TtsConfig"] = self.ttsConfigShrink!
@@ -1283,6 +1309,9 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
+        if let value = dict["EnableVideoUnderstanding"] as? Bool {
+            self.enableVideoUnderstanding = value
+        }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
         }
@@ -1297,6 +1326,9 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PreferVideo"] as? Int32 {
+            self.preferVideo = value
         }
         if let value = dict["TtsConfig"] as? String {
             self.ttsConfigShrink = value
@@ -5957,6 +5989,8 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var enableVideoUnderstanding: Bool?
+
         public var greeting: String?
 
         public var id: String?
@@ -5968,6 +6002,8 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
         public var llmConfig: DescribeAppAgentTemplatesResponseBody.Templates.LlmConfig?
 
         public var name: String?
+
+        public var preferVideo: Int32?
 
         public var ttsConfig: DescribeAppAgentTemplatesResponseBody.Templates.TtsConfig?
 
@@ -6012,6 +6048,9 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.enableVideoUnderstanding != nil {
+                map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+            }
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
@@ -6029,6 +6068,9 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.preferVideo != nil {
+                map["PreferVideo"] = self.preferVideo!
             }
             if self.ttsConfig != nil {
                 map["TtsConfig"] = self.ttsConfig?.toMap()
@@ -6067,6 +6109,9 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
+            if let value = dict["EnableVideoUnderstanding"] as? Bool {
+                self.enableVideoUnderstanding = value
+            }
             if let value = dict["Greeting"] as? String {
                 self.greeting = value
             }
@@ -6088,6 +6133,9 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PreferVideo"] as? Int32 {
+                self.preferVideo = value
             }
             if let value = dict["TtsConfig"] as? [String: Any?] {
                 var model = DescribeAppAgentTemplatesResponseBody.Templates.TtsConfig()
@@ -24316,6 +24364,8 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
 
     public var chatMode: Int32?
 
+    public var enableVideoUnderstanding: Bool?
+
     public var greeting: String?
 
     public var id: String?
@@ -24327,6 +24377,8 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
     public var llmConfig: ModifyAppAgentTemplateRequest.LlmConfig?
 
     public var name: String?
+
+    public var preferVideo: Int32?
 
     public var ttsConfig: ModifyAppAgentTemplateRequest.TtsConfig?
 
@@ -24371,6 +24423,9 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
+        if self.enableVideoUnderstanding != nil {
+            map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+        }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
         }
@@ -24388,6 +24443,9 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.preferVideo != nil {
+            map["PreferVideo"] = self.preferVideo!
         }
         if self.ttsConfig != nil {
             map["TtsConfig"] = self.ttsConfig?.toMap()
@@ -24426,6 +24484,9 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
+        if let value = dict["EnableVideoUnderstanding"] as? Bool {
+            self.enableVideoUnderstanding = value
+        }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
         }
@@ -24447,6 +24508,9 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PreferVideo"] as? Int32 {
+            self.preferVideo = value
         }
         if let value = dict["TtsConfig"] as? [String: Any?] {
             var model = ModifyAppAgentTemplateRequest.TtsConfig()
@@ -24472,6 +24536,8 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
 
     public var chatMode: Int32?
 
+    public var enableVideoUnderstanding: Bool?
+
     public var greeting: String?
 
     public var id: String?
@@ -24483,6 +24549,8 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
     public var llmConfigShrink: String?
 
     public var name: String?
+
+    public var preferVideo: Int32?
 
     public var ttsConfigShrink: String?
 
@@ -24520,6 +24588,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
+        if self.enableVideoUnderstanding != nil {
+            map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+        }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
         }
@@ -24537,6 +24608,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.preferVideo != nil {
+            map["PreferVideo"] = self.preferVideo!
         }
         if self.ttsConfigShrink != nil {
             map["TtsConfig"] = self.ttsConfigShrink!
@@ -24567,6 +24641,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
+        if let value = dict["EnableVideoUnderstanding"] as? Bool {
+            self.enableVideoUnderstanding = value
+        }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
         }
@@ -24584,6 +24661,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PreferVideo"] as? Int32 {
+            self.preferVideo = value
         }
         if let value = dict["TtsConfig"] as? String {
             self.ttsConfigShrink = value
@@ -31396,6 +31476,8 @@ public class StartAgentRequest : Tea.TeaModel {
 
             public var appId: String?
 
+            public var bizParams: Any?
+
             public var historyDepth: Int32?
 
             public var maxToken: Int32?
@@ -31437,6 +31519,9 @@ public class StartAgentRequest : Tea.TeaModel {
                 }
                 if self.appId != nil {
                     map["AppId"] = self.appId!
+                }
+                if self.bizParams != nil {
+                    map["BizParams"] = self.bizParams!
                 }
                 if self.historyDepth != nil {
                     map["HistoryDepth"] = self.historyDepth!
@@ -31481,6 +31566,9 @@ public class StartAgentRequest : Tea.TeaModel {
                 }
                 if let value = dict["AppId"] as? String {
                     self.appId = value
+                }
+                if let value = dict["BizParams"] as? Any {
+                    self.bizParams = value
                 }
                 if let value = dict["HistoryDepth"] as? Int32 {
                     self.historyDepth = value
@@ -31613,6 +31701,8 @@ public class StartAgentRequest : Tea.TeaModel {
 
         public var chatMode: Int32?
 
+        public var enableVideoUnderstanding: Bool?
+
         public var greeting: String?
 
         public var interruptConfig: StartAgentRequest.VoiceChatConfig.InterruptConfig?
@@ -31622,6 +31712,8 @@ public class StartAgentRequest : Tea.TeaModel {
         public var LLMConfig: StartAgentRequest.VoiceChatConfig.LLMConfig?
 
         public var TTSConfig: StartAgentRequest.VoiceChatConfig.TTSConfig?
+
+        public var preferVideo: Int32?
 
         public override init() {
             super.init()
@@ -31659,6 +31751,9 @@ public class StartAgentRequest : Tea.TeaModel {
             if self.chatMode != nil {
                 map["ChatMode"] = self.chatMode!
             }
+            if self.enableVideoUnderstanding != nil {
+                map["EnableVideoUnderstanding"] = self.enableVideoUnderstanding!
+            }
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
@@ -31673,6 +31768,9 @@ public class StartAgentRequest : Tea.TeaModel {
             }
             if self.TTSConfig != nil {
                 map["TTSConfig"] = self.TTSConfig?.toMap()
+            }
+            if self.preferVideo != nil {
+                map["preferVideo"] = self.preferVideo!
             }
             return map
         }
@@ -31702,6 +31800,9 @@ public class StartAgentRequest : Tea.TeaModel {
             if let value = dict["ChatMode"] as? Int32 {
                 self.chatMode = value
             }
+            if let value = dict["EnableVideoUnderstanding"] as? Bool {
+                self.enableVideoUnderstanding = value
+            }
             if let value = dict["Greeting"] as? String {
                 self.greeting = value
             }
@@ -31722,6 +31823,9 @@ public class StartAgentRequest : Tea.TeaModel {
                 var model = StartAgentRequest.VoiceChatConfig.TTSConfig()
                 model.fromMap(value)
                 self.TTSConfig = model
+            }
+            if let value = dict["preferVideo"] as? Int32 {
+                self.preferVideo = value
             }
         }
     }
