@@ -558,6 +558,61 @@ public class AllocateStrategySpec : Tea.TeaModel {
     }
 }
 
+public class AllocatedHyperNodeDetail : Tea.TeaModel {
+    public var allocatedNodeNum: Int64?
+
+    public var emptyNodeNum: Int64?
+
+    public var hyperNodeName: String?
+
+    public var totalNodeNum: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allocatedNodeNum != nil {
+            map["AllocatedNodeNum"] = self.allocatedNodeNum!
+        }
+        if self.emptyNodeNum != nil {
+            map["EmptyNodeNum"] = self.emptyNodeNum!
+        }
+        if self.hyperNodeName != nil {
+            map["HyperNodeName"] = self.hyperNodeName!
+        }
+        if self.totalNodeNum != nil {
+            map["TotalNodeNum"] = self.totalNodeNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllocatedNodeNum"] as? Int64 {
+            self.allocatedNodeNum = value
+        }
+        if let value = dict["EmptyNodeNum"] as? Int64 {
+            self.emptyNodeNum = value
+        }
+        if let value = dict["HyperNodeName"] as? String {
+            self.hyperNodeName = value
+        }
+        if let value = dict["TotalNodeNum"] as? Int64 {
+            self.totalNodeNum = value
+        }
+    }
+}
+
 public class AssignNodeSpec : Tea.TeaModel {
     public var antiAffinityNodeNames: String?
 
@@ -5241,6 +5296,8 @@ public class QuotaDetails : Tea.TeaModel {
 
     public var desiredMinQuota: ResourceAmount?
 
+    public var nodeStatistics: QuotaNodeStatistics?
+
     public var requestedQuota: ResourceAmount?
 
     public var selfAllocatedQuota: ResourceAmount?
@@ -5267,6 +5324,7 @@ public class QuotaDetails : Tea.TeaModel {
         try self.ancestorsAllocatedQuota?.validate()
         try self.descendantsAllocatedQuota?.validate()
         try self.desiredMinQuota?.validate()
+        try self.nodeStatistics?.validate()
         try self.requestedQuota?.validate()
         try self.selfAllocatedQuota?.validate()
         try self.selfSubmittedQuota?.validate()
@@ -5293,6 +5351,9 @@ public class QuotaDetails : Tea.TeaModel {
         }
         if self.desiredMinQuota != nil {
             map["DesiredMinQuota"] = self.desiredMinQuota?.toMap()
+        }
+        if self.nodeStatistics != nil {
+            map["NodeStatistics"] = self.nodeStatistics?.toMap()
         }
         if self.requestedQuota != nil {
             map["RequestedQuota"] = self.requestedQuota?.toMap()
@@ -5343,6 +5404,11 @@ public class QuotaDetails : Tea.TeaModel {
             var model = ResourceAmount()
             model.fromMap(value)
             self.desiredMinQuota = model
+        }
+        if let value = dict["NodeStatistics"] as? [String: Any?] {
+            var model = QuotaNodeStatistics()
+            model.fromMap(value)
+            self.nodeStatistics = model
         }
         if let value = dict["RequestedQuota"] as? [String: Any?] {
             var model = ResourceAmount()
@@ -5666,6 +5732,91 @@ public class QuotaMetric : Tea.TeaModel {
                 }
             }
             self.metrics = tmp
+        }
+    }
+}
+
+public class QuotaNodeStatistics : Tea.TeaModel {
+    public var actualMinHyperNodeNum: Int64?
+
+    public var actualMinNodeNum: Int64?
+
+    public var allocatedHyperNodeDetails: [AllocatedHyperNodeDetail]?
+
+    public var allocatedHyperNodeNum: Int64?
+
+    public var allocatedNodeNum: Int64?
+
+    public var emptyNodeNum: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actualMinHyperNodeNum != nil {
+            map["ActualMinHyperNodeNum"] = self.actualMinHyperNodeNum!
+        }
+        if self.actualMinNodeNum != nil {
+            map["ActualMinNodeNum"] = self.actualMinNodeNum!
+        }
+        if self.allocatedHyperNodeDetails != nil {
+            var tmp : [Any] = []
+            for k in self.allocatedHyperNodeDetails! {
+                tmp.append(k.toMap())
+            }
+            map["AllocatedHyperNodeDetails"] = tmp
+        }
+        if self.allocatedHyperNodeNum != nil {
+            map["AllocatedHyperNodeNum"] = self.allocatedHyperNodeNum!
+        }
+        if self.allocatedNodeNum != nil {
+            map["AllocatedNodeNum"] = self.allocatedNodeNum!
+        }
+        if self.emptyNodeNum != nil {
+            map["EmptyNodeNum"] = self.emptyNodeNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActualMinHyperNodeNum"] as? Int64 {
+            self.actualMinHyperNodeNum = value
+        }
+        if let value = dict["ActualMinNodeNum"] as? Int64 {
+            self.actualMinNodeNum = value
+        }
+        if let value = dict["AllocatedHyperNodeDetails"] as? [Any?] {
+            var tmp : [AllocatedHyperNodeDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = AllocatedHyperNodeDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.allocatedHyperNodeDetails = tmp
+        }
+        if let value = dict["AllocatedHyperNodeNum"] as? Int64 {
+            self.allocatedHyperNodeNum = value
+        }
+        if let value = dict["AllocatedNodeNum"] as? Int64 {
+            self.allocatedNodeNum = value
+        }
+        if let value = dict["EmptyNodeNum"] as? Int64 {
+            self.emptyNodeNum = value
         }
     }
 }
