@@ -65211,6 +65211,471 @@ public class DescribeRCMetricListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRCNetworkInterfacesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DescribeRCNetworkInterfacesResponseBody : Tea.TeaModel {
+    public class NetworkInterfaceSets : Tea.TeaModel {
+        public class AssociatedPublicIp : Tea.TeaModel {
+            public var publicIpAddress: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.publicIpAddress != nil {
+                    map["PublicIpAddress"] = self.publicIpAddress!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PublicIpAddress"] as? String {
+                    self.publicIpAddress = value
+                }
+            }
+        }
+        public class Ipv6Sets : Tea.TeaModel {
+            public var ipv6Address: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ipv6Address != nil {
+                    map["Ipv6Address"] = self.ipv6Address!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Ipv6Address"] as? String {
+                    self.ipv6Address = value
+                }
+            }
+        }
+        public class PrivateIpSets : Tea.TeaModel {
+            public var primary: Bool?
+
+            public var privateIpAddress: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
+                }
+                if self.privateIpAddress != nil {
+                    map["PrivateIpAddress"] = self.privateIpAddress!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Primary"] as? Bool {
+                    self.primary = value
+                }
+                if let value = dict["PrivateIpAddress"] as? String {
+                    self.privateIpAddress = value
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagKey"] as? String {
+                    self.tagKey = value
+                }
+                if let value = dict["TagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
+        public var associatedPublicIp: DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.AssociatedPublicIp?
+
+        public var creationTime: String?
+
+        public var description_: String?
+
+        public var instanceId: String?
+
+        public var ipv6Sets: [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Ipv6Sets]?
+
+        public var macAddress: String?
+
+        public var networkInterfaceId: String?
+
+        public var privateIpSets: [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.PrivateIpSets]?
+
+        public var resourceGroupId: String?
+
+        public var securityGroupIds: [String]?
+
+        public var status: String?
+
+        public var tags: [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Tags]?
+
+        public var type: String?
+
+        public var vSwitchId: String?
+
+        public var vpcId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.associatedPublicIp?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.associatedPublicIp != nil {
+                map["AssociatedPublicIp"] = self.associatedPublicIp?.toMap()
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.ipv6Sets != nil {
+                var tmp : [Any] = []
+                for k in self.ipv6Sets! {
+                    tmp.append(k.toMap())
+                }
+                map["Ipv6Sets"] = tmp
+            }
+            if self.macAddress != nil {
+                map["MacAddress"] = self.macAddress!
+            }
+            if self.networkInterfaceId != nil {
+                map["NetworkInterfaceId"] = self.networkInterfaceId!
+            }
+            if self.privateIpSets != nil {
+                var tmp : [Any] = []
+                for k in self.privateIpSets! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivateIpSets"] = tmp
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssociatedPublicIp"] as? [String: Any?] {
+                var model = DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.AssociatedPublicIp()
+                model.fromMap(value)
+                self.associatedPublicIp = model
+            }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Ipv6Sets"] as? [Any?] {
+                var tmp : [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Ipv6Sets] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Ipv6Sets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.ipv6Sets = tmp
+            }
+            if let value = dict["MacAddress"] as? String {
+                self.macAddress = value
+            }
+            if let value = dict["NetworkInterfaceId"] as? String {
+                self.networkInterfaceId = value
+            }
+            if let value = dict["PrivateIpSets"] as? [Any?] {
+                var tmp : [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.PrivateIpSets] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.PrivateIpSets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privateIpSets = tmp
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
+            if let value = dict["SecurityGroupIds"] as? [String] {
+                self.securityGroupIds = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var networkInterfaceSets: [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceSets != nil {
+            var tmp : [Any] = []
+            for k in self.networkInterfaceSets! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkInterfaceSets"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NetworkInterfaceSets"] as? [Any?] {
+            var tmp : [DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRCNetworkInterfacesResponseBody.NetworkInterfaceSets()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.networkInterfaceSets = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeRCNetworkInterfacesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRCNetworkInterfacesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRCNetworkInterfacesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRCNodePoolRequest : Tea.TeaModel {
     public var clusterId: String?
 
