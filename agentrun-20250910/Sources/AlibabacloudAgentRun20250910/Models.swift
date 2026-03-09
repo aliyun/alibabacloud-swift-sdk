@@ -3796,6 +3796,8 @@ public class CreateModelProxyInput : Tea.TeaModel {
 
     public var serviceRegionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -3856,6 +3858,9 @@ public class CreateModelProxyInput : Tea.TeaModel {
         if self.serviceRegionId != nil {
             map["serviceRegionId"] = self.serviceRegionId!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -3911,6 +3916,9 @@ public class CreateModelProxyInput : Tea.TeaModel {
         if let value = dict["serviceRegionId"] as? String {
             self.serviceRegionId = value
         }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
     }
 }
 
@@ -3930,6 +3938,8 @@ public class CreateModelServiceInput : Tea.TeaModel {
     public var provider: String?
 
     public var providerSettings: ProviderSettings?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -3975,6 +3985,9 @@ public class CreateModelServiceInput : Tea.TeaModel {
         if self.providerSettings != nil {
             map["providerSettings"] = self.providerSettings?.toMap()
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -4017,6 +4030,9 @@ public class CreateModelServiceInput : Tea.TeaModel {
             var model = ProviderSettings()
             model.fromMap(value)
             self.providerSettings = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -10255,6 +10271,8 @@ public class ModelProxy : Tea.TeaModel {
 
     public var statusReason: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -10332,6 +10350,9 @@ public class ModelProxy : Tea.TeaModel {
         if self.statusReason != nil {
             map["statusReason"] = self.statusReason!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -10402,6 +10423,9 @@ public class ModelProxy : Tea.TeaModel {
         }
         if let value = dict["statusReason"] as? String {
             self.statusReason = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -10483,6 +10507,8 @@ public class ModelService : Tea.TeaModel {
 
     public var statusReason: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -10542,6 +10568,9 @@ public class ModelService : Tea.TeaModel {
         if self.statusReason != nil {
             map["statusReason"] = self.statusReason!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -10599,6 +10628,9 @@ public class ModelService : Tea.TeaModel {
         }
         if let value = dict["statusReason"] as? String {
             self.statusReason = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -14648,6 +14680,8 @@ public class UpdateModelProxyInput : Tea.TeaModel {
 
     public var proxyConfig: ProxyConfig?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -14687,6 +14721,9 @@ public class UpdateModelProxyInput : Tea.TeaModel {
         if self.proxyConfig != nil {
             map["proxyConfig"] = self.proxyConfig?.toMap()
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -14721,6 +14758,9 @@ public class UpdateModelProxyInput : Tea.TeaModel {
             model.fromMap(value)
             self.proxyConfig = model
         }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
     }
 }
 
@@ -14738,6 +14778,8 @@ public class UpdateModelServiceInput : Tea.TeaModel {
     public var status: String?
 
     public var statusReason: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -14780,6 +14822,9 @@ public class UpdateModelServiceInput : Tea.TeaModel {
         if self.statusReason != nil {
             map["statusReason"] = self.statusReason!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -14819,6 +14864,9 @@ public class UpdateModelServiceInput : Tea.TeaModel {
         }
         if let value = dict["statusReason"] as? String {
             self.statusReason = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -19708,6 +19756,8 @@ public class ListModelProxiesRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -19734,6 +19784,9 @@ public class ListModelProxiesRequest : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -19750,6 +19803,9 @@ public class ListModelProxiesRequest : Tea.TeaModel {
         }
         if let value = dict["status"] as? String {
             self.status = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -19815,6 +19871,8 @@ public class ListModelServicesRequest : Tea.TeaModel {
 
     public var providerType: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -19844,6 +19902,9 @@ public class ListModelServicesRequest : Tea.TeaModel {
         if self.providerType != nil {
             map["providerType"] = self.providerType!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -19863,6 +19924,9 @@ public class ListModelServicesRequest : Tea.TeaModel {
         }
         if let value = dict["providerType"] as? String {
             self.providerType = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
