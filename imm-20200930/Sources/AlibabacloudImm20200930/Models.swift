@@ -15423,6 +15423,805 @@ public class CreateFileUncompressionTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateHighlightTaskRequest : Tea.TeaModel {
+    public class Edit : Tea.TeaModel {
+        public class BackgroundMusics : Tea.TeaModel {
+            public var URI: String?
+
+            public var volume: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.URI != nil {
+                    map["URI"] = self.URI!
+                }
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["URI"] as? String {
+                    self.URI = value
+                }
+                if let value = dict["Volume"] as? Double {
+                    self.volume = value
+                }
+            }
+        }
+        public class Transitions : Tea.TeaModel {
+            public var duration: Double?
+
+            public var transition: String?
+
+            public var weight: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.transition != nil {
+                    map["Transition"] = self.transition!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Duration"] as? Double {
+                    self.duration = value
+                }
+                if let value = dict["Transition"] as? String {
+                    self.transition = value
+                }
+                if let value = dict["Weight"] as? Int64 {
+                    self.weight = value
+                }
+            }
+        }
+        public class VfxEffects : Tea.TeaModel {
+            public var vfxEffect: String?
+
+            public var weight: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vfxEffect != nil {
+                    map["VfxEffect"] = self.vfxEffect!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["VfxEffect"] as? String {
+                    self.vfxEffect = value
+                }
+                if let value = dict["Weight"] as? Int64 {
+                    self.weight = value
+                }
+            }
+        }
+        public var backgroundMusicMode: String?
+
+        public var backgroundMusics: [CreateHighlightTaskRequest.Edit.BackgroundMusics]?
+
+        public var mode: String?
+
+        public var transitionMode: String?
+
+        public var transitions: [CreateHighlightTaskRequest.Edit.Transitions]?
+
+        public var vfxEffectMode: String?
+
+        public var vfxEffects: [CreateHighlightTaskRequest.Edit.VfxEffects]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundMusicMode != nil {
+                map["BackgroundMusicMode"] = self.backgroundMusicMode!
+            }
+            if self.backgroundMusics != nil {
+                var tmp : [Any] = []
+                for k in self.backgroundMusics! {
+                    tmp.append(k.toMap())
+                }
+                map["BackgroundMusics"] = tmp
+            }
+            if self.mode != nil {
+                map["Mode"] = self.mode!
+            }
+            if self.transitionMode != nil {
+                map["TransitionMode"] = self.transitionMode!
+            }
+            if self.transitions != nil {
+                var tmp : [Any] = []
+                for k in self.transitions! {
+                    tmp.append(k.toMap())
+                }
+                map["Transitions"] = tmp
+            }
+            if self.vfxEffectMode != nil {
+                map["VfxEffectMode"] = self.vfxEffectMode!
+            }
+            if self.vfxEffects != nil {
+                var tmp : [Any] = []
+                for k in self.vfxEffects! {
+                    tmp.append(k.toMap())
+                }
+                map["VfxEffects"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackgroundMusicMode"] as? String {
+                self.backgroundMusicMode = value
+            }
+            if let value = dict["BackgroundMusics"] as? [Any?] {
+                var tmp : [CreateHighlightTaskRequest.Edit.BackgroundMusics] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateHighlightTaskRequest.Edit.BackgroundMusics()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.backgroundMusics = tmp
+            }
+            if let value = dict["Mode"] as? String {
+                self.mode = value
+            }
+            if let value = dict["TransitionMode"] as? String {
+                self.transitionMode = value
+            }
+            if let value = dict["Transitions"] as? [Any?] {
+                var tmp : [CreateHighlightTaskRequest.Edit.Transitions] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateHighlightTaskRequest.Edit.Transitions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.transitions = tmp
+            }
+            if let value = dict["VfxEffectMode"] as? String {
+                self.vfxEffectMode = value
+            }
+            if let value = dict["VfxEffects"] as? [Any?] {
+                var tmp : [CreateHighlightTaskRequest.Edit.VfxEffects] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateHighlightTaskRequest.Edit.VfxEffects()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.vfxEffects = tmp
+            }
+        }
+    }
+    public class Highlight : Tea.TeaModel {
+        public var content: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+        }
+    }
+    public class Output : Tea.TeaModel {
+        public class Segment : Tea.TeaModel {
+            public var duration: Double?
+
+            public var format: String?
+
+            public var startNumber: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.format != nil {
+                    map["Format"] = self.format!
+                }
+                if self.startNumber != nil {
+                    map["StartNumber"] = self.startNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Duration"] as? Double {
+                    self.duration = value
+                }
+                if let value = dict["Format"] as? String {
+                    self.format = value
+                }
+                if let value = dict["StartNumber"] as? Int64 {
+                    self.startNumber = value
+                }
+            }
+        }
+        public var audio: TargetAudio?
+
+        public var container: String?
+
+        public var maxDuration: Double?
+
+        public var segment: CreateHighlightTaskRequest.Output.Segment?
+
+        public var speed: Double?
+
+        public var URI: String?
+
+        public var video: TargetVideo?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.audio?.validate()
+            try self.segment?.validate()
+            try self.video?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.audio != nil {
+                map["Audio"] = self.audio?.toMap()
+            }
+            if self.container != nil {
+                map["Container"] = self.container!
+            }
+            if self.maxDuration != nil {
+                map["MaxDuration"] = self.maxDuration!
+            }
+            if self.segment != nil {
+                map["Segment"] = self.segment?.toMap()
+            }
+            if self.speed != nil {
+                map["Speed"] = self.speed!
+            }
+            if self.URI != nil {
+                map["URI"] = self.URI!
+            }
+            if self.video != nil {
+                map["Video"] = self.video?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Audio"] as? [String: Any?] {
+                var model = TargetAudio()
+                model.fromMap(value)
+                self.audio = model
+            }
+            if let value = dict["Container"] as? String {
+                self.container = value
+            }
+            if let value = dict["MaxDuration"] as? Double {
+                self.maxDuration = value
+            }
+            if let value = dict["Segment"] as? [String: Any?] {
+                var model = CreateHighlightTaskRequest.Output.Segment()
+                model.fromMap(value)
+                self.segment = model
+            }
+            if let value = dict["Speed"] as? Double {
+                self.speed = value
+            }
+            if let value = dict["URI"] as? String {
+                self.URI = value
+            }
+            if let value = dict["Video"] as? [String: Any?] {
+                var model = TargetVideo()
+                model.fromMap(value)
+                self.video = model
+            }
+        }
+    }
+    public class Sources : Tea.TeaModel {
+        public var duration: Double?
+
+        public var startTime: Double?
+
+        public var URI: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.URI != nil {
+                map["URI"] = self.URI!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Double {
+                self.duration = value
+            }
+            if let value = dict["StartTime"] as? Double {
+                self.startTime = value
+            }
+            if let value = dict["URI"] as? String {
+                self.URI = value
+            }
+        }
+    }
+    public var credentialConfig: CredentialConfig?
+
+    public var edit: CreateHighlightTaskRequest.Edit?
+
+    public var highlight: CreateHighlightTaskRequest.Highlight?
+
+    public var mode: String?
+
+    public var notification: Notification?
+
+    public var output: CreateHighlightTaskRequest.Output?
+
+    public var projectName: String?
+
+    public var sources: [CreateHighlightTaskRequest.Sources]?
+
+    public var tags: [String: Any]?
+
+    public var type: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.credentialConfig?.validate()
+        try self.edit?.validate()
+        try self.highlight?.validate()
+        try self.notification?.validate()
+        try self.output?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.credentialConfig != nil {
+            map["CredentialConfig"] = self.credentialConfig?.toMap()
+        }
+        if self.edit != nil {
+            map["Edit"] = self.edit?.toMap()
+        }
+        if self.highlight != nil {
+            map["Highlight"] = self.highlight?.toMap()
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.notification != nil {
+            map["Notification"] = self.notification?.toMap()
+        }
+        if self.output != nil {
+            map["Output"] = self.output?.toMap()
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        if self.sources != nil {
+            var tmp : [Any] = []
+            for k in self.sources! {
+                tmp.append(k.toMap())
+            }
+            map["Sources"] = tmp
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CredentialConfig"] as? [String: Any?] {
+            var model = CredentialConfig()
+            model.fromMap(value)
+            self.credentialConfig = model
+        }
+        if let value = dict["Edit"] as? [String: Any?] {
+            var model = CreateHighlightTaskRequest.Edit()
+            model.fromMap(value)
+            self.edit = model
+        }
+        if let value = dict["Highlight"] as? [String: Any?] {
+            var model = CreateHighlightTaskRequest.Highlight()
+            model.fromMap(value)
+            self.highlight = model
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["Notification"] as? [String: Any?] {
+            var model = Notification()
+            model.fromMap(value)
+            self.notification = model
+        }
+        if let value = dict["Output"] as? [String: Any?] {
+            var model = CreateHighlightTaskRequest.Output()
+            model.fromMap(value)
+            self.output = model
+        }
+        if let value = dict["ProjectName"] as? String {
+            self.projectName = value
+        }
+        if let value = dict["Sources"] as? [Any?] {
+            var tmp : [CreateHighlightTaskRequest.Sources] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateHighlightTaskRequest.Sources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.sources = tmp
+        }
+        if let value = dict["Tags"] as? [String: Any] {
+            self.tags = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
+public class CreateHighlightTaskShrinkRequest : Tea.TeaModel {
+    public var credentialConfigShrink: String?
+
+    public var editShrink: String?
+
+    public var highlightShrink: String?
+
+    public var mode: String?
+
+    public var notificationShrink: String?
+
+    public var outputShrink: String?
+
+    public var projectName: String?
+
+    public var sourcesShrink: String?
+
+    public var tagsShrink: String?
+
+    public var type: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.credentialConfigShrink != nil {
+            map["CredentialConfig"] = self.credentialConfigShrink!
+        }
+        if self.editShrink != nil {
+            map["Edit"] = self.editShrink!
+        }
+        if self.highlightShrink != nil {
+            map["Highlight"] = self.highlightShrink!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.notificationShrink != nil {
+            map["Notification"] = self.notificationShrink!
+        }
+        if self.outputShrink != nil {
+            map["Output"] = self.outputShrink!
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        if self.sourcesShrink != nil {
+            map["Sources"] = self.sourcesShrink!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CredentialConfig"] as? String {
+            self.credentialConfigShrink = value
+        }
+        if let value = dict["Edit"] as? String {
+            self.editShrink = value
+        }
+        if let value = dict["Highlight"] as? String {
+            self.highlightShrink = value
+        }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
+        if let value = dict["Notification"] as? String {
+            self.notificationShrink = value
+        }
+        if let value = dict["Output"] as? String {
+            self.outputShrink = value
+        }
+        if let value = dict["ProjectName"] as? String {
+            self.projectName = value
+        }
+        if let value = dict["Sources"] as? String {
+            self.sourcesShrink = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
+public class CreateHighlightTaskResponseBody : Tea.TeaModel {
+    public var eventId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class CreateHighlightTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateHighlightTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateHighlightTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateImageModerationTaskRequest : Tea.TeaModel {
     public var credentialConfig: CredentialConfig?
 

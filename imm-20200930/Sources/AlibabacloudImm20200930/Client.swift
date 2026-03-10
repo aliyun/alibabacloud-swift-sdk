@@ -1257,6 +1257,92 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createHighlightTaskWithOptions(_ tmpReq: CreateHighlightTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHighlightTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateHighlightTaskShrinkRequest = CreateHighlightTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.credentialConfig)) {
+            request.credentialConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.credentialConfig, "CredentialConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.edit)) {
+            request.editShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.edit, "Edit", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.highlight)) {
+            request.highlightShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.highlight, "Highlight", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.notification)) {
+            request.notificationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.notification, "Notification", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.output)) {
+            request.outputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.output, "Output", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sources)) {
+            request.sourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sources, "Sources", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.projectName)) {
+            query["ProjectName"] = request.projectName ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialConfigShrink)) {
+            body["CredentialConfig"] = request.credentialConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.editShrink)) {
+            body["Edit"] = request.editShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.highlightShrink)) {
+            body["Highlight"] = request.highlightShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            body["Mode"] = request.mode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notificationShrink)) {
+            body["Notification"] = request.notificationShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputShrink)) {
+            body["Output"] = request.outputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourcesShrink)) {
+            body["Sources"] = request.sourcesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            body["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateHighlightTask",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateHighlightTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createHighlightTask(_ request: CreateHighlightTaskRequest) async throws -> CreateHighlightTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createHighlightTaskWithOptions(request as! CreateHighlightTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createImageModerationTaskWithOptions(_ tmpReq: CreateImageModerationTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateImageModerationTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateImageModerationTaskShrinkRequest = CreateImageModerationTaskShrinkRequest([:])
