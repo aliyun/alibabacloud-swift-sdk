@@ -777,6 +777,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceConditions)) {
+            query["ResourceConditions"] = request.resourceConditions ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scene)) {
             query["Scene"] = request.scene ?? "";
         }

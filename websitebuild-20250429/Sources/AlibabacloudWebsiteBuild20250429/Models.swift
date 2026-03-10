@@ -10549,6 +10549,8 @@ public class GetAppPluginConfigResponse : Tea.TeaModel {
 public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var resourceConditions: String?
+
     public var scene: String?
 
     public override init() {
@@ -10568,6 +10570,9 @@ public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.resourceConditions != nil {
+            map["ResourceConditions"] = self.resourceConditions!
+        }
         if self.scene != nil {
             map["Scene"] = self.scene!
         }
@@ -10578,6 +10583,9 @@ public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["ResourceConditions"] as? String {
+            self.resourceConditions = value
         }
         if let value = dict["Scene"] as? String {
             self.scene = value
@@ -13753,6 +13761,52 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Qualification : Tea.TeaModel {
+                public var icpRecordNumber: String?
+
+                public var icpSiteRecordNumber: String?
+
+                public var policeRecordNumber: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.icpRecordNumber != nil {
+                        map["IcpRecordNumber"] = self.icpRecordNumber!
+                    }
+                    if self.icpSiteRecordNumber != nil {
+                        map["IcpSiteRecordNumber"] = self.icpSiteRecordNumber!
+                    }
+                    if self.policeRecordNumber != nil {
+                        map["PoliceRecordNumber"] = self.policeRecordNumber!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["IcpRecordNumber"] as? String {
+                        self.icpRecordNumber = value
+                    }
+                    if let value = dict["IcpSiteRecordNumber"] as? String {
+                        self.icpSiteRecordNumber = value
+                    }
+                    if let value = dict["PoliceRecordNumber"] as? String {
+                        self.policeRecordNumber = value
+                    }
+                }
+            }
             public class Resolution : Tea.TeaModel {
                 public class DnsRecord : Tea.TeaModel {
                     public var host: String?
@@ -13961,6 +14015,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var ownership: ListAppInstanceDomainsResponseBody.Module.Data.Ownership?
 
+            public var qualification: ListAppInstanceDomainsResponseBody.Module.Data.Qualification?
+
             public var resolution: ListAppInstanceDomainsResponseBody.Module.Data.Resolution?
 
             public var verification: ListAppInstanceDomainsResponseBody.Module.Data.Verification?
@@ -13977,6 +14033,7 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.certificate?.validate()
                 try self.ownership?.validate()
+                try self.qualification?.validate()
                 try self.resolution?.validate()
                 try self.verification?.validate()
             }
@@ -13997,6 +14054,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 }
                 if self.ownership != nil {
                     map["Ownership"] = self.ownership?.toMap()
+                }
+                if self.qualification != nil {
+                    map["Qualification"] = self.qualification?.toMap()
                 }
                 if self.resolution != nil {
                     map["Resolution"] = self.resolution?.toMap()
@@ -14027,6 +14087,11 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Ownership()
                     model.fromMap(value)
                     self.ownership = model
+                }
+                if let value = dict["Qualification"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Data.Qualification()
+                    model.fromMap(value)
+                    self.qualification = model
                 }
                 if let value = dict["Resolution"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Data.Resolution()
@@ -14130,6 +14195,52 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Provider"] as? String {
                         self.provider = value
+                    }
+                }
+            }
+            public class Qualification : Tea.TeaModel {
+                public var icpRecordNumber: String?
+
+                public var icpSiteRecordNumber: String?
+
+                public var policeRecordNumber: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.icpRecordNumber != nil {
+                        map["IcpRecordNumber"] = self.icpRecordNumber!
+                    }
+                    if self.icpSiteRecordNumber != nil {
+                        map["IcpSiteRecordNumber"] = self.icpSiteRecordNumber!
+                    }
+                    if self.policeRecordNumber != nil {
+                        map["PoliceRecordNumber"] = self.policeRecordNumber!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["IcpRecordNumber"] as? String {
+                        self.icpRecordNumber = value
+                    }
+                    if let value = dict["IcpSiteRecordNumber"] as? String {
+                        self.icpSiteRecordNumber = value
+                    }
+                    if let value = dict["PoliceRecordNumber"] as? String {
+                        self.policeRecordNumber = value
                     }
                 }
             }
@@ -14333,6 +14444,8 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
 
             public var ownership: ListAppInstanceDomainsResponseBody.Module.Next.Ownership?
 
+            public var qualification: ListAppInstanceDomainsResponseBody.Module.Next.Qualification?
+
             public var resolution: ListAppInstanceDomainsResponseBody.Module.Next.Resolution?
 
             public var verification: ListAppInstanceDomainsResponseBody.Module.Next.Verification?
@@ -14349,6 +14462,7 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.certificate?.validate()
                 try self.ownership?.validate()
+                try self.qualification?.validate()
                 try self.resolution?.validate()
                 try self.verification?.validate()
             }
@@ -14369,6 +14483,9 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                 }
                 if self.ownership != nil {
                     map["Ownership"] = self.ownership?.toMap()
+                }
+                if self.qualification != nil {
+                    map["Qualification"] = self.qualification?.toMap()
                 }
                 if self.resolution != nil {
                     map["Resolution"] = self.resolution?.toMap()
@@ -14399,6 +14516,11 @@ public class ListAppInstanceDomainsResponseBody : Tea.TeaModel {
                     var model = ListAppInstanceDomainsResponseBody.Module.Next.Ownership()
                     model.fromMap(value)
                     self.ownership = model
+                }
+                if let value = dict["Qualification"] as? [String: Any?] {
+                    var model = ListAppInstanceDomainsResponseBody.Module.Next.Qualification()
+                    model.fromMap(value)
+                    self.qualification = model
                 }
                 if let value = dict["Resolution"] as? [String: Any?] {
                     var model = ListAppInstanceDomainsResponseBody.Module.Next.Resolution()
