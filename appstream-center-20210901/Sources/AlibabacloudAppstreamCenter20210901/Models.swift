@@ -9347,6 +9347,8 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
 
     public var gpuMemory: Int32?
 
+    public var instanceTypeForModify: String?
+
     public var language: String?
 
     public var memory: Int32?
@@ -9356,6 +9358,8 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
     public var nodeInstanceTypeFamily: String?
 
     public var orderBy: String?
+
+    public var orderType: String?
 
     public var osType: String?
 
@@ -9393,6 +9397,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if self.gpuMemory != nil {
             map["GpuMemory"] = self.gpuMemory!
         }
+        if self.instanceTypeForModify != nil {
+            map["InstanceTypeForModify"] = self.instanceTypeForModify!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -9407,6 +9414,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         }
         if self.orderBy != nil {
             map["OrderBy"] = self.orderBy!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
         }
         if self.osType != nil {
             map["OsType"] = self.osType!
@@ -9440,6 +9450,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if let value = dict["GpuMemory"] as? Int32 {
             self.gpuMemory = value
         }
+        if let value = dict["InstanceTypeForModify"] as? String {
+            self.instanceTypeForModify = value
+        }
         if let value = dict["Language"] as? String {
             self.language = value
         }
@@ -9454,6 +9467,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         }
         if let value = dict["OrderBy"] as? String {
             self.orderBy = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["OsType"] as? String {
             self.osType = value
