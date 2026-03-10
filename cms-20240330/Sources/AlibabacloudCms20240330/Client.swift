@@ -24,6 +24,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: AddMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMemoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            body["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asyncMode)) {
+            body["asyncMode"] = request.asyncMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.customInstructions)) {
+            body["customInstructions"] = request.customInstructions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.infer)) {
+            body["infer"] = request.infer!;
+        }
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.runId)) {
+            body["runId"] = request.runId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddMemories",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddMemoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addMemories(_ workspace: String, _ memoryStoreName: String, _ request: AddMemoriesRequest) async throws -> AddMemoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addMemoriesWithOptions(workspace as! String, memoryStoreName as! String, request as! AddMemoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func changeResourceGroupWithOptions(_ request: ChangeResourceGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -548,6 +605,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createIntegrationPolicyWithOptions(request as! CreateIntegrationPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMemoryStoreWithOptions(_ workspace: String, _ request: CreateMemoryStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMemoryStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customExtractionStrategies)) {
+            body["customExtractionStrategies"] = request.customExtractionStrategies ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extractionStrategies)) {
+            body["extractionStrategies"] = request.extractionStrategies ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryStoreName)) {
+            body["memoryStoreName"] = request.memoryStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shortTermTtl)) {
+            body["shortTermTtl"] = request.shortTermTtl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMemoryStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMemoryStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMemoryStore(_ workspace: String, _ request: CreateMemoryStoreRequest) async throws -> CreateMemoryStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createMemoryStoreWithOptions(workspace as! String, request as! CreateMemoryStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1168,6 +1270,102 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteIntegrationPolicyWithOptions(policyId as! String, request as! DeleteIntegrationPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: DeleteMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMemoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runId)) {
+            query["runId"] = request.runId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMemories",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMemoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemories(_ workspace: String, _ memoryStoreName: String, _ request: DeleteMemoriesRequest) async throws -> DeleteMemoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteMemoriesWithOptions(workspace as! String, memoryStoreName as! String, request as! DeleteMemoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemoryWithOptions(_ workspace: String, _ memoryStoreName: String, _ memoryId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMemoryResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMemory",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMemoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemory(_ workspace: String, _ memoryStoreName: String, _ memoryId: String) async throws -> DeleteMemoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteMemoryWithOptions(workspace as! String, memoryStoreName as! String, memoryId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemoryStoreWithOptions(_ workspace: String, _ memoryStoreName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMemoryStoreResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMemoryStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMemoryStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemoryStore(_ workspace: String, _ memoryStoreName: String) async throws -> DeleteMemoryStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteMemoryStoreWithOptions(workspace as! String, memoryStoreName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1928,6 +2126,135 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getIntegrationVersionForCSWithOptions(request as! GetIntegrationVersionForCSRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: GetMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            body["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            body["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runId)) {
+            body["runId"] = request.runId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMemories",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/query",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMemoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemories(_ workspace: String, _ memoryStoreName: String, _ request: GetMemoriesRequest) async throws -> GetMemoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMemoriesWithOptions(workspace as! String, memoryStoreName as! String, request as! GetMemoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoryWithOptions(_ workspace: String, _ memoryStoreName: String, _ memoryId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemoryResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMemory",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMemoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemory(_ workspace: String, _ memoryStoreName: String, _ memoryId: String) async throws -> GetMemoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMemoryWithOptions(workspace as! String, memoryStoreName as! String, memoryId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoryHistoryWithOptions(_ workspace: String, _ memoryStoreName: String, _ memoryId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemoryHistoryResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMemoryHistory",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryId)) + "/history",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMemoryHistoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoryHistory(_ workspace: String, _ memoryStoreName: String, _ memoryId: String) async throws -> GetMemoryHistoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMemoryHistoryWithOptions(workspace as! String, memoryStoreName as! String, memoryId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoryStoreWithOptions(_ workspace: String, _ memoryStoreName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemoryStoreResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMemoryStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMemoryStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemoryStore(_ workspace: String, _ memoryStoreName: String) async throws -> GetMemoryStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMemoryStoreWithOptions(workspace as! String, memoryStoreName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3005,6 +3332,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMemoryStoresWithOptions(_ workspace: String, _ request: ListMemoryStoresRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMemoryStoresResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryStoreName)) {
+            query["memoryStoreName"] = request.memoryStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMemoryStores",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMemoryStoresResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMemoryStores(_ workspace: String, _ request: ListMemoryStoresRequest) async throws -> ListMemoryStoresResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMemoryStoresWithOptions(workspace as! String, request as! ListMemoryStoresRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPrometheusDashboardsWithOptions(_ prometheusInstanceId: String, _ request: ListPrometheusDashboardsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrometheusDashboardsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3446,6 +3812,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await putWorkspaceWithOptions(workspaceName as! String, request as! PutWorkspaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: SearchMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMemoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            body["agentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerank)) {
+            body["rerank"] = request.rerank!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runId)) {
+            body["runId"] = request.runId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            body["topK"] = request.topK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchMemories",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/search",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchMemoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMemories(_ workspace: String, _ memoryStoreName: String, _ request: SearchMemoriesRequest) async throws -> SearchMemoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await searchMemoriesWithOptions(workspace as! String, memoryStoreName as! String, request as! SearchMemoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3910,6 +4330,84 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateIntegrationPolicyWithOptions(integrationPolicyId as! String, request as! UpdateIntegrationPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMemoryWithOptions(_ workspace: String, _ memoryStoreName: String, _ memoryId: String, _ request: UpdateMemoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMemoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.text)) {
+            body["text"] = request.text ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMemory",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)) + "/memory/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMemoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMemory(_ workspace: String, _ memoryStoreName: String, _ memoryId: String, _ request: UpdateMemoryRequest) async throws -> UpdateMemoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMemoryWithOptions(workspace as! String, memoryStoreName as! String, memoryId as! String, request as! UpdateMemoryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMemoryStoreWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: UpdateMemoryStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMemoryStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customExtractionStrategies)) {
+            body["customExtractionStrategies"] = request.customExtractionStrategies ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extractionStrategies)) {
+            body["extractionStrategies"] = request.extractionStrategies ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.shortTermTtl)) {
+            body["shortTermTtl"] = request.shortTermTtl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMemoryStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/memorystore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(memoryStoreName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMemoryStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMemoryStore(_ workspace: String, _ memoryStoreName: String, _ request: UpdateMemoryStoreRequest) async throws -> UpdateMemoryStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMemoryStoreWithOptions(workspace as! String, memoryStoreName as! String, request as! UpdateMemoryStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
