@@ -8195,6 +8195,147 @@ public class GetUserResponse : Tea.TeaModel {
     }
 }
 
+public class GetVpcConfigResponseBody : Tea.TeaModel {
+    public class TrustedVpcs : Tea.TeaModel {
+        public var createdAt: Int64?
+
+        public var extendedOptions: [String: String]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.extendedOptions != nil {
+                map["extendedOptions"] = self.extendedOptions!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["createdAt"] as? Int64 {
+                self.createdAt = value
+            }
+            if let value = dict["extendedOptions"] as? [String: String] {
+                self.extendedOptions = value
+            }
+            if let value = dict["vpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var trustedVpcs: [GetVpcConfigResponseBody.TrustedVpcs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.trustedVpcs != nil {
+            var tmp : [Any] = []
+            for k in self.trustedVpcs! {
+                tmp.append(k.toMap())
+            }
+            map["trustedVpcs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["trustedVpcs"] as? [Any?] {
+            var tmp : [GetVpcConfigResponseBody.TrustedVpcs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetVpcConfigResponseBody.TrustedVpcs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.trustedVpcs = tmp
+        }
+    }
+}
+
+public class GetVpcConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetVpcConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetVpcConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GrantRoleToUsersRequest : Tea.TeaModel {
     public var rolePrincipal: String?
 
