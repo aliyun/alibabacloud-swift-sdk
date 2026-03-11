@@ -1975,6 +1975,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
         public var limitedBandwidth: Int32?
 
+        public var paidCallbackUrl: String?
+
         public var payType: String?
 
         public var period: Int32?
@@ -2023,6 +2025,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
             if self.limitedBandwidth != nil {
                 map["LimitedBandwidth"] = self.limitedBandwidth!
             }
+            if self.paidCallbackUrl != nil {
+                map["PaidCallbackUrl"] = self.paidCallbackUrl!
+            }
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
@@ -2066,6 +2071,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["LimitedBandwidth"] as? Int32 {
                 self.limitedBandwidth = value
+            }
+            if let value = dict["PaidCallbackUrl"] as? String {
+                self.paidCallbackUrl = value
             }
             if let value = dict["PayType"] as? String {
                 self.payType = value
@@ -3286,6 +3294,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
         public var limitedBandwidth: Int32?
 
+        public var paidCallbackUrl: String?
+
         public var payType: String?
 
         public var visibleType: String?
@@ -3322,6 +3332,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             if self.limitedBandwidth != nil {
                 map["LimitedBandwidth"] = self.limitedBandwidth!
             }
+            if self.paidCallbackUrl != nil {
+                map["PaidCallbackUrl"] = self.paidCallbackUrl!
+            }
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
@@ -3350,6 +3363,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             }
             if let value = dict["LimitedBandwidth"] as? Int32 {
                 self.limitedBandwidth = value
+            }
+            if let value = dict["PaidCallbackUrl"] as? String {
+                self.paidCallbackUrl = value
             }
             if let value = dict["PayType"] as? String {
                 self.payType = value
