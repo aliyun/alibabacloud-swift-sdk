@@ -4042,6 +4042,8 @@ public class CreateSandboxInput : Tea.TeaModel {
 
     public var ossMountConfig: OSSMountConfig?
 
+    public var polarFsConfig: PolarFsConfig?
+
     public var sandboxId: String?
 
     public var sandboxIdleTimeoutInSeconds: Int32?
@@ -4062,6 +4064,7 @@ public class CreateSandboxInput : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4071,6 +4074,9 @@ public class CreateSandboxInput : Tea.TeaModel {
         }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.sandboxId != nil {
             map["sandboxId"] = self.sandboxId!
@@ -4098,6 +4104,11 @@ public class CreateSandboxInput : Tea.TeaModel {
             var model = OSSMountConfig()
             model.fromMap(value)
             self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["sandboxId"] as? String {
             self.sandboxId = value
