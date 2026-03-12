@@ -2326,6 +2326,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grayPublishWithOptions(_ InstanceId: String, _ request: GrayPublishRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GrayPublishResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.xRequestChangeId)) {
+            query["X-Request-ChangeId"] = request.xRequestChangeId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrayPublish",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/actions/grayPublish",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrayPublishResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grayPublish(_ InstanceId: String, _ request: GrayPublishRequest) async throws -> GrayPublishResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await grayPublishWithOptions(InstanceId as! String, request as! GrayPublishRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func initializeOperationRoleWithOptions(_ request: InitializeOperationRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InitializeOperationRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
