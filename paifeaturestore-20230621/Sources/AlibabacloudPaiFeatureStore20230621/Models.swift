@@ -66,6 +66,8 @@ public class FeatureViewConfigValue : Tea.TeaModel {
 
     public var snapshot: FeatureViewConfigValue.Snapshot?
 
+    public var secondJoinKey: String?
+
     public override init() {
         super.init()
     }
@@ -100,6 +102,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         if self.snapshot != nil {
             map["Snapshot"] = self.snapshot?.toMap()
         }
+        if self.secondJoinKey != nil {
+            map["SecondJoinKey"] = self.secondJoinKey!
+        }
         return map
     }
 
@@ -129,6 +134,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
             var model = FeatureViewConfigValue.Snapshot()
             model.fromMap(value)
             self.snapshot = model
+        }
+        if let value = dict["SecondJoinKey"] as? String {
+            self.secondJoinKey = value
         }
     }
 }
