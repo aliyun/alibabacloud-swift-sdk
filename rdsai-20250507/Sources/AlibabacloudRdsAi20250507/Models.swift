@@ -1215,6 +1215,8 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
 
     public var instanceIds: String?
 
+    public var reportLanguage: String?
+
     public var startTime: String?
 
     public override init() {
@@ -1240,6 +1242,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -1256,6 +1261,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIds = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -1410,6 +1418,8 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var reportLanguage: String?
+
     public var startTime: String?
 
     public var timeRange: String?
@@ -1440,6 +1450,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -1462,6 +1475,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -6035,6 +6051,8 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var reportLanguage: String?
+
         public var startTime: String?
 
         public var status: String?
@@ -6061,6 +6079,9 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -6080,6 +6101,9 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -6479,6 +6503,8 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var reportLanguage: String?
+
         public var startTime: String?
 
         public var status: String?
@@ -6505,6 +6531,9 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -6524,6 +6553,9 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -7230,6 +7262,8 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var reportLanguage: String?
+
         public var scheduledId: String?
 
         public var taskStartTime: String?
@@ -7265,6 +7299,9 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.reportLanguage != nil {
+                map["ReportLanguage"] = self.reportLanguage!
+            }
             if self.scheduledId != nil {
                 map["ScheduledId"] = self.scheduledId!
             }
@@ -7293,6 +7330,9 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ReportLanguage"] as? String {
+                self.reportLanguage = value
             }
             if let value = dict["ScheduledId"] as? String {
                 self.scheduledId = value
@@ -9308,6 +9348,8 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var reportLanguage: String?
+
     public var scheduledId: String?
 
     public var startTime: String?
@@ -9340,6 +9382,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.reportLanguage != nil {
+            map["ReportLanguage"] = self.reportLanguage!
+        }
         if self.scheduledId != nil {
             map["ScheduledId"] = self.scheduledId!
         }
@@ -9365,6 +9410,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ReportLanguage"] as? String {
+            self.reportLanguage = value
         }
         if let value = dict["ScheduledId"] as? String {
             self.scheduledId = value
