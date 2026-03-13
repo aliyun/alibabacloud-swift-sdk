@@ -9551,6 +9551,158 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Ext : Tea.TeaModel {
+            public class AigcData : Tea.TeaModel {
+                public class AIGC : Tea.TeaModel {
+                    public var contentProducer: String?
+
+                    public var contentPropagator: String?
+
+                    public var label: String?
+
+                    public var produceID: String?
+
+                    public var propagateID: String?
+
+                    public var reservedCode1: String?
+
+                    public var reservedCode2: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.contentProducer != nil {
+                            map["ContentProducer"] = self.contentProducer!
+                        }
+                        if self.contentPropagator != nil {
+                            map["ContentPropagator"] = self.contentPropagator!
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.produceID != nil {
+                            map["ProduceID"] = self.produceID!
+                        }
+                        if self.propagateID != nil {
+                            map["PropagateID"] = self.propagateID!
+                        }
+                        if self.reservedCode1 != nil {
+                            map["ReservedCode1"] = self.reservedCode1!
+                        }
+                        if self.reservedCode2 != nil {
+                            map["ReservedCode2"] = self.reservedCode2!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ContentProducer"] as? String {
+                            self.contentProducer = value
+                        }
+                        if let value = dict["ContentPropagator"] as? String {
+                            self.contentPropagator = value
+                        }
+                        if let value = dict["Label"] as? String {
+                            self.label = value
+                        }
+                        if let value = dict["ProduceID"] as? String {
+                            self.produceID = value
+                        }
+                        if let value = dict["PropagateID"] as? String {
+                            self.propagateID = value
+                        }
+                        if let value = dict["ReservedCode1"] as? String {
+                            self.reservedCode1 = value
+                        }
+                        if let value = dict["ReservedCode2"] as? String {
+                            self.reservedCode2 = value
+                        }
+                    }
+                }
+                public var AIGC: VideoModerationResultResponseBody.Data.Ext.AigcData.AIGC?
+
+                public var result: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.AIGC?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.AIGC != nil {
+                        map["AIGC"] = self.AIGC?.toMap()
+                    }
+                    if self.result != nil {
+                        map["Result"] = self.result!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AIGC"] as? [String: Any?] {
+                        var model = VideoModerationResultResponseBody.Data.Ext.AigcData.AIGC()
+                        model.fromMap(value)
+                        self.AIGC = model
+                    }
+                    if let value = dict["Result"] as? String {
+                        self.result = value
+                    }
+                }
+            }
+            public var aigcData: VideoModerationResultResponseBody.Data.Ext.AigcData?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.aigcData?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aigcData != nil {
+                    map["AigcData"] = self.aigcData?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AigcData"] as? [String: Any?] {
+                    var model = VideoModerationResultResponseBody.Data.Ext.AigcData()
+                    model.fromMap(value)
+                    self.aigcData = model
+                }
+            }
+        }
         public class FrameResult : Tea.TeaModel {
             public class FrameSummarys : Tea.TeaModel {
                 public var description_: String?
@@ -10238,6 +10390,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
         public var dataId: String?
 
+        public var ext: VideoModerationResultResponseBody.Data.Ext?
+
         public var frameResult: VideoModerationResultResponseBody.Data.FrameResult?
 
         public var liveId: String?
@@ -10259,6 +10413,7 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.audioResult?.validate()
+            try self.ext?.validate()
             try self.frameResult?.validate()
         }
 
@@ -10269,6 +10424,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             if self.dataId != nil {
                 map["DataId"] = self.dataId!
+            }
+            if self.ext != nil {
+                map["Ext"] = self.ext?.toMap()
             }
             if self.frameResult != nil {
                 map["FrameResult"] = self.frameResult?.toMap()
@@ -10297,6 +10455,11 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["DataId"] as? String {
                 self.dataId = value
+            }
+            if let value = dict["Ext"] as? [String: Any?] {
+                var model = VideoModerationResultResponseBody.Data.Ext()
+                model.fromMap(value)
+                self.ext = model
             }
             if let value = dict["FrameResult"] as? [String: Any?] {
                 var model = VideoModerationResultResponseBody.Data.FrameResult()
