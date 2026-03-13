@@ -228,8 +228,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func asyncCreateClipsTimeLineWithOptions(_ request: AsyncCreateClipsTimeLineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AsyncCreateClipsTimeLineResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func asyncCreateClipsTimeLineWithOptions(_ tmpReq: AsyncCreateClipsTimeLineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AsyncCreateClipsTimeLineResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AsyncCreateClipsTimeLineShrinkRequest = AsyncCreateClipsTimeLineShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.highLightConfig)) {
+            request.highLightConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.highLightConfig, "HighLightConfig", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.additionalContent)) {
             body["AdditionalContent"] = request.additionalContent ?? "";
@@ -237,14 +242,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.customContent)) {
             body["CustomContent"] = request.customContent ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.highLightConfigShrink)) {
+            body["HighLightConfig"] = request.highLightConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.noRefVideo)) {
             body["NoRefVideo"] = request.noRefVideo!;
         }
         if (!TeaUtils.Client.isUnset(request.processPrompt)) {
             body["ProcessPrompt"] = request.processPrompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.recommendAudio)) {
+            body["RecommendAudio"] = request.recommendAudio!;
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timelineScene)) {
+            body["TimelineScene"] = request.timelineScene!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

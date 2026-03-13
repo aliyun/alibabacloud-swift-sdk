@@ -2863,15 +2863,197 @@ public class AsyncCreateClipsTaskResponse : Tea.TeaModel {
 }
 
 public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
+    public class HighLightConfig : Tea.TeaModel {
+        public var htAnalyzeRhythm: Bool?
+
+        public var htHighQualityLabel: [String]?
+
+        public var htLowQualityLabel: [String]?
+
+        public var htMaxTimeLength: Int32?
+
+        public var htMinTimeLength: Int32?
+
+        public var htPrompt: String?
+
+        public var htSingleShotLen: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.htAnalyzeRhythm != nil {
+                map["HtAnalyzeRhythm"] = self.htAnalyzeRhythm!
+            }
+            if self.htHighQualityLabel != nil {
+                map["HtHighQualityLabel"] = self.htHighQualityLabel!
+            }
+            if self.htLowQualityLabel != nil {
+                map["HtLowQualityLabel"] = self.htLowQualityLabel!
+            }
+            if self.htMaxTimeLength != nil {
+                map["HtMaxTimeLength"] = self.htMaxTimeLength!
+            }
+            if self.htMinTimeLength != nil {
+                map["HtMinTimeLength"] = self.htMinTimeLength!
+            }
+            if self.htPrompt != nil {
+                map["HtPrompt"] = self.htPrompt!
+            }
+            if self.htSingleShotLen != nil {
+                map["HtSingleShotLen"] = self.htSingleShotLen!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["HtAnalyzeRhythm"] as? Bool {
+                self.htAnalyzeRhythm = value
+            }
+            if let value = dict["HtHighQualityLabel"] as? [String] {
+                self.htHighQualityLabel = value
+            }
+            if let value = dict["HtLowQualityLabel"] as? [String] {
+                self.htLowQualityLabel = value
+            }
+            if let value = dict["HtMaxTimeLength"] as? Int32 {
+                self.htMaxTimeLength = value
+            }
+            if let value = dict["HtMinTimeLength"] as? Int32 {
+                self.htMinTimeLength = value
+            }
+            if let value = dict["HtPrompt"] as? String {
+                self.htPrompt = value
+            }
+            if let value = dict["HtSingleShotLen"] as? Int32 {
+                self.htSingleShotLen = value
+            }
+        }
+    }
     public var additionalContent: String?
 
     public var customContent: String?
+
+    public var highLightConfig: AsyncCreateClipsTimeLineRequest.HighLightConfig?
 
     public var noRefVideo: Bool?
 
     public var processPrompt: String?
 
+    public var recommendAudio: Bool?
+
     public var taskId: String?
+
+    public var timelineScene: Int32?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.highLightConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalContent != nil {
+            map["AdditionalContent"] = self.additionalContent!
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.highLightConfig != nil {
+            map["HighLightConfig"] = self.highLightConfig?.toMap()
+        }
+        if self.noRefVideo != nil {
+            map["NoRefVideo"] = self.noRefVideo!
+        }
+        if self.processPrompt != nil {
+            map["ProcessPrompt"] = self.processPrompt!
+        }
+        if self.recommendAudio != nil {
+            map["RecommendAudio"] = self.recommendAudio!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.timelineScene != nil {
+            map["TimelineScene"] = self.timelineScene!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalContent"] as? String {
+            self.additionalContent = value
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["HighLightConfig"] as? [String: Any?] {
+            var model = AsyncCreateClipsTimeLineRequest.HighLightConfig()
+            model.fromMap(value)
+            self.highLightConfig = model
+        }
+        if let value = dict["NoRefVideo"] as? Bool {
+            self.noRefVideo = value
+        }
+        if let value = dict["ProcessPrompt"] as? String {
+            self.processPrompt = value
+        }
+        if let value = dict["RecommendAudio"] as? Bool {
+            self.recommendAudio = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["TimelineScene"] as? Int32 {
+            self.timelineScene = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class AsyncCreateClipsTimeLineShrinkRequest : Tea.TeaModel {
+    public var additionalContent: String?
+
+    public var customContent: String?
+
+    public var highLightConfigShrink: String?
+
+    public var noRefVideo: Bool?
+
+    public var processPrompt: String?
+
+    public var recommendAudio: Bool?
+
+    public var taskId: String?
+
+    public var timelineScene: Int32?
 
     public var workspaceId: String?
 
@@ -2895,14 +3077,23 @@ public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
         if self.customContent != nil {
             map["CustomContent"] = self.customContent!
         }
+        if self.highLightConfigShrink != nil {
+            map["HighLightConfig"] = self.highLightConfigShrink!
+        }
         if self.noRefVideo != nil {
             map["NoRefVideo"] = self.noRefVideo!
         }
         if self.processPrompt != nil {
             map["ProcessPrompt"] = self.processPrompt!
         }
+        if self.recommendAudio != nil {
+            map["RecommendAudio"] = self.recommendAudio!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
+        }
+        if self.timelineScene != nil {
+            map["TimelineScene"] = self.timelineScene!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -2918,14 +3109,23 @@ public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
         if let value = dict["CustomContent"] as? String {
             self.customContent = value
         }
+        if let value = dict["HighLightConfig"] as? String {
+            self.highLightConfigShrink = value
+        }
         if let value = dict["NoRefVideo"] as? Bool {
             self.noRefVideo = value
         }
         if let value = dict["ProcessPrompt"] as? String {
             self.processPrompt = value
         }
+        if let value = dict["RecommendAudio"] as? Bool {
+            self.recommendAudio = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+        if let value = dict["TimelineScene"] as? Int32 {
+            self.timelineScene = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -49559,6 +49759,46 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
     }
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
+            public class Introductions : Tea.TeaModel {
+                public var summary: String?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.summary != nil {
+                        map["Summary"] = self.summary!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Summary"] as? String {
+                        self.summary = value
+                    }
+                    if let value = dict["Title"] as? String {
+                        self.title = value
+                    }
+                }
+            }
+            public var introductions: [RunBookIntroductionResponseBody.Payload.Output.Introductions]?
+
             public var keyPoint: String?
 
             public var summary: String?
@@ -49577,6 +49817,13 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.introductions != nil {
+                    var tmp : [Any] = []
+                    for k in self.introductions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Introductions"] = tmp
+                }
                 if self.keyPoint != nil {
                     map["KeyPoint"] = self.keyPoint!
                 }
@@ -49588,6 +49835,19 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Introductions"] as? [Any?] {
+                    var tmp : [RunBookIntroductionResponseBody.Payload.Output.Introductions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = RunBookIntroductionResponseBody.Payload.Output.Introductions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.introductions = tmp
+                }
                 if let value = dict["KeyPoint"] as? String {
                     self.keyPoint = value
                 }
