@@ -5139,6 +5139,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateWebAuthnAuthenticatorRegistrationUrlWithOptions(_ request: GenerateWebAuthnAuthenticatorRegistrationUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateWebAuthnAuthenticatorRegistrationUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainId)) {
+            query["DomainId"] = request.domainId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateWebAuthnAuthenticatorRegistrationUrl",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateWebAuthnAuthenticatorRegistrationUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateWebAuthnAuthenticatorRegistrationUrl(_ request: GenerateWebAuthnAuthenticatorRegistrationUrlRequest) async throws -> GenerateWebAuthnAuthenticatorRegistrationUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateWebAuthnAuthenticatorRegistrationUrlWithOptions(request as! GenerateWebAuthnAuthenticatorRegistrationUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getApplicationWithOptions(_ request: GetApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApplicationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8010,6 +8047,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.credentialIds)) {
             query["CredentialIds"] = request.credentialIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialTypes)) {
+            query["CredentialTypes"] = request.credentialTypes ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? [];

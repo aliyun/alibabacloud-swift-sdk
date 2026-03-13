@@ -20606,6 +20606,183 @@ public class GenerateUploadAuthResponse : Tea.TeaModel {
     }
 }
 
+public class GenerateWebAuthnAuthenticatorRegistrationUrlRequest : Tea.TeaModel {
+    public var domainId: String?
+
+    public var instanceId: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody : Tea.TeaModel {
+    public class WebAuthnAuthenticatorRegistrationUrl : Tea.TeaModel {
+        public var registrationUrl: String?
+
+        public var registrationUrlParameters: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.registrationUrl != nil {
+                map["RegistrationUrl"] = self.registrationUrl!
+            }
+            if self.registrationUrlParameters != nil {
+                map["RegistrationUrlParameters"] = self.registrationUrlParameters!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegistrationUrl"] as? String {
+                self.registrationUrl = value
+            }
+            if let value = dict["RegistrationUrlParameters"] as? String {
+                self.registrationUrlParameters = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var webAuthnAuthenticatorRegistrationUrl: GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody.WebAuthnAuthenticatorRegistrationUrl?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.webAuthnAuthenticatorRegistrationUrl?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.webAuthnAuthenticatorRegistrationUrl != nil {
+            map["WebAuthnAuthenticatorRegistrationUrl"] = self.webAuthnAuthenticatorRegistrationUrl?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["WebAuthnAuthenticatorRegistrationUrl"] as? [String: Any?] {
+            var model = GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody.WebAuthnAuthenticatorRegistrationUrl()
+            model.fromMap(value)
+            self.webAuthnAuthenticatorRegistrationUrl = model
+        }
+    }
+}
+
+public class GenerateWebAuthnAuthenticatorRegistrationUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
@@ -46583,6 +46760,8 @@ public class ListCredentialsRequest : Tea.TeaModel {
     }
     public var credentialIds: [String]?
 
+    public var credentialTypes: [String]?
+
     public var filter: [ListCredentialsRequest.Filter]?
 
     public var instanceId: String?
@@ -46610,6 +46789,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         if self.credentialIds != nil {
             map["CredentialIds"] = self.credentialIds!
         }
+        if self.credentialTypes != nil {
+            map["CredentialTypes"] = self.credentialTypes!
+        }
         if self.filter != nil {
             var tmp : [Any] = []
             for k in self.filter! {
@@ -46636,6 +46818,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CredentialIds"] as? [String] {
             self.credentialIds = value
+        }
+        if let value = dict["CredentialTypes"] as? [String] {
+            self.credentialTypes = value
         }
         if let value = dict["Filter"] as? [Any?] {
             var tmp : [ListCredentialsRequest.Filter] = []
