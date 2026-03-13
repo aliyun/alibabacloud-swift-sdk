@@ -4523,11 +4523,17 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
         public var embedderModel: String?
 
+        public var embedderModelDimension: Int32?
+
+        public var graphLlmModel: String?
+
         public var llmModel: String?
 
         public var projectName: String?
 
         public var rerankerModel: String?
+
+        public var shard: Int32?
 
         public override init() {
             super.init()
@@ -4555,6 +4561,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if self.embedderModel != nil {
                 map["EmbedderModel"] = self.embedderModel!
             }
+            if self.embedderModelDimension != nil {
+                map["EmbedderModelDimension"] = self.embedderModelDimension!
+            }
+            if self.graphLlmModel != nil {
+                map["GraphLlmModel"] = self.graphLlmModel!
+            }
             if self.llmModel != nil {
                 map["LlmModel"] = self.llmModel!
             }
@@ -4563,6 +4575,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if self.rerankerModel != nil {
                 map["RerankerModel"] = self.rerankerModel!
+            }
+            if self.shard != nil {
+                map["Shard"] = self.shard!
             }
             return map
         }
@@ -4581,6 +4596,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
             if let value = dict["EmbedderModel"] as? String {
                 self.embedderModel = value
             }
+            if let value = dict["EmbedderModelDimension"] as? Int32 {
+                self.embedderModelDimension = value
+            }
+            if let value = dict["GraphLlmModel"] as? String {
+                self.graphLlmModel = value
+            }
             if let value = dict["LlmModel"] as? String {
                 self.llmModel = value
             }
@@ -4589,6 +4610,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
             if let value = dict["RerankerModel"] as? String {
                 self.rerankerModel = value
+            }
+            if let value = dict["Shard"] as? Int32 {
+                self.shard = value
             }
         }
     }
