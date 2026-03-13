@@ -1,6 +1,9 @@
 import Foundation
 import Tea
 import TeaUtils
+import DarabonbaXML
+import AlibabaCloudCredentials
+import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -18463,6 +18466,213 @@ public class UpdateTaskAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateTaskAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UploadModuleRequest : Tea.TeaModel {
+    public var code: [String: String]?
+
+    public var moduleId: String?
+
+    public var moduleName: String?
+
+    public var namespaceName: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.moduleId != nil {
+            map["moduleId"] = self.moduleId!
+        }
+        if self.moduleName != nil {
+            map["moduleName"] = self.moduleName!
+        }
+        if self.namespaceName != nil {
+            map["namespaceName"] = self.namespaceName!
+        }
+        if self.url != nil {
+            map["url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? [String: String] {
+            self.code = value
+        }
+        if let value = dict["moduleId"] as? String {
+            self.moduleId = value
+        }
+        if let value = dict["moduleName"] as? String {
+            self.moduleName = value
+        }
+        if let value = dict["namespaceName"] as? String {
+            self.namespaceName = value
+        }
+        if let value = dict["url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class UploadModuleAdvanceRequest : Tea.TeaModel {
+    public var code: [String: String]?
+
+    public var moduleId: String?
+
+    public var moduleName: String?
+
+    public var namespaceName: String?
+
+    public var urlObject: InputStream?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.moduleId != nil {
+            map["moduleId"] = self.moduleId!
+        }
+        if self.moduleName != nil {
+            map["moduleName"] = self.moduleName!
+        }
+        if self.namespaceName != nil {
+            map["namespaceName"] = self.namespaceName!
+        }
+        if self.urlObject != nil {
+            map["url"] = self.urlObject!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? [String: String] {
+            self.code = value
+        }
+        if let value = dict["moduleId"] as? String {
+            self.moduleId = value
+        }
+        if let value = dict["moduleName"] as? String {
+            self.moduleName = value
+        }
+        if let value = dict["namespaceName"] as? String {
+            self.namespaceName = value
+        }
+        if let value = dict["url"] as? InputStream {
+            self.urlObject = value
+        }
+    }
+}
+
+public class UploadModuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UploadModuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UploadModuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UploadModuleResponseBody()
             model.fromMap(value)
             self.body = model
         }
