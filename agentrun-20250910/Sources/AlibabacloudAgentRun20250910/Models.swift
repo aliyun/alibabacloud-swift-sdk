@@ -4591,7 +4591,7 @@ public class Credential : Tea.TeaModel {
 
     public var credentialName: String?
 
-    public var credentialPublicConfig: [String: String]?
+    public var credentialPublicConfig: CredentialPublicConfig?
 
     public var credentialSecret: String?
 
@@ -4615,6 +4615,7 @@ public class Credential : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.credentialPublicConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4632,7 +4633,7 @@ public class Credential : Tea.TeaModel {
             map["credentialName"] = self.credentialName!
         }
         if self.credentialPublicConfig != nil {
-            map["credentialPublicConfig"] = self.credentialPublicConfig!
+            map["credentialPublicConfig"] = self.credentialPublicConfig?.toMap()
         }
         if self.credentialSecret != nil {
             map["credentialSecret"] = self.credentialSecret!
@@ -4673,8 +4674,10 @@ public class Credential : Tea.TeaModel {
         if let value = dict["credentialName"] as? String {
             self.credentialName = value
         }
-        if let value = dict["credentialPublicConfig"] as? [String: String] {
-            self.credentialPublicConfig = value
+        if let value = dict["credentialPublicConfig"] as? [String: Any?] {
+            var model = CredentialPublicConfig()
+            model.fromMap(value)
+            self.credentialPublicConfig = model
         }
         if let value = dict["credentialSecret"] as? String {
             self.credentialSecret = value
@@ -4749,6 +4752,8 @@ public class CredentialListItem : Tea.TeaModel {
 
     public var credentialSourceType: String?
 
+    public var description_: String?
+
     public var enabled: Bool?
 
     public var relatedResourceCount: Int32?
@@ -4784,6 +4789,9 @@ public class CredentialListItem : Tea.TeaModel {
         if self.credentialSourceType != nil {
             map["credentialSourceType"] = self.credentialSourceType!
         }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.enabled != nil {
             map["enabled"] = self.enabled!
         }
@@ -4812,6 +4820,9 @@ public class CredentialListItem : Tea.TeaModel {
         }
         if let value = dict["credentialSourceType"] as? String {
             self.credentialSourceType = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
         }
         if let value = dict["enabled"] as? Bool {
             self.enabled = value
@@ -4916,6 +4927,10 @@ public class CredentialPublicConfig : Tea.TeaModel {
 
     public var headerKey: String?
 
+    public var jwks: String?
+
+    public var prefix_: String?
+
     public var provider: String?
 
     public var remoteConfig: CredentialPublicConfig.RemoteConfig?
@@ -4946,6 +4961,12 @@ public class CredentialPublicConfig : Tea.TeaModel {
         if self.headerKey != nil {
             map["headerKey"] = self.headerKey!
         }
+        if self.jwks != nil {
+            map["jwks"] = self.jwks!
+        }
+        if self.prefix_ != nil {
+            map["prefix"] = self.prefix_!
+        }
         if self.provider != nil {
             map["provider"] = self.provider!
         }
@@ -4972,6 +4993,12 @@ public class CredentialPublicConfig : Tea.TeaModel {
         }
         if let value = dict["headerKey"] as? String {
             self.headerKey = value
+        }
+        if let value = dict["jwks"] as? String {
+            self.jwks = value
+        }
+        if let value = dict["prefix"] as? String {
+            self.prefix_ = value
         }
         if let value = dict["provider"] as? String {
             self.provider = value
@@ -20244,6 +20271,111 @@ public class ListTemplatesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListTemplatesResult()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListWorkspacesRequest : Tea.TeaModel {
+    public var name: String?
+
+    public var pageNumber: String?
+
+    public var pageSize: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["pageNumber"] as? String {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class ListWorkspacesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListWorkspacesResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListWorkspacesResult()
             model.fromMap(value)
             self.body = model
         }
