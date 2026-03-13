@@ -14403,6 +14403,8 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var autoResourceEnable: Bool?
+
     public var generalInstanceSpecStatistic: DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic?
 
     public var requestId: String?
@@ -14425,6 +14427,9 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoResourceEnable != nil {
+            map["AutoResourceEnable"] = self.autoResourceEnable!
+        }
         if self.generalInstanceSpecStatistic != nil {
             map["GeneralInstanceSpecStatistic"] = self.generalInstanceSpecStatistic?.toMap()
         }
@@ -14439,6 +14444,9 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoResourceEnable"] as? Bool {
+            self.autoResourceEnable = value
+        }
         if let value = dict["GeneralInstanceSpecStatistic"] as? [String: Any?] {
             var model = DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic()
             model.fromMap(value)
