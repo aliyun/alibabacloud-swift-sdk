@@ -2836,6 +2836,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var tableIds: [String]?
 
+    public var channelType: String?
+
     public var chunkMode: String?
 
     public var connectId: String?
@@ -2936,6 +2938,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.tableIds != nil {
             map["TableIds"] = self.tableIds!
+        }
+        if self.channelType != nil {
+            map["channelType"] = self.channelType!
         }
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
@@ -3051,6 +3056,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["TableIds"] as? [String] {
             self.tableIds = value
         }
+        if let value = dict["channelType"] as? String {
+            self.channelType = value
+        }
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
@@ -3137,6 +3145,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var structureType: String?
 
     public var tableIdsShrink: String?
+
+    public var channelType: String?
 
     public var chunkMode: String?
 
@@ -3233,6 +3243,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.tableIdsShrink != nil {
             map["TableIds"] = self.tableIdsShrink!
+        }
+        if self.channelType != nil {
+            map["channelType"] = self.channelType!
         }
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
@@ -3331,6 +3344,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TableIds"] as? String {
             self.tableIdsShrink = value
+        }
+        if let value = dict["channelType"] as? String {
+            self.channelType = value
         }
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value

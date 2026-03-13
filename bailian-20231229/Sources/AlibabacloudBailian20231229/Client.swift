@@ -439,6 +439,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tableIdsShrink)) {
             query["TableIds"] = request.tableIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.channelType)) {
+            query["channelType"] = request.channelType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.chunkMode)) {
             query["chunkMode"] = request.chunkMode ?? "";
         }
