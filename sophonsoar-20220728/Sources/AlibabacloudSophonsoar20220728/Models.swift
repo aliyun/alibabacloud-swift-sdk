@@ -4272,6 +4272,8 @@ public class DescribeOpenApiListResponseBody : Tea.TeaModel {
 
         public var version: String?
 
+        public var versions: Any?
+
         public override init() {
             super.init()
         }
@@ -4295,6 +4297,9 @@ public class DescribeOpenApiListResponseBody : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.versions != nil {
+                map["Versions"] = self.versions!
+            }
             return map
         }
 
@@ -4308,6 +4313,9 @@ public class DescribeOpenApiListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Version"] as? String {
                 self.version = value
+            }
+            if let value = dict["Versions"] as? Any {
+                self.versions = value
             }
         }
     }

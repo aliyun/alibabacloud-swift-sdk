@@ -929,7 +929,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describePopApiWithOptions(_ request: DescribePopApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePopApiResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiName)) {
+            query["ApiName"] = request.apiName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.apiVersion)) {
+            query["ApiVersion"] = request.apiVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.popCode)) {
+            query["PopCode"] = request.popCode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -938,7 +947,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2022-07-28",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
