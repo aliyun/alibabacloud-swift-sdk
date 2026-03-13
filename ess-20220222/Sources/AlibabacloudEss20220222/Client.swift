@@ -1081,6 +1081,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeCandidateOptions)) {
+            query["InstanceTypeCandidateOptions"] = request.instanceTypeCandidateOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceTypeOverrides)) {
             query["InstanceTypeOverrides"] = request.instanceTypeOverrides ?? [];
         }
@@ -4545,6 +4548,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instancePatternInfos)) {
             query["InstancePatternInfos"] = request.instancePatternInfos ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeCandidateOptions)) {
+            query["InstanceTypeCandidateOptions"] = request.instanceTypeCandidateOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceTypeOverrides)) {
             query["InstanceTypeOverrides"] = request.instanceTypeOverrides ?? [];

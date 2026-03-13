@@ -6167,6 +6167,68 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class InstanceTypeCandidateOptions : Tea.TeaModel {
+        public var allowCidrBlocks: [String]?
+
+        public var allowCrossAz: Bool?
+
+        public var allowDifferentGeneration: Bool?
+
+        public var enabled: Bool?
+
+        public var maxPrice: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrBlocks != nil {
+                map["AllowCidrBlocks"] = self.allowCidrBlocks!
+            }
+            if self.allowCrossAz != nil {
+                map["AllowCrossAz"] = self.allowCrossAz!
+            }
+            if self.allowDifferentGeneration != nil {
+                map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxPrice != nil {
+                map["MaxPrice"] = self.maxPrice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowCidrBlocks"] as? [String] {
+                self.allowCidrBlocks = value
+            }
+            if let value = dict["AllowCrossAz"] as? Bool {
+                self.allowCrossAz = value
+            }
+            if let value = dict["AllowDifferentGeneration"] as? Bool {
+                self.allowDifferentGeneration = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxPrice"] as? Double {
+                self.maxPrice = value
+            }
+        }
+    }
     public class InstanceTypeOverrides : Tea.TeaModel {
         public var instanceType: String?
 
@@ -6421,6 +6483,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var instanceTypeCandidateOptions: CreateScalingConfigurationRequest.InstanceTypeCandidateOptions?
+
     public var instanceTypeOverrides: [CreateScalingConfigurationRequest.InstanceTypeOverrides]?
 
     public var instanceTypes: [String]?
@@ -6508,6 +6572,7 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.instanceTypeCandidateOptions?.validate()
         try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
@@ -6597,6 +6662,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.instanceTypeCandidateOptions != nil {
+            map["InstanceTypeCandidateOptions"] = self.instanceTypeCandidateOptions?.toMap()
         }
         if self.instanceTypeOverrides != nil {
             var tmp : [Any] = []
@@ -6833,6 +6901,11 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["InstanceTypeCandidateOptions"] as? [String: Any?] {
+            var model = CreateScalingConfigurationRequest.InstanceTypeCandidateOptions()
+            model.fromMap(value)
+            self.instanceTypeCandidateOptions = model
         }
         if let value = dict["InstanceTypeOverrides"] as? [Any?] {
             var tmp : [CreateScalingConfigurationRequest.InstanceTypeOverrides] = []
@@ -7539,6 +7612,68 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class InstanceTypeCandidateOptions : Tea.TeaModel {
+        public var allowCidrBlocks: [String]?
+
+        public var allowCrossAz: Bool?
+
+        public var allowDifferentGeneration: Bool?
+
+        public var enabled: Bool?
+
+        public var maxPrice: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrBlocks != nil {
+                map["AllowCidrBlocks"] = self.allowCidrBlocks!
+            }
+            if self.allowCrossAz != nil {
+                map["AllowCrossAz"] = self.allowCrossAz!
+            }
+            if self.allowDifferentGeneration != nil {
+                map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxPrice != nil {
+                map["MaxPrice"] = self.maxPrice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowCidrBlocks"] as? [String] {
+                self.allowCidrBlocks = value
+            }
+            if let value = dict["AllowCrossAz"] as? Bool {
+                self.allowCrossAz = value
+            }
+            if let value = dict["AllowDifferentGeneration"] as? Bool {
+                self.allowDifferentGeneration = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxPrice"] as? Double {
+                self.maxPrice = value
+            }
+        }
+    }
     public class InstanceTypeOverrides : Tea.TeaModel {
         public var instanceType: String?
 
@@ -7793,6 +7928,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var instanceTypeCandidateOptions: CreateScalingConfigurationShrinkRequest.InstanceTypeCandidateOptions?
+
     public var instanceTypeOverrides: [CreateScalingConfigurationShrinkRequest.InstanceTypeOverrides]?
 
     public var instanceTypes: [String]?
@@ -7880,6 +8017,7 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.instanceTypeCandidateOptions?.validate()
         try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
@@ -7969,6 +8107,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.instanceTypeCandidateOptions != nil {
+            map["InstanceTypeCandidateOptions"] = self.instanceTypeCandidateOptions?.toMap()
         }
         if self.instanceTypeOverrides != nil {
             var tmp : [Any] = []
@@ -8205,6 +8346,11 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["InstanceTypeCandidateOptions"] as? [String: Any?] {
+            var model = CreateScalingConfigurationShrinkRequest.InstanceTypeCandidateOptions()
+            model.fromMap(value)
+            self.instanceTypeCandidateOptions = model
         }
         if let value = dict["InstanceTypeOverrides"] as? [Any?] {
             var tmp : [CreateScalingConfigurationShrinkRequest.InstanceTypeOverrides] = []
@@ -22412,6 +22558,68 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class InstanceTypeCandidateOptions : Tea.TeaModel {
+            public var allowCidrBlocks: [String]?
+
+            public var allowCrossAz: Bool?
+
+            public var allowDifferentGeneration: Bool?
+
+            public var enabled: Bool?
+
+            public var maxPrice: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowCidrBlocks != nil {
+                    map["AllowCidrBlocks"] = self.allowCidrBlocks!
+                }
+                if self.allowCrossAz != nil {
+                    map["AllowCrossAz"] = self.allowCrossAz!
+                }
+                if self.allowDifferentGeneration != nil {
+                    map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+                }
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.maxPrice != nil {
+                    map["MaxPrice"] = self.maxPrice!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllowCidrBlocks"] as? [String] {
+                    self.allowCidrBlocks = value
+                }
+                if let value = dict["AllowCrossAz"] as? Bool {
+                    self.allowCrossAz = value
+                }
+                if let value = dict["AllowDifferentGeneration"] as? Bool {
+                    self.allowDifferentGeneration = value
+                }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["MaxPrice"] as? Double {
+                    self.maxPrice = value
+                }
+            }
+        }
         public class NetworkInterfaces : Tea.TeaModel {
             public var instanceType: String?
 
@@ -22696,6 +22904,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var instanceType: String?
 
+        public var instanceTypeCandidateOptions: DescribeScalingConfigurationsResponseBody.ScalingConfigurations.InstanceTypeCandidateOptions?
+
         public var instanceTypes: [String]?
 
         public var internetChargeType: String?
@@ -22804,6 +23014,7 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceTypeCandidateOptions?.validate()
             try self.resourcePoolOptions?.validate()
             try self.schedulerOptions?.validate()
             try self.securityOptions?.validate()
@@ -22894,6 +23105,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.instanceType != nil {
                 map["InstanceType"] = self.instanceType!
+            }
+            if self.instanceTypeCandidateOptions != nil {
+                map["InstanceTypeCandidateOptions"] = self.instanceTypeCandidateOptions?.toMap()
             }
             if self.instanceTypes != nil {
                 map["InstanceTypes"] = self.instanceTypes!
@@ -23160,6 +23374,11 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceType"] as? String {
                 self.instanceType = value
+            }
+            if let value = dict["InstanceTypeCandidateOptions"] as? [String: Any?] {
+                var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.InstanceTypeCandidateOptions()
+                model.fromMap(value)
+                self.instanceTypeCandidateOptions = model
             }
             if let value = dict["InstanceTypes"] as? [String] {
                 self.instanceTypes = value
@@ -35314,6 +35533,68 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class InstanceTypeCandidateOptions : Tea.TeaModel {
+        public var allowCidrBlocks: [String]?
+
+        public var allowCrossAz: Bool?
+
+        public var allowDifferentGeneration: Bool?
+
+        public var enabled: Bool?
+
+        public var maxPrice: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrBlocks != nil {
+                map["AllowCidrBlocks"] = self.allowCidrBlocks!
+            }
+            if self.allowCrossAz != nil {
+                map["AllowCrossAz"] = self.allowCrossAz!
+            }
+            if self.allowDifferentGeneration != nil {
+                map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxPrice != nil {
+                map["MaxPrice"] = self.maxPrice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowCidrBlocks"] as? [String] {
+                self.allowCidrBlocks = value
+            }
+            if let value = dict["AllowCrossAz"] as? Bool {
+                self.allowCrossAz = value
+            }
+            if let value = dict["AllowDifferentGeneration"] as? Bool {
+                self.allowDifferentGeneration = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxPrice"] as? Double {
+                self.maxPrice = value
+            }
+        }
+    }
     public class InstanceTypeOverrides : Tea.TeaModel {
         public var instanceType: String?
 
@@ -35564,6 +35845,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var instancePatternInfos: [ModifyScalingConfigurationRequest.InstancePatternInfos]?
 
+    public var instanceTypeCandidateOptions: ModifyScalingConfigurationRequest.InstanceTypeCandidateOptions?
+
     public var instanceTypeOverrides: [ModifyScalingConfigurationRequest.InstanceTypeOverrides]?
 
     public var instanceTypes: [String]?
@@ -35651,6 +35934,7 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.instanceTypeCandidateOptions?.validate()
         try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
@@ -35734,6 +36018,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["InstancePatternInfos"] = tmp
+        }
+        if self.instanceTypeCandidateOptions != nil {
+            map["InstanceTypeCandidateOptions"] = self.instanceTypeCandidateOptions?.toMap()
         }
         if self.instanceTypeOverrides != nil {
             var tmp : [Any] = []
@@ -35964,6 +36251,11 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
                 }
             }
             self.instancePatternInfos = tmp
+        }
+        if let value = dict["InstanceTypeCandidateOptions"] as? [String: Any?] {
+            var model = ModifyScalingConfigurationRequest.InstanceTypeCandidateOptions()
+            model.fromMap(value)
+            self.instanceTypeCandidateOptions = model
         }
         if let value = dict["InstanceTypeOverrides"] as? [Any?] {
             var tmp : [ModifyScalingConfigurationRequest.InstanceTypeOverrides] = []
@@ -36670,6 +36962,68 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class InstanceTypeCandidateOptions : Tea.TeaModel {
+        public var allowCidrBlocks: [String]?
+
+        public var allowCrossAz: Bool?
+
+        public var allowDifferentGeneration: Bool?
+
+        public var enabled: Bool?
+
+        public var maxPrice: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCidrBlocks != nil {
+                map["AllowCidrBlocks"] = self.allowCidrBlocks!
+            }
+            if self.allowCrossAz != nil {
+                map["AllowCrossAz"] = self.allowCrossAz!
+            }
+            if self.allowDifferentGeneration != nil {
+                map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxPrice != nil {
+                map["MaxPrice"] = self.maxPrice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowCidrBlocks"] as? [String] {
+                self.allowCidrBlocks = value
+            }
+            if let value = dict["AllowCrossAz"] as? Bool {
+                self.allowCrossAz = value
+            }
+            if let value = dict["AllowDifferentGeneration"] as? Bool {
+                self.allowDifferentGeneration = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxPrice"] as? Double {
+                self.maxPrice = value
+            }
+        }
+    }
     public class InstanceTypeOverrides : Tea.TeaModel {
         public var instanceType: String?
 
@@ -36920,6 +37274,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var instancePatternInfos: [ModifyScalingConfigurationShrinkRequest.InstancePatternInfos]?
 
+    public var instanceTypeCandidateOptions: ModifyScalingConfigurationShrinkRequest.InstanceTypeCandidateOptions?
+
     public var instanceTypeOverrides: [ModifyScalingConfigurationShrinkRequest.InstanceTypeOverrides]?
 
     public var instanceTypes: [String]?
@@ -37007,6 +37363,7 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.instanceTypeCandidateOptions?.validate()
         try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
@@ -37090,6 +37447,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["InstancePatternInfos"] = tmp
+        }
+        if self.instanceTypeCandidateOptions != nil {
+            map["InstanceTypeCandidateOptions"] = self.instanceTypeCandidateOptions?.toMap()
         }
         if self.instanceTypeOverrides != nil {
             var tmp : [Any] = []
@@ -37320,6 +37680,11 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
                 }
             }
             self.instancePatternInfos = tmp
+        }
+        if let value = dict["InstanceTypeCandidateOptions"] as? [String: Any?] {
+            var model = ModifyScalingConfigurationShrinkRequest.InstanceTypeCandidateOptions()
+            model.fromMap(value)
+            self.instanceTypeCandidateOptions = model
         }
         if let value = dict["InstanceTypeOverrides"] as? [Any?] {
             var tmp : [ModifyScalingConfigurationShrinkRequest.InstanceTypeOverrides] = []
