@@ -201,6 +201,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateEvaluationReportWithOptions(_ tmpReq: GenerateEvaluationReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateEvaluationReportResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GenerateEvaluationReportShrinkRequest = GenerateEvaluationReportShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.accountIds)) {
+            request.accountIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.accountIds, "AccountIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.accountIdsShrink)) {
+            query["AccountIds"] = request.accountIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reportType)) {
+            query["ReportType"] = request.reportType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateEvaluationReport",
+            "version": "2021-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateEvaluationReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateEvaluationReport(_ request: GenerateEvaluationReportRequest) async throws -> GenerateEvaluationReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateEvaluationReportWithOptions(request as! GenerateEvaluationReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAccountFactoryBaselineWithOptions(_ request: GetAccountFactoryBaselineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAccountFactoryBaselineResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
