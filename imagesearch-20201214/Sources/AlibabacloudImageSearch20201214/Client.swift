@@ -272,6 +272,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkImageExistsWithOptions(_ request: CheckImageExistsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckImageExistsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.picName)) {
+            body["PicName"] = request.picName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            body["ProductId"] = request.productId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckImageExists",
+            "version": "2020-12-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckImageExistsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkImageExists(_ request: CheckImageExistsRequest) async throws -> CheckImageExistsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkImageExistsWithOptions(request as! CheckImageExistsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func compareSimilarByImageWithOptions(_ request: CompareSimilarByImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CompareSimilarByImageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

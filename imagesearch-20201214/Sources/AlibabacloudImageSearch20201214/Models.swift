@@ -312,7 +312,79 @@ public class AddImageAdvanceRequest : Tea.TeaModel {
 
 public class AddImageResponseBody : Tea.TeaModel {
     public class PicInfo : Tea.TeaModel {
+        public class AllCategories : Tea.TeaModel {
+            public var id: Int32?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Id"] as? Int32 {
+                    self.id = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public class MultiRegion : Tea.TeaModel {
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+            }
+        }
+        public var allCategories: [AddImageResponseBody.PicInfo.AllCategories]?
+
         public var categoryId: Int32?
+
+        public var multiRegion: [AddImageResponseBody.PicInfo.MultiRegion]?
 
         public var region: String?
 
@@ -330,8 +402,22 @@ public class AddImageResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allCategories != nil {
+                var tmp : [Any] = []
+                for k in self.allCategories! {
+                    tmp.append(k.toMap())
+                }
+                map["AllCategories"] = tmp
+            }
             if self.categoryId != nil {
                 map["CategoryId"] = self.categoryId!
+            }
+            if self.multiRegion != nil {
+                var tmp : [Any] = []
+                for k in self.multiRegion! {
+                    tmp.append(k.toMap())
+                }
+                map["MultiRegion"] = tmp
             }
             if self.region != nil {
                 map["Region"] = self.region!
@@ -341,8 +427,34 @@ public class AddImageResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllCategories"] as? [Any?] {
+                var tmp : [AddImageResponseBody.PicInfo.AllCategories] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddImageResponseBody.PicInfo.AllCategories()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.allCategories = tmp
+            }
             if let value = dict["CategoryId"] as? Int32 {
                 self.categoryId = value
+            }
+            if let value = dict["MultiRegion"] as? [Any?] {
+                var tmp : [AddImageResponseBody.PicInfo.MultiRegion] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddImageResponseBody.PicInfo.MultiRegion()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.multiRegion = tmp
             }
             if let value = dict["Region"] as? String {
                 self.region = value
@@ -458,6 +570,295 @@ public class AddImageResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = AddImageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CheckImageExistsRequest : Tea.TeaModel {
+    public var instanceName: String?
+
+    public var picName: String?
+
+    public var productId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.picName != nil {
+            map["PicName"] = self.picName!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["PicName"] as? String {
+            self.picName = value
+        }
+        if let value = dict["ProductId"] as? String {
+            self.productId = value
+        }
+    }
+}
+
+public class CheckImageExistsResponseBody : Tea.TeaModel {
+    public class Auctions : Tea.TeaModel {
+        public var categoryId: Int32?
+
+        public var customContent: String?
+
+        public var intAttr: Int32?
+
+        public var intAttr2: Int32?
+
+        public var intAttr3: Int32?
+
+        public var intAttr4: Int32?
+
+        public var picName: String?
+
+        public var productId: String?
+
+        public var strAttr: String?
+
+        public var strAttr2: String?
+
+        public var strAttr3: String?
+
+        public var strAttr4: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.categoryId != nil {
+                map["CategoryId"] = self.categoryId!
+            }
+            if self.customContent != nil {
+                map["CustomContent"] = self.customContent!
+            }
+            if self.intAttr != nil {
+                map["IntAttr"] = self.intAttr!
+            }
+            if self.intAttr2 != nil {
+                map["IntAttr2"] = self.intAttr2!
+            }
+            if self.intAttr3 != nil {
+                map["IntAttr3"] = self.intAttr3!
+            }
+            if self.intAttr4 != nil {
+                map["IntAttr4"] = self.intAttr4!
+            }
+            if self.picName != nil {
+                map["PicName"] = self.picName!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.strAttr != nil {
+                map["StrAttr"] = self.strAttr!
+            }
+            if self.strAttr2 != nil {
+                map["StrAttr2"] = self.strAttr2!
+            }
+            if self.strAttr3 != nil {
+                map["StrAttr3"] = self.strAttr3!
+            }
+            if self.strAttr4 != nil {
+                map["StrAttr4"] = self.strAttr4!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CategoryId"] as? Int32 {
+                self.categoryId = value
+            }
+            if let value = dict["CustomContent"] as? String {
+                self.customContent = value
+            }
+            if let value = dict["IntAttr"] as? Int32 {
+                self.intAttr = value
+            }
+            if let value = dict["IntAttr2"] as? Int32 {
+                self.intAttr2 = value
+            }
+            if let value = dict["IntAttr3"] as? Int32 {
+                self.intAttr3 = value
+            }
+            if let value = dict["IntAttr4"] as? Int32 {
+                self.intAttr4 = value
+            }
+            if let value = dict["PicName"] as? String {
+                self.picName = value
+            }
+            if let value = dict["ProductId"] as? String {
+                self.productId = value
+            }
+            if let value = dict["StrAttr"] as? String {
+                self.strAttr = value
+            }
+            if let value = dict["StrAttr2"] as? String {
+                self.strAttr2 = value
+            }
+            if let value = dict["StrAttr3"] as? String {
+                self.strAttr3 = value
+            }
+            if let value = dict["StrAttr4"] as? String {
+                self.strAttr4 = value
+            }
+        }
+    }
+    public var auctions: CheckImageExistsResponseBody.Auctions?
+
+    public var code: Int32?
+
+    public var exists: Bool?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.auctions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.auctions != nil {
+            map["Auctions"] = self.auctions?.toMap()
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.exists != nil {
+            map["Exists"] = self.exists!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Auctions"] as? [String: Any?] {
+            var model = CheckImageExistsResponseBody.Auctions()
+            model.fromMap(value)
+            self.auctions = model
+        }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Exists"] as? Bool {
+            self.exists = value
+        }
+        if let value = dict["Msg"] as? String {
+            self.msg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CheckImageExistsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckImageExistsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CheckImageExistsResponseBody()
             model.fromMap(value)
             self.body = model
         }
