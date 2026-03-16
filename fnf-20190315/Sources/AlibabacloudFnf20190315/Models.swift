@@ -108,6 +108,8 @@ public class CreateFlowRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
 
     public var type: String?
@@ -145,6 +147,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -176,6 +181,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["RoleArn"] as? String {
             self.roleArn = value
         }
@@ -197,6 +205,8 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
     public var externalStorageLocation: String?
 
     public var name: String?
+
+    public var resourceGroupId: String?
 
     public var roleArn: String?
 
@@ -234,6 +244,9 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -262,6 +275,9 @@ public class CreateFlowShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleArn"] as? String {
             self.roleArn = value
@@ -381,6 +397,8 @@ public class CreateFlowResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
 
     public var type: String?
@@ -427,6 +445,9 @@ public class CreateFlowResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -466,6 +487,9 @@ public class CreateFlowResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleArn"] as? String {
             self.roleArn = value
@@ -1990,6 +2014,8 @@ public class DescribeFlowResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
 
     public var type: String?
@@ -2036,6 +2062,9 @@ public class DescribeFlowResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -2075,6 +2104,9 @@ public class DescribeFlowResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleArn"] as? String {
             self.roleArn = value
@@ -4152,6 +4184,8 @@ public class ListFlowsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -4172,6 +4206,9 @@ public class ListFlowsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -4182,6 +4219,9 @@ public class ListFlowsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -4294,6 +4334,8 @@ public class ListFlowsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var resourceGroupId: String?
+
         public var roleArn: String?
 
         public var type: String?
@@ -4337,6 +4379,9 @@ public class ListFlowsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.roleArn != nil {
                 map["RoleArn"] = self.roleArn!
             }
@@ -4373,6 +4418,9 @@ public class ListFlowsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["RoleArn"] as? String {
                 self.roleArn = value
@@ -6205,6 +6253,8 @@ public class UpdateFlowResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var roleArn: String?
 
     public var type: String?
@@ -6251,6 +6301,9 @@ public class UpdateFlowResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -6290,6 +6343,9 @@ public class UpdateFlowResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleArn"] as? String {
             self.roleArn = value
