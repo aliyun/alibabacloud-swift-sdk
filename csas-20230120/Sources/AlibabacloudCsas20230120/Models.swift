@@ -16968,13 +16968,77 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Processes : Tea.TeaModel {
+            public var cpu: Double?
+
+            public var description_: String?
+
+            public var memory: Int32?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.memory != nil {
+                    map["Memory"] = self.memory!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cpu"] as? Double {
+                    self.cpu = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Memory"] as? Int32 {
+                    self.memory = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
         public var appStatus: String?
 
         public var appVersion: String?
 
         public var autoLoginStatus: String?
 
+        public var batteryHealthPercentage: Int32?
+
+        public var batteryRemainingPercentage: Int32?
+
         public var CPU: String?
+
+        public var city: String?
+
+        public var continent: String?
+
+        public var country: String?
 
         public var createTime: String?
 
@@ -16994,6 +17058,10 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var disk: String?
 
+        public var diskAvailable: Int32?
+
+        public var diskUsed: Int32?
+
         public var dlpStatus: String?
 
         public var edrStatus: String?
@@ -17006,6 +17074,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var innerIP: String?
 
+        public var joinAdDomain: Bool?
+
         public var mac: String?
 
         public var matchDeviceGroupIds: [String]?
@@ -17017,6 +17087,10 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
         public var netInterfaceInfo: [GetUserDeviceResponseBody.Device.NetInterfaceInfo]?
 
         public var paStatus: String?
+
+        public var processes: [GetUserDeviceResponseBody.Device.Processes]?
+
+        public var province: String?
 
         public var saseUserId: String?
 
@@ -17033,6 +17107,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
         public var snSystem: String?
 
         public var srcIP: String?
+
+        public var terminalInfoCollectTime: Int64?
 
         public var updateTime: String?
 
@@ -17063,8 +17139,23 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.autoLoginStatus != nil {
                 map["AutoLoginStatus"] = self.autoLoginStatus!
             }
+            if self.batteryHealthPercentage != nil {
+                map["BatteryHealthPercentage"] = self.batteryHealthPercentage!
+            }
+            if self.batteryRemainingPercentage != nil {
+                map["BatteryRemainingPercentage"] = self.batteryRemainingPercentage!
+            }
             if self.CPU != nil {
                 map["CPU"] = self.CPU!
+            }
+            if self.city != nil {
+                map["City"] = self.city!
+            }
+            if self.continent != nil {
+                map["Continent"] = self.continent!
+            }
+            if self.country != nil {
+                map["Country"] = self.country!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -17093,6 +17184,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.disk != nil {
                 map["Disk"] = self.disk!
             }
+            if self.diskAvailable != nil {
+                map["DiskAvailable"] = self.diskAvailable!
+            }
+            if self.diskUsed != nil {
+                map["DiskUsed"] = self.diskUsed!
+            }
             if self.dlpStatus != nil {
                 map["DlpStatus"] = self.dlpStatus!
             }
@@ -17115,6 +17212,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.innerIP != nil {
                 map["InnerIP"] = self.innerIP!
             }
+            if self.joinAdDomain != nil {
+                map["JoinAdDomain"] = self.joinAdDomain!
+            }
             if self.mac != nil {
                 map["Mac"] = self.mac!
             }
@@ -17136,6 +17236,16 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
+            }
+            if self.processes != nil {
+                var tmp : [Any] = []
+                for k in self.processes! {
+                    tmp.append(k.toMap())
+                }
+                map["Processes"] = tmp
+            }
+            if self.province != nil {
+                map["Province"] = self.province!
             }
             if self.saseUserId != nil {
                 map["SaseUserId"] = self.saseUserId!
@@ -17161,6 +17271,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.srcIP != nil {
                 map["SrcIP"] = self.srcIP!
             }
+            if self.terminalInfoCollectTime != nil {
+                map["TerminalInfoCollectTime"] = self.terminalInfoCollectTime!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -17184,8 +17297,23 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if let value = dict["AutoLoginStatus"] as? String {
                 self.autoLoginStatus = value
             }
+            if let value = dict["BatteryHealthPercentage"] as? Int32 {
+                self.batteryHealthPercentage = value
+            }
+            if let value = dict["BatteryRemainingPercentage"] as? Int32 {
+                self.batteryRemainingPercentage = value
+            }
             if let value = dict["CPU"] as? String {
                 self.CPU = value
+            }
+            if let value = dict["City"] as? String {
+                self.city = value
+            }
+            if let value = dict["Continent"] as? String {
+                self.continent = value
+            }
+            if let value = dict["Country"] as? String {
+                self.country = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -17213,6 +17341,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Disk"] as? String {
                 self.disk = value
+            }
+            if let value = dict["DiskAvailable"] as? Int32 {
+                self.diskAvailable = value
+            }
+            if let value = dict["DiskUsed"] as? Int32 {
+                self.diskUsed = value
             }
             if let value = dict["DlpStatus"] as? String {
                 self.dlpStatus = value
@@ -17242,6 +17376,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if let value = dict["InnerIP"] as? String {
                 self.innerIP = value
             }
+            if let value = dict["JoinAdDomain"] as? Bool {
+                self.joinAdDomain = value
+            }
             if let value = dict["Mac"] as? String {
                 self.mac = value
             }
@@ -17270,6 +17407,22 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if let value = dict["PaStatus"] as? String {
                 self.paStatus = value
             }
+            if let value = dict["Processes"] as? [Any?] {
+                var tmp : [GetUserDeviceResponseBody.Device.Processes] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetUserDeviceResponseBody.Device.Processes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.processes = tmp
+            }
+            if let value = dict["Province"] as? String {
+                self.province = value
+            }
             if let value = dict["SaseUserId"] as? String {
                 self.saseUserId = value
             }
@@ -17293,6 +17446,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if let value = dict["SrcIP"] as? String {
                 self.srcIP = value
+            }
+            if let value = dict["TerminalInfoCollectTime"] as? Int64 {
+                self.terminalInfoCollectTime = value
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
@@ -23617,6 +23773,8 @@ public class ListExcessiveDeviceRegistrationApplicationsResponseBody : Tea.TeaMo
 
         public var deviceType: String?
 
+        public var fullDepartment: [String]?
+
         public var hostname: String?
 
         public var isUsed: Bool?
@@ -23661,6 +23819,9 @@ public class ListExcessiveDeviceRegistrationApplicationsResponseBody : Tea.TeaMo
             if self.deviceType != nil {
                 map["DeviceType"] = self.deviceType!
             }
+            if self.fullDepartment != nil {
+                map["FullDepartment"] = self.fullDepartment!
+            }
             if self.hostname != nil {
                 map["Hostname"] = self.hostname!
             }
@@ -23701,6 +23862,9 @@ public class ListExcessiveDeviceRegistrationApplicationsResponseBody : Tea.TeaMo
             }
             if let value = dict["DeviceType"] as? String {
                 self.deviceType = value
+            }
+            if let value = dict["FullDepartment"] as? [String] {
+                self.fullDepartment = value
             }
             if let value = dict["Hostname"] as? String {
                 self.hostname = value
@@ -29249,6 +29413,8 @@ public class ListUninstallApplicationsResponseBody : Tea.TeaModel {
 
         public var devType: String?
 
+        public var fullDepartment: [String]?
+
         public var hostname: String?
 
         public var idpName: String?
@@ -29294,6 +29460,9 @@ public class ListUninstallApplicationsResponseBody : Tea.TeaModel {
             if self.devType != nil {
                 map["DevType"] = self.devType!
             }
+            if self.fullDepartment != nil {
+                map["FullDepartment"] = self.fullDepartment!
+            }
             if self.hostname != nil {
                 map["Hostname"] = self.hostname!
             }
@@ -29337,6 +29506,9 @@ public class ListUninstallApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DevType"] as? String {
                 self.devType = value
+            }
+            if let value = dict["FullDepartment"] as? [String] {
+                self.fullDepartment = value
             }
             if let value = dict["Hostname"] as? String {
                 self.hostname = value
@@ -30063,6 +30235,12 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
 
         public var CPU: String?
 
+        public var city: String?
+
+        public var continent: String?
+
+        public var country: String?
+
         public var createTime: String?
 
         public var department: String?
@@ -30085,11 +30263,15 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
 
         public var edrStatus: String?
 
+        public var fullDepartment: [String]?
+
         public var hostname: String?
 
         public var iaStatus: String?
 
         public var innerIP: String?
+
+        public var joinAdDomain: Bool?
 
         public var mac: String?
 
@@ -30102,6 +30284,8 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
         public var netInterfaceInfo: [ListUserDevicesResponseBody.Devices.NetInterfaceInfo]?
 
         public var paStatus: String?
+
+        public var province: String?
 
         public var saseUserId: String?
 
@@ -30151,6 +30335,15 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.CPU != nil {
                 map["CPU"] = self.CPU!
             }
+            if self.city != nil {
+                map["City"] = self.city!
+            }
+            if self.continent != nil {
+                map["Continent"] = self.continent!
+            }
+            if self.country != nil {
+                map["Country"] = self.country!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -30184,6 +30377,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.edrStatus != nil {
                 map["EdrStatus"] = self.edrStatus!
             }
+            if self.fullDepartment != nil {
+                map["FullDepartment"] = self.fullDepartment!
+            }
             if self.hostname != nil {
                 map["Hostname"] = self.hostname!
             }
@@ -30192,6 +30388,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if self.innerIP != nil {
                 map["InnerIP"] = self.innerIP!
+            }
+            if self.joinAdDomain != nil {
+                map["JoinAdDomain"] = self.joinAdDomain!
             }
             if self.mac != nil {
                 map["Mac"] = self.mac!
@@ -30214,6 +30413,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
+            }
+            if self.province != nil {
+                map["Province"] = self.province!
             }
             if self.saseUserId != nil {
                 map["SaseUserId"] = self.saseUserId!
@@ -30265,6 +30467,15 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if let value = dict["CPU"] as? String {
                 self.CPU = value
             }
+            if let value = dict["City"] as? String {
+                self.city = value
+            }
+            if let value = dict["Continent"] as? String {
+                self.continent = value
+            }
+            if let value = dict["Country"] as? String {
+                self.country = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -30298,6 +30509,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if let value = dict["EdrStatus"] as? String {
                 self.edrStatus = value
             }
+            if let value = dict["FullDepartment"] as? [String] {
+                self.fullDepartment = value
+            }
             if let value = dict["Hostname"] as? String {
                 self.hostname = value
             }
@@ -30306,6 +30520,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["InnerIP"] as? String {
                 self.innerIP = value
+            }
+            if let value = dict["JoinAdDomain"] as? Bool {
+                self.joinAdDomain = value
             }
             if let value = dict["Mac"] as? String {
                 self.mac = value
@@ -30334,6 +30551,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PaStatus"] as? String {
                 self.paStatus = value
+            }
+            if let value = dict["Province"] as? String {
+                self.province = value
             }
             if let value = dict["SaseUserId"] as? String {
                 self.saseUserId = value
@@ -31845,6 +32065,8 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
         public var email: String?
 
+        public var fullDepartment: [String]?
+
         public var idpName: String?
 
         public var phone: String?
@@ -31875,6 +32097,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["Email"] = self.email!
             }
+            if self.fullDepartment != nil {
+                map["FullDepartment"] = self.fullDepartment!
+            }
             if self.idpName != nil {
                 map["IdpName"] = self.idpName!
             }
@@ -31900,6 +32125,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
             }
             if let value = dict["Email"] as? String {
                 self.email = value
+            }
+            if let value = dict["FullDepartment"] as? [String] {
+                self.fullDepartment = value
             }
             if let value = dict["IdpName"] as? String {
                 self.idpName = value
