@@ -3944,11 +3944,15 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var caCertIdentifier: String?
+
     public var certIdentifier: String?
 
     public var gatewayUniqueId: String?
 
     public var http2: String?
+
+    public var mtlsEnabled: Bool?
 
     public var mustHttps: Bool?
 
@@ -3980,6 +3984,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.caCertIdentifier != nil {
+            map["CaCertIdentifier"] = self.caCertIdentifier!
+        }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
@@ -3988,6 +3995,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         }
         if self.http2 != nil {
             map["Http2"] = self.http2!
+        }
+        if self.mtlsEnabled != nil {
+            map["MtlsEnabled"] = self.mtlsEnabled!
         }
         if self.mustHttps != nil {
             map["MustHttps"] = self.mustHttps!
@@ -4015,6 +4025,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["CaCertIdentifier"] as? String {
+            self.caCertIdentifier = value
+        }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
         }
@@ -4023,6 +4036,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         }
         if let value = dict["Http2"] as? String {
             self.http2 = value
+        }
+        if let value = dict["MtlsEnabled"] as? Bool {
+            self.mtlsEnabled = value
         }
         if let value = dict["MustHttps"] as? Bool {
             self.mustHttps = value
@@ -4050,11 +4066,15 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
 public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var caCertIdentifier: String?
+
     public var certIdentifier: String?
 
     public var gatewayUniqueId: String?
 
     public var http2: String?
+
+    public var mtlsEnabled: Bool?
 
     public var mustHttps: Bool?
 
@@ -4085,6 +4105,9 @@ public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.caCertIdentifier != nil {
+            map["CaCertIdentifier"] = self.caCertIdentifier!
+        }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
@@ -4093,6 +4116,9 @@ public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
         }
         if self.http2 != nil {
             map["Http2"] = self.http2!
+        }
+        if self.mtlsEnabled != nil {
+            map["MtlsEnabled"] = self.mtlsEnabled!
         }
         if self.mustHttps != nil {
             map["MustHttps"] = self.mustHttps!
@@ -4120,6 +4146,9 @@ public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["CaCertIdentifier"] as? String {
+            self.caCertIdentifier = value
+        }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
         }
@@ -4128,6 +4157,9 @@ public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Http2"] as? String {
             self.http2 = value
+        }
+        if let value = dict["MtlsEnabled"] as? Bool {
+            self.mtlsEnabled = value
         }
         if let value = dict["MustHttps"] as? Bool {
             self.mustHttps = value
@@ -29511,6 +29543,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
 
         public var beforeDate: Int64?
 
+        public var caCertIdentifier: String?
+
         public var certIdentifier: String?
 
         public var certName: String?
@@ -29536,6 +29570,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
         public var isManaged: Bool?
 
         public var issuer: String?
+
+        public var mtlsEnabled: Bool?
 
         public var mustHttps: Bool?
 
@@ -29574,6 +29610,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
+            }
+            if self.caCertIdentifier != nil {
+                map["CaCertIdentifier"] = self.caCertIdentifier!
             }
             if self.certIdentifier != nil {
                 map["CertIdentifier"] = self.certIdentifier!
@@ -29614,6 +29653,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             if self.issuer != nil {
                 map["Issuer"] = self.issuer!
             }
+            if self.mtlsEnabled != nil {
+                map["MtlsEnabled"] = self.mtlsEnabled!
+            }
             if self.mustHttps != nil {
                 map["MustHttps"] = self.mustHttps!
             }
@@ -29648,6 +29690,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
+            }
+            if let value = dict["CaCertIdentifier"] as? String {
+                self.caCertIdentifier = value
             }
             if let value = dict["CertIdentifier"] as? String {
                 self.certIdentifier = value
@@ -29687,6 +29732,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Issuer"] as? String {
                 self.issuer = value
+            }
+            if let value = dict["MtlsEnabled"] as? Bool {
+                self.mtlsEnabled = value
             }
             if let value = dict["MustHttps"] as? Bool {
                 self.mustHttps = value
@@ -76535,6 +76583,8 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var caCertIdentifier: String?
+
     public var certIdentifier: String?
 
     public var gatewayUniqueId: String?
@@ -76542,6 +76592,8 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
     public var http2: String?
 
     public var id: Int64?
+
+    public var mtlsEnabled: Bool?
 
     public var mustHttps: Bool?
 
@@ -76571,6 +76623,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.caCertIdentifier != nil {
+            map["CaCertIdentifier"] = self.caCertIdentifier!
+        }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
@@ -76582,6 +76637,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.mtlsEnabled != nil {
+            map["MtlsEnabled"] = self.mtlsEnabled!
         }
         if self.mustHttps != nil {
             map["MustHttps"] = self.mustHttps!
@@ -76606,6 +76664,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["CaCertIdentifier"] as? String {
+            self.caCertIdentifier = value
+        }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
         }
@@ -76617,6 +76678,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
+        }
+        if let value = dict["MtlsEnabled"] as? Bool {
+            self.mtlsEnabled = value
         }
         if let value = dict["MustHttps"] as? Bool {
             self.mustHttps = value
@@ -76641,6 +76705,8 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
 public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var caCertIdentifier: String?
+
     public var certIdentifier: String?
 
     public var gatewayUniqueId: String?
@@ -76648,6 +76714,8 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
     public var http2: String?
 
     public var id: Int64?
+
+    public var mtlsEnabled: Bool?
 
     public var mustHttps: Bool?
 
@@ -76676,6 +76744,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.caCertIdentifier != nil {
+            map["CaCertIdentifier"] = self.caCertIdentifier!
+        }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
         }
@@ -76687,6 +76758,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.mtlsEnabled != nil {
+            map["MtlsEnabled"] = self.mtlsEnabled!
         }
         if self.mustHttps != nil {
             map["MustHttps"] = self.mustHttps!
@@ -76711,6 +76785,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["CaCertIdentifier"] as? String {
+            self.caCertIdentifier = value
+        }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
         }
@@ -76722,6 +76799,9 @@ public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
+        }
+        if let value = dict["MtlsEnabled"] as? Bool {
+            self.mtlsEnabled = value
         }
         if let value = dict["MustHttps"] as? Bool {
             self.mustHttps = value
