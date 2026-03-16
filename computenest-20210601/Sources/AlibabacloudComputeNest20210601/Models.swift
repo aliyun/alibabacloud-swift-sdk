@@ -874,6 +874,8 @@ public class CheckServiceDeployableResponseBody : Tea.TeaModel {
     public class CheckResults : Tea.TeaModel {
         public var message: String?
 
+        public var skippable: Bool?
+
         public var type: String?
 
         public var value: String?
@@ -895,6 +897,9 @@ public class CheckServiceDeployableResponseBody : Tea.TeaModel {
             if self.message != nil {
                 map["Message"] = self.message!
             }
+            if self.skippable != nil {
+                map["Skippable"] = self.skippable!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -908,6 +913,9 @@ public class CheckServiceDeployableResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Message"] as? String {
                 self.message = value
+            }
+            if let value = dict["Skippable"] as? Bool {
+                self.skippable = value
             }
             if let value = dict["Type"] as? String {
                 self.type = value
