@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchSetDesktopManagerWithOptions(_ request: BatchSetDesktopManagerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSetDesktopManagerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.isDesktopManager)) {
             body["IsDesktopManager"] = request.isDesktopManager ?? "";
         }
@@ -61,6 +64,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func changeUserPasswordWithOptions(_ request: ChangeUserPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeUserPasswordResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserId)) {
             body["EndUserId"] = request.endUserId ?? "";
         }
@@ -95,6 +101,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func checkUsedPropertyWithOptions(_ request: CheckUsedPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUsedPropertyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             query["PropertyId"] = request.propertyId!;
         }
@@ -126,6 +135,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func checkUsedPropertyValueWithOptions(_ request: CheckUsedPropertyValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUsedPropertyValueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             query["PropertyId"] = request.propertyId!;
         }
@@ -162,6 +174,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -203,6 +218,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createOrgWithOptions(_ request: CreateOrgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrgResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orgName)) {
             query["OrgName"] = request.orgName ?? "";
         }
@@ -237,6 +255,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createPropertyWithOptions(_ request: CreatePropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePropertyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyKey)) {
             body["PropertyKey"] = request.propertyKey ?? "";
         }
@@ -271,6 +292,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createResourceGroupWithOptions(_ request: CreateResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.isResourceGroupWithOfficeSite)) {
             query["IsResourceGroupWithOfficeSite"] = request.isResourceGroupWithOfficeSite!;
         }
@@ -310,6 +334,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoLockTime)) {
             query["AutoLockTime"] = request.autoLockTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isLocalAdmin)) {
             query["IsLocalAdmin"] = request.isLocalAdmin!;
@@ -353,6 +380,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteResourceGroupWithOptions(_ request: DeleteResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
@@ -387,6 +417,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteUserPropertyValueWithOptions(_ request: DeleteUserPropertyValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUserPropertyValueResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             body["PropertyId"] = request.propertyId!;
         }
@@ -426,6 +459,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
@@ -472,6 +508,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.excludeAttachedLoginPolicyGroups)) {
             query["ExcludeAttachedLoginPolicyGroups"] = request.excludeAttachedLoginPolicyGroups!;
@@ -531,6 +570,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adDomain)) {
             query["AdDomain"] = request.adDomain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             query["EndUserIds"] = request.endUserIds ?? [];
         }
@@ -574,6 +616,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeOrgByLayerWithOptions(_ request: DescribeOrgByLayerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOrgByLayerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orgName)) {
             body["OrgName"] = request.orgName ?? "";
         }
@@ -613,6 +658,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.showExtrasShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.showExtras, "ShowExtras", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -656,6 +704,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeResourceGroupsWithOptions(_ request: DescribeResourceGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeResourceGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunResourceGroupIds)) {
+            query["AliyunResourceGroupIds"] = request.aliyunResourceGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.needContainResourceGroupWithOfficeSite)) {
             query["NeedContainResourceGroupWithOfficeSite"] = request.needContainResourceGroupWithOfficeSite!;
         }
@@ -703,6 +757,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribeUsersShrinkRequest = DescribeUsersShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterMap)) {
+            request.filterMapShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterMap, "FilterMap", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.filterWithAssignedResource)) {
             request.filterWithAssignedResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterWithAssignedResource, "FilterWithAssignedResource", "json")
         }
@@ -713,8 +770,14 @@ open class Client : AlibabacloudOpenApi.Client {
             request.showExtrasShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.showExtras, "ShowExtras", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterMapShrink)) {
+            query["FilterMap"] = request.filterMapShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -789,21 +852,33 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: FilterUsersShrinkRequest = FilterUsersShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterMap)) {
+            request.filterMapShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterMap, "FilterMap", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.orderParam)) {
             request.orderParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.orderParam, "OrderParam", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.excludeEndUserIds)) {
             query["ExcludeEndUserIds"] = request.excludeEndUserIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.filterMapShrink)) {
+            query["FilterMap"] = request.filterMapShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.includeDesktopCount)) {
             query["IncludeDesktopCount"] = request.includeDesktopCount!;
         }
         if (!TeaUtils.Client.isUnset(request.includeDesktopGroupCount)) {
             query["IncludeDesktopGroupCount"] = request.includeDesktopGroupCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.includeEndUserIds)) {
+            query["IncludeEndUserIds"] = request.includeEndUserIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.includeOrgInfo)) {
             query["IncludeOrgInfo"] = request.includeOrgInfo!;
@@ -894,8 +969,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func initTenantAliasWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> InitTenantAliasResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func initTenantAliasWithOptions(_ request: InitTenantAliasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitTenantAliasResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "InitTenantAlias",
             "version": "2021-03-08",
@@ -912,14 +994,21 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func initTenantAlias() async throws -> InitTenantAliasResponse {
+    public func initTenantAlias(_ request: InitTenantAliasRequest) async throws -> InitTenantAliasResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await initTenantAliasWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await initTenantAliasWithOptions(request as! InitTenantAliasRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPropertyWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListPropertyResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func listPropertyWithOptions(_ request: ListPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPropertyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ListProperty",
             "version": "2021-03-08",
@@ -936,15 +1025,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProperty() async throws -> ListPropertyResponse {
+    public func listProperty(_ request: ListPropertyRequest) async throws -> ListPropertyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listPropertyWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await listPropertyWithOptions(request as! ListPropertyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPropertyValueWithOptions(_ request: ListPropertyValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPropertyValueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             query["PropertyId"] = request.propertyId!;
         }
@@ -979,6 +1071,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adDomain)) {
             query["AdDomain"] = request.adDomain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }
@@ -1010,6 +1105,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func lockUsersWithOptions(_ request: LockUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LockUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.logoutSession)) {
             query["LogoutSession"] = request.logoutSession!;
         }
@@ -1046,6 +1144,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyGroupWithOptions(_ request: ModifyGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -1083,6 +1184,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyOrgWithOptions(_ request: ModifyOrgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyOrgResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orgId)) {
             query["OrgId"] = request.orgId ?? "";
         }
@@ -1117,6 +1221,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyUserWithOptions(_ request: ModifyUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.email)) {
             query["Email"] = request.email ?? "";
         }
@@ -1154,6 +1261,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func moveOrgWithOptions(_ request: MoveOrgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MoveOrgResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newParentOrgId)) {
             body["NewParentOrgId"] = request.newParentOrgId ?? "";
         }
@@ -1188,6 +1298,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func moveUserOrgWithOptions(_ request: MoveUserOrgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MoveUserOrgResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             body["EndUserIds"] = request.endUserIds ?? [];
         }
@@ -1219,8 +1332,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func querySyncStatusByAliUidWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySyncStatusByAliUidResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func querySyncStatusByAliUidWithOptions(_ request: QuerySyncStatusByAliUidRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySyncStatusByAliUidResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "QuerySyncStatusByAliUid",
             "version": "2021-03-08",
@@ -1237,15 +1357,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func querySyncStatusByAliUid() async throws -> QuerySyncStatusByAliUidResponse {
+    public func querySyncStatusByAliUid(_ request: QuerySyncStatusByAliUidRequest) async throws -> QuerySyncStatusByAliUidResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await querySyncStatusByAliUidWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await querySyncStatusByAliUidWithOptions(request as! QuerySyncStatusByAliUidRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func removeGroupWithOptions(_ request: RemoveGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId ?? "";
         }
@@ -1283,6 +1406,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adDomain)) {
             query["AdDomain"] = request.adDomain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }
@@ -1314,6 +1440,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func removeOrgWithOptions(_ request: RemoveOrgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveOrgResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orgId)) {
             body["OrgId"] = request.orgId ?? "";
         }
@@ -1344,11 +1473,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func removePropertyWithOptions(_ request: RemovePropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemovePropertyResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             body["PropertyId"] = request.propertyId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1376,6 +1510,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func removeUsersWithOptions(_ request: RemoveUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.users)) {
             body["Users"] = request.users ?? [];
         }
@@ -1407,6 +1544,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetUserPasswordWithOptions(_ request: ResetUserPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetUserPasswordResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.notifyType)) {
             body["NotifyType"] = request.notifyType!;
         }
@@ -1441,6 +1581,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setUserPropertyValueWithOptions(_ request: SetUserPropertyValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetUserPropertyValueResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             body["PropertyId"] = request.propertyId!;
         }
@@ -1508,6 +1651,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adDomain)) {
             query["AdDomain"] = request.adDomain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }
@@ -1542,6 +1688,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoLockTime)) {
             query["AutoLockTime"] = request.autoLockTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.users)) {
             body["Users"] = request.users ?? [];
@@ -1574,6 +1723,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updatePropertyWithOptions(_ request: UpdatePropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePropertyResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.propertyId)) {
             body["PropertyId"] = request.propertyId!;
@@ -1585,6 +1738,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["PropertyValues"] = request.propertyValues ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1612,6 +1766,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func userBatchJoinGroupWithOptions(_ request: UserBatchJoinGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UserBatchJoinGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             body["EndUserIds"] = request.endUserIds ?? [];
         }
@@ -1646,6 +1803,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func userBatchQuitGroupWithOptions(_ request: UserBatchQuitGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UserBatchQuitGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            body["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             body["EndUserIds"] = request.endUserIds ?? [];
         }

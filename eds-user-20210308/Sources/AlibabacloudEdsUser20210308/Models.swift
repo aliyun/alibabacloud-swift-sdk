@@ -439,6 +439,8 @@ public class WaIdPermissions : Tea.TeaModel {
 }
 
 public class BatchSetDesktopManagerRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var isDesktopManager: String?
 
     public var users: [String]?
@@ -457,6 +459,9 @@ public class BatchSetDesktopManagerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.isDesktopManager != nil {
             map["IsDesktopManager"] = self.isDesktopManager!
         }
@@ -468,6 +473,9 @@ public class BatchSetDesktopManagerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["IsDesktopManager"] as? String {
             self.isDesktopManager = value
         }
@@ -559,6 +567,8 @@ public class BatchSetDesktopManagerResponse : Tea.TeaModel {
 }
 
 public class ChangeUserPasswordRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var endUserId: String?
 
     public var newPassword: String?
@@ -577,6 +587,9 @@ public class ChangeUserPasswordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
@@ -588,6 +601,9 @@ public class ChangeUserPasswordRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
         }
@@ -679,6 +695,8 @@ public class ChangeUserPasswordResponse : Tea.TeaModel {
 }
 
 public class CheckUsedPropertyRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public override init() {
@@ -695,6 +713,9 @@ public class CheckUsedPropertyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -703,6 +724,9 @@ public class CheckUsedPropertyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -799,6 +823,8 @@ public class CheckUsedPropertyResponse : Tea.TeaModel {
 }
 
 public class CheckUsedPropertyValueRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public var propertyValueId: Int64?
@@ -817,6 +843,9 @@ public class CheckUsedPropertyValueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -828,6 +857,9 @@ public class CheckUsedPropertyValueRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -929,6 +961,8 @@ public class CheckUsedPropertyValueResponse : Tea.TeaModel {
 public class CreateGroupRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var businessChannel: String?
+
     public var description_: String?
 
     public var groupName: String?
@@ -954,6 +988,9 @@ public class CreateGroupRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -973,6 +1010,9 @@ public class CreateGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -1079,6 +1119,8 @@ public class CreateGroupResponse : Tea.TeaModel {
 }
 
 public class CreateOrgRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var orgName: String?
 
     public var parentOrgId: String?
@@ -1097,6 +1139,9 @@ public class CreateOrgRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.orgName != nil {
             map["OrgName"] = self.orgName!
         }
@@ -1108,6 +1153,9 @@ public class CreateOrgRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["OrgName"] as? String {
             self.orgName = value
         }
@@ -1207,6 +1255,8 @@ public class CreateOrgResponse : Tea.TeaModel {
 }
 
 public class CreatePropertyRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyKey: String?
 
     public var propertyValues: [String]?
@@ -1225,6 +1275,9 @@ public class CreatePropertyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyKey != nil {
             map["PropertyKey"] = self.propertyKey!
         }
@@ -1236,6 +1289,9 @@ public class CreatePropertyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyKey"] as? String {
             self.propertyKey = value
         }
@@ -1545,6 +1601,8 @@ public class CreatePropertyResponse : Tea.TeaModel {
 }
 
 public class CreateResourceGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var isResourceGroupWithOfficeSite: Int64?
 
     public var platform: String?
@@ -1565,6 +1623,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.isResourceGroupWithOfficeSite != nil {
             map["IsResourceGroupWithOfficeSite"] = self.isResourceGroupWithOfficeSite!
         }
@@ -1579,6 +1640,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["IsResourceGroupWithOfficeSite"] as? Int64 {
             self.isResourceGroupWithOfficeSite = value
         }
@@ -1777,6 +1841,8 @@ public class CreateUsersRequest : Tea.TeaModel {
     }
     public var autoLockTime: String?
 
+    public var businessChannel: String?
+
     public var isLocalAdmin: Bool?
 
     public var password: String?
@@ -1802,6 +1868,9 @@ public class CreateUsersRequest : Tea.TeaModel {
         if self.autoLockTime != nil {
             map["AutoLockTime"] = self.autoLockTime!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.isLocalAdmin != nil {
             map["IsLocalAdmin"] = self.isLocalAdmin!
         }
@@ -1825,6 +1894,9 @@ public class CreateUsersRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoLockTime"] as? String {
             self.autoLockTime = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["IsLocalAdmin"] as? Bool {
             self.isLocalAdmin = value
@@ -2142,6 +2214,8 @@ public class CreateUsersResponse : Tea.TeaModel {
 }
 
 public class DeleteResourceGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var resourceGroupId: String?
 
     public var resourceGroupIds: [String]?
@@ -2160,6 +2234,9 @@ public class DeleteResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -2171,6 +2248,9 @@ public class DeleteResourceGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
@@ -2262,6 +2342,8 @@ public class DeleteResourceGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteUserPropertyValueRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public var propertyValueId: Int64?
@@ -2282,6 +2364,9 @@ public class DeleteUserPropertyValueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -2296,6 +2381,9 @@ public class DeleteUserPropertyValueRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -2392,6 +2480,8 @@ public class DeleteUserPropertyValueResponse : Tea.TeaModel {
 public class DescribeGroupUserRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var businessChannel: String?
+
     public var filter: String?
 
     public var groupId: String?
@@ -2419,6 +2509,9 @@ public class DescribeGroupUserRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
@@ -2441,6 +2534,9 @@ public class DescribeGroupUserRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
@@ -2744,6 +2840,8 @@ public class DescribeGroupUserResponse : Tea.TeaModel {
 public class DescribeGroupsRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var businessChannel: String?
+
     public var excludeAttachedLoginPolicyGroups: Bool?
 
     public var groupId: String?
@@ -2779,6 +2877,9 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.excludeAttachedLoginPolicyGroups != nil {
             map["ExcludeAttachedLoginPolicyGroups"] = self.excludeAttachedLoginPolicyGroups!
         }
@@ -2813,6 +2914,9 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["ExcludeAttachedLoginPolicyGroups"] as? Bool {
             self.excludeAttachedLoginPolicyGroups = value
@@ -3085,6 +3189,8 @@ public class DescribeGroupsResponse : Tea.TeaModel {
 public class DescribeMfaDevicesRequest : Tea.TeaModel {
     public var adDomain: String?
 
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var filter: String?
@@ -3112,6 +3218,9 @@ public class DescribeMfaDevicesRequest : Tea.TeaModel {
         if self.adDomain != nil {
             map["AdDomain"] = self.adDomain!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -3134,6 +3243,9 @@ public class DescribeMfaDevicesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdDomain"] as? String {
             self.adDomain = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
@@ -3424,6 +3536,8 @@ public class DescribeMfaDevicesResponse : Tea.TeaModel {
 }
 
 public class DescribeOrgByLayerRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var orgName: String?
 
     public var parentOrgId: String?
@@ -3442,6 +3556,9 @@ public class DescribeOrgByLayerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.orgName != nil {
             map["OrgName"] = self.orgName!
         }
@@ -3453,6 +3570,9 @@ public class DescribeOrgByLayerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["OrgName"] as? String {
             self.orgName = value
         }
@@ -3612,6 +3732,8 @@ public class DescribeOrgByLayerResponse : Tea.TeaModel {
 }
 
 public class DescribeOrgsRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -3636,6 +3758,9 @@ public class DescribeOrgsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -3656,6 +3781,9 @@ public class DescribeOrgsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
         }
@@ -3675,6 +3803,8 @@ public class DescribeOrgsRequest : Tea.TeaModel {
 }
 
 public class DescribeOrgsShrinkRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -3699,6 +3829,9 @@ public class DescribeOrgsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -3719,6 +3852,9 @@ public class DescribeOrgsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
         }
@@ -3903,6 +4039,10 @@ public class DescribeOrgsResponse : Tea.TeaModel {
 }
 
 public class DescribeResourceGroupsRequest : Tea.TeaModel {
+    public var aliyunResourceGroupIds: [String]?
+
+    public var businessChannel: String?
+
     public var needContainResourceGroupWithOfficeSite: Int64?
 
     public var pageNumber: Int32?
@@ -3929,6 +4069,12 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aliyunResourceGroupIds != nil {
+            map["AliyunResourceGroupIds"] = self.aliyunResourceGroupIds!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.needContainResourceGroupWithOfficeSite != nil {
             map["NeedContainResourceGroupWithOfficeSite"] = self.needContainResourceGroupWithOfficeSite!
         }
@@ -3952,6 +4098,12 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AliyunResourceGroupIds"] as? [String] {
+            self.aliyunResourceGroupIds = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["NeedContainResourceGroupWithOfficeSite"] as? Int64 {
             self.needContainResourceGroupWithOfficeSite = value
         }
@@ -4121,6 +4273,8 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aliyunResourceGroupId: String?
+
         public var appRules: [DescribeResourceGroupsResponseBody.ResourceGroup.AppRules]?
 
         public var authCount: String?
@@ -4151,6 +4305,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aliyunResourceGroupId != nil {
+                map["AliyunResourceGroupId"] = self.aliyunResourceGroupId!
+            }
             if self.appRules != nil {
                 var tmp : [Any] = []
                 for k in self.appRules! {
@@ -4192,6 +4349,9 @@ public class DescribeResourceGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AliyunResourceGroupId"] as? String {
+                self.aliyunResourceGroupId = value
+            }
             if let value = dict["AppRules"] as? [Any?] {
                 var tmp : [DescribeResourceGroupsResponseBody.ResourceGroup.AppRules] = []
                 for v in value {
@@ -4361,6 +4521,8 @@ public class DescribeResourceGroupsResponse : Tea.TeaModel {
 public class DescribeUsersRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
@@ -4368,6 +4530,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
     public var excludeGroupId: String?
 
     public var filter: String?
+
+    public var filterMap: [String: String]?
 
     public var filterWithAssignedResource: [String: String]?
 
@@ -4406,6 +4570,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -4417,6 +4584,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
+        }
+        if self.filterMap != nil {
+            map["FilterMap"] = self.filterMap!
         }
         if self.filterWithAssignedResource != nil {
             map["FilterWithAssignedResource"] = self.filterWithAssignedResource!
@@ -4456,6 +4626,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? String {
             self.bizType = value
         }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
         }
@@ -4467,6 +4640,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
+        }
+        if let value = dict["FilterMap"] as? [String: String] {
+            self.filterMap = value
         }
         if let value = dict["FilterWithAssignedResource"] as? [String: String] {
             self.filterWithAssignedResource = value
@@ -4504,6 +4680,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
@@ -4511,6 +4689,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var excludeGroupId: String?
 
     public var filter: String?
+
+    public var filterMapShrink: String?
 
     public var filterWithAssignedResourceShrink: String?
 
@@ -4549,6 +4729,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -4560,6 +4743,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
+        }
+        if self.filterMapShrink != nil {
+            map["FilterMap"] = self.filterMapShrink!
         }
         if self.filterWithAssignedResourceShrink != nil {
             map["FilterWithAssignedResource"] = self.filterWithAssignedResourceShrink!
@@ -4599,6 +4785,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? String {
             self.bizType = value
         }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
         }
@@ -4610,6 +4799,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
+        }
+        if let value = dict["FilterMap"] as? String {
+            self.filterMapShrink = value
         }
         if let value = dict["FilterWithAssignedResource"] as? String {
             self.filterWithAssignedResourceShrink = value
@@ -5273,13 +5465,19 @@ public class FilterUsersRequest : Tea.TeaModel {
             }
         }
     }
+    public var businessChannel: String?
+
     public var excludeEndUserIds: [String]?
 
     public var filter: String?
 
+    public var filterMap: [String: String]?
+
     public var includeDesktopCount: Bool?
 
     public var includeDesktopGroupCount: Bool?
+
+    public var includeEndUserIds: [String]?
 
     public var includeOrgInfo: Bool?
 
@@ -5318,17 +5516,26 @@ public class FilterUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.excludeEndUserIds != nil {
             map["ExcludeEndUserIds"] = self.excludeEndUserIds!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.filterMap != nil {
+            map["FilterMap"] = self.filterMap!
+        }
         if self.includeDesktopCount != nil {
             map["IncludeDesktopCount"] = self.includeDesktopCount!
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.includeEndUserIds != nil {
+            map["IncludeEndUserIds"] = self.includeEndUserIds!
         }
         if self.includeOrgInfo != nil {
             map["IncludeOrgInfo"] = self.includeOrgInfo!
@@ -5376,17 +5583,26 @@ public class FilterUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["ExcludeEndUserIds"] as? [String] {
             self.excludeEndUserIds = value
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
+        if let value = dict["FilterMap"] as? [String: String] {
+            self.filterMap = value
+        }
         if let value = dict["IncludeDesktopCount"] as? Bool {
             self.includeDesktopCount = value
         }
         if let value = dict["IncludeDesktopGroupCount"] as? Bool {
             self.includeDesktopGroupCount = value
+        }
+        if let value = dict["IncludeEndUserIds"] as? [String] {
+            self.includeEndUserIds = value
         }
         if let value = dict["IncludeOrgInfo"] as? Bool {
             self.includeOrgInfo = value
@@ -5523,13 +5739,19 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var businessChannel: String?
+
     public var excludeEndUserIds: [String]?
 
     public var filter: String?
 
+    public var filterMapShrink: String?
+
     public var includeDesktopCount: Bool?
 
     public var includeDesktopGroupCount: Bool?
+
+    public var includeEndUserIds: [String]?
 
     public var includeOrgInfo: Bool?
 
@@ -5567,17 +5789,26 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.excludeEndUserIds != nil {
             map["ExcludeEndUserIds"] = self.excludeEndUserIds!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.filterMapShrink != nil {
+            map["FilterMap"] = self.filterMapShrink!
+        }
         if self.includeDesktopCount != nil {
             map["IncludeDesktopCount"] = self.includeDesktopCount!
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.includeEndUserIds != nil {
+            map["IncludeEndUserIds"] = self.includeEndUserIds!
         }
         if self.includeOrgInfo != nil {
             map["IncludeOrgInfo"] = self.includeOrgInfo!
@@ -5625,17 +5856,26 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["ExcludeEndUserIds"] as? [String] {
             self.excludeEndUserIds = value
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
+        if let value = dict["FilterMap"] as? String {
+            self.filterMapShrink = value
+        }
         if let value = dict["IncludeDesktopCount"] as? Bool {
             self.includeDesktopCount = value
         }
         if let value = dict["IncludeDesktopGroupCount"] as? Bool {
             self.includeDesktopGroupCount = value
+        }
+        if let value = dict["IncludeEndUserIds"] as? [String] {
+            self.includeEndUserIds = value
         }
         if let value = dict["IncludeOrgInfo"] as? Bool {
             self.includeOrgInfo = value
@@ -6479,6 +6719,37 @@ public class GetManagerInfoByAuthCodeResponse : Tea.TeaModel {
     }
 }
 
+public class InitTenantAliasRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
+    }
+}
+
 public class InitTenantAliasResponseBody : Tea.TeaModel {
     public class AliasInfo : Tea.TeaModel {
         public var aliasEditDisabledReason: String?
@@ -6629,6 +6900,37 @@ public class InitTenantAliasResponse : Tea.TeaModel {
             var model = InitTenantAliasResponseBody()
             model.fromMap(value)
             self.body = model
+        }
+    }
+}
+
+public class ListPropertyRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
     }
 }
@@ -6843,6 +7145,8 @@ public class ListPropertyResponse : Tea.TeaModel {
 }
 
 public class ListPropertyValueRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public override init() {
@@ -6859,6 +7163,9 @@ public class ListPropertyValueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -6867,6 +7174,9 @@ public class ListPropertyValueRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -7017,6 +7327,8 @@ public class ListPropertyValueResponse : Tea.TeaModel {
 public class LockMfaDeviceRequest : Tea.TeaModel {
     public var adDomain: String?
 
+    public var businessChannel: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -7036,6 +7348,9 @@ public class LockMfaDeviceRequest : Tea.TeaModel {
         if self.adDomain != nil {
             map["AdDomain"] = self.adDomain!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -7046,6 +7361,9 @@ public class LockMfaDeviceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdDomain"] as? String {
             self.adDomain = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["SerialNumber"] as? String {
             self.serialNumber = value
@@ -7135,6 +7453,8 @@ public class LockMfaDeviceResponse : Tea.TeaModel {
 }
 
 public class LockUsersRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var logoutSession: Bool?
 
     public var users: [String]?
@@ -7153,6 +7473,9 @@ public class LockUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.logoutSession != nil {
             map["LogoutSession"] = self.logoutSession!
         }
@@ -7164,6 +7487,9 @@ public class LockUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["LogoutSession"] as? Bool {
             self.logoutSession = value
         }
@@ -7364,6 +7690,8 @@ public class LockUsersResponse : Tea.TeaModel {
 }
 
 public class ModifyGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var description_: String?
 
     public var groupId: String?
@@ -7384,6 +7712,9 @@ public class ModifyGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -7398,6 +7729,9 @@ public class ModifyGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -7492,6 +7826,8 @@ public class ModifyGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyOrgRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var orgId: String?
 
     public var orgName: String?
@@ -7510,6 +7846,9 @@ public class ModifyOrgRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.orgId != nil {
             map["OrgId"] = self.orgId!
         }
@@ -7521,6 +7860,9 @@ public class ModifyOrgRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["OrgId"] as? String {
             self.orgId = value
         }
@@ -7612,6 +7954,8 @@ public class ModifyOrgResponse : Tea.TeaModel {
 }
 
 public class ModifyUserRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var email: String?
 
     public var endUserId: String?
@@ -7632,6 +7976,9 @@ public class ModifyUserRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.email != nil {
             map["Email"] = self.email!
         }
@@ -7646,6 +7993,9 @@ public class ModifyUserRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["Email"] as? String {
             self.email = value
         }
@@ -7740,6 +8090,8 @@ public class ModifyUserResponse : Tea.TeaModel {
 }
 
 public class MoveOrgRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var newParentOrgId: String?
 
     public var orgId: String?
@@ -7758,6 +8110,9 @@ public class MoveOrgRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.newParentOrgId != nil {
             map["NewParentOrgId"] = self.newParentOrgId!
         }
@@ -7769,6 +8124,9 @@ public class MoveOrgRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["NewParentOrgId"] as? String {
             self.newParentOrgId = value
         }
@@ -7860,6 +8218,8 @@ public class MoveOrgResponse : Tea.TeaModel {
 }
 
 public class MoveUserOrgRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var orgId: String?
@@ -7878,6 +8238,9 @@ public class MoveUserOrgRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -7889,6 +8252,9 @@ public class MoveUserOrgRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
         }
@@ -7975,6 +8341,37 @@ public class MoveUserOrgResponse : Tea.TeaModel {
             var model = MoveUserOrgResponseBody()
             model.fromMap(value)
             self.body = model
+        }
+    }
+}
+
+public class QuerySyncStatusByAliUidRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
     }
 }
@@ -8198,6 +8595,8 @@ public class QuerySyncStatusByAliUidResponse : Tea.TeaModel {
 }
 
 public class RemoveGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var groupId: String?
 
     public var groupIds: [String]?
@@ -8216,6 +8615,9 @@ public class RemoveGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -8227,6 +8629,9 @@ public class RemoveGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
         }
@@ -8320,6 +8725,8 @@ public class RemoveGroupResponse : Tea.TeaModel {
 public class RemoveMfaDeviceRequest : Tea.TeaModel {
     public var adDomain: String?
 
+    public var businessChannel: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -8339,6 +8746,9 @@ public class RemoveMfaDeviceRequest : Tea.TeaModel {
         if self.adDomain != nil {
             map["AdDomain"] = self.adDomain!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -8349,6 +8759,9 @@ public class RemoveMfaDeviceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdDomain"] as? String {
             self.adDomain = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["SerialNumber"] as? String {
             self.serialNumber = value
@@ -8438,6 +8851,8 @@ public class RemoveMfaDeviceResponse : Tea.TeaModel {
 }
 
 public class RemoveOrgRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var orgId: String?
 
     public override init() {
@@ -8454,6 +8869,9 @@ public class RemoveOrgRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.orgId != nil {
             map["OrgId"] = self.orgId!
         }
@@ -8462,6 +8880,9 @@ public class RemoveOrgRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["OrgId"] as? String {
             self.orgId = value
         }
@@ -8550,6 +8971,8 @@ public class RemoveOrgResponse : Tea.TeaModel {
 }
 
 public class RemovePropertyRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public override init() {
@@ -8566,6 +8989,9 @@ public class RemovePropertyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -8574,6 +9000,9 @@ public class RemovePropertyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -8662,6 +9091,8 @@ public class RemovePropertyResponse : Tea.TeaModel {
 }
 
 public class RemoveUsersRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var users: [String]?
 
     public override init() {
@@ -8678,6 +9109,9 @@ public class RemoveUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.users != nil {
             map["Users"] = self.users!
         }
@@ -8686,6 +9120,9 @@ public class RemoveUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["Users"] as? [String] {
             self.users = value
         }
@@ -8883,6 +9320,8 @@ public class RemoveUsersResponse : Tea.TeaModel {
 }
 
 public class ResetUserPasswordRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var notifyType: Int32?
 
     public var users: [String]?
@@ -8901,6 +9340,9 @@ public class ResetUserPasswordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.notifyType != nil {
             map["NotifyType"] = self.notifyType!
         }
@@ -8912,6 +9354,9 @@ public class ResetUserPasswordRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["NotifyType"] as? Int32 {
             self.notifyType = value
         }
@@ -9112,6 +9557,8 @@ public class ResetUserPasswordResponse : Tea.TeaModel {
 }
 
 public class SetUserPropertyValueRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public var propertyValueId: Int64?
@@ -9134,6 +9581,9 @@ public class SetUserPropertyValueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -9151,6 +9601,9 @@ public class SetUserPropertyValueRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -9363,6 +9816,8 @@ public class SyncAllEduInfoResponse : Tea.TeaModel {
 public class UnlockMfaDeviceRequest : Tea.TeaModel {
     public var adDomain: String?
 
+    public var businessChannel: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -9382,6 +9837,9 @@ public class UnlockMfaDeviceRequest : Tea.TeaModel {
         if self.adDomain != nil {
             map["AdDomain"] = self.adDomain!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -9392,6 +9850,9 @@ public class UnlockMfaDeviceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdDomain"] as? String {
             self.adDomain = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["SerialNumber"] as? String {
             self.serialNumber = value
@@ -9483,6 +9944,8 @@ public class UnlockMfaDeviceResponse : Tea.TeaModel {
 public class UnlockUsersRequest : Tea.TeaModel {
     public var autoLockTime: String?
 
+    public var businessChannel: String?
+
     public var users: [String]?
 
     public override init() {
@@ -9502,6 +9965,9 @@ public class UnlockUsersRequest : Tea.TeaModel {
         if self.autoLockTime != nil {
             map["AutoLockTime"] = self.autoLockTime!
         }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.users != nil {
             map["Users"] = self.users!
         }
@@ -9512,6 +9978,9 @@ public class UnlockUsersRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoLockTime"] as? String {
             self.autoLockTime = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["Users"] as? [String] {
             self.users = value
@@ -9748,6 +10217,8 @@ public class UpdatePropertyRequest : Tea.TeaModel {
             }
         }
     }
+    public var businessChannel: String?
+
     public var propertyId: Int64?
 
     public var propertyKey: String?
@@ -9768,6 +10239,9 @@ public class UpdatePropertyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.propertyId != nil {
             map["PropertyId"] = self.propertyId!
         }
@@ -9786,6 +10260,9 @@ public class UpdatePropertyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PropertyId"] as? Int64 {
             self.propertyId = value
         }
@@ -10108,6 +10585,8 @@ public class UpdatePropertyResponse : Tea.TeaModel {
 }
 
 public class UserBatchJoinGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var groupId: String?
@@ -10126,6 +10605,9 @@ public class UserBatchJoinGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -10137,6 +10619,9 @@ public class UserBatchJoinGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
         }
@@ -10228,6 +10713,8 @@ public class UserBatchJoinGroupResponse : Tea.TeaModel {
 }
 
 public class UserBatchQuitGroupRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var endUserIds: [String]?
 
     public var groupId: String?
@@ -10246,6 +10733,9 @@ public class UserBatchQuitGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -10257,6 +10747,9 @@ public class UserBatchQuitGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
         }
