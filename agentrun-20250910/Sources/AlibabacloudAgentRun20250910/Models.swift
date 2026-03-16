@@ -10,6 +10,8 @@ public class AgentEndpointConfig : Tea.TeaModel {
 
     public var customDomainUrl: String?
 
+    public var endpointName: String?
+
     public var endpointUrl: String?
 
     public override init() {
@@ -32,6 +34,9 @@ public class AgentEndpointConfig : Tea.TeaModel {
         if self.customDomainUrl != nil {
             map["customDomainUrl"] = self.customDomainUrl!
         }
+        if self.endpointName != nil {
+            map["endpointName"] = self.endpointName!
+        }
         if self.endpointUrl != nil {
             map["endpointUrl"] = self.endpointUrl!
         }
@@ -45,6 +50,9 @@ public class AgentEndpointConfig : Tea.TeaModel {
         }
         if let value = dict["customDomainUrl"] as? String {
             self.customDomainUrl = value
+        }
+        if let value = dict["endpointName"] as? String {
+            self.endpointName = value
         }
         if let value = dict["endpointUrl"] as? String {
             self.endpointUrl = value
@@ -350,6 +358,8 @@ public class AgentRuntimeEndpoint : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var endpointPublicUrl: String?
 
     public var routingConfiguration: RoutingConfiguration?
@@ -390,6 +400,9 @@ public class AgentRuntimeEndpoint : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.endpointPublicUrl != nil {
             map["endpointPublicUrl"] = self.endpointPublicUrl!
         }
@@ -424,6 +437,9 @@ public class AgentRuntimeEndpoint : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["endpointPublicUrl"] as? String {
             self.endpointPublicUrl = value
@@ -959,6 +975,8 @@ public class ApigLLMModel : Tea.TeaModel {
 public class ArmsConfiguration : Tea.TeaModel {
     public var armsLicenseKey: String?
 
+    public var cmsWorkspace: String?
+
     public var enableArms: Bool?
 
     public override init() {
@@ -978,6 +996,9 @@ public class ArmsConfiguration : Tea.TeaModel {
         if self.armsLicenseKey != nil {
             map["armsLicenseKey"] = self.armsLicenseKey!
         }
+        if self.cmsWorkspace != nil {
+            map["cmsWorkspace"] = self.cmsWorkspace!
+        }
         if self.enableArms != nil {
             map["enableArms"] = self.enableArms!
         }
@@ -988,6 +1009,9 @@ public class ArmsConfiguration : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["armsLicenseKey"] as? String {
             self.armsLicenseKey = value
+        }
+        if let value = dict["cmsWorkspace"] as? String {
+            self.cmsWorkspace = value
         }
         if let value = dict["enableArms"] as? Bool {
             self.enableArms = value
@@ -2462,6 +2486,8 @@ public class CreateAgentRuntimeEndpointInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var routingConfiguration: RoutingConfiguration?
 
     public var targetVersion: String?
@@ -2487,6 +2513,9 @@ public class CreateAgentRuntimeEndpointInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.routingConfiguration != nil {
             map["routingConfiguration"] = self.routingConfiguration?.toMap()
         }
@@ -2503,6 +2532,9 @@ public class CreateAgentRuntimeEndpointInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["routingConfiguration"] as? [String: Any?] {
             var model = RoutingConfiguration()
@@ -4160,6 +4192,8 @@ public class CreateTemplateInput : Tea.TeaModel {
 
     public var sandboxTTLInSeconds: Int32?
 
+    public var scalingConfig: ScalingConfig?
+
     public var templateConfiguration: [String: Any]?
 
     public var templateName: String?
@@ -4184,6 +4218,7 @@ public class CreateTemplateInput : Tea.TeaModel {
         try self.logConfiguration?.validate()
         try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.scalingConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4242,6 +4277,9 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if self.sandboxTTLInSeconds != nil {
             map["sandboxTTLInSeconds"] = self.sandboxTTLInSeconds!
+        }
+        if self.scalingConfig != nil {
+            map["scalingConfig"] = self.scalingConfig?.toMap()
         }
         if self.templateConfiguration != nil {
             map["templateConfiguration"] = self.templateConfiguration!
@@ -4332,6 +4370,11 @@ public class CreateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["sandboxTTLInSeconds"] as? Int32 {
             self.sandboxTTLInSeconds = value
+        }
+        if let value = dict["scalingConfig"] as? [String: Any?] {
+            var model = ScalingConfig()
+            model.fromMap(value)
+            self.scalingConfig = model
         }
         if let value = dict["templateConfiguration"] as? [String: Any] {
             self.templateConfiguration = value
@@ -5753,7 +5796,11 @@ public class DeregisterServiceInput : Tea.TeaModel {
 public class DiscoveryEndpoint : Tea.TeaModel {
     public var agentEndpointConfigs: [AgentEndpointConfig]?
 
+    public var credentialName: String?
+
     public var name: String?
+
+    public var returnAgentCredentialContent: Bool?
 
     public override init() {
         super.init()
@@ -5776,8 +5823,14 @@ public class DiscoveryEndpoint : Tea.TeaModel {
             }
             map["agentEndpointConfigs"] = tmp
         }
+        if self.credentialName != nil {
+            map["credentialName"] = self.credentialName!
+        }
         if self.name != nil {
             map["name"] = self.name!
+        }
+        if self.returnAgentCredentialContent != nil {
+            map["returnAgentCredentialContent"] = self.returnAgentCredentialContent!
         }
         return map
     }
@@ -5797,8 +5850,14 @@ public class DiscoveryEndpoint : Tea.TeaModel {
             }
             self.agentEndpointConfigs = tmp
         }
+        if let value = dict["credentialName"] as? String {
+            self.credentialName = value
+        }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["returnAgentCredentialContent"] as? Bool {
+            self.returnAgentCredentialContent = value
         }
     }
 }
@@ -11401,6 +11460,8 @@ public class ProtocolSettings : Tea.TeaModel {
 
     public var a2aAgentCardUrl: String?
 
+    public var config: String?
+
     public var headers: String?
 
     public var inputBodyJsonSchema: String?
@@ -11418,6 +11479,8 @@ public class ProtocolSettings : Tea.TeaModel {
     public var requestContentType: String?
 
     public var responseContentType: String?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -11441,6 +11504,9 @@ public class ProtocolSettings : Tea.TeaModel {
         }
         if self.a2aAgentCardUrl != nil {
             map["a2aAgentCardUrl"] = self.a2aAgentCardUrl!
+        }
+        if self.config != nil {
+            map["config"] = self.config!
         }
         if self.headers != nil {
             map["headers"] = self.headers!
@@ -11469,6 +11535,9 @@ public class ProtocolSettings : Tea.TeaModel {
         if self.responseContentType != nil {
             map["responseContentType"] = self.responseContentType!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         return map
     }
 
@@ -11482,6 +11551,9 @@ public class ProtocolSettings : Tea.TeaModel {
         }
         if let value = dict["a2aAgentCardUrl"] as? String {
             self.a2aAgentCardUrl = value
+        }
+        if let value = dict["config"] as? String {
+            self.config = value
         }
         if let value = dict["headers"] as? String {
             self.headers = value
@@ -11509,6 +11581,9 @@ public class ProtocolSettings : Tea.TeaModel {
         }
         if let value = dict["responseContentType"] as? String {
             self.responseContentType = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
@@ -12540,6 +12615,207 @@ public class SandboxResult : Tea.TeaModel {
     }
 }
 
+public class ScalingConfig : Tea.TeaModel {
+    public var minInstances: Int64?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
+        }
+    }
+}
+
+public class ScalingStatus : Tea.TeaModel {
+    public var currentError: String?
+
+    public var currentInstances: Int64?
+
+    public var minInstances: Int64?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
+
+    public var targetInstances: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentError != nil {
+            map["currentError"] = self.currentError!
+        }
+        if self.currentInstances != nil {
+            map["currentInstances"] = self.currentInstances!
+        }
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
+        }
+        if self.targetInstances != nil {
+            map["targetInstances"] = self.targetInstances!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["currentError"] as? String {
+            self.currentError = value
+        }
+        if let value = dict["currentInstances"] as? Int64 {
+            self.currentInstances = value
+        }
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
+        }
+        if let value = dict["targetInstances"] as? Int64 {
+            self.targetInstances = value
+        }
+    }
+}
+
+public class ScheduledPolicy : Tea.TeaModel {
+    public var endTime: String?
+
+    public var name: String?
+
+    public var scheduleExpression: String?
+
+    public var startTime: String?
+
+    public var target: Int64?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.scheduleExpression != nil {
+            map["scheduleExpression"] = self.scheduleExpression!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.target != nil {
+            map["target"] = self.target!
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["scheduleExpression"] as? String {
+            self.scheduleExpression = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["target"] as? Int64 {
+            self.target = value
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
 public class ServiceConfig : Tea.TeaModel {
     public var aiServiceConfig: AiServiceConfig?
 
@@ -13215,6 +13491,8 @@ public class Template : Tea.TeaModel {
 
     public var sandboxTTLInSeconds: String?
 
+    public var scalingStatus: ScalingStatus?
+
     public var status: String?
 
     public var statusReason: String?
@@ -13250,6 +13528,7 @@ public class Template : Tea.TeaModel {
         try self.mcpState?.validate()
         try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.scalingStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -13320,6 +13599,9 @@ public class Template : Tea.TeaModel {
         }
         if self.sandboxTTLInSeconds != nil {
             map["sandboxTTLInSeconds"] = self.sandboxTTLInSeconds!
+        }
+        if self.scalingStatus != nil {
+            map["scalingStatus"] = self.scalingStatus?.toMap()
         }
         if self.status != nil {
             map["status"] = self.status!
@@ -13439,6 +13721,11 @@ public class Template : Tea.TeaModel {
         }
         if let value = dict["sandboxTTLInSeconds"] as? String {
             self.sandboxTTLInSeconds = value
+        }
+        if let value = dict["scalingStatus"] as? [String: Any?] {
+            var model = ScalingStatus()
+            model.fromMap(value)
+            self.scalingStatus = model
         }
         if let value = dict["status"] as? String {
             self.status = value
@@ -13760,6 +14047,8 @@ public class UpdateAgentRuntimeEndpointInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var routingConfiguration: RoutingConfiguration?
 
     public var targetVersion: String?
@@ -13785,6 +14074,9 @@ public class UpdateAgentRuntimeEndpointInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.routingConfiguration != nil {
             map["routingConfiguration"] = self.routingConfiguration?.toMap()
         }
@@ -13801,6 +14093,9 @@ public class UpdateAgentRuntimeEndpointInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["routingConfiguration"] as? [String: Any?] {
             var model = RoutingConfiguration()
@@ -14984,6 +15279,8 @@ public class UpdateTemplateInput : Tea.TeaModel {
 
     public var sandboxTTLInSeconds: Int32?
 
+    public var scalingConfig: ScalingConfig?
+
     public var templateConfiguration: [String: Any]?
 
     public var workspaceId: String?
@@ -15004,6 +15301,7 @@ public class UpdateTemplateInput : Tea.TeaModel {
         try self.logConfiguration?.validate()
         try self.nasConfig?.validate()
         try self.networkConfiguration?.validate()
+        try self.scalingConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15059,6 +15357,9 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if self.sandboxTTLInSeconds != nil {
             map["sandboxTTLInSeconds"] = self.sandboxTTLInSeconds!
+        }
+        if self.scalingConfig != nil {
+            map["scalingConfig"] = self.scalingConfig?.toMap()
         }
         if self.templateConfiguration != nil {
             map["templateConfiguration"] = self.templateConfiguration!
@@ -15140,6 +15441,11 @@ public class UpdateTemplateInput : Tea.TeaModel {
         }
         if let value = dict["sandboxTTLInSeconds"] as? Int32 {
             self.sandboxTTLInSeconds = value
+        }
+        if let value = dict["scalingConfig"] as? [String: Any?] {
+            var model = ScalingConfig()
+            model.fromMap(value)
+            self.scalingConfig = model
         }
         if let value = dict["templateConfiguration"] as? [String: Any] {
             self.templateConfiguration = value
