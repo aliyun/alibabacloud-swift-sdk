@@ -37545,6 +37545,8 @@ public class GetSupabaseProjectRequest : Tea.TeaModel {
 public class GetSupabaseProjectResponseBody : Tea.TeaModel {
     public var createTime: String?
 
+    public var DBSecurityIpList: String?
+
     public var dashboardPassword: String?
 
     public var dashboardUserName: String?
@@ -37605,6 +37607,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.DBSecurityIpList != nil {
+            map["DBSecurityIpList"] = self.DBSecurityIpList!
         }
         if self.dashboardPassword != nil {
             map["DashboardPassword"] = self.dashboardPassword!
@@ -37679,6 +37684,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["DBSecurityIpList"] as? String {
+            self.DBSecurityIpList = value
         }
         if let value = dict["DashboardPassword"] as? String {
             self.dashboardPassword = value
@@ -50366,6 +50374,10 @@ public class ModifySupabaseProjectSecurityIpsRequest : Tea.TeaModel {
 
     public var securityIPList: String?
 
+    public var updateDb: Bool?
+
+    public var updateWeb: Bool?
+
     public override init() {
         super.init()
     }
@@ -50389,6 +50401,12 @@ public class ModifySupabaseProjectSecurityIpsRequest : Tea.TeaModel {
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
         }
+        if self.updateDb != nil {
+            map["UpdateDb"] = self.updateDb!
+        }
+        if self.updateWeb != nil {
+            map["UpdateWeb"] = self.updateWeb!
+        }
         return map
     }
 
@@ -50402,6 +50420,12 @@ public class ModifySupabaseProjectSecurityIpsRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityIPList"] as? String {
             self.securityIPList = value
+        }
+        if let value = dict["UpdateDb"] as? Bool {
+            self.updateDb = value
+        }
+        if let value = dict["UpdateWeb"] as? Bool {
+            self.updateWeb = value
         }
     }
 }

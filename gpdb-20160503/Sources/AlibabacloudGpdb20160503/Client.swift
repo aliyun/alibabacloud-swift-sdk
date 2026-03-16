@@ -9526,6 +9526,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityIPList)) {
             query["SecurityIPList"] = request.securityIPList ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.updateDb)) {
+            query["UpdateDb"] = request.updateDb!;
+        }
+        if (!TeaUtils.Client.isUnset(request.updateWeb)) {
+            query["UpdateWeb"] = request.updateWeb!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
