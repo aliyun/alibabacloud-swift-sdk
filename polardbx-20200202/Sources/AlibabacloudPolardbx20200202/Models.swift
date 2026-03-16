@@ -29986,7 +29986,17 @@ public class SwitchDBInstanceHAResponse : Tea.TeaModel {
 public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
+    public var dstMainConnectString: String?
+
+    public var dstMainPort: String?
+
+    public var isModifyEndpoint: String?
+
     public var regionId: String?
+
+    public var srcMainConnectString: String?
+
+    public var srcMainPort: String?
 
     public var switchMode: String?
 
@@ -30009,8 +30019,23 @@ public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
+        if self.dstMainConnectString != nil {
+            map["DstMainConnectString"] = self.dstMainConnectString!
+        }
+        if self.dstMainPort != nil {
+            map["DstMainPort"] = self.dstMainPort!
+        }
+        if self.isModifyEndpoint != nil {
+            map["IsModifyEndpoint"] = self.isModifyEndpoint!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.srcMainConnectString != nil {
+            map["SrcMainConnectString"] = self.srcMainConnectString!
+        }
+        if self.srcMainPort != nil {
+            map["SrcMainPort"] = self.srcMainPort!
         }
         if self.switchMode != nil {
             map["SwitchMode"] = self.switchMode!
@@ -30026,8 +30051,23 @@ public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
         }
+        if let value = dict["DstMainConnectString"] as? String {
+            self.dstMainConnectString = value
+        }
+        if let value = dict["DstMainPort"] as? String {
+            self.dstMainPort = value
+        }
+        if let value = dict["IsModifyEndpoint"] as? String {
+            self.isModifyEndpoint = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SrcMainConnectString"] as? String {
+            self.srcMainConnectString = value
+        }
+        if let value = dict["SrcMainPort"] as? String {
+            self.srcMainPort = value
         }
         if let value = dict["SwitchMode"] as? String {
             self.switchMode = value

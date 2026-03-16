@@ -5181,8 +5181,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
             query["DBInstanceName"] = request.DBInstanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dstMainConnectString)) {
+            query["DstMainConnectString"] = request.dstMainConnectString ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstMainPort)) {
+            query["DstMainPort"] = request.dstMainPort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isModifyEndpoint)) {
+            query["IsModifyEndpoint"] = request.isModifyEndpoint ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcMainConnectString)) {
+            query["SrcMainConnectString"] = request.srcMainConnectString ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcMainPort)) {
+            query["SrcMainPort"] = request.srcMainPort ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.switchMode)) {
             query["SwitchMode"] = request.switchMode ?? "";
