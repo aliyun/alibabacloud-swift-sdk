@@ -352,6 +352,44 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
         public class ExtraParams : Tea.TeaModel {
+            public class TranslationHotwordMap : Tea.TeaModel {
+                public var bizType: String?
+
+                public var bizUserId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bizType != nil {
+                        map["bizType"] = self.bizType!
+                    }
+                    if self.bizUserId != nil {
+                        map["bizUserId"] = self.bizUserId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["bizType"] as? String {
+                        self.bizType = value
+                    }
+                    if let value = dict["bizUserId"] as? String {
+                        self.bizUserId = value
+                    }
+                }
+            }
             public var domainEducationEnabled: Bool?
 
             public var fullTextSummaryFormat: String?
@@ -364,6 +402,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var translateLlmSceneEnabled: Bool?
 
+            public var translationHotwordMap: CreateTaskRequest.Parameters.ExtraParams.TranslationHotwordMap?
+
             public override init() {
                 super.init()
             }
@@ -374,6 +414,7 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.translationHotwordMap?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -395,6 +436,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if self.translateLlmSceneEnabled != nil {
                     map["TranslateLlmSceneEnabled"] = self.translateLlmSceneEnabled!
+                }
+                if self.translationHotwordMap != nil {
+                    map["TranslationHotwordMap"] = self.translationHotwordMap?.toMap()
                 }
                 return map
             }
@@ -418,6 +462,11 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if let value = dict["TranslateLlmSceneEnabled"] as? Bool {
                     self.translateLlmSceneEnabled = value
+                }
+                if let value = dict["TranslationHotwordMap"] as? [String: Any?] {
+                    var model = CreateTaskRequest.Parameters.ExtraParams.TranslationHotwordMap()
+                    model.fromMap(value)
+                    self.translationHotwordMap = model
                 }
             }
         }
