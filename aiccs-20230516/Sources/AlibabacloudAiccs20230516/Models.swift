@@ -814,6 +814,36 @@ public class AddTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class CallTimeStrList : Tea.TeaModel {
+        public var callTime: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callTime != nil {
+                map["CallTime"] = self.callTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallTime"] as? [String] {
+                self.callTime = value
+            }
+        }
+    }
     public class SendSmsPlan : Tea.TeaModel {
         public var intentTags: [String]?
 
@@ -853,6 +883,8 @@ public class AddTaskRequest : Tea.TeaModel {
         }
     }
     public var callTimeList: [AddTaskRequest.CallTimeList]?
+
+    public var callTimeStrList: [AddTaskRequest.CallTimeStrList]?
 
     public var callbackUrl: String?
 
@@ -916,6 +948,13 @@ public class AddTaskRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CallTimeList"] = tmp
+        }
+        if self.callTimeStrList != nil {
+            var tmp : [Any] = []
+            for k in self.callTimeStrList! {
+                tmp.append(k.toMap())
+            }
+            map["CallTimeStrList"] = tmp
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
@@ -1002,6 +1041,19 @@ public class AddTaskRequest : Tea.TeaModel {
             }
             self.callTimeList = tmp
         }
+        if let value = dict["CallTimeStrList"] as? [Any?] {
+            var tmp : [AddTaskRequest.CallTimeStrList] = []
+            for v in value {
+                if v != nil {
+                    var model = AddTaskRequest.CallTimeStrList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.callTimeStrList = tmp
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -1081,6 +1133,8 @@ public class AddTaskRequest : Tea.TeaModel {
 public class AddTaskShrinkRequest : Tea.TeaModel {
     public var callTimeListShrink: String?
 
+    public var callTimeStrListShrink: String?
+
     public var callbackUrl: String?
 
     public var flashSmsTemplateId: Int64?
@@ -1139,6 +1193,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.callTimeListShrink != nil {
             map["CallTimeList"] = self.callTimeListShrink!
+        }
+        if self.callTimeStrListShrink != nil {
+            map["CallTimeStrList"] = self.callTimeStrListShrink!
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
@@ -1210,6 +1267,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CallTimeList"] as? String {
             self.callTimeListShrink = value
+        }
+        if let value = dict["CallTimeStrList"] as? String {
+            self.callTimeStrListShrink = value
         }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
@@ -4892,6 +4952,36 @@ public class EditTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class CallTimeStrList : Tea.TeaModel {
+        public var callTime: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callTime != nil {
+                map["CallTime"] = self.callTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallTime"] as? [String] {
+                self.callTime = value
+            }
+        }
+    }
     public class SendSmsPlan : Tea.TeaModel {
         public var intentTags: [String]?
 
@@ -4931,6 +5021,8 @@ public class EditTaskRequest : Tea.TeaModel {
         }
     }
     public var callTimeList: [EditTaskRequest.CallTimeList]?
+
+    public var callTimeStrList: [EditTaskRequest.CallTimeStrList]?
 
     public var callbackUrl: String?
 
@@ -4994,6 +5086,13 @@ public class EditTaskRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CallTimeList"] = tmp
+        }
+        if self.callTimeStrList != nil {
+            var tmp : [Any] = []
+            for k in self.callTimeStrList! {
+                tmp.append(k.toMap())
+            }
+            map["CallTimeStrList"] = tmp
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
@@ -5080,6 +5179,19 @@ public class EditTaskRequest : Tea.TeaModel {
             }
             self.callTimeList = tmp
         }
+        if let value = dict["CallTimeStrList"] as? [Any?] {
+            var tmp : [EditTaskRequest.CallTimeStrList] = []
+            for v in value {
+                if v != nil {
+                    var model = EditTaskRequest.CallTimeStrList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.callTimeStrList = tmp
+        }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
@@ -5159,6 +5271,8 @@ public class EditTaskRequest : Tea.TeaModel {
 public class EditTaskShrinkRequest : Tea.TeaModel {
     public var callTimeListShrink: String?
 
+    public var callTimeStrListShrink: String?
+
     public var callbackUrl: String?
 
     public var flashSmsTemplateId: Int64?
@@ -5217,6 +5331,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.callTimeListShrink != nil {
             map["CallTimeList"] = self.callTimeListShrink!
+        }
+        if self.callTimeStrListShrink != nil {
+            map["CallTimeStrList"] = self.callTimeStrListShrink!
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
@@ -5288,6 +5405,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CallTimeList"] as? String {
             self.callTimeListShrink = value
+        }
+        if let value = dict["CallTimeStrList"] as? String {
+            self.callTimeStrListShrink = value
         }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
@@ -7444,9 +7564,41 @@ public class QuickAddTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class CallTimeStrList : Tea.TeaModel {
+        public var callTime: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callTime != nil {
+                map["CallTime"] = self.callTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallTime"] as? [String] {
+                self.callTime = value
+            }
+        }
+    }
     public var agentGroupId: Int64?
 
     public var callTimeList: [QuickAddTaskRequest.CallTimeList]?
+
+    public var callTimeStrList: [QuickAddTaskRequest.CallTimeStrList]?
 
     public var name: String?
 
@@ -7489,6 +7641,13 @@ public class QuickAddTaskRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CallTimeList"] = tmp
+        }
+        if self.callTimeStrList != nil {
+            var tmp : [Any] = []
+            for k in self.callTimeStrList! {
+                tmp.append(k.toMap())
+            }
+            map["CallTimeStrList"] = tmp
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -7538,6 +7697,19 @@ public class QuickAddTaskRequest : Tea.TeaModel {
             }
             self.callTimeList = tmp
         }
+        if let value = dict["CallTimeStrList"] as? [Any?] {
+            var tmp : [QuickAddTaskRequest.CallTimeStrList] = []
+            for v in value {
+                if v != nil {
+                    var model = QuickAddTaskRequest.CallTimeStrList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.callTimeStrList = tmp
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -7572,6 +7744,8 @@ public class QuickAddTaskShrinkRequest : Tea.TeaModel {
     public var agentGroupId: Int64?
 
     public var callTimeListShrink: String?
+
+    public var callTimeStrListShrink: String?
 
     public var name: String?
 
@@ -7611,6 +7785,9 @@ public class QuickAddTaskShrinkRequest : Tea.TeaModel {
         if self.callTimeListShrink != nil {
             map["CallTimeList"] = self.callTimeListShrink!
         }
+        if self.callTimeStrListShrink != nil {
+            map["CallTimeStrList"] = self.callTimeStrListShrink!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -7648,6 +7825,9 @@ public class QuickAddTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CallTimeList"] as? String {
             self.callTimeListShrink = value
+        }
+        if let value = dict["CallTimeStrList"] as? String {
+            self.callTimeStrListShrink = value
         }
         if let value = dict["Name"] as? String {
             self.name = value

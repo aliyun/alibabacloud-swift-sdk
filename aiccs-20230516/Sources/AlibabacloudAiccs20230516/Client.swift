@@ -174,6 +174,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.callTimeList)) {
             request.callTimeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeList, "CallTimeList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.callTimeStrList)) {
+            request.callTimeStrListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeStrList, "CallTimeStrList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.repeatReason)) {
             request.repeatReasonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.repeatReason, "RepeatReason", "json")
         }
@@ -186,6 +189,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callTimeStrListShrink)) {
+            query["CallTimeStrList"] = request.callTimeStrListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
@@ -738,6 +744,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.callTimeList)) {
             request.callTimeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeList, "CallTimeList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.callTimeStrList)) {
+            request.callTimeStrListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeStrList, "CallTimeStrList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.repeatReason)) {
             request.repeatReasonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.repeatReason, "RepeatReason", "json")
         }
@@ -750,6 +759,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callTimeStrListShrink)) {
+            query["CallTimeStrList"] = request.callTimeStrListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
@@ -1098,12 +1110,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.callTimeList)) {
             request.callTimeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeList, "CallTimeList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.callTimeStrList)) {
+            request.callTimeStrListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callTimeStrList, "CallTimeStrList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentGroupId)) {
             query["AgentGroupId"] = request.agentGroupId!;
         }
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callTimeStrListShrink)) {
+            query["CallTimeStrList"] = request.callTimeStrListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
