@@ -42054,6 +42054,8 @@ public class SendChatappMessageRequest : Tea.TeaModel {
     }
     public var adAccountId: String?
 
+    public var category: String?
+
     public var channelType: String?
 
     public var content: String?
@@ -42136,6 +42138,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.adAccountId != nil {
             map["AdAccountId"] = self.adAccountId!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
         }
         if self.channelType != nil {
             map["ChannelType"] = self.channelType!
@@ -42240,6 +42245,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdAccountId"] as? String {
             self.adAccountId = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
         }
         if let value = dict["ChannelType"] as? String {
             self.channelType = value
@@ -42347,6 +42355,8 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 public class SendChatappMessageShrinkRequest : Tea.TeaModel {
     public var adAccountId: String?
 
+    public var category: String?
+
     public var channelType: String?
 
     public var content: String?
@@ -42427,6 +42437,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.adAccountId != nil {
             map["AdAccountId"] = self.adAccountId!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
         }
         if self.channelType != nil {
             map["ChannelType"] = self.channelType!
@@ -42531,6 +42544,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AdAccountId"] as? String {
             self.adAccountId = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
         }
         if let value = dict["ChannelType"] as? String {
             self.channelType = value

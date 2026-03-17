@@ -7061,6 +7061,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adAccountId)) {
             query["AdAccountId"] = request.adAccountId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["Category"] = request.category ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.channelType)) {
             query["ChannelType"] = request.channelType ?? "";
         }
