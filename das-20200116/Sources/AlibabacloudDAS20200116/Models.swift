@@ -38454,6 +38454,52 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SubAgentCall : Tea.TeaModel {
+        public var status: String?
+
+        public var subAgentId: String?
+
+        public var subAgentName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subAgentId != nil {
+                map["SubAgentId"] = self.subAgentId!
+            }
+            if self.subAgentName != nil {
+                map["SubAgentName"] = self.subAgentName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SubAgentId"] as? String {
+                self.subAgentId = value
+            }
+            if let value = dict["SubAgentName"] as? String {
+                self.subAgentName = value
+            }
+        }
+    }
     public class UiFunctionCall : Tea.TeaModel {
         public var argsText: String?
 
@@ -38496,6 +38542,8 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
 
     public var functionCall: [GetYaoChiAgentResponseBody.FunctionCall]?
 
+    public var parentId: String?
+
     public var product: String?
 
     public var queryId: String?
@@ -38505,6 +38553,8 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var sessionId: String?
+
+    public var subAgentCall: [GetYaoChiAgentResponseBody.SubAgentCall]?
 
     public var uiFunctionCall: [GetYaoChiAgentResponseBody.UiFunctionCall]?
 
@@ -38532,6 +38582,9 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
             }
             map["FunctionCall"] = tmp
         }
+        if self.parentId != nil {
+            map["ParentId"] = self.parentId!
+        }
         if self.product != nil {
             map["Product"] = self.product!
         }
@@ -38546,6 +38599,13 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
         }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.subAgentCall != nil {
+            var tmp : [Any] = []
+            for k in self.subAgentCall! {
+                tmp.append(k.toMap())
+            }
+            map["SubAgentCall"] = tmp
         }
         if self.uiFunctionCall != nil {
             var tmp : [Any] = []
@@ -38575,6 +38635,9 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
             }
             self.functionCall = tmp
         }
+        if let value = dict["ParentId"] as? String {
+            self.parentId = value
+        }
         if let value = dict["Product"] as? String {
             self.product = value
         }
@@ -38589,6 +38652,19 @@ public class GetYaoChiAgentResponseBody : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["SubAgentCall"] as? [Any?] {
+            var tmp : [GetYaoChiAgentResponseBody.SubAgentCall] = []
+            for v in value {
+                if v != nil {
+                    var model = GetYaoChiAgentResponseBody.SubAgentCall()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.subAgentCall = tmp
         }
         if let value = dict["UiFunctionCall"] as? [Any?] {
             var tmp : [GetYaoChiAgentResponseBody.UiFunctionCall] = []
