@@ -4291,8 +4291,6 @@ public class EntityGroupBase : Tea.TeaModel {
 public class Evaluator : Tea.TeaModel {
     public var config: [String: Any]?
 
-    public var dataScope: String?
-
     public var filters: [String: String]?
 
     public var name: String?
@@ -4320,9 +4318,6 @@ public class Evaluator : Tea.TeaModel {
         if self.config != nil {
             map["config"] = self.config!
         }
-        if self.dataScope != nil {
-            map["dataScope"] = self.dataScope!
-        }
         if self.filters != nil {
             map["filters"] = self.filters!
         }
@@ -4345,9 +4340,6 @@ public class Evaluator : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["config"] as? [String: Any] {
             self.config = value
-        }
-        if let value = dict["dataScope"] as? String {
-            self.dataScope = value
         }
         if let value = dict["filters"] as? [String: String] {
             self.filters = value
@@ -14929,6 +14921,8 @@ public class CreateThreadRequest : Tea.TeaModel {
             }
         }
     }
+    public var attributes: [String: String]?
+
     public var title: String?
 
     public var variables: CreateThreadRequest.Variables?
@@ -14948,6 +14942,9 @@ public class CreateThreadRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.title != nil {
             map["title"] = self.title!
         }
@@ -14959,6 +14956,9 @@ public class CreateThreadRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["title"] as? String {
             self.title = value
         }
@@ -24452,6 +24452,8 @@ public class GetThreadResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var attributes: [String: String]?
+
     public var createTime: String?
 
     public var digitalEmployeeName: String?
@@ -24485,6 +24487,9 @@ public class GetThreadResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.createTime != nil {
             map["createTime"] = self.createTime!
         }
@@ -24517,6 +24522,9 @@ public class GetThreadResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["createTime"] as? String {
             self.createTime = value
         }
@@ -36345,6 +36353,8 @@ public class ListThreadsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var attributes: [String: String]?
+
         public var createTime: String?
 
         public var digitalEmployeeName: String?
@@ -36376,6 +36386,9 @@ public class ListThreadsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attributes != nil {
+                map["attributes"] = self.attributes!
+            }
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
             }
@@ -36405,6 +36418,9 @@ public class ListThreadsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["attributes"] as? [String: String] {
+                self.attributes = value
+            }
             if let value = dict["createTime"] as? String {
                 self.createTime = value
             }
@@ -40508,6 +40524,8 @@ public class UpdateSubscriptionResponse : Tea.TeaModel {
 }
 
 public class UpdateThreadRequest : Tea.TeaModel {
+    public var attributes: [String: String]?
+
     public var status: String?
 
     public var title: String?
@@ -40526,6 +40544,9 @@ public class UpdateThreadRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -40537,6 +40558,9 @@ public class UpdateThreadRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["status"] as? String {
             self.status = value
         }

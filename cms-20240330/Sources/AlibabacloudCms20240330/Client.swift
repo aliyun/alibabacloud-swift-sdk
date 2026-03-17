@@ -899,6 +899,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createThreadWithOptions(_ name: String, _ request: CreateThreadRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateThreadResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            body["attributes"] = request.attributes ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.title)) {
             body["title"] = request.title ?? "";
         }
@@ -4671,6 +4674,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateThreadWithOptions(_ name: String, _ threadId: String, _ request: UpdateThreadRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateThreadResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            body["attributes"] = request.attributes ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["status"] = request.status ?? "";
         }
