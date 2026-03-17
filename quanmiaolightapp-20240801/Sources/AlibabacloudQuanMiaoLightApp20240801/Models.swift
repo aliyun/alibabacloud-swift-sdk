@@ -6474,6 +6474,8 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
 
     public var outputFormat: String?
 
+    public var positiveFilter: Bool?
+
     public var sourceTrace: Bool?
 
     public var tags: [RunEnterpriseVocAnalysisRequest.Tags]?
@@ -6518,6 +6520,9 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
         }
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
+        }
+        if self.positiveFilter != nil {
+            map["positiveFilter"] = self.positiveFilter!
         }
         if self.sourceTrace != nil {
             map["sourceTrace"] = self.sourceTrace!
@@ -6568,6 +6573,9 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
         }
+        if let value = dict["positiveFilter"] as? Bool {
+            self.positiveFilter = value
+        }
         if let value = dict["sourceTrace"] as? Bool {
             self.sourceTrace = value
         }
@@ -6604,6 +6612,8 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var outputFormat: String?
+
+    public var positiveFilter: Bool?
 
     public var sourceTrace: Bool?
 
@@ -6646,6 +6656,9 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
         }
+        if self.positiveFilter != nil {
+            map["positiveFilter"] = self.positiveFilter!
+        }
         if self.sourceTrace != nil {
             map["sourceTrace"] = self.sourceTrace!
         }
@@ -6680,6 +6693,9 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
+        }
+        if let value = dict["positiveFilter"] as? Bool {
+            self.positiveFilter = value
         }
         if let value = dict["sourceTrace"] as? Bool {
             self.sourceTrace = value
@@ -17045,6 +17061,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
     }
     public var apiKey: String?
 
+    public var batchTask: Bool?
+
     public var contents: [SubmitEnterpriseVocAnalysisTaskRequest.Contents]?
 
     public var extraInfo: String?
@@ -17056,6 +17074,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var outputFormat: String?
+
+    public var positiveFilter: Bool?
 
     public var sourceTrace: Bool?
 
@@ -17081,6 +17101,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.apiKey != nil {
             map["apiKey"] = self.apiKey!
+        }
+        if self.batchTask != nil {
+            map["batchTask"] = self.batchTask!
         }
         if self.contents != nil {
             var tmp : [Any] = []
@@ -17108,6 +17131,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
         }
+        if self.positiveFilter != nil {
+            map["positiveFilter"] = self.positiveFilter!
+        }
         if self.sourceTrace != nil {
             map["sourceTrace"] = self.sourceTrace!
         }
@@ -17131,6 +17157,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["apiKey"] as? String {
             self.apiKey = value
+        }
+        if let value = dict["batchTask"] as? Bool {
+            self.batchTask = value
         }
         if let value = dict["contents"] as? [Any?] {
             var tmp : [SubmitEnterpriseVocAnalysisTaskRequest.Contents] = []
@@ -17170,6 +17199,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
         }
+        if let value = dict["positiveFilter"] as? Bool {
+            self.positiveFilter = value
+        }
         if let value = dict["sourceTrace"] as? Bool {
             self.sourceTrace = value
         }
@@ -17198,6 +17230,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
     public var apiKey: String?
 
+    public var batchTask: Bool?
+
     public var contentsShrink: String?
 
     public var extraInfo: String?
@@ -17209,6 +17243,8 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var outputFormat: String?
+
+    public var positiveFilter: Bool?
 
     public var sourceTrace: Bool?
 
@@ -17235,6 +17271,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.apiKey != nil {
             map["apiKey"] = self.apiKey!
         }
+        if self.batchTask != nil {
+            map["batchTask"] = self.batchTask!
+        }
         if self.contentsShrink != nil {
             map["contents"] = self.contentsShrink!
         }
@@ -17252,6 +17291,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
+        }
+        if self.positiveFilter != nil {
+            map["positiveFilter"] = self.positiveFilter!
         }
         if self.sourceTrace != nil {
             map["sourceTrace"] = self.sourceTrace!
@@ -17273,6 +17315,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         if let value = dict["apiKey"] as? String {
             self.apiKey = value
         }
+        if let value = dict["batchTask"] as? Bool {
+            self.batchTask = value
+        }
         if let value = dict["contents"] as? String {
             self.contentsShrink = value
         }
@@ -17290,6 +17335,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
+        }
+        if let value = dict["positiveFilter"] as? Bool {
+            self.positiveFilter = value
         }
         if let value = dict["sourceTrace"] as? Bool {
             self.sourceTrace = value
@@ -17905,6 +17953,8 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
     }
     public var apiKey: String?
 
+    public var batchTask: Bool?
+
     public var businessType: String?
 
     public var contents: [String]?
@@ -17937,6 +17987,9 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.apiKey != nil {
             map["apiKey"] = self.apiKey!
+        }
+        if self.batchTask != nil {
+            map["batchTask"] = self.batchTask!
         }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
@@ -17973,6 +18026,9 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["apiKey"] as? String {
             self.apiKey = value
+        }
+        if let value = dict["batchTask"] as? Bool {
+            self.batchTask = value
         }
         if let value = dict["businessType"] as? String {
             self.businessType = value
@@ -18014,6 +18070,8 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
 public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
     public var apiKey: String?
 
+    public var batchTask: Bool?
+
     public var businessType: String?
 
     public var contentsShrink: String?
@@ -18047,6 +18105,9 @@ public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.apiKey != nil {
             map["apiKey"] = self.apiKey!
         }
+        if self.batchTask != nil {
+            map["batchTask"] = self.batchTask!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -18078,6 +18139,9 @@ public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["apiKey"] as? String {
             self.apiKey = value
+        }
+        if let value = dict["batchTask"] as? Bool {
+            self.batchTask = value
         }
         if let value = dict["businessType"] as? String {
             self.businessType = value

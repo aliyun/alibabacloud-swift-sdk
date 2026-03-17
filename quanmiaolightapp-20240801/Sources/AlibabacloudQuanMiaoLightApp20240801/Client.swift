@@ -585,6 +585,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outputFormat)) {
             body["outputFormat"] = request.outputFormat ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.positiveFilter)) {
+            body["positiveFilter"] = request.positiveFilter!;
+        }
         if (!TeaUtils.Client.isUnset(request.sourceTrace)) {
             body["sourceTrace"] = request.sourceTrace!;
         }
@@ -1523,6 +1526,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.apiKey)) {
             body["apiKey"] = request.apiKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.batchTask)) {
+            body["batchTask"] = request.batchTask!;
+        }
         if (!TeaUtils.Client.isUnset(request.contentsShrink)) {
             body["contents"] = request.contentsShrink ?? "";
         }
@@ -1540,6 +1546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.outputFormat)) {
             body["outputFormat"] = request.outputFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.positiveFilter)) {
+            body["positiveFilter"] = request.positiveFilter!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceTrace)) {
             body["sourceTrace"] = request.sourceTrace!;
@@ -1649,6 +1658,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.apiKey)) {
             body["apiKey"] = request.apiKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.batchTask)) {
+            body["batchTask"] = request.batchTask!;
         }
         if (!TeaUtils.Client.isUnset(request.businessType)) {
             body["businessType"] = request.businessType ?? "";
