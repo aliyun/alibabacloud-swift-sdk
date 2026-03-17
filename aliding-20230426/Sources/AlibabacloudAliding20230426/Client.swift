@@ -2428,11 +2428,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfAssistantId)) {
+            body["sourceIdOfAssistantId"] = request.sourceIdOfAssistantId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
             body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfAssistantId)) {
+            body["sourceTypeOfAssistantId"] = request.sourceTypeOfAssistantId!;
+        }
         if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
-            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId!;
         }
         if (!TeaUtils.Client.isUnset(request.threadId)) {
             body["threadId"] = request.threadId ?? "";
@@ -2845,11 +2851,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfAssistantId)) {
+            body["sourceIdOfAssistantId"] = request.sourceIdOfAssistantId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
             body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfAssistantId)) {
+            body["sourceTypeOfAssistantId"] = request.sourceTypeOfAssistantId!;
+        }
         if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
-            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId!;
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
@@ -3327,8 +3339,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfAssistantId)) {
+            body["sourceIdOfAssistantId"] = request.sourceIdOfAssistantId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
             body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfAssistantId)) {
+            body["sourceTypeOfAssistantId"] = request.sourceTypeOfAssistantId!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
             body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId!;
@@ -5618,6 +5636,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(headers.accountId)) {
             realHeaders["accountId"] = TeaUtils.Client.toJSONString(headers.accountId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.aiLogContextJson)) {
+            realHeaders["aiLogContextJson"] = TeaUtils.Client.toJSONString(headers.aiLogContextJson);
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
@@ -10228,6 +10249,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func invokeAssistantWithOptions(_ request: InvokeAssistantRequest, _ headers: InvokeAssistantHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeAssistantResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowStructViewContent)) {
+            body["allowStructViewContent"] = request.allowStructViewContent!;
+        }
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
@@ -10246,11 +10270,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["sessionId"] = request.sessionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfAssistantId)) {
+            body["sourceIdOfAssistantId"] = request.sourceIdOfAssistantId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
             body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfAssistantId)) {
+            body["sourceTypeOfAssistantId"] = request.sourceTypeOfAssistantId!;
+        }
         if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
-            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId!;
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
@@ -10261,6 +10291,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(headers.accountId)) {
             realHeaders["accountId"] = TeaUtils.Client.toJSONString(headers.accountId);
+        }
+        if (!TeaUtils.Client.isUnset(headers.aiLogContextJson)) {
+            realHeaders["aiLogContextJson"] = TeaUtils.Client.toJSONString(headers.aiLogContextJson);
         }
         if (!TeaUtils.Client.isUnset(headers.alidingSsoTicket)) {
             realHeaders["alidingSsoTicket"] = TeaUtils.Client.toJSONString(headers.alidingSsoTicket);
