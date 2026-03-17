@@ -11728,6 +11728,8 @@ public class DescribeLogstashResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var endTime: Int64?
+
         public var endpointList: [DescribeLogstashResponseBody.Result.EndpointList]?
 
         public var instanceId: String?
@@ -11792,6 +11794,9 @@ public class DescribeLogstashResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["description"] = self.description_!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
             }
             if self.endpointList != nil {
                 var tmp : [Any] = []
@@ -11872,6 +11877,9 @@ public class DescribeLogstashResponseBody : Tea.TeaModel {
             }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
             }
             if let value = dict["endpointList"] as? [Any?] {
                 var tmp : [DescribeLogstashResponseBody.Result.EndpointList] = []
@@ -28901,6 +28909,8 @@ public class ListLogstashResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var endTime: Int64?
+
         public var instanceId: String?
 
         public var networkConfig: ListLogstashResponseBody.Result.NetworkConfig?
@@ -28947,6 +28957,9 @@ public class ListLogstashResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["description"] = self.description_!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
@@ -28998,6 +29011,9 @@ public class ListLogstashResponseBody : Tea.TeaModel {
             }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["endTime"] as? Int64 {
+                self.endTime = value
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
