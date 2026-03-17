@@ -3030,6 +3030,8 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
 
         public var terminologies: [SubmitDocTranslateTaskRequest.Ext.Terminologies]?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -3061,6 +3063,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                 }
                 map["terminologies"] = tmp
             }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
+            }
             return map
         }
 
@@ -3089,6 +3094,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                     }
                 }
                 self.terminologies = tmp
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -3258,6 +3266,8 @@ public class SubmitDocTranslateTaskResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -3278,6 +3288,9 @@ public class SubmitDocTranslateTaskResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
+            }
             return map
         }
 
@@ -3288,6 +3301,9 @@ public class SubmitDocTranslateTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["taskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -3590,6 +3606,8 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
 
         public var textTransform: SubmitHtmlTranslateTaskRequest.Ext.TextTransform?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -3634,6 +3652,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
             }
             if self.textTransform != nil {
                 map["textTransform"] = self.textTransform?.toMap()
+            }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
             }
             return map
         }
@@ -3684,6 +3705,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
                 var model = SubmitHtmlTranslateTaskRequest.Ext.TextTransform()
                 model.fromMap(value)
                 self.textTransform = model
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -3853,6 +3877,8 @@ public class SubmitHtmlTranslateTaskResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -3873,6 +3899,9 @@ public class SubmitHtmlTranslateTaskResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
+            }
             return map
         }
 
@@ -3883,6 +3912,9 @@ public class SubmitHtmlTranslateTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["taskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -4145,6 +4177,8 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
 
         public var textTransform: SubmitImageTranslateTaskRequest.Ext.TextTransform?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -4185,6 +4219,9 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
             }
             if self.textTransform != nil {
                 map["textTransform"] = self.textTransform?.toMap()
+            }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
             }
             return map
         }
@@ -4230,6 +4267,9 @@ public class SubmitImageTranslateTaskRequest : Tea.TeaModel {
                 var model = SubmitImageTranslateTaskRequest.Ext.TextTransform()
                 model.fromMap(value)
                 self.textTransform = model
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -4399,6 +4439,8 @@ public class SubmitImageTranslateTaskResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -4419,6 +4461,9 @@ public class SubmitImageTranslateTaskResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
+            }
             return map
         }
 
@@ -4429,6 +4474,9 @@ public class SubmitImageTranslateTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["taskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -4723,6 +4771,8 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
 
         public var textTransform: SubmitLongTextTranslateTaskRequest.Ext.TextTransform?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -4767,6 +4817,9 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
             }
             if self.textTransform != nil {
                 map["textTransform"] = self.textTransform?.toMap()
+            }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
             }
             return map
         }
@@ -4817,6 +4870,9 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
                 var model = SubmitLongTextTranslateTaskRequest.Ext.TextTransform()
                 model.fromMap(value)
                 self.textTransform = model
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
@@ -4986,6 +5042,8 @@ public class SubmitLongTextTranslateTaskResponseBody : Tea.TeaModel {
 
         public var taskId: String?
 
+        public var trackingData: String?
+
         public override init() {
             super.init()
         }
@@ -5006,6 +5064,9 @@ public class SubmitLongTextTranslateTaskResponseBody : Tea.TeaModel {
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
+            if self.trackingData != nil {
+                map["trackingData"] = self.trackingData!
+            }
             return map
         }
 
@@ -5016,6 +5077,9 @@ public class SubmitLongTextTranslateTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["taskId"] as? String {
                 self.taskId = value
+            }
+            if let value = dict["trackingData"] as? String {
+                self.trackingData = value
             }
         }
     }
