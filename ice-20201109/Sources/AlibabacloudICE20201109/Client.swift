@@ -315,6 +315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.srtPbkeyLen)) {
             query["SrtPbkeyLen"] = request.srtPbkeyLen ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.withInternalVip)) {
+            query["WithInternalVip"] = request.withInternalVip ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2480,6 +2483,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.fileExt)) {
             query["FileExt"] = request.fileExt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            query["FileType"] = request.fileType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5848,6 +5854,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.flowId)) {
             query["FlowId"] = request.flowId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.withInternalVip)) {
+            query["WithInternalVip"] = request.withInternalVip ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -7051,6 +7060,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getYikeAssetMediaInfo(_ request: GetYikeAssetMediaInfoRequest) async throws -> GetYikeAssetMediaInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getYikeAssetMediaInfoWithOptions(request as! GetYikeAssetMediaInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeStoryboardJobWithOptions(_ request: GetYikeStoryboardJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeStoryboardJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikeStoryboardJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikeStoryboardJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikeStoryboardJob(_ request: GetYikeStoryboardJobRequest) async throws -> GetYikeStoryboardJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikeStoryboardJobWithOptions(request as! GetYikeStoryboardJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14261,6 +14301,72 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitYikeAIAppJob(_ request: SubmitYikeAIAppJobRequest) async throws -> SubmitYikeAIAppJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitYikeAIAppJobWithOptions(request as! SubmitYikeAIAppJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitYikeStoryboardJobWithOptions(_ request: SubmitYikeStoryboardJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitYikeStoryboardJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
+            query["AspectRatio"] = request.aspectRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelParams)) {
+            query["ModelParams"] = request.modelParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.narrationVoiceId)) {
+            query["NarrationVoiceId"] = request.narrationVoiceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            query["Resolution"] = request.resolution ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shotPromptMode)) {
+            query["ShotPromptMode"] = request.shotPromptMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoModel)) {
+            query["VideoModel"] = request.videoModel ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileURL)) {
+            body["FileURL"] = request.fileURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shotSplitMode)) {
+            body["ShotSplitMode"] = request.shotSplitMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            body["SourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.styleId)) {
+            body["StyleId"] = request.styleId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitYikeStoryboardJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitYikeStoryboardJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitYikeStoryboardJob(_ request: SubmitYikeStoryboardJobRequest) async throws -> SubmitYikeStoryboardJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitYikeStoryboardJobWithOptions(request as! SubmitYikeStoryboardJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
