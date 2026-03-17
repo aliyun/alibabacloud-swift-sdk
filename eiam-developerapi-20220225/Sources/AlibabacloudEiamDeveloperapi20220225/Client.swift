@@ -541,6 +541,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTokenByAuthorizationServerWithOptions(_ instanceId: String, _ authorizationServerId: String, _ request: GenerateTokenByAuthorizationServerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateTokenByAuthorizationServerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationFederatedCredentialName)) {
+            query["application_federated_credential_name"] = request.applicationFederatedCredentialName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientAssertion)) {
+            query["client_assertion"] = request.clientAssertion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientAssertionType)) {
+            query["client_assertion_type"] = request.clientAssertionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["client_id"] = request.clientId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientSecret)) {
+            query["client_secret"] = request.clientSecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientX509)) {
+            query["client_x509"] = request.clientX509 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientX509Chain)) {
+            query["client_x509_chain"] = request.clientX509Chain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.code)) {
+            query["code"] = request.code ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.codeVerifier)) {
+            query["code_verifier"] = request.codeVerifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceCode)) {
+            query["device_code"] = request.deviceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grantType)) {
+            query["grant_type"] = request.grantType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.redirectUri)) {
+            query["redirect_uri"] = request.redirectUri ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refreshToken)) {
+            query["refresh_token"] = request.refreshToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scope)) {
+            query["scope"] = request.scope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            query["username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateTokenByAuthorizationServer",
+            "version": "2022-02-25",
+            "protocol": "HTTPS",
+            "pathname": "/v2/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/authorizationServer/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(authorizationServerId)) + "/oauth2/token",
+            "method": "POST",
+            "authType": "Anonymous",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await doROARequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.pathname ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateTokenByAuthorizationServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTokenByAuthorizationServer(_ instanceId: String, _ authorizationServerId: String, _ request: GenerateTokenByAuthorizationServerRequest) async throws -> GenerateTokenByAuthorizationServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generateTokenByAuthorizationServerWithOptions(instanceId as! String, authorizationServerId as! String, request as! GenerateTokenByAuthorizationServerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getApplicationProvisioningScopeWithOptions(_ instanceId: String, _ applicationId: String, _ headers: GetApplicationProvisioningScopeHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApplicationProvisioningScopeResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {

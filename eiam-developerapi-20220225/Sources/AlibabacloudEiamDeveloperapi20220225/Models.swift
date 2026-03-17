@@ -1703,6 +1703,286 @@ public class GenerateTokenResponse : Tea.TeaModel {
     }
 }
 
+public class GenerateTokenByAuthorizationServerRequest : Tea.TeaModel {
+    public var applicationFederatedCredentialName: String?
+
+    public var clientAssertion: String?
+
+    public var clientAssertionType: String?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
+    public var clientX509: String?
+
+    public var clientX509Chain: String?
+
+    public var code: String?
+
+    public var codeVerifier: String?
+
+    public var deviceCode: String?
+
+    public var grantType: String?
+
+    public var password: String?
+
+    public var redirectUri: String?
+
+    public var refreshToken: String?
+
+    public var scope: String?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationFederatedCredentialName != nil {
+            map["application_federated_credential_name"] = self.applicationFederatedCredentialName!
+        }
+        if self.clientAssertion != nil {
+            map["client_assertion"] = self.clientAssertion!
+        }
+        if self.clientAssertionType != nil {
+            map["client_assertion_type"] = self.clientAssertionType!
+        }
+        if self.clientId != nil {
+            map["client_id"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["client_secret"] = self.clientSecret!
+        }
+        if self.clientX509 != nil {
+            map["client_x509"] = self.clientX509!
+        }
+        if self.clientX509Chain != nil {
+            map["client_x509_chain"] = self.clientX509Chain!
+        }
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.codeVerifier != nil {
+            map["code_verifier"] = self.codeVerifier!
+        }
+        if self.deviceCode != nil {
+            map["device_code"] = self.deviceCode!
+        }
+        if self.grantType != nil {
+            map["grant_type"] = self.grantType!
+        }
+        if self.password != nil {
+            map["password"] = self.password!
+        }
+        if self.redirectUri != nil {
+            map["redirect_uri"] = self.redirectUri!
+        }
+        if self.refreshToken != nil {
+            map["refresh_token"] = self.refreshToken!
+        }
+        if self.scope != nil {
+            map["scope"] = self.scope!
+        }
+        if self.username != nil {
+            map["username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["application_federated_credential_name"] as? String {
+            self.applicationFederatedCredentialName = value
+        }
+        if let value = dict["client_assertion"] as? String {
+            self.clientAssertion = value
+        }
+        if let value = dict["client_assertion_type"] as? String {
+            self.clientAssertionType = value
+        }
+        if let value = dict["client_id"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["client_secret"] as? String {
+            self.clientSecret = value
+        }
+        if let value = dict["client_x509"] as? String {
+            self.clientX509 = value
+        }
+        if let value = dict["client_x509_chain"] as? String {
+            self.clientX509Chain = value
+        }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["code_verifier"] as? String {
+            self.codeVerifier = value
+        }
+        if let value = dict["device_code"] as? String {
+            self.deviceCode = value
+        }
+        if let value = dict["grant_type"] as? String {
+            self.grantType = value
+        }
+        if let value = dict["password"] as? String {
+            self.password = value
+        }
+        if let value = dict["redirect_uri"] as? String {
+            self.redirectUri = value
+        }
+        if let value = dict["refresh_token"] as? String {
+            self.refreshToken = value
+        }
+        if let value = dict["scope"] as? String {
+            self.scope = value
+        }
+        if let value = dict["username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class GenerateTokenByAuthorizationServerResponseBody : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var expiresAt: Int64?
+
+    public var expiresIn: Int64?
+
+    public var idToken: String?
+
+    public var refreshToken: String?
+
+    public var scope: String?
+
+    public var tokenType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["access_token"] = self.accessToken!
+        }
+        if self.expiresAt != nil {
+            map["expires_at"] = self.expiresAt!
+        }
+        if self.expiresIn != nil {
+            map["expires_in"] = self.expiresIn!
+        }
+        if self.idToken != nil {
+            map["id_token"] = self.idToken!
+        }
+        if self.refreshToken != nil {
+            map["refresh_token"] = self.refreshToken!
+        }
+        if self.scope != nil {
+            map["scope"] = self.scope!
+        }
+        if self.tokenType != nil {
+            map["token_type"] = self.tokenType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["access_token"] as? String {
+            self.accessToken = value
+        }
+        if let value = dict["expires_at"] as? Int64 {
+            self.expiresAt = value
+        }
+        if let value = dict["expires_in"] as? Int64 {
+            self.expiresIn = value
+        }
+        if let value = dict["id_token"] as? String {
+            self.idToken = value
+        }
+        if let value = dict["refresh_token"] as? String {
+            self.refreshToken = value
+        }
+        if let value = dict["scope"] as? String {
+            self.scope = value
+        }
+        if let value = dict["token_type"] as? String {
+            self.tokenType = value
+        }
+    }
+}
+
+public class GenerateTokenByAuthorizationServerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateTokenByAuthorizationServerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateTokenByAuthorizationServerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetApplicationProvisioningScopeHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
