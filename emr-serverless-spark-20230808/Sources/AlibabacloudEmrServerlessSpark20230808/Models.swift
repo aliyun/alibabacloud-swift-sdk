@@ -5385,6 +5385,8 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
     public var releaseType: String?
 
+    public var resourceGroupId: String?
+
     public var resourceSpec: CreateWorkspaceRequest.ResourceSpec?
 
     public var tag: [CreateWorkspaceRequest.Tag]?
@@ -5447,6 +5449,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
         if self.releaseType != nil {
             map["releaseType"] = self.releaseType!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceSpec != nil {
             map["resourceSpec"] = self.resourceSpec?.toMap()
         }
@@ -5506,6 +5511,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
         }
         if let value = dict["releaseType"] as? String {
             self.releaseType = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["resourceSpec"] as? [String: Any?] {
             var model = CreateWorkspaceRequest.ResourceSpec()
@@ -16661,6 +16669,8 @@ public class ListWorkspacesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var state: String?
 
     public var tag: [ListWorkspacesRequest.Tag]?
@@ -16691,6 +16701,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["state"] = self.state!
         }
@@ -16717,6 +16730,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["state"] as? String {
             self.state = value
@@ -16745,6 +16761,8 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public var state: String?
 
@@ -16776,6 +16794,9 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["state"] = self.state!
         }
@@ -16798,6 +16819,9 @@ public class ListWorkspacesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["state"] as? String {
             self.state = value
@@ -17010,6 +17034,8 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
         public var releaseType: String?
 
+        public var resourceGroupId: String?
+
         public var resourceSpec: String?
 
         public var stateChangeReason: ListWorkspacesResponseBody.Workspaces.StateChangeReason?
@@ -17084,6 +17110,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if self.releaseType != nil {
                 map["releaseType"] = self.releaseType!
+            }
+            if self.resourceGroupId != nil {
+                map["resourceGroupId"] = self.resourceGroupId!
             }
             if self.resourceSpec != nil {
                 map["resourceSpec"] = self.resourceSpec!
@@ -17161,6 +17190,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if let value = dict["releaseType"] as? String {
                 self.releaseType = value
+            }
+            if let value = dict["resourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["resourceSpec"] as? String {
                 self.resourceSpec = value
