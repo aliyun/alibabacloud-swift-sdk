@@ -4616,6 +4616,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public var AIDBClusterId: String?
+
     public var applicationType: String?
 
     public var architecture: String?
@@ -4637,6 +4639,16 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var endpoints: [CreateApplicationRequest.Endpoints]?
 
     public var memApplicationSpec: CreateApplicationRequest.MemApplicationSpec?
+
+    public var modelApi: String?
+
+    public var modelApiKey: String?
+
+    public var modelBaseUrl: String?
+
+    public var modelFrom: String?
+
+    public var modelName: String?
 
     public var payType: String?
 
@@ -4675,6 +4687,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.AIDBClusterId != nil {
+            map["AIDBClusterId"] = self.AIDBClusterId!
+        }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
         }
@@ -4716,6 +4731,21 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.memApplicationSpec != nil {
             map["MemApplicationSpec"] = self.memApplicationSpec?.toMap()
         }
+        if self.modelApi != nil {
+            map["ModelApi"] = self.modelApi!
+        }
+        if self.modelApiKey != nil {
+            map["ModelApiKey"] = self.modelApiKey!
+        }
+        if self.modelBaseUrl != nil {
+            map["ModelBaseUrl"] = self.modelBaseUrl!
+        }
+        if self.modelFrom != nil {
+            map["ModelFrom"] = self.modelFrom!
+        }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -4754,6 +4784,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AIDBClusterId"] as? String {
+            self.AIDBClusterId = value
+        }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
         }
@@ -4809,6 +4842,21 @@ public class CreateApplicationRequest : Tea.TeaModel {
             model.fromMap(value)
             self.memApplicationSpec = model
         }
+        if let value = dict["ModelApi"] as? String {
+            self.modelApi = value
+        }
+        if let value = dict["ModelApiKey"] as? String {
+            self.modelApiKey = value
+        }
+        if let value = dict["ModelBaseUrl"] as? String {
+            self.modelBaseUrl = value
+        }
+        if let value = dict["ModelFrom"] as? String {
+            self.modelFrom = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -4846,6 +4894,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 }
 
 public class CreateApplicationShrinkRequest : Tea.TeaModel {
+    public var AIDBClusterId: String?
+
     public var applicationType: String?
 
     public var architecture: String?
@@ -4867,6 +4917,16 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var endpointsShrink: String?
 
     public var memApplicationSpecShrink: String?
+
+    public var modelApi: String?
+
+    public var modelApiKey: String?
+
+    public var modelBaseUrl: String?
+
+    public var modelFrom: String?
+
+    public var modelName: String?
 
     public var payType: String?
 
@@ -4904,6 +4964,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.AIDBClusterId != nil {
+            map["AIDBClusterId"] = self.AIDBClusterId!
+        }
         if self.applicationType != nil {
             map["ApplicationType"] = self.applicationType!
         }
@@ -4936,6 +4999,21 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.memApplicationSpecShrink != nil {
             map["MemApplicationSpec"] = self.memApplicationSpecShrink!
+        }
+        if self.modelApi != nil {
+            map["ModelApi"] = self.modelApi!
+        }
+        if self.modelApiKey != nil {
+            map["ModelApiKey"] = self.modelApiKey!
+        }
+        if self.modelBaseUrl != nil {
+            map["ModelBaseUrl"] = self.modelBaseUrl!
+        }
+        if self.modelFrom != nil {
+            map["ModelFrom"] = self.modelFrom!
+        }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -4975,6 +5053,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AIDBClusterId"] as? String {
+            self.AIDBClusterId = value
+        }
         if let value = dict["ApplicationType"] as? String {
             self.applicationType = value
         }
@@ -5007,6 +5088,21 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MemApplicationSpec"] as? String {
             self.memApplicationSpecShrink = value
+        }
+        if let value = dict["ModelApi"] as? String {
+            self.modelApi = value
+        }
+        if let value = dict["ModelApiKey"] as? String {
+            self.modelApiKey = value
+        }
+        if let value = dict["ModelBaseUrl"] as? String {
+            self.modelBaseUrl = value
+        }
+        if let value = dict["ModelFrom"] as? String {
+            self.modelFrom = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value

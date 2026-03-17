@@ -1274,6 +1274,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.memApplicationSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.memApplicationSpec, "MemApplicationSpec", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.AIDBClusterId)) {
+            query["AIDBClusterId"] = request.AIDBClusterId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applicationType)) {
             query["ApplicationType"] = request.applicationType ?? "";
         }
@@ -1306,6 +1309,21 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.memApplicationSpecShrink)) {
             query["MemApplicationSpec"] = request.memApplicationSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelApi)) {
+            query["ModelApi"] = request.modelApi ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelApiKey)) {
+            query["ModelApiKey"] = request.modelApiKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelBaseUrl)) {
+            query["ModelBaseUrl"] = request.modelBaseUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelFrom)) {
+            query["ModelFrom"] = request.modelFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelName)) {
+            query["ModelName"] = request.modelName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
