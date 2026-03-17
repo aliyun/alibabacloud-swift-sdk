@@ -17942,6 +17942,8 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
 
             public var sourceTypeName: String?
 
+            public var status: String?
+
             public override init() {
                 super.init()
             }
@@ -17977,6 +17979,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 if self.sourceTypeName != nil {
                     map["SourceTypeName"] = self.sourceTypeName!
                 }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
                 return map
             }
 
@@ -18002,6 +18007,9 @@ public class QueryInspirationAccountDetailsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SourceTypeName"] as? String {
                     self.sourceTypeName = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
                 }
             }
         }
