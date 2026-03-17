@@ -2086,6 +2086,262 @@ public class OneMetaTableIndex : Tea.TeaModel {
     }
 }
 
+public class OpenClawInstanceVO : Tea.TeaModel {
+    public class ImageInfo : Tea.TeaModel {
+        public var imageId: Int64?
+
+        public var name: String?
+
+        public var namespace: String?
+
+        public var tag: String?
+
+        public var versionDesc: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.tag != nil {
+                map["Tag"] = self.tag!
+            }
+            if self.versionDesc != nil {
+                map["VersionDesc"] = self.versionDesc!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageId"] as? Int64 {
+                self.imageId = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["Tag"] as? String {
+                self.tag = value
+            }
+            if let value = dict["VersionDesc"] as? String {
+                self.versionDesc = value
+            }
+        }
+    }
+    public var aliyunAccountUid: String?
+
+    public var authType: String?
+
+    public var basicAuthPassword: String?
+
+    public var basicAuthUsername: String?
+
+    public var cpu: Double?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var imageInfo: OpenClawInstanceVO.ImageInfo?
+
+    public var instanceDesc: String?
+
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var instanceRegion: String?
+
+    public var lastActiveTime: String?
+
+    public var memorySize: Int32?
+
+    public var openclawToken: String?
+
+    public var ownerUid: String?
+
+    public var publicDomain: String?
+
+    public var status: Int32?
+
+    public var statusDesc: String?
+
+    public var statusMessage: String?
+
+    public var variables: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.imageInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunAccountUid != nil {
+            map["AliyunAccountUid"] = self.aliyunAccountUid!
+        }
+        if self.authType != nil {
+            map["AuthType"] = self.authType!
+        }
+        if self.basicAuthPassword != nil {
+            map["BasicAuthPassword"] = self.basicAuthPassword!
+        }
+        if self.basicAuthUsername != nil {
+            map["BasicAuthUsername"] = self.basicAuthUsername!
+        }
+        if self.cpu != nil {
+            map["Cpu"] = self.cpu!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.imageInfo != nil {
+            map["ImageInfo"] = self.imageInfo?.toMap()
+        }
+        if self.instanceDesc != nil {
+            map["InstanceDesc"] = self.instanceDesc!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.instanceRegion != nil {
+            map["InstanceRegion"] = self.instanceRegion!
+        }
+        if self.lastActiveTime != nil {
+            map["LastActiveTime"] = self.lastActiveTime!
+        }
+        if self.memorySize != nil {
+            map["MemorySize"] = self.memorySize!
+        }
+        if self.openclawToken != nil {
+            map["OpenclawToken"] = self.openclawToken!
+        }
+        if self.ownerUid != nil {
+            map["OwnerUid"] = self.ownerUid!
+        }
+        if self.publicDomain != nil {
+            map["PublicDomain"] = self.publicDomain!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusDesc != nil {
+            map["StatusDesc"] = self.statusDesc!
+        }
+        if self.statusMessage != nil {
+            map["StatusMessage"] = self.statusMessage!
+        }
+        if self.variables != nil {
+            map["Variables"] = self.variables!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AliyunAccountUid"] as? String {
+            self.aliyunAccountUid = value
+        }
+        if let value = dict["AuthType"] as? String {
+            self.authType = value
+        }
+        if let value = dict["BasicAuthPassword"] as? String {
+            self.basicAuthPassword = value
+        }
+        if let value = dict["BasicAuthUsername"] as? String {
+            self.basicAuthUsername = value
+        }
+        if let value = dict["Cpu"] as? Double {
+            self.cpu = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["ImageInfo"] as? [String: Any?] {
+            var model = OpenClawInstanceVO.ImageInfo()
+            model.fromMap(value)
+            self.imageInfo = model
+        }
+        if let value = dict["InstanceDesc"] as? String {
+            self.instanceDesc = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["InstanceRegion"] as? String {
+            self.instanceRegion = value
+        }
+        if let value = dict["LastActiveTime"] as? String {
+            self.lastActiveTime = value
+        }
+        if let value = dict["MemorySize"] as? Int32 {
+            self.memorySize = value
+        }
+        if let value = dict["OpenclawToken"] as? String {
+            self.openclawToken = value
+        }
+        if let value = dict["OwnerUid"] as? String {
+            self.ownerUid = value
+        }
+        if let value = dict["PublicDomain"] as? String {
+            self.publicDomain = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["StatusDesc"] as? String {
+            self.statusDesc = value
+        }
+        if let value = dict["StatusMessage"] as? String {
+            self.statusMessage = value
+        }
+        if let value = dict["Variables"] as? String {
+            self.variables = value
+        }
+    }
+}
+
 public class PartitionError : Tea.TeaModel {
     public var errorDetail: String?
 
@@ -3837,6 +4093,68 @@ public class CreateAirflowLoginTokenResponse : Tea.TeaModel {
 }
 
 public class CreateCustomAgentRequest : Tea.TeaModel {
+    public class CallbackConfig : Tea.TeaModel {
+        public var callbackArgs: String?
+
+        public var callbackPrompt: String?
+
+        public var callbackTime: Int32?
+
+        public var toolId: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callbackArgs != nil {
+                map["CallbackArgs"] = self.callbackArgs!
+            }
+            if self.callbackPrompt != nil {
+                map["CallbackPrompt"] = self.callbackPrompt!
+            }
+            if self.callbackTime != nil {
+                map["CallbackTime"] = self.callbackTime!
+            }
+            if self.toolId != nil {
+                map["ToolId"] = self.toolId!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallbackArgs"] as? String {
+                self.callbackArgs = value
+            }
+            if let value = dict["CallbackPrompt"] as? String {
+                self.callbackPrompt = value
+            }
+            if let value = dict["CallbackTime"] as? Int32 {
+                self.callbackTime = value
+            }
+            if let value = dict["ToolId"] as? String {
+                self.toolId = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class ExecutionConfig : Tea.TeaModel {
         public var skipAskHuman: Bool?
 
@@ -3975,6 +4293,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public var callbackConfig: CreateCustomAgentRequest.CallbackConfig?
+
     public var DMSUnit: String?
 
     public var dataJson: String?
@@ -4009,12 +4329,16 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.callbackConfig?.validate()
         try self.executionConfig?.validate()
         try self.scheduleTaskConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callbackConfig != nil {
+            map["CallbackConfig"] = self.callbackConfig?.toMap()
+        }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
@@ -4060,6 +4384,11 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallbackConfig"] as? [String: Any?] {
+            var model = CreateCustomAgentRequest.CallbackConfig()
+            model.fromMap(value)
+            self.callbackConfig = model
+        }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
         }
@@ -4114,6 +4443,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
 }
 
 public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
+    public var callbackConfigShrink: String?
+
     public var DMSUnit: String?
 
     public var dataJson: String?
@@ -4152,6 +4483,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callbackConfigShrink != nil {
+            map["CallbackConfig"] = self.callbackConfigShrink!
+        }
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
@@ -4193,6 +4527,9 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallbackConfig"] as? String {
+            self.callbackConfigShrink = value
+        }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
         }
@@ -4234,6 +4571,68 @@ public class CreateCustomAgentShrinkRequest : Tea.TeaModel {
 
 public class CreateCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class CallbackConfig : Tea.TeaModel {
+            public var callbackArgs: String?
+
+            public var callbackPrompt: String?
+
+            public var callbackTime: Int32?
+
+            public var toolId: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.callbackArgs != nil {
+                    map["CallbackArgs"] = self.callbackArgs!
+                }
+                if self.callbackPrompt != nil {
+                    map["CallbackPrompt"] = self.callbackPrompt!
+                }
+                if self.callbackTime != nil {
+                    map["CallbackTime"] = self.callbackTime!
+                }
+                if self.toolId != nil {
+                    map["ToolId"] = self.toolId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CallbackArgs"] as? String {
+                    self.callbackArgs = value
+                }
+                if let value = dict["CallbackPrompt"] as? String {
+                    self.callbackPrompt = value
+                }
+                if let value = dict["CallbackTime"] as? Int32 {
+                    self.callbackTime = value
+                }
+                if let value = dict["ToolId"] as? String {
+                    self.toolId = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ExecutionConfig : Tea.TeaModel {
             public var skipAskHuman: Bool?
 
@@ -4376,6 +4775,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
 
         public var aliyunUid: String?
 
+        public var callbackConfig: CreateCustomAgentResponseBody.Data.CallbackConfig?
+
         public var creatorUserName: String?
 
         public var customAgentId: String?
@@ -4436,6 +4837,7 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.callbackConfig?.validate()
             try self.executionConfig?.validate()
             try self.scheduleTaskConfig?.validate()
         }
@@ -4447,6 +4849,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.aliyunUid != nil {
                 map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.callbackConfig != nil {
+                map["CallbackConfig"] = self.callbackConfig?.toMap()
             }
             if self.creatorUserName != nil {
                 map["CreatorUserName"] = self.creatorUserName!
@@ -4537,6 +4942,11 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["AliyunUid"] as? String {
                 self.aliyunUid = value
+            }
+            if let value = dict["CallbackConfig"] as? [String: Any?] {
+                var model = CreateCustomAgentResponseBody.Data.CallbackConfig()
+                model.fromMap(value)
+                self.callbackConfig = model
             }
             if let value = dict["CreatorUserName"] as? String {
                 self.creatorUserName = value
@@ -8208,6 +8618,68 @@ public class DescribeCustomAgentRequest : Tea.TeaModel {
 
 public class DescribeCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class CallbackConfig : Tea.TeaModel {
+            public var callbackArgs: String?
+
+            public var callbackPrompt: String?
+
+            public var callbackTime: Int32?
+
+            public var toolId: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.callbackArgs != nil {
+                    map["CallbackArgs"] = self.callbackArgs!
+                }
+                if self.callbackPrompt != nil {
+                    map["CallbackPrompt"] = self.callbackPrompt!
+                }
+                if self.callbackTime != nil {
+                    map["CallbackTime"] = self.callbackTime!
+                }
+                if self.toolId != nil {
+                    map["ToolId"] = self.toolId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CallbackArgs"] as? String {
+                    self.callbackArgs = value
+                }
+                if let value = dict["CallbackPrompt"] as? String {
+                    self.callbackPrompt = value
+                }
+                if let value = dict["CallbackTime"] as? Int32 {
+                    self.callbackTime = value
+                }
+                if let value = dict["ToolId"] as? String {
+                    self.toolId = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ExecutionConfig : Tea.TeaModel {
             public var skipAskHuman: Bool?
 
@@ -8350,6 +8822,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
 
         public var aliyunUid: String?
 
+        public var callbackConfig: DescribeCustomAgentResponseBody.Data.CallbackConfig?
+
         public var creatorUserName: String?
 
         public var customAgentId: String?
@@ -8412,6 +8886,7 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.callbackConfig?.validate()
             try self.executionConfig?.validate()
             try self.scheduleTaskConfig?.validate()
         }
@@ -8423,6 +8898,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.aliyunUid != nil {
                 map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.callbackConfig != nil {
+                map["CallbackConfig"] = self.callbackConfig?.toMap()
             }
             if self.creatorUserName != nil {
                 map["CreatorUserName"] = self.creatorUserName!
@@ -8516,6 +8994,11 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["AliyunUid"] as? String {
                 self.aliyunUid = value
+            }
+            if let value = dict["CallbackConfig"] as? [String: Any?] {
+                var model = DescribeCustomAgentResponseBody.Data.CallbackConfig()
+                model.fromMap(value)
+                self.callbackConfig = model
             }
             if let value = dict["CreatorUserName"] as? String {
                 self.creatorUserName = value
@@ -12535,6 +13018,68 @@ public class ListCustomAgentRequest : Tea.TeaModel {
 public class ListCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Content : Tea.TeaModel {
+            public class CallbackConfig : Tea.TeaModel {
+                public var callbackArgs: String?
+
+                public var callbackPrompt: String?
+
+                public var callbackTime: Int32?
+
+                public var toolId: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callbackArgs != nil {
+                        map["CallbackArgs"] = self.callbackArgs!
+                    }
+                    if self.callbackPrompt != nil {
+                        map["CallbackPrompt"] = self.callbackPrompt!
+                    }
+                    if self.callbackTime != nil {
+                        map["CallbackTime"] = self.callbackTime!
+                    }
+                    if self.toolId != nil {
+                        map["ToolId"] = self.toolId!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallbackArgs"] as? String {
+                        self.callbackArgs = value
+                    }
+                    if let value = dict["CallbackPrompt"] as? String {
+                        self.callbackPrompt = value
+                    }
+                    if let value = dict["CallbackTime"] as? Int32 {
+                        self.callbackTime = value
+                    }
+                    if let value = dict["ToolId"] as? String {
+                        self.toolId = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
             public class ExecutionConfig : Tea.TeaModel {
                 public var skipAskHuman: Bool?
 
@@ -12677,6 +13222,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
 
             public var aliyunUid: String?
 
+            public var callbackConfig: ListCustomAgentResponseBody.Data.Content.CallbackConfig?
+
             public var creatorUserName: String?
 
             public var customAgentId: String?
@@ -12739,6 +13286,7 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.callbackConfig?.validate()
                 try self.executionConfig?.validate()
                 try self.scheduleTaskConfig?.validate()
             }
@@ -12750,6 +13298,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if self.aliyunUid != nil {
                     map["AliyunUid"] = self.aliyunUid!
+                }
+                if self.callbackConfig != nil {
+                    map["CallbackConfig"] = self.callbackConfig?.toMap()
                 }
                 if self.creatorUserName != nil {
                     map["CreatorUserName"] = self.creatorUserName!
@@ -12843,6 +13394,11 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AliyunUid"] as? String {
                     self.aliyunUid = value
+                }
+                if let value = dict["CallbackConfig"] as? [String: Any?] {
+                    var model = ListCustomAgentResponseBody.Data.Content.CallbackConfig()
+                    model.fromMap(value)
+                    self.callbackConfig = model
                 }
                 if let value = dict["CreatorUserName"] as? String {
                     self.creatorUserName = value
@@ -17630,6 +18186,68 @@ public class ListFileUploadResponse : Tea.TeaModel {
 }
 
 public class ModifyCustomAgentRequest : Tea.TeaModel {
+    public class CallbackConfig : Tea.TeaModel {
+        public var callbackArgs: String?
+
+        public var callbackPrompt: String?
+
+        public var callbackTime: Int32?
+
+        public var toolId: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callbackArgs != nil {
+                map["CallbackArgs"] = self.callbackArgs!
+            }
+            if self.callbackPrompt != nil {
+                map["CallbackPrompt"] = self.callbackPrompt!
+            }
+            if self.callbackTime != nil {
+                map["CallbackTime"] = self.callbackTime!
+            }
+            if self.toolId != nil {
+                map["ToolId"] = self.toolId!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallbackArgs"] as? String {
+                self.callbackArgs = value
+            }
+            if let value = dict["CallbackPrompt"] as? String {
+                self.callbackPrompt = value
+            }
+            if let value = dict["CallbackTime"] as? Int32 {
+                self.callbackTime = value
+            }
+            if let value = dict["ToolId"] as? String {
+                self.toolId = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class ExecutionConfig : Tea.TeaModel {
         public var skipAskHuman: Bool?
 
@@ -17768,6 +18386,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public var callbackConfig: ModifyCustomAgentRequest.CallbackConfig?
+
     public var customAgentId: String?
 
     public var DMSUnit: String?
@@ -17804,12 +18424,16 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.callbackConfig?.validate()
         try self.executionConfig?.validate()
         try self.scheduleTaskConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callbackConfig != nil {
+            map["CallbackConfig"] = self.callbackConfig?.toMap()
+        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -17858,6 +18482,11 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallbackConfig"] as? [String: Any?] {
+            var model = ModifyCustomAgentRequest.CallbackConfig()
+            model.fromMap(value)
+            self.callbackConfig = model
+        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
@@ -17915,6 +18544,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
 }
 
 public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
+    public var callbackConfigShrink: String?
+
     public var customAgentId: String?
 
     public var DMSUnit: String?
@@ -17955,6 +18586,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.callbackConfigShrink != nil {
+            map["CallbackConfig"] = self.callbackConfigShrink!
+        }
         if self.customAgentId != nil {
             map["CustomAgentId"] = self.customAgentId!
         }
@@ -17999,6 +18633,9 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CallbackConfig"] as? String {
+            self.callbackConfigShrink = value
+        }
         if let value = dict["CustomAgentId"] as? String {
             self.customAgentId = value
         }
@@ -18043,6 +18680,68 @@ public class ModifyCustomAgentShrinkRequest : Tea.TeaModel {
 
 public class ModifyCustomAgentResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class CallbackConfig : Tea.TeaModel {
+            public var callbackArgs: String?
+
+            public var callbackPrompt: String?
+
+            public var callbackTime: Int32?
+
+            public var toolId: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.callbackArgs != nil {
+                    map["CallbackArgs"] = self.callbackArgs!
+                }
+                if self.callbackPrompt != nil {
+                    map["CallbackPrompt"] = self.callbackPrompt!
+                }
+                if self.callbackTime != nil {
+                    map["CallbackTime"] = self.callbackTime!
+                }
+                if self.toolId != nil {
+                    map["ToolId"] = self.toolId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CallbackArgs"] as? String {
+                    self.callbackArgs = value
+                }
+                if let value = dict["CallbackPrompt"] as? String {
+                    self.callbackPrompt = value
+                }
+                if let value = dict["CallbackTime"] as? Int32 {
+                    self.callbackTime = value
+                }
+                if let value = dict["ToolId"] as? String {
+                    self.toolId = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public class ExecutionConfig : Tea.TeaModel {
             public var skipAskHuman: Bool?
 
@@ -18185,6 +18884,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
 
         public var aliyunUid: String?
 
+        public var callbackConfig: ModifyCustomAgentResponseBody.Data.CallbackConfig?
+
         public var creatorUserName: String?
 
         public var customAgentId: String?
@@ -18245,6 +18946,7 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.callbackConfig?.validate()
             try self.executionConfig?.validate()
             try self.scheduleTaskConfig?.validate()
         }
@@ -18256,6 +18958,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if self.aliyunUid != nil {
                 map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.callbackConfig != nil {
+                map["CallbackConfig"] = self.callbackConfig?.toMap()
             }
             if self.creatorUserName != nil {
                 map["CreatorUserName"] = self.creatorUserName!
@@ -18346,6 +19051,11 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
             }
             if let value = dict["AliyunUid"] as? String {
                 self.aliyunUid = value
+            }
+            if let value = dict["CallbackConfig"] as? [String: Any?] {
+                var model = ModifyCustomAgentResponseBody.Data.CallbackConfig()
+                model.fromMap(value)
+                self.callbackConfig = model
             }
             if let value = dict["CreatorUserName"] as? String {
                 self.creatorUserName = value

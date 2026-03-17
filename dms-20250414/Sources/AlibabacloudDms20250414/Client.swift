@@ -336,6 +336,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateCustomAgentShrinkRequest = CreateCustomAgentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.callbackConfig)) {
+            request.callbackConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callbackConfig, "CallbackConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.executionConfig)) {
             request.executionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.executionConfig, "ExecutionConfig", "json")
         }
@@ -346,6 +349,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.scheduleTaskConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scheduleTaskConfig, "ScheduleTaskConfig", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callbackConfigShrink)) {
+            query["CallbackConfig"] = request.callbackConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
             query["DMSUnit"] = request.DMSUnit ?? "";
         }
@@ -2523,6 +2529,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyCustomAgentShrinkRequest = ModifyCustomAgentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.callbackConfig)) {
+            request.callbackConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callbackConfig, "CallbackConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.executionConfig)) {
             request.executionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.executionConfig, "ExecutionConfig", "json")
         }
@@ -2533,6 +2542,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.scheduleTaskConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scheduleTaskConfig, "ScheduleTaskConfig", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callbackConfigShrink)) {
+            query["CallbackConfig"] = request.callbackConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customAgentId)) {
             query["CustomAgentId"] = request.customAgentId ?? "";
         }
