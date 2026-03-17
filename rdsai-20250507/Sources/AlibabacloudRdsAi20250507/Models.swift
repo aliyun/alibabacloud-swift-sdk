@@ -1208,6 +1208,310 @@ public class CreateCustomAgentResponse : Tea.TeaModel {
     }
 }
 
+public class CreateEdgeFunctionRequest : Tea.TeaModel {
+    public class Code : Tea.TeaModel {
+        public var ossBucketName: String?
+
+        public var ossObjectName: String?
+
+        public var ossType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ossBucketName != nil {
+                map["OssBucketName"] = self.ossBucketName!
+            }
+            if self.ossObjectName != nil {
+                map["OssObjectName"] = self.ossObjectName!
+            }
+            if self.ossType != nil {
+                map["OssType"] = self.ossType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OssBucketName"] as? String {
+                self.ossBucketName = value
+            }
+            if let value = dict["OssObjectName"] as? String {
+                self.ossObjectName = value
+            }
+            if let value = dict["OssType"] as? String {
+                self.ossType = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var code: CreateEdgeFunctionRequest.Code?
+
+    public var customConfig: [String: Int32]?
+
+    public var edgeFunctionName: String?
+
+    public var envs: [String: String]?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.code?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.code != nil {
+            map["Code"] = self.code?.toMap()
+        }
+        if self.customConfig != nil {
+            map["CustomConfig"] = self.customConfig!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.envs != nil {
+            map["Envs"] = self.envs!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? [String: Any?] {
+            var model = CreateEdgeFunctionRequest.Code()
+            model.fromMap(value)
+            self.code = model
+        }
+        if let value = dict["CustomConfig"] as? [String: Int32] {
+            self.customConfig = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["Envs"] as? [String: String] {
+            self.envs = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateEdgeFunctionShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var codeShrink: String?
+
+    public var customConfigShrink: String?
+
+    public var edgeFunctionName: String?
+
+    public var envsShrink: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.codeShrink != nil {
+            map["Code"] = self.codeShrink!
+        }
+        if self.customConfigShrink != nil {
+            map["CustomConfig"] = self.customConfigShrink!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.envsShrink != nil {
+            map["Envs"] = self.envsShrink!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? String {
+            self.codeShrink = value
+        }
+        if let value = dict["CustomConfig"] as? String {
+            self.customConfigShrink = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["Envs"] as? String {
+            self.envsShrink = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateEdgeFunctionResponseBody : Tea.TeaModel {
+    public var edgeFunctionName: String?
+
+    public var instanceName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateEdgeFunctionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateEdgeFunctionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateEdgeFunctionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateInspectionTaskRequest : Tea.TeaModel {
     public var endTime: String?
 
@@ -1215,7 +1519,11 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
 
     public var instanceIds: String?
 
+    public var regionId: String?
+
     public var reportLanguage: String?
+
+    public var reportType: String?
 
     public var startTime: String?
 
@@ -1242,8 +1550,14 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.reportLanguage != nil {
             map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -1262,8 +1576,14 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         if let value = dict["InstanceIds"] as? String {
             self.instanceIds = value
         }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
         if let value = dict["ReportLanguage"] as? String {
             self.reportLanguage = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -1418,7 +1738,11 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var regionId: String?
+
     public var reportLanguage: String?
+
+    public var reportType: String?
 
     public var startTime: String?
 
@@ -1450,8 +1774,14 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.reportLanguage != nil {
             map["ReportLanguage"] = self.reportLanguage!
+        }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -1476,8 +1806,14 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
         if let value = dict["ReportLanguage"] as? String {
             self.reportLanguage = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -2090,6 +2426,158 @@ public class DeleteCustomAgentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteCustomAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteEdgeFunctionRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var edgeFunctionName: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteEdgeFunctionResponseBody : Tea.TeaModel {
+    public var edgeFunctionName: String?
+
+    public var instanceName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteEdgeFunctionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteEdgeFunctionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteEdgeFunctionResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -2902,6 +3390,274 @@ public class DescribeAppInstancesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeAppInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeEdgeFunctionsRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var edgeFunctionName: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeEdgeFunctionsResponseBody : Tea.TeaModel {
+    public class EdgeFunctions : Tea.TeaModel {
+        public var cpu: String?
+
+        public var createdTime: String?
+
+        public var edgeFunctionName: String?
+
+        public var functionUrl: String?
+
+        public var memorySize: String?
+
+        public var modifiedTime: String?
+
+        public var runtime: String?
+
+        public var status: String?
+
+        public var urlInternet: String?
+
+        public var urlIntranet: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.createdTime != nil {
+                map["CreatedTime"] = self.createdTime!
+            }
+            if self.edgeFunctionName != nil {
+                map["EdgeFunctionName"] = self.edgeFunctionName!
+            }
+            if self.functionUrl != nil {
+                map["FunctionUrl"] = self.functionUrl!
+            }
+            if self.memorySize != nil {
+                map["MemorySize"] = self.memorySize!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.runtime != nil {
+                map["Runtime"] = self.runtime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.urlInternet != nil {
+                map["UrlInternet"] = self.urlInternet!
+            }
+            if self.urlIntranet != nil {
+                map["UrlIntranet"] = self.urlIntranet!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cpu"] as? String {
+                self.cpu = value
+            }
+            if let value = dict["CreatedTime"] as? String {
+                self.createdTime = value
+            }
+            if let value = dict["EdgeFunctionName"] as? String {
+                self.edgeFunctionName = value
+            }
+            if let value = dict["FunctionUrl"] as? String {
+                self.functionUrl = value
+            }
+            if let value = dict["MemorySize"] as? String {
+                self.memorySize = value
+            }
+            if let value = dict["ModifiedTime"] as? String {
+                self.modifiedTime = value
+            }
+            if let value = dict["Runtime"] as? String {
+                self.runtime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UrlInternet"] as? String {
+                self.urlInternet = value
+            }
+            if let value = dict["UrlIntranet"] as? String {
+                self.urlIntranet = value
+            }
+        }
+    }
+    public var edgeFunctions: [DescribeEdgeFunctionsResponseBody.EdgeFunctions]?
+
+    public var instanceName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.edgeFunctions != nil {
+            var tmp : [Any] = []
+            for k in self.edgeFunctions! {
+                tmp.append(k.toMap())
+            }
+            map["EdgeFunctions"] = tmp
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EdgeFunctions"] as? [Any?] {
+            var tmp : [DescribeEdgeFunctionsResponseBody.EdgeFunctions] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeEdgeFunctionsResponseBody.EdgeFunctions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.edgeFunctions = tmp
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeEdgeFunctionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeEdgeFunctionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeEdgeFunctionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -4940,6 +5696,8 @@ public class GetCustomAgentResponse : Tea.TeaModel {
 public class GetInspectionReportRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var reportType: String?
+
     public var taskId: String?
 
     public override init() {
@@ -4959,6 +5717,9 @@ public class GetInspectionReportRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -4969,6 +5730,9 @@ public class GetInspectionReportRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -6051,7 +6815,11 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var regionId: String?
+
         public var reportLanguage: String?
+
+        public var reportType: String?
 
         public var startTime: String?
 
@@ -6079,8 +6847,14 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
             if self.reportLanguage != nil {
                 map["ReportLanguage"] = self.reportLanguage!
+            }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -6102,8 +6876,14 @@ public class GetScheduledReportsResponseBody : Tea.TeaModel {
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
             }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
             if let value = dict["ReportLanguage"] as? String {
                 self.reportLanguage = value
+            }
+            if let value = dict["ReportType"] as? String {
+                self.reportType = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -6449,6 +7229,8 @@ public class GetStandAloneReportsRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var reportType: String?
+
     public var startTime: String?
 
     public override init() {
@@ -6474,6 +7256,9 @@ public class GetStandAloneReportsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.reportType != nil {
+            map["ReportType"] = self.reportType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -6491,6 +7276,9 @@ public class GetStandAloneReportsRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["ReportType"] as? String {
+            self.reportType = value
+        }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
         }
@@ -6503,7 +7291,11 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var regionId: String?
+
         public var reportLanguage: String?
+
+        public var reportType: String?
 
         public var startTime: String?
 
@@ -6531,8 +7323,14 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
             if self.reportLanguage != nil {
                 map["ReportLanguage"] = self.reportLanguage!
+            }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -6554,8 +7352,14 @@ public class GetStandAloneReportsResponseBody : Tea.TeaModel {
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
             }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
             if let value = dict["ReportLanguage"] as? String {
                 self.reportLanguage = value
+            }
+            if let value = dict["ReportType"] as? String {
+                self.reportType = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -7262,7 +8066,11 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var regionId: String?
+
         public var reportLanguage: String?
+
+        public var reportType: String?
 
         public var scheduledId: String?
 
@@ -7299,8 +8107,14 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
             if self.reportLanguage != nil {
                 map["ReportLanguage"] = self.reportLanguage!
+            }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
             }
             if self.scheduledId != nil {
                 map["ScheduledId"] = self.scheduledId!
@@ -7331,8 +8145,14 @@ public class ListScheduledTasksResponseBody : Tea.TeaModel {
             if let value = dict["Name"] as? String {
                 self.name = value
             }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
             if let value = dict["ReportLanguage"] as? String {
                 self.reportLanguage = value
+            }
+            if let value = dict["ReportType"] as? String {
+                self.reportType = value
             }
             if let value = dict["ScheduledId"] as? String {
                 self.scheduledId = value
@@ -10384,6 +11204,310 @@ public class UpdateCustomAgentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateCustomAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateEdgeFunctionRequest : Tea.TeaModel {
+    public class Code : Tea.TeaModel {
+        public var ossBucketName: String?
+
+        public var ossObjectName: String?
+
+        public var ossType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ossBucketName != nil {
+                map["OssBucketName"] = self.ossBucketName!
+            }
+            if self.ossObjectName != nil {
+                map["OssObjectName"] = self.ossObjectName!
+            }
+            if self.ossType != nil {
+                map["OssType"] = self.ossType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OssBucketName"] as? String {
+                self.ossBucketName = value
+            }
+            if let value = dict["OssObjectName"] as? String {
+                self.ossObjectName = value
+            }
+            if let value = dict["OssType"] as? String {
+                self.ossType = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var code: UpdateEdgeFunctionRequest.Code?
+
+    public var customConfig: [String: Any]?
+
+    public var edgeFunctionName: String?
+
+    public var envs: [String: String]?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.code?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.code != nil {
+            map["Code"] = self.code?.toMap()
+        }
+        if self.customConfig != nil {
+            map["CustomConfig"] = self.customConfig!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.envs != nil {
+            map["Envs"] = self.envs!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? [String: Any?] {
+            var model = UpdateEdgeFunctionRequest.Code()
+            model.fromMap(value)
+            self.code = model
+        }
+        if let value = dict["CustomConfig"] as? [String: Any] {
+            self.customConfig = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["Envs"] as? [String: String] {
+            self.envs = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateEdgeFunctionShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var codeShrink: String?
+
+    public var customConfigShrink: String?
+
+    public var edgeFunctionName: String?
+
+    public var envsShrink: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.codeShrink != nil {
+            map["Code"] = self.codeShrink!
+        }
+        if self.customConfigShrink != nil {
+            map["CustomConfig"] = self.customConfigShrink!
+        }
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.envsShrink != nil {
+            map["Envs"] = self.envsShrink!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? String {
+            self.codeShrink = value
+        }
+        if let value = dict["CustomConfig"] as? String {
+            self.customConfigShrink = value
+        }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["Envs"] as? String {
+            self.envsShrink = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateEdgeFunctionResponseBody : Tea.TeaModel {
+    public var edgeFunctionName: String?
+
+    public var instanceName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.edgeFunctionName != nil {
+            map["EdgeFunctionName"] = self.edgeFunctionName!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EdgeFunctionName"] as? String {
+            self.edgeFunctionName = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateEdgeFunctionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateEdgeFunctionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateEdgeFunctionResponseBody()
             model.fromMap(value)
             self.body = model
         }
