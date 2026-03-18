@@ -491,6 +491,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.artifactId)) {
             body["ArtifactId"] = request.artifactId!;
         }
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
         }
@@ -1366,6 +1369,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePptArtifactWithOptions(_ request: DeletePptArtifactRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePptArtifactResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pptArtifactId)) {
             body["PptArtifactId"] = request.pptArtifactId ?? "";
         }
@@ -3402,6 +3408,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPptArtifactWithOptions(_ request: GetPptArtifactRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPptArtifactResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pptArtifactId)) {
             body["PptArtifactId"] = request.pptArtifactId!;
         }
@@ -3436,6 +3445,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPptConfigWithOptions(_ request: GetPptConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPptConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -3758,6 +3770,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func initiatePptCreationWithOptions(_ request: InitiatePptCreationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitiatePptCreationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outline)) {
             body["Outline"] = request.outline ?? "";
         }
@@ -5358,6 +5373,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["MaxResults"] = request.maxResults!;
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
         }
@@ -6999,6 +7017,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runPptOutlineGenerationWithOptions(_ request: RunPptOutlineGenerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunPptOutlineGenerationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             body["Prompt"] = request.prompt ?? "";
         }

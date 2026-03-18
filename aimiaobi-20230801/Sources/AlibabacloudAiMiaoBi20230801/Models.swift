@@ -4813,6 +4813,8 @@ public class AsyncWritingBiddingDocResponse : Tea.TeaModel {
 public class BindPptArtifactRequest : Tea.TeaModel {
     public var artifactId: Int32?
 
+    public var externalUserId: String?
+
     public var taskId: String?
 
     public var workspaceId: String?
@@ -4834,6 +4836,9 @@ public class BindPptArtifactRequest : Tea.TeaModel {
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
         }
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -4847,6 +4852,9 @@ public class BindPptArtifactRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ArtifactId"] as? Int32 {
             self.artifactId = value
+        }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -9891,6 +9899,8 @@ public class DeleteMaterialByIdResponse : Tea.TeaModel {
 }
 
 public class DeletePptArtifactRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var pptArtifactId: String?
 
     public var workspaceId: String?
@@ -9909,6 +9919,9 @@ public class DeletePptArtifactRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.pptArtifactId != nil {
             map["PptArtifactId"] = self.pptArtifactId!
         }
@@ -9920,6 +9933,9 @@ public class DeletePptArtifactRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["PptArtifactId"] as? String {
             self.pptArtifactId = value
         }
@@ -25834,6 +25850,8 @@ public class GetMaterialByIdResponse : Tea.TeaModel {
 }
 
 public class GetPptArtifactRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var pptArtifactId: Int32?
 
     public var workspaceId: String?
@@ -25852,6 +25870,9 @@ public class GetPptArtifactRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.pptArtifactId != nil {
             map["PptArtifactId"] = self.pptArtifactId!
         }
@@ -25863,6 +25884,9 @@ public class GetPptArtifactRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["PptArtifactId"] as? Int32 {
             self.pptArtifactId = value
         }
@@ -26124,6 +26148,8 @@ public class GetPptArtifactResponse : Tea.TeaModel {
 }
 
 public class GetPptConfigRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -26140,6 +26166,9 @@ public class GetPptConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -26148,6 +26177,9 @@ public class GetPptConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -30939,6 +30971,8 @@ public class ImportInterveneFileAsyncResponse : Tea.TeaModel {
 }
 
 public class InitiatePptCreationRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var outline: String?
 
     public var taskId: String?
@@ -30959,6 +30993,9 @@ public class InitiatePptCreationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.outline != nil {
             map["Outline"] = self.outline!
         }
@@ -30973,6 +31010,9 @@ public class InitiatePptCreationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["Outline"] as? String {
             self.outline = value
         }
@@ -43101,6 +43141,8 @@ public class ListPlanningProposalResponse : Tea.TeaModel {
 }
 
 public class ListPptArtifactsRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -43123,6 +43165,9 @@ public class ListPptArtifactsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -43140,6 +43185,9 @@ public class ListPptArtifactsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -58290,6 +58338,8 @@ public class RunMultiDocIntroductionResponse : Tea.TeaModel {
 }
 
 public class RunPptOutlineGenerationRequest : Tea.TeaModel {
+    public var externalUserId: String?
+
     public var prompt: String?
 
     public var workspaceId: String?
@@ -58308,6 +58358,9 @@ public class RunPptOutlineGenerationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.externalUserId != nil {
+            map["ExternalUserId"] = self.externalUserId!
+        }
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
@@ -58319,6 +58372,9 @@ public class RunPptOutlineGenerationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExternalUserId"] as? String {
+            self.externalUserId = value
+        }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
         }
