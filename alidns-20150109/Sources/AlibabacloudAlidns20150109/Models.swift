@@ -41746,6 +41746,8 @@ public class ListCloudGtmInstancesResponse : Tea.TeaModel {
 public class ListCloudGtmMonitorNodesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var showDisabledNodes: Bool?
+
     public override init() {
         super.init()
     }
@@ -41763,6 +41765,9 @@ public class ListCloudGtmMonitorNodesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.showDisabledNodes != nil {
+            map["ShowDisabledNodes"] = self.showDisabledNodes!
+        }
         return map
     }
 
@@ -41770,6 +41775,9 @@ public class ListCloudGtmMonitorNodesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
+        }
+        if let value = dict["ShowDisabledNodes"] as? Bool {
+            self.showDisabledNodes = value
         }
     }
 }
@@ -41817,6 +41825,8 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
 
             public var defaultSelected: Bool?
 
+            public var enableStatus: String?
+
             public var groupName: String?
 
             public var groupType: String?
@@ -41859,6 +41869,9 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
                 if self.defaultSelected != nil {
                     map["DefaultSelected"] = self.defaultSelected!
                 }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
                 if self.groupName != nil {
                     map["GroupName"] = self.groupName!
                 }
@@ -41896,6 +41909,9 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DefaultSelected"] as? Bool {
                     self.defaultSelected = value
+                }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
                 }
                 if let value = dict["GroupName"] as? String {
                     self.groupName = value
@@ -42004,6 +42020,8 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
 
             public var defaultSelected: Bool?
 
+            public var enableStatus: String?
+
             public var groupName: String?
 
             public var groupType: String?
@@ -42046,6 +42064,9 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
                 if self.defaultSelected != nil {
                     map["DefaultSelected"] = self.defaultSelected!
                 }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
                 if self.groupName != nil {
                     map["GroupName"] = self.groupName!
                 }
@@ -42083,6 +42104,9 @@ public class ListCloudGtmMonitorNodesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DefaultSelected"] as? Bool {
                     self.defaultSelected = value
+                }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
                 }
                 if let value = dict["GroupName"] as? String {
                     self.groupName = value
