@@ -43,18 +43,19 @@ public class AddIpRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("IpList") {
-            self.ipList = dict["IpList"] as! String
+        if let value = dict["IpList"] as? String {
+            self.ipList = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -82,9 +83,10 @@ public class AddIpResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -123,16 +125,17 @@ public class AddIpResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = AddIpResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -162,9 +165,10 @@ public class AddRdMemberListRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Uid") {
-                self.uid = dict["Uid"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Uid"] as? String {
+                self.uid = value
             }
         }
     }
@@ -194,15 +198,18 @@ public class AddRdMemberListRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("MemberList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MemberList"] as? [Any?] {
             var tmp : [AddRdMemberListRequest.MemberList] = []
-            for v in dict["MemberList"] as! [Any] {
-                var model = AddRdMemberListRequest.MemberList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = AddRdMemberListRequest.MemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.memberList = tmp
         }
@@ -232,9 +239,10 @@ public class AddRdMemberListShrinkRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("MemberList") {
-            self.memberListShrink = dict["MemberList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MemberList"] as? String {
+            self.memberListShrink = value
         }
     }
 }
@@ -262,9 +270,10 @@ public class AddRdMemberListResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -303,16 +312,17 @@ public class AddRdMemberListResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = AddRdMemberListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -357,18 +367,19 @@ public class AttachAssetGroupToInstanceRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("MemberUid") {
-                self.memberUid = dict["MemberUid"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MemberUid"] as? String {
+                self.memberUid = value
             }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
         }
     }
@@ -408,23 +419,26 @@ public class AttachAssetGroupToInstanceRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetGroupList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetGroupList"] as? [Any?] {
             var tmp : [AttachAssetGroupToInstanceRequest.AssetGroupList] = []
-            for v in dict["AssetGroupList"] as! [Any] {
-                var model = AttachAssetGroupToInstanceRequest.AssetGroupList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = AttachAssetGroupToInstanceRequest.AssetGroupList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.assetGroupList = tmp
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -462,15 +476,16 @@ public class AttachAssetGroupToInstanceShrinkRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetGroupList") {
-            self.assetGroupListShrink = dict["AssetGroupList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetGroupList"] as? String {
+            self.assetGroupListShrink = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -498,9 +513,10 @@ public class AttachAssetGroupToInstanceResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -539,16 +555,17 @@ public class AttachAssetGroupToInstanceResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = AttachAssetGroupToInstanceResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -559,6 +576,8 @@ public class AttachToPolicyRequest : Tea.TeaModel {
         public var ip: String?
 
         public var port: Int32?
+
+        public var portRange: String?
 
         public var protocol_: String?
 
@@ -582,27 +601,36 @@ public class AttachToPolicyRequest : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("Port") {
-                self.port = dict["Port"] as! Int32
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
             }
-            if dict.keys.contains("Protocol") {
-                self.protocol_ = dict["Protocol"] as! String
+            if let value = dict["PortRange"] as? String {
+                self.portRange = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
             }
         }
     }
     public var ipPortProtocolList: [AttachToPolicyRequest.IpPortProtocolList]?
 
     public var policyId: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -628,23 +656,32 @@ public class AttachToPolicyRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? [Any?] {
             var tmp : [AttachToPolicyRequest.IpPortProtocolList] = []
-            for v in dict["IpPortProtocolList"] as! [Any] {
-                var model = AttachToPolicyRequest.IpPortProtocolList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = AttachToPolicyRequest.IpPortProtocolList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.ipPortProtocolList = tmp
         }
-        if dict.keys.contains("PolicyId") {
-            self.policyId = dict["PolicyId"] as! String
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -653,6 +690,8 @@ public class AttachToPolicyShrinkRequest : Tea.TeaModel {
     public var ipPortProtocolListShrink: String?
 
     public var policyId: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -674,15 +713,22 @@ public class AttachToPolicyShrinkRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
-            self.ipPortProtocolListShrink = dict["IpPortProtocolList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? String {
+            self.ipPortProtocolListShrink = value
         }
-        if dict.keys.contains("PolicyId") {
-            self.policyId = dict["PolicyId"] as! String
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -710,9 +756,10 @@ public class AttachToPolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -751,16 +798,17 @@ public class AttachToPolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = AttachToPolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -794,12 +842,13 @@ public class CheckAccessLogAuthRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -832,12 +881,13 @@ public class CheckAccessLogAuthResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessLogAuth") {
-            self.accessLogAuth = dict["AccessLogAuth"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessLogAuth"] as? Bool {
+            self.accessLogAuth = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -876,16 +926,17 @@ public class CheckAccessLogAuthResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = CheckAccessLogAuthResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -924,15 +975,16 @@ public class CheckGrantRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IsSlr") {
-            self.isSlr = dict["IsSlr"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IsSlr"] as? Bool {
+            self.isSlr = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -965,12 +1017,13 @@ public class CheckGrantResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Status") {
-            self.status = dict["Status"] as! Int32
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
         }
     }
 }
@@ -1009,213 +1062,17 @@ public class CheckGrantResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = CheckGrantResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class ConfigSchedruleOnDemandRequest : Tea.TeaModel {
-    public var instanceId: String?
-
-    public var regionId: String?
-
-    public var ruleAction: String?
-
-    public var ruleConditionCnt: String?
-
-    public var ruleConditionKpps: String?
-
-    public var ruleConditionMbps: String?
-
-    public var ruleName: String?
-
-    public var ruleSwitch: String?
-
-    public var ruleUndoBeginTime: String?
-
-    public var ruleUndoEndTime: String?
-
-    public var ruleUndoMode: String?
-
-    public var timeZone: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.ruleAction != nil {
-            map["RuleAction"] = self.ruleAction!
-        }
-        if self.ruleConditionCnt != nil {
-            map["RuleConditionCnt"] = self.ruleConditionCnt!
-        }
-        if self.ruleConditionKpps != nil {
-            map["RuleConditionKpps"] = self.ruleConditionKpps!
-        }
-        if self.ruleConditionMbps != nil {
-            map["RuleConditionMbps"] = self.ruleConditionMbps!
-        }
-        if self.ruleName != nil {
-            map["RuleName"] = self.ruleName!
-        }
-        if self.ruleSwitch != nil {
-            map["RuleSwitch"] = self.ruleSwitch!
-        }
-        if self.ruleUndoBeginTime != nil {
-            map["RuleUndoBeginTime"] = self.ruleUndoBeginTime!
-        }
-        if self.ruleUndoEndTime != nil {
-            map["RuleUndoEndTime"] = self.ruleUndoEndTime!
-        }
-        if self.ruleUndoMode != nil {
-            map["RuleUndoMode"] = self.ruleUndoMode!
-        }
-        if self.timeZone != nil {
-            map["TimeZone"] = self.timeZone!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RuleAction") {
-            self.ruleAction = dict["RuleAction"] as! String
-        }
-        if dict.keys.contains("RuleConditionCnt") {
-            self.ruleConditionCnt = dict["RuleConditionCnt"] as! String
-        }
-        if dict.keys.contains("RuleConditionKpps") {
-            self.ruleConditionKpps = dict["RuleConditionKpps"] as! String
-        }
-        if dict.keys.contains("RuleConditionMbps") {
-            self.ruleConditionMbps = dict["RuleConditionMbps"] as! String
-        }
-        if dict.keys.contains("RuleName") {
-            self.ruleName = dict["RuleName"] as! String
-        }
-        if dict.keys.contains("RuleSwitch") {
-            self.ruleSwitch = dict["RuleSwitch"] as! String
-        }
-        if dict.keys.contains("RuleUndoBeginTime") {
-            self.ruleUndoBeginTime = dict["RuleUndoBeginTime"] as! String
-        }
-        if dict.keys.contains("RuleUndoEndTime") {
-            self.ruleUndoEndTime = dict["RuleUndoEndTime"] as! String
-        }
-        if dict.keys.contains("RuleUndoMode") {
-            self.ruleUndoMode = dict["RuleUndoMode"] as! String
-        }
-        if dict.keys.contains("TimeZone") {
-            self.timeZone = dict["TimeZone"] as! String
-        }
-    }
-}
-
-public class ConfigSchedruleOnDemandResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class ConfigSchedruleOnDemandResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ConfigSchedruleOnDemandResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = ConfigSchedruleOnDemandResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -1223,6 +1080,8 @@ public class ConfigSchedruleOnDemandResponse : Tea.TeaModel {
 
 public class CreatePolicyRequest : Tea.TeaModel {
     public var name: String?
+
+    public var portVersion: String?
 
     public var type: String?
 
@@ -1243,18 +1102,25 @@ public class CreatePolicyRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -1287,12 +1153,13 @@ public class CreatePolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -1331,213 +1198,17 @@ public class CreatePolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = CreatePolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class CreateSchedruleOnDemandRequest : Tea.TeaModel {
-    public var instanceId: String?
-
-    public var regionId: String?
-
-    public var ruleAction: String?
-
-    public var ruleConditionCnt: String?
-
-    public var ruleConditionKpps: String?
-
-    public var ruleConditionMbps: String?
-
-    public var ruleName: String?
-
-    public var ruleSwitch: String?
-
-    public var ruleUndoBeginTime: String?
-
-    public var ruleUndoEndTime: String?
-
-    public var ruleUndoMode: String?
-
-    public var timeZone: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.ruleAction != nil {
-            map["RuleAction"] = self.ruleAction!
-        }
-        if self.ruleConditionCnt != nil {
-            map["RuleConditionCnt"] = self.ruleConditionCnt!
-        }
-        if self.ruleConditionKpps != nil {
-            map["RuleConditionKpps"] = self.ruleConditionKpps!
-        }
-        if self.ruleConditionMbps != nil {
-            map["RuleConditionMbps"] = self.ruleConditionMbps!
-        }
-        if self.ruleName != nil {
-            map["RuleName"] = self.ruleName!
-        }
-        if self.ruleSwitch != nil {
-            map["RuleSwitch"] = self.ruleSwitch!
-        }
-        if self.ruleUndoBeginTime != nil {
-            map["RuleUndoBeginTime"] = self.ruleUndoBeginTime!
-        }
-        if self.ruleUndoEndTime != nil {
-            map["RuleUndoEndTime"] = self.ruleUndoEndTime!
-        }
-        if self.ruleUndoMode != nil {
-            map["RuleUndoMode"] = self.ruleUndoMode!
-        }
-        if self.timeZone != nil {
-            map["TimeZone"] = self.timeZone!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RuleAction") {
-            self.ruleAction = dict["RuleAction"] as! String
-        }
-        if dict.keys.contains("RuleConditionCnt") {
-            self.ruleConditionCnt = dict["RuleConditionCnt"] as! String
-        }
-        if dict.keys.contains("RuleConditionKpps") {
-            self.ruleConditionKpps = dict["RuleConditionKpps"] as! String
-        }
-        if dict.keys.contains("RuleConditionMbps") {
-            self.ruleConditionMbps = dict["RuleConditionMbps"] as! String
-        }
-        if dict.keys.contains("RuleName") {
-            self.ruleName = dict["RuleName"] as! String
-        }
-        if dict.keys.contains("RuleSwitch") {
-            self.ruleSwitch = dict["RuleSwitch"] as! String
-        }
-        if dict.keys.contains("RuleUndoBeginTime") {
-            self.ruleUndoBeginTime = dict["RuleUndoBeginTime"] as! String
-        }
-        if dict.keys.contains("RuleUndoEndTime") {
-            self.ruleUndoEndTime = dict["RuleUndoEndTime"] as! String
-        }
-        if dict.keys.contains("RuleUndoMode") {
-            self.ruleUndoMode = dict["RuleUndoMode"] as! String
-        }
-        if dict.keys.contains("TimeZone") {
-            self.timeZone = dict["TimeZone"] as! String
-        }
-    }
-}
-
-public class CreateSchedruleOnDemandResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class CreateSchedruleOnDemandResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: CreateSchedruleOnDemandResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = CreateSchedruleOnDemandResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -1581,18 +1252,19 @@ public class DeleteBlackholeRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -1620,9 +1292,10 @@ public class DeleteBlackholeResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -1661,16 +1334,17 @@ public class DeleteBlackholeResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DeleteBlackholeResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -1714,18 +1388,19 @@ public class DeleteIpRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("IpList") {
-            self.ipList = dict["IpList"] as! String
+        if let value = dict["IpList"] as? String {
+            self.ipList = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -1753,9 +1428,10 @@ public class DeleteIpResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -1794,16 +1470,17 @@ public class DeleteIpResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DeleteIpResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -1832,9 +1509,10 @@ public class DeletePolicyRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
     }
 }
@@ -1862,9 +1540,10 @@ public class DeletePolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -1903,16 +1582,17 @@ public class DeletePolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DeletePolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -1942,9 +1622,10 @@ public class DeleteRdMemberListRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Uid") {
-                self.uid = dict["Uid"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Uid"] as? String {
+                self.uid = value
             }
         }
     }
@@ -1974,15 +1655,18 @@ public class DeleteRdMemberListRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("MemberList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MemberList"] as? [Any?] {
             var tmp : [DeleteRdMemberListRequest.MemberList] = []
-            for v in dict["MemberList"] as! [Any] {
-                var model = DeleteRdMemberListRequest.MemberList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DeleteRdMemberListRequest.MemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.memberList = tmp
         }
@@ -2012,9 +1696,10 @@ public class DeleteRdMemberListShrinkRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("MemberList") {
-            self.memberListShrink = dict["MemberList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MemberList"] as? String {
+            self.memberListShrink = value
         }
     }
 }
@@ -2042,9 +1727,10 @@ public class DeleteRdMemberListResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -2083,141 +1769,17 @@ public class DeleteRdMemberListResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DeleteRdMemberListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class DeleteSchedruleOnDemandRequest : Tea.TeaModel {
-    public var instanceId: String?
-
-    public var regionId: String?
-
-    public var ruleName: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.ruleName != nil {
-            map["RuleName"] = self.ruleName!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RuleName") {
-            self.ruleName = dict["RuleName"] as! String
-        }
-    }
-}
-
-public class DeleteSchedruleOnDemandResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class DeleteSchedruleOnDemandResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DeleteSchedruleOnDemandResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DeleteSchedruleOnDemandResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -2261,18 +1823,19 @@ public class DescribeAssetGroupRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("Region") {
-            self.region = dict["Region"] as! String
+        if let value = dict["Region"] as? String {
+            self.region = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -2311,15 +1874,16 @@ public class DescribeAssetGroupResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
         }
     }
@@ -2359,23 +1923,26 @@ public class DescribeAssetGroupResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetGroupList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetGroupList"] as? [Any?] {
             var tmp : [DescribeAssetGroupResponseBody.AssetGroupList] = []
-            for v in dict["AssetGroupList"] as! [Any] {
-                var model = DescribeAssetGroupResponseBody.AssetGroupList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeAssetGroupResponseBody.AssetGroupList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.assetGroupList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -2414,16 +1981,17 @@ public class DescribeAssetGroupResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeAssetGroupResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -2477,24 +2045,25 @@ public class DescribeAssetGroupToInstanceRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("MemberUid") {
-            self.memberUid = dict["MemberUid"] as! String
+        if let value = dict["MemberUid"] as? String {
+            self.memberUid = value
         }
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("Region") {
-            self.region = dict["Region"] as! String
+        if let value = dict["Region"] as? String {
+            self.region = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -2543,21 +2112,22 @@ public class DescribeAssetGroupToInstanceResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
-            if dict.keys.contains("MemberUid") {
-                self.memberUid = dict["MemberUid"] as! String
+            if let value = dict["MemberUid"] as? String {
+                self.memberUid = value
             }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
         }
     }
@@ -2597,23 +2167,26 @@ public class DescribeAssetGroupToInstanceResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DataList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataList"] as? [Any?] {
             var tmp : [DescribeAssetGroupToInstanceResponseBody.DataList] = []
-            for v in dict["DataList"] as! [Any] {
-                var model = DescribeAssetGroupToInstanceResponseBody.DataList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeAssetGroupToInstanceResponseBody.DataList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.dataList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -2652,16 +2225,17 @@ public class DescribeAssetGroupToInstanceResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeAssetGroupToInstanceResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -2725,30 +2299,31 @@ public class DescribeDdosEventRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? Int32 {
+            self.endTime = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int32
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! Int32
+        if let value = dict["StartTime"] as? Int32 {
+            self.startTime = value
         }
     }
 }
@@ -2802,24 +2377,25 @@ public class DescribeDdosEventResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EndTime") {
-                self.endTime = dict["EndTime"] as! Int32
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndTime"] as? Int32 {
+                self.endTime = value
             }
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("Mbps") {
-                self.mbps = dict["Mbps"] as! Int32
+            if let value = dict["Mbps"] as? Int32 {
+                self.mbps = value
             }
-            if dict.keys.contains("Pps") {
-                self.pps = dict["Pps"] as! Int32
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
             }
-            if dict.keys.contains("StartTime") {
-                self.startTime = dict["StartTime"] as! Int32
+            if let value = dict["StartTime"] as? Int32 {
+                self.startTime = value
             }
-            if dict.keys.contains("Status") {
-                self.status = dict["Status"] as! String
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
@@ -2859,23 +2435,26 @@ public class DescribeDdosEventResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Events") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Events"] as? [Any?] {
             var tmp : [DescribeDdosEventResponseBody.Events] = []
-            for v in dict["Events"] as! [Any] {
-                var model = DescribeDdosEventResponseBody.Events()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeDdosEventResponseBody.Events()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.events = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -2914,16 +2493,17 @@ public class DescribeDdosEventResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeDdosEventResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -2967,18 +2547,19 @@ public class DescribeDdosOriginInstanceBillRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! Int64
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
-        if dict.keys.contains("IsShowList") {
-            self.isShowList = dict["IsShowList"] as! Bool
+        if let value = dict["IsShowList"] as? Bool {
+            self.isShowList = value
         }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! Int64
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
         }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -3027,21 +2608,22 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("MemberFlow") {
-                self.memberFlow = dict["MemberFlow"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MemberFlow"] as? String {
+                self.memberFlow = value
             }
-            if dict.keys.contains("RegionFlow") {
-                self.regionFlow = dict["RegionFlow"] as! String
+            if let value = dict["RegionFlow"] as? String {
+                self.regionFlow = value
             }
-            if dict.keys.contains("Time") {
-                self.time = dict["Time"] as! Int64
+            if let value = dict["Time"] as? Int64 {
+                self.time = value
             }
-            if dict.keys.contains("TotalBillFlow") {
-                self.totalBillFlow = dict["TotalBillFlow"] as! Int64
+            if let value = dict["TotalBillFlow"] as? Int64 {
+                self.totalBillFlow = value
             }
-            if dict.keys.contains("TotalFlow") {
-                self.totalFlow = dict["TotalFlow"] as! Int64
+            if let value = dict["TotalFlow"] as? Int64 {
+                self.totalFlow = value
             }
         }
     }
@@ -3088,21 +2670,22 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Coverage") {
-                self.coverage = dict["Coverage"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Coverage"] as? String {
+                self.coverage = value
             }
-            if dict.keys.contains("IpCntCn") {
-                self.ipCntCn = dict["IpCntCn"] as! Int64
+            if let value = dict["IpCntCn"] as? Int64 {
+                self.ipCntCn = value
             }
-            if dict.keys.contains("IpCntOv") {
-                self.ipCntOv = dict["IpCntOv"] as! Int64
+            if let value = dict["IpCntOv"] as? Int64 {
+                self.ipCntOv = value
             }
-            if dict.keys.contains("MemberIpCnt") {
-                self.memberIpCnt = dict["MemberIpCnt"] as! String
+            if let value = dict["MemberIpCnt"] as? String {
+                self.memberIpCnt = value
             }
-            if dict.keys.contains("Time") {
-                self.time = dict["Time"] as! Int64
+            if let value = dict["Time"] as? Int64 {
+                self.time = value
             }
         }
     }
@@ -3169,33 +2752,34 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EnableDays") {
-                self.enableDays = dict["EnableDays"] as! Int32
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableDays"] as? Int32 {
+                self.enableDays = value
             }
-            if dict.keys.contains("FlowCn") {
-                self.flowCn = dict["FlowCn"] as! Int64
+            if let value = dict["FlowCn"] as? Int64 {
+                self.flowCn = value
             }
-            if dict.keys.contains("FlowIntl") {
-                self.flowIntl = dict["FlowIntl"] as! Int64
+            if let value = dict["FlowIntl"] as? Int64 {
+                self.flowIntl = value
             }
-            if dict.keys.contains("IpCountCn") {
-                self.ipCountCn = dict["IpCountCn"] as! Int32
+            if let value = dict["IpCountCn"] as? Int32 {
+                self.ipCountCn = value
             }
-            if dict.keys.contains("IpCountIntl") {
-                self.ipCountIntl = dict["IpCountIntl"] as! Int32
+            if let value = dict["IpCountIntl"] as? Int32 {
+                self.ipCountIntl = value
             }
-            if dict.keys.contains("MemberUid") {
-                self.memberUid = dict["MemberUid"] as! String
+            if let value = dict["MemberUid"] as? String {
+                self.memberUid = value
             }
-            if dict.keys.contains("StandardAssetsFlowCn") {
-                self.standardAssetsFlowCn = dict["StandardAssetsFlowCn"] as! Int64
+            if let value = dict["StandardAssetsFlowCn"] as? Int64 {
+                self.standardAssetsFlowCn = value
             }
-            if dict.keys.contains("StandardAssetsFlowIntl") {
-                self.standardAssetsFlowIntl = dict["StandardAssetsFlowIntl"] as! Int64
+            if let value = dict["StandardAssetsFlowIntl"] as? Int64 {
+                self.standardAssetsFlowIntl = value
             }
-            if dict.keys.contains("Uid") {
-                self.uid = dict["Uid"] as! String
+            if let value = dict["Uid"] as? String {
+                self.uid = value
             }
         }
     }
@@ -3237,18 +2821,19 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("MemberFlow") {
-                self.memberFlow = dict["MemberFlow"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MemberFlow"] as? String {
+                self.memberFlow = value
             }
-            if dict.keys.contains("RegionFlow") {
-                self.regionFlow = dict["RegionFlow"] as! String
+            if let value = dict["RegionFlow"] as? String {
+                self.regionFlow = value
             }
-            if dict.keys.contains("Time") {
-                self.time = dict["Time"] as! Int64
+            if let value = dict["Time"] as? Int64 {
+                self.time = value
             }
-            if dict.keys.contains("TotalFlow") {
-                self.totalFlow = dict["TotalFlow"] as! Int64
+            if let value = dict["TotalFlow"] as? Int64 {
+                self.totalFlow = value
             }
         }
     }
@@ -3370,89 +2955,98 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetStatus") {
-            self.assetStatus = dict["AssetStatus"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetStatus"] as? Int32 {
+            self.assetStatus = value
         }
-        if dict.keys.contains("DebtStatus") {
-            self.debtStatus = dict["DebtStatus"] as! Int64
+        if let value = dict["DebtStatus"] as? Int64 {
+            self.debtStatus = value
         }
-        if dict.keys.contains("FlowList") {
+        if let value = dict["FlowList"] as? [Any?] {
             var tmp : [DescribeDdosOriginInstanceBillResponseBody.FlowList] = []
-            for v in dict["FlowList"] as! [Any] {
-                var model = DescribeDdosOriginInstanceBillResponseBody.FlowList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeDdosOriginInstanceBillResponseBody.FlowList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.flowList = tmp
         }
-        if dict.keys.contains("FlowRegion") {
-            self.flowRegion = dict["FlowRegion"] as! [String: Any]
+        if let value = dict["FlowRegion"] as? [String: Any] {
+            self.flowRegion = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("IpCount") {
-            self.ipCount = dict["IpCount"] as! Int64
+        if let value = dict["IpCount"] as? Int64 {
+            self.ipCount = value
         }
-        if dict.keys.contains("IpCountOrFunctionList") {
+        if let value = dict["IpCountOrFunctionList"] as? [Any?] {
             var tmp : [DescribeDdosOriginInstanceBillResponseBody.IpCountOrFunctionList] = []
-            for v in dict["IpCountOrFunctionList"] as! [Any] {
-                var model = DescribeDdosOriginInstanceBillResponseBody.IpCountOrFunctionList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeDdosOriginInstanceBillResponseBody.IpCountOrFunctionList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.ipCountOrFunctionList = tmp
         }
-        if dict.keys.contains("IpInfo") {
-            self.ipInfo = dict["IpInfo"] as! String
+        if let value = dict["IpInfo"] as? String {
+            self.ipInfo = value
         }
-        if dict.keys.contains("MonthlySummaryList") {
+        if let value = dict["MonthlySummaryList"] as? [Any?] {
             var tmp : [DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList] = []
-            for v in dict["MonthlySummaryList"] as! [Any] {
-                var model = DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.monthlySummaryList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("StandardAssetsFlowList") {
+        if let value = dict["StandardAssetsFlowList"] as? [Any?] {
             var tmp : [DescribeDdosOriginInstanceBillResponseBody.StandardAssetsFlowList] = []
-            for v in dict["StandardAssetsFlowList"] as! [Any] {
-                var model = DescribeDdosOriginInstanceBillResponseBody.StandardAssetsFlowList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeDdosOriginInstanceBillResponseBody.StandardAssetsFlowList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.standardAssetsFlowList = tmp
         }
-        if dict.keys.contains("StandardAssetsFlowRegion") {
-            self.standardAssetsFlowRegion = dict["StandardAssetsFlowRegion"] as! [String: Any]
+        if let value = dict["StandardAssetsFlowRegion"] as? [String: Any] {
+            self.standardAssetsFlowRegion = value
         }
-        if dict.keys.contains("StandardAssetsTotalFlowCn") {
-            self.standardAssetsTotalFlowCn = dict["StandardAssetsTotalFlowCn"] as! Int64
+        if let value = dict["StandardAssetsTotalFlowCn"] as? Int64 {
+            self.standardAssetsTotalFlowCn = value
         }
-        if dict.keys.contains("StandardAssetsTotalFlowOv") {
-            self.standardAssetsTotalFlowOv = dict["StandardAssetsTotalFlowOv"] as! Int64
+        if let value = dict["StandardAssetsTotalFlowOv"] as? Int64 {
+            self.standardAssetsTotalFlowOv = value
         }
-        if dict.keys.contains("Status") {
-            self.status = dict["Status"] as! Int64
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
         }
-        if dict.keys.contains("TotalFlowCn") {
-            self.totalFlowCn = dict["TotalFlowCn"] as! Int64
+        if let value = dict["TotalFlowCn"] as? Int64 {
+            self.totalFlowCn = value
         }
-        if dict.keys.contains("TotalFlowOv") {
-            self.totalFlowOv = dict["TotalFlowOv"] as! Int64
+        if let value = dict["TotalFlowOv"] as? Int64 {
+            self.totalFlowOv = value
         }
     }
 }
@@ -3491,16 +3085,17 @@ public class DescribeDdosOriginInstanceBillResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeDdosOriginInstanceBillResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -3534,12 +3129,13 @@ public class DescribeExcpetionCountRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -3577,15 +3173,16 @@ public class DescribeExcpetionCountResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ExceptionIpCount") {
-            self.exceptionIpCount = dict["ExceptionIpCount"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExceptionIpCount"] as? Int32 {
+            self.exceptionIpCount = value
         }
-        if dict.keys.contains("ExpireTimeCount") {
-            self.expireTimeCount = dict["ExpireTimeCount"] as! Int32
+        if let value = dict["ExpireTimeCount"] as? Int32 {
+            self.expireTimeCount = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -3624,16 +3221,17 @@ public class DescribeExcpetionCountResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeExcpetionCountResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -3668,12 +3266,13 @@ public class DescribeInstanceListRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Value") {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -3763,51 +3362,54 @@ public class DescribeInstanceListRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceIdList") {
-            self.instanceIdList = dict["InstanceIdList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIdList"] as? String {
+            self.instanceIdList = value
         }
-        if dict.keys.contains("InstanceType") {
-            self.instanceType = dict["InstanceType"] as! String
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
         }
-        if dict.keys.contains("InstanceTypeList") {
-            self.instanceTypeList = dict["InstanceTypeList"] as! [String]
+        if let value = dict["InstanceTypeList"] as? [String] {
+            self.instanceTypeList = value
         }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
-        if dict.keys.contains("IpVersion") {
-            self.ipVersion = dict["IpVersion"] as! String
+        if let value = dict["IpVersion"] as? String {
+            self.ipVersion = value
         }
-        if dict.keys.contains("Orderby") {
-            self.orderby = dict["Orderby"] as! String
+        if let value = dict["Orderby"] as? String {
+            self.orderby = value
         }
-        if dict.keys.contains("Orderdire") {
-            self.orderdire = dict["Orderdire"] as! String
+        if let value = dict["Orderdire"] as? String {
+            self.orderdire = value
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int32
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("Remark") {
-            self.remark = dict["Remark"] as! String
+        if let value = dict["Remark"] as? String {
+            self.remark = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("Tag") {
+        if let value = dict["Tag"] as? [Any?] {
             var tmp : [DescribeInstanceListRequest.Tag] = []
-            for v in dict["Tag"] as! [Any] {
-                var model = DescribeInstanceListRequest.Tag()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeInstanceListRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.tag = tmp
         }
@@ -3839,9 +3441,10 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Events") {
-                    self.events = dict["Events"] as! [String]
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Events"] as? [String] {
+                    self.events = value
                 }
             }
         }
@@ -3938,53 +3541,54 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AutoProtectCondition") {
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoProtectCondition"] as? [String: Any?] {
                 var model = DescribeInstanceListResponseBody.InstanceList.AutoProtectCondition()
-                model.fromMap(dict["AutoProtectCondition"] as! [String: Any])
+                model.fromMap(value)
                 self.autoProtectCondition = model
             }
-            if dict.keys.contains("AutoRenewal") {
-                self.autoRenewal = dict["AutoRenewal"] as! Bool
+            if let value = dict["AutoRenewal"] as? Bool {
+                self.autoRenewal = value
             }
-            if dict.keys.contains("BlackholdingCount") {
-                self.blackholdingCount = dict["BlackholdingCount"] as! String
+            if let value = dict["BlackholdingCount"] as? String {
+                self.blackholdingCount = value
             }
-            if dict.keys.contains("CommodityType") {
-                self.commodityType = dict["CommodityType"] as! String
+            if let value = dict["CommodityType"] as? String {
+                self.commodityType = value
             }
-            if dict.keys.contains("CoverageType") {
-                self.coverageType = dict["CoverageType"] as! Int32
+            if let value = dict["CoverageType"] as? Int32 {
+                self.coverageType = value
             }
-            if dict.keys.contains("DebtStatus") {
-                self.debtStatus = dict["DebtStatus"] as! Int64
+            if let value = dict["DebtStatus"] as? Int64 {
+                self.debtStatus = value
             }
-            if dict.keys.contains("ExpireTime") {
-                self.expireTime = dict["ExpireTime"] as! Int64
+            if let value = dict["ExpireTime"] as? Int64 {
+                self.expireTime = value
             }
-            if dict.keys.contains("GmtCreate") {
-                self.gmtCreate = dict["GmtCreate"] as! Int64
+            if let value = dict["GmtCreate"] as? Int64 {
+                self.gmtCreate = value
             }
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
-            if dict.keys.contains("InstanceType") {
-                self.instanceType = dict["InstanceType"] as! String
+            if let value = dict["InstanceType"] as? String {
+                self.instanceType = value
             }
-            if dict.keys.contains("IpType") {
-                self.ipType = dict["IpType"] as! String
+            if let value = dict["IpType"] as? String {
+                self.ipType = value
             }
-            if dict.keys.contains("Product") {
-                self.product = dict["Product"] as! String
+            if let value = dict["Product"] as? String {
+                self.product = value
             }
-            if dict.keys.contains("Remark") {
-                self.remark = dict["Remark"] as! String
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
-            if dict.keys.contains("ResourceGroupId") {
-                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
-            if dict.keys.contains("Status") {
-                self.status = dict["Status"] as! String
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
@@ -4024,23 +3628,26 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceList"] as? [Any?] {
             var tmp : [DescribeInstanceListResponseBody.InstanceList] = []
-            for v in dict["InstanceList"] as! [Any] {
-                var model = DescribeInstanceListResponseBody.InstanceList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeInstanceListResponseBody.InstanceList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.instanceList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -4079,16 +3686,17 @@ public class DescribeInstanceListResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeInstanceListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -4127,15 +3735,16 @@ public class DescribeInstanceSpecsRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceIdList") {
-            self.instanceIdList = dict["InstanceIdList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIdList"] as? String {
+            self.instanceIdList = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -4210,36 +3819,37 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Bandwidth") {
-                    self.bandwidth = dict["Bandwidth"] as! Int64
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Bandwidth"] as? Int64 {
+                    self.bandwidth = value
                 }
-                if dict.keys.contains("BindIpCount") {
-                    self.bindIpCount = dict["BindIpCount"] as! Int32
+                if let value = dict["BindIpCount"] as? Int32 {
+                    self.bindIpCount = value
                 }
-                if dict.keys.contains("ElasticBwMbps") {
-                    self.elasticBwMbps = dict["ElasticBwMbps"] as! Int32
+                if let value = dict["ElasticBwMbps"] as? Int32 {
+                    self.elasticBwMbps = value
                 }
-                if dict.keys.contains("ElasticBwMode") {
-                    self.elasticBwMode = dict["ElasticBwMode"] as! String
+                if let value = dict["ElasticBwMode"] as? String {
+                    self.elasticBwMode = value
                 }
-                if dict.keys.contains("IpAdvanceThre") {
-                    self.ipAdvanceThre = dict["IpAdvanceThre"] as! Int32
+                if let value = dict["IpAdvanceThre"] as? Int32 {
+                    self.ipAdvanceThre = value
                 }
-                if dict.keys.contains("IpBasicThre") {
-                    self.ipBasicThre = dict["IpBasicThre"] as! Int32
+                if let value = dict["IpBasicThre"] as? Int32 {
+                    self.ipBasicThre = value
                 }
-                if dict.keys.contains("IpSpec") {
-                    self.ipSpec = dict["IpSpec"] as! Int32
+                if let value = dict["IpSpec"] as? Int32 {
+                    self.ipSpec = value
                 }
-                if dict.keys.contains("NormalBandwidth") {
-                    self.normalBandwidth = dict["NormalBandwidth"] as! Int32
+                if let value = dict["NormalBandwidth"] as? Int32 {
+                    self.normalBandwidth = value
                 }
-                if dict.keys.contains("PackAdvThre") {
-                    self.packAdvThre = dict["PackAdvThre"] as! Int32
+                if let value = dict["PackAdvThre"] as? Int32 {
+                    self.packAdvThre = value
                 }
-                if dict.keys.contains("PackBasicThre") {
-                    self.packBasicThre = dict["PackBasicThre"] as! Int32
+                if let value = dict["PackBasicThre"] as? Int32 {
+                    self.packBasicThre = value
                 }
             }
         }
@@ -4306,35 +3916,36 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AvailableDefenseTimes") {
-                self.availableDefenseTimes = dict["AvailableDefenseTimes"] as! Int32
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AvailableDefenseTimes"] as? Int32 {
+                self.availableDefenseTimes = value
             }
-            if dict.keys.contains("AvailableDeleteBlackholeCount") {
-                self.availableDeleteBlackholeCount = dict["AvailableDeleteBlackholeCount"] as! String
+            if let value = dict["AvailableDeleteBlackholeCount"] as? String {
+                self.availableDeleteBlackholeCount = value
             }
-            if dict.keys.contains("DefenseTimesPercent") {
-                self.defenseTimesPercent = dict["DefenseTimesPercent"] as! Int32
+            if let value = dict["DefenseTimesPercent"] as? Int32 {
+                self.defenseTimesPercent = value
             }
-            if dict.keys.contains("DowngradeStatus") {
-                self.downgradeStatus = dict["DowngradeStatus"] as! Int32
+            if let value = dict["DowngradeStatus"] as? Int32 {
+                self.downgradeStatus = value
             }
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
-            if dict.keys.contains("IsFullDefenseMode") {
-                self.isFullDefenseMode = dict["IsFullDefenseMode"] as! Int32
+            if let value = dict["IsFullDefenseMode"] as? Int32 {
+                self.isFullDefenseMode = value
             }
-            if dict.keys.contains("PackConfig") {
+            if let value = dict["PackConfig"] as? [String: Any?] {
                 var model = DescribeInstanceSpecsResponseBody.InstanceSpecs.PackConfig()
-                model.fromMap(dict["PackConfig"] as! [String: Any])
+                model.fromMap(value)
                 self.packConfig = model
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("TotalDefenseTimes") {
-                self.totalDefenseTimes = dict["TotalDefenseTimes"] as! Int32
+            if let value = dict["TotalDefenseTimes"] as? Int32 {
+                self.totalDefenseTimes = value
             }
         }
     }
@@ -4369,20 +3980,23 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceSpecs") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceSpecs"] as? [Any?] {
             var tmp : [DescribeInstanceSpecsResponseBody.InstanceSpecs] = []
-            for v in dict["InstanceSpecs"] as! [Any] {
-                var model = DescribeInstanceSpecsResponseBody.InstanceSpecs()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeInstanceSpecsResponseBody.InstanceSpecs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.instanceSpecs = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -4421,492 +4035,17 @@ public class DescribeInstanceSpecsResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeInstanceSpecsResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class DescribeOnDemandDdosEventRequest : Tea.TeaModel {
-    public var endTime: Int32?
-
-    public var instanceId: String?
-
-    public var ip: String?
-
-    public var pageNo: Int32?
-
-    public var pageSize: Int32?
-
-    public var regionId: String?
-
-    public var resourceGroupId: String?
-
-    public var startTime: Int32?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.endTime != nil {
-            map["EndTime"] = self.endTime!
-        }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.ip != nil {
-            map["Ip"] = self.ip!
-        }
-        if self.pageNo != nil {
-            map["PageNo"] = self.pageNo!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.resourceGroupId != nil {
-            map["ResourceGroupId"] = self.resourceGroupId!
-        }
-        if self.startTime != nil {
-            map["StartTime"] = self.startTime!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! Int32
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
-        }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int32
-        }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
-        }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! Int32
-        }
-    }
-}
-
-public class DescribeOnDemandDdosEventResponseBody : Tea.TeaModel {
-    public class Events : Tea.TeaModel {
-        public var endTime: Int32?
-
-        public var ip: String?
-
-        public var mbps: Int32?
-
-        public var pps: Int32?
-
-        public var startTime: Int32?
-
-        public var status: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.endTime != nil {
-                map["EndTime"] = self.endTime!
-            }
-            if self.ip != nil {
-                map["Ip"] = self.ip!
-            }
-            if self.mbps != nil {
-                map["Mbps"] = self.mbps!
-            }
-            if self.pps != nil {
-                map["Pps"] = self.pps!
-            }
-            if self.startTime != nil {
-                map["StartTime"] = self.startTime!
-            }
-            if self.status != nil {
-                map["Status"] = self.status!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EndTime") {
-                self.endTime = dict["EndTime"] as! Int32
-            }
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
-            }
-            if dict.keys.contains("Mbps") {
-                self.mbps = dict["Mbps"] as! Int32
-            }
-            if dict.keys.contains("Pps") {
-                self.pps = dict["Pps"] as! Int32
-            }
-            if dict.keys.contains("StartTime") {
-                self.startTime = dict["StartTime"] as! Int32
-            }
-            if dict.keys.contains("Status") {
-                self.status = dict["Status"] as! String
-            }
-        }
-    }
-    public var events: [DescribeOnDemandDdosEventResponseBody.Events]?
-
-    public var requestId: String?
-
-    public var total: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.events != nil {
-            var tmp : [Any] = []
-            for k in self.events! {
-                tmp.append(k.toMap())
-            }
-            map["Events"] = tmp
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.total != nil {
-            map["Total"] = self.total!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Events") {
-            var tmp : [DescribeOnDemandDdosEventResponseBody.Events] = []
-            for v in dict["Events"] as! [Any] {
-                var model = DescribeOnDemandDdosEventResponseBody.Events()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.events = tmp
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
-        }
-    }
-}
-
-public class DescribeOnDemandDdosEventResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeOnDemandDdosEventResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DescribeOnDemandDdosEventResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class DescribeOnDemandInstanceStatusRequest : Tea.TeaModel {
-    public var instanceIdList: [String]?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceIdList != nil {
-            map["InstanceIdList"] = self.instanceIdList!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceIdList") {
-            self.instanceIdList = dict["InstanceIdList"] as! [String]
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class DescribeOnDemandInstanceStatusResponseBody : Tea.TeaModel {
-    public class Instances : Tea.TeaModel {
-        public var declared: String?
-
-        public var desc: String?
-
-        public var instanceId: String?
-
-        public var mode: String?
-
-        public var net: String?
-
-        public var registedAs: String?
-
-        public var userId: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.declared != nil {
-                map["Declared"] = self.declared!
-            }
-            if self.desc != nil {
-                map["Desc"] = self.desc!
-            }
-            if self.instanceId != nil {
-                map["InstanceId"] = self.instanceId!
-            }
-            if self.mode != nil {
-                map["Mode"] = self.mode!
-            }
-            if self.net != nil {
-                map["Net"] = self.net!
-            }
-            if self.registedAs != nil {
-                map["RegistedAs"] = self.registedAs!
-            }
-            if self.userId != nil {
-                map["UserId"] = self.userId!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Declared") {
-                self.declared = dict["Declared"] as! String
-            }
-            if dict.keys.contains("Desc") {
-                self.desc = dict["Desc"] as! String
-            }
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
-            }
-            if dict.keys.contains("Mode") {
-                self.mode = dict["Mode"] as! String
-            }
-            if dict.keys.contains("Net") {
-                self.net = dict["Net"] as! String
-            }
-            if dict.keys.contains("RegistedAs") {
-                self.registedAs = dict["RegistedAs"] as! String
-            }
-            if dict.keys.contains("UserId") {
-                self.userId = dict["UserId"] as! String
-            }
-        }
-    }
-    public var instances: [DescribeOnDemandInstanceStatusResponseBody.Instances]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instances != nil {
-            var tmp : [Any] = []
-            for k in self.instances! {
-                tmp.append(k.toMap())
-            }
-            map["Instances"] = tmp
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Instances") {
-            var tmp : [DescribeOnDemandInstanceStatusResponseBody.Instances] = []
-            for v in dict["Instances"] as! [Any] {
-                var model = DescribeOnDemandInstanceStatusResponseBody.Instances()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.instances = tmp
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class DescribeOnDemandInstanceStatusResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeOnDemandInstanceStatusResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DescribeOnDemandInstanceStatusResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -4980,36 +4119,37 @@ public class DescribeOpEntitiesRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CurrentPage") {
-            self.currentPage = dict["CurrentPage"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
         }
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! Int64
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("OpAction") {
-            self.opAction = dict["OpAction"] as! Int32
+        if let value = dict["OpAction"] as? Int32 {
+            self.opAction = value
         }
-        if dict.keys.contains("OrderBy") {
-            self.orderBy = dict["OrderBy"] as! String
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
         }
-        if dict.keys.contains("OrderDir") {
-            self.orderDir = dict["OrderDir"] as! String
+        if let value = dict["OrderDir"] as? String {
+            self.orderDir = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! Int64
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
         }
     }
 }
@@ -5063,24 +4203,25 @@ public class DescribeOpEntitiesResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EntityObject") {
-                self.entityObject = dict["EntityObject"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EntityObject"] as? String {
+                self.entityObject = value
             }
-            if dict.keys.contains("EntityType") {
-                self.entityType = dict["EntityType"] as! Int32
+            if let value = dict["EntityType"] as? Int32 {
+                self.entityType = value
             }
-            if dict.keys.contains("GmtCreate") {
-                self.gmtCreate = dict["GmtCreate"] as! Int64
+            if let value = dict["GmtCreate"] as? Int64 {
+                self.gmtCreate = value
             }
-            if dict.keys.contains("OpAccount") {
-                self.opAccount = dict["OpAccount"] as! String
+            if let value = dict["OpAccount"] as? String {
+                self.opAccount = value
             }
-            if dict.keys.contains("OpAction") {
-                self.opAction = dict["OpAction"] as! Int32
+            if let value = dict["OpAction"] as? Int32 {
+                self.opAction = value
             }
-            if dict.keys.contains("OpDesc") {
-                self.opDesc = dict["OpDesc"] as! String
+            if let value = dict["OpDesc"] as? String {
+                self.opDesc = value
             }
         }
     }
@@ -5120,23 +4261,26 @@ public class DescribeOpEntitiesResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("OpEntities") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OpEntities"] as? [Any?] {
             var tmp : [DescribeOpEntitiesResponseBody.OpEntities] = []
-            for v in dict["OpEntities"] as! [Any] {
-                var model = DescribeOpEntitiesResponseBody.OpEntities()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeOpEntitiesResponseBody.OpEntities()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.opEntities = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("TotalCount") {
-            self.totalCount = dict["TotalCount"] as! Int32
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -5175,16 +4319,17 @@ public class DescribeOpEntitiesResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeOpEntitiesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -5248,30 +4393,31 @@ public class DescribePackIpListRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
-        if dict.keys.contains("MemberUid") {
-            self.memberUid = dict["MemberUid"] as! String
+        if let value = dict["MemberUid"] as? String {
+            self.memberUid = value
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int32
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("ProductName") {
-            self.productName = dict["ProductName"] as! String
+        if let value = dict["ProductName"] as? String {
+            self.productName = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -5340,33 +4486,34 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("MemberUid") {
-                self.memberUid = dict["MemberUid"] as! String
+            if let value = dict["MemberUid"] as? String {
+                self.memberUid = value
             }
-            if dict.keys.contains("NsmExpireAt") {
-                self.nsmExpireAt = dict["NsmExpireAt"] as! Int64
+            if let value = dict["NsmExpireAt"] as? Int64 {
+                self.nsmExpireAt = value
             }
-            if dict.keys.contains("NsmStartAt") {
-                self.nsmStartAt = dict["NsmStartAt"] as! Int64
+            if let value = dict["NsmStartAt"] as? Int64 {
+                self.nsmStartAt = value
             }
-            if dict.keys.contains("NsmStatus") {
-                self.nsmStatus = dict["NsmStatus"] as! Int32
+            if let value = dict["NsmStatus"] as? Int32 {
+                self.nsmStatus = value
             }
-            if dict.keys.contains("Product") {
-                self.product = dict["Product"] as! String
+            if let value = dict["Product"] as? String {
+                self.product = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Remark") {
-                self.remark = dict["Remark"] as! String
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
-            if dict.keys.contains("Status") {
-                self.status = dict["Status"] as! String
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
         }
     }
@@ -5416,29 +4563,32 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
         }
-        if dict.keys.contains("IpList") {
+        if let value = dict["IpList"] as? [Any?] {
             var tmp : [DescribePackIpListResponseBody.IpList] = []
-            for v in dict["IpList"] as! [Any] {
-                var model = DescribePackIpListResponseBody.IpList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribePackIpListResponseBody.IpList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.ipList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
+        if let value = dict["Success"] as? Bool {
+            self.success = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int32
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
         }
     }
 }
@@ -5477,16 +4627,17 @@ public class DescribePackIpListResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribePackIpListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -5525,15 +4676,16 @@ public class DescribeRdMemberListRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("ResourceDirectoryId") {
-            self.resourceDirectoryId = dict["ResourceDirectoryId"] as! String
+        if let value = dict["ResourceDirectoryId"] as? String {
+            self.resourceDirectoryId = value
         }
     }
 }
@@ -5572,15 +4724,16 @@ public class DescribeRdMemberListResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("GmtCreate") {
-                self.gmtCreate = dict["GmtCreate"] as! Int64
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GmtCreate"] as? Int64 {
+                self.gmtCreate = value
             }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Uid") {
-                self.uid = dict["Uid"] as! String
+            if let value = dict["Uid"] as? String {
+                self.uid = value
             }
         }
     }
@@ -5620,23 +4773,26 @@ public class DescribeRdMemberListResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("MemberList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MemberList"] as? [Any?] {
             var tmp : [DescribeRdMemberListResponseBody.MemberList] = []
-            for v in dict["MemberList"] as! [Any] {
-                var model = DescribeRdMemberListResponseBody.MemberList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeRdMemberListResponseBody.MemberList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.memberList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -5675,16 +4831,17 @@ public class DescribeRdMemberListResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeRdMemberListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -5753,33 +4910,34 @@ public class DescribeRdStatusResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CurrentUid") {
-            self.currentUid = dict["CurrentUid"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentUid"] as? String {
+            self.currentUid = value
         }
-        if dict.keys.contains("CurrentUidType") {
-            self.currentUidType = dict["CurrentUidType"] as! String
+        if let value = dict["CurrentUidType"] as? String {
+            self.currentUidType = value
         }
-        if dict.keys.contains("Enabled") {
-            self.enabled = dict["Enabled"] as! Bool
+        if let value = dict["Enabled"] as? Bool {
+            self.enabled = value
         }
-        if dict.keys.contains("LocalEnable") {
-            self.localEnable = dict["LocalEnable"] as! Bool
+        if let value = dict["LocalEnable"] as? Bool {
+            self.localEnable = value
         }
-        if dict.keys.contains("MasterUid") {
-            self.masterUid = dict["MasterUid"] as! String
+        if let value = dict["MasterUid"] as? String {
+            self.masterUid = value
         }
-        if dict.keys.contains("RemoteEnable") {
-            self.remoteEnable = dict["RemoteEnable"] as! Bool
+        if let value = dict["RemoteEnable"] as? Bool {
+            self.remoteEnable = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("RootUid") {
-            self.rootUid = dict["RootUid"] as! String
+        if let value = dict["RootUid"] as? String {
+            self.rootUid = value
         }
-        if dict.keys.contains("ServicePrincipalEnabled") {
-            self.servicePrincipalEnabled = dict["ServicePrincipalEnabled"] as! Bool
+        if let value = dict["ServicePrincipalEnabled"] as? Bool {
+            self.servicePrincipalEnabled = value
         }
     }
 }
@@ -5818,16 +4976,17 @@ public class DescribeRdStatusResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeRdStatusResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -5861,12 +5020,13 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -5905,15 +5065,16 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("RegionEnName") {
-                self.regionEnName = dict["RegionEnName"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionEnName"] as? String {
+                self.regionEnName = value
             }
-            if dict.keys.contains("RegionId") {
-                self.regionId = dict["RegionId"] as! String
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
             }
-            if dict.keys.contains("RegionName") {
-                self.regionName = dict["RegionName"] as! String
+            if let value = dict["RegionName"] as? String {
+                self.regionName = value
             }
         }
     }
@@ -5958,26 +5119,29 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
         }
-        if dict.keys.contains("Regions") {
+        if let value = dict["Regions"] as? [Any?] {
             var tmp : [DescribeRegionsResponseBody.Regions] = []
-            for v in dict["Regions"] as! [Any] {
-                var model = DescribeRegionsResponseBody.Regions()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeRegionsResponseBody.Regions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.regions = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
+        if let value = dict["Success"] as? Bool {
+            self.success = value
         }
     }
 }
@@ -6016,16 +5180,17 @@ public class DescribeRegionsResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeRegionsResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -6094,33 +5259,34 @@ public class DescribeTrafficRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? Int32 {
+            self.endTime = value
         }
-        if dict.keys.contains("FlowType") {
-            self.flowType = dict["FlowType"] as! String
+        if let value = dict["FlowType"] as? String {
+            self.flowType = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("Interval") {
-            self.interval = dict["Interval"] as! Int32
+        if let value = dict["Interval"] as? Int32 {
+            self.interval = value
         }
-        if dict.keys.contains("Ip") {
-            self.ip = dict["Ip"] as! String
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
-        if dict.keys.contains("Ipnet") {
-            self.ipnet = dict["Ipnet"] as! String
+        if let value = dict["Ipnet"] as? String {
+            self.ipnet = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! Int32
+        if let value = dict["StartTime"] as? Int32 {
+            self.startTime = value
         }
     }
 }
@@ -6179,27 +5345,28 @@ public class DescribeTrafficResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AttackBps") {
-                self.attackBps = dict["AttackBps"] as! Int64
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AttackBps"] as? Int64 {
+                self.attackBps = value
             }
-            if dict.keys.contains("AttackPps") {
-                self.attackPps = dict["AttackPps"] as! Int64
+            if let value = dict["AttackPps"] as? Int64 {
+                self.attackPps = value
             }
-            if dict.keys.contains("FlowType") {
-                self.flowType = dict["FlowType"] as! String
+            if let value = dict["FlowType"] as? String {
+                self.flowType = value
             }
-            if dict.keys.contains("Kbps") {
-                self.kbps = dict["Kbps"] as! Int32
+            if let value = dict["Kbps"] as? Int32 {
+                self.kbps = value
             }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Pps") {
-                self.pps = dict["Pps"] as! Int32
+            if let value = dict["Pps"] as? Int32 {
+                self.pps = value
             }
-            if dict.keys.contains("Time") {
-                self.time = dict["Time"] as! Int32
+            if let value = dict["Time"] as? Int32 {
+                self.time = value
             }
         }
     }
@@ -6234,20 +5401,23 @@ public class DescribeTrafficResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("FlowList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FlowList"] as? [Any?] {
             var tmp : [DescribeTrafficResponseBody.FlowList] = []
-            for v in dict["FlowList"] as! [Any] {
-                var model = DescribeTrafficResponseBody.FlowList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DescribeTrafficResponseBody.FlowList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.flowList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -6286,16 +5456,17 @@ public class DescribeTrafficResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DescribeTrafficResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -6306,6 +5477,8 @@ public class DetachFromPolicyRequest : Tea.TeaModel {
         public var ip: String?
 
         public var port: Int32?
+
+        public var portRange: String?
 
         public var protocol_: String?
 
@@ -6329,27 +5502,36 @@ public class DetachFromPolicyRequest : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("Port") {
-                self.port = dict["Port"] as! Int32
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
             }
-            if dict.keys.contains("Protocol") {
-                self.protocol_ = dict["Protocol"] as! String
+            if let value = dict["PortRange"] as? String {
+                self.portRange = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
             }
         }
     }
     public var ipPortProtocolList: [DetachFromPolicyRequest.IpPortProtocolList]?
 
     public var policyType: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -6375,23 +5557,32 @@ public class DetachFromPolicyRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? [Any?] {
             var tmp : [DetachFromPolicyRequest.IpPortProtocolList] = []
-            for v in dict["IpPortProtocolList"] as! [Any] {
-                var model = DetachFromPolicyRequest.IpPortProtocolList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DetachFromPolicyRequest.IpPortProtocolList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.ipPortProtocolList = tmp
         }
-        if dict.keys.contains("PolicyType") {
-            self.policyType = dict["PolicyType"] as! String
+        if let value = dict["PolicyType"] as? String {
+            self.policyType = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -6400,6 +5591,8 @@ public class DetachFromPolicyShrinkRequest : Tea.TeaModel {
     public var ipPortProtocolListShrink: String?
 
     public var policyType: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -6421,15 +5614,22 @@ public class DetachFromPolicyShrinkRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
-            self.ipPortProtocolListShrink = dict["IpPortProtocolList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? String {
+            self.ipPortProtocolListShrink = value
         }
-        if dict.keys.contains("PolicyType") {
-            self.policyType = dict["PolicyType"] as! String
+        if let value = dict["PolicyType"] as? String {
+            self.policyType = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -6457,9 +5657,10 @@ public class DetachFromPolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -6498,16 +5699,17 @@ public class DetachFromPolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DetachFromPolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -6547,15 +5749,16 @@ public class DettachAssetGroupToInstanceRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
         }
     }
@@ -6595,23 +5798,26 @@ public class DettachAssetGroupToInstanceRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetGroupList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetGroupList"] as? [Any?] {
             var tmp : [DettachAssetGroupToInstanceRequest.AssetGroupList] = []
-            for v in dict["AssetGroupList"] as! [Any] {
-                var model = DettachAssetGroupToInstanceRequest.AssetGroupList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = DettachAssetGroupToInstanceRequest.AssetGroupList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.assetGroupList = tmp
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -6649,15 +5855,16 @@ public class DettachAssetGroupToInstanceShrinkRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssetGroupList") {
-            self.assetGroupListShrink = dict["AssetGroupList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AssetGroupList"] as? String {
+            self.assetGroupListShrink = value
         }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
     }
 }
@@ -6685,9 +5892,10 @@ public class DettachAssetGroupToInstanceResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -6726,16 +5934,17 @@ public class DettachAssetGroupToInstanceResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = DettachAssetGroupToInstanceResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -6769,12 +5978,13 @@ public class GetSlsOpenStatusRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -6807,12 +6017,13 @@ public class GetSlsOpenStatusResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("SlsOpenStatus") {
-            self.slsOpenStatus = dict["SlsOpenStatus"] as! Bool
+        if let value = dict["SlsOpenStatus"] as? Bool {
+            self.slsOpenStatus = value
         }
     }
 }
@@ -6851,16 +6062,17 @@ public class GetSlsOpenStatusResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = GetSlsOpenStatusResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -6899,15 +6111,16 @@ public class ListOpenedAccessLogInstancesRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -6941,12 +6154,13 @@ public class ListOpenedAccessLogInstancesResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Enable") {
-                self.enable = dict["Enable"] as! Bool
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
             }
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
             }
         }
     }
@@ -6986,23 +6200,26 @@ public class ListOpenedAccessLogInstancesResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("SlsConfigStatus") {
+        if let value = dict["SlsConfigStatus"] as? [Any?] {
             var tmp : [ListOpenedAccessLogInstancesResponseBody.SlsConfigStatus] = []
-            for v in dict["SlsConfigStatus"] as! [Any] {
-                var model = ListOpenedAccessLogInstancesResponseBody.SlsConfigStatus()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListOpenedAccessLogInstancesResponseBody.SlsConfigStatus()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.slsConfigStatus = tmp
         }
-        if dict.keys.contains("TotalCount") {
-            self.totalCount = dict["TotalCount"] as! Int32
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -7041,16 +6258,17 @@ public class ListOpenedAccessLogInstancesResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ListOpenedAccessLogInstancesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -7099,21 +6317,22 @@ public class ListPolicyRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int64
+        if let value = dict["PageNo"] as? Int64 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int64
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
         }
-        if dict.keys.contains("ProductType") {
-            self.productType = dict["ProductType"] as! String
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
         }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -7204,53 +6423,100 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("DstPortEnd") {
-                        self.dstPortEnd = dict["DstPortEnd"] as! Int32
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DstPortEnd"] as? Int32 {
+                        self.dstPortEnd = value
                     }
-                    if dict.keys.contains("DstPortStart") {
-                        self.dstPortStart = dict["DstPortStart"] as! Int32
+                    if let value = dict["DstPortStart"] as? Int32 {
+                        self.dstPortStart = value
                     }
-                    if dict.keys.contains("Id") {
-                        self.id = dict["Id"] as! String
+                    if let value = dict["Id"] as? String {
+                        self.id = value
                     }
-                    if dict.keys.contains("MatchAction") {
-                        self.matchAction = dict["MatchAction"] as! String
+                    if let value = dict["MatchAction"] as? String {
+                        self.matchAction = value
                     }
-                    if dict.keys.contains("MaxPktLen") {
-                        self.maxPktLen = dict["MaxPktLen"] as! Int32
+                    if let value = dict["MaxPktLen"] as? Int32 {
+                        self.maxPktLen = value
                     }
-                    if dict.keys.contains("MinPktLen") {
-                        self.minPktLen = dict["MinPktLen"] as! Int32
+                    if let value = dict["MinPktLen"] as? Int32 {
+                        self.minPktLen = value
                     }
-                    if dict.keys.contains("Offset") {
-                        self.offset = dict["Offset"] as! Int32
+                    if let value = dict["Offset"] as? Int32 {
+                        self.offset = value
                     }
-                    if dict.keys.contains("PayloadBytes") {
-                        self.payloadBytes = dict["PayloadBytes"] as! String
+                    if let value = dict["PayloadBytes"] as? String {
+                        self.payloadBytes = value
                     }
-                    if dict.keys.contains("Protocol") {
-                        self.protocol_ = dict["Protocol"] as! String
+                    if let value = dict["Protocol"] as? String {
+                        self.protocol_ = value
                     }
-                    if dict.keys.contains("RateValue") {
-                        self.rateValue = dict["RateValue"] as! Int32
+                    if let value = dict["RateValue"] as? Int32 {
+                        self.rateValue = value
                     }
-                    if dict.keys.contains("SeqNo") {
-                        self.seqNo = dict["SeqNo"] as! Int32
+                    if let value = dict["SeqNo"] as? Int32 {
+                        self.seqNo = value
                     }
-                    if dict.keys.contains("SrcPortEnd") {
-                        self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                    if let value = dict["SrcPortEnd"] as? Int32 {
+                        self.srcPortEnd = value
                     }
-                    if dict.keys.contains("SrcPortStart") {
-                        self.srcPortStart = dict["SrcPortStart"] as! Int32
+                    if let value = dict["SrcPortStart"] as? Int32 {
+                        self.srcPortStart = value
                     }
                 }
             }
             public class L4RuleList : Tea.TeaModel {
                 public class ConditionList : Tea.TeaModel {
+                    public class Offset : Tea.TeaModel {
+                        public var end: Int32?
+
+                        public var start: Int32?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.end != nil {
+                                map["End"] = self.end!
+                            }
+                            if self.start != nil {
+                                map["Start"] = self.start!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["End"] as? Int32 {
+                                self.end = value
+                            }
+                            if let value = dict["Start"] as? Int32 {
+                                self.start = value
+                            }
+                        }
+                    }
                     public var arg: String?
 
+                    public var content: String?
+
                     public var depth: Int32?
+
+                    public var encode: String?
+
+                    public var offset: ListPolicyResponseBody.PolicyList.Content.L4RuleList.ConditionList.Offset?
+
+                    public var pattern: String?
 
                     public var position: Int32?
 
@@ -7264,6 +6530,7 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.offset?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -7271,8 +6538,20 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                         if self.arg != nil {
                             map["Arg"] = self.arg!
                         }
+                        if self.content != nil {
+                            map["Content"] = self.content!
+                        }
                         if self.depth != nil {
                             map["Depth"] = self.depth!
+                        }
+                        if self.encode != nil {
+                            map["Encode"] = self.encode!
+                        }
+                        if self.offset != nil {
+                            map["Offset"] = self.offset?.toMap()
+                        }
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
                         }
                         if self.position != nil {
                             map["Position"] = self.position!
@@ -7280,15 +6559,30 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                         return map
                     }
 
-                    public override func fromMap(_ dict: [String: Any]) -> Void {
-                        if dict.keys.contains("Arg") {
-                            self.arg = dict["Arg"] as! String
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Arg"] as? String {
+                            self.arg = value
                         }
-                        if dict.keys.contains("Depth") {
-                            self.depth = dict["Depth"] as! Int32
+                        if let value = dict["Content"] as? String {
+                            self.content = value
                         }
-                        if dict.keys.contains("Position") {
-                            self.position = dict["Position"] as! Int32
+                        if let value = dict["Depth"] as? Int32 {
+                            self.depth = value
+                        }
+                        if let value = dict["Encode"] as? String {
+                            self.encode = value
+                        }
+                        if let value = dict["Offset"] as? [String: Any?] {
+                            var model = ListPolicyResponseBody.PolicyList.Content.L4RuleList.ConditionList.Offset()
+                            model.fromMap(value)
+                            self.offset = model
+                        }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Position"] as? Int32 {
+                            self.position = value
                         }
                     }
                 }
@@ -7348,35 +6642,38 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Action") {
-                        self.action = dict["Action"] as! String
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Action"] as? String {
+                        self.action = value
                     }
-                    if dict.keys.contains("ConditionList") {
+                    if let value = dict["ConditionList"] as? [Any?] {
                         var tmp : [ListPolicyResponseBody.PolicyList.Content.L4RuleList.ConditionList] = []
-                        for v in dict["ConditionList"] as! [Any] {
-                            var model = ListPolicyResponseBody.PolicyList.Content.L4RuleList.ConditionList()
+                        for v in value {
                             if v != nil {
-                                model.fromMap(v as! [String: Any])
+                                var model = ListPolicyResponseBody.PolicyList.Content.L4RuleList.ConditionList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
                             }
-                            tmp.append(model)
                         }
                         self.conditionList = tmp
                     }
-                    if dict.keys.contains("Limited") {
-                        self.limited = dict["Limited"] as! Int32
+                    if let value = dict["Limited"] as? Int32 {
+                        self.limited = value
                     }
-                    if dict.keys.contains("Match") {
-                        self.match = dict["Match"] as! String
+                    if let value = dict["Match"] as? String {
+                        self.match = value
                     }
-                    if dict.keys.contains("Method") {
-                        self.method = dict["Method"] as! String
+                    if let value = dict["Method"] as? String {
+                        self.method = value
                     }
-                    if dict.keys.contains("Name") {
-                        self.name = dict["Name"] as! String
+                    if let value = dict["Name"] as? String {
+                        self.name = value
                     }
-                    if dict.keys.contains("Priority") {
-                        self.priority = dict["Priority"] as! Int32
+                    if let value = dict["Priority"] as? Int32 {
+                        self.priority = value
                     }
                 }
             }
@@ -7438,30 +6735,31 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("DstPortEnd") {
-                        self.dstPortEnd = dict["DstPortEnd"] as! Int32
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DstPortEnd"] as? Int32 {
+                        self.dstPortEnd = value
                     }
-                    if dict.keys.contains("DstPortStart") {
-                        self.dstPortStart = dict["DstPortStart"] as! Int32
+                    if let value = dict["DstPortStart"] as? Int32 {
+                        self.dstPortStart = value
                     }
-                    if dict.keys.contains("Id") {
-                        self.id = dict["Id"] as! String
+                    if let value = dict["Id"] as? String {
+                        self.id = value
                     }
-                    if dict.keys.contains("MatchAction") {
-                        self.matchAction = dict["MatchAction"] as! String
+                    if let value = dict["MatchAction"] as? String {
+                        self.matchAction = value
                     }
-                    if dict.keys.contains("Protocol") {
-                        self.protocol_ = dict["Protocol"] as! String
+                    if let value = dict["Protocol"] as? String {
+                        self.protocol_ = value
                     }
-                    if dict.keys.contains("SeqNo") {
-                        self.seqNo = dict["SeqNo"] as! Int32
+                    if let value = dict["SeqNo"] as? Int32 {
+                        self.seqNo = value
                     }
-                    if dict.keys.contains("SrcPortEnd") {
-                        self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                    if let value = dict["SrcPortEnd"] as? Int32 {
+                        self.srcPortEnd = value
                     }
-                    if dict.keys.contains("SrcPortStart") {
-                        self.srcPortStart = dict["SrcPortStart"] as! Int32
+                    if let value = dict["SrcPortStart"] as? Int32 {
+                        self.srcPortStart = value
                     }
                 }
             }
@@ -7503,18 +6801,19 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("BlockExpireSeconds") {
-                        self.blockExpireSeconds = dict["BlockExpireSeconds"] as! Int32
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BlockExpireSeconds"] as? Int32 {
+                        self.blockExpireSeconds = value
                     }
-                    if dict.keys.contains("EverySeconds") {
-                        self.everySeconds = dict["EverySeconds"] as! Int32
+                    if let value = dict["EverySeconds"] as? Int32 {
+                        self.everySeconds = value
                     }
-                    if dict.keys.contains("ExceedLimitTimes") {
-                        self.exceedLimitTimes = dict["ExceedLimitTimes"] as! Int32
+                    if let value = dict["ExceedLimitTimes"] as? Int32 {
+                        self.exceedLimitTimes = value
                     }
-                    if dict.keys.contains("Type") {
-                        self.type = dict["Type"] as! Int32
+                    if let value = dict["Type"] as? Int32 {
+                        self.type = value
                     }
                 }
             }
@@ -7556,18 +6855,19 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Bps") {
-                        self.bps = dict["Bps"] as! Int32
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bps"] as? Int32 {
+                        self.bps = value
                     }
-                    if dict.keys.contains("Pps") {
-                        self.pps = dict["Pps"] as! Int32
+                    if let value = dict["Pps"] as? Int32 {
+                        self.pps = value
                     }
-                    if dict.keys.contains("SynBps") {
-                        self.synBps = dict["SynBps"] as! Int32
+                    if let value = dict["SynBps"] as? Int32 {
+                        self.synBps = value
                     }
-                    if dict.keys.contains("SynPps") {
-                        self.synPps = dict["SynPps"] as! Int32
+                    if let value = dict["SynPps"] as? Int32 {
+                        self.synPps = value
                     }
                 }
             }
@@ -7586,6 +6886,8 @@ public class ListPolicyResponseBody : Tea.TeaModel {
             public var l4RuleList: [ListPolicyResponseBody.PolicyList.Content.L4RuleList]?
 
             public var portRuleList: [ListPolicyResponseBody.PolicyList.Content.PortRuleList]?
+
+            public var portVersion: String?
 
             public var reflectBlockUdpPortList: [Int32]?
 
@@ -7650,6 +6952,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                     }
                     map["PortRuleList"] = tmp
                 }
+                if self.portVersion != nil {
+                    map["PortVersion"] = self.portVersion!
+                }
                 if self.reflectBlockUdpPortList != nil {
                     map["ReflectBlockUdpPortList"] = self.reflectBlockUdpPortList!
                 }
@@ -7675,82 +6980,94 @@ public class ListPolicyResponseBody : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("BlackIpListExpireAt") {
-                    self.blackIpListExpireAt = dict["BlackIpListExpireAt"] as! Int64
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BlackIpListExpireAt"] as? Int64 {
+                    self.blackIpListExpireAt = value
                 }
-                if dict.keys.contains("EnableDropIcmp") {
-                    self.enableDropIcmp = dict["EnableDropIcmp"] as! Bool
+                if let value = dict["EnableDropIcmp"] as? Bool {
+                    self.enableDropIcmp = value
                 }
-                if dict.keys.contains("EnableIntelligence") {
-                    self.enableIntelligence = dict["EnableIntelligence"] as! Bool
+                if let value = dict["EnableIntelligence"] as? Bool {
+                    self.enableIntelligence = value
                 }
-                if dict.keys.contains("EnableL4Defense") {
-                    self.enableL4Defense = dict["EnableL4Defense"] as! Bool
+                if let value = dict["EnableL4Defense"] as? Bool {
+                    self.enableL4Defense = value
                 }
-                if dict.keys.contains("FingerPrintRuleList") {
+                if let value = dict["FingerPrintRuleList"] as? [Any?] {
                     var tmp : [ListPolicyResponseBody.PolicyList.Content.FingerPrintRuleList] = []
-                    for v in dict["FingerPrintRuleList"] as! [Any] {
-                        var model = ListPolicyResponseBody.PolicyList.Content.FingerPrintRuleList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ListPolicyResponseBody.PolicyList.Content.FingerPrintRuleList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.fingerPrintRuleList = tmp
                 }
-                if dict.keys.contains("IntelligenceLevel") {
-                    self.intelligenceLevel = dict["IntelligenceLevel"] as! String
+                if let value = dict["IntelligenceLevel"] as? String {
+                    self.intelligenceLevel = value
                 }
-                if dict.keys.contains("L4RuleList") {
+                if let value = dict["L4RuleList"] as? [Any?] {
                     var tmp : [ListPolicyResponseBody.PolicyList.Content.L4RuleList] = []
-                    for v in dict["L4RuleList"] as! [Any] {
-                        var model = ListPolicyResponseBody.PolicyList.Content.L4RuleList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ListPolicyResponseBody.PolicyList.Content.L4RuleList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.l4RuleList = tmp
                 }
-                if dict.keys.contains("PortRuleList") {
+                if let value = dict["PortRuleList"] as? [Any?] {
                     var tmp : [ListPolicyResponseBody.PolicyList.Content.PortRuleList] = []
-                    for v in dict["PortRuleList"] as! [Any] {
-                        var model = ListPolicyResponseBody.PolicyList.Content.PortRuleList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ListPolicyResponseBody.PolicyList.Content.PortRuleList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.portRuleList = tmp
                 }
-                if dict.keys.contains("ReflectBlockUdpPortList") {
-                    self.reflectBlockUdpPortList = dict["ReflectBlockUdpPortList"] as! [Int32]
+                if let value = dict["PortVersion"] as? String {
+                    self.portVersion = value
                 }
-                if dict.keys.contains("RegionBlockCountryList") {
-                    self.regionBlockCountryList = dict["RegionBlockCountryList"] as! [Int32]
+                if let value = dict["ReflectBlockUdpPortList"] as? [Int32] {
+                    self.reflectBlockUdpPortList = value
                 }
-                if dict.keys.contains("RegionBlockProvinceList") {
-                    self.regionBlockProvinceList = dict["RegionBlockProvinceList"] as! [Int32]
+                if let value = dict["RegionBlockCountryList"] as? [Int32] {
+                    self.regionBlockCountryList = value
                 }
-                if dict.keys.contains("SourceBlockList") {
+                if let value = dict["RegionBlockProvinceList"] as? [Int32] {
+                    self.regionBlockProvinceList = value
+                }
+                if let value = dict["SourceBlockList"] as? [Any?] {
                     var tmp : [ListPolicyResponseBody.PolicyList.Content.SourceBlockList] = []
-                    for v in dict["SourceBlockList"] as! [Any] {
-                        var model = ListPolicyResponseBody.PolicyList.Content.SourceBlockList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ListPolicyResponseBody.PolicyList.Content.SourceBlockList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.sourceBlockList = tmp
                 }
-                if dict.keys.contains("SourceLimit") {
+                if let value = dict["SourceLimit"] as? [String: Any?] {
                     var model = ListPolicyResponseBody.PolicyList.Content.SourceLimit()
-                    model.fromMap(dict["SourceLimit"] as! [String: Any])
+                    model.fromMap(value)
                     self.sourceLimit = model
                 }
-                if dict.keys.contains("WhitenGfbrNets") {
-                    self.whitenGfbrNets = dict["WhitenGfbrNets"] as! Bool
+                if let value = dict["WhitenGfbrNets"] as? Bool {
+                    self.whitenGfbrNets = value
                 }
             }
         }
@@ -7802,26 +7119,27 @@ public class ListPolicyResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AttachedCount") {
-                self.attachedCount = dict["AttachedCount"] as! Int32
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AttachedCount"] as? Int32 {
+                self.attachedCount = value
             }
-            if dict.keys.contains("Content") {
+            if let value = dict["Content"] as? [String: Any?] {
                 var model = ListPolicyResponseBody.PolicyList.Content()
-                model.fromMap(dict["Content"] as! [String: Any])
+                model.fromMap(value)
                 self.content = model
             }
-            if dict.keys.contains("Id") {
-                self.id = dict["Id"] as! String
+            if let value = dict["Id"] as? String {
+                self.id = value
             }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
+            if let value = dict["Name"] as? String {
+                self.name = value
             }
-            if dict.keys.contains("Remark") {
-                self.remark = dict["Remark"] as! String
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
+            if let value = dict["Type"] as? String {
+                self.type = value
             }
         }
     }
@@ -7861,23 +7179,26 @@ public class ListPolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PolicyList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolicyList"] as? [Any?] {
             var tmp : [ListPolicyResponseBody.PolicyList] = []
-            for v in dict["PolicyList"] as! [Any] {
-                var model = ListPolicyResponseBody.PolicyList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListPolicyResponseBody.PolicyList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.policyList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -7916,16 +7237,17 @@ public class ListPolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ListPolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -7936,6 +7258,8 @@ public class ListPolicyAttachmentRequest : Tea.TeaModel {
         public var ip: String?
 
         public var port: Int32?
+
+        public var portRange: String?
 
         public var protocol_: String?
 
@@ -7959,21 +7283,28 @@ public class ListPolicyAttachmentRequest : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("Port") {
-                self.port = dict["Port"] as! Int32
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
             }
-            if dict.keys.contains("Protocol") {
-                self.protocol_ = dict["Protocol"] as! String
+            if let value = dict["PortRange"] as? String {
+                self.portRange = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
             }
         }
     }
@@ -7986,6 +7317,8 @@ public class ListPolicyAttachmentRequest : Tea.TeaModel {
     public var policyId: String?
 
     public var policyType: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -8020,32 +7353,41 @@ public class ListPolicyAttachmentRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? [Any?] {
             var tmp : [ListPolicyAttachmentRequest.IpPortProtocolList] = []
-            for v in dict["IpPortProtocolList"] as! [Any] {
-                var model = ListPolicyAttachmentRequest.IpPortProtocolList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListPolicyAttachmentRequest.IpPortProtocolList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.ipPortProtocolList = tmp
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int64
+        if let value = dict["PageNo"] as? Int64 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int64
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
         }
-        if dict.keys.contains("PolicyId") {
-            self.policyId = dict["PolicyId"] as! String
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
         }
-        if dict.keys.contains("PolicyType") {
-            self.policyType = dict["PolicyType"] as! String
+        if let value = dict["PolicyType"] as? String {
+            self.policyType = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -8060,6 +7402,8 @@ public class ListPolicyAttachmentShrinkRequest : Tea.TeaModel {
     public var policyId: String?
 
     public var policyType: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -8090,24 +7434,31 @@ public class ListPolicyAttachmentShrinkRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("IpPortProtocolList") {
-            self.ipPortProtocolListShrink = dict["IpPortProtocolList"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["IpPortProtocolList"] as? String {
+            self.ipPortProtocolListShrink = value
         }
-        if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! Int64
+        if let value = dict["PageNo"] as? Int64 {
+            self.pageNo = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int64
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
         }
-        if dict.keys.contains("PolicyId") {
-            self.policyId = dict["PolicyId"] as! String
+        if let value = dict["PolicyId"] as? String {
+            self.policyId = value
         }
-        if dict.keys.contains("PolicyType") {
-            self.policyType = dict["PolicyType"] as! String
+        if let value = dict["PolicyType"] as? String {
+            self.policyType = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -8127,6 +7478,8 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
         public var policyType: String?
 
         public var port: Int32?
+
+        public var portRange: String?
 
         public var protocol_: String?
 
@@ -8167,6 +7520,9 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
@@ -8176,33 +7532,37 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Ip") {
-                self.ip = dict["Ip"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
-            if dict.keys.contains("MemberUid") {
-                self.memberUid = dict["MemberUid"] as! String
+            if let value = dict["MemberUid"] as? String {
+                self.memberUid = value
             }
-            if dict.keys.contains("PolicyId") {
-                self.policyId = dict["PolicyId"] as! String
+            if let value = dict["PolicyId"] as? String {
+                self.policyId = value
             }
-            if dict.keys.contains("PolicyName") {
-                self.policyName = dict["PolicyName"] as! String
+            if let value = dict["PolicyName"] as? String {
+                self.policyName = value
             }
-            if dict.keys.contains("PolicyRemark") {
-                self.policyRemark = dict["PolicyRemark"] as! String
+            if let value = dict["PolicyRemark"] as? String {
+                self.policyRemark = value
             }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
+            if let value = dict["PolicyType"] as? String {
+                self.policyType = value
             }
-            if dict.keys.contains("Port") {
-                self.port = dict["Port"] as! Int32
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
             }
-            if dict.keys.contains("Protocol") {
-                self.protocol_ = dict["Protocol"] as! String
+            if let value = dict["PortRange"] as? String {
+                self.portRange = value
             }
-            if dict.keys.contains("Region") {
-                self.region = dict["Region"] as! String
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+            if let value = dict["Region"] as? String {
+                self.region = value
             }
         }
     }
@@ -8242,23 +7602,26 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AttachmentList") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttachmentList"] as? [Any?] {
             var tmp : [ListPolicyAttachmentResponseBody.AttachmentList] = []
-            for v in dict["AttachmentList"] as! [Any] {
-                var model = ListPolicyAttachmentResponseBody.AttachmentList()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListPolicyAttachmentResponseBody.AttachmentList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.attachmentList = tmp
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("Total") {
-            self.total = dict["Total"] as! Int64
+        if let value = dict["Total"] as? Int64 {
+            self.total = value
         }
     }
 }
@@ -8297,16 +7660,17 @@ public class ListPolicyAttachmentResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ListPolicyAttachmentResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -8355,21 +7719,22 @@ public class ListTagKeysRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CurrentPage") {
-            self.currentPage = dict["CurrentPage"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("ResourceType") {
-            self.resourceType = dict["ResourceType"] as! String
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
@@ -8403,12 +7768,13 @@ public class ListTagKeysResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("TagCount") {
-                self.tagCount = dict["TagCount"] as! Int32
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagCount"] as? Int32 {
+                self.tagCount = value
             }
-            if dict.keys.contains("TagKey") {
-                self.tagKey = dict["TagKey"] as! String
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
             }
         }
     }
@@ -8458,29 +7824,32 @@ public class ListTagKeysResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CurrentPage") {
-            self.currentPage = dict["CurrentPage"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
         }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("TagKeys") {
+        if let value = dict["TagKeys"] as? [Any?] {
             var tmp : [ListTagKeysResponseBody.TagKeys] = []
-            for v in dict["TagKeys"] as! [Any] {
-                var model = ListTagKeysResponseBody.TagKeys()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListTagKeysResponseBody.TagKeys()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.tagKeys = tmp
         }
-        if dict.keys.contains("TotalCount") {
-            self.totalCount = dict["TotalCount"] as! Int32
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
@@ -8519,16 +7888,17 @@ public class ListTagKeysResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ListTagKeysResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -8563,12 +7933,13 @@ public class ListTagResourcesRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Value") {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -8623,30 +7994,33 @@ public class ListTagResourcesRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("NextToken") {
-            self.nextToken = dict["NextToken"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("ResourceId") {
-            self.resourceId = dict["ResourceId"] as! [String]
+        if let value = dict["ResourceId"] as? [String] {
+            self.resourceId = value
         }
-        if dict.keys.contains("ResourceType") {
-            self.resourceType = dict["ResourceType"] as! String
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
-        if dict.keys.contains("Tag") {
+        if let value = dict["Tag"] as? [Any?] {
             var tmp : [ListTagResourcesRequest.Tag] = []
-            for v in dict["Tag"] as! [Any] {
-                var model = ListTagResourcesRequest.Tag()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = ListTagResourcesRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.tag = tmp
         }
@@ -8693,18 +8067,19 @@ public class ListTagResourcesResponseBody : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("ResourceId") {
-                    self.resourceId = dict["ResourceId"] as! String
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceId"] as? String {
+                    self.resourceId = value
                 }
-                if dict.keys.contains("ResourceType") {
-                    self.resourceType = dict["ResourceType"] as! String
+                if let value = dict["ResourceType"] as? String {
+                    self.resourceType = value
                 }
-                if dict.keys.contains("TagKey") {
-                    self.tagKey = dict["TagKey"] as! String
+                if let value = dict["TagKey"] as? String {
+                    self.tagKey = value
                 }
-                if dict.keys.contains("TagValue") {
-                    self.tagValue = dict["TagValue"] as! String
+                if let value = dict["TagValue"] as? String {
+                    self.tagValue = value
                 }
             }
         }
@@ -8734,15 +8109,18 @@ public class ListTagResourcesResponseBody : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("TagResource") {
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagResource"] as? [Any?] {
                 var tmp : [ListTagResourcesResponseBody.TagResources.TagResource] = []
-                for v in dict["TagResource"] as! [Any] {
-                    var model = ListTagResourcesResponseBody.TagResources.TagResource()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ListTagResourcesResponseBody.TagResources.TagResource()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.tagResource = tmp
             }
@@ -8781,16 +8159,17 @@ public class ListTagResourcesResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("NextToken") {
-            self.nextToken = dict["NextToken"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
-        if dict.keys.contains("TagResources") {
+        if let value = dict["TagResources"] as? [String: Any?] {
             var model = ListTagResourcesResponseBody.TagResources()
-            model.fromMap(dict["TagResources"] as! [String: Any])
+            model.fromMap(value)
             self.tagResources = model
         }
     }
@@ -8830,16 +8209,17 @@ public class ListTagResourcesResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ListTagResourcesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -8930,53 +8310,100 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("DstPortEnd") {
-                    self.dstPortEnd = dict["DstPortEnd"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DstPortEnd"] as? Int32 {
+                    self.dstPortEnd = value
                 }
-                if dict.keys.contains("DstPortStart") {
-                    self.dstPortStart = dict["DstPortStart"] as! Int32
+                if let value = dict["DstPortStart"] as? Int32 {
+                    self.dstPortStart = value
                 }
-                if dict.keys.contains("Id") {
-                    self.id = dict["Id"] as! String
+                if let value = dict["Id"] as? String {
+                    self.id = value
                 }
-                if dict.keys.contains("MatchAction") {
-                    self.matchAction = dict["MatchAction"] as! String
+                if let value = dict["MatchAction"] as? String {
+                    self.matchAction = value
                 }
-                if dict.keys.contains("MaxPktLen") {
-                    self.maxPktLen = dict["MaxPktLen"] as! Int32
+                if let value = dict["MaxPktLen"] as? Int32 {
+                    self.maxPktLen = value
                 }
-                if dict.keys.contains("MinPktLen") {
-                    self.minPktLen = dict["MinPktLen"] as! Int32
+                if let value = dict["MinPktLen"] as? Int32 {
+                    self.minPktLen = value
                 }
-                if dict.keys.contains("Offset") {
-                    self.offset = dict["Offset"] as! Int32
+                if let value = dict["Offset"] as? Int32 {
+                    self.offset = value
                 }
-                if dict.keys.contains("PayloadBytes") {
-                    self.payloadBytes = dict["PayloadBytes"] as! String
+                if let value = dict["PayloadBytes"] as? String {
+                    self.payloadBytes = value
                 }
-                if dict.keys.contains("Protocol") {
-                    self.protocol_ = dict["Protocol"] as! String
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
                 }
-                if dict.keys.contains("RateValue") {
-                    self.rateValue = dict["RateValue"] as! Int32
+                if let value = dict["RateValue"] as? Int32 {
+                    self.rateValue = value
                 }
-                if dict.keys.contains("SeqNo") {
-                    self.seqNo = dict["SeqNo"] as! Int32
+                if let value = dict["SeqNo"] as? Int32 {
+                    self.seqNo = value
                 }
-                if dict.keys.contains("SrcPortEnd") {
-                    self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                if let value = dict["SrcPortEnd"] as? Int32 {
+                    self.srcPortEnd = value
                 }
-                if dict.keys.contains("SrcPortStart") {
-                    self.srcPortStart = dict["SrcPortStart"] as! Int32
+                if let value = dict["SrcPortStart"] as? Int32 {
+                    self.srcPortStart = value
                 }
             }
         }
         public class L4RuleList : Tea.TeaModel {
             public class ConditionList : Tea.TeaModel {
+                public class Offset : Tea.TeaModel {
+                    public var end: Int32?
+
+                    public var start: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.end != nil {
+                            map["End"] = self.end!
+                        }
+                        if self.start != nil {
+                            map["Start"] = self.start!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["End"] as? Int32 {
+                            self.end = value
+                        }
+                        if let value = dict["Start"] as? Int32 {
+                            self.start = value
+                        }
+                    }
+                }
                 public var arg: String?
 
+                public var content: String?
+
                 public var depth: Int32?
+
+                public var encode: String?
+
+                public var offset: ModifyPolicyRequest.Content.L4RuleList.ConditionList.Offset?
+
+                public var pattern: String?
 
                 public var position: Int32?
 
@@ -8990,6 +8417,7 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.offset?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -8997,8 +8425,20 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                     if self.arg != nil {
                         map["Arg"] = self.arg!
                     }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
                     if self.depth != nil {
                         map["Depth"] = self.depth!
+                    }
+                    if self.encode != nil {
+                        map["Encode"] = self.encode!
+                    }
+                    if self.offset != nil {
+                        map["Offset"] = self.offset?.toMap()
+                    }
+                    if self.pattern != nil {
+                        map["Pattern"] = self.pattern!
                     }
                     if self.position != nil {
                         map["Position"] = self.position!
@@ -9006,15 +8446,30 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Arg") {
-                        self.arg = dict["Arg"] as! String
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Arg"] as? String {
+                        self.arg = value
                     }
-                    if dict.keys.contains("Depth") {
-                        self.depth = dict["Depth"] as! Int32
+                    if let value = dict["Content"] as? String {
+                        self.content = value
                     }
-                    if dict.keys.contains("Position") {
-                        self.position = dict["Position"] as! Int32
+                    if let value = dict["Depth"] as? Int32 {
+                        self.depth = value
+                    }
+                    if let value = dict["Encode"] as? String {
+                        self.encode = value
+                    }
+                    if let value = dict["Offset"] as? [String: Any?] {
+                        var model = ModifyPolicyRequest.Content.L4RuleList.ConditionList.Offset()
+                        model.fromMap(value)
+                        self.offset = model
+                    }
+                    if let value = dict["Pattern"] as? String {
+                        self.pattern = value
+                    }
+                    if let value = dict["Position"] as? Int32 {
+                        self.position = value
                     }
                 }
             }
@@ -9074,35 +8529,38 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Action") {
-                    self.action = dict["Action"] as! String
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Action"] as? String {
+                    self.action = value
                 }
-                if dict.keys.contains("ConditionList") {
+                if let value = dict["ConditionList"] as? [Any?] {
                     var tmp : [ModifyPolicyRequest.Content.L4RuleList.ConditionList] = []
-                    for v in dict["ConditionList"] as! [Any] {
-                        var model = ModifyPolicyRequest.Content.L4RuleList.ConditionList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ModifyPolicyRequest.Content.L4RuleList.ConditionList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.conditionList = tmp
                 }
-                if dict.keys.contains("Limited") {
-                    self.limited = dict["Limited"] as! Int32
+                if let value = dict["Limited"] as? Int32 {
+                    self.limited = value
                 }
-                if dict.keys.contains("Match") {
-                    self.match = dict["Match"] as! String
+                if let value = dict["Match"] as? String {
+                    self.match = value
                 }
-                if dict.keys.contains("Method") {
-                    self.method = dict["Method"] as! String
+                if let value = dict["Method"] as? String {
+                    self.method = value
                 }
-                if dict.keys.contains("Name") {
-                    self.name = dict["Name"] as! String
+                if let value = dict["Name"] as? String {
+                    self.name = value
                 }
-                if dict.keys.contains("Priority") {
-                    self.priority = dict["Priority"] as! Int32
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
                 }
             }
         }
@@ -9164,30 +8622,31 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("DstPortEnd") {
-                    self.dstPortEnd = dict["DstPortEnd"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DstPortEnd"] as? Int32 {
+                    self.dstPortEnd = value
                 }
-                if dict.keys.contains("DstPortStart") {
-                    self.dstPortStart = dict["DstPortStart"] as! Int32
+                if let value = dict["DstPortStart"] as? Int32 {
+                    self.dstPortStart = value
                 }
-                if dict.keys.contains("Id") {
-                    self.id = dict["Id"] as! String
+                if let value = dict["Id"] as? String {
+                    self.id = value
                 }
-                if dict.keys.contains("MatchAction") {
-                    self.matchAction = dict["MatchAction"] as! String
+                if let value = dict["MatchAction"] as? String {
+                    self.matchAction = value
                 }
-                if dict.keys.contains("Protocol") {
-                    self.protocol_ = dict["Protocol"] as! String
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
                 }
-                if dict.keys.contains("SeqNo") {
-                    self.seqNo = dict["SeqNo"] as! Int32
+                if let value = dict["SeqNo"] as? Int32 {
+                    self.seqNo = value
                 }
-                if dict.keys.contains("SrcPortEnd") {
-                    self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                if let value = dict["SrcPortEnd"] as? Int32 {
+                    self.srcPortEnd = value
                 }
-                if dict.keys.contains("SrcPortStart") {
-                    self.srcPortStart = dict["SrcPortStart"] as! Int32
+                if let value = dict["SrcPortStart"] as? Int32 {
+                    self.srcPortStart = value
                 }
             }
         }
@@ -9229,18 +8688,19 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("BlockExpireSeconds") {
-                    self.blockExpireSeconds = dict["BlockExpireSeconds"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BlockExpireSeconds"] as? Int32 {
+                    self.blockExpireSeconds = value
                 }
-                if dict.keys.contains("EverySeconds") {
-                    self.everySeconds = dict["EverySeconds"] as! Int32
+                if let value = dict["EverySeconds"] as? Int32 {
+                    self.everySeconds = value
                 }
-                if dict.keys.contains("ExceedLimitTimes") {
-                    self.exceedLimitTimes = dict["ExceedLimitTimes"] as! Int32
+                if let value = dict["ExceedLimitTimes"] as? Int32 {
+                    self.exceedLimitTimes = value
                 }
-                if dict.keys.contains("Type") {
-                    self.type = dict["Type"] as! Int32
+                if let value = dict["Type"] as? Int32 {
+                    self.type = value
                 }
             }
         }
@@ -9282,18 +8742,19 @@ public class ModifyPolicyRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Bps") {
-                    self.bps = dict["Bps"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Bps"] as? Int32 {
+                    self.bps = value
                 }
-                if dict.keys.contains("Pps") {
-                    self.pps = dict["Pps"] as! Int32
+                if let value = dict["Pps"] as? Int32 {
+                    self.pps = value
                 }
-                if dict.keys.contains("SynBps") {
-                    self.synBps = dict["SynBps"] as! Int32
+                if let value = dict["SynBps"] as? Int32 {
+                    self.synBps = value
                 }
-                if dict.keys.contains("SynPps") {
-                    self.synPps = dict["SynPps"] as! Int32
+                if let value = dict["SynPps"] as? Int32 {
+                    self.synPps = value
                 }
             }
         }
@@ -9411,88 +8872,97 @@ public class ModifyPolicyRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("BlackIpList") {
-                self.blackIpList = dict["BlackIpList"] as! [String]
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BlackIpList"] as? [String] {
+                self.blackIpList = value
             }
-            if dict.keys.contains("BlackIpListExpireAt") {
-                self.blackIpListExpireAt = dict["BlackIpListExpireAt"] as! Int64
+            if let value = dict["BlackIpListExpireAt"] as? Int64 {
+                self.blackIpListExpireAt = value
             }
-            if dict.keys.contains("EnableDropIcmp") {
-                self.enableDropIcmp = dict["EnableDropIcmp"] as! Bool
+            if let value = dict["EnableDropIcmp"] as? Bool {
+                self.enableDropIcmp = value
             }
-            if dict.keys.contains("EnableIntelligence") {
-                self.enableIntelligence = dict["EnableIntelligence"] as! Bool
+            if let value = dict["EnableIntelligence"] as? Bool {
+                self.enableIntelligence = value
             }
-            if dict.keys.contains("EnableL4Defense") {
-                self.enableL4Defense = dict["EnableL4Defense"] as! Bool
+            if let value = dict["EnableL4Defense"] as? Bool {
+                self.enableL4Defense = value
             }
-            if dict.keys.contains("FingerPrintRuleList") {
+            if let value = dict["FingerPrintRuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyRequest.Content.FingerPrintRuleList] = []
-                for v in dict["FingerPrintRuleList"] as! [Any] {
-                    var model = ModifyPolicyRequest.Content.FingerPrintRuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyRequest.Content.FingerPrintRuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.fingerPrintRuleList = tmp
             }
-            if dict.keys.contains("IntelligenceLevel") {
-                self.intelligenceLevel = dict["IntelligenceLevel"] as! String
+            if let value = dict["IntelligenceLevel"] as? String {
+                self.intelligenceLevel = value
             }
-            if dict.keys.contains("L4RuleList") {
+            if let value = dict["L4RuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyRequest.Content.L4RuleList] = []
-                for v in dict["L4RuleList"] as! [Any] {
-                    var model = ModifyPolicyRequest.Content.L4RuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyRequest.Content.L4RuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.l4RuleList = tmp
             }
-            if dict.keys.contains("PortRuleList") {
+            if let value = dict["PortRuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyRequest.Content.PortRuleList] = []
-                for v in dict["PortRuleList"] as! [Any] {
-                    var model = ModifyPolicyRequest.Content.PortRuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyRequest.Content.PortRuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.portRuleList = tmp
             }
-            if dict.keys.contains("ReflectBlockUdpPortList") {
-                self.reflectBlockUdpPortList = dict["ReflectBlockUdpPortList"] as! [Int32]
+            if let value = dict["ReflectBlockUdpPortList"] as? [Int32] {
+                self.reflectBlockUdpPortList = value
             }
-            if dict.keys.contains("RegionBlockCountryList") {
-                self.regionBlockCountryList = dict["RegionBlockCountryList"] as! [Int32]
+            if let value = dict["RegionBlockCountryList"] as? [Int32] {
+                self.regionBlockCountryList = value
             }
-            if dict.keys.contains("RegionBlockProvinceList") {
-                self.regionBlockProvinceList = dict["RegionBlockProvinceList"] as! [Int32]
+            if let value = dict["RegionBlockProvinceList"] as? [Int32] {
+                self.regionBlockProvinceList = value
             }
-            if dict.keys.contains("SourceBlockList") {
+            if let value = dict["SourceBlockList"] as? [Any?] {
                 var tmp : [ModifyPolicyRequest.Content.SourceBlockList] = []
-                for v in dict["SourceBlockList"] as! [Any] {
-                    var model = ModifyPolicyRequest.Content.SourceBlockList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyRequest.Content.SourceBlockList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.sourceBlockList = tmp
             }
-            if dict.keys.contains("SourceLimit") {
+            if let value = dict["SourceLimit"] as? [String: Any?] {
                 var model = ModifyPolicyRequest.Content.SourceLimit()
-                model.fromMap(dict["SourceLimit"] as! [String: Any])
+                model.fromMap(value)
                 self.sourceLimit = model
             }
-            if dict.keys.contains("WhiteIpList") {
-                self.whiteIpList = dict["WhiteIpList"] as! [String]
+            if let value = dict["WhiteIpList"] as? [String] {
+                self.whiteIpList = value
             }
-            if dict.keys.contains("WhitenGfbrNets") {
-                self.whitenGfbrNets = dict["WhitenGfbrNets"] as! Bool
+            if let value = dict["WhitenGfbrNets"] as? Bool {
+                self.whitenGfbrNets = value
             }
         }
     }
@@ -9503,6 +8973,8 @@ public class ModifyPolicyRequest : Tea.TeaModel {
     public var id: String?
 
     public var name: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -9531,23 +9003,30 @@ public class ModifyPolicyRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ActionType") {
-            self.actionType = dict["ActionType"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionType"] as? Int32 {
+            self.actionType = value
         }
-        if dict.keys.contains("Content") {
+        if let value = dict["Content"] as? [String: Any?] {
             var model = ModifyPolicyRequest.Content()
-            model.fromMap(dict["Content"] as! [String: Any])
+            model.fromMap(value)
             self.content = model
         }
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -9560,6 +9039,8 @@ public class ModifyPolicyShrinkRequest : Tea.TeaModel {
     public var id: String?
 
     public var name: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -9587,21 +9068,28 @@ public class ModifyPolicyShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ActionType") {
-            self.actionType = dict["ActionType"] as! Int32
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionType"] as? Int32 {
+            self.actionType = value
         }
-        if dict.keys.contains("Content") {
-            self.contentShrink = dict["Content"] as! String
+        if let value = dict["Content"] as? String {
+            self.contentShrink = value
         }
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -9629,9 +9117,10 @@ public class ModifyPolicyResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -9670,16 +9159,17 @@ public class ModifyPolicyResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPolicyResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -9770,53 +9260,100 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("DstPortEnd") {
-                    self.dstPortEnd = dict["DstPortEnd"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DstPortEnd"] as? Int32 {
+                    self.dstPortEnd = value
                 }
-                if dict.keys.contains("DstPortStart") {
-                    self.dstPortStart = dict["DstPortStart"] as! Int32
+                if let value = dict["DstPortStart"] as? Int32 {
+                    self.dstPortStart = value
                 }
-                if dict.keys.contains("Id") {
-                    self.id = dict["Id"] as! String
+                if let value = dict["Id"] as? String {
+                    self.id = value
                 }
-                if dict.keys.contains("MatchAction") {
-                    self.matchAction = dict["MatchAction"] as! String
+                if let value = dict["MatchAction"] as? String {
+                    self.matchAction = value
                 }
-                if dict.keys.contains("MaxPktLen") {
-                    self.maxPktLen = dict["MaxPktLen"] as! Int32
+                if let value = dict["MaxPktLen"] as? Int32 {
+                    self.maxPktLen = value
                 }
-                if dict.keys.contains("MinPktLen") {
-                    self.minPktLen = dict["MinPktLen"] as! Int32
+                if let value = dict["MinPktLen"] as? Int32 {
+                    self.minPktLen = value
                 }
-                if dict.keys.contains("Offset") {
-                    self.offset = dict["Offset"] as! Int32
+                if let value = dict["Offset"] as? Int32 {
+                    self.offset = value
                 }
-                if dict.keys.contains("PayloadBytes") {
-                    self.payloadBytes = dict["PayloadBytes"] as! String
+                if let value = dict["PayloadBytes"] as? String {
+                    self.payloadBytes = value
                 }
-                if dict.keys.contains("Protocol") {
-                    self.protocol_ = dict["Protocol"] as! String
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
                 }
-                if dict.keys.contains("RateValue") {
-                    self.rateValue = dict["RateValue"] as! Int32
+                if let value = dict["RateValue"] as? Int32 {
+                    self.rateValue = value
                 }
-                if dict.keys.contains("SeqNo") {
-                    self.seqNo = dict["SeqNo"] as! Int32
+                if let value = dict["SeqNo"] as? Int32 {
+                    self.seqNo = value
                 }
-                if dict.keys.contains("SrcPortEnd") {
-                    self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                if let value = dict["SrcPortEnd"] as? Int32 {
+                    self.srcPortEnd = value
                 }
-                if dict.keys.contains("SrcPortStart") {
-                    self.srcPortStart = dict["SrcPortStart"] as! Int32
+                if let value = dict["SrcPortStart"] as? Int32 {
+                    self.srcPortStart = value
                 }
             }
         }
         public class L4RuleList : Tea.TeaModel {
             public class ConditionList : Tea.TeaModel {
+                public class Offset : Tea.TeaModel {
+                    public var end: Int32?
+
+                    public var start: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.end != nil {
+                            map["End"] = self.end!
+                        }
+                        if self.start != nil {
+                            map["Start"] = self.start!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["End"] as? Int32 {
+                            self.end = value
+                        }
+                        if let value = dict["Start"] as? Int32 {
+                            self.start = value
+                        }
+                    }
+                }
                 public var arg: String?
 
+                public var content: String?
+
                 public var depth: Int32?
+
+                public var encode: String?
+
+                public var offset: ModifyPolicyContentRequest.Content.L4RuleList.ConditionList.Offset?
+
+                public var pattern: String?
 
                 public var position: Int32?
 
@@ -9830,6 +9367,7 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.offset?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -9837,8 +9375,20 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                     if self.arg != nil {
                         map["Arg"] = self.arg!
                     }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
                     if self.depth != nil {
                         map["Depth"] = self.depth!
+                    }
+                    if self.encode != nil {
+                        map["Encode"] = self.encode!
+                    }
+                    if self.offset != nil {
+                        map["Offset"] = self.offset?.toMap()
+                    }
+                    if self.pattern != nil {
+                        map["Pattern"] = self.pattern!
                     }
                     if self.position != nil {
                         map["Position"] = self.position!
@@ -9846,15 +9396,30 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                     return map
                 }
 
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Arg") {
-                        self.arg = dict["Arg"] as! String
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Arg"] as? String {
+                        self.arg = value
                     }
-                    if dict.keys.contains("Depth") {
-                        self.depth = dict["Depth"] as! Int32
+                    if let value = dict["Content"] as? String {
+                        self.content = value
                     }
-                    if dict.keys.contains("Position") {
-                        self.position = dict["Position"] as! Int32
+                    if let value = dict["Depth"] as? Int32 {
+                        self.depth = value
+                    }
+                    if let value = dict["Encode"] as? String {
+                        self.encode = value
+                    }
+                    if let value = dict["Offset"] as? [String: Any?] {
+                        var model = ModifyPolicyContentRequest.Content.L4RuleList.ConditionList.Offset()
+                        model.fromMap(value)
+                        self.offset = model
+                    }
+                    if let value = dict["Pattern"] as? String {
+                        self.pattern = value
+                    }
+                    if let value = dict["Position"] as? Int32 {
+                        self.position = value
                     }
                 }
             }
@@ -9914,35 +9479,38 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Action") {
-                    self.action = dict["Action"] as! String
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Action"] as? String {
+                    self.action = value
                 }
-                if dict.keys.contains("ConditionList") {
+                if let value = dict["ConditionList"] as? [Any?] {
                     var tmp : [ModifyPolicyContentRequest.Content.L4RuleList.ConditionList] = []
-                    for v in dict["ConditionList"] as! [Any] {
-                        var model = ModifyPolicyContentRequest.Content.L4RuleList.ConditionList()
+                    for v in value {
                         if v != nil {
-                            model.fromMap(v as! [String: Any])
+                            var model = ModifyPolicyContentRequest.Content.L4RuleList.ConditionList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
                         }
-                        tmp.append(model)
                     }
                     self.conditionList = tmp
                 }
-                if dict.keys.contains("Limited") {
-                    self.limited = dict["Limited"] as! Int32
+                if let value = dict["Limited"] as? Int32 {
+                    self.limited = value
                 }
-                if dict.keys.contains("Match") {
-                    self.match = dict["Match"] as! String
+                if let value = dict["Match"] as? String {
+                    self.match = value
                 }
-                if dict.keys.contains("Method") {
-                    self.method = dict["Method"] as! String
+                if let value = dict["Method"] as? String {
+                    self.method = value
                 }
-                if dict.keys.contains("Name") {
-                    self.name = dict["Name"] as! String
+                if let value = dict["Name"] as? String {
+                    self.name = value
                 }
-                if dict.keys.contains("Priority") {
-                    self.priority = dict["Priority"] as! Int32
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
                 }
             }
         }
@@ -10004,30 +9572,31 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("DstPortEnd") {
-                    self.dstPortEnd = dict["DstPortEnd"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DstPortEnd"] as? Int32 {
+                    self.dstPortEnd = value
                 }
-                if dict.keys.contains("DstPortStart") {
-                    self.dstPortStart = dict["DstPortStart"] as! Int32
+                if let value = dict["DstPortStart"] as? Int32 {
+                    self.dstPortStart = value
                 }
-                if dict.keys.contains("Id") {
-                    self.id = dict["Id"] as! String
+                if let value = dict["Id"] as? String {
+                    self.id = value
                 }
-                if dict.keys.contains("MatchAction") {
-                    self.matchAction = dict["MatchAction"] as! String
+                if let value = dict["MatchAction"] as? String {
+                    self.matchAction = value
                 }
-                if dict.keys.contains("Protocol") {
-                    self.protocol_ = dict["Protocol"] as! String
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
                 }
-                if dict.keys.contains("SeqNo") {
-                    self.seqNo = dict["SeqNo"] as! Int32
+                if let value = dict["SeqNo"] as? Int32 {
+                    self.seqNo = value
                 }
-                if dict.keys.contains("SrcPortEnd") {
-                    self.srcPortEnd = dict["SrcPortEnd"] as! Int32
+                if let value = dict["SrcPortEnd"] as? Int32 {
+                    self.srcPortEnd = value
                 }
-                if dict.keys.contains("SrcPortStart") {
-                    self.srcPortStart = dict["SrcPortStart"] as! Int32
+                if let value = dict["SrcPortStart"] as? Int32 {
+                    self.srcPortStart = value
                 }
             }
         }
@@ -10069,18 +9638,19 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("BlockExpireSeconds") {
-                    self.blockExpireSeconds = dict["BlockExpireSeconds"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BlockExpireSeconds"] as? Int32 {
+                    self.blockExpireSeconds = value
                 }
-                if dict.keys.contains("EverySeconds") {
-                    self.everySeconds = dict["EverySeconds"] as! Int32
+                if let value = dict["EverySeconds"] as? Int32 {
+                    self.everySeconds = value
                 }
-                if dict.keys.contains("ExceedLimitTimes") {
-                    self.exceedLimitTimes = dict["ExceedLimitTimes"] as! Int32
+                if let value = dict["ExceedLimitTimes"] as? Int32 {
+                    self.exceedLimitTimes = value
                 }
-                if dict.keys.contains("Type") {
-                    self.type = dict["Type"] as! Int32
+                if let value = dict["Type"] as? Int32 {
+                    self.type = value
                 }
             }
         }
@@ -10122,18 +9692,19 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
                 return map
             }
 
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Bps") {
-                    self.bps = dict["Bps"] as! Int32
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Bps"] as? Int32 {
+                    self.bps = value
                 }
-                if dict.keys.contains("Pps") {
-                    self.pps = dict["Pps"] as! Int32
+                if let value = dict["Pps"] as? Int32 {
+                    self.pps = value
                 }
-                if dict.keys.contains("SynBps") {
-                    self.synBps = dict["SynBps"] as! Int32
+                if let value = dict["SynBps"] as? Int32 {
+                    self.synBps = value
                 }
-                if dict.keys.contains("SynPps") {
-                    self.synPps = dict["SynPps"] as! Int32
+                if let value = dict["SynPps"] as? Int32 {
+                    self.synPps = value
                 }
             }
         }
@@ -10241,82 +9812,91 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("BlackIpListExpireAt") {
-                self.blackIpListExpireAt = dict["BlackIpListExpireAt"] as! Int64
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BlackIpListExpireAt"] as? Int64 {
+                self.blackIpListExpireAt = value
             }
-            if dict.keys.contains("EnableDropIcmp") {
-                self.enableDropIcmp = dict["EnableDropIcmp"] as! Bool
+            if let value = dict["EnableDropIcmp"] as? Bool {
+                self.enableDropIcmp = value
             }
-            if dict.keys.contains("EnableIntelligence") {
-                self.enableIntelligence = dict["EnableIntelligence"] as! Bool
+            if let value = dict["EnableIntelligence"] as? Bool {
+                self.enableIntelligence = value
             }
-            if dict.keys.contains("EnableL4Defense") {
-                self.enableL4Defense = dict["EnableL4Defense"] as! Bool
+            if let value = dict["EnableL4Defense"] as? Bool {
+                self.enableL4Defense = value
             }
-            if dict.keys.contains("FingerPrintRuleList") {
+            if let value = dict["FingerPrintRuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyContentRequest.Content.FingerPrintRuleList] = []
-                for v in dict["FingerPrintRuleList"] as! [Any] {
-                    var model = ModifyPolicyContentRequest.Content.FingerPrintRuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyContentRequest.Content.FingerPrintRuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.fingerPrintRuleList = tmp
             }
-            if dict.keys.contains("IntelligenceLevel") {
-                self.intelligenceLevel = dict["IntelligenceLevel"] as! String
+            if let value = dict["IntelligenceLevel"] as? String {
+                self.intelligenceLevel = value
             }
-            if dict.keys.contains("L4RuleList") {
+            if let value = dict["L4RuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyContentRequest.Content.L4RuleList] = []
-                for v in dict["L4RuleList"] as! [Any] {
-                    var model = ModifyPolicyContentRequest.Content.L4RuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyContentRequest.Content.L4RuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.l4RuleList = tmp
             }
-            if dict.keys.contains("PortRuleList") {
+            if let value = dict["PortRuleList"] as? [Any?] {
                 var tmp : [ModifyPolicyContentRequest.Content.PortRuleList] = []
-                for v in dict["PortRuleList"] as! [Any] {
-                    var model = ModifyPolicyContentRequest.Content.PortRuleList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyContentRequest.Content.PortRuleList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.portRuleList = tmp
             }
-            if dict.keys.contains("ReflectBlockUdpPortList") {
-                self.reflectBlockUdpPortList = dict["ReflectBlockUdpPortList"] as! [Int32]
+            if let value = dict["ReflectBlockUdpPortList"] as? [Int32] {
+                self.reflectBlockUdpPortList = value
             }
-            if dict.keys.contains("RegionBlockCountryList") {
-                self.regionBlockCountryList = dict["RegionBlockCountryList"] as! [Int32]
+            if let value = dict["RegionBlockCountryList"] as? [Int32] {
+                self.regionBlockCountryList = value
             }
-            if dict.keys.contains("RegionBlockProvinceList") {
-                self.regionBlockProvinceList = dict["RegionBlockProvinceList"] as! [Int32]
+            if let value = dict["RegionBlockProvinceList"] as? [Int32] {
+                self.regionBlockProvinceList = value
             }
-            if dict.keys.contains("SourceBlockList") {
+            if let value = dict["SourceBlockList"] as? [Any?] {
                 var tmp : [ModifyPolicyContentRequest.Content.SourceBlockList] = []
-                for v in dict["SourceBlockList"] as! [Any] {
-                    var model = ModifyPolicyContentRequest.Content.SourceBlockList()
+                for v in value {
                     if v != nil {
-                        model.fromMap(v as! [String: Any])
+                        var model = ModifyPolicyContentRequest.Content.SourceBlockList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
                     }
-                    tmp.append(model)
                 }
                 self.sourceBlockList = tmp
             }
-            if dict.keys.contains("SourceLimit") {
+            if let value = dict["SourceLimit"] as? [String: Any?] {
                 var model = ModifyPolicyContentRequest.Content.SourceLimit()
-                model.fromMap(dict["SourceLimit"] as! [String: Any])
+                model.fromMap(value)
                 self.sourceLimit = model
             }
-            if dict.keys.contains("WhitenGfbrNets") {
-                self.whitenGfbrNets = dict["WhitenGfbrNets"] as! Bool
+            if let value = dict["WhitenGfbrNets"] as? Bool {
+                self.whitenGfbrNets = value
             }
         }
     }
@@ -10325,6 +9905,8 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
     public var id: String?
 
     public var name: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -10350,20 +9932,27 @@ public class ModifyPolicyContentRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Content") {
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Content"] as? [String: Any?] {
             var model = ModifyPolicyContentRequest.Content()
-            model.fromMap(dict["Content"] as! [String: Any])
+            model.fromMap(value)
             self.content = model
         }
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -10374,6 +9963,8 @@ public class ModifyPolicyContentShrinkRequest : Tea.TeaModel {
     public var id: String?
 
     public var name: String?
+
+    public var portVersion: String?
 
     public override init() {
         super.init()
@@ -10398,18 +9989,25 @@ public class ModifyPolicyContentShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.portVersion != nil {
+            map["PortVersion"] = self.portVersion!
+        }
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Content") {
-            self.contentShrink = dict["Content"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Content"] as? String {
+            self.contentShrink = value
         }
-        if dict.keys.contains("Id") {
-            self.id = dict["Id"] as! String
+        if let value = dict["Id"] as? String {
+            self.id = value
         }
-        if dict.keys.contains("Name") {
-            self.name = dict["Name"] as! String
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PortVersion"] as? String {
+            self.portVersion = value
         }
     }
 }
@@ -10437,9 +10035,10 @@ public class ModifyPolicyContentResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -10478,16 +10077,17 @@ public class ModifyPolicyContentResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ModifyPolicyContentResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -10531,18 +10131,19 @@ public class ModifyRemarkRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("Remark") {
-            self.remark = dict["Remark"] as! String
+        if let value = dict["Remark"] as? String {
+            self.remark = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -10570,9 +10171,10 @@ public class ModifyRemarkResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -10611,16 +10213,17 @@ public class ModifyRemarkResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ModifyRemarkResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -10664,18 +10267,19 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("ResourceId") {
-            self.resourceId = dict["ResourceId"] as! String
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
         }
-        if dict.keys.contains("ResourceRegionId") {
-            self.resourceRegionId = dict["ResourceRegionId"] as! String
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
         }
-        if dict.keys.contains("ResourceType") {
-            self.resourceType = dict["ResourceType"] as! String
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
@@ -10703,9 +10307,10 @@ public class MoveResourceGroupResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -10744,327 +10349,17 @@ public class MoveResourceGroupResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = MoveResourceGroupResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class QuerySchedruleOnDemandRequest : Tea.TeaModel {
-    public var instanceId: String?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class QuerySchedruleOnDemandResponseBody : Tea.TeaModel {
-    public class RuleConfig : Tea.TeaModel {
-        public var ruleAction: String?
-
-        public var ruleConditionCnt: String?
-
-        public var ruleConditionKpps: String?
-
-        public var ruleConditionMbps: String?
-
-        public var ruleName: String?
-
-        public var ruleSwitch: String?
-
-        public var ruleUndoBeginTime: String?
-
-        public var ruleUndoEndTime: String?
-
-        public var ruleUndoMode: String?
-
-        public var timeZone: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.ruleAction != nil {
-                map["RuleAction"] = self.ruleAction!
-            }
-            if self.ruleConditionCnt != nil {
-                map["RuleConditionCnt"] = self.ruleConditionCnt!
-            }
-            if self.ruleConditionKpps != nil {
-                map["RuleConditionKpps"] = self.ruleConditionKpps!
-            }
-            if self.ruleConditionMbps != nil {
-                map["RuleConditionMbps"] = self.ruleConditionMbps!
-            }
-            if self.ruleName != nil {
-                map["RuleName"] = self.ruleName!
-            }
-            if self.ruleSwitch != nil {
-                map["RuleSwitch"] = self.ruleSwitch!
-            }
-            if self.ruleUndoBeginTime != nil {
-                map["RuleUndoBeginTime"] = self.ruleUndoBeginTime!
-            }
-            if self.ruleUndoEndTime != nil {
-                map["RuleUndoEndTime"] = self.ruleUndoEndTime!
-            }
-            if self.ruleUndoMode != nil {
-                map["RuleUndoMode"] = self.ruleUndoMode!
-            }
-            if self.timeZone != nil {
-                map["TimeZone"] = self.timeZone!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("RuleAction") {
-                self.ruleAction = dict["RuleAction"] as! String
-            }
-            if dict.keys.contains("RuleConditionCnt") {
-                self.ruleConditionCnt = dict["RuleConditionCnt"] as! String
-            }
-            if dict.keys.contains("RuleConditionKpps") {
-                self.ruleConditionKpps = dict["RuleConditionKpps"] as! String
-            }
-            if dict.keys.contains("RuleConditionMbps") {
-                self.ruleConditionMbps = dict["RuleConditionMbps"] as! String
-            }
-            if dict.keys.contains("RuleName") {
-                self.ruleName = dict["RuleName"] as! String
-            }
-            if dict.keys.contains("RuleSwitch") {
-                self.ruleSwitch = dict["RuleSwitch"] as! String
-            }
-            if dict.keys.contains("RuleUndoBeginTime") {
-                self.ruleUndoBeginTime = dict["RuleUndoBeginTime"] as! String
-            }
-            if dict.keys.contains("RuleUndoEndTime") {
-                self.ruleUndoEndTime = dict["RuleUndoEndTime"] as! String
-            }
-            if dict.keys.contains("RuleUndoMode") {
-                self.ruleUndoMode = dict["RuleUndoMode"] as! String
-            }
-            if dict.keys.contains("TimeZone") {
-                self.timeZone = dict["TimeZone"] as! String
-            }
-        }
-    }
-    public class RuleStatus : Tea.TeaModel {
-        public var net: String?
-
-        public var ruleSchedStatus: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.net != nil {
-                map["Net"] = self.net!
-            }
-            if self.ruleSchedStatus != nil {
-                map["RuleSchedStatus"] = self.ruleSchedStatus!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Net") {
-                self.net = dict["Net"] as! String
-            }
-            if dict.keys.contains("RuleSchedStatus") {
-                self.ruleSchedStatus = dict["RuleSchedStatus"] as! String
-            }
-        }
-    }
-    public var instanceId: String?
-
-    public var requestId: String?
-
-    public var ruleConfig: [QuerySchedruleOnDemandResponseBody.RuleConfig]?
-
-    public var ruleStatus: [QuerySchedruleOnDemandResponseBody.RuleStatus]?
-
-    public var userId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.ruleConfig != nil {
-            var tmp : [Any] = []
-            for k in self.ruleConfig! {
-                tmp.append(k.toMap())
-            }
-            map["RuleConfig"] = tmp
-        }
-        if self.ruleStatus != nil {
-            var tmp : [Any] = []
-            for k in self.ruleStatus! {
-                tmp.append(k.toMap())
-            }
-            map["RuleStatus"] = tmp
-        }
-        if self.userId != nil {
-            map["UserId"] = self.userId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("RuleConfig") {
-            var tmp : [QuerySchedruleOnDemandResponseBody.RuleConfig] = []
-            for v in dict["RuleConfig"] as! [Any] {
-                var model = QuerySchedruleOnDemandResponseBody.RuleConfig()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.ruleConfig = tmp
-        }
-        if dict.keys.contains("RuleStatus") {
-            var tmp : [QuerySchedruleOnDemandResponseBody.RuleStatus] = []
-            for v in dict["RuleStatus"] as! [Any] {
-                var model = QuerySchedruleOnDemandResponseBody.RuleStatus()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.ruleStatus = tmp
-        }
-        if dict.keys.contains("UserId") {
-            self.userId = dict["UserId"] as! String
-        }
-    }
-}
-
-public class QuerySchedruleOnDemandResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: QuerySchedruleOnDemandResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = QuerySchedruleOnDemandResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -11093,9 +10388,10 @@ public class ReleaseDdosOriginInstanceRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
     }
 }
@@ -11123,9 +10419,10 @@ public class ReleaseDdosOriginInstanceResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -11164,141 +10461,17 @@ public class ReleaseDdosOriginInstanceResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = ReleaseDdosOriginInstanceResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class SetInstanceModeOnDemandRequest : Tea.TeaModel {
-    public var instanceIdList: [String]?
-
-    public var mode: String?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.instanceIdList != nil {
-            map["InstanceIdList"] = self.instanceIdList!
-        }
-        if self.mode != nil {
-            map["Mode"] = self.mode!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("InstanceIdList") {
-            self.instanceIdList = dict["InstanceIdList"] as! [String]
-        }
-        if dict.keys.contains("Mode") {
-            self.mode = dict["Mode"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class SetInstanceModeOnDemandResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class SetInstanceModeOnDemandResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: SetInstanceModeOnDemandResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = SetInstanceModeOnDemandResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -11333,12 +10506,13 @@ public class TagResourcesRequest : Tea.TeaModel {
             return map
         }
 
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Key") {
-                self.key = dict["Key"] as! String
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
             }
-            if dict.keys.contains("Value") {
-                self.value = dict["Value"] as! String
+            if let value = dict["Value"] as? String {
+                self.value = value
             }
         }
     }
@@ -11388,27 +10562,30 @@ public class TagResourcesRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("ResourceId") {
-            self.resourceId = dict["ResourceId"] as! [String]
+        if let value = dict["ResourceId"] as? [String] {
+            self.resourceId = value
         }
-        if dict.keys.contains("ResourceType") {
-            self.resourceType = dict["ResourceType"] as! String
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
-        if dict.keys.contains("Tag") {
+        if let value = dict["Tag"] as? [Any?] {
             var tmp : [TagResourcesRequest.Tag] = []
-            for v in dict["Tag"] as! [Any] {
-                var model = TagResourcesRequest.Tag()
+            for v in value {
                 if v != nil {
-                    model.fromMap(v as! [String: Any])
+                    var model = TagResourcesRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
                 }
-                tmp.append(model)
             }
             self.tag = tmp
         }
@@ -11438,9 +10615,10 @@ public class TagResourcesResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -11479,16 +10657,17 @@ public class TagResourcesResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = TagResourcesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
@@ -11542,24 +10721,25 @@ public class UntagResourcesRequest : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("All") {
-            self.all = dict["All"] as! Bool
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["All"] as? Bool {
+            self.all = value
         }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
-        if dict.keys.contains("ResourceId") {
-            self.resourceId = dict["ResourceId"] as! [String]
+        if let value = dict["ResourceId"] as? [String] {
+            self.resourceId = value
         }
-        if dict.keys.contains("ResourceType") {
-            self.resourceType = dict["ResourceType"] as! String
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
-        if dict.keys.contains("TagKey") {
-            self.tagKey = dict["TagKey"] as! [String]
+        if let value = dict["TagKey"] as? [String] {
+            self.tagKey = value
         }
     }
 }
@@ -11587,9 +10767,10 @@ public class UntagResourcesResponseBody : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -11628,16 +10809,17 @@ public class UntagResourcesResponse : Tea.TeaModel {
         return map
     }
 
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
         }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
         }
-        if dict.keys.contains("body") {
+        if let value = dict["body"] as? [String: Any?] {
             var model = UntagResourcesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
+            model.fromMap(value)
             self.body = model
         }
     }
