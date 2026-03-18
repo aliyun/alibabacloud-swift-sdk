@@ -1169,6 +1169,8 @@ public class GenerateCLICommandResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var unifiedCli: String?
+
     public override init() {
         super.init()
     }
@@ -1189,6 +1191,9 @@ public class GenerateCLICommandResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.unifiedCli != nil {
+            map["unifiedCli"] = self.unifiedCli!
+        }
         return map
     }
 
@@ -1199,6 +1204,9 @@ public class GenerateCLICommandResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["unifiedCli"] as? String {
+            self.unifiedCli = value
         }
     }
 }
