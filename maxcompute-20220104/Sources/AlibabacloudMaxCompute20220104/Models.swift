@@ -622,6 +622,45 @@ public class CreateMmsDataSourceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateMmsFetchMetadataJobRequest : Tea.TeaModel {
+    public var dbName: String?
+
+    public var tableNames: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dbName != nil {
+            map["dbName"] = self.dbName!
+        }
+        if self.tableNames != nil {
+            map["tableNames"] = self.tableNames!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dbName"] as? String {
+            self.dbName = value
+        }
+        if let value = dict["tableNames"] as? [String] {
+            self.tableNames = value
+        }
+    }
+}
+
 public class CreateMmsFetchMetadataJobResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var scanId: Int64?
@@ -1307,6 +1346,183 @@ public class CreateProjectResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateProjectResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateQuotaRequest : Tea.TeaModel {
+    public var chargeType: String?
+
+    public var commodityCode: String?
+
+    public var commodityData: String?
+
+    public var partNickName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chargeType != nil {
+            map["chargeType"] = self.chargeType!
+        }
+        if self.commodityCode != nil {
+            map["commodityCode"] = self.commodityCode!
+        }
+        if self.commodityData != nil {
+            map["commodityData"] = self.commodityData!
+        }
+        if self.partNickName != nil {
+            map["partNickName"] = self.partNickName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["chargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["commodityCode"] as? String {
+            self.commodityCode = value
+        }
+        if let value = dict["commodityData"] as? String {
+            self.commodityData = value
+        }
+        if let value = dict["partNickName"] as? String {
+            self.partNickName = value
+        }
+    }
+}
+
+public class CreateQuotaResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var nickName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nickName != nil {
+                map["nickName"] = self.nickName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["nickName"] as? String {
+                self.nickName = value
+            }
+        }
+    }
+    public var data: CreateQuotaResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateQuotaResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateQuotaResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -4473,6 +4689,8 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
 
             public var required_: Bool?
 
+            public var subItems: [String: Any]?
+
             public var subType: String?
 
             public var type: String?
@@ -4514,6 +4732,9 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
                 if self.required_ != nil {
                     map["required"] = self.required_!
                 }
+                if self.subItems != nil {
+                    map["subItems"] = self.subItems!
+                }
                 if self.subType != nil {
                     map["subType"] = self.subType!
                 }
@@ -4548,6 +4769,9 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["required"] as? Bool {
                     self.required_ = value
+                }
+                if let value = dict["subItems"] as? [String: Any] {
+                    self.subItems = value
                 }
                 if let value = dict["subType"] as? String {
                     self.subType = value
@@ -29727,6 +29951,8 @@ public class QueryQuotaMetricRequest : Tea.TeaModel {
 
     public var nickname: String?
 
+    public var subMetric: String?
+
     public var subQuotaNickname: String?
 
     public var endTime: Int64?
@@ -29755,6 +29981,9 @@ public class QueryQuotaMetricRequest : Tea.TeaModel {
         if self.nickname != nil {
             map["nickname"] = self.nickname!
         }
+        if self.subMetric != nil {
+            map["subMetric"] = self.subMetric!
+        }
         if self.subQuotaNickname != nil {
             map["subQuotaNickname"] = self.subQuotaNickname!
         }
@@ -29777,6 +30006,9 @@ public class QueryQuotaMetricRequest : Tea.TeaModel {
         }
         if let value = dict["nickname"] as? String {
             self.nickname = value
+        }
+        if let value = dict["subMetric"] as? String {
+            self.subMetric = value
         }
         if let value = dict["subQuotaNickname"] as? String {
             self.subQuotaNickname = value

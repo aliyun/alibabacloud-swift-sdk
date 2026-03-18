@@ -185,9 +185,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createMmsFetchMetadataJobWithOptions(_ sourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMmsFetchMetadataJobResponse {
+    public func createMmsFetchMetadataJobWithOptions(_ sourceId: String, _ request: CreateMmsFetchMetadataJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMmsFetchMetadataJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            body["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableNames)) {
+            body["tableNames"] = request.tableNames ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateMmsFetchMetadataJob",
@@ -205,10 +214,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createMmsFetchMetadataJob(_ sourceId: String) async throws -> CreateMmsFetchMetadataJobResponse {
+    public func createMmsFetchMetadataJob(_ sourceId: String, _ request: CreateMmsFetchMetadataJobRequest) async throws -> CreateMmsFetchMetadataJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createMmsFetchMetadataJobWithOptions(sourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createMmsFetchMetadataJobWithOptions(sourceId as! String, request as! CreateMmsFetchMetadataJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -368,6 +377,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createProjectWithOptions(request as! CreateProjectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQuotaWithOptions(_ request: CreateQuotaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQuotaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chargeType)) {
+            query["chargeType"] = request.chargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["commodityCode"] = request.commodityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commodityData)) {
+            query["commodityData"] = request.commodityData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.partNickName)) {
+            query["partNickName"] = request.partNickName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateQuota",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/quotas",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateQuotaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQuota(_ request: CreateQuotaRequest) async throws -> CreateQuotaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createQuotaWithOptions(request as! CreateQuotaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3036,6 +3087,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nickname)) {
             body["nickname"] = request.nickname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subMetric)) {
+            body["subMetric"] = request.subMetric ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.subQuotaNickname)) {
             body["subQuotaNickname"] = request.subQuotaNickname ?? "";
