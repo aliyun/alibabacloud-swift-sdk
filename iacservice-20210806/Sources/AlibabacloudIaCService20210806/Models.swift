@@ -8050,6 +8050,247 @@ public class GetResourceTypeResponse : Tea.TeaModel {
     }
 }
 
+public class GetStackExecutionResultResponseBody : Tea.TeaModel {
+    public class StackResults : Tea.TeaModel {
+        public class Deployments : Tea.TeaModel {
+            public var deploymentName: String?
+
+            public var jobResult: String?
+
+            public var status: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deploymentName != nil {
+                    map["deploymentName"] = self.deploymentName!
+                }
+                if self.jobResult != nil {
+                    map["jobResult"] = self.jobResult!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.url != nil {
+                    map["url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["deploymentName"] as? String {
+                    self.deploymentName = value
+                }
+                if let value = dict["jobResult"] as? String {
+                    self.jobResult = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public var deployments: [GetStackExecutionResultResponseBody.StackResults.Deployments]?
+
+        public var message: String?
+
+        public var stackId: String?
+
+        public var stackName: String?
+
+        public var stackStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deployments != nil {
+                var tmp : [Any] = []
+                for k in self.deployments! {
+                    tmp.append(k.toMap())
+                }
+                map["deployments"] = tmp
+            }
+            if self.message != nil {
+                map["message"] = self.message!
+            }
+            if self.stackId != nil {
+                map["stackId"] = self.stackId!
+            }
+            if self.stackName != nil {
+                map["stackName"] = self.stackName!
+            }
+            if self.stackStatus != nil {
+                map["stackStatus"] = self.stackStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["deployments"] as? [Any?] {
+                var tmp : [GetStackExecutionResultResponseBody.StackResults.Deployments] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetStackExecutionResultResponseBody.StackResults.Deployments()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.deployments = tmp
+            }
+            if let value = dict["message"] as? String {
+                self.message = value
+            }
+            if let value = dict["stackId"] as? String {
+                self.stackId = value
+            }
+            if let value = dict["stackName"] as? String {
+                self.stackName = value
+            }
+            if let value = dict["stackStatus"] as? String {
+                self.stackStatus = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var stackResults: [GetStackExecutionResultResponseBody.StackResults]?
+
+    public var triggerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.stackResults != nil {
+            var tmp : [Any] = []
+            for k in self.stackResults! {
+                tmp.append(k.toMap())
+            }
+            map["stackResults"] = tmp
+        }
+        if self.triggerId != nil {
+            map["triggerId"] = self.triggerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["stackResults"] as? [Any?] {
+            var tmp : [GetStackExecutionResultResponseBody.StackResults] = []
+            for v in value {
+                if v != nil {
+                    var model = GetStackExecutionResultResponseBody.StackResults()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.stackResults = tmp
+        }
+        if let value = dict["triggerId"] as? String {
+            self.triggerId = value
+        }
+    }
+}
+
+public class GetStackExecutionResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetStackExecutionResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetStackExecutionResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetTaskResponseBody : Tea.TeaModel {
     public class Task : Tea.TeaModel {
         public class GroupInfo : Tea.TeaModel {
@@ -16513,6 +16754,158 @@ public class RemoveSharedAccountsResponse : Tea.TeaModel {
     }
 }
 
+public class TriggerStackExecutionRequest : Tea.TeaModel {
+    public var action: String?
+
+    public var changedFolders: [String]?
+
+    public var clientToken: String?
+
+    public var codePackagePath: String?
+
+    public var codeVersionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.action != nil {
+            map["action"] = self.action!
+        }
+        if self.changedFolders != nil {
+            map["changedFolders"] = self.changedFolders!
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
+        }
+        if self.codePackagePath != nil {
+            map["codePackagePath"] = self.codePackagePath!
+        }
+        if self.codeVersionId != nil {
+            map["codeVersionId"] = self.codeVersionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["action"] as? String {
+            self.action = value
+        }
+        if let value = dict["changedFolders"] as? [String] {
+            self.changedFolders = value
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["codePackagePath"] as? String {
+            self.codePackagePath = value
+        }
+        if let value = dict["codeVersionId"] as? String {
+            self.codeVersionId = value
+        }
+    }
+}
+
+public class TriggerStackExecutionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var triggerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.triggerId != nil {
+            map["triggerId"] = self.triggerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["triggerId"] as? String {
+            self.triggerId = value
+        }
+    }
+}
+
+public class TriggerStackExecutionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TriggerStackExecutionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TriggerStackExecutionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateExplorerModuleAttributeRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -18601,6 +18994,8 @@ public class UploadModuleAdvanceRequest : Tea.TeaModel {
 public class UploadModuleResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -18618,6 +19013,9 @@ public class UploadModuleResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
         return map
     }
 
@@ -18625,6 +19023,9 @@ public class UploadModuleResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["version"] as? String {
+            self.version = value
         }
     }
 }

@@ -1696,6 +1696,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getStackExecutionResultWithOptions(_ triggerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetStackExecutionResultResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetStackExecutionResult",
+            "version": "2021-08-06",
+            "protocol": "HTTPS",
+            "pathname": "/stacks/trigger/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(triggerId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetStackExecutionResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getStackExecutionResult(_ triggerId: String) async throws -> GetStackExecutionResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getStackExecutionResultWithOptions(triggerId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTaskWithOptions(_ taskId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTaskResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -2833,6 +2860,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await removeSharedAccountsWithOptions(request as! RemoveSharedAccountsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerStackExecutionWithOptions(_ request: TriggerStackExecutionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TriggerStackExecutionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.action)) {
+            body["action"] = request.action ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.changedFolders)) {
+            body["changedFolders"] = request.changedFolders ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["clientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.codePackagePath)) {
+            body["codePackagePath"] = request.codePackagePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.codeVersionId)) {
+            body["codeVersionId"] = request.codeVersionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TriggerStackExecution",
+            "version": "2021-08-06",
+            "protocol": "HTTPS",
+            "pathname": "/stacks/trigger",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TriggerStackExecutionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerStackExecution(_ request: TriggerStackExecutionRequest) async throws -> TriggerStackExecutionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await triggerStackExecutionWithOptions(request as! TriggerStackExecutionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
