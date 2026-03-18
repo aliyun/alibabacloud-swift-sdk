@@ -410,6 +410,10 @@ public class CreateAppRequest : Tea.TeaModel {
 
         public var cu: Int32?
 
+        public var elastic: Bool?
+
+        public var minCu: Int32?
+
         public var storage: Int32?
 
         public override init() {
@@ -432,6 +436,12 @@ public class CreateAppRequest : Tea.TeaModel {
             if self.cu != nil {
                 map["cu"] = self.cu!
             }
+            if self.elastic != nil {
+                map["elastic"] = self.elastic!
+            }
+            if self.minCu != nil {
+                map["minCu"] = self.minCu!
+            }
             if self.storage != nil {
                 map["storage"] = self.storage!
             }
@@ -445,6 +455,12 @@ public class CreateAppRequest : Tea.TeaModel {
             }
             if let value = dict["cu"] as? Int32 {
                 self.cu = value
+            }
+            if let value = dict["elastic"] as? Bool {
+                self.elastic = value
+            }
+            if let value = dict["minCu"] as? Int32 {
+                self.minCu = value
             }
             if let value = dict["storage"] as? Int32 {
                 self.storage = value
