@@ -3341,6 +3341,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var podCount: Int64?
 
+    public var quotaId: String?
+
     public var resourceConfig: ResourceConfig?
 
     public var restartPolicy: String?
@@ -3412,6 +3414,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.podCount != nil {
             map["PodCount"] = self.podCount!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
         }
         if self.resourceConfig != nil {
             map["ResourceConfig"] = self.resourceConfig?.toMap()
@@ -3493,6 +3498,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["PodCount"] as? Int64 {
             self.podCount = value
+        }
+        if let value = dict["QuotaId"] as? String {
+            self.quotaId = value
         }
         if let value = dict["ResourceConfig"] as? [String: Any?] {
             var model = ResourceConfig()
@@ -6199,6 +6207,8 @@ public class CreateJobRequest : Tea.TeaModel {
         }
     }
     public class DataSources : Tea.TeaModel {
+        public var accessPointId: String?
+
         public var dataSourceId: String?
 
         public var dataSourceVersion: String?
@@ -6210,6 +6220,8 @@ public class CreateJobRequest : Tea.TeaModel {
         public var mountPath: String?
 
         public var options: String?
+
+        public var roleChain: String?
 
         public var uri: String?
 
@@ -6227,6 +6239,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accessPointId != nil {
+                map["AccessPointId"] = self.accessPointId!
+            }
             if self.dataSourceId != nil {
                 map["DataSourceId"] = self.dataSourceId!
             }
@@ -6245,6 +6260,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.options != nil {
                 map["Options"] = self.options!
             }
+            if self.roleChain != nil {
+                map["RoleChain"] = self.roleChain!
+            }
             if self.uri != nil {
                 map["Uri"] = self.uri!
             }
@@ -6253,6 +6271,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccessPointId"] as? String {
+                self.accessPointId = value
+            }
             if let value = dict["DataSourceId"] as? String {
                 self.dataSourceId = value
             }
@@ -6270,6 +6291,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if let value = dict["Options"] as? String {
                 self.options = value
+            }
+            if let value = dict["RoleChain"] as? String {
+                self.roleChain = value
             }
             if let value = dict["Uri"] as? String {
                 self.uri = value
@@ -8154,6 +8178,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var restartTimes: String?
 
+    public var roleSystemEnvs: [String: [String: Any]]?
+
     public var settings: JobSettings?
 
     public var status: String?
@@ -8316,6 +8342,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.restartTimes != nil {
             map["RestartTimes"] = self.restartTimes!
+        }
+        if self.roleSystemEnvs != nil {
+            map["RoleSystemEnvs"] = self.roleSystemEnvs!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -8523,6 +8552,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["RestartTimes"] as? String {
             self.restartTimes = value
+        }
+        if let value = dict["RoleSystemEnvs"] as? [String: [String: Any]] {
+            self.roleSystemEnvs = value
         }
         if let value = dict["Settings"] as? [String: Any?] {
             var model = JobSettings()
