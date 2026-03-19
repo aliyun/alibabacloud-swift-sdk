@@ -26191,11 +26191,43 @@ public class GetAIOrderApprovalCommentSSERequest : Tea.TeaModel {
 }
 
 public class GetAIOrderApprovalCommentSSEResponseBody : Tea.TeaModel {
+    public class Output : Tea.TeaModel {
+        public var content: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+        }
+    }
     public var data: String?
 
     public var errorCode: String?
 
     public var errorMessage: String?
+
+    public var output: GetAIOrderApprovalCommentSSEResponseBody.Output?
 
     public var requestId: String?
 
@@ -26211,6 +26243,7 @@ public class GetAIOrderApprovalCommentSSEResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.output?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -26223,6 +26256,9 @@ public class GetAIOrderApprovalCommentSSEResponseBody : Tea.TeaModel {
         }
         if self.errorMessage != nil {
             map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.output != nil {
+            map["Output"] = self.output?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -26243,6 +26279,11 @@ public class GetAIOrderApprovalCommentSSEResponseBody : Tea.TeaModel {
         }
         if let value = dict["ErrorMessage"] as? String {
             self.errorMessage = value
+        }
+        if let value = dict["Output"] as? [String: Any?] {
+            var model = GetAIOrderApprovalCommentSSEResponseBody.Output()
+            model.fromMap(value)
+            self.output = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
