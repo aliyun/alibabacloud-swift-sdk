@@ -2019,6 +2019,117 @@ public class ProjectDetailsLiteVO : Tea.TeaModel {
     }
 }
 
+public class SkillInfoDO : Tea.TeaModel {
+    public var category: String?
+
+    public var compatibility: String?
+
+    public var description_: String?
+
+    public var displayName: String?
+
+    public var installCount: String?
+
+    public var name: String?
+
+    public var source: String?
+
+    public var sourceType: String?
+
+    public var tags: String?
+
+    public var updatedAt: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.compatibility != nil {
+            map["Compatibility"] = self.compatibility!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.displayName != nil {
+            map["DisplayName"] = self.displayName!
+        }
+        if self.installCount != nil {
+            map["InstallCount"] = self.installCount!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.updatedAt != nil {
+            map["UpdatedAt"] = self.updatedAt!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Category"] as? String {
+            self.category = value
+        }
+        if let value = dict["Compatibility"] as? String {
+            self.compatibility = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DisplayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["InstallCount"] as? String {
+            self.installCount = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+        if let value = dict["SourceType"] as? String {
+            self.sourceType = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tags = value
+        }
+        if let value = dict["UpdatedAt"] as? String {
+            self.updatedAt = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
+        }
+    }
+}
+
 public class StsApplyVO : Tea.TeaModel {
     public var aliyunId: String?
 
@@ -13588,6 +13699,44 @@ public class CreateDatabaseExportOrderResponse : Tea.TeaModel {
 }
 
 public class CreateDifyInstanceRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var adbpgInstanceMode: String?
 
     public var autoRenew: Bool?
@@ -13617,6 +13766,8 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
     public var dbStorageSize: String?
 
     public var dbStorageType: String?
+
+    public var difyInstanceName: String?
 
     public var dryRun: Bool?
 
@@ -13673,6 +13824,8 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
     public var segNodeNum: Int32?
 
     public var storageType: String?
+
+    public var tag: [CreateDifyInstanceRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -13767,6 +13920,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         if self.dbStorageType != nil {
             map["DbStorageType"] = self.dbStorageType!
         }
+        if self.difyInstanceName != nil {
+            map["DifyInstanceName"] = self.difyInstanceName!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -13850,6 +14006,13 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if self.storageType != nil {
             map["StorageType"] = self.storageType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -13952,6 +14115,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         if let value = dict["DbStorageType"] as? String {
             self.dbStorageType = value
         }
+        if let value = dict["DifyInstanceName"] as? String {
+            self.difyInstanceName = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -14036,6 +14202,19 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         if let value = dict["StorageType"] as? String {
             self.storageType = value
         }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateDifyInstanceRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateDifyInstanceRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
@@ -14094,6 +14273,10 @@ public class CreateDifyInstanceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var appUuid: String?
 
+        public var difyInstanceId: String?
+
+        public var difyInstanceName: String?
+
         public var instanceId: String?
 
         public var instanceName: String?
@@ -14130,6 +14313,12 @@ public class CreateDifyInstanceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.appUuid != nil {
                 map["AppUuid"] = self.appUuid!
+            }
+            if self.difyInstanceId != nil {
+                map["DifyInstanceId"] = self.difyInstanceId!
+            }
+            if self.difyInstanceName != nil {
+                map["DifyInstanceName"] = self.difyInstanceName!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -14168,6 +14357,12 @@ public class CreateDifyInstanceResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AppUuid"] as? String {
                 self.appUuid = value
+            }
+            if let value = dict["DifyInstanceId"] as? String {
+                self.difyInstanceId = value
+            }
+            if let value = dict["DifyInstanceName"] as? String {
+                self.difyInstanceName = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -22291,13 +22486,21 @@ public class DescribeDifyAttributeRequest : Tea.TeaModel {
 
 public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
     public class Root : Tea.TeaModel {
+        public var appType: String?
+
         public var appUuid: String?
 
         public var billingInstanceId: String?
 
         public var chargeType: String?
 
+        public var difyInstanceId: String?
+
+        public var difyInstanceName: String?
+
         public var expireTime: Int64?
+
+        public var regionId: String?
 
         public var replicas: String?
 
@@ -22331,6 +22534,9 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appType != nil {
+                map["AppType"] = self.appType!
+            }
             if self.appUuid != nil {
                 map["AppUuid"] = self.appUuid!
             }
@@ -22340,8 +22546,17 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
+            if self.difyInstanceId != nil {
+                map["DifyInstanceId"] = self.difyInstanceId!
+            }
+            if self.difyInstanceName != nil {
+                map["DifyInstanceName"] = self.difyInstanceName!
+            }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.replicas != nil {
                 map["Replicas"] = self.replicas!
@@ -22375,6 +22590,9 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppType"] as? String {
+                self.appType = value
+            }
             if let value = dict["AppUuid"] as? String {
                 self.appUuid = value
             }
@@ -22384,8 +22602,17 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
+            if let value = dict["DifyInstanceId"] as? String {
+                self.difyInstanceId = value
+            }
+            if let value = dict["DifyInstanceName"] as? String {
+                self.difyInstanceName = value
+            }
             if let value = dict["ExpireTime"] as? Int64 {
                 self.expireTime = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
             }
             if let value = dict["Replicas"] as? String {
                 self.replicas = value
@@ -22416,6 +22643,44 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var code: String?
 
     public var errorCode: String?
@@ -22429,6 +22694,8 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
     public var root: DescribeDifyAttributeResponseBody.Root?
 
     public var success: Bool?
+
+    public var tags: [DescribeDifyAttributeResponseBody.Tags]?
 
     public override init() {
         super.init()
@@ -22466,6 +22733,13 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
         if self.success != nil {
             map["Success"] = self.success!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -22493,6 +22767,19 @@ public class DescribeDifyAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Success"] as? Bool {
             self.success = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [DescribeDifyAttributeResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDifyAttributeResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -25858,6 +26145,158 @@ public class GenerateSqlFromNLResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GenerateSqlFromNLResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetAIOrderApprovalCommentSSERequest : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OrderId"] as? Int64 {
+            self.orderId = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetAIOrderApprovalCommentSSEResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetAIOrderApprovalCommentSSEResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAIOrderApprovalCommentSSEResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAIOrderApprovalCommentSSEResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -56233,6 +56672,10 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var difyInstanceId: String?
+
+            public var difyInstanceName: String?
+
             public var edition: String?
 
             public var enterpriseInternetUrl: String?
@@ -56250,6 +56693,8 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
             public var majorVersion: String?
 
             public var regionCode: String?
+
+            public var regionId: String?
 
             public var securityGroupId: String?
 
@@ -56286,6 +56731,12 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.difyInstanceId != nil {
+                    map["DifyInstanceId"] = self.difyInstanceId!
+                }
+                if self.difyInstanceName != nil {
+                    map["DifyInstanceName"] = self.difyInstanceName!
+                }
                 if self.edition != nil {
                     map["Edition"] = self.edition!
                 }
@@ -56312,6 +56763,9 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.regionCode != nil {
                     map["RegionCode"] = self.regionCode!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
                 }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
@@ -56345,6 +56799,12 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
+                if let value = dict["DifyInstanceId"] as? String {
+                    self.difyInstanceId = value
+                }
+                if let value = dict["DifyInstanceName"] as? String {
+                    self.difyInstanceName = value
+                }
                 if let value = dict["Edition"] as? String {
                     self.edition = value
                 }
@@ -56371,6 +56831,9 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RegionCode"] as? String {
                     self.regionCode = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
                 }
                 if let value = dict["SecurityGroupId"] as? String {
                     self.securityGroupId = value
@@ -56435,6 +56898,44 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var code: String?
 
     public var errorCode: String?
@@ -56452,6 +56953,8 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
     public var root: ListDifyInstancesResponseBody.Root?
 
     public var success: Bool?
+
+    public var tags: [ListDifyInstancesResponseBody.Tags]?
 
     public override init() {
         super.init()
@@ -56495,6 +56998,13 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
         if self.success != nil {
             map["Success"] = self.success!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -56528,6 +57038,19 @@ public class ListDifyInstancesResponseBody : Tea.TeaModel {
         }
         if let value = dict["Success"] as? Bool {
             self.success = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [ListDifyInstancesResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = ListDifyInstancesResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
