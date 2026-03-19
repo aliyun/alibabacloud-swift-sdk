@@ -15861,6 +15861,10 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var maxInputLength: String?
+
+    public var maxOutputLength: String?
+
     public var modelId: String?
 
     public var modelType: String?
@@ -15894,6 +15898,12 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.maxInputLength != nil {
+            map["maxInputLength"] = self.maxInputLength!
+        }
+        if self.maxOutputLength != nil {
+            map["maxOutputLength"] = self.maxOutputLength!
+        }
         if self.modelId != nil {
             map["modelId"] = self.modelId!
         }
@@ -15922,6 +15932,12 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["maxInputLength"] as? String {
+            self.maxInputLength = value
+        }
+        if let value = dict["maxOutputLength"] as? String {
+            self.maxOutputLength = value
         }
         if let value = dict["modelId"] as? String {
             self.modelId = value
@@ -18067,130 +18083,6 @@ public class ModelRouterQueryModelListResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModelRouterQueryModelListResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
-public class ModelRouterQueryModelWithApiKeyResponseBody : Tea.TeaModel {
-    public var data: ModelDTO?
-
-    public var errCode: String?
-
-    public var errMessage: String?
-
-    public var httpStatusCode: Int32?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.data != nil {
-            map["data"] = self.data?.toMap()
-        }
-        if self.errCode != nil {
-            map["errCode"] = self.errCode!
-        }
-        if self.errMessage != nil {
-            map["errMessage"] = self.errMessage!
-        }
-        if self.httpStatusCode != nil {
-            map["httpStatusCode"] = self.httpStatusCode!
-        }
-        if self.requestId != nil {
-            map["requestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["data"] as? [String: Any?] {
-            var model = ModelDTO()
-            model.fromMap(value)
-            self.data = model
-        }
-        if let value = dict["errCode"] as? String {
-            self.errCode = value
-        }
-        if let value = dict["errMessage"] as? String {
-            self.errMessage = value
-        }
-        if let value = dict["httpStatusCode"] as? Int32 {
-            self.httpStatusCode = value
-        }
-        if let value = dict["requestId"] as? String {
-            self.requestId = value
-        }
-        if let value = dict["success"] as? Bool {
-            self.success = value
-        }
-    }
-}
-
-public class ModelRouterQueryModelWithApiKeyResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ModelRouterQueryModelWithApiKeyResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = ModelRouterQueryModelWithApiKeyResponseBody()
             model.fromMap(value)
             self.body = model
         }

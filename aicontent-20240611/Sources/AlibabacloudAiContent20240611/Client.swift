@@ -1781,6 +1781,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxInputLength)) {
+            body["maxInputLength"] = request.maxInputLength ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxOutputLength)) {
+            body["maxOutputLength"] = request.maxOutputLength ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelId)) {
             body["modelId"] = request.modelId ?? "";
         }
@@ -2252,33 +2258,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryModelListWithOptions(request as! ModelRouterQueryModelListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modelRouterQueryModelWithApiKeyWithOptions(_ id: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryModelWithApiKeyResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ModelRouterQueryModelWithApiKey",
-            "version": "20240611",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/modelRouter/open/models/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/with-api-key",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ModelRouterQueryModelWithApiKeyResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modelRouterQueryModelWithApiKey(_ id: String) async throws -> ModelRouterQueryModelWithApiKeyResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await modelRouterQueryModelWithApiKeyWithOptions(id as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
