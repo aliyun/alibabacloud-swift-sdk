@@ -2004,6 +2004,8 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public var summary: String?
 
+    public var tags: [String: Any]?
+
     public var title: String?
 
     public var websiteAuthorityScore: Int32?
@@ -2061,6 +2063,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         if self.summary != nil {
             map["summary"] = self.summary!
         }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
         if self.title != nil {
             map["title"] = self.title!
         }
@@ -2110,6 +2115,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         }
         if let value = dict["summary"] as? String {
             self.summary = value
+        }
+        if let value = dict["tags"] as? [String: Any] {
+            self.tags = value
         }
         if let value = dict["title"] as? String {
             self.title = value
