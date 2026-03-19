@@ -22673,6 +22673,44 @@ public class GetMemoryHistoryResponse : Tea.TeaModel {
 }
 
 public class GetMemoryStoreResponseBody : Tea.TeaModel {
+    public class ShortTermStorage : Tea.TeaModel {
+        public var logstore: String?
+
+        public var project: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logstore != nil {
+                map["logstore"] = self.logstore!
+            }
+            if self.project != nil {
+                map["project"] = self.project!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["logstore"] as? String {
+                self.logstore = value
+            }
+            if let value = dict["project"] as? String {
+                self.project = value
+            }
+        }
+    }
     public var createTime: String?
 
     public var customExtractionStrategies: [CustomExtractionStrategy]?
@@ -22686,6 +22724,8 @@ public class GetMemoryStoreResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var requestId: String?
+
+    public var shortTermStorage: GetMemoryStoreResponseBody.ShortTermStorage?
 
     public var shortTermTtl: Int32?
 
@@ -22703,6 +22743,7 @@ public class GetMemoryStoreResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.shortTermStorage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -22731,6 +22772,9 @@ public class GetMemoryStoreResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.shortTermStorage != nil {
+            map["shortTermStorage"] = self.shortTermStorage?.toMap()
         }
         if self.shortTermTtl != nil {
             map["shortTermTtl"] = self.shortTermTtl!
@@ -22776,6 +22820,11 @@ public class GetMemoryStoreResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["shortTermStorage"] as? [String: Any?] {
+            var model = GetMemoryStoreResponseBody.ShortTermStorage()
+            model.fromMap(value)
+            self.shortTermStorage = model
         }
         if let value = dict["shortTermTtl"] as? Int32 {
             self.shortTermTtl = value
@@ -33827,6 +33876,8 @@ public class ListMemoryStoresResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var total: Int32?
+
     public override init() {
         super.init()
     }
@@ -33857,6 +33908,9 @@ public class ListMemoryStoresResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
         return map
     }
 
@@ -33883,6 +33937,9 @@ public class ListMemoryStoresResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["total"] as? Int32 {
+            self.total = value
         }
     }
 }
