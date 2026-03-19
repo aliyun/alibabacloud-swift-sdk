@@ -19863,6 +19863,8 @@ public class QueryJobListResponseBody : Tea.TeaModel {
 
                     public var fileFormat: String?
 
+                    public var fileMd5: String?
+
                     public var fileSize: String?
 
                     public var format: QueryJobListResponseBody.JobList.Job.Output.Properties.Format?
@@ -19903,6 +19905,9 @@ public class QueryJobListResponseBody : Tea.TeaModel {
                         if self.fileFormat != nil {
                             map["FileFormat"] = self.fileFormat!
                         }
+                        if self.fileMd5 != nil {
+                            map["FileMd5"] = self.fileMd5!
+                        }
                         if self.fileSize != nil {
                             map["FileSize"] = self.fileSize!
                         }
@@ -19937,6 +19942,9 @@ public class QueryJobListResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["FileFormat"] as? String {
                             self.fileFormat = value
+                        }
+                        if let value = dict["FileMd5"] as? String {
+                            self.fileMd5 = value
                         }
                         if let value = dict["FileSize"] as? String {
                             self.fileSize = value
