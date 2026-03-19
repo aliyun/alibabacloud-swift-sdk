@@ -28,6 +28,8 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
 
     public var backupStartTime: String?
 
+    public var backupStorageEncryptMethod: String?
+
     public var backupStorageType: String?
 
     public var backupStrategyType: String?
@@ -44,6 +46,10 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
 
     public var enableBackupLog: Bool?
 
+    public var enableMysqlPhysicalBackupBinlog: String?
+
+    public var enableSourceEndpointSsl: String?
+
     public var OSSBucketName: String?
 
     public var ownerId: String?
@@ -58,6 +64,8 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
 
     public var sourceEndpointInstanceType: String?
 
+    public var sourceEndpointOracleHome: String?
+
     public var sourceEndpointOracleSID: String?
 
     public var sourceEndpointPassword: String?
@@ -67,6 +75,8 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
     public var sourceEndpointRegion: String?
 
     public var sourceEndpointUserName: String?
+
+    public var sslCaPem: String?
 
     public override init() {
         super.init()
@@ -115,6 +125,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if self.backupStartTime != nil {
             map["BackupStartTime"] = self.backupStartTime!
         }
+        if self.backupStorageEncryptMethod != nil {
+            map["BackupStorageEncryptMethod"] = self.backupStorageEncryptMethod!
+        }
         if self.backupStorageType != nil {
             map["BackupStorageType"] = self.backupStorageType!
         }
@@ -139,6 +152,12 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
         }
+        if self.enableMysqlPhysicalBackupBinlog != nil {
+            map["EnableMysqlPhysicalBackupBinlog"] = self.enableMysqlPhysicalBackupBinlog!
+        }
+        if self.enableSourceEndpointSsl != nil {
+            map["EnableSourceEndpointSsl"] = self.enableSourceEndpointSsl!
+        }
         if self.OSSBucketName != nil {
             map["OSSBucketName"] = self.OSSBucketName!
         }
@@ -160,6 +179,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if self.sourceEndpointInstanceType != nil {
             map["SourceEndpointInstanceType"] = self.sourceEndpointInstanceType!
         }
+        if self.sourceEndpointOracleHome != nil {
+            map["SourceEndpointOracleHome"] = self.sourceEndpointOracleHome!
+        }
         if self.sourceEndpointOracleSID != nil {
             map["SourceEndpointOracleSID"] = self.sourceEndpointOracleSID!
         }
@@ -174,6 +196,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         }
         if self.sourceEndpointUserName != nil {
             map["SourceEndpointUserName"] = self.sourceEndpointUserName!
+        }
+        if self.sslCaPem != nil {
+            map["SslCaPem"] = self.sslCaPem!
         }
         return map
     }
@@ -213,6 +238,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if let value = dict["BackupStartTime"] as? String {
             self.backupStartTime = value
         }
+        if let value = dict["BackupStorageEncryptMethod"] as? String {
+            self.backupStorageEncryptMethod = value
+        }
         if let value = dict["BackupStorageType"] as? String {
             self.backupStorageType = value
         }
@@ -237,6 +265,12 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if let value = dict["EnableBackupLog"] as? Bool {
             self.enableBackupLog = value
         }
+        if let value = dict["EnableMysqlPhysicalBackupBinlog"] as? String {
+            self.enableMysqlPhysicalBackupBinlog = value
+        }
+        if let value = dict["EnableSourceEndpointSsl"] as? String {
+            self.enableSourceEndpointSsl = value
+        }
         if let value = dict["OSSBucketName"] as? String {
             self.OSSBucketName = value
         }
@@ -258,6 +292,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         if let value = dict["SourceEndpointInstanceType"] as? String {
             self.sourceEndpointInstanceType = value
         }
+        if let value = dict["SourceEndpointOracleHome"] as? String {
+            self.sourceEndpointOracleHome = value
+        }
         if let value = dict["SourceEndpointOracleSID"] as? String {
             self.sourceEndpointOracleSID = value
         }
@@ -272,6 +309,9 @@ public class ConfigureBackupPlanRequest : Tea.TeaModel {
         }
         if let value = dict["SourceEndpointUserName"] as? String {
             self.sourceEndpointUserName = value
+        }
+        if let value = dict["SslCaPem"] as? String {
+            self.sslCaPem = value
         }
     }
 }
@@ -1726,6 +1766,10 @@ public class CreateIncrementBackupSetDownloadResponse : Tea.TeaModel {
 }
 
 public class CreateRestoreTaskRequest : Tea.TeaModel {
+    public var autoOpenDatabase: String?
+
+    public var autoShutdownDatabase: String?
+
     public var backupGatewayId: Int64?
 
     public var backupPlanId: String?
@@ -1737,6 +1781,20 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
     public var crossAliyunId: String?
 
     public var crossRoleName: String?
+
+    public var destDatabaseInstanceClass: String?
+
+    public var destDatabaseInstanceDatabaseVersion: String?
+
+    public var destDatabaseInstanceRegion: String?
+
+    public var destDatabaseInstanceStorageSize: String?
+
+    public var destDatabaseInstanceType: String?
+
+    public var destDatabaseInstanceVSwitch: String?
+
+    public var destDatabaseInstanceVpc: String?
 
     public var destinationEndpointDatabaseName: String?
 
@@ -1758,7 +1816,11 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
 
     public var duplicateConflict: String?
 
+    public var enableDestinationEndpointSsl: Bool?
+
     public var ownerId: String?
+
+    public var restoreDestinationMode: String?
 
     public var restoreDir: String?
 
@@ -1769,6 +1831,8 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
     public var restoreTaskName: String?
 
     public var restoreTime: Int64?
+
+    public var sslCaPem: String?
 
     public override init() {
         super.init()
@@ -1784,6 +1848,12 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoOpenDatabase != nil {
+            map["AutoOpenDatabase"] = self.autoOpenDatabase!
+        }
+        if self.autoShutdownDatabase != nil {
+            map["AutoShutdownDatabase"] = self.autoShutdownDatabase!
+        }
         if self.backupGatewayId != nil {
             map["BackupGatewayId"] = self.backupGatewayId!
         }
@@ -1801,6 +1871,27 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         }
         if self.crossRoleName != nil {
             map["CrossRoleName"] = self.crossRoleName!
+        }
+        if self.destDatabaseInstanceClass != nil {
+            map["DestDatabaseInstanceClass"] = self.destDatabaseInstanceClass!
+        }
+        if self.destDatabaseInstanceDatabaseVersion != nil {
+            map["DestDatabaseInstanceDatabaseVersion"] = self.destDatabaseInstanceDatabaseVersion!
+        }
+        if self.destDatabaseInstanceRegion != nil {
+            map["DestDatabaseInstanceRegion"] = self.destDatabaseInstanceRegion!
+        }
+        if self.destDatabaseInstanceStorageSize != nil {
+            map["DestDatabaseInstanceStorageSize"] = self.destDatabaseInstanceStorageSize!
+        }
+        if self.destDatabaseInstanceType != nil {
+            map["DestDatabaseInstanceType"] = self.destDatabaseInstanceType!
+        }
+        if self.destDatabaseInstanceVSwitch != nil {
+            map["DestDatabaseInstanceVSwitch"] = self.destDatabaseInstanceVSwitch!
+        }
+        if self.destDatabaseInstanceVpc != nil {
+            map["DestDatabaseInstanceVpc"] = self.destDatabaseInstanceVpc!
         }
         if self.destinationEndpointDatabaseName != nil {
             map["DestinationEndpointDatabaseName"] = self.destinationEndpointDatabaseName!
@@ -1832,8 +1923,14 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         if self.duplicateConflict != nil {
             map["DuplicateConflict"] = self.duplicateConflict!
         }
+        if self.enableDestinationEndpointSsl != nil {
+            map["EnableDestinationEndpointSsl"] = self.enableDestinationEndpointSsl!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.restoreDestinationMode != nil {
+            map["RestoreDestinationMode"] = self.restoreDestinationMode!
         }
         if self.restoreDir != nil {
             map["RestoreDir"] = self.restoreDir!
@@ -1850,11 +1947,20 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         if self.restoreTime != nil {
             map["RestoreTime"] = self.restoreTime!
         }
+        if self.sslCaPem != nil {
+            map["SslCaPem"] = self.sslCaPem!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoOpenDatabase"] as? String {
+            self.autoOpenDatabase = value
+        }
+        if let value = dict["AutoShutdownDatabase"] as? String {
+            self.autoShutdownDatabase = value
+        }
         if let value = dict["BackupGatewayId"] as? Int64 {
             self.backupGatewayId = value
         }
@@ -1872,6 +1978,27 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         }
         if let value = dict["CrossRoleName"] as? String {
             self.crossRoleName = value
+        }
+        if let value = dict["DestDatabaseInstanceClass"] as? String {
+            self.destDatabaseInstanceClass = value
+        }
+        if let value = dict["DestDatabaseInstanceDatabaseVersion"] as? String {
+            self.destDatabaseInstanceDatabaseVersion = value
+        }
+        if let value = dict["DestDatabaseInstanceRegion"] as? String {
+            self.destDatabaseInstanceRegion = value
+        }
+        if let value = dict["DestDatabaseInstanceStorageSize"] as? String {
+            self.destDatabaseInstanceStorageSize = value
+        }
+        if let value = dict["DestDatabaseInstanceType"] as? String {
+            self.destDatabaseInstanceType = value
+        }
+        if let value = dict["DestDatabaseInstanceVSwitch"] as? String {
+            self.destDatabaseInstanceVSwitch = value
+        }
+        if let value = dict["DestDatabaseInstanceVpc"] as? String {
+            self.destDatabaseInstanceVpc = value
         }
         if let value = dict["DestinationEndpointDatabaseName"] as? String {
             self.destinationEndpointDatabaseName = value
@@ -1903,8 +2030,14 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         if let value = dict["DuplicateConflict"] as? String {
             self.duplicateConflict = value
         }
+        if let value = dict["EnableDestinationEndpointSsl"] as? Bool {
+            self.enableDestinationEndpointSsl = value
+        }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
+        }
+        if let value = dict["RestoreDestinationMode"] as? String {
+            self.restoreDestinationMode = value
         }
         if let value = dict["RestoreDir"] as? String {
             self.restoreDir = value
@@ -1920,6 +2053,9 @@ public class CreateRestoreTaskRequest : Tea.TeaModel {
         }
         if let value = dict["RestoreTime"] as? Int64 {
             self.restoreTime = value
+        }
+        if let value = dict["SslCaPem"] as? String {
+            self.sslCaPem = value
         }
     }
 }
@@ -2732,6 +2868,8 @@ public class DescribeBackupPlanBillingResponse : Tea.TeaModel {
 }
 
 public class DescribeBackupPlanListRequest : Tea.TeaModel {
+    public var backupMethod: String?
+
     public var backupPlanId: String?
 
     public var backupPlanName: String?
@@ -2750,6 +2888,12 @@ public class DescribeBackupPlanListRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var showBackupStrategyInfo: Bool?
+
+    public var showRecoverTimeRange: Bool?
+
+    public var showStorageStrategyInfo: Bool?
+
     public override init() {
         super.init()
     }
@@ -2764,6 +2908,9 @@ public class DescribeBackupPlanListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backupMethod != nil {
+            map["BackupMethod"] = self.backupMethod!
+        }
         if self.backupPlanId != nil {
             map["BackupPlanId"] = self.backupPlanId!
         }
@@ -2791,11 +2938,23 @@ public class DescribeBackupPlanListRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.showBackupStrategyInfo != nil {
+            map["ShowBackupStrategyInfo"] = self.showBackupStrategyInfo!
+        }
+        if self.showRecoverTimeRange != nil {
+            map["ShowRecoverTimeRange"] = self.showRecoverTimeRange!
+        }
+        if self.showStorageStrategyInfo != nil {
+            map["ShowStorageStrategyInfo"] = self.showStorageStrategyInfo!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BackupMethod"] as? String {
+            self.backupMethod = value
+        }
         if let value = dict["BackupPlanId"] as? String {
             self.backupPlanId = value
         }
@@ -2823,6 +2982,15 @@ public class DescribeBackupPlanListRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
+        if let value = dict["ShowBackupStrategyInfo"] as? Bool {
+            self.showBackupStrategyInfo = value
+        }
+        if let value = dict["ShowRecoverTimeRange"] as? Bool {
+            self.showRecoverTimeRange = value
+        }
+        if let value = dict["ShowStorageStrategyInfo"] as? Bool {
+            self.showStorageStrategyInfo = value
+        }
     }
 }
 
@@ -2830,6 +2998,8 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
         public class BackupPlanDetail : Tea.TeaModel {
             public var backupGatewayId: Int64?
+
+            public var backupGatewayIdentifier: String?
 
             public var backupMethod: String?
 
@@ -2842,6 +3012,8 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
             public var backupPlanId: String?
 
             public var backupPlanName: String?
+
+            public var backupPlanRegion: String?
 
             public var backupPlanStatus: String?
 
@@ -2875,11 +3047,29 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
 
             public var enableBackupLog: Bool?
 
+            public var enableMysqlPhysicalBackupBinLog: Bool?
+
             public var endTimestampForRestore: Int64?
 
             public var errMessage: String?
 
+            public var incrementBackupRetentionPeriod: String?
+
+            public var incrementDuplicationArchivePeriod: String?
+
+            public var incrementDuplicationInfrequentAccessPeriod: String?
+
+            public var instanceChargeType: String?
+
             public var instanceClass: String?
+
+            public var instanceExpiredTimestamp: Int64?
+
+            public var logBackupRetentionPeriod: String?
+
+            public var logDuplicationArchivePeriod: String?
+
+            public var logDuplicationInfrequentAccessPeriod: String?
 
             public var OSSBucketName: String?
 
@@ -2891,6 +3081,10 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
 
             public var sourceEndpointDatabaseName: String?
 
+            public var sourceEndpointEnableSsl: String?
+
+            public var sourceEndpointHost: String?
+
             public var sourceEndpointInstanceID: String?
 
             public var sourceEndpointInstanceType: String?
@@ -2899,9 +3093,13 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
 
             public var sourceEndpointOracleSID: String?
 
+            public var sourceEndpointPort: String?
+
             public var sourceEndpointRegion: String?
 
             public var sourceEndpointUserName: String?
+
+            public var storageEncryptMethod: String?
 
             public override init() {
                 super.init()
@@ -2920,6 +3118,9 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if self.backupGatewayId != nil {
                     map["BackupGatewayId"] = self.backupGatewayId!
                 }
+                if self.backupGatewayIdentifier != nil {
+                    map["BackupGatewayIdentifier"] = self.backupGatewayIdentifier!
+                }
                 if self.backupMethod != nil {
                     map["BackupMethod"] = self.backupMethod!
                 }
@@ -2937,6 +3138,9 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 }
                 if self.backupPlanName != nil {
                     map["BackupPlanName"] = self.backupPlanName!
+                }
+                if self.backupPlanRegion != nil {
+                    map["BackupPlanRegion"] = self.backupPlanRegion!
                 }
                 if self.backupPlanStatus != nil {
                     map["BackupPlanStatus"] = self.backupPlanStatus!
@@ -2986,14 +3190,41 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if self.enableBackupLog != nil {
                     map["EnableBackupLog"] = self.enableBackupLog!
                 }
+                if self.enableMysqlPhysicalBackupBinLog != nil {
+                    map["EnableMysqlPhysicalBackupBinLog"] = self.enableMysqlPhysicalBackupBinLog!
+                }
                 if self.endTimestampForRestore != nil {
                     map["EndTimestampForRestore"] = self.endTimestampForRestore!
                 }
                 if self.errMessage != nil {
                     map["ErrMessage"] = self.errMessage!
                 }
+                if self.incrementBackupRetentionPeriod != nil {
+                    map["IncrementBackupRetentionPeriod"] = self.incrementBackupRetentionPeriod!
+                }
+                if self.incrementDuplicationArchivePeriod != nil {
+                    map["IncrementDuplicationArchivePeriod"] = self.incrementDuplicationArchivePeriod!
+                }
+                if self.incrementDuplicationInfrequentAccessPeriod != nil {
+                    map["IncrementDuplicationInfrequentAccessPeriod"] = self.incrementDuplicationInfrequentAccessPeriod!
+                }
+                if self.instanceChargeType != nil {
+                    map["InstanceChargeType"] = self.instanceChargeType!
+                }
                 if self.instanceClass != nil {
                     map["InstanceClass"] = self.instanceClass!
+                }
+                if self.instanceExpiredTimestamp != nil {
+                    map["InstanceExpiredTimestamp"] = self.instanceExpiredTimestamp!
+                }
+                if self.logBackupRetentionPeriod != nil {
+                    map["LogBackupRetentionPeriod"] = self.logBackupRetentionPeriod!
+                }
+                if self.logDuplicationArchivePeriod != nil {
+                    map["LogDuplicationArchivePeriod"] = self.logDuplicationArchivePeriod!
+                }
+                if self.logDuplicationInfrequentAccessPeriod != nil {
+                    map["LogDuplicationInfrequentAccessPeriod"] = self.logDuplicationInfrequentAccessPeriod!
                 }
                 if self.OSSBucketName != nil {
                     map["OSSBucketName"] = self.OSSBucketName!
@@ -3010,6 +3241,12 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if self.sourceEndpointDatabaseName != nil {
                     map["SourceEndpointDatabaseName"] = self.sourceEndpointDatabaseName!
                 }
+                if self.sourceEndpointEnableSsl != nil {
+                    map["SourceEndpointEnableSsl"] = self.sourceEndpointEnableSsl!
+                }
+                if self.sourceEndpointHost != nil {
+                    map["SourceEndpointHost"] = self.sourceEndpointHost!
+                }
                 if self.sourceEndpointInstanceID != nil {
                     map["SourceEndpointInstanceID"] = self.sourceEndpointInstanceID!
                 }
@@ -3022,11 +3259,17 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if self.sourceEndpointOracleSID != nil {
                     map["SourceEndpointOracleSID"] = self.sourceEndpointOracleSID!
                 }
+                if self.sourceEndpointPort != nil {
+                    map["SourceEndpointPort"] = self.sourceEndpointPort!
+                }
                 if self.sourceEndpointRegion != nil {
                     map["SourceEndpointRegion"] = self.sourceEndpointRegion!
                 }
                 if self.sourceEndpointUserName != nil {
                     map["SourceEndpointUserName"] = self.sourceEndpointUserName!
+                }
+                if self.storageEncryptMethod != nil {
+                    map["StorageEncryptMethod"] = self.storageEncryptMethod!
                 }
                 return map
             }
@@ -3035,6 +3278,9 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["BackupGatewayId"] as? Int64 {
                     self.backupGatewayId = value
+                }
+                if let value = dict["BackupGatewayIdentifier"] as? String {
+                    self.backupGatewayIdentifier = value
                 }
                 if let value = dict["BackupMethod"] as? String {
                     self.backupMethod = value
@@ -3053,6 +3299,9 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["BackupPlanName"] as? String {
                     self.backupPlanName = value
+                }
+                if let value = dict["BackupPlanRegion"] as? String {
+                    self.backupPlanRegion = value
                 }
                 if let value = dict["BackupPlanStatus"] as? String {
                     self.backupPlanStatus = value
@@ -3102,14 +3351,41 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if let value = dict["EnableBackupLog"] as? Bool {
                     self.enableBackupLog = value
                 }
+                if let value = dict["EnableMysqlPhysicalBackupBinLog"] as? Bool {
+                    self.enableMysqlPhysicalBackupBinLog = value
+                }
                 if let value = dict["EndTimestampForRestore"] as? Int64 {
                     self.endTimestampForRestore = value
                 }
                 if let value = dict["ErrMessage"] as? String {
                     self.errMessage = value
                 }
+                if let value = dict["IncrementBackupRetentionPeriod"] as? String {
+                    self.incrementBackupRetentionPeriod = value
+                }
+                if let value = dict["IncrementDuplicationArchivePeriod"] as? String {
+                    self.incrementDuplicationArchivePeriod = value
+                }
+                if let value = dict["IncrementDuplicationInfrequentAccessPeriod"] as? String {
+                    self.incrementDuplicationInfrequentAccessPeriod = value
+                }
+                if let value = dict["InstanceChargeType"] as? String {
+                    self.instanceChargeType = value
+                }
                 if let value = dict["InstanceClass"] as? String {
                     self.instanceClass = value
+                }
+                if let value = dict["InstanceExpiredTimestamp"] as? Int64 {
+                    self.instanceExpiredTimestamp = value
+                }
+                if let value = dict["LogBackupRetentionPeriod"] as? String {
+                    self.logBackupRetentionPeriod = value
+                }
+                if let value = dict["LogDuplicationArchivePeriod"] as? String {
+                    self.logDuplicationArchivePeriod = value
+                }
+                if let value = dict["LogDuplicationInfrequentAccessPeriod"] as? String {
+                    self.logDuplicationInfrequentAccessPeriod = value
                 }
                 if let value = dict["OSSBucketName"] as? String {
                     self.OSSBucketName = value
@@ -3126,6 +3402,12 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if let value = dict["SourceEndpointDatabaseName"] as? String {
                     self.sourceEndpointDatabaseName = value
                 }
+                if let value = dict["SourceEndpointEnableSsl"] as? String {
+                    self.sourceEndpointEnableSsl = value
+                }
+                if let value = dict["SourceEndpointHost"] as? String {
+                    self.sourceEndpointHost = value
+                }
                 if let value = dict["SourceEndpointInstanceID"] as? String {
                     self.sourceEndpointInstanceID = value
                 }
@@ -3138,11 +3420,17 @@ public class DescribeBackupPlanListResponseBody : Tea.TeaModel {
                 if let value = dict["SourceEndpointOracleSID"] as? String {
                     self.sourceEndpointOracleSID = value
                 }
+                if let value = dict["SourceEndpointPort"] as? String {
+                    self.sourceEndpointPort = value
+                }
                 if let value = dict["SourceEndpointRegion"] as? String {
                     self.sourceEndpointRegion = value
                 }
                 if let value = dict["SourceEndpointUserName"] as? String {
                     self.sourceEndpointUserName = value
+                }
+                if let value = dict["StorageEncryptMethod"] as? String {
+                    self.storageEncryptMethod = value
                 }
             }
         }
@@ -3978,6 +4266,8 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
 
     public var backupSetId: String?
 
+    public var backupSetStatus: String?
+
     public var clientToken: String?
 
     public var endTimestamp: Int64?
@@ -3987,6 +4277,8 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
     public var pageNum: Int32?
 
     public var pageSize: Int32?
+
+    public var showProgress: String?
 
     public var showStorageType: Bool?
 
@@ -4012,6 +4304,9 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
         if self.backupSetId != nil {
             map["BackupSetId"] = self.backupSetId!
         }
+        if self.backupSetStatus != nil {
+            map["BackupSetStatus"] = self.backupSetStatus!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -4026,6 +4321,9 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.showProgress != nil {
+            map["ShowProgress"] = self.showProgress!
         }
         if self.showStorageType != nil {
             map["ShowStorageType"] = self.showStorageType!
@@ -4044,6 +4342,9 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
         if let value = dict["BackupSetId"] as? String {
             self.backupSetId = value
         }
+        if let value = dict["BackupSetStatus"] as? String {
+            self.backupSetStatus = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -4059,6 +4360,9 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["ShowProgress"] as? String {
+            self.showProgress = value
+        }
         if let value = dict["ShowStorageType"] as? Bool {
             self.showStorageType = value
         }
@@ -4071,6 +4375,8 @@ public class DescribeFullBackupListRequest : Tea.TeaModel {
 public class DescribeFullBackupListResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
         public class FullBackupFile : Tea.TeaModel {
+            public var backupGatewayIdentifier: String?
+
             public var backupObjects: String?
 
             public var backupSetExpiredTime: Int64?
@@ -4083,15 +4389,39 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
 
             public var createTime: Int64?
 
+            public var crossAliyunId: String?
+
+            public var crossRoleName: String?
+
             public var endTime: Int64?
 
             public var errMessage: String?
 
             public var finishTime: Int64?
 
+            public var logicalFullBackupProgress: Int32?
+
+            public var logicalStructureBackupProgress: Int32?
+
+            public var sourceEndpointEnableSsl: String?
+
+            public var sourceEndpointHost: String?
+
+            public var sourceEndpointInstanceId: String?
+
+            public var sourceEndpointInstanceType: String?
+
             public var sourceEndpointIpPort: String?
 
+            public var sourceEndpointPort: String?
+
+            public var sourceEndpointRegion: String?
+
+            public var sourceEndpointUserName: String?
+
             public var startTime: Int64?
+
+            public var storageEncryptMethod: String?
 
             public var storageMethod: String?
 
@@ -4109,6 +4439,9 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.backupGatewayIdentifier != nil {
+                    map["BackupGatewayIdentifier"] = self.backupGatewayIdentifier!
+                }
                 if self.backupObjects != nil {
                     map["BackupObjects"] = self.backupObjects!
                 }
@@ -4127,6 +4460,12 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.crossAliyunId != nil {
+                    map["CrossAliyunId"] = self.crossAliyunId!
+                }
+                if self.crossRoleName != nil {
+                    map["CrossRoleName"] = self.crossRoleName!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -4136,11 +4475,41 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
                 if self.finishTime != nil {
                     map["FinishTime"] = self.finishTime!
                 }
+                if self.logicalFullBackupProgress != nil {
+                    map["LogicalFullBackupProgress"] = self.logicalFullBackupProgress!
+                }
+                if self.logicalStructureBackupProgress != nil {
+                    map["LogicalStructureBackupProgress"] = self.logicalStructureBackupProgress!
+                }
+                if self.sourceEndpointEnableSsl != nil {
+                    map["SourceEndpointEnableSsl"] = self.sourceEndpointEnableSsl!
+                }
+                if self.sourceEndpointHost != nil {
+                    map["SourceEndpointHost"] = self.sourceEndpointHost!
+                }
+                if self.sourceEndpointInstanceId != nil {
+                    map["SourceEndpointInstanceId"] = self.sourceEndpointInstanceId!
+                }
+                if self.sourceEndpointInstanceType != nil {
+                    map["SourceEndpointInstanceType"] = self.sourceEndpointInstanceType!
+                }
                 if self.sourceEndpointIpPort != nil {
                     map["SourceEndpointIpPort"] = self.sourceEndpointIpPort!
                 }
+                if self.sourceEndpointPort != nil {
+                    map["SourceEndpointPort"] = self.sourceEndpointPort!
+                }
+                if self.sourceEndpointRegion != nil {
+                    map["SourceEndpointRegion"] = self.sourceEndpointRegion!
+                }
+                if self.sourceEndpointUserName != nil {
+                    map["SourceEndpointUserName"] = self.sourceEndpointUserName!
+                }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
+                }
+                if self.storageEncryptMethod != nil {
+                    map["StorageEncryptMethod"] = self.storageEncryptMethod!
                 }
                 if self.storageMethod != nil {
                     map["StorageMethod"] = self.storageMethod!
@@ -4150,6 +4519,9 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BackupGatewayIdentifier"] as? String {
+                    self.backupGatewayIdentifier = value
+                }
                 if let value = dict["BackupObjects"] as? String {
                     self.backupObjects = value
                 }
@@ -4168,6 +4540,12 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
                 }
+                if let value = dict["CrossAliyunId"] as? String {
+                    self.crossAliyunId = value
+                }
+                if let value = dict["CrossRoleName"] as? String {
+                    self.crossRoleName = value
+                }
                 if let value = dict["EndTime"] as? Int64 {
                     self.endTime = value
                 }
@@ -4177,11 +4555,41 @@ public class DescribeFullBackupListResponseBody : Tea.TeaModel {
                 if let value = dict["FinishTime"] as? Int64 {
                     self.finishTime = value
                 }
+                if let value = dict["LogicalFullBackupProgress"] as? Int32 {
+                    self.logicalFullBackupProgress = value
+                }
+                if let value = dict["LogicalStructureBackupProgress"] as? Int32 {
+                    self.logicalStructureBackupProgress = value
+                }
+                if let value = dict["SourceEndpointEnableSsl"] as? String {
+                    self.sourceEndpointEnableSsl = value
+                }
+                if let value = dict["SourceEndpointHost"] as? String {
+                    self.sourceEndpointHost = value
+                }
+                if let value = dict["SourceEndpointInstanceId"] as? String {
+                    self.sourceEndpointInstanceId = value
+                }
+                if let value = dict["SourceEndpointInstanceType"] as? String {
+                    self.sourceEndpointInstanceType = value
+                }
                 if let value = dict["SourceEndpointIpPort"] as? String {
                     self.sourceEndpointIpPort = value
                 }
+                if let value = dict["SourceEndpointPort"] as? String {
+                    self.sourceEndpointPort = value
+                }
+                if let value = dict["SourceEndpointRegion"] as? String {
+                    self.sourceEndpointRegion = value
+                }
+                if let value = dict["SourceEndpointUserName"] as? String {
+                    self.sourceEndpointUserName = value
+                }
                 if let value = dict["StartTime"] as? Int64 {
                     self.startTime = value
+                }
+                if let value = dict["StorageEncryptMethod"] as? String {
+                    self.storageEncryptMethod = value
                 }
                 if let value = dict["StorageMethod"] as? String {
                     self.storageMethod = value
@@ -4488,7 +4896,17 @@ public class DescribeIncrementBackupListResponseBody : Tea.TeaModel {
 
             public var endTime: Int64?
 
+            public var sourceEndpointHost: String?
+
+            public var sourceEndpointInstanceId: String?
+
+            public var sourceEndpointInstanceType: String?
+
             public var sourceEndpointIpPort: String?
+
+            public var sourceEndpointPort: String?
+
+            public var sourceEndpointRegion: String?
 
             public var startTime: Int64?
 
@@ -4526,8 +4944,23 @@ public class DescribeIncrementBackupListResponseBody : Tea.TeaModel {
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
+                if self.sourceEndpointHost != nil {
+                    map["SourceEndpointHost"] = self.sourceEndpointHost!
+                }
+                if self.sourceEndpointInstanceId != nil {
+                    map["SourceEndpointInstanceId"] = self.sourceEndpointInstanceId!
+                }
+                if self.sourceEndpointInstanceType != nil {
+                    map["SourceEndpointInstanceType"] = self.sourceEndpointInstanceType!
+                }
                 if self.sourceEndpointIpPort != nil {
                     map["SourceEndpointIpPort"] = self.sourceEndpointIpPort!
+                }
+                if self.sourceEndpointPort != nil {
+                    map["SourceEndpointPort"] = self.sourceEndpointPort!
+                }
+                if self.sourceEndpointRegion != nil {
+                    map["SourceEndpointRegion"] = self.sourceEndpointRegion!
                 }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
@@ -4558,8 +4991,23 @@ public class DescribeIncrementBackupListResponseBody : Tea.TeaModel {
                 if let value = dict["EndTime"] as? Int64 {
                     self.endTime = value
                 }
+                if let value = dict["SourceEndpointHost"] as? String {
+                    self.sourceEndpointHost = value
+                }
+                if let value = dict["SourceEndpointInstanceId"] as? String {
+                    self.sourceEndpointInstanceId = value
+                }
+                if let value = dict["SourceEndpointInstanceType"] as? String {
+                    self.sourceEndpointInstanceType = value
+                }
                 if let value = dict["SourceEndpointIpPort"] as? String {
                     self.sourceEndpointIpPort = value
+                }
+                if let value = dict["SourceEndpointPort"] as? String {
+                    self.sourceEndpointPort = value
+                }
+                if let value = dict["SourceEndpointRegion"] as? String {
+                    self.sourceEndpointRegion = value
                 }
                 if let value = dict["StartTime"] as? Int64 {
                     self.startTime = value
@@ -5940,6 +6388,14 @@ public class DescribeRestoreRangeInfoResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var backupSourceHost: String?
+
+            public var backupSourceInstanceId: String?
+
+            public var backupSourceInstanceType: String?
+
+            public var backupSourcePort: String?
+
             public var beginTimestampForRestore: Int64?
 
             public var endTimestampForRestore: Int64?
@@ -5967,6 +6423,18 @@ public class DescribeRestoreRangeInfoResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.backupSourceHost != nil {
+                    map["BackupSourceHost"] = self.backupSourceHost!
+                }
+                if self.backupSourceInstanceId != nil {
+                    map["BackupSourceInstanceId"] = self.backupSourceInstanceId!
+                }
+                if self.backupSourceInstanceType != nil {
+                    map["BackupSourceInstanceType"] = self.backupSourceInstanceType!
+                }
+                if self.backupSourcePort != nil {
+                    map["BackupSourcePort"] = self.backupSourcePort!
+                }
                 if self.beginTimestampForRestore != nil {
                     map["BeginTimestampForRestore"] = self.beginTimestampForRestore!
                 }
@@ -5990,6 +6458,18 @@ public class DescribeRestoreRangeInfoResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BackupSourceHost"] as? String {
+                    self.backupSourceHost = value
+                }
+                if let value = dict["BackupSourceInstanceId"] as? String {
+                    self.backupSourceInstanceId = value
+                }
+                if let value = dict["BackupSourceInstanceType"] as? String {
+                    self.backupSourceInstanceType = value
+                }
+                if let value = dict["BackupSourcePort"] as? String {
+                    self.backupSourcePort = value
+                }
                 if let value = dict["BeginTimestampForRestore"] as? Int64 {
                     self.beginTimestampForRestore = value
                 }
@@ -6270,9 +6750,13 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
         public class RestoreTaskDetail : Tea.TeaModel {
             public var backupGatewayId: Int64?
 
+            public var backupGatewayIdentifier: String?
+
             public var backupPlanId: String?
 
             public var backupSetId: String?
+
+            public var backupSourceOssRegion: String?
 
             public var continuousRestoreProgress: Int32?
 
@@ -6282,6 +6766,10 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
 
             public var destinationEndpointDatabaseName: String?
 
+            public var destinationEndpointEnableSsl: String?
+
+            public var destinationEndpointHost: String?
+
             public var destinationEndpointInstanceID: String?
 
             public var destinationEndpointInstanceType: String?
@@ -6289,6 +6777,8 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
             public var destinationEndpointIpPort: String?
 
             public var destinationEndpointOracleSID: String?
+
+            public var destinationEndpointPort: String?
 
             public var destinationEndpointRegion: String?
 
@@ -6301,6 +6791,18 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
             public var fullStruAfterRestoreProgress: Int32?
 
             public var fullStruforeRestoreProgress: Int32?
+
+            public var physicalBackupRecoverProgress: Int32?
+
+            public var physicalDatabaseOnlineProgress: Int32?
+
+            public var physicalFullAndIncrementBackupRecoverProgress: Int32?
+
+            public var physicalFullBackupRecoverProgress: Int32?
+
+            public var physicalIncrementBackupRecoverProgress: Int32?
+
+            public var restoreDestinationMode: String?
 
             public var restoreDir: String?
 
@@ -6335,11 +6837,17 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 if self.backupGatewayId != nil {
                     map["BackupGatewayId"] = self.backupGatewayId!
                 }
+                if self.backupGatewayIdentifier != nil {
+                    map["BackupGatewayIdentifier"] = self.backupGatewayIdentifier!
+                }
                 if self.backupPlanId != nil {
                     map["BackupPlanId"] = self.backupPlanId!
                 }
                 if self.backupSetId != nil {
                     map["BackupSetId"] = self.backupSetId!
+                }
+                if self.backupSourceOssRegion != nil {
+                    map["BackupSourceOssRegion"] = self.backupSourceOssRegion!
                 }
                 if self.continuousRestoreProgress != nil {
                     map["ContinuousRestoreProgress"] = self.continuousRestoreProgress!
@@ -6353,6 +6861,12 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 if self.destinationEndpointDatabaseName != nil {
                     map["DestinationEndpointDatabaseName"] = self.destinationEndpointDatabaseName!
                 }
+                if self.destinationEndpointEnableSsl != nil {
+                    map["DestinationEndpointEnableSsl"] = self.destinationEndpointEnableSsl!
+                }
+                if self.destinationEndpointHost != nil {
+                    map["DestinationEndpointHost"] = self.destinationEndpointHost!
+                }
                 if self.destinationEndpointInstanceID != nil {
                     map["DestinationEndpointInstanceID"] = self.destinationEndpointInstanceID!
                 }
@@ -6364,6 +6878,9 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 }
                 if self.destinationEndpointOracleSID != nil {
                     map["DestinationEndpointOracleSID"] = self.destinationEndpointOracleSID!
+                }
+                if self.destinationEndpointPort != nil {
+                    map["DestinationEndpointPort"] = self.destinationEndpointPort!
                 }
                 if self.destinationEndpointRegion != nil {
                     map["DestinationEndpointRegion"] = self.destinationEndpointRegion!
@@ -6382,6 +6899,24 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 }
                 if self.fullStruforeRestoreProgress != nil {
                     map["FullStruforeRestoreProgress"] = self.fullStruforeRestoreProgress!
+                }
+                if self.physicalBackupRecoverProgress != nil {
+                    map["PhysicalBackupRecoverProgress"] = self.physicalBackupRecoverProgress!
+                }
+                if self.physicalDatabaseOnlineProgress != nil {
+                    map["PhysicalDatabaseOnlineProgress"] = self.physicalDatabaseOnlineProgress!
+                }
+                if self.physicalFullAndIncrementBackupRecoverProgress != nil {
+                    map["PhysicalFullAndIncrementBackupRecoverProgress"] = self.physicalFullAndIncrementBackupRecoverProgress!
+                }
+                if self.physicalFullBackupRecoverProgress != nil {
+                    map["PhysicalFullBackupRecoverProgress"] = self.physicalFullBackupRecoverProgress!
+                }
+                if self.physicalIncrementBackupRecoverProgress != nil {
+                    map["PhysicalIncrementBackupRecoverProgress"] = self.physicalIncrementBackupRecoverProgress!
+                }
+                if self.restoreDestinationMode != nil {
+                    map["RestoreDestinationMode"] = self.restoreDestinationMode!
                 }
                 if self.restoreDir != nil {
                     map["RestoreDir"] = self.restoreDir!
@@ -6415,11 +6950,17 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 if let value = dict["BackupGatewayId"] as? Int64 {
                     self.backupGatewayId = value
                 }
+                if let value = dict["BackupGatewayIdentifier"] as? String {
+                    self.backupGatewayIdentifier = value
+                }
                 if let value = dict["BackupPlanId"] as? String {
                     self.backupPlanId = value
                 }
                 if let value = dict["BackupSetId"] as? String {
                     self.backupSetId = value
+                }
+                if let value = dict["BackupSourceOssRegion"] as? String {
+                    self.backupSourceOssRegion = value
                 }
                 if let value = dict["ContinuousRestoreProgress"] as? Int32 {
                     self.continuousRestoreProgress = value
@@ -6433,6 +6974,12 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 if let value = dict["DestinationEndpointDatabaseName"] as? String {
                     self.destinationEndpointDatabaseName = value
                 }
+                if let value = dict["DestinationEndpointEnableSsl"] as? String {
+                    self.destinationEndpointEnableSsl = value
+                }
+                if let value = dict["DestinationEndpointHost"] as? String {
+                    self.destinationEndpointHost = value
+                }
                 if let value = dict["DestinationEndpointInstanceID"] as? String {
                     self.destinationEndpointInstanceID = value
                 }
@@ -6444,6 +6991,9 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DestinationEndpointOracleSID"] as? String {
                     self.destinationEndpointOracleSID = value
+                }
+                if let value = dict["DestinationEndpointPort"] as? String {
+                    self.destinationEndpointPort = value
                 }
                 if let value = dict["DestinationEndpointRegion"] as? String {
                     self.destinationEndpointRegion = value
@@ -6462,6 +7012,24 @@ public class DescribeRestoreTaskListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["FullStruforeRestoreProgress"] as? Int32 {
                     self.fullStruforeRestoreProgress = value
+                }
+                if let value = dict["PhysicalBackupRecoverProgress"] as? Int32 {
+                    self.physicalBackupRecoverProgress = value
+                }
+                if let value = dict["PhysicalDatabaseOnlineProgress"] as? Int32 {
+                    self.physicalDatabaseOnlineProgress = value
+                }
+                if let value = dict["PhysicalFullAndIncrementBackupRecoverProgress"] as? Int32 {
+                    self.physicalFullAndIncrementBackupRecoverProgress = value
+                }
+                if let value = dict["PhysicalFullBackupRecoverProgress"] as? Int32 {
+                    self.physicalFullBackupRecoverProgress = value
+                }
+                if let value = dict["PhysicalIncrementBackupRecoverProgress"] as? Int32 {
+                    self.physicalIncrementBackupRecoverProgress = value
+                }
+                if let value = dict["RestoreDestinationMode"] as? String {
+                    self.restoreDestinationMode = value
                 }
                 if let value = dict["RestoreDir"] as? String {
                     self.restoreDir = value
@@ -6692,6 +7260,8 @@ public class DisableBackupLogRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var disableMysqlPhysicalBackupBinlogOnly: String?
+
     public var ownerId: String?
 
     public override init() {
@@ -6714,6 +7284,9 @@ public class DisableBackupLogRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.disableMysqlPhysicalBackupBinlogOnly != nil {
+            map["DisableMysqlPhysicalBackupBinlogOnly"] = self.disableMysqlPhysicalBackupBinlogOnly!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -6727,6 +7300,9 @@ public class DisableBackupLogRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DisableMysqlPhysicalBackupBinlogOnly"] as? String {
+            self.disableMysqlPhysicalBackupBinlogOnly = value
         }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
@@ -6868,6 +7444,8 @@ public class EnableBackupLogRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var enableMysqlPhysicalBackupBinlog: String?
+
     public var ownerId: String?
 
     public override init() {
@@ -6890,6 +7468,9 @@ public class EnableBackupLogRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.enableMysqlPhysicalBackupBinlog != nil {
+            map["EnableMysqlPhysicalBackupBinlog"] = self.enableMysqlPhysicalBackupBinlog!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -6903,6 +7484,9 @@ public class EnableBackupLogRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["EnableMysqlPhysicalBackupBinlog"] as? String {
+            self.enableMysqlPhysicalBackupBinlog = value
         }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
@@ -7966,6 +8550,8 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
 
     public var crossRoleName: String?
 
+    public var enableSourceEndpointSsl: String?
+
     public var ownerId: String?
 
     public var sourceEndpointDatabaseName: String?
@@ -7976,6 +8562,8 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
 
     public var sourceEndpointInstanceType: String?
 
+    public var sourceEndpointOracleHome: String?
+
     public var sourceEndpointOracleSID: String?
 
     public var sourceEndpointPassword: String?
@@ -7985,6 +8573,8 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
     public var sourceEndpointRegion: String?
 
     public var sourceEndpointUserName: String?
+
+    public var sslCaPem: String?
 
     public override init() {
         super.init()
@@ -8018,6 +8608,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         if self.crossRoleName != nil {
             map["CrossRoleName"] = self.crossRoleName!
         }
+        if self.enableSourceEndpointSsl != nil {
+            map["EnableSourceEndpointSsl"] = self.enableSourceEndpointSsl!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -8033,6 +8626,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         if self.sourceEndpointInstanceType != nil {
             map["SourceEndpointInstanceType"] = self.sourceEndpointInstanceType!
         }
+        if self.sourceEndpointOracleHome != nil {
+            map["SourceEndpointOracleHome"] = self.sourceEndpointOracleHome!
+        }
         if self.sourceEndpointOracleSID != nil {
             map["SourceEndpointOracleSID"] = self.sourceEndpointOracleSID!
         }
@@ -8047,6 +8643,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         }
         if self.sourceEndpointUserName != nil {
             map["SourceEndpointUserName"] = self.sourceEndpointUserName!
+        }
+        if self.sslCaPem != nil {
+            map["SslCaPem"] = self.sslCaPem!
         }
         return map
     }
@@ -8071,6 +8670,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         if let value = dict["CrossRoleName"] as? String {
             self.crossRoleName = value
         }
+        if let value = dict["EnableSourceEndpointSsl"] as? String {
+            self.enableSourceEndpointSsl = value
+        }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
         }
@@ -8086,6 +8688,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         if let value = dict["SourceEndpointInstanceType"] as? String {
             self.sourceEndpointInstanceType = value
         }
+        if let value = dict["SourceEndpointOracleHome"] as? String {
+            self.sourceEndpointOracleHome = value
+        }
         if let value = dict["SourceEndpointOracleSID"] as? String {
             self.sourceEndpointOracleSID = value
         }
@@ -8100,6 +8705,9 @@ public class ModifyBackupSourceEndpointRequest : Tea.TeaModel {
         }
         if let value = dict["SourceEndpointUserName"] as? String {
             self.sourceEndpointUserName = value
+        }
+        if let value = dict["SslCaPem"] as? String {
+            self.sslCaPem = value
         }
     }
 }
@@ -8446,11 +9054,25 @@ public class ModifyStorageStrategyRequest : Tea.TeaModel {
 
     public var backupRetentionPeriod: Int32?
 
+    public var backupStorageEncryptMethod: String?
+
     public var clientToken: String?
 
     public var duplicationArchivePeriod: Int32?
 
     public var duplicationInfrequentAccessPeriod: Int32?
+
+    public var incrementBackupRetentionPeriod: String?
+
+    public var incrementDuplicationArchivePeriod: String?
+
+    public var incrementDuplicationInfrequentAccessPeriod: String?
+
+    public var logBackupRetentionPeriod: String?
+
+    public var logDuplicationArchivePeriod: String?
+
+    public var logDuplicationInfrequentAccessPeriod: String?
 
     public var ownerId: String?
 
@@ -8474,6 +9096,9 @@ public class ModifyStorageStrategyRequest : Tea.TeaModel {
         if self.backupRetentionPeriod != nil {
             map["BackupRetentionPeriod"] = self.backupRetentionPeriod!
         }
+        if self.backupStorageEncryptMethod != nil {
+            map["BackupStorageEncryptMethod"] = self.backupStorageEncryptMethod!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -8482,6 +9107,24 @@ public class ModifyStorageStrategyRequest : Tea.TeaModel {
         }
         if self.duplicationInfrequentAccessPeriod != nil {
             map["DuplicationInfrequentAccessPeriod"] = self.duplicationInfrequentAccessPeriod!
+        }
+        if self.incrementBackupRetentionPeriod != nil {
+            map["IncrementBackupRetentionPeriod"] = self.incrementBackupRetentionPeriod!
+        }
+        if self.incrementDuplicationArchivePeriod != nil {
+            map["IncrementDuplicationArchivePeriod"] = self.incrementDuplicationArchivePeriod!
+        }
+        if self.incrementDuplicationInfrequentAccessPeriod != nil {
+            map["IncrementDuplicationInfrequentAccessPeriod"] = self.incrementDuplicationInfrequentAccessPeriod!
+        }
+        if self.logBackupRetentionPeriod != nil {
+            map["LogBackupRetentionPeriod"] = self.logBackupRetentionPeriod!
+        }
+        if self.logDuplicationArchivePeriod != nil {
+            map["LogDuplicationArchivePeriod"] = self.logDuplicationArchivePeriod!
+        }
+        if self.logDuplicationInfrequentAccessPeriod != nil {
+            map["LogDuplicationInfrequentAccessPeriod"] = self.logDuplicationInfrequentAccessPeriod!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -8497,6 +9140,9 @@ public class ModifyStorageStrategyRequest : Tea.TeaModel {
         if let value = dict["BackupRetentionPeriod"] as? Int32 {
             self.backupRetentionPeriod = value
         }
+        if let value = dict["BackupStorageEncryptMethod"] as? String {
+            self.backupStorageEncryptMethod = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -8505,6 +9151,24 @@ public class ModifyStorageStrategyRequest : Tea.TeaModel {
         }
         if let value = dict["DuplicationInfrequentAccessPeriod"] as? Int32 {
             self.duplicationInfrequentAccessPeriod = value
+        }
+        if let value = dict["IncrementBackupRetentionPeriod"] as? String {
+            self.incrementBackupRetentionPeriod = value
+        }
+        if let value = dict["IncrementDuplicationArchivePeriod"] as? String {
+            self.incrementDuplicationArchivePeriod = value
+        }
+        if let value = dict["IncrementDuplicationInfrequentAccessPeriod"] as? String {
+            self.incrementDuplicationInfrequentAccessPeriod = value
+        }
+        if let value = dict["LogBackupRetentionPeriod"] as? String {
+            self.logBackupRetentionPeriod = value
+        }
+        if let value = dict["LogDuplicationArchivePeriod"] as? String {
+            self.logDuplicationArchivePeriod = value
+        }
+        if let value = dict["LogDuplicationInfrequentAccessPeriod"] as? String {
+            self.logDuplicationInfrequentAccessPeriod = value
         }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
