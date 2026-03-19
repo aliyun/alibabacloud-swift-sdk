@@ -1603,6 +1603,8 @@ public class CreatePropertyResponse : Tea.TeaModel {
 public class CreateResourceGroupRequest : Tea.TeaModel {
     public var businessChannel: String?
 
+    public var enableAliyunResourceGroup: Bool?
+
     public var isResourceGroupWithOfficeSite: Int64?
 
     public var platform: String?
@@ -1626,6 +1628,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         if self.businessChannel != nil {
             map["BusinessChannel"] = self.businessChannel!
         }
+        if self.enableAliyunResourceGroup != nil {
+            map["EnableAliyunResourceGroup"] = self.enableAliyunResourceGroup!
+        }
         if self.isResourceGroupWithOfficeSite != nil {
             map["IsResourceGroupWithOfficeSite"] = self.isResourceGroupWithOfficeSite!
         }
@@ -1642,6 +1647,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BusinessChannel"] as? String {
             self.businessChannel = value
+        }
+        if let value = dict["EnableAliyunResourceGroup"] as? Bool {
+            self.enableAliyunResourceGroup = value
         }
         if let value = dict["IsResourceGroupWithOfficeSite"] as? Int64 {
             self.isResourceGroupWithOfficeSite = value

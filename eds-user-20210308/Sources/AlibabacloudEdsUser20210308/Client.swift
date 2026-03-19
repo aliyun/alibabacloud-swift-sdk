@@ -295,6 +295,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.businessChannel)) {
             query["BusinessChannel"] = request.businessChannel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableAliyunResourceGroup)) {
+            query["EnableAliyunResourceGroup"] = request.enableAliyunResourceGroup!;
+        }
         if (!TeaUtils.Client.isUnset(request.isResourceGroupWithOfficeSite)) {
             query["IsResourceGroupWithOfficeSite"] = request.isResourceGroupWithOfficeSite!;
         }
