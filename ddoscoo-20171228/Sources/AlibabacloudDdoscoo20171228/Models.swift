@@ -9988,6 +9988,8 @@ public class DescribeSlsOpenStatusResponse : Tea.TeaModel {
 public class DescribleCertListRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var domainList: String?
+
     public var resourceGroupId: String?
 
     public var sourceIp: String?
@@ -10009,6 +10011,9 @@ public class DescribleCertListRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.domainList != nil {
+            map["DomainList"] = self.domainList!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -10022,6 +10027,9 @@ public class DescribleCertListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DomainList"] as? String {
+            self.domainList = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
