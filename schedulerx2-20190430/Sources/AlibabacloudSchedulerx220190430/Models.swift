@@ -9722,6 +9722,10 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var namespaceSource: String?
 
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
     public var regionId: String?
 
     public var status: String?
@@ -9752,6 +9756,12 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.namespaceSource != nil {
             map["NamespaceSource"] = self.namespaceSource!
         }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -9774,6 +9784,12 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if let value = dict["NamespaceSource"] as? String {
             self.namespaceSource = value
+        }
+        if let value = dict["PageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -10258,6 +10274,12 @@ public class ListJobsResponseBody : Tea.TeaModel {
         }
         public var jobs: [ListJobsResponseBody.Data.Jobs]?
 
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var total: Int32?
+
         public override init() {
             super.init()
         }
@@ -10279,6 +10301,15 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 map["Jobs"] = tmp
             }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
             return map
         }
 
@@ -10296,6 +10327,15 @@ public class ListJobsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.jobs = tmp
+            }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["Total"] as? Int32 {
+                self.total = value
             }
         }
     }
