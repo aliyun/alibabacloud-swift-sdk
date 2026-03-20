@@ -593,6 +593,8 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public var interruptWords: [String]?
 
+        public var keepInterruptWordsForLLM: Bool?
+
         public var noInterruptMode: String?
 
         public override init() {
@@ -615,6 +617,9 @@ public class AIAgentConfig : Tea.TeaModel {
             if self.interruptWords != nil {
                 map["InterruptWords"] = self.interruptWords!
             }
+            if self.keepInterruptWordsForLLM != nil {
+                map["KeepInterruptWordsForLLM"] = self.keepInterruptWordsForLLM!
+            }
             if self.noInterruptMode != nil {
                 map["NoInterruptMode"] = self.noInterruptMode!
             }
@@ -628,6 +633,9 @@ public class AIAgentConfig : Tea.TeaModel {
             }
             if let value = dict["InterruptWords"] as? [String] {
                 self.interruptWords = value
+            }
+            if let value = dict["KeepInterruptWordsForLLM"] as? Bool {
+                self.keepInterruptWordsForLLM = value
             }
             if let value = dict["NoInterruptMode"] as? String {
                 self.noInterruptMode = value
@@ -2191,6 +2199,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
         public var interruptWords: [String]?
 
+        public var keepInterruptWordsForLLM: Bool?
+
         public var noInterruptMode: String?
 
         public override init() {
@@ -2216,6 +2226,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             if self.interruptWords != nil {
                 map["InterruptWords"] = self.interruptWords!
             }
+            if self.keepInterruptWordsForLLM != nil {
+                map["KeepInterruptWordsForLLM"] = self.keepInterruptWordsForLLM!
+            }
             if self.noInterruptMode != nil {
                 map["NoInterruptMode"] = self.noInterruptMode!
             }
@@ -2232,6 +2245,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             }
             if let value = dict["InterruptWords"] as? [String] {
                 self.interruptWords = value
+            }
+            if let value = dict["KeepInterruptWordsForLLM"] as? Bool {
+                self.keepInterruptWordsForLLM = value
             }
             if let value = dict["NoInterruptMode"] as? String {
                 self.noInterruptMode = value
