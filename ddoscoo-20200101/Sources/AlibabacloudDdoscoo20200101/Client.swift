@@ -2513,6 +2513,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
+        if (!TeaUtils.Client.isUnset(request.queryType)) {
+            query["QueryType"] = request.queryType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
         }
@@ -2839,6 +2842,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
+        if (!TeaUtils.Client.isUnset(request.queryType)) {
+            query["QueryType"] = request.queryType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }
@@ -2881,6 +2887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryType)) {
+            query["QueryType"] = request.queryType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
@@ -2925,6 +2934,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
+        if (!TeaUtils.Client.isUnset(request.queryType)) {
+            query["QueryType"] = request.queryType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }
@@ -2967,6 +2979,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryType)) {
+            query["QueryType"] = request.queryType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";

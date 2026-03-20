@@ -10668,6 +10668,8 @@ public class DescribeDomainH2FingerprintRequest : Tea.TeaModel {
 
     public var limit: Int64?
 
+    public var queryType: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -10693,6 +10695,9 @@ public class DescribeDomainH2FingerprintRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -10709,6 +10714,9 @@ public class DescribeDomainH2FingerprintRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
@@ -12682,6 +12690,8 @@ public class DescribeDomainTopFingerprintRequest : Tea.TeaModel {
 
     public var limit: Int64?
 
+    public var queryType: String?
+
     public var region: String?
 
     public var startTime: Int64?
@@ -12712,6 +12722,9 @@ public class DescribeDomainTopFingerprintRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -12734,6 +12747,9 @@ public class DescribeDomainTopFingerprintRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
         }
         if let value = dict["Region"] as? String {
             self.region = value
@@ -12900,6 +12916,8 @@ public class DescribeDomainTopHttpMethodRequest : Tea.TeaModel {
 
     public var limit: Int64?
 
+    public var queryType: String?
+
     public var region: String?
 
     public var startTime: Int64?
@@ -12927,6 +12945,9 @@ public class DescribeDomainTopHttpMethodRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -12946,6 +12967,9 @@ public class DescribeDomainTopHttpMethodRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
         }
         if let value = dict["Region"] as? String {
             self.region = value
@@ -13112,6 +13136,8 @@ public class DescribeDomainTopRefererRequest : Tea.TeaModel {
 
     public var limit: Int64?
 
+    public var queryType: String?
+
     public var region: String?
 
     public var startTime: Int64?
@@ -13139,6 +13165,9 @@ public class DescribeDomainTopRefererRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -13158,6 +13187,9 @@ public class DescribeDomainTopRefererRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
         }
         if let value = dict["Region"] as? String {
             self.region = value
@@ -13324,6 +13356,8 @@ public class DescribeDomainTopUserAgentRequest : Tea.TeaModel {
 
     public var limit: Int64?
 
+    public var queryType: String?
+
     public var region: String?
 
     public var startTime: Int64?
@@ -13351,6 +13385,9 @@ public class DescribeDomainTopUserAgentRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -13370,6 +13407,9 @@ public class DescribeDomainTopUserAgentRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? Int64 {
             self.limit = value
+        }
+        if let value = dict["QueryType"] as? String {
+            self.queryType = value
         }
         if let value = dict["Region"] as? String {
             self.region = value
@@ -14680,6 +14720,8 @@ public class DescribeElasticQpsResponseBody : Tea.TeaModel {
 
         public var status4: Int64?
 
+        public var status410Pv: Int64?
+
         public var status5: Int64?
 
         public var ups: Int64?
@@ -14719,6 +14761,9 @@ public class DescribeElasticQpsResponseBody : Tea.TeaModel {
             if self.status4 != nil {
                 map["Status4"] = self.status4!
             }
+            if self.status410Pv != nil {
+                map["Status410Pv"] = self.status410Pv!
+            }
             if self.status5 != nil {
                 map["Status5"] = self.status5!
             }
@@ -14750,6 +14795,9 @@ public class DescribeElasticQpsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status4"] as? Int64 {
                 self.status4 = value
+            }
+            if let value = dict["Status410Pv"] as? Int64 {
+                self.status410Pv = value
             }
             if let value = dict["Status5"] as? Int64 {
                 self.status5 = value
