@@ -2846,6 +2846,8 @@ public class Node : Tea.TeaModel {
 
     public var gmtCreateTime: String?
 
+    public var gmtCreatedTime: String?
+
     public var gmtExpiredTime: String?
 
     public var gmtModifiedTime: String?
@@ -2962,6 +2964,9 @@ public class Node : Tea.TeaModel {
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtCreatedTime != nil {
+            map["GmtCreatedTime"] = self.gmtCreatedTime!
         }
         if self.gmtExpiredTime != nil {
             map["GmtExpiredTime"] = self.gmtExpiredTime!
@@ -3107,6 +3112,9 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
+        }
+        if let value = dict["GmtCreatedTime"] as? String {
+            self.gmtCreatedTime = value
         }
         if let value = dict["GmtExpiredTime"] as? String {
             self.gmtExpiredTime = value
