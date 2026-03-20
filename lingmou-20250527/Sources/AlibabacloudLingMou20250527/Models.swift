@@ -1244,6 +1244,8 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
     public class VideoOptions : Tea.TeaModel {
         public var fps: Int32?
 
+        public var languageHints: [String]?
+
         public var resolution: String?
 
         public var watermark: Bool?
@@ -1265,6 +1267,9 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
             if self.fps != nil {
                 map["fps"] = self.fps!
             }
+            if self.languageHints != nil {
+                map["languageHints"] = self.languageHints!
+            }
             if self.resolution != nil {
                 map["resolution"] = self.resolution!
             }
@@ -1278,6 +1283,9 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["fps"] as? Int32 {
                 self.fps = value
+            }
+            if let value = dict["languageHints"] as? [String] {
+                self.languageHints = value
             }
             if let value = dict["resolution"] as? String {
                 self.resolution = value
