@@ -757,6 +757,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
         public var healthCheckEnabled: Bool?
 
+        public var healthCheckExp: String?
+
         public var healthCheckHttpCode: [String]?
 
         public var healthCheckInterval: Int32?
@@ -764,6 +766,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         public var healthCheckPath: String?
 
         public var healthCheckProtocol: String?
+
+        public var healthCheckReq: String?
 
         public var healthyThreshold: Int32?
 
@@ -795,6 +799,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             if self.healthCheckEnabled != nil {
                 map["HealthCheckEnabled"] = self.healthCheckEnabled!
             }
+            if self.healthCheckExp != nil {
+                map["HealthCheckExp"] = self.healthCheckExp!
+            }
             if self.healthCheckHttpCode != nil {
                 map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
             }
@@ -806,6 +813,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             }
             if self.healthCheckProtocol != nil {
                 map["HealthCheckProtocol"] = self.healthCheckProtocol!
+            }
+            if self.healthCheckReq != nil {
+                map["HealthCheckReq"] = self.healthCheckReq!
             }
             if self.healthyThreshold != nil {
                 map["HealthyThreshold"] = self.healthyThreshold!
@@ -830,6 +840,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             if let value = dict["HealthCheckEnabled"] as? Bool {
                 self.healthCheckEnabled = value
             }
+            if let value = dict["HealthCheckExp"] as? String {
+                self.healthCheckExp = value
+            }
             if let value = dict["HealthCheckHttpCode"] as? [String] {
                 self.healthCheckHttpCode = value
             }
@@ -841,6 +854,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             }
             if let value = dict["HealthCheckProtocol"] as? String {
                 self.healthCheckProtocol = value
+            }
+            if let value = dict["HealthCheckReq"] as? String {
+                self.healthCheckReq = value
             }
             if let value = dict["HealthyThreshold"] as? Int32 {
                 self.healthyThreshold = value
@@ -4308,6 +4324,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
             public var healthCheckEnabled: Bool?
 
+            public var healthCheckExp: String?
+
             public var healthCheckHttpCode: [String]?
 
             public var healthCheckInterval: Int32?
@@ -4315,6 +4333,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             public var healthCheckPath: String?
 
             public var healthCheckProtocol: String?
+
+            public var healthCheckReq: String?
 
             public var healthyThreshold: Int32?
 
@@ -4346,6 +4366,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 if self.healthCheckEnabled != nil {
                     map["HealthCheckEnabled"] = self.healthCheckEnabled!
                 }
+                if self.healthCheckExp != nil {
+                    map["HealthCheckExp"] = self.healthCheckExp!
+                }
                 if self.healthCheckHttpCode != nil {
                     map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
                 }
@@ -4357,6 +4380,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 }
                 if self.healthCheckProtocol != nil {
                     map["HealthCheckProtocol"] = self.healthCheckProtocol!
+                }
+                if self.healthCheckReq != nil {
+                    map["HealthCheckReq"] = self.healthCheckReq!
                 }
                 if self.healthyThreshold != nil {
                     map["HealthyThreshold"] = self.healthyThreshold!
@@ -4381,6 +4407,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 if let value = dict["HealthCheckEnabled"] as? Bool {
                     self.healthCheckEnabled = value
                 }
+                if let value = dict["HealthCheckExp"] as? String {
+                    self.healthCheckExp = value
+                }
                 if let value = dict["HealthCheckHttpCode"] as? [String] {
                     self.healthCheckHttpCode = value
                 }
@@ -4392,6 +4421,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["HealthCheckProtocol"] as? String {
                     self.healthCheckProtocol = value
+                }
+                if let value = dict["HealthCheckReq"] as? String {
+                    self.healthCheckReq = value
                 }
                 if let value = dict["HealthyThreshold"] as? Int32 {
                     self.healthyThreshold = value
@@ -6234,6 +6266,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
         public var healthCheckEnabled: Bool?
 
+        public var healthCheckExp: String?
+
         public var healthCheckHttpCode: [String]?
 
         public var healthCheckInterval: Int32?
@@ -6241,6 +6275,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         public var healthCheckPath: String?
 
         public var healthCheckProtocol: String?
+
+        public var healthCheckReq: String?
 
         public var healthyThreshold: Int32?
 
@@ -6272,6 +6308,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             if self.healthCheckEnabled != nil {
                 map["HealthCheckEnabled"] = self.healthCheckEnabled!
             }
+            if self.healthCheckExp != nil {
+                map["HealthCheckExp"] = self.healthCheckExp!
+            }
             if self.healthCheckHttpCode != nil {
                 map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
             }
@@ -6283,6 +6322,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             }
             if self.healthCheckProtocol != nil {
                 map["HealthCheckProtocol"] = self.healthCheckProtocol!
+            }
+            if self.healthCheckReq != nil {
+                map["HealthCheckReq"] = self.healthCheckReq!
             }
             if self.healthyThreshold != nil {
                 map["HealthyThreshold"] = self.healthyThreshold!
@@ -6307,6 +6349,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             if let value = dict["HealthCheckEnabled"] as? Bool {
                 self.healthCheckEnabled = value
             }
+            if let value = dict["HealthCheckExp"] as? String {
+                self.healthCheckExp = value
+            }
             if let value = dict["HealthCheckHttpCode"] as? [String] {
                 self.healthCheckHttpCode = value
             }
@@ -6318,6 +6363,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             }
             if let value = dict["HealthCheckProtocol"] as? String {
                 self.healthCheckProtocol = value
+            }
+            if let value = dict["HealthCheckReq"] as? String {
+                self.healthCheckReq = value
             }
             if let value = dict["HealthyThreshold"] as? Int32 {
                 self.healthyThreshold = value
