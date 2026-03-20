@@ -4869,6 +4869,158 @@ public class CreateServiceCronScalerResponse : Tea.TeaModel {
     }
 }
 
+public class CreateServiceInstanceTokenRequest : Tea.TeaModel {
+    public var actionType: String?
+
+    public var workerName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionType != nil {
+            map["ActionType"] = self.actionType!
+        }
+        if self.workerName != nil {
+            map["WorkerName"] = self.workerName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ActionType"] as? String {
+            self.actionType = value
+        }
+        if let value = dict["WorkerName"] as? String {
+            self.workerName = value
+        }
+    }
+}
+
+public class CreateServiceInstanceTokenResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var streamlogUrl: String?
+
+    public var token: String?
+
+    public var url: String?
+
+    public var workbenchUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.streamlogUrl != nil {
+            map["StreamlogUrl"] = self.streamlogUrl!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.workbenchUrl != nil {
+            map["WorkbenchUrl"] = self.workbenchUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StreamlogUrl"] as? String {
+            self.streamlogUrl = value
+        }
+        if let value = dict["Token"] as? String {
+            self.token = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+        if let value = dict["WorkbenchUrl"] as? String {
+            self.workbenchUrl = value
+        }
+    }
+}
+
+public class CreateServiceInstanceTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateServiceInstanceTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateServiceInstanceTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateServiceMirrorRequest : Tea.TeaModel {
     public var ratio: Int32?
 

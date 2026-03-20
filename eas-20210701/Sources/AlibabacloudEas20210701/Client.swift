@@ -722,6 +722,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceInstanceTokenWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: CreateServiceInstanceTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceInstanceTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionType)) {
+            query["ActionType"] = request.actionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workerName)) {
+            query["WorkerName"] = request.workerName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateServiceInstanceToken",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceName)) + "/token",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateServiceInstanceTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceInstanceToken(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: CreateServiceInstanceTokenRequest) async throws -> CreateServiceInstanceTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createServiceInstanceTokenWithOptions(ClusterId as! String, ServiceName as! String, InstanceName as! String, request as! CreateServiceInstanceTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createServiceMirrorWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceMirrorRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceMirrorResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
