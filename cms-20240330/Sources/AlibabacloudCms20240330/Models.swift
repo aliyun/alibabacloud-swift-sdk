@@ -10639,6 +10639,8 @@ public class AddMemoriesRequest : Tea.TeaModel {
 
     public var runId: String?
 
+    public var timestamp: Int64?
+
     public var userId: String?
 
     public override init() {
@@ -10683,6 +10685,9 @@ public class AddMemoriesRequest : Tea.TeaModel {
         if self.runId != nil {
             map["runId"] = self.runId!
         }
+        if self.timestamp != nil {
+            map["timestamp"] = self.timestamp!
+        }
         if self.userId != nil {
             map["userId"] = self.userId!
         }
@@ -10724,6 +10729,9 @@ public class AddMemoriesRequest : Tea.TeaModel {
         }
         if let value = dict["runId"] as? String {
             self.runId = value
+        }
+        if let value = dict["timestamp"] as? Int64 {
+            self.timestamp = value
         }
         if let value = dict["userId"] as? String {
             self.userId = value
@@ -22025,6 +22033,8 @@ public class GetMemoriesResponseBody : Tea.TeaModel {
 
         public var agentId: String?
 
+        public var appId: String?
+
         public var createdAt: String?
 
         public var hash: String?
@@ -22064,6 +22074,9 @@ public class GetMemoriesResponseBody : Tea.TeaModel {
             }
             if self.agentId != nil {
                 map["agentId"] = self.agentId!
+            }
+            if self.appId != nil {
+                map["appId"] = self.appId!
             }
             if self.createdAt != nil {
                 map["createdAt"] = self.createdAt!
@@ -22105,6 +22118,9 @@ public class GetMemoriesResponseBody : Tea.TeaModel {
             }
             if let value = dict["agentId"] as? String {
                 self.agentId = value
+            }
+            if let value = dict["appId"] as? String {
+                self.appId = value
             }
             if let value = dict["createdAt"] as? String {
                 self.createdAt = value
@@ -22263,6 +22279,10 @@ public class GetMemoriesResponse : Tea.TeaModel {
 }
 
 public class GetMemoryResponseBody : Tea.TeaModel {
+    public var agentId: String?
+
+    public var appId: String?
+
     public var createdAt: String?
 
     public var expirationDate: String?
@@ -22281,7 +22301,11 @@ public class GetMemoryResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var runId: String?
+
     public var updatedAt: String?
+
+    public var userId: String?
 
     public override init() {
         super.init()
@@ -22297,6 +22321,12 @@ public class GetMemoryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["agentId"] = self.agentId!
+        }
+        if self.appId != nil {
+            map["appId"] = self.appId!
+        }
         if self.createdAt != nil {
             map["createdAt"] = self.createdAt!
         }
@@ -22324,14 +22354,26 @@ public class GetMemoryResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.runId != nil {
+            map["runId"] = self.runId!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["appId"] as? String {
+            self.appId = value
+        }
         if let value = dict["createdAt"] as? String {
             self.createdAt = value
         }
@@ -22359,8 +22401,14 @@ public class GetMemoryResponseBody : Tea.TeaModel {
         if let value = dict["requestId"] as? String {
             self.requestId = value
         }
+        if let value = dict["runId"] as? String {
+            self.runId = value
+        }
         if let value = dict["updatedAt"] as? String {
             self.updatedAt = value
+        }
+        if let value = dict["userId"] as? String {
+            self.userId = value
         }
     }
 }

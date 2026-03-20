@@ -51,6 +51,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.runId)) {
             body["runId"] = request.runId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.timestamp)) {
+            body["timestamp"] = request.timestamp!;
+        }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             body["userId"] = request.userId ?? "";
         }
