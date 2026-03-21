@@ -1811,6 +1811,8 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
 
         public var usedTime: Int64?
 
+        public var usedTimeDecimal: String?
+
         public var usedTimeWithScale: Int64?
 
         public override init() {
@@ -1878,6 +1880,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if self.usedTime != nil {
                 map["UsedTime"] = self.usedTime!
             }
+            if self.usedTimeDecimal != nil {
+                map["UsedTimeDecimal"] = self.usedTimeDecimal!
+            }
             if self.usedTimeWithScale != nil {
                 map["UsedTimeWithScale"] = self.usedTimeWithScale!
             }
@@ -1937,6 +1942,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if let value = dict["UsedTime"] as? Int64 {
                 self.usedTime = value
             }
+            if let value = dict["UsedTimeDecimal"] as? String {
+                self.usedTimeDecimal = value
+            }
             if let value = dict["UsedTimeWithScale"] as? Int64 {
                 self.usedTimeWithScale = value
             }
@@ -1955,6 +1963,8 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
     public var totalUsedCoreTime: Double?
 
     public var totalUsedTime: Int64?
+
+    public var totalUsedTimeDecimal: String?
 
     public override init() {
         super.init()
@@ -1995,6 +2005,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
         if self.totalUsedTime != nil {
             map["TotalUsedTime"] = self.totalUsedTime!
         }
+        if self.totalUsedTimeDecimal != nil {
+            map["TotalUsedTimeDecimal"] = self.totalUsedTimeDecimal!
+        }
         return map
     }
 
@@ -2030,6 +2043,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
         }
         if let value = dict["TotalUsedTime"] as? Int64 {
             self.totalUsedTime = value
+        }
+        if let value = dict["TotalUsedTimeDecimal"] as? String {
+            self.totalUsedTimeDecimal = value
         }
     }
 }
