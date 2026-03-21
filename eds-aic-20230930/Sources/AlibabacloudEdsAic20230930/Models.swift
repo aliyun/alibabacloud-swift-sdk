@@ -19974,7 +19974,99 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
 }
 
 public class RebootAndroidInstancesInGroupResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class ChildTasks : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var taskId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+            }
+        }
+        public var childTasks: [RebootAndroidInstancesInGroupResponseBody.Tasks.ChildTasks]?
+
+        public var parentTaskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.childTasks != nil {
+                var tmp : [Any] = []
+                for k in self.childTasks! {
+                    tmp.append(k.toMap())
+                }
+                map["ChildTasks"] = tmp
+            }
+            if self.parentTaskId != nil {
+                map["ParentTaskId"] = self.parentTaskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChildTasks"] as? [Any?] {
+                var tmp : [RebootAndroidInstancesInGroupResponseBody.Tasks.ChildTasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = RebootAndroidInstancesInGroupResponseBody.Tasks.ChildTasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.childTasks = tmp
+            }
+            if let value = dict["ParentTaskId"] as? String {
+                self.parentTaskId = value
+            }
+        }
+    }
     public var requestId: String?
+
+    public var tasks: RebootAndroidInstancesInGroupResponseBody.Tasks?
 
     public override init() {
         super.init()
@@ -19986,12 +20078,16 @@ public class RebootAndroidInstancesInGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tasks?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            map["Tasks"] = self.tasks?.toMap()
         }
         return map
     }
@@ -20000,6 +20096,11 @@ public class RebootAndroidInstancesInGroupResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [String: Any?] {
+            var model = RebootAndroidInstancesInGroupResponseBody.Tasks()
+            model.fromMap(value)
+            self.tasks = model
         }
     }
 }
@@ -21090,7 +21191,99 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
 }
 
 public class ResetAndroidInstancesInGroupResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class ChildTasks : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var taskId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+            }
+        }
+        public var childTasks: [ResetAndroidInstancesInGroupResponseBody.Tasks.ChildTasks]?
+
+        public var parentTaskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.childTasks != nil {
+                var tmp : [Any] = []
+                for k in self.childTasks! {
+                    tmp.append(k.toMap())
+                }
+                map["ChildTasks"] = tmp
+            }
+            if self.parentTaskId != nil {
+                map["ParentTaskId"] = self.parentTaskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChildTasks"] as? [Any?] {
+                var tmp : [ResetAndroidInstancesInGroupResponseBody.Tasks.ChildTasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = ResetAndroidInstancesInGroupResponseBody.Tasks.ChildTasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.childTasks = tmp
+            }
+            if let value = dict["ParentTaskId"] as? String {
+                self.parentTaskId = value
+            }
+        }
+    }
     public var requestId: String?
+
+    public var tasks: ResetAndroidInstancesInGroupResponseBody.Tasks?
 
     public override init() {
         super.init()
@@ -21102,12 +21295,16 @@ public class ResetAndroidInstancesInGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tasks?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            map["Tasks"] = self.tasks?.toMap()
         }
         return map
     }
@@ -21116,6 +21313,11 @@ public class ResetAndroidInstancesInGroupResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [String: Any?] {
+            var model = ResetAndroidInstancesInGroupResponseBody.Tasks()
+            model.fromMap(value)
+            self.tasks = model
         }
     }
 }
@@ -23375,9 +23577,101 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
 }
 
 public class UpdateInstanceImageResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public class ChildTasks : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var taskId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+            }
+        }
+        public var childTasks: [UpdateInstanceImageResponseBody.Tasks.ChildTasks]?
+
+        public var parentTaskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.childTasks != nil {
+                var tmp : [Any] = []
+                for k in self.childTasks! {
+                    tmp.append(k.toMap())
+                }
+                map["ChildTasks"] = tmp
+            }
+            if self.parentTaskId != nil {
+                map["ParentTaskId"] = self.parentTaskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChildTasks"] as? [Any?] {
+                var tmp : [UpdateInstanceImageResponseBody.Tasks.ChildTasks] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateInstanceImageResponseBody.Tasks.ChildTasks()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.childTasks = tmp
+            }
+            if let value = dict["ParentTaskId"] as? String {
+                self.parentTaskId = value
+            }
+        }
+    }
     public var requestId: String?
 
     public var taskId: String?
+
+    public var tasks: UpdateInstanceImageResponseBody.Tasks?
 
     public override init() {
         super.init()
@@ -23389,6 +23683,7 @@ public class UpdateInstanceImageResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tasks?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -23398,6 +23693,9 @@ public class UpdateInstanceImageResponseBody : Tea.TeaModel {
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
+        }
+        if self.tasks != nil {
+            map["Tasks"] = self.tasks?.toMap()
         }
         return map
     }
@@ -23409,6 +23707,11 @@ public class UpdateInstanceImageResponseBody : Tea.TeaModel {
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+        if let value = dict["Tasks"] as? [String: Any?] {
+            var model = UpdateInstanceImageResponseBody.Tasks()
+            model.fromMap(value)
+            self.tasks = model
         }
     }
 }
