@@ -19762,6 +19762,10 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var expired: Bool?
 
+    public var isLatestVersion: Bool?
+
+    public var latestVersion: String?
+
     public var lockMode: String?
 
     public var maintainEndTime: String?
@@ -19769,6 +19773,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var maintainStartTime: String?
 
     public var memApplicationAttribute: DescribeApplicationAttributeResponseBody.MemApplicationAttribute?
+
+    public var minorVersion: String?
 
     public var payType: String?
 
@@ -19849,6 +19855,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.expired != nil {
             map["Expired"] = self.expired!
         }
+        if self.isLatestVersion != nil {
+            map["IsLatestVersion"] = self.isLatestVersion!
+        }
+        if self.latestVersion != nil {
+            map["LatestVersion"] = self.latestVersion!
+        }
         if self.lockMode != nil {
             map["LockMode"] = self.lockMode!
         }
@@ -19860,6 +19872,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.memApplicationAttribute != nil {
             map["MemApplicationAttribute"] = self.memApplicationAttribute?.toMap()
+        }
+        if self.minorVersion != nil {
+            map["MinorVersion"] = self.minorVersion!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -19963,6 +19978,12 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if let value = dict["Expired"] as? Bool {
             self.expired = value
         }
+        if let value = dict["IsLatestVersion"] as? Bool {
+            self.isLatestVersion = value
+        }
+        if let value = dict["LatestVersion"] as? String {
+            self.latestVersion = value
+        }
         if let value = dict["LockMode"] as? String {
             self.lockMode = value
         }
@@ -19976,6 +19997,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             var model = DescribeApplicationAttributeResponseBody.MemApplicationAttribute()
             model.fromMap(value)
             self.memApplicationAttribute = model
+        }
+        if let value = dict["MinorVersion"] as? String {
+            self.minorVersion = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
