@@ -9569,6 +9569,12 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 public class UpdateSessionInput : Tea.TeaModel {
     public var disableSessionIdReuse: Bool?
 
+    public var nasConfig: NASConfig?
+
+    public var ossMountConfig: OSSMountConfig?
+
+    public var polarFsConfig: PolarFsConfig?
+
     public var sessionIdleTimeoutInSeconds: Int64?
 
     public var sessionTTLInSeconds: Int64?
@@ -9583,12 +9589,24 @@ public class UpdateSessionInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.nasConfig?.validate()
+        try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
+        }
+        if self.ossMountConfig != nil {
+            map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.sessionIdleTimeoutInSeconds != nil {
             map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
@@ -9603,6 +9621,21 @@ public class UpdateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
+        }
+        if let value = dict["ossMountConfig"] as? [String: Any?] {
+            var model = OSSMountConfig()
+            model.fromMap(value)
+            self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
             self.sessionIdleTimeoutInSeconds = value
