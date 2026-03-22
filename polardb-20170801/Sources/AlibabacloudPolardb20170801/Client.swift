@@ -1283,6 +1283,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.architecture)) {
             query["Architecture"] = request.architecture ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoAllocatePublicEip)) {
+            query["AutoAllocatePublicEip"] = request.autoAllocatePublicEip!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoCreatePolarFs)) {
             query["AutoCreatePolarFs"] = request.autoCreatePolarFs!;
         }

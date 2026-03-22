@@ -4622,6 +4622,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var autoAllocatePublicEip: Bool?
+
     public var autoCreatePolarFs: Bool?
 
     public var autoRenew: Bool?
@@ -4695,6 +4697,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.autoAllocatePublicEip != nil {
+            map["AutoAllocatePublicEip"] = self.autoAllocatePublicEip!
         }
         if self.autoCreatePolarFs != nil {
             map["AutoCreatePolarFs"] = self.autoCreatePolarFs!
@@ -4792,6 +4797,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AutoAllocatePublicEip"] as? Bool {
+            self.autoAllocatePublicEip = value
         }
         if let value = dict["AutoCreatePolarFs"] as? Bool {
             self.autoCreatePolarFs = value
@@ -4900,6 +4908,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var autoAllocatePublicEip: Bool?
+
     public var autoCreatePolarFs: Bool?
 
     public var autoRenew: Bool?
@@ -4972,6 +4982,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.autoAllocatePublicEip != nil {
+            map["AutoAllocatePublicEip"] = self.autoAllocatePublicEip!
         }
         if self.autoCreatePolarFs != nil {
             map["AutoCreatePolarFs"] = self.autoCreatePolarFs!
@@ -5061,6 +5074,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AutoAllocatePublicEip"] as? Bool {
+            self.autoAllocatePublicEip = value
         }
         if let value = dict["AutoCreatePolarFs"] as? Bool {
             self.autoCreatePolarFs = value
