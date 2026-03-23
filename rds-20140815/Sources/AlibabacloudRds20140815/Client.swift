@@ -14550,6 +14550,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyBackupPolicyWithOptions(_ request: ModifyBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyBackupPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.advancedDataPolicies)) {
+            query["AdvancedDataPolicies"] = request.advancedDataPolicies ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.advancedLogPolicies)) {
+            query["AdvancedLogPolicies"] = request.advancedLogPolicies ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.archiveBackupKeepCount)) {
             query["ArchiveBackupKeepCount"] = request.archiveBackupKeepCount!;
         }
@@ -14585,6 +14591,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableAdvancedBackupPolicy)) {
+            query["EnableAdvancedBackupPolicy"] = request.enableAdvancedBackupPolicy!;
         }
         if (!TeaUtils.Client.isUnset(request.enableBackupLog)) {
             query["EnableBackupLog"] = request.enableBackupLog ?? "";
