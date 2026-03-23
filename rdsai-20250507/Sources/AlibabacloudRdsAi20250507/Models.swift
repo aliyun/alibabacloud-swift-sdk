@@ -1210,6 +1210,8 @@ public class CreateCustomAgentResponse : Tea.TeaModel {
 
 public class CreateEdgeFunctionRequest : Tea.TeaModel {
     public class Code : Tea.TeaModel {
+        public var downloadUrl: String?
+
         public var ossBucketName: String?
 
         public var ossObjectName: String?
@@ -1230,6 +1232,9 @@ public class CreateEdgeFunctionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.downloadUrl != nil {
+                map["DownloadUrl"] = self.downloadUrl!
+            }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
             }
@@ -1244,6 +1249,9 @@ public class CreateEdgeFunctionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DownloadUrl"] as? String {
+                self.downloadUrl = value
+            }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
             }
@@ -11212,6 +11220,8 @@ public class UpdateCustomAgentResponse : Tea.TeaModel {
 
 public class UpdateEdgeFunctionRequest : Tea.TeaModel {
     public class Code : Tea.TeaModel {
+        public var downloadUrl: String?
+
         public var ossBucketName: String?
 
         public var ossObjectName: String?
@@ -11232,6 +11242,9 @@ public class UpdateEdgeFunctionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.downloadUrl != nil {
+                map["DownloadUrl"] = self.downloadUrl!
+            }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
             }
@@ -11246,6 +11259,9 @@ public class UpdateEdgeFunctionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DownloadUrl"] as? String {
+                self.downloadUrl = value
+            }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
             }
@@ -11261,7 +11277,7 @@ public class UpdateEdgeFunctionRequest : Tea.TeaModel {
 
     public var code: UpdateEdgeFunctionRequest.Code?
 
-    public var customConfig: [String: Any]?
+    public var customConfig: [String: String]?
 
     public var edgeFunctionName: String?
 
@@ -11320,7 +11336,7 @@ public class UpdateEdgeFunctionRequest : Tea.TeaModel {
             model.fromMap(value)
             self.code = model
         }
-        if let value = dict["CustomConfig"] as? [String: Any] {
+        if let value = dict["CustomConfig"] as? [String: String] {
             self.customConfig = value
         }
         if let value = dict["EdgeFunctionName"] as? String {
