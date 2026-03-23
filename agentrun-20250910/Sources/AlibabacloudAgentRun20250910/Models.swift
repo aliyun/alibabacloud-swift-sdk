@@ -3091,6 +3091,8 @@ public class CreateCredentialInput : Tea.TeaModel {
 
     public var enabled: Bool?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -3127,6 +3129,9 @@ public class CreateCredentialInput : Tea.TeaModel {
         if self.enabled != nil {
             map["enabled"] = self.enabled!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -3154,6 +3159,9 @@ public class CreateCredentialInput : Tea.TeaModel {
         }
         if let value = dict["enabled"] as? Bool {
             self.enabled = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -3539,6 +3547,8 @@ public class CreateKnowledgeBaseInput : Tea.TeaModel {
 
     public var retrieveSettings: [String: Any]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -3571,6 +3581,9 @@ public class CreateKnowledgeBaseInput : Tea.TeaModel {
         if self.retrieveSettings != nil {
             map["retrieveSettings"] = self.retrieveSettings!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -3593,6 +3606,9 @@ public class CreateKnowledgeBaseInput : Tea.TeaModel {
         }
         if let value = dict["retrieveSettings"] as? [String: Any] {
             self.retrieveSettings = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -4648,6 +4664,8 @@ public class Credential : Tea.TeaModel {
 
     public var updatedAt: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -4700,6 +4718,9 @@ public class Credential : Tea.TeaModel {
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -4749,6 +4770,9 @@ public class Credential : Tea.TeaModel {
         }
         if let value = dict["updatedAt"] as? String {
             self.updatedAt = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -4803,6 +4827,8 @@ public class CredentialListItem : Tea.TeaModel {
 
     public var updatedAt: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -4844,6 +4870,9 @@ public class CredentialListItem : Tea.TeaModel {
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -4875,6 +4904,9 @@ public class CredentialListItem : Tea.TeaModel {
         }
         if let value = dict["updatedAt"] as? String {
             self.updatedAt = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -6771,6 +6803,8 @@ public class KnowledgeBase : Tea.TeaModel {
 
     public var retrieveSettings: [String: Any]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -6812,6 +6846,9 @@ public class KnowledgeBase : Tea.TeaModel {
         if self.retrieveSettings != nil {
             map["retrieveSettings"] = self.retrieveSettings!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -6843,6 +6880,9 @@ public class KnowledgeBase : Tea.TeaModel {
         }
         if let value = dict["retrieveSettings"] as? [String: Any] {
             self.retrieveSettings = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -14419,6 +14459,8 @@ public class UpdateCredentialInput : Tea.TeaModel {
 
     public var enabled: Bool?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -14446,6 +14488,9 @@ public class UpdateCredentialInput : Tea.TeaModel {
         if self.enabled != nil {
             map["enabled"] = self.enabled!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -14464,6 +14509,9 @@ public class UpdateCredentialInput : Tea.TeaModel {
         }
         if let value = dict["enabled"] as? Bool {
             self.enabled = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -14766,6 +14814,8 @@ public class UpdateKnowledgeBaseInput : Tea.TeaModel {
 
     public var retrieveSettings: [String: Any]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -14792,6 +14842,9 @@ public class UpdateKnowledgeBaseInput : Tea.TeaModel {
         if self.retrieveSettings != nil {
             map["retrieveSettings"] = self.retrieveSettings!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -14808,6 +14861,9 @@ public class UpdateKnowledgeBaseInput : Tea.TeaModel {
         }
         if let value = dict["retrieveSettings"] as? [String: Any] {
             self.retrieveSettings = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -19342,6 +19398,10 @@ public class ListCredentialsRequest : Tea.TeaModel {
 
     public var provider: String?
 
+    public var workspaceId: String?
+
+    public var workspaceIds: String?
+
     public override init() {
         super.init()
     }
@@ -19377,6 +19437,12 @@ public class ListCredentialsRequest : Tea.TeaModel {
         if self.provider != nil {
             map["provider"] = self.provider!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        if self.workspaceIds != nil {
+            map["workspaceIds"] = self.workspaceIds!
+        }
         return map
     }
 
@@ -19402,6 +19468,12 @@ public class ListCredentialsRequest : Tea.TeaModel {
         }
         if let value = dict["provider"] as? String {
             self.provider = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+        if let value = dict["workspaceIds"] as? String {
+            self.workspaceIds = value
         }
     }
 }
@@ -19584,6 +19656,10 @@ public class ListKnowledgeBasesRequest : Tea.TeaModel {
 
     public var provider: String?
 
+    public var workspaceId: String?
+
+    public var workspaceIds: String?
+
     public override init() {
         super.init()
     }
@@ -19607,6 +19683,12 @@ public class ListKnowledgeBasesRequest : Tea.TeaModel {
         if self.provider != nil {
             map["provider"] = self.provider!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        if self.workspaceIds != nil {
+            map["workspaceIds"] = self.workspaceIds!
+        }
         return map
     }
 
@@ -19620,6 +19702,12 @@ public class ListKnowledgeBasesRequest : Tea.TeaModel {
         }
         if let value = dict["provider"] as? String {
             self.provider = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+        if let value = dict["workspaceIds"] as? String {
+            self.workspaceIds = value
         }
     }
 }
@@ -20475,6 +20563,8 @@ public class ListTemplatesRequest : Tea.TeaModel {
 
     public var workspaceId: String?
 
+    public var workspaceIds: String?
+
     public override init() {
         super.init()
     }
@@ -20507,6 +20597,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
         }
+        if self.workspaceIds != nil {
+            map["workspaceIds"] = self.workspaceIds!
+        }
         return map
     }
 
@@ -20529,6 +20622,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["workspaceId"] as? String {
             self.workspaceId = value
+        }
+        if let value = dict["workspaceIds"] as? String {
+            self.workspaceIds = value
         }
     }
 }
