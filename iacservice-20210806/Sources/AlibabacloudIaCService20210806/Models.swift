@@ -8187,6 +8187,8 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
 
     public var triggerId: String?
 
+    public var triggeredStatus: String?
+
     public override init() {
         super.init()
     }
@@ -8214,6 +8216,9 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
         if self.triggerId != nil {
             map["triggerId"] = self.triggerId!
         }
+        if self.triggeredStatus != nil {
+            map["triggeredStatus"] = self.triggeredStatus!
+        }
         return map
     }
 
@@ -8237,6 +8242,9 @@ public class GetStackExecutionResultResponseBody : Tea.TeaModel {
         }
         if let value = dict["triggerId"] as? String {
             self.triggerId = value
+        }
+        if let value = dict["triggeredStatus"] as? String {
+            self.triggeredStatus = value
         }
     }
 }
