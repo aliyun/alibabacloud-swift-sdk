@@ -4799,6 +4799,44 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var AIDBClusterId: String?
 
     public var applicationType: String?
@@ -4848,6 +4886,10 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateApplicationRequest.Tag]?
+
+    public var targetVersion: String?
 
     public var usedTime: String?
 
@@ -4954,6 +4996,16 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.targetVersion != nil {
+            map["TargetVersion"] = self.targetVersion!
         }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
@@ -5069,6 +5121,22 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
         }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["TargetVersion"] as? String {
+            self.targetVersion = value
+        }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
         }
@@ -5085,6 +5153,44 @@ public class CreateApplicationRequest : Tea.TeaModel {
 }
 
 public class CreateApplicationShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var AIDBClusterId: String?
 
     public var applicationType: String?
@@ -5134,6 +5240,10 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateApplicationShrinkRequest.Tag]?
+
+    public var targetVersion: String?
 
     public var usedTime: String?
 
@@ -5232,6 +5342,16 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.targetVersion != nil {
+            map["TargetVersion"] = self.targetVersion!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -5323,6 +5443,22 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateApplicationShrinkRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationShrinkRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["TargetVersion"] as? String {
+            self.targetVersion = value
         }
         if let value = dict["UsedTime"] as? String {
             self.usedTime = value
@@ -14623,6 +14759,189 @@ public class DeleteParameterGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteParameterGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeletePolarFsObjectsRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var objectsToDelete: [String]?
+
+    public var polarFsInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.objectsToDelete != nil {
+            map["ObjectsToDelete"] = self.objectsToDelete!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["ObjectsToDelete"] as? [String] {
+            self.objectsToDelete = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+    }
+}
+
+public class DeletePolarFsObjectsShrinkRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var objectsToDeleteShrink: String?
+
+    public var polarFsInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.objectsToDeleteShrink != nil {
+            map["ObjectsToDelete"] = self.objectsToDeleteShrink!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["ObjectsToDelete"] as? String {
+            self.objectsToDeleteShrink = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+    }
+}
+
+public class DeletePolarFsObjectsResponseBody : Tea.TeaModel {
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeletePolarFsObjectsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePolarFsObjectsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeletePolarFsObjectsResponseBody()
             model.fromMap(value)
             self.body = model
         }
