@@ -10501,6 +10501,8 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
 
             public var tableName: String?
 
+            public var triggerMode: String?
+
             public var updatedTime: Int64?
 
             public var vaultId: String?
@@ -10658,6 +10660,9 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                 if self.tableName != nil {
                     map["TableName"] = self.tableName!
                 }
+                if self.triggerMode != nil {
+                    map["TriggerMode"] = self.triggerMode!
+                }
                 if self.updatedTime != nil {
                     map["UpdatedTime"] = self.updatedTime!
                 }
@@ -10811,6 +10816,9 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TableName"] as? String {
                     self.tableName = value
+                }
+                if let value = dict["TriggerMode"] as? String {
+                    self.triggerMode = value
                 }
                 if let value = dict["UpdatedTime"] as? Int64 {
                     self.updatedTime = value
