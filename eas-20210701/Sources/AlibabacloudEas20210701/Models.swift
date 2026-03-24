@@ -15912,6 +15912,8 @@ public class ListServiceVersionsResponse : Tea.TeaModel {
 }
 
 public class ListServicesRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var autoscalerEnabled: Bool?
 
     public var callerUid: String?
@@ -15978,6 +15980,9 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.autoscalerEnabled != nil {
             map["AutoscalerEnabled"] = self.autoscalerEnabled!
         }
@@ -16061,6 +16066,9 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["AutoscalerEnabled"] as? Bool {
             self.autoscalerEnabled = value
         }
@@ -16143,6 +16151,8 @@ public class ListServicesRequest : Tea.TeaModel {
 }
 
 public class ListServicesShrinkRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var autoscalerEnabled: Bool?
 
     public var callerUid: String?
@@ -16209,6 +16219,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.autoscalerEnabled != nil {
             map["AutoscalerEnabled"] = self.autoscalerEnabled!
         }
@@ -16292,6 +16305,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["AutoscalerEnabled"] as? Bool {
             self.autoscalerEnabled = value
         }
@@ -17345,6 +17361,134 @@ public class RestartServiceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RestartServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ScaleServiceRequest : Tea.TeaModel {
+    public var instance: Int64?
+
+    public var instancesToDelete: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instance != nil {
+            map["Instance"] = self.instance!
+        }
+        if self.instancesToDelete != nil {
+            map["InstancesToDelete"] = self.instancesToDelete!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Instance"] as? Int64 {
+            self.instance = value
+        }
+        if let value = dict["InstancesToDelete"] as? [String] {
+            self.instancesToDelete = value
+        }
+    }
+}
+
+public class ScaleServiceResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ScaleServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ScaleServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ScaleServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
