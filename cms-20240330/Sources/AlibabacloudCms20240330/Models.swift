@@ -2598,6 +2598,44 @@ public class AlertRuleQuery : Tea.TeaModel {
             }
         }
     }
+    public class MarkTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public class Queries : Tea.TeaModel {
         public class ApmFilters : Tea.TeaModel {
             public var dim: String?
@@ -2776,6 +2814,8 @@ public class AlertRuleQuery : Tea.TeaModel {
 
     public var labelFilters: [AlertRuleQuery.LabelFilters]?
 
+    public var markTags: [AlertRuleQuery.MarkTags]?
+
     public var metric: String?
 
     public var metricSet: String?
@@ -2852,6 +2892,13 @@ public class AlertRuleQuery : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["labelFilters"] = tmp
+        }
+        if self.markTags != nil {
+            var tmp : [Any] = []
+            for k in self.markTags! {
+                tmp.append(k.toMap())
+            }
+            map["markTags"] = tmp
         }
         if self.metric != nil {
             map["metric"] = self.metric!
@@ -2945,6 +2992,19 @@ public class AlertRuleQuery : Tea.TeaModel {
                 }
             }
             self.labelFilters = tmp
+        }
+        if let value = dict["markTags"] as? [Any?] {
+            var tmp : [AlertRuleQuery.MarkTags] = []
+            for v in value {
+                if v != nil {
+                    var model = AlertRuleQuery.MarkTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.markTags = tmp
         }
         if let value = dict["metric"] as? String {
             self.metric = value
@@ -11862,6 +11922,8 @@ public class CreateAlertWebhookRequest : Tea.TeaModel {
 
     public var webhookId: String?
 
+    public var workspace: String?
+
     public override init() {
         super.init()
     }
@@ -11897,6 +11959,9 @@ public class CreateAlertWebhookRequest : Tea.TeaModel {
         if self.webhookId != nil {
             map["webhookId"] = self.webhookId!
         }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
         return map
     }
 
@@ -11922,6 +11987,9 @@ public class CreateAlertWebhookRequest : Tea.TeaModel {
         }
         if let value = dict["webhookId"] as? String {
             self.webhookId = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
         }
     }
 }
@@ -28253,6 +28321,8 @@ public class ListAlertWebhooksRequest : Tea.TeaModel {
 
     public var webhookIds: [String]?
 
+    public var workspace: String?
+
     public override init() {
         super.init()
     }
@@ -28279,6 +28349,9 @@ public class ListAlertWebhooksRequest : Tea.TeaModel {
         if self.webhookIds != nil {
             map["webhookIds"] = self.webhookIds!
         }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
         return map
     }
 
@@ -28296,6 +28369,9 @@ public class ListAlertWebhooksRequest : Tea.TeaModel {
         if let value = dict["webhookIds"] as? [String] {
             self.webhookIds = value
         }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
+        }
     }
 }
 
@@ -28307,6 +28383,8 @@ public class ListAlertWebhooksShrinkRequest : Tea.TeaModel {
     public var pageSize: Int64?
 
     public var webhookIdsShrink: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -28334,6 +28412,9 @@ public class ListAlertWebhooksShrinkRequest : Tea.TeaModel {
         if self.webhookIdsShrink != nil {
             map["webhookIds"] = self.webhookIdsShrink!
         }
+        if self.workspace != nil {
+            map["workspace"] = self.workspace!
+        }
         return map
     }
 
@@ -28350,6 +28431,9 @@ public class ListAlertWebhooksShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["webhookIds"] as? String {
             self.webhookIdsShrink = value
+        }
+        if let value = dict["workspace"] as? String {
+            self.workspace = value
         }
     }
 }
@@ -28369,6 +28453,8 @@ public class ListAlertWebhooksResponseBody : Tea.TeaModel {
         public var url: String?
 
         public var webhookId: String?
+
+        public var workspace: String?
 
         public override init() {
             super.init()
@@ -28405,6 +28491,9 @@ public class ListAlertWebhooksResponseBody : Tea.TeaModel {
             if self.webhookId != nil {
                 map["webhookId"] = self.webhookId!
             }
+            if self.workspace != nil {
+                map["workspace"] = self.workspace!
+            }
             return map
         }
 
@@ -28430,6 +28519,9 @@ public class ListAlertWebhooksResponseBody : Tea.TeaModel {
             }
             if let value = dict["webhookId"] as? String {
                 self.webhookId = value
+            }
+            if let value = dict["workspace"] as? String {
+                self.workspace = value
             }
         }
     }
