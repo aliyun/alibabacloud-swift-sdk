@@ -1931,6 +1931,618 @@ public class LockEmbodiedAIPlatformResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyAgentPlatformRequest : Tea.TeaModel {
+    public class AiPlatformConfig : Tea.TeaModel {
+        public var serveApiKey: String?
+
+        public var serveEmbeddingEndpoint: String?
+
+        public var serveEmbeddingModelName: String?
+
+        public var serveEndpoint: String?
+
+        public var serveModelName: String?
+
+        public var specName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serveApiKey != nil {
+                map["ServeApiKey"] = self.serveApiKey!
+            }
+            if self.serveEmbeddingEndpoint != nil {
+                map["ServeEmbeddingEndpoint"] = self.serveEmbeddingEndpoint!
+            }
+            if self.serveEmbeddingModelName != nil {
+                map["ServeEmbeddingModelName"] = self.serveEmbeddingModelName!
+            }
+            if self.serveEndpoint != nil {
+                map["ServeEndpoint"] = self.serveEndpoint!
+            }
+            if self.serveModelName != nil {
+                map["ServeModelName"] = self.serveModelName!
+            }
+            if self.specName != nil {
+                map["SpecName"] = self.specName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ServeApiKey"] as? String {
+                self.serveApiKey = value
+            }
+            if let value = dict["ServeEmbeddingEndpoint"] as? String {
+                self.serveEmbeddingEndpoint = value
+            }
+            if let value = dict["ServeEmbeddingModelName"] as? String {
+                self.serveEmbeddingModelName = value
+            }
+            if let value = dict["ServeEndpoint"] as? String {
+                self.serveEndpoint = value
+            }
+            if let value = dict["ServeModelName"] as? String {
+                self.serveModelName = value
+            }
+            if let value = dict["SpecName"] as? String {
+                self.specName = value
+            }
+        }
+    }
+    public var aiPlatformConfig: ModifyAgentPlatformRequest.AiPlatformConfig?
+
+    public var DBClusterId: String?
+
+    public var name: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.aiPlatformConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiPlatformConfig != nil {
+            map["AiPlatformConfig"] = self.aiPlatformConfig?.toMap()
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AiPlatformConfig"] as? [String: Any?] {
+            var model = ModifyAgentPlatformRequest.AiPlatformConfig()
+            model.fromMap(value)
+            self.aiPlatformConfig = model
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ModifyAgentPlatformShrinkRequest : Tea.TeaModel {
+    public var aiPlatformConfigShrink: String?
+
+    public var DBClusterId: String?
+
+    public var name: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiPlatformConfigShrink != nil {
+            map["AiPlatformConfig"] = self.aiPlatformConfigShrink!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AiPlatformConfig"] as? String {
+            self.aiPlatformConfigShrink = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ModifyAgentPlatformResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyAgentPlatformResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyAgentPlatformResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyAgentPlatformResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
+    public class RayConfig : Tea.TeaModel {
+        public class WorkerGroups : Tea.TeaModel {
+            public var allocateUnit: String?
+
+            public var groupName: String?
+
+            public var maxWorkerQuantity: Int32?
+
+            public var minWorkerQuantity: Int32?
+
+            public var workerDiskCapacity: String?
+
+            public var workerSpecName: String?
+
+            public var workerSpecType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocateUnit != nil {
+                    map["AllocateUnit"] = self.allocateUnit!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.maxWorkerQuantity != nil {
+                    map["MaxWorkerQuantity"] = self.maxWorkerQuantity!
+                }
+                if self.minWorkerQuantity != nil {
+                    map["MinWorkerQuantity"] = self.minWorkerQuantity!
+                }
+                if self.workerDiskCapacity != nil {
+                    map["WorkerDiskCapacity"] = self.workerDiskCapacity!
+                }
+                if self.workerSpecName != nil {
+                    map["WorkerSpecName"] = self.workerSpecName!
+                }
+                if self.workerSpecType != nil {
+                    map["WorkerSpecType"] = self.workerSpecType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocateUnit"] as? String {
+                    self.allocateUnit = value
+                }
+                if let value = dict["GroupName"] as? String {
+                    self.groupName = value
+                }
+                if let value = dict["MaxWorkerQuantity"] as? Int32 {
+                    self.maxWorkerQuantity = value
+                }
+                if let value = dict["MinWorkerQuantity"] as? Int32 {
+                    self.minWorkerQuantity = value
+                }
+                if let value = dict["WorkerDiskCapacity"] as? String {
+                    self.workerDiskCapacity = value
+                }
+                if let value = dict["WorkerSpecName"] as? String {
+                    self.workerSpecName = value
+                }
+                if let value = dict["WorkerSpecType"] as? String {
+                    self.workerSpecType = value
+                }
+            }
+        }
+        public var category: String?
+
+        public var headSpec: String?
+
+        public var workerGroups: [ModifyEmbodiedAIPlatformRequest.RayConfig.WorkerGroups]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.headSpec != nil {
+                map["HeadSpec"] = self.headSpec!
+            }
+            if self.workerGroups != nil {
+                var tmp : [Any] = []
+                for k in self.workerGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["WorkerGroups"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Category"] as? String {
+                self.category = value
+            }
+            if let value = dict["HeadSpec"] as? String {
+                self.headSpec = value
+            }
+            if let value = dict["WorkerGroups"] as? [Any?] {
+                var tmp : [ModifyEmbodiedAIPlatformRequest.RayConfig.WorkerGroups] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyEmbodiedAIPlatformRequest.RayConfig.WorkerGroups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.workerGroups = tmp
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var platformName: String?
+
+    public var rayConfig: ModifyEmbodiedAIPlatformRequest.RayConfig?
+
+    public var regionId: String?
+
+    public var webserverSpecName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.rayConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.platformName != nil {
+            map["PlatformName"] = self.platformName!
+        }
+        if self.rayConfig != nil {
+            map["RayConfig"] = self.rayConfig?.toMap()
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.webserverSpecName != nil {
+            map["WebserverSpecName"] = self.webserverSpecName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PlatformName"] as? String {
+            self.platformName = value
+        }
+        if let value = dict["RayConfig"] as? [String: Any?] {
+            var model = ModifyEmbodiedAIPlatformRequest.RayConfig()
+            model.fromMap(value)
+            self.rayConfig = model
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["WebserverSpecName"] as? String {
+            self.webserverSpecName = value
+        }
+    }
+}
+
+public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var platformName: String?
+
+    public var rayConfigShrink: String?
+
+    public var regionId: String?
+
+    public var webserverSpecName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.platformName != nil {
+            map["PlatformName"] = self.platformName!
+        }
+        if self.rayConfigShrink != nil {
+            map["RayConfig"] = self.rayConfigShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.webserverSpecName != nil {
+            map["WebserverSpecName"] = self.webserverSpecName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PlatformName"] as? String {
+            self.platformName = value
+        }
+        if let value = dict["RayConfig"] as? String {
+            self.rayConfigShrink = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["WebserverSpecName"] as? String {
+            self.webserverSpecName = value
+        }
+    }
+}
+
+public class ModifyEmbodiedAIPlatformResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyEmbodiedAIPlatformResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyEmbodiedAIPlatformResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyEmbodiedAIPlatformResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ResetEmbodiedAIPlatformPasswordRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
