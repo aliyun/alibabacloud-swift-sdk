@@ -560,6 +560,8 @@ public class Conversation : Tea.TeaModel {
 
     public var id: String?
 
+    public var status: String?
+
     public var title: String?
 
     public var updatedAt: Int64?
@@ -584,6 +586,9 @@ public class Conversation : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.title != nil {
             map["Title"] = self.title!
         }
@@ -600,6 +605,9 @@ public class Conversation : Tea.TeaModel {
         }
         if let value = dict["Id"] as? String {
             self.id = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["Title"] as? String {
             self.title = value
@@ -42822,6 +42830,8 @@ public class TestEventSourceConfigRequest : Tea.TeaModel {
 
         public var securityGroupId: String?
 
+        public var snapshotMode: String?
+
         public var tableNames: String?
 
         public var user: String?
@@ -42868,6 +42878,9 @@ public class TestEventSourceConfigRequest : Tea.TeaModel {
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
+            if self.snapshotMode != nil {
+                map["SnapshotMode"] = self.snapshotMode!
+            }
             if self.tableNames != nil {
                 map["TableNames"] = self.tableNames!
             }
@@ -42908,6 +42921,9 @@ public class TestEventSourceConfigRequest : Tea.TeaModel {
             }
             if let value = dict["SecurityGroupId"] as? String {
                 self.securityGroupId = value
+            }
+            if let value = dict["SnapshotMode"] as? String {
+                self.snapshotMode = value
             }
             if let value = dict["TableNames"] as? String {
                 self.tableNames = value
