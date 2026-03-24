@@ -1641,6 +1641,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.targetGroups)) {
+            request.targetGroupsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.targetGroups, "TargetGroups", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.targets)) {
             request.targetsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.targets, "Targets", "json")
         }
@@ -1662,6 +1665,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
             query["Tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetGroupsShrink)) {
+            query["TargetGroups"] = request.targetGroupsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.targetsShrink)) {
             query["Targets"] = request.targetsShrink ?? "";

@@ -17756,7 +17756,263 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class TargetGroups : Tea.TeaModel {
+        public class Targets : Tea.TeaModel {
+            public class Segment : Tea.TeaModel {
+                public var duration: Double?
+
+                public var format: String?
+
+                public var startNumber: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.format != nil {
+                        map["Format"] = self.format!
+                    }
+                    if self.startNumber != nil {
+                        map["StartNumber"] = self.startNumber!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Duration"] as? Double {
+                        self.duration = value
+                    }
+                    if let value = dict["Format"] as? String {
+                        self.format = value
+                    }
+                    if let value = dict["StartNumber"] as? Int32 {
+                        self.startNumber = value
+                    }
+                }
+            }
+            public var audio: TargetAudio?
+
+            public var container: String?
+
+            public var segment: CreateMediaConvertTaskRequest.TargetGroups.Targets.Segment?
+
+            public var speed: Double?
+
+            public var stripMetadata: Bool?
+
+            public var subtitle: TargetSubtitle?
+
+            public var URI: String?
+
+            public var video: TargetVideo?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.audio?.validate()
+                try self.segment?.validate()
+                try self.subtitle?.validate()
+                try self.video?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.audio != nil {
+                    map["Audio"] = self.audio?.toMap()
+                }
+                if self.container != nil {
+                    map["Container"] = self.container!
+                }
+                if self.segment != nil {
+                    map["Segment"] = self.segment?.toMap()
+                }
+                if self.speed != nil {
+                    map["Speed"] = self.speed!
+                }
+                if self.stripMetadata != nil {
+                    map["StripMetadata"] = self.stripMetadata!
+                }
+                if self.subtitle != nil {
+                    map["Subtitle"] = self.subtitle?.toMap()
+                }
+                if self.URI != nil {
+                    map["URI"] = self.URI!
+                }
+                if self.video != nil {
+                    map["Video"] = self.video?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Audio"] as? [String: Any?] {
+                    var model = TargetAudio()
+                    model.fromMap(value)
+                    self.audio = model
+                }
+                if let value = dict["Container"] as? String {
+                    self.container = value
+                }
+                if let value = dict["Segment"] as? [String: Any?] {
+                    var model = CreateMediaConvertTaskRequest.TargetGroups.Targets.Segment()
+                    model.fromMap(value)
+                    self.segment = model
+                }
+                if let value = dict["Speed"] as? Double {
+                    self.speed = value
+                }
+                if let value = dict["StripMetadata"] as? Bool {
+                    self.stripMetadata = value
+                }
+                if let value = dict["Subtitle"] as? [String: Any?] {
+                    var model = TargetSubtitle()
+                    model.fromMap(value)
+                    self.subtitle = model
+                }
+                if let value = dict["URI"] as? String {
+                    self.URI = value
+                }
+                if let value = dict["Video"] as? [String: Any?] {
+                    var model = TargetVideo()
+                    model.fromMap(value)
+                    self.video = model
+                }
+            }
+        }
+        public var targets: [CreateMediaConvertTaskRequest.TargetGroups.Targets]?
+
+        public var URI: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.targets != nil {
+                var tmp : [Any] = []
+                for k in self.targets! {
+                    tmp.append(k.toMap())
+                }
+                map["Targets"] = tmp
+            }
+            if self.URI != nil {
+                map["URI"] = self.URI!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Targets"] as? [Any?] {
+                var tmp : [CreateMediaConvertTaskRequest.TargetGroups.Targets] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateMediaConvertTaskRequest.TargetGroups.Targets()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.targets = tmp
+            }
+            if let value = dict["URI"] as? String {
+                self.URI = value
+            }
+        }
+    }
     public class Targets : Tea.TeaModel {
+        public class AttachedPicture : Tea.TeaModel {
+            public var stream: [Int32]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.stream != nil {
+                    map["Stream"] = self.stream!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Stream"] as? [Int32] {
+                    self.stream = value
+                }
+            }
+        }
+        public class Data : Tea.TeaModel {
+            public var stream: [Int32]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.stream != nil {
+                    map["Stream"] = self.stream!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Stream"] as? [Int32] {
+                    self.stream = value
+                }
+            }
+        }
         public class Segment : Tea.TeaModel {
             public var duration: Double?
 
@@ -17803,9 +18059,13 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var attachedPicture: CreateMediaConvertTaskRequest.Targets.AttachedPicture?
+
         public var audio: TargetAudio?
 
         public var container: String?
+
+        public var data: CreateMediaConvertTaskRequest.Targets.Data?
 
         public var image: TargetImage?
 
@@ -17831,7 +18091,9 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.attachedPicture?.validate()
             try self.audio?.validate()
+            try self.data?.validate()
             try self.image?.validate()
             try self.segment?.validate()
             try self.subtitle?.validate()
@@ -17840,11 +18102,17 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attachedPicture != nil {
+                map["AttachedPicture"] = self.attachedPicture?.toMap()
+            }
             if self.audio != nil {
                 map["Audio"] = self.audio?.toMap()
             }
             if self.container != nil {
                 map["Container"] = self.container!
+            }
+            if self.data != nil {
+                map["Data"] = self.data?.toMap()
             }
             if self.image != nil {
                 map["Image"] = self.image?.toMap()
@@ -17872,6 +18140,11 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AttachedPicture"] as? [String: Any?] {
+                var model = CreateMediaConvertTaskRequest.Targets.AttachedPicture()
+                model.fromMap(value)
+                self.attachedPicture = model
+            }
             if let value = dict["Audio"] as? [String: Any?] {
                 var model = TargetAudio()
                 model.fromMap(value)
@@ -17879,6 +18152,11 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
             }
             if let value = dict["Container"] as? String {
                 self.container = value
+            }
+            if let value = dict["Data"] as? [String: Any?] {
+                var model = CreateMediaConvertTaskRequest.Targets.Data()
+                model.fromMap(value)
+                self.data = model
             }
             if let value = dict["Image"] as? [String: Any?] {
                 var model = TargetImage()
@@ -17923,6 +18201,8 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
 
     public var tags: [String: Any]?
 
+    public var targetGroups: [CreateMediaConvertTaskRequest.TargetGroups]?
+
     public var targets: [CreateMediaConvertTaskRequest.Targets]?
 
     public var userData: String?
@@ -17964,6 +18244,13 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
         }
         if self.tags != nil {
             map["Tags"] = self.tags!
+        }
+        if self.targetGroups != nil {
+            var tmp : [Any] = []
+            for k in self.targetGroups! {
+                tmp.append(k.toMap())
+            }
+            map["TargetGroups"] = tmp
         }
         if self.targets != nil {
             var tmp : [Any] = []
@@ -18012,6 +18299,19 @@ public class CreateMediaConvertTaskRequest : Tea.TeaModel {
         if let value = dict["Tags"] as? [String: Any] {
             self.tags = value
         }
+        if let value = dict["TargetGroups"] as? [Any?] {
+            var tmp : [CreateMediaConvertTaskRequest.TargetGroups] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateMediaConvertTaskRequest.TargetGroups()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.targetGroups = tmp
+        }
         if let value = dict["Targets"] as? [Any?] {
             var tmp : [CreateMediaConvertTaskRequest.Targets] = []
             for v in value {
@@ -18043,6 +18343,8 @@ public class CreateMediaConvertTaskShrinkRequest : Tea.TeaModel {
     public var sourcesShrink: String?
 
     public var tagsShrink: String?
+
+    public var targetGroupsShrink: String?
 
     public var targetsShrink: String?
 
@@ -18080,6 +18382,9 @@ public class CreateMediaConvertTaskShrinkRequest : Tea.TeaModel {
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
+        if self.targetGroupsShrink != nil {
+            map["TargetGroups"] = self.targetGroupsShrink!
+        }
         if self.targetsShrink != nil {
             map["Targets"] = self.targetsShrink!
         }
@@ -18108,6 +18413,9 @@ public class CreateMediaConvertTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
+        }
+        if let value = dict["TargetGroups"] as? String {
+            self.targetGroupsShrink = value
         }
         if let value = dict["Targets"] as? String {
             self.targetsShrink = value
