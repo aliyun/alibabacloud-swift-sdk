@@ -3033,6 +3033,8 @@ public class DeepfakeDetectIntlResponseBody : Tea.TeaModel {
 
         public var riskTag: String?
 
+        public var transactionId: String?
+
         public override init() {
             super.init()
         }
@@ -3056,6 +3058,9 @@ public class DeepfakeDetectIntlResponseBody : Tea.TeaModel {
             if self.riskTag != nil {
                 map["RiskTag"] = self.riskTag!
             }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
             return map
         }
 
@@ -3069,6 +3074,9 @@ public class DeepfakeDetectIntlResponseBody : Tea.TeaModel {
             }
             if let value = dict["RiskTag"] as? String {
                 self.riskTag = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
             }
         }
     }
@@ -3345,6 +3353,8 @@ public class DeepfakeDetectIntlStreamResponseBody : Tea.TeaModel {
 
         public var riskTag: String?
 
+        public var transactionId: String?
+
         public override init() {
             super.init()
         }
@@ -3368,6 +3378,9 @@ public class DeepfakeDetectIntlStreamResponseBody : Tea.TeaModel {
             if self.riskTag != nil {
                 map["RiskTag"] = self.riskTag!
             }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
             return map
         }
 
@@ -3381,6 +3394,9 @@ public class DeepfakeDetectIntlStreamResponseBody : Tea.TeaModel {
             }
             if let value = dict["RiskTag"] as? String {
                 self.riskTag = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
             }
         }
     }
