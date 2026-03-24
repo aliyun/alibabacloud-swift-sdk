@@ -11515,6 +11515,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var docsExamined: String?
 
+            public var fail: String?
+
             public var frows: Int64?
 
             public var hostAddress: String?
@@ -11541,6 +11543,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var originTime: String?
 
+            public var params: String?
+
             public var physicalIOReads: Int64?
 
             public var psql: String?
@@ -11552,6 +11556,10 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
             public var queryTime: Int64?
 
             public var queryTimeSeconds: Double?
+
+            public var reason: String?
+
+            public var reqId: String?
 
             public var requestSize: Int64?
 
@@ -11643,6 +11651,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.docsExamined != nil {
                     map["DocsExamined"] = self.docsExamined!
                 }
+                if self.fail != nil {
+                    map["Fail"] = self.fail!
+                }
                 if self.frows != nil {
                     map["Frows"] = self.frows!
                 }
@@ -11682,6 +11693,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.originTime != nil {
                     map["OriginTime"] = self.originTime!
                 }
+                if self.params != nil {
+                    map["Params"] = self.params!
+                }
                 if self.physicalIOReads != nil {
                     map["PhysicalIOReads"] = self.physicalIOReads!
                 }
@@ -11699,6 +11713,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.queryTimeSeconds != nil {
                     map["QueryTimeSeconds"] = self.queryTimeSeconds!
+                }
+                if self.reason != nil {
+                    map["Reason"] = self.reason!
+                }
+                if self.reqId != nil {
+                    map["ReqId"] = self.reqId!
                 }
                 if self.requestSize != nil {
                     map["RequestSize"] = self.requestSize!
@@ -11801,6 +11821,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["DocsExamined"] as? String {
                     self.docsExamined = value
                 }
+                if let value = dict["Fail"] as? String {
+                    self.fail = value
+                }
                 if let value = dict["Frows"] as? Int64 {
                     self.frows = value
                 }
@@ -11840,6 +11863,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["OriginTime"] as? String {
                     self.originTime = value
                 }
+                if let value = dict["Params"] as? String {
+                    self.params = value
+                }
                 if let value = dict["PhysicalIOReads"] as? Int64 {
                     self.physicalIOReads = value
                 }
@@ -11857,6 +11883,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["QueryTimeSeconds"] as? Double {
                     self.queryTimeSeconds = value
+                }
+                if let value = dict["Reason"] as? String {
+                    self.reason = value
+                }
+                if let value = dict["ReqId"] as? String {
+                    self.reqId = value
                 }
                 if let value = dict["RequestSize"] as? Int64 {
                     self.requestSize = value
