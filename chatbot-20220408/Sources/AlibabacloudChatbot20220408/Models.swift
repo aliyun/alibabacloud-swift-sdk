@@ -447,6 +447,8 @@ public class BeginSessionRequest : Tea.TeaModel {
 
     public var sandBox: Bool?
 
+    public var sessionId: String?
+
     public var vendorParam: String?
 
     public override init() {
@@ -472,6 +474,9 @@ public class BeginSessionRequest : Tea.TeaModel {
         if self.sandBox != nil {
             map["SandBox"] = self.sandBox!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         if self.vendorParam != nil {
             map["VendorParam"] = self.vendorParam!
         }
@@ -488,6 +493,9 @@ public class BeginSessionRequest : Tea.TeaModel {
         }
         if let value = dict["SandBox"] as? Bool {
             self.sandBox = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
         if let value = dict["VendorParam"] as? String {
             self.vendorParam = value
@@ -13211,6 +13219,8 @@ public class ListInstanceRequest : Tea.TeaModel {
 
     public var robotType: String?
 
+    public var sandbox: Bool?
+
     public override init() {
         super.init()
     }
@@ -13240,6 +13250,9 @@ public class ListInstanceRequest : Tea.TeaModel {
         if self.robotType != nil {
             map["RobotType"] = self.robotType!
         }
+        if self.sandbox != nil {
+            map["Sandbox"] = self.sandbox!
+        }
         return map
     }
 
@@ -13259,6 +13272,9 @@ public class ListInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["RobotType"] as? String {
             self.robotType = value
+        }
+        if let value = dict["Sandbox"] as? Bool {
+            self.sandbox = value
         }
     }
 }
