@@ -27745,7 +27745,53 @@ public class DescribeDomainVerifyDataRequest : Tea.TeaModel {
 }
 
 public class DescribeDomainVerifyDataResponseBody : Tea.TeaModel {
-    public var content: String?
+    public class Content : Tea.TeaModel {
+        public var rootDomain: String?
+
+        public var verifyCode: String?
+
+        public var verifyKey: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rootDomain != nil {
+                map["RootDomain"] = self.rootDomain!
+            }
+            if self.verifyCode != nil {
+                map["verifyCode"] = self.verifyCode!
+            }
+            if self.verifyKey != nil {
+                map["verifyKey"] = self.verifyKey!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RootDomain"] as? String {
+                self.rootDomain = value
+            }
+            if let value = dict["verifyCode"] as? String {
+                self.verifyCode = value
+            }
+            if let value = dict["verifyKey"] as? String {
+                self.verifyKey = value
+            }
+        }
+    }
+    public var content: DescribeDomainVerifyDataResponseBody.Content?
 
     public var requestId: String?
 
@@ -27759,12 +27805,13 @@ public class DescribeDomainVerifyDataResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.content?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.content != nil {
-            map["Content"] = self.content!
+            map["Content"] = self.content?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -27774,8 +27821,10 @@ public class DescribeDomainVerifyDataResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Content"] as? String {
-            self.content = value
+        if let value = dict["Content"] as? [String: Any?] {
+            var model = DescribeDomainVerifyDataResponseBody.Content()
+            model.fromMap(value)
+            self.content = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
