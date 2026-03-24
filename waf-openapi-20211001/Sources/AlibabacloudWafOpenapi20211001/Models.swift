@@ -2640,6 +2640,8 @@ public class CreateDefenseRuleResponse : Tea.TeaModel {
 public class CreateDefenseTemplateRequest : Tea.TeaModel {
     public var defenseScene: String?
 
+    public var defenseSubScene: String?
+
     public var description_: String?
 
     public var instanceId: String?
@@ -2676,6 +2678,9 @@ public class CreateDefenseTemplateRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.defenseScene != nil {
             map["DefenseScene"] = self.defenseScene!
+        }
+        if self.defenseSubScene != nil {
+            map["DefenseSubScene"] = self.defenseSubScene!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -2714,6 +2719,9 @@ public class CreateDefenseTemplateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DefenseScene"] as? String {
             self.defenseScene = value
+        }
+        if let value = dict["DefenseSubScene"] as? String {
+            self.defenseSubScene = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
