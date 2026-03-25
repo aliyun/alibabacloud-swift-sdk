@@ -1794,6 +1794,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dataIngestionTemplateIds)) {
             request.dataIngestionTemplateIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataIngestionTemplateIds, "DataIngestionTemplateIds", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.normalizationSchemaIds)) {
+            request.normalizationSchemaIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.normalizationSchemaIds, "NormalizationSchemaIds", "simple")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.dataIngestionIdsShrink)) {
             body["DataIngestionIds"] = request.dataIngestionIdsShrink ?? "";
@@ -1806,6 +1809,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.normalizationSchemaIdsShrink)) {
+            body["NormalizationSchemaIds"] = request.normalizationSchemaIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.productId)) {
             body["ProductId"] = request.productId ?? "";

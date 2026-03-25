@@ -8546,6 +8546,8 @@ public class ListDataIngestionsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var normalizationSchemaIds: [String]?
+
     public var productId: String?
 
     public var regionId: String?
@@ -8578,6 +8580,9 @@ public class ListDataIngestionsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.normalizationSchemaIds != nil {
+            map["NormalizationSchemaIds"] = self.normalizationSchemaIds!
+        }
         if self.productId != nil {
             map["ProductId"] = self.productId!
         }
@@ -8604,6 +8609,9 @@ public class ListDataIngestionsRequest : Tea.TeaModel {
         if let value = dict["Lang"] as? String {
             self.lang = value
         }
+        if let value = dict["NormalizationSchemaIds"] as? [String] {
+            self.normalizationSchemaIds = value
+        }
         if let value = dict["ProductId"] as? String {
             self.productId = value
         }
@@ -8624,6 +8632,8 @@ public class ListDataIngestionsShrinkRequest : Tea.TeaModel {
     public var dataIngestionTemplateIdsShrink: String?
 
     public var lang: String?
+
+    public var normalizationSchemaIdsShrink: String?
 
     public var productId: String?
 
@@ -8657,6 +8667,9 @@ public class ListDataIngestionsShrinkRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.normalizationSchemaIdsShrink != nil {
+            map["NormalizationSchemaIds"] = self.normalizationSchemaIdsShrink!
+        }
         if self.productId != nil {
             map["ProductId"] = self.productId!
         }
@@ -8682,6 +8695,9 @@ public class ListDataIngestionsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
+        }
+        if let value = dict["NormalizationSchemaIds"] as? String {
+            self.normalizationSchemaIdsShrink = value
         }
         if let value = dict["ProductId"] as? String {
             self.productId = value
