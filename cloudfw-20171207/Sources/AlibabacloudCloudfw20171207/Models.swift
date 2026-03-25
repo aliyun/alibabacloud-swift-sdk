@@ -12942,6 +12942,8 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
 
     public var groupType: String?
 
+    public var groupUuid: String?
+
     public var lang: String?
 
     public var pageSize: String?
@@ -12971,6 +12973,9 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
         }
+        if self.groupUuid != nil {
+            map["GroupUuid"] = self.groupUuid!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -12993,6 +12998,9 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
         }
         if let value = dict["GroupType"] as? String {
             self.groupType = value
+        }
+        if let value = dict["GroupUuid"] as? String {
+            self.groupUuid = value
         }
         if let value = dict["Lang"] as? String {
             self.lang = value
