@@ -25198,6 +25198,8 @@ public class ImportHttpApiResponseBody : Tea.TeaModel {
 
             public var failureOperations: [ImportHttpApiResponseBody.Data.DryRunInfo.FailureOperations]?
 
+            public var mcpToolsDefinition: String?
+
             public var successComponents: [ImportHttpApiResponseBody.Data.DryRunInfo.SuccessComponents]?
 
             public var successOperations: [ImportHttpApiResponseBody.Data.DryRunInfo.SuccessOperations]?
@@ -25238,6 +25240,9 @@ public class ImportHttpApiResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["failureOperations"] = tmp
+                }
+                if self.mcpToolsDefinition != nil {
+                    map["mcpToolsDefinition"] = self.mcpToolsDefinition!
                 }
                 if self.successComponents != nil {
                     var tmp : [Any] = []
@@ -25294,6 +25299,9 @@ public class ImportHttpApiResponseBody : Tea.TeaModel {
                         }
                     }
                     self.failureOperations = tmp
+                }
+                if let value = dict["mcpToolsDefinition"] as? String {
+                    self.mcpToolsDefinition = value
                 }
                 if let value = dict["successComponents"] as? [Any?] {
                     var tmp : [ImportHttpApiResponseBody.Data.DryRunInfo.SuccessComponents] = []
