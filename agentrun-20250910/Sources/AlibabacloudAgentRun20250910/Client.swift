@@ -1781,6 +1781,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sandboxId)) {
+            query["sandboxId"] = request.sandboxId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status ?? "";
         }

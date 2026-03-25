@@ -20442,6 +20442,8 @@ public class ListSandboxesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var sandboxId: String?
+
     public var status: String?
 
     public var templateName: String?
@@ -20468,6 +20470,9 @@ public class ListSandboxesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.sandboxId != nil {
+            map["sandboxId"] = self.sandboxId!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -20487,6 +20492,9 @@ public class ListSandboxesRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["sandboxId"] as? String {
+            self.sandboxId = value
         }
         if let value = dict["status"] as? String {
             self.status = value
