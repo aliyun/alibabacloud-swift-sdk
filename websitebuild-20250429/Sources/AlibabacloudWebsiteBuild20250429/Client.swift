@@ -636,6 +636,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editPluginConfigWithOptions(_ request: EditPluginConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EditPluginConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginConfig)) {
+            query["PluginConfig"] = request.pluginConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginDesc)) {
+            query["PluginDesc"] = request.pluginDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginId)) {
+            query["PluginId"] = request.pluginId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginName)) {
+            query["PluginName"] = request.pluginName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EditPluginConfig",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EditPluginConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editPluginConfig(_ request: EditPluginConfigRequest) async throws -> EditPluginConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await editPluginConfigWithOptions(request as! EditPluginConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func exportMaterialFileWithOptions(_ tmpReq: ExportMaterialFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportMaterialFileResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ExportMaterialFileShrinkRequest = ExportMaterialFileShrinkRequest([:])
