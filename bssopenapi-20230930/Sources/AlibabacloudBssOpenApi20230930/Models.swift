@@ -4305,7 +4305,11 @@ public class DescribeCouponRequest : Tea.TeaModel {
 
     public var expireStartDate: Int64?
 
+    public var maxResults: Int32?
+
     public var nbid: String?
+
+    public var nextToken: String?
 
     public var pageSize: Int32?
 
@@ -4356,8 +4360,14 @@ public class DescribeCouponRequest : Tea.TeaModel {
         if self.expireStartDate != nil {
             map["ExpireStartDate"] = self.expireStartDate!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
         if self.nbid != nil {
             map["Nbid"] = self.nbid!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
@@ -4407,8 +4417,14 @@ public class DescribeCouponRequest : Tea.TeaModel {
         if let value = dict["ExpireStartDate"] as? Int64 {
             self.expireStartDate = value
         }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
         if let value = dict["Nbid"] as? String {
             self.nbid = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
@@ -4438,7 +4454,11 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
 
     public var expireStartDate: Int64?
 
+    public var maxResults: Int32?
+
     public var nbid: String?
+
+    public var nextToken: String?
 
     public var pageSize: Int32?
 
@@ -4485,8 +4505,14 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
         if self.expireStartDate != nil {
             map["ExpireStartDate"] = self.expireStartDate!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
         if self.nbid != nil {
             map["Nbid"] = self.nbid!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
@@ -4526,8 +4552,14 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
         if let value = dict["ExpireStartDate"] as? Int64 {
             self.expireStartDate = value
         }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
         if let value = dict["Nbid"] as? String {
             self.nbid = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
