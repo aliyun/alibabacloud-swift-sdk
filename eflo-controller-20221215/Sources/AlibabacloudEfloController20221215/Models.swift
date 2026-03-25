@@ -7149,7 +7149,11 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
         public var ip: String?
 
+        public var securityGroupId: String?
+
         public var subnetId: String?
+
+        public var vSwitchId: String?
 
         public var vpdId: String?
 
@@ -7173,8 +7177,14 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
             if self.subnetId != nil {
                 map["SubnetId"] = self.subnetId!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
             }
             if self.vpdId != nil {
                 map["VpdId"] = self.vpdId!
@@ -7190,8 +7200,14 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
             if let value = dict["Ip"] as? String {
                 self.ip = value
             }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
             if let value = dict["SubnetId"] as? String {
                 self.subnetId = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
             }
             if let value = dict["VpdId"] as? String {
                 self.vpdId = value
@@ -9689,6 +9705,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
             public var loginPassword: String?
 
+            public var securityGroupId: String?
+
             public var vSwitchId: String?
 
             public var vpcId: String?
@@ -9723,6 +9741,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 if self.loginPassword != nil {
                     map["LoginPassword"] = self.loginPassword!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
                 }
@@ -9755,6 +9776,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 if let value = dict["LoginPassword"] as? String {
                     self.loginPassword = value
+                }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
                 }
                 if let value = dict["VSwitchId"] as? String {
                     self.vSwitchId = value
@@ -9881,6 +9905,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
             public var nodeId: String?
 
+            public var securityGroupId: String?
+
             public var vSwitchId: String?
 
             public var vpcId: String?
@@ -9915,6 +9941,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
                 }
@@ -9947,6 +9976,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 if let value = dict["NodeId"] as? String {
                     self.nodeId = value
+                }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
                 }
                 if let value = dict["VSwitchId"] as? String {
                     self.vSwitchId = value
