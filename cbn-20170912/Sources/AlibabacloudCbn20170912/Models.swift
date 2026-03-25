@@ -19280,6 +19280,8 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
 
             public var createTime: Int64?
 
+            public var effectiveOrderType: String?
+
             public var orderType: String?
 
             public override init() {
@@ -19317,6 +19319,9 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.effectiveOrderType != nil {
+                    map["EffectiveOrderType"] = self.effectiveOrderType!
+                }
                 if self.orderType != nil {
                     map["OrderType"] = self.orderType!
                 }
@@ -19345,6 +19350,9 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
+                }
+                if let value = dict["EffectiveOrderType"] as? String {
+                    self.effectiveOrderType = value
                 }
                 if let value = dict["OrderType"] as? String {
                     self.orderType = value
@@ -19612,6 +19620,8 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var effectiveOrderType: String?
+
         public var orderType: String?
 
         public override init() {
@@ -19637,6 +19647,9 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.effectiveOrderType != nil {
+                map["EffectiveOrderType"] = self.effectiveOrderType!
+            }
             if self.orderType != nil {
                 map["OrderType"] = self.orderType!
             }
@@ -19653,6 +19666,9 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["EffectiveOrderType"] as? String {
+                self.effectiveOrderType = value
             }
             if let value = dict["OrderType"] as? String {
                 self.orderType = value
@@ -39077,6 +39093,8 @@ public class UpdateTransitRouterEcrAttachmentAttributeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var orderType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -39111,6 +39129,9 @@ public class UpdateTransitRouterEcrAttachmentAttributeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -39142,6 +39163,9 @@ public class UpdateTransitRouterEcrAttachmentAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -39864,6 +39888,8 @@ public class UpdateTransitRouterVbrAttachmentAttributeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var orderType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -39901,6 +39927,9 @@ public class UpdateTransitRouterVbrAttachmentAttributeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -39935,6 +39964,9 @@ public class UpdateTransitRouterVbrAttachmentAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -40048,6 +40080,8 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var orderType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -40087,6 +40121,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -40125,6 +40162,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
@@ -40158,6 +40198,8 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
     public var clientToken: String?
 
     public var dryRun: Bool?
+
+    public var orderType: String?
 
     public var ownerAccount: String?
 
@@ -40198,6 +40240,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -40235,6 +40280,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -40631,6 +40679,8 @@ public class UpdateTransitRouterVpnAttachmentAttributeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var orderType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -40668,6 +40718,9 @@ public class UpdateTransitRouterVpnAttachmentAttributeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -40702,6 +40755,9 @@ public class UpdateTransitRouterVpnAttachmentAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["OrderType"] as? String {
+            self.orderType = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
