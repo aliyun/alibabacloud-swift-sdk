@@ -383,13 +383,19 @@ public class CreateCommandResponse : Tea.TeaModel {
 public class CreateMemoryRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var autoUpdate: Bool?
+
     public var content: String?
+
+    public var expirationTime: Int32?
 
     public var messagesJson: String?
 
     public var metaData: [String: String]?
 
     public var projectId: String?
+
+    public var prompt: String?
 
     public var userDefinedId: String?
 
@@ -412,8 +418,14 @@ public class CreateMemoryRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.autoUpdate != nil {
+            map["AutoUpdate"] = self.autoUpdate!
+        }
         if self.content != nil {
             map["Content"] = self.content!
+        }
+        if self.expirationTime != nil {
+            map["ExpirationTime"] = self.expirationTime!
         }
         if self.messagesJson != nil {
             map["MessagesJson"] = self.messagesJson!
@@ -423,6 +435,9 @@ public class CreateMemoryRequest : Tea.TeaModel {
         }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
         }
         if self.userDefinedId != nil {
             map["UserDefinedId"] = self.userDefinedId!
@@ -438,8 +453,14 @@ public class CreateMemoryRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["AutoUpdate"] as? Bool {
+            self.autoUpdate = value
+        }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["ExpirationTime"] as? Int32 {
+            self.expirationTime = value
         }
         if let value = dict["MessagesJson"] as? String {
             self.messagesJson = value
@@ -449,6 +470,9 @@ public class CreateMemoryRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["UserDefinedId"] as? String {
             self.userDefinedId = value
@@ -462,13 +486,19 @@ public class CreateMemoryRequest : Tea.TeaModel {
 public class CreateMemoryShrinkRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var autoUpdate: Bool?
+
     public var content: String?
+
+    public var expirationTime: Int32?
 
     public var messagesJson: String?
 
     public var metaDataShrink: String?
 
     public var projectId: String?
+
+    public var prompt: String?
 
     public var userDefinedId: String?
 
@@ -491,8 +521,14 @@ public class CreateMemoryShrinkRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.autoUpdate != nil {
+            map["AutoUpdate"] = self.autoUpdate!
+        }
         if self.content != nil {
             map["Content"] = self.content!
+        }
+        if self.expirationTime != nil {
+            map["ExpirationTime"] = self.expirationTime!
         }
         if self.messagesJson != nil {
             map["MessagesJson"] = self.messagesJson!
@@ -502,6 +538,9 @@ public class CreateMemoryShrinkRequest : Tea.TeaModel {
         }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
         }
         if self.userDefinedId != nil {
             map["UserDefinedId"] = self.userDefinedId!
@@ -517,8 +556,14 @@ public class CreateMemoryShrinkRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["AutoUpdate"] as? Bool {
+            self.autoUpdate = value
+        }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["ExpirationTime"] as? Int32 {
+            self.expirationTime = value
         }
         if let value = dict["MessagesJson"] as? String {
             self.messagesJson = value
@@ -528,6 +573,9 @@ public class CreateMemoryShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["UserDefinedId"] as? String {
             self.userDefinedId = value
@@ -546,6 +594,8 @@ public class CreateMemoryResponseBody : Tea.TeaModel {
             public var event: String?
 
             public var memoryNodeId: String?
+
+            public var oldContent: String?
 
             public override init() {
                 super.init()
@@ -570,6 +620,9 @@ public class CreateMemoryResponseBody : Tea.TeaModel {
                 if self.memoryNodeId != nil {
                     map["MemoryNodeId"] = self.memoryNodeId!
                 }
+                if self.oldContent != nil {
+                    map["OldContent"] = self.oldContent!
+                }
                 return map
             }
 
@@ -583,6 +636,9 @@ public class CreateMemoryResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MemoryNodeId"] as? String {
                     self.memoryNodeId = value
+                }
+                if let value = dict["OldContent"] as? String {
+                    self.oldContent = value
                 }
             }
         }
