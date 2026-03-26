@@ -15560,4 +15560,44 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await upgradeDBClusterVersionZonalWithOptions(request as! UpgradeDBClusterVersionZonalRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradePolarClawSkillsWithOptions(_ request: UpgradePolarClawSkillsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradePolarClawSkillsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationType)) {
+            query["ApplicationType"] = request.applicationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.upgradeMethod)) {
+            query["UpgradeMethod"] = request.upgradeMethod ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpgradePolarClawSkills",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradePolarClawSkillsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradePolarClawSkills(_ request: UpgradePolarClawSkillsRequest) async throws -> UpgradePolarClawSkillsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await upgradePolarClawSkillsWithOptions(request as! UpgradePolarClawSkillsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
