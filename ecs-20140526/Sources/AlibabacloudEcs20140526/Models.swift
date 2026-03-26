@@ -11423,6 +11423,8 @@ public class CreateDeploymentSetRequest : Tea.TeaModel {
 
     public var strategy: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -11476,6 +11478,9 @@ public class CreateDeploymentSetRequest : Tea.TeaModel {
         if self.strategy != nil {
             map["Strategy"] = self.strategy!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -11519,6 +11524,9 @@ public class CreateDeploymentSetRequest : Tea.TeaModel {
         }
         if let value = dict["Strategy"] as? String {
             self.strategy = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -37499,6 +37507,10 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
         }
         public var allowedUpgradeWindows: DescribeCloudAssistantSettingsResponseBody.AgentUpgradeConfig.AllowedUpgradeWindows?
 
+        public var bootstrapUpgrade: Bool?
+
+        public var disableUpgrade: Bool?
+
         public var enabled: Bool?
 
         public var timeZone: String?
@@ -37521,6 +37533,12 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
             if self.allowedUpgradeWindows != nil {
                 map["AllowedUpgradeWindows"] = self.allowedUpgradeWindows?.toMap()
             }
+            if self.bootstrapUpgrade != nil {
+                map["BootstrapUpgrade"] = self.bootstrapUpgrade!
+            }
+            if self.disableUpgrade != nil {
+                map["DisableUpgrade"] = self.disableUpgrade!
+            }
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
@@ -37536,6 +37554,12 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
                 var model = DescribeCloudAssistantSettingsResponseBody.AgentUpgradeConfig.AllowedUpgradeWindows()
                 model.fromMap(value)
                 self.allowedUpgradeWindows = model
+            }
+            if let value = dict["BootstrapUpgrade"] as? Bool {
+                self.bootstrapUpgrade = value
+            }
+            if let value = dict["DisableUpgrade"] as? Bool {
+                self.disableUpgrade = value
             }
             if let value = dict["Enabled"] as? Bool {
                 self.enabled = value
@@ -37664,6 +37688,76 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.ossDeliveryConfig = tmp
+            }
+        }
+    }
+    public class ResourceUsageConfig : Tea.TeaModel {
+        public var cpuLimit: Int32?
+
+        public var keepScriptFile: Bool?
+
+        public var logFileCountLimit: Int32?
+
+        public var logSizeLimit: String?
+
+        public var memoryLimit: String?
+
+        public var overloadLimit: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuLimit != nil {
+                map["CpuLimit"] = self.cpuLimit!
+            }
+            if self.keepScriptFile != nil {
+                map["KeepScriptFile"] = self.keepScriptFile!
+            }
+            if self.logFileCountLimit != nil {
+                map["LogFileCountLimit"] = self.logFileCountLimit!
+            }
+            if self.logSizeLimit != nil {
+                map["LogSizeLimit"] = self.logSizeLimit!
+            }
+            if self.memoryLimit != nil {
+                map["MemoryLimit"] = self.memoryLimit!
+            }
+            if self.overloadLimit != nil {
+                map["OverloadLimit"] = self.overloadLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CpuLimit"] as? Int32 {
+                self.cpuLimit = value
+            }
+            if let value = dict["KeepScriptFile"] as? Bool {
+                self.keepScriptFile = value
+            }
+            if let value = dict["LogFileCountLimit"] as? Int32 {
+                self.logFileCountLimit = value
+            }
+            if let value = dict["LogSizeLimit"] as? String {
+                self.logSizeLimit = value
+            }
+            if let value = dict["MemoryLimit"] as? String {
+                self.memoryLimit = value
+            }
+            if let value = dict["OverloadLimit"] as? Int32 {
+                self.overloadLimit = value
             }
         }
     }
@@ -37801,6 +37895,8 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceUsageConfig: DescribeCloudAssistantSettingsResponseBody.ResourceUsageConfig?
+
     public var sessionManagerConfig: DescribeCloudAssistantSettingsResponseBody.SessionManagerConfig?
 
     public var slsDeliveryConfigs: DescribeCloudAssistantSettingsResponseBody.SlsDeliveryConfigs?
@@ -37817,6 +37913,7 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.agentUpgradeConfig?.validate()
         try self.ossDeliveryConfigs?.validate()
+        try self.resourceUsageConfig?.validate()
         try self.sessionManagerConfig?.validate()
         try self.slsDeliveryConfigs?.validate()
     }
@@ -37831,6 +37928,9 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.resourceUsageConfig != nil {
+            map["ResourceUsageConfig"] = self.resourceUsageConfig?.toMap()
         }
         if self.sessionManagerConfig != nil {
             map["SessionManagerConfig"] = self.sessionManagerConfig?.toMap()
@@ -37855,6 +37955,11 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceUsageConfig"] as? [String: Any?] {
+            var model = DescribeCloudAssistantSettingsResponseBody.ResourceUsageConfig()
+            model.fromMap(value)
+            self.resourceUsageConfig = model
         }
         if let value = dict["SessionManagerConfig"] as? [String: Any?] {
             var model = DescribeCloudAssistantSettingsResponseBody.SessionManagerConfig()
@@ -42512,6 +42617,8 @@ public class DescribeDeploymentSetsRequest : Tea.TeaModel {
 
     public var strategy: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -42565,6 +42672,9 @@ public class DescribeDeploymentSetsRequest : Tea.TeaModel {
         if self.strategy != nil {
             map["Strategy"] = self.strategy!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -42608,6 +42718,9 @@ public class DescribeDeploymentSetsRequest : Tea.TeaModel {
         }
         if let value = dict["Strategy"] as? String {
             self.strategy = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -42761,6 +42874,8 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
 
             public var strategy: String?
 
+            public var type: String?
+
             public override init() {
                 super.init()
             }
@@ -42816,6 +42931,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
                 if self.strategy != nil {
                     map["Strategy"] = self.strategy!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 return map
             }
 
@@ -42863,6 +42981,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Strategy"] as? String {
                     self.strategy = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
                 }
             }
         }
@@ -103774,6 +103895,10 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
     public class AgentUpgradeConfig : Tea.TeaModel {
         public var allowedUpgradeWindow: [String]?
 
+        public var bootstrapUpgrade: Bool?
+
+        public var disableUpgrade: Bool?
+
         public var enabled: Bool?
 
         public var timeZone: String?
@@ -103795,6 +103920,12 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
             if self.allowedUpgradeWindow != nil {
                 map["AllowedUpgradeWindow"] = self.allowedUpgradeWindow!
             }
+            if self.bootstrapUpgrade != nil {
+                map["BootstrapUpgrade"] = self.bootstrapUpgrade!
+            }
+            if self.disableUpgrade != nil {
+                map["DisableUpgrade"] = self.disableUpgrade!
+            }
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
@@ -103808,6 +103939,12 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AllowedUpgradeWindow"] as? [String] {
                 self.allowedUpgradeWindow = value
+            }
+            if let value = dict["BootstrapUpgrade"] as? Bool {
+                self.bootstrapUpgrade = value
+            }
+            if let value = dict["DisableUpgrade"] as? Bool {
+                self.disableUpgrade = value
             }
             if let value = dict["Enabled"] as? Bool {
                 self.enabled = value
@@ -103884,6 +104021,76 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
             }
             if let value = dict["Prefix"] as? String {
                 self.prefix_ = value
+            }
+        }
+    }
+    public class ResourceUsageConfig : Tea.TeaModel {
+        public var cpuLimit: Int32?
+
+        public var keepScriptFile: Bool?
+
+        public var logFileCountLimit: Int32?
+
+        public var logSizeLimit: String?
+
+        public var memoryLimit: String?
+
+        public var overloadLimit: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuLimit != nil {
+                map["CpuLimit"] = self.cpuLimit!
+            }
+            if self.keepScriptFile != nil {
+                map["KeepScriptFile"] = self.keepScriptFile!
+            }
+            if self.logFileCountLimit != nil {
+                map["LogFileCountLimit"] = self.logFileCountLimit!
+            }
+            if self.logSizeLimit != nil {
+                map["LogSizeLimit"] = self.logSizeLimit!
+            }
+            if self.memoryLimit != nil {
+                map["MemoryLimit"] = self.memoryLimit!
+            }
+            if self.overloadLimit != nil {
+                map["OverloadLimit"] = self.overloadLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CpuLimit"] as? Int32 {
+                self.cpuLimit = value
+            }
+            if let value = dict["KeepScriptFile"] as? Bool {
+                self.keepScriptFile = value
+            }
+            if let value = dict["LogFileCountLimit"] as? Int32 {
+                self.logFileCountLimit = value
+            }
+            if let value = dict["LogSizeLimit"] as? String {
+                self.logSizeLimit = value
+            }
+            if let value = dict["MemoryLimit"] as? String {
+                self.memoryLimit = value
+            }
+            if let value = dict["OverloadLimit"] as? Int32 {
+                self.overloadLimit = value
             }
         }
     }
@@ -103977,6 +104184,8 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var resourceUsageConfig: ModifyCloudAssistantSettingsRequest.ResourceUsageConfig?
+
     public var sessionManagerConfig: ModifyCloudAssistantSettingsRequest.SessionManagerConfig?
 
     public var settingType: String?
@@ -103995,6 +104204,7 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.agentUpgradeConfig?.validate()
         try self.ossDeliveryConfig?.validate()
+        try self.resourceUsageConfig?.validate()
         try self.sessionManagerConfig?.validate()
         try self.slsDeliveryConfig?.validate()
     }
@@ -104021,6 +104231,9 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.resourceUsageConfig != nil {
+            map["ResourceUsageConfig"] = self.resourceUsageConfig?.toMap()
         }
         if self.sessionManagerConfig != nil {
             map["SessionManagerConfig"] = self.sessionManagerConfig?.toMap()
@@ -104061,6 +104274,11 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
         }
+        if let value = dict["ResourceUsageConfig"] as? [String: Any?] {
+            var model = ModifyCloudAssistantSettingsRequest.ResourceUsageConfig()
+            model.fromMap(value)
+            self.resourceUsageConfig = model
+        }
         if let value = dict["SessionManagerConfig"] as? [String: Any?] {
             var model = ModifyCloudAssistantSettingsRequest.SessionManagerConfig()
             model.fromMap(value)
@@ -104091,6 +104309,8 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var resourceUsageConfigShrink: String?
 
     public var sessionManagerConfigShrink: String?
 
@@ -104133,6 +104353,9 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.resourceUsageConfigShrink != nil {
+            map["ResourceUsageConfig"] = self.resourceUsageConfigShrink!
+        }
         if self.sessionManagerConfigShrink != nil {
             map["SessionManagerConfig"] = self.sessionManagerConfigShrink!
         }
@@ -104167,6 +104390,9 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["ResourceUsageConfig"] as? String {
+            self.resourceUsageConfigShrink = value
         }
         if let value = dict["SessionManagerConfig"] as? String {
             self.sessionManagerConfigShrink = value

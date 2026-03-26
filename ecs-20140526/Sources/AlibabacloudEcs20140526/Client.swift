@@ -2303,6 +2303,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.strategy)) {
             query["Strategy"] = request.strategy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -8276,6 +8279,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.strategy)) {
             query["Strategy"] = request.strategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -16300,6 +16306,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.ossDeliveryConfig)) {
             request.ossDeliveryConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ossDeliveryConfig, "OssDeliveryConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceUsageConfig)) {
+            request.resourceUsageConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceUsageConfig, "ResourceUsageConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sessionManagerConfig)) {
             request.sessionManagerConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sessionManagerConfig, "SessionManagerConfig", "json")
         }
@@ -16327,6 +16336,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceUsageConfigShrink)) {
+            query["ResourceUsageConfig"] = request.resourceUsageConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sessionManagerConfigShrink)) {
             query["SessionManagerConfig"] = request.sessionManagerConfigShrink ?? "";
