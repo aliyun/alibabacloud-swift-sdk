@@ -107,6 +107,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAppInstanceShrinkRequest = CreateAppInstanceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.components)) {
+            request.componentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.components, "Components", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.DBInstanceConfig)) {
             request.DBInstanceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.DBInstanceConfig, "DBInstanceConfig", "json")
         }
@@ -119,6 +122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
+            query["Components"] = request.componentsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.DBInstanceConfigShrink)) {
             query["DBInstanceConfig"] = request.DBInstanceConfigShrink ?? "";
@@ -310,6 +316,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.reportLanguage)) {
             query["ReportLanguage"] = request.reportLanguage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.reportRegionId)) {
+            query["ReportRegionId"] = request.reportRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.reportType)) {
             query["ReportType"] = request.reportType ?? "";
         }
@@ -361,6 +370,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reportLanguage)) {
             query["ReportLanguage"] = request.reportLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reportRegionId)) {
+            query["ReportRegionId"] = request.reportRegionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.reportType)) {
             query["ReportType"] = request.reportType ?? "";

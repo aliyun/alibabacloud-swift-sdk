@@ -454,6 +454,36 @@ public class ChatMessagesTaskStopResponse : Tea.TeaModel {
 }
 
 public class CreateAppInstanceRequest : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class DBInstanceConfig : Tea.TeaModel {
         public var DBInstanceClass: String?
 
@@ -506,6 +536,8 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var components: [CreateAppInstanceRequest.Components]?
+
     public var DBInstanceConfig: CreateAppInstanceRequest.DBInstanceConfig?
 
     public var DBInstanceName: String?
@@ -553,6 +585,13 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["Components"] = tmp
         }
         if self.DBInstanceConfig != nil {
             map["DBInstanceConfig"] = self.DBInstanceConfig?.toMap()
@@ -604,6 +643,19 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["Components"] as? [Any?] {
+            var tmp : [CreateAppInstanceRequest.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAppInstanceRequest.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
         if let value = dict["DBInstanceConfig"] as? [String: Any?] {
             var model = CreateAppInstanceRequest.DBInstanceConfig()
             model.fromMap(value)
@@ -652,6 +704,8 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var componentsShrink: String?
+
     public var DBInstanceConfigShrink: String?
 
     public var DBInstanceName: String?
@@ -698,6 +752,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.componentsShrink != nil {
+            map["Components"] = self.componentsShrink!
         }
         if self.DBInstanceConfigShrink != nil {
             map["DBInstanceConfig"] = self.DBInstanceConfigShrink!
@@ -748,6 +805,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["Components"] as? String {
+            self.componentsShrink = value
         }
         if let value = dict["DBInstanceConfig"] as? String {
             self.DBInstanceConfigShrink = value
@@ -1531,6 +1591,8 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
 
     public var reportLanguage: String?
 
+    public var reportRegionId: String?
+
     public var reportType: String?
 
     public var startTime: String?
@@ -1564,6 +1626,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         if self.reportLanguage != nil {
             map["ReportLanguage"] = self.reportLanguage!
         }
+        if self.reportRegionId != nil {
+            map["ReportRegionId"] = self.reportRegionId!
+        }
         if self.reportType != nil {
             map["ReportType"] = self.reportType!
         }
@@ -1589,6 +1654,9 @@ public class CreateInspectionTaskRequest : Tea.TeaModel {
         }
         if let value = dict["ReportLanguage"] as? String {
             self.reportLanguage = value
+        }
+        if let value = dict["ReportRegionId"] as? String {
+            self.reportRegionId = value
         }
         if let value = dict["ReportType"] as? String {
             self.reportType = value
@@ -1750,6 +1818,8 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
 
     public var reportLanguage: String?
 
+    public var reportRegionId: String?
+
     public var reportType: String?
 
     public var startTime: String?
@@ -1788,6 +1858,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         if self.reportLanguage != nil {
             map["ReportLanguage"] = self.reportLanguage!
         }
+        if self.reportRegionId != nil {
+            map["ReportRegionId"] = self.reportRegionId!
+        }
         if self.reportType != nil {
             map["ReportType"] = self.reportType!
         }
@@ -1819,6 +1892,9 @@ public class CreateScheduledTaskRequest : Tea.TeaModel {
         }
         if let value = dict["ReportLanguage"] as? String {
             self.reportLanguage = value
+        }
+        if let value = dict["ReportRegionId"] as? String {
+            self.reportRegionId = value
         }
         if let value = dict["ReportType"] as? String {
             self.reportType = value
@@ -2880,9 +2956,49 @@ public class DescribeAppInstanceAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public var status: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public var appName: String?
 
     public var appType: String?
+
+    public var components: [DescribeAppInstanceAttributeResponseBody.Components]?
 
     public var DBInstanceName: String?
 
@@ -2935,6 +3051,13 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.appType != nil {
             map["AppType"] = self.appType!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["Components"] = tmp
         }
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
@@ -2994,6 +3117,19 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["AppType"] as? String {
             self.appType = value
+        }
+        if let value = dict["Components"] as? [Any?] {
+            var tmp : [DescribeAppInstanceAttributeResponseBody.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeAppInstanceAttributeResponseBody.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
         }
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
@@ -3161,9 +3297,49 @@ public class DescribeAppInstancesRequest : Tea.TeaModel {
 
 public class DescribeAppInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public class Components : Tea.TeaModel {
+            public var status: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var appName: String?
 
         public var appType: String?
+
+        public var components: [DescribeAppInstancesResponseBody.Instances.Components]?
 
         public var DBInstanceName: String?
 
@@ -3203,6 +3379,13 @@ public class DescribeAppInstancesResponseBody : Tea.TeaModel {
             if self.appType != nil {
                 map["AppType"] = self.appType!
             }
+            if self.components != nil {
+                var tmp : [Any] = []
+                for k in self.components! {
+                    tmp.append(k.toMap())
+                }
+                map["Components"] = tmp
+            }
             if self.DBInstanceName != nil {
                 map["DBInstanceName"] = self.DBInstanceName!
             }
@@ -3240,6 +3423,19 @@ public class DescribeAppInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AppType"] as? String {
                 self.appType = value
+            }
+            if let value = dict["Components"] as? [Any?] {
+                var tmp : [DescribeAppInstancesResponseBody.Instances.Components] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAppInstancesResponseBody.Instances.Components()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.components = tmp
             }
             if let value = dict["DBInstanceName"] as? String {
                 self.DBInstanceName = value
