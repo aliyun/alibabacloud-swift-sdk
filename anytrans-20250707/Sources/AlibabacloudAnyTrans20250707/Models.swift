@@ -497,6 +497,8 @@ public class BatchTranslateResponseBody : Tea.TeaModel {
             }
             public var code: Int64?
 
+            public var detectedLang: String?
+
             public var index: String?
 
             public var message: String?
@@ -523,6 +525,9 @@ public class BatchTranslateResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["code"] = self.code!
                 }
+                if self.detectedLang != nil {
+                    map["detectedLang"] = self.detectedLang!
+                }
                 if self.index != nil {
                     map["index"] = self.index!
                 }
@@ -542,6 +547,9 @@ public class BatchTranslateResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["code"] as? Int64 {
                     self.code = value
+                }
+                if let value = dict["detectedLang"] as? String {
+                    self.detectedLang = value
                 }
                 if let value = dict["index"] as? String {
                     self.index = value
@@ -1209,6 +1217,8 @@ public class BatchTranslateForHtmlResponseBody : Tea.TeaModel {
             }
             public var code: Int64?
 
+            public var detectedLang: String?
+
             public var index: String?
 
             public var message: String?
@@ -1235,6 +1245,9 @@ public class BatchTranslateForHtmlResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["code"] = self.code!
                 }
+                if self.detectedLang != nil {
+                    map["detectedLang"] = self.detectedLang!
+                }
                 if self.index != nil {
                     map["index"] = self.index!
                 }
@@ -1254,6 +1267,9 @@ public class BatchTranslateForHtmlResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["code"] as? Int64 {
                     self.code = value
+                }
+                if let value = dict["detectedLang"] as? String {
+                    self.detectedLang = value
                 }
                 if let value = dict["index"] as? String {
                     self.index = value
@@ -6557,6 +6573,8 @@ public class TextTranslateResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var detectedLang: String?
+
         public var translation: String?
 
         public var usage: TextTranslateResponseBody.Data.Usage?
@@ -6576,6 +6594,9 @@ public class TextTranslateResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.detectedLang != nil {
+                map["detectedLang"] = self.detectedLang!
+            }
             if self.translation != nil {
                 map["translation"] = self.translation!
             }
@@ -6587,6 +6608,9 @@ public class TextTranslateResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["detectedLang"] as? String {
+                self.detectedLang = value
+            }
             if let value = dict["translation"] as? String {
                 self.translation = value
             }
