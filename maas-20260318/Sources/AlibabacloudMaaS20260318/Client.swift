@@ -41,7 +41,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateApiKey",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/apiKey/createApiKey",
+            "pathname": "/maas/apikeys",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -60,21 +60,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteApiKeyWithOptions(_ request: DeleteApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteApiKeyResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
-            query["apiKeyId"] = request.apiKeyId!;
-        }
+    public func deleteApiKeyWithOptions(_ apiKeyId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteApiKeyResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "headers": headers as! [String: String]
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteApiKey",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/apiKey/deleteApiKey",
+            "pathname": "/maas/apikeys/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(apiKeyId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -86,28 +80,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteApiKey(_ request: DeleteApiKeyRequest) async throws -> DeleteApiKeyResponse {
+    public func deleteApiKey(_ apiKeyId: String) async throws -> DeleteApiKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteApiKeyWithOptions(request as! DeleteApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteApiKeyWithOptions(apiKeyId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getApiKeyWithOptions(_ request: GetApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApiKeyResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
-            query["apiKeyId"] = request.apiKeyId!;
-        }
+    public func getApiKeyWithOptions(_ apiKeyId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetApiKeyResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "headers": headers as! [String: String]
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetApiKey",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/apiKey/getApiKey",
+            "pathname": "/maas/apikeys/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(apiKeyId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -119,10 +107,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getApiKey(_ request: GetApiKeyRequest) async throws -> GetApiKeyResponse {
+    public func getApiKey(_ apiKeyId: String) async throws -> GetApiKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getApiKeyWithOptions(request as! GetApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getApiKeyWithOptions(apiKeyId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -152,7 +140,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListApiKeys",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/apiKeys",
+            "pathname": "/maas/apikeys",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -191,7 +179,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListWorkspaces",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/workspaces",
+            "pathname": "/maas/workspaces",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -210,12 +198,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateApiKeyWithOptions(_ request: UpdateApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApiKeyResponse {
+    public func updateApiKeyWithOptions(_ apiKeyId: String, _ request: UpdateApiKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApiKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
-            query["apiKeyId"] = request.apiKeyId!;
-        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["description"] = request.description_ ?? "";
         }
@@ -227,7 +212,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateApiKey",
             "version": "2026-03-18",
             "protocol": "HTTPS",
-            "pathname": "/bailianControl/apiKey/updateApiKey",
+            "pathname": "/maas/apikeys/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(apiKeyId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -239,9 +224,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateApiKey(_ request: UpdateApiKeyRequest) async throws -> UpdateApiKeyResponse {
+    public func updateApiKey(_ apiKeyId: String, _ request: UpdateApiKeyRequest) async throws -> UpdateApiKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateApiKeyWithOptions(request as! UpdateApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateApiKeyWithOptions(apiKeyId as! String, request as! UpdateApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }

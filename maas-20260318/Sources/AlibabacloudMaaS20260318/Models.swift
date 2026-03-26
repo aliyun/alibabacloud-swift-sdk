@@ -238,37 +238,6 @@ public class CreateApiKeyResponse : Tea.TeaModel {
     }
 }
 
-public class DeleteApiKeyRequest : Tea.TeaModel {
-    public var apiKeyId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.apiKeyId != nil {
-            map["apiKeyId"] = self.apiKeyId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["apiKeyId"] as? Int64 {
-            self.apiKeyId = value
-        }
-    }
-}
-
 public class DeleteApiKeyResponseBody : Tea.TeaModel {
     public var code: String?
 
@@ -378,37 +347,6 @@ public class DeleteApiKeyResponse : Tea.TeaModel {
             var model = DeleteApiKeyResponseBody()
             model.fromMap(value)
             self.body = model
-        }
-    }
-}
-
-public class GetApiKeyRequest : Tea.TeaModel {
-    public var apiKeyId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.apiKeyId != nil {
-            map["apiKeyId"] = self.apiKeyId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["apiKeyId"] as? Int64 {
-            self.apiKeyId = value
         }
     }
 }
@@ -1200,8 +1138,6 @@ public class ListWorkspacesResponse : Tea.TeaModel {
 }
 
 public class UpdateApiKeyRequest : Tea.TeaModel {
-    public var apiKeyId: Int64?
-
     public var description_: String?
 
     public override init() {
@@ -1218,9 +1154,6 @@ public class UpdateApiKeyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.apiKeyId != nil {
-            map["apiKeyId"] = self.apiKeyId!
-        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -1229,9 +1162,6 @@ public class UpdateApiKeyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["apiKeyId"] as? Int64 {
-            self.apiKeyId = value
-        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
