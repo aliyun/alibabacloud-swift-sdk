@@ -49572,6 +49572,8 @@ public class SearchCloudGtmMonitorTemplatesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var cloudGtmMonitorTemplateId: String?
+
             public var createTime: String?
 
             public var createTimestamp: Int64?
@@ -49617,6 +49619,9 @@ public class SearchCloudGtmMonitorTemplatesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.cloudGtmMonitorTemplateId != nil {
+                    map["CloudGtmMonitorTemplateId"] = self.cloudGtmMonitorTemplateId!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -49667,6 +49672,9 @@ public class SearchCloudGtmMonitorTemplatesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CloudGtmMonitorTemplateId"] as? String {
+                    self.cloudGtmMonitorTemplateId = value
+                }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
