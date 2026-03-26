@@ -32941,9 +32941,73 @@ public class GetInstanceLicenseRequest : Tea.TeaModel {
 
 public class GetInstanceLicenseResponseBody : Tea.TeaModel {
     public class License : Tea.TeaModel {
+        public class InstanceLicenseDetail : Tea.TeaModel {
+            public var conditionalAccessPolicyLicenseStatus: String?
+
+            public var m2mApplicationLicenseStatus: String?
+
+            public var m2mApplicationQuota: Int64?
+
+            public var networkAccessEndpointQuota: Int64?
+
+            public var userQuota: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.conditionalAccessPolicyLicenseStatus != nil {
+                    map["ConditionalAccessPolicyLicenseStatus"] = self.conditionalAccessPolicyLicenseStatus!
+                }
+                if self.m2mApplicationLicenseStatus != nil {
+                    map["M2mApplicationLicenseStatus"] = self.m2mApplicationLicenseStatus!
+                }
+                if self.m2mApplicationQuota != nil {
+                    map["M2mApplicationQuota"] = self.m2mApplicationQuota!
+                }
+                if self.networkAccessEndpointQuota != nil {
+                    map["NetworkAccessEndpointQuota"] = self.networkAccessEndpointQuota!
+                }
+                if self.userQuota != nil {
+                    map["UserQuota"] = self.userQuota!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConditionalAccessPolicyLicenseStatus"] as? String {
+                    self.conditionalAccessPolicyLicenseStatus = value
+                }
+                if let value = dict["M2mApplicationLicenseStatus"] as? String {
+                    self.m2mApplicationLicenseStatus = value
+                }
+                if let value = dict["M2mApplicationQuota"] as? Int64 {
+                    self.m2mApplicationQuota = value
+                }
+                if let value = dict["NetworkAccessEndpointQuota"] as? Int64 {
+                    self.networkAccessEndpointQuota = value
+                }
+                if let value = dict["UserQuota"] as? Int64 {
+                    self.userQuota = value
+                }
+            }
+        }
         public var edition: String?
 
         public var endTime: Int64?
+
+        public var instanceLicenseDetail: GetInstanceLicenseResponseBody.License.InstanceLicenseDetail?
 
         public var licenseChargeType: String?
 
@@ -32973,6 +33037,7 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceLicenseDetail?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -32982,6 +33047,9 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.instanceLicenseDetail != nil {
+                map["InstanceLicenseDetail"] = self.instanceLicenseDetail?.toMap()
             }
             if self.licenseChargeType != nil {
                 map["LicenseChargeType"] = self.licenseChargeType!
@@ -33020,6 +33088,11 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
+            }
+            if let value = dict["InstanceLicenseDetail"] as? [String: Any?] {
+                var model = GetInstanceLicenseResponseBody.License.InstanceLicenseDetail()
+                model.fromMap(value)
+                self.instanceLicenseDetail = model
             }
             if let value = dict["LicenseChargeType"] as? String {
                 self.licenseChargeType = value
