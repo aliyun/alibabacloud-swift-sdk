@@ -494,6 +494,8 @@ public class Dataset : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var accessibleRoleIdList: [String]?
+
     public var dataSourceType: String?
 
     public var dataType: String?
@@ -569,6 +571,9 @@ public class Dataset : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.accessibleRoleIdList != nil {
+            map["AccessibleRoleIdList"] = self.accessibleRoleIdList!
         }
         if self.dataSourceType != nil {
             map["DataSourceType"] = self.dataSourceType!
@@ -665,6 +670,9 @@ public class Dataset : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AccessibleRoleIdList"] as? [String] {
+            self.accessibleRoleIdList = value
         }
         if let value = dict["DataSourceType"] as? String {
             self.dataSourceType = value
@@ -4733,6 +4741,8 @@ public class CreateConnectionResponse : Tea.TeaModel {
 public class CreateDatasetRequest : Tea.TeaModel {
     public var accessibility: String?
 
+    public var accessibleRoleIdList: [String]?
+
     public var dataCount: Int64?
 
     public var dataSize: Int64?
@@ -4795,6 +4805,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.accessibleRoleIdList != nil {
+            map["AccessibleRoleIdList"] = self.accessibleRoleIdList!
         }
         if self.dataCount != nil {
             map["DataCount"] = self.dataCount!
@@ -4880,6 +4893,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AccessibleRoleIdList"] as? [String] {
+            self.accessibleRoleIdList = value
         }
         if let value = dict["DataCount"] as? Int64 {
             self.dataCount = value
@@ -11831,6 +11847,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var accessibleRoleIdList: [String]?
+
     public var dataSourceType: String?
 
     public var dataType: String?
@@ -11910,6 +11928,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.accessibleRoleIdList != nil {
+            map["AccessibleRoleIdList"] = self.accessibleRoleIdList!
         }
         if self.dataSourceType != nil {
             map["DataSourceType"] = self.dataSourceType!
@@ -12012,6 +12033,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AccessibleRoleIdList"] as? [String] {
+            self.accessibleRoleIdList = value
         }
         if let value = dict["DataSourceType"] as? String {
             self.dataSourceType = value
@@ -16809,6 +16833,8 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var withLogs: Bool?
+
     public var workspaceId: String?
 
     public override init() {
@@ -16846,6 +16872,9 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.withLogs != nil {
+            map["WithLogs"] = self.withLogs!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -16874,6 +16903,9 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["WithLogs"] as? Bool {
+            self.withLogs = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -17221,6 +17253,8 @@ public class ListDatasetsRequest : Tea.TeaModel {
 
     public var dataTypes: String?
 
+    public var datasetIds: String?
+
     public var edition: String?
 
     public var label: String?
@@ -17271,6 +17305,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         }
         if self.dataTypes != nil {
             map["DataTypes"] = self.dataTypes!
+        }
+        if self.datasetIds != nil {
+            map["DatasetIds"] = self.datasetIds!
         }
         if self.edition != nil {
             map["Edition"] = self.edition!
@@ -17327,6 +17364,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         }
         if let value = dict["DataTypes"] as? String {
             self.dataTypes = value
+        }
+        if let value = dict["DatasetIds"] as? String {
+            self.datasetIds = value
         }
         if let value = dict["Edition"] as? String {
             self.edition = value
@@ -24107,6 +24147,10 @@ public class UpdateDatasetRequest : Tea.TeaModel {
             }
         }
     }
+    public var accessibility: String?
+
+    public var accessibleRoleIdList: [String]?
+
     public var description_: String?
 
     public var edition: String?
@@ -24134,6 +24178,12 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
+        if self.accessibleRoleIdList != nil {
+            map["AccessibleRoleIdList"] = self.accessibleRoleIdList!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -24157,6 +24207,12 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
+        if let value = dict["AccessibleRoleIdList"] as? [String] {
+            self.accessibleRoleIdList = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }

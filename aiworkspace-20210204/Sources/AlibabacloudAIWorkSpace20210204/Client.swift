@@ -384,6 +384,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.accessibleRoleIdList)) {
+            body["AccessibleRoleIdList"] = request.accessibleRoleIdList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.dataCount)) {
             body["DataCount"] = request.dataCount!;
         }
@@ -2933,6 +2936,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.withLogs)) {
+            query["WithLogs"] = request.withLogs!;
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -3031,6 +3037,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dataTypes)) {
             query["DataTypes"] = request.dataTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.datasetIds)) {
+            query["DatasetIds"] = request.datasetIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.edition)) {
             query["Edition"] = request.edition ?? "";
@@ -4395,6 +4404,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateDatasetWithOptions(_ DatasetId: String, _ request: UpdateDatasetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDatasetResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessibleRoleIdList)) {
+            body["AccessibleRoleIdList"] = request.accessibleRoleIdList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
