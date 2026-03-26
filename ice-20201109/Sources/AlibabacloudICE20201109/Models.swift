@@ -61162,6 +61162,10 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
 
         public var outputUrl: String?
 
+        public var storyboardInfoList: String?
+
+        public var successStoryboardIds: String?
+
         public var successStoryboardList: String?
 
         public override init() {
@@ -61187,6 +61191,12 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
             if self.outputUrl != nil {
                 map["OutputUrl"] = self.outputUrl!
             }
+            if self.storyboardInfoList != nil {
+                map["StoryboardInfoList"] = self.storyboardInfoList!
+            }
+            if self.successStoryboardIds != nil {
+                map["SuccessStoryboardIds"] = self.successStoryboardIds!
+            }
             if self.successStoryboardList != nil {
                 map["SuccessStoryboardList"] = self.successStoryboardList!
             }
@@ -61203,6 +61213,12 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["OutputUrl"] as? String {
                 self.outputUrl = value
+            }
+            if let value = dict["StoryboardInfoList"] as? String {
+                self.storyboardInfoList = value
+            }
+            if let value = dict["SuccessStoryboardIds"] as? String {
+                self.successStoryboardIds = value
             }
             if let value = dict["SuccessStoryboardList"] as? String {
                 self.successStoryboardList = value
@@ -91084,6 +91100,126 @@ public class ResumeMediaConnectFlowOutputResponse : Tea.TeaModel {
     }
 }
 
+public class ResumeYikeStoryboardJobRequest : Tea.TeaModel {
+    public var jobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+    }
+}
+
+public class ResumeYikeStoryboardJobResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ResumeYikeStoryboardJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ResumeYikeStoryboardJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ResumeYikeStoryboardJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SearchEditingProjectRequest : Tea.TeaModel {
     public var createSource: String?
 
@@ -117371,6 +117507,8 @@ public class SubmitYikeAIAppJobResponse : Tea.TeaModel {
 public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
     public var aspectRatio: String?
 
+    public var execMode: String?
+
     public var fileURL: String?
 
     public var modelParams: String?
@@ -117382,6 +117520,8 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
     public var shotPromptMode: String?
 
     public var shotSplitMode: String?
+
+    public var skipFailureShot: Bool?
 
     public var sourceType: String?
 
@@ -117410,6 +117550,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         if self.aspectRatio != nil {
             map["AspectRatio"] = self.aspectRatio!
         }
+        if self.execMode != nil {
+            map["ExecMode"] = self.execMode!
+        }
         if self.fileURL != nil {
             map["FileURL"] = self.fileURL!
         }
@@ -117427,6 +117570,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         }
         if self.shotSplitMode != nil {
             map["ShotSplitMode"] = self.shotSplitMode!
+        }
+        if self.skipFailureShot != nil {
+            map["SkipFailureShot"] = self.skipFailureShot!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
@@ -117451,6 +117597,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         if let value = dict["AspectRatio"] as? String {
             self.aspectRatio = value
         }
+        if let value = dict["ExecMode"] as? String {
+            self.execMode = value
+        }
         if let value = dict["FileURL"] as? String {
             self.fileURL = value
         }
@@ -117468,6 +117617,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         }
         if let value = dict["ShotSplitMode"] as? String {
             self.shotSplitMode = value
+        }
+        if let value = dict["SkipFailureShot"] as? Bool {
+            self.skipFailureShot = value
         }
         if let value = dict["SourceType"] as? String {
             self.sourceType = value

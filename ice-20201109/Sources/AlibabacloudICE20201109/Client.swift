@@ -6150,7 +6150,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMediaProducingJobWithOptions(_ request: GetMediaProducingJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMediaProducingJobResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -6159,7 +6162,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-11-09",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -10767,6 +10770,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resumeYikeStoryboardJobWithOptions(_ request: ResumeYikeStoryboardJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResumeYikeStoryboardJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResumeYikeStoryboardJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResumeYikeStoryboardJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resumeYikeStoryboardJob(_ request: ResumeYikeStoryboardJobRequest) async throws -> ResumeYikeStoryboardJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await resumeYikeStoryboardJobWithOptions(request as! ResumeYikeStoryboardJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func searchEditingProjectWithOptions(_ request: SearchEditingProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchEditingProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14344,6 +14378,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aspectRatio)) {
             query["AspectRatio"] = request.aspectRatio ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.execMode)) {
+            query["ExecMode"] = request.execMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelParams)) {
             query["ModelParams"] = request.modelParams ?? "";
         }
@@ -14355,6 +14392,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shotPromptMode)) {
             query["ShotPromptMode"] = request.shotPromptMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skipFailureShot)) {
+            query["SkipFailureShot"] = request.skipFailureShot!;
         }
         if (!TeaUtils.Client.isUnset(request.title)) {
             query["Title"] = request.title ?? "";
