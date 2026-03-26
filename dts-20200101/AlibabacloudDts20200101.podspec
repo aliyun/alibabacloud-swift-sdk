@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDts20200101"
-  spec.version      = "1.9.1"
+  spec.version      = "1.9.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Data Transmission (20200101) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/dts-20200101" 
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.3'
-  spec.dependency 'TeaUtils',  '~> 1.0.6'
+  spec.dependency 'TeaUtils',  '~> 1.0.8'
   spec.dependency 'DarabonbaXML',  '~> 1.0.1'
   spec.dependency 'AlibabaCloudCredentials',  '~> 1.0.1'
   spec.dependency 'TeaFileForm',  '~> 1.0.3'

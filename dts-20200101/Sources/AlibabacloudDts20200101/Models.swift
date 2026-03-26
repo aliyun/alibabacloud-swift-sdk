@@ -19439,6 +19439,10 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
     }
     public var appName: String?
 
+    public var approvalProcessStatus: Int64?
+
+    public var approvalProcessUrl: String?
+
     public var beginTimestamp: String?
 
     public var binlog: String?
@@ -19579,6 +19583,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.appName != nil {
             map["AppName"] = self.appName!
+        }
+        if self.approvalProcessStatus != nil {
+            map["ApprovalProcessStatus"] = self.approvalProcessStatus!
+        }
+        if self.approvalProcessUrl != nil {
+            map["ApprovalProcessUrl"] = self.approvalProcessUrl!
         }
         if self.beginTimestamp != nil {
             map["BeginTimestamp"] = self.beginTimestamp!
@@ -19769,6 +19779,12 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppName"] as? String {
             self.appName = value
+        }
+        if let value = dict["ApprovalProcessStatus"] as? Int64 {
+            self.approvalProcessStatus = value
+        }
+        if let value = dict["ApprovalProcessUrl"] as? String {
+            self.approvalProcessUrl = value
         }
         if let value = dict["BeginTimestamp"] as? String {
             self.beginTimestamp = value
