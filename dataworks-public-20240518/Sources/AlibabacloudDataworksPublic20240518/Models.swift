@@ -7854,6 +7854,8 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var owner: String?
+
     public var projectId: Int64?
 
     public var resourceSettings: CreateDIJobRequest.ResourceSettings?
@@ -7909,6 +7911,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
         }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
@@ -7981,6 +7986,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
         }
@@ -8051,6 +8059,8 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var owner: String?
+
     public var projectId: Int64?
 
     public var resourceSettingsShrink: String?
@@ -8101,6 +8111,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -8147,6 +8160,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
         }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
@@ -26343,6 +26359,8 @@ public class GetDIJobResponseBody : Tea.TeaModel {
 
         public var migrationType: String?
 
+        public var owner: String?
+
         public var projectId: Int64?
 
         public var resourceSettings: GetDIJobResponseBody.PagingInfo.ResourceSettings?
@@ -26404,6 +26422,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
             }
             if self.migrationType != nil {
                 map["MigrationType"] = self.migrationType!
+            }
+            if self.owner != nil {
+                map["Owner"] = self.owner!
             }
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
@@ -26481,6 +26502,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["MigrationType"] as? String {
                 self.migrationType = value
+            }
+            if let value = dict["Owner"] as? String {
+                self.owner = value
             }
             if let value = dict["ProjectId"] as? Int64 {
                 self.projectId = value
@@ -47957,6 +47981,8 @@ public class ListDIJobsResponseBody : Tea.TeaModel {
 
             public var migrationType: String?
 
+            public var owner: String?
+
             public var projectId: Int64?
 
             public var sourceDataSourceType: String?
@@ -47993,6 +48019,9 @@ public class ListDIJobsResponseBody : Tea.TeaModel {
                 if self.migrationType != nil {
                     map["MigrationType"] = self.migrationType!
                 }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
                 if self.projectId != nil {
                     map["ProjectId"] = self.projectId!
                 }
@@ -48021,6 +48050,9 @@ public class ListDIJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MigrationType"] as? String {
                     self.migrationType = value
+                }
+                if let value = dict["Owner"] as? String {
+                    self.owner = value
                 }
                 if let value = dict["ProjectId"] as? Int64 {
                     self.projectId = value
@@ -83368,6 +83400,8 @@ public class UpdateDIJobRequest : Tea.TeaModel {
 
     public var jobSettings: UpdateDIJobRequest.JobSettings?
 
+    public var owner: String?
+
     public var projectId: Int64?
 
     public var resourceSettings: UpdateDIJobRequest.ResourceSettings?
@@ -83403,6 +83437,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
         }
         if self.jobSettings != nil {
             map["JobSettings"] = self.jobSettings?.toMap()
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
         }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
@@ -83442,6 +83479,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
             var model = UpdateDIJobRequest.JobSettings()
             model.fromMap(value)
             self.jobSettings = model
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
         }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
@@ -83489,6 +83529,8 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
 
     public var jobSettingsShrink: String?
 
+    public var owner: String?
+
     public var projectId: Int64?
 
     public var resourceSettingsShrink: String?
@@ -83523,6 +83565,9 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
         if self.jobSettingsShrink != nil {
             map["JobSettings"] = self.jobSettingsShrink!
         }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -83551,6 +83596,9 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["JobSettings"] as? String {
             self.jobSettingsShrink = value
+        }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
         }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
