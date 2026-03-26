@@ -6660,6 +6660,533 @@ public class ChangeWorkModeResponse : Tea.TeaModel {
     }
 }
 
+public class ClaimCallRequest : Tea.TeaModel {
+    public var candidateUserListJson: String?
+
+    public var instanceId: String?
+
+    public var jobId: String?
+
+    public var skillGroupId: String?
+
+    public var tags: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.candidateUserListJson != nil {
+            map["CandidateUserListJson"] = self.candidateUserListJson!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.skillGroupId != nil {
+            map["SkillGroupId"] = self.skillGroupId!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CandidateUserListJson"] as? String {
+            self.candidateUserListJson = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["SkillGroupId"] as? String {
+            self.skillGroupId = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tags = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class ClaimCallResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class CallContext : Tea.TeaModel {
+            public class ChannelContexts : Tea.TeaModel {
+                public var callType: String?
+
+                public var channelId: String?
+
+                public var channelState: String?
+
+                public var channelVariables: String?
+
+                public var destination: String?
+
+                public var jobId: String?
+
+                public var originator: String?
+
+                public var releaseInitiator: String?
+
+                public var releaseReason: String?
+
+                public var timestamp: Int64?
+
+                public var userExtension: String?
+
+                public var userId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callType != nil {
+                        map["CallType"] = self.callType!
+                    }
+                    if self.channelId != nil {
+                        map["ChannelId"] = self.channelId!
+                    }
+                    if self.channelState != nil {
+                        map["ChannelState"] = self.channelState!
+                    }
+                    if self.channelVariables != nil {
+                        map["ChannelVariables"] = self.channelVariables!
+                    }
+                    if self.destination != nil {
+                        map["Destination"] = self.destination!
+                    }
+                    if self.jobId != nil {
+                        map["JobId"] = self.jobId!
+                    }
+                    if self.originator != nil {
+                        map["Originator"] = self.originator!
+                    }
+                    if self.releaseInitiator != nil {
+                        map["ReleaseInitiator"] = self.releaseInitiator!
+                    }
+                    if self.releaseReason != nil {
+                        map["ReleaseReason"] = self.releaseReason!
+                    }
+                    if self.timestamp != nil {
+                        map["Timestamp"] = self.timestamp!
+                    }
+                    if self.userExtension != nil {
+                        map["UserExtension"] = self.userExtension!
+                    }
+                    if self.userId != nil {
+                        map["UserId"] = self.userId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallType"] as? String {
+                        self.callType = value
+                    }
+                    if let value = dict["ChannelId"] as? String {
+                        self.channelId = value
+                    }
+                    if let value = dict["ChannelState"] as? String {
+                        self.channelState = value
+                    }
+                    if let value = dict["ChannelVariables"] as? String {
+                        self.channelVariables = value
+                    }
+                    if let value = dict["Destination"] as? String {
+                        self.destination = value
+                    }
+                    if let value = dict["JobId"] as? String {
+                        self.jobId = value
+                    }
+                    if let value = dict["Originator"] as? String {
+                        self.originator = value
+                    }
+                    if let value = dict["ReleaseInitiator"] as? String {
+                        self.releaseInitiator = value
+                    }
+                    if let value = dict["ReleaseReason"] as? String {
+                        self.releaseReason = value
+                    }
+                    if let value = dict["Timestamp"] as? Int64 {
+                        self.timestamp = value
+                    }
+                    if let value = dict["UserExtension"] as? String {
+                        self.userExtension = value
+                    }
+                    if let value = dict["UserId"] as? String {
+                        self.userId = value
+                    }
+                }
+            }
+            public var channelContexts: [ClaimCallResponseBody.Data.CallContext.ChannelContexts]?
+
+            public var instanceId: String?
+
+            public var jobId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channelContexts != nil {
+                    var tmp : [Any] = []
+                    for k in self.channelContexts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ChannelContexts"] = tmp
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.jobId != nil {
+                    map["JobId"] = self.jobId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ChannelContexts"] as? [Any?] {
+                    var tmp : [ClaimCallResponseBody.Data.CallContext.ChannelContexts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ClaimCallResponseBody.Data.CallContext.ChannelContexts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.channelContexts = tmp
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["JobId"] as? String {
+                    self.jobId = value
+                }
+            }
+        }
+        public class UserContext : Tea.TeaModel {
+            public var breakCode: String?
+
+            public var deviceId: String?
+
+            public var extension_: String?
+
+            public var instanceId: String?
+
+            public var jobId: String?
+
+            public var outboundScenario: Bool?
+
+            public var signedSkillGroupIdList: [String]?
+
+            public var userId: String?
+
+            public var userState: String?
+
+            public var workMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.breakCode != nil {
+                    map["BreakCode"] = self.breakCode!
+                }
+                if self.deviceId != nil {
+                    map["DeviceId"] = self.deviceId!
+                }
+                if self.extension_ != nil {
+                    map["Extension"] = self.extension_!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.jobId != nil {
+                    map["JobId"] = self.jobId!
+                }
+                if self.outboundScenario != nil {
+                    map["OutboundScenario"] = self.outboundScenario!
+                }
+                if self.signedSkillGroupIdList != nil {
+                    map["SignedSkillGroupIdList"] = self.signedSkillGroupIdList!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                if self.userState != nil {
+                    map["UserState"] = self.userState!
+                }
+                if self.workMode != nil {
+                    map["WorkMode"] = self.workMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BreakCode"] as? String {
+                    self.breakCode = value
+                }
+                if let value = dict["DeviceId"] as? String {
+                    self.deviceId = value
+                }
+                if let value = dict["Extension"] as? String {
+                    self.extension_ = value
+                }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["JobId"] as? String {
+                    self.jobId = value
+                }
+                if let value = dict["OutboundScenario"] as? Bool {
+                    self.outboundScenario = value
+                }
+                if let value = dict["SignedSkillGroupIdList"] as? [String] {
+                    self.signedSkillGroupIdList = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+                if let value = dict["UserState"] as? String {
+                    self.userState = value
+                }
+                if let value = dict["WorkMode"] as? String {
+                    self.workMode = value
+                }
+            }
+        }
+        public var callContext: ClaimCallResponseBody.Data.CallContext?
+
+        public var contextId: Int64?
+
+        public var userContext: ClaimCallResponseBody.Data.UserContext?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.callContext?.validate()
+            try self.userContext?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callContext != nil {
+                map["CallContext"] = self.callContext?.toMap()
+            }
+            if self.contextId != nil {
+                map["ContextId"] = self.contextId!
+            }
+            if self.userContext != nil {
+                map["UserContext"] = self.userContext?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CallContext"] as? [String: Any?] {
+                var model = ClaimCallResponseBody.Data.CallContext()
+                model.fromMap(value)
+                self.callContext = model
+            }
+            if let value = dict["ContextId"] as? Int64 {
+                self.contextId = value
+            }
+            if let value = dict["UserContext"] as? [String: Any?] {
+                var model = ClaimCallResponseBody.Data.UserContext()
+                model.fromMap(value)
+                self.userContext = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ClaimCallResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var params: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ClaimCallResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Params"] as? [String] {
+            self.params = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ClaimCallResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ClaimCallResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ClaimCallResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ClaimChatRequest : Tea.TeaModel {
     public var instanceId: String?
 
