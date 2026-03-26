@@ -30738,6 +30738,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.focusLevel)) {
+            query["FocusLevel"] = request.focusLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.project)) {
             query["Project"] = request.project ?? "";
         }
