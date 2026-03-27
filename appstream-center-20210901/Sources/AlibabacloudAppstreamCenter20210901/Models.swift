@@ -13087,6 +13087,10 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
             public var richTextClipboard: String?
 
+            public var richTextClipboardLimit: Int32?
+
+            public var richTextClipboardSizeUnit: String?
+
             public var textClipboard: String?
 
             public override init() {
@@ -13124,6 +13128,12 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 if self.richTextClipboard != nil {
                     map["RichTextClipboard"] = self.richTextClipboard!
                 }
+                if self.richTextClipboardLimit != nil {
+                    map["RichTextClipboardLimit"] = self.richTextClipboardLimit!
+                }
+                if self.richTextClipboardSizeUnit != nil {
+                    map["RichTextClipboardSizeUnit"] = self.richTextClipboardSizeUnit!
+                }
                 if self.textClipboard != nil {
                     map["TextClipboard"] = self.textClipboard!
                 }
@@ -13152,6 +13162,12 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["RichTextClipboard"] as? String {
                     self.richTextClipboard = value
+                }
+                if let value = dict["RichTextClipboardLimit"] as? Int32 {
+                    self.richTextClipboardLimit = value
+                }
+                if let value = dict["RichTextClipboardSizeUnit"] as? String {
+                    self.richTextClipboardSizeUnit = value
                 }
                 if let value = dict["TextClipboard"] as? String {
                     self.textClipboard = value
