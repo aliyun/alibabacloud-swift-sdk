@@ -58720,6 +58720,10 @@ public class ListUsersRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var organizationalUnitId: String?
 
     public var pageNumber: Int64?
@@ -58764,6 +58768,12 @@ public class ListUsersRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.organizationalUnitId != nil {
             map["OrganizationalUnitId"] = self.organizationalUnitId!
@@ -58811,6 +58821,12 @@ public class ListUsersRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["OrganizationalUnitId"] as? String {
             self.organizationalUnitId = value
@@ -59039,6 +59055,10 @@ public class ListUsersResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var requestId: String?
 
     public var totalCount: Int64?
@@ -59059,6 +59079,12 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -59077,6 +59103,12 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
