@@ -10976,6 +10976,8 @@ public class GetAppPluginConfigResponse : Tea.TeaModel {
 public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var extend: String?
+
     public var resourceConditions: String?
 
     public var scene: String?
@@ -10997,6 +10999,9 @@ public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
         if self.resourceConditions != nil {
             map["ResourceConditions"] = self.resourceConditions!
         }
@@ -11010,6 +11015,9 @@ public class GetAppRecommendedCommoditiesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["Extend"] as? String {
+            self.extend = value
         }
         if let value = dict["ResourceConditions"] as? String {
             self.resourceConditions = value
