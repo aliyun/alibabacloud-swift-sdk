@@ -1540,9 +1540,133 @@ public class QueryDocParserStatusRequest : Tea.TeaModel {
 
 public class QueryDocParserStatusResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class OutputFormatResult : Tea.TeaModel {
+            public class Pages : Tea.TeaModel {
+                public var imageHeight: Int32?
+
+                public var imageUrl: String?
+
+                public var imageWidth: Int32?
+
+                public var pageIdAllDocs: Int32?
+
+                public var pageIdCurDoc: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.imageHeight != nil {
+                        map["ImageHeight"] = self.imageHeight!
+                    }
+                    if self.imageUrl != nil {
+                        map["ImageUrl"] = self.imageUrl!
+                    }
+                    if self.imageWidth != nil {
+                        map["ImageWidth"] = self.imageWidth!
+                    }
+                    if self.pageIdAllDocs != nil {
+                        map["PageIdAllDocs"] = self.pageIdAllDocs!
+                    }
+                    if self.pageIdCurDoc != nil {
+                        map["PageIdCurDoc"] = self.pageIdCurDoc!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ImageHeight"] as? Int32 {
+                        self.imageHeight = value
+                    }
+                    if let value = dict["ImageUrl"] as? String {
+                        self.imageUrl = value
+                    }
+                    if let value = dict["ImageWidth"] as? Int32 {
+                        self.imageWidth = value
+                    }
+                    if let value = dict["PageIdAllDocs"] as? Int32 {
+                        self.pageIdAllDocs = value
+                    }
+                    if let value = dict["PageIdCurDoc"] as? Int32 {
+                        self.pageIdCurDoc = value
+                    }
+                }
+            }
+            public var outputFileUrl: String?
+
+            public var outputType: String?
+
+            public var pages: [QueryDocParserStatusResponseBody.Data.OutputFormatResult.Pages]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.outputFileUrl != nil {
+                    map["OutputFileUrl"] = self.outputFileUrl!
+                }
+                if self.outputType != nil {
+                    map["OutputType"] = self.outputType!
+                }
+                if self.pages != nil {
+                    var tmp : [Any] = []
+                    for k in self.pages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Pages"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OutputFileUrl"] as? String {
+                    self.outputFileUrl = value
+                }
+                if let value = dict["OutputType"] as? String {
+                    self.outputType = value
+                }
+                if let value = dict["Pages"] as? [Any?] {
+                    var tmp : [QueryDocParserStatusResponseBody.Data.OutputFormatResult.Pages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryDocParserStatusResponseBody.Data.OutputFormatResult.Pages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.pages = tmp
+                }
+            }
+        }
         public var imageCount: Int32?
 
         public var numberOfSuccessfulParsing: Int32?
+
+        public var outputFormatResult: [QueryDocParserStatusResponseBody.Data.OutputFormatResult]?
 
         public var pageCountEstimate: Int32?
 
@@ -1576,6 +1700,13 @@ public class QueryDocParserStatusResponseBody : Tea.TeaModel {
             if self.numberOfSuccessfulParsing != nil {
                 map["NumberOfSuccessfulParsing"] = self.numberOfSuccessfulParsing!
             }
+            if self.outputFormatResult != nil {
+                var tmp : [Any] = []
+                for k in self.outputFormatResult! {
+                    tmp.append(k.toMap())
+                }
+                map["OutputFormatResult"] = tmp
+            }
             if self.pageCountEstimate != nil {
                 map["PageCountEstimate"] = self.pageCountEstimate!
             }
@@ -1604,6 +1735,19 @@ public class QueryDocParserStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["NumberOfSuccessfulParsing"] as? Int32 {
                 self.numberOfSuccessfulParsing = value
+            }
+            if let value = dict["OutputFormatResult"] as? [Any?] {
+                var tmp : [QueryDocParserStatusResponseBody.Data.OutputFormatResult] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryDocParserStatusResponseBody.Data.OutputFormatResult()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.outputFormatResult = tmp
             }
             if let value = dict["PageCountEstimate"] as? Int32 {
                 self.pageCountEstimate = value
@@ -4418,6 +4562,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public var ossEndpoint: String?
 
+    public var outputFormat: [String]?
+
     public var outputHtmlTable: Bool?
 
     public var pageIndex: String?
@@ -4481,6 +4627,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputFormat != nil {
+            map["OutputFormat"] = self.outputFormat!
+        }
         if self.outputHtmlTable != nil {
             map["OutputHtmlTable"] = self.outputHtmlTable!
         }
@@ -4539,6 +4688,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         }
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
+        }
+        if let value = dict["OutputFormat"] as? [String] {
+            self.outputFormat = value
         }
         if let value = dict["OutputHtmlTable"] as? Bool {
             self.outputHtmlTable = value
@@ -4700,6 +4852,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public var ossEndpoint: String?
 
+    public var outputFormat: [String]?
+
     public var outputHtmlTable: Bool?
 
     public var pageIndex: String?
@@ -4763,6 +4917,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputFormat != nil {
+            map["OutputFormat"] = self.outputFormat!
+        }
         if self.outputHtmlTable != nil {
             map["OutputHtmlTable"] = self.outputHtmlTable!
         }
@@ -4822,6 +4979,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
         }
+        if let value = dict["OutputFormat"] as? [String] {
+            self.outputFormat = value
+        }
         if let value = dict["OutputHtmlTable"] as? Bool {
             self.outputHtmlTable = value
         }
@@ -4859,6 +5019,8 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
     public var ossBucket: String?
 
     public var ossEndpoint: String?
+
+    public var outputFormatShrink: String?
 
     public var outputHtmlTable: Bool?
 
@@ -4920,6 +5082,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputFormatShrink != nil {
+            map["OutputFormat"] = self.outputFormatShrink!
+        }
         if self.outputHtmlTable != nil {
             map["OutputHtmlTable"] = self.outputHtmlTable!
         }
@@ -4972,6 +5137,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
+        }
+        if let value = dict["OutputFormat"] as? String {
+            self.outputFormatShrink = value
         }
         if let value = dict["OutputHtmlTable"] as? Bool {
             self.outputHtmlTable = value
@@ -5137,6 +5305,8 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
 
     public var ossEndpoint: String?
 
+    public var outputFormat: [String]?
+
     public var pageIndex: String?
 
     public var structureType: String?
@@ -5179,6 +5349,9 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputFormat != nil {
+            map["OutputFormat"] = self.outputFormat!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -5214,6 +5387,9 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
         }
+        if let value = dict["OutputFormat"] as? [String] {
+            self.outputFormat = value
+        }
         if let value = dict["PageIndex"] as? String {
             self.pageIndex = value
         }
@@ -5239,6 +5415,8 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
     public var ossBucket: String?
 
     public var ossEndpoint: String?
+
+    public var outputFormat: [String]?
 
     public var pageIndex: String?
 
@@ -5282,6 +5460,9 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputFormat != nil {
+            map["OutputFormat"] = self.outputFormat!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -5316,6 +5497,120 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
+        }
+        if let value = dict["OutputFormat"] as? [String] {
+            self.outputFormat = value
+        }
+        if let value = dict["PageIndex"] as? String {
+            self.pageIndex = value
+        }
+        if let value = dict["StructureType"] as? String {
+            self.structureType = value
+        }
+    }
+}
+
+public class SubmitDocStructureJobShrinkRequest : Tea.TeaModel {
+    public var allowPptFormat: Bool?
+
+    public var enableEventCallback: Bool?
+
+    public var fileName: String?
+
+    public var fileNameExtension: String?
+
+    public var fileUrl: String?
+
+    public var formulaEnhancement: Bool?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
+    public var outputFormatShrink: String?
+
+    public var pageIndex: String?
+
+    public var structureType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowPptFormat != nil {
+            map["AllowPptFormat"] = self.allowPptFormat!
+        }
+        if self.enableEventCallback != nil {
+            map["EnableEventCallback"] = self.enableEventCallback!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.fileNameExtension != nil {
+            map["FileNameExtension"] = self.fileNameExtension!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.formulaEnhancement != nil {
+            map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.outputFormatShrink != nil {
+            map["OutputFormat"] = self.outputFormatShrink!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        if self.structureType != nil {
+            map["StructureType"] = self.structureType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowPptFormat"] as? Bool {
+            self.allowPptFormat = value
+        }
+        if let value = dict["EnableEventCallback"] as? Bool {
+            self.enableEventCallback = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["FileNameExtension"] as? String {
+            self.fileNameExtension = value
+        }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
+        }
+        if let value = dict["FormulaEnhancement"] as? Bool {
+            self.formulaEnhancement = value
+        }
+        if let value = dict["OssBucket"] as? String {
+            self.ossBucket = value
+        }
+        if let value = dict["OssEndpoint"] as? String {
+            self.ossEndpoint = value
+        }
+        if let value = dict["OutputFormat"] as? String {
+            self.outputFormatShrink = value
         }
         if let value = dict["PageIndex"] as? String {
             self.pageIndex = value

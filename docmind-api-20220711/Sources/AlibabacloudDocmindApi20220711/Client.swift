@@ -1374,6 +1374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.multimediaParameters)) {
             request.multimediaParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multimediaParameters, "MultimediaParameters", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.outputFormat)) {
+            request.outputFormatShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outputFormat, "OutputFormat", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.customOssConfigShrink)) {
             query["CustomOssConfig"] = request.customOssConfigShrink ?? "";
@@ -1416,6 +1419,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ossEndpoint)) {
             query["OssEndpoint"] = request.ossEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputFormatShrink)) {
+            query["OutputFormat"] = request.outputFormatShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.outputHtmlTable)) {
             query["OutputHtmlTable"] = request.outputHtmlTable!;
@@ -1532,8 +1538,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitDocStructureJobWithOptions(_ request: SubmitDocStructureJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocStructureJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func submitDocStructureJobWithOptions(_ tmpReq: SubmitDocStructureJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocStructureJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitDocStructureJobShrinkRequest = SubmitDocStructureJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.outputFormat)) {
+            request.outputFormatShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outputFormat, "OutputFormat", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allowPptFormat)) {
             query["AllowPptFormat"] = request.allowPptFormat!;
@@ -1558,6 +1569,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ossEndpoint)) {
             query["OssEndpoint"] = request.ossEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputFormatShrink)) {
+            query["OutputFormat"] = request.outputFormatShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageIndex)) {
             query["PageIndex"] = request.pageIndex ?? "";
