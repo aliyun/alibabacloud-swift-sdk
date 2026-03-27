@@ -4887,6 +4887,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var securityIPArrayName: String?
+
+    public var securityIPList: String?
+
+    public var securityIPType: String?
+
     public var tag: [CreateApplicationRequest.Tag]?
 
     public var targetVersion: String?
@@ -4996,6 +5002,15 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.securityIPArrayName != nil {
+            map["SecurityIPArrayName"] = self.securityIPArrayName!
+        }
+        if self.securityIPList != nil {
+            map["SecurityIPList"] = self.securityIPList!
+        }
+        if self.securityIPType != nil {
+            map["SecurityIPType"] = self.securityIPType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -5121,6 +5136,15 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
         }
+        if let value = dict["SecurityIPArrayName"] as? String {
+            self.securityIPArrayName = value
+        }
+        if let value = dict["SecurityIPList"] as? String {
+            self.securityIPList = value
+        }
+        if let value = dict["SecurityIPType"] as? String {
+            self.securityIPType = value
+        }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationRequest.Tag] = []
             for v in value {
@@ -5241,6 +5265,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var securityIPArrayName: String?
+
+    public var securityIPList: String?
+
+    public var securityIPType: String?
+
     public var tag: [CreateApplicationShrinkRequest.Tag]?
 
     public var targetVersion: String?
@@ -5341,6 +5371,15 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.securityIPArrayName != nil {
+            map["SecurityIPArrayName"] = self.securityIPArrayName!
+        }
+        if self.securityIPList != nil {
+            map["SecurityIPList"] = self.securityIPList!
+        }
+        if self.securityIPType != nil {
+            map["SecurityIPType"] = self.securityIPType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -5443,6 +5482,15 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
+        }
+        if let value = dict["SecurityIPArrayName"] as? String {
+            self.securityIPArrayName = value
+        }
+        if let value = dict["SecurityIPList"] as? String {
+            self.securityIPList = value
+        }
+        if let value = dict["SecurityIPType"] as? String {
+            self.securityIPType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationShrinkRequest.Tag] = []
@@ -20532,6 +20580,60 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Storages : Tea.TeaModel {
+        public var storageCapacity: String?
+
+        public var storageInstanceId: String?
+
+        public var storagePerformanceLevel: String?
+
+        public var storageType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.storageCapacity != nil {
+                map["StorageCapacity"] = self.storageCapacity!
+            }
+            if self.storageInstanceId != nil {
+                map["StorageInstanceId"] = self.storageInstanceId!
+            }
+            if self.storagePerformanceLevel != nil {
+                map["StoragePerformanceLevel"] = self.storagePerformanceLevel!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["StorageCapacity"] as? String {
+                self.storageCapacity = value
+            }
+            if let value = dict["StorageInstanceId"] as? String {
+                self.storageInstanceId = value
+            }
+            if let value = dict["StoragePerformanceLevel"] as? String {
+                self.storagePerformanceLevel = value
+            }
+            if let value = dict["StorageType"] as? String {
+                self.storageType = value
+            }
+        }
+    }
     public var applicationId: String?
 
     public var applicationType: String?
@@ -20581,6 +20683,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var serverlessType: String?
 
     public var status: String?
+
+    public var storages: [DescribeApplicationAttributeResponseBody.Storages]?
 
     public var upgradeAvailable: String?
 
@@ -20697,6 +20801,13 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.storages != nil {
+            var tmp : [Any] = []
+            for k in self.storages! {
+                tmp.append(k.toMap())
+            }
+            map["Storages"] = tmp
         }
         if self.upgradeAvailable != nil {
             map["UpgradeAvailable"] = self.upgradeAvailable!
@@ -20834,6 +20945,19 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Storages"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.Storages] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.Storages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.storages = tmp
         }
         if let value = dict["UpgradeAvailable"] as? String {
             self.upgradeAvailable = value
@@ -50782,6 +50906,44 @@ public class DescribePolarFsAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
+    public class CustomBucketPathList : Tea.TeaModel {
+        public var bucket: String?
+
+        public var path: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucket != nil {
+                map["Bucket"] = self.bucket!
+            }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bucket"] as? String {
+                self.bucket = value
+            }
+            if let value = dict["Path"] as? String {
+                self.path = value
+            }
+        }
+    }
     public class MountInfo : Tea.TeaModel {
         public var polarDbProxy: String?
 
@@ -50828,6 +50990,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accelerateType: String?
+
     public var acceleratedStorageSpace: Double?
 
     public var acceleratingEnable: String?
@@ -50845,6 +51009,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
     public var createTime: String?
 
     public var customBucketPath: String?
+
+    public var customBucketPathList: [DescribePolarFsAttributeResponseBody.CustomBucketPathList]?
 
     public var DBType: String?
 
@@ -50911,6 +51077,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accelerateType != nil {
+            map["AccelerateType"] = self.accelerateType!
+        }
         if self.acceleratedStorageSpace != nil {
             map["AcceleratedStorageSpace"] = self.acceleratedStorageSpace!
         }
@@ -50937,6 +51106,13 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.customBucketPath != nil {
             map["CustomBucketPath"] = self.customBucketPath!
+        }
+        if self.customBucketPathList != nil {
+            var tmp : [Any] = []
+            for k in self.customBucketPathList! {
+                tmp.append(k.toMap())
+            }
+            map["CustomBucketPathList"] = tmp
         }
         if self.DBType != nil {
             map["DBType"] = self.DBType!
@@ -51018,6 +51194,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccelerateType"] as? String {
+            self.accelerateType = value
+        }
         if let value = dict["AcceleratedStorageSpace"] as? Double {
             self.acceleratedStorageSpace = value
         }
@@ -51044,6 +51223,19 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CustomBucketPath"] as? String {
             self.customBucketPath = value
+        }
+        if let value = dict["CustomBucketPathList"] as? [Any?] {
+            var tmp : [DescribePolarFsAttributeResponseBody.CustomBucketPathList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePolarFsAttributeResponseBody.CustomBucketPathList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customBucketPathList = tmp
         }
         if let value = dict["DBType"] as? String {
             self.DBType = value

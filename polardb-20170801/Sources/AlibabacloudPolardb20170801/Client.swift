@@ -1394,6 +1394,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
             query["SecurityGroupId"] = request.securityGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.securityIPArrayName)) {
+            query["SecurityIPArrayName"] = request.securityIPArrayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityIPList)) {
+            query["SecurityIPList"] = request.securityIPList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityIPType)) {
+            query["SecurityIPType"] = request.securityIPType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
