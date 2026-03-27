@@ -2624,108 +2624,6 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
         }
     }
-    public class DataSource : Tea.TeaModel {
-        public var credentialId: String?
-
-        public var credentialKey: String?
-
-        public var database: String?
-
-        public var endpoint: String?
-
-        public var isPrivateLink: Bool?
-
-        public var region: String?
-
-        public var subPath: String?
-
-        public var subType: String?
-
-        public var table: String?
-
-        public var type: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.credentialId != nil {
-                map["CredentialId"] = self.credentialId!
-            }
-            if self.credentialKey != nil {
-                map["CredentialKey"] = self.credentialKey!
-            }
-            if self.database != nil {
-                map["Database"] = self.database!
-            }
-            if self.endpoint != nil {
-                map["Endpoint"] = self.endpoint!
-            }
-            if self.isPrivateLink != nil {
-                map["IsPrivateLink"] = self.isPrivateLink!
-            }
-            if self.region != nil {
-                map["Region"] = self.region!
-            }
-            if self.subPath != nil {
-                map["SubPath"] = self.subPath!
-            }
-            if self.subType != nil {
-                map["SubType"] = self.subType!
-            }
-            if self.table != nil {
-                map["Table"] = self.table!
-            }
-            if self.type != nil {
-                map["Type"] = self.type!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["CredentialId"] as? String {
-                self.credentialId = value
-            }
-            if let value = dict["CredentialKey"] as? String {
-                self.credentialKey = value
-            }
-            if let value = dict["Database"] as? String {
-                self.database = value
-            }
-            if let value = dict["Endpoint"] as? String {
-                self.endpoint = value
-            }
-            if let value = dict["IsPrivateLink"] as? Bool {
-                self.isPrivateLink = value
-            }
-            if let value = dict["Region"] as? String {
-                self.region = value
-            }
-            if let value = dict["SubPath"] as? String {
-                self.subPath = value
-            }
-            if let value = dict["SubType"] as? String {
-                self.subType = value
-            }
-            if let value = dict["Table"] as? String {
-                self.table = value
-            }
-            if let value = dict["Type"] as? String {
-                self.type = value
-            }
-        }
-    }
     public class MetaExtractColumns : Tea.TeaModel {
         public var desc: String?
 
@@ -2804,8 +2702,6 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var createIndexType: String?
 
-    public var dataSource: CreateIndexRequest.DataSource?
-
     public var description_: String?
 
     public var documentIds: [String]?
@@ -2850,6 +2746,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var knowledgeScene: String?
 
+    public var knowledgeType: String?
+
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
 
     public var pipelineCommercialCu: Int32?
@@ -2870,7 +2768,6 @@ public class CreateIndexRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.dataSource?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2890,9 +2787,6 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.createIndexType != nil {
             map["CreateIndexType"] = self.createIndexType!
-        }
-        if self.dataSource != nil {
-            map["DataSource"] = self.dataSource?.toMap()
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -2960,6 +2854,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if self.knowledgeScene != nil {
             map["knowledgeScene"] = self.knowledgeScene!
         }
+        if self.knowledgeType != nil {
+            map["knowledgeType"] = self.knowledgeType!
+        }
         if self.metaExtractColumns != nil {
             var tmp : [Any] = []
             for k in self.metaExtractColumns! {
@@ -3005,11 +2902,6 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if let value = dict["CreateIndexType"] as? String {
             self.createIndexType = value
-        }
-        if let value = dict["DataSource"] as? [String: Any?] {
-            var model = CreateIndexRequest.DataSource()
-            model.fromMap(value)
-            self.dataSource = model
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -3077,6 +2969,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["knowledgeScene"] as? String {
             self.knowledgeScene = value
         }
+        if let value = dict["knowledgeType"] as? String {
+            self.knowledgeType = value
+        }
         if let value = dict["metaExtractColumns"] as? [Any?] {
             var tmp : [CreateIndexRequest.MetaExtractColumns] = []
             for v in value {
@@ -3113,8 +3008,6 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var columnsShrink: String?
 
     public var createIndexType: String?
-
-    public var dataSourceShrink: String?
 
     public var description_: String?
 
@@ -3160,6 +3053,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var knowledgeScene: String?
 
+    public var knowledgeType: String?
+
     public var metaExtractColumnsShrink: String?
 
     public var pipelineCommercialCu: Int32?
@@ -3195,9 +3090,6 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.createIndexType != nil {
             map["CreateIndexType"] = self.createIndexType!
-        }
-        if self.dataSourceShrink != nil {
-            map["DataSource"] = self.dataSourceShrink!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -3265,6 +3157,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.knowledgeScene != nil {
             map["knowledgeScene"] = self.knowledgeScene!
         }
+        if self.knowledgeType != nil {
+            map["knowledgeType"] = self.knowledgeType!
+        }
         if self.metaExtractColumnsShrink != nil {
             map["metaExtractColumns"] = self.metaExtractColumnsShrink!
         }
@@ -3296,9 +3191,6 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CreateIndexType"] as? String {
             self.createIndexType = value
-        }
-        if let value = dict["DataSource"] as? String {
-            self.dataSourceShrink = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -3365,6 +3257,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["knowledgeScene"] as? String {
             self.knowledgeScene = value
+        }
+        if let value = dict["knowledgeType"] as? String {
+            self.knowledgeType = value
         }
         if let value = dict["metaExtractColumns"] as? String {
             self.metaExtractColumnsShrink = value
