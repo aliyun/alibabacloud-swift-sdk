@@ -70523,6 +70523,8 @@ public class DescribeLockedSnapshotsResponseBody : Tea.TeaModel {
 
         public var lockExpiredTime: String?
 
+        public var lockMode: String?
+
         public var lockStatus: String?
 
         public var snapshotId: String?
@@ -70559,6 +70561,9 @@ public class DescribeLockedSnapshotsResponseBody : Tea.TeaModel {
             if self.lockExpiredTime != nil {
                 map["LockExpiredTime"] = self.lockExpiredTime!
             }
+            if self.lockMode != nil {
+                map["LockMode"] = self.lockMode!
+            }
             if self.lockStatus != nil {
                 map["LockStatus"] = self.lockStatus!
             }
@@ -70587,6 +70592,9 @@ public class DescribeLockedSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["LockExpiredTime"] as? String {
                 self.lockExpiredTime = value
+            }
+            if let value = dict["LockMode"] as? String {
+                self.lockMode = value
             }
             if let value = dict["LockStatus"] as? String {
                 self.lockStatus = value
@@ -102709,6 +102717,8 @@ public class LockSnapshotResponseBody : Tea.TeaModel {
 
         public var lockExpiredTime: String?
 
+        public var lockMode: String?
+
         public var lockStatus: String?
 
         public var snapshotId: String?
@@ -102745,6 +102755,9 @@ public class LockSnapshotResponseBody : Tea.TeaModel {
             if self.lockExpiredTime != nil {
                 map["LockExpiredTime"] = self.lockExpiredTime!
             }
+            if self.lockMode != nil {
+                map["LockMode"] = self.lockMode!
+            }
             if self.lockStatus != nil {
                 map["LockStatus"] = self.lockStatus!
             }
@@ -102773,6 +102786,9 @@ public class LockSnapshotResponseBody : Tea.TeaModel {
             }
             if let value = dict["LockExpiredTime"] as? String {
                 self.lockExpiredTime = value
+            }
+            if let value = dict["LockMode"] as? String {
+                self.lockMode = value
             }
             if let value = dict["LockStatus"] as? String {
                 self.lockStatus = value
