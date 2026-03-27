@@ -437,6 +437,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDeliveryTaskWithOptions(_ request: CreateDeliveryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeliveryTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataSourceId)) {
+            body["dataSourceId"] = request.dataSourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalLabels)) {
+            body["externalLabels"] = request.externalLabels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.labelFilters)) {
+            body["labelFilters"] = request.labelFilters ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.labelFiltersType)) {
+            body["labelFiltersType"] = request.labelFiltersType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sinkList)) {
+            body["sinkList"] = request.sinkList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["tags"] = request.tags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDescription)) {
+            body["taskDescription"] = request.taskDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            body["taskName"] = request.taskName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDeliveryTask",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/delivery-tasks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDeliveryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDeliveryTask(_ request: CreateDeliveryTaskRequest) async throws -> CreateDeliveryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDeliveryTaskWithOptions(request as! CreateDeliveryTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDigitalEmployeeWithOptions(_ request: CreateDigitalEmployeeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDigitalEmployeeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -631,6 +688,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shortTermTtl)) {
             body["shortTermTtl"] = request.shortTermTtl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            body["sourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.traceSourceConfig)) {
+            body["traceSourceConfig"] = request.traceSourceConfig!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1165,6 +1228,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteCloudResourceWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeliveryTaskWithOptions(_ taskId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDeliveryTaskResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDeliveryTask",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/delivery-task/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDeliveryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeliveryTask(_ taskId: String) async throws -> DeleteDeliveryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDeliveryTaskWithOptions(taskId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1939,6 +2029,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getCmsServiceWithOptions(request as! GetCmsServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeliveryTaskWithOptions(_ taskId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDeliveryTaskResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDeliveryTask",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/delivery-task/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDeliveryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDeliveryTask(_ taskId: String) async throws -> GetDeliveryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDeliveryTaskWithOptions(taskId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2881,6 +2998,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listBizTracesWithOptions(request as! ListBizTracesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDeliveryTasksWithOptions(_ tmpReq: ListDeliveryTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDeliveryTasksResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListDeliveryTasksShrinkRequest = ListDeliveryTasksShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "tag", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyWords)) {
+            query["keyWords"] = request.keyWords ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["tag"] = request.tagShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDeliveryTasks",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/delivery-tasks",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDeliveryTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDeliveryTasks(_ request: ListDeliveryTasksRequest) async throws -> ListDeliveryTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDeliveryTasksWithOptions(request as! ListDeliveryTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4210,6 +4377,63 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateBizTraceWithOptions(bizTraceId as! String, request as! UpdateBizTraceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeliveryTaskWithOptions(_ taskId: String, _ request: UpdateDeliveryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDeliveryTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataSourceId)) {
+            body["dataSourceId"] = request.dataSourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalLabels)) {
+            body["externalLabels"] = request.externalLabels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.labelFilters)) {
+            body["labelFilters"] = request.labelFilters ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.labelFiltersType)) {
+            body["labelFiltersType"] = request.labelFiltersType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sinkList)) {
+            body["sinkList"] = request.sinkList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDescription)) {
+            body["taskDescription"] = request.taskDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            body["taskName"] = request.taskName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDeliveryTask",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/delivery-task/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDeliveryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeliveryTask(_ taskId: String, _ request: UpdateDeliveryTaskRequest) async throws -> UpdateDeliveryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateDeliveryTaskWithOptions(taskId as! String, request as! UpdateDeliveryTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
