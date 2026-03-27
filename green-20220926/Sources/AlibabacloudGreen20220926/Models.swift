@@ -17758,6 +17758,8 @@ public class ListServiceConfigsResponseBody : Tea.TeaModel {
 
         public var resourceType: String?
 
+        public var sceneType: String?
+
         public var serviceCode: String?
 
         public var serviceDesc: String?
@@ -17803,6 +17805,9 @@ public class ListServiceConfigsResponseBody : Tea.TeaModel {
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
+            if self.sceneType != nil {
+                map["SceneType"] = self.sceneType!
+            }
             if self.serviceCode != nil {
                 map["ServiceCode"] = self.serviceCode!
             }
@@ -17845,6 +17850,9 @@ public class ListServiceConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceType"] as? String {
                 self.resourceType = value
+            }
+            if let value = dict["SceneType"] as? String {
+                self.sceneType = value
             }
             if let value = dict["ServiceCode"] as? String {
                 self.serviceCode = value
