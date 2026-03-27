@@ -7844,6 +7844,8 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
     public var destinationDataSourceType: String?
 
+    public var fileSpec: String?
+
     public var jobName: String?
 
     public var jobSettings: CreateDIJobRequest.JobSettings?
@@ -7896,6 +7898,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
         }
         if self.destinationDataSourceType != nil {
             map["DestinationDataSourceType"] = self.destinationDataSourceType!
+        }
+        if self.fileSpec != nil {
+            map["FileSpec"] = self.fileSpec!
         }
         if self.jobName != nil {
             map["JobName"] = self.jobName!
@@ -7968,6 +7973,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
         }
         if let value = dict["DestinationDataSourceType"] as? String {
             self.destinationDataSourceType = value
+        }
+        if let value = dict["FileSpec"] as? String {
+            self.fileSpec = value
         }
         if let value = dict["JobName"] as? String {
             self.jobName = value
@@ -8049,6 +8057,8 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
 
     public var destinationDataSourceType: String?
 
+    public var fileSpec: String?
+
     public var jobName: String?
 
     public var jobSettingsShrink: String?
@@ -8095,6 +8105,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         }
         if self.destinationDataSourceType != nil {
             map["DestinationDataSourceType"] = self.destinationDataSourceType!
+        }
+        if self.fileSpec != nil {
+            map["FileSpec"] = self.fileSpec!
         }
         if self.jobName != nil {
             map["JobName"] = self.jobName!
@@ -8145,6 +8158,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DestinationDataSourceType"] as? String {
             self.destinationDataSourceType = value
+        }
+        if let value = dict["FileSpec"] as? String {
+            self.fileSpec = value
         }
         if let value = dict["JobName"] as? String {
             self.jobName = value
@@ -83396,6 +83412,8 @@ public class UpdateDIJobRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var fileSpec: String?
+
     public var id: Int64?
 
     public var jobSettings: UpdateDIJobRequest.JobSettings?
@@ -83431,6 +83449,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.fileSpec != nil {
+            map["FileSpec"] = self.fileSpec!
         }
         if self.id != nil {
             map["Id"] = self.id!
@@ -83471,6 +83492,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["FileSpec"] as? String {
+            self.fileSpec = value
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
@@ -83525,6 +83549,8 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var fileSpec: String?
+
     public var id: Int64?
 
     public var jobSettingsShrink: String?
@@ -83559,6 +83585,9 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.fileSpec != nil {
+            map["FileSpec"] = self.fileSpec!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -83590,6 +83619,9 @@ public class UpdateDIJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["FileSpec"] as? String {
+            self.fileSpec = value
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
