@@ -4971,6 +4971,8 @@ public class Runtime : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var autoUpdateImage: Bool?
+
     public var creator: String?
 
     public var credentialConfig: Runtime.CredentialConfig?
@@ -5028,6 +5030,9 @@ public class Runtime : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.autoUpdateImage != nil {
+            map["AutoUpdateImage"] = self.autoUpdateImage!
         }
         if self.creator != nil {
             map["Creator"] = self.creator!
@@ -5105,6 +5110,9 @@ public class Runtime : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AutoUpdateImage"] as? Bool {
+            self.autoUpdateImage = value
         }
         if let value = dict["Creator"] as? String {
             self.creator = value
@@ -5211,6 +5219,8 @@ public class Snapshot : Tea.TeaModel {
 
     public var description_: String?
 
+    public var errorMessage: String?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -5222,6 +5232,8 @@ public class Snapshot : Tea.TeaModel {
     public var snapshotResourceId: String?
 
     public var snapshotResourceType: String?
+
+    public var snapshotStatus: String?
 
     public var snapshotStoragePath: String?
 
@@ -5257,6 +5269,9 @@ public class Snapshot : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -5274,6 +5289,9 @@ public class Snapshot : Tea.TeaModel {
         }
         if self.snapshotResourceType != nil {
             map["SnapshotResourceType"] = self.snapshotResourceType!
+        }
+        if self.snapshotStatus != nil {
+            map["SnapshotStatus"] = self.snapshotStatus!
         }
         if self.snapshotStoragePath != nil {
             map["SnapshotStoragePath"] = self.snapshotStoragePath!
@@ -5304,6 +5322,9 @@ public class Snapshot : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
         }
@@ -5321,6 +5342,9 @@ public class Snapshot : Tea.TeaModel {
         }
         if let value = dict["SnapshotResourceType"] as? String {
             self.snapshotResourceType = value
+        }
+        if let value = dict["SnapshotStatus"] as? String {
+            self.snapshotStatus = value
         }
         if let value = dict["SnapshotStoragePath"] as? String {
             self.snapshotStoragePath = value
@@ -7295,6 +7319,8 @@ public class CreateRuntimeRequest : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var autoUpdateImage: Bool?
+
     public var credentialConfig: CreateRuntimeRequest.CredentialConfig?
 
     public var dataSources: [CreateRuntimeRequest.DataSources]?
@@ -7338,6 +7364,9 @@ public class CreateRuntimeRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.autoUpdateImage != nil {
+            map["AutoUpdateImage"] = self.autoUpdateImage!
         }
         if self.credentialConfig != nil {
             map["CredentialConfig"] = self.credentialConfig?.toMap()
@@ -7394,6 +7423,9 @@ public class CreateRuntimeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AutoUpdateImage"] as? Bool {
+            self.autoUpdateImage = value
         }
         if let value = dict["CredentialConfig"] as? [String: Any?] {
             var model = CreateRuntimeRequest.CredentialConfig()
@@ -10773,6 +10805,8 @@ public class GetRuntimeResponseBody : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var autoUpdateImage: Bool?
+
     public var creator: String?
 
     public var credentialConfig: GetRuntimeResponseBody.CredentialConfig?
@@ -10832,6 +10866,9 @@ public class GetRuntimeResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.autoUpdateImage != nil {
+            map["AutoUpdateImage"] = self.autoUpdateImage!
         }
         if self.creator != nil {
             map["Creator"] = self.creator!
@@ -10912,6 +10949,9 @@ public class GetRuntimeResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["AutoUpdateImage"] as? Bool {
+            self.autoUpdateImage = value
         }
         if let value = dict["Creator"] as? String {
             self.creator = value
@@ -11102,6 +11142,8 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var errorMessage: String?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -11115,6 +11157,8 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
     public var snapshotResourceId: String?
 
     public var snapshotResourceType: String?
+
+    public var snapshotStatus: String?
 
     public var snapshotStoragePath: String?
 
@@ -11150,6 +11194,9 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -11170,6 +11217,9 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
         }
         if self.snapshotResourceType != nil {
             map["SnapshotResourceType"] = self.snapshotResourceType!
+        }
+        if self.snapshotStatus != nil {
+            map["SnapshotStatus"] = self.snapshotStatus!
         }
         if self.snapshotStoragePath != nil {
             map["SnapshotStoragePath"] = self.snapshotStoragePath!
@@ -11200,6 +11250,9 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
         }
@@ -11220,6 +11273,9 @@ public class GetSnapshotResponseBody : Tea.TeaModel {
         }
         if let value = dict["SnapshotResourceType"] as? String {
             self.snapshotResourceType = value
+        }
+        if let value = dict["SnapshotStatus"] as? String {
+            self.snapshotStatus = value
         }
         if let value = dict["SnapshotStoragePath"] as? String {
             self.snapshotStoragePath = value
@@ -12765,6 +12821,8 @@ public class ListSnapshotsRequest : Tea.TeaModel {
 
     public var snapshotResourceType: String?
 
+    public var snapshotStatus: String?
+
     public var sortBy: String?
 
     public var workspaceId: String?
@@ -12813,6 +12871,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
         if self.snapshotResourceType != nil {
             map["SnapshotResourceType"] = self.snapshotResourceType!
         }
+        if self.snapshotStatus != nil {
+            map["SnapshotStatus"] = self.snapshotStatus!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -12853,6 +12914,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
         }
         if let value = dict["SnapshotResourceType"] as? String {
             self.snapshotResourceType = value
+        }
+        if let value = dict["SnapshotStatus"] as? String {
+            self.snapshotStatus = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
@@ -14037,6 +14101,8 @@ public class UpdateKnowledgeBaseJobResponse : Tea.TeaModel {
 public class UpdateRuntimeRequest : Tea.TeaModel {
     public var action: String?
 
+    public var autoUpdateImage: Bool?
+
     public var runTimeout: Int32?
 
     public var version: String?
@@ -14060,6 +14126,9 @@ public class UpdateRuntimeRequest : Tea.TeaModel {
         if self.action != nil {
             map["Action"] = self.action!
         }
+        if self.autoUpdateImage != nil {
+            map["AutoUpdateImage"] = self.autoUpdateImage!
+        }
         if self.runTimeout != nil {
             map["RunTimeout"] = self.runTimeout!
         }
@@ -14076,6 +14145,9 @@ public class UpdateRuntimeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Action"] as? String {
             self.action = value
+        }
+        if let value = dict["AutoUpdateImage"] as? Bool {
+            self.autoUpdateImage = value
         }
         if let value = dict["RunTimeout"] as? Int32 {
             self.runTimeout = value
