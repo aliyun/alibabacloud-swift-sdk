@@ -2714,7 +2714,11 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var overlapSize: Int32?
 
+    public var rerankInstruct: String?
+
     public var rerankMinScore: Double?
+
+    public var rerankMode: String?
 
     public var rerankModelName: String?
 
@@ -2806,8 +2810,14 @@ public class CreateIndexRequest : Tea.TeaModel {
         if self.overlapSize != nil {
             map["OverlapSize"] = self.overlapSize!
         }
+        if self.rerankInstruct != nil {
+            map["RerankInstruct"] = self.rerankInstruct!
+        }
         if self.rerankMinScore != nil {
             map["RerankMinScore"] = self.rerankMinScore!
+        }
+        if self.rerankMode != nil {
+            map["RerankMode"] = self.rerankMode!
         }
         if self.rerankModelName != nil {
             map["RerankModelName"] = self.rerankModelName!
@@ -2921,8 +2931,14 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["OverlapSize"] as? Int32 {
             self.overlapSize = value
         }
+        if let value = dict["RerankInstruct"] as? String {
+            self.rerankInstruct = value
+        }
         if let value = dict["RerankMinScore"] as? Double {
             self.rerankMinScore = value
+        }
+        if let value = dict["RerankMode"] as? String {
+            self.rerankMode = value
         }
         if let value = dict["RerankModelName"] as? String {
             self.rerankModelName = value
@@ -3021,7 +3037,11 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var overlapSize: Int32?
 
+    public var rerankInstruct: String?
+
     public var rerankMinScore: Double?
+
+    public var rerankMode: String?
 
     public var rerankModelName: String?
 
@@ -3109,8 +3129,14 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.overlapSize != nil {
             map["OverlapSize"] = self.overlapSize!
         }
+        if self.rerankInstruct != nil {
+            map["RerankInstruct"] = self.rerankInstruct!
+        }
         if self.rerankMinScore != nil {
             map["RerankMinScore"] = self.rerankMinScore!
+        }
+        if self.rerankMode != nil {
+            map["RerankMode"] = self.rerankMode!
         }
         if self.rerankModelName != nil {
             map["RerankModelName"] = self.rerankModelName!
@@ -3210,8 +3236,14 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if let value = dict["OverlapSize"] as? Int32 {
             self.overlapSize = value
         }
+        if let value = dict["RerankInstruct"] as? String {
+            self.rerankInstruct = value
+        }
         if let value = dict["RerankMinScore"] as? Double {
             self.rerankMinScore = value
+        }
+        if let value = dict["RerankMode"] as? String {
+            self.rerankMode = value
         }
         if let value = dict["RerankModelName"] as? String {
             self.rerankModelName = value
@@ -11333,6 +11365,10 @@ public class RetrieveRequest : Tea.TeaModel {
     public class Rerank : Tea.TeaModel {
         public var modelName: String?
 
+        public var rerankInstruct: String?
+
+        public var rerankMode: String?
+
         public override init() {
             super.init()
         }
@@ -11350,6 +11386,12 @@ public class RetrieveRequest : Tea.TeaModel {
             if self.modelName != nil {
                 map["ModelName"] = self.modelName!
             }
+            if self.rerankInstruct != nil {
+                map["RerankInstruct"] = self.rerankInstruct!
+            }
+            if self.rerankMode != nil {
+                map["RerankMode"] = self.rerankMode!
+            }
             return map
         }
 
@@ -11357,6 +11399,12 @@ public class RetrieveRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ModelName"] as? String {
                 self.modelName = value
+            }
+            if let value = dict["RerankInstruct"] as? String {
+                self.rerankInstruct = value
+            }
+            if let value = dict["RerankMode"] as? String {
+                self.rerankMode = value
             }
         }
     }

@@ -406,8 +406,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.overlapSize)) {
             query["OverlapSize"] = request.overlapSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.rerankInstruct)) {
+            query["RerankInstruct"] = request.rerankInstruct ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.rerankMinScore)) {
             query["RerankMinScore"] = request.rerankMinScore!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankMode)) {
+            query["RerankMode"] = request.rerankMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.rerankModelName)) {
             query["RerankModelName"] = request.rerankModelName ?? "";
