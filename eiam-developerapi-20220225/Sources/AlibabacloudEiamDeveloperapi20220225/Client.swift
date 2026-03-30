@@ -1421,6 +1421,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudAccountRoleExternalId)) {
             query["cloudAccountRoleExternalId"] = request.cloudAccountRoleExternalId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.durationSeconds)) {
+            query["durationSeconds"] = request.durationSeconds!;
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
@@ -1492,6 +1495,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ObtainCredentialHeaders = ObtainCredentialHeaders([:])
         return try await obtainCredentialWithOptions(instanceId as! String, request as! ObtainCredentialRequest, headers as! ObtainCredentialHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func obtainJwtAuthenticationTokenWithOptions(_ instanceId: String, _ request: ObtainJwtAuthenticationTokenRequest, _ headers: ObtainJwtAuthenticationTokenHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ObtainJwtAuthenticationTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authenticationTokenId)) {
+            body["authenticationTokenId"] = request.authenticationTokenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.consumerId)) {
+            body["consumerId"] = request.consumerId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.authorization)) {
+            realHeaders["Authorization"] = TeaUtils.Client.toJSONString(headers.authorization);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ObtainJwtAuthenticationToken",
+            "version": "2022-02-25",
+            "protocol": "HTTPS",
+            "pathname": "/v2/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/authenticationTokens/_/actions/obtainJwt",
+            "method": "POST",
+            "authType": "Anonymous",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await doROARequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.pathname ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ObtainJwtAuthenticationTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func obtainJwtAuthenticationToken(_ instanceId: String, _ request: ObtainJwtAuthenticationTokenRequest) async throws -> ObtainJwtAuthenticationTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ObtainJwtAuthenticationTokenHeaders = ObtainJwtAuthenticationTokenHeaders([:])
+        return try await obtainJwtAuthenticationTokenWithOptions(instanceId as! String, request as! ObtainJwtAuthenticationTokenRequest, headers as! ObtainJwtAuthenticationTokenHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
