@@ -1202,6 +1202,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudAccountProviderName)) {
             query["CloudAccountProviderName"] = request.cloudAccountProviderName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cloudAccountSite)) {
+            query["CloudAccountSite"] = request.cloudAccountSite ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cloudAccountVendorType)) {
             query["CloudAccountVendorType"] = request.cloudAccountVendorType ?? "";
         }

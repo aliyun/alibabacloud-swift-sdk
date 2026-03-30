@@ -4470,6 +4470,8 @@ public class CreateCloudAccountRequest : Tea.TeaModel {
 
     public var cloudAccountProviderName: String?
 
+    public var cloudAccountSite: String?
+
     public var cloudAccountVendorType: String?
 
     public var description_: String?
@@ -4502,6 +4504,9 @@ public class CreateCloudAccountRequest : Tea.TeaModel {
         if self.cloudAccountProviderName != nil {
             map["CloudAccountProviderName"] = self.cloudAccountProviderName!
         }
+        if self.cloudAccountSite != nil {
+            map["CloudAccountSite"] = self.cloudAccountSite!
+        }
         if self.cloudAccountVendorType != nil {
             map["CloudAccountVendorType"] = self.cloudAccountVendorType!
         }
@@ -4527,6 +4532,9 @@ public class CreateCloudAccountRequest : Tea.TeaModel {
         }
         if let value = dict["CloudAccountProviderName"] as? String {
             self.cloudAccountProviderName = value
+        }
+        if let value = dict["CloudAccountSite"] as? String {
+            self.cloudAccountSite = value
         }
         if let value = dict["CloudAccountVendorType"] as? String {
             self.cloudAccountVendorType = value
