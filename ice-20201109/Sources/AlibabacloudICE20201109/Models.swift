@@ -83616,6 +83616,8 @@ public class ListYikeProductionsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -83642,6 +83644,9 @@ public class ListYikeProductionsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -83658,6 +83663,9 @@ public class ListYikeProductionsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
