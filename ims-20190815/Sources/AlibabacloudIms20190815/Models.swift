@@ -5818,6 +5818,8 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
 
         public var attachedSystemPoliciesPerUserQuota: Int32?
 
+        public var authorizedClientPerUserQuota: Int32?
+
         public var conditionsPerAKPolicyQuota: Int32?
 
         public var groups: Int32?
@@ -5887,6 +5889,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             }
             if self.attachedSystemPoliciesPerUserQuota != nil {
                 map["AttachedSystemPoliciesPerUserQuota"] = self.attachedSystemPoliciesPerUserQuota!
+            }
+            if self.authorizedClientPerUserQuota != nil {
+                map["AuthorizedClientPerUserQuota"] = self.authorizedClientPerUserQuota!
             }
             if self.conditionsPerAKPolicyQuota != nil {
                 map["ConditionsPerAKPolicyQuota"] = self.conditionsPerAKPolicyQuota!
@@ -5964,6 +5969,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             }
             if let value = dict["AttachedSystemPoliciesPerUserQuota"] as? Int32 {
                 self.attachedSystemPoliciesPerUserQuota = value
+            }
+            if let value = dict["AuthorizedClientPerUserQuota"] as? Int32 {
+                self.authorizedClientPerUserQuota = value
             }
             if let value = dict["ConditionsPerAKPolicyQuota"] as? Int32 {
                 self.conditionsPerAKPolicyQuota = value
