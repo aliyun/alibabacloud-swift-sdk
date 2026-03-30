@@ -5586,6 +5586,374 @@ public class CancelTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CloneDisksRequest : Tea.TeaModel {
+    public class Arn : Tea.TeaModel {
+        public var assumeRoleFor: String?
+
+        public var roleType: String?
+
+        public var rolearn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assumeRoleFor != nil {
+                map["AssumeRoleFor"] = self.assumeRoleFor!
+            }
+            if self.roleType != nil {
+                map["RoleType"] = self.roleType!
+            }
+            if self.rolearn != nil {
+                map["Rolearn"] = self.rolearn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssumeRoleFor"] as? String {
+                self.assumeRoleFor = value
+            }
+            if let value = dict["RoleType"] as? String {
+                self.roleType = value
+            }
+            if let value = dict["Rolearn"] as? String {
+                self.rolearn = value
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var arn: [CloneDisksRequest.Arn]?
+
+    public var burstingEnabled: Bool?
+
+    public var clientToken: String?
+
+    public var diskCategory: String?
+
+    public var diskName: String?
+
+    public var dryRun: String?
+
+    public var encrypted: Bool?
+
+    public var kmsKeyId: String?
+
+    public var multiAttach: String?
+
+    public var ownerId: Int64?
+
+    public var performanceLevel: String?
+
+    public var provisionedIops: Int64?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var size: Int32?
+
+    public var sourceDiskId: String?
+
+    public var tag: [CloneDisksRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arn != nil {
+            var tmp : [Any] = []
+            for k in self.arn! {
+                tmp.append(k.toMap())
+            }
+            map["Arn"] = tmp
+        }
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.diskCategory != nil {
+            map["DiskCategory"] = self.diskCategory!
+        }
+        if self.diskName != nil {
+            map["DiskName"] = self.diskName!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.encrypted != nil {
+            map["Encrypted"] = self.encrypted!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
+        if self.multiAttach != nil {
+            map["MultiAttach"] = self.multiAttach!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.performanceLevel != nil {
+            map["PerformanceLevel"] = self.performanceLevel!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        if self.sourceDiskId != nil {
+            map["SourceDiskId"] = self.sourceDiskId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Arn"] as? [Any?] {
+            var tmp : [CloneDisksRequest.Arn] = []
+            for v in value {
+                if v != nil {
+                    var model = CloneDisksRequest.Arn()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.arn = tmp
+        }
+        if let value = dict["BurstingEnabled"] as? Bool {
+            self.burstingEnabled = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DiskCategory"] as? String {
+            self.diskCategory = value
+        }
+        if let value = dict["DiskName"] as? String {
+            self.diskName = value
+        }
+        if let value = dict["DryRun"] as? String {
+            self.dryRun = value
+        }
+        if let value = dict["Encrypted"] as? Bool {
+            self.encrypted = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
+        if let value = dict["MultiAttach"] as? String {
+            self.multiAttach = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PerformanceLevel"] as? String {
+            self.performanceLevel = value
+        }
+        if let value = dict["ProvisionedIops"] as? Int64 {
+            self.provisionedIops = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Size"] as? Int32 {
+            self.size = value
+        }
+        if let value = dict["SourceDiskId"] as? String {
+            self.sourceDiskId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CloneDisksRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CloneDisksRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class CloneDisksResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskGroupId != nil {
+            map["TaskGroupId"] = self.taskGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TaskGroupId"] as? String {
+            self.taskGroupId = value
+        }
+    }
+}
+
+public class CloneDisksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloneDisksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloneDisksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ConnectRouterInterfaceRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
@@ -88859,6 +89227,8 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
             public var encrypted: Bool?
 
+            public var fullSnapshotSizeInBytes: Int64?
+
             public var instantAccess: Bool?
 
             public var instantAccessRetentionDays: Int32?
@@ -88936,6 +89306,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if self.encrypted != nil {
                     map["Encrypted"] = self.encrypted!
+                }
+                if self.fullSnapshotSizeInBytes != nil {
+                    map["FullSnapshotSizeInBytes"] = self.fullSnapshotSizeInBytes!
                 }
                 if self.instantAccess != nil {
                     map["InstantAccess"] = self.instantAccess!
@@ -89028,6 +89401,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Encrypted"] as? Bool {
                     self.encrypted = value
+                }
+                if let value = dict["FullSnapshotSizeInBytes"] as? Int64 {
+                    self.fullSnapshotSizeInBytes = value
                 }
                 if let value = dict["InstantAccess"] as? Bool {
                     self.instantAccess = value

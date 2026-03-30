@@ -1517,6 +1517,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneDisksWithOptions(_ request: CloneDisksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloneDisksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.arn)) {
+            query["Arn"] = request.arn ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.burstingEnabled)) {
+            query["BurstingEnabled"] = request.burstingEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskCategory)) {
+            query["DiskCategory"] = request.diskCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskName)) {
+            query["DiskName"] = request.diskName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encrypted)) {
+            query["Encrypted"] = request.encrypted!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.multiAttach)) {
+            query["MultiAttach"] = request.multiAttach ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceLevel)) {
+            query["PerformanceLevel"] = request.performanceLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
+            query["ProvisionedIops"] = request.provisionedIops!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDiskId)) {
+            query["SourceDiskId"] = request.sourceDiskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CloneDisks",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CloneDisksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneDisks(_ request: CloneDisksRequest) async throws -> CloneDisksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cloneDisksWithOptions(request as! CloneDisksRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func connectRouterInterfaceWithOptions(_ request: ConnectRouterInterfaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConnectRouterInterfaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
