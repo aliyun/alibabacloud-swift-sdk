@@ -13158,6 +13158,8 @@ public class CreateEcdReportTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var businessChannel: String?
+
     public var filterList: [CreateEcdReportTaskRequest.FilterList]?
 
     public var langType: String?
@@ -13182,6 +13184,9 @@ public class CreateEcdReportTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.filterList != nil {
             var tmp : [Any] = []
             for k in self.filterList! {
@@ -13206,6 +13211,9 @@ public class CreateEcdReportTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["FilterList"] as? [Any?] {
             var tmp : [CreateEcdReportTaskRequest.FilterList] = []
             for v in value {
@@ -28645,6 +28653,8 @@ public class DescribeDesktopGroupsResponse : Tea.TeaModel {
 }
 
 public class DescribeDesktopInfoRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var desktopId: [String]?
 
     public var needExtraInfo: Bool?
@@ -28665,6 +28675,9 @@ public class DescribeDesktopInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -28679,6 +28692,9 @@ public class DescribeDesktopInfoRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["DesktopId"] as? [String] {
             self.desktopId = value
         }
@@ -30708,6 +30724,8 @@ public class DescribeDesktopSessionsResponse : Tea.TeaModel {
 public class DescribeDesktopTypesRequest : Tea.TeaModel {
     public var appliedScope: String?
 
+    public var businessChannel: String?
+
     public var cpuCount: Int32?
 
     public var desktopGroupIdForModify: String?
@@ -30762,6 +30780,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.appliedScope != nil {
             map["AppliedScope"] = self.appliedScope!
+        }
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
         }
         if self.cpuCount != nil {
             map["CpuCount"] = self.cpuCount!
@@ -30827,6 +30848,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppliedScope"] as? String {
             self.appliedScope = value
+        }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
         }
         if let value = dict["CpuCount"] as? Int32 {
             self.cpuCount = value
@@ -31180,6 +31204,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
             }
         }
     }
+    public var businessChannel: String?
+
     public var chargeType: String?
 
     public var desktopGroupId: String?
@@ -31268,6 +31294,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
@@ -31388,6 +31417,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
         }
@@ -34844,6 +34876,8 @@ public class DescribeDrivesResponse : Tea.TeaModel {
 }
 
 public class DescribeEcdReportTasksRequest : Tea.TeaModel {
+    public var businessChannel: String?
+
     public var pageNum: Int32?
 
     public var pageSize: Int32?
@@ -34870,6 +34904,9 @@ public class DescribeEcdReportTasksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessChannel != nil {
+            map["BusinessChannel"] = self.businessChannel!
+        }
         if self.pageNum != nil {
             map["PageNum"] = self.pageNum!
         }
@@ -34893,6 +34930,9 @@ public class DescribeEcdReportTasksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BusinessChannel"] as? String {
+            self.businessChannel = value
+        }
         if let value = dict["PageNum"] as? Int32 {
             self.pageNum = value
         }

@@ -2886,6 +2886,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createEcdReportTaskWithOptions(_ request: CreateEcdReportTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEcdReportTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filterList)) {
             query["FilterList"] = request.filterList ?? [];
         }
@@ -5836,6 +5839,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDesktopInfoWithOptions(_ request: DescribeDesktopInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDesktopInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.desktopId)) {
             query["DesktopId"] = request.desktopId ?? [];
         }
@@ -6145,6 +6151,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appliedScope)) {
             query["AppliedScope"] = request.appliedScope ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cpuCount)) {
             query["CpuCount"] = request.cpuCount!;
         }
@@ -6230,6 +6239,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDesktopsWithOptions(_ request: DescribeDesktopsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDesktopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
         }
@@ -6571,6 +6583,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeEcdReportTasksWithOptions(_ request: DescribeEcdReportTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEcdReportTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNum)) {
             query["PageNum"] = request.pageNum!;
         }
