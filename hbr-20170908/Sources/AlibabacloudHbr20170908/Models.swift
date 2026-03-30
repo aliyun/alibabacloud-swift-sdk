@@ -601,6 +601,238 @@ public class AddCrossAccountResponse : Tea.TeaModel {
     }
 }
 
+public class AddDataSourceRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var connectionInfo: String?
+
+    public var credential: String?
+
+    public var dataSourceName: String?
+
+    public var dataSourceType: String?
+
+    public var exclude: String?
+
+    public var include: String?
+
+    public var indexLevel: String?
+
+    public var options: String?
+
+    public var path: [String]?
+
+    public var schedule: String?
+
+    public var speedLimit: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.connectionInfo != nil {
+            map["ConnectionInfo"] = self.connectionInfo!
+        }
+        if self.credential != nil {
+            map["Credential"] = self.credential!
+        }
+        if self.dataSourceName != nil {
+            map["DataSourceName"] = self.dataSourceName!
+        }
+        if self.dataSourceType != nil {
+            map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.exclude != nil {
+            map["Exclude"] = self.exclude!
+        }
+        if self.include != nil {
+            map["Include"] = self.include!
+        }
+        if self.indexLevel != nil {
+            map["IndexLevel"] = self.indexLevel!
+        }
+        if self.options != nil {
+            map["Options"] = self.options!
+        }
+        if self.path != nil {
+            map["Path"] = self.path!
+        }
+        if self.schedule != nil {
+            map["Schedule"] = self.schedule!
+        }
+        if self.speedLimit != nil {
+            map["SpeedLimit"] = self.speedLimit!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ConnectionInfo"] as? String {
+            self.connectionInfo = value
+        }
+        if let value = dict["Credential"] as? String {
+            self.credential = value
+        }
+        if let value = dict["DataSourceName"] as? String {
+            self.dataSourceName = value
+        }
+        if let value = dict["DataSourceType"] as? String {
+            self.dataSourceType = value
+        }
+        if let value = dict["Exclude"] as? String {
+            self.exclude = value
+        }
+        if let value = dict["Include"] as? String {
+            self.include = value
+        }
+        if let value = dict["IndexLevel"] as? String {
+            self.indexLevel = value
+        }
+        if let value = dict["Options"] as? String {
+            self.options = value
+        }
+        if let value = dict["Path"] as? [String] {
+            self.path = value
+        }
+        if let value = dict["Schedule"] as? String {
+            self.schedule = value
+        }
+        if let value = dict["SpeedLimit"] as? String {
+            self.speedLimit = value
+        }
+    }
+}
+
+public class AddDataSourceResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var dataSourceId: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["DataSourceId"] as? String {
+            self.dataSourceId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddDataSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddDataSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddDataSourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BrowseFilesRequest : Tea.TeaModel {
     public var absolutePath: String?
 

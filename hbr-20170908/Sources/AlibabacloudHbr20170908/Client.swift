@@ -140,6 +140,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDataSourceWithOptions(_ request: AddDataSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDataSourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectionInfo)) {
+            query["ConnectionInfo"] = request.connectionInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credential)) {
+            query["Credential"] = request.credential ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceName)) {
+            query["DataSourceName"] = request.dataSourceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceType)) {
+            query["DataSourceType"] = request.dataSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.exclude)) {
+            query["Exclude"] = request.exclude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.include)) {
+            query["Include"] = request.include ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.indexLevel)) {
+            query["IndexLevel"] = request.indexLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.options)) {
+            query["Options"] = request.options ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["Path"] = request.path ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            query["Schedule"] = request.schedule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.speedLimit)) {
+            query["SpeedLimit"] = request.speedLimit ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddDataSource",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddDataSourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDataSource(_ request: AddDataSourceRequest) async throws -> AddDataSourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addDataSourceWithOptions(request as! AddDataSourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func browseFilesWithOptions(_ request: BrowseFilesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BrowseFilesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
