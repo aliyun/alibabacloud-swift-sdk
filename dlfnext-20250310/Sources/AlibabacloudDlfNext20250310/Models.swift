@@ -703,6 +703,8 @@ public class Database : Tea.TeaModel {
 
     public var owner: String?
 
+    public var tableCount: Int64?
+
     public var updatedAt: Int64?
 
     public var updatedBy: String?
@@ -742,6 +744,9 @@ public class Database : Tea.TeaModel {
         if self.owner != nil {
             map["owner"] = self.owner!
         }
+        if self.tableCount != nil {
+            map["tableCount"] = self.tableCount!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
@@ -773,6 +778,9 @@ public class Database : Tea.TeaModel {
         }
         if let value = dict["owner"] as? String {
             self.owner = value
+        }
+        if let value = dict["tableCount"] as? Int64 {
+            self.tableCount = value
         }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
@@ -4189,6 +4197,8 @@ public class TableSnapshot : Tea.TeaModel {
 
     public var lastFileCreationTime: Int64?
 
+    public var partitionCount: Int64?
+
     public var recordCount: Int64?
 
     public var snapshot: Snapshot?
@@ -4219,6 +4229,9 @@ public class TableSnapshot : Tea.TeaModel {
         if self.lastFileCreationTime != nil {
             map["lastFileCreationTime"] = self.lastFileCreationTime!
         }
+        if self.partitionCount != nil {
+            map["partitionCount"] = self.partitionCount!
+        }
         if self.recordCount != nil {
             map["recordCount"] = self.recordCount!
         }
@@ -4241,6 +4254,9 @@ public class TableSnapshot : Tea.TeaModel {
         }
         if let value = dict["lastFileCreationTime"] as? Int64 {
             self.lastFileCreationTime = value
+        }
+        if let value = dict["partitionCount"] as? Int64 {
+            self.partitionCount = value
         }
         if let value = dict["recordCount"] as? Int64 {
             self.recordCount = value
