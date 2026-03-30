@@ -530,9 +530,41 @@ public class ListApiKeysRequest : Tea.TeaModel {
 
 public class ListApiKeysResponseBody : Tea.TeaModel {
     public class ApiKeys : Tea.TeaModel {
+        public class AuthSetModel : Tea.TeaModel {
+            public var authSetMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authSetMode != nil {
+                    map["authSetMode"] = self.authSetMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["authSetMode"] as? String {
+                    self.authSetMode = value
+                }
+            }
+        }
         public var apiKeyValue: String?
 
         public var apikeyId: String?
+
+        public var authSetModel: ListApiKeysResponseBody.ApiKeys.AuthSetModel?
 
         public var blocked: Int32?
 
@@ -564,6 +596,7 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.authSetModel?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -573,6 +606,9 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
             }
             if self.apikeyId != nil {
                 map["apikeyId"] = self.apikeyId!
+            }
+            if self.authSetModel != nil {
+                map["authSetModel"] = self.authSetModel?.toMap()
             }
             if self.blocked != nil {
                 map["blocked"] = self.blocked!
@@ -614,6 +650,11 @@ public class ListApiKeysResponseBody : Tea.TeaModel {
             }
             if let value = dict["apikeyId"] as? String {
                 self.apikeyId = value
+            }
+            if let value = dict["authSetModel"] as? [String: Any?] {
+                var model = ListApiKeysResponseBody.ApiKeys.AuthSetModel()
+                model.fromMap(value)
+                self.authSetModel = model
             }
             if let value = dict["blocked"] as? Int32 {
                 self.blocked = value
