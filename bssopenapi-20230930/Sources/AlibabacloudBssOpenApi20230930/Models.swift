@@ -4291,6 +4291,8 @@ public class DescribeCouponRequest : Tea.TeaModel {
 
     public var couponNo: String?
 
+    public var couponTemplateIdList: [Int64]?
+
     public var couponType: String?
 
     public var currentPage: Int32?
@@ -4334,6 +4336,9 @@ public class DescribeCouponRequest : Tea.TeaModel {
         }
         if self.couponNo != nil {
             map["CouponNo"] = self.couponNo!
+        }
+        if self.couponTemplateIdList != nil {
+            map["CouponTemplateIdList"] = self.couponTemplateIdList!
         }
         if self.couponType != nil {
             map["CouponType"] = self.couponType!
@@ -4385,6 +4390,9 @@ public class DescribeCouponRequest : Tea.TeaModel {
         }
         if let value = dict["CouponNo"] as? String {
             self.couponNo = value
+        }
+        if let value = dict["CouponTemplateIdList"] as? [Int64] {
+            self.couponTemplateIdList = value
         }
         if let value = dict["CouponType"] as? String {
             self.couponType = value
@@ -4440,6 +4448,8 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
 
     public var couponNo: String?
 
+    public var couponTemplateIdListShrink: String?
+
     public var couponType: String?
 
     public var currentPage: Int32?
@@ -4483,6 +4493,9 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
         }
         if self.couponNo != nil {
             map["CouponNo"] = self.couponNo!
+        }
+        if self.couponTemplateIdListShrink != nil {
+            map["CouponTemplateIdList"] = self.couponTemplateIdListShrink!
         }
         if self.couponType != nil {
             map["CouponType"] = self.couponType!
@@ -4530,6 +4543,9 @@ public class DescribeCouponShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CouponNo"] as? String {
             self.couponNo = value
+        }
+        if let value = dict["CouponTemplateIdList"] as? String {
+            self.couponTemplateIdListShrink = value
         }
         if let value = dict["CouponType"] as? String {
             self.couponType = value

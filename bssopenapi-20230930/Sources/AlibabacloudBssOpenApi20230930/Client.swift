@@ -733,6 +733,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribeCouponShrinkRequest = DescribeCouponShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.couponTemplateIdList)) {
+            request.couponTemplateIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.couponTemplateIdList, "CouponTemplateIdList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.ecIdAccountIds)) {
             request.ecIdAccountIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ecIdAccountIds, "EcIdAccountIds", "json")
         }
@@ -742,6 +745,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.couponNo)) {
             query["CouponNo"] = request.couponNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.couponTemplateIdListShrink)) {
+            query["CouponTemplateIdList"] = request.couponTemplateIdListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.couponType)) {
             query["CouponType"] = request.couponType ?? "";
