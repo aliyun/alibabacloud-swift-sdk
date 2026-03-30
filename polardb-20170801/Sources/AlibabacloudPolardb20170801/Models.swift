@@ -4843,6 +4843,10 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var authProvider: String?
+
+    public var authProviderConfig: String?
+
     public var autoAllocatePublicEip: Bool?
 
     public var autoCreatePolarFs: Bool?
@@ -4928,6 +4932,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.authProvider != nil {
+            map["AuthProvider"] = self.authProvider!
+        }
+        if self.authProviderConfig != nil {
+            map["AuthProviderConfig"] = self.authProviderConfig!
         }
         if self.autoAllocatePublicEip != nil {
             map["AutoAllocatePublicEip"] = self.autoAllocatePublicEip!
@@ -5047,6 +5057,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AuthProvider"] as? String {
+            self.authProvider = value
+        }
+        if let value = dict["AuthProviderConfig"] as? String {
+            self.authProviderConfig = value
         }
         if let value = dict["AutoAllocatePublicEip"] as? Bool {
             self.autoAllocatePublicEip = value
@@ -5221,6 +5237,10 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var authProvider: String?
+
+    public var authProviderConfig: String?
+
     public var autoAllocatePublicEip: Bool?
 
     public var autoCreatePolarFs: Bool?
@@ -5305,6 +5325,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.authProvider != nil {
+            map["AuthProvider"] = self.authProvider!
+        }
+        if self.authProviderConfig != nil {
+            map["AuthProviderConfig"] = self.authProviderConfig!
         }
         if self.autoAllocatePublicEip != nil {
             map["AutoAllocatePublicEip"] = self.autoAllocatePublicEip!
@@ -5416,6 +5442,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["AuthProvider"] as? String {
+            self.authProvider = value
+        }
+        if let value = dict["AuthProviderConfig"] as? String {
+            self.authProviderConfig = value
         }
         if let value = dict["AutoAllocatePublicEip"] as? Bool {
             self.autoAllocatePublicEip = value
@@ -20464,6 +20496,36 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class PolarClawSaaSApplicationAttribute : Tea.TeaModel {
+        public var authCallbackURL: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authCallbackURL != nil {
+                map["AuthCallbackURL"] = self.authCallbackURL!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AuthCallbackURL"] as? String {
+                self.authCallbackURL = value
+            }
+        }
+    }
     public class SecurityGroups : Tea.TeaModel {
         public var netType: String?
 
@@ -20670,6 +20732,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var payType: String?
 
+    public var polarClawSaaSApplicationAttribute: DescribeApplicationAttributeResponseBody.PolarClawSaaSApplicationAttribute?
+
     public var polarFSInstanceId: String?
 
     public var regionId: String?
@@ -20707,6 +20771,7 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.memApplicationAttribute?.validate()
+        try self.polarClawSaaSApplicationAttribute?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -20772,6 +20837,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
+        }
+        if self.polarClawSaaSApplicationAttribute != nil {
+            map["PolarClawSaaSApplicationAttribute"] = self.polarClawSaaSApplicationAttribute?.toMap()
         }
         if self.polarFSInstanceId != nil {
             map["PolarFSInstanceId"] = self.polarFSInstanceId!
@@ -20904,6 +20972,11 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
+        }
+        if let value = dict["PolarClawSaaSApplicationAttribute"] as? [String: Any?] {
+            var model = DescribeApplicationAttributeResponseBody.PolarClawSaaSApplicationAttribute()
+            model.fromMap(value)
+            self.polarClawSaaSApplicationAttribute = model
         }
         if let value = dict["PolarFSInstanceId"] as? String {
             self.polarFSInstanceId = value

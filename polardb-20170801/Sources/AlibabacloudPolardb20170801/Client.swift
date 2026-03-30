@@ -1328,6 +1328,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.architecture)) {
             query["Architecture"] = request.architecture ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.authProvider)) {
+            query["AuthProvider"] = request.authProvider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authProviderConfig)) {
+            query["AuthProviderConfig"] = request.authProviderConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoAllocatePublicEip)) {
             query["AutoAllocatePublicEip"] = request.autoAllocatePublicEip!;
         }
