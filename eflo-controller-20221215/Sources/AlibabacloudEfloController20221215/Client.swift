@@ -2391,6 +2391,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
             body["NodeGroupId"] = request.nodeGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
+            body["RamRoleName"] = request.ramRoleName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             body["UserData"] = request.userData ?? "";
         }

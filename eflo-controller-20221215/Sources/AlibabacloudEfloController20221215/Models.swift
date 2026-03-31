@@ -1905,6 +1905,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var nodes: [CreateClusterRequest.NodeGroups.Nodes]?
 
+        public var ramRoleName: String?
+
         public var systemDisk: CreateClusterRequest.NodeGroups.SystemDisk?
 
         public var userData: String?
@@ -1962,6 +1964,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Nodes"] = tmp
+            }
+            if self.ramRoleName != nil {
+                map["RamRoleName"] = self.ramRoleName!
             }
             if self.systemDisk != nil {
                 map["SystemDisk"] = self.systemDisk?.toMap()
@@ -2026,6 +2031,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     }
                 }
                 self.nodes = tmp
+            }
+            if let value = dict["RamRoleName"] as? String {
+                self.ramRoleName = value
             }
             if let value = dict["SystemDisk"] as? [String: Any?] {
                 var model = CreateClusterRequest.NodeGroups.SystemDisk()
@@ -3666,6 +3674,8 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
 
         public var nodeGroupName: String?
 
+        public var ramRoleName: String?
+
         public var systemDisk: CreateNodeGroupRequest.NodeGroup.SystemDisk?
 
         public var userData: String?
@@ -3711,6 +3721,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             if self.nodeGroupName != nil {
                 map["NodeGroupName"] = self.nodeGroupName!
             }
+            if self.ramRoleName != nil {
+                map["RamRoleName"] = self.ramRoleName!
+            }
             if self.systemDisk != nil {
                 map["SystemDisk"] = self.systemDisk?.toMap()
             }
@@ -3748,6 +3761,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             }
             if let value = dict["NodeGroupName"] as? String {
                 self.nodeGroupName = value
+            }
+            if let value = dict["RamRoleName"] as? String {
+                self.ramRoleName = value
             }
             if let value = dict["SystemDisk"] as? [String: Any?] {
                 var model = CreateNodeGroupRequest.NodeGroup.SystemDisk()
@@ -7604,6 +7620,8 @@ public class DescribeNodeGroupResponseBody : Tea.TeaModel {
 
     public var nodeGroupName: String?
 
+    public var ramRoleName: String?
+
     public var requestId: String?
 
     public var systemDisk: DescribeNodeGroupResponseBody.SystemDisk?
@@ -7671,6 +7689,9 @@ public class DescribeNodeGroupResponseBody : Tea.TeaModel {
         if self.nodeGroupName != nil {
             map["NodeGroupName"] = self.nodeGroupName!
         }
+        if self.ramRoleName != nil {
+            map["RamRoleName"] = self.ramRoleName!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -7732,6 +7753,9 @@ public class DescribeNodeGroupResponseBody : Tea.TeaModel {
         }
         if let value = dict["NodeGroupName"] as? String {
             self.nodeGroupName = value
+        }
+        if let value = dict["RamRoleName"] as? String {
+            self.ramRoleName = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -19172,6 +19196,8 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
 
     public var nodeGroupId: String?
 
+    public var ramRoleName: String?
+
     public var userData: String?
 
     public override init() {
@@ -19206,6 +19232,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         if self.nodeGroupId != nil {
             map["NodeGroupId"] = self.nodeGroupId!
         }
+        if self.ramRoleName != nil {
+            map["RamRoleName"] = self.ramRoleName!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -19231,6 +19260,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         }
         if let value = dict["NodeGroupId"] as? String {
             self.nodeGroupId = value
+        }
+        if let value = dict["RamRoleName"] as? String {
+            self.ramRoleName = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
