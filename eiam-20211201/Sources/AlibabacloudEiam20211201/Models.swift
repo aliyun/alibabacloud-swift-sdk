@@ -2936,13 +2936,93 @@ public class CheckInstanceModuleStatusResponse : Tea.TeaModel {
 }
 
 public class CreateApplicationRequest : Tea.TeaModel {
+    public class ApplicationOwner : Tea.TeaModel {
+        public var groupIds: [String]?
+
+        public var userIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupIds != nil {
+                map["GroupIds"] = self.groupIds!
+            }
+            if self.userIds != nil {
+                map["UserIds"] = self.userIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupIds"] as? [String] {
+                self.groupIds = value
+            }
+            if let value = dict["UserIds"] as? [String] {
+                self.userIds = value
+            }
+        }
+    }
+    public class CustomFields : Tea.TeaModel {
+        public var fieldName: String?
+
+        public var fieldValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            if self.fieldValue != nil {
+                map["FieldValue"] = self.fieldValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FieldName"] as? String {
+                self.fieldName = value
+            }
+            if let value = dict["FieldValue"] as? String {
+                self.fieldValue = value
+            }
+        }
+    }
     public var applicationIdentityType: String?
 
     public var applicationName: String?
 
+    public var applicationOwner: CreateApplicationRequest.ApplicationOwner?
+
     public var applicationSourceType: String?
 
     public var applicationTemplateId: String?
+
+    public var customFields: [CreateApplicationRequest.CustomFields]?
 
     public var description_: String?
 
@@ -2962,6 +3042,7 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.applicationOwner?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2972,11 +3053,21 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.applicationOwner != nil {
+            map["ApplicationOwner"] = self.applicationOwner?.toMap()
+        }
         if self.applicationSourceType != nil {
             map["ApplicationSourceType"] = self.applicationSourceType!
         }
         if self.applicationTemplateId != nil {
             map["ApplicationTemplateId"] = self.applicationTemplateId!
+        }
+        if self.customFields != nil {
+            var tmp : [Any] = []
+            for k in self.customFields! {
+                tmp.append(k.toMap())
+            }
+            map["CustomFields"] = tmp
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -3001,11 +3092,29 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
         }
+        if let value = dict["ApplicationOwner"] as? [String: Any?] {
+            var model = CreateApplicationRequest.ApplicationOwner()
+            model.fromMap(value)
+            self.applicationOwner = model
+        }
         if let value = dict["ApplicationSourceType"] as? String {
             self.applicationSourceType = value
         }
         if let value = dict["ApplicationTemplateId"] as? String {
             self.applicationTemplateId = value
+        }
+        if let value = dict["CustomFields"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.CustomFields] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.CustomFields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customFields = tmp
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -21515,6 +21624,82 @@ public class GetApplicationRequest : Tea.TeaModel {
 
 public class GetApplicationResponseBody : Tea.TeaModel {
     public class Application : Tea.TeaModel {
+        public class ApplicationOwner : Tea.TeaModel {
+            public var groupIds: [String]?
+
+            public var userIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupIds != nil {
+                    map["GroupIds"] = self.groupIds!
+                }
+                if self.userIds != nil {
+                    map["UserIds"] = self.userIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GroupIds"] as? [String] {
+                    self.groupIds = value
+                }
+                if let value = dict["UserIds"] as? [String] {
+                    self.userIds = value
+                }
+            }
+        }
+        public class CustomFields : Tea.TeaModel {
+            public var fieldName: String?
+
+            public var fieldValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fieldName != nil {
+                    map["FieldName"] = self.fieldName!
+                }
+                if self.fieldValue != nil {
+                    map["FieldValue"] = self.fieldValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FieldName"] as? String {
+                    self.fieldName = value
+                }
+                if let value = dict["FieldValue"] as? String {
+                    self.fieldValue = value
+                }
+            }
+        }
         public var apiInvokeStatus: String?
 
         public var applicationCreationType: String?
@@ -21524,6 +21709,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         public var applicationIdentityType: String?
 
         public var applicationName: String?
+
+        public var applicationOwner: GetApplicationResponseBody.Application.ApplicationOwner?
 
         public var applicationSourceType: String?
 
@@ -21536,6 +21723,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         public var clientId: String?
 
         public var createTime: Int64?
+
+        public var customFields: [GetApplicationResponseBody.Application.CustomFields]?
 
         public var customSubjectStatus: String?
 
@@ -21575,6 +21764,7 @@ public class GetApplicationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.applicationOwner?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -21594,6 +21784,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.applicationName != nil {
                 map["ApplicationName"] = self.applicationName!
             }
+            if self.applicationOwner != nil {
+                map["ApplicationOwner"] = self.applicationOwner?.toMap()
+            }
             if self.applicationSourceType != nil {
                 map["ApplicationSourceType"] = self.applicationSourceType!
             }
@@ -21611,6 +21804,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.customFields != nil {
+                var tmp : [Any] = []
+                for k in self.customFields! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomFields"] = tmp
             }
             if self.customSubjectStatus != nil {
                 map["CustomSubjectStatus"] = self.customSubjectStatus!
@@ -21674,6 +21874,11 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if let value = dict["ApplicationName"] as? String {
                 self.applicationName = value
             }
+            if let value = dict["ApplicationOwner"] as? [String: Any?] {
+                var model = GetApplicationResponseBody.Application.ApplicationOwner()
+                model.fromMap(value)
+                self.applicationOwner = model
+            }
             if let value = dict["ApplicationSourceType"] as? String {
                 self.applicationSourceType = value
             }
@@ -21691,6 +21896,19 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
+            }
+            if let value = dict["CustomFields"] as? [Any?] {
+                var tmp : [GetApplicationResponseBody.Application.CustomFields] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetApplicationResponseBody.Application.CustomFields()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customFields = tmp
             }
             if let value = dict["CustomSubjectStatus"] as? String {
                 self.customSubjectStatus = value
@@ -40748,6 +40966,44 @@ public class ListApplicationTokensResponse : Tea.TeaModel {
 }
 
 public class ListApplicationsRequest : Tea.TeaModel {
+    public class CustomFields : Tea.TeaModel {
+        public var fieldName: String?
+
+        public var fieldValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            if self.fieldValue != nil {
+                map["FieldValue"] = self.fieldValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FieldName"] as? String {
+                self.fieldName = value
+            }
+            if let value = dict["FieldValue"] as? String {
+                self.fieldValue = value
+            }
+        }
+    }
     public var applicationCreationType: String?
 
     public var applicationIdentityType: String?
@@ -40757,6 +41013,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
     public var applicationName: String?
 
     public var authorizationType: String?
+
+    public var customFields: [ListApplicationsRequest.CustomFields]?
 
     public var instanceId: String?
 
@@ -40801,6 +41059,13 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.authorizationType != nil {
             map["AuthorizationType"] = self.authorizationType!
         }
+        if self.customFields != nil {
+            var tmp : [Any] = []
+            for k in self.customFields! {
+                tmp.append(k.toMap())
+            }
+            map["CustomFields"] = tmp
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -40841,6 +41106,19 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["AuthorizationType"] as? String {
             self.authorizationType = value
+        }
+        if let value = dict["CustomFields"] as? [Any?] {
+            var tmp : [ListApplicationsRequest.CustomFields] = []
+            for v in value {
+                if v != nil {
+                    var model = ListApplicationsRequest.CustomFields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customFields = tmp
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -69413,13 +69691,101 @@ public class UpdateApplicationFederatedCredentialDescriptionResponse : Tea.TeaMo
 }
 
 public class UpdateApplicationInfoRequest : Tea.TeaModel {
+    public class ApplicationOwner : Tea.TeaModel {
+        public var groupIds: [String]?
+
+        public var userIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupIds != nil {
+                map["GroupIds"] = self.groupIds!
+            }
+            if self.userIds != nil {
+                map["UserIds"] = self.userIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GroupIds"] as? [String] {
+                self.groupIds = value
+            }
+            if let value = dict["UserIds"] as? [String] {
+                self.userIds = value
+            }
+        }
+    }
+    public class CustomFields : Tea.TeaModel {
+        public var fieldName: String?
+
+        public var fieldValue: String?
+
+        public var operation: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            if self.fieldValue != nil {
+                map["FieldValue"] = self.fieldValue!
+            }
+            if self.operation != nil {
+                map["Operation"] = self.operation!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FieldName"] as? String {
+                self.fieldName = value
+            }
+            if let value = dict["FieldValue"] as? String {
+                self.fieldValue = value
+            }
+            if let value = dict["Operation"] as? String {
+                self.operation = value
+            }
+        }
+    }
     public var applicationId: String?
 
     public var applicationName: String?
 
+    public var applicationOwner: UpdateApplicationInfoRequest.ApplicationOwner?
+
     public var applicationVisibility: [String]?
 
     public var clientToken: String?
+
+    public var customFields: [UpdateApplicationInfoRequest.CustomFields]?
 
     public var instanceId: String?
 
@@ -69435,6 +69801,7 @@ public class UpdateApplicationInfoRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.applicationOwner?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -69445,11 +69812,21 @@ public class UpdateApplicationInfoRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.applicationOwner != nil {
+            map["ApplicationOwner"] = self.applicationOwner?.toMap()
+        }
         if self.applicationVisibility != nil {
             map["ApplicationVisibility"] = self.applicationVisibility!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.customFields != nil {
+            var tmp : [Any] = []
+            for k in self.customFields! {
+                tmp.append(k.toMap())
+            }
+            map["CustomFields"] = tmp
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -69468,11 +69845,29 @@ public class UpdateApplicationInfoRequest : Tea.TeaModel {
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
         }
+        if let value = dict["ApplicationOwner"] as? [String: Any?] {
+            var model = UpdateApplicationInfoRequest.ApplicationOwner()
+            model.fromMap(value)
+            self.applicationOwner = model
+        }
         if let value = dict["ApplicationVisibility"] as? [String] {
             self.applicationVisibility = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["CustomFields"] as? [Any?] {
+            var tmp : [UpdateApplicationInfoRequest.CustomFields] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateApplicationInfoRequest.CustomFields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customFields = tmp
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value

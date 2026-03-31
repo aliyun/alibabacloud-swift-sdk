@@ -802,11 +802,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationOwner)) {
+            query["ApplicationOwner"] = request.applicationOwner!;
+        }
         if (!TeaUtils.Client.isUnset(request.applicationSourceType)) {
             query["ApplicationSourceType"] = request.applicationSourceType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.applicationTemplateId)) {
             query["ApplicationTemplateId"] = request.applicationTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customFields)) {
+            query["CustomFields"] = request.customFields ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -7418,6 +7424,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authorizationType)) {
             query["AuthorizationType"] = request.authorizationType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customFields)) {
+            query["CustomFields"] = request.customFields ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -11785,11 +11794,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applicationOwner)) {
+            query["ApplicationOwner"] = request.applicationOwner!;
+        }
         if (!TeaUtils.Client.isUnset(request.applicationVisibility)) {
             query["ApplicationVisibility"] = request.applicationVisibility ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customFields)) {
+            query["CustomFields"] = request.customFields ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
