@@ -45839,6 +45839,8 @@ public class ListAddonReleasesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var containsV2Addon: Bool?
+
         public var releases: [ListAddonReleasesResponseBody.Data.Releases]?
 
         public var total: Int64?
@@ -45857,6 +45859,9 @@ public class ListAddonReleasesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.containsV2Addon != nil {
+                map["ContainsV2Addon"] = self.containsV2Addon!
+            }
             if self.releases != nil {
                 var tmp : [Any] = []
                 for k in self.releases! {
@@ -45872,6 +45877,9 @@ public class ListAddonReleasesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ContainsV2Addon"] as? Bool {
+                self.containsV2Addon = value
+            }
             if let value = dict["Releases"] as? [Any?] {
                 var tmp : [ListAddonReleasesResponseBody.Data.Releases] = []
                 for v in value {
