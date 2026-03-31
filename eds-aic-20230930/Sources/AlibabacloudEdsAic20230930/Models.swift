@@ -2186,6 +2186,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var saleMode: String?
+
     public var streamMode: Int32?
 
     public var tag: [CreateAndroidInstanceGroupRequest.Tag]?
@@ -2279,6 +2281,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         if self.streamMode != nil {
             map["StreamMode"] = self.streamMode!
         }
@@ -2370,6 +2375,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["SaleMode"] as? String {
+            self.saleMode = value
         }
         if let value = dict["StreamMode"] as? Int32 {
             self.streamMode = value
@@ -2480,6 +2488,8 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var saleMode: String?
+
     public var streamMode: Int32?
 
     public var tag: [CreateAndroidInstanceGroupShrinkRequest.Tag]?
@@ -2572,6 +2582,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         if self.streamMode != nil {
             map["StreamMode"] = self.streamMode!
         }
@@ -2661,6 +2674,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["SaleMode"] as? String {
+            self.saleMode = value
         }
         if let value = dict["StreamMode"] as? Int32 {
             self.streamMode = value

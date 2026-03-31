@@ -472,6 +472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             query["PromotionId"] = request.promotionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            query["SaleMode"] = request.saleMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.streamMode)) {
             query["StreamMode"] = request.streamMode!;
         }
