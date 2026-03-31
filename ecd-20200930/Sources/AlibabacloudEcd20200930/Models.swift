@@ -28071,6 +28071,10 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var entraDomainName: String?
 
+        public var envId: String?
+
+        public var envType: String?
+
         public var expiredTime: String?
 
         public var expiredTimes: [String]?
@@ -28219,6 +28223,12 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.entraDomainName != nil {
                 map["EntraDomainName"] = self.entraDomainName!
+            }
+            if self.envId != nil {
+                map["EnvId"] = self.envId!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -28409,6 +28419,12 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EntraDomainName"] as? String {
                 self.entraDomainName = value
+            }
+            if let value = dict["EnvId"] as? String {
+                self.envId = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -55899,6 +55915,10 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
 
         public var directoryType: String?
 
+        public var envId: String?
+
+        public var envType: String?
+
         public var expiredTime: String?
 
         public var expiredTimes: [String]?
@@ -56033,6 +56053,12 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             }
             if self.directoryType != nil {
                 map["DirectoryType"] = self.directoryType!
+            }
+            if self.envId != nil {
+                map["EnvId"] = self.envId!
+            }
+            if self.envType != nil {
+                map["EnvType"] = self.envType!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -56205,6 +56231,12 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["DirectoryType"] as? String {
                 self.directoryType = value
+            }
+            if let value = dict["EnvId"] as? String {
+                self.envId = value
+            }
+            if let value = dict["EnvType"] as? String {
+                self.envType = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
