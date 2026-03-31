@@ -4119,6 +4119,8 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
 
             public var incidentUuid: String?
 
+            public var investigationReport: String?
+
             public var isDefend: String?
 
             public var logTime: String?
@@ -4243,6 +4245,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 }
                 if self.incidentUuid != nil {
                     map["IncidentUuid"] = self.incidentUuid!
+                }
+                if self.investigationReport != nil {
+                    map["InvestigationReport"] = self.investigationReport!
                 }
                 if self.isDefend != nil {
                     map["IsDefend"] = self.isDefend!
@@ -4375,6 +4380,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IncidentUuid"] as? String {
                     self.incidentUuid = value
+                }
+                if let value = dict["InvestigationReport"] as? String {
+                    self.investigationReport = value
                 }
                 if let value = dict["IsDefend"] as? String {
                     self.isDefend = value
@@ -5866,6 +5874,8 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
 
             public var incidentUuid: String?
 
+            public var investigationReport: String?
+
             public var isDefend: String?
 
             public var logTime: String?
@@ -5987,6 +5997,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if self.incidentUuid != nil {
                     map["IncidentUuid"] = self.incidentUuid!
+                }
+                if self.investigationReport != nil {
+                    map["InvestigationReport"] = self.investigationReport!
                 }
                 if self.isDefend != nil {
                     map["IsDefend"] = self.isDefend!
@@ -6116,6 +6129,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IncidentUuid"] as? String {
                     self.incidentUuid = value
+                }
+                if let value = dict["InvestigationReport"] as? String {
+                    self.investigationReport = value
                 }
                 if let value = dict["IsDefend"] as? String {
                     self.isDefend = value
@@ -10236,6 +10252,8 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
                 public var taskConfig: String?
 
+                public var unAvailableCode: String?
+
                 public var uuid: String?
 
                 public var wafPlaybook: Bool?
@@ -10278,6 +10296,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     if self.taskConfig != nil {
                         map["TaskConfig"] = self.taskConfig!
                     }
+                    if self.unAvailableCode != nil {
+                        map["UnAvailableCode"] = self.unAvailableCode!
+                    }
                     if self.uuid != nil {
                         map["Uuid"] = self.uuid!
                     }
@@ -10312,6 +10333,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["TaskConfig"] as? String {
                         self.taskConfig = value
+                    }
+                    if let value = dict["UnAvailableCode"] as? String {
+                        self.unAvailableCode = value
                     }
                     if let value = dict["Uuid"] as? String {
                         self.uuid = value
@@ -20446,6 +20470,44 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
             }
         }
         public class ResponseData : Tea.TeaModel {
+            public class AgentDisposes : Tea.TeaModel {
+                public var agentDisposalMethod: String?
+
+                public var agentDisposalPlaybookUuid: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentDisposalMethod != nil {
+                        map["AgentDisposalMethod"] = self.agentDisposalMethod!
+                    }
+                    if self.agentDisposalPlaybookUuid != nil {
+                        map["AgentDisposalPlaybookUuid"] = self.agentDisposalPlaybookUuid!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AgentDisposalMethod"] as? String {
+                        self.agentDisposalMethod = value
+                    }
+                    if let value = dict["AgentDisposalPlaybookUuid"] as? String {
+                        self.agentDisposalPlaybookUuid = value
+                    }
+                }
+            }
             public var agentConfidence: String?
 
             public var agentDisposalMethod: String?
@@ -20453,6 +20515,8 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
             public var agentDisposalPlaybookUuid: String?
 
             public var agentDisposalSuggestion: String?
+
+            public var agentDisposes: [ListEntitiesResponseBody.Data.ResponseData.AgentDisposes]?
 
             public var alertNum: Int32?
 
@@ -20517,6 +20581,13 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
                 }
                 if self.agentDisposalSuggestion != nil {
                     map["AgentDisposalSuggestion"] = self.agentDisposalSuggestion!
+                }
+                if self.agentDisposes != nil {
+                    var tmp : [Any] = []
+                    for k in self.agentDisposes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AgentDisposes"] = tmp
                 }
                 if self.alertNum != nil {
                     map["AlertNum"] = self.alertNum!
@@ -20591,6 +20662,19 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AgentDisposalSuggestion"] as? String {
                     self.agentDisposalSuggestion = value
+                }
+                if let value = dict["AgentDisposes"] as? [Any?] {
+                    var tmp : [ListEntitiesResponseBody.Data.ResponseData.AgentDisposes] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListEntitiesResponseBody.Data.ResponseData.AgentDisposes()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.agentDisposes = tmp
                 }
                 if let value = dict["AlertNum"] as? Int32 {
                     self.alertNum = value
