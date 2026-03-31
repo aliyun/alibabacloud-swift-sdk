@@ -17697,7 +17697,11 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
 
             public var region: String?
 
+            public var scanErrMsg: String?
+
             public var scanId: Int64?
+
+            public var scanStatus: String?
 
             public var status: String?
 
@@ -17779,8 +17783,14 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
                 if self.region != nil {
                     map["region"] = self.region!
                 }
+                if self.scanErrMsg != nil {
+                    map["scanErrMsg"] = self.scanErrMsg!
+                }
                 if self.scanId != nil {
                     map["scanId"] = self.scanId!
+                }
+                if self.scanStatus != nil {
+                    map["scanStatus"] = self.scanStatus!
                 }
                 if self.status != nil {
                     map["status"] = self.status!
@@ -17866,8 +17876,14 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
                 if let value = dict["region"] as? String {
                     self.region = value
                 }
+                if let value = dict["scanErrMsg"] as? String {
+                    self.scanErrMsg = value
+                }
                 if let value = dict["scanId"] as? Int64 {
                     self.scanId = value
+                }
+                if let value = dict["scanStatus"] as? String {
+                    self.scanStatus = value
                 }
                 if let value = dict["status"] as? String {
                     self.status = value
