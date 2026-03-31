@@ -10950,6 +10950,196 @@ public class VoiceModerationResultRequest : Tea.TeaModel {
 public class VoiceModerationResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class SliceDetails : Tea.TeaModel {
+            public class Result : Tea.TeaModel {
+                public class CustomizedHit : Tea.TeaModel {
+                    public var keyWords: String?
+
+                    public var libName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.keyWords != nil {
+                            map["KeyWords"] = self.keyWords!
+                        }
+                        if self.libName != nil {
+                            map["LibName"] = self.libName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["KeyWords"] as? String {
+                            self.keyWords = value
+                        }
+                        if let value = dict["LibName"] as? String {
+                            self.libName = value
+                        }
+                    }
+                }
+                public class RiskPositions : Tea.TeaModel {
+                    public var endPos: Int32?
+
+                    public var riskWord: String?
+
+                    public var startPos: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.endPos != nil {
+                            map["EndPos"] = self.endPos!
+                        }
+                        if self.riskWord != nil {
+                            map["RiskWord"] = self.riskWord!
+                        }
+                        if self.startPos != nil {
+                            map["StartPos"] = self.startPos!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["EndPos"] as? Int32 {
+                            self.endPos = value
+                        }
+                        if let value = dict["RiskWord"] as? String {
+                            self.riskWord = value
+                        }
+                        if let value = dict["StartPos"] as? Int32 {
+                            self.startPos = value
+                        }
+                    }
+                }
+                public var confidence: Double?
+
+                public var customizedHit: [VoiceModerationResultResponseBody.Data.SliceDetails.Result.CustomizedHit]?
+
+                public var description_: String?
+
+                public var label: String?
+
+                public var riskLevel: String?
+
+                public var riskPositions: [VoiceModerationResultResponseBody.Data.SliceDetails.Result.RiskPositions]?
+
+                public var riskWords: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confidence != nil {
+                        map["Confidence"] = self.confidence!
+                    }
+                    if self.customizedHit != nil {
+                        var tmp : [Any] = []
+                        for k in self.customizedHit! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CustomizedHit"] = tmp
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
+                    if self.riskPositions != nil {
+                        var tmp : [Any] = []
+                        for k in self.riskPositions! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RiskPositions"] = tmp
+                    }
+                    if self.riskWords != nil {
+                        map["RiskWords"] = self.riskWords!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Confidence"] as? Double {
+                        self.confidence = value
+                    }
+                    if let value = dict["CustomizedHit"] as? [Any?] {
+                        var tmp : [VoiceModerationResultResponseBody.Data.SliceDetails.Result.CustomizedHit] = []
+                        for v in value {
+                            if v != nil {
+                                var model = VoiceModerationResultResponseBody.Data.SliceDetails.Result.CustomizedHit()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.customizedHit = tmp
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Label"] as? String {
+                        self.label = value
+                    }
+                    if let value = dict["RiskLevel"] as? String {
+                        self.riskLevel = value
+                    }
+                    if let value = dict["RiskPositions"] as? [Any?] {
+                        var tmp : [VoiceModerationResultResponseBody.Data.SliceDetails.Result.RiskPositions] = []
+                        for v in value {
+                            if v != nil {
+                                var model = VoiceModerationResultResponseBody.Data.SliceDetails.Result.RiskPositions()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.riskPositions = tmp
+                    }
+                    if let value = dict["RiskWords"] as? String {
+                        self.riskWords = value
+                    }
+                }
+            }
             public var descriptions: String?
 
             public var endTime: Int64?
@@ -10961,6 +11151,8 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
             public var labels: String?
 
             public var originAlgoResult: [String: Any]?
+
+            public var result: [VoiceModerationResultResponseBody.Data.SliceDetails.Result]?
 
             public var riskLevel: String?
 
@@ -11010,6 +11202,13 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
                 if self.originAlgoResult != nil {
                     map["OriginAlgoResult"] = self.originAlgoResult!
                 }
+                if self.result != nil {
+                    var tmp : [Any] = []
+                    for k in self.result! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Result"] = tmp
+                }
                 if self.riskLevel != nil {
                     map["RiskLevel"] = self.riskLevel!
                 }
@@ -11056,6 +11255,19 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OriginAlgoResult"] as? [String: Any] {
                     self.originAlgoResult = value
+                }
+                if let value = dict["Result"] as? [Any?] {
+                    var tmp : [VoiceModerationResultResponseBody.Data.SliceDetails.Result] = []
+                    for v in value {
+                        if v != nil {
+                            var model = VoiceModerationResultResponseBody.Data.SliceDetails.Result()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.result = tmp
                 }
                 if let value = dict["RiskLevel"] as? String {
                     self.riskLevel = value
