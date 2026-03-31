@@ -8738,6 +8738,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUserTrafficWithOptions(_ request: DescribeUserTrafficRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUserTrafficResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            query["EndTimestamp"] = request.endTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceManagerResourceGroupId)) {
+            query["ResourceManagerResourceGroupId"] = request.resourceManagerResourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimestamp)) {
+            query["StartTimestamp"] = request.startTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeUserTraffic",
+            "version": "2021-10-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUserTrafficResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUserTraffic(_ request: DescribeUserTrafficRequest) async throws -> DescribeUserTrafficResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeUserTrafficWithOptions(request as! DescribeUserTrafficRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeUserWafLogStatusWithOptions(_ request: DescribeUserWafLogStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUserWafLogStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
