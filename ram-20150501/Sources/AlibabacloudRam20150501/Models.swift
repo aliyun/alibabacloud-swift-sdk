@@ -132,6 +132,8 @@ public class AttachPolicyToGroupRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -155,6 +157,9 @@ public class AttachPolicyToGroupRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -168,6 +173,9 @@ public class AttachPolicyToGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -258,6 +266,8 @@ public class AttachPolicyToRoleRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public var roleName: String?
 
     public override init() {
@@ -280,6 +290,9 @@ public class AttachPolicyToRoleRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleName != nil {
             map["RoleName"] = self.roleName!
         }
@@ -293,6 +306,9 @@ public class AttachPolicyToRoleRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleName"] as? String {
             self.roleName = value
@@ -386,6 +402,8 @@ public class AttachPolicyToUserRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public var userName: String?
 
     public override init() {
@@ -408,6 +426,9 @@ public class AttachPolicyToUserRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
@@ -421,6 +442,9 @@ public class AttachPolicyToUserRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["UserName"] as? String {
             self.userName = value
@@ -3989,6 +4013,8 @@ public class DetachPolicyFromGroupRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -4012,6 +4038,9 @@ public class DetachPolicyFromGroupRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -4025,6 +4054,9 @@ public class DetachPolicyFromGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
     }
 }
@@ -4115,6 +4147,8 @@ public class DetachPolicyFromRoleRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public var roleName: String?
 
     public override init() {
@@ -4137,6 +4171,9 @@ public class DetachPolicyFromRoleRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.roleName != nil {
             map["RoleName"] = self.roleName!
         }
@@ -4150,6 +4187,9 @@ public class DetachPolicyFromRoleRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["RoleName"] as? String {
             self.roleName = value
@@ -4243,6 +4283,8 @@ public class DetachPolicyFromUserRequest : Tea.TeaModel {
 
     public var policyType: String?
 
+    public var resourceGroupId: String?
+
     public var userName: String?
 
     public override init() {
@@ -4265,6 +4307,9 @@ public class DetachPolicyFromUserRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
@@ -4278,6 +4323,9 @@ public class DetachPolicyFromUserRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyType"] as? String {
             self.policyType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["UserName"] as? String {
             self.userName = value
