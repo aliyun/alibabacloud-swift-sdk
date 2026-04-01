@@ -1453,6 +1453,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
         public var capacityType: String?
 
+        public var drReplicationMode: String?
+
         public var messageRetentionTime: Int32?
 
         public var msgProcessSpec: String?
@@ -1487,6 +1489,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.capacityType != nil {
                 map["capacityType"] = self.capacityType!
             }
+            if self.drReplicationMode != nil {
+                map["drReplicationMode"] = self.drReplicationMode!
+            }
             if self.messageRetentionTime != nil {
                 map["messageRetentionTime"] = self.messageRetentionTime!
             }
@@ -1518,6 +1523,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["capacityType"] as? String {
                 self.capacityType = value
+            }
+            if let value = dict["drReplicationMode"] as? String {
+                self.drReplicationMode = value
             }
             if let value = dict["messageRetentionTime"] as? Int32 {
                 self.messageRetentionTime = value
@@ -7402,6 +7410,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
             public var capacityType: String?
 
+            public var drReplicationMode: String?
+
             public var messageRetentionTime: Int32?
 
             public var msgProcessSpec: String?
@@ -7438,6 +7448,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 if self.capacityType != nil {
                     map["capacityType"] = self.capacityType!
                 }
+                if self.drReplicationMode != nil {
+                    map["drReplicationMode"] = self.drReplicationMode!
+                }
                 if self.messageRetentionTime != nil {
                     map["messageRetentionTime"] = self.messageRetentionTime!
                 }
@@ -7472,6 +7485,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["capacityType"] as? String {
                     self.capacityType = value
+                }
+                if let value = dict["drReplicationMode"] as? String {
+                    self.drReplicationMode = value
                 }
                 if let value = dict["messageRetentionTime"] as? Int32 {
                     self.messageRetentionTime = value
@@ -20918,13 +20934,19 @@ public class VerifyConsumeMessageResponse : Tea.TeaModel {
 }
 
 public class VerifySendMessageRequest : Tea.TeaModel {
+    public var deliveryTimeStamp: Int64?
+
     public var liteTopicName: String?
 
     public var message: String?
 
+    public var messageGroup: String?
+
     public var messageKey: String?
 
     public var messageTag: String?
+
+    public var userProperties: [String: Any]?
 
     public override init() {
         super.init()
@@ -20940,11 +20962,17 @@ public class VerifySendMessageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deliveryTimeStamp != nil {
+            map["deliveryTimeStamp"] = self.deliveryTimeStamp!
+        }
         if self.liteTopicName != nil {
             map["liteTopicName"] = self.liteTopicName!
         }
         if self.message != nil {
             map["message"] = self.message!
+        }
+        if self.messageGroup != nil {
+            map["messageGroup"] = self.messageGroup!
         }
         if self.messageKey != nil {
             map["messageKey"] = self.messageKey!
@@ -20952,22 +20980,34 @@ public class VerifySendMessageRequest : Tea.TeaModel {
         if self.messageTag != nil {
             map["messageTag"] = self.messageTag!
         }
+        if self.userProperties != nil {
+            map["userProperties"] = self.userProperties!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["deliveryTimeStamp"] as? Int64 {
+            self.deliveryTimeStamp = value
+        }
         if let value = dict["liteTopicName"] as? String {
             self.liteTopicName = value
         }
         if let value = dict["message"] as? String {
             self.message = value
         }
+        if let value = dict["messageGroup"] as? String {
+            self.messageGroup = value
+        }
         if let value = dict["messageKey"] as? String {
             self.messageKey = value
         }
         if let value = dict["messageTag"] as? String {
             self.messageTag = value
+        }
+        if let value = dict["userProperties"] as? [String: Any] {
+            self.userProperties = value
         }
     }
 }

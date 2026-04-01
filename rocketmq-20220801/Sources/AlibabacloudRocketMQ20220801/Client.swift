@@ -2565,17 +2565,26 @@ open class Client : AlibabacloudOpenApi.Client {
     public func verifySendMessageWithOptions(_ instanceId: String, _ topicName: String, _ request: VerifySendMessageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifySendMessageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deliveryTimeStamp)) {
+            body["deliveryTimeStamp"] = request.deliveryTimeStamp!;
+        }
         if (!TeaUtils.Client.isUnset(request.liteTopicName)) {
             body["liteTopicName"] = request.liteTopicName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.message)) {
             body["message"] = request.message ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.messageGroup)) {
+            body["messageGroup"] = request.messageGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.messageKey)) {
             body["messageKey"] = request.messageKey ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.messageTag)) {
             body["messageTag"] = request.messageTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userProperties)) {
+            body["userProperties"] = request.userProperties ?? [:];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
