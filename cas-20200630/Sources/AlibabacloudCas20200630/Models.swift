@@ -5805,6 +5805,10 @@ public class DescribeClientCertificateStatusForSerialNumberResponse : Tea.TeaMod
 public class DescribePcaAndExternalCACertificateListRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
+    public var identifiers: String?
+
+    public var keyWord: String?
+
     public var showSize: Int32?
 
     public override init() {
@@ -5824,6 +5828,12 @@ public class DescribePcaAndExternalCACertificateListRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.identifiers != nil {
+            map["Identifiers"] = self.identifiers!
+        }
+        if self.keyWord != nil {
+            map["KeyWord"] = self.keyWord!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -5834,6 +5844,12 @@ public class DescribePcaAndExternalCACertificateListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CurrentPage"] as? Int32 {
             self.currentPage = value
+        }
+        if let value = dict["Identifiers"] as? String {
+            self.identifiers = value
+        }
+        if let value = dict["KeyWord"] as? String {
+            self.keyWord = value
         }
         if let value = dict["ShowSize"] as? Int32 {
             self.showSize = value

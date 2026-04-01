@@ -1052,6 +1052,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
+        if (!TeaUtils.Client.isUnset(request.identifiers)) {
+            query["Identifiers"] = request.identifiers ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyWord)) {
+            query["KeyWord"] = request.keyWord ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.showSize)) {
             query["ShowSize"] = request.showSize!;
         }
