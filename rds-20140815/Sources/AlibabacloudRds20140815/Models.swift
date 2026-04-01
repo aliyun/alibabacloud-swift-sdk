@@ -86489,6 +86489,569 @@ public class ModifyDBDescriptionResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyDBInstanceRequest : Tea.TeaModel {
+    public class DBNodes : Tea.TeaModel {
+        public var nodeId: String?
+
+        public var role: String?
+
+        public var vSwitchId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
+            }
+            if self.role != nil {
+                map["Role"] = self.role!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NodeId"] as? String {
+                self.nodeId = value
+            }
+            if let value = dict["Role"] as? String {
+                self.role = value
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var autoUseCoupon: Bool?
+
+    public var burstingEnabled: Bool?
+
+    public var category: String?
+
+    public var coldDataEnabled: Bool?
+
+    public var DBInstanceClass: String?
+
+    public var DBInstanceId: String?
+
+    public var DBInstanceStorage: Int32?
+
+    public var DBInstanceStorageType: String?
+
+    public var DBNodes: [ModifyDBInstanceRequest.DBNodes]?
+
+    public var direction: String?
+
+    public var effectiveTime: String?
+
+    public var ioAccelerationEnabled: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var parameterGroupId: String?
+
+    public var parameters: [String: String]?
+
+    public var promotionCode: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var switchTime: String?
+
+    public var targetMinorVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBInstanceStorage != nil {
+            map["DBInstanceStorage"] = self.DBInstanceStorage!
+        }
+        if self.DBInstanceStorageType != nil {
+            map["DBInstanceStorageType"] = self.DBInstanceStorageType!
+        }
+        if self.DBNodes != nil {
+            var tmp : [Any] = []
+            for k in self.DBNodes! {
+                tmp.append(k.toMap())
+            }
+            map["DBNodes"] = tmp
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.parameterGroupId != nil {
+            map["ParameterGroupId"] = self.parameterGroupId!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.switchTime != nil {
+            map["SwitchTime"] = self.switchTime!
+        }
+        if self.targetMinorVersion != nil {
+            map["TargetMinorVersion"] = self.targetMinorVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
+        if let value = dict["BurstingEnabled"] as? Bool {
+            self.burstingEnabled = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
+        }
+        if let value = dict["ColdDataEnabled"] as? Bool {
+            self.coldDataEnabled = value
+        }
+        if let value = dict["DBInstanceClass"] as? String {
+            self.DBInstanceClass = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["DBInstanceStorage"] as? Int32 {
+            self.DBInstanceStorage = value
+        }
+        if let value = dict["DBInstanceStorageType"] as? String {
+            self.DBInstanceStorageType = value
+        }
+        if let value = dict["DBNodes"] as? [Any?] {
+            var tmp : [ModifyDBInstanceRequest.DBNodes] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyDBInstanceRequest.DBNodes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.DBNodes = tmp
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EffectiveTime"] as? String {
+            self.effectiveTime = value
+        }
+        if let value = dict["IoAccelerationEnabled"] as? String {
+            self.ioAccelerationEnabled = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ParameterGroupId"] as? String {
+            self.parameterGroupId = value
+        }
+        if let value = dict["Parameters"] as? [String: String] {
+            self.parameters = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SwitchTime"] as? String {
+            self.switchTime = value
+        }
+        if let value = dict["TargetMinorVersion"] as? String {
+            self.targetMinorVersion = value
+        }
+    }
+}
+
+public class ModifyDBInstanceShrinkRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
+    public var burstingEnabled: Bool?
+
+    public var category: String?
+
+    public var coldDataEnabled: Bool?
+
+    public var DBInstanceClass: String?
+
+    public var DBInstanceId: String?
+
+    public var DBInstanceStorage: Int32?
+
+    public var DBInstanceStorageType: String?
+
+    public var DBNodesShrink: String?
+
+    public var direction: String?
+
+    public var effectiveTime: String?
+
+    public var ioAccelerationEnabled: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var parameterGroupId: String?
+
+    public var parametersShrink: String?
+
+    public var promotionCode: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var switchTime: String?
+
+    public var targetMinorVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBInstanceStorage != nil {
+            map["DBInstanceStorage"] = self.DBInstanceStorage!
+        }
+        if self.DBInstanceStorageType != nil {
+            map["DBInstanceStorageType"] = self.DBInstanceStorageType!
+        }
+        if self.DBNodesShrink != nil {
+            map["DBNodes"] = self.DBNodesShrink!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.parameterGroupId != nil {
+            map["ParameterGroupId"] = self.parameterGroupId!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.switchTime != nil {
+            map["SwitchTime"] = self.switchTime!
+        }
+        if self.targetMinorVersion != nil {
+            map["TargetMinorVersion"] = self.targetMinorVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
+        if let value = dict["BurstingEnabled"] as? Bool {
+            self.burstingEnabled = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
+        }
+        if let value = dict["ColdDataEnabled"] as? Bool {
+            self.coldDataEnabled = value
+        }
+        if let value = dict["DBInstanceClass"] as? String {
+            self.DBInstanceClass = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["DBInstanceStorage"] as? Int32 {
+            self.DBInstanceStorage = value
+        }
+        if let value = dict["DBInstanceStorageType"] as? String {
+            self.DBInstanceStorageType = value
+        }
+        if let value = dict["DBNodes"] as? String {
+            self.DBNodesShrink = value
+        }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EffectiveTime"] as? String {
+            self.effectiveTime = value
+        }
+        if let value = dict["IoAccelerationEnabled"] as? String {
+            self.ioAccelerationEnabled = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ParameterGroupId"] as? String {
+            self.parameterGroupId = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parametersShrink = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SwitchTime"] as? String {
+            self.switchTime = value
+        }
+        if let value = dict["TargetMinorVersion"] as? String {
+            self.targetMinorVersion = value
+        }
+    }
+}
+
+public class ModifyDBInstanceResponseBody : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var orderId: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["OrderId"] as? Int64 {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyDBInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDBInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyDBInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyDBInstanceAutoUpgradeMinorVersionRequest : Tea.TeaModel {
     public var autoUpgradeMinorVersion: String?
 
