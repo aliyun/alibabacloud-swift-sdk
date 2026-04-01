@@ -2590,6 +2590,8 @@ public class PartitionSummary : Tea.TeaModel {
 
     public var lastAccessTime: Int64?
 
+    public var lastRequester: String?
+
     public var partitionName: String?
 
     public var storageActionParams: [String: String]?
@@ -2599,6 +2601,14 @@ public class PartitionSummary : Tea.TeaModel {
     public var storageClass: String?
 
     public var tableName: String?
+
+    public var topRequester: String?
+
+    public var totalFileAccessNum: Int64?
+
+    public var totalFileAccessNum30d: Int64?
+
+    public var totalFileAccessNum7d: Int64?
 
     public var totalFileCount: Int64?
 
@@ -2629,6 +2639,9 @@ public class PartitionSummary : Tea.TeaModel {
         if self.lastAccessTime != nil {
             map["lastAccessTime"] = self.lastAccessTime!
         }
+        if self.lastRequester != nil {
+            map["lastRequester"] = self.lastRequester!
+        }
         if self.partitionName != nil {
             map["partitionName"] = self.partitionName!
         }
@@ -2643,6 +2656,18 @@ public class PartitionSummary : Tea.TeaModel {
         }
         if self.tableName != nil {
             map["tableName"] = self.tableName!
+        }
+        if self.topRequester != nil {
+            map["topRequester"] = self.topRequester!
+        }
+        if self.totalFileAccessNum != nil {
+            map["totalFileAccessNum"] = self.totalFileAccessNum!
+        }
+        if self.totalFileAccessNum30d != nil {
+            map["totalFileAccessNum30d"] = self.totalFileAccessNum30d!
+        }
+        if self.totalFileAccessNum7d != nil {
+            map["totalFileAccessNum7d"] = self.totalFileAccessNum7d!
         }
         if self.totalFileCount != nil {
             map["totalFileCount"] = self.totalFileCount!
@@ -2667,6 +2692,9 @@ public class PartitionSummary : Tea.TeaModel {
         if let value = dict["lastAccessTime"] as? Int64 {
             self.lastAccessTime = value
         }
+        if let value = dict["lastRequester"] as? String {
+            self.lastRequester = value
+        }
         if let value = dict["partitionName"] as? String {
             self.partitionName = value
         }
@@ -2681,6 +2709,18 @@ public class PartitionSummary : Tea.TeaModel {
         }
         if let value = dict["tableName"] as? String {
             self.tableName = value
+        }
+        if let value = dict["topRequester"] as? String {
+            self.topRequester = value
+        }
+        if let value = dict["totalFileAccessNum"] as? Int64 {
+            self.totalFileAccessNum = value
+        }
+        if let value = dict["totalFileAccessNum30d"] as? Int64 {
+            self.totalFileAccessNum30d = value
+        }
+        if let value = dict["totalFileAccessNum7d"] as? Int64 {
+            self.totalFileAccessNum7d = value
         }
         if let value = dict["totalFileCount"] as? Int64 {
             self.totalFileCount = value
@@ -4281,6 +4321,8 @@ public class TableSummary : Tea.TeaModel {
 
     public var lastAccessTime: Int64?
 
+    public var lastRequester: String?
+
     public var objTypeArchiveSize: Int64?
 
     public var objTypeColdArchiveSize: Int64?
@@ -4300,6 +4342,14 @@ public class TableSummary : Tea.TeaModel {
     public var storageClass: String?
 
     public var tableName: String?
+
+    public var topRequester: String?
+
+    public var totalFileAccessNum: Int64?
+
+    public var totalFileAccessNum30d: Int64?
+
+    public var totalFileAccessNum7d: Int64?
 
     public var totalFileCount: Int64?
 
@@ -4341,6 +4391,9 @@ public class TableSummary : Tea.TeaModel {
         if self.lastAccessTime != nil {
             map["lastAccessTime"] = self.lastAccessTime!
         }
+        if self.lastRequester != nil {
+            map["lastRequester"] = self.lastRequester!
+        }
         if self.objTypeArchiveSize != nil {
             map["objTypeArchiveSize"] = self.objTypeArchiveSize!
         }
@@ -4370,6 +4423,18 @@ public class TableSummary : Tea.TeaModel {
         }
         if self.tableName != nil {
             map["tableName"] = self.tableName!
+        }
+        if self.topRequester != nil {
+            map["topRequester"] = self.topRequester!
+        }
+        if self.totalFileAccessNum != nil {
+            map["totalFileAccessNum"] = self.totalFileAccessNum!
+        }
+        if self.totalFileAccessNum30d != nil {
+            map["totalFileAccessNum30d"] = self.totalFileAccessNum30d!
+        }
+        if self.totalFileAccessNum7d != nil {
+            map["totalFileAccessNum7d"] = self.totalFileAccessNum7d!
         }
         if self.totalFileCount != nil {
             map["totalFileCount"] = self.totalFileCount!
@@ -4409,6 +4474,9 @@ public class TableSummary : Tea.TeaModel {
         if let value = dict["lastAccessTime"] as? Int64 {
             self.lastAccessTime = value
         }
+        if let value = dict["lastRequester"] as? String {
+            self.lastRequester = value
+        }
         if let value = dict["objTypeArchiveSize"] as? Int64 {
             self.objTypeArchiveSize = value
         }
@@ -4438,6 +4506,18 @@ public class TableSummary : Tea.TeaModel {
         }
         if let value = dict["tableName"] as? String {
             self.tableName = value
+        }
+        if let value = dict["topRequester"] as? String {
+            self.topRequester = value
+        }
+        if let value = dict["totalFileAccessNum"] as? Int64 {
+            self.totalFileAccessNum = value
+        }
+        if let value = dict["totalFileAccessNum30d"] as? Int64 {
+            self.totalFileAccessNum30d = value
+        }
+        if let value = dict["totalFileAccessNum7d"] as? Int64 {
+            self.totalFileAccessNum7d = value
         }
         if let value = dict["totalFileCount"] as? Int64 {
             self.totalFileCount = value
