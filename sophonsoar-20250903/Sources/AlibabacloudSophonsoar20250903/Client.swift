@@ -24,6 +24,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func abortPlaybookExecutionWithOptions(_ request: AbortPlaybookExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AbortPlaybookExecutionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.playbookExecutionUuid)) {
+            body["PlaybookExecutionUuid"] = request.playbookExecutionUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.playbookUuid)) {
+            body["PlaybookUuid"] = request.playbookUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleFor)) {
+            body["RoleFor"] = request.roleFor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roleType)) {
+            body["RoleType"] = request.roleType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AbortPlaybookExecution",
+            "version": "2025-09-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AbortPlaybookExecutionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func abortPlaybookExecution(_ request: AbortPlaybookExecutionRequest) async throws -> AbortPlaybookExecutionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await abortPlaybookExecutionWithOptions(request as! AbortPlaybookExecutionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createComponentAssetWithOptions(_ request: CreateComponentAssetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateComponentAssetResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
