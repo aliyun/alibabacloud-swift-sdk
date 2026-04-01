@@ -50996,6 +50996,8 @@ public class ListEnvironmentAddonsResponseBody : Tea.TeaModel {
         }
         public var addons: [ListEnvironmentAddonsResponseBody.Data.Addons]?
 
+        public var containsV2Addon: Bool?
+
         public var total: Int64?
 
         public override init() {
@@ -51019,6 +51021,9 @@ public class ListEnvironmentAddonsResponseBody : Tea.TeaModel {
                 }
                 map["Addons"] = tmp
             }
+            if self.containsV2Addon != nil {
+                map["ContainsV2Addon"] = self.containsV2Addon!
+            }
             if self.total != nil {
                 map["Total"] = self.total!
             }
@@ -51039,6 +51044,9 @@ public class ListEnvironmentAddonsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.addons = tmp
+            }
+            if let value = dict["ContainsV2Addon"] as? Bool {
+                self.containsV2Addon = value
             }
             if let value = dict["Total"] as? Int64 {
                 self.total = value
