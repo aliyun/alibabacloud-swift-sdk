@@ -29057,6 +29057,8 @@ public class DescribeDesktopMetadataRequest : Tea.TeaModel {
 
 public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
     public class Desktops : Tea.TeaModel {
+        public var agentProviderList: [String]?
+
         public var chargeType: String?
 
         public var creationTime: String?
@@ -29107,6 +29109,9 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentProviderList != nil {
+                map["AgentProviderList"] = self.agentProviderList!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
@@ -29166,6 +29171,9 @@ public class DescribeDesktopMetadataResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AgentProviderList"] as? [String] {
+                self.agentProviderList = value
+            }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
@@ -32042,6 +32050,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         }
         public var accountType: String?
 
+        public var agentProviderList: [String]?
+
         public var bindAmount: Int32?
 
         public var bundleId: String?
@@ -32198,6 +32208,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.accountType != nil {
                 map["AccountType"] = self.accountType!
+            }
+            if self.agentProviderList != nil {
+                map["AgentProviderList"] = self.agentProviderList!
             }
             if self.bindAmount != nil {
                 map["BindAmount"] = self.bindAmount!
@@ -32433,6 +32446,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccountType"] as? String {
                 self.accountType = value
+            }
+            if let value = dict["AgentProviderList"] as? [String] {
+                self.agentProviderList = value
             }
             if let value = dict["BindAmount"] as? Int32 {
                 self.bindAmount = value
