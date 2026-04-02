@@ -16460,6 +16460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dbEndpointAliases)) {
             query["DbEndpointAliases"] = request.dbEndpointAliases ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dbEndpointCostThresholdForDuckdb)) {
+            query["DbEndpointCostThresholdForDuckdb"] = request.dbEndpointCostThresholdForDuckdb ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dbEndpointMinSlaveCount)) {
             query["DbEndpointMinSlaveCount"] = request.dbEndpointMinSlaveCount ?? "";
         }

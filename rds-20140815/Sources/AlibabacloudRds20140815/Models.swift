@@ -42436,6 +42436,8 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
 
     public var DBProxyConnectStringPort: String?
 
+    public var DBProxyEndpointCostThresholdForDuckdb: String?
+
     public var DBProxyEndpointId: String?
 
     public var DBProxyEndpointMinSlaveCount: String?
@@ -42493,6 +42495,9 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         }
         if self.DBProxyConnectStringPort != nil {
             map["DBProxyConnectStringPort"] = self.DBProxyConnectStringPort!
+        }
+        if self.DBProxyEndpointCostThresholdForDuckdb != nil {
+            map["DBProxyEndpointCostThresholdForDuckdb"] = self.DBProxyEndpointCostThresholdForDuckdb!
         }
         if self.DBProxyEndpointId != nil {
             map["DBProxyEndpointId"] = self.DBProxyEndpointId!
@@ -42555,6 +42560,9 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         }
         if let value = dict["DBProxyConnectStringPort"] as? String {
             self.DBProxyConnectStringPort = value
+        }
+        if let value = dict["DBProxyEndpointCostThresholdForDuckdb"] as? String {
+            self.DBProxyEndpointCostThresholdForDuckdb = value
         }
         if let value = dict["DBProxyEndpointId"] as? String {
             self.DBProxyEndpointId = value
@@ -92524,6 +92532,8 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
 
     public var dbEndpointAliases: String?
 
+    public var dbEndpointCostThresholdForDuckdb: String?
+
     public var dbEndpointMinSlaveCount: String?
 
     public var dbEndpointOperator: String?
@@ -92585,6 +92595,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if self.dbEndpointAliases != nil {
             map["DbEndpointAliases"] = self.dbEndpointAliases!
+        }
+        if self.dbEndpointCostThresholdForDuckdb != nil {
+            map["DbEndpointCostThresholdForDuckdb"] = self.dbEndpointCostThresholdForDuckdb!
         }
         if self.dbEndpointMinSlaveCount != nil {
             map["DbEndpointMinSlaveCount"] = self.dbEndpointMinSlaveCount!
@@ -92653,6 +92666,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if let value = dict["DbEndpointAliases"] as? String {
             self.dbEndpointAliases = value
+        }
+        if let value = dict["DbEndpointCostThresholdForDuckdb"] as? String {
+            self.dbEndpointCostThresholdForDuckdb = value
         }
         if let value = dict["DbEndpointMinSlaveCount"] as? String {
             self.dbEndpointMinSlaveCount = value
