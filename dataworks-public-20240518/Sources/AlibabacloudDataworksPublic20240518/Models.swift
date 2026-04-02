@@ -7082,7 +7082,39 @@ public class CreateDIAlarmRuleResponse : Tea.TeaModel {
 
 public class CreateDIJobRequest : Tea.TeaModel {
     public class DestinationDataSourceSettings : Tea.TeaModel {
+        public class DataSourceProperties : Tea.TeaModel {
+            public var connectionProperties: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.connectionProperties != nil {
+                    map["ConnectionProperties"] = self.connectionProperties!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConnectionProperties"] as? String {
+                    self.connectionProperties = value
+                }
+            }
+        }
         public var dataSourceName: String?
+
+        public var dataSourceProperties: CreateDIJobRequest.DestinationDataSourceSettings.DataSourceProperties?
 
         public override init() {
             super.init()
@@ -7094,12 +7126,16 @@ public class CreateDIJobRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dataSourceProperties?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.dataSourceName != nil {
                 map["DataSourceName"] = self.dataSourceName!
+            }
+            if self.dataSourceProperties != nil {
+                map["DataSourceProperties"] = self.dataSourceProperties?.toMap()
             }
             return map
         }
@@ -7108,6 +7144,11 @@ public class CreateDIJobRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["DataSourceName"] as? String {
                 self.dataSourceName = value
+            }
+            if let value = dict["DataSourceProperties"] as? [String: Any?] {
+                var model = CreateDIJobRequest.DestinationDataSourceSettings.DataSourceProperties()
+                model.fromMap(value)
+                self.dataSourceProperties = model
             }
         }
     }
@@ -7541,6 +7582,8 @@ public class CreateDIJobRequest : Tea.TeaModel {
     }
     public class SourceDataSourceSettings : Tea.TeaModel {
         public class DataSourceProperties : Tea.TeaModel {
+            public var connectionProperties: String?
+
             public var encoding: String?
 
             public var timezone: String?
@@ -7559,6 +7602,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.connectionProperties != nil {
+                    map["ConnectionProperties"] = self.connectionProperties!
+                }
                 if self.encoding != nil {
                     map["Encoding"] = self.encoding!
                 }
@@ -7570,6 +7616,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ConnectionProperties"] as? String {
+                    self.connectionProperties = value
+                }
                 if let value = dict["Encoding"] as? String {
                     self.encoding = value
                 }
