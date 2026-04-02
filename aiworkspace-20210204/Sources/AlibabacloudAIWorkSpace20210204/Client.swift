@@ -267,6 +267,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cloneType)) {
+            body["CloneType"] = request.cloneType!;
+        }
         if (!TeaUtils.Client.isUnset(request.codeBranch)) {
             body["CodeBranch"] = request.codeBranch ?? "";
         }
@@ -4233,6 +4236,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCodeSourceWithOptions(_ CodeSourceId: String, _ request: UpdateCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCodeSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloneType)) {
+            body["CloneType"] = request.cloneType!;
+        }
         if (!TeaUtils.Client.isUnset(request.codeBranch)) {
             body["CodeBranch"] = request.codeBranch ?? "";
         }

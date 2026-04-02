@@ -8,6 +8,8 @@ import AlibabacloudEndpointUtil
 public class CodeSourceItem : Tea.TeaModel {
     public var accessibility: String?
 
+    public var cloneType: Int32?
+
     public var codeBranch: String?
 
     public var codeCommit: String?
@@ -50,6 +52,9 @@ public class CodeSourceItem : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.cloneType != nil {
+            map["CloneType"] = self.cloneType!
         }
         if self.codeBranch != nil {
             map["CodeBranch"] = self.codeBranch!
@@ -97,6 +102,9 @@ public class CodeSourceItem : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["CloneType"] as? Int32 {
+            self.cloneType = value
         }
         if let value = dict["CodeBranch"] as? String {
             self.codeBranch = value
@@ -4248,6 +4256,8 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
 public class CreateCodeSourceRequest : Tea.TeaModel {
     public var accessibility: String?
 
+    public var cloneType: Int32?
+
     public var codeBranch: String?
 
     public var codeCommit: String?
@@ -4283,6 +4293,9 @@ public class CreateCodeSourceRequest : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.cloneType != nil {
+            map["CloneType"] = self.cloneType!
+        }
         if self.codeBranch != nil {
             map["CodeBranch"] = self.codeBranch!
         }
@@ -4317,6 +4330,9 @@ public class CreateCodeSourceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["CloneType"] as? Int32 {
+            self.cloneType = value
         }
         if let value = dict["CodeBranch"] as? String {
             self.codeBranch = value
@@ -11041,6 +11057,8 @@ public class DeleteWorkspaceResourceResponse : Tea.TeaModel {
 public class GetCodeSourceResponseBody : Tea.TeaModel {
     public var accessibility: String?
 
+    public var cloneType: Int32?
+
     public var codeBranch: String?
 
     public var codeCommit: String?
@@ -11085,6 +11103,9 @@ public class GetCodeSourceResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.cloneType != nil {
+            map["CloneType"] = self.cloneType!
         }
         if self.codeBranch != nil {
             map["CodeBranch"] = self.codeBranch!
@@ -11135,6 +11156,9 @@ public class GetCodeSourceResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["CloneType"] as? Int32 {
+            self.cloneType = value
         }
         if let value = dict["CodeBranch"] as? String {
             self.codeBranch = value
@@ -23303,6 +23327,8 @@ public class StopDatasetJobResponse : Tea.TeaModel {
 }
 
 public class UpdateCodeSourceRequest : Tea.TeaModel {
+    public var cloneType: Int32?
+
     public var codeBranch: String?
 
     public var codeCommit: String?
@@ -23333,6 +23359,9 @@ public class UpdateCodeSourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloneType != nil {
+            map["CloneType"] = self.cloneType!
+        }
         if self.codeBranch != nil {
             map["CodeBranch"] = self.codeBranch!
         }
@@ -23362,6 +23391,9 @@ public class UpdateCodeSourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloneType"] as? Int32 {
+            self.cloneType = value
+        }
         if let value = dict["CodeBranch"] as? String {
             self.codeBranch = value
         }
