@@ -1700,6 +1700,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parentId)) {
+            body["parentId"] = request.parentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["remark"] = request.remark ?? "";
         }
@@ -1780,6 +1783,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extensions)) {
+            body["extensions"] = request.extensions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inOut_)) {
+            body["inOut"] = request.inOut_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxInputLength)) {
             body["maxInputLength"] = request.maxInputLength ?? "";
@@ -2213,6 +2222,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            query["modelType"] = request.modelType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.needTotalCount)) {
             query["needTotalCount"] = request.needTotalCount!;
         }
@@ -2318,6 +2330,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryNacosTagsWithOptions(_ request: ModelRouterQueryNacosTagsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryNacosTagsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configType)) {
+            query["configType"] = request.configType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupBy)) {
             query["groupBy"] = request.groupBy ?? "";
         }

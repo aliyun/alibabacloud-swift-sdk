@@ -634,6 +634,155 @@ public class ClientListQry : Tea.TeaModel {
     }
 }
 
+public class ClientTreeDTO : Tea.TeaModel {
+    public var address: String?
+
+    public var allowedModels: String?
+
+    public var children: [ClientTreeDTO]?
+
+    public var clientUuid: String?
+
+    public var contact: String?
+
+    public var deleteTag: Int32?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var id: Int64?
+
+    public var level: Int32?
+
+    public var main: Int32?
+
+    public var name: String?
+
+    public var parentId: Int64?
+
+    public var remark: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["address"] = self.address!
+        }
+        if self.allowedModels != nil {
+            map["allowedModels"] = self.allowedModels!
+        }
+        if self.children != nil {
+            var tmp : [Any] = []
+            for k in self.children! {
+                tmp.append(k.toMap())
+            }
+            map["children"] = tmp
+        }
+        if self.clientUuid != nil {
+            map["clientUuid"] = self.clientUuid!
+        }
+        if self.contact != nil {
+            map["contact"] = self.contact!
+        }
+        if self.deleteTag != nil {
+            map["deleteTag"] = self.deleteTag!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.level != nil {
+            map["level"] = self.level!
+        }
+        if self.main != nil {
+            map["main"] = self.main!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
+        if self.remark != nil {
+            map["remark"] = self.remark!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["address"] as? String {
+            self.address = value
+        }
+        if let value = dict["allowedModels"] as? String {
+            self.allowedModels = value
+        }
+        if let value = dict["children"] as? [Any?] {
+            var tmp : [ClientTreeDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = ClientTreeDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.children = tmp
+        }
+        if let value = dict["clientUuid"] as? String {
+            self.clientUuid = value
+        }
+        if let value = dict["contact"] as? String {
+            self.contact = value
+        }
+        if let value = dict["deleteTag"] as? Int32 {
+            self.deleteTag = value
+        }
+        if let value = dict["gmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["gmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["level"] as? Int32 {
+            self.level = value
+        }
+        if let value = dict["main"] as? Int32 {
+            self.main = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["parentId"] as? Int64 {
+            self.parentId = value
+        }
+        if let value = dict["remark"] as? String {
+            self.remark = value
+        }
+    }
+}
+
 public class ClientUpdateCmd : Tea.TeaModel {
     public var address: String?
 
@@ -1061,11 +1210,15 @@ public class ModelDTO : Tea.TeaModel {
 
     public var description_: String?
 
+    public var extensions: String?
+
     public var gmtCreate: String?
 
     public var gmtModified: String?
 
     public var id: Int64?
+
+    public var inOut_: String?
 
     public var isCustom: Bool?
 
@@ -1113,6 +1266,9 @@ public class ModelDTO : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.extensions != nil {
+            map["extensions"] = self.extensions!
+        }
         if self.gmtCreate != nil {
             map["gmtCreate"] = self.gmtCreate!
         }
@@ -1121,6 +1277,9 @@ public class ModelDTO : Tea.TeaModel {
         }
         if self.id != nil {
             map["id"] = self.id!
+        }
+        if self.inOut_ != nil {
+            map["inOut"] = self.inOut_!
         }
         if self.isCustom != nil {
             map["isCustom"] = self.isCustom!
@@ -1169,6 +1328,9 @@ public class ModelDTO : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["extensions"] as? String {
+            self.extensions = value
+        }
         if let value = dict["gmtCreate"] as? String {
             self.gmtCreate = value
         }
@@ -1177,6 +1339,9 @@ public class ModelDTO : Tea.TeaModel {
         }
         if let value = dict["id"] as? Int64 {
             self.id = value
+        }
+        if let value = dict["inOut"] as? String {
+            self.inOut_ = value
         }
         if let value = dict["isCustom"] as? Bool {
             self.isCustom = value
@@ -3501,6 +3666,8 @@ public class RequestLogDTO : Tea.TeaModel {
 
     public var modelName: String?
 
+    public var modelType: String?
+
     public var promptTokens: Int32?
 
     public var requestBody: String?
@@ -3521,6 +3688,8 @@ public class RequestLogDTO : Tea.TeaModel {
 
     public var totalTokens: Int32?
 
+    public var usage: UsageInfoDTO?
+
     public override init() {
         super.init()
     }
@@ -3531,6 +3700,7 @@ public class RequestLogDTO : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.usage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3568,6 +3738,9 @@ public class RequestLogDTO : Tea.TeaModel {
         if self.modelName != nil {
             map["modelName"] = self.modelName!
         }
+        if self.modelType != nil {
+            map["modelType"] = self.modelType!
+        }
         if self.promptTokens != nil {
             map["promptTokens"] = self.promptTokens!
         }
@@ -3597,6 +3770,9 @@ public class RequestLogDTO : Tea.TeaModel {
         }
         if self.totalTokens != nil {
             map["totalTokens"] = self.totalTokens!
+        }
+        if self.usage != nil {
+            map["usage"] = self.usage?.toMap()
         }
         return map
     }
@@ -3636,6 +3812,9 @@ public class RequestLogDTO : Tea.TeaModel {
         if let value = dict["modelName"] as? String {
             self.modelName = value
         }
+        if let value = dict["modelType"] as? String {
+            self.modelType = value
+        }
         if let value = dict["promptTokens"] as? Int32 {
             self.promptTokens = value
         }
@@ -3665,6 +3844,11 @@ public class RequestLogDTO : Tea.TeaModel {
         }
         if let value = dict["totalTokens"] as? Int32 {
             self.totalTokens = value
+        }
+        if let value = dict["usage"] as? [String: Any?] {
+            var model = UsageInfoDTO()
+            model.fromMap(value)
+            self.usage = model
         }
     }
 }
@@ -3767,6 +3951,77 @@ public class TimeSeriesPointDTO : Tea.TeaModel {
         }
         if let value = dict["value"] as? Any {
             self.value = value
+        }
+    }
+}
+
+public class UsageInfoDTO : Tea.TeaModel {
+    public var completionTokens: Int32?
+
+    public var imageCount: Int32?
+
+    public var promptTokens: Int32?
+
+    public var totalTokens: Int32?
+
+    public var videoCount: Int32?
+
+    public var videoDuration: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.completionTokens != nil {
+            map["completionTokens"] = self.completionTokens!
+        }
+        if self.imageCount != nil {
+            map["imageCount"] = self.imageCount!
+        }
+        if self.promptTokens != nil {
+            map["promptTokens"] = self.promptTokens!
+        }
+        if self.totalTokens != nil {
+            map["totalTokens"] = self.totalTokens!
+        }
+        if self.videoCount != nil {
+            map["videoCount"] = self.videoCount!
+        }
+        if self.videoDuration != nil {
+            map["videoDuration"] = self.videoDuration!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["completionTokens"] as? Int32 {
+            self.completionTokens = value
+        }
+        if let value = dict["imageCount"] as? Int32 {
+            self.imageCount = value
+        }
+        if let value = dict["promptTokens"] as? Int32 {
+            self.promptTokens = value
+        }
+        if let value = dict["totalTokens"] as? Int32 {
+            self.totalTokens = value
+        }
+        if let value = dict["videoCount"] as? Int32 {
+            self.videoCount = value
+        }
+        if let value = dict["videoDuration"] as? Int32 {
+            self.videoDuration = value
         }
     }
 }
@@ -15607,6 +15862,8 @@ public class ModelRouterCreateClientRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var parentId: Int64?
+
     public var remark: String?
 
     public override init() {
@@ -15635,6 +15892,9 @@ public class ModelRouterCreateClientRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
         if self.remark != nil {
             map["remark"] = self.remark!
         }
@@ -15654,6 +15914,9 @@ public class ModelRouterCreateClientRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["parentId"] as? Int64 {
+            self.parentId = value
         }
         if let value = dict["remark"] as? String {
             self.remark = value
@@ -15963,6 +16226,10 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var extensions: String?
+
+    public var inOut_: String?
+
     public var maxInputLength: String?
 
     public var maxOutputLength: String?
@@ -16000,6 +16267,12 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.extensions != nil {
+            map["extensions"] = self.extensions!
+        }
+        if self.inOut_ != nil {
+            map["inOut"] = self.inOut_!
+        }
         if self.maxInputLength != nil {
             map["maxInputLength"] = self.maxInputLength!
         }
@@ -16034,6 +16307,12 @@ public class ModelRouterCreateModelRequest : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["extensions"] as? String {
+            self.extensions = value
+        }
+        if let value = dict["inOut"] as? String {
+            self.inOut_ = value
         }
         if let value = dict["maxInputLength"] as? String {
             self.maxInputLength = value
@@ -17995,6 +18274,8 @@ public class ModelRouterQueryModelListRequest : Tea.TeaModel {
 
     public var maxResults: Int32?
 
+    public var modelType: String?
+
     public var needTotalCount: Bool?
 
     public var nextToken: String?
@@ -18032,6 +18313,9 @@ public class ModelRouterQueryModelListRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
+        if self.modelType != nil {
+            map["modelType"] = self.modelType!
+        }
         if self.needTotalCount != nil {
             map["needTotalCount"] = self.needTotalCount!
         }
@@ -18066,6 +18350,9 @@ public class ModelRouterQueryModelListRequest : Tea.TeaModel {
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["modelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["needTotalCount"] as? Bool {
             self.needTotalCount = value
@@ -18389,11 +18676,47 @@ public class ModelRouterQueryNacosProvidersRequest : Tea.TeaModel {
 public class ModelRouterQueryNacosProvidersResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Models : Tea.TeaModel {
+            public class Extensions : Tea.TeaModel {
+                public var async: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.async != nil {
+                        map["async"] = self.async!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["async"] as? Bool {
+                        self.async = value
+                    }
+                }
+            }
+            public var extensions: ModelRouterQueryNacosProvidersResponseBody.Data.Models.Extensions?
+
             public var identifier: String?
+
+            public var inOut_: String?
 
             public var inputToken: String?
 
             public var outputToken: String?
+
+            public var type: String?
 
             public override init() {
                 super.init()
@@ -18405,12 +18728,19 @@ public class ModelRouterQueryNacosProvidersResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.extensions?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.extensions != nil {
+                    map["extensions"] = self.extensions?.toMap()
+                }
                 if self.identifier != nil {
                     map["identifier"] = self.identifier!
+                }
+                if self.inOut_ != nil {
+                    map["inOut"] = self.inOut_!
                 }
                 if self.inputToken != nil {
                     map["inputToken"] = self.inputToken!
@@ -18418,19 +18748,33 @@ public class ModelRouterQueryNacosProvidersResponseBody : Tea.TeaModel {
                 if self.outputToken != nil {
                     map["outputToken"] = self.outputToken!
                 }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["extensions"] as? [String: Any?] {
+                    var model = ModelRouterQueryNacosProvidersResponseBody.Data.Models.Extensions()
+                    model.fromMap(value)
+                    self.extensions = model
+                }
                 if let value = dict["identifier"] as? String {
                     self.identifier = value
+                }
+                if let value = dict["inOut"] as? String {
+                    self.inOut_ = value
                 }
                 if let value = dict["inputToken"] as? String {
                     self.inputToken = value
                 }
                 if let value = dict["outputToken"] as? String {
                     self.outputToken = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
                 }
             }
         }
@@ -18636,6 +18980,8 @@ public class ModelRouterQueryNacosProvidersResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryNacosTagsRequest : Tea.TeaModel {
+    public var configType: String?
+
     public var groupBy: String?
 
     public var maxResults: Int32?
@@ -18666,6 +19012,9 @@ public class ModelRouterQueryNacosTagsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.configType != nil {
+            map["configType"] = self.configType!
+        }
         if self.groupBy != nil {
             map["groupBy"] = self.groupBy!
         }
@@ -18695,6 +19044,9 @@ public class ModelRouterQueryNacosTagsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["configType"] as? String {
+            self.configType = value
+        }
         if let value = dict["groupBy"] as? String {
             self.groupBy = value
         }
@@ -18724,9 +19076,13 @@ public class ModelRouterQueryNacosTagsRequest : Tea.TeaModel {
 
 public class ModelRouterQueryNacosTagsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var label: String?
+
         public var tag: String?
 
         public var tagName: String?
+
+        public var value: String?
 
         public override init() {
             super.init()
@@ -18742,22 +19098,34 @@ public class ModelRouterQueryNacosTagsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.label != nil {
+                map["label"] = self.label!
+            }
             if self.tag != nil {
                 map["tag"] = self.tag!
             }
             if self.tagName != nil {
                 map["tagName"] = self.tagName!
             }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["label"] as? String {
+                self.label = value
+            }
             if let value = dict["tag"] as? String {
                 self.tag = value
             }
             if let value = dict["tagName"] as? String {
                 self.tagName = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
             }
         }
     }
