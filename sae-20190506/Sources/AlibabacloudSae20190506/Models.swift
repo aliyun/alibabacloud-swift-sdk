@@ -9956,6 +9956,10 @@ public class SidecarContainerConfig : Tea.TeaModel {
 
     public var name: String?
 
+    public var postStart: String?
+
+    public var preStop: String?
+
     public var readiness: String?
 
     public var secretMountDesc: String?
@@ -10007,6 +10011,12 @@ public class SidecarContainerConfig : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.postStart != nil {
+            map["PostStart"] = self.postStart!
+        }
+        if self.preStop != nil {
+            map["PreStop"] = self.preStop!
+        }
         if self.readiness != nil {
             map["Readiness"] = self.readiness!
         }
@@ -10050,6 +10060,12 @@ public class SidecarContainerConfig : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["PostStart"] as? String {
+            self.postStart = value
+        }
+        if let value = dict["PreStop"] as? String {
+            self.preStop = value
         }
         if let value = dict["Readiness"] as? String {
             self.readiness = value
@@ -25775,6 +25791,10 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var postStart: String?
+
+            public var preStop: String?
+
             public var readiness: String?
 
             public var secretMountDesc: [DescribeApplicationConfigResponseBody.Data.SidecarContainersConfig.SecretMountDesc]?
@@ -25833,6 +25853,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.postStart != nil {
+                    map["PostStart"] = self.postStart!
+                }
+                if self.preStop != nil {
+                    map["PreStop"] = self.preStop!
                 }
                 if self.readiness != nil {
                     map["Readiness"] = self.readiness!
@@ -25901,6 +25927,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
+                }
+                if let value = dict["PostStart"] as? String {
+                    self.postStart = value
+                }
+                if let value = dict["PreStop"] as? String {
+                    self.preStop = value
                 }
                 if let value = dict["Readiness"] as? String {
                     self.readiness = value
