@@ -5984,11 +5984,15 @@ public class CreateDomainResponse : Tea.TeaModel {
 
 public class CreateEndpointGroupRequest : Tea.TeaModel {
     public class EndpointConfigurations : Tea.TeaModel {
+        public var apiKeys: [String]?
+
         public var enableClientIPPreservation: Bool?
 
         public var enableProxyProtocol: Bool?
 
         public var endpoint: String?
+
+        public var provider: String?
 
         public var subAddress: String?
 
@@ -6014,6 +6018,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.apiKeys != nil {
+                map["ApiKeys"] = self.apiKeys!
+            }
             if self.enableClientIPPreservation != nil {
                 map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
             }
@@ -6022,6 +6029,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
             }
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
+            }
+            if self.provider != nil {
+                map["Provider"] = self.provider!
             }
             if self.subAddress != nil {
                 map["SubAddress"] = self.subAddress!
@@ -6043,6 +6053,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApiKeys"] as? [String] {
+                self.apiKeys = value
+            }
             if let value = dict["EnableClientIPPreservation"] as? Bool {
                 self.enableClientIPPreservation = value
             }
@@ -6051,6 +6064,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
             }
             if let value = dict["Endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["Provider"] as? String {
+                self.provider = value
             }
             if let value = dict["SubAddress"] as? String {
                 self.subAddress = value
@@ -6485,11 +6501,15 @@ public class CreateEndpointGroupResponse : Tea.TeaModel {
 public class CreateEndpointGroupsRequest : Tea.TeaModel {
     public class EndpointGroupConfigurations : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
+            public var apiKeys: [String]?
+
             public var enableClientIPPreservation: Bool?
 
             public var enableProxyProtocol: Bool?
 
             public var endpoint: String?
+
+            public var provider: String?
 
             public var subAddress: String?
 
@@ -6515,6 +6535,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.apiKeys != nil {
+                    map["ApiKeys"] = self.apiKeys!
+                }
                 if self.enableClientIPPreservation != nil {
                     map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
                 }
@@ -6523,6 +6546,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                 }
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
+                }
+                if self.provider != nil {
+                    map["Provider"] = self.provider!
                 }
                 if self.subAddress != nil {
                     map["SubAddress"] = self.subAddress!
@@ -6544,6 +6570,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ApiKeys"] as? [String] {
+                    self.apiKeys = value
+                }
                 if let value = dict["EnableClientIPPreservation"] as? Bool {
                     self.enableClientIPPreservation = value
                 }
@@ -6552,6 +6581,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                 }
                 if let value = dict["Endpoint"] as? String {
                     self.endpoint = value
+                }
+                if let value = dict["Provider"] as? String {
+                    self.provider = value
                 }
                 if let value = dict["SubAddress"] as? String {
                     self.subAddress = value
@@ -8260,11 +8292,15 @@ public class CreateListenerRequest : Tea.TeaModel {
     }
     public class EndpointGroupConfigurations : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
+            public var apiKeys: [String]?
+
             public var enableClientIPPreservation: Bool?
 
             public var enableProxyProtocol: Bool?
 
             public var endpoint: String?
+
+            public var provider: String?
 
             public var subAddress: String?
 
@@ -8290,6 +8326,9 @@ public class CreateListenerRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.apiKeys != nil {
+                    map["ApiKeys"] = self.apiKeys!
+                }
                 if self.enableClientIPPreservation != nil {
                     map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
                 }
@@ -8298,6 +8337,9 @@ public class CreateListenerRequest : Tea.TeaModel {
                 }
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
+                }
+                if self.provider != nil {
+                    map["Provider"] = self.provider!
                 }
                 if self.subAddress != nil {
                     map["SubAddress"] = self.subAddress!
@@ -8319,6 +8361,9 @@ public class CreateListenerRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ApiKeys"] as? [String] {
+                    self.apiKeys = value
+                }
                 if let value = dict["EnableClientIPPreservation"] as? Bool {
                     self.enableClientIPPreservation = value
                 }
@@ -8327,6 +8372,9 @@ public class CreateListenerRequest : Tea.TeaModel {
                 }
                 if let value = dict["Endpoint"] as? String {
                     self.endpoint = value
+                }
+                if let value = dict["Provider"] as? String {
+                    self.provider = value
                 }
                 if let value = dict["SubAddress"] as? String {
                     self.subAddress = value
@@ -16210,6 +16258,8 @@ public class DescribeEndpointGroupRequest : Tea.TeaModel {
 
 public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
     public class EndpointConfigurations : Tea.TeaModel {
+        public var apiKeys: [String]?
+
         public var enableClientIPPreservation: Bool?
 
         public var enableProxyProtocol: Bool?
@@ -16219,6 +16269,8 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
         public var probePort: Int32?
 
         public var probeProtocol: String?
+
+        public var provider: String?
 
         public var subAddress: String?
 
@@ -16244,6 +16296,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.apiKeys != nil {
+                map["ApiKeys"] = self.apiKeys!
+            }
             if self.enableClientIPPreservation != nil {
                 map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
             }
@@ -16258,6 +16313,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
             }
             if self.probeProtocol != nil {
                 map["ProbeProtocol"] = self.probeProtocol!
+            }
+            if self.provider != nil {
+                map["Provider"] = self.provider!
             }
             if self.subAddress != nil {
                 map["SubAddress"] = self.subAddress!
@@ -16279,6 +16337,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApiKeys"] as? [String] {
+                self.apiKeys = value
+            }
             if let value = dict["EnableClientIPPreservation"] as? Bool {
                 self.enableClientIPPreservation = value
             }
@@ -16293,6 +16354,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProbeProtocol"] as? String {
                 self.probeProtocol = value
+            }
+            if let value = dict["Provider"] as? String {
+                self.provider = value
             }
             if let value = dict["SubAddress"] as? String {
                 self.subAddress = value
@@ -30365,6 +30429,8 @@ public class ListEndpointGroupsRequest : Tea.TeaModel {
 public class ListEndpointGroupsResponseBody : Tea.TeaModel {
     public class EndpointGroups : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
+            public var apiKeys: [String]?
+
             public var enableClientIPPreservation: Bool?
 
             public var enableProxyProtocol: Bool?
@@ -30376,6 +30442,8 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
             public var probePort: Int32?
 
             public var probeProtocol: String?
+
+            public var provider: String?
 
             public var subAddress: String?
 
@@ -30401,6 +30469,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.apiKeys != nil {
+                    map["ApiKeys"] = self.apiKeys!
+                }
                 if self.enableClientIPPreservation != nil {
                     map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
                 }
@@ -30418,6 +30489,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                 }
                 if self.probeProtocol != nil {
                     map["ProbeProtocol"] = self.probeProtocol!
+                }
+                if self.provider != nil {
+                    map["Provider"] = self.provider!
                 }
                 if self.subAddress != nil {
                     map["SubAddress"] = self.subAddress!
@@ -30439,6 +30513,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ApiKeys"] as? [String] {
+                    self.apiKeys = value
+                }
                 if let value = dict["EnableClientIPPreservation"] as? Bool {
                     self.enableClientIPPreservation = value
                 }
@@ -30456,6 +30533,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProbeProtocol"] as? String {
                     self.probeProtocol = value
+                }
+                if let value = dict["Provider"] as? String {
+                    self.provider = value
                 }
                 if let value = dict["SubAddress"] as? String {
                     self.subAddress = value
@@ -38246,11 +38326,15 @@ public class UpdateDomainStateResponse : Tea.TeaModel {
 
 public class UpdateEndpointGroupRequest : Tea.TeaModel {
     public class EndpointConfigurations : Tea.TeaModel {
+        public var apiKeys: [String]?
+
         public var enableClientIPPreservation: Bool?
 
         public var enableProxyProtocol: Bool?
 
         public var endpoint: String?
+
+        public var provider: String?
 
         public var subAddress: String?
 
@@ -38276,6 +38360,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.apiKeys != nil {
+                map["ApiKeys"] = self.apiKeys!
+            }
             if self.enableClientIPPreservation != nil {
                 map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
             }
@@ -38284,6 +38371,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
             }
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
+            }
+            if self.provider != nil {
+                map["Provider"] = self.provider!
             }
             if self.subAddress != nil {
                 map["SubAddress"] = self.subAddress!
@@ -38305,6 +38395,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApiKeys"] as? [String] {
+                self.apiKeys = value
+            }
             if let value = dict["EnableClientIPPreservation"] as? Bool {
                 self.enableClientIPPreservation = value
             }
@@ -38313,6 +38406,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
             }
             if let value = dict["Endpoint"] as? String {
                 self.endpoint = value
+            }
+            if let value = dict["Provider"] as? String {
+                self.provider = value
             }
             if let value = dict["SubAddress"] as? String {
                 self.subAddress = value
@@ -38799,11 +38895,15 @@ public class UpdateEndpointGroupAttributeResponse : Tea.TeaModel {
 public class UpdateEndpointGroupsRequest : Tea.TeaModel {
     public class EndpointGroupConfigurations : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
+            public var apiKeys: [String]?
+
             public var enableClientIPPreservation: Bool?
 
             public var enableProxyProtocol: Bool?
 
             public var endpoint: String?
+
+            public var provider: String?
 
             public var subAddress: String?
 
@@ -38829,6 +38929,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.apiKeys != nil {
+                    map["ApiKeys"] = self.apiKeys!
+                }
                 if self.enableClientIPPreservation != nil {
                     map["EnableClientIPPreservation"] = self.enableClientIPPreservation!
                 }
@@ -38837,6 +38940,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
                 }
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
+                }
+                if self.provider != nil {
+                    map["Provider"] = self.provider!
                 }
                 if self.subAddress != nil {
                     map["SubAddress"] = self.subAddress!
@@ -38858,6 +38964,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ApiKeys"] as? [String] {
+                    self.apiKeys = value
+                }
                 if let value = dict["EnableClientIPPreservation"] as? Bool {
                     self.enableClientIPPreservation = value
                 }
@@ -38866,6 +38975,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
                 }
                 if let value = dict["Endpoint"] as? String {
                     self.endpoint = value
+                }
+                if let value = dict["Provider"] as? String {
+                    self.provider = value
                 }
                 if let value = dict["SubAddress"] as? String {
                     self.subAddress = value
