@@ -181,6 +181,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.vswitchIds)) {
+            request.vswitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vswitchIds, "VswitchIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
@@ -205,6 +208,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
             query["KmsKeyId"] = request.kmsKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.listenerMode)) {
+            query["ListenerMode"] = request.listenerMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxConnections)) {
             query["MaxConnections"] = request.maxConnections!;
@@ -239,6 +245,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
+            query["SecurityGroupId"] = request.securityGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serverlessChargeType)) {
             query["ServerlessChargeType"] = request.serverlessChargeType ?? "";
         }
@@ -256,6 +265,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tracingStorageTime)) {
             query["TracingStorageTime"] = request.tracingStorageTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchIdsShrink)) {
+            query["VswitchIds"] = request.vswitchIdsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

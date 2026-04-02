@@ -748,6 +748,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var kmsKeyId: String?
 
+    public var listenerMode: String?
+
     public var maxConnections: Int32?
 
     public var maxEipTps: Int64?
@@ -770,6 +772,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupId: String?
+
     public var serverlessChargeType: String?
 
     public var storageSize: Int32?
@@ -781,6 +785,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var tags: [CreateInstanceRequest.Tags]?
 
     public var tracingStorageTime: Int32?
+
+    public var vpcId: String?
+
+    public var vswitchIds: [String]?
 
     public override init() {
         super.init()
@@ -820,6 +828,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.kmsKeyId != nil {
             map["KmsKeyId"] = self.kmsKeyId!
         }
+        if self.listenerMode != nil {
+            map["ListenerMode"] = self.listenerMode!
+        }
         if self.maxConnections != nil {
             map["MaxConnections"] = self.maxConnections!
         }
@@ -853,6 +864,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.serverlessChargeType != nil {
             map["ServerlessChargeType"] = self.serverlessChargeType!
         }
@@ -874,6 +888,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.tracingStorageTime != nil {
             map["TracingStorageTime"] = self.tracingStorageTime!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vswitchIds != nil {
+            map["VswitchIds"] = self.vswitchIds!
         }
         return map
     }
@@ -903,6 +923,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["KmsKeyId"] as? String {
             self.kmsKeyId = value
+        }
+        if let value = dict["ListenerMode"] as? String {
+            self.listenerMode = value
         }
         if let value = dict["MaxConnections"] as? Int32 {
             self.maxConnections = value
@@ -936,6 +959,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
         }
         if let value = dict["ServerlessChargeType"] as? String {
             self.serverlessChargeType = value
@@ -965,6 +991,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if let value = dict["TracingStorageTime"] as? Int32 {
             self.tracingStorageTime = value
         }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["VswitchIds"] as? [String] {
+            self.vswitchIds = value
+        }
     }
 }
 
@@ -984,6 +1016,8 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     public var instanceType: String?
 
     public var kmsKeyId: String?
+
+    public var listenerMode: String?
 
     public var maxConnections: Int32?
 
@@ -1007,6 +1041,8 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupId: String?
+
     public var serverlessChargeType: String?
 
     public var storageSize: Int32?
@@ -1018,6 +1054,10 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     public var tagsShrink: String?
 
     public var tracingStorageTime: Int32?
+
+    public var vpcId: String?
+
+    public var vswitchIdsShrink: String?
 
     public override init() {
         super.init()
@@ -1057,6 +1097,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.kmsKeyId != nil {
             map["KmsKeyId"] = self.kmsKeyId!
         }
+        if self.listenerMode != nil {
+            map["ListenerMode"] = self.listenerMode!
+        }
         if self.maxConnections != nil {
             map["MaxConnections"] = self.maxConnections!
         }
@@ -1090,6 +1133,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.serverlessChargeType != nil {
             map["ServerlessChargeType"] = self.serverlessChargeType!
         }
@@ -1107,6 +1153,12 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.tracingStorageTime != nil {
             map["TracingStorageTime"] = self.tracingStorageTime!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vswitchIdsShrink != nil {
+            map["VswitchIds"] = self.vswitchIdsShrink!
         }
         return map
     }
@@ -1136,6 +1188,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KmsKeyId"] as? String {
             self.kmsKeyId = value
+        }
+        if let value = dict["ListenerMode"] as? String {
+            self.listenerMode = value
         }
         if let value = dict["MaxConnections"] as? Int32 {
             self.maxConnections = value
@@ -1170,6 +1225,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
         if let value = dict["ServerlessChargeType"] as? String {
             self.serverlessChargeType = value
         }
@@ -1187,6 +1245,12 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TracingStorageTime"] as? Int32 {
             self.tracingStorageTime = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["VswitchIds"] as? String {
+            self.vswitchIdsShrink = value
         }
     }
 }
@@ -2385,6 +2449,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var kmsKeyId: String?
 
+        public var listenerMode: String?
+
         public var maxConnections: Int32?
 
         public var maxEipTps: Int32?
@@ -2407,6 +2473,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var securityGroupId: String?
+
         public var status: String?
 
         public var storageSize: Int32?
@@ -2418,6 +2486,10 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         public var tags: [GetInstanceResponseBody.Data.Tags]?
 
         public var tracingStorageTime: Int32?
+
+        public var vpcId: String?
+
+        public var vswitchIds: [String]?
 
         public override init() {
             super.init()
@@ -2460,6 +2532,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.kmsKeyId != nil {
                 map["KmsKeyId"] = self.kmsKeyId!
             }
+            if self.listenerMode != nil {
+                map["ListenerMode"] = self.listenerMode!
+            }
             if self.maxConnections != nil {
                 map["MaxConnections"] = self.maxConnections!
             }
@@ -2493,6 +2568,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -2514,6 +2592,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.tracingStorageTime != nil {
                 map["TracingStorageTime"] = self.tracingStorageTime!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.vswitchIds != nil {
+                map["VswitchIds"] = self.vswitchIds!
             }
             return map
         }
@@ -2546,6 +2630,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["KmsKeyId"] as? String {
                 self.kmsKeyId = value
+            }
+            if let value = dict["ListenerMode"] as? String {
+                self.listenerMode = value
             }
             if let value = dict["MaxConnections"] as? Int32 {
                 self.maxConnections = value
@@ -2580,6 +2667,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if let value = dict["ResourceGroupId"] as? String {
                 self.resourceGroupId = value
             }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
             }
@@ -2607,6 +2697,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["TracingStorageTime"] as? Int32 {
                 self.tracingStorageTime = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+            if let value = dict["VswitchIds"] as? [String] {
+                self.vswitchIds = value
             }
         }
     }
@@ -4322,6 +4418,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var kmsKeyId: String?
 
+            public var listenerMode: String?
+
             public var maxEipTps: Int32?
 
             public var maxQueue: Int32?
@@ -4342,6 +4440,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var securityGroupId: String?
+
             public var status: String?
 
             public var storageSize: Int32?
@@ -4349,6 +4449,10 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             public var supportEIP: Bool?
 
             public var tags: [ListInstancesResponseBody.Data.Instances.Tags]?
+
+            public var vpcId: String?
+
+            public var vswitchIds: [String]?
 
             public override init() {
                 super.init()
@@ -4391,6 +4495,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.kmsKeyId != nil {
                     map["KmsKeyId"] = self.kmsKeyId!
                 }
+                if self.listenerMode != nil {
+                    map["ListenerMode"] = self.listenerMode!
+                }
                 if self.maxEipTps != nil {
                     map["MaxEipTps"] = self.maxEipTps!
                 }
@@ -4421,6 +4528,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -4436,6 +4546,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Tags"] = tmp
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
+                if self.vswitchIds != nil {
+                    map["VswitchIds"] = self.vswitchIds!
                 }
                 return map
             }
@@ -4469,6 +4585,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["KmsKeyId"] as? String {
                     self.kmsKeyId = value
                 }
+                if let value = dict["ListenerMode"] as? String {
+                    self.listenerMode = value
+                }
                 if let value = dict["MaxEipTps"] as? Int32 {
                     self.maxEipTps = value
                 }
@@ -4499,6 +4618,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
                 }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
                 if let value = dict["Status"] as? String {
                     self.status = value
                 }
@@ -4520,6 +4642,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.tags = tmp
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
+                }
+                if let value = dict["VswitchIds"] as? [String] {
+                    self.vswitchIds = value
                 }
             }
         }
