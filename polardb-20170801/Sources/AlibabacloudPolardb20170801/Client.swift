@@ -1409,6 +1409,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityIPType)) {
             query["SecurityIPType"] = request.securityIPType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.skillTemplateId)) {
+            query["SkillTemplateId"] = request.skillTemplateId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }

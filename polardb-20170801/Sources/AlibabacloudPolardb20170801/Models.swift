@@ -4897,6 +4897,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var securityIPType: String?
 
+    public var skillTemplateId: String?
+
     public var tag: [CreateApplicationRequest.Tag]?
 
     public var targetVersion: String?
@@ -5021,6 +5023,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.securityIPType != nil {
             map["SecurityIPType"] = self.securityIPType!
+        }
+        if self.skillTemplateId != nil {
+            map["SkillTemplateId"] = self.skillTemplateId!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -5161,6 +5166,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["SecurityIPType"] as? String {
             self.securityIPType = value
         }
+        if let value = dict["SkillTemplateId"] as? String {
+            self.skillTemplateId = value
+        }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationRequest.Tag] = []
             for v in value {
@@ -5291,6 +5299,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var securityIPType: String?
 
+    public var skillTemplateId: String?
+
     public var tag: [CreateApplicationShrinkRequest.Tag]?
 
     public var targetVersion: String?
@@ -5406,6 +5416,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.securityIPType != nil {
             map["SecurityIPType"] = self.securityIPType!
+        }
+        if self.skillTemplateId != nil {
+            map["SkillTemplateId"] = self.skillTemplateId!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -5523,6 +5536,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityIPType"] as? String {
             self.securityIPType = value
+        }
+        if let value = dict["SkillTemplateId"] as? String {
+            self.skillTemplateId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateApplicationShrinkRequest.Tag] = []
@@ -20499,6 +20515,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public class PolarClawSaaSApplicationAttribute : Tea.TeaModel {
         public var authCallbackURL: String?
 
+        public var supabaseClusterId: String?
+
         public override init() {
             super.init()
         }
@@ -20516,6 +20534,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.authCallbackURL != nil {
                 map["AuthCallbackURL"] = self.authCallbackURL!
             }
+            if self.supabaseClusterId != nil {
+                map["SupabaseClusterId"] = self.supabaseClusterId!
+            }
             return map
         }
 
@@ -20523,6 +20544,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AuthCallbackURL"] as? String {
                 self.authCallbackURL = value
+            }
+            if let value = dict["SupabaseClusterId"] as? String {
+                self.supabaseClusterId = value
             }
         }
     }
