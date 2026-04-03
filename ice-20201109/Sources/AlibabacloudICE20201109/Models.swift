@@ -5,6 +5,85 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AIAgentCallInfo : Tea.TeaModel {
+    public var callDuration: Int32?
+
+    public var callEndTime: String?
+
+    public var callStartTime: String?
+
+    public var calleeNumber: String?
+
+    public var callerNumber: String?
+
+    public var hangupRole: Int32?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callDuration != nil {
+            map["CallDuration"] = self.callDuration!
+        }
+        if self.callEndTime != nil {
+            map["CallEndTime"] = self.callEndTime!
+        }
+        if self.callStartTime != nil {
+            map["CallStartTime"] = self.callStartTime!
+        }
+        if self.calleeNumber != nil {
+            map["CalleeNumber"] = self.calleeNumber!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.hangupRole != nil {
+            map["HangupRole"] = self.hangupRole!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallDuration"] as? Int32 {
+            self.callDuration = value
+        }
+        if let value = dict["CallEndTime"] as? String {
+            self.callEndTime = value
+        }
+        if let value = dict["CallStartTime"] as? String {
+            self.callStartTime = value
+        }
+        if let value = dict["CalleeNumber"] as? String {
+            self.calleeNumber = value
+        }
+        if let value = dict["CallerNumber"] as? String {
+            self.callerNumber = value
+        }
+        if let value = dict["HangupRole"] as? Int32 {
+            self.hangupRole = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
 public class AIAgentConfig : Tea.TeaModel {
     public class AmbientSoundConfig : Tea.TeaModel {
         public var resourceId: String?
@@ -156,6 +235,8 @@ public class AIAgentConfig : Tea.TeaModel {
             }
             public var messages: [AIAgentConfig.AutoSpeechConfig.LlmPending.Messages]?
 
+            public var mode: String?
+
             public var waitTime: Int32?
 
             public override init() {
@@ -179,6 +260,9 @@ public class AIAgentConfig : Tea.TeaModel {
                     }
                     map["Messages"] = tmp
                 }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
                 if self.waitTime != nil {
                     map["WaitTime"] = self.waitTime!
                 }
@@ -199,6 +283,9 @@ public class AIAgentConfig : Tea.TeaModel {
                         }
                     }
                     self.messages = tmp
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
                 }
                 if let value = dict["WaitTime"] as? Int32 {
                     self.waitTime = value
@@ -244,6 +331,8 @@ public class AIAgentConfig : Tea.TeaModel {
                     }
                 }
             }
+            public var hangupEndWord: String?
+
             public var maxRepeats: Int32?
 
             public var messages: [AIAgentConfig.AutoSpeechConfig.UserIdle.Messages]?
@@ -264,6 +353,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.hangupEndWord != nil {
+                    map["HangupEndWord"] = self.hangupEndWord!
+                }
                 if self.maxRepeats != nil {
                     map["MaxRepeats"] = self.maxRepeats!
                 }
@@ -282,6 +374,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["HangupEndWord"] as? String {
+                    self.hangupEndWord = value
+                }
                 if let value = dict["MaxRepeats"] as? Int32 {
                     self.maxRepeats = value
                 }
@@ -1801,6 +1896,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             }
             public var messages: [AIAgentOutboundCallConfig.AutoSpeechConfig.LlmPending.Messages]?
 
+            public var mode: String?
+
             public var waitTime: Int32?
 
             public override init() {
@@ -1824,6 +1921,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
                     }
                     map["Messages"] = tmp
                 }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
                 if self.waitTime != nil {
                     map["WaitTime"] = self.waitTime!
                 }
@@ -1844,6 +1944,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
                         }
                     }
                     self.messages = tmp
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
                 }
                 if let value = dict["WaitTime"] as? Int32 {
                     self.waitTime = value
@@ -1889,6 +1992,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
                     }
                 }
             }
+            public var hangupEndWord: String?
+
             public var maxRepeats: Int32?
 
             public var messages: [AIAgentOutboundCallConfig.AutoSpeechConfig.UserIdle.Messages]?
@@ -1909,6 +2014,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.hangupEndWord != nil {
+                    map["HangupEndWord"] = self.hangupEndWord!
+                }
                 if self.maxRepeats != nil {
                     map["MaxRepeats"] = self.maxRepeats!
                 }
@@ -1927,6 +2035,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["HangupEndWord"] as? String {
+                    self.hangupEndWord = value
+                }
                 if let value = dict["MaxRepeats"] as? Int32 {
                     self.maxRepeats = value
                 }
@@ -31493,6 +31604,8 @@ public class DescribeAIAgentInstanceResponseBody : Tea.TeaModel {
     public class Instance : Tea.TeaModel {
         public var agentConfig: AIAgentConfig?
 
+        public var callInfo: AIAgentCallInfo?
+
         public var callLogUrl: String?
 
         public var gmtCreate: String?
@@ -31520,6 +31633,7 @@ public class DescribeAIAgentInstanceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.agentConfig?.validate()
+            try self.callInfo?.validate()
             try self.runtimeConfig?.validate()
             try self.templateConfig?.validate()
         }
@@ -31528,6 +31642,9 @@ public class DescribeAIAgentInstanceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.agentConfig != nil {
                 map["AgentConfig"] = self.agentConfig?.toMap()
+            }
+            if self.callInfo != nil {
+                map["CallInfo"] = self.callInfo?.toMap()
             }
             if self.callLogUrl != nil {
                 map["CallLogUrl"] = self.callLogUrl!
@@ -31562,6 +31679,11 @@ public class DescribeAIAgentInstanceResponseBody : Tea.TeaModel {
                 var model = AIAgentConfig()
                 model.fromMap(value)
                 self.agentConfig = model
+            }
+            if let value = dict["CallInfo"] as? [String: Any?] {
+                var model = AIAgentCallInfo()
+                model.fromMap(value)
+                self.callInfo = model
             }
             if let value = dict["CallLogUrl"] as? String {
                 self.callLogUrl = value
@@ -34390,6 +34512,8 @@ public class GenerateAIAgentCallShrinkRequest : Tea.TeaModel {
 public class GenerateAIAgentCallResponseBody : Tea.TeaModel {
     public var AIAgentUserId: String?
 
+    public var avatarUserId: String?
+
     public var channelId: String?
 
     public var instanceId: String?
@@ -34417,6 +34541,9 @@ public class GenerateAIAgentCallResponseBody : Tea.TeaModel {
         if self.AIAgentUserId != nil {
             map["AIAgentUserId"] = self.AIAgentUserId!
         }
+        if self.avatarUserId != nil {
+            map["AvatarUserId"] = self.avatarUserId!
+        }
         if self.channelId != nil {
             map["ChannelId"] = self.channelId!
         }
@@ -34439,6 +34566,9 @@ public class GenerateAIAgentCallResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AIAgentUserId"] as? String {
             self.AIAgentUserId = value
+        }
+        if let value = dict["AvatarUserId"] as? String {
+            self.avatarUserId = value
         }
         if let value = dict["ChannelId"] as? String {
             self.channelId = value
