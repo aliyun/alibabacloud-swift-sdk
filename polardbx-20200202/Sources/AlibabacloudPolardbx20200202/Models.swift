@@ -18349,6 +18349,8 @@ public class DescribeParameterTemplatesResponseBody : Tea.TeaModel {
 
             public var revisable: Int32?
 
+            public var userChangable: Int32?
+
             public override init() {
                 super.init()
             }
@@ -18381,6 +18383,9 @@ public class DescribeParameterTemplatesResponseBody : Tea.TeaModel {
                 if self.revisable != nil {
                     map["Revisable"] = self.revisable!
                 }
+                if self.userChangable != nil {
+                    map["UserChangable"] = self.userChangable!
+                }
                 return map
             }
 
@@ -18403,6 +18408,9 @@ public class DescribeParameterTemplatesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Revisable"] as? Int32 {
                     self.revisable = value
+                }
+                if let value = dict["UserChangable"] as? Int32 {
+                    self.userChangable = value
                 }
             }
         }
