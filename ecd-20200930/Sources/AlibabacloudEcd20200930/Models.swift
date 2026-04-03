@@ -7615,6 +7615,10 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var adminAccess: String?
 
+    public var adminKeyboardOnFullScreen: String?
+
+    public var adminKeyboardOnWindows: String?
+
     public var appContentProtection: String?
 
     public var authorizeAccessPolicyRule: [CreateCenterPolicyRequest.AuthorizeAccessPolicyRule]?
@@ -7659,6 +7663,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var cpuSingleRateLimit: Int32?
 
+    public var description_: String?
+
     public var deviceConnectHint: String?
 
     public var deviceRedirects: [CreateCenterPolicyRequest.DeviceRedirects]?
@@ -7702,6 +7708,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var internetCommunicationProtocol: String?
 
     public var internetPrinter: String?
+
+    public var keyboardControl: String?
 
     public var localDrive: String?
 
@@ -7889,6 +7897,12 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.adminAccess != nil {
             map["AdminAccess"] = self.adminAccess!
         }
+        if self.adminKeyboardOnFullScreen != nil {
+            map["AdminKeyboardOnFullScreen"] = self.adminKeyboardOnFullScreen!
+        }
+        if self.adminKeyboardOnWindows != nil {
+            map["AdminKeyboardOnWindows"] = self.adminKeyboardOnWindows!
+        }
         if self.appContentProtection != nil {
             map["AppContentProtection"] = self.appContentProtection!
         }
@@ -7971,6 +7985,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.cpuSingleRateLimit != nil {
             map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.deviceConnectHint != nil {
             map["DeviceConnectHint"] = self.deviceConnectHint!
         }
@@ -8048,6 +8065,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.internetPrinter != nil {
             map["InternetPrinter"] = self.internetPrinter!
+        }
+        if self.keyboardControl != nil {
+            map["KeyboardControl"] = self.keyboardControl!
         }
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
@@ -8321,6 +8341,12 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["AdminAccess"] as? String {
             self.adminAccess = value
         }
+        if let value = dict["AdminKeyboardOnFullScreen"] as? String {
+            self.adminKeyboardOnFullScreen = value
+        }
+        if let value = dict["AdminKeyboardOnWindows"] as? String {
+            self.adminKeyboardOnWindows = value
+        }
         if let value = dict["AppContentProtection"] as? String {
             self.appContentProtection = value
         }
@@ -8427,6 +8453,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["CpuSingleRateLimit"] as? Int32 {
             self.cpuSingleRateLimit = value
         }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["DeviceConnectHint"] as? String {
             self.deviceConnectHint = value
         }
@@ -8522,6 +8551,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["InternetPrinter"] as? String {
             self.internetPrinter = value
+        }
+        if let value = dict["KeyboardControl"] as? String {
+            self.keyboardControl = value
         }
         if let value = dict["LocalDrive"] as? String {
             self.localDrive = value
@@ -43148,6 +43180,10 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var adminAccess: String?
 
+        public var adminKeyboardOnFullScreen: String?
+
+        public var adminKeyboardOnWindows: String?
+
         public var appContentProtection: String?
 
         public var authorizeAccessPolicyRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
@@ -43189,6 +43225,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var cpuSampleDuration: Int32?
 
         public var cpuSingleRateLimit: Int32?
+
+        public var description_: String?
 
         public var desktopCount: Int32?
 
@@ -43245,6 +43283,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var internetCommunicationProtocol: String?
 
         public var internetPrinter: String?
+
+        public var keyboardControl: String?
 
         public var localDrive: String?
 
@@ -43436,6 +43476,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.adminAccess != nil {
                 map["AdminAccess"] = self.adminAccess!
             }
+            if self.adminKeyboardOnFullScreen != nil {
+                map["AdminKeyboardOnFullScreen"] = self.adminKeyboardOnFullScreen!
+            }
+            if self.adminKeyboardOnWindows != nil {
+                map["AdminKeyboardOnWindows"] = self.adminKeyboardOnWindows!
+            }
             if self.appContentProtection != nil {
                 map["AppContentProtection"] = self.appContentProtection!
             }
@@ -43510,6 +43556,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.cpuSingleRateLimit != nil {
                 map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.desktopCount != nil {
                 map["DesktopCount"] = self.desktopCount!
@@ -43606,6 +43655,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.internetPrinter != nil {
                 map["InternetPrinter"] = self.internetPrinter!
+            }
+            if self.keyboardControl != nil {
+                map["KeyboardControl"] = self.keyboardControl!
             }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
@@ -43885,6 +43937,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["AdminAccess"] as? String {
                 self.adminAccess = value
             }
+            if let value = dict["AdminKeyboardOnFullScreen"] as? String {
+                self.adminKeyboardOnFullScreen = value
+            }
+            if let value = dict["AdminKeyboardOnWindows"] as? String {
+                self.adminKeyboardOnWindows = value
+            }
             if let value = dict["AppContentProtection"] as? String {
                 self.appContentProtection = value
             }
@@ -43977,6 +44035,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CpuSingleRateLimit"] as? Int32 {
                 self.cpuSingleRateLimit = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["DesktopCount"] as? Int32 {
                 self.desktopCount = value
@@ -44091,6 +44152,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InternetPrinter"] as? String {
                 self.internetPrinter = value
+            }
+            if let value = dict["KeyboardControl"] as? String {
+                self.keyboardControl = value
             }
             if let value = dict["LocalDrive"] as? String {
                 self.localDrive = value
@@ -61982,6 +62046,10 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var adminAccess: String?
 
+    public var adminKeyboardOnFullScreen: String?
+
+    public var adminKeyboardOnWindows: String?
+
     public var appContentProtection: String?
 
     public var authorizeAccessPolicyRule: [ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule]?
@@ -62025,6 +62093,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var cpuSampleDuration: Int32?
 
     public var cpuSingleRateLimit: Int32?
+
+    public var description_: String?
 
     public var deviceConnectHint: String?
 
@@ -62262,6 +62332,12 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.adminAccess != nil {
             map["AdminAccess"] = self.adminAccess!
         }
+        if self.adminKeyboardOnFullScreen != nil {
+            map["AdminKeyboardOnFullScreen"] = self.adminKeyboardOnFullScreen!
+        }
+        if self.adminKeyboardOnWindows != nil {
+            map["AdminKeyboardOnWindows"] = self.adminKeyboardOnWindows!
+        }
         if self.appContentProtection != nil {
             map["AppContentProtection"] = self.appContentProtection!
         }
@@ -62343,6 +62419,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.cpuSingleRateLimit != nil {
             map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.deviceConnectHint != nil {
             map["DeviceConnectHint"] = self.deviceConnectHint!
@@ -62711,6 +62790,12 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["AdminAccess"] as? String {
             self.adminAccess = value
         }
+        if let value = dict["AdminKeyboardOnFullScreen"] as? String {
+            self.adminKeyboardOnFullScreen = value
+        }
+        if let value = dict["AdminKeyboardOnWindows"] as? String {
+            self.adminKeyboardOnWindows = value
+        }
         if let value = dict["AppContentProtection"] as? String {
             self.appContentProtection = value
         }
@@ -62816,6 +62901,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["CpuSingleRateLimit"] as? Int32 {
             self.cpuSingleRateLimit = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["DeviceConnectHint"] as? String {
             self.deviceConnectHint = value

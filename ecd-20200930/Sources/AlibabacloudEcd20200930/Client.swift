@@ -1740,6 +1740,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adminAccess)) {
             query["AdminAccess"] = request.adminAccess ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.adminKeyboardOnFullScreen)) {
+            query["AdminKeyboardOnFullScreen"] = request.adminKeyboardOnFullScreen ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.adminKeyboardOnWindows)) {
+            query["AdminKeyboardOnWindows"] = request.adminKeyboardOnWindows ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appContentProtection)) {
             query["AppContentProtection"] = request.appContentProtection ?? "";
         }
@@ -1806,6 +1812,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cpuSingleRateLimit)) {
             query["CpuSingleRateLimit"] = request.cpuSingleRateLimit!;
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deviceConnectHint)) {
             query["DeviceConnectHint"] = request.deviceConnectHint ?? "";
         }
@@ -1871,6 +1880,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.internetPrinter)) {
             query["InternetPrinter"] = request.internetPrinter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyboardControl)) {
+            query["KeyboardControl"] = request.keyboardControl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.localDrive)) {
             query["LocalDrive"] = request.localDrive ?? "";
@@ -10688,6 +10700,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adminAccess)) {
             query["AdminAccess"] = request.adminAccess ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.adminKeyboardOnFullScreen)) {
+            query["AdminKeyboardOnFullScreen"] = request.adminKeyboardOnFullScreen ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.adminKeyboardOnWindows)) {
+            query["AdminKeyboardOnWindows"] = request.adminKeyboardOnWindows ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appContentProtection)) {
             query["AppContentProtection"] = request.appContentProtection ?? "";
         }
@@ -10753,6 +10771,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.cpuSingleRateLimit)) {
             query["CpuSingleRateLimit"] = request.cpuSingleRateLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.deviceConnectHint)) {
             query["DeviceConnectHint"] = request.deviceConnectHint ?? "";
