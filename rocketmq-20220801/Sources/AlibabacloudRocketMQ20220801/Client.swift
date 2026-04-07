@@ -1741,14 +1741,28 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listMigrationOperationsWithOptions(_ migrationId: String, _ stageType: String, _ request: ListMigrationOperationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMigrationOperationsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listMigrationOperationsWithOptions(_ migrationId: String, _ stageType: String, _ tmpReq: ListMigrationOperationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMigrationOperationsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListMigrationOperationsShrinkRequest = ListMigrationOperationsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.businessStatus)) {
+            request.businessStatusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.businessStatus, "businessStatus", "simple")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.operationStatus)) {
+            request.operationStatusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operationStatus, "operationStatus", "simple")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessStatusShrink)) {
+            query["businessStatus"] = request.businessStatusShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["filter"] = request.filter ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["instanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationStatusShrink)) {
+            query["operationStatus"] = request.operationStatusShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.operationType)) {
             query["operationType"] = request.operationType ?? "";

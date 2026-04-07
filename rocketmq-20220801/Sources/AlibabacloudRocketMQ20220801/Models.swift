@@ -15322,9 +15322,13 @@ public class ListMetricMetaResponse : Tea.TeaModel {
 }
 
 public class ListMigrationOperationsRequest : Tea.TeaModel {
+    public var businessStatus: [String]?
+
     public var filter: String?
 
     public var instanceId: String?
+
+    public var operationStatus: [String]?
 
     public var operationType: String?
 
@@ -15346,11 +15350,17 @@ public class ListMigrationOperationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.businessStatus != nil {
+            map["businessStatus"] = self.businessStatus!
+        }
         if self.filter != nil {
             map["filter"] = self.filter!
         }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
+        }
+        if self.operationStatus != nil {
+            map["operationStatus"] = self.operationStatus!
         }
         if self.operationType != nil {
             map["operationType"] = self.operationType!
@@ -15366,11 +15376,96 @@ public class ListMigrationOperationsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["businessStatus"] as? [String] {
+            self.businessStatus = value
+        }
         if let value = dict["filter"] as? String {
             self.filter = value
         }
         if let value = dict["instanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["operationStatus"] as? [String] {
+            self.operationStatus = value
+        }
+        if let value = dict["operationType"] as? String {
+            self.operationType = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListMigrationOperationsShrinkRequest : Tea.TeaModel {
+    public var businessStatusShrink: String?
+
+    public var filter: String?
+
+    public var instanceId: String?
+
+    public var operationStatusShrink: String?
+
+    public var operationType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessStatusShrink != nil {
+            map["businessStatus"] = self.businessStatusShrink!
+        }
+        if self.filter != nil {
+            map["filter"] = self.filter!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.operationStatusShrink != nil {
+            map["operationStatus"] = self.operationStatusShrink!
+        }
+        if self.operationType != nil {
+            map["operationType"] = self.operationType!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["businessStatus"] as? String {
+            self.businessStatusShrink = value
+        }
+        if let value = dict["filter"] as? String {
+            self.filter = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["operationStatus"] as? String {
+            self.operationStatusShrink = value
         }
         if let value = dict["operationType"] as? String {
             self.operationType = value
