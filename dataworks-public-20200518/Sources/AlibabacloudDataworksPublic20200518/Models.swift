@@ -15865,21 +15865,79 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Columns : Tea.TeaModel {
+            public var column: String?
+
+            public var dbType: String?
+
+            public var project: String?
+
+            public var table: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.column != nil {
+                    map["column"] = self.column!
+                }
+                if self.dbType != nil {
+                    map["dbType"] = self.dbType!
+                }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
+                if self.table != nil {
+                    map["table"] = self.table!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["column"] as? String {
+                    self.column = value
+                }
+                if let value = dict["dbType"] as? String {
+                    self.dbType = value
+                }
+                if let value = dict["project"] as? String {
+                    self.project = value
+                }
+                if let value = dict["table"] as? String {
+                    self.table = value
+                }
+            }
+        }
         public var checkWatermark: Bool?
 
         public var dataType: String?
 
         public var desensPlan: DsgDesensPlanAddOrUpdateRequest.DesensRules.DesensPlan?
 
-        public var id: Int32?
+        public var id: Int64?
 
         public var owner: String?
 
         public var ruleName: String?
 
-        public var sceneIds: [Int32]?
+        public var sceneIds: [Int64]?
 
         public var status: Int32?
+
+        public var columns: [DsgDesensPlanAddOrUpdateRequest.DesensRules.Columns]?
+
+        public var emptyNotDesesn: Bool?
 
         public override init() {
             super.init()
@@ -15920,6 +15978,16 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.columns != nil {
+                var tmp : [Any] = []
+                for k in self.columns! {
+                    tmp.append(k.toMap())
+                }
+                map["columns"] = tmp
+            }
+            if self.emptyNotDesesn != nil {
+                map["emptyNotDesesn"] = self.emptyNotDesesn!
+            }
             return map
         }
 
@@ -15936,7 +16004,7 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.desensPlan = model
             }
-            if let value = dict["Id"] as? Int32 {
+            if let value = dict["Id"] as? Int64 {
                 self.id = value
             }
             if let value = dict["Owner"] as? String {
@@ -15945,11 +16013,27 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
             if let value = dict["RuleName"] as? String {
                 self.ruleName = value
             }
-            if let value = dict["SceneIds"] as? [Int32] {
+            if let value = dict["SceneIds"] as? [Int64] {
                 self.sceneIds = value
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
+            }
+            if let value = dict["columns"] as? [Any?] {
+                var tmp : [DsgDesensPlanAddOrUpdateRequest.DesensRules.Columns] = []
+                for v in value {
+                    if v != nil {
+                        var model = DsgDesensPlanAddOrUpdateRequest.DesensRules.Columns()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.columns = tmp
+            }
+            if let value = dict["emptyNotDesesn"] as? Bool {
+                self.emptyNotDesesn = value
             }
         }
     }
@@ -16349,6 +16433,60 @@ public class DsgDesensPlanDeleteResponse : Tea.TeaModel {
 }
 
 public class DsgDesensPlanQueryListRequest : Tea.TeaModel {
+    public class Columns : Tea.TeaModel {
+        public var column: String?
+
+        public var dbType: String?
+
+        public var project: String?
+
+        public var table: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.column != nil {
+                map["column"] = self.column!
+            }
+            if self.dbType != nil {
+                map["dbType"] = self.dbType!
+            }
+            if self.project != nil {
+                map["project"] = self.project!
+            }
+            if self.table != nil {
+                map["table"] = self.table!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["column"] as? String {
+                self.column = value
+            }
+            if let value = dict["dbType"] as? String {
+                self.dbType = value
+            }
+            if let value = dict["project"] as? String {
+                self.project = value
+            }
+            if let value = dict["table"] as? String {
+                self.table = value
+            }
+        }
+    }
     public var owner: String?
 
     public var pageNumber: Int32?
@@ -16357,9 +16495,15 @@ public class DsgDesensPlanQueryListRequest : Tea.TeaModel {
 
     public var ruleName: String?
 
-    public var sceneId: Int32?
+    public var sceneId: Int64?
 
     public var status: Int32?
+
+    public var columns: [DsgDesensPlanQueryListRequest.Columns]?
+
+    public var dataType: String?
+
+    public var emptyNotDesesn: String?
 
     public override init() {
         super.init()
@@ -16393,6 +16537,19 @@ public class DsgDesensPlanQueryListRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.columns != nil {
+            var tmp : [Any] = []
+            for k in self.columns! {
+                tmp.append(k.toMap())
+            }
+            map["columns"] = tmp
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.emptyNotDesesn != nil {
+            map["emptyNotDesesn"] = self.emptyNotDesesn!
+        }
         return map
     }
 
@@ -16410,11 +16567,125 @@ public class DsgDesensPlanQueryListRequest : Tea.TeaModel {
         if let value = dict["RuleName"] as? String {
             self.ruleName = value
         }
-        if let value = dict["SceneId"] as? Int32 {
+        if let value = dict["SceneId"] as? Int64 {
             self.sceneId = value
         }
         if let value = dict["Status"] as? Int32 {
             self.status = value
+        }
+        if let value = dict["columns"] as? [Any?] {
+            var tmp : [DsgDesensPlanQueryListRequest.Columns] = []
+            for v in value {
+                if v != nil {
+                    var model = DsgDesensPlanQueryListRequest.Columns()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.columns = tmp
+        }
+        if let value = dict["dataType"] as? String {
+            self.dataType = value
+        }
+        if let value = dict["emptyNotDesesn"] as? String {
+            self.emptyNotDesesn = value
+        }
+    }
+}
+
+public class DsgDesensPlanQueryListShrinkRequest : Tea.TeaModel {
+    public var owner: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var ruleName: String?
+
+    public var sceneId: Int64?
+
+    public var status: Int32?
+
+    public var columnsShrink: String?
+
+    public var dataType: String?
+
+    public var emptyNotDesesn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.columnsShrink != nil {
+            map["columns"] = self.columnsShrink!
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.emptyNotDesesn != nil {
+            map["emptyNotDesesn"] = self.emptyNotDesesn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["SceneId"] as? Int64 {
+            self.sceneId = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["columns"] as? String {
+            self.columnsShrink = value
+        }
+        if let value = dict["dataType"] as? String {
+            self.dataType = value
+        }
+        if let value = dict["emptyNotDesesn"] as? String {
+            self.emptyNotDesesn = value
         }
     }
 }
@@ -16460,6 +16731,60 @@ public class DsgDesensPlanQueryListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Columns : Tea.TeaModel {
+                public var column: String?
+
+                public var dbType: String?
+
+                public var project: String?
+
+                public var table: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.column != nil {
+                        map["column"] = self.column!
+                    }
+                    if self.dbType != nil {
+                        map["dbType"] = self.dbType!
+                    }
+                    if self.project != nil {
+                        map["project"] = self.project!
+                    }
+                    if self.table != nil {
+                        map["table"] = self.table!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["column"] as? String {
+                        self.column = value
+                    }
+                    if let value = dict["dbType"] as? String {
+                        self.dbType = value
+                    }
+                    if let value = dict["project"] as? String {
+                        self.project = value
+                    }
+                    if let value = dict["table"] as? String {
+                        self.table = value
+                    }
+                }
+            }
             public var checkWatermark: Bool?
 
             public var dataType: String?
@@ -16487,6 +16812,10 @@ public class DsgDesensPlanQueryListResponseBody : Tea.TeaModel {
             public var sceneName: String?
 
             public var status: Int32?
+
+            public var columns: [DsgDesensPlanQueryListResponseBody.PageData.Data.Columns]?
+
+            public var emptyNotDesesn: Bool?
 
             public override init() {
                 super.init()
@@ -16545,6 +16874,16 @@ public class DsgDesensPlanQueryListResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.columns != nil {
+                    var tmp : [Any] = []
+                    for k in self.columns! {
+                        tmp.append(k.toMap())
+                    }
+                    map["columns"] = tmp
+                }
+                if self.emptyNotDesesn != nil {
+                    map["emptyNotDesesn"] = self.emptyNotDesesn!
+                }
                 return map
             }
 
@@ -16593,6 +16932,22 @@ public class DsgDesensPlanQueryListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? Int32 {
                     self.status = value
+                }
+                if let value = dict["columns"] as? [Any?] {
+                    var tmp : [DsgDesensPlanQueryListResponseBody.PageData.Data.Columns] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DsgDesensPlanQueryListResponseBody.PageData.Data.Columns()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.columns = tmp
+                }
+                if let value = dict["emptyNotDesesn"] as? Bool {
+                    self.emptyNotDesesn = value
                 }
             }
         }
@@ -17206,7 +17561,7 @@ public class DsgPlatformQueryProjectsAndSchemaFromMetaResponse : Tea.TeaModel {
 }
 
 public class DsgQueryDefaultTemplatesRequest : Tea.TeaModel {
-    public var sceneId: Int32?
+    public var sceneId: Int64?
 
     public override init() {
         super.init()
@@ -17230,7 +17585,7 @@ public class DsgQueryDefaultTemplatesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["SceneId"] as? Int32 {
+        if let value = dict["SceneId"] as? Int64 {
             self.sceneId = value
         }
     }
@@ -17425,6 +17780,323 @@ public class DsgQueryDefaultTemplatesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DsgQueryDefaultTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DsgQueryDesensStatusListRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sceneCode: String?
+
+    public var sceneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.sceneId != nil {
+            map["sceneId"] = self.sceneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+        if let value = dict["sceneId"] as? String {
+            self.sceneId = value
+        }
+    }
+}
+
+public class DsgQueryDesensStatusListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class PageData : Tea.TeaModel {
+            public var desensStatus: Int32?
+
+            public var handleSpace: String?
+
+            public var id: Int64?
+
+            public var workspaceIdentifier: String?
+
+            public var workspaceName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desensStatus != nil {
+                    map["DesensStatus"] = self.desensStatus!
+                }
+                if self.handleSpace != nil {
+                    map["HandleSpace"] = self.handleSpace!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.workspaceIdentifier != nil {
+                    map["WorkspaceIdentifier"] = self.workspaceIdentifier!
+                }
+                if self.workspaceName != nil {
+                    map["WorkspaceName"] = self.workspaceName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DesensStatus"] as? Int32 {
+                    self.desensStatus = value
+                }
+                if let value = dict["HandleSpace"] as? String {
+                    self.handleSpace = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["WorkspaceIdentifier"] as? String {
+                    self.workspaceIdentifier = value
+                }
+                if let value = dict["WorkspaceName"] as? String {
+                    self.workspaceName = value
+                }
+            }
+        }
+        public var pageData: [DsgQueryDesensStatusListResponseBody.Data.PageData]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageData != nil {
+                var tmp : [Any] = []
+                for k in self.pageData! {
+                    tmp.append(k.toMap())
+                }
+                map["PageData"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PageData"] as? [Any?] {
+                var tmp : [DsgQueryDesensStatusListResponseBody.Data.PageData] = []
+                for v in value {
+                    if v != nil {
+                        var model = DsgQueryDesensStatusListResponseBody.Data.PageData()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pageData = tmp
+            }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var data: DsgQueryDesensStatusListResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DsgQueryDesensStatusListResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DsgQueryDesensStatusListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DsgQueryDesensStatusListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DsgQueryDesensStatusListResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -18432,6 +19104,8 @@ public class DsgSceneQuerySceneListByNameResponseBody : Tea.TeaModel {
 
         public var userGroups: String?
 
+        public var scenceDbType: String?
+
         public override init() {
             super.init()
         }
@@ -18474,6 +19148,9 @@ public class DsgSceneQuerySceneListByNameResponseBody : Tea.TeaModel {
             if self.userGroups != nil {
                 map["UserGroups"] = self.userGroups!
             }
+            if self.scenceDbType != nil {
+                map["scenceDbType"] = self.scenceDbType!
+            }
             return map
         }
 
@@ -18512,6 +19189,9 @@ public class DsgSceneQuerySceneListByNameResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserGroups"] as? String {
                 self.userGroups = value
+            }
+            if let value = dict["scenceDbType"] as? String {
+                self.scenceDbType = value
             }
         }
     }
@@ -18992,6 +19672,205 @@ public class DsgStopSensIdentifyResponse : Tea.TeaModel {
     }
 }
 
+public class DsgUpdateDesensStatusListRequest : Tea.TeaModel {
+    public var desensStatus: Int32?
+
+    public var ids: [Int32]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desensStatus != nil {
+            map["DesensStatus"] = self.desensStatus!
+        }
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesensStatus"] as? Int32 {
+            self.desensStatus = value
+        }
+        if let value = dict["Ids"] as? [Int32] {
+            self.ids = value
+        }
+    }
+}
+
+public class DsgUpdateDesensStatusListShrinkRequest : Tea.TeaModel {
+    public var desensStatus: Int32?
+
+    public var idsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desensStatus != nil {
+            map["DesensStatus"] = self.desensStatus!
+        }
+        if self.idsShrink != nil {
+            map["Ids"] = self.idsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesensStatus"] as? Int32 {
+            self.desensStatus = value
+        }
+        if let value = dict["Ids"] as? String {
+            self.idsShrink = value
+        }
+    }
+}
+
+public class DsgUpdateDesensStatusListResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DsgUpdateDesensStatusListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DsgUpdateDesensStatusListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DsgUpdateDesensStatusListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DsgUserGroupAddOrUpdateRequest : Tea.TeaModel {
     public class UserGroups : Tea.TeaModel {
         public var accounts: [String]?
@@ -19005,6 +19884,8 @@ public class DsgUserGroupAddOrUpdateRequest : Tea.TeaModel {
         public var projectName: String?
 
         public var userGroupType: Int32?
+
+        public var projects: String?
 
         public override init() {
             super.init()
@@ -19038,6 +19919,9 @@ public class DsgUserGroupAddOrUpdateRequest : Tea.TeaModel {
             if self.userGroupType != nil {
                 map["UserGroupType"] = self.userGroupType!
             }
+            if self.projects != nil {
+                map["projects"] = self.projects!
+            }
             return map
         }
 
@@ -19060,6 +19944,9 @@ public class DsgUserGroupAddOrUpdateRequest : Tea.TeaModel {
             }
             if let value = dict["UserGroupType"] as? Int32 {
                 self.userGroupType = value
+            }
+            if let value = dict["projects"] as? String {
+                self.projects = value
             }
         }
     }
@@ -19605,6 +20492,8 @@ public class DsgUserGroupQueryListRequest : Tea.TeaModel {
 
     public var projectName: String?
 
+    public var userGroupType: Int32?
+
     public override init() {
         super.init()
     }
@@ -19634,6 +20523,9 @@ public class DsgUserGroupQueryListRequest : Tea.TeaModel {
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
+        if self.userGroupType != nil {
+            map["userGroupType"] = self.userGroupType!
+        }
         return map
     }
 
@@ -19654,6 +20546,9 @@ public class DsgUserGroupQueryListRequest : Tea.TeaModel {
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
         }
+        if let value = dict["userGroupType"] as? Int32 {
+            self.userGroupType = value
+        }
     }
 }
 
@@ -19666,11 +20561,13 @@ public class DsgUserGroupQueryListResponseBody : Tea.TeaModel {
 
             public var gmtModified: String?
 
-            public var id: Int32?
+            public var id: Int64?
 
             public var name: String?
 
             public var owner: String?
+
+            public var mcAggregationInfo: String?
 
             public override init() {
                 super.init()
@@ -19704,6 +20601,9 @@ public class DsgUserGroupQueryListResponseBody : Tea.TeaModel {
                 if self.owner != nil {
                     map["Owner"] = self.owner!
                 }
+                if self.mcAggregationInfo != nil {
+                    map["mcAggregationInfo"] = self.mcAggregationInfo!
+                }
                 return map
             }
 
@@ -19718,7 +20618,7 @@ public class DsgUserGroupQueryListResponseBody : Tea.TeaModel {
                 if let value = dict["GmtModified"] as? String {
                     self.gmtModified = value
                 }
-                if let value = dict["Id"] as? Int32 {
+                if let value = dict["Id"] as? Int64 {
                     self.id = value
                 }
                 if let value = dict["Name"] as? String {
@@ -19726,6 +20626,9 @@ public class DsgUserGroupQueryListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Owner"] as? String {
                     self.owner = value
+                }
+                if let value = dict["mcAggregationInfo"] as? String {
+                    self.mcAggregationInfo = value
                 }
             }
         }

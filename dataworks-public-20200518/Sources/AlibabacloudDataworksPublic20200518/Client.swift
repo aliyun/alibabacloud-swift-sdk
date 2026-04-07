@@ -14,69 +14,150 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-1": "dataworks.ap-northeast-1.aliyuncs.com",
-            "ap-south-1": "dataworks.ap-south-1.aliyuncs.com",
+            "ap-northeast-2-pop": "dataworks.aliyuncs.com",
+            "ap-south-1": "dataworks.aliyuncs.com",
             "ap-southeast-1": "dataworks.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-2": "dataworks.ap-southeast-2.aliyuncs.com",
+            "ap-southeast-2": "dataworks.aliyuncs.com",
             "ap-southeast-3": "dataworks.ap-southeast-3.aliyuncs.com",
             "ap-southeast-5": "dataworks.ap-southeast-5.aliyuncs.com",
             "cn-beijing": "dataworks.cn-beijing.aliyuncs.com",
+            "cn-beijing-finance-1": "dataworks.cn-beijing-finance-1.aliyuncs.com",
+            "cn-beijing-finance-pop": "dataworks.aliyuncs.com",
+            "cn-beijing-gov-1": "dataworks.aliyuncs.com",
+            "cn-beijing-nu16-b01": "dataworks.aliyuncs.com",
             "cn-chengdu": "dataworks.cn-chengdu.aliyuncs.com",
+            "cn-edge-1": "dataworks.aliyuncs.com",
+            "cn-fujian": "dataworks.aliyuncs.com",
+            "cn-haidian-cm12-c01": "dataworks.aliyuncs.com",
             "cn-hangzhou": "dataworks.cn-hangzhou.aliyuncs.com",
+            "cn-hangzhou-bj-b01": "dataworks.aliyuncs.com",
+            "cn-hangzhou-finance": "dataworks.aliyuncs.com",
+            "cn-hangzhou-internal-prod-1": "dataworks.aliyuncs.com",
+            "cn-hangzhou-internal-test-1": "dataworks.aliyuncs.com",
+            "cn-hangzhou-internal-test-2": "dataworks.aliyuncs.com",
+            "cn-hangzhou-internal-test-3": "dataworks.aliyuncs.com",
+            "cn-hangzhou-test-306": "dataworks.aliyuncs.com",
             "cn-hongkong": "dataworks.cn-hongkong.aliyuncs.com",
+            "cn-hongkong-finance-pop": "dataworks.aliyuncs.com",
             "cn-huhehaote": "dataworks.aliyuncs.com",
+            "cn-huhehaote-nebula-1": "dataworks.aliyuncs.com",
+            "cn-north-2-gov-1": "dataworks.cn-north-2-gov-1.aliyuncs.com",
             "cn-qingdao": "dataworks.aliyuncs.com",
+            "cn-qingdao-nebula": "dataworks.aliyuncs.com",
             "cn-shanghai": "dataworks.cn-shanghai.aliyuncs.com",
+            "cn-shanghai-et15-b01": "dataworks.aliyuncs.com",
+            "cn-shanghai-et2-b01": "dataworks.aliyuncs.com",
+            "cn-shanghai-finance-1": "dataworks.cn-shanghai-finance-1.aliyuncs.com",
+            "cn-shanghai-inner": "dataworks.aliyuncs.com",
+            "cn-shanghai-internal-test-1": "dataworks.aliyuncs.com",
             "cn-shenzhen": "dataworks.cn-shenzhen.aliyuncs.com",
-            "cn-zhangjiakou": "dataworks.aliyuncs.com",
+            "cn-shenzhen-finance-1": "dataworks.cn-shenzhen-finance-1.aliyuncs.com",
+            "cn-shenzhen-inner": "dataworks.aliyuncs.com",
+            "cn-shenzhen-st4-d01": "dataworks.aliyuncs.com",
+            "cn-shenzhen-su18-b01": "dataworks.aliyuncs.com",
+            "cn-wuhan": "dataworks.aliyuncs.com",
+            "cn-wulanchabu": "dataworks.cn-wulanchabu.aliyuncs.com",
+            "cn-yushanfang": "dataworks.aliyuncs.com",
+            "cn-zhangbei": "dataworks.aliyuncs.com",
+            "cn-zhangbei-na61-b01": "dataworks.aliyuncs.com",
+            "cn-zhangjiakou": "dataworks.cn-zhangjiakou.aliyuncs.com",
+            "cn-zhangjiakou-na62-a01": "dataworks.aliyuncs.com",
+            "cn-zhengzhou-nebula-1": "dataworks.aliyuncs.com",
             "eu-central-1": "dataworks.eu-central-1.aliyuncs.com",
             "eu-west-1": "dataworks.eu-west-1.aliyuncs.com",
+            "eu-west-1-oxs": "dataworks.aliyuncs.com",
             "me-east-1": "dataworks.me-east-1.aliyuncs.com",
+            "rus-west-1-pop": "dataworks.aliyuncs.com",
             "us-east-1": "dataworks.us-east-1.aliyuncs.com",
-            "us-west-1": "dataworks.us-west-1.aliyuncs.com",
-            "cn-hangzhou-finance": "dataworks.aliyuncs.com",
-            "cn-shenzhen-finance-1": "dataworks.aliyuncs.com",
-            "cn-shanghai-finance-1": "dataworks.aliyuncs.com",
-            "cn-north-2-gov-1": "dataworks.aliyuncs.com"
+            "us-west-1": "dataworks.us-west-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dataworks-public", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func _postOSSObject(_ bucketName: String, _ data: [String: Any]) async throws -> [String: Any] {
-        var _request: Tea.TeaRequest = Tea.TeaRequest()
-        var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
-        var boundary: String = TeaFileForm.Client.getBoundary()
-        var host: String = try TeaUtils.Client.assertAsString(form["host"])
-        _request.protocol_ = "HTTPS"
-        _request.method = "POST"
-        _request.pathname = "/"
-        _request.headers = [
-            "host": host as! String,
-            "date": TeaUtils.Client.getDateUTCString(),
-            "user-agent": TeaUtils.Client.getUserAgent("")
+    public func _postOSSObject(_ bucketName: String, _ data: [String: Any], _ runtime: TeaUtils.RuntimeOptions) async throws -> [String: Any] {
+        try runtime.validate()
+        var _runtime: [String: Any] = [
+            "timeouted": "retry",
+            "key": TeaUtils.Client.defaultString(runtime.key, self._key),
+            "cert": TeaUtils.Client.defaultString(runtime.cert, self._cert),
+            "ca": TeaUtils.Client.defaultString(runtime.ca, self._ca),
+            "readTimeout": TeaUtils.Client.defaultNumber(runtime.readTimeout, self._readTimeout),
+            "connectTimeout": TeaUtils.Client.defaultNumber(runtime.connectTimeout, self._connectTimeout),
+            "httpProxy": TeaUtils.Client.defaultString(runtime.httpProxy, self._httpProxy),
+            "httpsProxy": TeaUtils.Client.defaultString(runtime.httpsProxy, self._httpsProxy),
+            "noProxy": TeaUtils.Client.defaultString(runtime.noProxy, self._noProxy),
+            "socks5Proxy": TeaUtils.Client.defaultString(runtime.socks5Proxy, self._socks5Proxy),
+            "socks5NetWork": TeaUtils.Client.defaultString(runtime.socks5NetWork, self._socks5NetWork),
+            "maxIdleConns": TeaUtils.Client.defaultNumber(runtime.maxIdleConns, self._maxIdleConns),
+            "retry": [
+                "retryable": runtime.autoretry!,
+                "maxAttempts": TeaUtils.Client.defaultNumber(runtime.maxAttempts, 3)
+            ],
+            "backoff": [
+                "policy": TeaUtils.Client.defaultString(runtime.backoffPolicy, "no"),
+                "period": TeaUtils.Client.defaultNumber(runtime.backoffPeriod, 1)
+            ],
+            "ignoreSSL": AlibabacloudOpenApi.Client.defaultAny(runtime.ignoreSSL, false),
+            "tlsMinVersion": self._tlsMinVersion ?? ""
         ]
-        _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
-        _request.body = TeaFileForm.Client.toFileForm(form, boundary)
-        var _lastRequest: Tea.TeaRequest = _request
-        var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request)
-        var respMap: [String: Any]? = nil
-        var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
-        if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
-            respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-            var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
-            throw Tea.ReuqestError([
-                "code": err["Code"]!,
-                "message": err["Message"]!,
-                "data": [
-                    "httpCode": _response.statusCode,
-                    "requestId": err["RequestId"]!,
-                    "hostId": err["HostId"]!
+        var _lastRequest: Tea.TeaRequest? = nil
+        var _lastException: Tea.TeaError? = nil
+        var _now: Int32 = Tea.TeaCore.timeNow()
+        var _retryTimes: Int32 = 0
+        while (Tea.TeaCore.allowRetry(_runtime["retry"], _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                var _backoffTime: Int32 = Tea.TeaCore.getBackoffTime(_runtime["backoff"], _retryTimes)
+                if (_backoffTime > 0) {
+                    Tea.TeaCore.sleep(_backoffTime)
+                }
+            }
+            _retryTimes = _retryTimes + 1
+            do {
+                var _request: Tea.TeaRequest = Tea.TeaRequest()
+                var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
+                var boundary: String = TeaFileForm.Client.getBoundary()
+                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                _request.protocol_ = "HTTPS"
+                _request.method = "POST"
+                _request.pathname = "/"
+                _request.headers = [
+                    "host": host as! String,
+                    "date": TeaUtils.Client.getDateUTCString(),
+                    "user-agent": TeaUtils.Client.getUserAgent("")
                 ]
-            ])
+                _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
+                _request.body = TeaFileForm.Client.toFileForm(form, boundary)
+                _lastRequest = _request
+                var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request, _runtime)
+                var respMap: [String: Any]? = nil
+                var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
+                if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
+                    respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                    var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
+                    throw Tea.ReuqestError([
+                        "code": err["Code"]!,
+                        "message": err["Message"]!,
+                        "data": [
+                            "httpCode": _response.statusCode,
+                            "requestId": err["RequestId"]!,
+                            "hostId": err["HostId"]!
+                        ]
+                    ])
+                }
+                respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                return Tea.TeaConverter.merge([:], respMap)
+            }
+            catch {
+                if (Tea.TeaCore.isRetryable(error)) {
+                    _lastException = error as! Tea.RetryableError
+                    continue
+                }
+                throw error
+            }
         }
-        respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-        return Tea.TeaConverter.merge([:], respMap)
+        throw Tea.UnretryableError(_lastRequest, _lastException)
     }
 
     public func getEndpoint(_ productId: String, _ regionId: String, _ endpointRule: String, _ network: String, _ suffix: String, _ endpointMap: [String: String], _ endpoint: String) throws -> String {
@@ -1609,7 +1690,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             createImportMigrationReq.packageFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var createImportMigrationResp: CreateImportMigrationResponse = try await createImportMigrationWithOptions(createImportMigrationReq as! CreateImportMigrationRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -2349,7 +2430,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             createResourceFileReq.resourceFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var createResourceFileResp: CreateResourceFileResponse = try await createResourceFileWithOptions(createResourceFileReq as! CreateResourceFileRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -3703,8 +3784,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func dsgDesensPlanQueryListWithOptions(_ request: DsgDesensPlanQueryListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DsgDesensPlanQueryListResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func dsgDesensPlanQueryListWithOptions(_ tmpReq: DsgDesensPlanQueryListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DsgDesensPlanQueryListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DsgDesensPlanQueryListShrinkRequest = DsgDesensPlanQueryListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.columns)) {
+            request.columnsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.columns, "columns", "json")
+        }
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3826,6 +3912,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func dsgQueryDefaultTemplates(_ request: DsgQueryDefaultTemplatesRequest) async throws -> DsgQueryDefaultTemplatesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await dsgQueryDefaultTemplatesWithOptions(request as! DsgQueryDefaultTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dsgQueryDesensStatusListWithOptions(_ request: DsgQueryDesensStatusListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DsgQueryDesensStatusListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DsgQueryDesensStatusList",
+            "version": "2020-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DsgQueryDesensStatusListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dsgQueryDesensStatusList(_ request: DsgQueryDesensStatusListRequest) async throws -> DsgQueryDesensStatusListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await dsgQueryDesensStatusListWithOptions(request as! DsgQueryDesensStatusListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4072,6 +4186,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func dsgStopSensIdentify(_ request: DsgStopSensIdentifyRequest) async throws -> DsgStopSensIdentifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await dsgStopSensIdentifyWithOptions(request as! DsgStopSensIdentifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dsgUpdateDesensStatusListWithOptions(_ tmpReq: DsgUpdateDesensStatusListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DsgUpdateDesensStatusListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DsgUpdateDesensStatusListShrinkRequest = DsgUpdateDesensStatusListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ids)) {
+            request.idsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ids, "Ids", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.desensStatus)) {
+            query["DesensStatus"] = request.desensStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.idsShrink)) {
+            query["Ids"] = request.idsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DsgUpdateDesensStatusList",
+            "version": "2020-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DsgUpdateDesensStatusListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func dsgUpdateDesensStatusList(_ request: DsgUpdateDesensStatusListRequest) async throws -> DsgUpdateDesensStatusListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await dsgUpdateDesensStatusListWithOptions(request as! DsgUpdateDesensStatusListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
