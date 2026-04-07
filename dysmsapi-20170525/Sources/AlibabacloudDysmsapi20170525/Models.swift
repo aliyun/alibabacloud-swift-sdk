@@ -7387,6 +7387,36 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SignList : Tea.TeaModel {
+        public var signList: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.signList != nil {
+                map["SignList"] = self.signList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SignList"] as? [String] {
+                self.signList = value
+            }
+        }
+    }
     public var applyScene: String?
 
     public var auditInfo: GetSmsTemplateResponseBody.AuditInfo?
@@ -7410,6 +7440,8 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
     public var remark: String?
 
     public var requestId: String?
+
+    public var signList: GetSmsTemplateResponseBody.SignList?
 
     public var templateCode: String?
 
@@ -7440,6 +7472,7 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
         try self.auditInfo?.validate()
         try self.fileUrlList?.validate()
         try self.moreDataFileUrlList?.validate()
+        try self.signList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7479,6 +7512,9 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.signList != nil {
+            map["SignList"] = self.signList?.toMap()
         }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
@@ -7550,6 +7586,11 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SignList"] as? [String: Any?] {
+            var model = GetSmsTemplateResponseBody.SignList()
+            model.fromMap(value)
+            self.signList = model
         }
         if let value = dict["TemplateCode"] as? String {
             self.templateCode = value
@@ -7915,6 +7956,8 @@ public class GetSmsTemplateListResponseBody : Tea.TeaModel {
 
             public var templateCode: String?
 
+            public var templateContent: String?
+
             public var templateName: String?
 
             public var templateTag: [GetSmsTemplateListResponseBody.Data.List.TemplateTag]?
@@ -7951,6 +7994,9 @@ public class GetSmsTemplateListResponseBody : Tea.TeaModel {
                 if self.templateCode != nil {
                     map["TemplateCode"] = self.templateCode!
                 }
+                if self.templateContent != nil {
+                    map["TemplateContent"] = self.templateContent!
+                }
                 if self.templateName != nil {
                     map["TemplateName"] = self.templateName!
                 }
@@ -7986,6 +8032,9 @@ public class GetSmsTemplateListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TemplateCode"] as? String {
                     self.templateCode = value
+                }
+                if let value = dict["TemplateContent"] as? String {
+                    self.templateContent = value
                 }
                 if let value = dict["TemplateName"] as? String {
                     self.templateName = value
