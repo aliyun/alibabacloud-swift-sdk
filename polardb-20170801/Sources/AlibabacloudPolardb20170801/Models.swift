@@ -29555,6 +29555,8 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
 
         public var autoAddNewNodes: String?
 
+        public var connectionString: String?
+
         public var DBClusterId: String?
 
         public var DBEndpointDescription: String?
@@ -29565,6 +29567,8 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
 
         public var endpointType: String?
 
+        public var netType: String?
+
         public var nodeWithRoles: String?
 
         public var nodes: String?
@@ -29573,11 +29577,17 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
 
         public var polarSccWaitTimeout: String?
 
+        public var port: String?
+
+        public var protocol_: String?
+
         public var readWriteMode: String?
 
         public var sccMode: String?
 
         public var serviceName: String?
+
+        public var VPCId: String?
 
         public override init() {
             super.init()
@@ -29603,6 +29613,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if self.autoAddNewNodes != nil {
                 map["AutoAddNewNodes"] = self.autoAddNewNodes!
             }
+            if self.connectionString != nil {
+                map["ConnectionString"] = self.connectionString!
+            }
             if self.DBClusterId != nil {
                 map["DBClusterId"] = self.DBClusterId!
             }
@@ -29618,6 +29631,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if self.endpointType != nil {
                 map["EndpointType"] = self.endpointType!
             }
+            if self.netType != nil {
+                map["NetType"] = self.netType!
+            }
             if self.nodeWithRoles != nil {
                 map["NodeWithRoles"] = self.nodeWithRoles!
             }
@@ -29630,6 +29646,12 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if self.polarSccWaitTimeout != nil {
                 map["PolarSccWaitTimeout"] = self.polarSccWaitTimeout!
             }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
             if self.readWriteMode != nil {
                 map["ReadWriteMode"] = self.readWriteMode!
             }
@@ -29638,6 +29660,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             }
             if self.serviceName != nil {
                 map["ServiceName"] = self.serviceName!
+            }
+            if self.VPCId != nil {
+                map["VPCId"] = self.VPCId!
             }
             return map
         }
@@ -29660,6 +29685,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if let value = dict["AutoAddNewNodes"] as? String {
                 self.autoAddNewNodes = value
             }
+            if let value = dict["ConnectionString"] as? String {
+                self.connectionString = value
+            }
             if let value = dict["DBClusterId"] as? String {
                 self.DBClusterId = value
             }
@@ -29675,6 +29703,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if let value = dict["EndpointType"] as? String {
                 self.endpointType = value
             }
+            if let value = dict["NetType"] as? String {
+                self.netType = value
+            }
             if let value = dict["NodeWithRoles"] as? String {
                 self.nodeWithRoles = value
             }
@@ -29687,6 +29718,12 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if let value = dict["PolarSccWaitTimeout"] as? String {
                 self.polarSccWaitTimeout = value
             }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
             if let value = dict["ReadWriteMode"] as? String {
                 self.readWriteMode = value
             }
@@ -29695,6 +29732,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceName"] as? String {
                 self.serviceName = value
+            }
+            if let value = dict["VPCId"] as? String {
+                self.VPCId = value
             }
         }
     }
