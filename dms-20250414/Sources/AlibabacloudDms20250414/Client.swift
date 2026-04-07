@@ -2690,6 +2690,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dataSource)) {
             request.dataSourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSource, "DataSource", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSources)) {
+            request.dataSourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSources, "DataSources", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sessionConfig)) {
             request.sessionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sessionConfig, "SessionConfig", "json")
         }
@@ -2702,6 +2705,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dataSourceShrink)) {
             query["DataSource"] = request.dataSourceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourcesShrink)) {
+            query["DataSources"] = request.dataSourcesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.message)) {
             query["Message"] = request.message ?? "";
