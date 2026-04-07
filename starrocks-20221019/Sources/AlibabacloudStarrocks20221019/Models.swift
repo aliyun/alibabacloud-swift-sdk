@@ -6359,6 +6359,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var beginTime: Int64?
 
+        public var enableAiFunction: Bool?
+
         public var enableAutoMinorVersionUpgrade: Bool?
 
         public var enableSSL: Bool?
@@ -6433,6 +6435,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.beginTime != nil {
                 map["BeginTime"] = self.beginTime!
+            }
+            if self.enableAiFunction != nil {
+                map["EnableAiFunction"] = self.enableAiFunction!
             }
             if self.enableAutoMinorVersionUpgrade != nil {
                 map["EnableAutoMinorVersionUpgrade"] = self.enableAutoMinorVersionUpgrade!
@@ -6533,6 +6538,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BeginTime"] as? Int64 {
                 self.beginTime = value
+            }
+            if let value = dict["EnableAiFunction"] as? Bool {
+                self.enableAiFunction = value
             }
             if let value = dict["EnableAutoMinorVersionUpgrade"] as? Bool {
                 self.enableAutoMinorVersionUpgrade = value
