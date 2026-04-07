@@ -1031,6 +1031,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addZooKeeperSaslUserWithOptions(_ tmpReq: AddZooKeeperSaslUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddZooKeeperSaslUserResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddZooKeeperSaslUserShrinkRequest = AddZooKeeperSaslUserShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.saslUser)) {
+            request.saslUserShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.saslUser, "SaslUser", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reload)) {
+            query["Reload"] = request.reload!;
+        }
+        if (!TeaUtils.Client.isUnset(request.saslUserShrink)) {
+            query["SaslUser"] = request.saslUserShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddZooKeeperSaslUser",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddZooKeeperSaslUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addZooKeeperSaslUser(_ request: AddZooKeeperSaslUserRequest) async throws -> AddZooKeeperSaslUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addZooKeeperSaslUserWithOptions(request as! AddZooKeeperSaslUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func applyGatewayRouteWithOptions(_ request: ApplyGatewayRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyGatewayRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8099,6 +8144,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listZooKeeperSaslUserWithOptions(_ request: ListZooKeeperSaslUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListZooKeeperSaslUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListZooKeeperSaslUser",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListZooKeeperSaslUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listZooKeeperSaslUser(_ request: ListZooKeeperSaslUserRequest) async throws -> ListZooKeeperSaslUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listZooKeeperSaslUserWithOptions(request as! ListZooKeeperSaslUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyGovernanceKubernetesClusterWithOptions(_ tmpReq: ModifyGovernanceKubernetesClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyGovernanceKubernetesClusterResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyGovernanceKubernetesClusterShrinkRequest = ModifyGovernanceKubernetesClusterShrinkRequest([:])
@@ -9189,6 +9268,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func removeAuthPolicy(_ request: RemoveAuthPolicyRequest) async throws -> RemoveAuthPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await removeAuthPolicyWithOptions(request as! RemoveAuthPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeZooKeeperSaslUserWithOptions(_ tmpReq: RemoveZooKeeperSaslUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveZooKeeperSaslUserResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RemoveZooKeeperSaslUserShrinkRequest = RemoveZooKeeperSaslUserShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.userNames)) {
+            request.userNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userNames, "UserNames", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reload)) {
+            query["Reload"] = request.reload!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userNamesShrink)) {
+            query["UserNames"] = request.userNamesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveZooKeeperSaslUser",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveZooKeeperSaslUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeZooKeeperSaslUser(_ request: RemoveZooKeeperSaslUserRequest) async throws -> RemoveZooKeeperSaslUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeZooKeeperSaslUserWithOptions(request as! RemoveZooKeeperSaslUserRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12209,6 +12333,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateZnode(_ request: UpdateZnodeRequest) async throws -> UpdateZnodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateZnodeWithOptions(request as! UpdateZnodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateZooKeeperSaslUserWithOptions(_ tmpReq: UpdateZooKeeperSaslUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateZooKeeperSaslUserResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateZooKeeperSaslUserShrinkRequest = UpdateZooKeeperSaslUserShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.saslUser)) {
+            request.saslUserShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.saslUser, "SaslUser", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reload)) {
+            query["Reload"] = request.reload!;
+        }
+        if (!TeaUtils.Client.isUnset(request.saslUserShrink)) {
+            query["SaslUser"] = request.saslUserShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateZooKeeperSaslUser",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateZooKeeperSaslUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateZooKeeperSaslUser(_ request: UpdateZooKeeperSaslUserRequest) async throws -> UpdateZooKeeperSaslUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateZooKeeperSaslUserWithOptions(request as! UpdateZooKeeperSaslUserRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
