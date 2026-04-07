@@ -2093,6 +2093,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resumeSessionWithOptions(_ functionName: String, _ sessionId: String, _ request: ResumeSessionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ResumeSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileSystemOnly)) {
+            query["fileSystemOnly"] = request.fileSystemOnly!;
+        }
         if (!TeaUtils.Client.isUnset(request.qualifier)) {
             query["qualifier"] = request.qualifier ?? "";
         }

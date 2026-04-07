@@ -15044,6 +15044,8 @@ public class PutScalingConfigResponse : Tea.TeaModel {
 }
 
 public class ResumeSessionRequest : Tea.TeaModel {
+    public var fileSystemOnly: Bool?
+
     public var qualifier: String?
 
     public override init() {
@@ -15060,6 +15062,9 @@ public class ResumeSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileSystemOnly != nil {
+            map["fileSystemOnly"] = self.fileSystemOnly!
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
         }
@@ -15068,6 +15073,9 @@ public class ResumeSessionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["fileSystemOnly"] as? Bool {
+            self.fileSystemOnly = value
+        }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
         }
