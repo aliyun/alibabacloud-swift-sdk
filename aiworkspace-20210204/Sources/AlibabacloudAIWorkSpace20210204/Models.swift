@@ -15643,6 +15643,8 @@ public class ListConfigsResponse : Tea.TeaModel {
 }
 
 public class ListConnectionsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var connectionIds: [String]?
 
     public var connectionName: String?
@@ -15683,6 +15685,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.connectionIds != nil {
             map["ConnectionIds"] = self.connectionIds!
         }
@@ -15727,6 +15732,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["ConnectionIds"] as? [String] {
             self.connectionIds = value
         }
@@ -15770,6 +15778,8 @@ public class ListConnectionsRequest : Tea.TeaModel {
 }
 
 public class ListConnectionsShrinkRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var connectionIdsShrink: String?
 
     public var connectionName: String?
@@ -15810,6 +15820,9 @@ public class ListConnectionsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.connectionIdsShrink != nil {
             map["ConnectionIds"] = self.connectionIdsShrink!
         }
@@ -15854,6 +15867,9 @@ public class ListConnectionsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["ConnectionIds"] as? String {
             self.connectionIdsShrink = value
         }

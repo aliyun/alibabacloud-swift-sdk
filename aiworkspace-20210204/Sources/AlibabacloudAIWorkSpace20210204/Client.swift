@@ -2670,6 +2670,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.modelTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modelTypes, "ModelTypes", "simple")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionIdsShrink)) {
             query["ConnectionIds"] = request.connectionIdsShrink ?? "";
         }
