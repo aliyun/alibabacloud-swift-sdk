@@ -12023,6 +12023,8 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
 
     public var httpStatusCode: Int32?
 
+    public var outerFileUrl: String?
+
     public var requestId: String?
 
     public var success: Bool?
@@ -12066,6 +12068,9 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
         }
+        if self.outerFileUrl != nil {
+            map["OuterFileUrl"] = self.outerFileUrl!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -12107,6 +12112,9 @@ public class DescribeDocParserJobResultResponseBody : Tea.TeaModel {
         }
         if let value = dict["HttpStatusCode"] as? Int32 {
             self.httpStatusCode = value
+        }
+        if let value = dict["OuterFileUrl"] as? String {
+            self.outerFileUrl = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
