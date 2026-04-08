@@ -30662,6 +30662,8 @@ public class DescribeGtmRecoveryPlansResponse : Tea.TeaModel {
 }
 
 public class DescribeInstanceDomainsRequest : Tea.TeaModel {
+    public var domainKeywords: String?
+
     public var instanceId: String?
 
     public var lang: String?
@@ -30684,6 +30686,9 @@ public class DescribeInstanceDomainsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.domainKeywords != nil {
+            map["DomainKeywords"] = self.domainKeywords!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -30701,6 +30706,9 @@ public class DescribeInstanceDomainsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DomainKeywords"] as? String {
+            self.domainKeywords = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }

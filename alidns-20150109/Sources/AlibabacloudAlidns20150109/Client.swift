@@ -4514,6 +4514,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInstanceDomainsWithOptions(_ request: DescribeInstanceDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainKeywords)) {
+            query["DomainKeywords"] = request.domainKeywords ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
