@@ -6949,6 +6949,8 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
 
     public var credentialScenarioLabel: String?
 
+    public var credentialSharingScope: String?
+
     public var credentialSubjectId: String?
 
     public var credentialSubjectType: String?
@@ -6956,6 +6958,8 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
     public var credentialType: String?
 
     public var description_: String?
+
+    public var exclusiveUserId: String?
 
     public var instanceId: String?
 
@@ -6999,6 +7003,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         if self.credentialScenarioLabel != nil {
             map["credentialScenarioLabel"] = self.credentialScenarioLabel!
         }
+        if self.credentialSharingScope != nil {
+            map["credentialSharingScope"] = self.credentialSharingScope!
+        }
         if self.credentialSubjectId != nil {
             map["credentialSubjectId"] = self.credentialSubjectId!
         }
@@ -7010,6 +7017,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.exclusiveUserId != nil {
+            map["exclusiveUserId"] = self.exclusiveUserId!
         }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
@@ -7048,6 +7058,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         if let value = dict["credentialScenarioLabel"] as? String {
             self.credentialScenarioLabel = value
         }
+        if let value = dict["credentialSharingScope"] as? String {
+            self.credentialSharingScope = value
+        }
         if let value = dict["credentialSubjectId"] as? String {
             self.credentialSubjectId = value
         }
@@ -7059,6 +7072,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["exclusiveUserId"] as? String {
+            self.exclusiveUserId = value
         }
         if let value = dict["instanceId"] as? String {
             self.instanceId = value
