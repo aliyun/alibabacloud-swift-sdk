@@ -5035,6 +5035,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var multiZone: [DescribeDBInstanceAttributeResponseBody.MultiZone]?
 
+    public var OTelBearerToken: String?
+
+    public var OTelGrafanaServiceStatus: String?
+
     public var objectStoreSize: Int64?
 
     public var regionId: String?
@@ -5140,6 +5144,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["MultiZone"] = tmp
+        }
+        if self.OTelBearerToken != nil {
+            map["OTelBearerToken"] = self.OTelBearerToken!
+        }
+        if self.OTelGrafanaServiceStatus != nil {
+            map["OTelGrafanaServiceStatus"] = self.OTelGrafanaServiceStatus!
         }
         if self.objectStoreSize != nil {
             map["ObjectStoreSize"] = self.objectStoreSize!
@@ -5272,6 +5282,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
             self.multiZone = tmp
+        }
+        if let value = dict["OTelBearerToken"] as? String {
+            self.OTelBearerToken = value
+        }
+        if let value = dict["OTelGrafanaServiceStatus"] as? String {
+            self.OTelGrafanaServiceStatus = value
         }
         if let value = dict["ObjectStoreSize"] as? Int64 {
             self.objectStoreSize = value
