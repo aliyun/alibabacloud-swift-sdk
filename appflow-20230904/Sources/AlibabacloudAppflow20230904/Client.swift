@@ -71,4 +71,79 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await generateUserSessionTokenWithOptions(request as! GenerateUserSessionTokenRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeActionWithOptions(_ tmpReq: InvokeActionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvokeActionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InvokeActionShrinkRequest = InvokeActionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.authConfig)) {
+            request.authConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.authConfig, "AuthConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.body)) {
+            request.bodyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.body, "Body", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.headers)) {
+            request.headersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.headers, "Headers", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.path)) {
+            request.pathShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.path, "Path", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.query)) {
+            request.queryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.query, "Query", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionId)) {
+            query["ActionId"] = request.actionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.actionVersion)) {
+            query["ActionVersion"] = request.actionVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authConfigShrink)) {
+            query["AuthConfig"] = request.authConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyShrink)) {
+            query["Body"] = request.bodyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectorId)) {
+            query["ConnectorId"] = request.connectorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectorVersion)) {
+            query["ConnectorVersion"] = request.connectorVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.headersShrink)) {
+            query["Headers"] = request.headersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pathShrink)) {
+            query["Path"] = request.pathShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryShrink)) {
+            query["Query"] = request.queryShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            query["Stream"] = request.stream!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InvokeAction",
+            "version": "2023-09-04",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InvokeActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func invokeAction(_ request: InvokeActionRequest) async throws -> InvokeActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await invokeActionWithOptions(request as! InvokeActionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
