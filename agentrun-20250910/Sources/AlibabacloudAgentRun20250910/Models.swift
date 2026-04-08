@@ -2877,6 +2877,8 @@ public class CreateAgentRuntimeEndpointInput : Tea.TeaModel {
 public class CreateAgentRuntimeInput : Tea.TeaModel {
     public var agentRuntimeName: String?
 
+    public var armsConfiguration: ArmsConfiguration?
+
     public var artifactType: String?
 
     public var codeConfiguration: CodeConfiguration?
@@ -2933,6 +2935,7 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.armsConfiguration?.validate()
         try self.codeConfiguration?.validate()
         try self.containerConfiguration?.validate()
         try self.healthCheckConfiguration?.validate()
@@ -2947,6 +2950,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         var map = super.toMap()
         if self.agentRuntimeName != nil {
             map["agentRuntimeName"] = self.agentRuntimeName!
+        }
+        if self.armsConfiguration != nil {
+            map["armsConfiguration"] = self.armsConfiguration?.toMap()
         }
         if self.artifactType != nil {
             map["artifactType"] = self.artifactType!
@@ -3024,6 +3030,11 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentRuntimeName"] as? String {
             self.agentRuntimeName = value
+        }
+        if let value = dict["armsConfiguration"] as? [String: Any?] {
+            var model = ArmsConfiguration()
+            model.fromMap(value)
+            self.armsConfiguration = model
         }
         if let value = dict["artifactType"] as? String {
             self.artifactType = value
@@ -3749,6 +3760,203 @@ public class CreateDomainInput : Tea.TeaModel {
         }
         if let value = dict["protocol"] as? String {
             self.protocol_ = value
+        }
+    }
+}
+
+public class CreateFlowEndpointInput : Tea.TeaModel {
+    public var description_: String?
+
+    public var flowEndpointName: String?
+
+    public var routingConfiguration: [FlowEndpointRoutingConfig]?
+
+    public var tags: [String]?
+
+    public var targetVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.flowEndpointName != nil {
+            map["flowEndpointName"] = self.flowEndpointName!
+        }
+        if self.routingConfiguration != nil {
+            var tmp : [Any] = []
+            for k in self.routingConfiguration! {
+                tmp.append(k.toMap())
+            }
+            map["routingConfiguration"] = tmp
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.targetVersion != nil {
+            map["targetVersion"] = self.targetVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["flowEndpointName"] as? String {
+            self.flowEndpointName = value
+        }
+        if let value = dict["routingConfiguration"] as? [Any?] {
+            var tmp : [FlowEndpointRoutingConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowEndpointRoutingConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routingConfiguration = tmp
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["targetVersion"] as? String {
+            self.targetVersion = value
+        }
+    }
+}
+
+public class CreateFlowInput : Tea.TeaModel {
+    public var definition: String?
+
+    public var description_: String?
+
+    public var environmentConfiguration: EnvironmentConfiguration?
+
+    public var executionRoleArn: String?
+
+    public var externalStorageLocation: String?
+
+    public var flowName: String?
+
+    public var loggingConfiguration: LoggingConfiguration?
+
+    public var resourceGroupId: String?
+
+    public var tags: [String]?
+
+    public var tracingConfiguration: TracingConfiguration?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.environmentConfiguration?.validate()
+        try self.loggingConfiguration?.validate()
+        try self.tracingConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.definition != nil {
+            map["definition"] = self.definition!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environmentConfiguration != nil {
+            map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
+        }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
+        if self.externalStorageLocation != nil {
+            map["externalStorageLocation"] = self.externalStorageLocation!
+        }
+        if self.flowName != nil {
+            map["flowName"] = self.flowName!
+        }
+        if self.loggingConfiguration != nil {
+            map["loggingConfiguration"] = self.loggingConfiguration?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.tracingConfiguration != nil {
+            map["tracingConfiguration"] = self.tracingConfiguration?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["definition"] as? String {
+            self.definition = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environmentConfiguration"] as? [String: Any?] {
+            var model = EnvironmentConfiguration()
+            model.fromMap(value)
+            self.environmentConfiguration = model
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
+        }
+        if let value = dict["externalStorageLocation"] as? String {
+            self.externalStorageLocation = value
+        }
+        if let value = dict["flowName"] as? String {
+            self.flowName = value
+        }
+        if let value = dict["loggingConfiguration"] as? [String: Any?] {
+            var model = LoggingConfiguration()
+            model.fromMap(value)
+            self.loggingConfiguration = model
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["tracingConfiguration"] as? [String: Any?] {
+            var model = TracingConfiguration()
+            model.fromMap(value)
+            self.tracingConfiguration = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -6849,6 +7057,98 @@ public class EmbedderConfig : Tea.TeaModel {
     }
 }
 
+public class EnvironmentConfiguration : Tea.TeaModel {
+    public var variables: [EnvironmentVariable]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.variables != nil {
+            var tmp : [Any] = []
+            for k in self.variables! {
+                tmp.append(k.toMap())
+            }
+            map["variables"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["variables"] as? [Any?] {
+            var tmp : [EnvironmentVariable] = []
+            for v in value {
+                if v != nil {
+                    var model = EnvironmentVariable()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.variables = tmp
+        }
+    }
+}
+
+public class EnvironmentVariable : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.value != nil {
+            map["value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["value"] as? String {
+            self.value = value
+        }
+    }
+}
+
 public class ErrorResult : Tea.TeaModel {
     public var code: String?
 
@@ -6931,6 +7231,576 @@ public class FCLinkConfig : Tea.TeaModel {
         }
         if let value = dict["version"] as? String {
             self.version = value
+        }
+    }
+}
+
+public class Flow : Tea.TeaModel {
+    public var createdAt: String?
+
+    public var definition: String?
+
+    public var description_: String?
+
+    public var environmentConfiguration: EnvironmentConfiguration?
+
+    public var executionRoleArn: String?
+
+    public var externalStorageLocation: String?
+
+    public var flowArn: String?
+
+    public var flowId: String?
+
+    public var flowName: String?
+
+    public var lastUpdatedAt: String?
+
+    public var loggingConfiguration: LoggingConfiguration?
+
+    public var resourceGroupId: String?
+
+    public var tags: [String]?
+
+    public var tracingConfiguration: TracingConfiguration?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.environmentConfiguration?.validate()
+        try self.loggingConfiguration?.validate()
+        try self.tracingConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.definition != nil {
+            map["definition"] = self.definition!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environmentConfiguration != nil {
+            map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
+        }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
+        if self.externalStorageLocation != nil {
+            map["externalStorageLocation"] = self.externalStorageLocation!
+        }
+        if self.flowArn != nil {
+            map["flowArn"] = self.flowArn!
+        }
+        if self.flowId != nil {
+            map["flowId"] = self.flowId!
+        }
+        if self.flowName != nil {
+            map["flowName"] = self.flowName!
+        }
+        if self.lastUpdatedAt != nil {
+            map["lastUpdatedAt"] = self.lastUpdatedAt!
+        }
+        if self.loggingConfiguration != nil {
+            map["loggingConfiguration"] = self.loggingConfiguration?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.tracingConfiguration != nil {
+            map["tracingConfiguration"] = self.tracingConfiguration?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createdAt"] as? String {
+            self.createdAt = value
+        }
+        if let value = dict["definition"] as? String {
+            self.definition = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environmentConfiguration"] as? [String: Any?] {
+            var model = EnvironmentConfiguration()
+            model.fromMap(value)
+            self.environmentConfiguration = model
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
+        }
+        if let value = dict["externalStorageLocation"] as? String {
+            self.externalStorageLocation = value
+        }
+        if let value = dict["flowArn"] as? String {
+            self.flowArn = value
+        }
+        if let value = dict["flowId"] as? String {
+            self.flowId = value
+        }
+        if let value = dict["flowName"] as? String {
+            self.flowName = value
+        }
+        if let value = dict["lastUpdatedAt"] as? String {
+            self.lastUpdatedAt = value
+        }
+        if let value = dict["loggingConfiguration"] as? [String: Any?] {
+            var model = LoggingConfiguration()
+            model.fromMap(value)
+            self.loggingConfiguration = model
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["tracingConfiguration"] as? [String: Any?] {
+            var model = TracingConfiguration()
+            model.fromMap(value)
+            self.tracingConfiguration = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class FlowEndpoint : Tea.TeaModel {
+    public var createdAt: String?
+
+    public var description_: String?
+
+    public var flowEndpointArn: String?
+
+    public var flowEndpointId: String?
+
+    public var flowEndpointName: String?
+
+    public var flowId: String?
+
+    public var lastUpdatedAt: String?
+
+    public var routingConfiguration: [FlowEndpointRoutingConfig]?
+
+    public var tags: [String]?
+
+    public var targetVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.flowEndpointArn != nil {
+            map["flowEndpointArn"] = self.flowEndpointArn!
+        }
+        if self.flowEndpointId != nil {
+            map["flowEndpointId"] = self.flowEndpointId!
+        }
+        if self.flowEndpointName != nil {
+            map["flowEndpointName"] = self.flowEndpointName!
+        }
+        if self.flowId != nil {
+            map["flowId"] = self.flowId!
+        }
+        if self.lastUpdatedAt != nil {
+            map["lastUpdatedAt"] = self.lastUpdatedAt!
+        }
+        if self.routingConfiguration != nil {
+            var tmp : [Any] = []
+            for k in self.routingConfiguration! {
+                tmp.append(k.toMap())
+            }
+            map["routingConfiguration"] = tmp
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.targetVersion != nil {
+            map["targetVersion"] = self.targetVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createdAt"] as? String {
+            self.createdAt = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["flowEndpointArn"] as? String {
+            self.flowEndpointArn = value
+        }
+        if let value = dict["flowEndpointId"] as? String {
+            self.flowEndpointId = value
+        }
+        if let value = dict["flowEndpointName"] as? String {
+            self.flowEndpointName = value
+        }
+        if let value = dict["flowId"] as? String {
+            self.flowId = value
+        }
+        if let value = dict["lastUpdatedAt"] as? String {
+            self.lastUpdatedAt = value
+        }
+        if let value = dict["routingConfiguration"] as? [Any?] {
+            var tmp : [FlowEndpointRoutingConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowEndpointRoutingConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routingConfiguration = tmp
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["targetVersion"] as? String {
+            self.targetVersion = value
+        }
+    }
+}
+
+public class FlowEndpointResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: FlowEndpoint?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = FlowEndpoint()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class FlowEndpointRoutingConfig : Tea.TeaModel {
+    public var version: String?
+
+    public var weight: Int?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        if self.weight != nil {
+            map["weight"] = self.weight!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["version"] as? String {
+            self.version = value
+        }
+        if let value = dict["weight"] as? Int {
+            self.weight = value
+        }
+    }
+}
+
+public class FlowResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Flow?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = Flow()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class FlowVersion : Tea.TeaModel {
+    public var createdAt: String?
+
+    public var definition: String?
+
+    public var description_: String?
+
+    public var environmentConfiguration: EnvironmentConfiguration?
+
+    public var externalStorageLocation: String?
+
+    public var flowId: String?
+
+    public var flowName: String?
+
+    public var flowVersion: String?
+
+    public var loggingConfiguration: LoggingConfiguration?
+
+    public var tracingConfiguration: TracingConfiguration?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.environmentConfiguration?.validate()
+        try self.loggingConfiguration?.validate()
+        try self.tracingConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.definition != nil {
+            map["definition"] = self.definition!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environmentConfiguration != nil {
+            map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
+        }
+        if self.externalStorageLocation != nil {
+            map["externalStorageLocation"] = self.externalStorageLocation!
+        }
+        if self.flowId != nil {
+            map["flowId"] = self.flowId!
+        }
+        if self.flowName != nil {
+            map["flowName"] = self.flowName!
+        }
+        if self.flowVersion != nil {
+            map["flowVersion"] = self.flowVersion!
+        }
+        if self.loggingConfiguration != nil {
+            map["loggingConfiguration"] = self.loggingConfiguration?.toMap()
+        }
+        if self.tracingConfiguration != nil {
+            map["tracingConfiguration"] = self.tracingConfiguration?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createdAt"] as? String {
+            self.createdAt = value
+        }
+        if let value = dict["definition"] as? String {
+            self.definition = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environmentConfiguration"] as? [String: Any?] {
+            var model = EnvironmentConfiguration()
+            model.fromMap(value)
+            self.environmentConfiguration = model
+        }
+        if let value = dict["externalStorageLocation"] as? String {
+            self.externalStorageLocation = value
+        }
+        if let value = dict["flowId"] as? String {
+            self.flowId = value
+        }
+        if let value = dict["flowName"] as? String {
+            self.flowName = value
+        }
+        if let value = dict["flowVersion"] as? String {
+            self.flowVersion = value
+        }
+        if let value = dict["loggingConfiguration"] as? [String: Any?] {
+            var model = LoggingConfiguration()
+            model.fromMap(value)
+            self.loggingConfiguration = model
+        }
+        if let value = dict["tracingConfiguration"] as? [String: Any?] {
+            var model = TracingConfiguration()
+            model.fromMap(value)
+            self.tracingConfiguration = model
+        }
+    }
+}
+
+public class FlowVersionResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: FlowVersion?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = FlowVersion()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
         }
     }
 }
@@ -10073,6 +10943,363 @@ public class ListDomainsOutput : Tea.TeaModel {
     }
 }
 
+public class ListFlowEndpointsOutput : Tea.TeaModel {
+    public var items: [FlowEndpoint]?
+
+    public var pageNumber: Int?
+
+    public var pageSize: Int?
+
+    public var total: Int?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [FlowEndpoint] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowEndpoint()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["pageNumber"] as? Int {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int {
+            self.pageSize = value
+        }
+        if let value = dict["total"] as? Int {
+            self.total = value
+        }
+    }
+}
+
+public class ListFlowEndpointsResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: ListFlowEndpointsOutput?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListFlowEndpointsOutput()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListFlowVersionsOutput : Tea.TeaModel {
+    public var items: [FlowVersion]?
+
+    public var pageNumber: Int?
+
+    public var pageSize: Int?
+
+    public var total: Int?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [FlowVersion] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowVersion()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["pageNumber"] as? Int {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int {
+            self.pageSize = value
+        }
+        if let value = dict["total"] as? Int {
+            self.total = value
+        }
+    }
+}
+
+public class ListFlowVersionsResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: ListFlowVersionsOutput?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListFlowVersionsOutput()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListFlowsOutput : Tea.TeaModel {
+    public var items: [Flow]?
+
+    public var pageNumber: Int?
+
+    public var pageSize: Int?
+
+    public var total: Int?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["items"] as? [Any?] {
+            var tmp : [Flow] = []
+            for v in value {
+                if v != nil {
+                    var model = Flow()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["pageNumber"] as? Int {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int {
+            self.pageSize = value
+        }
+        if let value = dict["total"] as? Int {
+            self.total = value
+        }
+    }
+}
+
+public class ListFlowsResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: ListFlowsOutput?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListFlowsOutput()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
 public class ListFunagentsInput : Tea.TeaModel {
     public var funagentName: String?
 
@@ -11464,6 +12691,85 @@ public class LogConfiguration : Tea.TeaModel {
         }
         if let value = dict["project"] as? String {
             self.project = value
+        }
+    }
+}
+
+public class LogDestination : Tea.TeaModel {
+    public var slsLogDestination: SLSLogDestination?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.slsLogDestination?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.slsLogDestination != nil {
+            map["slsLogDestination"] = self.slsLogDestination?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["slsLogDestination"] as? [String: Any?] {
+            var model = SLSLogDestination()
+            model.fromMap(value)
+            self.slsLogDestination = model
+        }
+    }
+}
+
+public class LoggingConfiguration : Tea.TeaModel {
+    public var destinations: [LogDestination]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.destinations != nil {
+            var tmp : [Any] = []
+            for k in self.destinations! {
+                tmp.append(k.toMap())
+            }
+            map["destinations"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["destinations"] as? [Any?] {
+            var tmp : [LogDestination] = []
+            for v in value {
+                if v != nil {
+                    var model = LogDestination()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.destinations = tmp
         }
     }
 }
@@ -14208,6 +15514,37 @@ public class ProxyConfig : Tea.TeaModel {
     }
 }
 
+public class PublishFlowVersionInput : Tea.TeaModel {
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+    }
+}
+
 public class PublishRuntimeVersionInput : Tea.TeaModel {
     public var description_: String?
 
@@ -14548,6 +15885,45 @@ public class RoutingConfiguration : Tea.TeaModel {
                 }
             }
             self.versionWeights = tmp
+        }
+    }
+}
+
+public class SLSLogDestination : Tea.TeaModel {
+    public var logStore: String?
+
+    public var project: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.logStore != nil {
+            map["logStore"] = self.logStore!
+        }
+        if self.project != nil {
+            map["project"] = self.project!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["logStore"] as? String {
+            self.logStore = value
+        }
+        if let value = dict["project"] as? String {
+            self.project = value
         }
     }
 }
@@ -16484,6 +17860,37 @@ public class ToolResult : Tea.TeaModel {
     }
 }
 
+public class TracingConfiguration : Tea.TeaModel {
+    public var enabled: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["enabled"] = self.enabled!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["enabled"] as? Bool {
+            self.enabled = value
+        }
+    }
+}
+
 public class TriggerConfig : Tea.TeaModel {
     public var authType: String?
 
@@ -17261,6 +18668,269 @@ public class UpdateDomainInput : Tea.TeaModel {
         }
         if let value = dict["protocol"] as? String {
             self.protocol_ = value
+        }
+    }
+}
+
+public class UpdateFlowDraftInput : Tea.TeaModel {
+    public var definition: String?
+
+    public var description_: String?
+
+    public var environmentConfiguration: EnvironmentConfiguration?
+
+    public var executionRoleArn: String?
+
+    public var externalStorageLocation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.environmentConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.definition != nil {
+            map["definition"] = self.definition!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environmentConfiguration != nil {
+            map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
+        }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
+        if self.externalStorageLocation != nil {
+            map["externalStorageLocation"] = self.externalStorageLocation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["definition"] as? String {
+            self.definition = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environmentConfiguration"] as? [String: Any?] {
+            var model = EnvironmentConfiguration()
+            model.fromMap(value)
+            self.environmentConfiguration = model
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
+        }
+        if let value = dict["externalStorageLocation"] as? String {
+            self.externalStorageLocation = value
+        }
+    }
+}
+
+public class UpdateFlowEndpointInput : Tea.TeaModel {
+    public var description_: String?
+
+    public var flowEndpointName: String?
+
+    public var routingConfiguration: [FlowEndpointRoutingConfig]?
+
+    public var tags: [String]?
+
+    public var targetVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.flowEndpointName != nil {
+            map["flowEndpointName"] = self.flowEndpointName!
+        }
+        if self.routingConfiguration != nil {
+            var tmp : [Any] = []
+            for k in self.routingConfiguration! {
+                tmp.append(k.toMap())
+            }
+            map["routingConfiguration"] = tmp
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.targetVersion != nil {
+            map["targetVersion"] = self.targetVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["flowEndpointName"] as? String {
+            self.flowEndpointName = value
+        }
+        if let value = dict["routingConfiguration"] as? [Any?] {
+            var tmp : [FlowEndpointRoutingConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = FlowEndpointRoutingConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.routingConfiguration = tmp
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["targetVersion"] as? String {
+            self.targetVersion = value
+        }
+    }
+}
+
+public class UpdateFlowInput : Tea.TeaModel {
+    public var definition: String?
+
+    public var description_: String?
+
+    public var environmentConfiguration: EnvironmentConfiguration?
+
+    public var executionRoleArn: String?
+
+    public var externalStorageLocation: String?
+
+    public var flowName: String?
+
+    public var loggingConfiguration: LoggingConfiguration?
+
+    public var resourceGroupId: String?
+
+    public var tags: [String]?
+
+    public var tracingConfiguration: TracingConfiguration?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.environmentConfiguration?.validate()
+        try self.loggingConfiguration?.validate()
+        try self.tracingConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.definition != nil {
+            map["definition"] = self.definition!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.environmentConfiguration != nil {
+            map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
+        }
+        if self.executionRoleArn != nil {
+            map["executionRoleArn"] = self.executionRoleArn!
+        }
+        if self.externalStorageLocation != nil {
+            map["externalStorageLocation"] = self.externalStorageLocation!
+        }
+        if self.flowName != nil {
+            map["flowName"] = self.flowName!
+        }
+        if self.loggingConfiguration != nil {
+            map["loggingConfiguration"] = self.loggingConfiguration?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.tracingConfiguration != nil {
+            map["tracingConfiguration"] = self.tracingConfiguration?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["definition"] as? String {
+            self.definition = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["environmentConfiguration"] as? [String: Any?] {
+            var model = EnvironmentConfiguration()
+            model.fromMap(value)
+            self.environmentConfiguration = model
+        }
+        if let value = dict["executionRoleArn"] as? String {
+            self.executionRoleArn = value
+        }
+        if let value = dict["externalStorageLocation"] as? String {
+            self.externalStorageLocation = value
+        }
+        if let value = dict["flowName"] as? String {
+            self.flowName = value
+        }
+        if let value = dict["loggingConfiguration"] as? [String: Any?] {
+            var model = LoggingConfiguration()
+            model.fromMap(value)
+            self.loggingConfiguration = model
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["tracingConfiguration"] as? [String: Any?] {
+            var model = TracingConfiguration()
+            model.fromMap(value)
+            self.tracingConfiguration = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
