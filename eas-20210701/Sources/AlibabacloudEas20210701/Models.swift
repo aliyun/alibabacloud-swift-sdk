@@ -519,6 +519,8 @@ public class Resource : Tea.TeaModel {
 
     public var updateTime: String?
 
+    public var usageMode: String?
+
     public var vendor: String?
 
     public override init() {
@@ -601,6 +603,9 @@ public class Resource : Tea.TeaModel {
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
+        if self.usageMode != nil {
+            map["UsageMode"] = self.usageMode!
+        }
         if self.vendor != nil {
             map["Vendor"] = self.vendor!
         }
@@ -674,6 +679,9 @@ public class Resource : Tea.TeaModel {
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
+        }
+        if let value = dict["UsageMode"] as? String {
+            self.usageMode = value
         }
         if let value = dict["Vendor"] as? String {
             self.vendor = value
@@ -3554,6 +3562,8 @@ public class CreateResourceRequest : Tea.TeaModel {
 
     public var systemDiskSize: Int32?
 
+    public var usageMode: String?
+
     public var zone: String?
 
     public override init() {
@@ -3598,6 +3608,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         if self.systemDiskSize != nil {
             map["SystemDiskSize"] = self.systemDiskSize!
         }
+        if self.usageMode != nil {
+            map["UsageMode"] = self.usageMode!
+        }
         if self.zone != nil {
             map["Zone"] = self.zone!
         }
@@ -3634,6 +3647,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         }
         if let value = dict["SystemDiskSize"] as? Int32 {
             self.systemDiskSize = value
+        }
+        if let value = dict["UsageMode"] as? String {
+            self.usageMode = value
         }
         if let value = dict["Zone"] as? String {
             self.zone = value
@@ -9113,6 +9129,8 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
 
     public var updateTime: String?
 
+    public var usageMode: String?
+
     public override init() {
         super.init()
     }
@@ -9199,6 +9217,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
+        if self.usageMode != nil {
+            map["UsageMode"] = self.usageMode!
+        }
         return map
     }
 
@@ -9275,6 +9296,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
+        }
+        if let value = dict["UsageMode"] as? String {
+            self.usageMode = value
         }
     }
 }
@@ -14883,6 +14907,8 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public var sort: String?
 
+    public var usageMode: String?
+
     public override init() {
         super.init()
     }
@@ -14921,6 +14947,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.usageMode != nil {
+            map["UsageMode"] = self.usageMode!
+        }
         return map
     }
 
@@ -14949,6 +14978,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["Sort"] as? String {
             self.sort = value
+        }
+        if let value = dict["UsageMode"] as? String {
+            self.usageMode = value
         }
     }
 }
