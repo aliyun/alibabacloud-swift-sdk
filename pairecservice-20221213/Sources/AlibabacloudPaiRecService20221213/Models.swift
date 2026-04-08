@@ -11230,6 +11230,134 @@ public class DeleteTrafficControlTaskResponse : Tea.TeaModel {
     }
 }
 
+public class DeployTrafficControlTaskCodeRequest : Tea.TeaModel {
+    public var environment: String?
+
+    public var instanceId: String?
+
+    public var retryDeploy: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.retryDeploy != nil {
+            map["RetryDeploy"] = self.retryDeploy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Environment"] as? String {
+            self.environment = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RetryDeploy"] as? Bool {
+            self.retryDeploy = value
+        }
+    }
+}
+
+public class DeployTrafficControlTaskCodeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeployTrafficControlTaskCodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeployTrafficControlTaskCodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeployTrafficControlTaskCodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GenerateAlgorithmCustomizationScriptRequest : Tea.TeaModel {
     public var deployMode: String?
 
@@ -33816,6 +33944,458 @@ public class QueryTrafficControlTargetItemReportDetailResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryTrafficControlTargetItemReportDetailResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryTrafficControlTaskDeployResultRequest : Tea.TeaModel {
+    public var environment: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Environment"] as? String {
+            self.environment = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class QueryTrafficControlTaskDeployResultResponseBody : Tea.TeaModel {
+    public var deployMessage: String?
+
+    public var deployStatus: String?
+
+    public var draftMessage: String?
+
+    public var draftStatus: String?
+
+    public var prepareMessage: String?
+
+    public var prepareStatus: String?
+
+    public var requestId: String?
+
+    public var startMessage: String?
+
+    public var startStatus: String?
+
+    public var trafficControlTaskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deployMessage != nil {
+            map["DeployMessage"] = self.deployMessage!
+        }
+        if self.deployStatus != nil {
+            map["DeployStatus"] = self.deployStatus!
+        }
+        if self.draftMessage != nil {
+            map["DraftMessage"] = self.draftMessage!
+        }
+        if self.draftStatus != nil {
+            map["DraftStatus"] = self.draftStatus!
+        }
+        if self.prepareMessage != nil {
+            map["PrepareMessage"] = self.prepareMessage!
+        }
+        if self.prepareStatus != nil {
+            map["PrepareStatus"] = self.prepareStatus!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startMessage != nil {
+            map["StartMessage"] = self.startMessage!
+        }
+        if self.startStatus != nil {
+            map["StartStatus"] = self.startStatus!
+        }
+        if self.trafficControlTaskId != nil {
+            map["TrafficControlTaskId"] = self.trafficControlTaskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DeployMessage"] as? String {
+            self.deployMessage = value
+        }
+        if let value = dict["DeployStatus"] as? String {
+            self.deployStatus = value
+        }
+        if let value = dict["DraftMessage"] as? String {
+            self.draftMessage = value
+        }
+        if let value = dict["DraftStatus"] as? String {
+            self.draftStatus = value
+        }
+        if let value = dict["PrepareMessage"] as? String {
+            self.prepareMessage = value
+        }
+        if let value = dict["PrepareStatus"] as? String {
+            self.prepareStatus = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartMessage"] as? String {
+            self.startMessage = value
+        }
+        if let value = dict["StartStatus"] as? String {
+            self.startStatus = value
+        }
+        if let value = dict["TrafficControlTaskId"] as? String {
+            self.trafficControlTaskId = value
+        }
+    }
+}
+
+public class QueryTrafficControlTaskDeployResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryTrafficControlTaskDeployResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryTrafficControlTaskDeployResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryTrafficControlTaskItemReportRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var environment: String?
+
+    public var instanceId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Environment"] as? String {
+            self.environment = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class QueryTrafficControlTaskItemReportResponseBody : Tea.TeaModel {
+    public class TrafficControlTaskItemReports : Tea.TeaModel {
+        public var actualItemControlNum: Int64?
+
+        public var actualItemControlTraffic: Int64?
+
+        public var doneItemControlNum: Int64?
+
+        public var doneItemControlPercentage: String?
+
+        public var itemControlNumPercentage: String?
+
+        public var itemControlTrafficPercentage: String?
+
+        public var oughtItemControlNum: Int64?
+
+        public var oughtItemControlTraffic: Int64?
+
+        public var trafficControlTargetId: String?
+
+        public var trafficControlTargetName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actualItemControlNum != nil {
+                map["ActualItemControlNum"] = self.actualItemControlNum!
+            }
+            if self.actualItemControlTraffic != nil {
+                map["ActualItemControlTraffic"] = self.actualItemControlTraffic!
+            }
+            if self.doneItemControlNum != nil {
+                map["DoneItemControlNum"] = self.doneItemControlNum!
+            }
+            if self.doneItemControlPercentage != nil {
+                map["DoneItemControlPercentage"] = self.doneItemControlPercentage!
+            }
+            if self.itemControlNumPercentage != nil {
+                map["ItemControlNumPercentage"] = self.itemControlNumPercentage!
+            }
+            if self.itemControlTrafficPercentage != nil {
+                map["ItemControlTrafficPercentage"] = self.itemControlTrafficPercentage!
+            }
+            if self.oughtItemControlNum != nil {
+                map["OughtItemControlNum"] = self.oughtItemControlNum!
+            }
+            if self.oughtItemControlTraffic != nil {
+                map["OughtItemControlTraffic"] = self.oughtItemControlTraffic!
+            }
+            if self.trafficControlTargetId != nil {
+                map["TrafficControlTargetId"] = self.trafficControlTargetId!
+            }
+            if self.trafficControlTargetName != nil {
+                map["TrafficControlTargetName"] = self.trafficControlTargetName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActualItemControlNum"] as? Int64 {
+                self.actualItemControlNum = value
+            }
+            if let value = dict["ActualItemControlTraffic"] as? Int64 {
+                self.actualItemControlTraffic = value
+            }
+            if let value = dict["DoneItemControlNum"] as? Int64 {
+                self.doneItemControlNum = value
+            }
+            if let value = dict["DoneItemControlPercentage"] as? String {
+                self.doneItemControlPercentage = value
+            }
+            if let value = dict["ItemControlNumPercentage"] as? String {
+                self.itemControlNumPercentage = value
+            }
+            if let value = dict["ItemControlTrafficPercentage"] as? String {
+                self.itemControlTrafficPercentage = value
+            }
+            if let value = dict["OughtItemControlNum"] as? Int64 {
+                self.oughtItemControlNum = value
+            }
+            if let value = dict["OughtItemControlTraffic"] as? Int64 {
+                self.oughtItemControlTraffic = value
+            }
+            if let value = dict["TrafficControlTargetId"] as? String {
+                self.trafficControlTargetId = value
+            }
+            if let value = dict["TrafficControlTargetName"] as? String {
+                self.trafficControlTargetName = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var trafficControlTaskItemReports: [QueryTrafficControlTaskItemReportResponseBody.TrafficControlTaskItemReports]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.trafficControlTaskItemReports != nil {
+            var tmp : [Any] = []
+            for k in self.trafficControlTaskItemReports! {
+                tmp.append(k.toMap())
+            }
+            map["TrafficControlTaskItemReports"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TrafficControlTaskItemReports"] as? [Any?] {
+            var tmp : [QueryTrafficControlTaskItemReportResponseBody.TrafficControlTaskItemReports] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryTrafficControlTaskItemReportResponseBody.TrafficControlTaskItemReports()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.trafficControlTaskItemReports = tmp
+        }
+    }
+}
+
+public class QueryTrafficControlTaskItemReportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryTrafficControlTaskItemReportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryTrafficControlTaskItemReportResponseBody()
             model.fromMap(value)
             self.body = model
         }
