@@ -51191,6 +51191,8 @@ public class ListDBTaskSQLJobDetailResponseBody : Tea.TeaModel {
 
         public var skip: Bool?
 
+        public var sqlId: Int64?
+
         public var sqlType: String?
 
         public var startTime: String?
@@ -51243,6 +51245,9 @@ public class ListDBTaskSQLJobDetailResponseBody : Tea.TeaModel {
             if self.skip != nil {
                 map["Skip"] = self.skip!
             }
+            if self.sqlId != nil {
+                map["SqlId"] = self.sqlId!
+            }
             if self.sqlType != nil {
                 map["SqlType"] = self.sqlType!
             }
@@ -51289,6 +51294,9 @@ public class ListDBTaskSQLJobDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Skip"] as? Bool {
                 self.skip = value
+            }
+            if let value = dict["SqlId"] as? Int64 {
+                self.sqlId = value
             }
             if let value = dict["SqlType"] as? String {
                 self.sqlType = value
