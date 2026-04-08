@@ -276,6 +276,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["Duration"] = request.duration!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableMultiAz)) {
+            body["EnableMultiAz"] = request.enableMultiAz!;
+        }
         if (!TeaUtils.Client.isUnset(request.encrypted)) {
             body["Encrypted"] = request.encrypted!;
         }

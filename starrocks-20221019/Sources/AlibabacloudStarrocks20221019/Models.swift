@@ -1499,6 +1499,8 @@ public class CreateInstanceV1Request : Tea.TeaModel {
 
     public var duration: Int32?
 
+    public var enableMultiAz: Bool?
+
     public var encrypted: Bool?
 
     public var frontendNodeGroups: [CreateInstanceV1Request.FrontendNodeGroups]?
@@ -1588,6 +1590,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.enableMultiAz != nil {
+            map["EnableMultiAz"] = self.enableMultiAz!
         }
         if self.encrypted != nil {
             map["Encrypted"] = self.encrypted!
@@ -1714,6 +1719,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["EnableMultiAz"] as? Bool {
+            self.enableMultiAz = value
         }
         if let value = dict["Encrypted"] as? Bool {
             self.encrypted = value
@@ -6363,6 +6371,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var enableAutoMinorVersionUpgrade: Bool?
 
+        public var enableMultiAz: Bool?
+
         public var enableSSL: Bool?
 
         public var enabledAuditLoader: Bool?
@@ -6441,6 +6451,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.enableAutoMinorVersionUpgrade != nil {
                 map["EnableAutoMinorVersionUpgrade"] = self.enableAutoMinorVersionUpgrade!
+            }
+            if self.enableMultiAz != nil {
+                map["EnableMultiAz"] = self.enableMultiAz!
             }
             if self.enableSSL != nil {
                 map["EnableSSL"] = self.enableSSL!
@@ -6544,6 +6557,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableAutoMinorVersionUpgrade"] as? Bool {
                 self.enableAutoMinorVersionUpgrade = value
+            }
+            if let value = dict["EnableMultiAz"] as? Bool {
+                self.enableMultiAz = value
             }
             if let value = dict["EnableSSL"] as? Bool {
                 self.enableSSL = value
@@ -11329,7 +11345,11 @@ public class ListOperationActivityResponseBody : Tea.TeaModel {
 
         public var activityStatus: String?
 
+        public var consoleRetryCount: Int32?
+
         public var endTime: Int64?
+
+        public var errMessage: String?
 
         public var name: String?
 
@@ -11355,8 +11375,14 @@ public class ListOperationActivityResponseBody : Tea.TeaModel {
             if self.activityStatus != nil {
                 map["ActivityStatus"] = self.activityStatus!
             }
+            if self.consoleRetryCount != nil {
+                map["ConsoleRetryCount"] = self.consoleRetryCount!
+            }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.errMessage != nil {
+                map["ErrMessage"] = self.errMessage!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -11375,8 +11401,14 @@ public class ListOperationActivityResponseBody : Tea.TeaModel {
             if let value = dict["ActivityStatus"] as? String {
                 self.activityStatus = value
             }
+            if let value = dict["ConsoleRetryCount"] as? Int32 {
+                self.consoleRetryCount = value
+            }
             if let value = dict["EndTime"] as? Int64 {
                 self.endTime = value
+            }
+            if let value = dict["ErrMessage"] as? String {
+                self.errMessage = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
