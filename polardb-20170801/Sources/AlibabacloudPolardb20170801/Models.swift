@@ -4799,6 +4799,44 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class Parameters : Tea.TeaModel {
+        public var parameterName: String?
+
+        public var parameterValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parameterName != nil {
+                map["ParameterName"] = self.parameterName!
+            }
+            if self.parameterValue != nil {
+                map["ParameterValue"] = self.parameterValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ParameterName"] as? String {
+                self.parameterName = value
+            }
+            if let value = dict["ParameterValue"] as? String {
+                self.parameterValue = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -4876,6 +4914,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var modelFrom: String?
 
     public var modelName: String?
+
+    public var parameters: [CreateApplicationRequest.Parameters]?
 
     public var payType: String?
 
@@ -4993,6 +5033,13 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.parameters != nil {
+            var tmp : [Any] = []
+            for k in self.parameters! {
+                tmp.append(k.toMap())
+            }
+            map["Parameters"] = tmp
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -5135,6 +5182,19 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["Parameters"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.Parameters] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.Parameters()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.parameters = tmp
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
@@ -5279,6 +5339,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var modelName: String?
 
+    public var parametersShrink: String?
+
     public var payType: String?
 
     public var period: String?
@@ -5386,6 +5448,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -5506,6 +5571,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ModelName"] as? String {
             self.modelName = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parametersShrink = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
