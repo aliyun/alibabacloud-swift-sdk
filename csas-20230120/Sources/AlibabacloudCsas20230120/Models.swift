@@ -5610,6 +5610,545 @@ public class CreateIdpDepartmentResponse : Tea.TeaModel {
     }
 }
 
+public class CreatePADiagnosisTaskRequest : Tea.TeaModel {
+    public class UdpExtraConfigs : Tea.TeaModel {
+        public var expectedResponse: String?
+
+        public var requestContent: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expectedResponse != nil {
+                map["ExpectedResponse"] = self.expectedResponse!
+            }
+            if self.requestContent != nil {
+                map["RequestContent"] = self.requestContent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExpectedResponse"] as? String {
+                self.expectedResponse = value
+            }
+            if let value = dict["RequestContent"] as? String {
+                self.requestContent = value
+            }
+        }
+    }
+    public var devTag: String?
+
+    public var diagnoseType: String?
+
+    public var host: String?
+
+    public var popId: String?
+
+    public var popMode: String?
+
+    public var port: String?
+
+    public var protocol_: String?
+
+    public var udpExtraConfigs: CreatePADiagnosisTaskRequest.UdpExtraConfigs?
+
+    public var userGroupId: String?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.udpExtraConfigs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.devTag != nil {
+            map["DevTag"] = self.devTag!
+        }
+        if self.diagnoseType != nil {
+            map["DiagnoseType"] = self.diagnoseType!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
+        }
+        if self.popId != nil {
+            map["PopId"] = self.popId!
+        }
+        if self.popMode != nil {
+            map["PopMode"] = self.popMode!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.udpExtraConfigs != nil {
+            map["UdpExtraConfigs"] = self.udpExtraConfigs?.toMap()
+        }
+        if self.userGroupId != nil {
+            map["UserGroupId"] = self.userGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DevTag"] as? String {
+            self.devTag = value
+        }
+        if let value = dict["DiagnoseType"] as? String {
+            self.diagnoseType = value
+        }
+        if let value = dict["Host"] as? String {
+            self.host = value
+        }
+        if let value = dict["PopId"] as? String {
+            self.popId = value
+        }
+        if let value = dict["PopMode"] as? String {
+            self.popMode = value
+        }
+        if let value = dict["Port"] as? String {
+            self.port = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["UdpExtraConfigs"] as? [String: Any?] {
+            var model = CreatePADiagnosisTaskRequest.UdpExtraConfigs()
+            model.fromMap(value)
+            self.udpExtraConfigs = model
+        }
+        if let value = dict["UserGroupId"] as? String {
+            self.userGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class CreatePADiagnosisTaskShrinkRequest : Tea.TeaModel {
+    public var devTag: String?
+
+    public var diagnoseType: String?
+
+    public var host: String?
+
+    public var popId: String?
+
+    public var popMode: String?
+
+    public var port: String?
+
+    public var protocol_: String?
+
+    public var udpExtraConfigsShrink: String?
+
+    public var userGroupId: String?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.devTag != nil {
+            map["DevTag"] = self.devTag!
+        }
+        if self.diagnoseType != nil {
+            map["DiagnoseType"] = self.diagnoseType!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
+        }
+        if self.popId != nil {
+            map["PopId"] = self.popId!
+        }
+        if self.popMode != nil {
+            map["PopMode"] = self.popMode!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.udpExtraConfigsShrink != nil {
+            map["UdpExtraConfigs"] = self.udpExtraConfigsShrink!
+        }
+        if self.userGroupId != nil {
+            map["UserGroupId"] = self.userGroupId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DevTag"] as? String {
+            self.devTag = value
+        }
+        if let value = dict["DiagnoseType"] as? String {
+            self.diagnoseType = value
+        }
+        if let value = dict["Host"] as? String {
+            self.host = value
+        }
+        if let value = dict["PopId"] as? String {
+            self.popId = value
+        }
+        if let value = dict["PopMode"] as? String {
+            self.popMode = value
+        }
+        if let value = dict["Port"] as? String {
+            self.port = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["UdpExtraConfigs"] as? String {
+            self.udpExtraConfigsShrink = value
+        }
+        if let value = dict["UserGroupId"] as? String {
+            self.userGroupId = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class CreatePADiagnosisTaskResponseBody : Tea.TeaModel {
+    public class DiagnosisTask : Tea.TeaModel {
+        public class UdpExtraConfigs : Tea.TeaModel {
+            public var expectedResponse: String?
+
+            public var requestContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.expectedResponse != nil {
+                    map["ExpectedResponse"] = self.expectedResponse!
+                }
+                if self.requestContent != nil {
+                    map["RequestContent"] = self.requestContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExpectedResponse"] as? String {
+                    self.expectedResponse = value
+                }
+                if let value = dict["RequestContent"] as? String {
+                    self.requestContent = value
+                }
+            }
+        }
+        public class UserGroup : Tea.TeaModel {
+            public var userGroupId: String?
+
+            public var userGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userGroupId != nil {
+                    map["UserGroupId"] = self.userGroupId!
+                }
+                if self.userGroupName != nil {
+                    map["UserGroupName"] = self.userGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserGroupId"] as? String {
+                    self.userGroupId = value
+                }
+                if let value = dict["UserGroupName"] as? String {
+                    self.userGroupName = value
+                }
+            }
+        }
+        public var devTag: String?
+
+        public var diagnoseId: String?
+
+        public var diagnoseType: String?
+
+        public var host: String?
+
+        public var popId: String?
+
+        public var popMode: String?
+
+        public var port: String?
+
+        public var protocol_: String?
+
+        public var status: String?
+
+        public var udpExtraConfigs: CreatePADiagnosisTaskResponseBody.DiagnosisTask.UdpExtraConfigs?
+
+        public var userGroup: CreatePADiagnosisTaskResponseBody.DiagnosisTask.UserGroup?
+
+        public var username: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.udpExtraConfigs?.validate()
+            try self.userGroup?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.devTag != nil {
+                map["DevTag"] = self.devTag!
+            }
+            if self.diagnoseId != nil {
+                map["DiagnoseId"] = self.diagnoseId!
+            }
+            if self.diagnoseType != nil {
+                map["DiagnoseType"] = self.diagnoseType!
+            }
+            if self.host != nil {
+                map["Host"] = self.host!
+            }
+            if self.popId != nil {
+                map["PopId"] = self.popId!
+            }
+            if self.popMode != nil {
+                map["PopMode"] = self.popMode!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.udpExtraConfigs != nil {
+                map["UdpExtraConfigs"] = self.udpExtraConfigs?.toMap()
+            }
+            if self.userGroup != nil {
+                map["UserGroup"] = self.userGroup?.toMap()
+            }
+            if self.username != nil {
+                map["Username"] = self.username!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DevTag"] as? String {
+                self.devTag = value
+            }
+            if let value = dict["DiagnoseId"] as? String {
+                self.diagnoseId = value
+            }
+            if let value = dict["DiagnoseType"] as? String {
+                self.diagnoseType = value
+            }
+            if let value = dict["Host"] as? String {
+                self.host = value
+            }
+            if let value = dict["PopId"] as? String {
+                self.popId = value
+            }
+            if let value = dict["PopMode"] as? String {
+                self.popMode = value
+            }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UdpExtraConfigs"] as? [String: Any?] {
+                var model = CreatePADiagnosisTaskResponseBody.DiagnosisTask.UdpExtraConfigs()
+                model.fromMap(value)
+                self.udpExtraConfigs = model
+            }
+            if let value = dict["UserGroup"] as? [String: Any?] {
+                var model = CreatePADiagnosisTaskResponseBody.DiagnosisTask.UserGroup()
+                model.fromMap(value)
+                self.userGroup = model
+            }
+            if let value = dict["Username"] as? String {
+                self.username = value
+            }
+        }
+    }
+    public var diagnosisTask: CreatePADiagnosisTaskResponseBody.DiagnosisTask?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.diagnosisTask?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagnosisTask != nil {
+            map["DiagnosisTask"] = self.diagnosisTask?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiagnosisTask"] as? [String: Any?] {
+            var model = CreatePADiagnosisTaskResponseBody.DiagnosisTask()
+            model.fromMap(value)
+            self.diagnosisTask = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreatePADiagnosisTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreatePADiagnosisTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreatePADiagnosisTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
     public class PortRanges : Tea.TeaModel {
         public var begin: Int32?
@@ -15805,6 +16344,1430 @@ public class GetIdpConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetIdpConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetPADiagnosisTaskRequest : Tea.TeaModel {
+    public var diagnoseId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagnoseId != nil {
+            map["DiagnoseId"] = self.diagnoseId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiagnoseId"] as? String {
+            self.diagnoseId = value
+        }
+    }
+}
+
+public class GetPADiagnosisTaskResponseBody : Tea.TeaModel {
+    public class DiagnosisTask : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class NetworkLinkInfo : Tea.TeaModel {
+                public class Dns : Tea.TeaModel {
+                    public class Hops : Tea.TeaModel {
+                        public class GeoData : Tea.TeaModel {
+                            public var country: String?
+
+                            public var prov: String?
+
+                            public var city: String?
+
+                            public var isp: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.country != nil {
+                                    map["Country"] = self.country!
+                                }
+                                if self.prov != nil {
+                                    map["Prov"] = self.prov!
+                                }
+                                if self.city != nil {
+                                    map["City"] = self.city!
+                                }
+                                if self.isp != nil {
+                                    map["Isp"] = self.isp!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Country"] as? String {
+                                    self.country = value
+                                }
+                                if let value = dict["Prov"] as? String {
+                                    self.prov = value
+                                }
+                                if let value = dict["City"] as? String {
+                                    self.city = value
+                                }
+                                if let value = dict["Isp"] as? String {
+                                    self.isp = value
+                                }
+                            }
+                        }
+                        public var address: String?
+
+                        public var TTL: String?
+
+                        public var latency: String?
+
+                        public var geoData: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops.GeoData?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.geoData?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.address != nil {
+                                map["Address"] = self.address!
+                            }
+                            if self.TTL != nil {
+                                map["TTL"] = self.TTL!
+                            }
+                            if self.latency != nil {
+                                map["Latency"] = self.latency!
+                            }
+                            if self.geoData != nil {
+                                map["GeoData"] = self.geoData?.toMap()
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Address"] as? String {
+                                self.address = value
+                            }
+                            if let value = dict["TTL"] as? String {
+                                self.TTL = value
+                            }
+                            if let value = dict["Latency"] as? String {
+                                self.latency = value
+                            }
+                            if let value = dict["GeoData"] as? [String: Any?] {
+                                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops.GeoData()
+                                model.fromMap(value)
+                                self.geoData = model
+                            }
+                        }
+                    }
+                    public var dnsServer: String?
+
+                    public var dnsType: String?
+
+                    public var error: String?
+
+                    public var fromNode: Int64?
+
+                    public var hops: [[GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops]]?
+
+                    public var latency: String?
+
+                    public var result: String?
+
+                    public var success: Bool?
+
+                    public var toNode: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dnsServer != nil {
+                            map["DnsServer"] = self.dnsServer!
+                        }
+                        if self.dnsType != nil {
+                            map["DnsType"] = self.dnsType!
+                        }
+                        if self.error != nil {
+                            map["Error"] = self.error!
+                        }
+                        if self.fromNode != nil {
+                            map["FromNode"] = self.fromNode!
+                        }
+                        if self.hops != nil {
+                            var tmp : [Any] = []
+                            for k in self.hops! {
+                                var l1 : [Any] = []
+                                for k1 in k {
+                                    l1.append(k1.toMap())
+                                }
+                                tmp.append(l1)
+                            }
+                            map["Hops"] = tmp
+                        }
+                        if self.latency != nil {
+                            map["Latency"] = self.latency!
+                        }
+                        if self.result != nil {
+                            map["Result"] = self.result!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.toNode != nil {
+                            map["ToNode"] = self.toNode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["DnsServer"] as? String {
+                            self.dnsServer = value
+                        }
+                        if let value = dict["DnsType"] as? String {
+                            self.dnsType = value
+                        }
+                        if let value = dict["Error"] as? String {
+                            self.error = value
+                        }
+                        if let value = dict["FromNode"] as? Int64 {
+                            self.fromNode = value
+                        }
+                        if let value = dict["Hops"] as? [Any?] {
+                            var tmp : [[GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops]] = []
+                            for v in value {
+                                if v != nil {
+                                    var l1 : [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops] = []
+                                    for v1 in v as! [Any?] {
+                                        if v1 != nil {
+                                            var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns.Hops()
+                                            if v1 != nil {
+                                                model.fromMap(v1 as? [String: Any?])
+                                            }
+                                            l1.append(model)
+                                        }
+                                    }
+                                    tmp.append(l1)
+                                }
+                            }
+                            self.hops = tmp
+                        }
+                        if let value = dict["Latency"] as? String {
+                            self.latency = value
+                        }
+                        if let value = dict["Result"] as? String {
+                            self.result = value
+                        }
+                        if let value = dict["Success"] as? Bool {
+                            self.success = value
+                        }
+                        if let value = dict["ToNode"] as? Int64 {
+                            self.toNode = value
+                        }
+                    }
+                }
+                public class Links : Tea.TeaModel {
+                    public class Hops : Tea.TeaModel {
+                        public class GeoData : Tea.TeaModel {
+                            public var city: String?
+
+                            public var country: String?
+
+                            public var isp: String?
+
+                            public var prov: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.city != nil {
+                                    map["City"] = self.city!
+                                }
+                                if self.country != nil {
+                                    map["Country"] = self.country!
+                                }
+                                if self.isp != nil {
+                                    map["Isp"] = self.isp!
+                                }
+                                if self.prov != nil {
+                                    map["Prov"] = self.prov!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["City"] as? String {
+                                    self.city = value
+                                }
+                                if let value = dict["Country"] as? String {
+                                    self.country = value
+                                }
+                                if let value = dict["Isp"] as? String {
+                                    self.isp = value
+                                }
+                                if let value = dict["Prov"] as? String {
+                                    self.prov = value
+                                }
+                            }
+                        }
+                        public var address: String?
+
+                        public var geoData: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links.Hops.GeoData?
+
+                        public var latency: String?
+
+                        public var TTL: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.geoData?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.address != nil {
+                                map["Address"] = self.address!
+                            }
+                            if self.geoData != nil {
+                                map["GeoData"] = self.geoData?.toMap()
+                            }
+                            if self.latency != nil {
+                                map["Latency"] = self.latency!
+                            }
+                            if self.TTL != nil {
+                                map["TTL"] = self.TTL!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Address"] as? String {
+                                self.address = value
+                            }
+                            if let value = dict["GeoData"] as? [String: Any?] {
+                                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links.Hops.GeoData()
+                                model.fromMap(value)
+                                self.geoData = model
+                            }
+                            if let value = dict["Latency"] as? String {
+                                self.latency = value
+                            }
+                            if let value = dict["TTL"] as? String {
+                                self.TTL = value
+                            }
+                        }
+                    }
+                    public var error: String?
+
+                    public var fromNode: Int64?
+
+                    public var hops: [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links.Hops]?
+
+                    public var latency: String?
+
+                    public var success: Bool?
+
+                    public var toNode: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.error != nil {
+                            map["Error"] = self.error!
+                        }
+                        if self.fromNode != nil {
+                            map["FromNode"] = self.fromNode!
+                        }
+                        if self.hops != nil {
+                            var tmp : [Any] = []
+                            for k in self.hops! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Hops"] = tmp
+                        }
+                        if self.latency != nil {
+                            map["Latency"] = self.latency!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.toNode != nil {
+                            map["ToNode"] = self.toNode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Error"] as? String {
+                            self.error = value
+                        }
+                        if let value = dict["FromNode"] as? Int64 {
+                            self.fromNode = value
+                        }
+                        if let value = dict["Hops"] as? [Any?] {
+                            var tmp : [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links.Hops] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links.Hops()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.hops = tmp
+                        }
+                        if let value = dict["Latency"] as? String {
+                            self.latency = value
+                        }
+                        if let value = dict["Success"] as? Bool {
+                            self.success = value
+                        }
+                        if let value = dict["ToNode"] as? Int64 {
+                            self.toNode = value
+                        }
+                    }
+                }
+                public class Nodes : Tea.TeaModel {
+                    public class GeoData : Tea.TeaModel {
+                        public var city: String?
+
+                        public var country: String?
+
+                        public var isp: String?
+
+                        public var prov: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.city != nil {
+                                map["City"] = self.city!
+                            }
+                            if self.country != nil {
+                                map["Country"] = self.country!
+                            }
+                            if self.isp != nil {
+                                map["Isp"] = self.isp!
+                            }
+                            if self.prov != nil {
+                                map["Prov"] = self.prov!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["City"] as? String {
+                                self.city = value
+                            }
+                            if let value = dict["Country"] as? String {
+                                self.country = value
+                            }
+                            if let value = dict["Isp"] as? String {
+                                self.isp = value
+                            }
+                            if let value = dict["Prov"] as? String {
+                                self.prov = value
+                            }
+                        }
+                    }
+                    public var address: String?
+
+                    public var cloudNetId: String?
+
+                    public var error: String?
+
+                    public var geoData: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Nodes.GeoData?
+
+                    public var id: Int64?
+
+                    public var name: String?
+
+                    public var nameEn: String?
+
+                    public var nodeType: String?
+
+                    public var resourceId: String?
+
+                    public var success: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.geoData?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.address != nil {
+                            map["Address"] = self.address!
+                        }
+                        if self.cloudNetId != nil {
+                            map["CloudNetId"] = self.cloudNetId!
+                        }
+                        if self.error != nil {
+                            map["Error"] = self.error!
+                        }
+                        if self.geoData != nil {
+                            map["GeoData"] = self.geoData?.toMap()
+                        }
+                        if self.id != nil {
+                            map["Id"] = self.id!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.nameEn != nil {
+                            map["NameEn"] = self.nameEn!
+                        }
+                        if self.nodeType != nil {
+                            map["NodeType"] = self.nodeType!
+                        }
+                        if self.resourceId != nil {
+                            map["ResourceId"] = self.resourceId!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Address"] as? String {
+                            self.address = value
+                        }
+                        if let value = dict["CloudNetId"] as? String {
+                            self.cloudNetId = value
+                        }
+                        if let value = dict["Error"] as? String {
+                            self.error = value
+                        }
+                        if let value = dict["GeoData"] as? [String: Any?] {
+                            var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Nodes.GeoData()
+                            model.fromMap(value)
+                            self.geoData = model
+                        }
+                        if let value = dict["Id"] as? Int64 {
+                            self.id = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["NameEn"] as? String {
+                            self.nameEn = value
+                        }
+                        if let value = dict["NodeType"] as? String {
+                            self.nodeType = value
+                        }
+                        if let value = dict["ResourceId"] as? String {
+                            self.resourceId = value
+                        }
+                        if let value = dict["Success"] as? Bool {
+                            self.success = value
+                        }
+                    }
+                }
+                public var dns: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns?
+
+                public var FBT: String?
+
+                public var links: [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links]?
+
+                public var nodes: [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Nodes]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.dns?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dns != nil {
+                        map["Dns"] = self.dns?.toMap()
+                    }
+                    if self.FBT != nil {
+                        map["FBT"] = self.FBT!
+                    }
+                    if self.links != nil {
+                        var tmp : [Any] = []
+                        for k in self.links! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Links"] = tmp
+                    }
+                    if self.nodes != nil {
+                        var tmp : [Any] = []
+                        for k in self.nodes! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Nodes"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Dns"] as? [String: Any?] {
+                        var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Dns()
+                        model.fromMap(value)
+                        self.dns = model
+                    }
+                    if let value = dict["FBT"] as? String {
+                        self.FBT = value
+                    }
+                    if let value = dict["Links"] as? [Any?] {
+                        var tmp : [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Links()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.links = tmp
+                    }
+                    if let value = dict["Nodes"] as? [Any?] {
+                        var tmp : [GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Nodes] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo.Nodes()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.nodes = tmp
+                    }
+                }
+            }
+            public class PolicyInfo : Tea.TeaModel {
+                public class DeviceAttributeInfo : Tea.TeaModel {
+                    public var devTag: String?
+
+                    public var deviceType: String?
+
+                    public var file: [String]?
+
+                    public var firewall: String?
+
+                    public var hostname: String?
+
+                    public var innerIp: String?
+
+                    public var internetIp: String?
+
+                    public var mac: String?
+
+                    public var matchedSecurityBaseline: String?
+
+                    public var process: [String]?
+
+                    public var ssid: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.devTag != nil {
+                            map["DevTag"] = self.devTag!
+                        }
+                        if self.deviceType != nil {
+                            map["DeviceType"] = self.deviceType!
+                        }
+                        if self.file != nil {
+                            map["File"] = self.file!
+                        }
+                        if self.firewall != nil {
+                            map["Firewall"] = self.firewall!
+                        }
+                        if self.hostname != nil {
+                            map["Hostname"] = self.hostname!
+                        }
+                        if self.innerIp != nil {
+                            map["InnerIp"] = self.innerIp!
+                        }
+                        if self.internetIp != nil {
+                            map["InternetIp"] = self.internetIp!
+                        }
+                        if self.mac != nil {
+                            map["Mac"] = self.mac!
+                        }
+                        if self.matchedSecurityBaseline != nil {
+                            map["MatchedSecurityBaseline"] = self.matchedSecurityBaseline!
+                        }
+                        if self.process != nil {
+                            map["Process"] = self.process!
+                        }
+                        if self.ssid != nil {
+                            map["Ssid"] = self.ssid!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["DevTag"] as? String {
+                            self.devTag = value
+                        }
+                        if let value = dict["DeviceType"] as? String {
+                            self.deviceType = value
+                        }
+                        if let value = dict["File"] as? [String] {
+                            self.file = value
+                        }
+                        if let value = dict["Firewall"] as? String {
+                            self.firewall = value
+                        }
+                        if let value = dict["Hostname"] as? String {
+                            self.hostname = value
+                        }
+                        if let value = dict["InnerIp"] as? String {
+                            self.innerIp = value
+                        }
+                        if let value = dict["InternetIp"] as? String {
+                            self.internetIp = value
+                        }
+                        if let value = dict["Mac"] as? String {
+                            self.mac = value
+                        }
+                        if let value = dict["MatchedSecurityBaseline"] as? String {
+                            self.matchedSecurityBaseline = value
+                        }
+                        if let value = dict["Process"] as? [String] {
+                            self.process = value
+                        }
+                        if let value = dict["Ssid"] as? String {
+                            self.ssid = value
+                        }
+                    }
+                }
+                public class RouteStrategyInfo : Tea.TeaModel {
+                    public var routeType: String?
+
+                    public var strategyId: String?
+
+                    public var strategyName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.routeType != nil {
+                            map["RouteType"] = self.routeType!
+                        }
+                        if self.strategyId != nil {
+                            map["StrategyId"] = self.strategyId!
+                        }
+                        if self.strategyName != nil {
+                            map["StrategyName"] = self.strategyName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["RouteType"] as? String {
+                            self.routeType = value
+                        }
+                        if let value = dict["StrategyId"] as? String {
+                            self.strategyId = value
+                        }
+                        if let value = dict["StrategyName"] as? String {
+                            self.strategyName = value
+                        }
+                    }
+                }
+                public class UserGroupInfo : Tea.TeaModel {
+                    public var email: String?
+
+                    public var group: [String]?
+
+                    public var matchedUserGroups: String?
+
+                    public var telephone: String?
+
+                    public var username: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.email != nil {
+                            map["Email"] = self.email!
+                        }
+                        if self.group != nil {
+                            map["Group"] = self.group!
+                        }
+                        if self.matchedUserGroups != nil {
+                            map["MatchedUserGroups"] = self.matchedUserGroups!
+                        }
+                        if self.telephone != nil {
+                            map["Telephone"] = self.telephone!
+                        }
+                        if self.username != nil {
+                            map["Username"] = self.username!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Email"] as? String {
+                            self.email = value
+                        }
+                        if let value = dict["Group"] as? [String] {
+                            self.group = value
+                        }
+                        if let value = dict["MatchedUserGroups"] as? String {
+                            self.matchedUserGroups = value
+                        }
+                        if let value = dict["Telephone"] as? String {
+                            self.telephone = value
+                        }
+                        if let value = dict["Username"] as? String {
+                            self.username = value
+                        }
+                    }
+                }
+                public class ZeroTrustPolicyInfo : Tea.TeaModel {
+                    public var action: String?
+
+                    public var appName: String?
+
+                    public var blockInfo: String?
+
+                    public var policyName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.action != nil {
+                            map["Action"] = self.action!
+                        }
+                        if self.appName != nil {
+                            map["AppName"] = self.appName!
+                        }
+                        if self.blockInfo != nil {
+                            map["BlockInfo"] = self.blockInfo!
+                        }
+                        if self.policyName != nil {
+                            map["PolicyName"] = self.policyName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Action"] as? String {
+                            self.action = value
+                        }
+                        if let value = dict["AppName"] as? String {
+                            self.appName = value
+                        }
+                        if let value = dict["BlockInfo"] as? String {
+                            self.blockInfo = value
+                        }
+                        if let value = dict["PolicyName"] as? String {
+                            self.policyName = value
+                        }
+                    }
+                }
+                public var deviceAttributeInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.DeviceAttributeInfo?
+
+                public var processTime: Int64?
+
+                public var routeStrategyInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.RouteStrategyInfo?
+
+                public var userGroupInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.UserGroupInfo?
+
+                public var zeroTrustPolicyInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.ZeroTrustPolicyInfo?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.deviceAttributeInfo?.validate()
+                    try self.routeStrategyInfo?.validate()
+                    try self.userGroupInfo?.validate()
+                    try self.zeroTrustPolicyInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.deviceAttributeInfo != nil {
+                        map["DeviceAttributeInfo"] = self.deviceAttributeInfo?.toMap()
+                    }
+                    if self.processTime != nil {
+                        map["ProcessTime"] = self.processTime!
+                    }
+                    if self.routeStrategyInfo != nil {
+                        map["RouteStrategyInfo"] = self.routeStrategyInfo?.toMap()
+                    }
+                    if self.userGroupInfo != nil {
+                        map["UserGroupInfo"] = self.userGroupInfo?.toMap()
+                    }
+                    if self.zeroTrustPolicyInfo != nil {
+                        map["ZeroTrustPolicyInfo"] = self.zeroTrustPolicyInfo?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DeviceAttributeInfo"] as? [String: Any?] {
+                        var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.DeviceAttributeInfo()
+                        model.fromMap(value)
+                        self.deviceAttributeInfo = model
+                    }
+                    if let value = dict["ProcessTime"] as? Int64 {
+                        self.processTime = value
+                    }
+                    if let value = dict["RouteStrategyInfo"] as? [String: Any?] {
+                        var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.RouteStrategyInfo()
+                        model.fromMap(value)
+                        self.routeStrategyInfo = model
+                    }
+                    if let value = dict["UserGroupInfo"] as? [String: Any?] {
+                        var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.UserGroupInfo()
+                        model.fromMap(value)
+                        self.userGroupInfo = model
+                    }
+                    if let value = dict["ZeroTrustPolicyInfo"] as? [String: Any?] {
+                        var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo.ZeroTrustPolicyInfo()
+                        model.fromMap(value)
+                        self.zeroTrustPolicyInfo = model
+                    }
+                }
+            }
+            public var errorMessage: String?
+
+            public var flowId: String?
+
+            public var networkLinkInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo?
+
+            public var policyInfo: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.networkLinkInfo?.validate()
+                try self.policyInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.flowId != nil {
+                    map["FlowId"] = self.flowId!
+                }
+                if self.networkLinkInfo != nil {
+                    map["NetworkLinkInfo"] = self.networkLinkInfo?.toMap()
+                }
+                if self.policyInfo != nil {
+                    map["PolicyInfo"] = self.policyInfo?.toMap()
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["FlowId"] as? String {
+                    self.flowId = value
+                }
+                if let value = dict["NetworkLinkInfo"] as? [String: Any?] {
+                    var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.NetworkLinkInfo()
+                    model.fromMap(value)
+                    self.networkLinkInfo = model
+                }
+                if let value = dict["PolicyInfo"] as? [String: Any?] {
+                    var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result.PolicyInfo()
+                    model.fromMap(value)
+                    self.policyInfo = model
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public class UdpExtraConfigs : Tea.TeaModel {
+            public var expectedResponse: String?
+
+            public var requestContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.expectedResponse != nil {
+                    map["ExpectedResponse"] = self.expectedResponse!
+                }
+                if self.requestContent != nil {
+                    map["RequestContent"] = self.requestContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExpectedResponse"] as? String {
+                    self.expectedResponse = value
+                }
+                if let value = dict["RequestContent"] as? String {
+                    self.requestContent = value
+                }
+            }
+        }
+        public class UserGroup : Tea.TeaModel {
+            public var userGroupId: String?
+
+            public var userGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userGroupId != nil {
+                    map["UserGroupId"] = self.userGroupId!
+                }
+                if self.userGroupName != nil {
+                    map["UserGroupName"] = self.userGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserGroupId"] as? String {
+                    self.userGroupId = value
+                }
+                if let value = dict["UserGroupName"] as? String {
+                    self.userGroupName = value
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var devTag: String?
+
+        public var diagnoseId: String?
+
+        public var diagnoseType: String?
+
+        public var host: String?
+
+        public var popId: String?
+
+        public var popMode: String?
+
+        public var port: String?
+
+        public var protocol_: String?
+
+        public var result: GetPADiagnosisTaskResponseBody.DiagnosisTask.Result?
+
+        public var status: String?
+
+        public var udpExtraConfigs: GetPADiagnosisTaskResponseBody.DiagnosisTask.UdpExtraConfigs?
+
+        public var userGroup: GetPADiagnosisTaskResponseBody.DiagnosisTask.UserGroup?
+
+        public var username: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+            try self.udpExtraConfigs?.validate()
+            try self.userGroup?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.devTag != nil {
+                map["DevTag"] = self.devTag!
+            }
+            if self.diagnoseId != nil {
+                map["DiagnoseId"] = self.diagnoseId!
+            }
+            if self.diagnoseType != nil {
+                map["DiagnoseType"] = self.diagnoseType!
+            }
+            if self.host != nil {
+                map["Host"] = self.host!
+            }
+            if self.popId != nil {
+                map["PopId"] = self.popId!
+            }
+            if self.popMode != nil {
+                map["PopMode"] = self.popMode!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.udpExtraConfigs != nil {
+                map["UdpExtraConfigs"] = self.udpExtraConfigs?.toMap()
+            }
+            if self.userGroup != nil {
+                map["UserGroup"] = self.userGroup?.toMap()
+            }
+            if self.username != nil {
+                map["Username"] = self.username!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["DevTag"] as? String {
+                self.devTag = value
+            }
+            if let value = dict["DiagnoseId"] as? String {
+                self.diagnoseId = value
+            }
+            if let value = dict["DiagnoseType"] as? String {
+                self.diagnoseType = value
+            }
+            if let value = dict["Host"] as? String {
+                self.host = value
+            }
+            if let value = dict["PopId"] as? String {
+                self.popId = value
+            }
+            if let value = dict["PopMode"] as? String {
+                self.popMode = value
+            }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+            if let value = dict["Protocol"] as? String {
+                self.protocol_ = value
+            }
+            if let value = dict["Result"] as? [String: Any?] {
+                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.Result()
+                model.fromMap(value)
+                self.result = model
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UdpExtraConfigs"] as? [String: Any?] {
+                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.UdpExtraConfigs()
+                model.fromMap(value)
+                self.udpExtraConfigs = model
+            }
+            if let value = dict["UserGroup"] as? [String: Any?] {
+                var model = GetPADiagnosisTaskResponseBody.DiagnosisTask.UserGroup()
+                model.fromMap(value)
+                self.userGroup = model
+            }
+            if let value = dict["Username"] as? String {
+                self.username = value
+            }
+        }
+    }
+    public var diagnosisTask: GetPADiagnosisTaskResponseBody.DiagnosisTask?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.diagnosisTask?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagnosisTask != nil {
+            map["DiagnosisTask"] = self.diagnosisTask?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DiagnosisTask"] as? [String: Any?] {
+            var model = GetPADiagnosisTaskResponseBody.DiagnosisTask()
+            model.fromMap(value)
+            self.diagnosisTask = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetPADiagnosisTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetPADiagnosisTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetPADiagnosisTaskResponseBody()
             model.fromMap(value)
             self.body = model
         }

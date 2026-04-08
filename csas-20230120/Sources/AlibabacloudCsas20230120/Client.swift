@@ -381,6 +381,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPADiagnosisTaskWithOptions(_ tmpReq: CreatePADiagnosisTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePADiagnosisTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePADiagnosisTaskShrinkRequest = CreatePADiagnosisTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.udpExtraConfigs)) {
+            request.udpExtraConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.udpExtraConfigs, "UdpExtraConfigs", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTag)) {
+            body["DevTag"] = request.devTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diagnoseType)) {
+            body["DiagnoseType"] = request.diagnoseType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.host)) {
+            body["Host"] = request.host ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.popId)) {
+            body["PopId"] = request.popId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.popMode)) {
+            body["PopMode"] = request.popMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.port)) {
+            body["Port"] = request.port ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.udpExtraConfigsShrink)) {
+            body["UdpExtraConfigs"] = request.udpExtraConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupId)) {
+            body["UserGroupId"] = request.userGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            body["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePADiagnosisTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePADiagnosisTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPADiagnosisTask(_ request: CreatePADiagnosisTaskRequest) async throws -> CreatePADiagnosisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createPADiagnosisTaskWithOptions(request as! CreatePADiagnosisTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPrivateAccessApplicationWithOptions(_ tmpReq: CreatePrivateAccessApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePrivateAccessApplicationResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreatePrivateAccessApplicationShrinkRequest = CreatePrivateAccessApplicationShrinkRequest([:])
@@ -1795,6 +1858,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getIdpConfig(_ request: GetIdpConfigRequest) async throws -> GetIdpConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getIdpConfigWithOptions(request as! GetIdpConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPADiagnosisTaskWithOptions(_ request: GetPADiagnosisTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPADiagnosisTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPADiagnosisTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPADiagnosisTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPADiagnosisTask(_ request: GetPADiagnosisTaskRequest) async throws -> GetPADiagnosisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getPADiagnosisTaskWithOptions(request as! GetPADiagnosisTaskRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
