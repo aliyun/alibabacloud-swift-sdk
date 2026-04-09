@@ -40318,6 +40318,10 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var vpdId: String?
+
+    public var vpdVSwitchId: String?
+
     public override init() {
         super.init()
     }
@@ -40399,6 +40403,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vpdId != nil {
+            map["VpdId"] = self.vpdId!
+        }
+        if self.vpdVSwitchId != nil {
+            map["VpdVSwitchId"] = self.vpdVSwitchId!
+        }
         return map
     }
 
@@ -40477,6 +40487,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
+        if let value = dict["VpdId"] as? String {
+            self.vpdId = value
+        }
+        if let value = dict["VpdVSwitchId"] as? String {
+            self.vpdVSwitchId = value
+        }
     }
 }
 
@@ -40522,6 +40538,10 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
     public var tagsShrink: String?
 
     public var vSwitchId: String?
+
+    public var vpdId: String?
+
+    public var vpdVSwitchId: String?
 
     public override init() {
         super.init()
@@ -40600,6 +40620,12 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vpdId != nil {
+            map["VpdId"] = self.vpdId!
+        }
+        if self.vpdVSwitchId != nil {
+            map["VpdVSwitchId"] = self.vpdVSwitchId!
+        }
         return map
     }
 
@@ -40667,6 +40693,12 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
+        }
+        if let value = dict["VpdId"] as? String {
+            self.vpdId = value
+        }
+        if let value = dict["VpdVSwitchId"] as? String {
+            self.vpdVSwitchId = value
         }
     }
 }
@@ -41115,6 +41147,10 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
                     public var type: String?
 
+                    public var vpdId: String?
+
+                    public var vpdVSwitchId: String?
+
                     public override init() {
                         super.init()
                     }
@@ -41149,6 +41185,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                         if self.type != nil {
                             map["Type"] = self.type!
                         }
+                        if self.vpdId != nil {
+                            map["VpdId"] = self.vpdId!
+                        }
+                        if self.vpdVSwitchId != nil {
+                            map["VpdVSwitchId"] = self.vpdVSwitchId!
+                        }
                         return map
                     }
 
@@ -41175,6 +41217,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["Type"] as? String {
                             self.type = value
+                        }
+                        if let value = dict["VpdId"] as? String {
+                            self.vpdId = value
+                        }
+                        if let value = dict["VpdVSwitchId"] as? String {
+                            self.vpdVSwitchId = value
                         }
                     }
                 }
@@ -78376,6 +78424,10 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var vpdId: String?
+
+    public var vpdVSwitchIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -78524,6 +78576,12 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpdId != nil {
+            map["VpdId"] = self.vpdId!
+        }
+        if self.vpdVSwitchIds != nil {
+            map["VpdVSwitchIds"] = self.vpdVSwitchIds!
         }
         return map
     }
@@ -78678,6 +78736,12 @@ public class RunInstancesRequest : Tea.TeaModel {
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
+        if let value = dict["VpdId"] as? String {
+            self.vpdId = value
+        }
+        if let value = dict["VpdVSwitchIds"] as? [String] {
+            self.vpdVSwitchIds = value
+        }
     }
 }
 
@@ -78803,6 +78867,10 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
     public var userData: String?
 
     public var vSwitchId: String?
+
+    public var vpdId: String?
+
+    public var vpdVSwitchIdsShrink: String?
 
     public override init() {
         super.init()
@@ -78948,6 +79016,12 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vpdId != nil {
+            map["VpdId"] = self.vpdId!
+        }
+        if self.vpdVSwitchIdsShrink != nil {
+            map["VpdVSwitchIds"] = self.vpdVSwitchIdsShrink!
+        }
         return map
     }
 
@@ -79088,6 +79162,12 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
+        }
+        if let value = dict["VpdId"] as? String {
+            self.vpdId = value
+        }
+        if let value = dict["VpdVSwitchIds"] as? String {
+            self.vpdVSwitchIdsShrink = value
         }
     }
 }

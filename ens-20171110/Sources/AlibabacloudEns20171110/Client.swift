@@ -6527,6 +6527,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vpdId)) {
+            query["VpdId"] = request.vpdId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpdVSwitchId)) {
+            query["VpdVSwitchId"] = request.vpdVSwitchId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -11899,6 +11905,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.systemDisk)) {
             request.systemDiskShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.systemDisk, "SystemDisk", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.vpdVSwitchIds)) {
+            request.vpdVSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vpdVSwitchIds, "VpdVSwitchIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.amount)) {
             query["Amount"] = request.amount!;
@@ -12025,6 +12034,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpdId)) {
+            query["VpdId"] = request.vpdId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpdVSwitchIdsShrink)) {
+            query["VpdVSwitchIds"] = request.vpdVSwitchIdsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
