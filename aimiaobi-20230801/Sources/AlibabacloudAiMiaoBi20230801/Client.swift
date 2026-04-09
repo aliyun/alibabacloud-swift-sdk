@@ -697,6 +697,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataPermissionsWithOptions(_ tmpReq: CreateDataPermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataPermissionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateDataPermissionsShrinkRequest = CreateDataPermissionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.permissionUserInfos)) {
+            request.permissionUserInfosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.permissionUserInfos, "PermissionUserInfos", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataId)) {
+            body["DataId"] = request.dataId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            body["DataType"] = request.dataType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionUserInfosShrink)) {
+            body["PermissionUserInfos"] = request.permissionUserInfosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDataPermissions",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDataPermissionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDataPermissions(_ request: CreateDataPermissionsRequest) async throws -> CreateDataPermissionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDataPermissionsWithOptions(request as! CreateDataPermissionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDatasetWithOptions(_ tmpReq: CreateDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDatasetResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDatasetShrinkRequest = CreateDatasetShrinkRequest([:])
@@ -708,6 +753,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.documentHandleConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentHandleConfig, "DocumentHandleConfig", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessLevel)) {
+            body["AccessLevel"] = request.accessLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
             body["DatasetConfig"] = request.datasetConfigShrink ?? "";
         }
@@ -1068,6 +1116,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCustomTopicViewPointById(_ request: DeleteCustomTopicViewPointByIdRequest) async throws -> DeleteCustomTopicViewPointByIdResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCustomTopicViewPointByIdWithOptions(request as! DeleteCustomTopicViewPointByIdRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataPermissionsWithOptions(_ tmpReq: DeleteDataPermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDataPermissionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteDataPermissionsShrinkRequest = DeleteDataPermissionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ids)) {
+            request.idsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ids, "Ids", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.idsShrink)) {
+            body["Ids"] = request.idsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDataPermissions",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDataPermissionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDataPermissions(_ request: DeleteDataPermissionsRequest) async throws -> DeleteDataPermissionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDataPermissionsWithOptions(request as! DeleteDataPermissionsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4458,6 +4545,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataPermissionsWithOptions(_ request: ListDataPermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataPermissionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataId)) {
+            body["DataId"] = request.dataId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            body["DataType"] = request.dataType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDataPermissions",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDataPermissionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDataPermissions(_ request: ListDataPermissionsRequest) async throws -> ListDataPermissionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listDataPermissionsWithOptions(request as! ListDataPermissionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDatasetDocumentsWithOptions(_ tmpReq: ListDatasetDocumentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetDocumentsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListDatasetDocumentsShrinkRequest = ListDatasetDocumentsShrinkRequest([:])
@@ -4581,6 +4711,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDatasetsWithOptions(_ request: ListDatasetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetDescription)) {
+            body["DatasetDescription"] = request.datasetDescription ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.datasetId)) {
             body["DatasetId"] = request.datasetId!;
         }
@@ -9198,6 +9331,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.datasetConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.datasetConfig, "DatasetConfig", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessLevel)) {
+            body["AccessLevel"] = request.accessLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.datasetConfigShrink)) {
             body["DatasetConfig"] = request.datasetConfigShrink ?? "";
         }
