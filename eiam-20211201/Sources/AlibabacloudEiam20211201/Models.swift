@@ -5490,6 +5490,8 @@ public class CreateCredentialRequest : Tea.TeaModel {
 
     public var credentialScenarioLabel: String?
 
+    public var credentialSharingScope: String?
+
     public var credentialSubjectId: String?
 
     public var credentialSubjectType: String?
@@ -5497,6 +5499,8 @@ public class CreateCredentialRequest : Tea.TeaModel {
     public var credentialType: String?
 
     public var description_: String?
+
+    public var exclusiveUserId: String?
 
     public var instanceId: String?
 
@@ -5530,6 +5534,9 @@ public class CreateCredentialRequest : Tea.TeaModel {
         if self.credentialScenarioLabel != nil {
             map["CredentialScenarioLabel"] = self.credentialScenarioLabel!
         }
+        if self.credentialSharingScope != nil {
+            map["CredentialSharingScope"] = self.credentialSharingScope!
+        }
         if self.credentialSubjectId != nil {
             map["CredentialSubjectId"] = self.credentialSubjectId!
         }
@@ -5541,6 +5548,9 @@ public class CreateCredentialRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.exclusiveUserId != nil {
+            map["ExclusiveUserId"] = self.exclusiveUserId!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -5567,6 +5577,9 @@ public class CreateCredentialRequest : Tea.TeaModel {
         if let value = dict["CredentialScenarioLabel"] as? String {
             self.credentialScenarioLabel = value
         }
+        if let value = dict["CredentialSharingScope"] as? String {
+            self.credentialSharingScope = value
+        }
         if let value = dict["CredentialSubjectId"] as? String {
             self.credentialSubjectId = value
         }
@@ -5578,6 +5591,9 @@ public class CreateCredentialRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ExclusiveUserId"] as? String {
+            self.exclusiveUserId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -6884,6 +6900,36 @@ public class CreateDomainProxyTokenResponse : Tea.TeaModel {
 }
 
 public class CreateFederatedCredentialProviderRequest : Tea.TeaModel {
+    public class CloudIdPProviderConfig : Tea.TeaModel {
+        public var identityProviderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.identityProviderId != nil {
+                map["IdentityProviderId"] = self.identityProviderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["IdentityProviderId"] as? String {
+                self.identityProviderId = value
+            }
+        }
+    }
     public class OidcProviderConfig : Tea.TeaModel {
         public var audiences: [String]?
 
@@ -7158,6 +7204,8 @@ public class CreateFederatedCredentialProviderRequest : Tea.TeaModel {
             }
         }
     }
+    public var cloudIdPProviderConfig: CreateFederatedCredentialProviderRequest.CloudIdPProviderConfig?
+
     public var description_: String?
 
     public var federatedCredentialProviderName: String?
@@ -7184,6 +7232,7 @@ public class CreateFederatedCredentialProviderRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.cloudIdPProviderConfig?.validate()
         try self.oidcProviderConfig?.validate()
         try self.pkcs7ProviderConfig?.validate()
         try self.privateCaProviderConfig?.validate()
@@ -7191,6 +7240,9 @@ public class CreateFederatedCredentialProviderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudIdPProviderConfig != nil {
+            map["CloudIdPProviderConfig"] = self.cloudIdPProviderConfig?.toMap()
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -7220,6 +7272,11 @@ public class CreateFederatedCredentialProviderRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloudIdPProviderConfig"] as? [String: Any?] {
+            var model = CreateFederatedCredentialProviderRequest.CloudIdPProviderConfig()
+            model.fromMap(value)
+            self.cloudIdPProviderConfig = model
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -27013,6 +27070,8 @@ public class GetCredentialResponseBody : Tea.TeaModel {
 
         public var credentialScenarioLabel: String?
 
+        public var credentialSharingScope: String?
+
         public var credentialSubjectId: String?
 
         public var credentialSubjectType: String?
@@ -27020,6 +27079,8 @@ public class GetCredentialResponseBody : Tea.TeaModel {
         public var credentialType: String?
 
         public var description_: String?
+
+        public var exclusiveUserId: String?
 
         public var instanceId: String?
 
@@ -27063,6 +27124,9 @@ public class GetCredentialResponseBody : Tea.TeaModel {
             if self.credentialScenarioLabel != nil {
                 map["CredentialScenarioLabel"] = self.credentialScenarioLabel!
             }
+            if self.credentialSharingScope != nil {
+                map["CredentialSharingScope"] = self.credentialSharingScope!
+            }
             if self.credentialSubjectId != nil {
                 map["CredentialSubjectId"] = self.credentialSubjectId!
             }
@@ -27074,6 +27138,9 @@ public class GetCredentialResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.exclusiveUserId != nil {
+                map["ExclusiveUserId"] = self.exclusiveUserId!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -27112,6 +27179,9 @@ public class GetCredentialResponseBody : Tea.TeaModel {
             if let value = dict["CredentialScenarioLabel"] as? String {
                 self.credentialScenarioLabel = value
             }
+            if let value = dict["CredentialSharingScope"] as? String {
+                self.credentialSharingScope = value
+            }
             if let value = dict["CredentialSubjectId"] as? String {
                 self.credentialSubjectId = value
             }
@@ -27123,6 +27193,9 @@ public class GetCredentialResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["ExclusiveUserId"] as? String {
+                self.exclusiveUserId = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -28825,6 +28898,36 @@ public class GetFederatedCredentialProviderRequest : Tea.TeaModel {
 
 public class GetFederatedCredentialProviderResponseBody : Tea.TeaModel {
     public class FederatedCredentialProvider : Tea.TeaModel {
+        public class CloudIdPProviderConfig : Tea.TeaModel {
+            public var identityProviderId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.identityProviderId != nil {
+                    map["IdentityProviderId"] = self.identityProviderId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["IdentityProviderId"] as? String {
+                    self.identityProviderId = value
+                }
+            }
+        }
         public class OidcProviderConfig : Tea.TeaModel {
             public var audiences: [String]?
 
@@ -29229,6 +29332,8 @@ public class GetFederatedCredentialProviderResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var cloudIdPProviderConfig: GetFederatedCredentialProviderResponseBody.FederatedCredentialProvider.CloudIdPProviderConfig?
+
         public var createTime: Int64?
 
         public var description_: String?
@@ -29263,6 +29368,7 @@ public class GetFederatedCredentialProviderResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cloudIdPProviderConfig?.validate()
             try self.oidcProviderConfig?.validate()
             try self.pkcs7ProviderConfig?.validate()
             try self.privateCaProviderConfig?.validate()
@@ -29270,6 +29376,9 @@ public class GetFederatedCredentialProviderResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cloudIdPProviderConfig != nil {
+                map["CloudIdPProviderConfig"] = self.cloudIdPProviderConfig?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -29311,6 +29420,11 @@ public class GetFederatedCredentialProviderResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CloudIdPProviderConfig"] as? [String: Any?] {
+                var model = GetFederatedCredentialProviderResponseBody.FederatedCredentialProvider.CloudIdPProviderConfig()
+                model.fromMap(value)
+                self.cloudIdPProviderConfig = model
+            }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
@@ -48753,6 +48867,8 @@ public class ListCredentialsRequest : Tea.TeaModel {
     }
     public var credentialIds: [String]?
 
+    public var credentialSharingScopes: [String]?
+
     public var credentialTypes: [String]?
 
     public var filter: [ListCredentialsRequest.Filter]?
@@ -48781,6 +48897,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.credentialIds != nil {
             map["CredentialIds"] = self.credentialIds!
+        }
+        if self.credentialSharingScopes != nil {
+            map["CredentialSharingScopes"] = self.credentialSharingScopes!
         }
         if self.credentialTypes != nil {
             map["CredentialTypes"] = self.credentialTypes!
@@ -48811,6 +48930,9 @@ public class ListCredentialsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CredentialIds"] as? [String] {
             self.credentialIds = value
+        }
+        if let value = dict["CredentialSharingScopes"] as? [String] {
+            self.credentialSharingScopes = value
         }
         if let value = dict["CredentialTypes"] as? [String] {
             self.credentialTypes = value
@@ -48922,6 +49044,8 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
 
         public var credentialScenarioLabel: String?
 
+        public var credentialSharingScope: String?
+
         public var credentialSubjectId: String?
 
         public var credentialSubjectType: String?
@@ -48929,6 +49053,8 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
         public var credentialType: String?
 
         public var description_: String?
+
+        public var exclusiveUserId: String?
 
         public var instanceId: String?
 
@@ -48972,6 +49098,9 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
             if self.credentialScenarioLabel != nil {
                 map["CredentialScenarioLabel"] = self.credentialScenarioLabel!
             }
+            if self.credentialSharingScope != nil {
+                map["CredentialSharingScope"] = self.credentialSharingScope!
+            }
             if self.credentialSubjectId != nil {
                 map["CredentialSubjectId"] = self.credentialSubjectId!
             }
@@ -48983,6 +49112,9 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.exclusiveUserId != nil {
+                map["ExclusiveUserId"] = self.exclusiveUserId!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -49021,6 +49153,9 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
             if let value = dict["CredentialScenarioLabel"] as? String {
                 self.credentialScenarioLabel = value
             }
+            if let value = dict["CredentialSharingScope"] as? String {
+                self.credentialSharingScope = value
+            }
             if let value = dict["CredentialSubjectId"] as? String {
                 self.credentialSubjectId = value
             }
@@ -49032,6 +49167,9 @@ public class ListCredentialsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["ExclusiveUserId"] as? String {
+                self.exclusiveUserId = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -50809,6 +50947,36 @@ public class ListFederatedCredentialProvidersRequest : Tea.TeaModel {
 
 public class ListFederatedCredentialProvidersResponseBody : Tea.TeaModel {
     public class FederatedCredentialProviders : Tea.TeaModel {
+        public class CloudIdPProviderConfig : Tea.TeaModel {
+            public var identityProviderId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.identityProviderId != nil {
+                    map["IdentityProviderId"] = self.identityProviderId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["IdentityProviderId"] as? String {
+                    self.identityProviderId = value
+                }
+            }
+        }
         public class OidcProviderConfig : Tea.TeaModel {
             public var audiences: [String]?
 
@@ -51213,6 +51381,8 @@ public class ListFederatedCredentialProvidersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var cloudIdPProviderConfig: ListFederatedCredentialProvidersResponseBody.FederatedCredentialProviders.CloudIdPProviderConfig?
+
         public var createTime: Int64?
 
         public var description_: String?
@@ -51247,6 +51417,7 @@ public class ListFederatedCredentialProvidersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cloudIdPProviderConfig?.validate()
             try self.oidcProviderConfig?.validate()
             try self.pkcs7ProviderConfig?.validate()
             try self.privateCaProviderConfig?.validate()
@@ -51254,6 +51425,9 @@ public class ListFederatedCredentialProvidersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cloudIdPProviderConfig != nil {
+                map["CloudIdPProviderConfig"] = self.cloudIdPProviderConfig?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -51295,6 +51469,11 @@ public class ListFederatedCredentialProvidersResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CloudIdPProviderConfig"] as? [String: Any?] {
+                var model = ListFederatedCredentialProvidersResponseBody.FederatedCredentialProviders.CloudIdPProviderConfig()
+                model.fromMap(value)
+                self.cloudIdPProviderConfig = model
+            }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
             }
@@ -61261,6 +61440,8 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
 
         public var credentialScenarioLabel: String?
 
+        public var credentialSharingScope: String?
+
         public var credentialSubjectId: String?
 
         public var credentialSubjectType: String?
@@ -61268,6 +61449,8 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         public var credentialType: String?
 
         public var description_: String?
+
+        public var exclusiveUserId: String?
 
         public var instanceId: String?
 
@@ -61311,6 +61494,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
             if self.credentialScenarioLabel != nil {
                 map["CredentialScenarioLabel"] = self.credentialScenarioLabel!
             }
+            if self.credentialSharingScope != nil {
+                map["CredentialSharingScope"] = self.credentialSharingScope!
+            }
             if self.credentialSubjectId != nil {
                 map["CredentialSubjectId"] = self.credentialSubjectId!
             }
@@ -61322,6 +61508,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.exclusiveUserId != nil {
+                map["ExclusiveUserId"] = self.exclusiveUserId!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -61360,6 +61549,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
             if let value = dict["CredentialScenarioLabel"] as? String {
                 self.credentialScenarioLabel = value
             }
+            if let value = dict["CredentialSharingScope"] as? String {
+                self.credentialSharingScope = value
+            }
             if let value = dict["CredentialSubjectId"] as? String {
                 self.credentialSubjectId = value
             }
@@ -61371,6 +61563,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["ExclusiveUserId"] as? String {
+                self.exclusiveUserId = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value

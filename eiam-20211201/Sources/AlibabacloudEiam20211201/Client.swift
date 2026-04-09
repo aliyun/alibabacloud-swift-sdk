@@ -1367,6 +1367,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.credentialScenarioLabel)) {
             query["CredentialScenarioLabel"] = request.credentialScenarioLabel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.credentialSharingScope)) {
+            query["CredentialSharingScope"] = request.credentialSharingScope ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.credentialSubjectId)) {
             query["CredentialSubjectId"] = request.credentialSubjectId ?? "";
         }
@@ -1378,6 +1381,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.exclusiveUserId)) {
+            query["ExclusiveUserId"] = request.exclusiveUserId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -1646,6 +1652,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createFederatedCredentialProviderWithOptions(_ request: CreateFederatedCredentialProviderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFederatedCredentialProviderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudIdPProviderConfig)) {
+            query["CloudIdPProviderConfig"] = request.cloudIdPProviderConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -8293,6 +8302,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.credentialIds)) {
             query["CredentialIds"] = request.credentialIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialSharingScopes)) {
+            query["CredentialSharingScopes"] = request.credentialSharingScopes ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.credentialTypes)) {
             query["CredentialTypes"] = request.credentialTypes ?? [];
