@@ -490,6 +490,8 @@ public class AddCommonBandwidthPackageIpRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var ipInstanceId: String?
 
     public var ipType: String?
@@ -524,6 +526,9 @@ public class AddCommonBandwidthPackageIpRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipInstanceId != nil {
             map["IpInstanceId"] = self.ipInstanceId!
         }
@@ -555,6 +560,9 @@ public class AddCommonBandwidthPackageIpRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["IpInstanceId"] as? String {
             self.ipInstanceId = value
@@ -13300,6 +13308,8 @@ public class CreateIpv6EgressOnlyRuleRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var instanceId: String?
 
     public var instanceType: String?
@@ -13338,6 +13348,9 @@ public class CreateIpv6EgressOnlyRuleRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -13375,6 +13388,9 @@ public class CreateIpv6EgressOnlyRuleRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -13538,6 +13554,8 @@ public class CreateIpv6GatewayRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var name: String?
 
     public var ownerAccount: String?
@@ -13575,6 +13593,9 @@ public class CreateIpv6GatewayRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -13617,6 +13638,9 @@ public class CreateIpv6GatewayRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -29316,6 +29340,8 @@ public class DeleteIpv4GatewayResponse : Tea.TeaModel {
 public class DeleteIpv6EgressOnlyRuleRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var ipv6EgressOnlyRuleId: String?
 
     public var ownerAccount: String?
@@ -29345,6 +29371,9 @@ public class DeleteIpv6EgressOnlyRuleRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipv6EgressOnlyRuleId != nil {
             map["Ipv6EgressOnlyRuleId"] = self.ipv6EgressOnlyRuleId!
         }
@@ -29370,6 +29399,9 @@ public class DeleteIpv6EgressOnlyRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Ipv6EgressOnlyRuleId"] as? String {
             self.ipv6EgressOnlyRuleId = value
@@ -108200,6 +108232,8 @@ public class RemoveCommonBandwidthPackageIpRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var ipInstanceId: String?
 
     public var ownerAccount: String?
@@ -108232,6 +108266,9 @@ public class RemoveCommonBandwidthPackageIpRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipInstanceId != nil {
             map["IpInstanceId"] = self.ipInstanceId!
         }
@@ -108260,6 +108297,9 @@ public class RemoveCommonBandwidthPackageIpRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["IpInstanceId"] as? String {
             self.ipInstanceId = value
