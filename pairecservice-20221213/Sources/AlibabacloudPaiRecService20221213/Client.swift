@@ -489,8 +489,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createABMetricWithOptions(_ request: CreateABMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateABMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregationByUser)) {
+            body["AggregationByUser"] = request.aggregationByUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.definition)) {
             body["Definition"] = request.definition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.denominator)) {
+            body["Denominator"] = request.denominator ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -498,11 +504,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isBinomialDistribution)) {
+            body["IsBinomialDistribution"] = request.isBinomialDistribution!;
+        }
         if (!TeaUtils.Client.isUnset(request.leftMetricId)) {
             body["LeftMetricId"] = request.leftMetricId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needSignificance)) {
+            body["NeedSignificance"] = request.needSignificance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.numerator)) {
+            body["Numerator"] = request.numerator ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.operator_)) {
             body["Operator"] = request.operator_ ?? "";
@@ -2393,7 +2408,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteInstanceResourceWithOptions(_ InstanceId: String, _ ResourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteInstanceResourceResponse {
+    public func deleteInstanceResourceWithOptions(_ InstanceId: String, _ ResourceId: String, _ request: DeleteInstanceResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteInstanceResourceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -2413,10 +2429,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteInstanceResource(_ InstanceId: String, _ ResourceId: String) async throws -> DeleteInstanceResourceResponse {
+    public func deleteInstanceResource(_ InstanceId: String, _ ResourceId: String, _ request: DeleteInstanceResourceRequest) async throws -> DeleteInstanceResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteInstanceResourceWithOptions(InstanceId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteInstanceResourceWithOptions(InstanceId as! String, ResourceId as! String, request as! DeleteInstanceResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3359,7 +3375,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstanceWithOptions(_ InstanceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResponse {
+    public func getInstanceWithOptions(_ InstanceId: String, _ request: GetInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -3379,14 +3396,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstance(_ InstanceId: String) async throws -> GetInstanceResponse {
+    public func getInstance(_ InstanceId: String, _ request: GetInstanceRequest) async throws -> GetInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getInstanceWithOptions(InstanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getInstanceWithOptions(InstanceId as! String, request as! GetInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstanceResourceWithOptions(_ InstanceId: String, _ ResourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResourceResponse {
+    public func getInstanceResourceWithOptions(_ InstanceId: String, _ ResourceId: String, _ request: GetInstanceResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResourceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -3406,14 +3424,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstanceResource(_ InstanceId: String, _ ResourceId: String) async throws -> GetInstanceResourceResponse {
+    public func getInstanceResource(_ InstanceId: String, _ ResourceId: String, _ request: GetInstanceResourceRequest) async throws -> GetInstanceResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getInstanceResourceWithOptions(InstanceId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getInstanceResourceWithOptions(InstanceId as! String, ResourceId as! String, request as! GetInstanceResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstanceResourceTableWithOptions(_ InstanceId: String, _ ResourceId: String, _ TableName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResourceTableResponse {
+    public func getInstanceResourceTableWithOptions(_ InstanceId: String, _ ResourceId: String, _ TableName: String, _ request: GetInstanceResourceTableRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceResourceTableResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -3433,10 +3452,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstanceResourceTable(_ InstanceId: String, _ ResourceId: String, _ TableName: String) async throws -> GetInstanceResourceTableResponse {
+    public func getInstanceResourceTable(_ InstanceId: String, _ ResourceId: String, _ TableName: String, _ request: GetInstanceResourceTableRequest) async throws -> GetInstanceResourceTableResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getInstanceResourceTableWithOptions(InstanceId as! String, ResourceId as! String, TableName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getInstanceResourceTableWithOptions(InstanceId as! String, ResourceId as! String, TableName as! String, request as! GetInstanceResourceTableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6594,8 +6613,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateABMetricWithOptions(_ ABMetricId: String, _ request: UpdateABMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateABMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregationByUser)) {
+            body["AggregationByUser"] = request.aggregationByUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.definition)) {
             body["Definition"] = request.definition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.denominator)) {
+            body["Denominator"] = request.denominator ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -6603,11 +6628,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isBinomialDistribution)) {
+            body["IsBinomialDistribution"] = request.isBinomialDistribution!;
+        }
         if (!TeaUtils.Client.isUnset(request.leftMetricId)) {
             body["LeftMetricId"] = request.leftMetricId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needSignificance)) {
+            body["NeedSignificance"] = request.needSignificance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.numerator)) {
+            body["Numerator"] = request.numerator ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.operator_)) {
             body["Operator"] = request.operator_ ?? "";

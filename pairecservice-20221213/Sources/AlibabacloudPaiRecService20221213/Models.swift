@@ -1767,15 +1767,25 @@ public class CompareSampleConsistencyJobResponse : Tea.TeaModel {
 }
 
 public class CreateABMetricRequest : Tea.TeaModel {
+    public var aggregationByUser: Bool?
+
     public var definition: String?
+
+    public var denominator: String?
 
     public var description_: String?
 
     public var instanceId: String?
 
+    public var isBinomialDistribution: Bool?
+
     public var leftMetricId: String?
 
     public var name: String?
+
+    public var needSignificance: Bool?
+
+    public var numerator: String?
 
     public var operator_: String?
 
@@ -1807,8 +1817,14 @@ public class CreateABMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregationByUser != nil {
+            map["AggregationByUser"] = self.aggregationByUser!
+        }
         if self.definition != nil {
             map["Definition"] = self.definition!
+        }
+        if self.denominator != nil {
+            map["Denominator"] = self.denominator!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -1816,11 +1832,20 @@ public class CreateABMetricRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.isBinomialDistribution != nil {
+            map["IsBinomialDistribution"] = self.isBinomialDistribution!
+        }
         if self.leftMetricId != nil {
             map["LeftMetricId"] = self.leftMetricId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.needSignificance != nil {
+            map["NeedSignificance"] = self.needSignificance!
+        }
+        if self.numerator != nil {
+            map["Numerator"] = self.numerator!
         }
         if self.operator_ != nil {
             map["Operator"] = self.operator_!
@@ -1851,8 +1876,14 @@ public class CreateABMetricRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AggregationByUser"] as? Bool {
+            self.aggregationByUser = value
+        }
         if let value = dict["Definition"] as? String {
             self.definition = value
+        }
+        if let value = dict["Denominator"] as? String {
+            self.denominator = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -1860,11 +1891,20 @@ public class CreateABMetricRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["IsBinomialDistribution"] as? Bool {
+            self.isBinomialDistribution = value
+        }
         if let value = dict["LeftMetricId"] as? String {
             self.leftMetricId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NeedSignificance"] as? Bool {
+            self.needSignificance = value
+        }
+        if let value = dict["Numerator"] as? String {
+            self.numerator = value
         }
         if let value = dict["Operator"] as? String {
             self.operator_ = value
@@ -9469,6 +9509,30 @@ public class DeleteExperimentGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteInstanceResourceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteInstanceResourceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -11790,13 +11854,23 @@ public class GetABMetricRequest : Tea.TeaModel {
 }
 
 public class GetABMetricResponseBody : Tea.TeaModel {
+    public var aggregationByUser: Bool?
+
     public var definition: String?
 
+    public var denominator: String?
+
     public var description_: String?
+
+    public var isBinomialDistribution: Bool?
 
     public var leftMetricId: String?
 
     public var name: String?
+
+    public var needSignificance: Bool?
+
+    public var numerator: String?
 
     public var operator_: String?
 
@@ -11834,17 +11908,32 @@ public class GetABMetricResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregationByUser != nil {
+            map["AggregationByUser"] = self.aggregationByUser!
+        }
         if self.definition != nil {
             map["Definition"] = self.definition!
         }
+        if self.denominator != nil {
+            map["Denominator"] = self.denominator!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.isBinomialDistribution != nil {
+            map["IsBinomialDistribution"] = self.isBinomialDistribution!
         }
         if self.leftMetricId != nil {
             map["LeftMetricId"] = self.leftMetricId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.needSignificance != nil {
+            map["NeedSignificance"] = self.needSignificance!
+        }
+        if self.numerator != nil {
+            map["Numerator"] = self.numerator!
         }
         if self.operator_ != nil {
             map["Operator"] = self.operator_!
@@ -11884,17 +11973,32 @@ public class GetABMetricResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AggregationByUser"] as? Bool {
+            self.aggregationByUser = value
+        }
         if let value = dict["Definition"] as? String {
             self.definition = value
         }
+        if let value = dict["Denominator"] as? String {
+            self.denominator = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["IsBinomialDistribution"] as? Bool {
+            self.isBinomialDistribution = value
         }
         if let value = dict["LeftMetricId"] as? String {
             self.leftMetricId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NeedSignificance"] as? Bool {
+            self.needSignificance = value
+        }
+        if let value = dict["Numerator"] as? String {
+            self.numerator = value
         }
         if let value = dict["Operator"] as? String {
             self.operator_ = value
@@ -13950,6 +14054,30 @@ public class GetFeatureConsistencyCheckJobConfigResponse : Tea.TeaModel {
     }
 }
 
+public class GetInstanceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetInstanceResponseBody : Tea.TeaModel {
     public class Config : Tea.TeaModel {
         public class DataManagements : Tea.TeaModel {
@@ -14381,6 +14509,30 @@ public class GetInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class GetInstanceResourceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetInstanceResourceResponseBody : Tea.TeaModel {
     public var category: String?
 
@@ -14523,6 +14675,30 @@ public class GetInstanceResourceResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetInstanceResourceTableRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -20452,13 +20628,23 @@ public class ListABMetricsResponseBody : Tea.TeaModel {
     public class ABMetrics : Tea.TeaModel {
         public var ABMetricId: String?
 
+        public var aggregationByUser: Bool?
+
         public var definition: String?
 
+        public var denominator: String?
+
         public var description_: String?
+
+        public var isBinomialDistribution: Bool?
 
         public var leftMetricId: String?
 
         public var name: String?
+
+        public var needSignificance: Bool?
+
+        public var numerator: String?
 
         public var operator_: String?
 
@@ -20497,17 +20683,32 @@ public class ListABMetricsResponseBody : Tea.TeaModel {
             if self.ABMetricId != nil {
                 map["ABMetricId"] = self.ABMetricId!
             }
+            if self.aggregationByUser != nil {
+                map["AggregationByUser"] = self.aggregationByUser!
+            }
             if self.definition != nil {
                 map["Definition"] = self.definition!
             }
+            if self.denominator != nil {
+                map["Denominator"] = self.denominator!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.isBinomialDistribution != nil {
+                map["IsBinomialDistribution"] = self.isBinomialDistribution!
             }
             if self.leftMetricId != nil {
                 map["LeftMetricId"] = self.leftMetricId!
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.needSignificance != nil {
+                map["NeedSignificance"] = self.needSignificance!
+            }
+            if self.numerator != nil {
+                map["Numerator"] = self.numerator!
             }
             if self.operator_ != nil {
                 map["Operator"] = self.operator_!
@@ -20547,17 +20748,32 @@ public class ListABMetricsResponseBody : Tea.TeaModel {
             if let value = dict["ABMetricId"] as? String {
                 self.ABMetricId = value
             }
+            if let value = dict["AggregationByUser"] as? Bool {
+                self.aggregationByUser = value
+            }
             if let value = dict["Definition"] as? String {
                 self.definition = value
             }
+            if let value = dict["Denominator"] as? String {
+                self.denominator = value
+            }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["IsBinomialDistribution"] as? Bool {
+                self.isBinomialDistribution = value
             }
             if let value = dict["LeftMetricId"] as? String {
                 self.leftMetricId = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["NeedSignificance"] as? Bool {
+                self.needSignificance = value
+            }
+            if let value = dict["Numerator"] as? String {
+                self.numerator = value
             }
             if let value = dict["Operator"] as? String {
                 self.operator_ = value
@@ -35979,15 +36195,25 @@ public class TerminateFeatureConsistencyCheckJobResponse : Tea.TeaModel {
 }
 
 public class UpdateABMetricRequest : Tea.TeaModel {
+    public var aggregationByUser: Bool?
+
     public var definition: String?
+
+    public var denominator: String?
 
     public var description_: String?
 
     public var instanceId: String?
 
+    public var isBinomialDistribution: Bool?
+
     public var leftMetricId: String?
 
     public var name: String?
+
+    public var needSignificance: Bool?
+
+    public var numerator: String?
 
     public var operator_: String?
 
@@ -36019,8 +36245,14 @@ public class UpdateABMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregationByUser != nil {
+            map["AggregationByUser"] = self.aggregationByUser!
+        }
         if self.definition != nil {
             map["Definition"] = self.definition!
+        }
+        if self.denominator != nil {
+            map["Denominator"] = self.denominator!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -36028,11 +36260,20 @@ public class UpdateABMetricRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.isBinomialDistribution != nil {
+            map["IsBinomialDistribution"] = self.isBinomialDistribution!
+        }
         if self.leftMetricId != nil {
             map["LeftMetricId"] = self.leftMetricId!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.needSignificance != nil {
+            map["NeedSignificance"] = self.needSignificance!
+        }
+        if self.numerator != nil {
+            map["Numerator"] = self.numerator!
         }
         if self.operator_ != nil {
             map["Operator"] = self.operator_!
@@ -36063,8 +36304,14 @@ public class UpdateABMetricRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AggregationByUser"] as? Bool {
+            self.aggregationByUser = value
+        }
         if let value = dict["Definition"] as? String {
             self.definition = value
+        }
+        if let value = dict["Denominator"] as? String {
+            self.denominator = value
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -36072,11 +36319,20 @@ public class UpdateABMetricRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["IsBinomialDistribution"] as? Bool {
+            self.isBinomialDistribution = value
+        }
         if let value = dict["LeftMetricId"] as? String {
             self.leftMetricId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NeedSignificance"] as? Bool {
+            self.needSignificance = value
+        }
+        if let value = dict["Numerator"] as? String {
+            self.numerator = value
         }
         if let value = dict["Operator"] as? String {
             self.operator_ = value
