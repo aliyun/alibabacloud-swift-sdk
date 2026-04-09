@@ -195,7 +195,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addMemberRoleWithOptions(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMemberRoleResponse {
+    public func addMemberRoleWithOptions(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ request: AddMemberRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMemberRoleResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -215,10 +216,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addMemberRole(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String) async throws -> AddMemberRoleResponse {
+    public func addMemberRole(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ request: AddMemberRoleRequest) async throws -> AddMemberRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await addMemberRoleWithOptions(WorkspaceId as! String, MemberId as! String, RoleName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await addMemberRoleWithOptions(WorkspaceId as! String, MemberId as! String, RoleName as! String, request as! AddMemberRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1271,7 +1272,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteCodeSourceWithOptions(_ CodeSourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCodeSourceResponse {
+    public func deleteCodeSourceWithOptions(_ CodeSourceId: String, _ request: DeleteCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCodeSourceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1291,10 +1293,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteCodeSource(_ CodeSourceId: String) async throws -> DeleteCodeSourceResponse {
+    public func deleteCodeSource(_ CodeSourceId: String, _ request: DeleteCodeSourceRequest) async throws -> DeleteCodeSourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteCodeSourceWithOptions(CodeSourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteCodeSourceWithOptions(CodeSourceId as! String, request as! DeleteCodeSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1334,7 +1336,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteConnectionWithOptions(_ ConnectionId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteConnectionResponse {
+    public func deleteConnectionWithOptions(_ ConnectionId: String, _ request: DeleteConnectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteConnectionResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1354,14 +1357,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteConnection(_ ConnectionId: String) async throws -> DeleteConnectionResponse {
+    public func deleteConnection(_ ConnectionId: String, _ request: DeleteConnectionRequest) async throws -> DeleteConnectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteConnectionWithOptions(ConnectionId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteConnectionWithOptions(ConnectionId as! String, request as! DeleteConnectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDatasetWithOptions(_ DatasetId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetResponse {
+    public func deleteDatasetWithOptions(_ DatasetId: String, _ request: DeleteDatasetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1381,10 +1385,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDataset(_ DatasetId: String) async throws -> DeleteDatasetResponse {
+    public func deleteDataset(_ DatasetId: String, _ request: DeleteDatasetRequest) async throws -> DeleteDatasetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteDatasetWithOptions(DatasetId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteDatasetWithOptions(DatasetId as! String, request as! DeleteDatasetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1427,7 +1431,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDatasetJobWithOptions(_ DatasetId: String, _ DatasetJobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetJobResponse {
+    public func deleteDatasetJobWithOptions(_ DatasetId: String, _ DatasetJobId: String, _ request: DeleteDatasetJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetJobResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1447,10 +1452,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDatasetJob(_ DatasetId: String, _ DatasetJobId: String) async throws -> DeleteDatasetJobResponse {
+    public func deleteDatasetJob(_ DatasetId: String, _ DatasetJobId: String, _ request: DeleteDatasetJobRequest) async throws -> DeleteDatasetJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteDatasetJobWithOptions(DatasetId as! String, DatasetJobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteDatasetJobWithOptions(DatasetId as! String, DatasetJobId as! String, request as! DeleteDatasetJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1520,7 +1525,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetVersionResponse {
+    public func deleteDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ request: DeleteDatasetVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetVersionResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1540,10 +1546,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteDatasetVersion(_ DatasetId: String, _ VersionName: String) async throws -> DeleteDatasetVersionResponse {
+    public func deleteDatasetVersion(_ DatasetId: String, _ VersionName: String, _ request: DeleteDatasetVersionRequest) async throws -> DeleteDatasetVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, request as! DeleteDatasetVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1580,7 +1586,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteExperimentWithOptions(_ ExperimentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentResponse {
+    public func deleteExperimentWithOptions(_ ExperimentId: String, _ request: DeleteExperimentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1600,14 +1607,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteExperiment(_ ExperimentId: String) async throws -> DeleteExperimentResponse {
+    public func deleteExperiment(_ ExperimentId: String, _ request: DeleteExperimentRequest) async throws -> DeleteExperimentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteExperimentWithOptions(ExperimentId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteExperimentWithOptions(ExperimentId as! String, request as! DeleteExperimentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteExperimentLabelWithOptions(_ ExperimentId: String, _ Key: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentLabelResponse {
+    public func deleteExperimentLabelWithOptions(_ ExperimentId: String, _ Key: String, _ request: DeleteExperimentLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentLabelResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1627,10 +1635,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteExperimentLabel(_ ExperimentId: String, _ Key: String) async throws -> DeleteExperimentLabelResponse {
+    public func deleteExperimentLabel(_ ExperimentId: String, _ Key: String, _ request: DeleteExperimentLabelRequest) async throws -> DeleteExperimentLabelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteExperimentLabelWithOptions(ExperimentId as! String, Key as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteExperimentLabelWithOptions(ExperimentId as! String, Key as! String, request as! DeleteExperimentLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1667,7 +1675,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteModelWithOptions(_ ModelId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteModelResponse {
+    public func deleteModelWithOptions(_ ModelId: String, _ request: DeleteModelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteModelResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1687,10 +1696,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteModel(_ ModelId: String) async throws -> DeleteModelResponse {
+    public func deleteModel(_ ModelId: String, _ request: DeleteModelRequest) async throws -> DeleteModelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteModelWithOptions(ModelId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteModelWithOptions(ModelId as! String, request as! DeleteModelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1727,7 +1736,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteModelVersionWithOptions(_ ModelId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteModelVersionResponse {
+    public func deleteModelVersionWithOptions(_ ModelId: String, _ VersionName: String, _ request: DeleteModelVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteModelVersionResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1747,10 +1757,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteModelVersion(_ ModelId: String, _ VersionName: String) async throws -> DeleteModelVersionResponse {
+    public func deleteModelVersion(_ ModelId: String, _ VersionName: String, _ request: DeleteModelVersionRequest) async throws -> DeleteModelVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteModelVersionWithOptions(ModelId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteModelVersionWithOptions(ModelId as! String, VersionName as! String, request as! DeleteModelVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1787,7 +1797,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRunWithOptions(_ RunId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRunResponse {
+    public func deleteRunWithOptions(_ RunId: String, _ request: DeleteRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRunResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1807,14 +1818,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRun(_ RunId: String) async throws -> DeleteRunResponse {
+    public func deleteRun(_ RunId: String, _ request: DeleteRunRequest) async throws -> DeleteRunResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteRunWithOptions(RunId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteRunWithOptions(RunId as! String, request as! DeleteRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRunLabelWithOptions(_ RunId: String, _ Key: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRunLabelResponse {
+    public func deleteRunLabelWithOptions(_ RunId: String, _ Key: String, _ request: DeleteRunLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRunLabelResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1834,10 +1846,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRunLabel(_ RunId: String, _ Key: String) async throws -> DeleteRunLabelResponse {
+    public func deleteRunLabel(_ RunId: String, _ Key: String, _ request: DeleteRunLabelRequest) async throws -> DeleteRunLabelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteRunLabelWithOptions(RunId as! String, Key as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteRunLabelWithOptions(RunId as! String, Key as! String, request as! DeleteRunLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1877,7 +1889,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteWorkspaceWithOptions(_ WorkspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWorkspaceResponse {
+    public func deleteWorkspaceWithOptions(_ WorkspaceId: String, _ request: DeleteWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWorkspaceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1897,10 +1910,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteWorkspace(_ WorkspaceId: String) async throws -> DeleteWorkspaceResponse {
+    public func deleteWorkspace(_ WorkspaceId: String, _ request: DeleteWorkspaceRequest) async throws -> DeleteWorkspaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteWorkspaceWithOptions(WorkspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteWorkspaceWithOptions(WorkspaceId as! String, request as! DeleteWorkspaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1952,7 +1965,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getCodeSourceWithOptions(_ CodeSourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCodeSourceResponse {
+    public func getCodeSourceWithOptions(_ CodeSourceId: String, _ request: GetCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCodeSourceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1972,10 +1986,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getCodeSource(_ CodeSourceId: String) async throws -> GetCodeSourceResponse {
+    public func getCodeSource(_ CodeSourceId: String, _ request: GetCodeSourceRequest) async throws -> GetCodeSourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getCodeSourceWithOptions(CodeSourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getCodeSourceWithOptions(CodeSourceId as! String, request as! GetCodeSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2051,7 +2065,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDatasetWithOptions(_ DatasetId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetResponse {
+    public func getDatasetWithOptions(_ DatasetId: String, _ request: GetDatasetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -2071,10 +2086,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDataset(_ DatasetId: String) async throws -> GetDatasetResponse {
+    public func getDataset(_ DatasetId: String, _ request: GetDatasetRequest) async throws -> GetDatasetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getDatasetWithOptions(DatasetId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getDatasetWithOptions(DatasetId as! String, request as! GetDatasetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2225,7 +2240,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetVersionResponse {
+    public func getDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ request: GetDatasetVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetVersionResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -2245,10 +2261,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDatasetVersion(_ DatasetId: String, _ VersionName: String) async throws -> GetDatasetVersionResponse {
+    public func getDatasetVersion(_ DatasetId: String, _ VersionName: String, _ request: GetDatasetVersionRequest) async throws -> GetDatasetVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, request as! GetDatasetVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2387,7 +2403,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getModelWithOptions(_ ModelId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelResponse {
+    public func getModelWithOptions(_ ModelId: String, _ request: GetModelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -2407,14 +2424,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getModel(_ ModelId: String) async throws -> GetModelResponse {
+    public func getModel(_ ModelId: String, _ request: GetModelRequest) async throws -> GetModelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getModelWithOptions(ModelId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getModelWithOptions(ModelId as! String, request as! GetModelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getModelVersionWithOptions(_ ModelId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelVersionResponse {
+    public func getModelVersionWithOptions(_ ModelId: String, _ VersionName: String, _ request: GetModelVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModelVersionResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -2434,10 +2452,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getModelVersion(_ ModelId: String, _ VersionName: String) async throws -> GetModelVersionResponse {
+    public func getModelVersion(_ ModelId: String, _ VersionName: String, _ request: GetModelVersionRequest) async throws -> GetModelVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getModelVersionWithOptions(ModelId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getModelVersionWithOptions(ModelId as! String, VersionName as! String, request as! GetModelVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3343,6 +3361,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.roles)) {
             query["Roles"] = request.roles ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3519,7 +3540,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPermissionsWithOptions(_ WorkspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPermissionsResponse {
+    public func listPermissionsWithOptions(_ WorkspaceId: String, _ request: ListPermissionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPermissionsResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -3539,10 +3561,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPermissions(_ WorkspaceId: String) async throws -> ListPermissionsResponse {
+    public func listPermissions(_ WorkspaceId: String, _ request: ListPermissionsRequest) async throws -> ListPermissionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listPermissionsWithOptions(WorkspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listPermissionsWithOptions(WorkspaceId as! String, request as! ListPermissionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3972,7 +3994,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishCodeSourceWithOptions(_ CodeSourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishCodeSourceResponse {
+    public func publishCodeSourceWithOptions(_ CodeSourceId: String, _ request: PublishCodeSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishCodeSourceResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -3992,14 +4015,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishCodeSource(_ CodeSourceId: String) async throws -> PublishCodeSourceResponse {
+    public func publishCodeSource(_ CodeSourceId: String, _ request: PublishCodeSourceRequest) async throws -> PublishCodeSourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await publishCodeSourceWithOptions(CodeSourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await publishCodeSourceWithOptions(CodeSourceId as! String, request as! PublishCodeSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishDatasetWithOptions(_ DatasetId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishDatasetResponse {
+    public func publishDatasetWithOptions(_ DatasetId: String, _ request: PublishDatasetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishDatasetResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -4019,14 +4043,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishDataset(_ DatasetId: String) async throws -> PublishDatasetResponse {
+    public func publishDataset(_ DatasetId: String, _ request: PublishDatasetRequest) async throws -> PublishDatasetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await publishDatasetWithOptions(DatasetId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await publishDatasetWithOptions(DatasetId as! String, request as! PublishDatasetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishImageWithOptions(_ ImageId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishImageResponse {
+    public func publishImageWithOptions(_ ImageId: String, _ request: PublishImageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishImageResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -4046,14 +4071,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishImage(_ ImageId: String) async throws -> PublishImageResponse {
+    public func publishImage(_ ImageId: String, _ request: PublishImageRequest) async throws -> PublishImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await publishImageWithOptions(ImageId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await publishImageWithOptions(ImageId as! String, request as! PublishImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeImageWithOptions(_ ImageId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveImageResponse {
+    public func removeImageWithOptions(_ ImageId: String, _ request: RemoveImageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveImageResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -4073,14 +4099,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeImage(_ ImageId: String) async throws -> RemoveImageResponse {
+    public func removeImage(_ ImageId: String, _ request: RemoveImageRequest) async throws -> RemoveImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await removeImageWithOptions(ImageId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await removeImageWithOptions(ImageId as! String, request as! RemoveImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeImageLabelsWithOptions(_ ImageId: String, _ LabelKey: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveImageLabelsResponse {
+    public func removeImageLabelsWithOptions(_ ImageId: String, _ LabelKey: String, _ request: RemoveImageLabelsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveImageLabelsResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -4100,14 +4127,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeImageLabels(_ ImageId: String, _ LabelKey: String) async throws -> RemoveImageLabelsResponse {
+    public func removeImageLabels(_ ImageId: String, _ LabelKey: String, _ request: RemoveImageLabelsRequest) async throws -> RemoveImageLabelsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await removeImageLabelsWithOptions(ImageId as! String, LabelKey as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await removeImageLabelsWithOptions(ImageId as! String, LabelKey as! String, request as! RemoveImageLabelsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeMemberRoleWithOptions(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveMemberRoleResponse {
+    public func removeMemberRoleWithOptions(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ request: RemoveMemberRoleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveMemberRoleResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -4127,10 +4155,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeMemberRole(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String) async throws -> RemoveMemberRoleResponse {
+    public func removeMemberRole(_ WorkspaceId: String, _ MemberId: String, _ RoleName: String, _ request: RemoveMemberRoleRequest) async throws -> RemoveMemberRoleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await removeMemberRoleWithOptions(WorkspaceId as! String, MemberId as! String, RoleName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await removeMemberRoleWithOptions(WorkspaceId as! String, MemberId as! String, RoleName as! String, request as! RemoveMemberRoleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
