@@ -59,7 +59,8 @@ open class Client : AlibabacloudOpenApi.Client {
                 var _request: Tea.TeaRequest = Tea.TeaRequest()
                 var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
                 var boundary: String = TeaFileForm.Client.getBoundary()
-                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                var tmp: String = try TeaUtils.Client.assertAsString(form["host"])
+                var host: String = (bucketName as! String) + "." + (tmp as! String)
                 _request.protocol_ = "HTTPS"
                 _request.method = "POST"
                 _request.pathname = "/"
@@ -865,7 +866,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getAppConfigWithOptions(_ workspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAppConfigResponse {
+    public func getAppConfigWithOptions(_ workspaceId: String, _ request: GetAppConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAppConfigResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -885,10 +887,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getAppConfig(_ workspaceId: String) async throws -> GetAppConfigResponse {
+    public func getAppConfig(_ workspaceId: String, _ request: GetAppConfigRequest) async throws -> GetAppConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getAppConfigWithOptions(workspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getAppConfigWithOptions(workspaceId as! String, request as! GetAppConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2486,7 +2488,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "contentType": ""
             ])
             ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "host": AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType),
                 "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
                 "policy": authResponseBody["EncodedPolicy"] ?? "",
                 "Signature": authResponseBody["Signature"] ?? "",

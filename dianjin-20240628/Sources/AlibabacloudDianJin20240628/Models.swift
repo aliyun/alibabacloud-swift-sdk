@@ -4738,6 +4738,30 @@ public class GenDocQaResultResponse : Tea.TeaModel {
     }
 }
 
+public class GetAppConfigRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetAppConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var embeddingTypeList: [[String: String]]?
