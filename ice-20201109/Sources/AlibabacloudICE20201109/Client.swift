@@ -12420,6 +12420,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func subYikeUserCreditWithOptions(_ request: SubYikeUserCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubYikeUserCreditResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credit)) {
+            query["Credit"] = request.credit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.yikeUserId)) {
+            query["YikeUserId"] = request.yikeUserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubYikeUserCredit",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubYikeUserCreditResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func subYikeUserCredit(_ request: SubYikeUserCreditRequest) async throws -> SubYikeUserCreditResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await subYikeUserCreditWithOptions(request as! SubYikeUserCreditRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitAIAgentVideoAuditTaskWithOptions(_ tmpReq: SubmitAIAgentVideoAuditTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAIAgentVideoAuditTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitAIAgentVideoAuditTaskShrinkRequest = SubmitAIAgentVideoAuditTaskShrinkRequest([:])
