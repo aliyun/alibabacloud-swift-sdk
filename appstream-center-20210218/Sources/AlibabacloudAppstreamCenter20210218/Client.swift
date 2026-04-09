@@ -66,6 +66,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAuthCodeWithOptions(_ request: GetAuthCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAuthCodeResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tokenType)) {
+            query["TokenType"] = request.tokenType ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoCreateUser)) {
             body["AutoCreateUser"] = request.autoCreateUser!;
@@ -80,6 +84,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Policy"] = request.policy ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

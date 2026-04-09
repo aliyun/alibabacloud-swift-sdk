@@ -150,6 +150,8 @@ public class GetAuthCodeRequest : Tea.TeaModel {
 
     public var policy: String?
 
+    public var tokenType: String?
+
     public override init() {
         super.init()
     }
@@ -176,6 +178,9 @@ public class GetAuthCodeRequest : Tea.TeaModel {
         if self.policy != nil {
             map["Policy"] = self.policy!
         }
+        if self.tokenType != nil {
+            map["TokenType"] = self.tokenType!
+        }
         return map
     }
 
@@ -192,6 +197,9 @@ public class GetAuthCodeRequest : Tea.TeaModel {
         }
         if let value = dict["Policy"] as? String {
             self.policy = value
+        }
+        if let value = dict["TokenType"] as? String {
+            self.tokenType = value
         }
     }
 }
