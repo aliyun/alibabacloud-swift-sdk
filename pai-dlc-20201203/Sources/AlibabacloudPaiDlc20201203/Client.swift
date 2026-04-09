@@ -90,6 +90,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.debuggerConfigContent)) {
             body["DebuggerConfigContent"] = request.debuggerConfigContent ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             body["DisplayName"] = request.displayName ?? "";
         }
@@ -261,7 +264,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteJobWithOptions(_ JobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteJobResponse {
+    public func deleteJobWithOptions(_ JobId: String, _ request: DeleteJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteJobResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -281,10 +285,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteJob(_ JobId: String) async throws -> DeleteJobResponse {
+    public func deleteJob(_ JobId: String, _ request: DeleteJobRequest) async throws -> DeleteJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteJobWithOptions(JobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteJobWithOptions(JobId as! String, request as! DeleteJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -884,6 +888,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.caller)) {
             query["Caller"] = request.caller ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             query["DisplayName"] = request.displayName ?? "";
         }
@@ -1130,7 +1137,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopJobWithOptions(_ JobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopJobResponse {
+    public func stopJobWithOptions(_ JobId: String, _ request: StopJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopJobResponse {
+        try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1150,10 +1158,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopJob(_ JobId: String) async throws -> StopJobResponse {
+    public func stopJob(_ JobId: String, _ request: StopJobRequest) async throws -> StopJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await stopJobWithOptions(JobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await stopJobWithOptions(JobId as! String, request as! StopJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1195,6 +1203,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.jobSpecs)) {
             body["JobSpecs"] = request.jobSpecs ?? [];

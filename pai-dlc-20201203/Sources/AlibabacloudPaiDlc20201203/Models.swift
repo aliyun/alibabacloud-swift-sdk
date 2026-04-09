@@ -6374,6 +6374,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var debuggerConfigContent: String?
 
+    public var description_: String?
+
     public var displayName: String?
 
     public var elasticSpec: JobElasticSpec?
@@ -6454,6 +6456,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.debuggerConfigContent != nil {
             map["DebuggerConfigContent"] = self.debuggerConfigContent!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
@@ -6559,6 +6564,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["DebuggerConfigContent"] as? String {
             self.debuggerConfigContent = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
@@ -7038,6 +7046,30 @@ public class CreateTensorboardResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteJobRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -8126,6 +8158,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var dataSources: [GetJobResponseBody.DataSources]?
 
+    public var description_: String?
+
     public var displayName: String?
 
     public var duration: Int64?
@@ -8248,6 +8282,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataSources"] = tmp
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
@@ -8432,6 +8469,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
             }
             self.dataSources = tmp
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
@@ -10437,6 +10477,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var caller: String?
 
+    public var description_: String?
+
     public var displayName: String?
 
     public var displayNameSearchMode: String?
@@ -10523,6 +10565,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.caller != nil {
             map["Caller"] = self.caller!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
@@ -10634,6 +10679,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if let value = dict["Caller"] as? String {
             self.caller = value
         }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
         }
@@ -10740,6 +10788,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
     public var caller: String?
 
+    public var description_: String?
+
     public var displayName: String?
 
     public var displayNameSearchMode: String?
@@ -10826,6 +10876,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.caller != nil {
             map["Caller"] = self.caller!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
@@ -10936,6 +10989,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Caller"] as? String {
             self.caller = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
@@ -11561,6 +11617,30 @@ public class StartTensorboardResponse : Tea.TeaModel {
     }
 }
 
+public class StopJobRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class StopJobResponseBody : Tea.TeaModel {
     public var jobId: String?
 
@@ -11773,6 +11853,8 @@ public class StopTensorboardResponse : Tea.TeaModel {
 public class UpdateJobRequest : Tea.TeaModel {
     public var accessibility: String?
 
+    public var description_: String?
+
     public var jobSpecs: [JobSpec]?
 
     public var priority: Int32?
@@ -11794,6 +11876,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.jobSpecs != nil {
             var tmp : [Any] = []
             for k in self.jobSpecs! {
@@ -11811,6 +11896,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["JobSpecs"] as? [Any?] {
             var tmp : [JobSpec] = []
