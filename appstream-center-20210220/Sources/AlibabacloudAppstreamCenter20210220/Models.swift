@@ -1908,6 +1908,12 @@ public class GetStsTokenRequest : Tea.TeaModel {
 
 public class GetStsTokenResponseBody : Tea.TeaModel {
     public class StsTokenModel : Tea.TeaModel {
+        public var endUserId: String?
+
+        public var loginToken: String?
+
+        public var profileRegion: String?
+
         public var sessionId: String?
 
         public var stsToken: String?
@@ -1928,6 +1934,15 @@ public class GetStsTokenResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.loginToken != nil {
+                map["LoginToken"] = self.loginToken!
+            }
+            if self.profileRegion != nil {
+                map["ProfileRegion"] = self.profileRegion!
+            }
             if self.sessionId != nil {
                 map["SessionId"] = self.sessionId!
             }
@@ -1942,6 +1957,15 @@ public class GetStsTokenResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+            if let value = dict["LoginToken"] as? String {
+                self.loginToken = value
+            }
+            if let value = dict["ProfileRegion"] as? String {
+                self.profileRegion = value
+            }
             if let value = dict["SessionId"] as? String {
                 self.sessionId = value
             }
