@@ -15052,6 +15052,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMemoriesWithOptions(_ request: SearchMemoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMemoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            query["ApplicationId"] = request.applicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeBegin)) {
+            query["CreateTimeBegin"] = request.createTimeBegin ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeEnd)) {
+            query["CreateTimeEnd"] = request.createTimeEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryAgentId)) {
+            query["MemoryAgentId"] = request.memoryAgentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryUserId)) {
+            query["MemoryUserId"] = request.memoryUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            query["TopK"] = request.topK ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchMemories",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchMemoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMemories(_ request: SearchMemoriesRequest) async throws -> SearchMemoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchMemoriesWithOptions(request as! SearchMemoriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setPolarFsFileQuotaWithOptions(_ request: SetPolarFsFileQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetPolarFsFileQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
