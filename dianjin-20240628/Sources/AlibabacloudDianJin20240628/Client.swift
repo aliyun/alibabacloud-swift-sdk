@@ -827,6 +827,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exchangeEntitlementWithOptions(_ workspaceId: String, _ tenantId: String, _ request: ExchangeEntitlementRequest, _ headers: ExchangeEntitlementHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExchangeEntitlementResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["externalUserId"] = request.externalUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyHash)) {
+            body["keyHash"] = request.keyHash ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["templateId"] = request.templateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExchangeEntitlement",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/v1/tenants/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tenantId)) + "/redeem",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExchangeEntitlementResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exchangeEntitlement(_ workspaceId: String, _ tenantId: String, _ request: ExchangeEntitlementRequest) async throws -> ExchangeEntitlementResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ExchangeEntitlementHeaders = ExchangeEntitlementHeaders([:])
+        return try await exchangeEntitlementWithOptions(workspaceId as! String, tenantId as! String, request as! ExchangeEntitlementRequest, headers as! ExchangeEntitlementHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func genDocQaResultWithOptions(_ workspaceId: String, _ request: GenDocQaResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenDocQaResultResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1552,6 +1604,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUsageWithOptions(_ workspaceId: String, _ tenantId: String, _ request: GetUsageRequest, _ headers: GetUsageHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUsageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            query["externalUserId"] = request.externalUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.redemptionOrderNo)) {
+            query["redemptionOrderNo"] = request.redemptionOrderNo ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetUsage",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/v1/tenants/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tenantId)) + "/usage",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUsageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUsage(_ workspaceId: String, _ tenantId: String, _ request: GetUsageRequest) async throws -> GetUsageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetUsageHeaders = GetUsageHeaders([:])
+        return try await getUsageWithOptions(workspaceId as! String, tenantId as! String, request as! GetUsageRequest, headers as! GetUsageHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getVideoCreationTaskResultWithOptions(_ workspaceId: String, _ request: GetVideoCreationTaskResultRequest, _ headers: GetVideoCreationTaskResultHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoCreationTaskResultResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1661,6 +1756,95 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await previewDocumentWithOptions(workspaceId as! String, request as! PreviewDocumentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryApiKeysWithOptions(_ workspaceId: String, _ tenantId: String, _ request: QueryApiKeysRequest, _ headers: QueryApiKeysHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryApiKeysResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            query["externalUserId"] = request.externalUserId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryApiKeys",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/v1/tenants/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tenantId)) + "/apikeys",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryApiKeysResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryApiKeys(_ workspaceId: String, _ tenantId: String, _ request: QueryApiKeysRequest) async throws -> QueryApiKeysResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: QueryApiKeysHeaders = QueryApiKeysHeaders([:])
+        return try await queryApiKeysWithOptions(workspaceId as! String, tenantId as! String, request as! QueryApiKeysRequest, headers as! QueryApiKeysHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRedemptionRecordsWithOptions(_ workspaceId: String, _ tenantId: String, _ request: QueryRedemptionRecordsRequest, _ headers: QueryRedemptionRecordsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRedemptionRecordsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            query["externalUserId"] = request.externalUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.redemptionOrderNo)) {
+            query["redemptionOrderNo"] = request.redemptionOrderNo ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xLoadTest)) {
+            realHeaders["X-Load-Test"] = TeaUtils.Client.toJSONString(headers.xLoadTest);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryRedemptionRecords",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/v1/tenants/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tenantId)) + "/redemption-records",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryRedemptionRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRedemptionRecords(_ workspaceId: String, _ tenantId: String, _ request: QueryRedemptionRecordsRequest) async throws -> QueryRedemptionRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: QueryRedemptionRecordsHeaders = QueryRedemptionRecordsHeaders([:])
+        return try await queryRedemptionRecordsWithOptions(workspaceId as! String, tenantId as! String, request as! QueryRedemptionRecordsRequest, headers as! QueryRedemptionRecordsHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
