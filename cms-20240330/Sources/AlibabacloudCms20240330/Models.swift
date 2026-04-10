@@ -15749,6 +15749,30 @@ public class CreateDigitalEmployeeSkillResponse : Tea.TeaModel {
     }
 }
 
+public class CreateEntityStoreRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class CreateEntityStoreResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -17444,6 +17468,30 @@ public class CreateServiceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateServiceObservabilityRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class CreateServiceObservabilityResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18070,6 +18118,30 @@ public class DeleteAddonReleaseResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteAggTaskGroupRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteAggTaskGroupResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18294,6 +18366,30 @@ public class DeleteAlertWebhooksResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteBizTraceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteBizTraceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18456,6 +18552,30 @@ public class DeleteCloudResourceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDatasetRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteDatasetResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18534,6 +18654,30 @@ public class DeleteDatasetResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteDeliveryTaskRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -18618,6 +18762,30 @@ public class DeleteDeliveryTaskResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDigitalEmployeeRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteDigitalEmployeeResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18699,6 +18867,30 @@ public class DeleteDigitalEmployeeResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDigitalEmployeeSkillRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteDigitalEmployeeSkillResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -18777,6 +18969,30 @@ public class DeleteDigitalEmployeeSkillResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteEntityStoreRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -19109,6 +19325,30 @@ public class DeleteMemoriesResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteMemoryRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteMemoryResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -19187,6 +19427,30 @@ public class DeleteMemoryResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteMemoryStoreRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -19271,6 +19535,30 @@ public class DeleteMemoryStoreResponse : Tea.TeaModel {
     }
 }
 
+public class DeletePrometheusInstanceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeletePrometheusInstanceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -19349,6 +19637,30 @@ public class DeletePrometheusInstanceResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeletePrometheusViewRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -19433,6 +19745,30 @@ public class DeletePrometheusViewResponse : Tea.TeaModel {
     }
 }
 
+public class DeletePrometheusVirtualInstanceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeletePrometheusVirtualInstanceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -19511,6 +19847,30 @@ public class DeletePrometheusVirtualInstanceResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteServiceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -19595,6 +19955,30 @@ public class DeleteServiceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteThreadRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class DeleteThreadResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -19673,6 +20057,30 @@ public class DeleteThreadResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteUmodelRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -19994,6 +20402,30 @@ public class DeleteUmodelDataResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class DeleteWorkspaceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -21339,6 +21771,30 @@ public class GetAddonCodeTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetAddonReleaseRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetAddonReleaseResponseBody : Tea.TeaModel {
     public class Release : Tea.TeaModel {
         public class Conditions : Tea.TeaModel {
@@ -22266,6 +22722,30 @@ public class GetAddonSchemaResponse : Tea.TeaModel {
     }
 }
 
+public class GetAggTaskGroupRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetAggTaskGroupResponseBody : Tea.TeaModel {
     public class AggTaskGroup : Tea.TeaModel {
         public class Tags : Tea.TeaModel {
@@ -22605,6 +23085,30 @@ public class GetAggTaskGroupResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetBizTraceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -23069,6 +23573,30 @@ public class GetCmsServiceResponse : Tea.TeaModel {
     }
 }
 
+public class GetDatasetRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetDatasetResponseBody : Tea.TeaModel {
     public var createTime: String?
 
@@ -23215,6 +23743,30 @@ public class GetDatasetResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetDeliveryTaskRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -23578,6 +24130,30 @@ public class GetDeliveryTaskResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetDigitalEmployeeRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -24117,6 +24693,30 @@ public class GetDigitalEmployeeSkillResponse : Tea.TeaModel {
     }
 }
 
+public class GetEntityStoreRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetEntityStoreResponseBody : Tea.TeaModel {
     public var regionId: String?
 
@@ -24535,6 +25135,30 @@ public class GetEntityStoreDataResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetIntegrationPolicyRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -25498,6 +26122,8 @@ public class GetMemoriesRequest : Tea.TeaModel {
 
     public var appId: String?
 
+    public var filters: [String: Any]?
+
     public var page: Int32?
 
     public var pageSize: Int32?
@@ -25526,6 +26152,9 @@ public class GetMemoriesRequest : Tea.TeaModel {
         if self.appId != nil {
             map["appId"] = self.appId!
         }
+        if self.filters != nil {
+            map["filters"] = self.filters!
+        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -25548,6 +26177,9 @@ public class GetMemoriesRequest : Tea.TeaModel {
         }
         if let value = dict["appId"] as? String {
             self.appId = value
+        }
+        if let value = dict["filters"] as? [String: Any] {
+            self.filters = value
         }
         if let value = dict["page"] as? Int32 {
             self.page = value
@@ -25861,6 +26493,30 @@ public class GetMemoriesResponse : Tea.TeaModel {
     }
 }
 
+public class GetMemoryRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetMemoryResponseBody : Tea.TeaModel {
     public var agentId: String?
 
@@ -26043,6 +26699,30 @@ public class GetMemoryResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetMemoryHistoryRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -26300,6 +26980,30 @@ public class GetMemoryHistoryResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetMemoryStoreRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -27686,6 +28390,30 @@ public class GetPrometheusViewResponse : Tea.TeaModel {
     }
 }
 
+public class GetServiceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetServiceResponseBody : Tea.TeaModel {
     public class Service : Tea.TeaModel {
         public class Tags : Tea.TeaModel {
@@ -27956,6 +28684,30 @@ public class GetServiceResponse : Tea.TeaModel {
     }
 }
 
+public class GetServiceObservabilityRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetServiceObservabilityResponseBody : Tea.TeaModel {
     public class EntryPointInfo : Tea.TeaModel {
         public var authToken: String?
@@ -28155,6 +28907,30 @@ public class GetServiceObservabilityResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetThreadRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -28712,6 +29488,30 @@ public class GetThreadDataResponse : Tea.TeaModel {
     }
 }
 
+public class GetUmodelRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class GetUmodelResponseBody : Tea.TeaModel {
     public class CommonSchemaRef : Tea.TeaModel {
         public var group: String?
@@ -28874,6 +29674,30 @@ public class GetUmodelResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetUmodelCommonSchemaRefRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -29219,6 +30043,30 @@ public class GetUmodelDataResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class GetWorkspaceRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -33225,6 +34073,30 @@ public class ListDeliveryTasksResponse : Tea.TeaModel {
     }
 }
 
+public class ListDigitalEmployeeSkillVersionsRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
 public class ListDigitalEmployeeSkillVersionsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var createTime: String?
@@ -35376,6 +36248,30 @@ public class ListIntegrationPoliciesResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
+    }
+}
+
+public class ListIntegrationPolicyAddonsRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
     }
 }
 
@@ -41930,13 +42826,17 @@ public class SearchMemoriesRequest : Tea.TeaModel {
 
     public var appId: String?
 
-    public var metadata: [String: Any]?
+    public var filters: [String: Any]?
 
     public var query: String?
 
     public var rerank: Bool?
 
+    public var retrieveLevel: String?
+
     public var runId: String?
+
+    public var threshold: Double?
 
     public var topK: Int32?
 
@@ -41962,8 +42862,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.appId != nil {
             map["appId"] = self.appId!
         }
-        if self.metadata != nil {
-            map["metadata"] = self.metadata!
+        if self.filters != nil {
+            map["filters"] = self.filters!
         }
         if self.query != nil {
             map["query"] = self.query!
@@ -41971,8 +42871,14 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.rerank != nil {
             map["rerank"] = self.rerank!
         }
+        if self.retrieveLevel != nil {
+            map["retrieveLevel"] = self.retrieveLevel!
+        }
         if self.runId != nil {
             map["runId"] = self.runId!
+        }
+        if self.threshold != nil {
+            map["threshold"] = self.threshold!
         }
         if self.topK != nil {
             map["topK"] = self.topK!
@@ -41991,8 +42897,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if let value = dict["appId"] as? String {
             self.appId = value
         }
-        if let value = dict["metadata"] as? [String: Any] {
-            self.metadata = value
+        if let value = dict["filters"] as? [String: Any] {
+            self.filters = value
         }
         if let value = dict["query"] as? String {
             self.query = value
@@ -42000,8 +42906,14 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if let value = dict["rerank"] as? Bool {
             self.rerank = value
         }
+        if let value = dict["retrieveLevel"] as? String {
+            self.retrieveLevel = value
+        }
         if let value = dict["runId"] as? String {
             self.runId = value
+        }
+        if let value = dict["threshold"] as? Double {
+            self.threshold = value
         }
         if let value = dict["topK"] as? Int32 {
             self.topK = value
@@ -42072,7 +42984,7 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
 
         public var memory: String?
 
-        public var metadata: String?
+        public var metadata: [String: Any]?
 
         public var role: String?
 
@@ -42157,7 +43069,7 @@ public class SearchMemoriesResponseBody : Tea.TeaModel {
             if let value = dict["memory"] as? String {
                 self.memory = value
             }
-            if let value = dict["metadata"] as? String {
+            if let value = dict["metadata"] as? [String: Any] {
                 self.metadata = value
             }
             if let value = dict["role"] as? String {
