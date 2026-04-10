@@ -54188,6 +54188,112 @@ public class DescribePhysicalConnectionsRequest : Tea.TeaModel {
 public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
     public class PhysicalConnectionSet : Tea.TeaModel {
         public class PhysicalConnectionType : Tea.TeaModel {
+            public class MacsecKeys : Tea.TeaModel {
+                public class MacsecKey : Tea.TeaModel {
+                    public var cak: String?
+
+                    public var cipherSuite: String?
+
+                    public var ckn: String?
+
+                    public var startOn: String?
+
+                    public var status: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cak != nil {
+                            map["Cak"] = self.cak!
+                        }
+                        if self.cipherSuite != nil {
+                            map["CipherSuite"] = self.cipherSuite!
+                        }
+                        if self.ckn != nil {
+                            map["Ckn"] = self.ckn!
+                        }
+                        if self.startOn != nil {
+                            map["StartOn"] = self.startOn!
+                        }
+                        if self.status != nil {
+                            map["Status"] = self.status!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Cak"] as? String {
+                            self.cak = value
+                        }
+                        if let value = dict["CipherSuite"] as? String {
+                            self.cipherSuite = value
+                        }
+                        if let value = dict["Ckn"] as? String {
+                            self.ckn = value
+                        }
+                        if let value = dict["StartOn"] as? String {
+                            self.startOn = value
+                        }
+                        if let value = dict["Status"] as? String {
+                            self.status = value
+                        }
+                    }
+                }
+                public var macsecKey: [DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.MacsecKeys.MacsecKey]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.macsecKey != nil {
+                        var tmp : [Any] = []
+                        for k in self.macsecKey! {
+                            tmp.append(k.toMap())
+                        }
+                        map["MacsecKey"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MacsecKey"] as? [Any?] {
+                        var tmp : [DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.MacsecKeys.MacsecKey] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.MacsecKeys.MacsecKey()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.macsecKey = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tags : Tea.TeaModel {
                     public var key: String?
@@ -54302,6 +54408,8 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
 
             public var loaStatus: String?
 
+            public var macsecKeys: DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.MacsecKeys?
+
             public var name: String?
 
             public var opticalModuleModel: String?
@@ -54358,6 +54466,7 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.macsecKeys?.validate()
                 try self.tags?.validate()
             }
 
@@ -54410,6 +54519,9 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if self.loaStatus != nil {
                     map["LoaStatus"] = self.loaStatus!
+                }
+                if self.macsecKeys != nil {
+                    map["MacsecKeys"] = self.macsecKeys?.toMap()
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
@@ -54532,6 +54644,11 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LoaStatus"] as? String {
                     self.loaStatus = value
+                }
+                if let value = dict["MacsecKeys"] as? [String: Any?] {
+                    var model = DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.MacsecKeys()
+                    model.fromMap(value)
+                    self.macsecKeys = model
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
