@@ -7124,6 +7124,8 @@ public class FaceGuardRiskRequest : Tea.TeaModel {
 
     public var productCode: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -7150,6 +7152,9 @@ public class FaceGuardRiskRequest : Tea.TeaModel {
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -7166,6 +7171,9 @@ public class FaceGuardRiskRequest : Tea.TeaModel {
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
