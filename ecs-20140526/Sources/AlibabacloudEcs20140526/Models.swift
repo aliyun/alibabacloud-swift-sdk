@@ -36955,7 +36955,11 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
 
                     public var capacityReservationUsages: DescribeCapacityReservationsResponseBody.CapacityReservationSet.CapacityReservationItem.AllocatedResources.AllocatedResource.CapacityReservationUsages?
 
+                    public var failedAmount: Int32?
+
                     public var instanceType: String?
+
+                    public var lockedAmount: Int32?
 
                     public var totalAmount: Int32?
 
@@ -36984,8 +36988,14 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                         if self.capacityReservationUsages != nil {
                             map["CapacityReservationUsages"] = self.capacityReservationUsages?.toMap()
                         }
+                        if self.failedAmount != nil {
+                            map["FailedAmount"] = self.failedAmount!
+                        }
                         if self.instanceType != nil {
                             map["InstanceType"] = self.instanceType!
+                        }
+                        if self.lockedAmount != nil {
+                            map["LockedAmount"] = self.lockedAmount!
                         }
                         if self.totalAmount != nil {
                             map["TotalAmount"] = self.totalAmount!
@@ -37009,8 +37019,14 @@ public class DescribeCapacityReservationsResponseBody : Tea.TeaModel {
                             model.fromMap(value)
                             self.capacityReservationUsages = model
                         }
+                        if let value = dict["FailedAmount"] as? Int32 {
+                            self.failedAmount = value
+                        }
                         if let value = dict["InstanceType"] as? String {
                             self.instanceType = value
+                        }
+                        if let value = dict["LockedAmount"] as? Int32 {
+                            self.lockedAmount = value
                         }
                         if let value = dict["TotalAmount"] as? Int32 {
                             self.totalAmount = value
@@ -49380,7 +49396,11 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
 
                     public var elasticityAssuranceUsages: DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.AllocatedResources.AllocatedResource.ElasticityAssuranceUsages?
 
+                    public var failedAmount: Int32?
+
                     public var instanceType: String?
+
+                    public var lockedAmount: Int32?
 
                     public var totalAmount: Int32?
 
@@ -49409,8 +49429,14 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                         if self.elasticityAssuranceUsages != nil {
                             map["ElasticityAssuranceUsages"] = self.elasticityAssuranceUsages?.toMap()
                         }
+                        if self.failedAmount != nil {
+                            map["FailedAmount"] = self.failedAmount!
+                        }
                         if self.instanceType != nil {
                             map["InstanceType"] = self.instanceType!
+                        }
+                        if self.lockedAmount != nil {
+                            map["LockedAmount"] = self.lockedAmount!
                         }
                         if self.totalAmount != nil {
                             map["TotalAmount"] = self.totalAmount!
@@ -49434,8 +49460,14 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                             model.fromMap(value)
                             self.elasticityAssuranceUsages = model
                         }
+                        if let value = dict["FailedAmount"] as? Int32 {
+                            self.failedAmount = value
+                        }
                         if let value = dict["InstanceType"] as? String {
                             self.instanceType = value
+                        }
+                        if let value = dict["LockedAmount"] as? Int32 {
+                            self.lockedAmount = value
                         }
                         if let value = dict["TotalAmount"] as? Int32 {
                             self.totalAmount = value
