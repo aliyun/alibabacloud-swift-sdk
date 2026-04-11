@@ -439,6 +439,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupSpec)) {
             query["InstanceGroupSpec"] = request.instanceGroupSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceVersion)) {
+            query["InstanceVersion"] = request.instanceVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipv6Bandwidth)) {
             query["Ipv6Bandwidth"] = request.ipv6Bandwidth!;
         }
@@ -1196,6 +1199,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupName)) {
             query["InstanceGroupName"] = request.instanceGroupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceVersion)) {
+            query["InstanceVersion"] = request.instanceVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyPairId)) {
             query["KeyPairId"] = request.keyPairId ?? "";
         }
@@ -1272,6 +1278,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupName)) {
             query["InstanceGroupName"] = request.instanceGroupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceVersion)) {
+            query["InstanceVersion"] = request.instanceVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyPairId)) {
             query["KeyPairId"] = request.keyPairId ?? "";
         }
@@ -1298,6 +1307,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortKey)) {
+            query["SortKey"] = request.sortKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortType)) {
+            query["SortType"] = request.sortType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
@@ -2339,6 +2354,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
             query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceFilePath)) {
             query["SourceFilePath"] = request.sourceFilePath ?? "";
@@ -3620,6 +3638,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.autoInstall)) {
             query["AutoInstall"] = request.autoInstall!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceFilePath)) {
             query["SourceFilePath"] = request.sourceFilePath ?? "";

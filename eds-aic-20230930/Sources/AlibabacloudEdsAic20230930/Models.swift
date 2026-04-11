@@ -2164,6 +2164,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var instanceGroupSpec: String?
 
+    public var instanceVersion: String?
+
     public var ipv6Bandwidth: Int32?
 
     public var keyPairId: String?
@@ -2247,6 +2249,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if self.instanceGroupSpec != nil {
             map["InstanceGroupSpec"] = self.instanceGroupSpec!
+        }
+        if self.instanceVersion != nil {
+            map["InstanceVersion"] = self.instanceVersion!
         }
         if self.ipv6Bandwidth != nil {
             map["Ipv6Bandwidth"] = self.ipv6Bandwidth!
@@ -2340,6 +2345,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupSpec"] as? String {
             self.instanceGroupSpec = value
+        }
+        if let value = dict["InstanceVersion"] as? String {
+            self.instanceVersion = value
         }
         if let value = dict["Ipv6Bandwidth"] as? Int32 {
             self.ipv6Bandwidth = value
@@ -2466,6 +2474,8 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var instanceGroupSpec: String?
 
+    public var instanceVersion: String?
+
     public var ipv6Bandwidth: Int32?
 
     public var keyPairId: String?
@@ -2548,6 +2558,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if self.instanceGroupSpec != nil {
             map["InstanceGroupSpec"] = self.instanceGroupSpec!
+        }
+        if self.instanceVersion != nil {
+            map["InstanceVersion"] = self.instanceVersion!
         }
         if self.ipv6Bandwidth != nil {
             map["Ipv6Bandwidth"] = self.ipv6Bandwidth!
@@ -2641,6 +2654,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupSpec"] as? String {
             self.instanceGroupSpec = value
+        }
+        if let value = dict["InstanceVersion"] as? String {
+            self.instanceVersion = value
         }
         if let value = dict["Ipv6Bandwidth"] as? Int32 {
             self.ipv6Bandwidth = value
@@ -6757,6 +6773,8 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
 
     public var instanceGroupName: String?
 
+    public var instanceVersion: String?
+
     public var keyPairId: String?
 
     public var maxResults: Int32?
@@ -6796,6 +6814,9 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if self.instanceGroupName != nil {
             map["InstanceGroupName"] = self.instanceGroupName!
+        }
+        if self.instanceVersion != nil {
+            map["InstanceVersion"] = self.instanceVersion!
         }
         if self.keyPairId != nil {
             map["KeyPairId"] = self.keyPairId!
@@ -6838,6 +6859,9 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupName"] as? String {
             self.instanceGroupName = value
+        }
+        if let value = dict["InstanceVersion"] as? String {
+            self.instanceVersion = value
         }
         if let value = dict["KeyPairId"] as? String {
             self.keyPairId = value
@@ -7572,6 +7596,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var instanceGroupName: String?
 
+    public var instanceVersion: String?
+
     public var keyPairId: String?
 
     public var maxResults: Int32?
@@ -7589,6 +7615,10 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
     public var qosRuleIds: [String]?
 
     public var saleMode: String?
+
+    public var sortKey: String?
+
+    public var sortType: String?
 
     public var status: String?
 
@@ -7635,6 +7665,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if self.instanceGroupName != nil {
             map["InstanceGroupName"] = self.instanceGroupName!
         }
+        if self.instanceVersion != nil {
+            map["InstanceVersion"] = self.instanceVersion!
+        }
         if self.keyPairId != nil {
             map["KeyPairId"] = self.keyPairId!
         }
@@ -7661,6 +7694,12 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
+        }
+        if self.sortKey != nil {
+            map["SortKey"] = self.sortKey!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -7704,6 +7743,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if let value = dict["InstanceGroupName"] as? String {
             self.instanceGroupName = value
         }
+        if let value = dict["InstanceVersion"] as? String {
+            self.instanceVersion = value
+        }
         if let value = dict["KeyPairId"] as? String {
             self.keyPairId = value
         }
@@ -7730,6 +7772,12 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["SaleMode"] as? String {
             self.saleMode = value
+        }
+        if let value = dict["SortKey"] as? String {
+            self.sortKey = value
+        }
+        if let value = dict["SortType"] as? String {
+            self.sortType = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -15265,6 +15313,8 @@ public class ExpandPhoneDataVolumeResponse : Tea.TeaModel {
 public class FetchFileRequest : Tea.TeaModel {
     public var androidInstanceIdList: [String]?
 
+    public var clientToken: String?
+
     public var sourceFilePath: String?
 
     public var uploadEndpoint: String?
@@ -15290,6 +15340,9 @@ public class FetchFileRequest : Tea.TeaModel {
         if self.androidInstanceIdList != nil {
             map["AndroidInstanceIdList"] = self.androidInstanceIdList!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.sourceFilePath != nil {
             map["SourceFilePath"] = self.sourceFilePath!
         }
@@ -15309,6 +15362,9 @@ public class FetchFileRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AndroidInstanceIdList"] as? [String] {
             self.androidInstanceIdList = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["SourceFilePath"] as? String {
             self.sourceFilePath = value
@@ -16277,6 +16333,46 @@ public class InstallAppRequest : Tea.TeaModel {
 }
 
 public class InstallAppResponseBody : Tea.TeaModel {
+    public class ChildTaskInfo : Tea.TeaModel {
+        public var childTaskId: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.childTaskId != nil {
+                map["ChildTaskId"] = self.childTaskId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChildTaskId"] as? String {
+                self.childTaskId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
+    public var childTaskInfo: [InstallAppResponseBody.ChildTaskInfo]?
+
     public var requestId: String?
 
     public var taskId: String?
@@ -16295,6 +16391,13 @@ public class InstallAppResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.childTaskInfo != nil {
+            var tmp : [Any] = []
+            for k in self.childTaskInfo! {
+                tmp.append(k.toMap())
+            }
+            map["ChildTaskInfo"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -16306,6 +16409,19 @@ public class InstallAppResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChildTaskInfo"] as? [Any?] {
+            var tmp : [InstallAppResponseBody.ChildTaskInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = InstallAppResponseBody.ChildTaskInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.childTaskInfo = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -21841,6 +21957,8 @@ public class SendFileRequest : Tea.TeaModel {
 
     public var autoInstall: Bool?
 
+    public var clientToken: String?
+
     public var sourceFilePath: String?
 
     public var targetFileName: String?
@@ -21871,6 +21989,9 @@ public class SendFileRequest : Tea.TeaModel {
         if self.autoInstall != nil {
             map["AutoInstall"] = self.autoInstall!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.sourceFilePath != nil {
             map["SourceFilePath"] = self.sourceFilePath!
         }
@@ -21896,6 +22017,9 @@ public class SendFileRequest : Tea.TeaModel {
         }
         if let value = dict["AutoInstall"] as? Bool {
             self.autoInstall = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["SourceFilePath"] as? String {
             self.sourceFilePath = value
@@ -23189,6 +23313,46 @@ public class UninstallAppRequest : Tea.TeaModel {
 }
 
 public class UninstallAppResponseBody : Tea.TeaModel {
+    public class ChildTaskInfo : Tea.TeaModel {
+        public var childTaskId: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.childTaskId != nil {
+                map["ChildTaskId"] = self.childTaskId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChildTaskId"] as? String {
+                self.childTaskId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
+    public var childTaskInfo: [UninstallAppResponseBody.ChildTaskInfo]?
+
     public var requestId: String?
 
     public var taskId: String?
@@ -23207,6 +23371,13 @@ public class UninstallAppResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.childTaskInfo != nil {
+            var tmp : [Any] = []
+            for k in self.childTaskInfo! {
+                tmp.append(k.toMap())
+            }
+            map["ChildTaskInfo"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -23218,6 +23389,19 @@ public class UninstallAppResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChildTaskInfo"] as? [Any?] {
+            var tmp : [UninstallAppResponseBody.ChildTaskInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = UninstallAppResponseBody.ChildTaskInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.childTaskInfo = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
