@@ -31414,6 +31414,8 @@ public class StartAgentRequest : Tea.TeaModel {
         public class BackChannelConfig : Tea.TeaModel {
             public var userTurnEnd: Bool?
 
+            public var version: Int32?
+
             public override init() {
                 super.init()
             }
@@ -31431,6 +31433,9 @@ public class StartAgentRequest : Tea.TeaModel {
                 if self.userTurnEnd != nil {
                     map["UserTurnEnd"] = self.userTurnEnd!
                 }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
                 return map
             }
 
@@ -31438,6 +31443,9 @@ public class StartAgentRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["UserTurnEnd"] as? Bool {
                     self.userTurnEnd = value
+                }
+                if let value = dict["Version"] as? Int32 {
+                    self.version = value
                 }
             }
         }
