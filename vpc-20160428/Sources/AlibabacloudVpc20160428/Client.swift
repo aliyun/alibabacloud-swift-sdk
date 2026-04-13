@@ -1239,6 +1239,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func associateMacSecKeyWithOptions(_ request: AssociateMacSecKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssociateMacSecKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cak)) {
+            query["Cak"] = request.cak ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cipherSuite)) {
+            query["CipherSuite"] = request.cipherSuite ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ckn)) {
+            query["Ckn"] = request.ckn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.physicalConnectionId)) {
+            query["PhysicalConnectionId"] = request.physicalConnectionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AssociateMacSecKey",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AssociateMacSecKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func associateMacSecKey(_ request: AssociateMacSecKeyRequest) async throws -> AssociateMacSecKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await associateMacSecKeyWithOptions(request as! AssociateMacSecKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func associateNetworkAclWithOptions(_ request: AssociateNetworkAclRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssociateNetworkAclResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14340,6 +14383,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableVpcClassicLink(_ request: DisableVpcClassicLinkRequest) async throws -> DisableVpcClassicLinkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await disableVpcClassicLinkWithOptions(request as! DisableVpcClassicLinkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disassociateMacSecKeyWithOptions(_ request: DisassociateMacSecKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisassociateMacSecKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ckn)) {
+            query["Ckn"] = request.ckn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.physicalConnectionId)) {
+            query["PhysicalConnectionId"] = request.physicalConnectionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisassociateMacSecKey",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisassociateMacSecKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disassociateMacSecKey(_ request: DisassociateMacSecKeyRequest) async throws -> DisassociateMacSecKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disassociateMacSecKeyWithOptions(request as! DisassociateMacSecKeyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
