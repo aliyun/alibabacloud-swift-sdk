@@ -20583,6 +20583,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public class PolarClawSaaSApplicationAttribute : Tea.TeaModel {
         public var authCallbackURL: String?
 
+        public var authProviders: [String]?
+
         public var supabaseClusterId: String?
 
         public override init() {
@@ -20602,6 +20604,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.authCallbackURL != nil {
                 map["AuthCallbackURL"] = self.authCallbackURL!
             }
+            if self.authProviders != nil {
+                map["AuthProviders"] = self.authProviders!
+            }
             if self.supabaseClusterId != nil {
                 map["SupabaseClusterId"] = self.supabaseClusterId!
             }
@@ -20612,6 +20617,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AuthCallbackURL"] as? String {
                 self.authCallbackURL = value
+            }
+            if let value = dict["AuthProviders"] as? [String] {
+                self.authProviders = value
             }
             if let value = dict["SupabaseClusterId"] as? String {
                 self.supabaseClusterId = value
