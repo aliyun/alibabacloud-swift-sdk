@@ -19339,6 +19339,8 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
 
             public var sourceInstanceId: String?
 
+            public var sourceResourceId: String?
+
             public var sourceType: String?
 
             public var speed: Int64?
@@ -19482,6 +19484,9 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
                 }
                 if self.sourceInstanceId != nil {
                     map["SourceInstanceId"] = self.sourceInstanceId!
+                }
+                if self.sourceResourceId != nil {
+                    map["SourceResourceId"] = self.sourceResourceId!
                 }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
@@ -19638,6 +19643,9 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SourceInstanceId"] as? String {
                     self.sourceInstanceId = value
+                }
+                if let value = dict["SourceResourceId"] as? String {
+                    self.sourceResourceId = value
                 }
                 if let value = dict["SourceType"] as? String {
                     self.sourceType = value
@@ -24195,6 +24203,8 @@ public class InstallBackupClientsResponse : Tea.TeaModel {
 public class ListProtectedResourcesRequest : Tea.TeaModel {
     public var createdByProduct: String?
 
+    public var hasSnapshot: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -24222,6 +24232,9 @@ public class ListProtectedResourcesRequest : Tea.TeaModel {
         if self.createdByProduct != nil {
             map["CreatedByProduct"] = self.createdByProduct!
         }
+        if self.hasSnapshot != nil {
+            map["HasSnapshot"] = self.hasSnapshot!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -24245,6 +24258,9 @@ public class ListProtectedResourcesRequest : Tea.TeaModel {
         if let value = dict["CreatedByProduct"] as? String {
             self.createdByProduct = value
         }
+        if let value = dict["HasSnapshot"] as? Bool {
+            self.hasSnapshot = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -24265,6 +24281,8 @@ public class ListProtectedResourcesRequest : Tea.TeaModel {
 
 public class ListProtectedResourcesResponseBody : Tea.TeaModel {
     public class ProtectedResources : Tea.TeaModel {
+        public var backupPlanCount: Int64?
+
         public var createdByProduct: String?
 
         public var protectedDataSize: Int64?
@@ -24274,6 +24292,8 @@ public class ListProtectedResourcesResponseBody : Tea.TeaModel {
         public var resourceId: String?
 
         public var resourceOwnerId: Int64?
+
+        public var resourceRegionId: String?
 
         public var snapshotCount: Int64?
 
@@ -24293,6 +24313,9 @@ public class ListProtectedResourcesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backupPlanCount != nil {
+                map["BackupPlanCount"] = self.backupPlanCount!
+            }
             if self.createdByProduct != nil {
                 map["CreatedByProduct"] = self.createdByProduct!
             }
@@ -24308,6 +24331,9 @@ public class ListProtectedResourcesResponseBody : Tea.TeaModel {
             if self.resourceOwnerId != nil {
                 map["ResourceOwnerId"] = self.resourceOwnerId!
             }
+            if self.resourceRegionId != nil {
+                map["ResourceRegionId"] = self.resourceRegionId!
+            }
             if self.snapshotCount != nil {
                 map["SnapshotCount"] = self.snapshotCount!
             }
@@ -24319,6 +24345,9 @@ public class ListProtectedResourcesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackupPlanCount"] as? Int64 {
+                self.backupPlanCount = value
+            }
             if let value = dict["CreatedByProduct"] as? String {
                 self.createdByProduct = value
             }
@@ -24333,6 +24362,9 @@ public class ListProtectedResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceOwnerId"] as? Int64 {
                 self.resourceOwnerId = value
+            }
+            if let value = dict["ResourceRegionId"] as? String {
+                self.resourceRegionId = value
             }
             if let value = dict["SnapshotCount"] as? Int64 {
                 self.snapshotCount = value

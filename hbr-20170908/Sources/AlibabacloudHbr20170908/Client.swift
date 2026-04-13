@@ -3501,6 +3501,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.createdByProduct)) {
             query["CreatedByProduct"] = request.createdByProduct ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hasSnapshot)) {
+            query["HasSnapshot"] = request.hasSnapshot!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
