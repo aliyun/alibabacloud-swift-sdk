@@ -13949,9 +13949,17 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var networkType: String?
+
             public var regionId: String?
 
+            public var securityGroupId: String?
+
             public var topic: String?
+
+            public var vSwitchIds: String?
+
+            public var vpcId: String?
 
             public override init() {
                 super.init()
@@ -13973,11 +13981,23 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
                 }
                 return map
             }
@@ -13990,11 +14010,23 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
                 }
+                if let value = dict["NetworkType"] as? String {
+                    self.networkType = value
+                }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
                 }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
+                }
+                if let value = dict["VSwitchIds"] as? String {
+                    self.vSwitchIds = value
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
                 }
             }
         }
@@ -27376,9 +27408,17 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var instanceId: String?
 
+                public var networkType: String?
+
                 public var regionId: String?
 
+                public var securityGroupId: String?
+
                 public var topic: String?
+
+                public var vSwitchIds: String?
+
+                public var vpcId: String?
 
                 public override init() {
                     super.init()
@@ -27400,11 +27440,23 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.instanceId != nil {
                         map["InstanceId"] = self.instanceId!
                     }
+                    if self.networkType != nil {
+                        map["NetworkType"] = self.networkType!
+                    }
                     if self.regionId != nil {
                         map["RegionId"] = self.regionId!
                     }
+                    if self.securityGroupId != nil {
+                        map["SecurityGroupId"] = self.securityGroupId!
+                    }
                     if self.topic != nil {
                         map["Topic"] = self.topic!
+                    }
+                    if self.vSwitchIds != nil {
+                        map["VSwitchIds"] = self.vSwitchIds!
+                    }
+                    if self.vpcId != nil {
+                        map["VpcId"] = self.vpcId!
                     }
                     return map
                 }
@@ -27417,11 +27469,23 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if let value = dict["InstanceId"] as? String {
                         self.instanceId = value
                     }
+                    if let value = dict["NetworkType"] as? String {
+                        self.networkType = value
+                    }
                     if let value = dict["RegionId"] as? String {
                         self.regionId = value
                     }
+                    if let value = dict["SecurityGroupId"] as? String {
+                        self.securityGroupId = value
+                    }
                     if let value = dict["Topic"] as? String {
                         self.topic = value
+                    }
+                    if let value = dict["VSwitchIds"] as? String {
+                        self.vSwitchIds = value
+                    }
+                    if let value = dict["VpcId"] as? String {
+                        self.vpcId = value
                     }
                 }
             }
@@ -37669,9 +37733,17 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public var instanceId: String?
 
+                    public var networkType: String?
+
                     public var regionId: String?
 
+                    public var securityGroupId: String?
+
                     public var topic: String?
+
+                    public var vSwitchIds: String?
+
+                    public var vpcId: String?
 
                     public override init() {
                         super.init()
@@ -37693,11 +37765,23 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         if self.instanceId != nil {
                             map["InstanceId"] = self.instanceId!
                         }
+                        if self.networkType != nil {
+                            map["NetworkType"] = self.networkType!
+                        }
                         if self.regionId != nil {
                             map["RegionId"] = self.regionId!
                         }
+                        if self.securityGroupId != nil {
+                            map["SecurityGroupId"] = self.securityGroupId!
+                        }
                         if self.topic != nil {
                             map["Topic"] = self.topic!
+                        }
+                        if self.vSwitchIds != nil {
+                            map["VSwitchIds"] = self.vSwitchIds!
+                        }
+                        if self.vpcId != nil {
+                            map["VpcId"] = self.vpcId!
                         }
                         return map
                     }
@@ -37710,11 +37794,23 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         if let value = dict["InstanceId"] as? String {
                             self.instanceId = value
                         }
+                        if let value = dict["NetworkType"] as? String {
+                            self.networkType = value
+                        }
                         if let value = dict["RegionId"] as? String {
                             self.regionId = value
                         }
+                        if let value = dict["SecurityGroupId"] as? String {
+                            self.securityGroupId = value
+                        }
                         if let value = dict["Topic"] as? String {
                             self.topic = value
+                        }
+                        if let value = dict["VSwitchIds"] as? String {
+                            self.vSwitchIds = value
+                        }
+                        if let value = dict["VpcId"] as? String {
+                            self.vpcId = value
                         }
                     }
                 }
@@ -53484,9 +53580,17 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var networkType: String?
+
             public var regionId: String?
 
+            public var securityGroupId: String?
+
             public var topic: String?
+
+            public var vSwitchIds: String?
+
+            public var vpcId: String?
 
             public override init() {
                 super.init()
@@ -53508,11 +53612,23 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
                 if self.topic != nil {
                     map["Topic"] = self.topic!
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
                 }
                 return map
             }
@@ -53525,11 +53641,23 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
                 }
+                if let value = dict["NetworkType"] as? String {
+                    self.networkType = value
+                }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
                 }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
                 if let value = dict["Topic"] as? String {
                     self.topic = value
+                }
+                if let value = dict["VSwitchIds"] as? String {
+                    self.vSwitchIds = value
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
                 }
             }
         }
