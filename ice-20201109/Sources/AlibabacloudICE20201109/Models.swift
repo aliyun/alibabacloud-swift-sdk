@@ -91163,6 +91163,44 @@ public class QueryVideoCognitionJobShrinkRequest : Tea.TeaModel {
 }
 
 public class QueryVideoCognitionJobResponseBody : Tea.TeaModel {
+    public class Input : Tea.TeaModel {
+        public var media: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.media != nil {
+                map["Media"] = self.media!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Media"] as? String {
+                self.media = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public class Results : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public var data: String?
@@ -91245,11 +91283,17 @@ public class QueryVideoCognitionJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var input: QueryVideoCognitionJobResponseBody.Input?
+
     public var jobStatus: String?
+
+    public var params: String?
 
     public var requestId: String?
 
     public var results: QueryVideoCognitionJobResponseBody.Results?
+
+    public var templateId: String?
 
     public var userData: String?
 
@@ -91263,19 +91307,29 @@ public class QueryVideoCognitionJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.input?.validate()
         try self.results?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.input != nil {
+            map["Input"] = self.input?.toMap()
+        }
         if self.jobStatus != nil {
             map["JobStatus"] = self.jobStatus!
+        }
+        if self.params != nil {
+            map["Params"] = self.params!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
         if self.results != nil {
             map["Results"] = self.results?.toMap()
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
         }
         if self.userData != nil {
             map["UserData"] = self.userData!
@@ -91285,8 +91339,16 @@ public class QueryVideoCognitionJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Input"] as? [String: Any?] {
+            var model = QueryVideoCognitionJobResponseBody.Input()
+            model.fromMap(value)
+            self.input = model
+        }
         if let value = dict["JobStatus"] as? String {
             self.jobStatus = value
+        }
+        if let value = dict["Params"] as? String {
+            self.params = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -91295,6 +91357,9 @@ public class QueryVideoCognitionJobResponseBody : Tea.TeaModel {
             var model = QueryVideoCognitionJobResponseBody.Results()
             model.fromMap(value)
             self.results = model
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
