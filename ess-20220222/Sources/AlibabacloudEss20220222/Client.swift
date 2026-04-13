@@ -2111,6 +2111,82 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCandidateInstanceTypeWithOptions(_ request: DescribeCandidateInstanceTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCandidateInstanceTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowCrossAz)) {
+            query["AllowCrossAz"] = request.allowCrossAz!;
+        }
+        if (!TeaUtils.Client.isUnset(request.allowDifferentGeneration)) {
+            query["AllowDifferentGeneration"] = request.allowDifferentGeneration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataDiskCategories)) {
+            query["DataDiskCategories"] = request.dataDiskCategories ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.imageFamily)) {
+            query["ImageFamily"] = request.imageFamily ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageName)) {
+            query["ImageName"] = request.imageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceTypes)) {
+            query["InstanceTypes"] = request.instanceTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6AddressCount)) {
+            query["Ipv6AddressCount"] = request.ipv6AddressCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxPrice)) {
+            query["MaxPrice"] = request.maxPrice!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.spotStrategy)) {
+            query["SpotStrategy"] = request.spotStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemDiskCategories)) {
+            query["SystemDiskCategories"] = request.systemDiskCategories ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneIds)) {
+            query["ZoneIds"] = request.zoneIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCandidateInstanceType",
+            "version": "2022-02-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCandidateInstanceTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCandidateInstanceType(_ request: DescribeCandidateInstanceTypeRequest) async throws -> DescribeCandidateInstanceTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCandidateInstanceTypeWithOptions(request as! DescribeCandidateInstanceTypeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDiagnoseReportsWithOptions(_ request: DescribeDiagnoseReportsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiagnoseReportsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))

@@ -12831,6 +12831,254 @@ public class DescribeAlertConfigurationResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCandidateInstanceTypeRequest : Tea.TeaModel {
+    public var allowCrossAz: Bool?
+
+    public var allowDifferentGeneration: Bool?
+
+    public var dataDiskCategories: [String]?
+
+    public var imageFamily: String?
+
+    public var imageId: String?
+
+    public var imageName: String?
+
+    public var instanceTypes: [String]?
+
+    public var ipv6AddressCount: Int32?
+
+    public var maxPrice: Double?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var spotStrategy: String?
+
+    public var systemDiskCategories: [String]?
+
+    public var zoneIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowCrossAz != nil {
+            map["AllowCrossAz"] = self.allowCrossAz!
+        }
+        if self.allowDifferentGeneration != nil {
+            map["AllowDifferentGeneration"] = self.allowDifferentGeneration!
+        }
+        if self.dataDiskCategories != nil {
+            map["DataDiskCategories"] = self.dataDiskCategories!
+        }
+        if self.imageFamily != nil {
+            map["ImageFamily"] = self.imageFamily!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
+        if self.instanceTypes != nil {
+            map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.ipv6AddressCount != nil {
+            map["Ipv6AddressCount"] = self.ipv6AddressCount!
+        }
+        if self.maxPrice != nil {
+            map["MaxPrice"] = self.maxPrice!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        if self.systemDiskCategories != nil {
+            map["SystemDiskCategories"] = self.systemDiskCategories!
+        }
+        if self.zoneIds != nil {
+            map["ZoneIds"] = self.zoneIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowCrossAz"] as? Bool {
+            self.allowCrossAz = value
+        }
+        if let value = dict["AllowDifferentGeneration"] as? Bool {
+            self.allowDifferentGeneration = value
+        }
+        if let value = dict["DataDiskCategories"] as? [String] {
+            self.dataDiskCategories = value
+        }
+        if let value = dict["ImageFamily"] as? String {
+            self.imageFamily = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["ImageName"] as? String {
+            self.imageName = value
+        }
+        if let value = dict["InstanceTypes"] as? [String] {
+            self.instanceTypes = value
+        }
+        if let value = dict["Ipv6AddressCount"] as? Int32 {
+            self.ipv6AddressCount = value
+        }
+        if let value = dict["MaxPrice"] as? Double {
+            self.maxPrice = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SpotStrategy"] as? String {
+            self.spotStrategy = value
+        }
+        if let value = dict["SystemDiskCategories"] as? [String] {
+            self.systemDiskCategories = value
+        }
+        if let value = dict["ZoneIds"] as? [String] {
+            self.zoneIds = value
+        }
+    }
+}
+
+public class DescribeCandidateInstanceTypeResponseBody : Tea.TeaModel {
+    public var candidateInstanceTypes: [String]?
+
+    public var candidateZoneIds: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.candidateInstanceTypes != nil {
+            map["CandidateInstanceTypes"] = self.candidateInstanceTypes!
+        }
+        if self.candidateZoneIds != nil {
+            map["CandidateZoneIds"] = self.candidateZoneIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CandidateInstanceTypes"] as? [String] {
+            self.candidateInstanceTypes = value
+        }
+        if let value = dict["CandidateZoneIds"] as? [String] {
+            self.candidateZoneIds = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeCandidateInstanceTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCandidateInstanceTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeCandidateInstanceTypeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDiagnoseReportsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
@@ -17750,6 +17998,8 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
             }
             public var code: String?
 
+            public var elasticStrength: String?
+
             public var instanceType: String?
 
             public var inventoryHealth: DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools.InventoryHealth?
@@ -17782,6 +18032,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["Code"] = self.code!
                 }
+                if self.elasticStrength != nil {
+                    map["ElasticStrength"] = self.elasticStrength!
+                }
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
                 }
@@ -17810,6 +18063,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Code"] as? String {
                     self.code = value
+                }
+                if let value = dict["ElasticStrength"] as? String {
+                    self.elasticStrength = value
                 }
                 if let value = dict["InstanceType"] as? String {
                     self.instanceType = value
@@ -17960,6 +18216,8 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
         }
         public var code: String?
 
+        public var elasticStrength: String?
+
         public var instanceType: String?
 
         public var inventoryHealth: DescribeElasticStrengthResponseBody.ResourcePools.InventoryHealth?
@@ -17992,6 +18250,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.elasticStrength != nil {
+                map["ElasticStrength"] = self.elasticStrength!
+            }
             if self.instanceType != nil {
                 map["InstanceType"] = self.instanceType!
             }
@@ -18020,6 +18281,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Code"] as? String {
                 self.code = value
+            }
+            if let value = dict["ElasticStrength"] as? String {
+                self.elasticStrength = value
             }
             if let value = dict["InstanceType"] as? String {
                 self.instanceType = value
