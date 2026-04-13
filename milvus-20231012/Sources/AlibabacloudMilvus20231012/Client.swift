@@ -106,11 +106,20 @@ open class Client : AlibabacloudOpenApi.Client {
             query["clientToken"] = request.clientToken ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiFunction)) {
+            body["aiFunction"] = request.aiFunction!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoBackup)) {
             body["autoBackup"] = request.autoBackup!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            body["autoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["autoRenew"] = request.autoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.backupRestoreInfo)) {
+            body["backupRestoreInfo"] = request.backupRestoreInfo!;
         }
         if (!TeaUtils.Client.isUnset(request.components)) {
             body["components"] = request.components ?? [];
@@ -674,6 +683,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoBackup)) {
             body["autoBackup"] = request.autoBackup!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            body["autoPay"] = request.autoPay!;
         }
         if (!TeaUtils.Client.isUnset(request.components)) {
             body["components"] = request.components ?? [];

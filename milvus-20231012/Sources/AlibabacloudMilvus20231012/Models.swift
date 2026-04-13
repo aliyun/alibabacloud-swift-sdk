@@ -91,6 +91,8 @@ public class DBVersionDetail : Tea.TeaModel {
 
         public var isStandalone: Bool?
 
+        public var isStandalonePro: Bool?
+
         public var zoneMode: String?
 
         public override init() {
@@ -120,6 +122,9 @@ public class DBVersionDetail : Tea.TeaModel {
             if self.isStandalone != nil {
                 map["isStandalone"] = self.isStandalone!
             }
+            if self.isStandalonePro != nil {
+                map["isStandalonePro"] = self.isStandalonePro!
+            }
             if self.zoneMode != nil {
                 map["zoneMode"] = self.zoneMode!
             }
@@ -146,6 +151,9 @@ public class DBVersionDetail : Tea.TeaModel {
             }
             if let value = dict["isStandalone"] as? Bool {
                 self.isStandalone = value
+            }
+            if let value = dict["isStandalonePro"] as? Bool {
+                self.isStandalonePro = value
             }
             if let value = dict["zoneMode"] as? String {
                 self.zoneMode = value
@@ -220,6 +228,8 @@ public class InstanceDetail : Tea.TeaModel {
 
         public var diskSizeType: String?
 
+        public var payType: String?
+
         public var replica: Int32?
 
         public var type: String?
@@ -247,6 +257,9 @@ public class InstanceDetail : Tea.TeaModel {
             if self.diskSizeType != nil {
                 map["diskSizeType"] = self.diskSizeType!
             }
+            if self.payType != nil {
+                map["payType"] = self.payType!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -266,6 +279,9 @@ public class InstanceDetail : Tea.TeaModel {
             }
             if let value = dict["diskSizeType"] as? String {
                 self.diskSizeType = value
+            }
+            if let value = dict["payType"] as? String {
+                self.payType = value
             }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
@@ -1036,6 +1052,272 @@ public class PromotionInfo : Tea.TeaModel {
     }
 }
 
+public class ScalingActivity : Tea.TeaModel {
+    public var componentTypes: String?
+
+    public var description_: String?
+
+    public var endTime: String?
+
+    public var instanceId: String?
+
+    public var policyType: String?
+
+    public var scalingActivityId: String?
+
+    public var scalingActivityState: String?
+
+    public var scalingPolicyId: String?
+
+    public var scalingRuleDetail: String?
+
+    public var scalingRuleId: String?
+
+    public var scalingRuleName: String?
+
+    public var startTime: String?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.componentTypes != nil {
+            map["componentTypes"] = self.componentTypes!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.policyType != nil {
+            map["policyType"] = self.policyType!
+        }
+        if self.scalingActivityId != nil {
+            map["scalingActivityId"] = self.scalingActivityId!
+        }
+        if self.scalingActivityState != nil {
+            map["scalingActivityState"] = self.scalingActivityState!
+        }
+        if self.scalingPolicyId != nil {
+            map["scalingPolicyId"] = self.scalingPolicyId!
+        }
+        if self.scalingRuleDetail != nil {
+            map["scalingRuleDetail"] = self.scalingRuleDetail!
+        }
+        if self.scalingRuleId != nil {
+            map["scalingRuleId"] = self.scalingRuleId!
+        }
+        if self.scalingRuleName != nil {
+            map["scalingRuleName"] = self.scalingRuleName!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["componentTypes"] as? String {
+            self.componentTypes = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["policyType"] as? String {
+            self.policyType = value
+        }
+        if let value = dict["scalingActivityId"] as? String {
+            self.scalingActivityId = value
+        }
+        if let value = dict["scalingActivityState"] as? String {
+            self.scalingActivityState = value
+        }
+        if let value = dict["scalingPolicyId"] as? String {
+            self.scalingPolicyId = value
+        }
+        if let value = dict["scalingRuleDetail"] as? String {
+            self.scalingRuleDetail = value
+        }
+        if let value = dict["scalingRuleId"] as? String {
+            self.scalingRuleId = value
+        }
+        if let value = dict["scalingRuleName"] as? String {
+            self.scalingRuleName = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
+public class ScalingRule : Tea.TeaModel {
+    public class AdjustInfos : Tea.TeaModel {
+        public var componentType: String?
+
+        public var targetValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentType != nil {
+                map["componentType"] = self.componentType!
+            }
+            if self.targetValue != nil {
+                map["targetValue"] = self.targetValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["componentType"] as? String {
+                self.componentType = value
+            }
+            if let value = dict["targetValue"] as? String {
+                self.targetValue = value
+            }
+        }
+    }
+    public var adjustInfos: [ScalingRule.AdjustInfos]?
+
+    public var cronStr: String?
+
+    public var disabled: Bool?
+
+    public var endTime: Int64?
+
+    public var ruleId: String?
+
+    public var scalingRuleName: String?
+
+    public var startTime: Int64?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adjustInfos != nil {
+            var tmp : [Any] = []
+            for k in self.adjustInfos! {
+                tmp.append(k.toMap())
+            }
+            map["adjustInfos"] = tmp
+        }
+        if self.cronStr != nil {
+            map["cronStr"] = self.cronStr!
+        }
+        if self.disabled != nil {
+            map["disabled"] = self.disabled!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.ruleId != nil {
+            map["ruleId"] = self.ruleId!
+        }
+        if self.scalingRuleName != nil {
+            map["scalingRuleName"] = self.scalingRuleName!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["adjustInfos"] as? [Any?] {
+            var tmp : [ScalingRule.AdjustInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingRule.AdjustInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.adjustInfos = tmp
+        }
+        if let value = dict["cronStr"] as? String {
+            self.cronStr = value
+        }
+        if let value = dict["disabled"] as? Bool {
+            self.disabled = value
+        }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["ruleId"] as? String {
+            self.ruleId = value
+        }
+        if let value = dict["scalingRuleName"] as? String {
+            self.scalingRuleName = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
 public class ChangeResourceGroupRequest : Tea.TeaModel {
     public var newResourceGroupId: String?
 
@@ -1358,6 +1640,52 @@ public class CreateDefaultRoleResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class BackupRestoreInfo : Tea.TeaModel {
+        public var backupId: String?
+
+        public var backupName: String?
+
+        public var sourceClusterId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupId != nil {
+                map["backupId"] = self.backupId!
+            }
+            if self.backupName != nil {
+                map["backupName"] = self.backupName!
+            }
+            if self.sourceClusterId != nil {
+                map["sourceClusterId"] = self.sourceClusterId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["backupId"] as? String {
+                self.backupId = value
+            }
+            if let value = dict["backupName"] as? String {
+                self.backupName = value
+            }
+            if let value = dict["sourceClusterId"] as? String {
+                self.sourceClusterId = value
+            }
+        }
+    }
     public class Components : Tea.TeaModel {
         public var cuNum: Int32?
 
@@ -1498,9 +1826,15 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
     public var regionId: String?
 
+    public var aiFunction: Bool?
+
     public var autoBackup: Bool?
 
+    public var autoPay: Bool?
+
     public var autoRenew: Bool?
+
+    public var backupRestoreInfo: CreateInstanceRequest.BackupRestoreInfo?
 
     public var components: [CreateInstanceRequest.Components]?
 
@@ -1554,6 +1888,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.backupRestoreInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1561,11 +1896,20 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.aiFunction != nil {
+            map["aiFunction"] = self.aiFunction!
+        }
         if self.autoBackup != nil {
             map["autoBackup"] = self.autoBackup!
         }
+        if self.autoPay != nil {
+            map["autoPay"] = self.autoPay!
+        }
         if self.autoRenew != nil {
             map["autoRenew"] = self.autoRenew!
+        }
+        if self.backupRestoreInfo != nil {
+            map["backupRestoreInfo"] = self.backupRestoreInfo?.toMap()
         }
         if self.components != nil {
             var tmp : [Any] = []
@@ -1650,11 +1994,22 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["aiFunction"] as? Bool {
+            self.aiFunction = value
+        }
         if let value = dict["autoBackup"] as? Bool {
             self.autoBackup = value
         }
+        if let value = dict["autoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["autoRenew"] as? Bool {
             self.autoRenew = value
+        }
+        if let value = dict["backupRestoreInfo"] as? [String: Any?] {
+            var model = CreateInstanceRequest.BackupRestoreInfo()
+            model.fromMap(value)
+            self.backupRestoreInfo = model
         }
         if let value = dict["components"] as? [Any?] {
             var tmp : [CreateInstanceRequest.Components] = []
@@ -2579,6 +2934,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
                 public var diskType: String?
 
+                public var payType: String?
+
                 public var replica: Int32?
 
                 public var zoneId: String?
@@ -2612,6 +2969,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     if self.diskType != nil {
                         map["DiskType"] = self.diskType!
                     }
+                    if self.payType != nil {
+                        map["PayType"] = self.payType!
+                    }
                     if self.replica != nil {
                         map["Replica"] = self.replica!
                     }
@@ -2637,6 +2997,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["DiskType"] as? String {
                         self.diskType = value
+                    }
+                    if let value = dict["PayType"] as? String {
+                        self.payType = value
                     }
                     if let value = dict["Replica"] as? Int32 {
                         self.replica = value
@@ -3011,6 +3374,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var kmsKeyId: String?
 
+        public var maintainablePeriod: String?
+
         public var measureConfig: GetInstanceDetailResponseBody.Data.MeasureConfig?
 
         public var multiZoneMode: String?
@@ -3104,6 +3469,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.kmsKeyId != nil {
                 map["KmsKeyId"] = self.kmsKeyId!
+            }
+            if self.maintainablePeriod != nil {
+                map["MaintainablePeriod"] = self.maintainablePeriod!
             }
             if self.measureConfig != nil {
                 map["MeasureConfig"] = self.measureConfig?.toMap()
@@ -3217,6 +3585,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["KmsKeyId"] as? String {
                 self.kmsKeyId = value
+            }
+            if let value = dict["MaintainablePeriod"] as? String {
+                self.maintainablePeriod = value
             }
             if let value = dict["MeasureConfig"] as? [String: Any?] {
                 var model = GetInstanceDetailResponseBody.Data.MeasureConfig()
@@ -3868,6 +4239,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var tags: [ListInstancesResponseBody.Data.Tags]?
 
+        public var templateVersion: String?
+
         public var version: String?
 
         public var vpcId: String?
@@ -3945,6 +4318,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.templateVersion != nil {
+                map["TemplateVersion"] = self.templateVersion!
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -4025,6 +4401,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["TemplateVersion"] as? String {
+                self.templateVersion = value
             }
             if let value = dict["Version"] as? String {
                 self.version = value
@@ -5318,6 +5697,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public var cuNum: Int32?
 
+        public var payType: String?
+
         public var replica: Int32?
 
         public var type: String?
@@ -5339,6 +5720,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.cuNum != nil {
                 map["cuNum"] = self.cuNum!
             }
+            if self.payType != nil {
+                map["payType"] = self.payType!
+            }
             if self.replica != nil {
                 map["replica"] = self.replica!
             }
@@ -5353,6 +5737,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if let value = dict["cuNum"] as? Int32 {
                 self.cuNum = value
             }
+            if let value = dict["payType"] as? String {
+                self.payType = value
+            }
             if let value = dict["replica"] as? Int32 {
                 self.replica = value
             }
@@ -5364,6 +5751,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var autoBackup: Bool?
+
+    public var autoPay: Bool?
 
     public var components: [UpdateInstanceRequest.Components]?
 
@@ -5397,6 +5786,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.autoBackup != nil {
             map["autoBackup"] = self.autoBackup!
         }
+        if self.autoPay != nil {
+            map["autoPay"] = self.autoPay!
+        }
         if self.components != nil {
             var tmp : [Any] = []
             for k in self.components! {
@@ -5429,6 +5821,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["autoBackup"] as? Bool {
             self.autoBackup = value
+        }
+        if let value = dict["autoPay"] as? Bool {
+            self.autoPay = value
         }
         if let value = dict["components"] as? [Any?] {
             var tmp : [UpdateInstanceRequest.Components] = []
@@ -5466,6 +5861,8 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
 
     public var data: Bool?
 
+    public var orderId: String?
+
     public var success: Bool?
 
     public override init() {
@@ -5488,6 +5885,9 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data!
         }
+        if self.orderId != nil {
+            map["orderId"] = self.orderId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -5501,6 +5901,9 @@ public class UpdateInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["data"] as? Bool {
             self.data = value
+        }
+        if let value = dict["orderId"] as? String {
+            self.orderId = value
         }
         if let value = dict["success"] as? Bool {
             self.success = value
