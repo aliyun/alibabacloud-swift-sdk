@@ -1315,6 +1315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.endpoints)) {
             request.endpointsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.endpoints, "Endpoints", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.knowledgeApplicationSpec)) {
+            request.knowledgeApplicationSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.knowledgeApplicationSpec, "KnowledgeApplicationSpec", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.memApplicationSpec)) {
             request.memApplicationSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.memApplicationSpec, "MemApplicationSpec", "json")
         }
@@ -1363,6 +1366,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeApplicationSpecShrink)) {
+            query["KnowledgeApplicationSpec"] = request.knowledgeApplicationSpecShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.memApplicationSpecShrink)) {
             query["MemApplicationSpec"] = request.memApplicationSpecShrink ?? "";

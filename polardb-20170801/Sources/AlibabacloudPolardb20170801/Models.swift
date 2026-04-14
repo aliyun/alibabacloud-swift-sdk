@@ -4697,6 +4697,52 @@ public class CreateApplicationRequest : Tea.TeaModel {
             }
         }
     }
+    public class KnowledgeApplicationSpec : Tea.TeaModel {
+        public var dashboardPassword: String?
+
+        public var dbPassword: String?
+
+        public var llmModel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dashboardPassword != nil {
+                map["DashboardPassword"] = self.dashboardPassword!
+            }
+            if self.dbPassword != nil {
+                map["DbPassword"] = self.dbPassword!
+            }
+            if self.llmModel != nil {
+                map["LlmModel"] = self.llmModel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DashboardPassword"] as? String {
+                self.dashboardPassword = value
+            }
+            if let value = dict["DbPassword"] as? String {
+                self.dbPassword = value
+            }
+            if let value = dict["LlmModel"] as? String {
+                self.llmModel = value
+            }
+        }
+    }
     public class MemApplicationSpec : Tea.TeaModel {
         public var dbName: String?
 
@@ -4903,6 +4949,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var endpoints: [CreateApplicationRequest.Endpoints]?
 
+    public var knowledgeApplicationSpec: CreateApplicationRequest.KnowledgeApplicationSpec?
+
     public var memApplicationSpec: CreateApplicationRequest.MemApplicationSpec?
 
     public var modelApi: String?
@@ -4961,6 +5009,7 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.knowledgeApplicationSpec?.validate()
         try self.memApplicationSpec?.validate()
     }
 
@@ -5015,6 +5064,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Endpoints"] = tmp
+        }
+        if self.knowledgeApplicationSpec != nil {
+            map["KnowledgeApplicationSpec"] = self.knowledgeApplicationSpec?.toMap()
         }
         if self.memApplicationSpec != nil {
             map["MemApplicationSpec"] = self.memApplicationSpec?.toMap()
@@ -5162,6 +5214,11 @@ public class CreateApplicationRequest : Tea.TeaModel {
                 }
             }
             self.endpoints = tmp
+        }
+        if let value = dict["KnowledgeApplicationSpec"] as? [String: Any?] {
+            var model = CreateApplicationRequest.KnowledgeApplicationSpec()
+            model.fromMap(value)
+            self.knowledgeApplicationSpec = model
         }
         if let value = dict["MemApplicationSpec"] as? [String: Any?] {
             var model = CreateApplicationRequest.MemApplicationSpec()
@@ -5327,6 +5384,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var endpointsShrink: String?
 
+    public var knowledgeApplicationSpecShrink: String?
+
     public var memApplicationSpecShrink: String?
 
     public var modelApi: String?
@@ -5430,6 +5489,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
+        }
+        if self.knowledgeApplicationSpecShrink != nil {
+            map["KnowledgeApplicationSpec"] = self.knowledgeApplicationSpecShrink!
         }
         if self.memApplicationSpecShrink != nil {
             map["MemApplicationSpec"] = self.memApplicationSpecShrink!
@@ -5553,6 +5615,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value
+        }
+        if let value = dict["KnowledgeApplicationSpec"] as? String {
+            self.knowledgeApplicationSpecShrink = value
         }
         if let value = dict["MemApplicationSpec"] as? String {
             self.memApplicationSpecShrink = value
