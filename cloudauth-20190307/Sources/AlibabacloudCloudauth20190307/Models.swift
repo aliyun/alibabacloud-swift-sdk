@@ -20140,6 +20140,8 @@ public class MobileRecycledMetaVerifyResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
         public var bizCode: String?
 
+        public var ispName: String?
+
         public var subCode: String?
 
         public override init() {
@@ -20159,6 +20161,9 @@ public class MobileRecycledMetaVerifyResponseBody : Tea.TeaModel {
             if self.bizCode != nil {
                 map["BizCode"] = self.bizCode!
             }
+            if self.ispName != nil {
+                map["IspName"] = self.ispName!
+            }
             if self.subCode != nil {
                 map["SubCode"] = self.subCode!
             }
@@ -20169,6 +20174,9 @@ public class MobileRecycledMetaVerifyResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["BizCode"] as? String {
                 self.bizCode = value
+            }
+            if let value = dict["IspName"] as? String {
+                self.ispName = value
             }
             if let value = dict["SubCode"] as? String {
                 self.subCode = value

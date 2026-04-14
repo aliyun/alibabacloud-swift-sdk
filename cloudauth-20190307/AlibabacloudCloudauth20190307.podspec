@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudCloudauth20190307"
-  spec.version      = "2.12.1"
+  spec.version      = "2.12.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ID Verification (20190307) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/cloudauth-20190307" 
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.3'
-  spec.dependency 'TeaUtils',  '~> 1.0.6'
+  spec.dependency 'TeaUtils',  '~> 1.0.8'
   spec.dependency 'DarabonbaXML',  '~> 1.0.1'
   spec.dependency 'AlibabaCloudCredentials',  '~> 1.0.1'
   spec.dependency 'TeaFileForm',  '~> 1.0.3'
