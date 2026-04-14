@@ -989,7 +989,7 @@ public class ResourceInstanceWorker : Tea.TeaModel {
 
     public var gpuRequest: Int32?
 
-    public var memoryLimit: Int32?
+    public var memoryLimit: Int64?
 
     public var memoryRquest: Int32?
 
@@ -997,7 +997,7 @@ public class ResourceInstanceWorker : Tea.TeaModel {
 
     public var ready: Bool?
 
-    public var restartCount: Int32?
+    public var restartCount: Int64?
 
     public var serviceName: String?
 
@@ -1072,7 +1072,7 @@ public class ResourceInstanceWorker : Tea.TeaModel {
         if let value = dict["GpuRequest"] as? Int32 {
             self.gpuRequest = value
         }
-        if let value = dict["MemoryLimit"] as? Int32 {
+        if let value = dict["MemoryLimit"] as? Int64 {
             self.memoryLimit = value
         }
         if let value = dict["MemoryRquest"] as? Int32 {
@@ -1084,7 +1084,7 @@ public class ResourceInstanceWorker : Tea.TeaModel {
         if let value = dict["Ready"] as? Bool {
             self.ready = value
         }
-        if let value = dict["RestartCount"] as? Int32 {
+        if let value = dict["RestartCount"] as? Int64 {
             self.restartCount = value
         }
         if let value = dict["ServiceName"] as? String {
