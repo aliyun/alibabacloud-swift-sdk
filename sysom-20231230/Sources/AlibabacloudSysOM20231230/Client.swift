@@ -99,6 +99,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cpuHighAgentStreamResponseWithOptions(_ request: CpuHighAgentStreamResponseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CpuHighAgentStreamResponseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.llmParamString)) {
+            body["llmParamString"] = request.llmParamString ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CpuHighAgentStreamResponse",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/highCpuAgent/streamResponse",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CpuHighAgentStreamResponseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cpuHighAgentStreamResponse(_ request: CpuHighAgentStreamResponseRequest) async throws -> CpuHighAgentStreamResponseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cpuHighAgentStreamResponseWithOptions(request as! CpuHighAgentStreamResponseRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAlertStrategyWithOptions(_ request: CreateAlertStrategyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlertStrategyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

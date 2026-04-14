@@ -413,9 +413,147 @@ public class CheckInstanceSupportResponse : Tea.TeaModel {
     }
 }
 
+public class CpuHighAgentStreamResponseRequest : Tea.TeaModel {
+    public var llmParamString: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.llmParamString != nil {
+            map["llmParamString"] = self.llmParamString!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["llmParamString"] as? String {
+            self.llmParamString = value
+        }
+    }
+}
+
+public class CpuHighAgentStreamResponseResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? String {
+            self.data = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CpuHighAgentStreamResponseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CpuHighAgentStreamResponseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CpuHighAgentStreamResponseResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateAlertStrategyRequest : Tea.TeaModel {
     public class Strategy : Tea.TeaModel {
         public var clusters: [String]?
+
+        public var destinations: [Int32]?
 
         public var items: [String]?
 
@@ -436,6 +574,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
             if self.clusters != nil {
                 map["clusters"] = self.clusters!
             }
+            if self.destinations != nil {
+                map["destinations"] = self.destinations!
+            }
             if self.items != nil {
                 map["items"] = self.items!
             }
@@ -446,6 +587,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["clusters"] as? [String] {
                 self.clusters = value
+            }
+            if let value = dict["destinations"] as? [Int32] {
+                self.destinations = value
             }
             if let value = dict["items"] as? [String] {
                 self.items = value
@@ -2453,6 +2597,8 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
         public class Strategy : Tea.TeaModel {
             public var clusters: [String]?
 
+            public var destinations: Any?
+
             public var items: Any?
 
             public override init() {
@@ -2472,6 +2618,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
                 if self.clusters != nil {
                     map["clusters"] = self.clusters!
                 }
+                if self.destinations != nil {
+                    map["destinations"] = self.destinations!
+                }
                 if self.items != nil {
                     map["items"] = self.items!
                 }
@@ -2482,6 +2631,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["clusters"] as? [String] {
                     self.clusters = value
+                }
+                if let value = dict["destinations"] as? Any {
+                    self.destinations = value
                 }
                 if let value = dict["items"] as? Any {
                     self.items = value
@@ -9023,6 +9175,8 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
         public class Strategy : Tea.TeaModel {
             public var clusters: [String]?
 
+            public var destinations: [Int32]?
+
             public var items: [String]?
 
             public override init() {
@@ -9042,6 +9196,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
                 if self.clusters != nil {
                     map["clusters"] = self.clusters!
                 }
+                if self.destinations != nil {
+                    map["destinations"] = self.destinations!
+                }
                 if self.items != nil {
                     map["items"] = self.items!
                 }
@@ -9052,6 +9209,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["clusters"] as? [String] {
                     self.clusters = value
+                }
+                if let value = dict["destinations"] as? [Int32] {
+                    self.destinations = value
                 }
                 if let value = dict["items"] as? [String] {
                     self.items = value
@@ -14346,6 +14506,8 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
     public class Strategy : Tea.TeaModel {
         public var clusters: [String]?
 
+        public var destinations: [Int32]?
+
         public var items: [String]?
 
         public override init() {
@@ -14365,6 +14527,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
             if self.clusters != nil {
                 map["clusters"] = self.clusters!
             }
+            if self.destinations != nil {
+                map["destinations"] = self.destinations!
+            }
             if self.items != nil {
                 map["items"] = self.items!
             }
@@ -14375,6 +14540,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["clusters"] as? [String] {
                 self.clusters = value
+            }
+            if let value = dict["destinations"] as? [Int32] {
+                self.destinations = value
             }
             if let value = dict["items"] as? [String] {
                 self.items = value
