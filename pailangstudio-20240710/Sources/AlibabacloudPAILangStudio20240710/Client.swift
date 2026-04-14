@@ -684,6 +684,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDeploymentsWithOptions(_ request: ListDeploymentsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDeploymentsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creator)) {
             query["Creator"] = request.creator ?? "";
         }
@@ -804,6 +807,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKnowledgeBaseJobsWithOptions(_ KnowledgeBaseId: String, _ request: ListKnowledgeBaseJobsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBaseJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobAction)) {
             query["JobAction"] = request.jobAction ?? "";
         }
@@ -864,6 +870,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listKnowledgeBasesWithOptions(_ request: ListKnowledgeBasesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKnowledgeBasesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creator)) {
             query["Creator"] = request.creator ?? "";
         }
@@ -927,6 +936,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listRuntimesWithOptions(_ request: ListRuntimesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRuntimesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creator)) {
             query["Creator"] = request.creator ?? "";
         }
@@ -996,6 +1008,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSnapshotsWithOptions(_ request: ListSnapshotsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSnapshotsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.creationType)) {
             query["CreationType"] = request.creationType ?? "";
         }

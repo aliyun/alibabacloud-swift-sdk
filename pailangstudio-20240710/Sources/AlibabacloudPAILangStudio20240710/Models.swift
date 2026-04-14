@@ -11343,6 +11343,8 @@ public class GetSnapshotResponse : Tea.TeaModel {
 }
 
 public class ListDeploymentsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var creator: String?
 
     public var deploymentId: String?
@@ -11387,6 +11389,9 @@ public class ListDeploymentsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.creator != nil {
             map["Creator"] = self.creator!
         }
@@ -11437,6 +11442,9 @@ public class ListDeploymentsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["Creator"] as? String {
             self.creator = value
         }
@@ -12079,6 +12087,8 @@ public class ListKnowledgeBaseChunksResponse : Tea.TeaModel {
 }
 
 public class ListKnowledgeBaseJobsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var jobAction: String?
 
     public var knowledgeBaseJobId: String?
@@ -12113,6 +12123,9 @@ public class ListKnowledgeBaseJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.jobAction != nil {
             map["JobAction"] = self.jobAction!
         }
@@ -12148,6 +12161,9 @@ public class ListKnowledgeBaseJobsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["JobAction"] as? String {
             self.jobAction = value
         }
@@ -12309,6 +12325,8 @@ public class ListKnowledgeBaseJobsResponse : Tea.TeaModel {
 }
 
 public class ListKnowledgeBasesRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var creator: String?
 
     public var knowledgeBaseId: String?
@@ -12345,6 +12363,9 @@ public class ListKnowledgeBasesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.creator != nil {
             map["Creator"] = self.creator!
         }
@@ -12383,6 +12404,9 @@ public class ListKnowledgeBasesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["Creator"] as? String {
             self.creator = value
         }
@@ -12547,6 +12571,8 @@ public class ListKnowledgeBasesResponse : Tea.TeaModel {
 }
 
 public class ListRuntimesRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var creator: String?
 
     public var maxResults: Int32?
@@ -12587,6 +12613,9 @@ public class ListRuntimesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.creator != nil {
             map["Creator"] = self.creator!
         }
@@ -12631,6 +12660,9 @@ public class ListRuntimesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["Creator"] as? String {
             self.creator = value
         }
@@ -12801,6 +12833,8 @@ public class ListRuntimesResponse : Tea.TeaModel {
 }
 
 public class ListSnapshotsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var creationType: String?
 
     public var creator: String?
@@ -12841,6 +12875,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.creationType != nil {
             map["CreationType"] = self.creationType!
         }
@@ -12885,6 +12922,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["CreationType"] as? String {
             self.creationType = value
         }
