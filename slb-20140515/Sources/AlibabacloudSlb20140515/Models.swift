@@ -4057,6 +4057,8 @@ public class CreateMasterSlaveServerGroupResponse : Tea.TeaModel {
 }
 
 public class CreateRulesRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var listenerPort: Int32?
 
     public var listenerProtocol: String?
@@ -4089,6 +4091,9 @@ public class CreateRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.listenerPort != nil {
             map["ListenerPort"] = self.listenerPort!
         }
@@ -4121,6 +4126,9 @@ public class CreateRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
         if let value = dict["ListenerPort"] as? Int32 {
             self.listenerPort = value
         }
@@ -24089,6 +24097,8 @@ public class SetLoadBalancerHTTPListenerAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var gzip: String?
 
     public var healthCheck: String?
@@ -24185,6 +24195,9 @@ public class SetLoadBalancerHTTPListenerAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.gzip != nil {
             map["Gzip"] = self.gzip!
@@ -24304,6 +24317,9 @@ public class SetLoadBalancerHTTPListenerAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["Gzip"] as? String {
             self.gzip = value
@@ -24499,6 +24515,8 @@ public class SetLoadBalancerHTTPSListenerAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var enableHttp2: String?
 
     public var gzip: String?
@@ -24604,6 +24622,9 @@ public class SetLoadBalancerHTTPSListenerAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.enableHttp2 != nil {
             map["EnableHttp2"] = self.enableHttp2!
@@ -24735,6 +24756,9 @@ public class SetLoadBalancerHTTPSListenerAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EnableHttp2"] as? String {
             self.enableHttp2 = value
@@ -25425,6 +25449,8 @@ public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var establishedTimeout: Int32?
 
     public var healthCheckConnectPort: Int32?
@@ -25511,6 +25537,9 @@ public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.establishedTimeout != nil {
             map["EstablishedTimeout"] = self.establishedTimeout!
@@ -25615,6 +25644,9 @@ public class SetLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["EstablishedTimeout"] as? Int32 {
             self.establishedTimeout = value
@@ -25789,6 +25821,8 @@ public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var healthCheckConnectPort: Int32?
 
     public var healthCheckConnectTimeout: Int32?
@@ -25859,6 +25893,9 @@ public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.healthCheckConnectPort != nil {
             map["HealthCheckConnectPort"] = self.healthCheckConnectPort!
@@ -25942,6 +25979,9 @@ public class SetLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["HealthCheckConnectPort"] as? Int32 {
             self.healthCheckConnectPort = value
@@ -26095,6 +26135,8 @@ public class SetRuleRequest : Tea.TeaModel {
 
     public var cookieTimeout: Int32?
 
+    public var dryRun: Bool?
+
     public var healthCheck: String?
 
     public var healthCheckConnectPort: Int32?
@@ -26156,6 +26198,9 @@ public class SetRuleRequest : Tea.TeaModel {
         }
         if self.cookieTimeout != nil {
             map["CookieTimeout"] = self.cookieTimeout!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.healthCheck != nil {
             map["HealthCheck"] = self.healthCheck!
@@ -26230,6 +26275,9 @@ public class SetRuleRequest : Tea.TeaModel {
         }
         if let value = dict["CookieTimeout"] as? Int32 {
             self.cookieTimeout = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
         }
         if let value = dict["HealthCheck"] as? String {
             self.healthCheck = value
