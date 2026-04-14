@@ -59919,6 +59919,8 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var status: String?
+
     public var tag: [DescribeRCDisksRequest.Tag]?
 
     public override init() {
@@ -59950,6 +59952,9 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -59976,6 +59981,9 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [DescribeRCDisksRequest.Tag] = []
@@ -107049,6 +107057,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var autoUseCoupon: Bool?
 
+    public var businessInfo: String?
+
     public var clientToken: String?
 
     public var createAckEdgeParam: RunRCInstancesRequest.CreateAckEdgeParam?
@@ -107158,6 +107168,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -107303,6 +107316,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value
+        }
+        if let value = dict["BusinessInfo"] as? String {
+            self.businessInfo = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -107499,6 +107515,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var autoUseCoupon: Bool?
 
+    public var businessInfo: String?
+
     public var clientToken: String?
 
     public var createAckEdgeParamShrink: String?
@@ -107605,6 +107623,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -107746,6 +107767,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value
+        }
+        if let value = dict["BusinessInfo"] as? String {
+            self.businessInfo = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
