@@ -67443,6 +67443,462 @@ public class GetRunningTasksResponse : Tea.TeaModel {
     }
 }
 
+public class GetScenegroupHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: GetScenegroupHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = GetScenegroupHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class GetScenegroupShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class GetScenegroupRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var openConversationId: String?
+
+    public var tenantContext: GetScenegroupRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.openConversationId != nil {
+            map["OpenConversationId"] = self.openConversationId!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OpenConversationId"] as? String {
+            self.openConversationId = value
+        }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = GetScenegroupRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+    }
+}
+
+public class GetScenegroupShrinkRequest : Tea.TeaModel {
+    public var openConversationId: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.openConversationId != nil {
+            map["OpenConversationId"] = self.openConversationId!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OpenConversationId"] as? String {
+            self.openConversationId = value
+        }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+    }
+}
+
+public class GetScenegroupResponseBody : Tea.TeaModel {
+    public class ManagementOptions : Tea.TeaModel {
+        public var chatBannedType: String?
+
+        public var managementType: String?
+
+        public var mentionAllAuthority: String?
+
+        public var searchable: String?
+
+        public var showHistoryType: String?
+
+        public var validationType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chatBannedType != nil {
+                map["ChatBannedType"] = self.chatBannedType!
+            }
+            if self.managementType != nil {
+                map["ManagementType"] = self.managementType!
+            }
+            if self.mentionAllAuthority != nil {
+                map["MentionAllAuthority"] = self.mentionAllAuthority!
+            }
+            if self.searchable != nil {
+                map["Searchable"] = self.searchable!
+            }
+            if self.showHistoryType != nil {
+                map["ShowHistoryType"] = self.showHistoryType!
+            }
+            if self.validationType != nil {
+                map["ValidationType"] = self.validationType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChatBannedType"] as? String {
+                self.chatBannedType = value
+            }
+            if let value = dict["ManagementType"] as? String {
+                self.managementType = value
+            }
+            if let value = dict["MentionAllAuthority"] as? String {
+                self.mentionAllAuthority = value
+            }
+            if let value = dict["Searchable"] as? String {
+                self.searchable = value
+            }
+            if let value = dict["ShowHistoryType"] as? String {
+                self.showHistoryType = value
+            }
+            if let value = dict["ValidationType"] as? String {
+                self.validationType = value
+            }
+        }
+    }
+    public var groupUrl: String?
+
+    public var icon: String?
+
+    public var managementOptions: GetScenegroupResponseBody.ManagementOptions?
+
+    public var openConversationId: String?
+
+    public var ownerStaffId: String?
+
+    public var requestId: String?
+
+    public var subAdminStaffIds: [String]?
+
+    public var templateId: String?
+
+    public var title: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.managementOptions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupUrl != nil {
+            map["groupUrl"] = self.groupUrl!
+        }
+        if self.icon != nil {
+            map["icon"] = self.icon!
+        }
+        if self.managementOptions != nil {
+            map["managementOptions"] = self.managementOptions?.toMap()
+        }
+        if self.openConversationId != nil {
+            map["openConversationId"] = self.openConversationId!
+        }
+        if self.ownerStaffId != nil {
+            map["ownerStaffId"] = self.ownerStaffId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.subAdminStaffIds != nil {
+            map["subAdminStaffIds"] = self.subAdminStaffIds!
+        }
+        if self.templateId != nil {
+            map["templateId"] = self.templateId!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["groupUrl"] as? String {
+            self.groupUrl = value
+        }
+        if let value = dict["icon"] as? String {
+            self.icon = value
+        }
+        if let value = dict["managementOptions"] as? [String: Any?] {
+            var model = GetScenegroupResponseBody.ManagementOptions()
+            model.fromMap(value)
+            self.managementOptions = model
+        }
+        if let value = dict["openConversationId"] as? String {
+            self.openConversationId = value
+        }
+        if let value = dict["ownerStaffId"] as? String {
+            self.ownerStaffId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["subAdminStaffIds"] as? [String] {
+            self.subAdminStaffIds = value
+        }
+        if let value = dict["templateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["title"] as? String {
+            self.title = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class GetScenegroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetScenegroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetScenegroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetScheduleHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
