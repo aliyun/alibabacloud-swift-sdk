@@ -34427,6 +34427,10 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var language: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var securityToken: String?
 
     public var tag: [DescribeInstancesRequest.Tag]?
@@ -34457,6 +34461,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.language != nil {
             map["Language"] = self.language!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -34483,6 +34493,12 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["Language"] as? String {
             self.language = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["SecurityToken"] as? String {
             self.securityToken = value
