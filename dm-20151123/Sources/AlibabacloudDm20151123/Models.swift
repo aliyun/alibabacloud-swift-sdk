@@ -5962,6 +5962,8 @@ public class DescDomainResponseBody : Tea.TeaModel {
 
     public var domainType: String?
 
+    public var domainVersion: Int32?
+
     public var hostRecord: String?
 
     public var icpStatus: String?
@@ -6055,6 +6057,9 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if self.domainType != nil {
             map["DomainType"] = self.domainType!
+        }
+        if self.domainVersion != nil {
+            map["DomainVersion"] = self.domainVersion!
         }
         if self.hostRecord != nil {
             map["HostRecord"] = self.hostRecord!
@@ -6150,6 +6155,9 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if let value = dict["DomainType"] as? String {
             self.domainType = value
+        }
+        if let value = dict["DomainVersion"] as? Int32 {
+            self.domainVersion = value
         }
         if let value = dict["HostRecord"] as? String {
             self.hostRecord = value
