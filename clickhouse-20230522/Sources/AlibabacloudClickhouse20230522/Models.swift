@@ -4528,6 +4528,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var expireTime: String?
 
+        public var langfuseInstanceIds: [String]?
+
         public var latestEngineMinorVersion: String?
 
         public var lockMode: String?
@@ -4632,6 +4634,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
+            }
+            if self.langfuseInstanceIds != nil {
+                map["LangfuseInstanceIds"] = self.langfuseInstanceIds!
             }
             if self.latestEngineMinorVersion != nil {
                 map["LatestEngineMinorVersion"] = self.latestEngineMinorVersion!
@@ -4763,6 +4768,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpireTime"] as? String {
                 self.expireTime = value
+            }
+            if let value = dict["LangfuseInstanceIds"] as? [String] {
+                self.langfuseInstanceIds = value
             }
             if let value = dict["LatestEngineMinorVersion"] as? String {
                 self.latestEngineMinorVersion = value
@@ -5858,6 +5866,8 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
     public var tags: [DescribeDBInstancesRequest.Tags]?
 
+    public var vpcIds: String?
+
     public override init() {
         super.init()
     }
@@ -5900,6 +5910,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
             }
             map["Tags"] = tmp
         }
+        if self.vpcIds != nil {
+            map["VpcIds"] = self.vpcIds!
+        }
         return map
     }
 
@@ -5938,6 +5951,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["VpcIds"] as? String {
+            self.vpcIds = value
         }
     }
 }
