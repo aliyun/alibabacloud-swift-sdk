@@ -1922,6 +1922,283 @@ public class OneMetaDatabaseObject : Tea.TeaModel {
     }
 }
 
+public class OneMetaKnowledgeBase : Tea.TeaModel {
+    public var creator: String?
+
+    public var description_: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var kbUuid: String?
+
+    public var name: String?
+
+    public var state: Int32?
+
+    public var tag: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creator != nil {
+            map["Creator"] = self.creator!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.kbUuid != nil {
+            map["KbUuid"] = self.kbUuid!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Creator"] as? String {
+            self.creator = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["KbUuid"] as? String {
+            self.kbUuid = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["State"] as? Int32 {
+            self.state = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+    }
+}
+
+public class OneMetaKnowledgeBaseChunk : Tea.TeaModel {
+    public var chunkMtime: String?
+
+    public var chunkTitle: String?
+
+    public var content: String?
+
+    public var docName: String?
+
+    public var id: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chunkMtime != nil {
+            map["ChunkMtime"] = self.chunkMtime!
+        }
+        if self.chunkTitle != nil {
+            map["ChunkTitle"] = self.chunkTitle!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ChunkMtime"] as? String {
+            self.chunkMtime = value
+        }
+        if let value = dict["ChunkTitle"] as? String {
+            self.chunkTitle = value
+        }
+        if let value = dict["Content"] as? String {
+            self.content = value
+        }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["Id"] as? String {
+            self.id = value
+        }
+    }
+}
+
+public class OneMetaKnowledgeBaseDocument : Tea.TeaModel {
+    public var description_: String?
+
+    public var docsCount: Int32?
+
+    public var documentLoaderName: String?
+
+    public var fileExt: String?
+
+    public var fileSize: Int64?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var kbUuid: String?
+
+    public var keywords: String?
+
+    public var name: String?
+
+    public var state: Int32?
+
+    public var summary: String?
+
+    public var textSplitterName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.docsCount != nil {
+            map["DocsCount"] = self.docsCount!
+        }
+        if self.documentLoaderName != nil {
+            map["DocumentLoaderName"] = self.documentLoaderName!
+        }
+        if self.fileExt != nil {
+            map["FileExt"] = self.fileExt!
+        }
+        if self.fileSize != nil {
+            map["FileSize"] = self.fileSize!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.kbUuid != nil {
+            map["KbUuid"] = self.kbUuid!
+        }
+        if self.keywords != nil {
+            map["Keywords"] = self.keywords!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.summary != nil {
+            map["Summary"] = self.summary!
+        }
+        if self.textSplitterName != nil {
+            map["TextSplitterName"] = self.textSplitterName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DocsCount"] as? Int32 {
+            self.docsCount = value
+        }
+        if let value = dict["DocumentLoaderName"] as? String {
+            self.documentLoaderName = value
+        }
+        if let value = dict["FileExt"] as? String {
+            self.fileExt = value
+        }
+        if let value = dict["FileSize"] as? Int64 {
+            self.fileSize = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["KbUuid"] as? String {
+            self.kbUuid = value
+        }
+        if let value = dict["Keywords"] as? String {
+            self.keywords = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["State"] as? Int32 {
+            self.state = value
+        }
+        if let value = dict["Summary"] as? String {
+            self.summary = value
+        }
+        if let value = dict["TextSplitterName"] as? String {
+            self.textSplitterName = value
+        }
+    }
+}
+
 public class OneMetaTableBaseInfo : Tea.TeaModel {
     public var catalogType: String?
 
@@ -2359,6 +2636,125 @@ public class OneMetaTableIndex : Tea.TeaModel {
         }
         if let value = dict["Unique"] as? Bool {
             self.unique = value
+        }
+    }
+}
+
+public class OpenClawInstanceQuotaVO : Tea.TeaModel {
+    public var aliyunAccountUid: String?
+
+    public var deepResearchCallQuota: String?
+
+    public var deepResearchCallUsed: String?
+
+    public var instanceGmtCreate: String?
+
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var lastMeteringTime: String?
+
+    public var modelCallQuota: String?
+
+    public var modelCallUsed: String?
+
+    public var refreshDay: String?
+
+    public var skillPlanCallQuota: String?
+
+    public var skillPlanCallUsed: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunAccountUid != nil {
+            map["AliyunAccountUid"] = self.aliyunAccountUid!
+        }
+        if self.deepResearchCallQuota != nil {
+            map["DeepResearchCallQuota"] = self.deepResearchCallQuota!
+        }
+        if self.deepResearchCallUsed != nil {
+            map["DeepResearchCallUsed"] = self.deepResearchCallUsed!
+        }
+        if self.instanceGmtCreate != nil {
+            map["InstanceGmtCreate"] = self.instanceGmtCreate!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.lastMeteringTime != nil {
+            map["LastMeteringTime"] = self.lastMeteringTime!
+        }
+        if self.modelCallQuota != nil {
+            map["ModelCallQuota"] = self.modelCallQuota!
+        }
+        if self.modelCallUsed != nil {
+            map["ModelCallUsed"] = self.modelCallUsed!
+        }
+        if self.refreshDay != nil {
+            map["RefreshDay"] = self.refreshDay!
+        }
+        if self.skillPlanCallQuota != nil {
+            map["SkillPlanCallQuota"] = self.skillPlanCallQuota!
+        }
+        if self.skillPlanCallUsed != nil {
+            map["SkillPlanCallUsed"] = self.skillPlanCallUsed!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AliyunAccountUid"] as? String {
+            self.aliyunAccountUid = value
+        }
+        if let value = dict["DeepResearchCallQuota"] as? String {
+            self.deepResearchCallQuota = value
+        }
+        if let value = dict["DeepResearchCallUsed"] as? String {
+            self.deepResearchCallUsed = value
+        }
+        if let value = dict["InstanceGmtCreate"] as? String {
+            self.instanceGmtCreate = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["LastMeteringTime"] as? String {
+            self.lastMeteringTime = value
+        }
+        if let value = dict["ModelCallQuota"] as? String {
+            self.modelCallQuota = value
+        }
+        if let value = dict["ModelCallUsed"] as? String {
+            self.modelCallUsed = value
+        }
+        if let value = dict["RefreshDay"] as? String {
+            self.refreshDay = value
+        }
+        if let value = dict["SkillPlanCallQuota"] as? String {
+            self.skillPlanCallQuota = value
+        }
+        if let value = dict["SkillPlanCallUsed"] as? String {
+            self.skillPlanCallUsed = value
         }
     }
 }
@@ -4513,6 +4909,8 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
     public class KnowledgeConfigList : Tea.TeaModel {
         public var accessType: String?
 
+        public var kbUuid: String?
+
         public var mcpServerId: String?
 
         public override init() {
@@ -4532,6 +4930,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             if self.accessType != nil {
                 map["AccessType"] = self.accessType!
             }
+            if self.kbUuid != nil {
+                map["KbUuid"] = self.kbUuid!
+            }
             if self.mcpServerId != nil {
                 map["McpServerId"] = self.mcpServerId!
             }
@@ -4542,6 +4943,9 @@ public class CreateCustomAgentRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessType"] as? String {
                 self.accessType = value
+            }
+            if let value = dict["KbUuid"] as? String {
+                self.kbUuid = value
             }
             if let value = dict["McpServerId"] as? String {
                 self.mcpServerId = value
@@ -4991,6 +5395,8 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
         public class KnowledgeConfigList : Tea.TeaModel {
             public var accessType: String?
 
+            public var kbUuid: String?
+
             public var mcpServerId: String?
 
             public override init() {
@@ -5010,6 +5416,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 if self.accessType != nil {
                     map["AccessType"] = self.accessType!
                 }
+                if self.kbUuid != nil {
+                    map["KbUuid"] = self.kbUuid!
+                }
                 if self.mcpServerId != nil {
                     map["McpServerId"] = self.mcpServerId!
                 }
@@ -5020,6 +5429,9 @@ public class CreateCustomAgentResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccessType"] as? String {
                     self.accessType = value
+                }
+                if let value = dict["KbUuid"] as? String {
+                    self.kbUuid = value
                 }
                 if let value = dict["McpServerId"] as? String {
                     self.mcpServerId = value
@@ -5467,6 +5879,8 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
 
         public var encryptType: String?
 
+        public var kbUuidList: [String]?
+
         public var language: String?
 
         public var mcpServerIds: [String]?
@@ -5508,6 +5922,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             if self.encryptType != nil {
                 map["EncryptType"] = self.encryptType!
             }
+            if self.kbUuidList != nil {
+                map["KbUuidList"] = self.kbUuidList!
+            }
             if self.language != nil {
                 map["Language"] = self.language!
             }
@@ -5545,6 +5962,9 @@ public class CreateDataAgentSessionRequest : Tea.TeaModel {
             }
             if let value = dict["EncryptType"] as? String {
                 self.encryptType = value
+            }
+            if let value = dict["KbUuidList"] as? [String] {
+                self.kbUuidList = value
             }
             if let value = dict["Language"] as? String {
                 self.language = value
@@ -5707,6 +6127,8 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var encryptType: String?
 
+            public var kbUuidList: [String]?
+
             public var language: String?
 
             public var mcpServerIds: [String]?
@@ -5748,6 +6170,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.encryptType != nil {
                     map["EncryptType"] = self.encryptType!
                 }
+                if self.kbUuidList != nil {
+                    map["KbUuidList"] = self.kbUuidList!
+                }
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
@@ -5785,6 +6210,9 @@ public class CreateDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EncryptType"] as? String {
                     self.encryptType = value
+                }
+                if let value = dict["KbUuidList"] as? [String] {
+                    self.kbUuidList = value
                 }
                 if let value = dict["Language"] as? String {
                     self.language = value
@@ -9038,6 +9466,8 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
         public class KnowledgeConfigList : Tea.TeaModel {
             public var accessType: String?
 
+            public var kbUuid: String?
+
             public var mcpServerId: String?
 
             public override init() {
@@ -9057,6 +9487,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                 if self.accessType != nil {
                     map["AccessType"] = self.accessType!
                 }
+                if self.kbUuid != nil {
+                    map["KbUuid"] = self.kbUuid!
+                }
                 if self.mcpServerId != nil {
                     map["McpServerId"] = self.mcpServerId!
                 }
@@ -9067,6 +9500,9 @@ public class DescribeCustomAgentResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccessType"] as? String {
                     self.accessType = value
+                }
+                if let value = dict["KbUuid"] as? String {
+                    self.kbUuid = value
                 }
                 if let value = dict["McpServerId"] as? String {
                     self.mcpServerId = value
@@ -9608,6 +10044,8 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
 
             public var encryptType: String?
 
+            public var kbUuidList: [String]?
+
             public var language: String?
 
             public var mcpServerIds: [String]?
@@ -9649,6 +10087,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 if self.encryptType != nil {
                     map["EncryptType"] = self.encryptType!
                 }
+                if self.kbUuidList != nil {
+                    map["KbUuidList"] = self.kbUuidList!
+                }
                 if self.language != nil {
                     map["Language"] = self.language!
                 }
@@ -9686,6 +10127,9 @@ public class DescribeDataAgentSessionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EncryptType"] as? String {
                     self.encryptType = value
+                }
+                if let value = dict["KbUuidList"] as? [String] {
+                    self.kbUuidList = value
                 }
                 if let value = dict["Language"] as? String {
                     self.language = value
@@ -13438,6 +13882,8 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
             public class KnowledgeConfigList : Tea.TeaModel {
                 public var accessType: String?
 
+                public var kbUuid: String?
+
                 public var mcpServerId: String?
 
                 public override init() {
@@ -13457,6 +13903,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                     if self.accessType != nil {
                         map["AccessType"] = self.accessType!
                     }
+                    if self.kbUuid != nil {
+                        map["KbUuid"] = self.kbUuid!
+                    }
                     if self.mcpServerId != nil {
                         map["McpServerId"] = self.mcpServerId!
                     }
@@ -13467,6 +13916,9 @@ public class ListCustomAgentResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["AccessType"] as? String {
                         self.accessType = value
+                    }
+                    if let value = dict["KbUuid"] as? String {
+                        self.kbUuid = value
                     }
                     if let value = dict["McpServerId"] as? String {
                         self.mcpServerId = value
@@ -18606,6 +19058,8 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
     public class KnowledgeConfigList : Tea.TeaModel {
         public var accessType: String?
 
+        public var kbUuid: String?
+
         public var mcpServerId: String?
 
         public override init() {
@@ -18625,6 +19079,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
             if self.accessType != nil {
                 map["AccessType"] = self.accessType!
             }
+            if self.kbUuid != nil {
+                map["KbUuid"] = self.kbUuid!
+            }
             if self.mcpServerId != nil {
                 map["McpServerId"] = self.mcpServerId!
             }
@@ -18635,6 +19092,9 @@ public class ModifyCustomAgentRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessType"] as? String {
                 self.accessType = value
+            }
+            if let value = dict["KbUuid"] as? String {
+                self.kbUuid = value
             }
             if let value = dict["McpServerId"] as? String {
                 self.mcpServerId = value
@@ -19100,6 +19560,8 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
         public class KnowledgeConfigList : Tea.TeaModel {
             public var accessType: String?
 
+            public var kbUuid: String?
+
             public var mcpServerId: String?
 
             public override init() {
@@ -19119,6 +19581,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
                 if self.accessType != nil {
                     map["AccessType"] = self.accessType!
                 }
+                if self.kbUuid != nil {
+                    map["KbUuid"] = self.kbUuid!
+                }
                 if self.mcpServerId != nil {
                     map["McpServerId"] = self.mcpServerId!
                 }
@@ -19129,6 +19594,9 @@ public class ModifyCustomAgentResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccessType"] as? String {
                     self.accessType = value
+                }
+                if let value = dict["KbUuid"] as? String {
+                    self.kbUuid = value
                 }
                 if let value = dict["McpServerId"] as? String {
                     self.mcpServerId = value
