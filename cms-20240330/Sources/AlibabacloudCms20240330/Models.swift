@@ -17034,6 +17034,8 @@ public class CreatePrometheusViewResponse : Tea.TeaModel {
 public class CreatePrometheusVirtualInstanceRequest : Tea.TeaModel {
     public var namespace: String?
 
+    public var tenantId: String?
+
     public override init() {
         super.init()
     }
@@ -17051,6 +17053,9 @@ public class CreatePrometheusVirtualInstanceRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["namespace"] = self.namespace!
         }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
         return map
     }
 
@@ -17058,6 +17063,9 @@ public class CreatePrometheusVirtualInstanceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
         }
     }
 }
@@ -40683,6 +40691,8 @@ public class ListPrometheusViewsResponse : Tea.TeaModel {
 public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
     public var namespace: String?
 
+    public var tenantId: String?
+
     public override init() {
         super.init()
     }
@@ -40700,6 +40710,9 @@ public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["namespace"] = self.namespace!
         }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
         return map
     }
 
@@ -40707,6 +40720,9 @@ public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
         }
     }
 }
