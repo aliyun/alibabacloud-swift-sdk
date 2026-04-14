@@ -2101,6 +2101,10 @@ public class CreateChatConfigResponse : Tea.TeaModel {
 }
 
 public class CreateChatSessionRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var deviceId: String?
+
     public var instanceId: String?
 
     public var license: String?
@@ -2121,6 +2125,12 @@ public class CreateChatSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["appId"] = self.appId!
+        }
+        if self.deviceId != nil {
+            map["deviceId"] = self.deviceId!
+        }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
         }
@@ -2135,6 +2145,12 @@ public class CreateChatSessionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["appId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["deviceId"] as? String {
+            self.deviceId = value
+        }
         if let value = dict["instanceId"] as? String {
             self.instanceId = value
         }

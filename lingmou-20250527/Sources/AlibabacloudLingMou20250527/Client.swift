@@ -326,6 +326,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createChatSessionWithOptions(_ id: String, _ request: CreateChatSessionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateChatSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceId)) {
+            query["deviceId"] = request.deviceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["instanceId"] = request.instanceId ?? "";
         }
