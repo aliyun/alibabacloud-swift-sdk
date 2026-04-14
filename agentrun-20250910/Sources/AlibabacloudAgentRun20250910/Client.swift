@@ -1424,6 +1424,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.systemTags)) {
+            query["systemTags"] = request.systemTags ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["workspaceId"] = request.workspaceId ?? "";
         }
