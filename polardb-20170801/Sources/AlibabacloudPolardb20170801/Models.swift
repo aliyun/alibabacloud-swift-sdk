@@ -23346,6 +23346,286 @@ public class DescribeAvailableCrossRegionsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAvailableModelsRequest : Tea.TeaModel {
+    public var kubeType: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.kubeType != nil {
+            map["KubeType"] = self.kubeType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["KubeType"] as? String {
+            self.kubeType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeAvailableModelsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class GpuRequired : Tea.TeaModel {
+            public var gpuMinCount: String?
+
+            public var gpuModel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gpuMinCount != nil {
+                    map["GpuMinCount"] = self.gpuMinCount!
+                }
+                if self.gpuModel != nil {
+                    map["GpuModel"] = self.gpuModel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GpuMinCount"] as? String {
+                    self.gpuMinCount = value
+                }
+                if let value = dict["GpuModel"] as? String {
+                    self.gpuModel = value
+                }
+            }
+        }
+        public var gpuRequired: [DescribeAvailableModelsResponseBody.Items.GpuRequired]?
+
+        public var minimumCpu: Int64?
+
+        public var minimumMemory: Int64?
+
+        public var modelName: String?
+
+        public var modelSeries: String?
+
+        public var supportedGpuModels: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gpuRequired != nil {
+                var tmp : [Any] = []
+                for k in self.gpuRequired! {
+                    tmp.append(k.toMap())
+                }
+                map["GpuRequired"] = tmp
+            }
+            if self.minimumCpu != nil {
+                map["MinimumCpu"] = self.minimumCpu!
+            }
+            if self.minimumMemory != nil {
+                map["MinimumMemory"] = self.minimumMemory!
+            }
+            if self.modelName != nil {
+                map["ModelName"] = self.modelName!
+            }
+            if self.modelSeries != nil {
+                map["ModelSeries"] = self.modelSeries!
+            }
+            if self.supportedGpuModels != nil {
+                map["SupportedGpuModels"] = self.supportedGpuModels!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GpuRequired"] as? [Any?] {
+                var tmp : [DescribeAvailableModelsResponseBody.Items.GpuRequired] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAvailableModelsResponseBody.Items.GpuRequired()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.gpuRequired = tmp
+            }
+            if let value = dict["MinimumCpu"] as? Int64 {
+                self.minimumCpu = value
+            }
+            if let value = dict["MinimumMemory"] as? Int64 {
+                self.minimumMemory = value
+            }
+            if let value = dict["ModelName"] as? String {
+                self.modelName = value
+            }
+            if let value = dict["ModelSeries"] as? String {
+                self.modelSeries = value
+            }
+            if let value = dict["SupportedGpuModels"] as? [String] {
+                self.supportedGpuModels = value
+            }
+        }
+    }
+    public var engine: String?
+
+    public var engineVersion: String?
+
+    public var items: [DescribeAvailableModelsResponseBody.Items]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
+        }
+        if let value = dict["EngineVersion"] as? String {
+            self.engineVersion = value
+        }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeAvailableModelsResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeAvailableModelsResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeAvailableModelsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAvailableModelsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeAvailableModelsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeBackupLogsRequest : Tea.TeaModel {
     public var backupRegion: String?
 
