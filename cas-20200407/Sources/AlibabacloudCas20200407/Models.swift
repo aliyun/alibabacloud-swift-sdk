@@ -7467,6 +7467,8 @@ public class ListCertResponseBody : Tea.TeaModel {
     public class CertList : Tea.TeaModel {
         public var afterDate: Int64?
 
+        public var algorithm: String?
+
         public var beforeDate: Int64?
 
         public var certType: String?
@@ -7480,6 +7482,10 @@ public class ListCertResponseBody : Tea.TeaModel {
         public var issuer: String?
 
         public var sans: String?
+
+        public var serialNo: String?
+
+        public var signAlgorithm: String?
 
         public var sourceType: String?
 
@@ -7506,6 +7512,9 @@ public class ListCertResponseBody : Tea.TeaModel {
             if self.afterDate != nil {
                 map["AfterDate"] = self.afterDate!
             }
+            if self.algorithm != nil {
+                map["Algorithm"] = self.algorithm!
+            }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
             }
@@ -7527,6 +7536,12 @@ public class ListCertResponseBody : Tea.TeaModel {
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
+            if self.serialNo != nil {
+                map["SerialNo"] = self.serialNo!
+            }
+            if self.signAlgorithm != nil {
+                map["SignAlgorithm"] = self.signAlgorithm!
+            }
             if self.sourceType != nil {
                 map["SourceType"] = self.sourceType!
             }
@@ -7546,6 +7561,9 @@ public class ListCertResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AfterDate"] as? Int64 {
                 self.afterDate = value
+            }
+            if let value = dict["Algorithm"] as? String {
+                self.algorithm = value
             }
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
@@ -7567,6 +7585,12 @@ public class ListCertResponseBody : Tea.TeaModel {
             }
             if let value = dict["Sans"] as? String {
                 self.sans = value
+            }
+            if let value = dict["SerialNo"] as? String {
+                self.serialNo = value
+            }
+            if let value = dict["SignAlgorithm"] as? String {
+                self.signAlgorithm = value
             }
             if let value = dict["SourceType"] as? String {
                 self.sourceType = value
