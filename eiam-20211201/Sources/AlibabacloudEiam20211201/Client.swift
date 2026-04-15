@@ -1789,6 +1789,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.oidcConfig)) {
             query["OidcConfig"] = request.oidcConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.samlConfig)) {
+            query["SamlConfig"] = request.samlConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.udPullConfig)) {
             query["UdPullConfig"] = request.udPullConfig!;
         }
@@ -5137,6 +5140,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.oidcIssuer)) {
             query["OidcIssuer"] = request.oidcIssuer ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.samlMetadataUrl)) {
+            query["SamlMetadataUrl"] = request.samlMetadataUrl ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -12970,6 +12976,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.oidcConfig)) {
             query["OidcConfig"] = request.oidcConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.samlConfig)) {
+            query["SamlConfig"] = request.samlConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.weComConfig)) {
             query["WeComConfig"] = request.weComConfig!;

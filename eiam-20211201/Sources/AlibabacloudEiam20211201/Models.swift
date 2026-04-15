@@ -8246,6 +8246,120 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
         }
     }
+    public class SamlConfig : Tea.TeaModel {
+        public class Certificates : Tea.TeaModel {
+            public var content: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+            }
+        }
+        public var bindingMethod: String?
+
+        public var certificates: [CreateIdentityProviderRequest.SamlConfig.Certificates]?
+
+        public var idPEntityId: String?
+
+        public var idPSsoUrl: String?
+
+        public var maxClockSkew: Int64?
+
+        public var requireRequestSigned: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bindingMethod != nil {
+                map["BindingMethod"] = self.bindingMethod!
+            }
+            if self.certificates != nil {
+                var tmp : [Any] = []
+                for k in self.certificates! {
+                    tmp.append(k.toMap())
+                }
+                map["Certificates"] = tmp
+            }
+            if self.idPEntityId != nil {
+                map["IdPEntityId"] = self.idPEntityId!
+            }
+            if self.idPSsoUrl != nil {
+                map["IdPSsoUrl"] = self.idPSsoUrl!
+            }
+            if self.maxClockSkew != nil {
+                map["MaxClockSkew"] = self.maxClockSkew!
+            }
+            if self.requireRequestSigned != nil {
+                map["RequireRequestSigned"] = self.requireRequestSigned!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BindingMethod"] as? String {
+                self.bindingMethod = value
+            }
+            if let value = dict["Certificates"] as? [Any?] {
+                var tmp : [CreateIdentityProviderRequest.SamlConfig.Certificates] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateIdentityProviderRequest.SamlConfig.Certificates()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.certificates = tmp
+            }
+            if let value = dict["IdPEntityId"] as? String {
+                self.idPEntityId = value
+            }
+            if let value = dict["IdPSsoUrl"] as? String {
+                self.idPSsoUrl = value
+            }
+            if let value = dict["MaxClockSkew"] as? Int64 {
+                self.maxClockSkew = value
+            }
+            if let value = dict["RequireRequestSigned"] as? Bool {
+                self.requireRequestSigned = value
+            }
+        }
+    }
     public class UdPullConfig : Tea.TeaModel {
         public class PeriodicSyncConfig : Tea.TeaModel {
             public var periodicSyncCron: String?
@@ -8643,6 +8757,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
     public var oidcConfig: CreateIdentityProviderRequest.OidcConfig?
 
+    public var samlConfig: CreateIdentityProviderRequest.SamlConfig?
+
     public var udPullConfig: CreateIdentityProviderRequest.UdPullConfig?
 
     public var udPushConfig: CreateIdentityProviderRequest.UdPushConfig?
@@ -8667,6 +8783,7 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         try self.larkConfig?.validate()
         try self.ldapConfig?.validate()
         try self.oidcConfig?.validate()
+        try self.samlConfig?.validate()
         try self.udPullConfig?.validate()
         try self.udPushConfig?.validate()
         try self.weComConfig?.validate()
@@ -8715,6 +8832,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
         if self.oidcConfig != nil {
             map["OidcConfig"] = self.oidcConfig?.toMap()
+        }
+        if self.samlConfig != nil {
+            map["SamlConfig"] = self.samlConfig?.toMap()
         }
         if self.udPullConfig != nil {
             map["UdPullConfig"] = self.udPullConfig?.toMap()
@@ -8787,6 +8907,11 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             var model = CreateIdentityProviderRequest.OidcConfig()
             model.fromMap(value)
             self.oidcConfig = model
+        }
+        if let value = dict["SamlConfig"] as? [String: Any?] {
+            var model = CreateIdentityProviderRequest.SamlConfig()
+            model.fromMap(value)
+            self.samlConfig = model
         }
         if let value = dict["UdPullConfig"] as? [String: Any?] {
             var model = CreateIdentityProviderRequest.UdPullConfig()
@@ -20565,6 +20690,8 @@ public class ExecIdentityProviderMetadataUrlResolutionRequest : Tea.TeaModel {
 
     public var oidcIssuer: String?
 
+    public var samlMetadataUrl: String?
+
     public override init() {
         super.init()
     }
@@ -20591,6 +20718,9 @@ public class ExecIdentityProviderMetadataUrlResolutionRequest : Tea.TeaModel {
         if self.oidcIssuer != nil {
             map["OidcIssuer"] = self.oidcIssuer!
         }
+        if self.samlMetadataUrl != nil {
+            map["SamlMetadataUrl"] = self.samlMetadataUrl!
+        }
         return map
     }
 
@@ -20607,6 +20737,9 @@ public class ExecIdentityProviderMetadataUrlResolutionRequest : Tea.TeaModel {
         }
         if let value = dict["OidcIssuer"] as? String {
             self.oidcIssuer = value
+        }
+        if let value = dict["SamlMetadataUrl"] as? String {
+            self.samlMetadataUrl = value
         }
     }
 }
@@ -20675,7 +20808,99 @@ public class ExecIdentityProviderMetadataUrlResolutionResponseBody : Tea.TeaMode
                 }
             }
         }
+        public class SamlMetadataConfiguration : Tea.TeaModel {
+            public class Certificates : Tea.TeaModel {
+                public var content: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Content"] as? String {
+                        self.content = value
+                    }
+                }
+            }
+            public var certificates: [ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.SamlMetadataConfiguration.Certificates]?
+
+            public var idPEntityId: String?
+
+            public var idPSsoUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.certificates != nil {
+                    var tmp : [Any] = []
+                    for k in self.certificates! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Certificates"] = tmp
+                }
+                if self.idPEntityId != nil {
+                    map["IdPEntityId"] = self.idPEntityId!
+                }
+                if self.idPSsoUrl != nil {
+                    map["IdPSsoUrl"] = self.idPSsoUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Certificates"] as? [Any?] {
+                    var tmp : [ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.SamlMetadataConfiguration.Certificates] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.SamlMetadataConfiguration.Certificates()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.certificates = tmp
+                }
+                if let value = dict["IdPEntityId"] as? String {
+                    self.idPEntityId = value
+                }
+                if let value = dict["IdPSsoUrl"] as? String {
+                    self.idPSsoUrl = value
+                }
+            }
+        }
         public var oidcOpenIdConfiguration: ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.OidcOpenIdConfiguration?
+
+        public var samlMetadataConfiguration: ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.SamlMetadataConfiguration?
 
         public override init() {
             super.init()
@@ -20688,12 +20913,16 @@ public class ExecIdentityProviderMetadataUrlResolutionResponseBody : Tea.TeaMode
 
         public override func validate() throws -> Void {
             try self.oidcOpenIdConfiguration?.validate()
+            try self.samlMetadataConfiguration?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.oidcOpenIdConfiguration != nil {
                 map["OidcOpenIdConfiguration"] = self.oidcOpenIdConfiguration?.toMap()
+            }
+            if self.samlMetadataConfiguration != nil {
+                map["SamlMetadataConfiguration"] = self.samlMetadataConfiguration?.toMap()
             }
             return map
         }
@@ -20704,6 +20933,11 @@ public class ExecIdentityProviderMetadataUrlResolutionResponseBody : Tea.TeaMode
                 var model = ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.OidcOpenIdConfiguration()
                 model.fromMap(value)
                 self.oidcOpenIdConfiguration = model
+            }
+            if let value = dict["SamlMetadataConfiguration"] as? [String: Any?] {
+                var model = ExecIdentityProviderMetadataUrlResolutionResponseBody.IdentityProviderMetadata.SamlMetadataConfiguration()
+                model.fromMap(value)
+                self.samlMetadataConfiguration = model
             }
         }
     }
@@ -30247,6 +30481,52 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EndpointMetadata : Tea.TeaModel {
+            public var samlAcsEndpoint: String?
+
+            public var samlEntityId: String?
+
+            public var samlMetaEndpoint: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.samlAcsEndpoint != nil {
+                    map["SamlAcsEndpoint"] = self.samlAcsEndpoint!
+                }
+                if self.samlEntityId != nil {
+                    map["SamlEntityId"] = self.samlEntityId!
+                }
+                if self.samlMetaEndpoint != nil {
+                    map["SamlMetaEndpoint"] = self.samlMetaEndpoint!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SamlAcsEndpoint"] as? String {
+                    self.samlAcsEndpoint = value
+                }
+                if let value = dict["SamlEntityId"] as? String {
+                    self.samlEntityId = value
+                }
+                if let value = dict["SamlMetaEndpoint"] as? String {
+                    self.samlMetaEndpoint = value
+                }
+            }
+        }
         public class LarkConfig : Tea.TeaModel {
             public var appId: String?
 
@@ -30579,6 +30859,169 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SamlConfig : Tea.TeaModel {
+            public class Certificates : Tea.TeaModel {
+                public class CertificateMetadata : Tea.TeaModel {
+                    public var notAfter: Int64?
+
+                    public var notBefore: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.notAfter != nil {
+                            map["NotAfter"] = self.notAfter!
+                        }
+                        if self.notBefore != nil {
+                            map["NotBefore"] = self.notBefore!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["NotAfter"] as? Int64 {
+                            self.notAfter = value
+                        }
+                        if let value = dict["NotBefore"] as? Int64 {
+                            self.notBefore = value
+                        }
+                    }
+                }
+                public var certificateMetadata: GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig.Certificates.CertificateMetadata?
+
+                public var content: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.certificateMetadata?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.certificateMetadata != nil {
+                        map["CertificateMetadata"] = self.certificateMetadata?.toMap()
+                    }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CertificateMetadata"] as? [String: Any?] {
+                        var model = GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig.Certificates.CertificateMetadata()
+                        model.fromMap(value)
+                        self.certificateMetadata = model
+                    }
+                    if let value = dict["Content"] as? String {
+                        self.content = value
+                    }
+                }
+            }
+            public var bindingMethod: String?
+
+            public var certificates: [GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig.Certificates]?
+
+            public var idPEntityId: String?
+
+            public var idPSsoUrl: String?
+
+            public var maxClockSkew: Int64?
+
+            public var requireRequestSigned: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bindingMethod != nil {
+                    map["BindingMethod"] = self.bindingMethod!
+                }
+                if self.certificates != nil {
+                    var tmp : [Any] = []
+                    for k in self.certificates! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Certificates"] = tmp
+                }
+                if self.idPEntityId != nil {
+                    map["IdPEntityId"] = self.idPEntityId!
+                }
+                if self.idPSsoUrl != nil {
+                    map["IdPSsoUrl"] = self.idPSsoUrl!
+                }
+                if self.maxClockSkew != nil {
+                    map["MaxClockSkew"] = self.maxClockSkew!
+                }
+                if self.requireRequestSigned != nil {
+                    map["RequireRequestSigned"] = self.requireRequestSigned!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BindingMethod"] as? String {
+                    self.bindingMethod = value
+                }
+                if let value = dict["Certificates"] as? [Any?] {
+                    var tmp : [GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig.Certificates] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig.Certificates()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.certificates = tmp
+                }
+                if let value = dict["IdPEntityId"] as? String {
+                    self.idPEntityId = value
+                }
+                if let value = dict["IdPSsoUrl"] as? String {
+                    self.idPSsoUrl = value
+                }
+                if let value = dict["MaxClockSkew"] as? Int64 {
+                    self.maxClockSkew = value
+                }
+                if let value = dict["RequireRequestSigned"] as? Bool {
+                    self.requireRequestSigned = value
+                }
+            }
+        }
         public class UdPullConfig : Tea.TeaModel {
             public class UdSyncScopeConfig : Tea.TeaModel {
                 public var sourceScopes: [String]?
@@ -30834,6 +31277,8 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
         public var dingtalkProvisioningConfig: GetIdentityProviderResponseBody.IdentityProviderDetail.DingtalkProvisioningConfig?
 
+        public var endpointMetadata: GetIdentityProviderResponseBody.IdentityProviderDetail.EndpointMetadata?
+
         public var identityProviderExternalId: String?
 
         public var identityProviderId: String?
@@ -30857,6 +31302,8 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
         public var networkAccessEndpointId: String?
 
         public var oidcConfig: GetIdentityProviderResponseBody.IdentityProviderDetail.OidcConfig?
+
+        public var samlConfig: GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig?
 
         public var udPullConfig: GetIdentityProviderResponseBody.IdentityProviderDetail.UdPullConfig?
 
@@ -30882,9 +31329,11 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.dingtalkAppConfig?.validate()
             try self.dingtalkProvisioningConfig?.validate()
+            try self.endpointMetadata?.validate()
             try self.larkConfig?.validate()
             try self.ldapConfig?.validate()
             try self.oidcConfig?.validate()
+            try self.samlConfig?.validate()
             try self.udPullConfig?.validate()
             try self.udPushConfig?.validate()
             try self.weComConfig?.validate()
@@ -30915,6 +31364,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
             }
             if self.dingtalkProvisioningConfig != nil {
                 map["DingtalkProvisioningConfig"] = self.dingtalkProvisioningConfig?.toMap()
+            }
+            if self.endpointMetadata != nil {
+                map["EndpointMetadata"] = self.endpointMetadata?.toMap()
             }
             if self.identityProviderExternalId != nil {
                 map["IdentityProviderExternalId"] = self.identityProviderExternalId!
@@ -30951,6 +31403,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
             }
             if self.oidcConfig != nil {
                 map["OidcConfig"] = self.oidcConfig?.toMap()
+            }
+            if self.samlConfig != nil {
+                map["SamlConfig"] = self.samlConfig?.toMap()
             }
             if self.udPullConfig != nil {
                 map["UdPullConfig"] = self.udPullConfig?.toMap()
@@ -31003,6 +31458,11 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.dingtalkProvisioningConfig = model
             }
+            if let value = dict["EndpointMetadata"] as? [String: Any?] {
+                var model = GetIdentityProviderResponseBody.IdentityProviderDetail.EndpointMetadata()
+                model.fromMap(value)
+                self.endpointMetadata = model
+            }
             if let value = dict["IdentityProviderExternalId"] as? String {
                 self.identityProviderExternalId = value
             }
@@ -31044,6 +31504,11 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 var model = GetIdentityProviderResponseBody.IdentityProviderDetail.OidcConfig()
                 model.fromMap(value)
                 self.oidcConfig = model
+            }
+            if let value = dict["SamlConfig"] as? [String: Any?] {
+                var model = GetIdentityProviderResponseBody.IdentityProviderDetail.SamlConfig()
+                model.fromMap(value)
+                self.samlConfig = model
             }
             if let value = dict["UdPullConfig"] as? [String: Any?] {
                 var model = GetIdentityProviderResponseBody.IdentityProviderDetail.UdPullConfig()
@@ -75266,6 +75731,120 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             }
         }
     }
+    public class SamlConfig : Tea.TeaModel {
+        public class Certificates : Tea.TeaModel {
+            public var content: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+            }
+        }
+        public var bindingMethod: String?
+
+        public var certificates: [UpdateIdentityProviderRequest.SamlConfig.Certificates]?
+
+        public var idPEntityId: String?
+
+        public var idPSsoUrl: String?
+
+        public var maxClockSkew: Int64?
+
+        public var requireRequestSigned: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bindingMethod != nil {
+                map["BindingMethod"] = self.bindingMethod!
+            }
+            if self.certificates != nil {
+                var tmp : [Any] = []
+                for k in self.certificates! {
+                    tmp.append(k.toMap())
+                }
+                map["Certificates"] = tmp
+            }
+            if self.idPEntityId != nil {
+                map["IdPEntityId"] = self.idPEntityId!
+            }
+            if self.idPSsoUrl != nil {
+                map["IdPSsoUrl"] = self.idPSsoUrl!
+            }
+            if self.maxClockSkew != nil {
+                map["MaxClockSkew"] = self.maxClockSkew!
+            }
+            if self.requireRequestSigned != nil {
+                map["RequireRequestSigned"] = self.requireRequestSigned!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BindingMethod"] as? String {
+                self.bindingMethod = value
+            }
+            if let value = dict["Certificates"] as? [Any?] {
+                var tmp : [UpdateIdentityProviderRequest.SamlConfig.Certificates] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateIdentityProviderRequest.SamlConfig.Certificates()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.certificates = tmp
+            }
+            if let value = dict["IdPEntityId"] as? String {
+                self.idPEntityId = value
+            }
+            if let value = dict["IdPSsoUrl"] as? String {
+                self.idPSsoUrl = value
+            }
+            if let value = dict["MaxClockSkew"] as? Int64 {
+                self.maxClockSkew = value
+            }
+            if let value = dict["RequireRequestSigned"] as? Bool {
+                self.requireRequestSigned = value
+            }
+        }
+    }
     public class WeComConfig : Tea.TeaModel {
         public var agentId: String?
 
@@ -75340,6 +75919,8 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
     public var oidcConfig: UpdateIdentityProviderRequest.OidcConfig?
 
+    public var samlConfig: UpdateIdentityProviderRequest.SamlConfig?
+
     public var weComConfig: UpdateIdentityProviderRequest.WeComConfig?
 
     public override init() {
@@ -75356,6 +75937,7 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
         try self.larkConfig?.validate()
         try self.ldapConfig?.validate()
         try self.oidcConfig?.validate()
+        try self.samlConfig?.validate()
         try self.weComConfig?.validate()
     }
 
@@ -75390,6 +75972,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
         }
         if self.oidcConfig != nil {
             map["OidcConfig"] = self.oidcConfig?.toMap()
+        }
+        if self.samlConfig != nil {
+            map["SamlConfig"] = self.samlConfig?.toMap()
         }
         if self.weComConfig != nil {
             map["WeComConfig"] = self.weComConfig?.toMap()
@@ -75436,6 +76021,11 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             var model = UpdateIdentityProviderRequest.OidcConfig()
             model.fromMap(value)
             self.oidcConfig = model
+        }
+        if let value = dict["SamlConfig"] as? [String: Any?] {
+            var model = UpdateIdentityProviderRequest.SamlConfig()
+            model.fromMap(value)
+            self.samlConfig = model
         }
         if let value = dict["WeComConfig"] as? [String: Any?] {
             var model = UpdateIdentityProviderRequest.WeComConfig()
