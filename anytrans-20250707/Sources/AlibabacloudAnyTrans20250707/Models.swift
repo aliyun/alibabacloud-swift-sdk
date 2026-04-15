@@ -165,6 +165,8 @@ public class BatchTranslateRequest : Tea.TeaModel {
 
         public var examples: [BatchTranslateRequest.Ext.Examples]?
 
+        public var langDetect: Bool?
+
         public var paramMap: Any?
 
         public var sensitives: [String]?
@@ -201,6 +203,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.langDetect != nil {
+                map["langDetect"] = self.langDetect!
             }
             if self.paramMap != nil {
                 map["paramMap"] = self.paramMap!
@@ -243,6 +248,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["langDetect"] as? Bool {
+                self.langDetect = value
             }
             if let value = dict["paramMap"] as? Any {
                 self.paramMap = value
@@ -893,6 +901,8 @@ public class BatchTranslateForHtmlRequest : Tea.TeaModel {
 
         public var examples: [BatchTranslateForHtmlRequest.Ext.Examples]?
 
+        public var langDetect: Bool?
+
         public var sensitives: [String]?
 
         public var terminologies: [BatchTranslateForHtmlRequest.Ext.Terminologies]?
@@ -927,6 +937,9 @@ public class BatchTranslateForHtmlRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.langDetect != nil {
+                map["langDetect"] = self.langDetect!
             }
             if self.sensitives != nil {
                 map["sensitives"] = self.sensitives!
@@ -966,6 +979,9 @@ public class BatchTranslateForHtmlRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["langDetect"] as? Bool {
+                self.langDetect = value
             }
             if let value = dict["sensitives"] as? [String] {
                 self.sensitives = value
@@ -6246,6 +6262,8 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public var examples: [TextTranslateRequest.Ext.Examples]?
 
+        public var langDetect: Bool?
+
         public var paramMap: Any?
 
         public var prefix_: String?
@@ -6287,6 +6305,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["examples"] = tmp
+            }
+            if self.langDetect != nil {
+                map["langDetect"] = self.langDetect!
             }
             if self.paramMap != nil {
                 map["paramMap"] = self.paramMap!
@@ -6335,6 +6356,9 @@ public class TextTranslateRequest : Tea.TeaModel {
                     }
                 }
                 self.examples = tmp
+            }
+            if let value = dict["langDetect"] as? Bool {
+                self.langDetect = value
             }
             if let value = dict["paramMap"] as? Any {
                 self.paramMap = value
