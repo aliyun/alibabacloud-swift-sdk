@@ -11307,6 +11307,8 @@ public class CreateStreamingJobResponse : Tea.TeaModel {
 public class CreateSupabaseProjectRequest : Tea.TeaModel {
     public var accountPassword: String?
 
+    public var autoScale: Bool?
+
     public var clientToken: String?
 
     public var diskPerformanceLevel: String?
@@ -11349,6 +11351,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accountPassword != nil {
             map["AccountPassword"] = self.accountPassword!
+        }
+        if self.autoScale != nil {
+            map["AutoScale"] = self.autoScale!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -11396,6 +11401,9 @@ public class CreateSupabaseProjectRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountPassword"] as? String {
             self.accountPassword = value
+        }
+        if let value = dict["AutoScale"] as? Bool {
+            self.autoScale = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -38644,6 +38652,8 @@ public class GetSupabaseProjectRequest : Tea.TeaModel {
 }
 
 public class GetSupabaseProjectResponseBody : Tea.TeaModel {
+    public var autoScale: String?
+
     public var createTime: String?
 
     public var DBSecurityIpList: String?
@@ -38706,6 +38716,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoScale != nil {
+            map["AutoScale"] = self.autoScale!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -38783,6 +38796,9 @@ public class GetSupabaseProjectResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoScale"] as? String {
+            self.autoScale = value
+        }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
@@ -46903,6 +46919,14 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var searchField: String?
+
+    public var searchValue: String?
+
+    public var sortField: String?
+
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -46932,6 +46956,18 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.searchField != nil {
+            map["SearchField"] = self.searchField!
+        }
+        if self.searchValue != nil {
+            map["SearchValue"] = self.searchValue!
+        }
+        if self.sortField != nil {
+            map["SortField"] = self.sortField!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -46952,11 +46988,25 @@ public class ListSupabaseProjectsRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["SearchField"] as? String {
+            self.searchField = value
+        }
+        if let value = dict["SearchValue"] as? String {
+            self.searchValue = value
+        }
+        if let value = dict["SortField"] as? String {
+            self.sortField = value
+        }
+        if let value = dict["SortOrder"] as? String {
+            self.sortOrder = value
+        }
     }
 }
 
 public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var autoScale: String?
+
         public var createTime: String?
 
         public var dashboardPassword: String?
@@ -47011,6 +47061,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoScale != nil {
+                map["AutoScale"] = self.autoScale!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -47076,6 +47129,9 @@ public class ListSupabaseProjectsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoScale"] as? String {
+                self.autoScale = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
