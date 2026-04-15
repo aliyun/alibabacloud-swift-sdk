@@ -19508,6 +19508,8 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
 
         public var deploymentContent: String?
 
+        public var failedReason: String?
+
         public var status: String?
 
         public var version: String?
@@ -19543,6 +19545,9 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
             if self.deploymentContent != nil {
                 map["deploymentContent"] = self.deploymentContent!
             }
+            if self.failedReason != nil {
+                map["failedReason"] = self.failedReason!
+            }
             if self.status != nil {
                 map["status"] = self.status!
             }
@@ -19572,6 +19577,9 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["deploymentContent"] as? String {
                 self.deploymentContent = value
+            }
+            if let value = dict["failedReason"] as? String {
+                self.failedReason = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
