@@ -6717,6 +6717,397 @@ public class BatchGetFormDataByIdListResponse : Tea.TeaModel {
     }
 }
 
+public class BatchQueryGroupMemberHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: BatchQueryGroupMemberHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = BatchQueryGroupMemberHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class BatchQueryGroupMemberShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class BatchQueryGroupMemberRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var coolAppCode: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var openConversationId: String?
+
+    public var tenantContext: BatchQueryGroupMemberRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.coolAppCode != nil {
+            map["CoolAppCode"] = self.coolAppCode!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.openConversationId != nil {
+            map["OpenConversationId"] = self.openConversationId!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CoolAppCode"] as? String {
+            self.coolAppCode = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OpenConversationId"] as? String {
+            self.openConversationId = value
+        }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = BatchQueryGroupMemberRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+    }
+}
+
+public class BatchQueryGroupMemberShrinkRequest : Tea.TeaModel {
+    public var coolAppCode: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var openConversationId: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.coolAppCode != nil {
+            map["CoolAppCode"] = self.coolAppCode!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.openConversationId != nil {
+            map["OpenConversationId"] = self.openConversationId!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CoolAppCode"] as? String {
+            self.coolAppCode = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OpenConversationId"] as? String {
+            self.openConversationId = value
+        }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+    }
+}
+
+public class BatchQueryGroupMemberResponseBody : Tea.TeaModel {
+    public var hasMore: Bool?
+
+    public var memberUserIds: [String]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.hasMore != nil {
+            map["hasMore"] = self.hasMore!
+        }
+        if self.memberUserIds != nil {
+            map["memberUserIds"] = self.memberUserIds!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["hasMore"] as? Bool {
+            self.hasMore = value
+        }
+        if let value = dict["memberUserIds"] as? [String] {
+            self.memberUserIds = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class BatchQueryGroupMemberResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchQueryGroupMemberResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchQueryGroupMemberResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BatchRemovalByFormInstanceIdListHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
@@ -24903,6 +25294,60 @@ public class CreateScheduleConferenceShrinkHeaders : Tea.TeaModel {
 
 public class CreateScheduleConferenceRequest : Tea.TeaModel {
     public class ScheduleConfSettingModel : Tea.TeaModel {
+        public class AiAgentSummarySetting : Tea.TeaModel {
+            public var allowAllParticipantsStart: Int32?
+
+            public var receiverType: Int32?
+
+            public var restrictShareMinutesSummaryOnly: Int32?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowAllParticipantsStart != nil {
+                    map["AllowAllParticipantsStart"] = self.allowAllParticipantsStart!
+                }
+                if self.receiverType != nil {
+                    map["ReceiverType"] = self.receiverType!
+                }
+                if self.restrictShareMinutesSummaryOnly != nil {
+                    map["RestrictShareMinutesSummaryOnly"] = self.restrictShareMinutesSummaryOnly!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllowAllParticipantsStart"] as? Int32 {
+                    self.allowAllParticipantsStart = value
+                }
+                if let value = dict["ReceiverType"] as? Int32 {
+                    self.receiverType = value
+                }
+                if let value = dict["RestrictShareMinutesSummaryOnly"] as? Int32 {
+                    self.restrictShareMinutesSummaryOnly = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public class MoziConfOpenRecordSetting : Tea.TeaModel {
             public var isFollowHost: Bool?
 
@@ -24911,6 +25356,8 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
             public var recordAutoStart: Int32?
 
             public var recordAutoStartType: Int32?
+
+            public var restrictShareMinutesSummaryOnly: Int32?
 
             public override init() {
                 super.init()
@@ -24938,6 +25385,9 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 if self.recordAutoStartType != nil {
                     map["RecordAutoStartType"] = self.recordAutoStartType!
                 }
+                if self.restrictShareMinutesSummaryOnly != nil {
+                    map["RestrictShareMinutesSummaryOnly"] = self.restrictShareMinutesSummaryOnly!
+                }
                 return map
             }
 
@@ -24954,6 +25404,9 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 }
                 if let value = dict["RecordAutoStartType"] as? Int32 {
                     self.recordAutoStartType = value
+                }
+                if let value = dict["RestrictShareMinutesSummaryOnly"] as? Int32 {
+                    self.restrictShareMinutesSummaryOnly = value
                 }
             }
         }
@@ -25010,6 +25463,8 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
 
             public var enableWebAnonymousJoin: Bool?
 
+            public var hiddenOwnerNick: Bool?
+
             public var joinBeforeHost: Int32?
 
             public var lockMediaStatusMicMute: Int32?
@@ -25017,6 +25472,12 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
             public var lockNick: Int32?
 
             public var minutesOwnerUserId: String?
+
+            public var minutesSummaryDiyTemplateVersion: String?
+
+            public var minutesSummaryTemplateId: String?
+
+            public var minutesSummaryTemplateType: String?
 
             public var moziConfExtensionAppSettings: [CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings]?
 
@@ -25051,6 +25512,9 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 if self.enableWebAnonymousJoin != nil {
                     map["EnableWebAnonymousJoin"] = self.enableWebAnonymousJoin!
                 }
+                if self.hiddenOwnerNick != nil {
+                    map["HiddenOwnerNick"] = self.hiddenOwnerNick!
+                }
                 if self.joinBeforeHost != nil {
                     map["JoinBeforeHost"] = self.joinBeforeHost!
                 }
@@ -25062,6 +25526,15 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 }
                 if self.minutesOwnerUserId != nil {
                     map["MinutesOwnerUserId"] = self.minutesOwnerUserId!
+                }
+                if self.minutesSummaryDiyTemplateVersion != nil {
+                    map["MinutesSummaryDiyTemplateVersion"] = self.minutesSummaryDiyTemplateVersion!
+                }
+                if self.minutesSummaryTemplateId != nil {
+                    map["MinutesSummaryTemplateId"] = self.minutesSummaryTemplateId!
+                }
+                if self.minutesSummaryTemplateType != nil {
+                    map["MinutesSummaryTemplateType"] = self.minutesSummaryTemplateType!
                 }
                 if self.moziConfExtensionAppSettings != nil {
                     var tmp : [Any] = []
@@ -25096,6 +25569,9 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 if let value = dict["EnableWebAnonymousJoin"] as? Bool {
                     self.enableWebAnonymousJoin = value
                 }
+                if let value = dict["HiddenOwnerNick"] as? Bool {
+                    self.hiddenOwnerNick = value
+                }
                 if let value = dict["JoinBeforeHost"] as? Int32 {
                     self.joinBeforeHost = value
                 }
@@ -25107,6 +25583,15 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 }
                 if let value = dict["MinutesOwnerUserId"] as? String {
                     self.minutesOwnerUserId = value
+                }
+                if let value = dict["MinutesSummaryDiyTemplateVersion"] as? String {
+                    self.minutesSummaryDiyTemplateVersion = value
+                }
+                if let value = dict["MinutesSummaryTemplateId"] as? String {
+                    self.minutesSummaryTemplateId = value
+                }
+                if let value = dict["MinutesSummaryTemplateType"] as? String {
+                    self.minutesSummaryTemplateType = value
                 }
                 if let value = dict["MoziConfExtensionAppSettings"] as? [Any?] {
                     var tmp : [CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings] = []
@@ -25135,6 +25620,8 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
                 }
             }
         }
+        public var aiAgentSummarySetting: CreateScheduleConferenceRequest.ScheduleConfSettingModel.AiAgentSummarySetting?
+
         public var cohostUserIds: [String]?
 
         public var confAllowedCorpId: String?
@@ -25161,12 +25648,16 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aiAgentSummarySetting?.validate()
             try self.moziConfOpenRecordSetting?.validate()
             try self.moziConfVirtualExtraSetting?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiAgentSummarySetting != nil {
+                map["AiAgentSummarySetting"] = self.aiAgentSummarySetting?.toMap()
+            }
             if self.cohostUserIds != nil {
                 map["CohostUserIds"] = self.cohostUserIds!
             }
@@ -25196,6 +25687,11 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AiAgentSummarySetting"] as? [String: Any?] {
+                var model = CreateScheduleConferenceRequest.ScheduleConfSettingModel.AiAgentSummarySetting()
+                model.fromMap(value)
+                self.aiAgentSummarySetting = model
+            }
             if let value = dict["CohostUserIds"] as? [String] {
                 self.cohostUserIds = value
             }
@@ -25398,6 +25894,10 @@ public class CreateScheduleConferenceResponseBody : Tea.TeaModel {
 
     public var url: String?
 
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
     public override init() {
         super.init()
     }
@@ -25427,6 +25927,12 @@ public class CreateScheduleConferenceResponseBody : Tea.TeaModel {
         if self.url != nil {
             map["url"] = self.url!
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         return map
     }
 
@@ -25446,6 +25952,12 @@ public class CreateScheduleConferenceResponseBody : Tea.TeaModel {
         }
         if let value = dict["url"] as? String {
             self.url = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
         }
     }
 }
@@ -67437,6 +67949,333 @@ public class GetRunningTasksResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetRunningTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: GetScencegroupFileDownloadurlHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = GetScencegroupFileDownloadurlHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var downloadCode: String?
+
+    public var tenantContext: GetScencegroupFileDownloadurlRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadCode != nil {
+            map["DownloadCode"] = self.downloadCode!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DownloadCode"] as? String {
+            self.downloadCode = value
+        }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = GetScencegroupFileDownloadurlRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlShrinkRequest : Tea.TeaModel {
+    public var downloadCode: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadCode != nil {
+            map["DownloadCode"] = self.downloadCode!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DownloadCode"] as? String {
+            self.downloadCode = value
+        }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlResponseBody : Tea.TeaModel {
+    public var downloadUrl: String?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadUrl != nil {
+            map["downloadUrl"] = self.downloadUrl!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["downloadUrl"] as? String {
+            self.downloadUrl = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class GetScencegroupFileDownloadurlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetScencegroupFileDownloadurlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetScencegroupFileDownloadurlResponseBody()
             model.fromMap(value)
             self.body = model
         }
