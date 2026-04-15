@@ -2977,6 +2977,214 @@ public class CreateProductResponse : Tea.TeaModel {
     }
 }
 
+public class CreateResponseRuleRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var responseActionConfig: String?
+
+    public var responseActionType: String?
+
+    public var responseExecutionCondition: String?
+
+    public var responseRuleName: String?
+
+    public var responseRulePriority: String?
+
+    public var responseTriggerType: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.responseActionConfig != nil {
+            map["ResponseActionConfig"] = self.responseActionConfig!
+        }
+        if self.responseActionType != nil {
+            map["ResponseActionType"] = self.responseActionType!
+        }
+        if self.responseExecutionCondition != nil {
+            map["ResponseExecutionCondition"] = self.responseExecutionCondition!
+        }
+        if self.responseRuleName != nil {
+            map["ResponseRuleName"] = self.responseRuleName!
+        }
+        if self.responseRulePriority != nil {
+            map["ResponseRulePriority"] = self.responseRulePriority!
+        }
+        if self.responseTriggerType != nil {
+            map["ResponseTriggerType"] = self.responseTriggerType!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResponseActionConfig"] as? String {
+            self.responseActionConfig = value
+        }
+        if let value = dict["ResponseActionType"] as? String {
+            self.responseActionType = value
+        }
+        if let value = dict["ResponseExecutionCondition"] as? String {
+            self.responseExecutionCondition = value
+        }
+        if let value = dict["ResponseRuleName"] as? String {
+            self.responseRuleName = value
+        }
+        if let value = dict["ResponseRulePriority"] as? String {
+            self.responseRulePriority = value
+        }
+        if let value = dict["ResponseTriggerType"] as? String {
+            self.responseTriggerType = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class CreateResponseRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var responseRuleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
+        }
+    }
+}
+
+public class CreateResponseRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateResponseRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateResponseRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateVendorRequest : Tea.TeaModel {
     public var lang: String?
 
@@ -4379,6 +4587,150 @@ public class DeleteProductResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteProductResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteResponseRuleRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var responseRuleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
+        }
+    }
+}
+
+public class DeleteResponseRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteResponseRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteResponseRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteResponseRuleResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -16033,6 +16385,386 @@ public class ListProductsResponse : Tea.TeaModel {
     }
 }
 
+public class ListResponseRulesRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var responseActionType: String?
+
+    public var responseRuleName: String?
+
+    public var responseRuleStatus: Int32?
+
+    public var responseRuleType: String?
+
+    public var responseTriggerType: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.responseActionType != nil {
+            map["ResponseActionType"] = self.responseActionType!
+        }
+        if self.responseRuleName != nil {
+            map["ResponseRuleName"] = self.responseRuleName!
+        }
+        if self.responseRuleStatus != nil {
+            map["ResponseRuleStatus"] = self.responseRuleStatus!
+        }
+        if self.responseRuleType != nil {
+            map["ResponseRuleType"] = self.responseRuleType!
+        }
+        if self.responseTriggerType != nil {
+            map["ResponseTriggerType"] = self.responseTriggerType!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResponseActionType"] as? String {
+            self.responseActionType = value
+        }
+        if let value = dict["ResponseRuleName"] as? String {
+            self.responseRuleName = value
+        }
+        if let value = dict["ResponseRuleStatus"] as? Int32 {
+            self.responseRuleStatus = value
+        }
+        if let value = dict["ResponseRuleType"] as? String {
+            self.responseRuleType = value
+        }
+        if let value = dict["ResponseTriggerType"] as? String {
+            self.responseTriggerType = value
+        }
+        if let value = dict["RoleFor"] as? Int64 {
+            self.roleFor = value
+        }
+        if let value = dict["RoleType"] as? Int32 {
+            self.roleType = value
+        }
+    }
+}
+
+public class ListResponseRulesResponseBody : Tea.TeaModel {
+    public class ResponseRules : Tea.TeaModel {
+        public var createTime: Int64?
+
+        public var responseActionConfig: String?
+
+        public var responseActionType: String?
+
+        public var responseExecutionCondition: String?
+
+        public var responseRuleId: String?
+
+        public var responseRuleName: String?
+
+        public var responseRulePriority: Int32?
+
+        public var responseRuleStatus: Int32?
+
+        public var responseRuleType: String?
+
+        public var responseTriggerType: String?
+
+        public var updateTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.responseActionConfig != nil {
+                map["ResponseActionConfig"] = self.responseActionConfig!
+            }
+            if self.responseActionType != nil {
+                map["ResponseActionType"] = self.responseActionType!
+            }
+            if self.responseExecutionCondition != nil {
+                map["ResponseExecutionCondition"] = self.responseExecutionCondition!
+            }
+            if self.responseRuleId != nil {
+                map["ResponseRuleId"] = self.responseRuleId!
+            }
+            if self.responseRuleName != nil {
+                map["ResponseRuleName"] = self.responseRuleName!
+            }
+            if self.responseRulePriority != nil {
+                map["ResponseRulePriority"] = self.responseRulePriority!
+            }
+            if self.responseRuleStatus != nil {
+                map["ResponseRuleStatus"] = self.responseRuleStatus!
+            }
+            if self.responseRuleType != nil {
+                map["ResponseRuleType"] = self.responseRuleType!
+            }
+            if self.responseTriggerType != nil {
+                map["ResponseTriggerType"] = self.responseTriggerType!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["ResponseActionConfig"] as? String {
+                self.responseActionConfig = value
+            }
+            if let value = dict["ResponseActionType"] as? String {
+                self.responseActionType = value
+            }
+            if let value = dict["ResponseExecutionCondition"] as? String {
+                self.responseExecutionCondition = value
+            }
+            if let value = dict["ResponseRuleId"] as? String {
+                self.responseRuleId = value
+            }
+            if let value = dict["ResponseRuleName"] as? String {
+                self.responseRuleName = value
+            }
+            if let value = dict["ResponseRulePriority"] as? Int32 {
+                self.responseRulePriority = value
+            }
+            if let value = dict["ResponseRuleStatus"] as? Int32 {
+                self.responseRuleStatus = value
+            }
+            if let value = dict["ResponseRuleType"] as? String {
+                self.responseRuleType = value
+            }
+            if let value = dict["ResponseTriggerType"] as? String {
+                self.responseTriggerType = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var responseRules: [ListResponseRulesResponseBody.ResponseRules]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.responseRules != nil {
+            var tmp : [Any] = []
+            for k in self.responseRules! {
+                tmp.append(k.toMap())
+            }
+            map["ResponseRules"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResponseRules"] as? [Any?] {
+            var tmp : [ListResponseRulesResponseBody.ResponseRules] = []
+            for v in value {
+                if v != nil {
+                    var model = ListResponseRulesResponseBody.ResponseRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.responseRules = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListResponseRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResponseRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListResponseRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTrafficStatisticsRequest : Tea.TeaModel {
     public var lang: String?
 
@@ -20904,6 +21636,214 @@ public class UpdateProductResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateProductResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateResponseRuleRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var responseActionConfig: String?
+
+    public var responseActionType: String?
+
+    public var responseExecutionCondition: String?
+
+    public var responseRuleId: String?
+
+    public var responseRuleName: String?
+
+    public var responseRulePriority: Int32?
+
+    public var responseRuleStatus: Int32?
+
+    public var responseTriggerType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.responseActionConfig != nil {
+            map["ResponseActionConfig"] = self.responseActionConfig!
+        }
+        if self.responseActionType != nil {
+            map["ResponseActionType"] = self.responseActionType!
+        }
+        if self.responseExecutionCondition != nil {
+            map["ResponseExecutionCondition"] = self.responseExecutionCondition!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
+        if self.responseRuleName != nil {
+            map["ResponseRuleName"] = self.responseRuleName!
+        }
+        if self.responseRulePriority != nil {
+            map["ResponseRulePriority"] = self.responseRulePriority!
+        }
+        if self.responseRuleStatus != nil {
+            map["ResponseRuleStatus"] = self.responseRuleStatus!
+        }
+        if self.responseTriggerType != nil {
+            map["ResponseTriggerType"] = self.responseTriggerType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResponseActionConfig"] as? String {
+            self.responseActionConfig = value
+        }
+        if let value = dict["ResponseActionType"] as? String {
+            self.responseActionType = value
+        }
+        if let value = dict["ResponseExecutionCondition"] as? String {
+            self.responseExecutionCondition = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
+        }
+        if let value = dict["ResponseRuleName"] as? String {
+            self.responseRuleName = value
+        }
+        if let value = dict["ResponseRulePriority"] as? Int32 {
+            self.responseRulePriority = value
+        }
+        if let value = dict["ResponseRuleStatus"] as? Int32 {
+            self.responseRuleStatus = value
+        }
+        if let value = dict["ResponseTriggerType"] as? String {
+            self.responseTriggerType = value
+        }
+    }
+}
+
+public class UpdateResponseRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var responseRuleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.responseRuleId != nil {
+            map["ResponseRuleId"] = self.responseRuleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResponseRuleId"] as? String {
+            self.responseRuleId = value
+        }
+    }
+}
+
+public class UpdateResponseRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateResponseRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateResponseRuleResponseBody()
             model.fromMap(value)
             self.body = model
         }
