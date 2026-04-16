@@ -22039,6 +22039,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var serviceManaged: Bool?
 
+        public var smartConfigCapabilities: [String]?
+
         public var ssoType: String?
 
         public var status: String?
@@ -22135,6 +22137,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.smartConfigCapabilities != nil {
+                map["SmartConfigCapabilities"] = self.smartConfigCapabilities!
             }
             if self.ssoType != nil {
                 map["SsoType"] = self.ssoType!
@@ -22233,6 +22238,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceManaged"] as? Bool {
                 self.serviceManaged = value
+            }
+            if let value = dict["SmartConfigCapabilities"] as? [String] {
+                self.smartConfigCapabilities = value
             }
             if let value = dict["SsoType"] as? String {
                 self.ssoType = value
