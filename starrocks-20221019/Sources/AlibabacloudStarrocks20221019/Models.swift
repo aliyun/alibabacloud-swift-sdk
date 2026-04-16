@@ -139,6 +139,53 @@ public class ResourceSpec : Tea.TeaModel {
     }
 }
 
+public class DataZoneSupportCompactionServiceValue : Tea.TeaModel {
+    public var zoneId: String?
+
+    public var resourceLevel: String?
+
+    public var recommended: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.zoneId != nil {
+            map["zoneId"] = self.zoneId!
+        }
+        if self.resourceLevel != nil {
+            map["resourceLevel"] = self.resourceLevel!
+        }
+        if self.recommended != nil {
+            map["recommended"] = self.recommended!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["zoneId"] as? String {
+            self.zoneId = value
+        }
+        if let value = dict["resourceLevel"] as? String {
+            self.resourceLevel = value
+        }
+        if let value = dict["recommended"] as? Bool {
+            self.recommended = value
+        }
+    }
+}
+
 public class AddBackupPolicyRequest : Tea.TeaModel {
     public var expireDays: Int32?
 
@@ -8544,6 +8591,8 @@ public class DescribeResourceConstraintsResponseBody : Tea.TeaModel {
 
         public var compactionServiceCuConstraint: DescribeResourceConstraintsResponseBody.Data.CompactionServiceCuConstraint?
 
+        public var zoneSupportCompactionService: [String: [DataZoneSupportCompactionServiceValue]]?
+
         public override init() {
             super.init()
         }
@@ -8644,6 +8693,17 @@ public class DescribeResourceConstraintsResponseBody : Tea.TeaModel {
             }
             if self.compactionServiceCuConstraint != nil {
                 map["compactionServiceCuConstraint"] = self.compactionServiceCuConstraint?.toMap()
+            }
+            if self.zoneSupportCompactionService != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.zoneSupportCompactionService! {
+                    var l1 : [Any] = []
+                    for k1 in v {
+                        l1.append(k1.toMap())
+                    }
+                    tmp[k] = l1
+                }
+                map["zoneSupportCompactionService"] = tmp
             }
             return map
         }
@@ -8773,6 +8833,23 @@ public class DescribeResourceConstraintsResponseBody : Tea.TeaModel {
                 var model = DescribeResourceConstraintsResponseBody.Data.CompactionServiceCuConstraint()
                 model.fromMap(value)
                 self.compactionServiceCuConstraint = model
+            }
+            if let value = dict["zoneSupportCompactionService"] as? [String: Any?] {
+                var tmp : [String: [DataZoneSupportCompactionServiceValue]] = [:]
+                for (k, v) in value {
+                    var l1 : [DataZoneSupportCompactionServiceValue] = []
+                    for v1 in v as! [Any?] {
+                        if v1 != nil {
+                            var model = DataZoneSupportCompactionServiceValue()
+                            if v1 != nil {
+                                model.fromMap(v1 as? [String: Any?])
+                            }
+                            l1.append(model)
+                        }
+                    }
+                    tmp[k] = l1
+                }
+                self.zoneSupportCompactionService = tmp
             }
         }
     }
