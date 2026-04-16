@@ -1757,6 +1757,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.policy)) {
             request.policyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.policy, "Policy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.storagePolicy)) {
+            request.storagePolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.storagePolicy, "StoragePolicy", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.timers)) {
             request.timersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.timers, "Timers", "json")
         }
@@ -1777,8 +1780,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudBrowserName)) {
             body["CloudBrowserName"] = request.cloudBrowserName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxAmount)) {
+            body["MaxAmount"] = request.maxAmount!;
+        }
         if (!TeaUtils.Client.isUnset(request.networkShrink)) {
             body["Network"] = request.networkShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storagePolicyShrink)) {
+            body["StoragePolicy"] = request.storagePolicyShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),

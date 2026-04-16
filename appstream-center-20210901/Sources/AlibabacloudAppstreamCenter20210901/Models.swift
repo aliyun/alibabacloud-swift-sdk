@@ -12908,7 +12908,11 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
         }
         public var bookmarks: [ModifyBrowserInstanceGroupRequest.BrowserConfig.Bookmarks]?
 
+        public var bookmarksFilePath: String?
+
         public var browserParam: String?
+
+        public var cookiesSync: String?
 
         public var homepage: String?
 
@@ -12935,8 +12939,14 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
                 map["Bookmarks"] = tmp
             }
+            if self.bookmarksFilePath != nil {
+                map["BookmarksFilePath"] = self.bookmarksFilePath!
+            }
             if self.browserParam != nil {
                 map["BrowserParam"] = self.browserParam!
+            }
+            if self.cookiesSync != nil {
+                map["CookiesSync"] = self.cookiesSync!
             }
             if self.homepage != nil {
                 map["Homepage"] = self.homepage!
@@ -12962,8 +12972,14 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
                 self.bookmarks = tmp
             }
+            if let value = dict["BookmarksFilePath"] as? String {
+                self.bookmarksFilePath = value
+            }
             if let value = dict["BrowserParam"] as? String {
                 self.browserParam = value
+            }
+            if let value = dict["CookiesSync"] as? String {
+                self.cookiesSync = value
             }
             if let value = dict["Homepage"] as? String {
                 self.homepage = value
@@ -13018,6 +13034,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var restrictedURLs: [ModifyBrowserInstanceGroupRequest.Network.RestrictedURLs]?
 
+        public var restrictedURLsFilePath: String?
+
         public override init() {
             super.init()
         }
@@ -13045,6 +13063,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 }
                 map["RestrictedURLs"] = tmp
             }
+            if self.restrictedURLsFilePath != nil {
+                map["RestrictedURLsFilePath"] = self.restrictedURLsFilePath!
+            }
             return map
         }
 
@@ -13068,6 +13089,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                     }
                 }
                 self.restrictedURLs = tmp
+            }
+            if let value = dict["RestrictedURLsFilePath"] as? String {
+                self.restrictedURLsFilePath = value
             }
         }
     }
@@ -13352,6 +13376,69 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class StoragePolicy : Tea.TeaModel {
+        public class UserProfile : Tea.TeaModel {
+            public var userProfileSwitch: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userProfileSwitch != nil {
+                    map["UserProfileSwitch"] = self.userProfileSwitch!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserProfileSwitch"] as? Bool {
+                    self.userProfileSwitch = value
+                }
+            }
+        }
+        public var userProfile: ModifyBrowserInstanceGroupRequest.StoragePolicy.UserProfile?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.userProfile?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userProfile != nil {
+                map["UserProfile"] = self.userProfile?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UserProfile"] as? [String: Any?] {
+                var model = ModifyBrowserInstanceGroupRequest.StoragePolicy.UserProfile()
+                model.fromMap(value)
+                self.userProfile = model
+            }
+        }
+    }
     public class Timers : Tea.TeaModel {
         public var interval: Int32?
 
@@ -13396,9 +13483,13 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
     public var cloudBrowserName: String?
 
+    public var maxAmount: Int32?
+
     public var network: ModifyBrowserInstanceGroupRequest.Network?
 
     public var policy: ModifyBrowserInstanceGroupRequest.Policy?
+
+    public var storagePolicy: ModifyBrowserInstanceGroupRequest.StoragePolicy?
 
     public var timers: [ModifyBrowserInstanceGroupRequest.Timers]?
 
@@ -13415,6 +13506,7 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
         try self.browserConfig?.validate()
         try self.network?.validate()
         try self.policy?.validate()
+        try self.storagePolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -13428,11 +13520,17 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
         if self.cloudBrowserName != nil {
             map["CloudBrowserName"] = self.cloudBrowserName!
         }
+        if self.maxAmount != nil {
+            map["MaxAmount"] = self.maxAmount!
+        }
         if self.network != nil {
             map["Network"] = self.network?.toMap()
         }
         if self.policy != nil {
             map["Policy"] = self.policy?.toMap()
+        }
+        if self.storagePolicy != nil {
+            map["StoragePolicy"] = self.storagePolicy?.toMap()
         }
         if self.timers != nil {
             var tmp : [Any] = []
@@ -13457,6 +13555,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
         if let value = dict["CloudBrowserName"] as? String {
             self.cloudBrowserName = value
         }
+        if let value = dict["MaxAmount"] as? Int32 {
+            self.maxAmount = value
+        }
         if let value = dict["Network"] as? [String: Any?] {
             var model = ModifyBrowserInstanceGroupRequest.Network()
             model.fromMap(value)
@@ -13466,6 +13567,11 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             var model = ModifyBrowserInstanceGroupRequest.Policy()
             model.fromMap(value)
             self.policy = model
+        }
+        if let value = dict["StoragePolicy"] as? [String: Any?] {
+            var model = ModifyBrowserInstanceGroupRequest.StoragePolicy()
+            model.fromMap(value)
+            self.storagePolicy = model
         }
         if let value = dict["Timers"] as? [Any?] {
             var tmp : [ModifyBrowserInstanceGroupRequest.Timers] = []
@@ -13490,9 +13596,13 @@ public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var cloudBrowserName: String?
 
+    public var maxAmount: Int32?
+
     public var networkShrink: String?
 
     public var policyShrink: String?
+
+    public var storagePolicyShrink: String?
 
     public var timersShrink: String?
 
@@ -13519,11 +13629,17 @@ public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.cloudBrowserName != nil {
             map["CloudBrowserName"] = self.cloudBrowserName!
         }
+        if self.maxAmount != nil {
+            map["MaxAmount"] = self.maxAmount!
+        }
         if self.networkShrink != nil {
             map["Network"] = self.networkShrink!
         }
         if self.policyShrink != nil {
             map["Policy"] = self.policyShrink!
+        }
+        if self.storagePolicyShrink != nil {
+            map["StoragePolicy"] = self.storagePolicyShrink!
         }
         if self.timersShrink != nil {
             map["Timers"] = self.timersShrink!
@@ -13542,11 +13658,17 @@ public class ModifyBrowserInstanceGroupShrinkRequest : Tea.TeaModel {
         if let value = dict["CloudBrowserName"] as? String {
             self.cloudBrowserName = value
         }
+        if let value = dict["MaxAmount"] as? Int32 {
+            self.maxAmount = value
+        }
         if let value = dict["Network"] as? String {
             self.networkShrink = value
         }
         if let value = dict["Policy"] as? String {
             self.policyShrink = value
+        }
+        if let value = dict["StoragePolicy"] as? String {
+            self.storagePolicyShrink = value
         }
         if let value = dict["Timers"] as? String {
             self.timersShrink = value
