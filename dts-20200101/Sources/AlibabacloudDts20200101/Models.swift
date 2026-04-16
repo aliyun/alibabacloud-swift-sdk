@@ -22595,6 +22595,8 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
 
         public var incDataCheckStatus: DescribeDtsJobsResponseBody.DtsJobList.IncDataCheckStatus?
 
+        public var insightModule: Bool?
+
         public var jobType: String?
 
         public var maxDu: Double?
@@ -22767,6 +22769,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
             }
             if self.incDataCheckStatus != nil {
                 map["IncDataCheckStatus"] = self.incDataCheckStatus?.toMap()
+            }
+            if self.insightModule != nil {
+                map["InsightModule"] = self.insightModule!
             }
             if self.jobType != nil {
                 map["JobType"] = self.jobType!
@@ -22965,6 +22970,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
                 var model = DescribeDtsJobsResponseBody.DtsJobList.IncDataCheckStatus()
                 model.fromMap(value)
                 self.incDataCheckStatus = model
+            }
+            if let value = dict["InsightModule"] as? Bool {
+                self.insightModule = value
             }
             if let value = dict["JobType"] as? String {
                 self.jobType = value
