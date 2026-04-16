@@ -3325,6 +3325,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var autoScalingSpec: AutoScalingSpec?
 
+    public var considerInSuccessPolicy: Bool?
+
     public var ecsSpec: String?
 
     public var extraPodSpec: ExtraPodSpec?
@@ -3386,6 +3388,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.autoScalingSpec != nil {
             map["AutoScalingSpec"] = self.autoScalingSpec?.toMap()
+        }
+        if self.considerInSuccessPolicy != nil {
+            map["ConsiderInSuccessPolicy"] = self.considerInSuccessPolicy!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -3460,6 +3465,9 @@ public class JobSpec : Tea.TeaModel {
             var model = AutoScalingSpec()
             model.fromMap(value)
             self.autoScalingSpec = model
+        }
+        if let value = dict["ConsiderInSuccessPolicy"] as? Bool {
+            self.considerInSuccessPolicy = value
         }
         if let value = dict["EcsSpec"] as? String {
             self.ecsSpec = value
