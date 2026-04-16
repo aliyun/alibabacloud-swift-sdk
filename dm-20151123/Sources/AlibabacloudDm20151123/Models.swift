@@ -1278,6 +1278,8 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
 
     public var ipPoolId: String?
 
+    public var isPublicChannelBackoff: Bool?
+
     public var name: String?
 
     public override init() {
@@ -1300,6 +1302,9 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
         if self.ipPoolId != nil {
             map["IpPoolId"] = self.ipPoolId!
         }
+        if self.isPublicChannelBackoff != nil {
+            map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -1313,6 +1318,9 @@ public class ConfigSetCreateRequest : Tea.TeaModel {
         }
         if let value = dict["IpPoolId"] as? String {
             self.ipPoolId = value
+        }
+        if let value = dict["IsPublicChannelBackoff"] as? Bool {
+            self.isPublicChannelBackoff = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -1606,6 +1614,8 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
 
         public var ipPool: ConfigSetDetailResponseBody.Detail.IpPool?
 
+        public var isPublicChannelBackoff: Bool?
+
         public var name: String?
 
         public override init() {
@@ -1632,6 +1642,9 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
             if self.ipPool != nil {
                 map["IpPool"] = self.ipPool?.toMap()
             }
+            if self.isPublicChannelBackoff != nil {
+                map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -1650,6 +1663,9 @@ public class ConfigSetDetailResponseBody : Tea.TeaModel {
                 var model = ConfigSetDetailResponseBody.Detail.IpPool()
                 model.fromMap(value)
                 self.ipPool = model
+            }
+            if let value = dict["IsPublicChannelBackoff"] as? Bool {
+                self.isPublicChannelBackoff = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -1850,6 +1866,8 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
 
         public var ipPool: ConfigSetListResponseBody.ConfigSets.IpPool?
 
+        public var isPublicChannelBackoff: Bool?
+
         public var name: String?
 
         public override init() {
@@ -1879,6 +1897,9 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
             if self.ipPool != nil {
                 map["IpPool"] = self.ipPool?.toMap()
             }
+            if self.isPublicChannelBackoff != nil {
+                map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -1900,6 +1921,9 @@ public class ConfigSetListResponseBody : Tea.TeaModel {
                 var model = ConfigSetListResponseBody.ConfigSets.IpPool()
                 model.fromMap(value)
                 self.ipPool = model
+            }
+            if let value = dict["IsPublicChannelBackoff"] as? Bool {
+                self.isPublicChannelBackoff = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -2175,6 +2199,8 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
 
     public var ipPoolId: String?
 
+    public var isPublicChannelBackoff: Bool?
+
     public var name: String?
 
     public override init() {
@@ -2200,6 +2226,9 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
         if self.ipPoolId != nil {
             map["IpPoolId"] = self.ipPoolId!
         }
+        if self.isPublicChannelBackoff != nil {
+            map["IsPublicChannelBackoff"] = self.isPublicChannelBackoff!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -2216,6 +2245,9 @@ public class ConfigSetUpdateRequest : Tea.TeaModel {
         }
         if let value = dict["IpPoolId"] as? String {
             self.ipPoolId = value
+        }
+        if let value = dict["IsPublicChannelBackoff"] as? Bool {
+            self.isPublicChannelBackoff = value
         }
         if let value = dict["Name"] as? String {
             self.name = value

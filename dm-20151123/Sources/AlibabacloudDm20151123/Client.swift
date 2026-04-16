@@ -473,6 +473,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ipPoolId)) {
             query["IpPoolId"] = request.ipPoolId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isPublicChannelBackoff)) {
+            query["IsPublicChannelBackoff"] = request.isPublicChannelBackoff!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
@@ -651,6 +654,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipPoolId)) {
             query["IpPoolId"] = request.ipPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isPublicChannelBackoff)) {
+            query["IsPublicChannelBackoff"] = request.isPublicChannelBackoff!;
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
