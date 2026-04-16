@@ -28325,6 +28325,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var category: String?
 
+    public var columnTable: String?
+
     public var compressStorageMode: String?
 
     public var compressStorageUsed: Int64?
@@ -28488,6 +28490,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.category != nil {
             map["Category"] = self.category!
+        }
+        if self.columnTable != nil {
+            map["ColumnTable"] = self.columnTable!
         }
         if self.compressStorageMode != nil {
             map["CompressStorageMode"] = self.compressStorageMode!
@@ -28713,6 +28718,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Category"] as? String {
             self.category = value
+        }
+        if let value = dict["ColumnTable"] as? String {
+            self.columnTable = value
         }
         if let value = dict["CompressStorageMode"] as? String {
             self.compressStorageMode = value
