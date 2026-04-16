@@ -63588,6 +63588,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public class AdditionalInfo : Tea.TeaModel {
                 public var enableHighDensityMode: Bool?
 
+                public var nodeSerialNumber: String?
+
                 public override init() {
                     super.init()
                 }
@@ -63605,6 +63607,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     if self.enableHighDensityMode != nil {
                         map["EnableHighDensityMode"] = self.enableHighDensityMode!
                     }
+                    if self.nodeSerialNumber != nil {
+                        map["NodeSerialNumber"] = self.nodeSerialNumber!
+                    }
                     return map
                 }
 
@@ -63612,6 +63617,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["EnableHighDensityMode"] as? Bool {
                         self.enableHighDensityMode = value
+                    }
+                    if let value = dict["NodeSerialNumber"] as? String {
+                        self.nodeSerialNumber = value
                     }
                 }
             }
@@ -63652,6 +63660,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
                 public var enableVRDT: Bool?
 
+                public var nestedVirtualization: String?
+
                 public var numa: String?
 
                 public var threadsPerCore: Int32?
@@ -63683,6 +63693,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     if self.enableVRDT != nil {
                         map["EnableVRDT"] = self.enableVRDT!
                     }
+                    if self.nestedVirtualization != nil {
+                        map["NestedVirtualization"] = self.nestedVirtualization!
+                    }
                     if self.numa != nil {
                         map["Numa"] = self.numa!
                     }
@@ -63708,6 +63721,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["EnableVRDT"] as? Bool {
                         self.enableVRDT = value
+                    }
+                    if let value = dict["NestedVirtualization"] as? String {
+                        self.nestedVirtualization = value
                     }
                     if let value = dict["Numa"] as? String {
                         self.numa = value
