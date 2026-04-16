@@ -8006,6 +8006,10 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
 
     public var thinkingBudget: Int32?
 
+    public var toolChoice: String?
+
+    public var tools: String?
+
     public var topK: Int32?
 
     public var topLogprobs: Int32?
@@ -8102,6 +8106,12 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         if self.thinkingBudget != nil {
             map["ThinkingBudget"] = self.thinkingBudget!
         }
+        if self.toolChoice != nil {
+            map["ToolChoice"] = self.toolChoice!
+        }
+        if self.tools != nil {
+            map["Tools"] = self.tools!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -8194,6 +8204,12 @@ public class ChatWithDesensitizeSSERequest : Tea.TeaModel {
         if let value = dict["ThinkingBudget"] as? Int32 {
             self.thinkingBudget = value
         }
+        if let value = dict["ToolChoice"] as? String {
+            self.toolChoice = value
+        }
+        if let value = dict["Tools"] as? String {
+            self.tools = value
+        }
         if let value = dict["TopK"] as? Int32 {
             self.topK = value
         }
@@ -8260,6 +8276,10 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
     public var temperature: String?
 
     public var thinkingBudget: Int32?
+
+    public var toolChoice: String?
+
+    public var tools: String?
 
     public var topK: Int32?
 
@@ -8357,6 +8377,12 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         if self.thinkingBudget != nil {
             map["ThinkingBudget"] = self.thinkingBudget!
         }
+        if self.toolChoice != nil {
+            map["ToolChoice"] = self.toolChoice!
+        }
+        if self.tools != nil {
+            map["Tools"] = self.tools!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -8448,6 +8474,12 @@ public class ChatWithDesensitizeSSEShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ThinkingBudget"] as? Int32 {
             self.thinkingBudget = value
+        }
+        if let value = dict["ToolChoice"] as? String {
+            self.toolChoice = value
+        }
+        if let value = dict["Tools"] as? String {
+            self.tools = value
         }
         if let value = dict["TopK"] as? Int32 {
             self.topK = value

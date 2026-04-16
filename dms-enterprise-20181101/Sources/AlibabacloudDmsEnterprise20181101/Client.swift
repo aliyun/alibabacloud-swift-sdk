@@ -1152,6 +1152,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thinkingBudget)) {
             query["ThinkingBudget"] = request.thinkingBudget!;
         }
+        if (!TeaUtils.Client.isUnset(request.toolChoice)) {
+            query["ToolChoice"] = request.toolChoice ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tools)) {
+            query["Tools"] = request.tools ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.topK)) {
             query["TopK"] = request.topK!;
         }
