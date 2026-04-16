@@ -10,6 +10,8 @@ public class BroadcastAudio : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var errorCode: String?
+
     public var id: String?
 
     public var modifiedTime: String?
@@ -38,6 +40,9 @@ public class BroadcastAudio : Tea.TeaModel {
         if self.createTime != nil {
             map["createTime"] = self.createTime!
         }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -60,6 +65,9 @@ public class BroadcastAudio : Tea.TeaModel {
         }
         if let value = dict["createTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
         }
         if let value = dict["id"] as? String {
             self.id = value
