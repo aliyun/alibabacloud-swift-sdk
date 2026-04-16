@@ -1109,6 +1109,2373 @@ public class ChangeMediaTypeResponse : Tea.TeaModel {
     }
 }
 
+public class CloudCreateTaskRequest : Tea.TeaModel {
+    public var agentGroup: String?
+
+    public var agentTimeout: Int64?
+
+    public var answerRate: Int64?
+
+    public var autoComplete: Int64?
+
+    public var autoDelete: Int64?
+
+    public var autoStart: Int64?
+
+    public var autoStartDay: String?
+
+    public var autoStartTime: String?
+
+    public var autoStop: Int64?
+
+    public var autoStopDay: String?
+
+    public var autoStopTime: String?
+
+    public var autoTaskType: Int64?
+
+    public var autoTriggerTimeStrategy: String?
+
+    public var callGroupType: Int64?
+
+    public var callLimitStrategy: String?
+
+    public var callPriorityStrategy: String?
+
+    public var callRouteStrategy: Int64?
+
+    public var callStrategy: String?
+
+    public var callVariables: String?
+
+    public var clidProperty: String?
+
+    public var cnos: String?
+
+    public var concurrency: Int64?
+
+    public var customerClidType: Int64?
+
+    public var customerClidWeight: String?
+
+    public var customerClidWeightFlag: Int64?
+
+    public var customerClids: String?
+
+    public var customerClidsCategory: Int64?
+
+    public var customerClidsGroup: String?
+
+    public var customerMoh: String?
+
+    public var customerTimeout: Int64?
+
+    public var customerVoice: String?
+
+    public var description_: String?
+
+    public var enterpriseId: Int64?
+
+    public var forceEndFlag: Int64?
+
+    public var isRewarm: Int64?
+
+    public var ivrId: Int64?
+
+    public var ivrName: String?
+
+    public var maxWaitTime: Int64?
+
+    public var minAvailableAgentCount: Int64?
+
+    public var name: String?
+
+    public var ownerId: Int64?
+
+    public var predictAdjust: Int64?
+
+    public var quotiety: Double?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var retryStrategy: String?
+
+    public var retryStrategyOnlyToday: Int64?
+
+    public var retryStrategyTimeType: Int64?
+
+    public var templateName: String?
+
+    public var timeStrategy: String?
+
+    public var type: Int64?
+
+    public var userFields: String?
+
+    public var warmUpDuration: Int64?
+
+    public var wrapup: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentGroup != nil {
+            map["AgentGroup"] = self.agentGroup!
+        }
+        if self.agentTimeout != nil {
+            map["AgentTimeout"] = self.agentTimeout!
+        }
+        if self.answerRate != nil {
+            map["AnswerRate"] = self.answerRate!
+        }
+        if self.autoComplete != nil {
+            map["AutoComplete"] = self.autoComplete!
+        }
+        if self.autoDelete != nil {
+            map["AutoDelete"] = self.autoDelete!
+        }
+        if self.autoStart != nil {
+            map["AutoStart"] = self.autoStart!
+        }
+        if self.autoStartDay != nil {
+            map["AutoStartDay"] = self.autoStartDay!
+        }
+        if self.autoStartTime != nil {
+            map["AutoStartTime"] = self.autoStartTime!
+        }
+        if self.autoStop != nil {
+            map["AutoStop"] = self.autoStop!
+        }
+        if self.autoStopDay != nil {
+            map["AutoStopDay"] = self.autoStopDay!
+        }
+        if self.autoStopTime != nil {
+            map["AutoStopTime"] = self.autoStopTime!
+        }
+        if self.autoTaskType != nil {
+            map["AutoTaskType"] = self.autoTaskType!
+        }
+        if self.autoTriggerTimeStrategy != nil {
+            map["AutoTriggerTimeStrategy"] = self.autoTriggerTimeStrategy!
+        }
+        if self.callGroupType != nil {
+            map["CallGroupType"] = self.callGroupType!
+        }
+        if self.callLimitStrategy != nil {
+            map["CallLimitStrategy"] = self.callLimitStrategy!
+        }
+        if self.callPriorityStrategy != nil {
+            map["CallPriorityStrategy"] = self.callPriorityStrategy!
+        }
+        if self.callRouteStrategy != nil {
+            map["CallRouteStrategy"] = self.callRouteStrategy!
+        }
+        if self.callStrategy != nil {
+            map["CallStrategy"] = self.callStrategy!
+        }
+        if self.callVariables != nil {
+            map["CallVariables"] = self.callVariables!
+        }
+        if self.clidProperty != nil {
+            map["ClidProperty"] = self.clidProperty!
+        }
+        if self.cnos != nil {
+            map["Cnos"] = self.cnos!
+        }
+        if self.concurrency != nil {
+            map["Concurrency"] = self.concurrency!
+        }
+        if self.customerClidType != nil {
+            map["CustomerClidType"] = self.customerClidType!
+        }
+        if self.customerClidWeight != nil {
+            map["CustomerClidWeight"] = self.customerClidWeight!
+        }
+        if self.customerClidWeightFlag != nil {
+            map["CustomerClidWeightFlag"] = self.customerClidWeightFlag!
+        }
+        if self.customerClids != nil {
+            map["CustomerClids"] = self.customerClids!
+        }
+        if self.customerClidsCategory != nil {
+            map["CustomerClidsCategory"] = self.customerClidsCategory!
+        }
+        if self.customerClidsGroup != nil {
+            map["CustomerClidsGroup"] = self.customerClidsGroup!
+        }
+        if self.customerMoh != nil {
+            map["CustomerMoh"] = self.customerMoh!
+        }
+        if self.customerTimeout != nil {
+            map["CustomerTimeout"] = self.customerTimeout!
+        }
+        if self.customerVoice != nil {
+            map["CustomerVoice"] = self.customerVoice!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.forceEndFlag != nil {
+            map["ForceEndFlag"] = self.forceEndFlag!
+        }
+        if self.isRewarm != nil {
+            map["IsRewarm"] = self.isRewarm!
+        }
+        if self.ivrId != nil {
+            map["IvrId"] = self.ivrId!
+        }
+        if self.ivrName != nil {
+            map["IvrName"] = self.ivrName!
+        }
+        if self.maxWaitTime != nil {
+            map["MaxWaitTime"] = self.maxWaitTime!
+        }
+        if self.minAvailableAgentCount != nil {
+            map["MinAvailableAgentCount"] = self.minAvailableAgentCount!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.predictAdjust != nil {
+            map["PredictAdjust"] = self.predictAdjust!
+        }
+        if self.quotiety != nil {
+            map["Quotiety"] = self.quotiety!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.retryStrategy != nil {
+            map["RetryStrategy"] = self.retryStrategy!
+        }
+        if self.retryStrategyOnlyToday != nil {
+            map["RetryStrategyOnlyToday"] = self.retryStrategyOnlyToday!
+        }
+        if self.retryStrategyTimeType != nil {
+            map["RetryStrategyTimeType"] = self.retryStrategyTimeType!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.timeStrategy != nil {
+            map["TimeStrategy"] = self.timeStrategy!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userFields != nil {
+            map["UserFields"] = self.userFields!
+        }
+        if self.warmUpDuration != nil {
+            map["WarmUpDuration"] = self.warmUpDuration!
+        }
+        if self.wrapup != nil {
+            map["Wrapup"] = self.wrapup!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentGroup"] as? String {
+            self.agentGroup = value
+        }
+        if let value = dict["AgentTimeout"] as? Int64 {
+            self.agentTimeout = value
+        }
+        if let value = dict["AnswerRate"] as? Int64 {
+            self.answerRate = value
+        }
+        if let value = dict["AutoComplete"] as? Int64 {
+            self.autoComplete = value
+        }
+        if let value = dict["AutoDelete"] as? Int64 {
+            self.autoDelete = value
+        }
+        if let value = dict["AutoStart"] as? Int64 {
+            self.autoStart = value
+        }
+        if let value = dict["AutoStartDay"] as? String {
+            self.autoStartDay = value
+        }
+        if let value = dict["AutoStartTime"] as? String {
+            self.autoStartTime = value
+        }
+        if let value = dict["AutoStop"] as? Int64 {
+            self.autoStop = value
+        }
+        if let value = dict["AutoStopDay"] as? String {
+            self.autoStopDay = value
+        }
+        if let value = dict["AutoStopTime"] as? String {
+            self.autoStopTime = value
+        }
+        if let value = dict["AutoTaskType"] as? Int64 {
+            self.autoTaskType = value
+        }
+        if let value = dict["AutoTriggerTimeStrategy"] as? String {
+            self.autoTriggerTimeStrategy = value
+        }
+        if let value = dict["CallGroupType"] as? Int64 {
+            self.callGroupType = value
+        }
+        if let value = dict["CallLimitStrategy"] as? String {
+            self.callLimitStrategy = value
+        }
+        if let value = dict["CallPriorityStrategy"] as? String {
+            self.callPriorityStrategy = value
+        }
+        if let value = dict["CallRouteStrategy"] as? Int64 {
+            self.callRouteStrategy = value
+        }
+        if let value = dict["CallStrategy"] as? String {
+            self.callStrategy = value
+        }
+        if let value = dict["CallVariables"] as? String {
+            self.callVariables = value
+        }
+        if let value = dict["ClidProperty"] as? String {
+            self.clidProperty = value
+        }
+        if let value = dict["Cnos"] as? String {
+            self.cnos = value
+        }
+        if let value = dict["Concurrency"] as? Int64 {
+            self.concurrency = value
+        }
+        if let value = dict["CustomerClidType"] as? Int64 {
+            self.customerClidType = value
+        }
+        if let value = dict["CustomerClidWeight"] as? String {
+            self.customerClidWeight = value
+        }
+        if let value = dict["CustomerClidWeightFlag"] as? Int64 {
+            self.customerClidWeightFlag = value
+        }
+        if let value = dict["CustomerClids"] as? String {
+            self.customerClids = value
+        }
+        if let value = dict["CustomerClidsCategory"] as? Int64 {
+            self.customerClidsCategory = value
+        }
+        if let value = dict["CustomerClidsGroup"] as? String {
+            self.customerClidsGroup = value
+        }
+        if let value = dict["CustomerMoh"] as? String {
+            self.customerMoh = value
+        }
+        if let value = dict["CustomerTimeout"] as? Int64 {
+            self.customerTimeout = value
+        }
+        if let value = dict["CustomerVoice"] as? String {
+            self.customerVoice = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["ForceEndFlag"] as? Int64 {
+            self.forceEndFlag = value
+        }
+        if let value = dict["IsRewarm"] as? Int64 {
+            self.isRewarm = value
+        }
+        if let value = dict["IvrId"] as? Int64 {
+            self.ivrId = value
+        }
+        if let value = dict["IvrName"] as? String {
+            self.ivrName = value
+        }
+        if let value = dict["MaxWaitTime"] as? Int64 {
+            self.maxWaitTime = value
+        }
+        if let value = dict["MinAvailableAgentCount"] as? Int64 {
+            self.minAvailableAgentCount = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PredictAdjust"] as? Int64 {
+            self.predictAdjust = value
+        }
+        if let value = dict["Quotiety"] as? Double {
+            self.quotiety = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["RetryStrategy"] as? String {
+            self.retryStrategy = value
+        }
+        if let value = dict["RetryStrategyOnlyToday"] as? Int64 {
+            self.retryStrategyOnlyToday = value
+        }
+        if let value = dict["RetryStrategyTimeType"] as? Int64 {
+            self.retryStrategyTimeType = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["TimeStrategy"] as? String {
+            self.timeStrategy = value
+        }
+        if let value = dict["Type"] as? Int64 {
+            self.type = value
+        }
+        if let value = dict["UserFields"] as? String {
+            self.userFields = value
+        }
+        if let value = dict["WarmUpDuration"] as? Int64 {
+            self.warmUpDuration = value
+        }
+        if let value = dict["Wrapup"] as? Int64 {
+            self.wrapup = value
+        }
+    }
+}
+
+public class CloudCreateTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var agentTimeout: String?
+
+        public var answerRate: String?
+
+        public var autoComplete: Int64?
+
+        public var autoStart: String?
+
+        public var autoStartDay: String?
+
+        public var autoStartTime: String?
+
+        public var autoStop: String?
+
+        public var autoStopDay: String?
+
+        public var autoStopTime: String?
+
+        public var cnos: String?
+
+        public var concurrency: String?
+
+        public var createTime: String?
+
+        public var customerClids: String?
+
+        public var customerMoh: String?
+
+        public var customerTimeout: String?
+
+        public var description_: String?
+
+        public var enterpriseId: String?
+
+        public var id: String?
+
+        public var isRandom: String?
+
+        public var ivrId: String?
+
+        public var maxWaitTime: String?
+
+        public var name: String?
+
+        public var overTime: String?
+
+        public var predictAdjust: String?
+
+        public var quotiety: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var type: String?
+
+        public var userFields: String?
+
+        public var wrapup: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentTimeout != nil {
+                map["AgentTimeout"] = self.agentTimeout!
+            }
+            if self.answerRate != nil {
+                map["AnswerRate"] = self.answerRate!
+            }
+            if self.autoComplete != nil {
+                map["AutoComplete"] = self.autoComplete!
+            }
+            if self.autoStart != nil {
+                map["AutoStart"] = self.autoStart!
+            }
+            if self.autoStartDay != nil {
+                map["AutoStartDay"] = self.autoStartDay!
+            }
+            if self.autoStartTime != nil {
+                map["AutoStartTime"] = self.autoStartTime!
+            }
+            if self.autoStop != nil {
+                map["AutoStop"] = self.autoStop!
+            }
+            if self.autoStopDay != nil {
+                map["AutoStopDay"] = self.autoStopDay!
+            }
+            if self.autoStopTime != nil {
+                map["AutoStopTime"] = self.autoStopTime!
+            }
+            if self.cnos != nil {
+                map["Cnos"] = self.cnos!
+            }
+            if self.concurrency != nil {
+                map["Concurrency"] = self.concurrency!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.customerClids != nil {
+                map["CustomerClids"] = self.customerClids!
+            }
+            if self.customerMoh != nil {
+                map["CustomerMoh"] = self.customerMoh!
+            }
+            if self.customerTimeout != nil {
+                map["CustomerTimeout"] = self.customerTimeout!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.enterpriseId != nil {
+                map["EnterpriseId"] = self.enterpriseId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.isRandom != nil {
+                map["IsRandom"] = self.isRandom!
+            }
+            if self.ivrId != nil {
+                map["IvrId"] = self.ivrId!
+            }
+            if self.maxWaitTime != nil {
+                map["MaxWaitTime"] = self.maxWaitTime!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.overTime != nil {
+                map["OverTime"] = self.overTime!
+            }
+            if self.predictAdjust != nil {
+                map["PredictAdjust"] = self.predictAdjust!
+            }
+            if self.quotiety != nil {
+                map["Quotiety"] = self.quotiety!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.userFields != nil {
+                map["UserFields"] = self.userFields!
+            }
+            if self.wrapup != nil {
+                map["Wrapup"] = self.wrapup!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AgentTimeout"] as? String {
+                self.agentTimeout = value
+            }
+            if let value = dict["AnswerRate"] as? String {
+                self.answerRate = value
+            }
+            if let value = dict["AutoComplete"] as? Int64 {
+                self.autoComplete = value
+            }
+            if let value = dict["AutoStart"] as? String {
+                self.autoStart = value
+            }
+            if let value = dict["AutoStartDay"] as? String {
+                self.autoStartDay = value
+            }
+            if let value = dict["AutoStartTime"] as? String {
+                self.autoStartTime = value
+            }
+            if let value = dict["AutoStop"] as? String {
+                self.autoStop = value
+            }
+            if let value = dict["AutoStopDay"] as? String {
+                self.autoStopDay = value
+            }
+            if let value = dict["AutoStopTime"] as? String {
+                self.autoStopTime = value
+            }
+            if let value = dict["Cnos"] as? String {
+                self.cnos = value
+            }
+            if let value = dict["Concurrency"] as? String {
+                self.concurrency = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["CustomerClids"] as? String {
+                self.customerClids = value
+            }
+            if let value = dict["CustomerMoh"] as? String {
+                self.customerMoh = value
+            }
+            if let value = dict["CustomerTimeout"] as? String {
+                self.customerTimeout = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["EnterpriseId"] as? String {
+                self.enterpriseId = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["IsRandom"] as? String {
+                self.isRandom = value
+            }
+            if let value = dict["IvrId"] as? String {
+                self.ivrId = value
+            }
+            if let value = dict["MaxWaitTime"] as? String {
+                self.maxWaitTime = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["OverTime"] as? String {
+                self.overTime = value
+            }
+            if let value = dict["PredictAdjust"] as? String {
+                self.predictAdjust = value
+            }
+            if let value = dict["Quotiety"] as? String {
+                self.quotiety = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["UserFields"] as? String {
+                self.userFields = value
+            }
+            if let value = dict["Wrapup"] as? String {
+                self.wrapup = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudCreateTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudCreateTaskResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudCreateTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudCreateTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudCreateTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudImportTaskTelRequest : Tea.TeaModel {
+    public class TaskTelList : Tea.TeaModel {
+        public var backupTels: String?
+
+        public var clid: String?
+
+        public var clidGroup: String?
+
+        public var priority: Int64?
+
+        public var property: String?
+
+        public var tel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupTels != nil {
+                map["BackupTels"] = self.backupTels!
+            }
+            if self.clid != nil {
+                map["Clid"] = self.clid!
+            }
+            if self.clidGroup != nil {
+                map["ClidGroup"] = self.clidGroup!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.property != nil {
+                map["Property"] = self.property!
+            }
+            if self.tel != nil {
+                map["Tel"] = self.tel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackupTels"] as? String {
+                self.backupTels = value
+            }
+            if let value = dict["Clid"] as? String {
+                self.clid = value
+            }
+            if let value = dict["ClidGroup"] as? String {
+                self.clidGroup = value
+            }
+            if let value = dict["Priority"] as? Int64 {
+                self.priority = value
+            }
+            if let value = dict["Property"] as? String {
+                self.property = value
+            }
+            if let value = dict["Tel"] as? String {
+                self.tel = value
+            }
+        }
+    }
+    public var bridgeVoicePath: String?
+
+    public var bridgeVoiceType: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var fileId: Int64?
+
+    public var importTelAutoStart: Int64?
+
+    public var isRepeat: Int64?
+
+    public var name: String?
+
+    public var ownerId: Int64?
+
+    public var priority: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskId: Int64?
+
+    public var taskTelList: [CloudImportTaskTelRequest.TaskTelList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bridgeVoicePath != nil {
+            map["BridgeVoicePath"] = self.bridgeVoicePath!
+        }
+        if self.bridgeVoiceType != nil {
+            map["BridgeVoiceType"] = self.bridgeVoiceType!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.importTelAutoStart != nil {
+            map["ImportTelAutoStart"] = self.importTelAutoStart!
+        }
+        if self.isRepeat != nil {
+            map["IsRepeat"] = self.isRepeat!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.taskTelList != nil {
+            var tmp : [Any] = []
+            for k in self.taskTelList! {
+                tmp.append(k.toMap())
+            }
+            map["TaskTelList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BridgeVoicePath"] as? String {
+            self.bridgeVoicePath = value
+        }
+        if let value = dict["BridgeVoiceType"] as? Int64 {
+            self.bridgeVoiceType = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["FileId"] as? Int64 {
+            self.fileId = value
+        }
+        if let value = dict["ImportTelAutoStart"] as? Int64 {
+            self.importTelAutoStart = value
+        }
+        if let value = dict["IsRepeat"] as? Int64 {
+            self.isRepeat = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Priority"] as? Int64 {
+            self.priority = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["TaskTelList"] as? [Any?] {
+            var tmp : [CloudImportTaskTelRequest.TaskTelList] = []
+            for v in value {
+                if v != nil {
+                    var model = CloudImportTaskTelRequest.TaskTelList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.taskTelList = tmp
+        }
+    }
+}
+
+public class CloudImportTaskTelShrinkRequest : Tea.TeaModel {
+    public var bridgeVoicePath: String?
+
+    public var bridgeVoiceType: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var fileId: Int64?
+
+    public var importTelAutoStart: Int64?
+
+    public var isRepeat: Int64?
+
+    public var name: String?
+
+    public var ownerId: Int64?
+
+    public var priority: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskId: Int64?
+
+    public var taskTelListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bridgeVoicePath != nil {
+            map["BridgeVoicePath"] = self.bridgeVoicePath!
+        }
+        if self.bridgeVoiceType != nil {
+            map["BridgeVoiceType"] = self.bridgeVoiceType!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.importTelAutoStart != nil {
+            map["ImportTelAutoStart"] = self.importTelAutoStart!
+        }
+        if self.isRepeat != nil {
+            map["IsRepeat"] = self.isRepeat!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.taskTelListShrink != nil {
+            map["TaskTelList"] = self.taskTelListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BridgeVoicePath"] as? String {
+            self.bridgeVoicePath = value
+        }
+        if let value = dict["BridgeVoiceType"] as? Int64 {
+            self.bridgeVoiceType = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["FileId"] as? Int64 {
+            self.fileId = value
+        }
+        if let value = dict["ImportTelAutoStart"] as? Int64 {
+            self.importTelAutoStart = value
+        }
+        if let value = dict["IsRepeat"] as? Int64 {
+            self.isRepeat = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Priority"] as? Int64 {
+            self.priority = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["TaskTelList"] as? String {
+            self.taskTelListShrink = value
+        }
+    }
+}
+
+public class CloudImportTaskTelResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileId: String?
+
+        public var importTotal: String?
+
+        public var invalidTotal: String?
+
+        public var successTotal: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.importTotal != nil {
+                map["ImportTotal"] = self.importTotal!
+            }
+            if self.invalidTotal != nil {
+                map["InvalidTotal"] = self.invalidTotal!
+            }
+            if self.successTotal != nil {
+                map["SuccessTotal"] = self.successTotal!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["ImportTotal"] as? String {
+                self.importTotal = value
+            }
+            if let value = dict["InvalidTotal"] as? String {
+                self.invalidTotal = value
+            }
+            if let value = dict["SuccessTotal"] as? String {
+                self.successTotal = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudImportTaskTelResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudImportTaskTelResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudImportTaskTelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudImportTaskTelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudImportTaskTelResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudStartTaskRequest : Tea.TeaModel {
+    public var enterpriseId: Int64?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+    }
+}
+
+public class CloudStartTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Result"] as? Int64 {
+                self.result = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudStartTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudStartTaskResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudStartTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudStartTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudStartTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudUpdateTaskRequest : Tea.TeaModel {
+    public var agentGroup: String?
+
+    public var agentTimeout: Int64?
+
+    public var answerRate: Int64?
+
+    public var autoComplete: Int64?
+
+    public var autoStart: Int64?
+
+    public var autoStartDay: String?
+
+    public var autoStartTime: String?
+
+    public var autoStop: Int64?
+
+    public var autoStopDay: String?
+
+    public var autoStopTime: String?
+
+    public var autoTaskType: Int64?
+
+    public var autoTriggerTimeStrategy: String?
+
+    public var callLimitStrategy: String?
+
+    public var callPriorityStrategy: String?
+
+    public var callRouteStrategy: Int64?
+
+    public var callStrategy: String?
+
+    public var callVariables: String?
+
+    public var clidProperty: String?
+
+    public var cnos: String?
+
+    public var concurrency: Int64?
+
+    public var customerClidType: Int64?
+
+    public var customerClidWeight: String?
+
+    public var customerClidWeightFlag: Int64?
+
+    public var customerClids: String?
+
+    public var customerClidsCategory: Int64?
+
+    public var customerClidsGroup: String?
+
+    public var customerMoh: String?
+
+    public var customerTimeout: Int64?
+
+    public var customerVoice: String?
+
+    public var description_: String?
+
+    public var enterpriseId: Int64?
+
+    public var forceEndFlag: Int64?
+
+    public var isRewarm: Int64?
+
+    public var ivrId: Int64?
+
+    public var ivrName: String?
+
+    public var maxWaitTime: Int64?
+
+    public var minAvailableAgentCount: Int64?
+
+    public var name: String?
+
+    public var ownerId: Int64?
+
+    public var predictAdjust: Int64?
+
+    public var quotiety: Double?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var retryStrategy: String?
+
+    public var retryStrategyOnlyToday: Int64?
+
+    public var retryStrategyTimeType: Int64?
+
+    public var taskId: String?
+
+    public var timeStrategy: String?
+
+    public var userFields: String?
+
+    public var warmUpDuration: Int64?
+
+    public var wrapup: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentGroup != nil {
+            map["AgentGroup"] = self.agentGroup!
+        }
+        if self.agentTimeout != nil {
+            map["AgentTimeout"] = self.agentTimeout!
+        }
+        if self.answerRate != nil {
+            map["AnswerRate"] = self.answerRate!
+        }
+        if self.autoComplete != nil {
+            map["AutoComplete"] = self.autoComplete!
+        }
+        if self.autoStart != nil {
+            map["AutoStart"] = self.autoStart!
+        }
+        if self.autoStartDay != nil {
+            map["AutoStartDay"] = self.autoStartDay!
+        }
+        if self.autoStartTime != nil {
+            map["AutoStartTime"] = self.autoStartTime!
+        }
+        if self.autoStop != nil {
+            map["AutoStop"] = self.autoStop!
+        }
+        if self.autoStopDay != nil {
+            map["AutoStopDay"] = self.autoStopDay!
+        }
+        if self.autoStopTime != nil {
+            map["AutoStopTime"] = self.autoStopTime!
+        }
+        if self.autoTaskType != nil {
+            map["AutoTaskType"] = self.autoTaskType!
+        }
+        if self.autoTriggerTimeStrategy != nil {
+            map["AutoTriggerTimeStrategy"] = self.autoTriggerTimeStrategy!
+        }
+        if self.callLimitStrategy != nil {
+            map["CallLimitStrategy"] = self.callLimitStrategy!
+        }
+        if self.callPriorityStrategy != nil {
+            map["CallPriorityStrategy"] = self.callPriorityStrategy!
+        }
+        if self.callRouteStrategy != nil {
+            map["CallRouteStrategy"] = self.callRouteStrategy!
+        }
+        if self.callStrategy != nil {
+            map["CallStrategy"] = self.callStrategy!
+        }
+        if self.callVariables != nil {
+            map["CallVariables"] = self.callVariables!
+        }
+        if self.clidProperty != nil {
+            map["ClidProperty"] = self.clidProperty!
+        }
+        if self.cnos != nil {
+            map["Cnos"] = self.cnos!
+        }
+        if self.concurrency != nil {
+            map["Concurrency"] = self.concurrency!
+        }
+        if self.customerClidType != nil {
+            map["CustomerClidType"] = self.customerClidType!
+        }
+        if self.customerClidWeight != nil {
+            map["CustomerClidWeight"] = self.customerClidWeight!
+        }
+        if self.customerClidWeightFlag != nil {
+            map["CustomerClidWeightFlag"] = self.customerClidWeightFlag!
+        }
+        if self.customerClids != nil {
+            map["CustomerClids"] = self.customerClids!
+        }
+        if self.customerClidsCategory != nil {
+            map["CustomerClidsCategory"] = self.customerClidsCategory!
+        }
+        if self.customerClidsGroup != nil {
+            map["CustomerClidsGroup"] = self.customerClidsGroup!
+        }
+        if self.customerMoh != nil {
+            map["CustomerMoh"] = self.customerMoh!
+        }
+        if self.customerTimeout != nil {
+            map["CustomerTimeout"] = self.customerTimeout!
+        }
+        if self.customerVoice != nil {
+            map["CustomerVoice"] = self.customerVoice!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.forceEndFlag != nil {
+            map["ForceEndFlag"] = self.forceEndFlag!
+        }
+        if self.isRewarm != nil {
+            map["IsRewarm"] = self.isRewarm!
+        }
+        if self.ivrId != nil {
+            map["IvrId"] = self.ivrId!
+        }
+        if self.ivrName != nil {
+            map["IvrName"] = self.ivrName!
+        }
+        if self.maxWaitTime != nil {
+            map["MaxWaitTime"] = self.maxWaitTime!
+        }
+        if self.minAvailableAgentCount != nil {
+            map["MinAvailableAgentCount"] = self.minAvailableAgentCount!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.predictAdjust != nil {
+            map["PredictAdjust"] = self.predictAdjust!
+        }
+        if self.quotiety != nil {
+            map["Quotiety"] = self.quotiety!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.retryStrategy != nil {
+            map["RetryStrategy"] = self.retryStrategy!
+        }
+        if self.retryStrategyOnlyToday != nil {
+            map["RetryStrategyOnlyToday"] = self.retryStrategyOnlyToday!
+        }
+        if self.retryStrategyTimeType != nil {
+            map["RetryStrategyTimeType"] = self.retryStrategyTimeType!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.timeStrategy != nil {
+            map["TimeStrategy"] = self.timeStrategy!
+        }
+        if self.userFields != nil {
+            map["UserFields"] = self.userFields!
+        }
+        if self.warmUpDuration != nil {
+            map["WarmUpDuration"] = self.warmUpDuration!
+        }
+        if self.wrapup != nil {
+            map["Wrapup"] = self.wrapup!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentGroup"] as? String {
+            self.agentGroup = value
+        }
+        if let value = dict["AgentTimeout"] as? Int64 {
+            self.agentTimeout = value
+        }
+        if let value = dict["AnswerRate"] as? Int64 {
+            self.answerRate = value
+        }
+        if let value = dict["AutoComplete"] as? Int64 {
+            self.autoComplete = value
+        }
+        if let value = dict["AutoStart"] as? Int64 {
+            self.autoStart = value
+        }
+        if let value = dict["AutoStartDay"] as? String {
+            self.autoStartDay = value
+        }
+        if let value = dict["AutoStartTime"] as? String {
+            self.autoStartTime = value
+        }
+        if let value = dict["AutoStop"] as? Int64 {
+            self.autoStop = value
+        }
+        if let value = dict["AutoStopDay"] as? String {
+            self.autoStopDay = value
+        }
+        if let value = dict["AutoStopTime"] as? String {
+            self.autoStopTime = value
+        }
+        if let value = dict["AutoTaskType"] as? Int64 {
+            self.autoTaskType = value
+        }
+        if let value = dict["AutoTriggerTimeStrategy"] as? String {
+            self.autoTriggerTimeStrategy = value
+        }
+        if let value = dict["CallLimitStrategy"] as? String {
+            self.callLimitStrategy = value
+        }
+        if let value = dict["CallPriorityStrategy"] as? String {
+            self.callPriorityStrategy = value
+        }
+        if let value = dict["CallRouteStrategy"] as? Int64 {
+            self.callRouteStrategy = value
+        }
+        if let value = dict["CallStrategy"] as? String {
+            self.callStrategy = value
+        }
+        if let value = dict["CallVariables"] as? String {
+            self.callVariables = value
+        }
+        if let value = dict["ClidProperty"] as? String {
+            self.clidProperty = value
+        }
+        if let value = dict["Cnos"] as? String {
+            self.cnos = value
+        }
+        if let value = dict["Concurrency"] as? Int64 {
+            self.concurrency = value
+        }
+        if let value = dict["CustomerClidType"] as? Int64 {
+            self.customerClidType = value
+        }
+        if let value = dict["CustomerClidWeight"] as? String {
+            self.customerClidWeight = value
+        }
+        if let value = dict["CustomerClidWeightFlag"] as? Int64 {
+            self.customerClidWeightFlag = value
+        }
+        if let value = dict["CustomerClids"] as? String {
+            self.customerClids = value
+        }
+        if let value = dict["CustomerClidsCategory"] as? Int64 {
+            self.customerClidsCategory = value
+        }
+        if let value = dict["CustomerClidsGroup"] as? String {
+            self.customerClidsGroup = value
+        }
+        if let value = dict["CustomerMoh"] as? String {
+            self.customerMoh = value
+        }
+        if let value = dict["CustomerTimeout"] as? Int64 {
+            self.customerTimeout = value
+        }
+        if let value = dict["CustomerVoice"] as? String {
+            self.customerVoice = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["ForceEndFlag"] as? Int64 {
+            self.forceEndFlag = value
+        }
+        if let value = dict["IsRewarm"] as? Int64 {
+            self.isRewarm = value
+        }
+        if let value = dict["IvrId"] as? Int64 {
+            self.ivrId = value
+        }
+        if let value = dict["IvrName"] as? String {
+            self.ivrName = value
+        }
+        if let value = dict["MaxWaitTime"] as? Int64 {
+            self.maxWaitTime = value
+        }
+        if let value = dict["MinAvailableAgentCount"] as? Int64 {
+            self.minAvailableAgentCount = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PredictAdjust"] as? Int64 {
+            self.predictAdjust = value
+        }
+        if let value = dict["Quotiety"] as? Double {
+            self.quotiety = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["RetryStrategy"] as? String {
+            self.retryStrategy = value
+        }
+        if let value = dict["RetryStrategyOnlyToday"] as? Int64 {
+            self.retryStrategyOnlyToday = value
+        }
+        if let value = dict["RetryStrategyTimeType"] as? Int64 {
+            self.retryStrategyTimeType = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["TimeStrategy"] as? String {
+            self.timeStrategy = value
+        }
+        if let value = dict["UserFields"] as? String {
+            self.userFields = value
+        }
+        if let value = dict["WarmUpDuration"] as? Int64 {
+            self.warmUpDuration = value
+        }
+        if let value = dict["Wrapup"] as? Int64 {
+            self.wrapup = value
+        }
+    }
+}
+
+public class CloudUpdateTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var agentTimeout: String?
+
+        public var answerRate: String?
+
+        public var autoComplete: Int64?
+
+        public var autoStart: String?
+
+        public var autoStartDay: String?
+
+        public var autoStartTime: String?
+
+        public var autoStop: String?
+
+        public var autoStopDay: String?
+
+        public var autoStopTime: String?
+
+        public var cnos: String?
+
+        public var concurrency: String?
+
+        public var createTime: String?
+
+        public var customerClids: String?
+
+        public var customerMoh: String?
+
+        public var customerTimeout: String?
+
+        public var description_: String?
+
+        public var enterpriseId: String?
+
+        public var id: String?
+
+        public var isRandom: String?
+
+        public var ivrId: String?
+
+        public var maxWaitTime: String?
+
+        public var name: String?
+
+        public var overTime: String?
+
+        public var predictAdjust: String?
+
+        public var quotiety: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var type: String?
+
+        public var userFields: String?
+
+        public var wrapup: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentTimeout != nil {
+                map["AgentTimeout"] = self.agentTimeout!
+            }
+            if self.answerRate != nil {
+                map["AnswerRate"] = self.answerRate!
+            }
+            if self.autoComplete != nil {
+                map["AutoComplete"] = self.autoComplete!
+            }
+            if self.autoStart != nil {
+                map["AutoStart"] = self.autoStart!
+            }
+            if self.autoStartDay != nil {
+                map["AutoStartDay"] = self.autoStartDay!
+            }
+            if self.autoStartTime != nil {
+                map["AutoStartTime"] = self.autoStartTime!
+            }
+            if self.autoStop != nil {
+                map["AutoStop"] = self.autoStop!
+            }
+            if self.autoStopDay != nil {
+                map["AutoStopDay"] = self.autoStopDay!
+            }
+            if self.autoStopTime != nil {
+                map["AutoStopTime"] = self.autoStopTime!
+            }
+            if self.cnos != nil {
+                map["Cnos"] = self.cnos!
+            }
+            if self.concurrency != nil {
+                map["Concurrency"] = self.concurrency!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.customerClids != nil {
+                map["CustomerClids"] = self.customerClids!
+            }
+            if self.customerMoh != nil {
+                map["CustomerMoh"] = self.customerMoh!
+            }
+            if self.customerTimeout != nil {
+                map["CustomerTimeout"] = self.customerTimeout!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.enterpriseId != nil {
+                map["EnterpriseId"] = self.enterpriseId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.isRandom != nil {
+                map["IsRandom"] = self.isRandom!
+            }
+            if self.ivrId != nil {
+                map["IvrId"] = self.ivrId!
+            }
+            if self.maxWaitTime != nil {
+                map["MaxWaitTime"] = self.maxWaitTime!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.overTime != nil {
+                map["OverTime"] = self.overTime!
+            }
+            if self.predictAdjust != nil {
+                map["PredictAdjust"] = self.predictAdjust!
+            }
+            if self.quotiety != nil {
+                map["Quotiety"] = self.quotiety!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.userFields != nil {
+                map["UserFields"] = self.userFields!
+            }
+            if self.wrapup != nil {
+                map["Wrapup"] = self.wrapup!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AgentTimeout"] as? String {
+                self.agentTimeout = value
+            }
+            if let value = dict["AnswerRate"] as? String {
+                self.answerRate = value
+            }
+            if let value = dict["AutoComplete"] as? Int64 {
+                self.autoComplete = value
+            }
+            if let value = dict["AutoStart"] as? String {
+                self.autoStart = value
+            }
+            if let value = dict["AutoStartDay"] as? String {
+                self.autoStartDay = value
+            }
+            if let value = dict["AutoStartTime"] as? String {
+                self.autoStartTime = value
+            }
+            if let value = dict["AutoStop"] as? String {
+                self.autoStop = value
+            }
+            if let value = dict["AutoStopDay"] as? String {
+                self.autoStopDay = value
+            }
+            if let value = dict["AutoStopTime"] as? String {
+                self.autoStopTime = value
+            }
+            if let value = dict["Cnos"] as? String {
+                self.cnos = value
+            }
+            if let value = dict["Concurrency"] as? String {
+                self.concurrency = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["CustomerClids"] as? String {
+                self.customerClids = value
+            }
+            if let value = dict["CustomerMoh"] as? String {
+                self.customerMoh = value
+            }
+            if let value = dict["CustomerTimeout"] as? String {
+                self.customerTimeout = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["EnterpriseId"] as? String {
+                self.enterpriseId = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["IsRandom"] as? String {
+                self.isRandom = value
+            }
+            if let value = dict["IvrId"] as? String {
+                self.ivrId = value
+            }
+            if let value = dict["MaxWaitTime"] as? String {
+                self.maxWaitTime = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["OverTime"] as? String {
+                self.overTime = value
+            }
+            if let value = dict["PredictAdjust"] as? String {
+                self.predictAdjust = value
+            }
+            if let value = dict["Quotiety"] as? String {
+                self.quotiety = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["UserFields"] as? String {
+                self.userFields = value
+            }
+            if let value = dict["Wrapup"] as? String {
+                self.wrapup = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudUpdateTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudUpdateTaskResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudUpdateTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudUpdateTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudUpdateTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateCallTaskRequest : Tea.TeaModel {
     public var bizType: String?
 
@@ -7600,182 +9967,6 @@ public class QueryVideoPlayProgressResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryVideoPlayProgressResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
-public class QueryVirtualNumberRequest : Tea.TeaModel {
-    public var ownerId: Int64?
-
-    public var pageNo: Int32?
-
-    public var pageSize: Int32?
-
-    public var prodCode: String?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
-    public var routeType: Int32?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.pageNo != nil {
-            map["PageNo"] = self.pageNo!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.prodCode != nil {
-            map["ProdCode"] = self.prodCode!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
-        if self.routeType != nil {
-            map["RouteType"] = self.routeType!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["OwnerId"] as? Int64 {
-            self.ownerId = value
-        }
-        if let value = dict["PageNo"] as? Int32 {
-            self.pageNo = value
-        }
-        if let value = dict["PageSize"] as? Int32 {
-            self.pageSize = value
-        }
-        if let value = dict["ProdCode"] as? String {
-            self.prodCode = value
-        }
-        if let value = dict["ResourceOwnerAccount"] as? String {
-            self.resourceOwnerAccount = value
-        }
-        if let value = dict["ResourceOwnerId"] as? Int64 {
-            self.resourceOwnerId = value
-        }
-        if let value = dict["RouteType"] as? Int32 {
-            self.routeType = value
-        }
-    }
-}
-
-public class QueryVirtualNumberResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var data: String?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["Code"] as? String {
-            self.code = value
-        }
-        if let value = dict["Data"] as? String {
-            self.data = value
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
-public class QueryVirtualNumberResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: QueryVirtualNumberResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = QueryVirtualNumberResponseBody()
             model.fromMap(value)
             self.body = model
         }
