@@ -42852,6 +42852,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
 
     public var runId: String?
 
+    public var searchType: String?
+
     public var threshold: Double?
 
     public var topK: Int32?
@@ -42893,6 +42895,9 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.runId != nil {
             map["runId"] = self.runId!
         }
+        if self.searchType != nil {
+            map["searchType"] = self.searchType!
+        }
         if self.threshold != nil {
             map["threshold"] = self.threshold!
         }
@@ -42927,6 +42932,9 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         }
         if let value = dict["runId"] as? String {
             self.runId = value
+        }
+        if let value = dict["searchType"] as? String {
+            self.searchType = value
         }
         if let value = dict["threshold"] as? Double {
             self.threshold = value

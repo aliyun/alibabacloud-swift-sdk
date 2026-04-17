@@ -4346,6 +4346,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.runId)) {
             body["runId"] = request.runId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.searchType)) {
+            body["searchType"] = request.searchType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.threshold)) {
             body["threshold"] = request.threshold!;
         }
