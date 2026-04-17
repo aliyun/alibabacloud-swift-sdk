@@ -2456,9 +2456,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createDiagnosticReportWithOptions(_ request: CreateDiagnosticReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDiagnosticReportResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createDiagnosticReportWithOptions(_ tmpReq: CreateDiagnosticReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDiagnosticReportResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateDiagnosticReportShrinkRequest = CreateDiagnosticReportShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.additionalOptions)) {
+            request.additionalOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.additionalOptions, "AdditionalOptions", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalOptionsShrink)) {
+            query["AdditionalOptions"] = request.additionalOptionsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }

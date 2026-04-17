@@ -12141,6 +12141,8 @@ public class CreateDiagnosticMetricSetResponse : Tea.TeaModel {
 }
 
 public class CreateDiagnosticReportRequest : Tea.TeaModel {
+    public var additionalOptions: [String: String]?
+
     public var endTime: String?
 
     public var metricSetId: String?
@@ -12165,6 +12167,9 @@ public class CreateDiagnosticReportRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalOptions != nil {
+            map["AdditionalOptions"] = self.additionalOptions!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -12185,6 +12190,80 @@ public class CreateDiagnosticReportRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalOptions"] as? [String: String] {
+            self.additionalOptions = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["MetricSetId"] as? String {
+            self.metricSetId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class CreateDiagnosticReportShrinkRequest : Tea.TeaModel {
+    public var additionalOptionsShrink: String?
+
+    public var endTime: String?
+
+    public var metricSetId: String?
+
+    public var regionId: String?
+
+    public var resourceId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalOptionsShrink != nil {
+            map["AdditionalOptions"] = self.additionalOptionsShrink!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.metricSetId != nil {
+            map["MetricSetId"] = self.metricSetId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalOptions"] as? String {
+            self.additionalOptionsShrink = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
