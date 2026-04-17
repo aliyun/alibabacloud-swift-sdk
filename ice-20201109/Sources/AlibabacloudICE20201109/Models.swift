@@ -14189,6 +14189,172 @@ public class BatchGetMediaInfosRequest : Tea.TeaModel {
 public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
     public class MediaInfos : Tea.TeaModel {
         public class FileInfoList : Tea.TeaModel {
+            public class AudioStreamInfoList : Tea.TeaModel {
+                public var bitrate: String?
+
+                public var channelLayout: String?
+
+                public var channels: String?
+
+                public var codecLongName: String?
+
+                public var codecName: String?
+
+                public var codecTag: String?
+
+                public var codecTagString: String?
+
+                public var codecTimeBase: String?
+
+                public var duration: String?
+
+                public var fps: String?
+
+                public var index: String?
+
+                public var lang: String?
+
+                public var numFrames: String?
+
+                public var profile: String?
+
+                public var sampleFmt: String?
+
+                public var sampleRate: String?
+
+                public var startTime: String?
+
+                public var timebase: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bitrate != nil {
+                        map["Bitrate"] = self.bitrate!
+                    }
+                    if self.channelLayout != nil {
+                        map["ChannelLayout"] = self.channelLayout!
+                    }
+                    if self.channels != nil {
+                        map["Channels"] = self.channels!
+                    }
+                    if self.codecLongName != nil {
+                        map["CodecLongName"] = self.codecLongName!
+                    }
+                    if self.codecName != nil {
+                        map["CodecName"] = self.codecName!
+                    }
+                    if self.codecTag != nil {
+                        map["CodecTag"] = self.codecTag!
+                    }
+                    if self.codecTagString != nil {
+                        map["CodecTagString"] = self.codecTagString!
+                    }
+                    if self.codecTimeBase != nil {
+                        map["CodecTimeBase"] = self.codecTimeBase!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.fps != nil {
+                        map["Fps"] = self.fps!
+                    }
+                    if self.index != nil {
+                        map["Index"] = self.index!
+                    }
+                    if self.lang != nil {
+                        map["Lang"] = self.lang!
+                    }
+                    if self.numFrames != nil {
+                        map["NumFrames"] = self.numFrames!
+                    }
+                    if self.profile != nil {
+                        map["Profile"] = self.profile!
+                    }
+                    if self.sampleFmt != nil {
+                        map["SampleFmt"] = self.sampleFmt!
+                    }
+                    if self.sampleRate != nil {
+                        map["SampleRate"] = self.sampleRate!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timebase != nil {
+                        map["Timebase"] = self.timebase!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bitrate"] as? String {
+                        self.bitrate = value
+                    }
+                    if let value = dict["ChannelLayout"] as? String {
+                        self.channelLayout = value
+                    }
+                    if let value = dict["Channels"] as? String {
+                        self.channels = value
+                    }
+                    if let value = dict["CodecLongName"] as? String {
+                        self.codecLongName = value
+                    }
+                    if let value = dict["CodecName"] as? String {
+                        self.codecName = value
+                    }
+                    if let value = dict["CodecTag"] as? String {
+                        self.codecTag = value
+                    }
+                    if let value = dict["CodecTagString"] as? String {
+                        self.codecTagString = value
+                    }
+                    if let value = dict["CodecTimeBase"] as? String {
+                        self.codecTimeBase = value
+                    }
+                    if let value = dict["Duration"] as? String {
+                        self.duration = value
+                    }
+                    if let value = dict["Fps"] as? String {
+                        self.fps = value
+                    }
+                    if let value = dict["Index"] as? String {
+                        self.index = value
+                    }
+                    if let value = dict["Lang"] as? String {
+                        self.lang = value
+                    }
+                    if let value = dict["NumFrames"] as? String {
+                        self.numFrames = value
+                    }
+                    if let value = dict["Profile"] as? String {
+                        self.profile = value
+                    }
+                    if let value = dict["SampleFmt"] as? String {
+                        self.sampleFmt = value
+                    }
+                    if let value = dict["SampleRate"] as? String {
+                        self.sampleRate = value
+                    }
+                    if let value = dict["StartTime"] as? String {
+                        self.startTime = value
+                    }
+                    if let value = dict["Timebase"] as? String {
+                        self.timebase = value
+                    }
+                }
+            }
             public class FileBasicInfo : Tea.TeaModel {
                 public var bitrate: String?
 
@@ -14299,7 +14465,329 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SubtitleStreamInfoList : Tea.TeaModel {
+                public var codecLongName: String?
+
+                public var codecName: String?
+
+                public var codecTag: String?
+
+                public var codecTagString: String?
+
+                public var codecTimeBase: String?
+
+                public var duration: String?
+
+                public var index: String?
+
+                public var lang: String?
+
+                public var startTime: String?
+
+                public var timebase: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.codecLongName != nil {
+                        map["CodecLongName"] = self.codecLongName!
+                    }
+                    if self.codecName != nil {
+                        map["CodecName"] = self.codecName!
+                    }
+                    if self.codecTag != nil {
+                        map["CodecTag"] = self.codecTag!
+                    }
+                    if self.codecTagString != nil {
+                        map["CodecTagString"] = self.codecTagString!
+                    }
+                    if self.codecTimeBase != nil {
+                        map["CodecTimeBase"] = self.codecTimeBase!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.index != nil {
+                        map["Index"] = self.index!
+                    }
+                    if self.lang != nil {
+                        map["Lang"] = self.lang!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timebase != nil {
+                        map["Timebase"] = self.timebase!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CodecLongName"] as? String {
+                        self.codecLongName = value
+                    }
+                    if let value = dict["CodecName"] as? String {
+                        self.codecName = value
+                    }
+                    if let value = dict["CodecTag"] as? String {
+                        self.codecTag = value
+                    }
+                    if let value = dict["CodecTagString"] as? String {
+                        self.codecTagString = value
+                    }
+                    if let value = dict["CodecTimeBase"] as? String {
+                        self.codecTimeBase = value
+                    }
+                    if let value = dict["Duration"] as? String {
+                        self.duration = value
+                    }
+                    if let value = dict["Index"] as? String {
+                        self.index = value
+                    }
+                    if let value = dict["Lang"] as? String {
+                        self.lang = value
+                    }
+                    if let value = dict["StartTime"] as? String {
+                        self.startTime = value
+                    }
+                    if let value = dict["Timebase"] as? String {
+                        self.timebase = value
+                    }
+                }
+            }
+            public class VideoStreamInfoList : Tea.TeaModel {
+                public var avgFPS: String?
+
+                public var bitrate: String?
+
+                public var codecLongName: String?
+
+                public var codecName: String?
+
+                public var codecTag: String?
+
+                public var codecTagString: String?
+
+                public var codecTimeBase: String?
+
+                public var dar: String?
+
+                public var duration: String?
+
+                public var fps: String?
+
+                public var hasBFrames: String?
+
+                public var height: String?
+
+                public var index: String?
+
+                public var lang: String?
+
+                public var level: String?
+
+                public var nbFrames: String?
+
+                public var numFrames: String?
+
+                public var pixFmt: String?
+
+                public var profile: String?
+
+                public var rotate: String?
+
+                public var sar: String?
+
+                public var startTime: String?
+
+                public var timebase: String?
+
+                public var width: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.avgFPS != nil {
+                        map["AvgFPS"] = self.avgFPS!
+                    }
+                    if self.bitrate != nil {
+                        map["Bitrate"] = self.bitrate!
+                    }
+                    if self.codecLongName != nil {
+                        map["CodecLongName"] = self.codecLongName!
+                    }
+                    if self.codecName != nil {
+                        map["CodecName"] = self.codecName!
+                    }
+                    if self.codecTag != nil {
+                        map["CodecTag"] = self.codecTag!
+                    }
+                    if self.codecTagString != nil {
+                        map["CodecTagString"] = self.codecTagString!
+                    }
+                    if self.codecTimeBase != nil {
+                        map["CodecTimeBase"] = self.codecTimeBase!
+                    }
+                    if self.dar != nil {
+                        map["Dar"] = self.dar!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.fps != nil {
+                        map["Fps"] = self.fps!
+                    }
+                    if self.hasBFrames != nil {
+                        map["HasBFrames"] = self.hasBFrames!
+                    }
+                    if self.height != nil {
+                        map["Height"] = self.height!
+                    }
+                    if self.index != nil {
+                        map["Index"] = self.index!
+                    }
+                    if self.lang != nil {
+                        map["Lang"] = self.lang!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.nbFrames != nil {
+                        map["Nb_frames"] = self.nbFrames!
+                    }
+                    if self.numFrames != nil {
+                        map["NumFrames"] = self.numFrames!
+                    }
+                    if self.pixFmt != nil {
+                        map["PixFmt"] = self.pixFmt!
+                    }
+                    if self.profile != nil {
+                        map["Profile"] = self.profile!
+                    }
+                    if self.rotate != nil {
+                        map["Rotate"] = self.rotate!
+                    }
+                    if self.sar != nil {
+                        map["Sar"] = self.sar!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timebase != nil {
+                        map["Timebase"] = self.timebase!
+                    }
+                    if self.width != nil {
+                        map["Width"] = self.width!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AvgFPS"] as? String {
+                        self.avgFPS = value
+                    }
+                    if let value = dict["Bitrate"] as? String {
+                        self.bitrate = value
+                    }
+                    if let value = dict["CodecLongName"] as? String {
+                        self.codecLongName = value
+                    }
+                    if let value = dict["CodecName"] as? String {
+                        self.codecName = value
+                    }
+                    if let value = dict["CodecTag"] as? String {
+                        self.codecTag = value
+                    }
+                    if let value = dict["CodecTagString"] as? String {
+                        self.codecTagString = value
+                    }
+                    if let value = dict["CodecTimeBase"] as? String {
+                        self.codecTimeBase = value
+                    }
+                    if let value = dict["Dar"] as? String {
+                        self.dar = value
+                    }
+                    if let value = dict["Duration"] as? String {
+                        self.duration = value
+                    }
+                    if let value = dict["Fps"] as? String {
+                        self.fps = value
+                    }
+                    if let value = dict["HasBFrames"] as? String {
+                        self.hasBFrames = value
+                    }
+                    if let value = dict["Height"] as? String {
+                        self.height = value
+                    }
+                    if let value = dict["Index"] as? String {
+                        self.index = value
+                    }
+                    if let value = dict["Lang"] as? String {
+                        self.lang = value
+                    }
+                    if let value = dict["Level"] as? String {
+                        self.level = value
+                    }
+                    if let value = dict["Nb_frames"] as? String {
+                        self.nbFrames = value
+                    }
+                    if let value = dict["NumFrames"] as? String {
+                        self.numFrames = value
+                    }
+                    if let value = dict["PixFmt"] as? String {
+                        self.pixFmt = value
+                    }
+                    if let value = dict["Profile"] as? String {
+                        self.profile = value
+                    }
+                    if let value = dict["Rotate"] as? String {
+                        self.rotate = value
+                    }
+                    if let value = dict["Sar"] as? String {
+                        self.sar = value
+                    }
+                    if let value = dict["StartTime"] as? String {
+                        self.startTime = value
+                    }
+                    if let value = dict["Timebase"] as? String {
+                        self.timebase = value
+                    }
+                    if let value = dict["Width"] as? String {
+                        self.width = value
+                    }
+                }
+            }
+            public var audioStreamInfoList: [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.AudioStreamInfoList]?
+
             public var fileBasicInfo: BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.FileBasicInfo?
+
+            public var subtitleStreamInfoList: [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.SubtitleStreamInfoList]?
+
+            public var videoStreamInfoList: [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.VideoStreamInfoList]?
 
             public override init() {
                 super.init()
@@ -14316,18 +14804,78 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.audioStreamInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.audioStreamInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AudioStreamInfoList"] = tmp
+                }
                 if self.fileBasicInfo != nil {
                     map["FileBasicInfo"] = self.fileBasicInfo?.toMap()
+                }
+                if self.subtitleStreamInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.subtitleStreamInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SubtitleStreamInfoList"] = tmp
+                }
+                if self.videoStreamInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.videoStreamInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["VideoStreamInfoList"] = tmp
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AudioStreamInfoList"] as? [Any?] {
+                    var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.AudioStreamInfoList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.AudioStreamInfoList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.audioStreamInfoList = tmp
+                }
                 if let value = dict["FileBasicInfo"] as? [String: Any?] {
                     var model = BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.FileBasicInfo()
                     model.fromMap(value)
                     self.fileBasicInfo = model
+                }
+                if let value = dict["SubtitleStreamInfoList"] as? [Any?] {
+                    var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.SubtitleStreamInfoList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.SubtitleStreamInfoList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.subtitleStreamInfoList = tmp
+                }
+                if let value = dict["VideoStreamInfoList"] as? [Any?] {
+                    var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.VideoStreamInfoList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = BatchGetMediaInfosResponseBody.MediaInfos.FileInfoList.VideoStreamInfoList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.videoStreamInfoList = tmp
                 }
             }
         }
