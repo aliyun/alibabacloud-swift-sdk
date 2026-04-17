@@ -59787,7 +59787,11 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var targetMemberIp: String?
+
     public var targetOfficeSiteId: String?
+
+    public var targetSubnetId: String?
 
     public override init() {
         super.init()
@@ -59809,8 +59813,14 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.targetMemberIp != nil {
+            map["TargetMemberIp"] = self.targetMemberIp!
+        }
         if self.targetOfficeSiteId != nil {
             map["TargetOfficeSiteId"] = self.targetOfficeSiteId!
+        }
+        if self.targetSubnetId != nil {
+            map["TargetSubnetId"] = self.targetSubnetId!
         }
         return map
     }
@@ -59823,8 +59833,14 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["TargetMemberIp"] as? String {
+            self.targetMemberIp = value
+        }
         if let value = dict["TargetOfficeSiteId"] as? String {
             self.targetOfficeSiteId = value
+        }
+        if let value = dict["TargetSubnetId"] as? String {
+            self.targetSubnetId = value
         }
     }
 }

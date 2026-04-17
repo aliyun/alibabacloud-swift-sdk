@@ -10229,8 +10229,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetMemberIp)) {
+            query["TargetMemberIp"] = request.targetMemberIp ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.targetOfficeSiteId)) {
             query["TargetOfficeSiteId"] = request.targetOfficeSiteId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetSubnetId)) {
+            query["TargetSubnetId"] = request.targetSubnetId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
