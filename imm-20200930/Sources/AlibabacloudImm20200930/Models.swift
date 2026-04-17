@@ -29815,6 +29815,8 @@ public class ListBindingsRequest : Tea.TeaModel {
 
     public var maxResults: Int64?
 
+    public var name: String?
+
     public var nextToken: String?
 
     public var projectName: String?
@@ -29839,6 +29841,9 @@ public class ListBindingsRequest : Tea.TeaModel {
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -29855,6 +29860,9 @@ public class ListBindingsRequest : Tea.TeaModel {
         }
         if let value = dict["MaxResults"] as? Int64 {
             self.maxResults = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
