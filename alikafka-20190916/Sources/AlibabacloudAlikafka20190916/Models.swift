@@ -2027,6 +2027,68 @@ public class CreatePostPayOrderResponse : Tea.TeaModel {
 
 public class CreatePrePayInstanceRequest : Tea.TeaModel {
     public class ConfluentConfig : Tea.TeaModel {
+        public class KsqlList : Tea.TeaModel {
+            public var internalId: String?
+
+            public var cu: Int32?
+
+            public var replica: Int32?
+
+            public var storage: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.internalId != nil {
+                    map["InternalId"] = self.internalId!
+                }
+                if self.cu != nil {
+                    map["cu"] = self.cu!
+                }
+                if self.replica != nil {
+                    map["replica"] = self.replica!
+                }
+                if self.storage != nil {
+                    map["storage"] = self.storage!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InternalId"] as? String {
+                    self.internalId = value
+                }
+                if let value = dict["cu"] as? Int32 {
+                    self.cu = value
+                }
+                if let value = dict["replica"] as? Int32 {
+                    self.replica = value
+                }
+                if let value = dict["storage"] as? Int32 {
+                    self.storage = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var connectCU: Int32?
 
         public var connectReplica: Int32?
@@ -2048,6 +2110,8 @@ public class CreatePrePayInstanceRequest : Tea.TeaModel {
         public var kafkaStorage: Int32?
 
         public var ksqlCU: Int32?
+
+        public var ksqlList: [CreatePrePayInstanceRequest.ConfluentConfig.KsqlList]?
 
         public var ksqlReplica: Int32?
 
@@ -2110,6 +2174,13 @@ public class CreatePrePayInstanceRequest : Tea.TeaModel {
             if self.ksqlCU != nil {
                 map["KsqlCU"] = self.ksqlCU!
             }
+            if self.ksqlList != nil {
+                var tmp : [Any] = []
+                for k in self.ksqlList! {
+                    tmp.append(k.toMap())
+                }
+                map["KsqlList"] = tmp
+            }
             if self.ksqlReplica != nil {
                 map["KsqlReplica"] = self.ksqlReplica!
             }
@@ -2168,6 +2239,19 @@ public class CreatePrePayInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["KsqlCU"] as? Int32 {
                 self.ksqlCU = value
+            }
+            if let value = dict["KsqlList"] as? [Any?] {
+                var tmp : [CreatePrePayInstanceRequest.ConfluentConfig.KsqlList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreatePrePayInstanceRequest.ConfluentConfig.KsqlList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.ksqlList = tmp
             }
             if let value = dict["KsqlReplica"] as? Int32 {
                 self.ksqlReplica = value
@@ -2708,6 +2792,68 @@ public class CreatePrePayInstanceResponse : Tea.TeaModel {
 
 public class CreatePrePayOrderRequest : Tea.TeaModel {
     public class ConfluentConfig : Tea.TeaModel {
+        public class KsqlList : Tea.TeaModel {
+            public var cu: Int32?
+
+            public var internalId: String?
+
+            public var replica: Int32?
+
+            public var storage: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cu != nil {
+                    map["Cu"] = self.cu!
+                }
+                if self.internalId != nil {
+                    map["InternalId"] = self.internalId!
+                }
+                if self.replica != nil {
+                    map["Replica"] = self.replica!
+                }
+                if self.storage != nil {
+                    map["Storage"] = self.storage!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cu"] as? Int32 {
+                    self.cu = value
+                }
+                if let value = dict["InternalId"] as? String {
+                    self.internalId = value
+                }
+                if let value = dict["Replica"] as? Int32 {
+                    self.replica = value
+                }
+                if let value = dict["Storage"] as? Int32 {
+                    self.storage = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var connectCU: Int32?
 
         public var connectReplica: Int32?
@@ -2729,6 +2875,8 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         public var kafkaStorage: Int32?
 
         public var ksqlCU: Int32?
+
+        public var ksqlList: [CreatePrePayOrderRequest.ConfluentConfig.KsqlList]?
 
         public var ksqlReplica: Int32?
 
@@ -2791,6 +2939,13 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             if self.ksqlCU != nil {
                 map["KsqlCU"] = self.ksqlCU!
             }
+            if self.ksqlList != nil {
+                var tmp : [Any] = []
+                for k in self.ksqlList! {
+                    tmp.append(k.toMap())
+                }
+                map["KsqlList"] = tmp
+            }
             if self.ksqlReplica != nil {
                 map["KsqlReplica"] = self.ksqlReplica!
             }
@@ -2849,6 +3004,19 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             }
             if let value = dict["KsqlCU"] as? Int32 {
                 self.ksqlCU = value
+            }
+            if let value = dict["KsqlList"] as? [Any?] {
+                var tmp : [CreatePrePayOrderRequest.ConfluentConfig.KsqlList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreatePrePayOrderRequest.ConfluentConfig.KsqlList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.ksqlList = tmp
             }
             if let value = dict["KsqlReplica"] as? Int32 {
                 self.ksqlReplica = value
@@ -9568,6 +9736,112 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
     public class InstanceList : Tea.TeaModel {
         public class InstanceVO : Tea.TeaModel {
             public class ConfluentConfig : Tea.TeaModel {
+                public class KsqlList : Tea.TeaModel {
+                    public class ConfluentInstanceComponentResourceVO : Tea.TeaModel {
+                        public var cu: Int32?
+
+                        public var internalId: String?
+
+                        public var replica: Int32?
+
+                        public var storage: Int32?
+
+                        public var type: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.cu != nil {
+                                map["Cu"] = self.cu!
+                            }
+                            if self.internalId != nil {
+                                map["InternalId"] = self.internalId!
+                            }
+                            if self.replica != nil {
+                                map["Replica"] = self.replica!
+                            }
+                            if self.storage != nil {
+                                map["Storage"] = self.storage!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Cu"] as? Int32 {
+                                self.cu = value
+                            }
+                            if let value = dict["InternalId"] as? String {
+                                self.internalId = value
+                            }
+                            if let value = dict["Replica"] as? Int32 {
+                                self.replica = value
+                            }
+                            if let value = dict["Storage"] as? Int32 {
+                                self.storage = value
+                            }
+                            if let value = dict["Type"] as? String {
+                                self.type = value
+                            }
+                        }
+                    }
+                    public var confluentInstanceComponentResourceVO: [GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig.KsqlList.ConfluentInstanceComponentResourceVO]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confluentInstanceComponentResourceVO != nil {
+                            var tmp : [Any] = []
+                            for k in self.confluentInstanceComponentResourceVO! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ConfluentInstanceComponentResourceVO"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ConfluentInstanceComponentResourceVO"] as? [Any?] {
+                            var tmp : [GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig.KsqlList.ConfluentInstanceComponentResourceVO] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig.KsqlList.ConfluentInstanceComponentResourceVO()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.confluentInstanceComponentResourceVO = tmp
+                        }
+                    }
+                }
                 public var connectCU: Int32?
 
                 public var connectReplica: Int32?
@@ -9589,6 +9863,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 public var kafkaStorage: Int32?
 
                 public var ksqlCU: Int32?
+
+                public var ksqlList: GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig.KsqlList?
 
                 public var ksqlReplica: Int32?
 
@@ -9614,6 +9890,7 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.ksqlList?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -9650,6 +9927,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     }
                     if self.ksqlCU != nil {
                         map["KsqlCU"] = self.ksqlCU!
+                    }
+                    if self.ksqlList != nil {
+                        map["KsqlList"] = self.ksqlList?.toMap()
                     }
                     if self.ksqlReplica != nil {
                         map["KsqlReplica"] = self.ksqlReplica!
@@ -9710,6 +9990,11 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     if let value = dict["KsqlCU"] as? Int32 {
                         self.ksqlCU = value
                     }
+                    if let value = dict["KsqlList"] as? [String: Any?] {
+                        var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig.KsqlList()
+                        model.fromMap(value)
+                        self.ksqlList = model
+                    }
                     if let value = dict["KsqlReplica"] as? Int32 {
                         self.ksqlReplica = value
                     }
@@ -9743,6 +10028,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
                     public var vpcEndpoint: String?
 
+                    public var internalId: String?
+
                     public override init() {
                         super.init()
                     }
@@ -9769,6 +10056,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                         if self.vpcEndpoint != nil {
                             map["VpcEndpoint"] = self.vpcEndpoint!
                         }
+                        if self.internalId != nil {
+                            map["internalId"] = self.internalId!
+                        }
                         return map
                     }
 
@@ -9785,6 +10075,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["VpcEndpoint"] as? String {
                             self.vpcEndpoint = value
+                        }
+                        if let value = dict["internalId"] as? String {
+                            self.internalId = value
                         }
                     }
                 }
@@ -16819,6 +17112,68 @@ public class UpgradePostPayOrderResponse : Tea.TeaModel {
 
 public class UpgradePrePayOrderRequest : Tea.TeaModel {
     public class ConfluentConfig : Tea.TeaModel {
+        public class KsqlList : Tea.TeaModel {
+            public var cu: Int32?
+
+            public var internalId: String?
+
+            public var replica: Int32?
+
+            public var storage: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cu != nil {
+                    map["Cu"] = self.cu!
+                }
+                if self.internalId != nil {
+                    map["InternalId"] = self.internalId!
+                }
+                if self.replica != nil {
+                    map["Replica"] = self.replica!
+                }
+                if self.storage != nil {
+                    map["Storage"] = self.storage!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cu"] as? Int32 {
+                    self.cu = value
+                }
+                if let value = dict["InternalId"] as? String {
+                    self.internalId = value
+                }
+                if let value = dict["Replica"] as? Int32 {
+                    self.replica = value
+                }
+                if let value = dict["Storage"] as? Int32 {
+                    self.storage = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var connectCU: Int32?
 
         public var connectReplica: Int32?
@@ -16840,6 +17195,8 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
         public var kafkaStorage: Int32?
 
         public var ksqlCU: Int32?
+
+        public var ksqlList: [UpgradePrePayOrderRequest.ConfluentConfig.KsqlList]?
 
         public var ksqlReplica: Int32?
 
@@ -16902,6 +17259,13 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
             if self.ksqlCU != nil {
                 map["KsqlCU"] = self.ksqlCU!
             }
+            if self.ksqlList != nil {
+                var tmp : [Any] = []
+                for k in self.ksqlList! {
+                    tmp.append(k.toMap())
+                }
+                map["KsqlList"] = tmp
+            }
             if self.ksqlReplica != nil {
                 map["KsqlReplica"] = self.ksqlReplica!
             }
@@ -16960,6 +17324,19 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
             }
             if let value = dict["KsqlCU"] as? Int32 {
                 self.ksqlCU = value
+            }
+            if let value = dict["KsqlList"] as? [Any?] {
+                var tmp : [UpgradePrePayOrderRequest.ConfluentConfig.KsqlList] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpgradePrePayOrderRequest.ConfluentConfig.KsqlList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.ksqlList = tmp
             }
             if let value = dict["KsqlReplica"] as? Int32 {
                 self.ksqlReplica = value
