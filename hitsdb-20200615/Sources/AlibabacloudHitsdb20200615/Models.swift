@@ -141,6 +141,446 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CheckCreateLindormV2InstanceRequest : Tea.TeaModel {
+    public class EngineList : Tea.TeaModel {
+        public class NodeGroupList : Tea.TeaModel {
+            public var nodeCount: Int32?
+
+            public var nodeDiskSize: Int32?
+
+            public var nodeDiskType: String?
+
+            public var nodeSpec: String?
+
+            public var resourceGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nodeCount != nil {
+                    map["NodeCount"] = self.nodeCount!
+                }
+                if self.nodeDiskSize != nil {
+                    map["NodeDiskSize"] = self.nodeDiskSize!
+                }
+                if self.nodeDiskType != nil {
+                    map["NodeDiskType"] = self.nodeDiskType!
+                }
+                if self.nodeSpec != nil {
+                    map["NodeSpec"] = self.nodeSpec!
+                }
+                if self.resourceGroupName != nil {
+                    map["ResourceGroupName"] = self.resourceGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NodeCount"] as? Int32 {
+                    self.nodeCount = value
+                }
+                if let value = dict["NodeDiskSize"] as? Int32 {
+                    self.nodeDiskSize = value
+                }
+                if let value = dict["NodeDiskType"] as? String {
+                    self.nodeDiskType = value
+                }
+                if let value = dict["NodeSpec"] as? String {
+                    self.nodeSpec = value
+                }
+                if let value = dict["ResourceGroupName"] as? String {
+                    self.resourceGroupName = value
+                }
+            }
+        }
+        public var engineType: String?
+
+        public var nodeGroupList: [CheckCreateLindormV2InstanceRequest.EngineList.NodeGroupList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
+            }
+            if self.nodeGroupList != nil {
+                var tmp : [Any] = []
+                for k in self.nodeGroupList! {
+                    tmp.append(k.toMap())
+                }
+                map["NodeGroupList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EngineType"] as? String {
+                self.engineType = value
+            }
+            if let value = dict["NodeGroupList"] as? [Any?] {
+                var tmp : [CheckCreateLindormV2InstanceRequest.EngineList.NodeGroupList] = []
+                for v in value {
+                    if v != nil {
+                        var model = CheckCreateLindormV2InstanceRequest.EngineList.NodeGroupList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.nodeGroupList = tmp
+            }
+        }
+    }
+    public var arbiterVSwitchId: String?
+
+    public var arbiterZoneId: String?
+
+    public var archVersion: String?
+
+    public var cloudStorageSize: Int32?
+
+    public var cloudStorageType: String?
+
+    public var clusterPattern: String?
+
+    public var engineList: [CheckCreateLindormV2InstanceRequest.EngineList]?
+
+    public var instanceAlias: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var primaryVSwitchId: String?
+
+    public var primaryZoneId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public var standbyVSwitchId: String?
+
+    public var standbyZoneId: String?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arbiterVSwitchId != nil {
+            map["ArbiterVSwitchId"] = self.arbiterVSwitchId!
+        }
+        if self.arbiterZoneId != nil {
+            map["ArbiterZoneId"] = self.arbiterZoneId!
+        }
+        if self.archVersion != nil {
+            map["ArchVersion"] = self.archVersion!
+        }
+        if self.cloudStorageSize != nil {
+            map["CloudStorageSize"] = self.cloudStorageSize!
+        }
+        if self.cloudStorageType != nil {
+            map["CloudStorageType"] = self.cloudStorageType!
+        }
+        if self.clusterPattern != nil {
+            map["ClusterPattern"] = self.clusterPattern!
+        }
+        if self.engineList != nil {
+            var tmp : [Any] = []
+            for k in self.engineList! {
+                tmp.append(k.toMap())
+            }
+            map["EngineList"] = tmp
+        }
+        if self.instanceAlias != nil {
+            map["InstanceAlias"] = self.instanceAlias!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.primaryVSwitchId != nil {
+            map["PrimaryVSwitchId"] = self.primaryVSwitchId!
+        }
+        if self.primaryZoneId != nil {
+            map["PrimaryZoneId"] = self.primaryZoneId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.standbyVSwitchId != nil {
+            map["StandbyVSwitchId"] = self.standbyVSwitchId!
+        }
+        if self.standbyZoneId != nil {
+            map["StandbyZoneId"] = self.standbyZoneId!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ArbiterVSwitchId"] as? String {
+            self.arbiterVSwitchId = value
+        }
+        if let value = dict["ArbiterZoneId"] as? String {
+            self.arbiterZoneId = value
+        }
+        if let value = dict["ArchVersion"] as? String {
+            self.archVersion = value
+        }
+        if let value = dict["CloudStorageSize"] as? Int32 {
+            self.cloudStorageSize = value
+        }
+        if let value = dict["CloudStorageType"] as? String {
+            self.cloudStorageType = value
+        }
+        if let value = dict["ClusterPattern"] as? String {
+            self.clusterPattern = value
+        }
+        if let value = dict["EngineList"] as? [Any?] {
+            var tmp : [CheckCreateLindormV2InstanceRequest.EngineList] = []
+            for v in value {
+                if v != nil {
+                    var model = CheckCreateLindormV2InstanceRequest.EngineList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.engineList = tmp
+        }
+        if let value = dict["InstanceAlias"] as? String {
+            self.instanceAlias = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PrimaryVSwitchId"] as? String {
+            self.primaryVSwitchId = value
+        }
+        if let value = dict["PrimaryZoneId"] as? String {
+            self.primaryZoneId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+        if let value = dict["StandbyVSwitchId"] as? String {
+            self.standbyVSwitchId = value
+        }
+        if let value = dict["StandbyZoneId"] as? String {
+            self.standbyZoneId = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class CheckCreateLindormV2InstanceResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Msg"] as? String {
+            self.msg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CheckCreateLindormV2InstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckCreateLindormV2InstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CheckCreateLindormV2InstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CheckLdpsColumnarIndexStatusRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -303,6 +743,158 @@ public class CheckLdpsColumnarIndexStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CheckLdpsColumnarIndexStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateAdditionalVpcLinkRequest : Tea.TeaModel {
+    public var additionalVpcId: String?
+
+    public var additionalVswitchId: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalVpcId != nil {
+            map["AdditionalVpcId"] = self.additionalVpcId!
+        }
+        if self.additionalVswitchId != nil {
+            map["AdditionalVswitchId"] = self.additionalVswitchId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalVpcId"] as? String {
+            self.additionalVpcId = value
+        }
+        if let value = dict["AdditionalVswitchId"] as? String {
+            self.additionalVswitchId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class CreateAdditionalVpcLinkResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateAdditionalVpcLinkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAdditionalVpcLinkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateAdditionalVpcLinkResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -8897,6 +9489,8 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
 
         public var enableCDC: String?
 
+        public var enableMaaS: String?
+
         public var engine: String?
 
         public var isLastVersion: Bool?
@@ -8933,6 +9527,9 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
             }
             if self.enableCDC != nil {
                 map["EnableCDC"] = self.enableCDC!
+            }
+            if self.enableMaaS != nil {
+                map["EnableMaaS"] = self.enableMaaS!
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
@@ -8976,6 +9573,9 @@ public class GetLindormV2InstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableCDC"] as? String {
                 self.enableCDC = value
+            }
+            if let value = dict["EnableMaaS"] as? String {
+                self.enableMaaS = value
             }
             if let value = dict["Engine"] as? String {
                 self.engine = value
