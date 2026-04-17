@@ -288,6 +288,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelAgentTaskWithOptions(_ request: CancelAgentTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelAgentTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskIds)) {
+            query["TaskIds"] = request.taskIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelAgentTask",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelAgentTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelAgentTask(_ request: CancelAgentTaskRequest) async throws -> CancelAgentTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cancelAgentTaskWithOptions(request as! CancelAgentTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func changeCloudPhoneNodeWithOptions(_ request: ChangeCloudPhoneNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeCloudPhoneNodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -630,6 +661,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nodeName)) {
             query["NodeName"] = request.nodeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period!;
@@ -2303,6 +2337,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeIds)) {
             query["NodeIds"] = request.nodeIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.phoneDataVolume)) {
             query["PhoneDataVolume"] = request.phoneDataVolume!;
         }
@@ -2348,6 +2385,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.phoneDataVolume)) {
             query["PhoneDataVolume"] = request.phoneDataVolume!;
@@ -3456,6 +3496,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupIds)) {
             query["InstanceGroupIds"] = request.instanceGroupIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period!;
         }
@@ -3495,6 +3538,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             query["PromotionId"] = request.promotionId ?? "";
@@ -4263,6 +4309,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceGroupId)) {
             query["InstanceGroupId"] = request.instanceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidCallBackUrl)) {
+            query["PaidCallBackUrl"] = request.paidCallBackUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             query["PromotionId"] = request.promotionId ?? "";

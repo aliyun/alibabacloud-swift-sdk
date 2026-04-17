@@ -1433,6 +1433,226 @@ public class BatchGetAcpConnectionTicketResponse : Tea.TeaModel {
     }
 }
 
+public class CancelAgentTaskRequest : Tea.TeaModel {
+    public var taskIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskIds != nil {
+            map["TaskIds"] = self.taskIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TaskIds"] as? [String] {
+            self.taskIds = value
+        }
+    }
+}
+
+public class CancelAgentTaskResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public var cancelAt: String?
+
+        public var currentStatus: String?
+
+        public var failedReason: String?
+
+        public var instanceId: String?
+
+        public var previousStatus: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cancelAt != nil {
+                map["CancelAt"] = self.cancelAt!
+            }
+            if self.currentStatus != nil {
+                map["CurrentStatus"] = self.currentStatus!
+            }
+            if self.failedReason != nil {
+                map["FailedReason"] = self.failedReason!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.previousStatus != nil {
+                map["PreviousStatus"] = self.previousStatus!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CancelAt"] as? String {
+                self.cancelAt = value
+            }
+            if let value = dict["CurrentStatus"] as? String {
+                self.currentStatus = value
+            }
+            if let value = dict["FailedReason"] as? String {
+                self.failedReason = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["PreviousStatus"] as? String {
+                self.previousStatus = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var tasks: [CancelAgentTaskResponseBody.Tasks]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Tasks"] as? [Any?] {
+            var tmp : [CancelAgentTaskResponseBody.Tasks] = []
+            for v in value {
+                if v != nil {
+                    var model = CancelAgentTaskResponseBody.Tasks()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tasks = tmp
+        }
+    }
+}
+
+public class CancelAgentTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelAgentTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CancelAgentTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
@@ -3501,6 +3721,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var nodeName: String?
 
+    public var paidCallBackUrl: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -3594,6 +3816,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
+        }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
         }
         if self.period != nil {
             map["Period"] = self.period!
@@ -3700,6 +3925,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["Period"] as? Int32 {
             self.period = value
@@ -3830,6 +4058,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var nodeName: String?
 
+    public var paidCallBackUrl: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -3921,6 +4151,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
+        }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
         }
         if self.period != nil {
             map["Period"] = self.period!
@@ -4023,6 +4256,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["Period"] as? Int32 {
             self.period = value
@@ -15249,6 +15485,8 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
 
     public var nodeIds: [String]?
 
+    public var paidCallBackUrl: String?
+
     public var phoneDataVolume: Int32?
 
     public var promotionId: String?
@@ -15278,6 +15516,9 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
         if self.nodeIds != nil {
             map["NodeIds"] = self.nodeIds!
         }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
+        }
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
         }
@@ -15300,6 +15541,9 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
         }
         if let value = dict["NodeIds"] as? [String] {
             self.nodeIds = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
@@ -15409,6 +15653,8 @@ public class ExpandPhoneDataVolumeRequest : Tea.TeaModel {
 
     public var instanceIds: [String]?
 
+    public var paidCallBackUrl: String?
+
     public var phoneDataVolume: Int32?
 
     public var promotionId: String?
@@ -15436,6 +15682,9 @@ public class ExpandPhoneDataVolumeRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
+        }
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
         }
@@ -15455,6 +15704,9 @@ public class ExpandPhoneDataVolumeRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
@@ -16578,6 +16830,8 @@ public class InstallAppRequest : Tea.TeaModel {
 
 public class InstallAppResponseBody : Tea.TeaModel {
     public class ChildTaskInfo : Tea.TeaModel {
+        public var appId: String?
+
         public var childTaskId: String?
 
         public var instanceId: String?
@@ -16596,6 +16850,9 @@ public class InstallAppResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
             if self.childTaskId != nil {
                 map["ChildTaskId"] = self.childTaskId!
             }
@@ -16607,6 +16864,9 @@ public class InstallAppResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppId"] as? String {
+                self.appId = value
+            }
             if let value = dict["ChildTaskId"] as? String {
                 self.childTaskId = value
             }
@@ -21204,6 +21464,8 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
 
     public var instanceGroupIds: [String]?
 
+    public var paidCallBackUrl: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -21230,6 +21492,9 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
         if self.instanceGroupIds != nil {
             map["InstanceGroupIds"] = self.instanceGroupIds!
         }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -21249,6 +21514,9 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupIds"] as? [String] {
             self.instanceGroupIds = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["Period"] as? Int32 {
             self.period = value
@@ -21358,6 +21626,8 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
 
     public var nodeIds: [String]?
 
+    public var paidCallBackUrl: String?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -21387,6 +21657,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
         if self.nodeIds != nil {
             map["NodeIds"] = self.nodeIds!
         }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -21409,6 +21682,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
         }
         if let value = dict["NodeIds"] as? [String] {
             self.nodeIds = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["Period"] as? Int32 {
             self.period = value
@@ -22065,6 +22341,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
 public class RunCommandResponseBody : Tea.TeaModel {
     public class RunCommandInfos : Tea.TeaModel {
+        public var childTaskId: String?
+
         public var instanceId: String?
 
         public var invokeId: String?
@@ -22083,6 +22361,9 @@ public class RunCommandResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.childTaskId != nil {
+                map["ChildTaskId"] = self.childTaskId!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -22094,6 +22375,9 @@ public class RunCommandResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ChildTaskId"] as? String {
+                self.childTaskId = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
@@ -22107,6 +22391,8 @@ public class RunCommandResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var runCommandInfos: [RunCommandResponseBody.RunCommandInfos]?
+
+    public var taskId: String?
 
     public override init() {
         super.init()
@@ -22135,6 +22421,9 @@ public class RunCommandResponseBody : Tea.TeaModel {
             }
             map["RunCommandInfos"] = tmp
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -22158,6 +22447,9 @@ public class RunCommandResponseBody : Tea.TeaModel {
                 }
             }
             self.runCommandInfos = tmp
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
     }
 }
@@ -23810,6 +24102,8 @@ public class UninstallAppRequest : Tea.TeaModel {
 
 public class UninstallAppResponseBody : Tea.TeaModel {
     public class ChildTaskInfo : Tea.TeaModel {
+        public var appId: String?
+
         public var childTaskId: String?
 
         public var instanceId: String?
@@ -23828,6 +24122,9 @@ public class UninstallAppResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
             if self.childTaskId != nil {
                 map["ChildTaskId"] = self.childTaskId!
             }
@@ -23839,6 +24136,9 @@ public class UninstallAppResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AppId"] as? String {
+                self.appId = value
+            }
             if let value = dict["ChildTaskId"] as? String {
                 self.childTaskId = value
             }
@@ -24705,6 +25005,8 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var instanceGroupId: String?
 
+    public var paidCallBackUrl: String?
+
     public var promotionId: String?
 
     public override init() {
@@ -24730,6 +25032,9 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.instanceGroupId != nil {
             map["InstanceGroupId"] = self.instanceGroupId!
         }
+        if self.paidCallBackUrl != nil {
+            map["PaidCallBackUrl"] = self.paidCallBackUrl!
+        }
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
@@ -24746,6 +25051,9 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupId"] as? String {
             self.instanceGroupId = value
+        }
+        if let value = dict["PaidCallBackUrl"] as? String {
+            self.paidCallBackUrl = value
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
