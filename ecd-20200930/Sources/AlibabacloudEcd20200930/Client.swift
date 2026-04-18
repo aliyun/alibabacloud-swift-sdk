@@ -13042,6 +13042,77 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryHistoryActiveUserCountWithOptions(_ request: QueryHistoryActiveUserCountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryHistoryActiveUserCountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataDate)) {
+            query["DataDate"] = request.dataDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryHistoryActiveUserCount",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryHistoryActiveUserCountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryHistoryActiveUserCount(_ request: QueryHistoryActiveUserCountRequest) async throws -> QueryHistoryActiveUserCountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryHistoryActiveUserCountWithOptions(request as! QueryHistoryActiveUserCountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryHistoryMetricDistributionWithOptions(_ request: QueryHistoryMetricDistributionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryHistoryMetricDistributionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            query["EndDate"] = request.endDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metricName)) {
+            query["MetricName"] = request.metricName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ranges)) {
+            query["Ranges"] = request.ranges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            query["StartDate"] = request.startDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryHistoryMetricDistribution",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryHistoryMetricDistributionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryHistoryMetricDistribution(_ request: QueryHistoryMetricDistributionRequest) async throws -> QueryHistoryMetricDistributionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryHistoryMetricDistributionWithOptions(request as! QueryHistoryMetricDistributionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func rebootDesktopsWithOptions(_ request: RebootDesktopsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RebootDesktopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
