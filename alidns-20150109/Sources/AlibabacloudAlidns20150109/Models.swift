@@ -10428,6 +10428,8 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
 
             public var noticeType: String?
 
+            public var qpsThreshold: Int64?
+
             public var smsNotice: Bool?
 
             public var threshold: Int32?
@@ -10455,6 +10457,9 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
                 if self.noticeType != nil {
                     map["NoticeType"] = self.noticeType!
                 }
+                if self.qpsThreshold != nil {
+                    map["QpsThreshold"] = self.qpsThreshold!
+                }
                 if self.smsNotice != nil {
                     map["SmsNotice"] = self.smsNotice!
                 }
@@ -10474,6 +10479,9 @@ public class DescribeCloudGtmGlobalAlertResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NoticeType"] as? String {
                     self.noticeType = value
+                }
+                if let value = dict["QpsThreshold"] as? Int64 {
+                    self.qpsThreshold = value
                 }
                 if let value = dict["SmsNotice"] as? Bool {
                     self.smsNotice = value
@@ -54572,6 +54580,8 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
 
         public var noticeType: String?
 
+        public var qpsThreshold: Int64?
+
         public var smsNotice: Bool?
 
         public var threshold: Int32?
@@ -54599,6 +54609,9 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
             if self.noticeType != nil {
                 map["NoticeType"] = self.noticeType!
             }
+            if self.qpsThreshold != nil {
+                map["QpsThreshold"] = self.qpsThreshold!
+            }
             if self.smsNotice != nil {
                 map["SmsNotice"] = self.smsNotice!
             }
@@ -54618,6 +54631,9 @@ public class UpdateCloudGtmGlobalAlertRequest : Tea.TeaModel {
             }
             if let value = dict["NoticeType"] as? String {
                 self.noticeType = value
+            }
+            if let value = dict["QpsThreshold"] as? Int64 {
+                self.qpsThreshold = value
             }
             if let value = dict["SmsNotice"] as? Bool {
                 self.smsNotice = value
