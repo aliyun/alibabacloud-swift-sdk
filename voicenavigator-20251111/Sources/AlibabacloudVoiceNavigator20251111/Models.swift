@@ -2300,6 +2300,44 @@ public class CreateScriptVersionRequest : Tea.TeaModel {
         }
     }
     public class TranscriberConfig : Tea.TeaModel {
+        public class CorrectionRules : Tea.TeaModel {
+            public var pattern: String?
+
+            public var replacement: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.pattern != nil {
+                    map["Pattern"] = self.pattern!
+                }
+                if self.replacement != nil {
+                    map["Replacement"] = self.replacement!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Pattern"] as? String {
+                    self.pattern = value
+                }
+                if let value = dict["Replacement"] as? String {
+                    self.replacement = value
+                }
+            }
+        }
         public class NlsAccessProfile : Tea.TeaModel {
             public var accessProfileId: String?
 
@@ -2330,6 +2368,8 @@ public class CreateScriptVersionRequest : Tea.TeaModel {
                 }
             }
         }
+        public var correctionRules: [CreateScriptVersionRequest.TranscriberConfig.CorrectionRules]?
+
         public var customizationId: String?
 
         public var endSilenceTimeout: Int32?
@@ -2361,6 +2401,13 @@ public class CreateScriptVersionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.correctionRules != nil {
+                var tmp : [Any] = []
+                for k in self.correctionRules! {
+                    tmp.append(k.toMap())
+                }
+                map["CorrectionRules"] = tmp
+            }
             if self.customizationId != nil {
                 map["CustomizationId"] = self.customizationId!
             }
@@ -2390,6 +2437,19 @@ public class CreateScriptVersionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CorrectionRules"] as? [Any?] {
+                var tmp : [CreateScriptVersionRequest.TranscriberConfig.CorrectionRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateScriptVersionRequest.TranscriberConfig.CorrectionRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.correctionRules = tmp
+            }
             if let value = dict["CustomizationId"] as? String {
                 self.customizationId = value
             }
@@ -7883,6 +7943,44 @@ public class GetScriptResponseBody : Tea.TeaModel {
                 }
             }
             public class TranscriberConfig : Tea.TeaModel {
+                public class CorrectionRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
                 public class NlsAccessProfile : Tea.TeaModel {
                     public var accessProfileId: String?
 
@@ -7913,6 +8011,8 @@ public class GetScriptResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var correctionRules: [GetScriptResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules]?
+
                 public var customizationId: String?
 
                 public var endSilenceTimeout: Int32?
@@ -7944,6 +8044,13 @@ public class GetScriptResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.correctionRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.correctionRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CorrectionRules"] = tmp
+                    }
                     if self.customizationId != nil {
                         map["CustomizationId"] = self.customizationId!
                     }
@@ -7973,6 +8080,19 @@ public class GetScriptResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CorrectionRules"] as? [Any?] {
+                        var tmp : [GetScriptResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetScriptResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.correctionRules = tmp
+                    }
                     if let value = dict["CustomizationId"] as? String {
                         self.customizationId = value
                     }
@@ -8776,6 +8896,44 @@ public class GetScriptResponseBody : Tea.TeaModel {
                 }
             }
             public class TranscriberConfig : Tea.TeaModel {
+                public class CorrectionRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
                 public class NlsAccessProfile : Tea.TeaModel {
                     public var accessProfileId: String?
 
@@ -8806,6 +8964,8 @@ public class GetScriptResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var correctionRules: [GetScriptResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules]?
+
                 public var customizationId: String?
 
                 public var endSilenceTimeout: Int32?
@@ -8837,6 +8997,13 @@ public class GetScriptResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.correctionRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.correctionRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CorrectionRules"] = tmp
+                    }
                     if self.customizationId != nil {
                         map["CustomizationId"] = self.customizationId!
                     }
@@ -8866,6 +9033,19 @@ public class GetScriptResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CorrectionRules"] as? [Any?] {
+                        var tmp : [GetScriptResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetScriptResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.correctionRules = tmp
+                    }
                     if let value = dict["CustomizationId"] as? String {
                         self.customizationId = value
                     }
