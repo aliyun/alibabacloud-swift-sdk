@@ -3384,6 +3384,12 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
     public class Options : Tea.TeaModel {
         public var compatibilityCheck: Bool?
 
+        public var credentialName: String?
+
+        public var flowName: String?
+
+        public var vpcEndpointName: String?
+
         public override init() {
             super.init()
         }
@@ -3401,6 +3407,15 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
             if self.compatibilityCheck != nil {
                 map["compatibilityCheck"] = self.compatibilityCheck!
             }
+            if self.credentialName != nil {
+                map["credentialName"] = self.credentialName!
+            }
+            if self.flowName != nil {
+                map["flowName"] = self.flowName!
+            }
+            if self.vpcEndpointName != nil {
+                map["vpcEndpointName"] = self.vpcEndpointName!
+            }
             return map
         }
 
@@ -3408,6 +3423,15 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["compatibilityCheck"] as? Bool {
                 self.compatibilityCheck = value
+            }
+            if let value = dict["credentialName"] as? String {
+                self.credentialName = value
+            }
+            if let value = dict["flowName"] as? String {
+                self.flowName = value
+            }
+            if let value = dict["vpcEndpointName"] as? String {
+                self.vpcEndpointName = value
             }
         }
     }
