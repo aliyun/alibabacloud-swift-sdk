@@ -8349,6 +8349,12 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var targetFacePictureUrl: String?
 
+    public var templateConfig: String?
+
+    public var templateRanCount: String?
+
+    public var templateType: String?
+
     public var useNFC: String?
 
     public var verifyModel: String?
@@ -8517,6 +8523,15 @@ public class InitializeRequest : Tea.TeaModel {
         if self.targetFacePictureUrl != nil {
             map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
+        if self.templateRanCount != nil {
+            map["TemplateRanCount"] = self.templateRanCount!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -8678,6 +8693,15 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["TargetFacePictureUrl"] as? String {
             self.targetFacePictureUrl = value
         }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
+        if let value = dict["TemplateRanCount"] as? String {
+            self.templateRanCount = value
+        }
+        if let value = dict["TemplateType"] as? String {
+            self.templateType = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
         }
@@ -8787,6 +8811,12 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var targetFacePicture: String?
 
     public var targetFacePictureUrl: String?
+
+    public var templateConfig: String?
+
+    public var templateRanCount: String?
+
+    public var templateType: String?
 
     public var useNFC: String?
 
@@ -8956,6 +8986,15 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.targetFacePictureUrl != nil {
             map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
+        if self.templateRanCount != nil {
+            map["TemplateRanCount"] = self.templateRanCount!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
         }
@@ -9116,6 +9155,15 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TargetFacePictureUrl"] as? String {
             self.targetFacePictureUrl = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
+        if let value = dict["TemplateRanCount"] as? String {
+            self.templateRanCount = value
+        }
+        if let value = dict["TemplateType"] as? String {
+            self.templateType = value
         }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value

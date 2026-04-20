@@ -2443,6 +2443,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetFacePictureUrl)) {
             query["TargetFacePictureUrl"] = request.targetFacePictureUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateConfig)) {
+            query["TemplateConfig"] = request.templateConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateRanCount)) {
+            query["TemplateRanCount"] = request.templateRanCount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.useNFC)) {
             query["UseNFC"] = request.useNFC ?? "";
         }
