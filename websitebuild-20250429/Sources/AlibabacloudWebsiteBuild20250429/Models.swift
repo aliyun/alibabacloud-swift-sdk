@@ -9978,6 +9978,8 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
 
                 public var serviceSpecText: String?
 
+                public var upgradeStatus: String?
+
                 public override init() {
                     super.init()
                 }
@@ -10022,6 +10024,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                     if self.serviceSpecText != nil {
                         map["ServiceSpecText"] = self.serviceSpecText!
                     }
+                    if self.upgradeStatus != nil {
+                        map["UpgradeStatus"] = self.upgradeStatus!
+                    }
                     return map
                 }
 
@@ -10056,6 +10061,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["ServiceSpecText"] as? String {
                         self.serviceSpecText = value
+                    }
+                    if let value = dict["UpgradeStatus"] as? String {
+                        self.upgradeStatus = value
                     }
                 }
             }
@@ -10459,6 +10467,8 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
 
             public var thumbnail: String?
 
+            public var upgradeStatus: String?
+
             public override init() {
                 super.init()
             }
@@ -10563,6 +10573,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                 if self.thumbnail != nil {
                     map["Thumbnail"] = self.thumbnail!
                 }
+                if self.upgradeStatus != nil {
+                    map["UpgradeStatus"] = self.upgradeStatus!
+                }
                 return map
             }
 
@@ -10658,6 +10671,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                 if let value = dict["Thumbnail"] as? String {
                     self.thumbnail = value
                 }
+                if let value = dict["UpgradeStatus"] as? String {
+                    self.upgradeStatus = value
+                }
             }
         }
         public class RelatedInstanceList : Tea.TeaModel {
@@ -10721,6 +10737,8 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                 public var textList: String?
 
                 public var thumbnail: String?
+
+                public var upgradeStatus: String?
 
                 public override init() {
                     super.init()
@@ -10826,6 +10844,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                     if self.thumbnail != nil {
                         map["Thumbnail"] = self.thumbnail!
                     }
+                    if self.upgradeStatus != nil {
+                        map["UpgradeStatus"] = self.upgradeStatus!
+                    }
                     return map
                 }
 
@@ -10920,6 +10941,9 @@ public class GetAppInstanceForPartnerResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Thumbnail"] as? String {
                         self.thumbnail = value
+                    }
+                    if let value = dict["UpgradeStatus"] as? String {
+                        self.upgradeStatus = value
                     }
                 }
             }
