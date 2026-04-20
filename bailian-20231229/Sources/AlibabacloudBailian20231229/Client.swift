@@ -33,6 +33,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryType)) {
             body["CategoryType"] = request.categoryType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connectorId)) {
+            body["ConnectorId"] = request.connectorId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.parentCategoryId)) {
             body["ParentCategoryId"] = request.parentCategoryId ?? "";
         }

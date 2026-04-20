@@ -10,6 +10,8 @@ public class AddCategoryRequest : Tea.TeaModel {
 
     public var categoryType: String?
 
+    public var connectorId: String?
+
     public var parentCategoryId: String?
 
     public override init() {
@@ -32,6 +34,9 @@ public class AddCategoryRequest : Tea.TeaModel {
         if self.categoryType != nil {
             map["CategoryType"] = self.categoryType!
         }
+        if self.connectorId != nil {
+            map["ConnectorId"] = self.connectorId!
+        }
         if self.parentCategoryId != nil {
             map["ParentCategoryId"] = self.parentCategoryId!
         }
@@ -45,6 +50,9 @@ public class AddCategoryRequest : Tea.TeaModel {
         }
         if let value = dict["CategoryType"] as? String {
             self.categoryType = value
+        }
+        if let value = dict["ConnectorId"] as? String {
+            self.connectorId = value
         }
         if let value = dict["ParentCategoryId"] as? String {
             self.parentCategoryId = value
