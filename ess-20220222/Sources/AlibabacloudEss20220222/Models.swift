@@ -22444,6 +22444,36 @@ public class DescribeScalingConfigurationsRequest : Tea.TeaModel {
 
 public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
     public class ScalingConfigurations : Tea.TeaModel {
+        public class CpuOptions : Tea.TeaModel {
+            public var nestedVirtualization: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nestedVirtualization != nil {
+                    map["NestedVirtualization"] = self.nestedVirtualization!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NestedVirtualization"] as? String {
+                    self.nestedVirtualization = value
+                }
+            }
+        }
         public class CustomPriorities : Tea.TeaModel {
             public var instanceType: String?
 
@@ -23124,6 +23154,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var cpu: Int32?
 
+        public var cpuOptions: DescribeScalingConfigurationsResponseBody.ScalingConfigurations.CpuOptions?
+
         public var creationTime: String?
 
         public var creditSpecification: String?
@@ -23278,6 +23310,7 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cpuOptions?.validate()
             try self.instanceTypeCandidateOptions?.validate()
             try self.resourcePoolOptions?.validate()
             try self.schedulerOptions?.validate()
@@ -23291,6 +23324,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.cpu != nil {
                 map["Cpu"] = self.cpu!
+            }
+            if self.cpuOptions != nil {
+                map["CpuOptions"] = self.cpuOptions?.toMap()
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
@@ -23542,6 +23578,11 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Cpu"] as? Int32 {
                 self.cpu = value
+            }
+            if let value = dict["CpuOptions"] as? [String: Any?] {
+                var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["CreationTime"] as? String {
                 self.creationTime = value
