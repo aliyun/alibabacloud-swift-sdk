@@ -9716,6 +9716,8 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
         public class SegmentTimers : Tea.TeaModel {
             public var appointmentTimer: Int64?
 
+            public var createSnapshot: Bool?
+
             public var endCronExpression: String?
 
             public var enforce: Bool?
@@ -9729,6 +9731,8 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
             public var notificationTime: Int32?
 
             public var operationType: String?
+
+            public var patchId: String?
 
             public var processWhitelist: [String]?
 
@@ -9759,6 +9763,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 if self.appointmentTimer != nil {
                     map["AppointmentTimer"] = self.appointmentTimer!
                 }
+                if self.createSnapshot != nil {
+                    map["CreateSnapshot"] = self.createSnapshot!
+                }
                 if self.endCronExpression != nil {
                     map["EndCronExpression"] = self.endCronExpression!
                 }
@@ -9779,6 +9786,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 }
                 if self.operationType != nil {
                     map["OperationType"] = self.operationType!
+                }
+                if self.patchId != nil {
+                    map["PatchId"] = self.patchId!
                 }
                 if self.processWhitelist != nil {
                     map["ProcessWhitelist"] = self.processWhitelist!
@@ -9806,6 +9816,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 if let value = dict["AppointmentTimer"] as? Int64 {
                     self.appointmentTimer = value
                 }
+                if let value = dict["CreateSnapshot"] as? Bool {
+                    self.createSnapshot = value
+                }
                 if let value = dict["EndCronExpression"] as? String {
                     self.endCronExpression = value
                 }
@@ -9826,6 +9839,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["OperationType"] as? String {
                     self.operationType = value
+                }
+                if let value = dict["PatchId"] as? String {
+                    self.patchId = value
                 }
                 if let value = dict["ProcessWhitelist"] as? [String] {
                     self.processWhitelist = value
@@ -50606,6 +50622,8 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
             public class SegmentTimers : Tea.TeaModel {
                 public var appointmentTimer: Int64?
 
+                public var createSnapshot: Bool?
+
                 public var endCronExpression: String?
 
                 public var enforce: Bool?
@@ -50619,6 +50637,8 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                 public var notificationTime: Int32?
 
                 public var operationType: String?
+
+                public var patchId: String?
 
                 public var processWhitelist: [String]?
 
@@ -50649,6 +50669,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     if self.appointmentTimer != nil {
                         map["AppointmentTimer"] = self.appointmentTimer!
                     }
+                    if self.createSnapshot != nil {
+                        map["CreateSnapshot"] = self.createSnapshot!
+                    }
                     if self.endCronExpression != nil {
                         map["EndCronExpression"] = self.endCronExpression!
                     }
@@ -50669,6 +50692,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     }
                     if self.operationType != nil {
                         map["OperationType"] = self.operationType!
+                    }
+                    if self.patchId != nil {
+                        map["PatchId"] = self.patchId!
                     }
                     if self.processWhitelist != nil {
                         map["ProcessWhitelist"] = self.processWhitelist!
@@ -50696,6 +50722,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     if let value = dict["AppointmentTimer"] as? Int64 {
                         self.appointmentTimer = value
                     }
+                    if let value = dict["CreateSnapshot"] as? Bool {
+                        self.createSnapshot = value
+                    }
                     if let value = dict["EndCronExpression"] as? String {
                         self.endCronExpression = value
                     }
@@ -50716,6 +50745,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["OperationType"] as? String {
                         self.operationType = value
+                    }
+                    if let value = dict["PatchId"] as? String {
+                        self.patchId = value
                     }
                     if let value = dict["ProcessWhitelist"] as? [String] {
                         self.processWhitelist = value
@@ -72451,9 +72483,13 @@ public class QueryHistoryMetricDistributionResponse : Tea.TeaModel {
 }
 
 public class RebootDesktopsRequest : Tea.TeaModel {
+    public var createSnapshot: Bool?
+
     public var desktopId: [String]?
 
     public var osUpdate: Bool?
+
+    public var patchId: String?
 
     public var regionId: String?
 
@@ -72471,11 +72507,17 @@ public class RebootDesktopsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createSnapshot != nil {
+            map["CreateSnapshot"] = self.createSnapshot!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
         if self.osUpdate != nil {
             map["OsUpdate"] = self.osUpdate!
+        }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -72485,11 +72527,17 @@ public class RebootDesktopsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CreateSnapshot"] as? Bool {
+            self.createSnapshot = value
+        }
         if let value = dict["DesktopId"] as? [String] {
             self.desktopId = value
         }
         if let value = dict["OsUpdate"] as? Bool {
             self.osUpdate = value
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -76608,9 +76656,13 @@ public class StartDesktopsResponse : Tea.TeaModel {
 }
 
 public class StopDesktopsRequest : Tea.TeaModel {
+    public var createSnapshot: String?
+
     public var desktopId: [String]?
 
     public var osUpdate: Bool?
+
+    public var patchId: String?
 
     public var regionId: String?
 
@@ -76630,11 +76682,17 @@ public class StopDesktopsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createSnapshot != nil {
+            map["CreateSnapshot"] = self.createSnapshot!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
         if self.osUpdate != nil {
             map["OsUpdate"] = self.osUpdate!
+        }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -76647,11 +76705,17 @@ public class StopDesktopsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CreateSnapshot"] as? String {
+            self.createSnapshot = value
+        }
         if let value = dict["DesktopId"] as? [String] {
             self.desktopId = value
         }
         if let value = dict["OsUpdate"] as? Bool {
             self.osUpdate = value
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

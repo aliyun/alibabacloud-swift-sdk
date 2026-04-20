@@ -13116,11 +13116,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rebootDesktopsWithOptions(_ request: RebootDesktopsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RebootDesktopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createSnapshot)) {
+            query["CreateSnapshot"] = request.createSnapshot!;
+        }
         if (!TeaUtils.Client.isUnset(request.desktopId)) {
             query["DesktopId"] = request.desktopId ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.osUpdate)) {
             query["OsUpdate"] = request.osUpdate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.patchId)) {
+            query["PatchId"] = request.patchId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -14177,11 +14183,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopDesktopsWithOptions(_ request: StopDesktopsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopDesktopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createSnapshot)) {
+            query["CreateSnapshot"] = request.createSnapshot ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.desktopId)) {
             query["DesktopId"] = request.desktopId ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.osUpdate)) {
             query["OsUpdate"] = request.osUpdate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.patchId)) {
+            query["PatchId"] = request.patchId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
