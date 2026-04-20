@@ -590,6 +590,8 @@ public class AddUserRequest : Tea.TeaModel {
 
     public var authAdminUser: Bool?
 
+    public var copilotModules: String?
+
     public var nickName: String?
 
     public var roleIds: String?
@@ -622,6 +624,9 @@ public class AddUserRequest : Tea.TeaModel {
         if self.authAdminUser != nil {
             map["AuthAdminUser"] = self.authAdminUser!
         }
+        if self.copilotModules != nil {
+            map["CopilotModules"] = self.copilotModules!
+        }
         if self.nickName != nil {
             map["NickName"] = self.nickName!
         }
@@ -648,6 +653,9 @@ public class AddUserRequest : Tea.TeaModel {
         if let value = dict["AuthAdminUser"] as? Bool {
             self.authAdminUser = value
         }
+        if let value = dict["CopilotModules"] as? String {
+            self.copilotModules = value
+        }
         if let value = dict["NickName"] as? String {
             self.nickName = value
         }
@@ -667,6 +675,8 @@ public class AddUserResponseBody : Tea.TeaModel {
         public var adminUser: Bool?
 
         public var authAdminUser: Bool?
+
+        public var copilotModules: [String]?
 
         public var nickName: String?
 
@@ -699,6 +709,9 @@ public class AddUserResponseBody : Tea.TeaModel {
             if self.authAdminUser != nil {
                 map["AuthAdminUser"] = self.authAdminUser!
             }
+            if self.copilotModules != nil {
+                map["CopilotModules"] = self.copilotModules!
+            }
             if self.nickName != nil {
                 map["NickName"] = self.nickName!
             }
@@ -724,6 +737,9 @@ public class AddUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthAdminUser"] as? Bool {
                 self.authAdminUser = value
+            }
+            if let value = dict["CopilotModules"] as? [String] {
+                self.copilotModules = value
             }
             if let value = dict["NickName"] as? String {
                 self.nickName = value
@@ -1384,6 +1400,174 @@ public class AddUserToWorkspaceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = AddUserToWorkspaceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class AddWorksAuthorizationRequest : Tea.TeaModel {
+    public var authPoints: Int32?
+
+    public var authorizeScope: Int32?
+
+    public var authorizedId: String?
+
+    public var expireDay: String?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authPoints != nil {
+            map["AuthPoints"] = self.authPoints!
+        }
+        if self.authorizeScope != nil {
+            map["AuthorizeScope"] = self.authorizeScope!
+        }
+        if self.authorizedId != nil {
+            map["AuthorizedId"] = self.authorizedId!
+        }
+        if self.expireDay != nil {
+            map["ExpireDay"] = self.expireDay!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AuthPoints"] as? Int32 {
+            self.authPoints = value
+        }
+        if let value = dict["AuthorizeScope"] as? Int32 {
+            self.authorizeScope = value
+        }
+        if let value = dict["AuthorizedId"] as? String {
+            self.authorizedId = value
+        }
+        if let value = dict["ExpireDay"] as? String {
+            self.expireDay = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+    }
+}
+
+public class AddWorksAuthorizationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? String {
+            self.result = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddWorksAuthorizationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddWorksAuthorizationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddWorksAuthorizationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -22718,6 +22902,8 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
 
         public var authAdminUser: Bool?
 
+        public var copilotModules: [String]?
+
         public var email: String?
 
         public var nickName: String?
@@ -22756,6 +22942,9 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
             if self.authAdminUser != nil {
                 map["AuthAdminUser"] = self.authAdminUser!
             }
+            if self.copilotModules != nil {
+                map["CopilotModules"] = self.copilotModules!
+            }
             if self.email != nil {
                 map["Email"] = self.email!
             }
@@ -22790,6 +22979,9 @@ public class QueryUserInfoByAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthAdminUser"] as? Bool {
                 self.authAdminUser = value
+            }
+            if let value = dict["CopilotModules"] as? [String] {
+                self.copilotModules = value
             }
             if let value = dict["Email"] as? String {
                 self.email = value
@@ -22951,6 +23143,8 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
 
         public var authAdminUser: Bool?
 
+        public var copilotModules: [String]?
+
         public var email: String?
 
         public var nickName: String?
@@ -22989,6 +23183,9 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
             if self.authAdminUser != nil {
                 map["AuthAdminUser"] = self.authAdminUser!
             }
+            if self.copilotModules != nil {
+                map["CopilotModules"] = self.copilotModules!
+            }
             if self.email != nil {
                 map["Email"] = self.email!
             }
@@ -23023,6 +23220,9 @@ public class QueryUserInfoByUserIdResponseBody : Tea.TeaModel {
             }
             if let value = dict["AuthAdminUser"] as? Bool {
                 self.authAdminUser = value
+            }
+            if let value = dict["CopilotModules"] as? [String] {
+                self.copilotModules = value
             }
             if let value = dict["Email"] as? String {
                 self.email = value
@@ -23201,6 +23401,8 @@ public class QueryUserListResponseBody : Tea.TeaModel {
 
             public var authAdminUser: Bool?
 
+            public var copilotModules: [String]?
+
             public var isDeleted: Bool?
 
             public var joinedDate: Int64?
@@ -23241,6 +23443,9 @@ public class QueryUserListResponseBody : Tea.TeaModel {
                 if self.authAdminUser != nil {
                     map["AuthAdminUser"] = self.authAdminUser!
                 }
+                if self.copilotModules != nil {
+                    map["CopilotModules"] = self.copilotModules!
+                }
                 if self.isDeleted != nil {
                     map["IsDeleted"] = self.isDeleted!
                 }
@@ -23278,6 +23483,9 @@ public class QueryUserListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AuthAdminUser"] as? Bool {
                     self.authAdminUser = value
+                }
+                if let value = dict["CopilotModules"] as? [String] {
+                    self.copilotModules = value
                 }
                 if let value = dict["IsDeleted"] as? Bool {
                     self.isDeleted = value
@@ -28257,6 +28465,8 @@ public class UpdateUserRequest : Tea.TeaModel {
 
     public var authAdminUser: Bool?
 
+    public var copilotModules: String?
+
     public var isDeleted: Bool?
 
     public var nickName: String?
@@ -28287,6 +28497,9 @@ public class UpdateUserRequest : Tea.TeaModel {
         if self.authAdminUser != nil {
             map["AuthAdminUser"] = self.authAdminUser!
         }
+        if self.copilotModules != nil {
+            map["CopilotModules"] = self.copilotModules!
+        }
         if self.isDeleted != nil {
             map["IsDeleted"] = self.isDeleted!
         }
@@ -28312,6 +28525,9 @@ public class UpdateUserRequest : Tea.TeaModel {
         }
         if let value = dict["AuthAdminUser"] as? Bool {
             self.authAdminUser = value
+        }
+        if let value = dict["CopilotModules"] as? String {
+            self.copilotModules = value
         }
         if let value = dict["IsDeleted"] as? Bool {
             self.isDeleted = value

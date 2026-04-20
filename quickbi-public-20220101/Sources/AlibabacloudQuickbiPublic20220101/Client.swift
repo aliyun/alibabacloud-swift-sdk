@@ -187,6 +187,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authAdminUser)) {
             query["AuthAdminUser"] = request.authAdminUser!;
         }
+        if (!TeaUtils.Client.isUnset(request.copilotModules)) {
+            query["CopilotModules"] = request.copilotModules ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nickName)) {
             query["NickName"] = request.nickName ?? "";
         }
@@ -359,6 +362,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addUserToWorkspace(_ request: AddUserToWorkspaceRequest) async throws -> AddUserToWorkspaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await addUserToWorkspaceWithOptions(request as! AddUserToWorkspaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addWorksAuthorizationWithOptions(_ request: AddWorksAuthorizationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddWorksAuthorizationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authPoints)) {
+            query["AuthPoints"] = request.authPoints!;
+        }
+        if (!TeaUtils.Client.isUnset(request.authorizeScope)) {
+            query["AuthorizeScope"] = request.authorizeScope!;
+        }
+        if (!TeaUtils.Client.isUnset(request.authorizedId)) {
+            query["AuthorizedId"] = request.authorizedId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireDay)) {
+            query["ExpireDay"] = request.expireDay ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddWorksAuthorization",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddWorksAuthorizationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addWorksAuthorization(_ request: AddWorksAuthorizationRequest) async throws -> AddWorksAuthorizationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addWorksAuthorizationWithOptions(request as! AddWorksAuthorizationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4530,6 +4579,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.authAdminUser)) {
             query["AuthAdminUser"] = request.authAdminUser!;
+        }
+        if (!TeaUtils.Client.isUnset(request.copilotModules)) {
+            query["CopilotModules"] = request.copilotModules ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isDeleted)) {
             query["IsDeleted"] = request.isDeleted!;
