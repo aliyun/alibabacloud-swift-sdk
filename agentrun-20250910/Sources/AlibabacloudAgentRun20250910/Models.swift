@@ -200,6 +200,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var statusReason: String?
 
+    public var systemTags: [String]?
+
     public var workspaceId: String?
 
     public override init() {
@@ -314,6 +316,9 @@ public class AgentRuntime : Tea.TeaModel {
         if self.statusReason != nil {
             map["statusReason"] = self.statusReason!
         }
+        if self.systemTags != nil {
+            map["systemTags"] = self.systemTags!
+        }
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
         }
@@ -427,6 +432,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["statusReason"] as? String {
             self.statusReason = value
+        }
+        if let value = dict["systemTags"] as? [String] {
+            self.systemTags = value
         }
         if let value = dict["workspaceId"] as? String {
             self.workspaceId = value
@@ -3625,6 +3633,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var sessionIdleTimeoutSeconds: Int32?
 
+    public var systemTags: [String]?
+
     public var workspaceId: String?
 
     public override init() {
@@ -3724,6 +3734,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.sessionIdleTimeoutSeconds != nil {
             map["sessionIdleTimeoutSeconds"] = self.sessionIdleTimeoutSeconds!
+        }
+        if self.systemTags != nil {
+            map["systemTags"] = self.systemTags!
         }
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
@@ -3825,6 +3838,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["sessionIdleTimeoutSeconds"] as? Int32 {
             self.sessionIdleTimeoutSeconds = value
+        }
+        if let value = dict["systemTags"] as? [String] {
+            self.systemTags = value
         }
         if let value = dict["workspaceId"] as? String {
             self.workspaceId = value
@@ -18927,6 +18943,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var sessionIdleTimeoutSeconds: Int32?
 
+    public var systemTags: [String]?
+
     public var workspaceId: String?
 
     public override init() {
@@ -19020,6 +19038,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.sessionIdleTimeoutSeconds != nil {
             map["sessionIdleTimeoutSeconds"] = self.sessionIdleTimeoutSeconds!
+        }
+        if self.systemTags != nil {
+            map["systemTags"] = self.systemTags!
         }
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
@@ -19115,6 +19136,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["sessionIdleTimeoutSeconds"] as? Int32 {
             self.sessionIdleTimeoutSeconds = value
+        }
+        if let value = dict["systemTags"] as? [String] {
+            self.systemTags = value
         }
         if let value = dict["workspaceId"] as? String {
             self.workspaceId = value
