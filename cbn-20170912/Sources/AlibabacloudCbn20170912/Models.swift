@@ -2536,6 +2536,8 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var consoleDryRun: Bool?
+
     public var dryRun: Bool?
 
     public var ownerAccount: String?
@@ -2575,6 +2577,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.consoleDryRun != nil {
+            map["ConsoleDryRun"] = self.consoleDryRun!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -2620,6 +2625,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
+        }
+        if let value = dict["ConsoleDryRun"] as? Bool {
+            self.consoleDryRun = value
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
