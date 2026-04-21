@@ -9746,6 +9746,10 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
 
             public var triggerType: String?
 
+            public var verificationNotificationTime: Int32?
+
+            public var verificationTime: Int32?
+
             public override init() {
                 super.init()
             }
@@ -9808,6 +9812,12 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 if self.triggerType != nil {
                     map["TriggerType"] = self.triggerType!
                 }
+                if self.verificationNotificationTime != nil {
+                    map["VerificationNotificationTime"] = self.verificationNotificationTime!
+                }
+                if self.verificationTime != nil {
+                    map["VerificationTime"] = self.verificationTime!
+                }
                 return map
             }
 
@@ -9860,6 +9870,12 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["TriggerType"] as? String {
                     self.triggerType = value
+                }
+                if let value = dict["VerificationNotificationTime"] as? Int32 {
+                    self.verificationNotificationTime = value
+                }
+                if let value = dict["VerificationTime"] as? Int32 {
+                    self.verificationTime = value
                 }
             }
         }
@@ -50652,6 +50668,10 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
                 public var triggerType: String?
 
+                public var verificationNotificationTime: Int32?
+
+                public var verificationTime: Int32?
+
                 public override init() {
                     super.init()
                 }
@@ -50714,6 +50734,12 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     if self.triggerType != nil {
                         map["TriggerType"] = self.triggerType!
                     }
+                    if self.verificationNotificationTime != nil {
+                        map["VerificationNotificationTime"] = self.verificationNotificationTime!
+                    }
+                    if self.verificationTime != nil {
+                        map["VerificationTime"] = self.verificationTime!
+                    }
                     return map
                 }
 
@@ -50766,6 +50792,12 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["TriggerType"] as? String {
                         self.triggerType = value
+                    }
+                    if let value = dict["VerificationNotificationTime"] as? Int32 {
+                        self.verificationNotificationTime = value
+                    }
+                    if let value = dict["VerificationTime"] as? Int32 {
+                        self.verificationTime = value
                     }
                 }
             }
@@ -71119,6 +71151,10 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
 
             public var triggerType: String?
 
+            public var verificationNotificationTime: Int32?
+
+            public var verificationTime: Int32?
+
             public override init() {
                 super.init()
             }
@@ -71175,6 +71211,12 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 if self.triggerType != nil {
                     map["TriggerType"] = self.triggerType!
                 }
+                if self.verificationNotificationTime != nil {
+                    map["VerificationNotificationTime"] = self.verificationNotificationTime!
+                }
+                if self.verificationTime != nil {
+                    map["VerificationTime"] = self.verificationTime!
+                }
                 return map
             }
 
@@ -71221,6 +71263,12 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
                 }
                 if let value = dict["TriggerType"] as? String {
                     self.triggerType = value
+                }
+                if let value = dict["VerificationNotificationTime"] as? Int32 {
+                    self.verificationNotificationTime = value
+                }
+                if let value = dict["VerificationTime"] as? Int32 {
+                    self.verificationTime = value
                 }
             }
         }
