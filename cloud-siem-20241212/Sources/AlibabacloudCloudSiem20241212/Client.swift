@@ -64,6 +64,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAutoDisposeConfigWithOptions(_ request: CreateAutoDisposeConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAutoDisposeConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoDecisionStatus)) {
+            body["AutoDecisionStatus"] = request.autoDecisionStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAutoDisposeConfig",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAutoDisposeConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAutoDisposeConfig(_ request: CreateAutoDisposeConfigRequest) async throws -> CreateAutoDisposeConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAutoDisposeConfigWithOptions(request as! CreateAutoDisposeConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDataIngestionWithOptions(_ request: CreateDataIngestionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDataIngestionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1344,6 +1381,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeAutoDisposeRecordsWithOptions(_ request: ExecuteAutoDisposeRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteAutoDisposeRecordsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.selectedEntityList)) {
+            bodyFlat["SelectedEntityList"] = request.selectedEntityList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.unSelectedEntityList)) {
+            bodyFlat["UnSelectedEntityList"] = request.unSelectedEntityList ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteAutoDisposeRecords",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteAutoDisposeRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeAutoDisposeRecords(_ request: ExecuteAutoDisposeRecordsRequest) async throws -> ExecuteAutoDisposeRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await executeAutoDisposeRecordsWithOptions(request as! ExecuteAutoDisposeRecordsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func executeLogQueryWithOptions(_ request: ExecuteLogQueryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteLogQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1442,6 +1518,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func executeUpgrade(_ request: ExecuteUpgradeRequest) async throws -> ExecuteUpgradeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await executeUpgradeWithOptions(request as! ExecuteUpgradeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutoDisposeConfigWithOptions(_ request: GetAutoDisposeConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAutoDisposeConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAutoDisposeConfig",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAutoDisposeConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutoDisposeConfig(_ request: GetAutoDisposeConfigRequest) async throws -> GetAutoDisposeConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAutoDisposeConfigWithOptions(request as! GetAutoDisposeConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1836,6 +1946,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getUserConfig(_ request: GetUserConfigRequest) async throws -> GetUserConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getUserConfigWithOptions(request as! GetUserConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAutoDisposeEntitiesWithOptions(_ tmpReq: ListAutoDisposeEntitiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAutoDisposeEntitiesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListAutoDisposeEntitiesShrinkRequest = ListAutoDisposeEntitiesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.autoDisposeRecordIds)) {
+            request.autoDisposeRecordIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.autoDisposeRecordIds, "AutoDisposeRecordIds", "simple")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoDisposeRecordIdsShrink)) {
+            body["AutoDisposeRecordIds"] = request.autoDisposeRecordIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            body["CurrentPage"] = request.currentPage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceType)) {
+            body["DataSourceType"] = request.dataSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            body["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListAutoDisposeEntities",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAutoDisposeEntitiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listAutoDisposeEntities(_ request: ListAutoDisposeEntitiesRequest) async throws -> ListAutoDisposeEntitiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listAutoDisposeEntitiesWithOptions(request as! ListAutoDisposeEntitiesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3292,6 +3459,86 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setDefaultNormalizationRuleVersion(_ request: SetDefaultNormalizationRuleVersionRequest) async throws -> SetDefaultNormalizationRuleVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setDefaultNormalizationRuleVersionWithOptions(request as! SetDefaultNormalizationRuleVersionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutoDisposeConfigWithOptions(_ request: UpdateAutoDisposeConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAutoDisposeConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoDecisionStatus)) {
+            body["AutoDecisionStatus"] = request.autoDecisionStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAutoDisposeConfig",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAutoDisposeConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutoDisposeConfig(_ request: UpdateAutoDisposeConfigRequest) async throws -> UpdateAutoDisposeConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAutoDisposeConfigWithOptions(request as! UpdateAutoDisposeConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutoDisposeRecordWithOptions(_ request: UpdateAutoDisposeRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAutoDisposeRecordResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoDecisionConclusion)) {
+            body["AutoDecisionConclusion"] = request.autoDecisionConclusion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoDecisionEntityList)) {
+            body["AutoDecisionEntityList"] = request.autoDecisionEntityList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoDecisionResult)) {
+            body["AutoDecisionResult"] = request.autoDecisionResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoDisposeRecordId)) {
+            body["AutoDisposeRecordId"] = request.autoDisposeRecordId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            body["Lang"] = request.lang ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAutoDisposeRecord",
+            "version": "2024-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAutoDisposeRecordResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAutoDisposeRecord(_ request: UpdateAutoDisposeRecordRequest) async throws -> UpdateAutoDisposeRecordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAutoDisposeRecordWithOptions(request as! UpdateAutoDisposeRecordRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -198,6 +198,134 @@ public class CheckUpgradeItemResponse : Tea.TeaModel {
     }
 }
 
+public class CreateAutoDisposeConfigRequest : Tea.TeaModel {
+    public var autoDecisionStatus: String?
+
+    public var lang: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDecisionStatus != nil {
+            map["AutoDecisionStatus"] = self.autoDecisionStatus!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDecisionStatus"] as? String {
+            self.autoDecisionStatus = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+    }
+}
+
+public class CreateAutoDisposeConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateAutoDisposeConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAutoDisposeConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateAutoDisposeConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateDataIngestionRequest : Tea.TeaModel {
     public var capacityCount: Int32?
 
@@ -5161,6 +5289,238 @@ public class EnableDataIngestionResponse : Tea.TeaModel {
     }
 }
 
+public class ExecuteAutoDisposeRecordsRequest : Tea.TeaModel {
+    public class SelectedEntityList : Tea.TeaModel {
+        public var autoDisposeRecordId: String?
+
+        public var entityUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoDisposeRecordId != nil {
+                map["AutoDisposeRecordId"] = self.autoDisposeRecordId!
+            }
+            if self.entityUuid != nil {
+                map["EntityUuid"] = self.entityUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoDisposeRecordId"] as? String {
+                self.autoDisposeRecordId = value
+            }
+            if let value = dict["EntityUuid"] as? String {
+                self.entityUuid = value
+            }
+        }
+    }
+    public class UnSelectedEntityList : Tea.TeaModel {
+        public var autoDisposeRecordId: String?
+
+        public var entityUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoDisposeRecordId != nil {
+                map["AutoDisposeRecordId"] = self.autoDisposeRecordId!
+            }
+            if self.entityUuid != nil {
+                map["EntityUuid"] = self.entityUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoDisposeRecordId"] as? String {
+                self.autoDisposeRecordId = value
+            }
+            if let value = dict["EntityUuid"] as? String {
+                self.entityUuid = value
+            }
+        }
+    }
+    public var lang: String?
+
+    public var selectedEntityList: [ExecuteAutoDisposeRecordsRequest.SelectedEntityList]?
+
+    public var unSelectedEntityList: [ExecuteAutoDisposeRecordsRequest.UnSelectedEntityList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.selectedEntityList != nil {
+            var tmp : [Any] = []
+            for k in self.selectedEntityList! {
+                tmp.append(k.toMap())
+            }
+            map["SelectedEntityList"] = tmp
+        }
+        if self.unSelectedEntityList != nil {
+            var tmp : [Any] = []
+            for k in self.unSelectedEntityList! {
+                tmp.append(k.toMap())
+            }
+            map["UnSelectedEntityList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["SelectedEntityList"] as? [Any?] {
+            var tmp : [ExecuteAutoDisposeRecordsRequest.SelectedEntityList] = []
+            for v in value {
+                if v != nil {
+                    var model = ExecuteAutoDisposeRecordsRequest.SelectedEntityList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.selectedEntityList = tmp
+        }
+        if let value = dict["UnSelectedEntityList"] as? [Any?] {
+            var tmp : [ExecuteAutoDisposeRecordsRequest.UnSelectedEntityList] = []
+            for v in value {
+                if v != nil {
+                    var model = ExecuteAutoDisposeRecordsRequest.UnSelectedEntityList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.unSelectedEntityList = tmp
+        }
+    }
+}
+
+public class ExecuteAutoDisposeRecordsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ExecuteAutoDisposeRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAutoDisposeRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExecuteAutoDisposeRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ExecuteLogQueryRequest : Tea.TeaModel {
     public var endTime: String?
 
@@ -5491,6 +5851,175 @@ public class ExecuteUpgradeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ExecuteUpgradeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetAutoDisposeConfigRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+    }
+}
+
+public class GetAutoDisposeConfigResponseBody : Tea.TeaModel {
+    public class AutoDisposeConfig : Tea.TeaModel {
+        public var autoDecisionStatus: String?
+
+        public var productCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoDecisionStatus != nil {
+                map["AutoDecisionStatus"] = self.autoDecisionStatus!
+            }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoDecisionStatus"] as? String {
+                self.autoDecisionStatus = value
+            }
+            if let value = dict["ProductCode"] as? String {
+                self.productCode = value
+            }
+        }
+    }
+    public var autoDisposeConfig: GetAutoDisposeConfigResponseBody.AutoDisposeConfig?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoDisposeConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDisposeConfig != nil {
+            map["AutoDisposeConfig"] = self.autoDisposeConfig?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDisposeConfig"] as? [String: Any?] {
+            var model = GetAutoDisposeConfigResponseBody.AutoDisposeConfig()
+            model.fromMap(value)
+            self.autoDisposeConfig = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetAutoDisposeConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAutoDisposeConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAutoDisposeConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -8567,6 +9096,409 @@ public class GetUserConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetUserConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListAutoDisposeEntitiesRequest : Tea.TeaModel {
+    public var autoDisposeRecordIds: [String]?
+
+    public var currentPage: String?
+
+    public var dataSourceType: String?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageSize: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDisposeRecordIds != nil {
+            map["AutoDisposeRecordIds"] = self.autoDisposeRecordIds!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.dataSourceType != nil {
+            map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDisposeRecordIds"] as? [String] {
+            self.autoDisposeRecordIds = value
+        }
+        if let value = dict["CurrentPage"] as? String {
+            self.currentPage = value
+        }
+        if let value = dict["DataSourceType"] as? String {
+            self.dataSourceType = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class ListAutoDisposeEntitiesShrinkRequest : Tea.TeaModel {
+    public var autoDisposeRecordIdsShrink: String?
+
+    public var currentPage: String?
+
+    public var dataSourceType: String?
+
+    public var lang: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageSize: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDisposeRecordIdsShrink != nil {
+            map["AutoDisposeRecordIds"] = self.autoDisposeRecordIdsShrink!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.dataSourceType != nil {
+            map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDisposeRecordIds"] as? String {
+            self.autoDisposeRecordIdsShrink = value
+        }
+        if let value = dict["CurrentPage"] as? String {
+            self.currentPage = value
+        }
+        if let value = dict["DataSourceType"] as? String {
+            self.dataSourceType = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["Uuid"] as? String {
+            self.uuid = value
+        }
+    }
+}
+
+public class ListAutoDisposeEntitiesResponseBody : Tea.TeaModel {
+    public class AutoDecisionEntities : Tea.TeaModel {
+        public var alertId: String?
+
+        public var disposalMethod: String?
+
+        public var disposeRecordId: String?
+
+        public var entityName: String?
+
+        public var entityType: String?
+
+        public var entityUuid: String?
+
+        public var playbookUuid: String?
+
+        public var uuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertId != nil {
+                map["AlertId"] = self.alertId!
+            }
+            if self.disposalMethod != nil {
+                map["DisposalMethod"] = self.disposalMethod!
+            }
+            if self.disposeRecordId != nil {
+                map["DisposeRecordId"] = self.disposeRecordId!
+            }
+            if self.entityName != nil {
+                map["EntityName"] = self.entityName!
+            }
+            if self.entityType != nil {
+                map["EntityType"] = self.entityType!
+            }
+            if self.entityUuid != nil {
+                map["EntityUuid"] = self.entityUuid!
+            }
+            if self.playbookUuid != nil {
+                map["PlaybookUuid"] = self.playbookUuid!
+            }
+            if self.uuid != nil {
+                map["Uuid"] = self.uuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AlertId"] as? String {
+                self.alertId = value
+            }
+            if let value = dict["DisposalMethod"] as? String {
+                self.disposalMethod = value
+            }
+            if let value = dict["DisposeRecordId"] as? String {
+                self.disposeRecordId = value
+            }
+            if let value = dict["EntityName"] as? String {
+                self.entityName = value
+            }
+            if let value = dict["EntityType"] as? String {
+                self.entityType = value
+            }
+            if let value = dict["EntityUuid"] as? String {
+                self.entityUuid = value
+            }
+            if let value = dict["PlaybookUuid"] as? String {
+                self.playbookUuid = value
+            }
+            if let value = dict["Uuid"] as? String {
+                self.uuid = value
+            }
+        }
+    }
+    public var autoDecisionEntities: [ListAutoDisposeEntitiesResponseBody.AutoDecisionEntities]?
+
+    public var currentPage: Int32?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDecisionEntities != nil {
+            var tmp : [Any] = []
+            for k in self.autoDecisionEntities! {
+                tmp.append(k.toMap())
+            }
+            map["AutoDecisionEntities"] = tmp
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDecisionEntities"] as? [Any?] {
+            var tmp : [ListAutoDisposeEntitiesResponseBody.AutoDecisionEntities] = []
+            for v in value {
+                if v != nil {
+                    var model = ListAutoDisposeEntitiesResponseBody.AutoDecisionEntities()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.autoDecisionEntities = tmp
+        }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListAutoDisposeEntitiesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListAutoDisposeEntitiesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListAutoDisposeEntitiesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -18294,6 +19226,278 @@ public class SetDefaultNormalizationRuleVersionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetDefaultNormalizationRuleVersionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateAutoDisposeConfigRequest : Tea.TeaModel {
+    public var autoDecisionStatus: String?
+
+    public var lang: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDecisionStatus != nil {
+            map["AutoDecisionStatus"] = self.autoDecisionStatus!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDecisionStatus"] as? String {
+            self.autoDecisionStatus = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+    }
+}
+
+public class UpdateAutoDisposeConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateAutoDisposeConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateAutoDisposeConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateAutoDisposeConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateAutoDisposeRecordRequest : Tea.TeaModel {
+    public var autoDecisionConclusion: String?
+
+    public var autoDecisionEntityList: String?
+
+    public var autoDecisionResult: String?
+
+    public var autoDisposeRecordId: String?
+
+    public var lang: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoDecisionConclusion != nil {
+            map["AutoDecisionConclusion"] = self.autoDecisionConclusion!
+        }
+        if self.autoDecisionEntityList != nil {
+            map["AutoDecisionEntityList"] = self.autoDecisionEntityList!
+        }
+        if self.autoDecisionResult != nil {
+            map["AutoDecisionResult"] = self.autoDecisionResult!
+        }
+        if self.autoDisposeRecordId != nil {
+            map["AutoDisposeRecordId"] = self.autoDisposeRecordId!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoDecisionConclusion"] as? String {
+            self.autoDecisionConclusion = value
+        }
+        if let value = dict["AutoDecisionEntityList"] as? String {
+            self.autoDecisionEntityList = value
+        }
+        if let value = dict["AutoDecisionResult"] as? String {
+            self.autoDecisionResult = value
+        }
+        if let value = dict["AutoDisposeRecordId"] as? String {
+            self.autoDisposeRecordId = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+    }
+}
+
+public class UpdateAutoDisposeRecordResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateAutoDisposeRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateAutoDisposeRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateAutoDisposeRecordResponseBody()
             model.fromMap(value)
             self.body = model
         }
