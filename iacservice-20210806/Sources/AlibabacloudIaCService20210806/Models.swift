@@ -18356,6 +18356,8 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
 
         public var resourceListPageUrl: String?
 
+        public var resourceType: String?
+
         public var status: String?
 
         public var statusStartVersion: String?
@@ -18399,6 +18401,9 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
             if self.resourceListPageUrl != nil {
                 map["resourceListPageUrl"] = self.resourceListPageUrl!
             }
+            if self.resourceType != nil {
+                map["resourceType"] = self.resourceType!
+            }
             if self.status != nil {
                 map["status"] = self.status!
             }
@@ -18439,6 +18444,9 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceListPageUrl"] as? String {
                 self.resourceListPageUrl = value
+            }
+            if let value = dict["resourceType"] as? String {
+                self.resourceType = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
