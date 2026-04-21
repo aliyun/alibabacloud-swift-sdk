@@ -6215,6 +6215,52 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
     }
     public class Sink : Tea.TeaModel {
         public class SinkApacheKafkaParameters : Tea.TeaModel {
+            public class DynamicTopic : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class Headers : Tea.TeaModel {
                 public var form: String?
 
@@ -6399,6 +6445,44 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class SslKeystoreKey : Tea.TeaModel {
+                public var kmsArn: String?
+
+                public var kmsSecretValueKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.kmsArn != nil {
+                        map["KmsArn"] = self.kmsArn!
+                    }
+                    if self.kmsSecretValueKey != nil {
+                        map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["KmsArn"] as? String {
+                        self.kmsArn = value
+                    }
+                    if let value = dict["KmsSecretValueKey"] as? String {
+                        self.kmsSecretValueKey = value
+                    }
+                }
+            }
             public class VSwitchIds : Tea.TeaModel {
                 public var form: String?
 
@@ -6543,6 +6627,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var compressionType: String?
 
+            public var dynamicTopic: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.DynamicTopic?
+
             public var headers: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers?
 
             public var key: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Key?
@@ -6558,6 +6644,12 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
             public var securityProtocol: String?
+
+            public var sslKeyPassword: String?
+
+            public var sslKeystoreCertificateChain: String?
+
+            public var sslKeystoreKey: CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SslKeystoreKey?
 
             public var sslTruststoreCertificates: String?
 
@@ -6579,10 +6671,12 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dynamicTopic?.validate()
                 try self.headers?.validate()
                 try self.key?.validate()
                 try self.networkType?.validate()
                 try self.securityGroupId?.validate()
+                try self.sslKeystoreKey?.validate()
                 try self.vSwitchIds?.validate()
                 try self.value?.validate()
                 try self.vpcId?.validate()
@@ -6598,6 +6692,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.compressionType != nil {
                     map["CompressionType"] = self.compressionType!
+                }
+                if self.dynamicTopic != nil {
+                    map["DynamicTopic"] = self.dynamicTopic?.toMap()
                 }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
@@ -6622,6 +6719,15 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
+                }
+                if self.sslKeyPassword != nil {
+                    map["SslKeyPassword"] = self.sslKeyPassword!
+                }
+                if self.sslKeystoreCertificateChain != nil {
+                    map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                }
+                if self.sslKeystoreKey != nil {
+                    map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                 }
                 if self.sslTruststoreCertificates != nil {
                     map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -6651,6 +6757,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["CompressionType"] as? String {
                     self.compressionType = value
+                }
+                if let value = dict["DynamicTopic"] as? [String: Any?] {
+                    var model = CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.DynamicTopic()
+                    model.fromMap(value)
+                    self.dynamicTopic = model
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers()
@@ -6683,6 +6794,17 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslKeyPassword"] as? String {
+                    self.sslKeyPassword = value
+                }
+                if let value = dict["SslKeystoreCertificateChain"] as? String {
+                    self.sslKeystoreCertificateChain = value
+                }
+                if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                    var model = CreateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SslKeystoreKey()
+                    model.fromMap(value)
+                    self.sslKeystoreKey = model
                 }
                 if let value = dict["SslTruststoreCertificates"] as? String {
                     self.sslTruststoreCertificates = value
@@ -9472,6 +9594,52 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class DynamicTopic : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class Headers : Tea.TeaModel {
                 public var form: String?
 
@@ -9706,6 +9874,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var compressionType: String?
 
+            public var dynamicTopic: CreateEventStreamingRequest.Sink.SinkKafkaParameters.DynamicTopic?
+
             public var headers: CreateEventStreamingRequest.Sink.SinkKafkaParameters.Headers?
 
             public var instanceId: CreateEventStreamingRequest.Sink.SinkKafkaParameters.InstanceId?
@@ -9727,6 +9897,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.acks?.validate()
+                try self.dynamicTopic?.validate()
                 try self.headers?.validate()
                 try self.instanceId?.validate()
                 try self.key?.validate()
@@ -9741,6 +9912,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.compressionType != nil {
                     map["CompressionType"] = self.compressionType!
+                }
+                if self.dynamicTopic != nil {
+                    map["DynamicTopic"] = self.dynamicTopic?.toMap()
                 }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
@@ -9769,6 +9943,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["CompressionType"] as? String {
                     self.compressionType = value
+                }
+                if let value = dict["DynamicTopic"] as? [String: Any?] {
+                    var model = CreateEventStreamingRequest.Sink.SinkKafkaParameters.DynamicTopic()
+                    model.fromMap(value)
+                    self.dynamicTopic = model
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = CreateEventStreamingRequest.Sink.SinkKafkaParameters.Headers()
@@ -13336,6 +13515,44 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
     }
     public class Source : Tea.TeaModel {
         public class SourceApacheKafkaParameters : Tea.TeaModel {
+            public class SslKeystoreKey : Tea.TeaModel {
+                public var kmsArn: String?
+
+                public var kmsSecretValueKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.kmsArn != nil {
+                        map["KmsArn"] = self.kmsArn!
+                    }
+                    if self.kmsSecretValueKey != nil {
+                        map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["KmsArn"] as? String {
+                        self.kmsArn = value
+                    }
+                    if let value = dict["KmsSecretValueKey"] as? String {
+                        self.kmsSecretValueKey = value
+                    }
+                }
+            }
             public var bootstraps: String?
 
             public var consumerGroup: String?
@@ -13353,6 +13570,12 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: String?
 
             public var securityProtocol: String?
+
+            public var sslKeyPassword: String?
+
+            public var sslKeystoreCertificateChain: String?
+
+            public var sslKeystoreKey: CreateEventStreamingRequest.Source.SourceApacheKafkaParameters.SslKeystoreKey?
 
             public var sslTruststoreCertificates: String?
 
@@ -13374,6 +13597,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.sslKeystoreKey?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -13404,6 +13628,15 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
+                }
+                if self.sslKeyPassword != nil {
+                    map["SslKeyPassword"] = self.sslKeyPassword!
+                }
+                if self.sslKeystoreCertificateChain != nil {
+                    map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                }
+                if self.sslKeystoreKey != nil {
+                    map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                 }
                 if self.sslTruststoreCertificates != nil {
                     map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -13451,6 +13684,17 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslKeyPassword"] as? String {
+                    self.sslKeyPassword = value
+                }
+                if let value = dict["SslKeystoreCertificateChain"] as? String {
+                    self.sslKeystoreCertificateChain = value
+                }
+                if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                    var model = CreateEventStreamingRequest.Source.SourceApacheKafkaParameters.SslKeystoreKey()
+                    model.fromMap(value)
+                    self.sslKeystoreKey = model
                 }
                 if let value = dict["SslTruststoreCertificates"] as? String {
                     self.sslTruststoreCertificates = value
@@ -20443,6 +20687,52 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
         }
         public class Sink : Tea.TeaModel {
             public class SinkApacheKafkaParameters : Tea.TeaModel {
+                public class DynamicTopic : Tea.TeaModel {
+                    public var form: String?
+
+                    public var template: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.form != nil {
+                            map["Form"] = self.form!
+                        }
+                        if self.template != nil {
+                            map["Template"] = self.template!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Form"] as? String {
+                            self.form = value
+                        }
+                        if let value = dict["Template"] as? String {
+                            self.template = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
                 public class Headers : Tea.TeaModel {
                     public var form: String?
 
@@ -20627,6 +20917,44 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class SslKeystoreKey : Tea.TeaModel {
+                    public var kmsArn: String?
+
+                    public var kmsSecretValueKey: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.kmsArn != nil {
+                            map["KmsArn"] = self.kmsArn!
+                        }
+                        if self.kmsSecretValueKey != nil {
+                            map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["KmsArn"] as? String {
+                            self.kmsArn = value
+                        }
+                        if let value = dict["KmsSecretValueKey"] as? String {
+                            self.kmsSecretValueKey = value
+                        }
+                    }
+                }
                 public class VSwitchIds : Tea.TeaModel {
                     public var form: String?
 
@@ -20771,6 +21099,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var compressionType: String?
 
+                public var dynamicTopic: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.DynamicTopic?
+
                 public var headers: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Headers?
 
                 public var key: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Key?
@@ -20786,6 +21116,12 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 public var securityGroupId: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
                 public var securityProtocol: String?
+
+                public var sslKeyPassword: String?
+
+                public var sslKeystoreCertificateChain: String?
+
+                public var sslKeystoreKey: GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.SslKeystoreKey?
 
                 public var sslTruststoreCertificates: String?
 
@@ -20807,10 +21143,12 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.dynamicTopic?.validate()
                     try self.headers?.validate()
                     try self.key?.validate()
                     try self.networkType?.validate()
                     try self.securityGroupId?.validate()
+                    try self.sslKeystoreKey?.validate()
                     try self.vSwitchIds?.validate()
                     try self.value?.validate()
                     try self.vpcId?.validate()
@@ -20826,6 +21164,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if self.compressionType != nil {
                         map["CompressionType"] = self.compressionType!
+                    }
+                    if self.dynamicTopic != nil {
+                        map["DynamicTopic"] = self.dynamicTopic?.toMap()
                     }
                     if self.headers != nil {
                         map["Headers"] = self.headers?.toMap()
@@ -20850,6 +21191,15 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if self.securityProtocol != nil {
                         map["SecurityProtocol"] = self.securityProtocol!
+                    }
+                    if self.sslKeyPassword != nil {
+                        map["SslKeyPassword"] = self.sslKeyPassword!
+                    }
+                    if self.sslKeystoreCertificateChain != nil {
+                        map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                    }
+                    if self.sslKeystoreKey != nil {
+                        map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                     }
                     if self.sslTruststoreCertificates != nil {
                         map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -20879,6 +21229,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["CompressionType"] as? String {
                         self.compressionType = value
+                    }
+                    if let value = dict["DynamicTopic"] as? [String: Any?] {
+                        var model = GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.DynamicTopic()
+                        model.fromMap(value)
+                        self.dynamicTopic = model
                     }
                     if let value = dict["Headers"] as? [String: Any?] {
                         var model = GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.Headers()
@@ -20911,6 +21266,17 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SecurityProtocol"] as? String {
                         self.securityProtocol = value
+                    }
+                    if let value = dict["SslKeyPassword"] as? String {
+                        self.sslKeyPassword = value
+                    }
+                    if let value = dict["SslKeystoreCertificateChain"] as? String {
+                        self.sslKeystoreCertificateChain = value
+                    }
+                    if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                        var model = GetEventStreamingResponseBody.Data.Sink.SinkApacheKafkaParameters.SslKeystoreKey()
+                        model.fromMap(value)
+                        self.sslKeystoreKey = model
                     }
                     if let value = dict["SslTruststoreCertificates"] as? String {
                         self.sslTruststoreCertificates = value
@@ -23537,6 +23903,52 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class DynamicTopic : Tea.TeaModel {
+                    public var form: String?
+
+                    public var template: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.form != nil {
+                            map["Form"] = self.form!
+                        }
+                        if self.template != nil {
+                            map["Template"] = self.template!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Form"] as? String {
+                            self.form = value
+                        }
+                        if let value = dict["Template"] as? String {
+                            self.template = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
                 public class Headers : Tea.TeaModel {
                     public var form: String?
 
@@ -23771,6 +24183,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var compressionType: String?
 
+                public var dynamicTopic: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.DynamicTopic?
+
                 public var headers: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Headers?
 
                 public var instanceId: GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.InstanceId?
@@ -23792,6 +24206,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public override func validate() throws -> Void {
                     try self.acks?.validate()
+                    try self.dynamicTopic?.validate()
                     try self.headers?.validate()
                     try self.instanceId?.validate()
                     try self.key?.validate()
@@ -23806,6 +24221,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if self.compressionType != nil {
                         map["CompressionType"] = self.compressionType!
+                    }
+                    if self.dynamicTopic != nil {
+                        map["DynamicTopic"] = self.dynamicTopic?.toMap()
                     }
                     if self.headers != nil {
                         map["Headers"] = self.headers?.toMap()
@@ -23834,6 +24252,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["CompressionType"] as? String {
                         self.compressionType = value
+                    }
+                    if let value = dict["DynamicTopic"] as? [String: Any?] {
+                        var model = GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.DynamicTopic()
+                        model.fromMap(value)
+                        self.dynamicTopic = model
                     }
                     if let value = dict["Headers"] as? [String: Any?] {
                         var model = GetEventStreamingResponseBody.Data.Sink.SinkKafkaParameters.Headers()
@@ -26787,6 +27210,44 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
         }
         public class Source : Tea.TeaModel {
             public class SourceApacheKafkaParameters : Tea.TeaModel {
+                public class SslKeystoreKey : Tea.TeaModel {
+                    public var kmsArn: String?
+
+                    public var kmsSecretValueKey: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.kmsArn != nil {
+                            map["KmsArn"] = self.kmsArn!
+                        }
+                        if self.kmsSecretValueKey != nil {
+                            map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["KmsArn"] as? String {
+                            self.kmsArn = value
+                        }
+                        if let value = dict["KmsSecretValueKey"] as? String {
+                            self.kmsSecretValueKey = value
+                        }
+                    }
+                }
                 public var bootstraps: String?
 
                 public var consumerGroup: String?
@@ -26804,6 +27265,12 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 public var securityGroupId: String?
 
                 public var securityProtocol: String?
+
+                public var sslKeyPassword: String?
+
+                public var sslKeystoreCertificateChain: String?
+
+                public var sslKeystoreKey: GetEventStreamingResponseBody.Data.Source.SourceApacheKafkaParameters.SslKeystoreKey?
 
                 public var sslTruststoreCertificates: String?
 
@@ -26825,6 +27292,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.sslKeystoreKey?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -26855,6 +27323,15 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if self.securityProtocol != nil {
                         map["SecurityProtocol"] = self.securityProtocol!
+                    }
+                    if self.sslKeyPassword != nil {
+                        map["SslKeyPassword"] = self.sslKeyPassword!
+                    }
+                    if self.sslKeystoreCertificateChain != nil {
+                        map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                    }
+                    if self.sslKeystoreKey != nil {
+                        map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                     }
                     if self.sslTruststoreCertificates != nil {
                         map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -26902,6 +27379,17 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SecurityProtocol"] as? String {
                         self.securityProtocol = value
+                    }
+                    if let value = dict["SslKeyPassword"] as? String {
+                        self.sslKeyPassword = value
+                    }
+                    if let value = dict["SslKeystoreCertificateChain"] as? String {
+                        self.sslKeystoreCertificateChain = value
+                    }
+                    if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                        var model = GetEventStreamingResponseBody.Data.Source.SourceApacheKafkaParameters.SslKeystoreKey()
+                        model.fromMap(value)
+                        self.sslKeystoreKey = model
                     }
                     if let value = dict["SslTruststoreCertificates"] as? String {
                         self.sslTruststoreCertificates = value
@@ -34072,6 +34560,52 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class DynamicTopic : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Form"] as? String {
+                                self.form = value
+                            }
+                            if let value = dict["Template"] as? String {
+                                self.template = value
+                            }
+                            if let value = dict["Value"] as? String {
+                                self.value = value
+                            }
+                        }
+                    }
                     public class InstanceId : Tea.TeaModel {
                         public var form: String?
 
@@ -34260,6 +34794,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public var compressionType: String?
 
+                    public var dynamicTopic: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.DynamicTopic?
+
                     public var instanceId: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.InstanceId?
 
                     public var key: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.Key?
@@ -34279,6 +34815,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public override func validate() throws -> Void {
                         try self.acks?.validate()
+                        try self.dynamicTopic?.validate()
                         try self.instanceId?.validate()
                         try self.key?.validate()
                         try self.topic?.validate()
@@ -34292,6 +34829,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         }
                         if self.compressionType != nil {
                             map["CompressionType"] = self.compressionType!
+                        }
+                        if self.dynamicTopic != nil {
+                            map["DynamicTopic"] = self.dynamicTopic?.toMap()
                         }
                         if self.instanceId != nil {
                             map["InstanceId"] = self.instanceId?.toMap()
@@ -34317,6 +34857,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["CompressionType"] as? String {
                             self.compressionType = value
+                        }
+                        if let value = dict["DynamicTopic"] as? [String: Any?] {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.DynamicTopic()
+                            model.fromMap(value)
+                            self.dynamicTopic = model
                         }
                         if let value = dict["InstanceId"] as? [String: Any?] {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkKafkaParameters.InstanceId()
@@ -45732,6 +46277,52 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
     }
     public class Sink : Tea.TeaModel {
         public class SinkApacheKafkaParameters : Tea.TeaModel {
+            public class DynamicTopic : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class Headers : Tea.TeaModel {
                 public var form: String?
 
@@ -45916,6 +46507,44 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class SslKeystoreKey : Tea.TeaModel {
+                public var kmsArn: String?
+
+                public var kmsSecretValueKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.kmsArn != nil {
+                        map["KmsArn"] = self.kmsArn!
+                    }
+                    if self.kmsSecretValueKey != nil {
+                        map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["KmsArn"] as? String {
+                        self.kmsArn = value
+                    }
+                    if let value = dict["KmsSecretValueKey"] as? String {
+                        self.kmsSecretValueKey = value
+                    }
+                }
+            }
             public class VSwitchIds : Tea.TeaModel {
                 public var form: String?
 
@@ -46060,6 +46689,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var compressionType: String?
 
+            public var dynamicTopic: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.DynamicTopic?
+
             public var headers: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers?
 
             public var key: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Key?
@@ -46075,6 +46706,12 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SecurityGroupId?
 
             public var securityProtocol: String?
+
+            public var sslKeyPassword: String?
+
+            public var sslKeystoreCertificateChain: String?
+
+            public var sslKeystoreKey: UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SslKeystoreKey?
 
             public var sslTruststoreCertificates: String?
 
@@ -46096,10 +46733,12 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dynamicTopic?.validate()
                 try self.headers?.validate()
                 try self.key?.validate()
                 try self.networkType?.validate()
                 try self.securityGroupId?.validate()
+                try self.sslKeystoreKey?.validate()
                 try self.vSwitchIds?.validate()
                 try self.value?.validate()
                 try self.vpcId?.validate()
@@ -46115,6 +46754,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.compressionType != nil {
                     map["CompressionType"] = self.compressionType!
+                }
+                if self.dynamicTopic != nil {
+                    map["DynamicTopic"] = self.dynamicTopic?.toMap()
                 }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
@@ -46139,6 +46781,15 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
+                }
+                if self.sslKeyPassword != nil {
+                    map["SslKeyPassword"] = self.sslKeyPassword!
+                }
+                if self.sslKeystoreCertificateChain != nil {
+                    map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                }
+                if self.sslKeystoreKey != nil {
+                    map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                 }
                 if self.sslTruststoreCertificates != nil {
                     map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -46168,6 +46819,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["CompressionType"] as? String {
                     self.compressionType = value
+                }
+                if let value = dict["DynamicTopic"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.DynamicTopic()
+                    model.fromMap(value)
+                    self.dynamicTopic = model
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.Headers()
@@ -46200,6 +46856,17 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslKeyPassword"] as? String {
+                    self.sslKeyPassword = value
+                }
+                if let value = dict["SslKeystoreCertificateChain"] as? String {
+                    self.sslKeystoreCertificateChain = value
+                }
+                if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkApacheKafkaParameters.SslKeystoreKey()
+                    model.fromMap(value)
+                    self.sslKeystoreKey = model
                 }
                 if let value = dict["SslTruststoreCertificates"] as? String {
                     self.sslTruststoreCertificates = value
@@ -49103,6 +49770,52 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class DynamicTopic : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Form"] as? String {
+                        self.form = value
+                    }
+                    if let value = dict["Template"] as? String {
+                        self.template = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public class Headers : Tea.TeaModel {
                 public var form: String?
 
@@ -49337,6 +50050,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var compressionType: String?
 
+            public var dynamicTopic: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.DynamicTopic?
+
             public var headers: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Headers?
 
             public var instanceId: UpdateEventStreamingRequest.Sink.SinkKafkaParameters.InstanceId?
@@ -49358,6 +50073,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.acks?.validate()
+                try self.dynamicTopic?.validate()
                 try self.headers?.validate()
                 try self.instanceId?.validate()
                 try self.key?.validate()
@@ -49372,6 +50088,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.compressionType != nil {
                     map["CompressionType"] = self.compressionType!
+                }
+                if self.dynamicTopic != nil {
+                    map["DynamicTopic"] = self.dynamicTopic?.toMap()
                 }
                 if self.headers != nil {
                     map["Headers"] = self.headers?.toMap()
@@ -49400,6 +50119,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["CompressionType"] as? String {
                     self.compressionType = value
+                }
+                if let value = dict["DynamicTopic"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Sink.SinkKafkaParameters.DynamicTopic()
+                    model.fromMap(value)
+                    self.dynamicTopic = model
                 }
                 if let value = dict["Headers"] as? [String: Any?] {
                     var model = UpdateEventStreamingRequest.Sink.SinkKafkaParameters.Headers()
@@ -52967,6 +53691,44 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
     }
     public class Source : Tea.TeaModel {
         public class SourceApacheKafkaParameters : Tea.TeaModel {
+            public class SslKeystoreKey : Tea.TeaModel {
+                public var kmsArn: String?
+
+                public var kmsSecretValueKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.kmsArn != nil {
+                        map["KmsArn"] = self.kmsArn!
+                    }
+                    if self.kmsSecretValueKey != nil {
+                        map["KmsSecretValueKey"] = self.kmsSecretValueKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["KmsArn"] as? String {
+                        self.kmsArn = value
+                    }
+                    if let value = dict["KmsSecretValueKey"] as? String {
+                        self.kmsSecretValueKey = value
+                    }
+                }
+            }
             public var bootstraps: String?
 
             public var consumerGroup: String?
@@ -52984,6 +53746,12 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             public var securityGroupId: String?
 
             public var securityProtocol: String?
+
+            public var sslKeyPassword: String?
+
+            public var sslKeystoreCertificateChain: String?
+
+            public var sslKeystoreKey: UpdateEventStreamingRequest.Source.SourceApacheKafkaParameters.SslKeystoreKey?
 
             public var sslTruststoreCertificates: String?
 
@@ -53005,6 +53773,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.sslKeystoreKey?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -53035,6 +53804,15 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.securityProtocol != nil {
                     map["SecurityProtocol"] = self.securityProtocol!
+                }
+                if self.sslKeyPassword != nil {
+                    map["SslKeyPassword"] = self.sslKeyPassword!
+                }
+                if self.sslKeystoreCertificateChain != nil {
+                    map["SslKeystoreCertificateChain"] = self.sslKeystoreCertificateChain!
+                }
+                if self.sslKeystoreKey != nil {
+                    map["SslKeystoreKey"] = self.sslKeystoreKey?.toMap()
                 }
                 if self.sslTruststoreCertificates != nil {
                     map["SslTruststoreCertificates"] = self.sslTruststoreCertificates!
@@ -53082,6 +53860,17 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if let value = dict["SecurityProtocol"] as? String {
                     self.securityProtocol = value
+                }
+                if let value = dict["SslKeyPassword"] as? String {
+                    self.sslKeyPassword = value
+                }
+                if let value = dict["SslKeystoreCertificateChain"] as? String {
+                    self.sslKeystoreCertificateChain = value
+                }
+                if let value = dict["SslKeystoreKey"] as? [String: Any?] {
+                    var model = UpdateEventStreamingRequest.Source.SourceApacheKafkaParameters.SslKeystoreKey()
+                    model.fromMap(value)
+                    self.sslKeystoreKey = model
                 }
                 if let value = dict["SslTruststoreCertificates"] as? String {
                     self.sslTruststoreCertificates = value
