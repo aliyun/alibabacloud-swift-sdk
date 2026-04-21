@@ -3007,6 +3007,8 @@ public class CreateKyuubiTokenRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var sparkRole: [String]?
+
     public var token: String?
 
     public var regionId: String?
@@ -3035,6 +3037,9 @@ public class CreateKyuubiTokenRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.sparkRole != nil {
+            map["sparkRole"] = self.sparkRole!
+        }
         if self.token != nil {
             map["token"] = self.token!
         }
@@ -3056,6 +3061,9 @@ public class CreateKyuubiTokenRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["sparkRole"] as? [String] {
+            self.sparkRole = value
         }
         if let value = dict["token"] as? String {
             self.token = value
@@ -8305,6 +8313,8 @@ public class GetKyuubiTokenResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var sparkRole: [String]?
+
         public var token: String?
 
         public var tokenId: String?
@@ -8345,6 +8355,9 @@ public class GetKyuubiTokenResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.sparkRole != nil {
+                map["sparkRole"] = self.sparkRole!
+            }
             if self.token != nil {
                 map["token"] = self.token!
             }
@@ -8378,6 +8391,9 @@ public class GetKyuubiTokenResponseBody : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["sparkRole"] as? [String] {
+                self.sparkRole = value
             }
             if let value = dict["token"] as? String {
                 self.token = value
@@ -13553,6 +13569,8 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var sparkRole: [String]?
+
             public var token: String?
 
             public var tokenId: String?
@@ -13592,6 +13610,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.sparkRole != nil {
+                    map["sparkRole"] = self.sparkRole!
+                }
                 if self.token != nil {
                     map["token"] = self.token!
                 }
@@ -13623,6 +13644,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["sparkRole"] as? [String] {
+                    self.sparkRole = value
                 }
                 if let value = dict["token"] as? String {
                     self.token = value
@@ -20701,6 +20725,8 @@ public class UpdateKyuubiTokenRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var sparkRole: [String]?
+
     public var token: String?
 
     public var regionId: String?
@@ -20729,6 +20755,9 @@ public class UpdateKyuubiTokenRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.sparkRole != nil {
+            map["sparkRole"] = self.sparkRole!
+        }
         if self.token != nil {
             map["token"] = self.token!
         }
@@ -20750,6 +20779,9 @@ public class UpdateKyuubiTokenRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["sparkRole"] as? [String] {
+            self.sparkRole = value
         }
         if let value = dict["token"] as? String {
             self.token = value
