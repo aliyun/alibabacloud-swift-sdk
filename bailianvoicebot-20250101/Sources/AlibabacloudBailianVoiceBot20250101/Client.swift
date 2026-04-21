@@ -589,6 +589,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVoicesWithOptions(_ request: ListVoicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVoicesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessUnitId)) {
+            body["BusinessUnitId"] = request.businessUnitId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nlsAccessType)) {
+            body["NlsAccessType"] = request.nlsAccessType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nlsEngine)) {
+            body["NlsEngine"] = request.nlsEngine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVoices",
+            "version": "2025-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVoicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVoices(_ request: ListVoicesRequest) async throws -> ListVoicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVoicesWithOptions(request as! ListVoicesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func publishApplicationVersionWithOptions(_ request: PublishApplicationVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishApplicationVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
