@@ -5139,6 +5139,10 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
 
     public var commonName: String?
 
+    public var companyId: Int64?
+
+    public var contactId: Int64?
+
     public var domain: String?
 
     public var existPrivateKey: Bool?
@@ -5206,6 +5210,12 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.commonName != nil {
             map["CommonName"] = self.commonName!
+        }
+        if self.companyId != nil {
+            map["CompanyId"] = self.companyId!
+        }
+        if self.contactId != nil {
+            map["ContactId"] = self.contactId!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -5288,6 +5298,12 @@ public class GetCertificateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["CommonName"] as? String {
             self.commonName = value
+        }
+        if let value = dict["CompanyId"] as? Int64 {
+            self.companyId = value
+        }
+        if let value = dict["ContactId"] as? Int64 {
+            self.contactId = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
