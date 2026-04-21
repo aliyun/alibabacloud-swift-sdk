@@ -186,6 +186,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.sendSmsPlan)) {
             request.sendSmsPlanShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sendSmsPlan, "SendSmsPlan", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.weekTag)) {
+            request.weekTagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.weekTag, "WeekTag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
@@ -255,6 +258,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["TemplateType"] = request.templateType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.weekTagShrink)) {
+            query["WeekTag"] = request.weekTagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -756,6 +762,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.sendSmsPlan)) {
             request.sendSmsPlanShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sendSmsPlan, "SendSmsPlan", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.weekTag)) {
+            request.weekTagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.weekTag, "WeekTag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
@@ -825,6 +834,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["TemplateType"] = request.templateType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.weekTagShrink)) {
+            query["WeekTag"] = request.weekTagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

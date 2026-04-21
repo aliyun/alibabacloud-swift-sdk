@@ -928,6 +928,8 @@ public class AddTaskRequest : Tea.TeaModel {
 
     public var templateType: Int64?
 
+    public var weekTag: [String]?
+
     public override init() {
         super.init()
     }
@@ -1022,6 +1024,9 @@ public class AddTaskRequest : Tea.TeaModel {
         }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
+        }
+        if self.weekTag != nil {
+            map["WeekTag"] = self.weekTag!
         }
         return map
     }
@@ -1127,6 +1132,9 @@ public class AddTaskRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? Int64 {
             self.templateType = value
         }
+        if let value = dict["WeekTag"] as? [String] {
+            self.weekTag = value
+        }
     }
 }
 
@@ -1176,6 +1184,8 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
     public var templateId: Int64?
 
     public var templateType: Int64?
+
+    public var weekTagShrink: String?
 
     public override init() {
         super.init()
@@ -1260,6 +1270,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.weekTagShrink != nil {
+            map["WeekTag"] = self.weekTagShrink!
+        }
         return map
     }
 
@@ -1333,6 +1346,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? Int64 {
             self.templateType = value
+        }
+        if let value = dict["WeekTag"] as? String {
+            self.weekTagShrink = value
         }
     }
 }
@@ -5066,6 +5082,8 @@ public class EditTaskRequest : Tea.TeaModel {
 
     public var templateType: Int64?
 
+    public var weekTag: [String]?
+
     public override init() {
         super.init()
     }
@@ -5160,6 +5178,9 @@ public class EditTaskRequest : Tea.TeaModel {
         }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
+        }
+        if self.weekTag != nil {
+            map["WeekTag"] = self.weekTag!
         }
         return map
     }
@@ -5265,6 +5286,9 @@ public class EditTaskRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? Int64 {
             self.templateType = value
         }
+        if let value = dict["WeekTag"] as? [String] {
+            self.weekTag = value
+        }
     }
 }
 
@@ -5314,6 +5338,8 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
     public var templateId: Int64?
 
     public var templateType: Int64?
+
+    public var weekTagShrink: String?
 
     public override init() {
         super.init()
@@ -5398,6 +5424,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.weekTagShrink != nil {
+            map["WeekTag"] = self.weekTagShrink!
+        }
         return map
     }
 
@@ -5471,6 +5500,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? Int64 {
             self.templateType = value
+        }
+        if let value = dict["WeekTag"] as? String {
+            self.weekTagShrink = value
         }
     }
 }
