@@ -5025,6 +5025,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var gmtModified: String?
 
+    public var langfuseInstanceIds: [String]?
+
     public var lockMode: Int64?
 
     public var lockReason: String?
@@ -5125,6 +5127,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.gmtModified != nil {
             map["GmtModified"] = self.gmtModified!
+        }
+        if self.langfuseInstanceIds != nil {
+            map["LangfuseInstanceIds"] = self.langfuseInstanceIds!
         }
         if self.lockMode != nil {
             map["LockMode"] = self.lockMode!
@@ -5257,6 +5262,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtModified"] as? String {
             self.gmtModified = value
+        }
+        if let value = dict["LangfuseInstanceIds"] as? [String] {
+            self.langfuseInstanceIds = value
         }
         if let value = dict["LockMode"] as? Int64 {
             self.lockMode = value
