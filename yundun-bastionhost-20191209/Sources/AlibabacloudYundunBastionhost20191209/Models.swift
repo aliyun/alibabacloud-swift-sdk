@@ -14660,6 +14660,10 @@ public class GetPolicyResponseBody : Tea.TeaModel {
 
                 public var diskRedirection: String?
 
+                public var diskRedirectionDownload: String?
+
+                public var diskRedirectionUpload: String?
+
                 public var recordKeyboard: String?
 
                 public override init() {
@@ -14685,6 +14689,12 @@ public class GetPolicyResponseBody : Tea.TeaModel {
                     if self.diskRedirection != nil {
                         map["DiskRedirection"] = self.diskRedirection!
                     }
+                    if self.diskRedirectionDownload != nil {
+                        map["DiskRedirectionDownload"] = self.diskRedirectionDownload!
+                    }
+                    if self.diskRedirectionUpload != nil {
+                        map["DiskRedirectionUpload"] = self.diskRedirectionUpload!
+                    }
                     if self.recordKeyboard != nil {
                         map["RecordKeyboard"] = self.recordKeyboard!
                     }
@@ -14702,12 +14712,22 @@ public class GetPolicyResponseBody : Tea.TeaModel {
                     if let value = dict["DiskRedirection"] as? String {
                         self.diskRedirection = value
                     }
+                    if let value = dict["DiskRedirectionDownload"] as? String {
+                        self.diskRedirectionDownload = value
+                    }
+                    if let value = dict["DiskRedirectionUpload"] as? String {
+                        self.diskRedirectionUpload = value
+                    }
                     if let value = dict["RecordKeyboard"] as? String {
                         self.recordKeyboard = value
                     }
                 }
             }
             public class SSH : Tea.TeaModel {
+                public var allowDirectTcp: String?
+
+                public var allowTcpForwarding: String?
+
                 public var execCommand: String?
 
                 public var SFTPChannel: String?
@@ -14726,6 +14746,8 @@ public class GetPolicyResponseBody : Tea.TeaModel {
 
                 public var SSHChannel: String?
 
+                public var tcpForwarding: String?
+
                 public var x11Forwarding: String?
 
                 public override init() {
@@ -14742,6 +14764,12 @@ public class GetPolicyResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.allowDirectTcp != nil {
+                        map["AllowDirectTcp"] = self.allowDirectTcp!
+                    }
+                    if self.allowTcpForwarding != nil {
+                        map["AllowTcpForwarding"] = self.allowTcpForwarding!
+                    }
                     if self.execCommand != nil {
                         map["ExecCommand"] = self.execCommand!
                     }
@@ -14769,6 +14797,9 @@ public class GetPolicyResponseBody : Tea.TeaModel {
                     if self.SSHChannel != nil {
                         map["SSHChannel"] = self.SSHChannel!
                     }
+                    if self.tcpForwarding != nil {
+                        map["TcpForwarding"] = self.tcpForwarding!
+                    }
                     if self.x11Forwarding != nil {
                         map["X11Forwarding"] = self.x11Forwarding!
                     }
@@ -14777,6 +14808,12 @@ public class GetPolicyResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AllowDirectTcp"] as? String {
+                        self.allowDirectTcp = value
+                    }
+                    if let value = dict["AllowTcpForwarding"] as? String {
+                        self.allowTcpForwarding = value
+                    }
                     if let value = dict["ExecCommand"] as? String {
                         self.execCommand = value
                     }
@@ -14803,6 +14840,9 @@ public class GetPolicyResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["SSHChannel"] as? String {
                         self.SSHChannel = value
+                    }
+                    if let value = dict["TcpForwarding"] as? String {
+                        self.tcpForwarding = value
                     }
                     if let value = dict["X11Forwarding"] as? String {
                         self.x11Forwarding = value
@@ -33181,6 +33221,8 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
 
             public var SSHChannel: String?
 
+            public var tcpForwarding: String?
+
             public var x11Forwarding: String?
 
             public override init() {
@@ -33230,6 +33272,9 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
                 if self.SSHChannel != nil {
                     map["SSHChannel"] = self.SSHChannel!
                 }
+                if self.tcpForwarding != nil {
+                    map["TcpForwarding"] = self.tcpForwarding!
+                }
                 if self.x11Forwarding != nil {
                     map["X11Forwarding"] = self.x11Forwarding!
                 }
@@ -33270,6 +33315,9 @@ public class SetPolicyProtocolConfigRequest : Tea.TeaModel {
                 }
                 if let value = dict["SSHChannel"] as? String {
                     self.SSHChannel = value
+                }
+                if let value = dict["TcpForwarding"] as? String {
+                    self.tcpForwarding = value
                 }
                 if let value = dict["X11Forwarding"] as? String {
                     self.x11Forwarding = value
