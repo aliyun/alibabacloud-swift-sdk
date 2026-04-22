@@ -5371,6 +5371,8 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
 
             public var recallType: String?
 
+            public var sortFields: String?
+
             public var userVectorField: String?
 
             public var userVectorRecallManagementTableId: String?
@@ -5426,6 +5428,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                 if self.recallType != nil {
                     map["RecallType"] = self.recallType!
                 }
+                if self.sortFields != nil {
+                    map["SortFields"] = self.sortFields!
+                }
                 if self.userVectorField != nil {
                     map["UserVectorField"] = self.userVectorField!
                 }
@@ -5479,6 +5484,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                 }
                 if let value = dict["RecallType"] as? String {
                     self.recallType = value
+                }
+                if let value = dict["SortFields"] as? String {
+                    self.sortFields = value
                 }
                 if let value = dict["UserVectorField"] as? String {
                     self.userVectorField = value
@@ -6024,6 +6032,8 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
         public var recallType: String?
 
+        public var sortFields: String?
+
         public var userVectorField: String?
 
         public var userVectorRecallManagementTableId: String?
@@ -6079,6 +6089,9 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             if self.recallType != nil {
                 map["RecallType"] = self.recallType!
             }
+            if self.sortFields != nil {
+                map["SortFields"] = self.sortFields!
+            }
             if self.userVectorField != nil {
                 map["UserVectorField"] = self.userVectorField!
             }
@@ -6132,6 +6145,9 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if let value = dict["RecallType"] as? String {
                 self.recallType = value
+            }
+            if let value = dict["SortFields"] as? String {
+                self.sortFields = value
             }
             if let value = dict["UserVectorField"] as? String {
                 self.userVectorField = value
@@ -16291,6 +16307,8 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
 
             public var recallType: String?
 
+            public var sortFields: String?
+
             public var userVectorField: String?
 
             public var userVectorRecallManagementTableId: String?
@@ -16349,6 +16367,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                 if self.recallType != nil {
                     map["RecallType"] = self.recallType!
                 }
+                if self.sortFields != nil {
+                    map["SortFields"] = self.sortFields!
+                }
                 if self.userVectorField != nil {
                     map["UserVectorField"] = self.userVectorField!
                 }
@@ -16405,6 +16426,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RecallType"] as? String {
                     self.recallType = value
+                }
+                if let value = dict["SortFields"] as? String {
+                    self.sortFields = value
                 }
                 if let value = dict["UserVectorField"] as? String {
                     self.userVectorField = value
@@ -16990,6 +17014,8 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
 
         public var recallType: String?
 
+        public var sortFields: String?
+
         public var userVectorField: String?
 
         public var userVectorRecallManagementTableId: String?
@@ -17045,6 +17071,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             if self.recallType != nil {
                 map["RecallType"] = self.recallType!
             }
+            if self.sortFields != nil {
+                map["SortFields"] = self.sortFields!
+            }
             if self.userVectorField != nil {
                 map["UserVectorField"] = self.userVectorField!
             }
@@ -17098,6 +17127,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             }
             if let value = dict["RecallType"] as? String {
                 self.recallType = value
+            }
+            if let value = dict["SortFields"] as? String {
+                self.sortFields = value
             }
             if let value = dict["UserVectorField"] as? String {
                 self.userVectorField = value
@@ -39142,6 +39174,8 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
         public var recallType: String?
 
+        public var sortFields: String?
+
         public var userVectorField: String?
 
         public var userVectorRecallManagementTableId: String?
@@ -39197,6 +39231,9 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             if self.recallType != nil {
                 map["RecallType"] = self.recallType!
             }
+            if self.sortFields != nil {
+                map["SortFields"] = self.sortFields!
+            }
             if self.userVectorField != nil {
                 map["UserVectorField"] = self.userVectorField!
             }
@@ -39250,6 +39287,9 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
             if let value = dict["RecallType"] as? String {
                 self.recallType = value
+            }
+            if let value = dict["SortFields"] as? String {
+                self.sortFields = value
             }
             if let value = dict["UserVectorField"] as? String {
                 self.userVectorField = value
