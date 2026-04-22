@@ -3078,6 +3078,45 @@ public class PartitionError : Tea.TeaModel {
     }
 }
 
+public class TrialOrderEligibilityVO : Tea.TeaModel {
+    public var message: String?
+
+    public var valid: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.valid != nil {
+            map["Valid"] = self.valid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Valid"] as? Bool {
+            self.valid = value
+        }
+    }
+}
+
 public class AddUserToDataAgentWorkspaceRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
@@ -11287,6 +11326,8 @@ public class GetChatContentResponseBody : Tea.TeaModel {
 
     public var level: Int64?
 
+    public var timestamp: String?
+
     public override init() {
         super.init()
     }
@@ -11319,6 +11360,9 @@ public class GetChatContentResponseBody : Tea.TeaModel {
         if self.level != nil {
             map["level"] = self.level!
         }
+        if self.timestamp != nil {
+            map["timestamp"] = self.timestamp!
+        }
         return map
     }
 
@@ -11341,6 +11385,9 @@ public class GetChatContentResponseBody : Tea.TeaModel {
         }
         if let value = dict["level"] as? Int64 {
             self.level = value
+        }
+        if let value = dict["timestamp"] as? String {
+            self.timestamp = value
         }
     }
 }
