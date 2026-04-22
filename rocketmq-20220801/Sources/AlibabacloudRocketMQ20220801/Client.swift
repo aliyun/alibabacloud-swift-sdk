@@ -284,6 +284,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.password)) {
             body["password"] = request.password ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["remark"] = request.remark ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.username)) {
             body["username"] = request.username ?? "";
         }
@@ -2428,6 +2431,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.password)) {
             query["password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["remark"] = request.remark ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

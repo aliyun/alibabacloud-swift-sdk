@@ -1909,6 +1909,8 @@ public class CreateInstanceResponse : Tea.TeaModel {
 public class CreateInstanceAccountRequest : Tea.TeaModel {
     public var password: String?
 
+    public var remark: String?
+
     public var username: String?
 
     public override init() {
@@ -1928,6 +1930,9 @@ public class CreateInstanceAccountRequest : Tea.TeaModel {
         if self.password != nil {
             map["password"] = self.password!
         }
+        if self.remark != nil {
+            map["remark"] = self.remark!
+        }
         if self.username != nil {
             map["username"] = self.username!
         }
@@ -1938,6 +1943,9 @@ public class CreateInstanceAccountRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["password"] as? String {
             self.password = value
+        }
+        if let value = dict["remark"] as? String {
+            self.remark = value
         }
         if let value = dict["username"] as? String {
             self.username = value
@@ -8066,6 +8074,8 @@ public class GetInstanceAccountResponseBody : Tea.TeaModel {
 
         public var password: String?
 
+        public var remark: String?
+
         public var username: String?
 
         public override init() {
@@ -8088,6 +8098,9 @@ public class GetInstanceAccountResponseBody : Tea.TeaModel {
             if self.password != nil {
                 map["password"] = self.password!
             }
+            if self.remark != nil {
+                map["remark"] = self.remark!
+            }
             if self.username != nil {
                 map["username"] = self.username!
             }
@@ -8101,6 +8114,9 @@ public class GetInstanceAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["password"] as? String {
                 self.password = value
+            }
+            if let value = dict["remark"] as? String {
+                self.remark = value
             }
             if let value = dict["username"] as? String {
                 self.username = value
@@ -13053,6 +13069,8 @@ public class ListInstanceAccountResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var remark: String?
+
             public var username: String?
 
             public override init() {
@@ -13081,6 +13099,9 @@ public class ListInstanceAccountResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["regionId"] = self.regionId!
                 }
+                if self.remark != nil {
+                    map["remark"] = self.remark!
+                }
                 if self.username != nil {
                     map["username"] = self.username!
                 }
@@ -13100,6 +13121,9 @@ public class ListInstanceAccountResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["regionId"] as? String {
                     self.regionId = value
+                }
+                if let value = dict["remark"] as? String {
+                    self.remark = value
                 }
                 if let value = dict["username"] as? String {
                     self.username = value
@@ -20281,6 +20305,8 @@ public class UpdateInstanceAccountRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var remark: String?
+
     public override init() {
         super.init()
     }
@@ -20301,6 +20327,9 @@ public class UpdateInstanceAccountRequest : Tea.TeaModel {
         if self.password != nil {
             map["password"] = self.password!
         }
+        if self.remark != nil {
+            map["remark"] = self.remark!
+        }
         return map
     }
 
@@ -20311,6 +20340,9 @@ public class UpdateInstanceAccountRequest : Tea.TeaModel {
         }
         if let value = dict["password"] as? String {
             self.password = value
+        }
+        if let value = dict["remark"] as? String {
+            self.remark = value
         }
     }
 }
