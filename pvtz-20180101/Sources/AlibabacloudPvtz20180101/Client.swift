@@ -817,6 +817,266 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeIntranetUserCanAnalysisVpcsWithOptions(_ request: DescribeIntranetUserCanAnalysisVpcsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeIntranetUserCanAnalysisVpcsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.networkType)) {
+            query["NetworkType"] = request.networkType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryTreeLevel)) {
+            query["QueryTreeLevel"] = request.queryTreeLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcOwner)) {
+            query["VpcOwner"] = request.vpcOwner!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcType)) {
+            query["VpcType"] = request.vpcType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeIntranetUserCanAnalysisVpcs",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeIntranetUserCanAnalysisVpcsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeIntranetUserCanAnalysisVpcs(_ request: DescribeIntranetUserCanAnalysisVpcsRequest) async throws -> DescribeIntranetUserCanAnalysisVpcsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeIntranetUserCanAnalysisVpcsWithOptions(request as! DescribeIntranetUserCanAnalysisVpcsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsGlobalOverviewWithOptions(_ request: DescribePvtzStatisticsGlobalOverviewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePvtzStatisticsGlobalOverviewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.networkParams)) {
+            query["NetworkParams"] = request.networkParams ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.overviewPeriod)) {
+            query["OverviewPeriod"] = request.overviewPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverRegion)) {
+            query["ServerRegion"] = request.serverRegion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePvtzStatisticsGlobalOverview",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePvtzStatisticsGlobalOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsGlobalOverview(_ request: DescribePvtzStatisticsGlobalOverviewRequest) async throws -> DescribePvtzStatisticsGlobalOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePvtzStatisticsGlobalOverviewWithOptions(request as! DescribePvtzStatisticsGlobalOverviewRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsHistoryWithOptions(_ request: DescribePvtzStatisticsHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePvtzStatisticsHistoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            query["EndTimestamp"] = request.endTimestamp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.module)) {
+            query["Module"] = request.module ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkParams)) {
+            query["NetworkParams"] = request.networkParams ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.rcode)) {
+            query["Rcode"] = request.rcode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverRegion)) {
+            query["ServerRegion"] = request.serverRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimestamp)) {
+            query["StartTimestamp"] = request.startTimestamp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisticalType)) {
+            query["StatisticalType"] = request.statisticalType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneName)) {
+            query["ZoneName"] = request.zoneName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePvtzStatisticsHistory",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePvtzStatisticsHistoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsHistory(_ request: DescribePvtzStatisticsHistoryRequest) async throws -> DescribePvtzStatisticsHistoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePvtzStatisticsHistoryWithOptions(request as! DescribePvtzStatisticsHistoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsSummaryWithOptions(_ request: DescribePvtzStatisticsSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePvtzStatisticsSummaryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.direction)) {
+            query["Direction"] = request.direction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            query["EndTimestamp"] = request.endTimestamp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.growType)) {
+            query["GrowType"] = request.growType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.module)) {
+            query["Module"] = request.module ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkParams)) {
+            query["NetworkParams"] = request.networkParams ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["OrderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rcode)) {
+            query["Rcode"] = request.rcode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverRegion)) {
+            query["ServerRegion"] = request.serverRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimestamp)) {
+            query["StartTimestamp"] = request.startTimestamp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisticalType)) {
+            query["StatisticalType"] = request.statisticalType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneName)) {
+            query["ZoneName"] = request.zoneName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePvtzStatisticsSummary",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePvtzStatisticsSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsSummary(_ request: DescribePvtzStatisticsSummaryRequest) async throws -> DescribePvtzStatisticsSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePvtzStatisticsSummaryWithOptions(request as! DescribePvtzStatisticsSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsZoneOverviewWithOptions(_ request: DescribePvtzStatisticsZoneOverviewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePvtzStatisticsZoneOverviewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.module)) {
+            query["Module"] = request.module ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkParams)) {
+            query["NetworkParams"] = request.networkParams ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.overviewPeriod)) {
+            query["OverviewPeriod"] = request.overviewPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverRegion)) {
+            query["ServerRegion"] = request.serverRegion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePvtzStatisticsZoneOverview",
+            "version": "2018-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePvtzStatisticsZoneOverviewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePvtzStatisticsZoneOverview(_ request: DescribePvtzStatisticsZoneOverviewRequest) async throws -> DescribePvtzStatisticsZoneOverviewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePvtzStatisticsZoneOverviewWithOptions(request as! DescribePvtzStatisticsZoneOverviewRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeRegionsWithOptions(_ request: DescribeRegionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRegionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
