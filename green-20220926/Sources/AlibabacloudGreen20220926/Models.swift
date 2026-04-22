@@ -4611,6 +4611,546 @@ public class DescribeOnlineTestResultResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeOssV2ResultRequest : Tea.TeaModel {
+    public var bucket: String?
+
+    public var currentPage: Int32?
+
+    public var endDate: String?
+
+    public var pageSize: Int32?
+
+    public var riskLevel: String?
+
+    public var startDate: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucket != nil {
+            map["Bucket"] = self.bucket!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.riskLevel != nil {
+            map["RiskLevel"] = self.riskLevel!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Bucket"] as? String {
+            self.bucket = value
+        }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RiskLevel"] as? String {
+            self.riskLevel = value
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class DescribeOssV2ResultResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class LabelDetails : Tea.TeaModel {
+            public var confidence: Double?
+
+            public var description_: String?
+
+            public var label: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.confidence != nil {
+                    map["Confidence"] = self.confidence!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Confidence"] as? Double {
+                    self.confidence = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Label"] as? String {
+                    self.label = value
+                }
+            }
+        }
+        public class LabelDetails2 : Tea.TeaModel {
+            public var confidence: Double?
+
+            public var description_: String?
+
+            public var label: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.confidence != nil {
+                    map["Confidence"] = self.confidence!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Confidence"] as? Double {
+                    self.confidence = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Label"] as? String {
+                    self.label = value
+                }
+            }
+        }
+        public var bucket: String?
+
+        public var code: String?
+
+        public var contentType: String?
+
+        public var freeze: Bool?
+
+        public var freezeStatus: String?
+
+        public var freezeType: String?
+
+        public var labelDetails: [DescribeOssV2ResultResponseBody.Items.LabelDetails]?
+
+        public var labelDetails2: [DescribeOssV2ResultResponseBody.Items.LabelDetails2]?
+
+        public var labels: [String]?
+
+        public var labels2: [String]?
+
+        public var manualFreezeAction: String?
+
+        public var manualOperateTime: String?
+
+        public var manualOperator: String?
+
+        public var md5: String?
+
+        public var object: String?
+
+        public var requestId: String?
+
+        public var riskLevel: String?
+
+        public var riskLevel0: String?
+
+        public var riskLevel2: String?
+
+        public var scanResult: String?
+
+        public var serviceCode: String?
+
+        public var sysDisposalStatus: String?
+
+        public var taskId: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucket != nil {
+                map["Bucket"] = self.bucket!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.contentType != nil {
+                map["ContentType"] = self.contentType!
+            }
+            if self.freeze != nil {
+                map["Freeze"] = self.freeze!
+            }
+            if self.freezeStatus != nil {
+                map["FreezeStatus"] = self.freezeStatus!
+            }
+            if self.freezeType != nil {
+                map["FreezeType"] = self.freezeType!
+            }
+            if self.labelDetails != nil {
+                var tmp : [Any] = []
+                for k in self.labelDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["LabelDetails"] = tmp
+            }
+            if self.labelDetails2 != nil {
+                var tmp : [Any] = []
+                for k in self.labelDetails2! {
+                    tmp.append(k.toMap())
+                }
+                map["LabelDetails2"] = tmp
+            }
+            if self.labels != nil {
+                map["Labels"] = self.labels!
+            }
+            if self.labels2 != nil {
+                map["Labels2"] = self.labels2!
+            }
+            if self.manualFreezeAction != nil {
+                map["ManualFreezeAction"] = self.manualFreezeAction!
+            }
+            if self.manualOperateTime != nil {
+                map["ManualOperateTime"] = self.manualOperateTime!
+            }
+            if self.manualOperator != nil {
+                map["ManualOperator"] = self.manualOperator!
+            }
+            if self.md5 != nil {
+                map["Md5"] = self.md5!
+            }
+            if self.object != nil {
+                map["Object"] = self.object!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
+            if self.riskLevel0 != nil {
+                map["RiskLevel0"] = self.riskLevel0!
+            }
+            if self.riskLevel2 != nil {
+                map["RiskLevel2"] = self.riskLevel2!
+            }
+            if self.scanResult != nil {
+                map["ScanResult"] = self.scanResult!
+            }
+            if self.serviceCode != nil {
+                map["ServiceCode"] = self.serviceCode!
+            }
+            if self.sysDisposalStatus != nil {
+                map["SysDisposalStatus"] = self.sysDisposalStatus!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bucket"] as? String {
+                self.bucket = value
+            }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["ContentType"] as? String {
+                self.contentType = value
+            }
+            if let value = dict["Freeze"] as? Bool {
+                self.freeze = value
+            }
+            if let value = dict["FreezeStatus"] as? String {
+                self.freezeStatus = value
+            }
+            if let value = dict["FreezeType"] as? String {
+                self.freezeType = value
+            }
+            if let value = dict["LabelDetails"] as? [Any?] {
+                var tmp : [DescribeOssV2ResultResponseBody.Items.LabelDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeOssV2ResultResponseBody.Items.LabelDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.labelDetails = tmp
+            }
+            if let value = dict["LabelDetails2"] as? [Any?] {
+                var tmp : [DescribeOssV2ResultResponseBody.Items.LabelDetails2] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeOssV2ResultResponseBody.Items.LabelDetails2()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.labelDetails2 = tmp
+            }
+            if let value = dict["Labels"] as? [String] {
+                self.labels = value
+            }
+            if let value = dict["Labels2"] as? [String] {
+                self.labels2 = value
+            }
+            if let value = dict["ManualFreezeAction"] as? String {
+                self.manualFreezeAction = value
+            }
+            if let value = dict["ManualOperateTime"] as? String {
+                self.manualOperateTime = value
+            }
+            if let value = dict["ManualOperator"] as? String {
+                self.manualOperator = value
+            }
+            if let value = dict["Md5"] as? String {
+                self.md5 = value
+            }
+            if let value = dict["Object"] as? String {
+                self.object = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["RiskLevel"] as? String {
+                self.riskLevel = value
+            }
+            if let value = dict["RiskLevel0"] as? String {
+                self.riskLevel0 = value
+            }
+            if let value = dict["RiskLevel2"] as? String {
+                self.riskLevel2 = value
+            }
+            if let value = dict["ScanResult"] as? String {
+                self.scanResult = value
+            }
+            if let value = dict["ServiceCode"] as? String {
+                self.serviceCode = value
+            }
+            if let value = dict["SysDisposalStatus"] as? String {
+                self.sysDisposalStatus = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+        }
+    }
+    public var currentPage: Int32?
+
+    public var items: [DescribeOssV2ResultResponseBody.Items]?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeOssV2ResultResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeOssV2ResultResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeOssV2ResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeOssV2ResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeOssV2ResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ExportAnswerSampleRequest : Tea.TeaModel {
     public var libId: String?
 
@@ -18368,6 +18908,174 @@ public class LlmStreamChatResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = LlmStreamChatResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MarkOssV2ResultRequest : Tea.TeaModel {
+    public var endDate: String?
+
+    public var freezeType: String?
+
+    public var operation: String?
+
+    public var requestIds: String?
+
+    public var startDate: String?
+
+    public var taskName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.freezeType != nil {
+            map["FreezeType"] = self.freezeType!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.requestIds != nil {
+            map["RequestIds"] = self.requestIds!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["FreezeType"] as? String {
+            self.freezeType = value
+        }
+        if let value = dict["Operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["RequestIds"] as? String {
+            self.requestIds = value
+        }
+        if let value = dict["StartDate"] as? String {
+            self.startDate = value
+        }
+        if let value = dict["TaskName"] as? String {
+            self.taskName = value
+        }
+    }
+}
+
+public class MarkOssV2ResultResponseBody : Tea.TeaModel {
+    public var failureRequestIds: [String]?
+
+    public var requestId: String?
+
+    public var successRequestIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failureRequestIds != nil {
+            map["FailureRequestIds"] = self.failureRequestIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successRequestIds != nil {
+            map["SuccessRequestIds"] = self.successRequestIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FailureRequestIds"] as? [String] {
+            self.failureRequestIds = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SuccessRequestIds"] as? [String] {
+            self.successRequestIds = value
+        }
+    }
+}
+
+public class MarkOssV2ResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MarkOssV2ResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MarkOssV2ResultResponseBody()
             model.fromMap(value)
             self.body = model
         }
