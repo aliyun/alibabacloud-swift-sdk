@@ -23385,6 +23385,451 @@ public class DescribeApplicationAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeApplicationLogsRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var componentName: String?
+
+    public var containerName: String?
+
+    public var endTime: String?
+
+    public var keyword: String?
+
+    public var level: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var startTime: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.componentName != nil {
+            map["ComponentName"] = self.componentName!
+        }
+        if self.containerName != nil {
+            map["ContainerName"] = self.containerName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.level != nil {
+            map["Level"] = self.level!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ComponentName"] as? String {
+            self.componentName = value
+        }
+        if let value = dict["ContainerName"] as? String {
+            self.containerName = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["Level"] as? String {
+            self.level = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class DescribeApplicationLogsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class LogRecords : Tea.TeaModel {
+            public var componentName: String?
+
+            public var containerName: String?
+
+            public var content: String?
+
+            public var date: String?
+
+            public var fileLine: String?
+
+            public var fileName: String?
+
+            public var fullFilePath: String?
+
+            public var hostname: String?
+
+            public var logLevelId: Int64?
+
+            public var logLevelName: String?
+
+            public var method: String?
+
+            public var name: String?
+
+            public var runtime: String?
+
+            public var runtimeVersion: String?
+
+            public var time: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.componentName != nil {
+                    map["ComponentName"] = self.componentName!
+                }
+                if self.containerName != nil {
+                    map["ContainerName"] = self.containerName!
+                }
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.date != nil {
+                    map["Date"] = self.date!
+                }
+                if self.fileLine != nil {
+                    map["FileLine"] = self.fileLine!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.fullFilePath != nil {
+                    map["FullFilePath"] = self.fullFilePath!
+                }
+                if self.hostname != nil {
+                    map["Hostname"] = self.hostname!
+                }
+                if self.logLevelId != nil {
+                    map["LogLevelId"] = self.logLevelId!
+                }
+                if self.logLevelName != nil {
+                    map["LogLevelName"] = self.logLevelName!
+                }
+                if self.method != nil {
+                    map["Method"] = self.method!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.runtime != nil {
+                    map["Runtime"] = self.runtime!
+                }
+                if self.runtimeVersion != nil {
+                    map["RuntimeVersion"] = self.runtimeVersion!
+                }
+                if self.time != nil {
+                    map["Time"] = self.time!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ComponentName"] as? String {
+                    self.componentName = value
+                }
+                if let value = dict["ContainerName"] as? String {
+                    self.containerName = value
+                }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["Date"] as? String {
+                    self.date = value
+                }
+                if let value = dict["FileLine"] as? String {
+                    self.fileLine = value
+                }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+                if let value = dict["FullFilePath"] as? String {
+                    self.fullFilePath = value
+                }
+                if let value = dict["Hostname"] as? String {
+                    self.hostname = value
+                }
+                if let value = dict["LogLevelId"] as? Int64 {
+                    self.logLevelId = value
+                }
+                if let value = dict["LogLevelName"] as? String {
+                    self.logLevelName = value
+                }
+                if let value = dict["Method"] as? String {
+                    self.method = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Runtime"] as? String {
+                    self.runtime = value
+                }
+                if let value = dict["RuntimeVersion"] as? String {
+                    self.runtimeVersion = value
+                }
+                if let value = dict["Time"] as? String {
+                    self.time = value
+                }
+            }
+        }
+        public var logRecords: [DescribeApplicationLogsResponseBody.Items.LogRecords]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logRecords != nil {
+                var tmp : [Any] = []
+                for k in self.logRecords! {
+                    tmp.append(k.toMap())
+                }
+                map["LogRecords"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LogRecords"] as? [Any?] {
+                var tmp : [DescribeApplicationLogsResponseBody.Items.LogRecords] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationLogsResponseBody.Items.LogRecords()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.logRecords = tmp
+            }
+        }
+    }
+    public var applicationId: String?
+
+    public var items: DescribeApplicationLogsResponseBody.Items?
+
+    public var pageNumber: Int32?
+
+    public var pageRecordCount: Int32?
+
+    public var requestId: String?
+
+    public var totalRecordCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeApplicationLogsResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? Int32 {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class DescribeApplicationLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationLogsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeApplicationParametersRequest : Tea.TeaModel {
     public var applicationId: String?
 
