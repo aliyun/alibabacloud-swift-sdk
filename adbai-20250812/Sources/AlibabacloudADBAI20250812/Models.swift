@@ -410,6 +410,8 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
     }
     public var DBClusterId: String?
 
+    public var deviceCount: Int32?
+
     public var platformName: String?
 
     public var rayConfig: CreateEmbodiedAIPlatformRequest.RayConfig?
@@ -436,6 +438,9 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.deviceCount != nil {
+            map["DeviceCount"] = self.deviceCount!
+        }
         if self.platformName != nil {
             map["PlatformName"] = self.platformName!
         }
@@ -456,6 +461,9 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["DeviceCount"] as? Int32 {
+            self.deviceCount = value
+        }
         if let value = dict["PlatformName"] as? String {
             self.platformName = value
         }
@@ -475,6 +483,8 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
 
 public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
     public var DBClusterId: String?
+
+    public var deviceCount: Int32?
 
     public var platformName: String?
 
@@ -501,6 +511,9 @@ public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.deviceCount != nil {
+            map["DeviceCount"] = self.deviceCount!
+        }
         if self.platformName != nil {
             map["PlatformName"] = self.platformName!
         }
@@ -520,6 +533,9 @@ public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["DeviceCount"] as? Int32 {
+            self.deviceCount = value
         }
         if let value = dict["PlatformName"] as? String {
             self.platformName = value
@@ -1383,6 +1399,290 @@ public class DescribeChatMessageResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeEapDeviceResourceAllocationRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var deviceCount: Int32?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.deviceCount != nil {
+            map["DeviceCount"] = self.deviceCount!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DeviceCount"] as? Int32 {
+            self.deviceCount = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeEapDeviceResourceAllocationResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var deviceCount: Int32?
+
+        public var headAcu: Double?
+
+        public var headCpu: Int32?
+
+        public var headSpecName: String?
+
+        public var totalAcu: Double?
+
+        public var totalDeployedCpu: Int32?
+
+        public var totalTargetCpu: Int32?
+
+        public var webserverAcu: Double?
+
+        public var webserverCpu: Int32?
+
+        public var webserverSpecName: String?
+
+        public var workerAcu: Double?
+
+        public var workerCount: Int32?
+
+        public var workerCpu: Int32?
+
+        public var workerSpecName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceCount != nil {
+                map["DeviceCount"] = self.deviceCount!
+            }
+            if self.headAcu != nil {
+                map["HeadAcu"] = self.headAcu!
+            }
+            if self.headCpu != nil {
+                map["HeadCpu"] = self.headCpu!
+            }
+            if self.headSpecName != nil {
+                map["HeadSpecName"] = self.headSpecName!
+            }
+            if self.totalAcu != nil {
+                map["TotalAcu"] = self.totalAcu!
+            }
+            if self.totalDeployedCpu != nil {
+                map["TotalDeployedCpu"] = self.totalDeployedCpu!
+            }
+            if self.totalTargetCpu != nil {
+                map["TotalTargetCpu"] = self.totalTargetCpu!
+            }
+            if self.webserverAcu != nil {
+                map["WebserverAcu"] = self.webserverAcu!
+            }
+            if self.webserverCpu != nil {
+                map["WebserverCpu"] = self.webserverCpu!
+            }
+            if self.webserverSpecName != nil {
+                map["WebserverSpecName"] = self.webserverSpecName!
+            }
+            if self.workerAcu != nil {
+                map["WorkerAcu"] = self.workerAcu!
+            }
+            if self.workerCount != nil {
+                map["WorkerCount"] = self.workerCount!
+            }
+            if self.workerCpu != nil {
+                map["WorkerCpu"] = self.workerCpu!
+            }
+            if self.workerSpecName != nil {
+                map["WorkerSpecName"] = self.workerSpecName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeviceCount"] as? Int32 {
+                self.deviceCount = value
+            }
+            if let value = dict["HeadAcu"] as? Double {
+                self.headAcu = value
+            }
+            if let value = dict["HeadCpu"] as? Int32 {
+                self.headCpu = value
+            }
+            if let value = dict["HeadSpecName"] as? String {
+                self.headSpecName = value
+            }
+            if let value = dict["TotalAcu"] as? Double {
+                self.totalAcu = value
+            }
+            if let value = dict["TotalDeployedCpu"] as? Int32 {
+                self.totalDeployedCpu = value
+            }
+            if let value = dict["TotalTargetCpu"] as? Int32 {
+                self.totalTargetCpu = value
+            }
+            if let value = dict["WebserverAcu"] as? Double {
+                self.webserverAcu = value
+            }
+            if let value = dict["WebserverCpu"] as? Int32 {
+                self.webserverCpu = value
+            }
+            if let value = dict["WebserverSpecName"] as? String {
+                self.webserverSpecName = value
+            }
+            if let value = dict["WorkerAcu"] as? Double {
+                self.workerAcu = value
+            }
+            if let value = dict["WorkerCount"] as? Int32 {
+                self.workerCount = value
+            }
+            if let value = dict["WorkerCpu"] as? Int32 {
+                self.workerCpu = value
+            }
+            if let value = dict["WorkerSpecName"] as? String {
+                self.workerSpecName = value
+            }
+        }
+    }
+    public var items: [DescribeEapDeviceResourceAllocationResponseBody.Items]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeEapDeviceResourceAllocationResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeEapDeviceResourceAllocationResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeEapDeviceResourceAllocationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeEapDeviceResourceAllocationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeEapDeviceResourceAllocationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeEmbodiedAIPlatformsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -1985,6 +2285,60 @@ public class GetEmbodiedAIPlatformResourceUsageInfoRequest : Tea.TeaModel {
 }
 
 public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
+    public class AcuDetails : Tea.TeaModel {
+        public var eapWebserverACUCount: Double?
+
+        public var rayHeadACUCount: Double?
+
+        public var rayWorkerACUCount: Double?
+
+        public var totalACUCount: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eapWebserverACUCount != nil {
+                map["EapWebserverACUCount"] = self.eapWebserverACUCount!
+            }
+            if self.rayHeadACUCount != nil {
+                map["RayHeadACUCount"] = self.rayHeadACUCount!
+            }
+            if self.rayWorkerACUCount != nil {
+                map["RayWorkerACUCount"] = self.rayWorkerACUCount!
+            }
+            if self.totalACUCount != nil {
+                map["TotalACUCount"] = self.totalACUCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EapWebserverACUCount"] as? Double {
+                self.eapWebserverACUCount = value
+            }
+            if let value = dict["RayHeadACUCount"] as? Double {
+                self.rayHeadACUCount = value
+            }
+            if let value = dict["RayWorkerACUCount"] as? Double {
+                self.rayWorkerACUCount = value
+            }
+            if let value = dict["TotalACUCount"] as? Double {
+                self.totalACUCount = value
+            }
+        }
+    }
     public class GpuDetails : Tea.TeaModel {
         public var allocatedUnit: Int32?
 
@@ -2173,6 +2527,8 @@ public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var acuDetails: GetEmbodiedAIPlatformResourceUsageInfoResponseBody.AcuDetails?
+
     public var gpuDetails: [GetEmbodiedAIPlatformResourceUsageInfoResponseBody.GpuDetails]?
 
     public var maxRegisteredDevices: Int64?
@@ -2195,12 +2551,16 @@ public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.acuDetails?.validate()
         try self.slbTraffic?.validate()
         try self.storageUsage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acuDetails != nil {
+            map["AcuDetails"] = self.acuDetails?.toMap()
+        }
         if self.gpuDetails != nil {
             var tmp : [Any] = []
             for k in self.gpuDetails! {
@@ -2228,6 +2588,11 @@ public class GetEmbodiedAIPlatformResourceUsageInfoResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AcuDetails"] as? [String: Any?] {
+            var model = GetEmbodiedAIPlatformResourceUsageInfoResponseBody.AcuDetails()
+            model.fromMap(value)
+            self.acuDetails = model
+        }
         if let value = dict["GpuDetails"] as? [Any?] {
             var tmp : [GetEmbodiedAIPlatformResourceUsageInfoResponseBody.GpuDetails] = []
             for v in value {
@@ -2846,6 +3211,8 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
     }
     public var DBClusterId: String?
 
+    public var deviceCount: String?
+
     public var platformName: String?
 
     public var rayConfig: ModifyEmbodiedAIPlatformRequest.RayConfig?
@@ -2872,6 +3239,9 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.deviceCount != nil {
+            map["DeviceCount"] = self.deviceCount!
+        }
         if self.platformName != nil {
             map["PlatformName"] = self.platformName!
         }
@@ -2892,6 +3262,9 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
+        if let value = dict["DeviceCount"] as? String {
+            self.deviceCount = value
+        }
         if let value = dict["PlatformName"] as? String {
             self.platformName = value
         }
@@ -2911,6 +3284,8 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
 
 public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
     public var DBClusterId: String?
+
+    public var deviceCount: String?
 
     public var platformName: String?
 
@@ -2937,6 +3312,9 @@ public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.deviceCount != nil {
+            map["DeviceCount"] = self.deviceCount!
+        }
         if self.platformName != nil {
             map["PlatformName"] = self.platformName!
         }
@@ -2956,6 +3334,9 @@ public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["DeviceCount"] as? String {
+            self.deviceCount = value
         }
         if let value = dict["PlatformName"] as? String {
             self.platformName = value
