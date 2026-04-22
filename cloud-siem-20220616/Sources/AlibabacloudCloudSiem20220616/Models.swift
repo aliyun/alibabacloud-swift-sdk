@@ -3172,6 +3172,8 @@ public class DescribeAlertSourceRequest : Tea.TeaModel {
 
 public class DescribeAlertSourceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var modules: [String]?
+
         public var source: String?
 
         public var sourceName: String?
@@ -3190,6 +3192,9 @@ public class DescribeAlertSourceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.modules != nil {
+                map["Modules"] = self.modules!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -3201,6 +3206,9 @@ public class DescribeAlertSourceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Modules"] as? [String] {
+                self.modules = value
+            }
             if let value = dict["Source"] as? String {
                 self.source = value
             }
