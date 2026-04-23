@@ -10363,6 +10363,8 @@ public class DescribeVodDomainBpsDataByLayerResponse : Tea.TeaModel {
 public class DescribeVodDomainCertificateInfoRequest : Tea.TeaModel {
     public var domainName: String?
 
+    public var heraApiAutoVersion: String?
+
     public var ownerId: Int64?
 
     public override init() {
@@ -10382,6 +10384,9 @@ public class DescribeVodDomainCertificateInfoRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.heraApiAutoVersion != nil {
+            map["HeraApiAutoVersion"] = self.heraApiAutoVersion!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -10392,6 +10397,9 @@ public class DescribeVodDomainCertificateInfoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["HeraApiAutoVersion"] as? String {
+            self.heraApiAutoVersion = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
