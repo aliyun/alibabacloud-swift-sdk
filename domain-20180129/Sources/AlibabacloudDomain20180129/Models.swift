@@ -8806,6 +8806,8 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
 
     public var registrantUpdatingStatus: String?
 
+    public var registrar: String?
+
     public var registrationDate: String?
 
     public var registrationDateLong: Int64?
@@ -8911,6 +8913,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
         }
         if self.registrantUpdatingStatus != nil {
             map["RegistrantUpdatingStatus"] = self.registrantUpdatingStatus!
+        }
+        if self.registrar != nil {
+            map["Registrar"] = self.registrar!
         }
         if self.registrationDate != nil {
             map["RegistrationDate"] = self.registrationDate!
@@ -9020,6 +9025,9 @@ public class QueryDomainByDomainNameResponseBody : Tea.TeaModel {
         }
         if let value = dict["RegistrantUpdatingStatus"] as? String {
             self.registrantUpdatingStatus = value
+        }
+        if let value = dict["Registrar"] as? String {
+            self.registrar = value
         }
         if let value = dict["RegistrationDate"] as? String {
             self.registrationDate = value
@@ -9962,6 +9970,8 @@ public class QueryDomainListRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoRenewEnabled: Bool?
+
     public var ccompany: String?
 
     public var dns: String?
@@ -10014,6 +10024,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRenewEnabled != nil {
+            map["AutoRenewEnabled"] = self.autoRenewEnabled!
+        }
         if self.ccompany != nil {
             map["Ccompany"] = self.ccompany!
         }
@@ -10080,6 +10093,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoRenewEnabled"] as? Bool {
+            self.autoRenewEnabled = value
+        }
         if let value = dict["Ccompany"] as? String {
             self.ccompany = value
         }
@@ -10265,6 +10281,8 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var autoRenewEnabled: Bool?
+
             public var ccompany: String?
 
             public var chgholderStatus: String?
@@ -10327,6 +10345,9 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoRenewEnabled != nil {
+                    map["AutoRenewEnabled"] = self.autoRenewEnabled!
+                }
                 if self.ccompany != nil {
                     map["Ccompany"] = self.ccompany!
                 }
@@ -10401,6 +10422,9 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AutoRenewEnabled"] as? Bool {
+                    self.autoRenewEnabled = value
+                }
                 if let value = dict["Ccompany"] as? String {
                     self.ccompany = value
                 }
