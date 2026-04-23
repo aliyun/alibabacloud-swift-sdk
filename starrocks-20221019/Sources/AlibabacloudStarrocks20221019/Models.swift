@@ -11985,6 +11985,263 @@ public class ListOperationHistoryResponse : Tea.TeaModel {
     }
 }
 
+public class ListSSLDetailsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class ListSSLDetailsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var aliases: String?
+
+        public var customCert: Bool?
+
+        public var enableSSL: Bool?
+
+        public var isValid: Bool?
+
+        public var issuerDN: String?
+
+        public var notAfter: Int64?
+
+        public var notBefore: Int64?
+
+        public var sslCertificateText: String?
+
+        public var status: String?
+
+        public var subjectDN: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliases != nil {
+                map["Aliases"] = self.aliases!
+            }
+            if self.customCert != nil {
+                map["CustomCert"] = self.customCert!
+            }
+            if self.enableSSL != nil {
+                map["EnableSSL"] = self.enableSSL!
+            }
+            if self.isValid != nil {
+                map["IsValid"] = self.isValid!
+            }
+            if self.issuerDN != nil {
+                map["IssuerDN"] = self.issuerDN!
+            }
+            if self.notAfter != nil {
+                map["NotAfter"] = self.notAfter!
+            }
+            if self.notBefore != nil {
+                map["NotBefore"] = self.notBefore!
+            }
+            if self.sslCertificateText != nil {
+                map["SslCertificateText"] = self.sslCertificateText!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subjectDN != nil {
+                map["SubjectDN"] = self.subjectDN!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Aliases"] as? String {
+                self.aliases = value
+            }
+            if let value = dict["CustomCert"] as? Bool {
+                self.customCert = value
+            }
+            if let value = dict["EnableSSL"] as? Bool {
+                self.enableSSL = value
+            }
+            if let value = dict["IsValid"] as? Bool {
+                self.isValid = value
+            }
+            if let value = dict["IssuerDN"] as? String {
+                self.issuerDN = value
+            }
+            if let value = dict["NotAfter"] as? Int64 {
+                self.notAfter = value
+            }
+            if let value = dict["NotBefore"] as? Int64 {
+                self.notBefore = value
+            }
+            if let value = dict["SslCertificateText"] as? String {
+                self.sslCertificateText = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SubjectDN"] as? String {
+                self.subjectDN = value
+            }
+        }
+    }
+    public var data: ListSSLDetailsResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListSSLDetailsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListSSLDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSSLDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListSSLDetailsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyChargeTypeRequest : Tea.TeaModel {
     public var autoRenew: Bool?
 
