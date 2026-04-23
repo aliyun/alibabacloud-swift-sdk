@@ -1596,6 +1596,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterBillingCostTabsWithOptions(_ request: ModelRouterBillingCostTabsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterBillingCostTabsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterBillingCostTabs",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/tabs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterBillingCostTabsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterBillingCostTabs(_ request: ModelRouterBillingCostTabsRequest) async throws -> ModelRouterBillingCostTabsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterBillingCostTabsWithOptions(request as! ModelRouterBillingCostTabsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterChatCompletionsWithOptions(_ request: ModelRouterChatCompletionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterChatCompletionsResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -1682,6 +1718,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterCreateApiKeyWithOptions(request as! ModelRouterCreateApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterCreateBillingRuleWithOptions(_ request: ModelRouterCreateBillingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterCreateBillingRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billingType)) {
+            body["billingType"] = request.billingType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["effectiveTime"] = request.effectiveTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["expireTime"] = request.expireTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pricingConfig)) {
+            body["pricingConfig"] = request.pricingConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterCreateBillingRule",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/rules",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterCreateBillingRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterCreateBillingRule(_ request: ModelRouterCreateBillingRuleRequest) async throws -> ModelRouterCreateBillingRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterCreateBillingRuleWithOptions(request as! ModelRouterCreateBillingRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2039,6 +2123,99 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingRuleListWithOptions(_ request: ModelRouterQueryBillingRuleListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingRuleListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activeOnly)) {
+            query["activeOnly"] = request.activeOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCode)) {
+            query["modelCode"] = request.modelCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            query["modelType"] = request.modelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryBillingRuleList",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/rules",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryBillingRuleListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingRuleList(_ request: ModelRouterQueryBillingRuleListRequest) async throws -> ModelRouterQueryBillingRuleListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryBillingRuleListWithOptions(request as! ModelRouterQueryBillingRuleListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryClientDiscountLogsWithOptions(_ id: String, _ request: ModelRouterQueryClientDiscountLogsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryClientDiscountLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryClientDiscountLogs",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/discount-logs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryClientDiscountLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryClientDiscountLogs(_ id: String, _ request: ModelRouterQueryClientDiscountLogsRequest) async throws -> ModelRouterQueryClientDiscountLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryClientDiscountLogsWithOptions(id as! String, request as! ModelRouterQueryClientDiscountLogsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterQueryClientListWithOptions(_ request: ModelRouterQueryClientListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryClientListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2096,6 +2273,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryClientListWithOptions(request as! ModelRouterQueryClientListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryClientTreeWithOptions(_ request: ModelRouterQueryClientTreeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryClientTreeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryClientTree",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/tree",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryClientTreeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryClientTree(_ request: ModelRouterQueryClientTreeRequest) async throws -> ModelRouterQueryClientTreeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryClientTreeWithOptions(request as! ModelRouterQueryClientTreeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2183,6 +2396,219 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryConversationListWithOptions(request as! ModelRouterQueryConversationListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostModelDetailWithOptions(_ request: ModelRouterQueryCostModelDetailRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostModelDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryCostModelDetail",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/model-detail",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryCostModelDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostModelDetail(_ request: ModelRouterQueryCostModelDetailRequest) async throws -> ModelRouterQueryCostModelDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryCostModelDetailWithOptions(request as! ModelRouterQueryCostModelDetailRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostModelListWithOptions(_ request: ModelRouterQueryCostModelListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostModelListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.search)) {
+            query["search"] = request.search ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryCostModelList",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/models",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryCostModelListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostModelList(_ request: ModelRouterQueryCostModelListRequest) async throws -> ModelRouterQueryCostModelListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryCostModelListWithOptions(request as! ModelRouterQueryCostModelListRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostOverviewMetricsWithOptions(_ request: ModelRouterQueryCostOverviewMetricsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostOverviewMetricsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryCostOverviewMetrics",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/overview",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryCostOverviewMetricsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostOverviewMetrics(_ request: ModelRouterQueryCostOverviewMetricsRequest) async throws -> ModelRouterQueryCostOverviewMetricsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryCostOverviewMetricsWithOptions(request as! ModelRouterQueryCostOverviewMetricsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostTrendMetricsWithOptions(_ request: ModelRouterQueryCostTrendMetricsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostTrendMetricsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryCostTrendMetrics",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/trend",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryCostTrendMetricsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryCostTrendMetrics(_ request: ModelRouterQueryCostTrendMetricsRequest) async throws -> ModelRouterQueryCostTrendMetricsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryCostTrendMetricsWithOptions(request as! ModelRouterQueryCostTrendMetricsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2576,6 +3002,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryObservationMetricsWithOptions(request as! ModelRouterQueryObservationMetricsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterUpdateBillingRuleWithOptions(_ id: String, _ request: ModelRouterUpdateBillingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterUpdateBillingRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billingType)) {
+            body["billingType"] = request.billingType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["effectiveTime"] = request.effectiveTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["expireTime"] = request.expireTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pricingConfig)) {
+            body["pricingConfig"] = request.pricingConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterUpdateBillingRule",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/rules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterUpdateBillingRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterUpdateBillingRule(_ id: String, _ request: ModelRouterUpdateBillingRuleRequest) async throws -> ModelRouterUpdateBillingRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterUpdateBillingRuleWithOptions(id as! String, request as! ModelRouterUpdateBillingRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
