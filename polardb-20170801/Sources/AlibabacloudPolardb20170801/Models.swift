@@ -8042,6 +8042,10 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
 
     public var sccMode: String?
 
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
     public override init() {
         super.init()
     }
@@ -8104,6 +8108,12 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         if self.sccMode != nil {
             map["SccMode"] = self.sccMode!
         }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         return map
     }
 
@@ -8156,6 +8166,12 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         }
         if let value = dict["SccMode"] as? String {
             self.sccMode = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
         }
     }
 }
