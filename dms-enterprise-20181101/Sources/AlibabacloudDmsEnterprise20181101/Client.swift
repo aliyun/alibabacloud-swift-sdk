@@ -1291,6 +1291,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkInventoryJobWithOptions(_ request: CheckInventoryJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckInventoryJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckInventoryJob",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckInventoryJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkInventoryJob(_ request: CheckInventoryJobRequest) async throws -> CheckInventoryJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkInventoryJobWithOptions(request as! CheckInventoryJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func closeOrderWithOptions(_ request: CloseOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloseOrderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1325,6 +1356,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func closeOrder(_ request: CloseOrderRequest) async throws -> CloseOrderResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await closeOrderWithOptions(request as! CloseOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func confirmInventoryKnowledgeWithOptions(_ request: ConfirmInventoryKnowledgeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfirmInventoryKnowledgeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.entityId)) {
+            query["EntityId"] = request.entityId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeType)) {
+            query["KnowledgeType"] = request.knowledgeType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ConfirmInventoryKnowledge",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ConfirmInventoryKnowledgeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func confirmInventoryKnowledge(_ request: ConfirmInventoryKnowledgeRequest) async throws -> ConfirmInventoryKnowledgeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await confirmInventoryKnowledgeWithOptions(request as! ConfirmInventoryKnowledgeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2310,6 +2378,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createFreeLockCorrectOrder(_ request: CreateFreeLockCorrectOrderRequest) async throws -> CreateFreeLockCorrectOrderResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createFreeLockCorrectOrderWithOptions(request as! CreateFreeLockCorrectOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInventoryJobWithOptions(_ request: CreateInventoryJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInventoryJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.param)) {
+            query["Param"] = request.param ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateInventoryJob",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateInventoryJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInventoryJob(_ request: CreateInventoryJobRequest) async throws -> CreateInventoryJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createInventoryJobWithOptions(request as! CreateInventoryJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11853,6 +11952,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchDatabase(_ request: SearchDatabaseRequest) async throws -> SearchDatabaseResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchDatabaseWithOptions(request as! SearchDatabaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchInventoryKnowledgeWithOptions(_ request: SearchInventoryKnowledgeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchInventoryKnowledgeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["Query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showType)) {
+            query["ShowType"] = request.showType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchInventoryKnowledge",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchInventoryKnowledgeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchInventoryKnowledge(_ request: SearchInventoryKnowledgeRequest) async throws -> SearchInventoryKnowledgeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchInventoryKnowledgeWithOptions(request as! SearchInventoryKnowledgeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
