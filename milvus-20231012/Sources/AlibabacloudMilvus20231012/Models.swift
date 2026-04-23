@@ -6285,6 +6285,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public var cuNum: Int32?
 
+        public var cuType: String?
+
         public var payType: String?
 
         public var replica: Int32?
@@ -6308,6 +6310,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.cuNum != nil {
                 map["cuNum"] = self.cuNum!
             }
+            if self.cuType != nil {
+                map["cuType"] = self.cuType!
+            }
             if self.payType != nil {
                 map["payType"] = self.payType!
             }
@@ -6324,6 +6329,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cuNum"] as? Int32 {
                 self.cuNum = value
+            }
+            if let value = dict["cuType"] as? String {
+                self.cuType = value
             }
             if let value = dict["payType"] as? String {
                 self.payType = value
