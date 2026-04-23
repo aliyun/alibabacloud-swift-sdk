@@ -4864,6 +4864,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAIAgentConcurrencyWithOptions(_ request: GetAIAgentConcurrencyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAIAgentConcurrencyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.AIAgentId)) {
+            query["AIAgentId"] = request.AIAgentId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAIAgentConcurrency",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAIAgentConcurrencyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAIAgentConcurrency(_ request: GetAIAgentConcurrencyRequest) async throws -> GetAIAgentConcurrencyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAIAgentConcurrencyWithOptions(request as! GetAIAgentConcurrencyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAIWorkflowTaskWithOptions(_ request: GetAIWorkflowTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAIWorkflowTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
