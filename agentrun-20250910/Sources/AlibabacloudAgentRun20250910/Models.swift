@@ -2890,7 +2890,7 @@ public class ConvertFlowDSLData : Tea.TeaModel {
         public class Issues : Tea.TeaModel {
             public var description_: String?
 
-            public var details: [String: String]?
+            public var details: [String: Any]?
 
             public var issueType: String?
 
@@ -2950,7 +2950,7 @@ public class ConvertFlowDSLData : Tea.TeaModel {
                 if let value = dict["description"] as? String {
                     self.description_ = value
                 }
-                if let value = dict["details"] as? [String: String] {
+                if let value = dict["details"] as? [String: Any] {
                     self.details = value
                 }
                 if let value = dict["issueType"] as? String {
@@ -3390,6 +3390,8 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
 
         public var vpcEndpointName: String?
 
+        public var vpcEndpoints: [String: String]?
+
         public override init() {
             super.init()
         }
@@ -3416,6 +3418,9 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
             if self.vpcEndpointName != nil {
                 map["vpcEndpointName"] = self.vpcEndpointName!
             }
+            if self.vpcEndpoints != nil {
+                map["vpcEndpoints"] = self.vpcEndpoints!
+            }
             return map
         }
 
@@ -3432,6 +3437,9 @@ public class ConvertFlowDSLInput : Tea.TeaModel {
             }
             if let value = dict["vpcEndpointName"] as? String {
                 self.vpcEndpointName = value
+            }
+            if let value = dict["vpcEndpoints"] as? [String: String] {
+                self.vpcEndpoints = value
             }
         }
     }
