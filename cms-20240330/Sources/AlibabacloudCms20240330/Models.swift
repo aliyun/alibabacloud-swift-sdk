@@ -19320,6 +19320,473 @@ public class DeleteWorkspaceResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeMetricMetaListRequest : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var name: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var labels: [DescribeMetricMetaListRequest.Labels]?
+
+    public var metaFormat: String?
+
+    public var metricName: String?
+
+    public var namespace: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["labels"] = tmp
+        }
+        if self.metaFormat != nil {
+            map["metaFormat"] = self.metaFormat!
+        }
+        if self.metricName != nil {
+            map["metricName"] = self.metricName!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["labels"] as? [Any?] {
+            var tmp : [DescribeMetricMetaListRequest.Labels] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeMetricMetaListRequest.Labels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.labels = tmp
+        }
+        if let value = dict["metaFormat"] as? String {
+            self.metaFormat = value
+        }
+        if let value = dict["metricName"] as? String {
+            self.metricName = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
+    public var labelsShrink: String?
+
+    public var metaFormat: String?
+
+    public var metricName: String?
+
+    public var namespace: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.labelsShrink != nil {
+            map["labels"] = self.labelsShrink!
+        }
+        if self.metaFormat != nil {
+            map["metaFormat"] = self.metaFormat!
+        }
+        if self.metricName != nil {
+            map["metricName"] = self.metricName!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["labels"] as? String {
+            self.labelsShrink = value
+        }
+        if let value = dict["metaFormat"] as? String {
+            self.metaFormat = value
+        }
+        if let value = dict["metricName"] as? String {
+            self.metricName = value
+        }
+        if let value = dict["namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class DescribeMetricMetaListResponseBody : Tea.TeaModel {
+    public class Resources : Tea.TeaModel {
+        public class DimensionDescription : Tea.TeaModel {
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public var description_: String?
+
+        public var dimensionDescription: [DescribeMetricMetaListResponseBody.Resources.DimensionDescription]?
+
+        public var dimensions: [String]?
+
+        public var labels: [String: String]?
+
+        public var metricName: String?
+
+        public var namespace: String?
+
+        public var periods: String?
+
+        public var statistics: String?
+
+        public var type: String?
+
+        public var unit: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.dimensionDescription != nil {
+                var tmp : [Any] = []
+                for k in self.dimensionDescription! {
+                    tmp.append(k.toMap())
+                }
+                map["dimensionDescription"] = tmp
+            }
+            if self.dimensions != nil {
+                map["dimensions"] = self.dimensions!
+            }
+            if self.labels != nil {
+                map["labels"] = self.labels!
+            }
+            if self.metricName != nil {
+                map["metricName"] = self.metricName!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
+            }
+            if self.periods != nil {
+                map["periods"] = self.periods!
+            }
+            if self.statistics != nil {
+                map["statistics"] = self.statistics!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.unit != nil {
+                map["unit"] = self.unit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["dimensionDescription"] as? [Any?] {
+                var tmp : [DescribeMetricMetaListResponseBody.Resources.DimensionDescription] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeMetricMetaListResponseBody.Resources.DimensionDescription()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dimensionDescription = tmp
+            }
+            if let value = dict["dimensions"] as? [String] {
+                self.dimensions = value
+            }
+            if let value = dict["labels"] as? [String: String] {
+                self.labels = value
+            }
+            if let value = dict["metricName"] as? String {
+                self.metricName = value
+            }
+            if let value = dict["namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["periods"] as? String {
+                self.periods = value
+            }
+            if let value = dict["statistics"] as? String {
+                self.statistics = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+            if let value = dict["unit"] as? String {
+                self.unit = value
+            }
+        }
+    }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var resources: [DescribeMetricMetaListResponseBody.Resources]?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.resources != nil {
+            var tmp : [Any] = []
+            for k in self.resources! {
+                tmp.append(k.toMap())
+            }
+            map["resources"] = tmp
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["resources"] as? [Any?] {
+            var tmp : [DescribeMetricMetaListResponseBody.Resources] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeMetricMetaListResponseBody.Resources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resources = tmp
+        }
+        if let value = dict["totalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeMetricMetaListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMetricMetaListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeMetricMetaListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRegionsRequest : Tea.TeaModel {
     public var language: String?
 
