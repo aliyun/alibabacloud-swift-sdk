@@ -53052,6 +53052,10 @@ public class DescribeImagePipelineExecutionsResponseBody : Tea.TeaModel {
             }
             public var creationTime: String?
 
+            public var errorCode: String?
+
+            public var errorInfo: String?
+
             public var executionId: String?
 
             public var imageId: String?
@@ -53086,6 +53090,12 @@ public class DescribeImagePipelineExecutionsResponseBody : Tea.TeaModel {
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
                 }
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorInfo != nil {
+                    map["ErrorInfo"] = self.errorInfo!
+                }
                 if self.executionId != nil {
                     map["ExecutionId"] = self.executionId!
                 }
@@ -53117,6 +53127,12 @@ public class DescribeImagePipelineExecutionsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
+                }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorInfo"] as? String {
+                    self.errorInfo = value
                 }
                 if let value = dict["ExecutionId"] as? String {
                     self.executionId = value
