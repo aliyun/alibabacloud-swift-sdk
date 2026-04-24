@@ -5915,6 +5915,8 @@ public class EkycVerifyV2Response : Tea.TeaModel {
 public class FaceCompareRequest : Tea.TeaModel {
     public var facePictureQualityCheck: String?
 
+    public var faceQualityCheck: String?
+
     public var merchantBizId: String?
 
     public var sourceFacePicture: String?
@@ -5942,6 +5944,9 @@ public class FaceCompareRequest : Tea.TeaModel {
         if self.facePictureQualityCheck != nil {
             map["FacePictureQualityCheck"] = self.facePictureQualityCheck!
         }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
@@ -5965,6 +5970,9 @@ public class FaceCompareRequest : Tea.TeaModel {
         if let value = dict["FacePictureQualityCheck"] as? String {
             self.facePictureQualityCheck = value
         }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }
@@ -5985,6 +5993,70 @@ public class FaceCompareRequest : Tea.TeaModel {
 
 public class FaceCompareResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class ExtFaceInfo : Tea.TeaModel {
+            public var faceQualityScore: Double?
+
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.faceQualityScore != nil {
+                    map["FaceQualityScore"] = self.faceQualityScore!
+                }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FaceQualityScore"] as? Double {
+                    self.faceQualityScore = value
+                }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
+                }
+            }
+        }
+        public var extFaceInfo: FaceCompareResponseBody.Result.ExtFaceInfo?
+
         public var faceComparisonScore: Double?
 
         public var passed: String?
@@ -6001,10 +6073,14 @@ public class FaceCompareResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.extFaceInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.extFaceInfo != nil {
+                map["ExtFaceInfo"] = self.extFaceInfo?.toMap()
+            }
             if self.faceComparisonScore != nil {
                 map["FaceComparisonScore"] = self.faceComparisonScore!
             }
@@ -6019,6 +6095,11 @@ public class FaceCompareResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ExtFaceInfo"] as? [String: Any?] {
+                var model = FaceCompareResponseBody.Result.ExtFaceInfo()
+                model.fromMap(value)
+                self.extFaceInfo = model
+            }
             if let value = dict["FaceComparisonScore"] as? Double {
                 self.faceComparisonScore = value
             }
@@ -6140,6 +6221,8 @@ public class FaceCompareResponse : Tea.TeaModel {
 public class FaceCompareV2Request : Tea.TeaModel {
     public var facePictureQualityCheck: String?
 
+    public var faceQualityCheck: String?
+
     public var merchantBizId: String?
 
     public var sourceFacePicture: String?
@@ -6171,6 +6254,9 @@ public class FaceCompareV2Request : Tea.TeaModel {
         if self.facePictureQualityCheck != nil {
             map["FacePictureQualityCheck"] = self.facePictureQualityCheck!
         }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
@@ -6200,6 +6286,9 @@ public class FaceCompareV2Request : Tea.TeaModel {
         if let value = dict["FacePictureQualityCheck"] as? String {
             self.facePictureQualityCheck = value
         }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }
@@ -6226,6 +6315,8 @@ public class FaceCompareV2Request : Tea.TeaModel {
 
 public class FaceCompareV2AdvanceRequest : Tea.TeaModel {
     public var facePictureQualityCheck: String?
+
+    public var faceQualityCheck: String?
 
     public var merchantBizId: String?
 
@@ -6258,6 +6349,9 @@ public class FaceCompareV2AdvanceRequest : Tea.TeaModel {
         if self.facePictureQualityCheck != nil {
             map["FacePictureQualityCheck"] = self.facePictureQualityCheck!
         }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
@@ -6287,6 +6381,9 @@ public class FaceCompareV2AdvanceRequest : Tea.TeaModel {
         if let value = dict["FacePictureQualityCheck"] as? String {
             self.facePictureQualityCheck = value
         }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }
@@ -6313,6 +6410,70 @@ public class FaceCompareV2AdvanceRequest : Tea.TeaModel {
 
 public class FaceCompareV2ResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class ExtFaceInfo : Tea.TeaModel {
+            public var faceQualityScore: Double?
+
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.faceQualityScore != nil {
+                    map["FaceQualityScore"] = self.faceQualityScore!
+                }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FaceQualityScore"] as? Double {
+                    self.faceQualityScore = value
+                }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
+                }
+            }
+        }
+        public var extFaceInfo: FaceCompareV2ResponseBody.Result.ExtFaceInfo?
+
         public var faceComparisonScore: Double?
 
         public var passed: String?
@@ -6329,10 +6490,14 @@ public class FaceCompareV2ResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.extFaceInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.extFaceInfo != nil {
+                map["ExtFaceInfo"] = self.extFaceInfo?.toMap()
+            }
             if self.faceComparisonScore != nil {
                 map["FaceComparisonScore"] = self.faceComparisonScore!
             }
@@ -6347,6 +6512,11 @@ public class FaceCompareV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ExtFaceInfo"] as? [String: Any?] {
+                var model = FaceCompareV2ResponseBody.Result.ExtFaceInfo()
+                model.fromMap(value)
+                self.extFaceInfo = model
+            }
             if let value = dict["FaceComparisonScore"] as? Double {
                 self.faceComparisonScore = value
             }
@@ -6751,6 +6921,8 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
 
     public var faceGroupCodes: String?
 
+    public var faceQualityCheck: String?
+
     public var faceRegisterGroupCode: String?
 
     public var faceVerifyThreshold: String?
@@ -6798,6 +6970,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         }
         if self.faceGroupCodes != nil {
             map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
         }
         if self.faceRegisterGroupCode != nil {
             map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
@@ -6852,6 +7027,9 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
         if let value = dict["FaceGroupCodes"] as? String {
             self.faceGroupCodes = value
         }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
         if let value = dict["FaceRegisterGroupCode"] as? String {
             self.faceRegisterGroupCode = value
         }
@@ -6899,7 +7077,71 @@ public class FaceDuplicationCheckIntlRequest : Tea.TeaModel {
 
 public class FaceDuplicationCheckIntlResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class ExtFaceInfo : Tea.TeaModel {
+            public var faceQualityScore: Double?
+
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.faceQualityScore != nil {
+                    map["FaceQualityScore"] = self.faceQualityScore!
+                }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FaceQualityScore"] as? Double {
+                    self.faceQualityScore = value
+                }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
+                }
+            }
+        }
         public var duplicateFace: String?
+
+        public var extFaceInfo: FaceDuplicationCheckIntlResponseBody.Result.ExtFaceInfo?
 
         public var faceAge: String?
 
@@ -6931,12 +7173,16 @@ public class FaceDuplicationCheckIntlResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.extFaceInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.duplicateFace != nil {
                 map["DuplicateFace"] = self.duplicateFace!
+            }
+            if self.extFaceInfo != nil {
+                map["ExtFaceInfo"] = self.extFaceInfo?.toMap()
             }
             if self.faceAge != nil {
                 map["FaceAge"] = self.faceAge!
@@ -6975,6 +7221,11 @@ public class FaceDuplicationCheckIntlResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["DuplicateFace"] as? String {
                 self.duplicateFace = value
+            }
+            if let value = dict["ExtFaceInfo"] as? [String: Any?] {
+                var model = FaceDuplicationCheckIntlResponseBody.Result.ExtFaceInfo()
+                model.fromMap(value)
+                self.extFaceInfo = model
             }
             if let value = dict["FaceAge"] as? String {
                 self.faceAge = value
@@ -7349,6 +7600,8 @@ public class FaceLivenessRequest : Tea.TeaModel {
 
     public var faceQuality: String?
 
+    public var faceQualityCheck: String?
+
     public var merchantBizId: String?
 
     public var merchantUserId: String?
@@ -7383,6 +7636,9 @@ public class FaceLivenessRequest : Tea.TeaModel {
         if self.faceQuality != nil {
             map["FaceQuality"] = self.faceQuality!
         }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
@@ -7412,6 +7668,9 @@ public class FaceLivenessRequest : Tea.TeaModel {
         if let value = dict["FaceQuality"] as? String {
             self.faceQuality = value
         }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }
@@ -7438,7 +7697,15 @@ public class FaceLivenessResponseBody : Tea.TeaModel {
 
             public var faceQualityScore: Double?
 
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
             public var occlusionResult: String?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
 
             public override init() {
                 super.init()
@@ -7466,8 +7733,20 @@ public class FaceLivenessResponseBody : Tea.TeaModel {
                 if self.faceQualityScore != nil {
                     map["FaceQualityScore"] = self.faceQualityScore!
                 }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
                 if self.occlusionResult != nil {
                     map["OcclusionResult"] = self.occlusionResult!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
                 }
                 return map
             }
@@ -7486,8 +7765,20 @@ public class FaceLivenessResponseBody : Tea.TeaModel {
                 if let value = dict["FaceQualityScore"] as? Double {
                     self.faceQualityScore = value
                 }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
                 if let value = dict["OcclusionResult"] as? String {
                     self.occlusionResult = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
                 }
             }
         }

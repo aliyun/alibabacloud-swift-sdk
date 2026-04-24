@@ -1712,6 +1712,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.facePictureQualityCheck)) {
             query["FacePictureQualityCheck"] = request.facePictureQualityCheck ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            query["FaceQualityCheck"] = request.faceQualityCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
         }
@@ -1759,6 +1762,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.facePictureQualityCheck)) {
             query["FacePictureQualityCheck"] = request.facePictureQualityCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            query["FaceQualityCheck"] = request.faceQualityCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
@@ -1991,6 +1997,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.faceGroupCodes)) {
             body["FaceGroupCodes"] = request.faceGroupCodes ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            body["FaceQualityCheck"] = request.faceQualityCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.faceRegisterGroupCode)) {
             body["FaceRegisterGroupCode"] = request.faceRegisterGroupCode ?? "";
         }
@@ -2110,6 +2119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.faceQuality)) {
             query["FaceQuality"] = request.faceQuality ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceQualityCheck)) {
+            query["FaceQualityCheck"] = request.faceQualityCheck ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
