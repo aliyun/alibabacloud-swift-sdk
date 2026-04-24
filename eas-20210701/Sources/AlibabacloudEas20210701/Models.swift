@@ -515,6 +515,8 @@ public class Resource : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var serviceCount: Int32?
+
     public var status: String?
 
     public var updateTime: String?
@@ -597,6 +599,9 @@ public class Resource : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.serviceCount != nil {
+            map["ServiceCount"] = self.serviceCount!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -673,6 +678,9 @@ public class Resource : Tea.TeaModel {
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
+        }
+        if let value = dict["ServiceCount"] as? Int32 {
+            self.serviceCount = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -9533,6 +9541,8 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var serviceCount: String?
+
     public var status: String?
 
     public var updateTime: String?
@@ -9619,6 +9629,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.serviceCount != nil {
+            map["ServiceCount"] = self.serviceCount!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -9698,6 +9711,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
+        }
+        if let value = dict["ServiceCount"] as? String {
+            self.serviceCount = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
