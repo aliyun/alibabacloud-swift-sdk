@@ -9114,6 +9114,10 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var vpcIpAddr: String?
 
+        public var webUISnatStatus: String?
+
+        public var webUIStatus: String?
+
         public var zoneId: String?
 
         public var zoneIdVswitchMap: [String: Any]?
@@ -9298,6 +9302,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.vpcIpAddr != nil {
                 map["VpcIpAddr"] = self.vpcIpAddr!
             }
+            if self.webUISnatStatus != nil {
+                map["WebUISnatStatus"] = self.webUISnatStatus!
+            }
+            if self.webUIStatus != nil {
+                map["WebUIStatus"] = self.webUIStatus!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -9477,6 +9487,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["VpcIpAddr"] as? String {
                 self.vpcIpAddr = value
+            }
+            if let value = dict["WebUISnatStatus"] as? String {
+                self.webUISnatStatus = value
+            }
+            if let value = dict["WebUIStatus"] as? String {
+                self.webUIStatus = value
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
