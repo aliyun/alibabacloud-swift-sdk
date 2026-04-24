@@ -215,6 +215,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addPolarFsPathMappingWithOptions(_ request: AddPolarFsPathMappingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddPolarFsPathMappingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customBucketPathList)) {
+            query["CustomBucketPathList"] = request.customBucketPathList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarFsInstanceId)) {
+            query["PolarFsInstanceId"] = request.polarFsInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddPolarFsPathMapping",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddPolarFsPathMappingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addPolarFsPathMapping(_ request: AddPolarFsPathMappingRequest) async throws -> AddPolarFsPathMappingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addPolarFsPathMappingWithOptions(request as! AddPolarFsPathMappingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addPolarFsQuotaWithOptions(_ request: AddPolarFsQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddPolarFsQuotaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4368,6 +4405,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePolarFsObjects(_ request: DeletePolarFsObjectsRequest) async throws -> DeletePolarFsObjectsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deletePolarFsObjectsWithOptions(request as! DeletePolarFsObjectsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deletePolarFsPathMappingWithOptions(_ request: DeletePolarFsPathMappingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePolarFsPathMappingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customBucketPathList)) {
+            query["CustomBucketPathList"] = request.customBucketPathList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarFsInstanceId)) {
+            query["PolarFsInstanceId"] = request.polarFsInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeletePolarFsPathMapping",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeletePolarFsPathMappingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deletePolarFsPathMapping(_ request: DeletePolarFsPathMappingRequest) async throws -> DeletePolarFsPathMappingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deletePolarFsPathMappingWithOptions(request as! DeletePolarFsPathMappingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9546,8 +9620,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["Path"] = request.path ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.polarFsInstanceId)) {
             query["PolarFsInstanceId"] = request.polarFsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaType)) {
+            query["QuotaType"] = request.quotaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
