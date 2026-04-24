@@ -4574,6 +4574,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var vpcId: String?
 
+        public var webUISnatStatus: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -4715,6 +4717,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
+            }
+            if self.webUISnatStatus != nil {
+                map["WebUISnatStatus"] = self.webUISnatStatus!
             }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
@@ -4867,6 +4872,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value
+            }
+            if let value = dict["WebUISnatStatus"] as? String {
+                self.webUISnatStatus = value
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
