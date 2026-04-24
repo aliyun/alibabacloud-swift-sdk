@@ -1912,6 +1912,169 @@ public class AlertRuleCondition : Tea.TeaModel {
             }
         }
     }
+    public class Triggers : Tea.TeaModel {
+        public class Expression : Tea.TeaModel {
+            public class Conditions : Tea.TeaModel {
+                public var expressionType: String?
+
+                public var operator_: String?
+
+                public var queryName: String?
+
+                public var threshold: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.expressionType != nil {
+                        map["expressionType"] = self.expressionType!
+                    }
+                    if self.operator_ != nil {
+                        map["operator"] = self.operator_!
+                    }
+                    if self.queryName != nil {
+                        map["queryName"] = self.queryName!
+                    }
+                    if self.threshold != nil {
+                        map["threshold"] = self.threshold!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["expressionType"] as? String {
+                        self.expressionType = value
+                    }
+                    if let value = dict["operator"] as? String {
+                        self.operator_ = value
+                    }
+                    if let value = dict["queryName"] as? String {
+                        self.queryName = value
+                    }
+                    if let value = dict["threshold"] as? Double {
+                        self.threshold = value
+                    }
+                }
+            }
+            public var conditions: [AlertRuleCondition.Triggers.Expression.Conditions]?
+
+            public var expressionType: String?
+
+            public var logicOperator: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.conditions != nil {
+                    var tmp : [Any] = []
+                    for k in self.conditions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["conditions"] = tmp
+                }
+                if self.expressionType != nil {
+                    map["expressionType"] = self.expressionType!
+                }
+                if self.logicOperator != nil {
+                    map["logicOperator"] = self.logicOperator!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["conditions"] as? [Any?] {
+                    var tmp : [AlertRuleCondition.Triggers.Expression.Conditions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = AlertRuleCondition.Triggers.Expression.Conditions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.conditions = tmp
+                }
+                if let value = dict["expressionType"] as? String {
+                    self.expressionType = value
+                }
+                if let value = dict["logicOperator"] as? String {
+                    self.logicOperator = value
+                }
+            }
+        }
+        public var durationSecs: Int32?
+
+        public var expression: AlertRuleCondition.Triggers.Expression?
+
+        public var severity: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.expression?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.durationSecs != nil {
+                map["durationSecs"] = self.durationSecs!
+            }
+            if self.expression != nil {
+                map["expression"] = self.expression?.toMap()
+            }
+            if self.severity != nil {
+                map["severity"] = self.severity!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["durationSecs"] as? Int32 {
+                self.durationSecs = value
+            }
+            if let value = dict["expression"] as? [String: Any?] {
+                var model = AlertRuleCondition.Triggers.Expression()
+                model.fromMap(value)
+                self.expression = model
+            }
+            if let value = dict["severity"] as? String {
+                self.severity = value
+            }
+        }
+    }
     public var alertCount: Int32?
 
     public var caseList: [AlertRuleCondition.CaseList]?
@@ -1919,6 +2082,8 @@ public class AlertRuleCondition : Tea.TeaModel {
     public var compareList: [AlertRuleCondition.CompareList]?
 
     public var compositeEscalation: AlertRuleCondition.CompositeEscalation?
+
+    public var enableSeveritySuppression: Bool?
 
     public var escalationType: String?
 
@@ -1935,6 +2100,8 @@ public class AlertRuleCondition : Tea.TeaModel {
     public var relation: String?
 
     public var simpleEscalation: AlertRuleCondition.SimpleEscalation?
+
+    public var triggers: [AlertRuleCondition.Triggers]?
 
     public var type: String?
 
@@ -1977,6 +2144,9 @@ public class AlertRuleCondition : Tea.TeaModel {
         if self.compositeEscalation != nil {
             map["compositeEscalation"] = self.compositeEscalation?.toMap()
         }
+        if self.enableSeveritySuppression != nil {
+            map["enableSeveritySuppression"] = self.enableSeveritySuppression!
+        }
         if self.escalationType != nil {
             map["escalationType"] = self.escalationType!
         }
@@ -2000,6 +2170,13 @@ public class AlertRuleCondition : Tea.TeaModel {
         }
         if self.simpleEscalation != nil {
             map["simpleEscalation"] = self.simpleEscalation?.toMap()
+        }
+        if self.triggers != nil {
+            var tmp : [Any] = []
+            for k in self.triggers! {
+                tmp.append(k.toMap())
+            }
+            map["triggers"] = tmp
         }
         if self.type != nil {
             map["type"] = self.type!
@@ -2046,6 +2223,9 @@ public class AlertRuleCondition : Tea.TeaModel {
             model.fromMap(value)
             self.compositeEscalation = model
         }
+        if let value = dict["enableSeveritySuppression"] as? Bool {
+            self.enableSeveritySuppression = value
+        }
         if let value = dict["escalationType"] as? String {
             self.escalationType = value
         }
@@ -2073,6 +2253,19 @@ public class AlertRuleCondition : Tea.TeaModel {
             var model = AlertRuleCondition.SimpleEscalation()
             model.fromMap(value)
             self.simpleEscalation = model
+        }
+        if let value = dict["triggers"] as? [Any?] {
+            var tmp : [AlertRuleCondition.Triggers] = []
+            for v in value {
+                if v != nil {
+                    var model = AlertRuleCondition.Triggers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.triggers = tmp
         }
         if let value = dict["type"] as? String {
             self.type = value
@@ -2148,6 +2341,8 @@ public class AlertRuleDataSource : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantId: String?
+
     public var type: String?
 
     public override init() {
@@ -2183,6 +2378,9 @@ public class AlertRuleDataSource : Tea.TeaModel {
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -2215,6 +2413,9 @@ public class AlertRuleDataSource : Tea.TeaModel {
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
         }
         if let value = dict["type"] as? String {
             self.type = value
@@ -2276,6 +2477,8 @@ public class AlertRuleNotification : Tea.TeaModel {
 
     public var notifyTime: AlertRuleTimeSpan?
 
+    public var qwencloudContacts: [String: [String: Any]]?
+
     public var silenceTime: Int64?
 
     public var slackWebhooks: [String]?
@@ -2318,6 +2521,9 @@ public class AlertRuleNotification : Tea.TeaModel {
         if self.notifyTime != nil {
             map["notifyTime"] = self.notifyTime?.toMap()
         }
+        if self.qwencloudContacts != nil {
+            map["qwencloudContacts"] = self.qwencloudContacts!
+        }
         if self.silenceTime != nil {
             map["silenceTime"] = self.silenceTime!
         }
@@ -2354,6 +2560,9 @@ public class AlertRuleNotification : Tea.TeaModel {
             var model = AlertRuleTimeSpan()
             model.fromMap(value)
             self.notifyTime = model
+        }
+        if let value = dict["qwencloudContacts"] as? [String: [String: Any]] {
+            self.qwencloudContacts = value
         }
         if let value = dict["silenceTime"] as? Int64 {
             self.silenceTime = value
@@ -2734,6 +2943,10 @@ public class AlertRuleQuery : Tea.TeaModel {
 
         public var expr: String?
 
+        public var name: String?
+
+        public var promQl: String?
+
         public var start: Int64?
 
         public var timeUnit: String?
@@ -2776,6 +2989,12 @@ public class AlertRuleQuery : Tea.TeaModel {
             if self.expr != nil {
                 map["expr"] = self.expr!
             }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.promQl != nil {
+                map["promQl"] = self.promQl!
+            }
             if self.start != nil {
                 map["start"] = self.start!
             }
@@ -2817,6 +3036,12 @@ public class AlertRuleQuery : Tea.TeaModel {
             }
             if let value = dict["expr"] as? String {
                 self.expr = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["promQl"] as? String {
+                self.promQl = value
             }
             if let value = dict["start"] as? Int64 {
                 self.start = value
@@ -25420,6 +25645,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
 
         public var httpApiInterUrl: String?
 
+        public var httpApiInternalUrl: String?
+
         public var httpApiIntraUrl: String?
 
         public var instanceType: String?
@@ -25436,15 +25663,21 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
 
         public var pushGatewayInterUrl: String?
 
+        public var pushGatewayInternalUrl: String?
+
         public var pushGatewayIntraUrl: String?
 
         public var regionId: String?
 
         public var remoteReadInterUrl: String?
 
+        public var remoteReadInternalUrl: String?
+
         public var remoteReadIntraUrl: String?
 
         public var remoteWriteInterUrl: String?
+
+        public var remoteWriteInternalUrl: String?
 
         public var remoteWriteIntraUrl: String?
 
@@ -25522,6 +25755,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if self.httpApiInterUrl != nil {
                 map["httpApiInterUrl"] = self.httpApiInterUrl!
             }
+            if self.httpApiInternalUrl != nil {
+                map["httpApiInternalUrl"] = self.httpApiInternalUrl!
+            }
             if self.httpApiIntraUrl != nil {
                 map["httpApiIntraUrl"] = self.httpApiIntraUrl!
             }
@@ -25546,6 +25782,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if self.pushGatewayInterUrl != nil {
                 map["pushGatewayInterUrl"] = self.pushGatewayInterUrl!
             }
+            if self.pushGatewayInternalUrl != nil {
+                map["pushGatewayInternalUrl"] = self.pushGatewayInternalUrl!
+            }
             if self.pushGatewayIntraUrl != nil {
                 map["pushGatewayIntraUrl"] = self.pushGatewayIntraUrl!
             }
@@ -25555,11 +25794,17 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if self.remoteReadInterUrl != nil {
                 map["remoteReadInterUrl"] = self.remoteReadInterUrl!
             }
+            if self.remoteReadInternalUrl != nil {
+                map["remoteReadInternalUrl"] = self.remoteReadInternalUrl!
+            }
             if self.remoteReadIntraUrl != nil {
                 map["remoteReadIntraUrl"] = self.remoteReadIntraUrl!
             }
             if self.remoteWriteInterUrl != nil {
                 map["remoteWriteInterUrl"] = self.remoteWriteInterUrl!
+            }
+            if self.remoteWriteInternalUrl != nil {
+                map["remoteWriteInternalUrl"] = self.remoteWriteInternalUrl!
             }
             if self.remoteWriteIntraUrl != nil {
                 map["remoteWriteIntraUrl"] = self.remoteWriteIntraUrl!
@@ -25642,6 +25887,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if let value = dict["httpApiInterUrl"] as? String {
                 self.httpApiInterUrl = value
             }
+            if let value = dict["httpApiInternalUrl"] as? String {
+                self.httpApiInternalUrl = value
+            }
             if let value = dict["httpApiIntraUrl"] as? String {
                 self.httpApiIntraUrl = value
             }
@@ -25666,6 +25914,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if let value = dict["pushGatewayInterUrl"] as? String {
                 self.pushGatewayInterUrl = value
             }
+            if let value = dict["pushGatewayInternalUrl"] as? String {
+                self.pushGatewayInternalUrl = value
+            }
             if let value = dict["pushGatewayIntraUrl"] as? String {
                 self.pushGatewayIntraUrl = value
             }
@@ -25675,11 +25926,17 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if let value = dict["remoteReadInterUrl"] as? String {
                 self.remoteReadInterUrl = value
             }
+            if let value = dict["remoteReadInternalUrl"] as? String {
+                self.remoteReadInternalUrl = value
+            }
             if let value = dict["remoteReadIntraUrl"] as? String {
                 self.remoteReadIntraUrl = value
             }
             if let value = dict["remoteWriteInterUrl"] as? String {
                 self.remoteWriteInterUrl = value
+            }
+            if let value = dict["remoteWriteInternalUrl"] as? String {
+                self.remoteWriteInternalUrl = value
             }
             if let value = dict["remoteWriteIntraUrl"] as? String {
                 self.remoteWriteIntraUrl = value
@@ -26077,6 +26334,8 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
 
         public var httpApiInterUrl: String?
 
+        public var httpApiInternalUrl: String?
+
         public var httpApiIntraUrl: String?
 
         public var instanceType: String?
@@ -26094,6 +26353,8 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
         public var regionId: String?
 
         public var remoteReadInterUrl: String?
+
+        public var remoteReadInternalUrl: String?
 
         public var remoteReadIntraUrl: String?
 
@@ -26154,6 +26415,9 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
             if self.httpApiInterUrl != nil {
                 map["httpApiInterUrl"] = self.httpApiInterUrl!
             }
+            if self.httpApiInternalUrl != nil {
+                map["httpApiInternalUrl"] = self.httpApiInternalUrl!
+            }
             if self.httpApiIntraUrl != nil {
                 map["httpApiIntraUrl"] = self.httpApiIntraUrl!
             }
@@ -26184,6 +26448,9 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
             }
             if self.remoteReadInterUrl != nil {
                 map["remoteReadInterUrl"] = self.remoteReadInterUrl!
+            }
+            if self.remoteReadInternalUrl != nil {
+                map["remoteReadInternalUrl"] = self.remoteReadInternalUrl!
             }
             if self.remoteReadIntraUrl != nil {
                 map["remoteReadIntraUrl"] = self.remoteReadIntraUrl!
@@ -26248,6 +26515,9 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
             if let value = dict["httpApiInterUrl"] as? String {
                 self.httpApiInterUrl = value
             }
+            if let value = dict["httpApiInternalUrl"] as? String {
+                self.httpApiInternalUrl = value
+            }
             if let value = dict["httpApiIntraUrl"] as? String {
                 self.httpApiIntraUrl = value
             }
@@ -26284,6 +26554,9 @@ public class GetPrometheusViewResponseBody : Tea.TeaModel {
             }
             if let value = dict["remoteReadInterUrl"] as? String {
                 self.remoteReadInterUrl = value
+            }
+            if let value = dict["remoteReadInternalUrl"] as? String {
+                self.remoteReadInternalUrl = value
             }
             if let value = dict["remoteReadIntraUrl"] as? String {
                 self.remoteReadIntraUrl = value
@@ -38220,7 +38493,11 @@ public class ListPrometheusViewsResponse : Tea.TeaModel {
 }
 
 public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
     public var namespace: String?
+
+    public var nextToken: String?
 
     public var tenantId: String?
 
@@ -38238,8 +38515,14 @@ public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
         if self.namespace != nil {
             map["namespace"] = self.namespace!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
         }
         if self.tenantId != nil {
             map["tenantId"] = self.tenantId!
@@ -38249,8 +38532,14 @@ public class ListPrometheusVirtualInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
         if let value = dict["namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["tenantId"] as? String {
             self.tenantId = value
@@ -38331,7 +38620,13 @@ public class ListPrometheusVirtualInstancesResponseBody : Tea.TeaModel {
     }
     public var instances: [ListPrometheusVirtualInstancesResponseBody.Instances]?
 
+    public var maxResults: String?
+
+    public var nextToken: String?
+
     public var requestId: String?
+
+    public var totalCount: String?
 
     public override init() {
         super.init()
@@ -38354,8 +38649,17 @@ public class ListPrometheusVirtualInstancesResponseBody : Tea.TeaModel {
             }
             map["instances"] = tmp
         }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
         }
         return map
     }
@@ -38375,8 +38679,17 @@ public class ListPrometheusVirtualInstancesResponseBody : Tea.TeaModel {
             }
             self.instances = tmp
         }
+        if let value = dict["maxResults"] as? String {
+            self.maxResults = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["totalCount"] as? String {
+            self.totalCount = value
         }
     }
 }

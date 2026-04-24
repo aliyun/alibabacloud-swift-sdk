@@ -3607,8 +3607,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPrometheusVirtualInstancesWithOptions(_ request: ListPrometheusVirtualInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrometheusVirtualInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
         if (!TeaUtils.Client.isUnset(request.namespace)) {
             query["namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["tenantId"] = request.tenantId ?? "";
