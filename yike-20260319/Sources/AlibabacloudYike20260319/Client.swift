@@ -639,6 +639,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setYikeCallbackConfigWithOptions(_ request: SetYikeCallbackConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetYikeCallbackConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callbackConfig)) {
+            query["CallbackConfig"] = request.callbackConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetYikeCallbackConfig",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetYikeCallbackConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setYikeCallbackConfig(_ request: SetYikeCallbackConfigRequest) async throws -> SetYikeCallbackConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setYikeCallbackConfigWithOptions(request as! SetYikeCallbackConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setYikeUserRoleWithOptions(_ request: SetYikeUserRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetYikeUserRoleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

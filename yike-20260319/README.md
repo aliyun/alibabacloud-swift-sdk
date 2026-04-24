@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudYike20260319` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/yike-20260319" "1.1.0"
+github "alibabacloud-sdk-swift/yike-20260319" "1.2.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudYike20260319` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/yike-20260319.git", from: "1.1.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/yike-20260319.git", from: "1.2.0")
 ]
 ```
 
