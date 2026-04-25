@@ -12912,7 +12912,7 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var browserParam: String?
 
-        public var cookiesSync: String?
+        public var cookiesSync: Bool?
 
         public var homepage: String?
 
@@ -12978,7 +12978,7 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             if let value = dict["BrowserParam"] as? String {
                 self.browserParam = value
             }
-            if let value = dict["CookiesSync"] as? String {
+            if let value = dict["CookiesSync"] as? Bool {
                 self.cookiesSync = value
             }
             if let value = dict["Homepage"] as? String {
