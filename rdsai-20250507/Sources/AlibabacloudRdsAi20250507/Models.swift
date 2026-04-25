@@ -13498,6 +13498,8 @@ public class StartInstanceResponse : Tea.TeaModel {
 }
 
 public class StopInstanceRequest : Tea.TeaModel {
+    public var force: Bool?
+
     public var instanceName: String?
 
     public var regionId: String?
@@ -13516,6 +13518,9 @@ public class StopInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -13527,6 +13532,9 @@ public class StopInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Force"] as? Bool {
+            self.force = value
+        }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
         }
