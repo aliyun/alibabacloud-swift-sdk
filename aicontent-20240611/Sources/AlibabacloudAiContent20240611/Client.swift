@@ -2123,6 +2123,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingCostBreakdownWithOptions(_ request: ModelRouterQueryBillingCostBreakdownRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingCostBreakdownResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryBillingCostBreakdown",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/billing/cost/breakdown",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryBillingCostBreakdownResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryBillingCostBreakdown(_ request: ModelRouterQueryBillingCostBreakdownRequest) async throws -> ModelRouterQueryBillingCostBreakdownResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryBillingCostBreakdownWithOptions(request as! ModelRouterQueryBillingCostBreakdownRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterQueryBillingRuleListWithOptions(_ request: ModelRouterQueryBillingRuleListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingRuleListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3002,6 +3053,57 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterQueryObservationMetricsWithOptions(request as! ModelRouterQueryObservationMetricsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryUsageBreakdownWithOptions(_ request: ModelRouterQueryUsageBreakdownRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryUsageBreakdownResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterQueryUsageBreakdown",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/usage/breakdown",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterQueryUsageBreakdownResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterQueryUsageBreakdown(_ request: ModelRouterQueryUsageBreakdownRequest) async throws -> ModelRouterQueryUsageBreakdownResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterQueryUsageBreakdownWithOptions(request as! ModelRouterQueryUsageBreakdownRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
