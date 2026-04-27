@@ -9903,6 +9903,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySupabaseProjectResourceWithOptions(_ request: ModifySupabaseProjectResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySupabaseProjectResourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modifyType)) {
+            query["ModifyType"] = request.modifyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            query["ProjectId"] = request.projectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectSpec)) {
+            query["ProjectSpec"] = request.projectSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageSize)) {
+            query["StorageSize"] = request.storageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySupabaseProjectResource",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySupabaseProjectResourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySupabaseProjectResource(_ request: ModifySupabaseProjectResourceRequest) async throws -> ModifySupabaseProjectResourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySupabaseProjectResourceWithOptions(request as! ModifySupabaseProjectResourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifySupabaseProjectSecurityIpsWithOptions(_ request: ModifySupabaseProjectSecurityIpsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySupabaseProjectSecurityIpsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
