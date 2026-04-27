@@ -1688,9 +1688,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyDBInstanceClassWithOptions(_ request: ModifyDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceClassResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyDBInstanceClassWithOptions(_ tmpReq: ModifyDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceClassResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyDBInstanceClassShrinkRequest = ModifyDBInstanceClassShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.autoScaleConfig)) {
+            request.autoScaleConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.autoScaleConfig, "AutoScaleConfig", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoScaleConfigShrink)) {
+            query["AutoScaleConfig"] = request.autoScaleConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
             query["ComputingGroupId"] = request.computingGroupId ?? "";
         }

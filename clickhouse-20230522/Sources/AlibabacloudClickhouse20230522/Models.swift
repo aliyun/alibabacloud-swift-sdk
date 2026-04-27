@@ -10600,6 +10600,106 @@ public class ModifyDBInstanceAttributeResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceClassRequest : Tea.TeaModel {
+    public class AutoScaleConfig : Tea.TeaModel {
+        public class VSwitchInfos : Tea.TeaModel {
+            public var vSwitchIds: [String]?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["VSwitchIds"] as? [String] {
+                    self.vSwitchIds = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
+        public var burstNum: Int32?
+
+        public var status: String?
+
+        public var vSwitchInfos: [ModifyDBInstanceClassRequest.AutoScaleConfig.VSwitchInfos]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.burstNum != nil {
+                map["BurstNum"] = self.burstNum!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.vSwitchInfos != nil {
+                var tmp : [Any] = []
+                for k in self.vSwitchInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["VSwitchInfos"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BurstNum"] as? Int32 {
+                self.burstNum = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["VSwitchInfos"] as? [Any?] {
+                var tmp : [ModifyDBInstanceClassRequest.AutoScaleConfig.VSwitchInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyDBInstanceClassRequest.AutoScaleConfig.VSwitchInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.vSwitchInfos = tmp
+            }
+        }
+    }
+    public var autoScaleConfig: ModifyDBInstanceClassRequest.AutoScaleConfig?
+
     public var computingGroupId: String?
 
     public var DBInstanceId: String?
@@ -10630,10 +10730,14 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.autoScaleConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoScaleConfig != nil {
+            map["AutoScaleConfig"] = self.autoScaleConfig?.toMap()
+        }
         if self.computingGroupId != nil {
             map["ComputingGroupId"] = self.computingGroupId!
         }
@@ -10669,6 +10773,122 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoScaleConfig"] as? [String: Any?] {
+            var model = ModifyDBInstanceClassRequest.AutoScaleConfig()
+            model.fromMap(value)
+            self.autoScaleConfig = model
+        }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeScaleMax"] as? Int32 {
+            self.nodeScaleMax = value
+        }
+        if let value = dict["NodeScaleMin"] as? Int32 {
+            self.nodeScaleMin = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ScaleMax"] as? Int64 {
+            self.scaleMax = value
+        }
+        if let value = dict["ScaleMin"] as? Int64 {
+            self.scaleMin = value
+        }
+        if let value = dict["StorageQuota"] as? Int64 {
+            self.storageQuota = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
+    }
+}
+
+public class ModifyDBInstanceClassShrinkRequest : Tea.TeaModel {
+    public var autoScaleConfigShrink: String?
+
+    public var computingGroupId: String?
+
+    public var DBInstanceId: String?
+
+    public var nodeCount: Int32?
+
+    public var nodeScaleMax: Int32?
+
+    public var nodeScaleMin: Int32?
+
+    public var regionId: String?
+
+    public var scaleMax: Int64?
+
+    public var scaleMin: Int64?
+
+    public var storageQuota: Int64?
+
+    public var storageType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoScaleConfigShrink != nil {
+            map["AutoScaleConfig"] = self.autoScaleConfigShrink!
+        }
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeScaleMax != nil {
+            map["NodeScaleMax"] = self.nodeScaleMax!
+        }
+        if self.nodeScaleMin != nil {
+            map["NodeScaleMin"] = self.nodeScaleMin!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.scaleMax != nil {
+            map["ScaleMax"] = self.scaleMax!
+        }
+        if self.scaleMin != nil {
+            map["ScaleMin"] = self.scaleMin!
+        }
+        if self.storageQuota != nil {
+            map["StorageQuota"] = self.storageQuota!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoScaleConfig"] as? String {
+            self.autoScaleConfigShrink = value
+        }
         if let value = dict["ComputingGroupId"] as? String {
             self.computingGroupId = value
         }
