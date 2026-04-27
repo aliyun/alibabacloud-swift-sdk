@@ -63,6 +63,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createWorkspaceWithOptions(_ request: CreateWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serviceSite)) {
+            query["serviceSite"] = request.serviceSite ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceName)) {
             query["workspaceName"] = request.workspaceName ?? "";
         }
@@ -200,6 +203,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["workspaceId"] = request.workspaceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceName)) {
             query["workspaceName"] = request.workspaceName ?? "";

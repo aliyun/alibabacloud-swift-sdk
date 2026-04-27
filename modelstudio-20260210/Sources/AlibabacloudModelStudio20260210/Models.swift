@@ -239,6 +239,8 @@ public class CreateApiKeyResponse : Tea.TeaModel {
 }
 
 public class CreateWorkspaceRequest : Tea.TeaModel {
+    public var serviceSite: String?
+
     public var workspaceName: String?
 
     public override init() {
@@ -255,6 +257,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.serviceSite != nil {
+            map["serviceSite"] = self.serviceSite!
+        }
         if self.workspaceName != nil {
             map["workspaceName"] = self.workspaceName!
         }
@@ -263,6 +268,9 @@ public class CreateWorkspaceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["serviceSite"] as? String {
+            self.serviceSite = value
+        }
         if let value = dict["workspaceName"] as? String {
             self.workspaceName = value
         }
@@ -1083,6 +1091,8 @@ public class ListWorkspacesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var workspaceId: String?
+
     public var workspaceName: String?
 
     public override init() {
@@ -1105,6 +1115,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
         if self.workspaceName != nil {
             map["workspaceName"] = self.workspaceName!
         }
@@ -1118,6 +1131,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
         }
         if let value = dict["workspaceName"] as? String {
             self.workspaceName = value
