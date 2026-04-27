@@ -3107,6 +3107,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterSaveFlowConfigWithOptions(_ request: ModelRouterSaveFlowConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterSaveFlowConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rpm)) {
+            body["rpm"] = request.rpm!;
+        }
+        if (!TeaUtils.Client.isUnset(request.smoothFlowEnabled)) {
+            body["smoothFlowEnabled"] = request.smoothFlowEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tpm)) {
+            body["tpm"] = request.tpm!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterSaveFlowConfig",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/flow-config",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterSaveFlowConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterSaveFlowConfig(_ request: ModelRouterSaveFlowConfigRequest) async throws -> ModelRouterSaveFlowConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterSaveFlowConfigWithOptions(request as! ModelRouterSaveFlowConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterUpdateBillingRuleWithOptions(_ id: String, _ request: ModelRouterUpdateBillingRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterUpdateBillingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
