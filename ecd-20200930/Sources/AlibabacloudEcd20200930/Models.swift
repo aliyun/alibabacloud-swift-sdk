@@ -11429,6 +11429,36 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
         }
     }
+    public class PurchaseOptions : Tea.TeaModel {
+        public var monthlyCredits: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.monthlyCredits != nil {
+                map["MonthlyCredits"] = self.monthlyCredits!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MonthlyCredits"] as? Int32 {
+                self.monthlyCredits = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -11561,6 +11591,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var purchaseOptions: CreateDesktopsRequest.PurchaseOptions?
+
     public var qosRuleId: String?
 
     public var regionId: String?
@@ -11603,6 +11635,7 @@ public class CreateDesktopsRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.desktopAttachment?.validate()
         try self.monthDesktopSetting?.validate()
+        try self.purchaseOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11686,6 +11719,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
+        }
+        if self.purchaseOptions != nil {
+            map["PurchaseOptions"] = self.purchaseOptions?.toMap()
         }
         if self.qosRuleId != nil {
             map["QosRuleId"] = self.qosRuleId!
@@ -11840,6 +11876,11 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["PurchaseOptions"] as? [String: Any?] {
+            var model = CreateDesktopsRequest.PurchaseOptions()
+            model.fromMap(value)
+            self.purchaseOptions = model
         }
         if let value = dict["QosRuleId"] as? String {
             self.qosRuleId = value
@@ -12244,6 +12285,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var purchaseOptionsShrink: String?
+
     public var qosRuleId: String?
 
     public var regionId: String?
@@ -12368,6 +12411,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
+        }
+        if self.purchaseOptionsShrink != nil {
+            map["PurchaseOptions"] = self.purchaseOptionsShrink!
         }
         if self.qosRuleId != nil {
             map["QosRuleId"] = self.qosRuleId!
@@ -12520,6 +12566,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["PurchaseOptions"] as? String {
+            self.purchaseOptionsShrink = value
         }
         if let value = dict["QosRuleId"] as? String {
             self.qosRuleId = value
@@ -15622,6 +15671,8 @@ public class CreatePolicyGroupResponse : Tea.TeaModel {
 public class CreateQosRuleRequest : Tea.TeaModel {
     public var authAndroidId: [String]?
 
+    public var authDesktopGroupId: [String]?
+
     public var authDesktopId: [String]?
 
     public var download: Int32?
@@ -15649,6 +15700,9 @@ public class CreateQosRuleRequest : Tea.TeaModel {
         if self.authAndroidId != nil {
             map["AuthAndroidId"] = self.authAndroidId!
         }
+        if self.authDesktopGroupId != nil {
+            map["AuthDesktopGroupId"] = self.authDesktopGroupId!
+        }
         if self.authDesktopId != nil {
             map["AuthDesktopId"] = self.authDesktopId!
         }
@@ -15671,6 +15725,9 @@ public class CreateQosRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AuthAndroidId"] as? [String] {
             self.authAndroidId = value
+        }
+        if let value = dict["AuthDesktopGroupId"] as? [String] {
+            self.authDesktopGroupId = value
         }
         if let value = dict["AuthDesktopId"] as? [String] {
             self.authDesktopId = value
@@ -27861,6 +27918,8 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
 
     public var protocolType: String?
 
+    public var qosRuleId: String?
+
     public var regionId: String?
 
     public var status: Int32?
@@ -27932,6 +27991,9 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
         }
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28000,6 +28062,9 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["ProtocolType"] as? String {
             self.protocolType = value
+        }
+        if let value = dict["QosRuleId"] as? String {
+            self.qosRuleId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -28191,6 +28256,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var protocolType: String?
 
+        public var qosRuleId: String?
+
         public var ratioThreshold: Double?
 
         public var resetType: Int64?
@@ -28371,6 +28438,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.protocolType != nil {
                 map["ProtocolType"] = self.protocolType!
+            }
+            if self.qosRuleId != nil {
+                map["QosRuleId"] = self.qosRuleId!
             }
             if self.ratioThreshold != nil {
                 map["RatioThreshold"] = self.ratioThreshold!
@@ -28567,6 +28637,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProtocolType"] as? String {
                 self.protocolType = value
+            }
+            if let value = dict["QosRuleId"] as? String {
+                self.qosRuleId = value
             }
             if let value = dict["RatioThreshold"] as? Double {
                 self.ratioThreshold = value
@@ -45721,6 +45794,8 @@ public class DescribeQosRulesResponseBody : Tea.TeaModel {
     public class QosRules : Tea.TeaModel {
         public var desktopCount: String?
 
+        public var desktopGroupCount: Int32?
+
         public var download: String?
 
         public var networkPackageId: String?
@@ -45748,6 +45823,9 @@ public class DescribeQosRulesResponseBody : Tea.TeaModel {
             if self.desktopCount != nil {
                 map["DesktopCount"] = self.desktopCount!
             }
+            if self.desktopGroupCount != nil {
+                map["DesktopGroupCount"] = self.desktopGroupCount!
+            }
             if self.download != nil {
                 map["Download"] = self.download!
             }
@@ -45770,6 +45848,9 @@ public class DescribeQosRulesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["DesktopCount"] as? String {
                 self.desktopCount = value
+            }
+            if let value = dict["DesktopGroupCount"] as? Int32 {
+                self.desktopGroupCount = value
             }
             if let value = dict["Download"] as? String {
                 self.download = value
@@ -69335,11 +69416,15 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
 public class ModifyQosEntriesRequest : Tea.TeaModel {
     public var authAndroidId: [String]?
 
+    public var authDesktopGroupId: [String]?
+
     public var authDesktopId: [String]?
 
     public var qosRuleId: String?
 
     public var revokeAndroidId: [String]?
+
+    public var revokeDesktopGroupId: [String]?
 
     public var revokeDesktopId: [String]?
 
@@ -69360,6 +69445,9 @@ public class ModifyQosEntriesRequest : Tea.TeaModel {
         if self.authAndroidId != nil {
             map["AuthAndroidId"] = self.authAndroidId!
         }
+        if self.authDesktopGroupId != nil {
+            map["AuthDesktopGroupId"] = self.authDesktopGroupId!
+        }
         if self.authDesktopId != nil {
             map["AuthDesktopId"] = self.authDesktopId!
         }
@@ -69368,6 +69456,9 @@ public class ModifyQosEntriesRequest : Tea.TeaModel {
         }
         if self.revokeAndroidId != nil {
             map["RevokeAndroidId"] = self.revokeAndroidId!
+        }
+        if self.revokeDesktopGroupId != nil {
+            map["RevokeDesktopGroupId"] = self.revokeDesktopGroupId!
         }
         if self.revokeDesktopId != nil {
             map["RevokeDesktopId"] = self.revokeDesktopId!
@@ -69380,6 +69471,9 @@ public class ModifyQosEntriesRequest : Tea.TeaModel {
         if let value = dict["AuthAndroidId"] as? [String] {
             self.authAndroidId = value
         }
+        if let value = dict["AuthDesktopGroupId"] as? [String] {
+            self.authDesktopGroupId = value
+        }
         if let value = dict["AuthDesktopId"] as? [String] {
             self.authDesktopId = value
         }
@@ -69388,6 +69482,9 @@ public class ModifyQosEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["RevokeAndroidId"] as? [String] {
             self.revokeAndroidId = value
+        }
+        if let value = dict["RevokeDesktopGroupId"] as? [String] {
+            self.revokeDesktopGroupId = value
         }
         if let value = dict["RevokeDesktopId"] as? [String] {
             self.revokeDesktopId = value
