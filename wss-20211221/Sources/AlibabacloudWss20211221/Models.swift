@@ -953,6 +953,8 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
 
         public var components: [DescribeMultiPriceRequest.OrderItems.Components]?
 
+        public var data: String?
+
         public var instanceIds: [String]?
 
         public var period: Int32?
@@ -990,6 +992,9 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Components"] = tmp
+            }
+            if self.data != nil {
+                map["Data"] = self.data!
             }
             if self.instanceIds != nil {
                 map["InstanceIds"] = self.instanceIds!
@@ -1032,6 +1037,9 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
                     }
                 }
                 self.components = tmp
+            }
+            if let value = dict["Data"] as? String {
+                self.data = value
             }
             if let value = dict["InstanceIds"] as? [String] {
                 self.instanceIds = value
