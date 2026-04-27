@@ -5575,6 +5575,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var tags: [GetInstanceResponseBody.Tags]?
 
+    public var tenantId: String?
+
     public var terminalUrl: String?
 
     public var userCommandId: String?
@@ -5782,6 +5784,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
         }
         if self.terminalUrl != nil {
             map["TerminalUrl"] = self.terminalUrl!
@@ -6035,6 +6040,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
         }
         if let value = dict["TerminalUrl"] as? String {
             self.terminalUrl = value
@@ -11303,6 +11311,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var tags: [ListInstancesResponseBody.Instances.Tags]?
 
+        public var tenantId: String?
+
         public var terminalUrl: String?
 
         public var userId: String?
@@ -11475,6 +11485,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
             }
             if self.terminalUrl != nil {
                 map["TerminalUrl"] = self.terminalUrl!
@@ -11684,6 +11697,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["TenantId"] as? String {
+                self.tenantId = value
             }
             if let value = dict["TerminalUrl"] as? String {
                 self.terminalUrl = value
