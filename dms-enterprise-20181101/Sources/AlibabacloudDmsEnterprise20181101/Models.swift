@@ -95,6 +95,8 @@ public class ColumnKnowledgeInfo : Tea.TeaModel {
 
     public var description_: String?
 
+    public var level: Int32?
+
     public var position: Int32?
 
     public override init() {
@@ -126,6 +128,9 @@ public class ColumnKnowledgeInfo : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.level != nil {
+            map["Level"] = self.level!
+        }
         if self.position != nil {
             map["Position"] = self.position!
         }
@@ -148,6 +153,9 @@ public class ColumnKnowledgeInfo : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Level"] as? Int32 {
+            self.level = value
         }
         if let value = dict["Position"] as? Int32 {
             self.position = value
@@ -2685,6 +2693,8 @@ public class TableKnowledgeInfo : Tea.TeaModel {
 
     public var description_: String?
 
+    public var level: Int32?
+
     public var summary: String?
 
     public var tableName: String?
@@ -2719,6 +2729,9 @@ public class TableKnowledgeInfo : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.level != nil {
+            map["Level"] = self.level!
+        }
         if self.summary != nil {
             map["Summary"] = self.summary!
         }
@@ -2751,6 +2764,9 @@ public class TableKnowledgeInfo : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Level"] as? Int32 {
+            self.level = value
         }
         if let value = dict["Summary"] as? String {
             self.summary = value
