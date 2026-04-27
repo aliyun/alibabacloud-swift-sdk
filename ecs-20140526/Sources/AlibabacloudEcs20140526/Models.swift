@@ -7994,6 +7994,44 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class CandidateOptions : Tea.TeaModel {
+        public var evaluate: Bool?
+
+        public var timeoutMinutes: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.evaluate != nil {
+                map["Evaluate"] = self.evaluate!
+            }
+            if self.timeoutMinutes != nil {
+                map["TimeoutMinutes"] = self.timeoutMinutes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Evaluate"] as? Bool {
+                self.evaluate = value
+            }
+            if let value = dict["TimeoutMinutes"] as? Int32 {
+                self.timeoutMinutes = value
+            }
+        }
+    }
     public class DataDiskConfig : Tea.TeaModel {
         public var diskCategory: String?
 
@@ -8344,6 +8382,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
     public var autoProvisioningGroupType: String?
 
+    public var candidateOptions: CreateAutoProvisioningGroupRequest.CandidateOptions?
+
     public var clientToken: String?
 
     public var dataDiskConfig: [CreateAutoProvisioningGroupRequest.DataDiskConfig]?
@@ -8421,6 +8461,7 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.launchConfiguration?.validate()
+        try self.candidateOptions?.validate()
         try self.prePaidOptions?.validate()
         try self.resourcePoolOptions?.validate()
     }
@@ -8435,6 +8476,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
         }
         if self.autoProvisioningGroupType != nil {
             map["AutoProvisioningGroupType"] = self.autoProvisioningGroupType!
+        }
+        if self.candidateOptions != nil {
+            map["CandidateOptions"] = self.candidateOptions?.toMap()
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -8566,6 +8610,11 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
         }
         if let value = dict["AutoProvisioningGroupType"] as? String {
             self.autoProvisioningGroupType = value
+        }
+        if let value = dict["CandidateOptions"] as? [String: Any?] {
+            var model = CreateAutoProvisioningGroupRequest.CandidateOptions()
+            model.fromMap(value)
+            self.candidateOptions = model
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -9545,6 +9594,44 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class CandidateOptions : Tea.TeaModel {
+        public var evaluate: Bool?
+
+        public var timeoutMinutes: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.evaluate != nil {
+                map["Evaluate"] = self.evaluate!
+            }
+            if self.timeoutMinutes != nil {
+                map["TimeoutMinutes"] = self.timeoutMinutes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Evaluate"] as? Bool {
+                self.evaluate = value
+            }
+            if let value = dict["TimeoutMinutes"] as? Int32 {
+                self.timeoutMinutes = value
+            }
+        }
+    }
     public class DataDiskConfig : Tea.TeaModel {
         public var diskCategory: String?
 
@@ -9857,6 +9944,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
     public var autoProvisioningGroupType: String?
 
+    public var candidateOptions: CreateAutoProvisioningGroupShrinkRequest.CandidateOptions?
+
     public var clientToken: String?
 
     public var dataDiskConfig: [CreateAutoProvisioningGroupShrinkRequest.DataDiskConfig]?
@@ -9934,6 +10023,7 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.launchConfiguration?.validate()
+        try self.candidateOptions?.validate()
         try self.prePaidOptions?.validate()
     }
 
@@ -9947,6 +10037,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
         }
         if self.autoProvisioningGroupType != nil {
             map["AutoProvisioningGroupType"] = self.autoProvisioningGroupType!
+        }
+        if self.candidateOptions != nil {
+            map["CandidateOptions"] = self.candidateOptions?.toMap()
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -10078,6 +10171,11 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AutoProvisioningGroupType"] as? String {
             self.autoProvisioningGroupType = value
+        }
+        if let value = dict["CandidateOptions"] as? [String: Any?] {
+            var model = CreateAutoProvisioningGroupShrinkRequest.CandidateOptions()
+            model.fromMap(value)
+            self.candidateOptions = model
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -10258,6 +10356,8 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
             }
             public var amount: Int32?
 
+            public var candidateEvaluateLevel: String?
+
             public var errorCode: String?
 
             public var errorMsg: String?
@@ -10288,6 +10388,9 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
                 if self.amount != nil {
                     map["Amount"] = self.amount!
                 }
+                if self.candidateEvaluateLevel != nil {
+                    map["CandidateEvaluateLevel"] = self.candidateEvaluateLevel!
+                }
                 if self.errorCode != nil {
                     map["ErrorCode"] = self.errorCode!
                 }
@@ -10313,6 +10416,9 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Amount"] as? Int32 {
                     self.amount = value
+                }
+                if let value = dict["CandidateEvaluateLevel"] as? String {
+                    self.candidateEvaluateLevel = value
                 }
                 if let value = dict["ErrorCode"] as? String {
                     self.errorCode = value
@@ -32634,7 +32740,196 @@ public class DescribeAutoProvisioningGroupHistoryResponseBody : Tea.TeaModel {
         public class AutoProvisioningGroupHistory : Tea.TeaModel {
             public class ActivityDetails : Tea.TeaModel {
                 public class ActivityDetail : Tea.TeaModel {
+                    public class CreatedInstanceIds : Tea.TeaModel {
+                        public var createdInstanceId: [String]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.createdInstanceId != nil {
+                                map["CreatedInstanceId"] = self.createdInstanceId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["CreatedInstanceId"] as? [String] {
+                                self.createdInstanceId = value
+                            }
+                        }
+                    }
+                    public class DestroyedInstanceIds : Tea.TeaModel {
+                        public var destroyedInstanceId: [String]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.destroyedInstanceId != nil {
+                                map["DestroyedInstanceId"] = self.destroyedInstanceId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["DestroyedInstanceId"] as? [String] {
+                                self.destroyedInstanceId = value
+                            }
+                        }
+                    }
+                    public class ErrorMessages : Tea.TeaModel {
+                        public class ErrorMessage : Tea.TeaModel {
+                            public class FailedInstanceIds : Tea.TeaModel {
+                                public var failedInstanceId: [String]?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.failedInstanceId != nil {
+                                        map["FailedInstanceId"] = self.failedInstanceId!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                    guard let dict else { return }
+                                    if let value = dict["FailedInstanceId"] as? [String] {
+                                        self.failedInstanceId = value
+                                    }
+                                }
+                            }
+                            public var code: String?
+
+                            public var failedInstanceIds: DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages.ErrorMessage.FailedInstanceIds?
+
+                            public var message: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                                try self.failedInstanceIds?.validate()
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.code != nil {
+                                    map["Code"] = self.code!
+                                }
+                                if self.failedInstanceIds != nil {
+                                    map["FailedInstanceIds"] = self.failedInstanceIds?.toMap()
+                                }
+                                if self.message != nil {
+                                    map["Message"] = self.message!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["Code"] as? String {
+                                    self.code = value
+                                }
+                                if let value = dict["FailedInstanceIds"] as? [String: Any?] {
+                                    var model = DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages.ErrorMessage.FailedInstanceIds()
+                                    model.fromMap(value)
+                                    self.failedInstanceIds = model
+                                }
+                                if let value = dict["Message"] as? String {
+                                    self.message = value
+                                }
+                            }
+                        }
+                        public var errorMessage: [DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages.ErrorMessage]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.errorMessage != nil {
+                                var tmp : [Any] = []
+                                for k in self.errorMessage! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["ErrorMessage"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["ErrorMessage"] as? [Any?] {
+                                var tmp : [DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages.ErrorMessage] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages.ErrorMessage()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.errorMessage = tmp
+                            }
+                        }
+                    }
+                    public var createdInstanceIds: DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.CreatedInstanceIds?
+
+                    public var destroyedInstanceIds: DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.DestroyedInstanceIds?
+
                     public var detail: String?
+
+                    public var errorMessages: DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages?
 
                     public var status: String?
 
@@ -32648,12 +32943,24 @@ public class DescribeAutoProvisioningGroupHistoryResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.createdInstanceIds?.validate()
+                        try self.destroyedInstanceIds?.validate()
+                        try self.errorMessages?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.createdInstanceIds != nil {
+                            map["CreatedInstanceIds"] = self.createdInstanceIds?.toMap()
+                        }
+                        if self.destroyedInstanceIds != nil {
+                            map["DestroyedInstanceIds"] = self.destroyedInstanceIds?.toMap()
+                        }
                         if self.detail != nil {
                             map["Detail"] = self.detail!
+                        }
+                        if self.errorMessages != nil {
+                            map["ErrorMessages"] = self.errorMessages?.toMap()
                         }
                         if self.status != nil {
                             map["Status"] = self.status!
@@ -32663,8 +32970,23 @@ public class DescribeAutoProvisioningGroupHistoryResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["CreatedInstanceIds"] as? [String: Any?] {
+                            var model = DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.CreatedInstanceIds()
+                            model.fromMap(value)
+                            self.createdInstanceIds = model
+                        }
+                        if let value = dict["DestroyedInstanceIds"] as? [String: Any?] {
+                            var model = DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.DestroyedInstanceIds()
+                            model.fromMap(value)
+                            self.destroyedInstanceIds = model
+                        }
                         if let value = dict["Detail"] as? String {
                             self.detail = value
+                        }
+                        if let value = dict["ErrorMessages"] as? [String: Any?] {
+                            var model = DescribeAutoProvisioningGroupHistoryResponseBody.AutoProvisioningGroupHistories.AutoProvisioningGroupHistory.ActivityDetails.ActivityDetail.ErrorMessages()
+                            model.fromMap(value)
+                            self.errorMessages = model
                         }
                         if let value = dict["Status"] as? String {
                             self.status = value
@@ -33346,6 +33668,8 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
 
     public var autoProvisioningGroupStatus: [String]?
 
+    public var autoProvisioningGroupTypes: [String]?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -33386,6 +33710,9 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
         }
         if self.autoProvisioningGroupStatus != nil {
             map["AutoProvisioningGroupStatus"] = self.autoProvisioningGroupStatus!
+        }
+        if self.autoProvisioningGroupTypes != nil {
+            map["AutoProvisioningGroupTypes"] = self.autoProvisioningGroupTypes!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -33432,6 +33759,9 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
         if let value = dict["AutoProvisioningGroupStatus"] as? [String] {
             self.autoProvisioningGroupStatus = value
         }
+        if let value = dict["AutoProvisioningGroupTypes"] as? [String] {
+            self.autoProvisioningGroupTypes = value
+        }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
         }
@@ -33475,6 +33805,90 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
 public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
     public class AutoProvisioningGroups : Tea.TeaModel {
         public class AutoProvisioningGroup : Tea.TeaModel {
+            public class CandidateOptions : Tea.TeaModel {
+                public var timeoutMinutes: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.timeoutMinutes != nil {
+                        map["TimeoutMinutes"] = self.timeoutMinutes!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TimeoutMinutes"] as? Int32 {
+                        self.timeoutMinutes = value
+                    }
+                }
+            }
+            public class CapacitySpecification : Tea.TeaModel {
+                public var payAsYouGoCapacity: Double?
+
+                public var prePaidCapacity: Double?
+
+                public var spotCapacity: Double?
+
+                public var totalCapacity: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.payAsYouGoCapacity != nil {
+                        map["PayAsYouGoCapacity"] = self.payAsYouGoCapacity!
+                    }
+                    if self.prePaidCapacity != nil {
+                        map["PrePaidCapacity"] = self.prePaidCapacity!
+                    }
+                    if self.spotCapacity != nil {
+                        map["SpotCapacity"] = self.spotCapacity!
+                    }
+                    if self.totalCapacity != nil {
+                        map["TotalCapacity"] = self.totalCapacity!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PayAsYouGoCapacity"] as? Double {
+                        self.payAsYouGoCapacity = value
+                    }
+                    if let value = dict["PrePaidCapacity"] as? Double {
+                        self.prePaidCapacity = value
+                    }
+                    if let value = dict["SpotCapacity"] as? Double {
+                        self.spotCapacity = value
+                    }
+                    if let value = dict["TotalCapacity"] as? Double {
+                        self.totalCapacity = value
+                    }
+                }
+            }
             public class LaunchTemplateConfigs : Tea.TeaModel {
                 public class LaunchTemplateConfig : Tea.TeaModel {
                     public var instanceType: String?
@@ -33657,6 +34071,36 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SuspendedProcesses : Tea.TeaModel {
+                public var suspendedProcess: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.suspendedProcess != nil {
+                        map["SuspendedProcess"] = self.suspendedProcess!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SuspendedProcess"] as? [String] {
+                        self.suspendedProcess = value
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -33799,6 +34243,10 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
 
             public var autoProvisioningGroupType: String?
 
+            public var candidateOptions: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.CandidateOptions?
+
+            public var capacitySpecification: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.CapacitySpecification?
+
             public var creationTime: String?
 
             public var excessCapacityTerminationPolicy: String?
@@ -33823,6 +34271,8 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var suspendedProcesses: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.SuspendedProcesses?
+
             public var tags: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags?
 
             public var targetCapacitySpecification: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.TargetCapacitySpecification?
@@ -33845,9 +34295,12 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.candidateOptions?.validate()
+                try self.capacitySpecification?.validate()
                 try self.launchTemplateConfigs?.validate()
                 try self.payAsYouGoOptions?.validate()
                 try self.spotOptions?.validate()
+                try self.suspendedProcesses?.validate()
                 try self.tags?.validate()
                 try self.targetCapacitySpecification?.validate()
             }
@@ -33862,6 +34315,12 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 }
                 if self.autoProvisioningGroupType != nil {
                     map["AutoProvisioningGroupType"] = self.autoProvisioningGroupType!
+                }
+                if self.candidateOptions != nil {
+                    map["CandidateOptions"] = self.candidateOptions?.toMap()
+                }
+                if self.capacitySpecification != nil {
+                    map["CapacitySpecification"] = self.capacitySpecification?.toMap()
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
@@ -33899,6 +34358,9 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.suspendedProcesses != nil {
+                    map["SuspendedProcesses"] = self.suspendedProcesses?.toMap()
+                }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
@@ -33930,6 +34392,16 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AutoProvisioningGroupType"] as? String {
                     self.autoProvisioningGroupType = value
+                }
+                if let value = dict["CandidateOptions"] as? [String: Any?] {
+                    var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.CandidateOptions()
+                    model.fromMap(value)
+                    self.candidateOptions = model
+                }
+                if let value = dict["CapacitySpecification"] as? [String: Any?] {
+                    var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.CapacitySpecification()
+                    model.fromMap(value)
+                    self.capacitySpecification = model
                 }
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
@@ -33972,6 +34444,11 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
+                }
+                if let value = dict["SuspendedProcesses"] as? [String: Any?] {
+                    var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.SuspendedProcesses()
+                    model.fromMap(value)
+                    self.suspendedProcesses = model
                 }
                 if let value = dict["Tags"] as? [String: Any?] {
                     var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags()
@@ -62130,6 +62607,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
                 public var hyperThreadingAdjustable: Bool?
 
+                public var nestedVirtualizationSupport: String?
+
                 public var supportedTopologyTypes: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.CpuOptions.SupportedTopologyTypes?
 
                 public var threadsPerCore: Int32?
@@ -62158,6 +62637,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     if self.hyperThreadingAdjustable != nil {
                         map["HyperThreadingAdjustable"] = self.hyperThreadingAdjustable!
                     }
+                    if self.nestedVirtualizationSupport != nil {
+                        map["NestedVirtualizationSupport"] = self.nestedVirtualizationSupport!
+                    }
                     if self.supportedTopologyTypes != nil {
                         map["SupportedTopologyTypes"] = self.supportedTopologyTypes?.toMap()
                     }
@@ -62177,6 +62659,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["HyperThreadingAdjustable"] as? Bool {
                         self.hyperThreadingAdjustable = value
+                    }
+                    if let value = dict["NestedVirtualizationSupport"] as? String {
+                        self.nestedVirtualizationSupport = value
                     }
                     if let value = dict["SupportedTopologyTypes"] as? [String: Any?] {
                         var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.CpuOptions.SupportedTopologyTypes()
