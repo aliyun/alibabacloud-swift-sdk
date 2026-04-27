@@ -3999,8 +3999,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.rerank)) {
             body["rerank"] = request.rerank!;
         }
-        if (!TeaUtils.Client.isUnset(request.retrieveLevel)) {
-            body["retrieveLevel"] = request.retrieveLevel ?? "";
+        if (!TeaUtils.Client.isUnset(request.retrievalOption)) {
+            body["retrievalOption"] = request.retrievalOption ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.runId)) {
             body["runId"] = request.runId ?? "";

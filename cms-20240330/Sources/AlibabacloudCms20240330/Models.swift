@@ -4984,7 +4984,7 @@ public class EntityDiscoverRule : Tea.TeaModel {
 
     public var instanceIds: [String]?
 
-    public var ipMatchRule: [EntityDiscoverRule.IpMatchRule]?
+    public var ipMatchRule: EntityDiscoverRule.IpMatchRule?
 
     public var labels: [EntityDiscoverRule.Labels]?
 
@@ -5004,6 +5004,7 @@ public class EntityDiscoverRule : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.ipMatchRule?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5029,11 +5030,7 @@ public class EntityDiscoverRule : Tea.TeaModel {
             map["instanceIds"] = self.instanceIds!
         }
         if self.ipMatchRule != nil {
-            var tmp : [Any] = []
-            for k in self.ipMatchRule! {
-                tmp.append(k.toMap())
-            }
-            map["ipMatchRule"] = tmp
+            map["ipMatchRule"] = self.ipMatchRule?.toMap()
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -5092,18 +5089,10 @@ public class EntityDiscoverRule : Tea.TeaModel {
         if let value = dict["instanceIds"] as? [String] {
             self.instanceIds = value
         }
-        if let value = dict["ipMatchRule"] as? [Any?] {
-            var tmp : [EntityDiscoverRule.IpMatchRule] = []
-            for v in value {
-                if v != nil {
-                    var model = EntityDiscoverRule.IpMatchRule()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.ipMatchRule = tmp
+        if let value = dict["ipMatchRule"] as? [String: Any?] {
+            var model = EntityDiscoverRule.IpMatchRule()
+            model.fromMap(value)
+            self.ipMatchRule = model
         }
         if let value = dict["labels"] as? [Any?] {
             var tmp : [EntityDiscoverRule.Labels] = []
@@ -40711,7 +40700,7 @@ public class SearchMemoriesRequest : Tea.TeaModel {
 
     public var rerank: Bool?
 
-    public var retrieveLevel: String?
+    public var retrievalOption: String?
 
     public var runId: String?
 
@@ -40752,8 +40741,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if self.rerank != nil {
             map["rerank"] = self.rerank!
         }
-        if self.retrieveLevel != nil {
-            map["retrieveLevel"] = self.retrieveLevel!
+        if self.retrievalOption != nil {
+            map["retrievalOption"] = self.retrievalOption!
         }
         if self.runId != nil {
             map["runId"] = self.runId!
@@ -40790,8 +40779,8 @@ public class SearchMemoriesRequest : Tea.TeaModel {
         if let value = dict["rerank"] as? Bool {
             self.rerank = value
         }
-        if let value = dict["retrieveLevel"] as? String {
-            self.retrieveLevel = value
+        if let value = dict["retrievalOption"] as? String {
+            self.retrievalOption = value
         }
         if let value = dict["runId"] as? String {
             self.runId = value
