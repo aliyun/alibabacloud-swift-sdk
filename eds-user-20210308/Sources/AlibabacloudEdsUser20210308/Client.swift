@@ -664,6 +664,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.businessChannel)) {
             query["BusinessChannel"] = request.businessChannel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeOrgIds)) {
+            query["IncludeOrgIds"] = request.includeOrgIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -753,6 +756,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeResourceGroups(_ request: DescribeResourceGroupsRequest) async throws -> DescribeResourceGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeResourceGroupsWithOptions(request as! DescribeResourceGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUserWithOptions(_ request: DescribeUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessChannel)) {
+            query["BusinessChannel"] = request.businessChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            query["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requireExtraAttributes)) {
+            query["RequireExtraAttributes"] = request.requireExtraAttributes ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeUser",
+            "version": "2021-03-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeUser(_ request: DescribeUserRequest) async throws -> DescribeUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeUserWithOptions(request as! DescribeUserRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -912,6 +952,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.propertyKeyValueFilterParam)) {
             query["PropertyKeyValueFilterParam"] = request.propertyKeyValueFilterParam ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.showExtras)) {
+            query["ShowExtras"] = request.showExtras ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status!;
