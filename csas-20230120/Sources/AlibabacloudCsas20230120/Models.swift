@@ -25959,6 +25959,546 @@ public class ListExcessiveDeviceRegistrationApplicationsResponse : Tea.TeaModel 
     }
 }
 
+public class ListForwardStrategiesRequest : Tea.TeaModel {
+    public var currentPage: String?
+
+    public var destinationIds: [String]?
+
+    public var destinationType: String?
+
+    public var forwardIds: [String]?
+
+    public var name: String?
+
+    public var pageSize: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.destinationIds != nil {
+            map["DestinationIds"] = self.destinationIds!
+        }
+        if self.destinationType != nil {
+            map["DestinationType"] = self.destinationType!
+        }
+        if self.forwardIds != nil {
+            map["ForwardIds"] = self.forwardIds!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? String {
+            self.currentPage = value
+        }
+        if let value = dict["DestinationIds"] as? [String] {
+            self.destinationIds = value
+        }
+        if let value = dict["DestinationType"] as? String {
+            self.destinationType = value
+        }
+        if let value = dict["ForwardIds"] as? [String] {
+            self.forwardIds = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+    }
+}
+
+public class ListForwardStrategiesResponseBody : Tea.TeaModel {
+    public class ForwardStrategies : Tea.TeaModel {
+        public var description_: String?
+
+        public var destinationId: String?
+
+        public var destinationType: String?
+
+        public var forwardId: String?
+
+        public var name: String?
+
+        public var priority: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.destinationId != nil {
+                map["DestinationId"] = self.destinationId!
+            }
+            if self.destinationType != nil {
+                map["DestinationType"] = self.destinationType!
+            }
+            if self.forwardId != nil {
+                map["ForwardId"] = self.forwardId!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DestinationId"] as? String {
+                self.destinationId = value
+            }
+            if let value = dict["DestinationType"] as? String {
+                self.destinationType = value
+            }
+            if let value = dict["ForwardId"] as? String {
+                self.forwardId = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Priority"] as? String {
+                self.priority = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var forwardStrategies: [ListForwardStrategiesResponseBody.ForwardStrategies]?
+
+    public var requestId: String?
+
+    public var totalNum: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forwardStrategies != nil {
+            var tmp : [Any] = []
+            for k in self.forwardStrategies! {
+                tmp.append(k.toMap())
+            }
+            map["ForwardStrategies"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ForwardStrategies"] as? [Any?] {
+            var tmp : [ListForwardStrategiesResponseBody.ForwardStrategies] = []
+            for v in value {
+                if v != nil {
+                    var model = ListForwardStrategiesResponseBody.ForwardStrategies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.forwardStrategies = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalNum"] as? Int64 {
+            self.totalNum = value
+        }
+    }
+}
+
+public class ListForwardStrategiesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListForwardStrategiesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListForwardStrategiesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListForwardStrategyBindingItemsRequest : Tea.TeaModel {
+    public var forwardIds: [String]?
+
+    public var itemType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forwardIds != nil {
+            map["ForwardIds"] = self.forwardIds!
+        }
+        if self.itemType != nil {
+            map["ItemType"] = self.itemType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ForwardIds"] as? [String] {
+            self.forwardIds = value
+        }
+        if let value = dict["ItemType"] as? String {
+            self.itemType = value
+        }
+    }
+}
+
+public class ListForwardStrategyBindingItemsResponseBody : Tea.TeaModel {
+    public class ForwardStrategyBindingItemsList : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var applicationId: String?
+
+            public var applicationName: String?
+
+            public var tagId: String?
+
+            public var tagName: String?
+
+            public var userGroupId: String?
+
+            public var userGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationId != nil {
+                    map["ApplicationId"] = self.applicationId!
+                }
+                if self.applicationName != nil {
+                    map["ApplicationName"] = self.applicationName!
+                }
+                if self.tagId != nil {
+                    map["TagId"] = self.tagId!
+                }
+                if self.tagName != nil {
+                    map["TagName"] = self.tagName!
+                }
+                if self.userGroupId != nil {
+                    map["UserGroupId"] = self.userGroupId!
+                }
+                if self.userGroupName != nil {
+                    map["UserGroupName"] = self.userGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationId"] as? String {
+                    self.applicationId = value
+                }
+                if let value = dict["ApplicationName"] as? String {
+                    self.applicationName = value
+                }
+                if let value = dict["TagId"] as? String {
+                    self.tagId = value
+                }
+                if let value = dict["TagName"] as? String {
+                    self.tagName = value
+                }
+                if let value = dict["UserGroupId"] as? String {
+                    self.userGroupId = value
+                }
+                if let value = dict["UserGroupName"] as? String {
+                    self.userGroupName = value
+                }
+            }
+        }
+        public var forwardId: String?
+
+        public var items: [ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList.Items]?
+
+        public var matchMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.forwardId != nil {
+                map["ForwardId"] = self.forwardId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.matchMode != nil {
+                map["MatchMode"] = self.matchMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ForwardId"] as? String {
+                self.forwardId = value
+            }
+            if let value = dict["Items"] as? [Any?] {
+                var tmp : [ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
+            }
+            if let value = dict["MatchMode"] as? String {
+                self.matchMode = value
+            }
+        }
+    }
+    public var forwardStrategyBindingItemsList: [ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList]?
+
+    public var itemType: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forwardStrategyBindingItemsList != nil {
+            var tmp : [Any] = []
+            for k in self.forwardStrategyBindingItemsList! {
+                tmp.append(k.toMap())
+            }
+            map["ForwardStrategyBindingItemsList"] = tmp
+        }
+        if self.itemType != nil {
+            map["ItemType"] = self.itemType!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ForwardStrategyBindingItemsList"] as? [Any?] {
+            var tmp : [ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList] = []
+            for v in value {
+                if v != nil {
+                    var model = ListForwardStrategyBindingItemsResponseBody.ForwardStrategyBindingItemsList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.forwardStrategyBindingItemsList = tmp
+        }
+        if let value = dict["ItemType"] as? String {
+            self.itemType = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListForwardStrategyBindingItemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListForwardStrategyBindingItemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListForwardStrategyBindingItemsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListIdpConfigsRequest : Tea.TeaModel {
     public var currentPage: Int64?
 
