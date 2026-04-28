@@ -228,6 +228,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkTypesShrink)) {
             query["CheckTypes"] = request.checkTypesShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
@@ -457,6 +460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupBy)) {
             query["GroupBy"] = request.groupBy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.product)) {
             query["Product"] = request.product ?? "";
         }
@@ -649,6 +655,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getProductListWithOptions(_ request: GetProductListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProductListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.token)) {
             query["Token"] = request.token ?? "";
         }
