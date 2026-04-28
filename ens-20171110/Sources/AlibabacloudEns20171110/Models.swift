@@ -28973,11 +28973,15 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
 
     public var icmpReplyEnabled: Bool?
 
+    public var lockReason: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
 
     public var standby: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -29017,6 +29021,9 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         if self.icmpReplyEnabled != nil {
             map["IcmpReplyEnabled"] = self.icmpReplyEnabled!
         }
+        if self.lockReason != nil {
+            map["LockReason"] = self.lockReason!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -29025,6 +29032,9 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         }
         if self.standby != nil {
             map["Standby"] = self.standby!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
         }
         return map
     }
@@ -29055,6 +29065,9 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         if let value = dict["IcmpReplyEnabled"] as? Bool {
             self.icmpReplyEnabled = value
         }
+        if let value = dict["LockReason"] as? String {
+            self.lockReason = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -29064,12 +29077,89 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         if let value = dict["Standby"] as? String {
             self.standby = value
         }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
     }
 }
 
 public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
     public class EipAddresses : Tea.TeaModel {
         public class EipAddress : Tea.TeaModel {
+            public class OperationLocks : Tea.TeaModel {
+                public class Lock : Tea.TeaModel {
+                    public var lockReason: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.lockReason != nil {
+                            map["LockReason"] = self.lockReason!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["LockReason"] as? String {
+                            self.lockReason = value
+                        }
+                    }
+                }
+                public var lock: [DescribeEnsEipAddressesResponseBody.EipAddresses.EipAddress.OperationLocks.Lock]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.lock != nil {
+                        var tmp : [Any] = []
+                        for k in self.lock! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Lock"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Lock"] as? [Any?] {
+                        var tmp : [DescribeEnsEipAddressesResponseBody.EipAddresses.EipAddress.OperationLocks.Lock] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeEnsEipAddressesResponseBody.EipAddresses.EipAddress.OperationLocks.Lock()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.lock = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var key: String?
@@ -29174,6 +29264,10 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
 
             public var bandwidth: Int32?
 
+            public var bandwidthPackageBandwidth: Int32?
+
+            public var bandwidthPackageId: String?
+
             public var chargeType: String?
 
             public var description_: String?
@@ -29196,6 +29290,8 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var operationLocks: DescribeEnsEipAddressesResponseBody.EipAddresses.EipAddress.OperationLocks?
+
             public var standby: Bool?
 
             public var status: String?
@@ -29212,6 +29308,7 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.operationLocks?.validate()
                 try self.tags?.validate()
             }
 
@@ -29225,6 +29322,12 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if self.bandwidth != nil {
                     map["Bandwidth"] = self.bandwidth!
+                }
+                if self.bandwidthPackageBandwidth != nil {
+                    map["BandwidthPackageBandwidth"] = self.bandwidthPackageBandwidth!
+                }
+                if self.bandwidthPackageId != nil {
+                    map["BandwidthPackageId"] = self.bandwidthPackageId!
                 }
                 if self.chargeType != nil {
                     map["ChargeType"] = self.chargeType!
@@ -29259,6 +29362,9 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.operationLocks != nil {
+                    map["OperationLocks"] = self.operationLocks?.toMap()
+                }
                 if self.standby != nil {
                     map["Standby"] = self.standby!
                 }
@@ -29281,6 +29387,12 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Bandwidth"] as? Int32 {
                     self.bandwidth = value
+                }
+                if let value = dict["BandwidthPackageBandwidth"] as? Int32 {
+                    self.bandwidthPackageBandwidth = value
+                }
+                if let value = dict["BandwidthPackageId"] as? String {
+                    self.bandwidthPackageId = value
                 }
                 if let value = dict["ChargeType"] as? String {
                     self.chargeType = value
@@ -29314,6 +29426,11 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
+                }
+                if let value = dict["OperationLocks"] as? [String: Any?] {
+                    var model = DescribeEnsEipAddressesResponseBody.EipAddresses.EipAddress.OperationLocks()
+                    model.fromMap(value)
+                    self.operationLocks = model
                 }
                 if let value = dict["Standby"] as? Bool {
                     self.standby = value
