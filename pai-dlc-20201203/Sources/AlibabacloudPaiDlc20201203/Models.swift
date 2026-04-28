@@ -1560,6 +1560,8 @@ public class ExtraPodSpec : Tea.TeaModel {
 
     public var lifecycle: Lifecycle?
 
+    public var mainContainerSecurityContext: SecurityContext?
+
     public var podAnnotations: [String: String]?
 
     public var podLabels: [String: String]?
@@ -1579,6 +1581,7 @@ public class ExtraPodSpec : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.lifecycle?.validate()
+        try self.mainContainerSecurityContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1592,6 +1595,9 @@ public class ExtraPodSpec : Tea.TeaModel {
         }
         if self.lifecycle != nil {
             map["Lifecycle"] = self.lifecycle?.toMap()
+        }
+        if self.mainContainerSecurityContext != nil {
+            map["MainContainerSecurityContext"] = self.mainContainerSecurityContext?.toMap()
         }
         if self.podAnnotations != nil {
             map["PodAnnotations"] = self.podAnnotations!
@@ -1631,6 +1637,11 @@ public class ExtraPodSpec : Tea.TeaModel {
             var model = Lifecycle()
             model.fromMap(value)
             self.lifecycle = model
+        }
+        if let value = dict["MainContainerSecurityContext"] as? [String: Any?] {
+            var model = SecurityContext()
+            model.fromMap(value)
+            self.mainContainerSecurityContext = model
         }
         if let value = dict["PodAnnotations"] as? [String: String] {
             self.podAnnotations = value
