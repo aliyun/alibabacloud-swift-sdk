@@ -3462,6 +3462,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeUserDeviceSessionWithOptions(_ request: RevokeUserDeviceSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeUserDeviceSessionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.devTag)) {
+            body["DevTag"] = request.devTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.saseUserId)) {
+            body["SaseUserId"] = request.saseUserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeUserDeviceSession",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeUserDeviceSessionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeUserDeviceSession(_ request: RevokeUserDeviceSessionRequest) async throws -> RevokeUserDeviceSessionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await revokeUserDeviceSessionWithOptions(request as! RevokeUserDeviceSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func revokeUserSessionWithOptions(_ request: RevokeUserSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeUserSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
