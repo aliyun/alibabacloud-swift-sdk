@@ -15802,15 +15802,23 @@ public class ListDataCenterDatabaseResponseBody : Tea.TeaModel {
 
         public var dmsInstanceId: Int64?
 
+        public var downloadLink: String?
+
         public var gmtCreated: String?
 
         public var importType: String?
 
         public var instanceName: String?
 
+        public var intranetDownloadLink: String?
+
         public var isInternal: String?
 
+        public var ossBucket: String?
+
         public var size: Int64?
+
+        public var useUserOssBucket: Bool?
 
         public override init() {
             super.init()
@@ -15847,6 +15855,9 @@ public class ListDataCenterDatabaseResponseBody : Tea.TeaModel {
             if self.dmsInstanceId != nil {
                 map["DmsInstanceId"] = self.dmsInstanceId!
             }
+            if self.downloadLink != nil {
+                map["DownloadLink"] = self.downloadLink!
+            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
             }
@@ -15856,11 +15867,20 @@ public class ListDataCenterDatabaseResponseBody : Tea.TeaModel {
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
             }
+            if self.intranetDownloadLink != nil {
+                map["IntranetDownloadLink"] = self.intranetDownloadLink!
+            }
             if self.isInternal != nil {
                 map["IsInternal"] = self.isInternal!
             }
+            if self.ossBucket != nil {
+                map["OssBucket"] = self.ossBucket!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
+            }
+            if self.useUserOssBucket != nil {
+                map["UseUserOssBucket"] = self.useUserOssBucket!
             }
             return map
         }
@@ -15888,6 +15908,9 @@ public class ListDataCenterDatabaseResponseBody : Tea.TeaModel {
             if let value = dict["DmsInstanceId"] as? Int64 {
                 self.dmsInstanceId = value
             }
+            if let value = dict["DownloadLink"] as? String {
+                self.downloadLink = value
+            }
             if let value = dict["GmtCreated"] as? String {
                 self.gmtCreated = value
             }
@@ -15897,11 +15920,20 @@ public class ListDataCenterDatabaseResponseBody : Tea.TeaModel {
             if let value = dict["InstanceName"] as? String {
                 self.instanceName = value
             }
+            if let value = dict["IntranetDownloadLink"] as? String {
+                self.intranetDownloadLink = value
+            }
             if let value = dict["IsInternal"] as? String {
                 self.isInternal = value
             }
+            if let value = dict["OssBucket"] as? String {
+                self.ossBucket = value
+            }
             if let value = dict["Size"] as? Int64 {
                 self.size = value
+            }
+            if let value = dict["UseUserOssBucket"] as? Bool {
+                self.useUserOssBucket = value
             }
         }
     }
