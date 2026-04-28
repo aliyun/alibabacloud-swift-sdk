@@ -5619,6 +5619,708 @@ public class CloudGetAgentStatusResponse : Tea.TeaModel {
     }
 }
 
+public class CloudGetObCdrRequest : Tea.TeaModel {
+    public var enterpriseId: Int64?
+
+    public var uniqueId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.uniqueId != nil {
+            map["UniqueId"] = self.uniqueId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["UniqueId"] as? String {
+            self.uniqueId = value
+        }
+    }
+}
+
+public class CloudGetObCdrResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var agentName: String?
+
+            public var answerTime: String?
+
+            public var callId: String?
+
+            public var callType: String?
+
+            public var callTypeCode: String?
+
+            public var calleeAreaCode: String?
+
+            public var calleeNumber: String?
+
+            public var clid: String?
+
+            public var cno: String?
+
+            public var displayNumber: String?
+
+            public var endReason: String?
+
+            public var endTime: String?
+
+            public var gno: String?
+
+            public var id: String?
+
+            public var joinQueueTime: String?
+
+            public var mainCallType: String?
+
+            public var mainUniqueId: String?
+
+            public var qno: String?
+
+            public var queueName: String?
+
+            public var recordFile: [String]?
+
+            public var ringingTime: String?
+
+            public var sipCause: String?
+
+            public var sipCauseStr: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var statusCode: String?
+
+            public var taskName: String?
+
+            public var totalDuration: String?
+
+            public var trunkGroupKey: String?
+
+            public var tsiFile: String?
+
+            public var uniqueId: String?
+
+            public var XNumber: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.answerTime != nil {
+                    map["AnswerTime"] = self.answerTime!
+                }
+                if self.callId != nil {
+                    map["CallId"] = self.callId!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.callTypeCode != nil {
+                    map["CallTypeCode"] = self.callTypeCode!
+                }
+                if self.calleeAreaCode != nil {
+                    map["CalleeAreaCode"] = self.calleeAreaCode!
+                }
+                if self.calleeNumber != nil {
+                    map["CalleeNumber"] = self.calleeNumber!
+                }
+                if self.clid != nil {
+                    map["Clid"] = self.clid!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.displayNumber != nil {
+                    map["DisplayNumber"] = self.displayNumber!
+                }
+                if self.endReason != nil {
+                    map["EndReason"] = self.endReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.gno != nil {
+                    map["Gno"] = self.gno!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.joinQueueTime != nil {
+                    map["JoinQueueTime"] = self.joinQueueTime!
+                }
+                if self.mainCallType != nil {
+                    map["MainCallType"] = self.mainCallType!
+                }
+                if self.mainUniqueId != nil {
+                    map["MainUniqueId"] = self.mainUniqueId!
+                }
+                if self.qno != nil {
+                    map["Qno"] = self.qno!
+                }
+                if self.queueName != nil {
+                    map["QueueName"] = self.queueName!
+                }
+                if self.recordFile != nil {
+                    map["RecordFile"] = self.recordFile!
+                }
+                if self.ringingTime != nil {
+                    map["RingingTime"] = self.ringingTime!
+                }
+                if self.sipCause != nil {
+                    map["SipCause"] = self.sipCause!
+                }
+                if self.sipCauseStr != nil {
+                    map["SipCauseStr"] = self.sipCauseStr!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.trunkGroupKey != nil {
+                    map["TrunkGroupKey"] = self.trunkGroupKey!
+                }
+                if self.tsiFile != nil {
+                    map["TsiFile"] = self.tsiFile!
+                }
+                if self.uniqueId != nil {
+                    map["UniqueId"] = self.uniqueId!
+                }
+                if self.XNumber != nil {
+                    map["XNumber"] = self.XNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AnswerTime"] as? String {
+                    self.answerTime = value
+                }
+                if let value = dict["CallId"] as? String {
+                    self.callId = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["CallTypeCode"] as? String {
+                    self.callTypeCode = value
+                }
+                if let value = dict["CalleeAreaCode"] as? String {
+                    self.calleeAreaCode = value
+                }
+                if let value = dict["CalleeNumber"] as? String {
+                    self.calleeNumber = value
+                }
+                if let value = dict["Clid"] as? String {
+                    self.clid = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["DisplayNumber"] as? String {
+                    self.displayNumber = value
+                }
+                if let value = dict["EndReason"] as? String {
+                    self.endReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["Gno"] as? String {
+                    self.gno = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["JoinQueueTime"] as? String {
+                    self.joinQueueTime = value
+                }
+                if let value = dict["MainCallType"] as? String {
+                    self.mainCallType = value
+                }
+                if let value = dict["MainUniqueId"] as? String {
+                    self.mainUniqueId = value
+                }
+                if let value = dict["Qno"] as? String {
+                    self.qno = value
+                }
+                if let value = dict["QueueName"] as? String {
+                    self.queueName = value
+                }
+                if let value = dict["RecordFile"] as? [String] {
+                    self.recordFile = value
+                }
+                if let value = dict["RingingTime"] as? String {
+                    self.ringingTime = value
+                }
+                if let value = dict["SipCause"] as? String {
+                    self.sipCause = value
+                }
+                if let value = dict["SipCauseStr"] as? String {
+                    self.sipCauseStr = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["StatusCode"] as? String {
+                    self.statusCode = value
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TotalDuration"] as? String {
+                    self.totalDuration = value
+                }
+                if let value = dict["TrunkGroupKey"] as? String {
+                    self.trunkGroupKey = value
+                }
+                if let value = dict["TsiFile"] as? String {
+                    self.tsiFile = value
+                }
+                if let value = dict["UniqueId"] as? String {
+                    self.uniqueId = value
+                }
+                if let value = dict["XNumber"] as? String {
+                    self.XNumber = value
+                }
+            }
+        }
+        public var list: [CloudGetObCdrResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudGetObCdrResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudGetObCdrResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudGetObCdrResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudGetObCdrResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudGetObCdrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudGetObCdrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudGetObCdrResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudGetRecordUrlRequest : Tea.TeaModel {
+    public var callType: Int64?
+
+    public var download: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var recordFile: String?
+
+    public var recordFormat: Int64?
+
+    public var recordSide: Int64?
+
+    public var recordType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callType != nil {
+            map["CallType"] = self.callType!
+        }
+        if self.download != nil {
+            map["Download"] = self.download!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.recordFile != nil {
+            map["RecordFile"] = self.recordFile!
+        }
+        if self.recordFormat != nil {
+            map["RecordFormat"] = self.recordFormat!
+        }
+        if self.recordSide != nil {
+            map["RecordSide"] = self.recordSide!
+        }
+        if self.recordType != nil {
+            map["RecordType"] = self.recordType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CallType"] as? Int64 {
+            self.callType = value
+        }
+        if let value = dict["Download"] as? Int64 {
+            self.download = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["RecordFile"] as? String {
+            self.recordFile = value
+        }
+        if let value = dict["RecordFormat"] as? Int64 {
+            self.recordFormat = value
+        }
+        if let value = dict["RecordSide"] as? Int64 {
+            self.recordSide = value
+        }
+        if let value = dict["RecordType"] as? String {
+            self.recordType = value
+        }
+    }
+}
+
+public class CloudGetRecordUrlResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudGetRecordUrlResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudGetRecordUrlResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudGetRecordUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudGetRecordUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudGetRecordUrlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CloudImportTaskTelRequest : Tea.TeaModel {
     public class TaskTelList : Tea.TeaModel {
         public var backupTels: String?
@@ -7273,6 +7975,1048 @@ public class CloudListOnlineAgentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CloudListOnlineAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudOutboundObClidReportRequest : Tea.TeaModel {
+    public var areaCodes: String?
+
+    public var endHour: Int64?
+
+    public var endTime: String?
+
+    public var enterpriseId: Int64?
+
+    public var limit: Int64?
+
+    public var start: Int64?
+
+    public var startHour: Int64?
+
+    public var startTime: String?
+
+    public var statisticMethod: Int64?
+
+    public var timeRangeType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.areaCodes != nil {
+            map["AreaCodes"] = self.areaCodes!
+        }
+        if self.endHour != nil {
+            map["EndHour"] = self.endHour!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startHour != nil {
+            map["StartHour"] = self.startHour!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.statisticMethod != nil {
+            map["StatisticMethod"] = self.statisticMethod!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AreaCodes"] as? String {
+            self.areaCodes = value
+        }
+        if let value = dict["EndHour"] as? Int64 {
+            self.endHour = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartHour"] as? Int64 {
+            self.startHour = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["StatisticMethod"] as? Int64 {
+            self.statisticMethod = value
+        }
+        if let value = dict["TimeRangeType"] as? Int64 {
+            self.timeRangeType = value
+        }
+    }
+}
+
+public class CloudOutboundObClidReportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var answeredCount: String?
+
+            public var avgBridgeTime: String?
+
+            public var avgPreviewObWaitTime: Int64?
+
+            public var callType: String?
+
+            public var city: String?
+
+            public var clid: String?
+
+            public var clidRate: String?
+
+            public var createTime: String?
+
+            public var customerBillMinute: Int64?
+
+            public var dateTimeRange: String?
+
+            public var day: String?
+
+            public var enterpriseId: Int64?
+
+            public var hour: String?
+
+            public var maxBridgeTime: String?
+
+            public var minBridgeTime: String?
+
+            public var previewObCustomerRingingCount: Int64?
+
+            public var previewObCustomerRingingRate: String?
+
+            public var province: String?
+
+            public var rowName: String?
+
+            public var totalBridgeTime: String?
+
+            public var totalCount: String?
+
+            public var trunkGroupKey: String?
+
+            public var validAvgBridgeTime: String?
+
+            public var validCalls: String?
+
+            public var validTotalBridgeTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.answeredCount != nil {
+                    map["AnsweredCount"] = self.answeredCount!
+                }
+                if self.avgBridgeTime != nil {
+                    map["AvgBridgeTime"] = self.avgBridgeTime!
+                }
+                if self.avgPreviewObWaitTime != nil {
+                    map["AvgPreviewObWaitTime"] = self.avgPreviewObWaitTime!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.city != nil {
+                    map["City"] = self.city!
+                }
+                if self.clid != nil {
+                    map["Clid"] = self.clid!
+                }
+                if self.clidRate != nil {
+                    map["ClidRate"] = self.clidRate!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.customerBillMinute != nil {
+                    map["CustomerBillMinute"] = self.customerBillMinute!
+                }
+                if self.dateTimeRange != nil {
+                    map["DateTimeRange"] = self.dateTimeRange!
+                }
+                if self.day != nil {
+                    map["Day"] = self.day!
+                }
+                if self.enterpriseId != nil {
+                    map["EnterpriseId"] = self.enterpriseId!
+                }
+                if self.hour != nil {
+                    map["Hour"] = self.hour!
+                }
+                if self.maxBridgeTime != nil {
+                    map["MaxBridgeTime"] = self.maxBridgeTime!
+                }
+                if self.minBridgeTime != nil {
+                    map["MinBridgeTime"] = self.minBridgeTime!
+                }
+                if self.previewObCustomerRingingCount != nil {
+                    map["PreviewObCustomerRingingCount"] = self.previewObCustomerRingingCount!
+                }
+                if self.previewObCustomerRingingRate != nil {
+                    map["PreviewObCustomerRingingRate"] = self.previewObCustomerRingingRate!
+                }
+                if self.province != nil {
+                    map["Province"] = self.province!
+                }
+                if self.rowName != nil {
+                    map["RowName"] = self.rowName!
+                }
+                if self.totalBridgeTime != nil {
+                    map["TotalBridgeTime"] = self.totalBridgeTime!
+                }
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
+                if self.trunkGroupKey != nil {
+                    map["TrunkGroupKey"] = self.trunkGroupKey!
+                }
+                if self.validAvgBridgeTime != nil {
+                    map["ValidAvgBridgeTime"] = self.validAvgBridgeTime!
+                }
+                if self.validCalls != nil {
+                    map["ValidCalls"] = self.validCalls!
+                }
+                if self.validTotalBridgeTime != nil {
+                    map["ValidTotalBridgeTime"] = self.validTotalBridgeTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AnsweredCount"] as? String {
+                    self.answeredCount = value
+                }
+                if let value = dict["AvgBridgeTime"] as? String {
+                    self.avgBridgeTime = value
+                }
+                if let value = dict["AvgPreviewObWaitTime"] as? Int64 {
+                    self.avgPreviewObWaitTime = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["City"] as? String {
+                    self.city = value
+                }
+                if let value = dict["Clid"] as? String {
+                    self.clid = value
+                }
+                if let value = dict["ClidRate"] as? String {
+                    self.clidRate = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["CustomerBillMinute"] as? Int64 {
+                    self.customerBillMinute = value
+                }
+                if let value = dict["DateTimeRange"] as? String {
+                    self.dateTimeRange = value
+                }
+                if let value = dict["Day"] as? String {
+                    self.day = value
+                }
+                if let value = dict["EnterpriseId"] as? Int64 {
+                    self.enterpriseId = value
+                }
+                if let value = dict["Hour"] as? String {
+                    self.hour = value
+                }
+                if let value = dict["MaxBridgeTime"] as? String {
+                    self.maxBridgeTime = value
+                }
+                if let value = dict["MinBridgeTime"] as? String {
+                    self.minBridgeTime = value
+                }
+                if let value = dict["PreviewObCustomerRingingCount"] as? Int64 {
+                    self.previewObCustomerRingingCount = value
+                }
+                if let value = dict["PreviewObCustomerRingingRate"] as? String {
+                    self.previewObCustomerRingingRate = value
+                }
+                if let value = dict["Province"] as? String {
+                    self.province = value
+                }
+                if let value = dict["RowName"] as? String {
+                    self.rowName = value
+                }
+                if let value = dict["TotalBridgeTime"] as? String {
+                    self.totalBridgeTime = value
+                }
+                if let value = dict["TotalCount"] as? String {
+                    self.totalCount = value
+                }
+                if let value = dict["TrunkGroupKey"] as? String {
+                    self.trunkGroupKey = value
+                }
+                if let value = dict["ValidAvgBridgeTime"] as? String {
+                    self.validAvgBridgeTime = value
+                }
+                if let value = dict["ValidCalls"] as? String {
+                    self.validCalls = value
+                }
+                if let value = dict["ValidTotalBridgeTime"] as? String {
+                    self.validTotalBridgeTime = value
+                }
+            }
+        }
+        public var list: [CloudOutboundObClidReportResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudOutboundObClidReportResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudOutboundObClidReportResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudOutboundObClidReportResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudOutboundObClidReportResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudOutboundObClidReportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudOutboundObClidReportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudOutboundObClidReportResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudOutboundPreviewObReportRequest : Tea.TeaModel {
+    public var cnos: String?
+
+    public var endHour: Int64?
+
+    public var endTime: String?
+
+    public var enterpriseId: Int64?
+
+    public var limit: Int64?
+
+    public var start: Int64?
+
+    public var startHour: Int64?
+
+    public var startTime: String?
+
+    public var statisticMethod: Int64?
+
+    public var timeRangeType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cnos != nil {
+            map["Cnos"] = self.cnos!
+        }
+        if self.endHour != nil {
+            map["EndHour"] = self.endHour!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startHour != nil {
+            map["StartHour"] = self.startHour!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.statisticMethod != nil {
+            map["StatisticMethod"] = self.statisticMethod!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Cnos"] as? String {
+            self.cnos = value
+        }
+        if let value = dict["EndHour"] as? Int64 {
+            self.endHour = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartHour"] as? Int64 {
+            self.startHour = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["StatisticMethod"] as? Int64 {
+            self.statisticMethod = value
+        }
+        if let value = dict["TimeRangeType"] as? Int64 {
+            self.timeRangeType = value
+        }
+    }
+}
+
+public class CloudOutboundPreviewObReportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var agentAnsweredCount: String?
+
+            public var agentName: String?
+
+            public var agentRate: String?
+
+            public var avgBridgeTime: String?
+
+            public var axbBothAnsweredCount: String?
+
+            public var axbBothAnsweredRate: String?
+
+            public var axbBothAnsweredTime: String?
+
+            public var axbObTotalCount: String?
+
+            public var bothAnsweredCount: String?
+
+            public var bothAnsweredTime: String?
+
+            public var callBridgedRate: String?
+
+            public var callTotalCount: String?
+
+            public var cno: String?
+
+            public var customerAnsweredCount: String?
+
+            public var customerRate: String?
+
+            public var dateTimeRange: String?
+
+            public var enterpriseId: String?
+
+            public var interceptionCount: String?
+
+            public var interceptionRate: String?
+
+            public var landlineBothAnsweredCount: String?
+
+            public var landlineBothAnsweredRate: String?
+
+            public var landlineBothAnsweredTime: String?
+
+            public var landlineObTotalCount: String?
+
+            public var maxBridgeTime: String?
+
+            public var minBridgeTime: String?
+
+            public var totalBridgeTime: String?
+
+            public var totalCount: String?
+
+            public var vadRate: String?
+
+            public var validAvgBridgeTime: String?
+
+            public var validCalls: String?
+
+            public var validTotalBridgeTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentAnsweredCount != nil {
+                    map["AgentAnsweredCount"] = self.agentAnsweredCount!
+                }
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.agentRate != nil {
+                    map["AgentRate"] = self.agentRate!
+                }
+                if self.avgBridgeTime != nil {
+                    map["AvgBridgeTime"] = self.avgBridgeTime!
+                }
+                if self.axbBothAnsweredCount != nil {
+                    map["AxbBothAnsweredCount"] = self.axbBothAnsweredCount!
+                }
+                if self.axbBothAnsweredRate != nil {
+                    map["AxbBothAnsweredRate"] = self.axbBothAnsweredRate!
+                }
+                if self.axbBothAnsweredTime != nil {
+                    map["AxbBothAnsweredTime"] = self.axbBothAnsweredTime!
+                }
+                if self.axbObTotalCount != nil {
+                    map["AxbObTotalCount"] = self.axbObTotalCount!
+                }
+                if self.bothAnsweredCount != nil {
+                    map["BothAnsweredCount"] = self.bothAnsweredCount!
+                }
+                if self.bothAnsweredTime != nil {
+                    map["BothAnsweredTime"] = self.bothAnsweredTime!
+                }
+                if self.callBridgedRate != nil {
+                    map["CallBridgedRate"] = self.callBridgedRate!
+                }
+                if self.callTotalCount != nil {
+                    map["CallTotalCount"] = self.callTotalCount!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.customerAnsweredCount != nil {
+                    map["CustomerAnsweredCount"] = self.customerAnsweredCount!
+                }
+                if self.customerRate != nil {
+                    map["CustomerRate"] = self.customerRate!
+                }
+                if self.dateTimeRange != nil {
+                    map["DateTimeRange"] = self.dateTimeRange!
+                }
+                if self.enterpriseId != nil {
+                    map["EnterpriseId"] = self.enterpriseId!
+                }
+                if self.interceptionCount != nil {
+                    map["InterceptionCount"] = self.interceptionCount!
+                }
+                if self.interceptionRate != nil {
+                    map["InterceptionRate"] = self.interceptionRate!
+                }
+                if self.landlineBothAnsweredCount != nil {
+                    map["LandlineBothAnsweredCount"] = self.landlineBothAnsweredCount!
+                }
+                if self.landlineBothAnsweredRate != nil {
+                    map["LandlineBothAnsweredRate"] = self.landlineBothAnsweredRate!
+                }
+                if self.landlineBothAnsweredTime != nil {
+                    map["LandlineBothAnsweredTime"] = self.landlineBothAnsweredTime!
+                }
+                if self.landlineObTotalCount != nil {
+                    map["LandlineObTotalCount"] = self.landlineObTotalCount!
+                }
+                if self.maxBridgeTime != nil {
+                    map["MaxBridgeTime"] = self.maxBridgeTime!
+                }
+                if self.minBridgeTime != nil {
+                    map["MinBridgeTime"] = self.minBridgeTime!
+                }
+                if self.totalBridgeTime != nil {
+                    map["TotalBridgeTime"] = self.totalBridgeTime!
+                }
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
+                if self.vadRate != nil {
+                    map["VadRate"] = self.vadRate!
+                }
+                if self.validAvgBridgeTime != nil {
+                    map["ValidAvgBridgeTime"] = self.validAvgBridgeTime!
+                }
+                if self.validCalls != nil {
+                    map["ValidCalls"] = self.validCalls!
+                }
+                if self.validTotalBridgeTime != nil {
+                    map["ValidTotalBridgeTime"] = self.validTotalBridgeTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentAnsweredCount"] as? String {
+                    self.agentAnsweredCount = value
+                }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AgentRate"] as? String {
+                    self.agentRate = value
+                }
+                if let value = dict["AvgBridgeTime"] as? String {
+                    self.avgBridgeTime = value
+                }
+                if let value = dict["AxbBothAnsweredCount"] as? String {
+                    self.axbBothAnsweredCount = value
+                }
+                if let value = dict["AxbBothAnsweredRate"] as? String {
+                    self.axbBothAnsweredRate = value
+                }
+                if let value = dict["AxbBothAnsweredTime"] as? String {
+                    self.axbBothAnsweredTime = value
+                }
+                if let value = dict["AxbObTotalCount"] as? String {
+                    self.axbObTotalCount = value
+                }
+                if let value = dict["BothAnsweredCount"] as? String {
+                    self.bothAnsweredCount = value
+                }
+                if let value = dict["BothAnsweredTime"] as? String {
+                    self.bothAnsweredTime = value
+                }
+                if let value = dict["CallBridgedRate"] as? String {
+                    self.callBridgedRate = value
+                }
+                if let value = dict["CallTotalCount"] as? String {
+                    self.callTotalCount = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["CustomerAnsweredCount"] as? String {
+                    self.customerAnsweredCount = value
+                }
+                if let value = dict["CustomerRate"] as? String {
+                    self.customerRate = value
+                }
+                if let value = dict["DateTimeRange"] as? String {
+                    self.dateTimeRange = value
+                }
+                if let value = dict["EnterpriseId"] as? String {
+                    self.enterpriseId = value
+                }
+                if let value = dict["InterceptionCount"] as? String {
+                    self.interceptionCount = value
+                }
+                if let value = dict["InterceptionRate"] as? String {
+                    self.interceptionRate = value
+                }
+                if let value = dict["LandlineBothAnsweredCount"] as? String {
+                    self.landlineBothAnsweredCount = value
+                }
+                if let value = dict["LandlineBothAnsweredRate"] as? String {
+                    self.landlineBothAnsweredRate = value
+                }
+                if let value = dict["LandlineBothAnsweredTime"] as? String {
+                    self.landlineBothAnsweredTime = value
+                }
+                if let value = dict["LandlineObTotalCount"] as? String {
+                    self.landlineObTotalCount = value
+                }
+                if let value = dict["MaxBridgeTime"] as? String {
+                    self.maxBridgeTime = value
+                }
+                if let value = dict["MinBridgeTime"] as? String {
+                    self.minBridgeTime = value
+                }
+                if let value = dict["TotalBridgeTime"] as? String {
+                    self.totalBridgeTime = value
+                }
+                if let value = dict["TotalCount"] as? String {
+                    self.totalCount = value
+                }
+                if let value = dict["VadRate"] as? String {
+                    self.vadRate = value
+                }
+                if let value = dict["ValidAvgBridgeTime"] as? String {
+                    self.validAvgBridgeTime = value
+                }
+                if let value = dict["ValidCalls"] as? String {
+                    self.validCalls = value
+                }
+                if let value = dict["ValidTotalBridgeTime"] as? String {
+                    self.validTotalBridgeTime = value
+                }
+            }
+        }
+        public var list: [CloudOutboundPreviewObReportResponseBody.Data.List]?
+
+        public var pageSize: String?
+
+        public var totalCount: String?
+
+        public var totalPageCount: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            if self.totalPageCount != nil {
+                map["TotalPageCount"] = self.totalPageCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudOutboundPreviewObReportResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudOutboundPreviewObReportResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+            if let value = dict["PageSize"] as? String {
+                self.pageSize = value
+            }
+            if let value = dict["TotalCount"] as? String {
+                self.totalCount = value
+            }
+            if let value = dict["TotalPageCount"] as? String {
+                self.totalPageCount = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudOutboundPreviewObReportResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudOutboundPreviewObReportResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudOutboundPreviewObReportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudOutboundPreviewObReportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudOutboundPreviewObReportResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -9175,6 +10919,3058 @@ public class CloudQueryAgentSkillResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CloudQueryAgentSkillResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudQueryIbCdrRequest : Tea.TeaModel {
+    public var calleeNumber: String?
+
+    public var city: String?
+
+    public var cno: String?
+
+    public var customerNumber: String?
+
+    public var endTime: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var hotline: String?
+
+    public var joinQueueCode: Int64?
+
+    public var leaveQueueCode: Int64?
+
+    public var limit: Int64?
+
+    public var province: String?
+
+    public var qno: String?
+
+    public var start: Int64?
+
+    public var startTime: Int64?
+
+    public var status: Int64?
+
+    public var timeRangeType: String?
+
+    public var uniqueId: String?
+
+    public var userFieldValue: String?
+
+    public var userFieldkey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.calleeNumber != nil {
+            map["CalleeNumber"] = self.calleeNumber!
+        }
+        if self.city != nil {
+            map["City"] = self.city!
+        }
+        if self.cno != nil {
+            map["Cno"] = self.cno!
+        }
+        if self.customerNumber != nil {
+            map["CustomerNumber"] = self.customerNumber!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.hotline != nil {
+            map["Hotline"] = self.hotline!
+        }
+        if self.joinQueueCode != nil {
+            map["JoinQueueCode"] = self.joinQueueCode!
+        }
+        if self.leaveQueueCode != nil {
+            map["LeaveQueueCode"] = self.leaveQueueCode!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.province != nil {
+            map["Province"] = self.province!
+        }
+        if self.qno != nil {
+            map["Qno"] = self.qno!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        if self.uniqueId != nil {
+            map["UniqueId"] = self.uniqueId!
+        }
+        if self.userFieldValue != nil {
+            map["UserFieldValue"] = self.userFieldValue!
+        }
+        if self.userFieldkey != nil {
+            map["UserFieldkey"] = self.userFieldkey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CalleeNumber"] as? String {
+            self.calleeNumber = value
+        }
+        if let value = dict["City"] as? String {
+            self.city = value
+        }
+        if let value = dict["Cno"] as? String {
+            self.cno = value
+        }
+        if let value = dict["CustomerNumber"] as? String {
+            self.customerNumber = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Hotline"] as? String {
+            self.hotline = value
+        }
+        if let value = dict["JoinQueueCode"] as? Int64 {
+            self.joinQueueCode = value
+        }
+        if let value = dict["LeaveQueueCode"] as? Int64 {
+            self.leaveQueueCode = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Province"] as? String {
+            self.province = value
+        }
+        if let value = dict["Qno"] as? String {
+            self.qno = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+        if let value = dict["TimeRangeType"] as? String {
+            self.timeRangeType = value
+        }
+        if let value = dict["UniqueId"] as? String {
+            self.uniqueId = value
+        }
+        if let value = dict["UserFieldValue"] as? String {
+            self.userFieldValue = value
+        }
+        if let value = dict["UserFieldkey"] as? String {
+            self.userFieldkey = value
+        }
+    }
+}
+
+public class CloudQueryIbCdrResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class RecordFile : Tea.TeaModel {
+                public var file: String?
+
+                public var monitorType: Int64?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.file != nil {
+                        map["File"] = self.file!
+                    }
+                    if self.monitorType != nil {
+                        map["Monitor_type"] = self.monitorType!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["File"] as? String {
+                        self.file = value
+                    }
+                    if let value = dict["Monitor_type"] as? Int64 {
+                        self.monitorType = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var agentName: String?
+
+            public var answerTime: String?
+
+            public var bridgeDuration: String?
+
+            public var bridgeTime: String?
+
+            public var callType: String?
+
+            public var calleeNumber: String?
+
+            public var cno: String?
+
+            public var customerAreaCode: String?
+
+            public var customerCity: String?
+
+            public var customerNumber: String?
+
+            public var customerProvince: String?
+
+            public var endReason: String?
+
+            public var endTime: String?
+
+            public var hotline: String?
+
+            public var ivrName: String?
+
+            public var leaveQueueCode: Int64?
+
+            public var numberTrunk: String?
+
+            public var numberTrunkAreaCode: String?
+
+            public var qno: String?
+
+            public var recordFile: [CloudQueryIbCdrResponseBody.Data.List.RecordFile]?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var statusCode: String?
+
+            public var totalDuration: String?
+
+            public var uniqueId: String?
+
+            public var userField: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.answerTime != nil {
+                    map["AnswerTime"] = self.answerTime!
+                }
+                if self.bridgeDuration != nil {
+                    map["BridgeDuration"] = self.bridgeDuration!
+                }
+                if self.bridgeTime != nil {
+                    map["BridgeTime"] = self.bridgeTime!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.calleeNumber != nil {
+                    map["CalleeNumber"] = self.calleeNumber!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.customerAreaCode != nil {
+                    map["CustomerAreaCode"] = self.customerAreaCode!
+                }
+                if self.customerCity != nil {
+                    map["CustomerCity"] = self.customerCity!
+                }
+                if self.customerNumber != nil {
+                    map["CustomerNumber"] = self.customerNumber!
+                }
+                if self.customerProvince != nil {
+                    map["CustomerProvince"] = self.customerProvince!
+                }
+                if self.endReason != nil {
+                    map["EndReason"] = self.endReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.hotline != nil {
+                    map["Hotline"] = self.hotline!
+                }
+                if self.ivrName != nil {
+                    map["IvrName"] = self.ivrName!
+                }
+                if self.leaveQueueCode != nil {
+                    map["LeaveQueueCode"] = self.leaveQueueCode!
+                }
+                if self.numberTrunk != nil {
+                    map["NumberTrunk"] = self.numberTrunk!
+                }
+                if self.numberTrunkAreaCode != nil {
+                    map["NumberTrunkAreaCode"] = self.numberTrunkAreaCode!
+                }
+                if self.qno != nil {
+                    map["Qno"] = self.qno!
+                }
+                if self.recordFile != nil {
+                    var tmp : [Any] = []
+                    for k in self.recordFile! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RecordFile"] = tmp
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.uniqueId != nil {
+                    map["UniqueId"] = self.uniqueId!
+                }
+                if self.userField != nil {
+                    map["UserField"] = self.userField!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AnswerTime"] as? String {
+                    self.answerTime = value
+                }
+                if let value = dict["BridgeDuration"] as? String {
+                    self.bridgeDuration = value
+                }
+                if let value = dict["BridgeTime"] as? String {
+                    self.bridgeTime = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["CalleeNumber"] as? String {
+                    self.calleeNumber = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["CustomerAreaCode"] as? String {
+                    self.customerAreaCode = value
+                }
+                if let value = dict["CustomerCity"] as? String {
+                    self.customerCity = value
+                }
+                if let value = dict["CustomerNumber"] as? String {
+                    self.customerNumber = value
+                }
+                if let value = dict["CustomerProvince"] as? String {
+                    self.customerProvince = value
+                }
+                if let value = dict["EndReason"] as? String {
+                    self.endReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["Hotline"] as? String {
+                    self.hotline = value
+                }
+                if let value = dict["IvrName"] as? String {
+                    self.ivrName = value
+                }
+                if let value = dict["LeaveQueueCode"] as? Int64 {
+                    self.leaveQueueCode = value
+                }
+                if let value = dict["NumberTrunk"] as? String {
+                    self.numberTrunk = value
+                }
+                if let value = dict["NumberTrunkAreaCode"] as? String {
+                    self.numberTrunkAreaCode = value
+                }
+                if let value = dict["Qno"] as? String {
+                    self.qno = value
+                }
+                if let value = dict["RecordFile"] as? [Any?] {
+                    var tmp : [CloudQueryIbCdrResponseBody.Data.List.RecordFile] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CloudQueryIbCdrResponseBody.Data.List.RecordFile()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.recordFile = tmp
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["StatusCode"] as? String {
+                    self.statusCode = value
+                }
+                if let value = dict["TotalDuration"] as? String {
+                    self.totalDuration = value
+                }
+                if let value = dict["UniqueId"] as? String {
+                    self.uniqueId = value
+                }
+                if let value = dict["UserField"] as? [String: Any] {
+                    self.userField = value
+                }
+            }
+        }
+        public var list: [CloudQueryIbCdrResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudQueryIbCdrResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudQueryIbCdrResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudQueryIbCdrResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudQueryIbCdrResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudQueryIbCdrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudQueryIbCdrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudQueryIbCdrResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudQueryObCdrRequest : Tea.TeaModel {
+    public var agentName: String?
+
+    public var agentNumber: String?
+
+    public var callType: Int64?
+
+    public var city: String?
+
+    public var clid: String?
+
+    public var cno: String?
+
+    public var customerNumber: String?
+
+    public var downGrade: Int64?
+
+    public var endTime: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var gno: String?
+
+    public var isRealAnswer: Int64?
+
+    public var leftDisplayNumber: String?
+
+    public var limit: Int64?
+
+    public var order: Int64?
+
+    public var province: String?
+
+    public var requestUniqueId: String?
+
+    public var returnCount: Int64?
+
+    public var start: Int64?
+
+    public var startTime: Int64?
+
+    public var status: Int64?
+
+    public var timeRangeType: String?
+
+    public var uniqueId: String?
+
+    public var userFieldValue: String?
+
+    public var userFieldkey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentName != nil {
+            map["AgentName"] = self.agentName!
+        }
+        if self.agentNumber != nil {
+            map["AgentNumber"] = self.agentNumber!
+        }
+        if self.callType != nil {
+            map["CallType"] = self.callType!
+        }
+        if self.city != nil {
+            map["City"] = self.city!
+        }
+        if self.clid != nil {
+            map["Clid"] = self.clid!
+        }
+        if self.cno != nil {
+            map["Cno"] = self.cno!
+        }
+        if self.customerNumber != nil {
+            map["CustomerNumber"] = self.customerNumber!
+        }
+        if self.downGrade != nil {
+            map["DownGrade"] = self.downGrade!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.gno != nil {
+            map["Gno"] = self.gno!
+        }
+        if self.isRealAnswer != nil {
+            map["IsRealAnswer"] = self.isRealAnswer!
+        }
+        if self.leftDisplayNumber != nil {
+            map["LeftDisplayNumber"] = self.leftDisplayNumber!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.province != nil {
+            map["Province"] = self.province!
+        }
+        if self.requestUniqueId != nil {
+            map["RequestUniqueId"] = self.requestUniqueId!
+        }
+        if self.returnCount != nil {
+            map["ReturnCount"] = self.returnCount!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        if self.uniqueId != nil {
+            map["UniqueId"] = self.uniqueId!
+        }
+        if self.userFieldValue != nil {
+            map["UserFieldValue"] = self.userFieldValue!
+        }
+        if self.userFieldkey != nil {
+            map["UserFieldkey"] = self.userFieldkey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentName"] as? String {
+            self.agentName = value
+        }
+        if let value = dict["AgentNumber"] as? String {
+            self.agentNumber = value
+        }
+        if let value = dict["CallType"] as? Int64 {
+            self.callType = value
+        }
+        if let value = dict["City"] as? String {
+            self.city = value
+        }
+        if let value = dict["Clid"] as? String {
+            self.clid = value
+        }
+        if let value = dict["Cno"] as? String {
+            self.cno = value
+        }
+        if let value = dict["CustomerNumber"] as? String {
+            self.customerNumber = value
+        }
+        if let value = dict["DownGrade"] as? Int64 {
+            self.downGrade = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Gno"] as? String {
+            self.gno = value
+        }
+        if let value = dict["IsRealAnswer"] as? Int64 {
+            self.isRealAnswer = value
+        }
+        if let value = dict["LeftDisplayNumber"] as? String {
+            self.leftDisplayNumber = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Order"] as? Int64 {
+            self.order = value
+        }
+        if let value = dict["Province"] as? String {
+            self.province = value
+        }
+        if let value = dict["RequestUniqueId"] as? String {
+            self.requestUniqueId = value
+        }
+        if let value = dict["ReturnCount"] as? Int64 {
+            self.returnCount = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+        if let value = dict["TimeRangeType"] as? String {
+            self.timeRangeType = value
+        }
+        if let value = dict["UniqueId"] as? String {
+            self.uniqueId = value
+        }
+        if let value = dict["UserFieldValue"] as? String {
+            self.userFieldValue = value
+        }
+        if let value = dict["UserFieldkey"] as? String {
+            self.userFieldkey = value
+        }
+    }
+}
+
+public class CloudQueryObCdrResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class RecordFile : Tea.TeaModel {
+                public var file: String?
+
+                public var monitorType: Int64?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.file != nil {
+                        map["File"] = self.file!
+                    }
+                    if self.monitorType != nil {
+                        map["Monitor_type"] = self.monitorType!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["File"] as? String {
+                        self.file = value
+                    }
+                    if let value = dict["Monitor_type"] as? Int64 {
+                        self.monitorType = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var agentClid: String?
+
+            public var agentName: String?
+
+            public var agentNumber: String?
+
+            public var answerTime: String?
+
+            public var bridgeDuration: String?
+
+            public var bridgeTime: String?
+
+            public var callId: String?
+
+            public var callType: String?
+
+            public var calleeRingingTime: String?
+
+            public var clid: String?
+
+            public var cno: String?
+
+            public var customerAreaCode: String?
+
+            public var customerCity: String?
+
+            public var customerNumber: String?
+
+            public var customerProvince: String?
+
+            public var displayNumber: String?
+
+            public var downGrade: String?
+
+            public var downGradeCounts: String?
+
+            public var endReason: String?
+
+            public var endTime: String?
+
+            public var gno: String?
+
+            public var hangupReason: String?
+
+            public var id: String?
+
+            public var isRealAnswer: String?
+
+            public var leftDisplayNumber: String?
+
+            public var mainRingingTime: String?
+
+            public var realAnswerTime: String?
+
+            public var recordFile: [CloudQueryObCdrResponseBody.Data.List.RecordFile]?
+
+            public var requestUniqueId: String?
+
+            public var rtcTotalDuration: String?
+
+            public var sipCause: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var statusCode: String?
+
+            public var statusReason: String?
+
+            public var taskId: String?
+
+            public var totalDuration: String?
+
+            public var trunkGroupKey: String?
+
+            public var tsiFile: String?
+
+            public var tsiFileFormat: String?
+
+            public var uniqueId: String?
+
+            public var userField: [String: Any]?
+
+            public var vadIn: String?
+
+            public var vadOut: String?
+
+            public var waitDuration: String?
+
+            public var XNumber: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentClid != nil {
+                    map["AgentClid"] = self.agentClid!
+                }
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.agentNumber != nil {
+                    map["AgentNumber"] = self.agentNumber!
+                }
+                if self.answerTime != nil {
+                    map["AnswerTime"] = self.answerTime!
+                }
+                if self.bridgeDuration != nil {
+                    map["BridgeDuration"] = self.bridgeDuration!
+                }
+                if self.bridgeTime != nil {
+                    map["BridgeTime"] = self.bridgeTime!
+                }
+                if self.callId != nil {
+                    map["CallId"] = self.callId!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.calleeRingingTime != nil {
+                    map["CalleeRingingTime"] = self.calleeRingingTime!
+                }
+                if self.clid != nil {
+                    map["Clid"] = self.clid!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.customerAreaCode != nil {
+                    map["CustomerAreaCode"] = self.customerAreaCode!
+                }
+                if self.customerCity != nil {
+                    map["CustomerCity"] = self.customerCity!
+                }
+                if self.customerNumber != nil {
+                    map["CustomerNumber"] = self.customerNumber!
+                }
+                if self.customerProvince != nil {
+                    map["CustomerProvince"] = self.customerProvince!
+                }
+                if self.displayNumber != nil {
+                    map["DisplayNumber"] = self.displayNumber!
+                }
+                if self.downGrade != nil {
+                    map["DownGrade"] = self.downGrade!
+                }
+                if self.downGradeCounts != nil {
+                    map["DownGradeCounts"] = self.downGradeCounts!
+                }
+                if self.endReason != nil {
+                    map["EndReason"] = self.endReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.gno != nil {
+                    map["Gno"] = self.gno!
+                }
+                if self.hangupReason != nil {
+                    map["HangupReason"] = self.hangupReason!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isRealAnswer != nil {
+                    map["IsRealAnswer"] = self.isRealAnswer!
+                }
+                if self.leftDisplayNumber != nil {
+                    map["LeftDisplayNumber"] = self.leftDisplayNumber!
+                }
+                if self.mainRingingTime != nil {
+                    map["MainRingingTime"] = self.mainRingingTime!
+                }
+                if self.realAnswerTime != nil {
+                    map["RealAnswerTime"] = self.realAnswerTime!
+                }
+                if self.recordFile != nil {
+                    var tmp : [Any] = []
+                    for k in self.recordFile! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RecordFile"] = tmp
+                }
+                if self.requestUniqueId != nil {
+                    map["RequestUniqueId"] = self.requestUniqueId!
+                }
+                if self.rtcTotalDuration != nil {
+                    map["RtcTotalDuration"] = self.rtcTotalDuration!
+                }
+                if self.sipCause != nil {
+                    map["SipCause"] = self.sipCause!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
+                if self.statusReason != nil {
+                    map["StatusReason"] = self.statusReason!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.trunkGroupKey != nil {
+                    map["TrunkGroupKey"] = self.trunkGroupKey!
+                }
+                if self.tsiFile != nil {
+                    map["TsiFile"] = self.tsiFile!
+                }
+                if self.tsiFileFormat != nil {
+                    map["TsiFileFormat"] = self.tsiFileFormat!
+                }
+                if self.uniqueId != nil {
+                    map["UniqueId"] = self.uniqueId!
+                }
+                if self.userField != nil {
+                    map["UserField"] = self.userField!
+                }
+                if self.vadIn != nil {
+                    map["VadIn"] = self.vadIn!
+                }
+                if self.vadOut != nil {
+                    map["VadOut"] = self.vadOut!
+                }
+                if self.waitDuration != nil {
+                    map["WaitDuration"] = self.waitDuration!
+                }
+                if self.XNumber != nil {
+                    map["XNumber"] = self.XNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentClid"] as? String {
+                    self.agentClid = value
+                }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AgentNumber"] as? String {
+                    self.agentNumber = value
+                }
+                if let value = dict["AnswerTime"] as? String {
+                    self.answerTime = value
+                }
+                if let value = dict["BridgeDuration"] as? String {
+                    self.bridgeDuration = value
+                }
+                if let value = dict["BridgeTime"] as? String {
+                    self.bridgeTime = value
+                }
+                if let value = dict["CallId"] as? String {
+                    self.callId = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["CalleeRingingTime"] as? String {
+                    self.calleeRingingTime = value
+                }
+                if let value = dict["Clid"] as? String {
+                    self.clid = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["CustomerAreaCode"] as? String {
+                    self.customerAreaCode = value
+                }
+                if let value = dict["CustomerCity"] as? String {
+                    self.customerCity = value
+                }
+                if let value = dict["CustomerNumber"] as? String {
+                    self.customerNumber = value
+                }
+                if let value = dict["CustomerProvince"] as? String {
+                    self.customerProvince = value
+                }
+                if let value = dict["DisplayNumber"] as? String {
+                    self.displayNumber = value
+                }
+                if let value = dict["DownGrade"] as? String {
+                    self.downGrade = value
+                }
+                if let value = dict["DownGradeCounts"] as? String {
+                    self.downGradeCounts = value
+                }
+                if let value = dict["EndReason"] as? String {
+                    self.endReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["Gno"] as? String {
+                    self.gno = value
+                }
+                if let value = dict["HangupReason"] as? String {
+                    self.hangupReason = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["IsRealAnswer"] as? String {
+                    self.isRealAnswer = value
+                }
+                if let value = dict["LeftDisplayNumber"] as? String {
+                    self.leftDisplayNumber = value
+                }
+                if let value = dict["MainRingingTime"] as? String {
+                    self.mainRingingTime = value
+                }
+                if let value = dict["RealAnswerTime"] as? String {
+                    self.realAnswerTime = value
+                }
+                if let value = dict["RecordFile"] as? [Any?] {
+                    var tmp : [CloudQueryObCdrResponseBody.Data.List.RecordFile] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CloudQueryObCdrResponseBody.Data.List.RecordFile()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.recordFile = tmp
+                }
+                if let value = dict["RequestUniqueId"] as? String {
+                    self.requestUniqueId = value
+                }
+                if let value = dict["RtcTotalDuration"] as? String {
+                    self.rtcTotalDuration = value
+                }
+                if let value = dict["SipCause"] as? String {
+                    self.sipCause = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["StatusCode"] as? String {
+                    self.statusCode = value
+                }
+                if let value = dict["StatusReason"] as? String {
+                    self.statusReason = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+                if let value = dict["TotalDuration"] as? String {
+                    self.totalDuration = value
+                }
+                if let value = dict["TrunkGroupKey"] as? String {
+                    self.trunkGroupKey = value
+                }
+                if let value = dict["TsiFile"] as? String {
+                    self.tsiFile = value
+                }
+                if let value = dict["TsiFileFormat"] as? String {
+                    self.tsiFileFormat = value
+                }
+                if let value = dict["UniqueId"] as? String {
+                    self.uniqueId = value
+                }
+                if let value = dict["UserField"] as? [String: Any] {
+                    self.userField = value
+                }
+                if let value = dict["VadIn"] as? String {
+                    self.vadIn = value
+                }
+                if let value = dict["VadOut"] as? String {
+                    self.vadOut = value
+                }
+                if let value = dict["WaitDuration"] as? String {
+                    self.waitDuration = value
+                }
+                if let value = dict["XNumber"] as? String {
+                    self.XNumber = value
+                }
+            }
+        }
+        public var list: [CloudQueryObCdrResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudQueryObCdrResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudQueryObCdrResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudQueryObCdrResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudQueryObCdrResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudQueryObCdrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudQueryObCdrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudQueryObCdrResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudQueryPredictiveCallCdrRequest : Tea.TeaModel {
+    public var agentName: String?
+
+    public var city: String?
+
+    public var clid: String?
+
+    public var cno: String?
+
+    public var customerNumber: String?
+
+    public var displayNumber: String?
+
+    public var downGrade: Int64?
+
+    public var endTime: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var gno: String?
+
+    public var isRealAnswer: Int64?
+
+    public var limit: Int64?
+
+    public var province: String?
+
+    public var requestUniqueId: String?
+
+    public var start: Int64?
+
+    public var startTime: Int64?
+
+    public var status: Int64?
+
+    public var taskFileId: Int64?
+
+    public var taskId: Int64?
+
+    public var timeRangeType: String?
+
+    public var uniqueId: String?
+
+    public var userFieldValue: String?
+
+    public var userFieldkey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentName != nil {
+            map["AgentName"] = self.agentName!
+        }
+        if self.city != nil {
+            map["City"] = self.city!
+        }
+        if self.clid != nil {
+            map["Clid"] = self.clid!
+        }
+        if self.cno != nil {
+            map["Cno"] = self.cno!
+        }
+        if self.customerNumber != nil {
+            map["CustomerNumber"] = self.customerNumber!
+        }
+        if self.displayNumber != nil {
+            map["DisplayNumber"] = self.displayNumber!
+        }
+        if self.downGrade != nil {
+            map["DownGrade"] = self.downGrade!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.gno != nil {
+            map["Gno"] = self.gno!
+        }
+        if self.isRealAnswer != nil {
+            map["IsRealAnswer"] = self.isRealAnswer!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.province != nil {
+            map["Province"] = self.province!
+        }
+        if self.requestUniqueId != nil {
+            map["RequestUniqueId"] = self.requestUniqueId!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskFileId != nil {
+            map["TaskFileId"] = self.taskFileId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        if self.uniqueId != nil {
+            map["UniqueId"] = self.uniqueId!
+        }
+        if self.userFieldValue != nil {
+            map["UserFieldValue"] = self.userFieldValue!
+        }
+        if self.userFieldkey != nil {
+            map["UserFieldkey"] = self.userFieldkey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentName"] as? String {
+            self.agentName = value
+        }
+        if let value = dict["City"] as? String {
+            self.city = value
+        }
+        if let value = dict["Clid"] as? String {
+            self.clid = value
+        }
+        if let value = dict["Cno"] as? String {
+            self.cno = value
+        }
+        if let value = dict["CustomerNumber"] as? String {
+            self.customerNumber = value
+        }
+        if let value = dict["DisplayNumber"] as? String {
+            self.displayNumber = value
+        }
+        if let value = dict["DownGrade"] as? Int64 {
+            self.downGrade = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Gno"] as? String {
+            self.gno = value
+        }
+        if let value = dict["IsRealAnswer"] as? Int64 {
+            self.isRealAnswer = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Province"] as? String {
+            self.province = value
+        }
+        if let value = dict["RequestUniqueId"] as? String {
+            self.requestUniqueId = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+        if let value = dict["TaskFileId"] as? Int64 {
+            self.taskFileId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["TimeRangeType"] as? String {
+            self.timeRangeType = value
+        }
+        if let value = dict["UniqueId"] as? String {
+            self.uniqueId = value
+        }
+        if let value = dict["UserFieldValue"] as? String {
+            self.userFieldValue = value
+        }
+        if let value = dict["UserFieldkey"] as? String {
+            self.userFieldkey = value
+        }
+    }
+}
+
+public class CloudQueryPredictiveCallCdrResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class RecordFile : Tea.TeaModel {
+                public var file: String?
+
+                public var monitorType: Int64?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.file != nil {
+                        map["File"] = self.file!
+                    }
+                    if self.monitorType != nil {
+                        map["Monitor_type"] = self.monitorType!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["File"] as? String {
+                        self.file = value
+                    }
+                    if let value = dict["Monitor_type"] as? Int64 {
+                        self.monitorType = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var agentName: String?
+
+            public var answerTime: String?
+
+            public var bridgeDuration: String?
+
+            public var bridgeTime: String?
+
+            public var callId: String?
+
+            public var callType: String?
+
+            public var calleeClid: String?
+
+            public var calleeDisplayNumber: String?
+
+            public var calleeNumber: String?
+
+            public var calleeRingingTime: String?
+
+            public var clid: String?
+
+            public var cno: String?
+
+            public var customerCity: String?
+
+            public var customerNumber: String?
+
+            public var customerProvince: String?
+
+            public var detailRingingTime: String?
+
+            public var displayNumber: String?
+
+            public var downGrade: String?
+
+            public var downGradeCounts: String?
+
+            public var endReason: String?
+
+            public var endTime: String?
+
+            public var gno: String?
+
+            public var id: String?
+
+            public var isRealAnswer: String?
+
+            public var ivrName: String?
+
+            public var numberTrunk: String?
+
+            public var qno: String?
+
+            public var realAnswerTime: String?
+
+            public var recordFile: [CloudQueryPredictiveCallCdrResponseBody.Data.List.RecordFile]?
+
+            public var requestUniqueId: String?
+
+            public var sipCause: String?
+
+            public var sipCauseStr: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var statusCode: String?
+
+            public var taskFileId: String?
+
+            public var taskId: String?
+
+            public var taskName: String?
+
+            public var totalDuration: String?
+
+            public var trunkGroupKey: String?
+
+            public var uniqueId: String?
+
+            public var userField: [String: Any]?
+
+            public var vadIn: String?
+
+            public var vadOut: String?
+
+            public var waitDuration: String?
+
+            public var XNumber: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.answerTime != nil {
+                    map["AnswerTime"] = self.answerTime!
+                }
+                if self.bridgeDuration != nil {
+                    map["BridgeDuration"] = self.bridgeDuration!
+                }
+                if self.bridgeTime != nil {
+                    map["BridgeTime"] = self.bridgeTime!
+                }
+                if self.callId != nil {
+                    map["CallId"] = self.callId!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.calleeClid != nil {
+                    map["CalleeClid"] = self.calleeClid!
+                }
+                if self.calleeDisplayNumber != nil {
+                    map["CalleeDisplayNumber"] = self.calleeDisplayNumber!
+                }
+                if self.calleeNumber != nil {
+                    map["CalleeNumber"] = self.calleeNumber!
+                }
+                if self.calleeRingingTime != nil {
+                    map["CalleeRingingTime"] = self.calleeRingingTime!
+                }
+                if self.clid != nil {
+                    map["Clid"] = self.clid!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.customerCity != nil {
+                    map["CustomerCity"] = self.customerCity!
+                }
+                if self.customerNumber != nil {
+                    map["CustomerNumber"] = self.customerNumber!
+                }
+                if self.customerProvince != nil {
+                    map["CustomerProvince"] = self.customerProvince!
+                }
+                if self.detailRingingTime != nil {
+                    map["DetailRingingTime"] = self.detailRingingTime!
+                }
+                if self.displayNumber != nil {
+                    map["DisplayNumber"] = self.displayNumber!
+                }
+                if self.downGrade != nil {
+                    map["DownGrade"] = self.downGrade!
+                }
+                if self.downGradeCounts != nil {
+                    map["DownGradeCounts"] = self.downGradeCounts!
+                }
+                if self.endReason != nil {
+                    map["EndReason"] = self.endReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.gno != nil {
+                    map["Gno"] = self.gno!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isRealAnswer != nil {
+                    map["IsRealAnswer"] = self.isRealAnswer!
+                }
+                if self.ivrName != nil {
+                    map["IvrName"] = self.ivrName!
+                }
+                if self.numberTrunk != nil {
+                    map["NumberTrunk"] = self.numberTrunk!
+                }
+                if self.qno != nil {
+                    map["Qno"] = self.qno!
+                }
+                if self.realAnswerTime != nil {
+                    map["RealAnswerTime"] = self.realAnswerTime!
+                }
+                if self.recordFile != nil {
+                    var tmp : [Any] = []
+                    for k in self.recordFile! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RecordFile"] = tmp
+                }
+                if self.requestUniqueId != nil {
+                    map["RequestUniqueId"] = self.requestUniqueId!
+                }
+                if self.sipCause != nil {
+                    map["SipCause"] = self.sipCause!
+                }
+                if self.sipCauseStr != nil {
+                    map["SipCauseStr"] = self.sipCauseStr!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
+                if self.taskFileId != nil {
+                    map["TaskFileId"] = self.taskFileId!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                if self.taskName != nil {
+                    map["TaskName"] = self.taskName!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.trunkGroupKey != nil {
+                    map["TrunkGroupKey"] = self.trunkGroupKey!
+                }
+                if self.uniqueId != nil {
+                    map["UniqueId"] = self.uniqueId!
+                }
+                if self.userField != nil {
+                    map["UserField"] = self.userField!
+                }
+                if self.vadIn != nil {
+                    map["VadIn"] = self.vadIn!
+                }
+                if self.vadOut != nil {
+                    map["VadOut"] = self.vadOut!
+                }
+                if self.waitDuration != nil {
+                    map["WaitDuration"] = self.waitDuration!
+                }
+                if self.XNumber != nil {
+                    map["XNumber"] = self.XNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AnswerTime"] as? String {
+                    self.answerTime = value
+                }
+                if let value = dict["BridgeDuration"] as? String {
+                    self.bridgeDuration = value
+                }
+                if let value = dict["BridgeTime"] as? String {
+                    self.bridgeTime = value
+                }
+                if let value = dict["CallId"] as? String {
+                    self.callId = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["CalleeClid"] as? String {
+                    self.calleeClid = value
+                }
+                if let value = dict["CalleeDisplayNumber"] as? String {
+                    self.calleeDisplayNumber = value
+                }
+                if let value = dict["CalleeNumber"] as? String {
+                    self.calleeNumber = value
+                }
+                if let value = dict["CalleeRingingTime"] as? String {
+                    self.calleeRingingTime = value
+                }
+                if let value = dict["Clid"] as? String {
+                    self.clid = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["CustomerCity"] as? String {
+                    self.customerCity = value
+                }
+                if let value = dict["CustomerNumber"] as? String {
+                    self.customerNumber = value
+                }
+                if let value = dict["CustomerProvince"] as? String {
+                    self.customerProvince = value
+                }
+                if let value = dict["DetailRingingTime"] as? String {
+                    self.detailRingingTime = value
+                }
+                if let value = dict["DisplayNumber"] as? String {
+                    self.displayNumber = value
+                }
+                if let value = dict["DownGrade"] as? String {
+                    self.downGrade = value
+                }
+                if let value = dict["DownGradeCounts"] as? String {
+                    self.downGradeCounts = value
+                }
+                if let value = dict["EndReason"] as? String {
+                    self.endReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["Gno"] as? String {
+                    self.gno = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["IsRealAnswer"] as? String {
+                    self.isRealAnswer = value
+                }
+                if let value = dict["IvrName"] as? String {
+                    self.ivrName = value
+                }
+                if let value = dict["NumberTrunk"] as? String {
+                    self.numberTrunk = value
+                }
+                if let value = dict["Qno"] as? String {
+                    self.qno = value
+                }
+                if let value = dict["RealAnswerTime"] as? String {
+                    self.realAnswerTime = value
+                }
+                if let value = dict["RecordFile"] as? [Any?] {
+                    var tmp : [CloudQueryPredictiveCallCdrResponseBody.Data.List.RecordFile] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CloudQueryPredictiveCallCdrResponseBody.Data.List.RecordFile()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.recordFile = tmp
+                }
+                if let value = dict["RequestUniqueId"] as? String {
+                    self.requestUniqueId = value
+                }
+                if let value = dict["SipCause"] as? String {
+                    self.sipCause = value
+                }
+                if let value = dict["SipCauseStr"] as? String {
+                    self.sipCauseStr = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["StatusCode"] as? String {
+                    self.statusCode = value
+                }
+                if let value = dict["TaskFileId"] as? String {
+                    self.taskFileId = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+                if let value = dict["TaskName"] as? String {
+                    self.taskName = value
+                }
+                if let value = dict["TotalDuration"] as? String {
+                    self.totalDuration = value
+                }
+                if let value = dict["TrunkGroupKey"] as? String {
+                    self.trunkGroupKey = value
+                }
+                if let value = dict["UniqueId"] as? String {
+                    self.uniqueId = value
+                }
+                if let value = dict["UserField"] as? [String: Any] {
+                    self.userField = value
+                }
+                if let value = dict["VadIn"] as? String {
+                    self.vadIn = value
+                }
+                if let value = dict["VadOut"] as? String {
+                    self.vadOut = value
+                }
+                if let value = dict["WaitDuration"] as? String {
+                    self.waitDuration = value
+                }
+                if let value = dict["XNumber"] as? String {
+                    self.XNumber = value
+                }
+            }
+        }
+        public var list: [CloudQueryPredictiveCallCdrResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudQueryPredictiveCallCdrResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudQueryPredictiveCallCdrResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudQueryPredictiveCallCdrResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudQueryPredictiveCallCdrResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudQueryPredictiveCallCdrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudQueryPredictiveCallCdrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudQueryPredictiveCallCdrResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CloudQueryWebcallCdrRequest : Tea.TeaModel {
+    public var calleeClid: String?
+
+    public var calleeDisplayNumber: String?
+
+    public var calleeNumber: String?
+
+    public var city: String?
+
+    public var clid: String?
+
+    public var cno: String?
+
+    public var customerNumber: String?
+
+    public var displayNumber: String?
+
+    public var endTime: Int64?
+
+    public var enterpriseId: Int64?
+
+    public var gno: String?
+
+    public var isRealAnswer: Int64?
+
+    public var limit: Int64?
+
+    public var province: String?
+
+    public var requestUniqueId: String?
+
+    public var returnCount: Int64?
+
+    public var start: Int64?
+
+    public var startTime: Int64?
+
+    public var status: Int64?
+
+    public var timeRangeType: String?
+
+    public var uniqueId: String?
+
+    public var userFieldValue: String?
+
+    public var userFieldkey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.calleeClid != nil {
+            map["CalleeClid"] = self.calleeClid!
+        }
+        if self.calleeDisplayNumber != nil {
+            map["CalleeDisplayNumber"] = self.calleeDisplayNumber!
+        }
+        if self.calleeNumber != nil {
+            map["CalleeNumber"] = self.calleeNumber!
+        }
+        if self.city != nil {
+            map["City"] = self.city!
+        }
+        if self.clid != nil {
+            map["Clid"] = self.clid!
+        }
+        if self.cno != nil {
+            map["Cno"] = self.cno!
+        }
+        if self.customerNumber != nil {
+            map["CustomerNumber"] = self.customerNumber!
+        }
+        if self.displayNumber != nil {
+            map["DisplayNumber"] = self.displayNumber!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.enterpriseId != nil {
+            map["EnterpriseId"] = self.enterpriseId!
+        }
+        if self.gno != nil {
+            map["Gno"] = self.gno!
+        }
+        if self.isRealAnswer != nil {
+            map["IsRealAnswer"] = self.isRealAnswer!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.province != nil {
+            map["Province"] = self.province!
+        }
+        if self.requestUniqueId != nil {
+            map["RequestUniqueId"] = self.requestUniqueId!
+        }
+        if self.returnCount != nil {
+            map["ReturnCount"] = self.returnCount!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.timeRangeType != nil {
+            map["TimeRangeType"] = self.timeRangeType!
+        }
+        if self.uniqueId != nil {
+            map["UniqueId"] = self.uniqueId!
+        }
+        if self.userFieldValue != nil {
+            map["UserFieldValue"] = self.userFieldValue!
+        }
+        if self.userFieldkey != nil {
+            map["UserFieldkey"] = self.userFieldkey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CalleeClid"] as? String {
+            self.calleeClid = value
+        }
+        if let value = dict["CalleeDisplayNumber"] as? String {
+            self.calleeDisplayNumber = value
+        }
+        if let value = dict["CalleeNumber"] as? String {
+            self.calleeNumber = value
+        }
+        if let value = dict["City"] as? String {
+            self.city = value
+        }
+        if let value = dict["Clid"] as? String {
+            self.clid = value
+        }
+        if let value = dict["Cno"] as? String {
+            self.cno = value
+        }
+        if let value = dict["CustomerNumber"] as? String {
+            self.customerNumber = value
+        }
+        if let value = dict["DisplayNumber"] as? String {
+            self.displayNumber = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["EnterpriseId"] as? Int64 {
+            self.enterpriseId = value
+        }
+        if let value = dict["Gno"] as? String {
+            self.gno = value
+        }
+        if let value = dict["IsRealAnswer"] as? Int64 {
+            self.isRealAnswer = value
+        }
+        if let value = dict["Limit"] as? Int64 {
+            self.limit = value
+        }
+        if let value = dict["Province"] as? String {
+            self.province = value
+        }
+        if let value = dict["RequestUniqueId"] as? String {
+            self.requestUniqueId = value
+        }
+        if let value = dict["ReturnCount"] as? Int64 {
+            self.returnCount = value
+        }
+        if let value = dict["Start"] as? Int64 {
+            self.start = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+        if let value = dict["TimeRangeType"] as? String {
+            self.timeRangeType = value
+        }
+        if let value = dict["UniqueId"] as? String {
+            self.uniqueId = value
+        }
+        if let value = dict["UserFieldValue"] as? String {
+            self.userFieldValue = value
+        }
+        if let value = dict["UserFieldkey"] as? String {
+            self.userFieldkey = value
+        }
+    }
+}
+
+public class CloudQueryWebcallCdrResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class RecordFile : Tea.TeaModel {
+                public var file: String?
+
+                public var monitorType: Int64?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.file != nil {
+                        map["File"] = self.file!
+                    }
+                    if self.monitorType != nil {
+                        map["Monitor_type"] = self.monitorType!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["File"] as? String {
+                        self.file = value
+                    }
+                    if let value = dict["Monitor_type"] as? Int64 {
+                        self.monitorType = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var agentName: String?
+
+            public var answerTime: String?
+
+            public var bridgeDuration: String?
+
+            public var bridgeTime: String?
+
+            public var callId: String?
+
+            public var callType: String?
+
+            public var calleeClid: String?
+
+            public var calleeDisplayNumber: String?
+
+            public var calleeNumber: String?
+
+            public var calleeRingingTime: String?
+
+            public var clid: String?
+
+            public var cno: String?
+
+            public var customerCity: String?
+
+            public var customerNumber: String?
+
+            public var customerProvince: String?
+
+            public var detailRingingTime: String?
+
+            public var displayNumber: String?
+
+            public var downGrade: String?
+
+            public var downGradeCounts: String?
+
+            public var endReason: String?
+
+            public var endTime: String?
+
+            public var gno: String?
+
+            public var id: String?
+
+            public var isRealAnswer: String?
+
+            public var ivrName: String?
+
+            public var numberTrunk: String?
+
+            public var qno: String?
+
+            public var realAnswerTime: String?
+
+            public var recordFile: [CloudQueryWebcallCdrResponseBody.Data.List.RecordFile]?
+
+            public var requestUniqueId: String?
+
+            public var sipCause: String?
+
+            public var sipCauseStr: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public var statusCode: String?
+
+            public var taskFileId: String?
+
+            public var taskId: String?
+
+            public var totalDuration: String?
+
+            public var trunkGroupKey: String?
+
+            public var uniqueId: String?
+
+            public var waitDuration: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.answerTime != nil {
+                    map["AnswerTime"] = self.answerTime!
+                }
+                if self.bridgeDuration != nil {
+                    map["BridgeDuration"] = self.bridgeDuration!
+                }
+                if self.bridgeTime != nil {
+                    map["BridgeTime"] = self.bridgeTime!
+                }
+                if self.callId != nil {
+                    map["CallId"] = self.callId!
+                }
+                if self.callType != nil {
+                    map["CallType"] = self.callType!
+                }
+                if self.calleeClid != nil {
+                    map["CalleeClid"] = self.calleeClid!
+                }
+                if self.calleeDisplayNumber != nil {
+                    map["CalleeDisplayNumber"] = self.calleeDisplayNumber!
+                }
+                if self.calleeNumber != nil {
+                    map["CalleeNumber"] = self.calleeNumber!
+                }
+                if self.calleeRingingTime != nil {
+                    map["CalleeRingingTime"] = self.calleeRingingTime!
+                }
+                if self.clid != nil {
+                    map["Clid"] = self.clid!
+                }
+                if self.cno != nil {
+                    map["Cno"] = self.cno!
+                }
+                if self.customerCity != nil {
+                    map["CustomerCity"] = self.customerCity!
+                }
+                if self.customerNumber != nil {
+                    map["CustomerNumber"] = self.customerNumber!
+                }
+                if self.customerProvince != nil {
+                    map["CustomerProvince"] = self.customerProvince!
+                }
+                if self.detailRingingTime != nil {
+                    map["DetailRingingTime"] = self.detailRingingTime!
+                }
+                if self.displayNumber != nil {
+                    map["DisplayNumber"] = self.displayNumber!
+                }
+                if self.downGrade != nil {
+                    map["DownGrade"] = self.downGrade!
+                }
+                if self.downGradeCounts != nil {
+                    map["DownGradeCounts"] = self.downGradeCounts!
+                }
+                if self.endReason != nil {
+                    map["EndReason"] = self.endReason!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.gno != nil {
+                    map["Gno"] = self.gno!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isRealAnswer != nil {
+                    map["IsRealAnswer"] = self.isRealAnswer!
+                }
+                if self.ivrName != nil {
+                    map["IvrName"] = self.ivrName!
+                }
+                if self.numberTrunk != nil {
+                    map["NumberTrunk"] = self.numberTrunk!
+                }
+                if self.qno != nil {
+                    map["Qno"] = self.qno!
+                }
+                if self.realAnswerTime != nil {
+                    map["RealAnswerTime"] = self.realAnswerTime!
+                }
+                if self.recordFile != nil {
+                    var tmp : [Any] = []
+                    for k in self.recordFile! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RecordFile"] = tmp
+                }
+                if self.requestUniqueId != nil {
+                    map["RequestUniqueId"] = self.requestUniqueId!
+                }
+                if self.sipCause != nil {
+                    map["SipCause"] = self.sipCause!
+                }
+                if self.sipCauseStr != nil {
+                    map["SipCauseStr"] = self.sipCauseStr!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
+                if self.taskFileId != nil {
+                    map["TaskFileId"] = self.taskFileId!
+                }
+                if self.taskId != nil {
+                    map["TaskId"] = self.taskId!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.trunkGroupKey != nil {
+                    map["TrunkGroupKey"] = self.trunkGroupKey!
+                }
+                if self.uniqueId != nil {
+                    map["UniqueId"] = self.uniqueId!
+                }
+                if self.waitDuration != nil {
+                    map["WaitDuration"] = self.waitDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["AnswerTime"] as? String {
+                    self.answerTime = value
+                }
+                if let value = dict["BridgeDuration"] as? String {
+                    self.bridgeDuration = value
+                }
+                if let value = dict["BridgeTime"] as? String {
+                    self.bridgeTime = value
+                }
+                if let value = dict["CallId"] as? String {
+                    self.callId = value
+                }
+                if let value = dict["CallType"] as? String {
+                    self.callType = value
+                }
+                if let value = dict["CalleeClid"] as? String {
+                    self.calleeClid = value
+                }
+                if let value = dict["CalleeDisplayNumber"] as? String {
+                    self.calleeDisplayNumber = value
+                }
+                if let value = dict["CalleeNumber"] as? String {
+                    self.calleeNumber = value
+                }
+                if let value = dict["CalleeRingingTime"] as? String {
+                    self.calleeRingingTime = value
+                }
+                if let value = dict["Clid"] as? String {
+                    self.clid = value
+                }
+                if let value = dict["Cno"] as? String {
+                    self.cno = value
+                }
+                if let value = dict["CustomerCity"] as? String {
+                    self.customerCity = value
+                }
+                if let value = dict["CustomerNumber"] as? String {
+                    self.customerNumber = value
+                }
+                if let value = dict["CustomerProvince"] as? String {
+                    self.customerProvince = value
+                }
+                if let value = dict["DetailRingingTime"] as? String {
+                    self.detailRingingTime = value
+                }
+                if let value = dict["DisplayNumber"] as? String {
+                    self.displayNumber = value
+                }
+                if let value = dict["DownGrade"] as? String {
+                    self.downGrade = value
+                }
+                if let value = dict["DownGradeCounts"] as? String {
+                    self.downGradeCounts = value
+                }
+                if let value = dict["EndReason"] as? String {
+                    self.endReason = value
+                }
+                if let value = dict["EndTime"] as? String {
+                    self.endTime = value
+                }
+                if let value = dict["Gno"] as? String {
+                    self.gno = value
+                }
+                if let value = dict["Id"] as? String {
+                    self.id = value
+                }
+                if let value = dict["IsRealAnswer"] as? String {
+                    self.isRealAnswer = value
+                }
+                if let value = dict["IvrName"] as? String {
+                    self.ivrName = value
+                }
+                if let value = dict["NumberTrunk"] as? String {
+                    self.numberTrunk = value
+                }
+                if let value = dict["Qno"] as? String {
+                    self.qno = value
+                }
+                if let value = dict["RealAnswerTime"] as? String {
+                    self.realAnswerTime = value
+                }
+                if let value = dict["RecordFile"] as? [Any?] {
+                    var tmp : [CloudQueryWebcallCdrResponseBody.Data.List.RecordFile] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CloudQueryWebcallCdrResponseBody.Data.List.RecordFile()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.recordFile = tmp
+                }
+                if let value = dict["RequestUniqueId"] as? String {
+                    self.requestUniqueId = value
+                }
+                if let value = dict["SipCause"] as? String {
+                    self.sipCause = value
+                }
+                if let value = dict["SipCauseStr"] as? String {
+                    self.sipCauseStr = value
+                }
+                if let value = dict["StartTime"] as? String {
+                    self.startTime = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["StatusCode"] as? String {
+                    self.statusCode = value
+                }
+                if let value = dict["TaskFileId"] as? String {
+                    self.taskFileId = value
+                }
+                if let value = dict["TaskId"] as? String {
+                    self.taskId = value
+                }
+                if let value = dict["TotalDuration"] as? String {
+                    self.totalDuration = value
+                }
+                if let value = dict["TrunkGroupKey"] as? String {
+                    self.trunkGroupKey = value
+                }
+                if let value = dict["UniqueId"] as? String {
+                    self.uniqueId = value
+                }
+                if let value = dict["WaitDuration"] as? String {
+                    self.waitDuration = value
+                }
+            }
+        }
+        public var list: [CloudQueryWebcallCdrResponseBody.Data.List]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [CloudQueryWebcallCdrResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = CloudQueryWebcallCdrResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: CloudQueryWebcallCdrResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CloudQueryWebcallCdrResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CloudQueryWebcallCdrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloudQueryWebcallCdrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CloudQueryWebcallCdrResponseBody()
             model.fromMap(value)
             self.body = model
         }
