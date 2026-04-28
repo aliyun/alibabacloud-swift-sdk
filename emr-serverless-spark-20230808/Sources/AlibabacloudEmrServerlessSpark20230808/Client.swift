@@ -3252,4 +3252,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await updateRayClusterWithOptions(workspaceId as! String, clusterId as! String, request as! UpdateRayClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWorkspaceWithOptions(_ request: UpdateWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWorkspaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cu)) {
+            body["cu"] = request.cu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gpu)) {
+            body["gpu"] = request.gpu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuSpec)) {
+            body["gpuSpec"] = request.gpuSpec ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subscription)) {
+            body["subscription"] = request.subscription!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["workspaceId"] = request.workspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceName)) {
+            body["workspaceName"] = request.workspaceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWorkspace",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWorkspaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWorkspace(_ request: UpdateWorkspaceRequest) async throws -> UpdateWorkspaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateWorkspaceWithOptions(request as! UpdateWorkspaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }

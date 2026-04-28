@@ -23251,3 +23251,301 @@ public class UpdateRayClusterResponse : Tea.TeaModel {
         }
     }
 }
+
+public class UpdateWorkspaceRequest : Tea.TeaModel {
+    public class Subscription : Tea.TeaModel {
+        public var autoRenew: String?
+
+        public var autoRenewPeriod: String?
+
+        public var autoRenewPeriodUnit: String?
+
+        public var clientToken: String?
+
+        public var duration: String?
+
+        public var paymentDurationUnit: String?
+
+        public var queue: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenew != nil {
+                map["autoRenew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["autoRenewPeriod"] = self.autoRenewPeriod!
+            }
+            if self.autoRenewPeriodUnit != nil {
+                map["autoRenewPeriodUnit"] = self.autoRenewPeriodUnit!
+            }
+            if self.clientToken != nil {
+                map["clientToken"] = self.clientToken!
+            }
+            if self.duration != nil {
+                map["duration"] = self.duration!
+            }
+            if self.paymentDurationUnit != nil {
+                map["paymentDurationUnit"] = self.paymentDurationUnit!
+            }
+            if self.queue != nil {
+                map["queue"] = self.queue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["autoRenew"] as? String {
+                self.autoRenew = value
+            }
+            if let value = dict["autoRenewPeriod"] as? String {
+                self.autoRenewPeriod = value
+            }
+            if let value = dict["autoRenewPeriodUnit"] as? String {
+                self.autoRenewPeriodUnit = value
+            }
+            if let value = dict["clientToken"] as? String {
+                self.clientToken = value
+            }
+            if let value = dict["duration"] as? String {
+                self.duration = value
+            }
+            if let value = dict["paymentDurationUnit"] as? String {
+                self.paymentDurationUnit = value
+            }
+            if let value = dict["queue"] as? [String] {
+                self.queue = value
+            }
+        }
+    }
+    public var cu: Int32?
+
+    public var gpu: Int32?
+
+    public var gpuSpec: [String]?
+
+    public var resourceGroupId: String?
+
+    public var subscription: UpdateWorkspaceRequest.Subscription?
+
+    public var workspaceId: String?
+
+    public var workspaceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.subscription?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cu != nil {
+            map["cu"] = self.cu!
+        }
+        if self.gpu != nil {
+            map["gpu"] = self.gpu!
+        }
+        if self.gpuSpec != nil {
+            map["gpuSpec"] = self.gpuSpec!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.subscription != nil {
+            map["subscription"] = self.subscription?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        if self.workspaceName != nil {
+            map["workspaceName"] = self.workspaceName!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cu"] as? Int32 {
+            self.cu = value
+        }
+        if let value = dict["gpu"] as? Int32 {
+            self.gpu = value
+        }
+        if let value = dict["gpuSpec"] as? [String] {
+            self.gpuSpec = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["subscription"] as? [String: Any?] {
+            var model = UpdateWorkspaceRequest.Subscription()
+            model.fromMap(value)
+            self.subscription = model
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+        if let value = dict["workspaceName"] as? String {
+            self.workspaceName = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateWorkspaceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var orderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.orderId != nil {
+                map["orderId"] = self.orderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["orderId"] as? String {
+                self.orderId = value
+            }
+        }
+    }
+    public var data: UpdateWorkspaceResponseBody.Data?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.orderId != nil {
+            map["orderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = UpdateWorkspaceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["orderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateWorkspaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateWorkspaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateWorkspaceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
