@@ -6421,6 +6421,8 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
             public var logStoreTtl: Int32?
 
+            public var usedCapacity: Double?
+
             public override init() {
                 super.init()
             }
@@ -6441,6 +6443,9 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                 if self.logStoreTtl != nil {
                     map["LogStoreTtl"] = self.logStoreTtl!
                 }
+                if self.usedCapacity != nil {
+                    map["UsedCapacity"] = self.usedCapacity!
+                }
                 return map
             }
 
@@ -6451,6 +6456,9 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LogStoreTtl"] as? Int32 {
                     self.logStoreTtl = value
+                }
+                if let value = dict["UsedCapacity"] as? Double {
+                    self.usedCapacity = value
                 }
             }
         }
@@ -6561,6 +6569,8 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
 
             public var logStoreTtl: Int32?
 
+            public var usedCapacity: Double?
+
             public override init() {
                 super.init()
             }
@@ -6605,6 +6615,9 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                 if self.logStoreTtl != nil {
                     map["LogStoreTtl"] = self.logStoreTtl!
                 }
+                if self.usedCapacity != nil {
+                    map["UsedCapacity"] = self.usedCapacity!
+                }
                 return map
             }
 
@@ -6640,6 +6653,55 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                 if let value = dict["LogStoreTtl"] as? Int32 {
                     self.logStoreTtl = value
                 }
+                if let value = dict["UsedCapacity"] as? Double {
+                    self.usedCapacity = value
+                }
+            }
+        }
+        public class UnusedLogStores : Tea.TeaModel {
+            public var logStoreName: String?
+
+            public var logStoreTtl: Int32?
+
+            public var usedCapacity: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.logStoreTtl != nil {
+                    map["LogStoreTtl"] = self.logStoreTtl!
+                }
+                if self.usedCapacity != nil {
+                    map["UsedCapacity"] = self.usedCapacity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LogStoreName"] as? String {
+                    self.logStoreName = value
+                }
+                if let value = dict["LogStoreTtl"] as? Int32 {
+                    self.logStoreTtl = value
+                }
+                if let value = dict["UsedCapacity"] as? Double {
+                    self.usedCapacity = value
+                }
             }
         }
         public var coldStorageUsedCapacity: Double?
@@ -6661,6 +6723,8 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
         public var normalizationLogViews: [GetDataStorageResponseBody.Data.NormalizationLogViews]?
 
         public var sasLogStores: [GetDataStorageResponseBody.Data.SasLogStores]?
+
+        public var unusedLogStores: [GetDataStorageResponseBody.Data.UnusedLogStores]?
 
         public override init() {
             super.init()
@@ -6717,6 +6781,13 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["SasLogStores"] = tmp
+            }
+            if self.unusedLogStores != nil {
+                var tmp : [Any] = []
+                for k in self.unusedLogStores! {
+                    tmp.append(k.toMap())
+                }
+                map["UnusedLogStores"] = tmp
             }
             return map
         }
@@ -6782,6 +6853,19 @@ public class GetDataStorageResponseBody : Tea.TeaModel {
                     }
                 }
                 self.sasLogStores = tmp
+            }
+            if let value = dict["UnusedLogStores"] as? [Any?] {
+                var tmp : [GetDataStorageResponseBody.Data.UnusedLogStores] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDataStorageResponseBody.Data.UnusedLogStores()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.unusedLogStores = tmp
             }
         }
     }
