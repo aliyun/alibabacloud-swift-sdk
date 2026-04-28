@@ -6451,6 +6451,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getInstanceControlConfigurationWithOptions(_ request: GetInstanceControlConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstanceControlConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.elementName)) {
+            query["ElementName"] = request.elementName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

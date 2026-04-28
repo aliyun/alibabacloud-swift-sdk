@@ -33315,6 +33315,8 @@ public class GetInstanceResponse : Tea.TeaModel {
 }
 
 public class GetInstanceControlConfigurationRequest : Tea.TeaModel {
+    public var elementName: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -33331,6 +33333,9 @@ public class GetInstanceControlConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.elementName != nil {
+            map["ElementName"] = self.elementName!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -33339,6 +33344,9 @@ public class GetInstanceControlConfigurationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ElementName"] as? String {
+            self.elementName = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
