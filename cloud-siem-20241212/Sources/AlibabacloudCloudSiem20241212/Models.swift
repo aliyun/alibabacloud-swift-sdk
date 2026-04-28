@@ -1429,9 +1429,13 @@ public class CreateDataSourceResponse : Tea.TeaModel {
 public class CreateDetectionRuleRequest : Tea.TeaModel {
     public var alertAttCk: String?
 
+    public var alertAttCkMapping: String?
+
     public var alertDescription: String?
 
     public var alertLevel: String?
+
+    public var alertLevelMapping: String?
 
     public var alertName: String?
 
@@ -1446,6 +1450,8 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
     public var alertThresholdPeriod: String?
 
     public var alertType: String?
+
+    public var alertTypeMapping: String?
 
     public var detectionExpressionContent: String?
 
@@ -1512,11 +1518,17 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         if self.alertAttCk != nil {
             map["AlertAttCk"] = self.alertAttCk!
         }
+        if self.alertAttCkMapping != nil {
+            map["AlertAttCkMapping"] = self.alertAttCkMapping!
+        }
         if self.alertDescription != nil {
             map["AlertDescription"] = self.alertDescription!
         }
         if self.alertLevel != nil {
             map["AlertLevel"] = self.alertLevel!
+        }
+        if self.alertLevelMapping != nil {
+            map["AlertLevelMapping"] = self.alertLevelMapping!
         }
         if self.alertName != nil {
             map["AlertName"] = self.alertName!
@@ -1538,6 +1550,9 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if self.alertType != nil {
             map["AlertType"] = self.alertType!
+        }
+        if self.alertTypeMapping != nil {
+            map["AlertTypeMapping"] = self.alertTypeMapping!
         }
         if self.detectionExpressionContent != nil {
             map["DetectionExpressionContent"] = self.detectionExpressionContent!
@@ -1619,11 +1634,17 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         if let value = dict["AlertAttCk"] as? String {
             self.alertAttCk = value
         }
+        if let value = dict["AlertAttCkMapping"] as? String {
+            self.alertAttCkMapping = value
+        }
         if let value = dict["AlertDescription"] as? String {
             self.alertDescription = value
         }
         if let value = dict["AlertLevel"] as? String {
             self.alertLevel = value
+        }
+        if let value = dict["AlertLevelMapping"] as? String {
+            self.alertLevelMapping = value
         }
         if let value = dict["AlertName"] as? String {
             self.alertName = value
@@ -1645,6 +1666,9 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["AlertType"] as? String {
             self.alertType = value
+        }
+        if let value = dict["AlertTypeMapping"] as? String {
+            self.alertTypeMapping = value
         }
         if let value = dict["DetectionExpressionContent"] as? String {
             self.detectionExpressionContent = value
@@ -10275,11 +10299,17 @@ public class ListDataIngestionsResponse : Tea.TeaModel {
 public class ListDataSetRecordsRequest : Tea.TeaModel {
     public var dataSetId: String?
 
+    public var filter: String?
+
     public var lang: String?
 
     public var maxResults: Int32?
 
     public var nextToken: String?
+
+    public var order: String?
+
+    public var orderField: String?
 
     public var pageNumber: Int32?
 
@@ -10306,6 +10336,9 @@ public class ListDataSetRecordsRequest : Tea.TeaModel {
         if self.dataSetId != nil {
             map["DataSetId"] = self.dataSetId!
         }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -10314,6 +10347,12 @@ public class ListDataSetRecordsRequest : Tea.TeaModel {
         }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.orderField != nil {
+            map["OrderField"] = self.orderField!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -10335,6 +10374,9 @@ public class ListDataSetRecordsRequest : Tea.TeaModel {
         if let value = dict["DataSetId"] as? String {
             self.dataSetId = value
         }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
+        }
         if let value = dict["Lang"] as? String {
             self.lang = value
         }
@@ -10343,6 +10385,12 @@ public class ListDataSetRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
+        if let value = dict["OrderField"] as? String {
+            self.orderField = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -12983,9 +13031,13 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
         }
         public var alertAttCk: String?
 
+        public var alertAttCkMapping: String?
+
         public var alertDescription: String?
 
         public var alertLevel: String?
+
+        public var alertLevelMapping: String?
 
         public var alertName: String?
 
@@ -13000,6 +13052,8 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
         public var alertThresholdPeriod: String?
 
         public var alertType: String?
+
+        public var alertTypeMapping: String?
 
         public var createTime: Int64?
 
@@ -13065,11 +13119,17 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
             if self.alertAttCk != nil {
                 map["AlertAttCk"] = self.alertAttCk!
             }
+            if self.alertAttCkMapping != nil {
+                map["AlertAttCkMapping"] = self.alertAttCkMapping!
+            }
             if self.alertDescription != nil {
                 map["AlertDescription"] = self.alertDescription!
             }
             if self.alertLevel != nil {
                 map["AlertLevel"] = self.alertLevel!
+            }
+            if self.alertLevelMapping != nil {
+                map["AlertLevelMapping"] = self.alertLevelMapping!
             }
             if self.alertName != nil {
                 map["AlertName"] = self.alertName!
@@ -13091,6 +13151,9 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
             }
             if self.alertType != nil {
                 map["AlertType"] = self.alertType!
+            }
+            if self.alertTypeMapping != nil {
+                map["AlertTypeMapping"] = self.alertTypeMapping!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -13173,11 +13236,17 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
             if let value = dict["AlertAttCk"] as? String {
                 self.alertAttCk = value
             }
+            if let value = dict["AlertAttCkMapping"] as? String {
+                self.alertAttCkMapping = value
+            }
             if let value = dict["AlertDescription"] as? String {
                 self.alertDescription = value
             }
             if let value = dict["AlertLevel"] as? String {
                 self.alertLevel = value
+            }
+            if let value = dict["AlertLevelMapping"] as? String {
+                self.alertLevelMapping = value
             }
             if let value = dict["AlertName"] as? String {
                 self.alertName = value
@@ -13199,6 +13268,9 @@ public class ListDetectionRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AlertType"] as? String {
                 self.alertType = value
+            }
+            if let value = dict["AlertTypeMapping"] as? String {
+                self.alertTypeMapping = value
             }
             if let value = dict["CreateTime"] as? Int64 {
                 self.createTime = value
@@ -21554,9 +21626,13 @@ public class UpdateDataStorageTtlResponse : Tea.TeaModel {
 public class UpdateDetectionRuleRequest : Tea.TeaModel {
     public var alertAttCk: String?
 
+    public var alertAttCkMapping: String?
+
     public var alertDescription: String?
 
     public var alertLevel: String?
+
+    public var alertLevelMapping: String?
 
     public var alertName: String?
 
@@ -21571,6 +21647,8 @@ public class UpdateDetectionRuleRequest : Tea.TeaModel {
     public var alertThresholdPeriod: String?
 
     public var alertType: String?
+
+    public var alertTypeMapping: String?
 
     public var detectionExpressionContent: String?
 
@@ -21633,11 +21711,17 @@ public class UpdateDetectionRuleRequest : Tea.TeaModel {
         if self.alertAttCk != nil {
             map["AlertAttCk"] = self.alertAttCk!
         }
+        if self.alertAttCkMapping != nil {
+            map["AlertAttCkMapping"] = self.alertAttCkMapping!
+        }
         if self.alertDescription != nil {
             map["AlertDescription"] = self.alertDescription!
         }
         if self.alertLevel != nil {
             map["AlertLevel"] = self.alertLevel!
+        }
+        if self.alertLevelMapping != nil {
+            map["AlertLevelMapping"] = self.alertLevelMapping!
         }
         if self.alertName != nil {
             map["AlertName"] = self.alertName!
@@ -21659,6 +21743,9 @@ public class UpdateDetectionRuleRequest : Tea.TeaModel {
         }
         if self.alertType != nil {
             map["AlertType"] = self.alertType!
+        }
+        if self.alertTypeMapping != nil {
+            map["AlertTypeMapping"] = self.alertTypeMapping!
         }
         if self.detectionExpressionContent != nil {
             map["DetectionExpressionContent"] = self.detectionExpressionContent!
@@ -21734,11 +21821,17 @@ public class UpdateDetectionRuleRequest : Tea.TeaModel {
         if let value = dict["AlertAttCk"] as? String {
             self.alertAttCk = value
         }
+        if let value = dict["AlertAttCkMapping"] as? String {
+            self.alertAttCkMapping = value
+        }
         if let value = dict["AlertDescription"] as? String {
             self.alertDescription = value
         }
         if let value = dict["AlertLevel"] as? String {
             self.alertLevel = value
+        }
+        if let value = dict["AlertLevelMapping"] as? String {
+            self.alertLevelMapping = value
         }
         if let value = dict["AlertName"] as? String {
             self.alertName = value
@@ -21760,6 +21853,9 @@ public class UpdateDetectionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["AlertType"] as? String {
             self.alertType = value
+        }
+        if let value = dict["AlertTypeMapping"] as? String {
+            self.alertTypeMapping = value
         }
         if let value = dict["DetectionExpressionContent"] as? String {
             self.detectionExpressionContent = value
