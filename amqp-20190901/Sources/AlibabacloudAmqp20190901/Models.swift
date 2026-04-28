@@ -10694,6 +10694,8 @@ public class ImportDefinitionAsynchronousResponse : Tea.TeaModel {
 public class InstancePreivewRequest : Tea.TeaModel {
     public var consoleSessionId: String?
 
+    public var resourceGroupId: String?
+
     public var tags: String?
 
     public override init() {
@@ -10713,6 +10715,9 @@ public class InstancePreivewRequest : Tea.TeaModel {
         if self.consoleSessionId != nil {
             map["ConsoleSessionId"] = self.consoleSessionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -10723,6 +10728,9 @@ public class InstancePreivewRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConsoleSessionId"] as? String {
             self.consoleSessionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["Tags"] as? String {
             self.tags = value
