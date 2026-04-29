@@ -1395,6 +1395,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProxyPriceWithOptions(_ request: UpdateProxyPriceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateProxyPriceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auctionId)) {
+            body["AuctionId"] = request.auctionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currency)) {
+            body["Currency"] = request.currency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.price)) {
+            body["Price"] = request.price!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateProxyPrice",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateProxyPriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProxyPrice(_ request: UpdateProxyPriceRequest) async throws -> UpdateProxyPriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateProxyPriceWithOptions(request as! UpdateProxyPriceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func websiteAddDnsRecordWithOptions(_ request: WebsiteAddDnsRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WebsiteAddDnsRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
