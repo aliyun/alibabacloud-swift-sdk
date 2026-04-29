@@ -836,6 +836,8 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
         public class Transform : Tea.TeaModel {
             public class Input : Tea.TeaModel {
+                public var modality: String?
+
                 public var name: String?
 
                 public var type: String?
@@ -854,6 +856,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.modality != nil {
+                        map["Modality"] = self.modality!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -865,6 +870,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Modality"] as? String {
+                        self.modality = value
+                    }
                     if let value = dict["Name"] as? String {
                         self.name = value
                     }
@@ -1365,9 +1373,13 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
 
     public var embeddingDimension: Int32?
 
+    public var enableFusion: Bool?
+
     public var maxTokens: Int32?
 
     public var model: String?
+
+    public var modelType: String?
 
     public var name: String?
 
@@ -1401,11 +1413,17 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
         if self.embeddingDimension != nil {
             map["EmbeddingDimension"] = self.embeddingDimension!
         }
+        if self.enableFusion != nil {
+            map["EnableFusion"] = self.enableFusion!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -1433,11 +1451,17 @@ public class CreateLLMConfigRequest : Tea.TeaModel {
         if let value = dict["EmbeddingDimension"] as? Int32 {
             self.embeddingDimension = value
         }
+        if let value = dict["EnableFusion"] as? Bool {
+            self.enableFusion = value
+        }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -3524,6 +3548,8 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
         public class Transform : Tea.TeaModel {
             public class Input : Tea.TeaModel {
+                public var modality: String?
+
                 public var name: String?
 
                 public var type: String?
@@ -3542,6 +3568,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.modality != nil {
+                        map["Modality"] = self.modality!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -3553,6 +3582,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Modality"] as? String {
+                        self.modality = value
+                    }
                     if let value = dict["Name"] as? String {
                         self.name = value
                     }
@@ -4201,6 +4233,8 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
 
     public var embeddingDimension: Int32?
 
+    public var enableFusion: Bool?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -4210,6 +4244,8 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
     public var maxTokens: Int32?
 
     public var model: String?
+
+    public var modelType: String?
 
     public var name: String?
 
@@ -4245,6 +4281,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         if self.embeddingDimension != nil {
             map["EmbeddingDimension"] = self.embeddingDimension!
         }
+        if self.enableFusion != nil {
+            map["EnableFusion"] = self.enableFusion!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -4259,6 +4298,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -4289,6 +4331,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         if let value = dict["EmbeddingDimension"] as? Int32 {
             self.embeddingDimension = value
         }
+        if let value = dict["EnableFusion"] as? Bool {
+            self.enableFusion = value
+        }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
         }
@@ -4303,6 +4348,9 @@ public class GetLLMConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -8986,6 +9034,8 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
 
         public var embeddingDimension: Int32?
 
+        public var enableFusion: Bool?
+
         public var gmtCreateTime: String?
 
         public var gmtModifiedTime: String?
@@ -8995,6 +9045,8 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
         public var maxTokens: Int32?
 
         public var model: String?
+
+        public var modelType: String?
 
         public var name: String?
 
@@ -9030,6 +9082,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             if self.embeddingDimension != nil {
                 map["EmbeddingDimension"] = self.embeddingDimension!
             }
+            if self.enableFusion != nil {
+                map["EnableFusion"] = self.enableFusion!
+            }
             if self.gmtCreateTime != nil {
                 map["GmtCreateTime"] = self.gmtCreateTime!
             }
@@ -9044,6 +9099,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             }
             if self.model != nil {
                 map["Model"] = self.model!
+            }
+            if self.modelType != nil {
+                map["ModelType"] = self.modelType!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -9074,6 +9132,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             if let value = dict["EmbeddingDimension"] as? Int32 {
                 self.embeddingDimension = value
             }
+            if let value = dict["EnableFusion"] as? Bool {
+                self.enableFusion = value
+            }
             if let value = dict["GmtCreateTime"] as? String {
                 self.gmtCreateTime = value
             }
@@ -9088,6 +9149,9 @@ public class ListLLMConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Model"] as? String {
                 self.model = value
+            }
+            if let value = dict["ModelType"] as? String {
+                self.modelType = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -12011,6 +12075,306 @@ public class UpdateDatasourceResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateFeatureViewRequest : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public class Transform : Tea.TeaModel {
+            public class Input : Tea.TeaModel {
+                public var modality: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.modality != nil {
+                        map["Modality"] = self.modality!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Modality"] as? String {
+                        self.modality = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var input: [UpdateFeatureViewRequest.Fields.Transform.Input]?
+
+            public var LLMConfigId: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.input != nil {
+                    var tmp : [Any] = []
+                    for k in self.input! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Input"] = tmp
+                }
+                if self.LLMConfigId != nil {
+                    map["LLMConfigId"] = self.LLMConfigId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Input"] as? [Any?] {
+                    var tmp : [UpdateFeatureViewRequest.Fields.Transform.Input] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateFeatureViewRequest.Fields.Transform.Input()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.input = tmp
+                }
+                if let value = dict["LLMConfigId"] as? Int32 {
+                    self.LLMConfigId = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var attributes: [String]?
+
+        public var name: String?
+
+        public var transform: [UpdateFeatureViewRequest.Fields.Transform]?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributes != nil {
+                map["Attributes"] = self.attributes!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.transform != nil {
+                var tmp : [Any] = []
+                for k in self.transform! {
+                    tmp.append(k.toMap())
+                }
+                map["Transform"] = tmp
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attributes"] as? [String] {
+                self.attributes = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Transform"] as? [Any?] {
+                var tmp : [UpdateFeatureViewRequest.Fields.Transform] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateFeatureViewRequest.Fields.Transform()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.transform = tmp
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public var fields: [UpdateFeatureViewRequest.Fields]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fields != nil {
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["Fields"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Fields"] as? [Any?] {
+            var tmp : [UpdateFeatureViewRequest.Fields] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateFeatureViewRequest.Fields()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fields = tmp
+        }
+    }
+}
+
+public class UpdateFeatureViewResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateFeatureViewResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateFeatureViewResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateFeatureViewResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateLLMConfigRequest : Tea.TeaModel {
     public var apiKey: String?
 
@@ -12020,9 +12384,13 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
 
     public var embeddingDimension: Int32?
 
+    public var enableFusion: Bool?
+
     public var maxTokens: Int32?
 
     public var model: String?
+
+    public var modelType: String?
 
     public var name: String?
 
@@ -12054,11 +12422,17 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
         if self.embeddingDimension != nil {
             map["EmbeddingDimension"] = self.embeddingDimension!
         }
+        if self.enableFusion != nil {
+            map["EnableFusion"] = self.enableFusion!
+        }
         if self.maxTokens != nil {
             map["MaxTokens"] = self.maxTokens!
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -12083,11 +12457,17 @@ public class UpdateLLMConfigRequest : Tea.TeaModel {
         if let value = dict["EmbeddingDimension"] as? Int32 {
             self.embeddingDimension = value
         }
+        if let value = dict["EnableFusion"] as? Bool {
+            self.enableFusion = value
+        }
         if let value = dict["MaxTokens"] as? Int32 {
             self.maxTokens = value
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["ModelType"] as? String {
+            self.modelType = value
         }
         if let value = dict["Name"] as? String {
             self.name = value

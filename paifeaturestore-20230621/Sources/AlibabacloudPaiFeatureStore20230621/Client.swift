@@ -294,11 +294,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.embeddingDimension)) {
             body["EmbeddingDimension"] = request.embeddingDimension!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableFusion)) {
+            body["EnableFusion"] = request.enableFusion!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxTokens)) {
             body["MaxTokens"] = request.maxTokens!;
         }
         if (!TeaUtils.Client.isUnset(request.model)) {
             body["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            body["ModelType"] = request.modelType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
@@ -2090,6 +2096,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFeatureViewWithOptions(_ InstanceId: String, _ FeatureViewId: String, _ request: UpdateFeatureViewRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFeatureViewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            body["Fields"] = request.fields ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateFeatureView",
+            "version": "2023-06-21",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/featureviews/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureViewId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateFeatureViewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFeatureView(_ InstanceId: String, _ FeatureViewId: String, _ request: UpdateFeatureViewRequest) async throws -> UpdateFeatureViewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateFeatureViewWithOptions(InstanceId as! String, FeatureViewId as! String, request as! UpdateFeatureViewRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateLLMConfigWithOptions(_ InstanceId: String, _ LLMConfigId: String, _ request: UpdateLLMConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLLMConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2105,11 +2144,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.embeddingDimension)) {
             body["EmbeddingDimension"] = request.embeddingDimension!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableFusion)) {
+            body["EnableFusion"] = request.enableFusion!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxTokens)) {
             body["MaxTokens"] = request.maxTokens!;
         }
         if (!TeaUtils.Client.isUnset(request.model)) {
             body["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            body["ModelType"] = request.modelType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
