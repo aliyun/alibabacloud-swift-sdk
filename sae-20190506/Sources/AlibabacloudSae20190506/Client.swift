@@ -6124,6 +6124,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scalingRuleTimer)) {
             query["ScalingRuleTimer"] = request.scalingRuleTimer ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scalingRuleType)) {
+            query["ScalingRuleType"] = request.scalingRuleType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

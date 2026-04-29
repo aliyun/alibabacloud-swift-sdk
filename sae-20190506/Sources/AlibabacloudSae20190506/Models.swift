@@ -57687,6 +57687,8 @@ public class UpdateApplicationScalingRuleRequest : Tea.TeaModel {
 
     public var scalingRuleTimer: String?
 
+    public var scalingRuleType: String?
+
     public override init() {
         super.init()
     }
@@ -57722,6 +57724,9 @@ public class UpdateApplicationScalingRuleRequest : Tea.TeaModel {
         if self.scalingRuleTimer != nil {
             map["ScalingRuleTimer"] = self.scalingRuleTimer!
         }
+        if self.scalingRuleType != nil {
+            map["ScalingRuleType"] = self.scalingRuleType!
+        }
         return map
     }
 
@@ -57747,6 +57752,9 @@ public class UpdateApplicationScalingRuleRequest : Tea.TeaModel {
         }
         if let value = dict["ScalingRuleTimer"] as? String {
             self.scalingRuleTimer = value
+        }
+        if let value = dict["ScalingRuleType"] as? String {
+            self.scalingRuleType = value
         }
     }
 }
