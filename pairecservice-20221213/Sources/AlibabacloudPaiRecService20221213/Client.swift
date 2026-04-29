@@ -2970,6 +2970,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportRecallManagementTableWithOptions(_ RecallManagementTableId: String, _ request: ExportRecallManagementTableRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportRecallManagementTableResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxcomputeProjectName)) {
+            body["MaxcomputeProjectName"] = request.maxcomputeProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxcomputeSchema)) {
+            body["MaxcomputeSchema"] = request.maxcomputeSchema ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxcomputeTableName)) {
+            body["MaxcomputeTableName"] = request.maxcomputeTableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.partitions)) {
+            body["Partitions"] = request.partitions ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExportRecallManagementTable",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/recallmanagementtables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(RecallManagementTableId)) + "/action/export",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExportRecallManagementTableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportRecallManagementTable(_ RecallManagementTableId: String, _ request: ExportRecallManagementTableRequest) async throws -> ExportRecallManagementTableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await exportRecallManagementTableWithOptions(RecallManagementTableId as! String, request as! ExportRecallManagementTableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func generateAlgorithmCustomizationScriptWithOptions(_ AlgorithmCustomizationId: String, _ request: GenerateAlgorithmCustomizationScriptRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateAlgorithmCustomizationScriptResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -6011,6 +6056,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRecallManagementTableRecordsWithOptions(_ RecallManagementTableId: String, _ request: QueryRecallManagementTableRecordsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRecallManagementTableRecordsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.primaryKeys)) {
+            query["PrimaryKeys"] = request.primaryKeys!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recallManagementTableVersionId)) {
+            query["RecallManagementTableVersionId"] = request.recallManagementTableVersionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryRecallManagementTableRecords",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/recallmanagementtables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(RecallManagementTableId)) + "/queryrecords",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryRecallManagementTableRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryRecallManagementTableRecords(_ RecallManagementTableId: String, _ request: QueryRecallManagementTableRecordsRequest) async throws -> QueryRecallManagementTableRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryRecallManagementTableRecordsWithOptions(RecallManagementTableId as! String, request as! QueryRecallManagementTableRecordsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func querySampleConsistencyJobDifferenceWithOptions(_ SampleConsistencyJobId: String, _ request: QuerySampleConsistencyJobDifferenceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySampleConsistencyJobDifferenceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7440,10 +7524,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateRecallManagementServiceVersionConfigWithOptions(_ RecallManagementServiceId: String, _ RecallManagementServiceVersionId: String, _ RecallManagementServiceVersionConfigId: String, _ request: UpdateRecallManagementServiceVersionConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRecallManagementServiceVersionConfigResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.configType)) {
             body["ConfigType"] = request.configType ?? "";
@@ -7459,7 +7539,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -7493,6 +7572,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableRowCountFluctuationThreshold)) {
             body["EnableRowCountFluctuationThreshold"] = request.enableRowCountFluctuationThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            body["Fields"] = request.fields!;
         }
         if (!TeaUtils.Client.isUnset(request.indexVersionId)) {
             body["IndexVersionId"] = request.indexVersionId ?? "";

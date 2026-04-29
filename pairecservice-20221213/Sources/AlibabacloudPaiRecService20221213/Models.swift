@@ -5225,9 +5225,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                 public class TriggerConfig : Tea.TeaModel {
                     public var field: String?
 
-                    public var fieldQuantityLimit: String?
+                    public var fieldQuantityLimit: Int32?
 
-                    public var isRandSort: String?
+                    public var isRandSort: Bool?
 
                     public var sortField: String?
 
@@ -5265,10 +5265,10 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
                         if let value = dict["Field"] as? String {
                             self.field = value
                         }
-                        if let value = dict["FieldQuantityLimit"] as? String {
+                        if let value = dict["FieldQuantityLimit"] as? Int32 {
                             self.fieldQuantityLimit = value
                         }
-                        if let value = dict["IsRandSort"] as? String {
+                        if let value = dict["IsRandSort"] as? Bool {
                             self.isRandSort = value
                         }
                         if let value = dict["SortField"] as? String {
@@ -5886,9 +5886,9 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             public class TriggerConfig : Tea.TeaModel {
                 public var field: String?
 
-                public var fieldQuantityLimit: String?
+                public var fieldQuantityLimit: Int32?
 
-                public var isRandSort: String?
+                public var isRandSort: Bool?
 
                 public var sortField: String?
 
@@ -5926,10 +5926,10 @@ public class CreateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
                     if let value = dict["Field"] as? String {
                         self.field = value
                     }
-                    if let value = dict["FieldQuantityLimit"] as? String {
+                    if let value = dict["FieldQuantityLimit"] as? Int32 {
                         self.fieldQuantityLimit = value
                     }
-                    if let value = dict["IsRandSort"] as? String {
+                    if let value = dict["IsRandSort"] as? Bool {
                         self.isRandSort = value
                     }
                     if let value = dict["SortField"] as? String {
@@ -11438,6 +11438,158 @@ public class DeployTrafficControlTaskCodeResponse : Tea.TeaModel {
     }
 }
 
+public class ExportRecallManagementTableRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var maxcomputeProjectName: String?
+
+    public var maxcomputeSchema: String?
+
+    public var maxcomputeTableName: String?
+
+    public var partitions: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxcomputeProjectName != nil {
+            map["MaxcomputeProjectName"] = self.maxcomputeProjectName!
+        }
+        if self.maxcomputeSchema != nil {
+            map["MaxcomputeSchema"] = self.maxcomputeSchema!
+        }
+        if self.maxcomputeTableName != nil {
+            map["MaxcomputeTableName"] = self.maxcomputeTableName!
+        }
+        if self.partitions != nil {
+            map["Partitions"] = self.partitions!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxcomputeProjectName"] as? String {
+            self.maxcomputeProjectName = value
+        }
+        if let value = dict["MaxcomputeSchema"] as? String {
+            self.maxcomputeSchema = value
+        }
+        if let value = dict["MaxcomputeTableName"] as? String {
+            self.maxcomputeTableName = value
+        }
+        if let value = dict["Partitions"] as? [String: String] {
+            self.partitions = value
+        }
+    }
+}
+
+public class ExportRecallManagementTableResponseBody : Tea.TeaModel {
+    public var recallManagementJobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recallManagementJobId != nil {
+            map["RecallManagementJobId"] = self.recallManagementJobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecallManagementJobId"] as? String {
+            self.recallManagementJobId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ExportRecallManagementTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportRecallManagementTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExportRecallManagementTableResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GenerateAlgorithmCustomizationScriptRequest : Tea.TeaModel {
     public var deployMode: String?
 
@@ -16159,9 +16311,9 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                 public class TriggerConfig : Tea.TeaModel {
                     public var field: String?
 
-                    public var fieldQuantityLimit: String?
+                    public var fieldQuantityLimit: Int32?
 
-                    public var isRandSort: String?
+                    public var isRandSort: Bool?
 
                     public var sortField: String?
 
@@ -16199,10 +16351,10 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
                         if let value = dict["Field"] as? String {
                             self.field = value
                         }
-                        if let value = dict["FieldQuantityLimit"] as? String {
+                        if let value = dict["FieldQuantityLimit"] as? Int32 {
                             self.fieldQuantityLimit = value
                         }
-                        if let value = dict["IsRandSort"] as? String {
+                        if let value = dict["IsRandSort"] as? Bool {
                             self.isRandSort = value
                         }
                         if let value = dict["SortField"] as? String {
@@ -16498,8 +16650,6 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
 
     public var gmtModifiedTime: String?
 
-    public var isDefault: String?
-
     public var isEffective: Bool?
 
     public var name: String?
@@ -16532,9 +16682,6 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
         }
-        if self.isDefault != nil {
-            map["IsDefault"] = self.isDefault!
-        }
         if self.isEffective != nil {
             map["IsEffective"] = self.isEffective!
         }
@@ -16562,9 +16709,6 @@ public class GetRecallManagementServiceVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtModifiedTime"] as? String {
             self.gmtModifiedTime = value
-        }
-        if let value = dict["IsDefault"] as? String {
-            self.isDefault = value
         }
         if let value = dict["IsEffective"] as? Bool {
             self.isEffective = value
@@ -17010,6 +17154,8 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
 
         public var priority: Int64?
 
+        public var recallManagementServiceVersionConfigId: String?
+
         public var recallManagementTableId: String?
 
         public var recallType: String?
@@ -17064,6 +17210,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             }
             if self.priority != nil {
                 map["Priority"] = self.priority!
+            }
+            if self.recallManagementServiceVersionConfigId != nil {
+                map["RecallManagementServiceVersionConfigId"] = self.recallManagementServiceVersionConfigId!
             }
             if self.recallManagementTableId != nil {
                 map["RecallManagementTableId"] = self.recallManagementTableId!
@@ -17121,6 +17270,9 @@ public class GetRecallManagementServiceVersionConfigResponseBody : Tea.TeaModel 
             }
             if let value = dict["Priority"] as? Int64 {
                 self.priority = value
+            }
+            if let value = dict["RecallManagementServiceVersionConfigId"] as? String {
+                self.recallManagementServiceVersionConfigId = value
             }
             if let value = dict["RecallManagementTableId"] as? String {
                 self.recallManagementTableId = value
@@ -18898,6 +19050,10 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var resourceType: String?
+
+    public var resourceUri: String?
+
     public var tableMetaId: String?
 
     public var tableName: String?
@@ -18956,6 +19112,12 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.resourceUri != nil {
+            map["ResourceUri"] = self.resourceUri!
         }
         if self.tableMetaId != nil {
             map["TableMetaId"] = self.tableMetaId!
@@ -19016,6 +19178,12 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["ResourceUri"] as? String {
+            self.resourceUri = value
         }
         if let value = dict["TableMetaId"] as? String {
             self.tableMetaId = value
@@ -28157,7 +28325,7 @@ public class ListRecallManagementServiceVersionsResponseBody : Tea.TeaModel {
 
         public var gmtModifiedTime: String?
 
-        public var isDefault: String?
+        public var isEffective: Bool?
 
         public var name: String?
 
@@ -28183,8 +28351,8 @@ public class ListRecallManagementServiceVersionsResponseBody : Tea.TeaModel {
             if self.gmtModifiedTime != nil {
                 map["GmtModifiedTime"] = self.gmtModifiedTime!
             }
-            if self.isDefault != nil {
-                map["IsDefault"] = self.isDefault!
+            if self.isEffective != nil {
+                map["IsEffective"] = self.isEffective!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -28203,8 +28371,8 @@ public class ListRecallManagementServiceVersionsResponseBody : Tea.TeaModel {
             if let value = dict["GmtModifiedTime"] as? String {
                 self.gmtModifiedTime = value
             }
-            if let value = dict["IsDefault"] as? String {
-                self.isDefault = value
+            if let value = dict["IsEffective"] as? Bool {
+                self.isEffective = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -30571,6 +30739,10 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
 
         public var resourceId: String?
 
+        public var resourceType: String?
+
+        public var resourceUri: String?
+
         public var tableMetaId: String?
 
         public var tableName: String?
@@ -30626,6 +30798,12 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
             }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.resourceUri != nil {
+                map["ResourceUri"] = self.resourceUri!
             }
             if self.tableMetaId != nil {
                 map["TableMetaId"] = self.tableMetaId!
@@ -30683,6 +30861,12 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceId"] as? String {
                 self.resourceId = value
+            }
+            if let value = dict["ResourceType"] as? String {
+                self.resourceType = value
+            }
+            if let value = dict["ResourceUri"] as? String {
+                self.resourceUri = value
             }
             if let value = dict["TableMetaId"] as? String {
                 self.tableMetaId = value
@@ -33515,6 +33699,142 @@ public class QueryDataDiagnosisStatisticsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryDataDiagnosisStatisticsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryRecallManagementTableRecordsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var primaryKeys: [UInt8]?
+
+    public var recallManagementTableVersionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.primaryKeys != nil {
+            map["PrimaryKeys"] = self.primaryKeys!
+        }
+        if self.recallManagementTableVersionId != nil {
+            map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PrimaryKeys"] as? [UInt8] {
+            self.primaryKeys = value
+        }
+        if let value = dict["RecallManagementTableVersionId"] as? String {
+            self.recallManagementTableVersionId = value
+        }
+    }
+}
+
+public class QueryRecallManagementTableRecordsResponseBody : Tea.TeaModel {
+    public var records: [[String: Any]]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.records != nil {
+            map["Records"] = self.records!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Records"] as? [[String: Any]] {
+            self.records = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class QueryRecallManagementTableRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryRecallManagementTableRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryRecallManagementTableRecordsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -38982,7 +39302,7 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             public class JoinConfig : Tea.TeaModel {
                 public var field: String?
 
-                public var outputFields: String?
+                public var outputFields: [String]?
 
                 public var recallManagementTableId: String?
 
@@ -39017,7 +39337,7 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
                     if let value = dict["Field"] as? String {
                         self.field = value
                     }
-                    if let value = dict["OutputFields"] as? String {
+                    if let value = dict["OutputFields"] as? [String] {
                         self.outputFields = value
                     }
                     if let value = dict["RecallManagementTableId"] as? String {
@@ -39028,9 +39348,9 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             public class TriggerConfig : Tea.TeaModel {
                 public var field: String?
 
-                public var fieldQuantityLimit: String?
+                public var fieldQuantityLimit: Int32?
 
-                public var isRandSort: String?
+                public var isRandSort: Bool?
 
                 public var sortField: String?
 
@@ -39068,10 +39388,10 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
                     if let value = dict["Field"] as? String {
                         self.field = value
                     }
-                    if let value = dict["FieldQuantityLimit"] as? String {
+                    if let value = dict["FieldQuantityLimit"] as? Int32 {
                         self.fieldQuantityLimit = value
                     }
-                    if let value = dict["IsRandSort"] as? String {
+                    if let value = dict["IsRandSort"] as? Bool {
                         self.isRandSort = value
                     }
                     if let value = dict["SortField"] as? String {
@@ -39085,7 +39405,7 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
             public var joinConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.JoinConfig?
 
-            public var operatorsType: String?
+            public var operatorType: String?
 
             public var triggerConfig: UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig?
 
@@ -39116,8 +39436,8 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
                 if self.joinConfig != nil {
                     map["JoinConfig"] = self.joinConfig?.toMap()
                 }
-                if self.operatorsType != nil {
-                    map["OperatorsType"] = self.operatorsType!
+                if self.operatorType != nil {
+                    map["OperatorType"] = self.operatorType!
                 }
                 if self.triggerConfig != nil {
                     map["TriggerConfig"] = self.triggerConfig?.toMap()
@@ -39142,8 +39462,8 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
                     model.fromMap(value)
                     self.joinConfig = model
                 }
-                if let value = dict["OperatorsType"] as? String {
-                    self.operatorsType = value
+                if let value = dict["OperatorType"] as? String {
+                    self.operatorType = value
                 }
                 if let value = dict["TriggerConfig"] as? [String: Any?] {
                     var model = UpdateRecallManagementServiceVersionConfigRequest.RecallConfig.Operators.TriggerConfig()
@@ -39299,8 +39619,6 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
             }
         }
     }
-    public var regionId: String?
-
     public var configType: String?
 
     public var instanceId: String?
@@ -39325,9 +39643,6 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         if self.configType != nil {
             map["ConfigType"] = self.configType!
         }
@@ -39345,9 +39660,6 @@ public class UpdateRecallManagementServiceVersionConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["RegionId"] as? String {
-            self.regionId = value
-        }
         if let value = dict["ConfigType"] as? String {
             self.configType = value
         }
@@ -39449,9 +39761,73 @@ public class UpdateRecallManagementServiceVersionConfigResponse : Tea.TeaModel {
 }
 
 public class UpdateRecallManagementTableRequest : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public var attributes: [String]?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var vectorDimension: Int32?
+
+        public var vectorMetricType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributes != nil {
+                map["Attributes"] = self.attributes!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.vectorDimension != nil {
+                map["VectorDimension"] = self.vectorDimension!
+            }
+            if self.vectorMetricType != nil {
+                map["VectorMetricType"] = self.vectorMetricType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Attributes"] as? [String] {
+                self.attributes = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["VectorDimension"] as? Int32 {
+                self.vectorDimension = value
+            }
+            if let value = dict["VectorMetricType"] as? String {
+                self.vectorMetricType = value
+            }
+        }
+    }
     public var enableDataSizeFluctuationThreshold: Bool?
 
     public var enableRowCountFluctuationThreshold: Bool?
+
+    public var fields: UpdateRecallManagementTableRequest.Fields?
 
     public var indexVersionId: String?
 
@@ -39475,6 +39851,7 @@ public class UpdateRecallManagementTableRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.fields?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -39484,6 +39861,9 @@ public class UpdateRecallManagementTableRequest : Tea.TeaModel {
         }
         if self.enableRowCountFluctuationThreshold != nil {
             map["EnableRowCountFluctuationThreshold"] = self.enableRowCountFluctuationThreshold!
+        }
+        if self.fields != nil {
+            map["Fields"] = self.fields?.toMap()
         }
         if self.indexVersionId != nil {
             map["IndexVersionId"] = self.indexVersionId!
@@ -39513,6 +39893,11 @@ public class UpdateRecallManagementTableRequest : Tea.TeaModel {
         }
         if let value = dict["EnableRowCountFluctuationThreshold"] as? Bool {
             self.enableRowCountFluctuationThreshold = value
+        }
+        if let value = dict["Fields"] as? [String: Any?] {
+            var model = UpdateRecallManagementTableRequest.Fields()
+            model.fromMap(value)
+            self.fields = model
         }
         if let value = dict["IndexVersionId"] as? String {
             self.indexVersionId = value
