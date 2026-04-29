@@ -2488,6 +2488,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMOQuotaAlertThresholdWithOptions(_ tmpReq: UpdateMOQuotaAlertThresholdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMOQuotaAlertThresholdResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMOQuotaAlertThresholdShrinkRequest = UpdateMOQuotaAlertThresholdShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.apikey)) {
+            request.apikeyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.apikey, "Apikey", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apikeyShrink)) {
+            query["Apikey"] = request.apikeyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMOQuotaAlertThreshold",
+            "version": "2025-05-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMOQuotaAlertThresholdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMOQuotaAlertThreshold(_ request: UpdateMOQuotaAlertThresholdRequest) async throws -> UpdateMOQuotaAlertThresholdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMOQuotaAlertThresholdWithOptions(request as! UpdateMOQuotaAlertThresholdRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateSkillWithOptions(_ tmpReq: UpdateSkillRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSkillResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateSkillShrinkRequest = UpdateSkillShrinkRequest([:])

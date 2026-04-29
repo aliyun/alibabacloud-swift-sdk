@@ -5641,6 +5641,8 @@ public class DescribeModelOperatorResponseBody : Tea.TeaModel {
 
         public var keyUsageList: [DescribeModelOperatorResponseBody.Data.KeyUsageList]?
 
+        public var prefixCacheEnabled: Bool?
+
         public var startTime: Int64?
 
         public var status: String?
@@ -5697,6 +5699,9 @@ public class DescribeModelOperatorResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["KeyUsageList"] = tmp
+            }
+            if self.prefixCacheEnabled != nil {
+                map["PrefixCacheEnabled"] = self.prefixCacheEnabled!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -5761,6 +5766,9 @@ public class DescribeModelOperatorResponseBody : Tea.TeaModel {
                     }
                 }
                 self.keyUsageList = tmp
+            }
+            if let value = dict["PrefixCacheEnabled"] as? Bool {
+                self.prefixCacheEnabled = value
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
@@ -14470,6 +14478,309 @@ public class UpdateCustomAgentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateCustomAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateMOQuotaAlertThresholdRequest : Tea.TeaModel {
+    public class Apikey : Tea.TeaModel {
+        public var apikey: String?
+
+        public var thresholdPercent: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apikey != nil {
+                map["Apikey"] = self.apikey!
+            }
+            if self.thresholdPercent != nil {
+                map["ThresholdPercent"] = self.thresholdPercent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Apikey"] as? String {
+                self.apikey = value
+            }
+            if let value = dict["ThresholdPercent"] as? Int32 {
+                self.thresholdPercent = value
+            }
+        }
+    }
+    public var apikey: [UpdateMOQuotaAlertThresholdRequest.Apikey]?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apikey != nil {
+            var tmp : [Any] = []
+            for k in self.apikey! {
+                tmp.append(k.toMap())
+            }
+            map["Apikey"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Apikey"] as? [Any?] {
+            var tmp : [UpdateMOQuotaAlertThresholdRequest.Apikey] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateMOQuotaAlertThresholdRequest.Apikey()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.apikey = tmp
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class UpdateMOQuotaAlertThresholdShrinkRequest : Tea.TeaModel {
+    public var apikeyShrink: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apikeyShrink != nil {
+            map["Apikey"] = self.apikeyShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Apikey"] as? String {
+            self.apikeyShrink = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class UpdateMOQuotaAlertThresholdResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public var apikey: String?
+
+        public var instanceId: String?
+
+        public var keyName: String?
+
+        public var keyType: String?
+
+        public var thresholdPercent: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apikey != nil {
+                map["Apikey"] = self.apikey!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.keyName != nil {
+                map["KeyName"] = self.keyName!
+            }
+            if self.keyType != nil {
+                map["KeyType"] = self.keyType!
+            }
+            if self.thresholdPercent != nil {
+                map["ThresholdPercent"] = self.thresholdPercent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Apikey"] as? String {
+                self.apikey = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["KeyName"] as? String {
+                self.keyName = value
+            }
+            if let value = dict["KeyType"] as? String {
+                self.keyType = value
+            }
+            if let value = dict["ThresholdPercent"] as? Int32 {
+                self.thresholdPercent = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var results: [UpdateMOQuotaAlertThresholdResponseBody.Results]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            var tmp : [Any] = []
+            for k in self.results! {
+                tmp.append(k.toMap())
+            }
+            map["Results"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Results"] as? [Any?] {
+            var tmp : [UpdateMOQuotaAlertThresholdResponseBody.Results] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateMOQuotaAlertThresholdResponseBody.Results()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.results = tmp
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateMOQuotaAlertThresholdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateMOQuotaAlertThresholdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateMOQuotaAlertThresholdResponseBody()
             model.fromMap(value)
             self.body = model
         }
