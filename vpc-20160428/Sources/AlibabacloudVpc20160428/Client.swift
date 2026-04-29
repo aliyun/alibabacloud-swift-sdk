@@ -4031,6 +4031,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }
+        if (!TeaUtils.Client.isUnset(request.availabilityMode)) {
+            query["AvailabilityMode"] = request.availabilityMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -11675,6 +11678,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeNatGatewaysWithOptions(_ request: DescribeNatGatewaysRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNatGatewaysResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.availabilityMode)) {
+            query["AvailabilityMode"] = request.availabilityMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }

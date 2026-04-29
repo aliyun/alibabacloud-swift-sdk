@@ -14004,6 +14004,8 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
 
     public var autoPay: Bool?
 
+    public var availabilityMode: String?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -14072,6 +14074,9 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
+        }
+        if self.availabilityMode != nil {
+            map["AvailabilityMode"] = self.availabilityMode!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -14161,6 +14166,9 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["AutoPay"] as? Bool {
             self.autoPay = value
+        }
+        if let value = dict["AvailabilityMode"] as? String {
+            self.availabilityMode = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -14290,6 +14298,8 @@ public class CreateNatGatewayShrinkRequest : Tea.TeaModel {
 
     public var autoPay: Bool?
 
+    public var availabilityMode: String?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -14357,6 +14367,9 @@ public class CreateNatGatewayShrinkRequest : Tea.TeaModel {
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
+        }
+        if self.availabilityMode != nil {
+            map["AvailabilityMode"] = self.availabilityMode!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -14444,6 +14457,9 @@ public class CreateNatGatewayShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AutoPay"] as? Bool {
             self.autoPay = value
+        }
+        if let value = dict["AvailabilityMode"] as? String {
+            self.availabilityMode = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -50892,6 +50908,8 @@ public class DescribeNatGatewaysRequest : Tea.TeaModel {
             }
         }
     }
+    public var availabilityMode: String?
+
     public var dryRun: Bool?
 
     public var instanceChargeType: String?
@@ -50944,6 +50962,9 @@ public class DescribeNatGatewaysRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.availabilityMode != nil {
+            map["AvailabilityMode"] = self.availabilityMode!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -51010,6 +51031,9 @@ public class DescribeNatGatewaysRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AvailabilityMode"] as? String {
+            self.availabilityMode = value
+        }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
@@ -51563,6 +51587,8 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
 
             public var autoPay: Bool?
 
+            public var availabilityMode: String?
+
             public var businessStatus: String?
 
             public var creationTime: String?
@@ -51650,6 +51676,9 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
                 }
                 if self.autoPay != nil {
                     map["AutoPay"] = self.autoPay!
+                }
+                if self.availabilityMode != nil {
+                    map["AvailabilityMode"] = self.availabilityMode!
                 }
                 if self.businessStatus != nil {
                     map["BusinessStatus"] = self.businessStatus!
@@ -51753,6 +51782,9 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AutoPay"] as? Bool {
                     self.autoPay = value
+                }
+                if let value = dict["AvailabilityMode"] as? String {
+                    self.availabilityMode = value
                 }
                 if let value = dict["BusinessStatus"] as? String {
                     self.businessStatus = value
@@ -78239,6 +78271,8 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
     }
     public var accessMode: GetNatGatewayAttributeResponseBody.AccessMode?
 
+    public var availabilityMode: String?
+
     public var billingConfig: GetNatGatewayAttributeResponseBody.BillingConfig?
 
     public var businessStatus: String?
@@ -78313,6 +78347,9 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.accessMode != nil {
             map["AccessMode"] = self.accessMode?.toMap()
+        }
+        if self.availabilityMode != nil {
+            map["AvailabilityMode"] = self.availabilityMode!
         }
         if self.billingConfig != nil {
             map["BillingConfig"] = self.billingConfig?.toMap()
@@ -78402,6 +78439,9 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
             var model = GetNatGatewayAttributeResponseBody.AccessMode()
             model.fromMap(value)
             self.accessMode = model
+        }
+        if let value = dict["AvailabilityMode"] as? String {
+            self.availabilityMode = value
         }
         if let value = dict["BillingConfig"] as? [String: Any?] {
             var model = GetNatGatewayAttributeResponseBody.BillingConfig()
