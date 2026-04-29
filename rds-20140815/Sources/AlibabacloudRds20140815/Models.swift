@@ -37678,6 +37678,363 @@ public class DescribeDBInstanceSecurityGroupRuleResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDBInstanceSwitchLogRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var endTime: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: [UInt8]?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? [UInt8] {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeDBInstanceSwitchLogResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Item : Tea.TeaModel {
+            public var affectedSessions: String?
+
+            public var HAStatus: String?
+
+            public var switchCauseCode: String?
+
+            public var switchCauseDetail: String?
+
+            public var switchFinishTime: String?
+
+            public var switchId: String?
+
+            public var switchStartTime: String?
+
+            public var totalSessions: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.affectedSessions != nil {
+                    map["AffectedSessions"] = self.affectedSessions!
+                }
+                if self.HAStatus != nil {
+                    map["HAStatus"] = self.HAStatus!
+                }
+                if self.switchCauseCode != nil {
+                    map["SwitchCauseCode"] = self.switchCauseCode!
+                }
+                if self.switchCauseDetail != nil {
+                    map["SwitchCauseDetail"] = self.switchCauseDetail!
+                }
+                if self.switchFinishTime != nil {
+                    map["SwitchFinishTime"] = self.switchFinishTime!
+                }
+                if self.switchId != nil {
+                    map["SwitchId"] = self.switchId!
+                }
+                if self.switchStartTime != nil {
+                    map["SwitchStartTime"] = self.switchStartTime!
+                }
+                if self.totalSessions != nil {
+                    map["TotalSessions"] = self.totalSessions!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AffectedSessions"] as? String {
+                    self.affectedSessions = value
+                }
+                if let value = dict["HAStatus"] as? String {
+                    self.HAStatus = value
+                }
+                if let value = dict["SwitchCauseCode"] as? String {
+                    self.switchCauseCode = value
+                }
+                if let value = dict["SwitchCauseDetail"] as? String {
+                    self.switchCauseDetail = value
+                }
+                if let value = dict["SwitchFinishTime"] as? String {
+                    self.switchFinishTime = value
+                }
+                if let value = dict["SwitchId"] as? String {
+                    self.switchId = value
+                }
+                if let value = dict["SwitchStartTime"] as? String {
+                    self.switchStartTime = value
+                }
+                if let value = dict["TotalSessions"] as? String {
+                    self.totalSessions = value
+                }
+            }
+        }
+        public var item: [DescribeDBInstanceSwitchLogResponseBody.Items.Item]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.item != nil {
+                var tmp : [Any] = []
+                for k in self.item! {
+                    tmp.append(k.toMap())
+                }
+                map["Item"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Item"] as? [Any?] {
+                var tmp : [DescribeDBInstanceSwitchLogResponseBody.Items.Item] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDBInstanceSwitchLogResponseBody.Items.Item()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.item = tmp
+            }
+        }
+    }
+    public var DBInstanceName: String?
+
+    public var items: DescribeDBInstanceSwitchLogResponseBody.Items?
+
+    public var pageNumber: Int32?
+
+    public var pageRecordCount: Int32?
+
+    public var requestId: String?
+
+    public var totalRecordCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeDBInstanceSwitchLogResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? Int32 {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class DescribeDBInstanceSwitchLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDBInstanceSwitchLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDBInstanceSwitchLogResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDBInstanceTDERequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
