@@ -23808,6 +23808,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func handleObjectScanEventWithOptions(_ request: HandleObjectScanEventRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> HandleObjectScanEventResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchType)) {
+            query["BatchType"] = request.batchType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventId)) {
+            query["EventId"] = request.eventId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventIdList)) {
+            query["EventIdList"] = request.eventIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleConditionList)) {
+            query["RuleConditionList"] = request.ruleConditionList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "HandleObjectScanEvent",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(HandleObjectScanEventResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func handleObjectScanEvent(_ request: HandleObjectScanEventRequest) async throws -> HandleObjectScanEventResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await handleObjectScanEventWithOptions(request as! HandleObjectScanEventRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func handleSecurityEventsWithOptions(_ request: HandleSecurityEventsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> HandleSecurityEventsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
