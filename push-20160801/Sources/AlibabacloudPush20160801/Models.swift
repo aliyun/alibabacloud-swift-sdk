@@ -338,6 +338,8 @@ public class PushTask : Tea.TeaModel {
 
                     public var importance: Int32?
 
+                    public var liveMessage: String?
+
                     public var receiptId: String?
 
                     public override init() {
@@ -360,6 +362,9 @@ public class PushTask : Tea.TeaModel {
                         if self.importance != nil {
                             map["Importance"] = self.importance!
                         }
+                        if self.liveMessage != nil {
+                            map["LiveMessage"] = self.liveMessage!
+                        }
                         if self.receiptId != nil {
                             map["ReceiptId"] = self.receiptId!
                         }
@@ -373,6 +378,9 @@ public class PushTask : Tea.TeaModel {
                         }
                         if let value = dict["Importance"] as? Int32 {
                             self.importance = value
+                        }
+                        if let value = dict["LiveMessage"] as? String {
+                            self.liveMessage = value
                         }
                         if let value = dict["ReceiptId"] as? String {
                             self.receiptId = value
@@ -3183,6 +3191,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidTargetUserType: Int32?
 
+        public var androidVivoLiveMessage: String?
+
         public var androidVivoPushMode: Int32?
 
         public var androidVivoReceiptId: String?
@@ -3461,6 +3471,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidTargetUserType != nil {
                 map["AndroidTargetUserType"] = self.androidTargetUserType!
+            }
+            if self.androidVivoLiveMessage != nil {
+                map["AndroidVivoLiveMessage"] = self.androidVivoLiveMessage!
             }
             if self.androidVivoPushMode != nil {
                 map["AndroidVivoPushMode"] = self.androidVivoPushMode!
@@ -3793,6 +3806,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidTargetUserType"] as? Int32 {
                 self.androidTargetUserType = value
+            }
+            if let value = dict["AndroidVivoLiveMessage"] as? String {
+                self.androidVivoLiveMessage = value
             }
             if let value = dict["AndroidVivoPushMode"] as? Int32 {
                 self.androidVivoPushMode = value
@@ -4456,6 +4472,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidTargetUserType: Int32?
 
+    public var androidVivoLiveMessage: String?
+
     public var androidVivoPushMode: Int32?
 
     public var androidVivoReceiptId: String?
@@ -4748,6 +4766,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidTargetUserType != nil {
             map["AndroidTargetUserType"] = self.androidTargetUserType!
+        }
+        if self.androidVivoLiveMessage != nil {
+            map["AndroidVivoLiveMessage"] = self.androidVivoLiveMessage!
         }
         if self.androidVivoPushMode != nil {
             map["AndroidVivoPushMode"] = self.androidVivoPushMode!
@@ -5102,6 +5123,9 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidTargetUserType"] as? Int32 {
             self.androidTargetUserType = value
         }
+        if let value = dict["AndroidVivoLiveMessage"] as? String {
+            self.androidVivoLiveMessage = value
+        }
         if let value = dict["AndroidVivoPushMode"] as? Int32 {
             self.androidVivoPushMode = value
         }
@@ -5407,6 +5431,8 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidTargetUserType: Int32?
 
+    public var androidVivoLiveMessage: String?
+
     public var androidVivoPushMode: Int32?
 
     public var androidVivoReceiptId: String?
@@ -5699,6 +5725,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidTargetUserType != nil {
             map["AndroidTargetUserType"] = self.androidTargetUserType!
+        }
+        if self.androidVivoLiveMessage != nil {
+            map["AndroidVivoLiveMessage"] = self.androidVivoLiveMessage!
         }
         if self.androidVivoPushMode != nil {
             map["AndroidVivoPushMode"] = self.androidVivoPushMode!
@@ -6052,6 +6081,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidTargetUserType"] as? Int32 {
             self.androidTargetUserType = value
+        }
+        if let value = dict["AndroidVivoLiveMessage"] as? String {
+            self.androidVivoLiveMessage = value
         }
         if let value = dict["AndroidVivoPushMode"] as? Int32 {
             self.androidVivoPushMode = value

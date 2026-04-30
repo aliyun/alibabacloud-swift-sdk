@@ -689,6 +689,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidTargetUserType)) {
             query["AndroidTargetUserType"] = request.androidTargetUserType!;
         }
+        if (!TeaUtils.Client.isUnset(request.androidVivoLiveMessage)) {
+            query["AndroidVivoLiveMessage"] = request.androidVivoLiveMessage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.androidVivoPushMode)) {
             query["AndroidVivoPushMode"] = request.androidVivoPushMode!;
         }
