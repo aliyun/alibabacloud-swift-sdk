@@ -11495,6 +11495,8 @@ public class QueryConfigUnified : Tea.TeaModel {
 
     public var entityType: String?
 
+    public var expr: String?
+
     public var filterList: [ApmFilterConfig]?
 
     public var labelFilters: [UmodelLabelFilter]?
@@ -11547,6 +11549,9 @@ public class QueryConfigUnified : Tea.TeaModel {
         }
         if self.entityType != nil {
             map["entityType"] = self.entityType!
+        }
+        if self.expr != nil {
+            map["expr"] = self.expr!
         }
         if self.filterList != nil {
             var tmp : [Any] = []
@@ -11623,6 +11628,9 @@ public class QueryConfigUnified : Tea.TeaModel {
         }
         if let value = dict["entityType"] as? String {
             self.entityType = value
+        }
+        if let value = dict["expr"] as? String {
+            self.expr = value
         }
         if let value = dict["filterList"] as? [Any?] {
             var tmp : [ApmFilterConfig] = []
