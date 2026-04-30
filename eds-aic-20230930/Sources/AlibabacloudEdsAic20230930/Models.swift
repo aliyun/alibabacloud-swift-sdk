@@ -11984,6 +11984,370 @@ public class DescribeInvocationsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeJVSInstanceRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class DescribeJVSInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class CreditConfig : Tea.TeaModel {
+            public var creditLimit: Int64?
+
+            public var limitPeriod: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.creditLimit != nil {
+                    map["CreditLimit"] = self.creditLimit!
+                }
+                if self.limitPeriod != nil {
+                    map["LimitPeriod"] = self.limitPeriod!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreditLimit"] as? Int64 {
+                    self.creditLimit = value
+                }
+                if let value = dict["LimitPeriod"] as? String {
+                    self.limitPeriod = value
+                }
+            }
+        }
+        public class UsedCredit : Tea.TeaModel {
+            public var credit: Int64?
+
+            public var limitPeriod: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.credit != nil {
+                    map["Credit"] = self.credit!
+                }
+                if self.limitPeriod != nil {
+                    map["LimitPeriod"] = self.limitPeriod!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Credit"] as? Int64 {
+                    self.credit = value
+                }
+                if let value = dict["LimitPeriod"] as? String {
+                    self.limitPeriod = value
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var creditConfig: [DescribeJVSInstanceResponseBody.Data.CreditConfig]?
+
+        public var expireTime: String?
+
+        public var instanceId: String?
+
+        public var jvsPackageId: String?
+
+        public var modifyTime: String?
+
+        public var status: String?
+
+        public var usedCredit: [DescribeJVSInstanceResponseBody.Data.UsedCredit]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.creditConfig != nil {
+                var tmp : [Any] = []
+                for k in self.creditConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["CreditConfig"] = tmp
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.jvsPackageId != nil {
+                map["JvsPackageId"] = self.jvsPackageId!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.usedCredit != nil {
+                var tmp : [Any] = []
+                for k in self.usedCredit! {
+                    tmp.append(k.toMap())
+                }
+                map["UsedCredit"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["CreditConfig"] as? [Any?] {
+                var tmp : [DescribeJVSInstanceResponseBody.Data.CreditConfig] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeJVSInstanceResponseBody.Data.CreditConfig()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.creditConfig = tmp
+            }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["JvsPackageId"] as? String {
+                self.jvsPackageId = value
+            }
+            if let value = dict["ModifyTime"] as? String {
+                self.modifyTime = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UsedCredit"] as? [Any?] {
+                var tmp : [DescribeJVSInstanceResponseBody.Data.UsedCredit] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeJVSInstanceResponseBody.Data.UsedCredit()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.usedCredit = tmp
+            }
+        }
+    }
+    public var data: [DescribeJVSInstanceResponseBody.Data]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [DescribeJVSInstanceResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeJVSInstanceResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeJVSInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeJVSInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeJVSInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeKeyPairsRequest : Tea.TeaModel {
     public var keyPairIds: [String]?
 
@@ -19355,6 +19719,194 @@ public class ModifyInstanceChargeTypeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyInstanceChargeTypeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyJVSInstanceRequest : Tea.TeaModel {
+    public class CreditConfig : Tea.TeaModel {
+        public var creditLimit: Int64?
+
+        public var limitPeriod: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.creditLimit != nil {
+                map["CreditLimit"] = self.creditLimit!
+            }
+            if self.limitPeriod != nil {
+                map["LimitPeriod"] = self.limitPeriod!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreditLimit"] as? Int64 {
+                self.creditLimit = value
+            }
+            if let value = dict["LimitPeriod"] as? String {
+                self.limitPeriod = value
+            }
+        }
+    }
+    public var applyToAll: Bool?
+
+    public var creditConfig: [ModifyJVSInstanceRequest.CreditConfig]?
+
+    public var instanceIds: [String]?
+
+    public var instanceName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applyToAll != nil {
+            map["ApplyToAll"] = self.applyToAll!
+        }
+        if self.creditConfig != nil {
+            var tmp : [Any] = []
+            for k in self.creditConfig! {
+                tmp.append(k.toMap())
+            }
+            map["CreditConfig"] = tmp
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplyToAll"] as? Bool {
+            self.applyToAll = value
+        }
+        if let value = dict["CreditConfig"] as? [Any?] {
+            var tmp : [ModifyJVSInstanceRequest.CreditConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyJVSInstanceRequest.CreditConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.creditConfig = tmp
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+    }
+}
+
+public class ModifyJVSInstanceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyJVSInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyJVSInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyJVSInstanceResponseBody()
             model.fromMap(value)
             self.body = model
         }
