@@ -1235,6 +1235,130 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAIDBClusterWithOptions(_ request: CreateAIDBClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAIDBClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ackAdmin)) {
+            query["AckAdmin"] = request.ackAdmin ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterDescription)) {
+            query["DBClusterDescription"] = request.DBClusterDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBNodeClass)) {
+            query["DBNodeClass"] = request.DBNodeClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extension_)) {
+            query["Extension"] = request.extension_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inferenceEngine)) {
+            query["InferenceEngine"] = request.inferenceEngine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubeClusterId)) {
+            query["KubeClusterId"] = request.kubeClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubeConfig)) {
+            query["KubeConfig"] = request.kubeConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubeManagement)) {
+            query["KubeManagement"] = request.kubeManagement ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubeType)) {
+            query["KubeType"] = request.kubeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubernetesConfig)) {
+            query["KubernetesConfig"] = request.kubernetesConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managementMode)) {
+            query["ManagementMode"] = request.managementMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modeName)) {
+            query["ModeName"] = request.modeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payType)) {
+            query["PayType"] = request.payType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            query["PromotionCode"] = request.promotionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
+            query["SecurityGroupId"] = request.securityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageSpace)) {
+            query["StorageSpace"] = request.storageSpace!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeSlices)) {
+            query["TimeSlices"] = request.timeSlices ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.usedTime)) {
+            query["UsedTime"] = request.usedTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.VPCId)) {
+            query["VPCId"] = request.VPCId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAIDBCluster",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAIDBClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAIDBCluster(_ request: CreateAIDBClusterRequest) async throws -> CreateAIDBClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAIDBClusterWithOptions(request as! CreateAIDBClusterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAIDBClusterDatasetWithOptions(_ request: CreateAIDBClusterDatasetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAIDBClusterDatasetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

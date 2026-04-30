@@ -4525,6 +4525,442 @@ public class ContinueDBClusterMigrationResponse : Tea.TeaModel {
     }
 }
 
+public class CreateAIDBClusterRequest : Tea.TeaModel {
+    public class TimeSlices : Tea.TeaModel {
+        public var beginTime: Int64?
+
+        public var endTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.beginTime != nil {
+                map["BeginTime"] = self.beginTime!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BeginTime"] as? Int64 {
+                self.beginTime = value
+            }
+            if let value = dict["EndTime"] as? Int64 {
+                self.endTime = value
+            }
+        }
+    }
+    public var ackAdmin: String?
+
+    public var autoRenew: String?
+
+    public var autoUseCoupon: Bool?
+
+    public var DBClusterDescription: String?
+
+    public var DBClusterId: String?
+
+    public var DBNodeClass: String?
+
+    public var extension_: String?
+
+    public var inferenceEngine: String?
+
+    public var kubeClusterId: String?
+
+    public var kubeConfig: String?
+
+    public var kubeManagement: String?
+
+    public var kubeType: String?
+
+    public var kubernetesConfig: String?
+
+    public var managementMode: String?
+
+    public var modeName: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var password: String?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var promotionCode: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityGroupId: String?
+
+    public var storageSpace: Int32?
+
+    public var storageType: String?
+
+    public var timeSlices: [CreateAIDBClusterRequest.TimeSlices]?
+
+    public var usedTime: String?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ackAdmin != nil {
+            map["AckAdmin"] = self.ackAdmin!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.DBClusterDescription != nil {
+            map["DBClusterDescription"] = self.DBClusterDescription!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.DBNodeClass != nil {
+            map["DBNodeClass"] = self.DBNodeClass!
+        }
+        if self.extension_ != nil {
+            map["Extension"] = self.extension_!
+        }
+        if self.inferenceEngine != nil {
+            map["InferenceEngine"] = self.inferenceEngine!
+        }
+        if self.kubeClusterId != nil {
+            map["KubeClusterId"] = self.kubeClusterId!
+        }
+        if self.kubeConfig != nil {
+            map["KubeConfig"] = self.kubeConfig!
+        }
+        if self.kubeManagement != nil {
+            map["KubeManagement"] = self.kubeManagement!
+        }
+        if self.kubeType != nil {
+            map["KubeType"] = self.kubeType!
+        }
+        if self.kubernetesConfig != nil {
+            map["KubernetesConfig"] = self.kubernetesConfig!
+        }
+        if self.managementMode != nil {
+            map["ManagementMode"] = self.managementMode!
+        }
+        if self.modeName != nil {
+            map["ModeName"] = self.modeName!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.storageSpace != nil {
+            map["StorageSpace"] = self.storageSpace!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        if self.timeSlices != nil {
+            var tmp : [Any] = []
+            for k in self.timeSlices! {
+                tmp.append(k.toMap())
+            }
+            map["TimeSlices"] = tmp
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AckAdmin"] as? String {
+            self.ackAdmin = value
+        }
+        if let value = dict["AutoRenew"] as? String {
+            self.autoRenew = value
+        }
+        if let value = dict["AutoUseCoupon"] as? Bool {
+            self.autoUseCoupon = value
+        }
+        if let value = dict["DBClusterDescription"] as? String {
+            self.DBClusterDescription = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DBNodeClass"] as? String {
+            self.DBNodeClass = value
+        }
+        if let value = dict["Extension"] as? String {
+            self.extension_ = value
+        }
+        if let value = dict["InferenceEngine"] as? String {
+            self.inferenceEngine = value
+        }
+        if let value = dict["KubeClusterId"] as? String {
+            self.kubeClusterId = value
+        }
+        if let value = dict["KubeConfig"] as? String {
+            self.kubeConfig = value
+        }
+        if let value = dict["KubeManagement"] as? String {
+            self.kubeManagement = value
+        }
+        if let value = dict["KubeType"] as? String {
+            self.kubeType = value
+        }
+        if let value = dict["KubernetesConfig"] as? String {
+            self.kubernetesConfig = value
+        }
+        if let value = dict["ManagementMode"] as? String {
+            self.managementMode = value
+        }
+        if let value = dict["ModeName"] as? String {
+            self.modeName = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
+        if let value = dict["PromotionCode"] as? String {
+            self.promotionCode = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["StorageSpace"] as? Int32 {
+            self.storageSpace = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
+        if let value = dict["TimeSlices"] as? [Any?] {
+            var tmp : [CreateAIDBClusterRequest.TimeSlices] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAIDBClusterRequest.TimeSlices()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.timeSlices = tmp
+        }
+        if let value = dict["UsedTime"] as? String {
+            self.usedTime = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class CreateAIDBClusterResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class CreateAIDBClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAIDBClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateAIDBClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateAIDBClusterDatasetRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
