@@ -1307,6 +1307,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createADConnectorOfficeSiteWithOptions(_ request: CreateADConnectorOfficeSiteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateADConnectorOfficeSiteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessAttribute)) {
+            query["AccessAttribute"] = request.accessAttribute ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.adHostname)) {
             query["AdHostname"] = request.adHostname ?? "";
         }
@@ -3636,6 +3639,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSimpleOfficeSiteWithOptions(_ request: CreateSimpleOfficeSiteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSimpleOfficeSiteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessAttribute)) {
+            query["AccessAttribute"] = request.accessAttribute ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.accountType)) {
             query["AccountType"] = request.accountType ?? "";
         }

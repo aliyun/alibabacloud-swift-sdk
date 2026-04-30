@@ -5595,6 +5595,8 @@ public class CreateADConnectorDirectoryResponse : Tea.TeaModel {
 }
 
 public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
+    public var accessAttribute: String?
+
     public var adHostname: String?
 
     public var backupDCHostname: String?
@@ -5655,6 +5657,9 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessAttribute != nil {
+            map["AccessAttribute"] = self.accessAttribute!
+        }
         if self.adHostname != nil {
             map["AdHostname"] = self.adHostname!
         }
@@ -5729,6 +5734,9 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessAttribute"] as? String {
+            self.accessAttribute = value
+        }
         if let value = dict["AdHostname"] as? String {
             self.adHostname = value
         }
@@ -16317,6 +16325,8 @@ public class CreateRouteTableResponse : Tea.TeaModel {
 }
 
 public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
+    public var accessAttribute: String?
+
     public var accountType: String?
 
     public var authorityHost: String?
@@ -16373,6 +16383,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessAttribute != nil {
+            map["AccessAttribute"] = self.accessAttribute!
+        }
         if self.accountType != nil {
             map["AccountType"] = self.accountType!
         }
@@ -16441,6 +16454,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessAttribute"] as? String {
+            self.accessAttribute = value
+        }
         if let value = dict["AccountType"] as? String {
             self.accountType = value
         }
@@ -40755,11 +40771,15 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
 
         public var officeSites: [DescribeNASFileSystemsResponseBody.FileSystems.OfficeSites]?
 
+        public var productType: String?
+
         public var profileCompatible: Bool?
 
         public var regionId: String?
 
         public var scene: String?
+
+        public var sizeQuota: Int64?
 
         public var storageType: String?
 
@@ -40844,6 +40864,9 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
                 }
                 map["OfficeSites"] = tmp
             }
+            if self.productType != nil {
+                map["ProductType"] = self.productType!
+            }
             if self.profileCompatible != nil {
                 map["ProfileCompatible"] = self.profileCompatible!
             }
@@ -40852,6 +40875,9 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
             }
             if self.scene != nil {
                 map["Scene"] = self.scene!
+            }
+            if self.sizeQuota != nil {
+                map["SizeQuota"] = self.sizeQuota!
             }
             if self.storageType != nil {
                 map["StorageType"] = self.storageType!
@@ -40948,6 +40974,9 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
                 }
                 self.officeSites = tmp
             }
+            if let value = dict["ProductType"] as? String {
+                self.productType = value
+            }
             if let value = dict["ProfileCompatible"] as? Bool {
                 self.profileCompatible = value
             }
@@ -40956,6 +40985,9 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Scene"] as? String {
                 self.scene = value
+            }
+            if let value = dict["SizeQuota"] as? Int64 {
+                self.sizeQuota = value
             }
             if let value = dict["StorageType"] as? String {
                 self.storageType = value
@@ -42001,6 +42033,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var acceleratorId: String?
 
+        public var accessAttribute: String?
+
         public var accountType: String?
 
         public var adHostname: String?
@@ -42152,6 +42186,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.acceleratorId != nil {
                 map["AcceleratorId"] = self.acceleratorId!
+            }
+            if self.accessAttribute != nil {
+                map["AccessAttribute"] = self.accessAttribute!
             }
             if self.accountType != nil {
                 map["AccountType"] = self.accountType!
@@ -42373,6 +42410,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AcceleratorId"] as? String {
                 self.acceleratorId = value
+            }
+            if let value = dict["AccessAttribute"] as? String {
+                self.accessAttribute = value
             }
             if let value = dict["AccountType"] as? String {
                 self.accountType = value
@@ -43357,6 +43397,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var endUserApplyAdminCoordinate: String?
 
+        public var endUserCount: String?
+
         public var endUserGroupCoordinate: String?
 
         public var externalDrive: String?
@@ -43428,6 +43470,10 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var netRedirect: String?
 
         public var netRedirectRule: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.NetRedirectRule]?
+
+        public var networkPrinter: String?
+
+        public var organizationCount: String?
 
         public var policyGroupId: String?
 
@@ -43713,6 +43759,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.endUserApplyAdminCoordinate != nil {
                 map["EndUserApplyAdminCoordinate"] = self.endUserApplyAdminCoordinate!
             }
+            if self.endUserCount != nil {
+                map["EndUserCount"] = self.endUserCount!
+            }
             if self.endUserGroupCoordinate != nil {
                 map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
             }
@@ -43824,6 +43873,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NetRedirectRule"] = tmp
+            }
+            if self.networkPrinter != nil {
+                map["NetworkPrinter"] = self.networkPrinter!
+            }
+            if self.organizationCount != nil {
+                map["OrganizationCount"] = self.organizationCount!
             }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
@@ -44210,6 +44265,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["EndUserApplyAdminCoordinate"] as? String {
                 self.endUserApplyAdminCoordinate = value
             }
+            if let value = dict["EndUserCount"] as? String {
+                self.endUserCount = value
+            }
             if let value = dict["EndUserGroupCoordinate"] as? String {
                 self.endUserGroupCoordinate = value
             }
@@ -44327,6 +44385,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.netRedirectRule = tmp
+            }
+            if let value = dict["NetworkPrinter"] as? String {
+                self.networkPrinter = value
+            }
+            if let value = dict["OrganizationCount"] as? String {
+                self.organizationCount = value
             }
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
