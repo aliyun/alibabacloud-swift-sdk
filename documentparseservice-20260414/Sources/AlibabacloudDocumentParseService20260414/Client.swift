@@ -56,38 +56,4 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await documentParseOnlineApiWithOptions(request as! DocumentParseOnlineApiRequest, runtime as! TeaUtils.RuntimeOptions)
     }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func documentParseTestApiWithOptions(_ request: DocumentParseTestApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocumentParseTestApiResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
-            body["ImageUrl"] = request.imageUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.type)) {
-            body["Type"] = request.type!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DocumentParseTestApi",
-            "version": "2026-04-14",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DocumentParseTestApiResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func documentParseTestApi(_ request: DocumentParseTestApiRequest) async throws -> DocumentParseTestApiResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await documentParseTestApiWithOptions(request as! DocumentParseTestApiRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
 }
