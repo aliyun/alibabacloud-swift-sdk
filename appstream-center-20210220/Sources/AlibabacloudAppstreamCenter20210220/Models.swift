@@ -439,11 +439,15 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
 
         public var officeSiteId: String?
 
+        public var preferVpcAccess: Bool?
+
         public var providerId: String?
 
         public var regionId: String?
 
         public var ssoServiceUrl: String?
+
+        public var vpcAccessAddress: String?
 
         public override init() {
             super.init()
@@ -465,6 +469,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
             }
+            if self.preferVpcAccess != nil {
+                map["PreferVpcAccess"] = self.preferVpcAccess!
+            }
             if self.providerId != nil {
                 map["ProviderId"] = self.providerId!
             }
@@ -473,6 +480,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             }
             if self.ssoServiceUrl != nil {
                 map["SsoServiceUrl"] = self.ssoServiceUrl!
+            }
+            if self.vpcAccessAddress != nil {
+                map["VpcAccessAddress"] = self.vpcAccessAddress!
             }
             return map
         }
@@ -485,6 +495,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if let value = dict["OfficeSiteId"] as? String {
                 self.officeSiteId = value
             }
+            if let value = dict["PreferVpcAccess"] as? Bool {
+                self.preferVpcAccess = value
+            }
             if let value = dict["ProviderId"] as? String {
                 self.providerId = value
             }
@@ -494,12 +507,19 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if let value = dict["SsoServiceUrl"] as? String {
                 self.ssoServiceUrl = value
             }
+            if let value = dict["VpcAccessAddress"] as? String {
+                self.vpcAccessAddress = value
+            }
         }
     }
     public class TenantAliasInfo : Tea.TeaModel {
         public var accessType: String?
 
+        public var preferVpcAccess: Bool?
+
         public var tenantAlias: String?
+
+        public var vpcAccessAddress: String?
 
         public override init() {
             super.init()
@@ -518,8 +538,14 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if self.accessType != nil {
                 map["AccessType"] = self.accessType!
             }
+            if self.preferVpcAccess != nil {
+                map["PreferVpcAccess"] = self.preferVpcAccess!
+            }
             if self.tenantAlias != nil {
                 map["TenantAlias"] = self.tenantAlias!
+            }
+            if self.vpcAccessAddress != nil {
+                map["VpcAccessAddress"] = self.vpcAccessAddress!
             }
             return map
         }
@@ -529,8 +555,14 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if let value = dict["AccessType"] as? String {
                 self.accessType = value
             }
+            if let value = dict["PreferVpcAccess"] as? Bool {
+                self.preferVpcAccess = value
+            }
             if let value = dict["TenantAlias"] as? String {
                 self.tenantAlias = value
+            }
+            if let value = dict["VpcAccessAddress"] as? String {
+                self.vpcAccessAddress = value
             }
         }
     }
