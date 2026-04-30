@@ -13113,9 +13113,25 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
             public var richTextClipboardLimit: Int32?
 
+            public var richTextClipboardReadLimit: Int32?
+
+            public var richTextClipboardReadSizeUnit: String?
+
             public var richTextClipboardSizeUnit: String?
 
+            public var richTextClipboardWriteLimit: Int32?
+
+            public var richTextClipboardWriteSizeUnit: String?
+
             public var textClipboard: String?
+
+            public var textClipboardReadLimit: Int32?
+
+            public var textClipboardReadSizeUnit: String?
+
+            public var textClipboardWriteLimit: Int32?
+
+            public var textClipboardWriteSizeUnit: String?
 
             public override init() {
                 super.init()
@@ -13155,11 +13171,35 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 if self.richTextClipboardLimit != nil {
                     map["RichTextClipboardLimit"] = self.richTextClipboardLimit!
                 }
+                if self.richTextClipboardReadLimit != nil {
+                    map["RichTextClipboardReadLimit"] = self.richTextClipboardReadLimit!
+                }
+                if self.richTextClipboardReadSizeUnit != nil {
+                    map["RichTextClipboardReadSizeUnit"] = self.richTextClipboardReadSizeUnit!
+                }
                 if self.richTextClipboardSizeUnit != nil {
                     map["RichTextClipboardSizeUnit"] = self.richTextClipboardSizeUnit!
                 }
+                if self.richTextClipboardWriteLimit != nil {
+                    map["RichTextClipboardWriteLimit"] = self.richTextClipboardWriteLimit!
+                }
+                if self.richTextClipboardWriteSizeUnit != nil {
+                    map["RichTextClipboardWriteSizeUnit"] = self.richTextClipboardWriteSizeUnit!
+                }
                 if self.textClipboard != nil {
                     map["TextClipboard"] = self.textClipboard!
+                }
+                if self.textClipboardReadLimit != nil {
+                    map["TextClipboardReadLimit"] = self.textClipboardReadLimit!
+                }
+                if self.textClipboardReadSizeUnit != nil {
+                    map["TextClipboardReadSizeUnit"] = self.textClipboardReadSizeUnit!
+                }
+                if self.textClipboardWriteLimit != nil {
+                    map["TextClipboardWriteLimit"] = self.textClipboardWriteLimit!
+                }
+                if self.textClipboardWriteSizeUnit != nil {
+                    map["TextClipboardWriteSizeUnit"] = self.textClipboardWriteSizeUnit!
                 }
                 return map
             }
@@ -13190,11 +13230,35 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
                 if let value = dict["RichTextClipboardLimit"] as? Int32 {
                     self.richTextClipboardLimit = value
                 }
+                if let value = dict["RichTextClipboardReadLimit"] as? Int32 {
+                    self.richTextClipboardReadLimit = value
+                }
+                if let value = dict["RichTextClipboardReadSizeUnit"] as? String {
+                    self.richTextClipboardReadSizeUnit = value
+                }
                 if let value = dict["RichTextClipboardSizeUnit"] as? String {
                     self.richTextClipboardSizeUnit = value
                 }
+                if let value = dict["RichTextClipboardWriteLimit"] as? Int32 {
+                    self.richTextClipboardWriteLimit = value
+                }
+                if let value = dict["RichTextClipboardWriteSizeUnit"] as? String {
+                    self.richTextClipboardWriteSizeUnit = value
+                }
                 if let value = dict["TextClipboard"] as? String {
                     self.textClipboard = value
+                }
+                if let value = dict["TextClipboardReadLimit"] as? Int32 {
+                    self.textClipboardReadLimit = value
+                }
+                if let value = dict["TextClipboardReadSizeUnit"] as? String {
+                    self.textClipboardReadSizeUnit = value
+                }
+                if let value = dict["TextClipboardWriteLimit"] as? Int32 {
+                    self.textClipboardWriteLimit = value
+                }
+                if let value = dict["TextClipboardWriteSizeUnit"] as? String {
+                    self.textClipboardWriteSizeUnit = value
                 }
             }
         }
@@ -13272,6 +13336,8 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var disconnectKeepSessionTime: Int32?
 
+        public var fileManager: String?
+
         public var html5FileTransfer: String?
 
         public var noOperationDisconnect: String?
@@ -13312,6 +13378,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             if self.disconnectKeepSessionTime != nil {
                 map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
             }
+            if self.fileManager != nil {
+                map["FileManager"] = self.fileManager!
+            }
             if self.html5FileTransfer != nil {
                 map["Html5FileTransfer"] = self.html5FileTransfer!
             }
@@ -13348,6 +13417,9 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
                 self.disconnectKeepSessionTime = value
+            }
+            if let value = dict["FileManager"] as? String {
+                self.fileManager = value
             }
             if let value = dict["Html5FileTransfer"] as? String {
                 self.html5FileTransfer = value
