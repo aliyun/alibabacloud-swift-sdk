@@ -3952,6 +3952,47 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCatalogAssetDetailsWithOptions(_ tmpReq: GetCatalogAssetDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCatalogAssetDetailsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetCatalogAssetDetailsShrinkRequest = GetCatalogAssetDetailsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.getCatalogAssetDetailsQuery)) {
+            request.getCatalogAssetDetailsQueryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.getCatalogAssetDetailsQuery, "GetCatalogAssetDetailsQuery", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.getCatalogAssetDetailsQueryShrink)) {
+            body["GetCatalogAssetDetailsQuery"] = request.getCatalogAssetDetailsQueryShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCatalogAssetDetails",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCatalogAssetDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCatalogAssetDetails(_ request: GetCatalogAssetDetailsRequest) async throws -> GetCatalogAssetDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCatalogAssetDetailsWithOptions(request as! GetCatalogAssetDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCheckConnectivityJobsWithOptions(_ request: GetCheckConnectivityJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCheckConnectivityJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7394,6 +7435,47 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listBizUnits(_ request: ListBizUnitsRequest) async throws -> ListBizUnitsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listBizUnitsWithOptions(request as! ListBizUnitsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCatalogAssetsWithOptions(_ tmpReq: ListCatalogAssetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCatalogAssetsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListCatalogAssetsShrinkRequest = ListCatalogAssetsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.listCatalogAssetsQuery)) {
+            request.listCatalogAssetsQueryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.listCatalogAssetsQuery, "ListCatalogAssetsQuery", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.opTenantId)) {
+            query["OpTenantId"] = request.opTenantId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.listCatalogAssetsQueryShrink)) {
+            body["ListCatalogAssetsQuery"] = request.listCatalogAssetsQueryShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCatalogAssets",
+            "version": "2023-06-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCatalogAssetsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCatalogAssets(_ request: ListCatalogAssetsRequest) async throws -> ListCatalogAssetsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCatalogAssetsWithOptions(request as! ListCatalogAssetsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

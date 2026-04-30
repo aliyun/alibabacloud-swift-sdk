@@ -34265,6 +34265,1444 @@ public class GetBizUnitInfoResponse : Tea.TeaModel {
     }
 }
 
+public class GetCatalogAssetDetailsRequest : Tea.TeaModel {
+    public class GetCatalogAssetDetailsQuery : Tea.TeaModel {
+        public var guid: String?
+
+        public var includeColumns: Bool?
+
+        public var includeDetailedAttributes: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.guid != nil {
+                map["Guid"] = self.guid!
+            }
+            if self.includeColumns != nil {
+                map["IncludeColumns"] = self.includeColumns!
+            }
+            if self.includeDetailedAttributes != nil {
+                map["IncludeDetailedAttributes"] = self.includeDetailedAttributes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Guid"] as? String {
+                self.guid = value
+            }
+            if let value = dict["IncludeColumns"] as? Bool {
+                self.includeColumns = value
+            }
+            if let value = dict["IncludeDetailedAttributes"] as? Bool {
+                self.includeDetailedAttributes = value
+            }
+        }
+    }
+    public var getCatalogAssetDetailsQuery: GetCatalogAssetDetailsRequest.GetCatalogAssetDetailsQuery?
+
+    public var opTenantId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.getCatalogAssetDetailsQuery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.getCatalogAssetDetailsQuery != nil {
+            map["GetCatalogAssetDetailsQuery"] = self.getCatalogAssetDetailsQuery?.toMap()
+        }
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GetCatalogAssetDetailsQuery"] as? [String: Any?] {
+            var model = GetCatalogAssetDetailsRequest.GetCatalogAssetDetailsQuery()
+            model.fromMap(value)
+            self.getCatalogAssetDetailsQuery = model
+        }
+        if let value = dict["OpTenantId"] as? Int64 {
+            self.opTenantId = value
+        }
+    }
+}
+
+public class GetCatalogAssetDetailsShrinkRequest : Tea.TeaModel {
+    public var getCatalogAssetDetailsQueryShrink: String?
+
+    public var opTenantId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.getCatalogAssetDetailsQueryShrink != nil {
+            map["GetCatalogAssetDetailsQuery"] = self.getCatalogAssetDetailsQueryShrink!
+        }
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GetCatalogAssetDetailsQuery"] as? String {
+            self.getCatalogAssetDetailsQueryShrink = value
+        }
+        if let value = dict["OpTenantId"] as? Int64 {
+            self.opTenantId = value
+        }
+    }
+}
+
+public class GetCatalogAssetDetailsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Columns : Tea.TeaModel {
+            public class AssociatedEntity : Tea.TeaModel {
+                public var bizUnitId: Int64?
+
+                public var bizUnitName: String?
+
+                public var dimensionDisplayName: String?
+
+                public var dimensionId: Int64?
+
+                public var dimensionName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bizUnitId != nil {
+                        map["BizUnitId"] = self.bizUnitId!
+                    }
+                    if self.bizUnitName != nil {
+                        map["BizUnitName"] = self.bizUnitName!
+                    }
+                    if self.dimensionDisplayName != nil {
+                        map["DimensionDisplayName"] = self.dimensionDisplayName!
+                    }
+                    if self.dimensionId != nil {
+                        map["DimensionId"] = self.dimensionId!
+                    }
+                    if self.dimensionName != nil {
+                        map["DimensionName"] = self.dimensionName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BizUnitId"] as? Int64 {
+                        self.bizUnitId = value
+                    }
+                    if let value = dict["BizUnitName"] as? String {
+                        self.bizUnitName = value
+                    }
+                    if let value = dict["DimensionDisplayName"] as? String {
+                        self.dimensionDisplayName = value
+                    }
+                    if let value = dict["DimensionId"] as? Int64 {
+                        self.dimensionId = value
+                    }
+                    if let value = dict["DimensionName"] as? String {
+                        self.dimensionName = value
+                    }
+                }
+            }
+            public class Standards : Tea.TeaModel {
+                public var code: String?
+
+                public var id: Int64?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Code"] as? String {
+                        self.code = value
+                    }
+                    if let value = dict["Id"] as? Int64 {
+                        self.id = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var associatedEntity: GetCatalogAssetDetailsResponseBody.Data.Columns.AssociatedEntity?
+
+            public var bizType: String?
+
+            public var classifyName: String?
+
+            public var dataType: String?
+
+            public var description_: String?
+
+            public var displayName: String?
+
+            public var guid: String?
+
+            public var levelShortName: String?
+
+            public var name: String?
+
+            public var qualityScore: Double?
+
+            public var standards: [GetCatalogAssetDetailsResponseBody.Data.Columns.Standards]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.associatedEntity?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.associatedEntity != nil {
+                    map["AssociatedEntity"] = self.associatedEntity?.toMap()
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.classifyName != nil {
+                    map["ClassifyName"] = self.classifyName!
+                }
+                if self.dataType != nil {
+                    map["DataType"] = self.dataType!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.displayName != nil {
+                    map["DisplayName"] = self.displayName!
+                }
+                if self.guid != nil {
+                    map["Guid"] = self.guid!
+                }
+                if self.levelShortName != nil {
+                    map["LevelShortName"] = self.levelShortName!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.qualityScore != nil {
+                    map["QualityScore"] = self.qualityScore!
+                }
+                if self.standards != nil {
+                    var tmp : [Any] = []
+                    for k in self.standards! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Standards"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AssociatedEntity"] as? [String: Any?] {
+                    var model = GetCatalogAssetDetailsResponseBody.Data.Columns.AssociatedEntity()
+                    model.fromMap(value)
+                    self.associatedEntity = model
+                }
+                if let value = dict["BizType"] as? String {
+                    self.bizType = value
+                }
+                if let value = dict["ClassifyName"] as? String {
+                    self.classifyName = value
+                }
+                if let value = dict["DataType"] as? String {
+                    self.dataType = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["DisplayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["Guid"] as? String {
+                    self.guid = value
+                }
+                if let value = dict["LevelShortName"] as? String {
+                    self.levelShortName = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["QualityScore"] as? Double {
+                    self.qualityScore = value
+                }
+                if let value = dict["Standards"] as? [Any?] {
+                    var tmp : [GetCatalogAssetDetailsResponseBody.Data.Columns.Standards] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetCatalogAssetDetailsResponseBody.Data.Columns.Standards()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.standards = tmp
+                }
+            }
+        }
+        public class CustomAttributes : Tea.TeaModel {
+            public var attrType: String?
+
+            public var code: String?
+
+            public var name: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attrType != nil {
+                    map["AttrType"] = self.attrType!
+                }
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AttrType"] as? String {
+                    self.attrType = value
+                }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public class Directories : Tea.TeaModel {
+            public var directoryId: Int64?
+
+            public var directoryName: String?
+
+            public var topicId: Int64?
+
+            public var topicName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.directoryId != nil {
+                    map["DirectoryId"] = self.directoryId!
+                }
+                if self.directoryName != nil {
+                    map["DirectoryName"] = self.directoryName!
+                }
+                if self.topicId != nil {
+                    map["TopicId"] = self.topicId!
+                }
+                if self.topicName != nil {
+                    map["TopicName"] = self.topicName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DirectoryId"] as? Int64 {
+                    self.directoryId = value
+                }
+                if let value = dict["DirectoryName"] as? String {
+                    self.directoryName = value
+                }
+                if let value = dict["TopicId"] as? Int64 {
+                    self.topicId = value
+                }
+                if let value = dict["TopicName"] as? String {
+                    self.topicName = value
+                }
+            }
+        }
+        public class FirstOnShelveUser : Tea.TeaModel {
+            public var displayName: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayName != nil {
+                    map["DisplayName"] = self.displayName!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DisplayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
+        public class LastOnShelveUser : Tea.TeaModel {
+            public var displayName: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayName != nil {
+                    map["DisplayName"] = self.displayName!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DisplayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
+        public class Owner : Tea.TeaModel {
+            public var displayName: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayName != nil {
+                    map["DisplayName"] = self.displayName!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DisplayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
+        public class SimpleNodeInfos : Tea.TeaModel {
+            public class Owners : Tea.TeaModel {
+                public var displayName: String?
+
+                public var userId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayName != nil {
+                        map["DisplayName"] = self.displayName!
+                    }
+                    if self.userId != nil {
+                        map["UserId"] = self.userId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayName"] as? String {
+                        self.displayName = value
+                    }
+                    if let value = dict["UserId"] as? String {
+                        self.userId = value
+                    }
+                }
+            }
+            public class Project : Tea.TeaModel {
+                public var projectId: String?
+
+                public var projectName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
+                    if self.projectName != nil {
+                        map["ProjectName"] = self.projectName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ProjectId"] as? String {
+                        self.projectId = value
+                    }
+                    if let value = dict["ProjectName"] as? String {
+                        self.projectName = value
+                    }
+                }
+            }
+            public var bizUnit: String?
+
+            public var env: String?
+
+            public var nodeId: String?
+
+            public var nodeName: String?
+
+            public var nodeScheduleType: String?
+
+            public var owners: [GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos.Owners]?
+
+            public var project: GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos.Project?
+
+            public var subBizType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.project?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bizUnit != nil {
+                    map["BizUnit"] = self.bizUnit!
+                }
+                if self.env != nil {
+                    map["Env"] = self.env!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.nodeName != nil {
+                    map["NodeName"] = self.nodeName!
+                }
+                if self.nodeScheduleType != nil {
+                    map["NodeScheduleType"] = self.nodeScheduleType!
+                }
+                if self.owners != nil {
+                    var tmp : [Any] = []
+                    for k in self.owners! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Owners"] = tmp
+                }
+                if self.project != nil {
+                    map["Project"] = self.project?.toMap()
+                }
+                if self.subBizType != nil {
+                    map["SubBizType"] = self.subBizType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BizUnit"] as? String {
+                    self.bizUnit = value
+                }
+                if let value = dict["Env"] as? String {
+                    self.env = value
+                }
+                if let value = dict["NodeId"] as? String {
+                    self.nodeId = value
+                }
+                if let value = dict["NodeName"] as? String {
+                    self.nodeName = value
+                }
+                if let value = dict["NodeScheduleType"] as? String {
+                    self.nodeScheduleType = value
+                }
+                if let value = dict["Owners"] as? [Any?] {
+                    var tmp : [GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos.Owners] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos.Owners()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.owners = tmp
+                }
+                if let value = dict["Project"] as? [String: Any?] {
+                    var model = GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos.Project()
+                    model.fromMap(value)
+                    self.project = model
+                }
+                if let value = dict["SubBizType"] as? String {
+                    self.subBizType = value
+                }
+            }
+        }
+        public var apiCallMode: String?
+
+        public var apiGroupName: String?
+
+        public var apiId: Int64?
+
+        public var apiRequestMethod: String?
+
+        public var assetDescription: String?
+
+        public var assetDetailUrl: String?
+
+        public var assetDisplayName: String?
+
+        public var assetFrom: String?
+
+        public var assetFullName: String?
+
+        public var assetName: String?
+
+        public var assetTags: [String]?
+
+        public var assetType: String?
+
+        public var biCatalog: String?
+
+        public var bizUnitId: Int64?
+
+        public var bizUnitName: String?
+
+        public var chartCount: Int64?
+
+        public var collectionCount: Int64?
+
+        public var columns: [GetCatalogAssetDetailsResponseBody.Data.Columns]?
+
+        public var createTime: String?
+
+        public var customAttributes: [GetCatalogAssetDetailsResponseBody.Data.CustomAttributes]?
+
+        public var dataCellId: String?
+
+        public var dataCellName: String?
+
+        public var dataSourceName: String?
+
+        public var datasourceId: Int64?
+
+        public var directories: [GetCatalogAssetDetailsResponseBody.Data.Directories]?
+
+        public var firstOnShelveTime: String?
+
+        public var firstOnShelveUser: GetCatalogAssetDetailsResponseBody.Data.FirstOnShelveUser?
+
+        public var granularity: String?
+
+        public var guid: String?
+
+        public var instruction: String?
+
+        public var isDeleted: Bool?
+
+        public var isPartitionTable: Bool?
+
+        public var lastDdlTime: String?
+
+        public var lastDmlTime: String?
+
+        public var lastOnShelveTime: String?
+
+        public var lastOnShelveUser: GetCatalogAssetDetailsResponseBody.Data.LastOnShelveUser?
+
+        public var maintainUserGroups: [String]?
+
+        public var maintainUserIds: [String]?
+
+        public var maxSecurityLevel: String?
+
+        public var modifyTime: String?
+
+        public var owner: GetCatalogAssetDetailsResponseBody.Data.Owner?
+
+        public var partitionKey: String?
+
+        public var primaryKey: String?
+
+        public var profilingReportViewScopeType: String?
+
+        public var profilingReportViewScopeUserGroups: [String]?
+
+        public var profilingReportViewScopeUserIds: [String]?
+
+        public var projectId: Int64?
+
+        public var projectName: String?
+
+        public var readCount: Int64?
+
+        public var shelveViewScopeType: String?
+
+        public var shelveViewScopeUserGroups: [String]?
+
+        public var shelveViewScopeUserIds: [String]?
+
+        public var simpleNodeInfos: [GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos]?
+
+        public var subType: String?
+
+        public var sumTableGuid: String?
+
+        public var sumTableName: String?
+
+        public var tableLifeCycle: String?
+
+        public var tableSizeInBytes: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.firstOnShelveUser?.validate()
+            try self.lastOnShelveUser?.validate()
+            try self.owner?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiCallMode != nil {
+                map["ApiCallMode"] = self.apiCallMode!
+            }
+            if self.apiGroupName != nil {
+                map["ApiGroupName"] = self.apiGroupName!
+            }
+            if self.apiId != nil {
+                map["ApiId"] = self.apiId!
+            }
+            if self.apiRequestMethod != nil {
+                map["ApiRequestMethod"] = self.apiRequestMethod!
+            }
+            if self.assetDescription != nil {
+                map["AssetDescription"] = self.assetDescription!
+            }
+            if self.assetDetailUrl != nil {
+                map["AssetDetailUrl"] = self.assetDetailUrl!
+            }
+            if self.assetDisplayName != nil {
+                map["AssetDisplayName"] = self.assetDisplayName!
+            }
+            if self.assetFrom != nil {
+                map["AssetFrom"] = self.assetFrom!
+            }
+            if self.assetFullName != nil {
+                map["AssetFullName"] = self.assetFullName!
+            }
+            if self.assetName != nil {
+                map["AssetName"] = self.assetName!
+            }
+            if self.assetTags != nil {
+                map["AssetTags"] = self.assetTags!
+            }
+            if self.assetType != nil {
+                map["AssetType"] = self.assetType!
+            }
+            if self.biCatalog != nil {
+                map["BiCatalog"] = self.biCatalog!
+            }
+            if self.bizUnitId != nil {
+                map["BizUnitId"] = self.bizUnitId!
+            }
+            if self.bizUnitName != nil {
+                map["BizUnitName"] = self.bizUnitName!
+            }
+            if self.chartCount != nil {
+                map["ChartCount"] = self.chartCount!
+            }
+            if self.collectionCount != nil {
+                map["CollectionCount"] = self.collectionCount!
+            }
+            if self.columns != nil {
+                var tmp : [Any] = []
+                for k in self.columns! {
+                    tmp.append(k.toMap())
+                }
+                map["Columns"] = tmp
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.customAttributes != nil {
+                var tmp : [Any] = []
+                for k in self.customAttributes! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomAttributes"] = tmp
+            }
+            if self.dataCellId != nil {
+                map["DataCellId"] = self.dataCellId!
+            }
+            if self.dataCellName != nil {
+                map["DataCellName"] = self.dataCellName!
+            }
+            if self.dataSourceName != nil {
+                map["DataSourceName"] = self.dataSourceName!
+            }
+            if self.datasourceId != nil {
+                map["DatasourceId"] = self.datasourceId!
+            }
+            if self.directories != nil {
+                var tmp : [Any] = []
+                for k in self.directories! {
+                    tmp.append(k.toMap())
+                }
+                map["Directories"] = tmp
+            }
+            if self.firstOnShelveTime != nil {
+                map["FirstOnShelveTime"] = self.firstOnShelveTime!
+            }
+            if self.firstOnShelveUser != nil {
+                map["FirstOnShelveUser"] = self.firstOnShelveUser?.toMap()
+            }
+            if self.granularity != nil {
+                map["Granularity"] = self.granularity!
+            }
+            if self.guid != nil {
+                map["Guid"] = self.guid!
+            }
+            if self.instruction != nil {
+                map["Instruction"] = self.instruction!
+            }
+            if self.isDeleted != nil {
+                map["IsDeleted"] = self.isDeleted!
+            }
+            if self.isPartitionTable != nil {
+                map["IsPartitionTable"] = self.isPartitionTable!
+            }
+            if self.lastDdlTime != nil {
+                map["LastDdlTime"] = self.lastDdlTime!
+            }
+            if self.lastDmlTime != nil {
+                map["LastDmlTime"] = self.lastDmlTime!
+            }
+            if self.lastOnShelveTime != nil {
+                map["LastOnShelveTime"] = self.lastOnShelveTime!
+            }
+            if self.lastOnShelveUser != nil {
+                map["LastOnShelveUser"] = self.lastOnShelveUser?.toMap()
+            }
+            if self.maintainUserGroups != nil {
+                map["MaintainUserGroups"] = self.maintainUserGroups!
+            }
+            if self.maintainUserIds != nil {
+                map["MaintainUserIds"] = self.maintainUserIds!
+            }
+            if self.maxSecurityLevel != nil {
+                map["MaxSecurityLevel"] = self.maxSecurityLevel!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.owner != nil {
+                map["Owner"] = self.owner?.toMap()
+            }
+            if self.partitionKey != nil {
+                map["PartitionKey"] = self.partitionKey!
+            }
+            if self.primaryKey != nil {
+                map["PrimaryKey"] = self.primaryKey!
+            }
+            if self.profilingReportViewScopeType != nil {
+                map["ProfilingReportViewScopeType"] = self.profilingReportViewScopeType!
+            }
+            if self.profilingReportViewScopeUserGroups != nil {
+                map["ProfilingReportViewScopeUserGroups"] = self.profilingReportViewScopeUserGroups!
+            }
+            if self.profilingReportViewScopeUserIds != nil {
+                map["ProfilingReportViewScopeUserIds"] = self.profilingReportViewScopeUserIds!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.projectName != nil {
+                map["ProjectName"] = self.projectName!
+            }
+            if self.readCount != nil {
+                map["ReadCount"] = self.readCount!
+            }
+            if self.shelveViewScopeType != nil {
+                map["ShelveViewScopeType"] = self.shelveViewScopeType!
+            }
+            if self.shelveViewScopeUserGroups != nil {
+                map["ShelveViewScopeUserGroups"] = self.shelveViewScopeUserGroups!
+            }
+            if self.shelveViewScopeUserIds != nil {
+                map["ShelveViewScopeUserIds"] = self.shelveViewScopeUserIds!
+            }
+            if self.simpleNodeInfos != nil {
+                var tmp : [Any] = []
+                for k in self.simpleNodeInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["SimpleNodeInfos"] = tmp
+            }
+            if self.subType != nil {
+                map["SubType"] = self.subType!
+            }
+            if self.sumTableGuid != nil {
+                map["SumTableGuid"] = self.sumTableGuid!
+            }
+            if self.sumTableName != nil {
+                map["SumTableName"] = self.sumTableName!
+            }
+            if self.tableLifeCycle != nil {
+                map["TableLifeCycle"] = self.tableLifeCycle!
+            }
+            if self.tableSizeInBytes != nil {
+                map["TableSizeInBytes"] = self.tableSizeInBytes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApiCallMode"] as? String {
+                self.apiCallMode = value
+            }
+            if let value = dict["ApiGroupName"] as? String {
+                self.apiGroupName = value
+            }
+            if let value = dict["ApiId"] as? Int64 {
+                self.apiId = value
+            }
+            if let value = dict["ApiRequestMethod"] as? String {
+                self.apiRequestMethod = value
+            }
+            if let value = dict["AssetDescription"] as? String {
+                self.assetDescription = value
+            }
+            if let value = dict["AssetDetailUrl"] as? String {
+                self.assetDetailUrl = value
+            }
+            if let value = dict["AssetDisplayName"] as? String {
+                self.assetDisplayName = value
+            }
+            if let value = dict["AssetFrom"] as? String {
+                self.assetFrom = value
+            }
+            if let value = dict["AssetFullName"] as? String {
+                self.assetFullName = value
+            }
+            if let value = dict["AssetName"] as? String {
+                self.assetName = value
+            }
+            if let value = dict["AssetTags"] as? [String] {
+                self.assetTags = value
+            }
+            if let value = dict["AssetType"] as? String {
+                self.assetType = value
+            }
+            if let value = dict["BiCatalog"] as? String {
+                self.biCatalog = value
+            }
+            if let value = dict["BizUnitId"] as? Int64 {
+                self.bizUnitId = value
+            }
+            if let value = dict["BizUnitName"] as? String {
+                self.bizUnitName = value
+            }
+            if let value = dict["ChartCount"] as? Int64 {
+                self.chartCount = value
+            }
+            if let value = dict["CollectionCount"] as? Int64 {
+                self.collectionCount = value
+            }
+            if let value = dict["Columns"] as? [Any?] {
+                var tmp : [GetCatalogAssetDetailsResponseBody.Data.Columns] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetCatalogAssetDetailsResponseBody.Data.Columns()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.columns = tmp
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["CustomAttributes"] as? [Any?] {
+                var tmp : [GetCatalogAssetDetailsResponseBody.Data.CustomAttributes] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetCatalogAssetDetailsResponseBody.Data.CustomAttributes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customAttributes = tmp
+            }
+            if let value = dict["DataCellId"] as? String {
+                self.dataCellId = value
+            }
+            if let value = dict["DataCellName"] as? String {
+                self.dataCellName = value
+            }
+            if let value = dict["DataSourceName"] as? String {
+                self.dataSourceName = value
+            }
+            if let value = dict["DatasourceId"] as? Int64 {
+                self.datasourceId = value
+            }
+            if let value = dict["Directories"] as? [Any?] {
+                var tmp : [GetCatalogAssetDetailsResponseBody.Data.Directories] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetCatalogAssetDetailsResponseBody.Data.Directories()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.directories = tmp
+            }
+            if let value = dict["FirstOnShelveTime"] as? String {
+                self.firstOnShelveTime = value
+            }
+            if let value = dict["FirstOnShelveUser"] as? [String: Any?] {
+                var model = GetCatalogAssetDetailsResponseBody.Data.FirstOnShelveUser()
+                model.fromMap(value)
+                self.firstOnShelveUser = model
+            }
+            if let value = dict["Granularity"] as? String {
+                self.granularity = value
+            }
+            if let value = dict["Guid"] as? String {
+                self.guid = value
+            }
+            if let value = dict["Instruction"] as? String {
+                self.instruction = value
+            }
+            if let value = dict["IsDeleted"] as? Bool {
+                self.isDeleted = value
+            }
+            if let value = dict["IsPartitionTable"] as? Bool {
+                self.isPartitionTable = value
+            }
+            if let value = dict["LastDdlTime"] as? String {
+                self.lastDdlTime = value
+            }
+            if let value = dict["LastDmlTime"] as? String {
+                self.lastDmlTime = value
+            }
+            if let value = dict["LastOnShelveTime"] as? String {
+                self.lastOnShelveTime = value
+            }
+            if let value = dict["LastOnShelveUser"] as? [String: Any?] {
+                var model = GetCatalogAssetDetailsResponseBody.Data.LastOnShelveUser()
+                model.fromMap(value)
+                self.lastOnShelveUser = model
+            }
+            if let value = dict["MaintainUserGroups"] as? [String] {
+                self.maintainUserGroups = value
+            }
+            if let value = dict["MaintainUserIds"] as? [String] {
+                self.maintainUserIds = value
+            }
+            if let value = dict["MaxSecurityLevel"] as? String {
+                self.maxSecurityLevel = value
+            }
+            if let value = dict["ModifyTime"] as? String {
+                self.modifyTime = value
+            }
+            if let value = dict["Owner"] as? [String: Any?] {
+                var model = GetCatalogAssetDetailsResponseBody.Data.Owner()
+                model.fromMap(value)
+                self.owner = model
+            }
+            if let value = dict["PartitionKey"] as? String {
+                self.partitionKey = value
+            }
+            if let value = dict["PrimaryKey"] as? String {
+                self.primaryKey = value
+            }
+            if let value = dict["ProfilingReportViewScopeType"] as? String {
+                self.profilingReportViewScopeType = value
+            }
+            if let value = dict["ProfilingReportViewScopeUserGroups"] as? [String] {
+                self.profilingReportViewScopeUserGroups = value
+            }
+            if let value = dict["ProfilingReportViewScopeUserIds"] as? [String] {
+                self.profilingReportViewScopeUserIds = value
+            }
+            if let value = dict["ProjectId"] as? Int64 {
+                self.projectId = value
+            }
+            if let value = dict["ProjectName"] as? String {
+                self.projectName = value
+            }
+            if let value = dict["ReadCount"] as? Int64 {
+                self.readCount = value
+            }
+            if let value = dict["ShelveViewScopeType"] as? String {
+                self.shelveViewScopeType = value
+            }
+            if let value = dict["ShelveViewScopeUserGroups"] as? [String] {
+                self.shelveViewScopeUserGroups = value
+            }
+            if let value = dict["ShelveViewScopeUserIds"] as? [String] {
+                self.shelveViewScopeUserIds = value
+            }
+            if let value = dict["SimpleNodeInfos"] as? [Any?] {
+                var tmp : [GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetCatalogAssetDetailsResponseBody.Data.SimpleNodeInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.simpleNodeInfos = tmp
+            }
+            if let value = dict["SubType"] as? String {
+                self.subType = value
+            }
+            if let value = dict["SumTableGuid"] as? String {
+                self.sumTableGuid = value
+            }
+            if let value = dict["SumTableName"] as? String {
+                self.sumTableName = value
+            }
+            if let value = dict["TableLifeCycle"] as? String {
+                self.tableLifeCycle = value
+            }
+            if let value = dict["TableSizeInBytes"] as? Int64 {
+                self.tableSizeInBytes = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetCatalogAssetDetailsResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetCatalogAssetDetailsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetCatalogAssetDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCatalogAssetDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCatalogAssetDetailsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetCheckConnectivityJobsRequest : Tea.TeaModel {
     public var dataSourceId: Int64?
 
@@ -72561,6 +73999,655 @@ public class ListBizUnitsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListBizUnitsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCatalogAssetsRequest : Tea.TeaModel {
+    public class ListCatalogAssetsQuery : Tea.TeaModel {
+        public var assetType: String?
+
+        public var keyword: String?
+
+        public var name: String?
+
+        public var pageNum: Int32?
+
+        public var pageSize: Int32?
+
+        public var queryMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assetType != nil {
+                map["AssetType"] = self.assetType!
+            }
+            if self.keyword != nil {
+                map["Keyword"] = self.keyword!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.pageNum != nil {
+                map["PageNum"] = self.pageNum!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.queryMode != nil {
+                map["QueryMode"] = self.queryMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssetType"] as? String {
+                self.assetType = value
+            }
+            if let value = dict["Keyword"] as? String {
+                self.keyword = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["PageNum"] as? Int32 {
+                self.pageNum = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["QueryMode"] as? String {
+                self.queryMode = value
+            }
+        }
+    }
+    public var listCatalogAssetsQuery: ListCatalogAssetsRequest.ListCatalogAssetsQuery?
+
+    public var opTenantId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.listCatalogAssetsQuery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.listCatalogAssetsQuery != nil {
+            map["ListCatalogAssetsQuery"] = self.listCatalogAssetsQuery?.toMap()
+        }
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ListCatalogAssetsQuery"] as? [String: Any?] {
+            var model = ListCatalogAssetsRequest.ListCatalogAssetsQuery()
+            model.fromMap(value)
+            self.listCatalogAssetsQuery = model
+        }
+        if let value = dict["OpTenantId"] as? Int64 {
+            self.opTenantId = value
+        }
+    }
+}
+
+public class ListCatalogAssetsShrinkRequest : Tea.TeaModel {
+    public var listCatalogAssetsQueryShrink: String?
+
+    public var opTenantId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.listCatalogAssetsQueryShrink != nil {
+            map["ListCatalogAssetsQuery"] = self.listCatalogAssetsQueryShrink!
+        }
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ListCatalogAssetsQuery"] as? String {
+            self.listCatalogAssetsQueryShrink = value
+        }
+        if let value = dict["OpTenantId"] as? Int64 {
+            self.opTenantId = value
+        }
+    }
+}
+
+public class ListCatalogAssetsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AssetList : Tea.TeaModel {
+            public class Directories : Tea.TeaModel {
+                public var directoryId: Int64?
+
+                public var directoryName: String?
+
+                public var topicId: Int64?
+
+                public var topicName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.directoryId != nil {
+                        map["DirectoryId"] = self.directoryId!
+                    }
+                    if self.directoryName != nil {
+                        map["DirectoryName"] = self.directoryName!
+                    }
+                    if self.topicId != nil {
+                        map["TopicId"] = self.topicId!
+                    }
+                    if self.topicName != nil {
+                        map["TopicName"] = self.topicName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DirectoryId"] as? Int64 {
+                        self.directoryId = value
+                    }
+                    if let value = dict["DirectoryName"] as? String {
+                        self.directoryName = value
+                    }
+                    if let value = dict["TopicId"] as? Int64 {
+                        self.topicId = value
+                    }
+                    if let value = dict["TopicName"] as? String {
+                        self.topicName = value
+                    }
+                }
+            }
+            public var apiCallMode: String?
+
+            public var apiGroupName: String?
+
+            public var apiId: Int64?
+
+            public var apiRequestMethod: String?
+
+            public var assetDescription: String?
+
+            public var assetDisplayName: String?
+
+            public var assetFrom: String?
+
+            public var assetFullName: String?
+
+            public var assetName: String?
+
+            public var assetTags: [String]?
+
+            public var assetType: String?
+
+            public var biCatalog: String?
+
+            public var bizUnitId: Int64?
+
+            public var bizUnitName: String?
+
+            public var chartCount: Int64?
+
+            public var dataCellId: String?
+
+            public var dataCellName: String?
+
+            public var dataSourceName: String?
+
+            public var datasourceId: Int64?
+
+            public var directories: [ListCatalogAssetsResponseBody.Data.AssetList.Directories]?
+
+            public var granularity: String?
+
+            public var guid: String?
+
+            public var isDeleted: Bool?
+
+            public var maxSecurityLevel: String?
+
+            public var projectId: Int64?
+
+            public var projectName: String?
+
+            public var subType: String?
+
+            public var sumTableGuid: String?
+
+            public var sumTableName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiCallMode != nil {
+                    map["ApiCallMode"] = self.apiCallMode!
+                }
+                if self.apiGroupName != nil {
+                    map["ApiGroupName"] = self.apiGroupName!
+                }
+                if self.apiId != nil {
+                    map["ApiId"] = self.apiId!
+                }
+                if self.apiRequestMethod != nil {
+                    map["ApiRequestMethod"] = self.apiRequestMethod!
+                }
+                if self.assetDescription != nil {
+                    map["AssetDescription"] = self.assetDescription!
+                }
+                if self.assetDisplayName != nil {
+                    map["AssetDisplayName"] = self.assetDisplayName!
+                }
+                if self.assetFrom != nil {
+                    map["AssetFrom"] = self.assetFrom!
+                }
+                if self.assetFullName != nil {
+                    map["AssetFullName"] = self.assetFullName!
+                }
+                if self.assetName != nil {
+                    map["AssetName"] = self.assetName!
+                }
+                if self.assetTags != nil {
+                    map["AssetTags"] = self.assetTags!
+                }
+                if self.assetType != nil {
+                    map["AssetType"] = self.assetType!
+                }
+                if self.biCatalog != nil {
+                    map["BiCatalog"] = self.biCatalog!
+                }
+                if self.bizUnitId != nil {
+                    map["BizUnitId"] = self.bizUnitId!
+                }
+                if self.bizUnitName != nil {
+                    map["BizUnitName"] = self.bizUnitName!
+                }
+                if self.chartCount != nil {
+                    map["ChartCount"] = self.chartCount!
+                }
+                if self.dataCellId != nil {
+                    map["DataCellId"] = self.dataCellId!
+                }
+                if self.dataCellName != nil {
+                    map["DataCellName"] = self.dataCellName!
+                }
+                if self.dataSourceName != nil {
+                    map["DataSourceName"] = self.dataSourceName!
+                }
+                if self.datasourceId != nil {
+                    map["DatasourceId"] = self.datasourceId!
+                }
+                if self.directories != nil {
+                    var tmp : [Any] = []
+                    for k in self.directories! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Directories"] = tmp
+                }
+                if self.granularity != nil {
+                    map["Granularity"] = self.granularity!
+                }
+                if self.guid != nil {
+                    map["Guid"] = self.guid!
+                }
+                if self.isDeleted != nil {
+                    map["IsDeleted"] = self.isDeleted!
+                }
+                if self.maxSecurityLevel != nil {
+                    map["MaxSecurityLevel"] = self.maxSecurityLevel!
+                }
+                if self.projectId != nil {
+                    map["ProjectId"] = self.projectId!
+                }
+                if self.projectName != nil {
+                    map["ProjectName"] = self.projectName!
+                }
+                if self.subType != nil {
+                    map["SubType"] = self.subType!
+                }
+                if self.sumTableGuid != nil {
+                    map["SumTableGuid"] = self.sumTableGuid!
+                }
+                if self.sumTableName != nil {
+                    map["SumTableName"] = self.sumTableName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApiCallMode"] as? String {
+                    self.apiCallMode = value
+                }
+                if let value = dict["ApiGroupName"] as? String {
+                    self.apiGroupName = value
+                }
+                if let value = dict["ApiId"] as? Int64 {
+                    self.apiId = value
+                }
+                if let value = dict["ApiRequestMethod"] as? String {
+                    self.apiRequestMethod = value
+                }
+                if let value = dict["AssetDescription"] as? String {
+                    self.assetDescription = value
+                }
+                if let value = dict["AssetDisplayName"] as? String {
+                    self.assetDisplayName = value
+                }
+                if let value = dict["AssetFrom"] as? String {
+                    self.assetFrom = value
+                }
+                if let value = dict["AssetFullName"] as? String {
+                    self.assetFullName = value
+                }
+                if let value = dict["AssetName"] as? String {
+                    self.assetName = value
+                }
+                if let value = dict["AssetTags"] as? [String] {
+                    self.assetTags = value
+                }
+                if let value = dict["AssetType"] as? String {
+                    self.assetType = value
+                }
+                if let value = dict["BiCatalog"] as? String {
+                    self.biCatalog = value
+                }
+                if let value = dict["BizUnitId"] as? Int64 {
+                    self.bizUnitId = value
+                }
+                if let value = dict["BizUnitName"] as? String {
+                    self.bizUnitName = value
+                }
+                if let value = dict["ChartCount"] as? Int64 {
+                    self.chartCount = value
+                }
+                if let value = dict["DataCellId"] as? String {
+                    self.dataCellId = value
+                }
+                if let value = dict["DataCellName"] as? String {
+                    self.dataCellName = value
+                }
+                if let value = dict["DataSourceName"] as? String {
+                    self.dataSourceName = value
+                }
+                if let value = dict["DatasourceId"] as? Int64 {
+                    self.datasourceId = value
+                }
+                if let value = dict["Directories"] as? [Any?] {
+                    var tmp : [ListCatalogAssetsResponseBody.Data.AssetList.Directories] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListCatalogAssetsResponseBody.Data.AssetList.Directories()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.directories = tmp
+                }
+                if let value = dict["Granularity"] as? String {
+                    self.granularity = value
+                }
+                if let value = dict["Guid"] as? String {
+                    self.guid = value
+                }
+                if let value = dict["IsDeleted"] as? Bool {
+                    self.isDeleted = value
+                }
+                if let value = dict["MaxSecurityLevel"] as? String {
+                    self.maxSecurityLevel = value
+                }
+                if let value = dict["ProjectId"] as? Int64 {
+                    self.projectId = value
+                }
+                if let value = dict["ProjectName"] as? String {
+                    self.projectName = value
+                }
+                if let value = dict["SubType"] as? String {
+                    self.subType = value
+                }
+                if let value = dict["SumTableGuid"] as? String {
+                    self.sumTableGuid = value
+                }
+                if let value = dict["SumTableName"] as? String {
+                    self.sumTableName = value
+                }
+            }
+        }
+        public var assetList: [ListCatalogAssetsResponseBody.Data.AssetList]?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assetList != nil {
+                var tmp : [Any] = []
+                for k in self.assetList! {
+                    tmp.append(k.toMap())
+                }
+                map["AssetList"] = tmp
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AssetList"] as? [Any?] {
+                var tmp : [ListCatalogAssetsResponseBody.Data.AssetList] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListCatalogAssetsResponseBody.Data.AssetList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.assetList = tmp
+            }
+            if let value = dict["TotalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListCatalogAssetsResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListCatalogAssetsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListCatalogAssetsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCatalogAssetsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCatalogAssetsResponseBody()
             model.fromMap(value)
             self.body = model
         }
