@@ -1661,6 +1661,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterConfigureClientBalanceWithOptions(_ id: String, _ request: ModelRouterConfigureClientBalanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterConfigureClientBalanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.balanceType)) {
+            body["balanceType"] = request.balanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableBalance)) {
+            body["enableBalance"] = request.enableBalance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.initialBalance)) {
+            body["initialBalance"] = request.initialBalance!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterConfigureClientBalance",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/balance",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterConfigureClientBalanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterConfigureClientBalance(_ id: String, _ request: ModelRouterConfigureClientBalanceRequest) async throws -> ModelRouterConfigureClientBalanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterConfigureClientBalanceWithOptions(id as! String, request as! ModelRouterConfigureClientBalanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modelRouterCopyApiKeyWithOptions(_ id: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterCopyApiKeyResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1718,6 +1757,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterCreateApiKeyWithOptions(request as! ModelRouterCreateApiKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterCreateBalanceTransactionWithOptions(_ id: String, _ request: ModelRouterCreateBalanceTransactionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterCreateBalanceTransactionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            body["amount"] = request.amount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterCreateBalanceTransaction",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/balance/transactions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterCreateBalanceTransactionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterCreateBalanceTransaction(_ id: String, _ request: ModelRouterCreateBalanceTransactionRequest) async throws -> ModelRouterCreateBalanceTransactionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterCreateBalanceTransactionWithOptions(id as! String, request as! ModelRouterCreateBalanceTransactionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2030,6 +2108,79 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelRouterDeleteModelWithOptions(id as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetClientBalanceWithOptions(_ id: String, _ request: ModelRouterGetClientBalanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterGetClientBalanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterGetClientBalance",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/balance",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterGetClientBalanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetClientBalance(_ id: String, _ request: ModelRouterGetClientBalanceRequest) async throws -> ModelRouterGetClientBalanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterGetClientBalanceWithOptions(id as! String, request as! ModelRouterGetClientBalanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetClientBalanceLogsWithOptions(_ id: String, _ request: ModelRouterGetClientBalanceLogsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterGetClientBalanceLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.changeType)) {
+            query["changeType"] = request.changeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelRouterGetClientBalanceLogs",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/modelRouter/open/clients/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(id)) + "/balance/logs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelRouterGetClientBalanceLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelRouterGetClientBalanceLogs(_ id: String, _ request: ModelRouterGetClientBalanceLogsRequest) async throws -> ModelRouterGetClientBalanceLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelRouterGetClientBalanceLogsWithOptions(id as! String, request as! ModelRouterGetClientBalanceLogsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
