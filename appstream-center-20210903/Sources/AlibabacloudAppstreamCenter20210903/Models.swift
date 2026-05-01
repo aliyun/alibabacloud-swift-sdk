@@ -46,6 +46,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public var productType: String?
 
+    public var requireUuidValidation: Bool?
+
     public var resourceId: String?
 
     public var sessionId: String?
@@ -130,6 +132,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
+        if self.requireUuidValidation != nil {
+            map["RequireUuidValidation"] = self.requireUuidValidation!
+        }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
@@ -209,6 +214,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         }
         if let value = dict["ProductType"] as? String {
             self.productType = value
+        }
+        if let value = dict["RequireUuidValidation"] as? Bool {
+            self.requireUuidValidation = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value

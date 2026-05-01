@@ -87,6 +87,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.productType)) {
             body["ProductType"] = request.productType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.requireUuidValidation)) {
+            body["RequireUuidValidation"] = request.requireUuidValidation!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             body["ResourceId"] = request.resourceId ?? "";
         }
