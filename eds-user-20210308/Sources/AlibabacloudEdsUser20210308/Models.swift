@@ -4753,6 +4753,8 @@ public class DescribeUserResponseBody : Tea.TeaModel {
 
         public var gmtCreate: Int64?
 
+        public var nickName: String?
+
         public var orgIds: [String]?
 
         public var orgPaths: [String]?
@@ -4796,6 +4798,9 @@ public class DescribeUserResponseBody : Tea.TeaModel {
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.nickName != nil {
+                map["NickName"] = self.nickName!
             }
             if self.orgIds != nil {
                 map["OrgIds"] = self.orgIds!
@@ -4843,6 +4848,9 @@ public class DescribeUserResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtCreate"] as? Int64 {
                 self.gmtCreate = value
+            }
+            if let value = dict["NickName"] as? String {
+                self.nickName = value
             }
             if let value = dict["OrgIds"] as? [String] {
                 self.orgIds = value
