@@ -69,6 +69,129 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCreditPackageAgentsWithOptions(_ request: DescribeCreditPackageAgentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCreditPackageAgentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentIds)) {
+            query["AgentIds"] = request.agentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.agentType)) {
+            query["AgentType"] = request.agentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCreditPackageAgents",
+            "version": "2021-12-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCreditPackageAgentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCreditPackageAgents(_ request: DescribeCreditPackageAgentsRequest) async throws -> DescribeCreditPackageAgentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCreditPackageAgentsWithOptions(request as! DescribeCreditPackageAgentsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCreditUsageInfoWithOptions(_ request: DescribeCreditUsageInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCreditUsageInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.usageType)) {
+            query["UsageType"] = request.usageType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCreditUsageInfo",
+            "version": "2021-12-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCreditUsageInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCreditUsageInfo(_ request: DescribeCreditUsageInfoRequest) async throws -> DescribeCreditUsageInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCreditUsageInfoWithOptions(request as! DescribeCreditUsageInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDeductionStatisticWithOptions(_ request: DescribeDeductionStatisticRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeductionStatisticResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.periods)) {
+            query["Periods"] = request.periods ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
+            query["ResourceTypes"] = request.resourceTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDeductionStatistic",
+            "version": "2021-12-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDeductionStatisticResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDeductionStatistic(_ request: DescribeDeductionStatisticRequest) async throws -> DescribeDeductionStatisticResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDeductionStatisticWithOptions(request as! DescribeDeductionStatisticRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDeliveryAddressWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeliveryAddressResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -225,5 +348,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceProperties(_ request: ModifyInstancePropertiesRequest) async throws -> ModifyInstancePropertiesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyInstancePropertiesWithOptions(request as! ModifyInstancePropertiesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAgentCreditQuotaWithOptions(_ request: SetAgentCreditQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAgentCreditQuotaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentIds)) {
+            query["AgentIds"] = request.agentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.agentType)) {
+            query["AgentType"] = request.agentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.creditQuota)) {
+            query["CreditQuota"] = request.creditQuota!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetAgentCreditQuota",
+            "version": "2021-12-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetAgentCreditQuotaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAgentCreditQuota(_ request: SetAgentCreditQuotaRequest) async throws -> SetAgentCreditQuotaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setAgentCreditQuotaWithOptions(request as! SetAgentCreditQuotaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
