@@ -212,6 +212,8 @@ public class Group : Tea.TeaModel {
 }
 
 public class Instance : Tea.TeaModel {
+    public var createTime: String?
+
     public var currentAmount: Double?
 
     public var detached: Bool?
@@ -286,6 +288,9 @@ public class Instance : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
         if self.currentAmount != nil {
             map["CurrentAmount"] = self.currentAmount!
         }
@@ -381,6 +386,9 @@ public class Instance : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
         if let value = dict["CurrentAmount"] as? Double {
             self.currentAmount = value
         }
