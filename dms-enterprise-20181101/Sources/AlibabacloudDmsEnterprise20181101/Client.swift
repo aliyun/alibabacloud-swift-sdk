@@ -6904,6 +6904,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTableKnowledgeDetailsWithOptions(_ request: GetTableKnowledgeDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTableKnowledgeDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dbId)) {
+            query["DbId"] = request.dbId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tableName)) {
+            query["TableName"] = request.tableName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTableKnowledgeDetails",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTableKnowledgeDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTableKnowledgeDetails(_ request: GetTableKnowledgeDetailsRequest) async throws -> GetTableKnowledgeDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getTableKnowledgeDetailsWithOptions(request as! GetTableKnowledgeDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTableKnowledgeInfoWithOptions(_ request: GetTableKnowledgeInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTableKnowledgeInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
