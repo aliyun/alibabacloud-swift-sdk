@@ -624,11 +624,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func runEssayCorrectionWithOptions(_ workspaceId: String, _ request: RunEssayCorrectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunEssayCorrectionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func runEssayCorrectionWithOptions(_ workspaceId: String, _ tmpReq: RunEssayCorrectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunEssayCorrectionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunEssayCorrectionShrinkRequest = RunEssayCorrectionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dimensions)) {
+            request.dimensionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dimensions, "dimensions", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.answer)) {
             body["answer"] = request.answer ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dimensionsShrink)) {
+            body["dimensions"] = request.dimensionsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.grade)) {
             body["grade"] = request.grade ?? "";
@@ -1593,10 +1601,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitEssayCorrectionTaskShrinkRequest = SubmitEssayCorrectionTaskShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dimensions)) {
+            request.dimensionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dimensions, "dimensions", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tasks)) {
             request.tasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tasks, "tasks", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dimensionsShrink)) {
+            body["dimensions"] = request.dimensionsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.grade)) {
             body["grade"] = request.grade ?? "";
         }

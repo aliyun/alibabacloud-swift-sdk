@@ -1664,7 +1664,69 @@ public class GetEssayCorrectionTaskRequest : Tea.TeaModel {
 public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Results : Tea.TeaModel {
+            public class DimensionResults : Tea.TeaModel {
+                public var analysis: String?
+
+                public var maxScore: Double?
+
+                public var name: String?
+
+                public var score: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.analysis != nil {
+                        map["analysis"] = self.analysis!
+                    }
+                    if self.maxScore != nil {
+                        map["maxScore"] = self.maxScore!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.score != nil {
+                        map["score"] = self.score!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["analysis"] as? String {
+                        self.analysis = value
+                    }
+                    if let value = dict["maxScore"] as? Double {
+                        self.maxScore = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["score"] as? Double {
+                        self.score = value
+                    }
+                }
+            }
             public var customId: String?
+
+            public var dimensionResults: [GetEssayCorrectionTaskResponseBody.Data.Results.DimensionResults]?
+
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var overallComment: String?
 
             public var result: String?
 
@@ -1690,6 +1752,22 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
                 if self.customId != nil {
                     map["customId"] = self.customId!
                 }
+                if self.dimensionResults != nil {
+                    var tmp : [Any] = []
+                    for k in self.dimensionResults! {
+                        tmp.append(k.toMap())
+                    }
+                    map["dimensionResults"] = tmp
+                }
+                if self.errorCode != nil {
+                    map["errorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["errorMessage"] = self.errorMessage!
+                }
+                if self.overallComment != nil {
+                    map["overallComment"] = self.overallComment!
+                }
                 if self.result != nil {
                     map["result"] = self.result!
                 }
@@ -1706,6 +1784,28 @@ public class GetEssayCorrectionTaskResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["customId"] as? String {
                     self.customId = value
+                }
+                if let value = dict["dimensionResults"] as? [Any?] {
+                    var tmp : [GetEssayCorrectionTaskResponseBody.Data.Results.DimensionResults] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetEssayCorrectionTaskResponseBody.Data.Results.DimensionResults()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dimensionResults = tmp
+                }
+                if let value = dict["errorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["errorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["overallComment"] as? String {
+                    self.overallComment = value
                 }
                 if let value = dict["result"] as? String {
                     self.result = value
@@ -7112,7 +7212,55 @@ public class RunEnterpriseVocAnalysisResponse : Tea.TeaModel {
 }
 
 public class RunEssayCorrectionRequest : Tea.TeaModel {
+    public class Dimensions : Tea.TeaModel {
+        public var maxScore: Int32?
+
+        public var name: String?
+
+        public var rubric: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxScore != nil {
+                map["maxScore"] = self.maxScore!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.rubric != nil {
+                map["rubric"] = self.rubric!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["maxScore"] as? Int32 {
+                self.maxScore = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["rubric"] as? String {
+                self.rubric = value
+            }
+        }
+    }
     public var answer: String?
+
+    public var dimensions: [RunEssayCorrectionRequest.Dimensions]?
 
     public var grade: String?
 
@@ -7143,6 +7291,13 @@ public class RunEssayCorrectionRequest : Tea.TeaModel {
         if self.answer != nil {
             map["answer"] = self.answer!
         }
+        if self.dimensions != nil {
+            var tmp : [Any] = []
+            for k in self.dimensions! {
+                tmp.append(k.toMap())
+            }
+            map["dimensions"] = tmp
+        }
         if self.grade != nil {
             map["grade"] = self.grade!
         }
@@ -7168,6 +7323,106 @@ public class RunEssayCorrectionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["answer"] as? String {
             self.answer = value
+        }
+        if let value = dict["dimensions"] as? [Any?] {
+            var tmp : [RunEssayCorrectionRequest.Dimensions] = []
+            for v in value {
+                if v != nil {
+                    var model = RunEssayCorrectionRequest.Dimensions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dimensions = tmp
+        }
+        if let value = dict["grade"] as? String {
+            self.grade = value
+        }
+        if let value = dict["modelId"] as? String {
+            self.modelId = value
+        }
+        if let value = dict["otherReviewPoints"] as? String {
+            self.otherReviewPoints = value
+        }
+        if let value = dict["question"] as? String {
+            self.question = value
+        }
+        if let value = dict["subject"] as? String {
+            self.subject = value
+        }
+        if let value = dict["totalScore"] as? Int32 {
+            self.totalScore = value
+        }
+    }
+}
+
+public class RunEssayCorrectionShrinkRequest : Tea.TeaModel {
+    public var answer: String?
+
+    public var dimensionsShrink: String?
+
+    public var grade: String?
+
+    public var modelId: String?
+
+    public var otherReviewPoints: String?
+
+    public var question: String?
+
+    public var subject: String?
+
+    public var totalScore: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.answer != nil {
+            map["answer"] = self.answer!
+        }
+        if self.dimensionsShrink != nil {
+            map["dimensions"] = self.dimensionsShrink!
+        }
+        if self.grade != nil {
+            map["grade"] = self.grade!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.otherReviewPoints != nil {
+            map["otherReviewPoints"] = self.otherReviewPoints!
+        }
+        if self.question != nil {
+            map["question"] = self.question!
+        }
+        if self.subject != nil {
+            map["subject"] = self.subject!
+        }
+        if self.totalScore != nil {
+            map["totalScore"] = self.totalScore!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["answer"] as? String {
+            self.answer = value
+        }
+        if let value = dict["dimensions"] as? String {
+            self.dimensionsShrink = value
         }
         if let value = dict["grade"] as? String {
             self.grade = value
@@ -7263,6 +7518,66 @@ public class RunEssayCorrectionResponseBody : Tea.TeaModel {
     }
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
+            public class DimensionResults : Tea.TeaModel {
+                public var analysis: String?
+
+                public var maxScore: Double?
+
+                public var name: String?
+
+                public var score: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.analysis != nil {
+                        map["analysis"] = self.analysis!
+                    }
+                    if self.maxScore != nil {
+                        map["maxScore"] = self.maxScore!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.score != nil {
+                        map["score"] = self.score!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["analysis"] as? String {
+                        self.analysis = value
+                    }
+                    if let value = dict["maxScore"] as? Double {
+                        self.maxScore = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["score"] as? Double {
+                        self.score = value
+                    }
+                }
+            }
+            public var dimensionResults: [RunEssayCorrectionResponseBody.Payload.Output.DimensionResults]?
+
+            public var overallComment: String?
+
+            public var reasoningContent: String?
+
             public var score: Int32?
 
             public var text: String?
@@ -7281,6 +7596,19 @@ public class RunEssayCorrectionResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dimensionResults != nil {
+                    var tmp : [Any] = []
+                    for k in self.dimensionResults! {
+                        tmp.append(k.toMap())
+                    }
+                    map["dimensionResults"] = tmp
+                }
+                if self.overallComment != nil {
+                    map["overallComment"] = self.overallComment!
+                }
+                if self.reasoningContent != nil {
+                    map["reasoningContent"] = self.reasoningContent!
+                }
                 if self.score != nil {
                     map["score"] = self.score!
                 }
@@ -7292,6 +7620,25 @@ public class RunEssayCorrectionResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["dimensionResults"] as? [Any?] {
+                    var tmp : [RunEssayCorrectionResponseBody.Payload.Output.DimensionResults] = []
+                    for v in value {
+                        if v != nil {
+                            var model = RunEssayCorrectionResponseBody.Payload.Output.DimensionResults()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dimensionResults = tmp
+                }
+                if let value = dict["overallComment"] as? String {
+                    self.overallComment = value
+                }
+                if let value = dict["reasoningContent"] as? String {
+                    self.reasoningContent = value
+                }
                 if let value = dict["score"] as? Int32 {
                     self.score = value
                 }
@@ -17509,6 +17856,52 @@ public class SubmitEnterpriseVocAnalysisTaskResponse : Tea.TeaModel {
 }
 
 public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
+    public class Dimensions : Tea.TeaModel {
+        public var maxScore: Int32?
+
+        public var name: String?
+
+        public var rubric: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxScore != nil {
+                map["maxScore"] = self.maxScore!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.rubric != nil {
+                map["rubric"] = self.rubric!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["maxScore"] as? Int32 {
+                self.maxScore = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["rubric"] as? String {
+                self.rubric = value
+            }
+        }
+    }
     public class Tasks : Tea.TeaModel {
         public var answer: String?
 
@@ -17587,6 +17980,8 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var dimensions: [SubmitEssayCorrectionTaskRequest.Dimensions]?
+
     public var grade: String?
 
     public var modelId: String?
@@ -17615,6 +18010,13 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dimensions != nil {
+            var tmp : [Any] = []
+            for k in self.dimensions! {
+                tmp.append(k.toMap())
+            }
+            map["dimensions"] = tmp
+        }
         if self.grade != nil {
             map["grade"] = self.grade!
         }
@@ -17645,6 +18047,19 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["dimensions"] as? [Any?] {
+            var tmp : [SubmitEssayCorrectionTaskRequest.Dimensions] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitEssayCorrectionTaskRequest.Dimensions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dimensions = tmp
+        }
         if let value = dict["grade"] as? String {
             self.grade = value
         }
@@ -17680,6 +18095,8 @@ public class SubmitEssayCorrectionTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitEssayCorrectionTaskShrinkRequest : Tea.TeaModel {
+    public var dimensionsShrink: String?
+
     public var grade: String?
 
     public var modelId: String?
@@ -17708,6 +18125,9 @@ public class SubmitEssayCorrectionTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dimensionsShrink != nil {
+            map["dimensions"] = self.dimensionsShrink!
+        }
         if self.grade != nil {
             map["grade"] = self.grade!
         }
@@ -17734,6 +18154,9 @@ public class SubmitEssayCorrectionTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["dimensions"] as? String {
+            self.dimensionsShrink = value
+        }
         if let value = dict["grade"] as? String {
             self.grade = value
         }
