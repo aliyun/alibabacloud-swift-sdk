@@ -6439,6 +6439,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             body["Prompt"] = request.prompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.responseFormat)) {
+            body["ResponseFormat"] = request.responseFormat!;
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";
         }
@@ -6476,6 +6479,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runBookIntroductionWithOptions(_ request: RunBookIntroductionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunBookIntroductionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cleanCache)) {
+            body["CleanCache"] = request.cleanCache!;
+        }
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
@@ -6823,6 +6829,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             body["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseFormat)) {
+            body["ResponseFormat"] = request.responseFormat!;
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";

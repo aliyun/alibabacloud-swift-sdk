@@ -51874,6 +51874,8 @@ public class RunBookBrainmapRequest : Tea.TeaModel {
 
     public var prompt: String?
 
+    public var responseFormat: Int32?
+
     public var sessionId: String?
 
     public var wordNumber: Int32?
@@ -51906,6 +51908,9 @@ public class RunBookBrainmapRequest : Tea.TeaModel {
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
+        if self.responseFormat != nil {
+            map["ResponseFormat"] = self.responseFormat!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -51931,6 +51936,9 @@ public class RunBookBrainmapRequest : Tea.TeaModel {
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
+        }
+        if let value = dict["ResponseFormat"] as? Int32 {
+            self.responseFormat = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
@@ -52246,6 +52254,8 @@ public class RunBookBrainmapResponse : Tea.TeaModel {
 }
 
 public class RunBookIntroductionRequest : Tea.TeaModel {
+    public var cleanCache: Bool?
+
     public var docId: String?
 
     public var keyPointPrompt: String?
@@ -52270,6 +52280,9 @@ public class RunBookIntroductionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cleanCache != nil {
+            map["CleanCache"] = self.cleanCache!
+        }
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
@@ -52290,6 +52303,9 @@ public class RunBookIntroductionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CleanCache"] as? Bool {
+            self.cleanCache = value
+        }
         if let value = dict["DocId"] as? String {
             self.docId = value
         }
@@ -52390,6 +52406,86 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
             public class Introductions : Tea.TeaModel {
+                public class Blocks : Tea.TeaModel {
+                    public var beginTime: Int64?
+
+                    public var endTime: Int64?
+
+                    public var height: Int32?
+
+                    public var pageId: Int32?
+
+                    public var width: Int32?
+
+                    public var x: Int32?
+
+                    public var y: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.beginTime != nil {
+                            map["BeginTime"] = self.beginTime!
+                        }
+                        if self.endTime != nil {
+                            map["EndTime"] = self.endTime!
+                        }
+                        if self.height != nil {
+                            map["Height"] = self.height!
+                        }
+                        if self.pageId != nil {
+                            map["PageId"] = self.pageId!
+                        }
+                        if self.width != nil {
+                            map["Width"] = self.width!
+                        }
+                        if self.x != nil {
+                            map["X"] = self.x!
+                        }
+                        if self.y != nil {
+                            map["Y"] = self.y!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["BeginTime"] as? Int64 {
+                            self.beginTime = value
+                        }
+                        if let value = dict["EndTime"] as? Int64 {
+                            self.endTime = value
+                        }
+                        if let value = dict["Height"] as? Int32 {
+                            self.height = value
+                        }
+                        if let value = dict["PageId"] as? Int32 {
+                            self.pageId = value
+                        }
+                        if let value = dict["Width"] as? Int32 {
+                            self.width = value
+                        }
+                        if let value = dict["X"] as? Int32 {
+                            self.x = value
+                        }
+                        if let value = dict["Y"] as? Int32 {
+                            self.y = value
+                        }
+                    }
+                }
+                public var blocks: [RunBookIntroductionResponseBody.Payload.Output.Introductions.Blocks]?
+
                 public var summary: String?
 
                 public var title: String?
@@ -52408,6 +52504,13 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.blocks != nil {
+                        var tmp : [Any] = []
+                        for k in self.blocks! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Blocks"] = tmp
+                    }
                     if self.summary != nil {
                         map["Summary"] = self.summary!
                     }
@@ -52419,6 +52522,19 @@ public class RunBookIntroductionResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Blocks"] as? [Any?] {
+                        var tmp : [RunBookIntroductionResponseBody.Payload.Output.Introductions.Blocks] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunBookIntroductionResponseBody.Payload.Output.Introductions.Blocks()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.blocks = tmp
+                    }
                     if let value = dict["Summary"] as? String {
                         self.summary = value
                     }
@@ -55556,6 +55672,8 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
 
     public var prompt: String?
 
+    public var responseFormat: Int32?
+
     public var sessionId: String?
 
     public var wordNumber: Int32?
@@ -55593,6 +55711,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
+        if self.responseFormat != nil {
+            map["ResponseFormat"] = self.responseFormat!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -55624,6 +55745,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
+        }
+        if let value = dict["ResponseFormat"] as? Int32 {
+            self.responseFormat = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
