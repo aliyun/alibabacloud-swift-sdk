@@ -5552,6 +5552,8 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
     }
     public var configs: CreateRecallManagementServiceVersionRequest.Configs?
 
+    public var instanceId: String?
+
     public var sourceRecallManagementServiceVersionId: String?
 
     public override init() {
@@ -5572,6 +5574,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
         if self.configs != nil {
             map["Configs"] = self.configs?.toMap()
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.sourceRecallManagementServiceVersionId != nil {
             map["SourceRecallManagementServiceVersionId"] = self.sourceRecallManagementServiceVersionId!
         }
@@ -5584,6 +5589,9 @@ public class CreateRecallManagementServiceVersionRequest : Tea.TeaModel {
             var model = CreateRecallManagementServiceVersionRequest.Configs()
             model.fromMap(value)
             self.configs = model
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
         if let value = dict["SourceRecallManagementServiceVersionId"] as? String {
             self.sourceRecallManagementServiceVersionId = value
@@ -9190,6 +9198,8 @@ public class DeleteDataDiagnosisResponse : Tea.TeaModel {
 }
 
 public class DeleteEngineConfigRequest : Tea.TeaModel {
+    public var deleteAll: Bool?
+
     public var instanceId: String?
 
     public override init() {
@@ -9206,6 +9216,9 @@ public class DeleteEngineConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteAll != nil {
+            map["DeleteAll"] = self.deleteAll!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -9214,6 +9227,9 @@ public class DeleteEngineConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DeleteAll"] as? Bool {
+            self.deleteAll = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -15454,7 +15470,11 @@ public class GetRecallManagementConfigResponseBody : Tea.TeaModel {
     public class NetworkConfigs : Tea.TeaModel {
         public var privateLinkAddress: String?
 
+        public var publicEndpoint: String?
+
         public var status: String?
+
+        public var token: String?
 
         public var vpcId: String?
 
@@ -15477,8 +15497,14 @@ public class GetRecallManagementConfigResponseBody : Tea.TeaModel {
             if self.privateLinkAddress != nil {
                 map["PrivateLinkAddress"] = self.privateLinkAddress!
             }
+            if self.publicEndpoint != nil {
+                map["PublicEndpoint"] = self.publicEndpoint!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.token != nil {
+                map["Token"] = self.token!
             }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
@@ -15494,8 +15520,14 @@ public class GetRecallManagementConfigResponseBody : Tea.TeaModel {
             if let value = dict["PrivateLinkAddress"] as? String {
                 self.privateLinkAddress = value
             }
+            if let value = dict["PublicEndpoint"] as? String {
+                self.publicEndpoint = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Token"] as? String {
+                self.token = value
             }
             if let value = dict["VpcId"] as? String {
                 self.vpcId = value

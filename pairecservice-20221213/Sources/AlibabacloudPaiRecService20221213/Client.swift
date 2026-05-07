@@ -1488,6 +1488,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.configs)) {
             body["Configs"] = request.configs!;
         }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceRecallManagementServiceVersionId)) {
             body["SourceRecallManagementServiceVersionId"] = request.sourceRecallManagementServiceVersionId ?? "";
         }
@@ -2312,6 +2315,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEngineConfigWithOptions(_ EngineConfigId: String, _ request: DeleteEngineConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEngineConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteAll)) {
+            query["DeleteAll"] = request.deleteAll!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
