@@ -29684,6 +29684,374 @@ public class RestartDataImportTaskResponse : Tea.TeaModel {
     }
 }
 
+public class RestoreDBInstanceRequest : Tea.TeaModel {
+    public var autoRenew: Bool?
+
+    public var backupSetId: String?
+
+    public var backupSetRegion: String?
+
+    public var CNNodeCount: String?
+
+    public var clientToken: String?
+
+    public var cloneInstanceName: String?
+
+    public var cnClass: String?
+
+    public var DBNodeClass: String?
+
+    public var DBNodeCount: Int32?
+
+    public var DNNodeCount: String?
+
+    public var dnClass: String?
+
+    public var engineVersion: String?
+
+    public var gdnRole: String?
+
+    public var networkType: String?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var primaryZone: String?
+
+    public var recoveryTypeCode: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var restoreTime: String?
+
+    public var secondaryZone: String?
+
+    public var series: String?
+
+    public var sourceInstanceRegion: String?
+
+    public var storageType: String?
+
+    public var tertiaryZone: String?
+
+    public var topologyType: String?
+
+    public var usedTime: Int32?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.backupSetId != nil {
+            map["BackupSetId"] = self.backupSetId!
+        }
+        if self.backupSetRegion != nil {
+            map["BackupSetRegion"] = self.backupSetRegion!
+        }
+        if self.CNNodeCount != nil {
+            map["CNNodeCount"] = self.CNNodeCount!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cloneInstanceName != nil {
+            map["CloneInstanceName"] = self.cloneInstanceName!
+        }
+        if self.cnClass != nil {
+            map["CnClass"] = self.cnClass!
+        }
+        if self.DBNodeClass != nil {
+            map["DBNodeClass"] = self.DBNodeClass!
+        }
+        if self.DBNodeCount != nil {
+            map["DBNodeCount"] = self.DBNodeCount!
+        }
+        if self.DNNodeCount != nil {
+            map["DNNodeCount"] = self.DNNodeCount!
+        }
+        if self.dnClass != nil {
+            map["DnClass"] = self.dnClass!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.gdnRole != nil {
+            map["GdnRole"] = self.gdnRole!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.primaryZone != nil {
+            map["PrimaryZone"] = self.primaryZone!
+        }
+        if self.recoveryTypeCode != nil {
+            map["RecoveryTypeCode"] = self.recoveryTypeCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.restoreTime != nil {
+            map["RestoreTime"] = self.restoreTime!
+        }
+        if self.secondaryZone != nil {
+            map["SecondaryZone"] = self.secondaryZone!
+        }
+        if self.series != nil {
+            map["Series"] = self.series!
+        }
+        if self.sourceInstanceRegion != nil {
+            map["SourceInstanceRegion"] = self.sourceInstanceRegion!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        if self.tertiaryZone != nil {
+            map["TertiaryZone"] = self.tertiaryZone!
+        }
+        if self.topologyType != nil {
+            map["TopologyType"] = self.topologyType!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["BackupSetId"] as? String {
+            self.backupSetId = value
+        }
+        if let value = dict["BackupSetRegion"] as? String {
+            self.backupSetRegion = value
+        }
+        if let value = dict["CNNodeCount"] as? String {
+            self.CNNodeCount = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CloneInstanceName"] as? String {
+            self.cloneInstanceName = value
+        }
+        if let value = dict["CnClass"] as? String {
+            self.cnClass = value
+        }
+        if let value = dict["DBNodeClass"] as? String {
+            self.DBNodeClass = value
+        }
+        if let value = dict["DBNodeCount"] as? Int32 {
+            self.DBNodeCount = value
+        }
+        if let value = dict["DNNodeCount"] as? String {
+            self.DNNodeCount = value
+        }
+        if let value = dict["DnClass"] as? String {
+            self.dnClass = value
+        }
+        if let value = dict["EngineVersion"] as? String {
+            self.engineVersion = value
+        }
+        if let value = dict["GdnRole"] as? String {
+            self.gdnRole = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
+        if let value = dict["PrimaryZone"] as? String {
+            self.primaryZone = value
+        }
+        if let value = dict["RecoveryTypeCode"] as? String {
+            self.recoveryTypeCode = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["RestoreTime"] as? String {
+            self.restoreTime = value
+        }
+        if let value = dict["SecondaryZone"] as? String {
+            self.secondaryZone = value
+        }
+        if let value = dict["Series"] as? String {
+            self.series = value
+        }
+        if let value = dict["SourceInstanceRegion"] as? String {
+            self.sourceInstanceRegion = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
+        if let value = dict["TertiaryZone"] as? String {
+            self.tertiaryZone = value
+        }
+        if let value = dict["TopologyType"] as? String {
+            self.topologyType = value
+        }
+        if let value = dict["UsedTime"] as? Int32 {
+            self.usedTime = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class RestoreDBInstanceResponseBody : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RestoreDBInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RestoreDBInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RestoreDBInstanceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SkipCurrentStepRequest : Tea.TeaModel {
     public var currentStep: String?
 
