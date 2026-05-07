@@ -6999,6 +6999,142 @@ public class EnableAgentRuntimeResponse : Tea.TeaModel {
     }
 }
 
+public class GetAvailableLLMModelsRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetAvailableLLMModelsResponseBody : Tea.TeaModel {
+    public var models: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.models != nil {
+            map["Models"] = self.models!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Models"] as? [String] {
+            self.models = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetAvailableLLMModelsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAvailableLLMModelsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAvailableLLMModelsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetConversationsRequest : Tea.TeaModel {
     public var lastId: String?
 
@@ -10374,6 +10510,306 @@ public class ListCustomAgentToolsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListCustomAgentToolsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListLLMTokenUsageRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var instanceName: String?
+
+    public var model: String?
+
+    public var regionId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["Model"] as? String {
+            self.model = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class ListLLMTokenUsageResponseBody : Tea.TeaModel {
+    public class TokenUsages : Tea.TeaModel {
+        public var completionReasoningTokens: Int64?
+
+        public var completionTokens: Int64?
+
+        public var endTime: String?
+
+        public var explicitCachedTokens: Int64?
+
+        public var implicitCachedTokens: Int64?
+
+        public var model: String?
+
+        public var promptTokens: Int64?
+
+        public var startTime: String?
+
+        public var totalTokens: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completionReasoningTokens != nil {
+                map["CompletionReasoningTokens"] = self.completionReasoningTokens!
+            }
+            if self.completionTokens != nil {
+                map["CompletionTokens"] = self.completionTokens!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.explicitCachedTokens != nil {
+                map["ExplicitCachedTokens"] = self.explicitCachedTokens!
+            }
+            if self.implicitCachedTokens != nil {
+                map["ImplicitCachedTokens"] = self.implicitCachedTokens!
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.promptTokens != nil {
+                map["PromptTokens"] = self.promptTokens!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.totalTokens != nil {
+                map["TotalTokens"] = self.totalTokens!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CompletionReasoningTokens"] as? Int64 {
+                self.completionReasoningTokens = value
+            }
+            if let value = dict["CompletionTokens"] as? Int64 {
+                self.completionTokens = value
+            }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["ExplicitCachedTokens"] as? Int64 {
+                self.explicitCachedTokens = value
+            }
+            if let value = dict["ImplicitCachedTokens"] as? Int64 {
+                self.implicitCachedTokens = value
+            }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["PromptTokens"] as? Int64 {
+                self.promptTokens = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["TotalTokens"] as? Int64 {
+                self.totalTokens = value
+            }
+        }
+    }
+    public var completionTokens: Int64?
+
+    public var explicitCachedTokens: Int64?
+
+    public var implicitCachedTokens: Int64?
+
+    public var promptTokens: Int64?
+
+    public var requestId: String?
+
+    public var tokenUsages: [ListLLMTokenUsageResponseBody.TokenUsages]?
+
+    public var totalTokens: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.completionTokens != nil {
+            map["CompletionTokens"] = self.completionTokens!
+        }
+        if self.explicitCachedTokens != nil {
+            map["ExplicitCachedTokens"] = self.explicitCachedTokens!
+        }
+        if self.implicitCachedTokens != nil {
+            map["ImplicitCachedTokens"] = self.implicitCachedTokens!
+        }
+        if self.promptTokens != nil {
+            map["PromptTokens"] = self.promptTokens!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tokenUsages != nil {
+            var tmp : [Any] = []
+            for k in self.tokenUsages! {
+                tmp.append(k.toMap())
+            }
+            map["TokenUsages"] = tmp
+        }
+        if self.totalTokens != nil {
+            map["TotalTokens"] = self.totalTokens!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CompletionTokens"] as? Int64 {
+            self.completionTokens = value
+        }
+        if let value = dict["ExplicitCachedTokens"] as? Int64 {
+            self.explicitCachedTokens = value
+        }
+        if let value = dict["ImplicitCachedTokens"] as? Int64 {
+            self.implicitCachedTokens = value
+        }
+        if let value = dict["PromptTokens"] as? Int64 {
+            self.promptTokens = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TokenUsages"] as? [Any?] {
+            var tmp : [ListLLMTokenUsageResponseBody.TokenUsages] = []
+            for v in value {
+                if v != nil {
+                    var model = ListLLMTokenUsageResponseBody.TokenUsages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tokenUsages = tmp
+        }
+        if let value = dict["TotalTokens"] as? Int64 {
+            self.totalTokens = value
+        }
+    }
+}
+
+public class ListLLMTokenUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListLLMTokenUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListLLMTokenUsageResponseBody()
             model.fromMap(value)
             self.body = model
         }
