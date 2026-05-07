@@ -6503,6 +6503,8 @@ public class CreateDataAgentSessionResponse : Tea.TeaModel {
 public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
+    public var isSessionShareEnabled: Bool?
+
     public var workspaceDesc: String?
 
     public var workspaceName: String?
@@ -6524,6 +6526,9 @@ public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
+        if self.isSessionShareEnabled != nil {
+            map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+        }
         if self.workspaceDesc != nil {
             map["WorkspaceDesc"] = self.workspaceDesc!
         }
@@ -6537,6 +6542,9 @@ public class CreateDataAgentWorkspaceRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
+        }
+        if let value = dict["IsSessionShareEnabled"] as? Bool {
+            self.isSessionShareEnabled = value
         }
         if let value = dict["WorkspaceDesc"] as? String {
             self.workspaceDesc = value
@@ -6552,6 +6560,8 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
         public var createTime: Int64?
 
         public var creator: String?
+
+        public var isSessionShareEnabled: Bool?
 
         public var modifyTime: Int64?
 
@@ -6587,6 +6597,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
             if self.creator != nil {
                 map["Creator"] = self.creator!
             }
+            if self.isSessionShareEnabled != nil {
+                map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+            }
             if self.modifyTime != nil {
                 map["ModifyTime"] = self.modifyTime!
             }
@@ -6618,6 +6631,9 @@ public class CreateDataAgentWorkspaceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Creator"] as? String {
                 self.creator = value
+            }
+            if let value = dict["IsSessionShareEnabled"] as? Bool {
+                self.isSessionShareEnabled = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
                 self.modifyTime = value
@@ -11720,6 +11736,8 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var isSessionShareEnabled: Bool?
+
         public var modifyTime: String?
 
         public var roleName: String?
@@ -11754,6 +11772,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
             if self.creator != nil {
                 map["Creator"] = self.creator!
             }
+            if self.isSessionShareEnabled != nil {
+                map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+            }
             if self.modifyTime != nil {
                 map["ModifyTime"] = self.modifyTime!
             }
@@ -11785,6 +11806,9 @@ public class GetDataAgentWorkspaceInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Creator"] as? String {
                 self.creator = value
+            }
+            if let value = dict["IsSessionShareEnabled"] as? Bool {
+                self.isSessionShareEnabled = value
             }
             if let value = dict["ModifyTime"] as? String {
                 self.modifyTime = value
@@ -15049,6 +15073,8 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var isSessionShareEnabled: Bool?
+
             public var modifyTime: Int64?
 
             public var roleName: String?
@@ -15084,6 +15110,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.isSessionShareEnabled != nil {
+                    map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+                }
                 if self.modifyTime != nil {
                     map["ModifyTime"] = self.modifyTime!
                 }
@@ -15115,6 +15144,9 @@ public class ListDataAgentWorkspaceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["IsSessionShareEnabled"] as? Bool {
+                    self.isSessionShareEnabled = value
                 }
                 if let value = dict["ModifyTime"] as? Int64 {
                     self.modifyTime = value
@@ -21642,6 +21674,8 @@ public class UpdateAirflowResponse : Tea.TeaModel {
 public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
     public var DMSUnit: String?
 
+    public var isSessionShareEnabled: Bool?
+
     public var workspaceDesc: String?
 
     public var workspaceId: String?
@@ -21665,6 +21699,9 @@ public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
         if self.DMSUnit != nil {
             map["DMSUnit"] = self.DMSUnit!
         }
+        if self.isSessionShareEnabled != nil {
+            map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+        }
         if self.workspaceDesc != nil {
             map["WorkspaceDesc"] = self.workspaceDesc!
         }
@@ -21681,6 +21718,9 @@ public class UpdateDataAgentSpaceInfoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DMSUnit"] as? String {
             self.DMSUnit = value
+        }
+        if let value = dict["IsSessionShareEnabled"] as? Bool {
+            self.isSessionShareEnabled = value
         }
         if let value = dict["WorkspaceDesc"] as? String {
             self.workspaceDesc = value
@@ -21701,6 +21741,8 @@ public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
         public var creator: String?
 
         public var description_: String?
+
+        public var isSessionShareEnabled: Bool?
 
         public var modifyTime: String?
 
@@ -21737,6 +21779,9 @@ public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.isSessionShareEnabled != nil {
+                map["IsSessionShareEnabled"] = self.isSessionShareEnabled!
+            }
             if self.modifyTime != nil {
                 map["ModifyTime"] = self.modifyTime!
             }
@@ -21768,6 +21813,9 @@ public class UpdateDataAgentSpaceInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["IsSessionShareEnabled"] as? Bool {
+                self.isSessionShareEnabled = value
             }
             if let value = dict["ModifyTime"] as? String {
                 self.modifyTime = value

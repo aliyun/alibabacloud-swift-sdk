@@ -467,6 +467,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
             query["DMSUnit"] = request.DMSUnit ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isSessionShareEnabled)) {
+            query["IsSessionShareEnabled"] = request.isSessionShareEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceDesc)) {
             query["WorkspaceDesc"] = request.workspaceDesc ?? "";
         }
@@ -2824,6 +2827,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DMSUnit)) {
             query["DMSUnit"] = request.DMSUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isSessionShareEnabled)) {
+            query["IsSessionShareEnabled"] = request.isSessionShareEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceDesc)) {
             query["WorkspaceDesc"] = request.workspaceDesc ?? "";
