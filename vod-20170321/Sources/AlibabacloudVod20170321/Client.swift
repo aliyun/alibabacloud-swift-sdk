@@ -927,11 +927,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableFirstFrameCover)) {
+            query["EnableFirstFrameCover"] = request.enableFirstFrameCover!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fileSize)) {
             query["FileSize"] = request.fileSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.generateThumbnail)) {
+            query["GenerateThumbnail"] = request.generateThumbnail!;
         }
         if (!TeaUtils.Client.isUnset(request.referenceId)) {
             query["ReferenceId"] = request.referenceId ?? "";
@@ -5912,6 +5918,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func registerMediaWithOptions(_ request: RegisterMediaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RegisterMediaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableFirstFrameCover)) {
+            query["EnableFirstFrameCover"] = request.enableFirstFrameCover!;
+        }
+        if (!TeaUtils.Client.isUnset(request.generateThumbnail)) {
+            query["GenerateThumbnail"] = request.generateThumbnail!;
+        }
         if (!TeaUtils.Client.isUnset(request.registerMetadatas)) {
             query["RegisterMetadatas"] = request.registerMetadatas ?? "";
         }
@@ -7559,6 +7571,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableFirstFrameCover)) {
+            query["EnableFirstFrameCover"] = request.enableFirstFrameCover!;
+        }
+        if (!TeaUtils.Client.isUnset(request.generateThumbnail)) {
+            query["GenerateThumbnail"] = request.generateThumbnail!;
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";

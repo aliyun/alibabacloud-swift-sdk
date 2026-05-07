@@ -4877,9 +4877,13 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableFirstFrameCover: Bool?
+
     public var fileName: String?
 
     public var fileSize: Int64?
+
+    public var generateThumbnail: Bool?
 
     public var referenceId: String?
 
@@ -4921,11 +4925,17 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableFirstFrameCover != nil {
+            map["EnableFirstFrameCover"] = self.enableFirstFrameCover!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
         if self.fileSize != nil {
             map["FileSize"] = self.fileSize!
+        }
+        if self.generateThumbnail != nil {
+            map["GenerateThumbnail"] = self.generateThumbnail!
         }
         if self.referenceId != nil {
             map["ReferenceId"] = self.referenceId!
@@ -4965,11 +4975,17 @@ public class CreateUploadVideoRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EnableFirstFrameCover"] as? Bool {
+            self.enableFirstFrameCover = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
         if let value = dict["FileSize"] as? Int64 {
             self.fileSize = value
+        }
+        if let value = dict["GenerateThumbnail"] as? Bool {
+            self.generateThumbnail = value
         }
         if let value = dict["ReferenceId"] as? String {
             self.referenceId = value
@@ -40815,6 +40831,10 @@ public class RefreshVodObjectCachesResponse : Tea.TeaModel {
 }
 
 public class RegisterMediaRequest : Tea.TeaModel {
+    public var enableFirstFrameCover: Bool?
+
+    public var generateThumbnail: Bool?
+
     public var registerMetadatas: String?
 
     public var templateGroupId: String?
@@ -40837,6 +40857,12 @@ public class RegisterMediaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableFirstFrameCover != nil {
+            map["EnableFirstFrameCover"] = self.enableFirstFrameCover!
+        }
+        if self.generateThumbnail != nil {
+            map["GenerateThumbnail"] = self.generateThumbnail!
+        }
         if self.registerMetadatas != nil {
             map["RegisterMetadatas"] = self.registerMetadatas!
         }
@@ -40854,6 +40880,12 @@ public class RegisterMediaRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnableFirstFrameCover"] as? Bool {
+            self.enableFirstFrameCover = value
+        }
+        if let value = dict["GenerateThumbnail"] as? Bool {
+            self.generateThumbnail = value
+        }
         if let value = dict["RegisterMetadatas"] as? String {
             self.registerMetadatas = value
         }
@@ -48714,6 +48746,10 @@ public class UpdateWatermarkResponse : Tea.TeaModel {
 public class UploadMediaByURLRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var enableFirstFrameCover: Bool?
+
+    public var generateThumbnail: Bool?
+
     public var sessionId: String?
 
     public var storageLocation: String?
@@ -48745,6 +48781,12 @@ public class UploadMediaByURLRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.enableFirstFrameCover != nil {
+            map["EnableFirstFrameCover"] = self.enableFirstFrameCover!
+        }
+        if self.generateThumbnail != nil {
+            map["GenerateThumbnail"] = self.generateThumbnail!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -48773,6 +48815,12 @@ public class UploadMediaByURLRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppId"] as? String {
             self.appId = value
+        }
+        if let value = dict["EnableFirstFrameCover"] as? Bool {
+            self.enableFirstFrameCover = value
+        }
+        if let value = dict["GenerateThumbnail"] as? Bool {
+            self.generateThumbnail = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
