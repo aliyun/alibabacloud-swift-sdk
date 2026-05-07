@@ -3744,6 +3744,8 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
 
         public var outputUrl: String?
 
+        public var srtFileUrl: String?
+
         public var storyboardInfoList: String?
 
         public var successStoryboardIds: String?
@@ -3773,6 +3775,9 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
             if self.outputUrl != nil {
                 map["OutputUrl"] = self.outputUrl!
             }
+            if self.srtFileUrl != nil {
+                map["SrtFileUrl"] = self.srtFileUrl!
+            }
             if self.storyboardInfoList != nil {
                 map["StoryboardInfoList"] = self.storyboardInfoList!
             }
@@ -3795,6 +3800,9 @@ public class GetYikeStoryboardJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["OutputUrl"] as? String {
                 self.outputUrl = value
+            }
+            if let value = dict["SrtFileUrl"] as? String {
+                self.srtFileUrl = value
             }
             if let value = dict["StoryboardInfoList"] as? String {
                 self.storyboardInfoList = value
