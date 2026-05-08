@@ -6321,6 +6321,8 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
 
     public var fileURL: String?
 
+    public var keepOriginDialogue: Bool?
+
     public var modelParams: String?
 
     public var narrationVoiceId: String?
@@ -6365,6 +6367,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         }
         if self.fileURL != nil {
             map["FileURL"] = self.fileURL!
+        }
+        if self.keepOriginDialogue != nil {
+            map["KeepOriginDialogue"] = self.keepOriginDialogue!
         }
         if self.modelParams != nil {
             map["ModelParams"] = self.modelParams!
@@ -6412,6 +6417,9 @@ public class SubmitYikeStoryboardJobRequest : Tea.TeaModel {
         }
         if let value = dict["FileURL"] as? String {
             self.fileURL = value
+        }
+        if let value = dict["KeepOriginDialogue"] as? Bool {
+            self.keepOriginDialogue = value
         }
         if let value = dict["ModelParams"] as? String {
             self.modelParams = value

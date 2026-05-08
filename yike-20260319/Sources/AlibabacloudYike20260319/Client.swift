@@ -889,6 +889,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.execMode)) {
             query["ExecMode"] = request.execMode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keepOriginDialogue)) {
+            query["KeepOriginDialogue"] = request.keepOriginDialogue!;
+        }
         if (!TeaUtils.Client.isUnset(request.modelParams)) {
             query["ModelParams"] = request.modelParams ?? "";
         }
