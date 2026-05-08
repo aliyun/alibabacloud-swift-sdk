@@ -12946,6 +12946,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
                 public var enableOplock: Bool?
 
+                public var vscAccessPointAccessOnly: Bool?
+
                 public override init() {
                     super.init()
                 }
@@ -12966,6 +12968,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     if self.enableOplock != nil {
                         map["EnableOplock"] = self.enableOplock!
                     }
+                    if self.vscAccessPointAccessOnly != nil {
+                        map["VscAccessPointAccessOnly"] = self.vscAccessPointAccessOnly!
+                    }
                     return map
                 }
 
@@ -12976,6 +12981,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["EnableOplock"] as? Bool {
                         self.enableOplock = value
+                    }
+                    if let value = dict["VscAccessPointAccessOnly"] as? Bool {
+                        self.vscAccessPointAccessOnly = value
                     }
                 }
             }
@@ -16108,6 +16116,8 @@ public class DescribeMountTargetsResponseBody : Tea.TeaModel {
             }
             public var accessGroup: String?
 
+            public var accessPointAccessOnly: Bool?
+
             public var clientMasterNodes: DescribeMountTargetsResponseBody.MountTargets.MountTarget.ClientMasterNodes?
 
             public var dualStackMountTargetDomain: String?
@@ -16145,6 +16155,9 @@ public class DescribeMountTargetsResponseBody : Tea.TeaModel {
                 if self.accessGroup != nil {
                     map["AccessGroup"] = self.accessGroup!
                 }
+                if self.accessPointAccessOnly != nil {
+                    map["AccessPointAccessOnly"] = self.accessPointAccessOnly!
+                }
                 if self.clientMasterNodes != nil {
                     map["ClientMasterNodes"] = self.clientMasterNodes?.toMap()
                 }
@@ -16179,6 +16192,9 @@ public class DescribeMountTargetsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccessGroup"] as? String {
                     self.accessGroup = value
+                }
+                if let value = dict["AccessPointAccessOnly"] as? Bool {
+                    self.accessPointAccessOnly = value
                 }
                 if let value = dict["ClientMasterNodes"] as? [String: Any?] {
                     var model = DescribeMountTargetsResponseBody.MountTargets.MountTarget.ClientMasterNodes()
@@ -23437,6 +23453,8 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
 
         public var enableOplock: Bool?
 
+        public var vscAccessPointAccessOnly: Bool?
+
         public override init() {
             super.init()
         }
@@ -23457,6 +23475,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
             if self.enableOplock != nil {
                 map["EnableOplock"] = self.enableOplock!
             }
+            if self.vscAccessPointAccessOnly != nil {
+                map["VscAccessPointAccessOnly"] = self.vscAccessPointAccessOnly!
+            }
             return map
         }
 
@@ -23467,6 +23488,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
             }
             if let value = dict["EnableOplock"] as? Bool {
                 self.enableOplock = value
+            }
+            if let value = dict["VscAccessPointAccessOnly"] as? Bool {
+                self.vscAccessPointAccessOnly = value
             }
         }
     }
@@ -24098,6 +24122,8 @@ public class ModifyLifecyclePolicyResponse : Tea.TeaModel {
 public class ModifyMountTargetRequest : Tea.TeaModel {
     public var accessGroupName: String?
 
+    public var accessPointAccessOnly: Bool?
+
     public var dualStackMountTargetDomain: String?
 
     public var fileSystemId: String?
@@ -24123,6 +24149,9 @@ public class ModifyMountTargetRequest : Tea.TeaModel {
         if self.accessGroupName != nil {
             map["AccessGroupName"] = self.accessGroupName!
         }
+        if self.accessPointAccessOnly != nil {
+            map["AccessPointAccessOnly"] = self.accessPointAccessOnly!
+        }
         if self.dualStackMountTargetDomain != nil {
             map["DualStackMountTargetDomain"] = self.dualStackMountTargetDomain!
         }
@@ -24142,6 +24171,9 @@ public class ModifyMountTargetRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccessGroupName"] as? String {
             self.accessGroupName = value
+        }
+        if let value = dict["AccessPointAccessOnly"] as? Bool {
+            self.accessPointAccessOnly = value
         }
         if let value = dict["DualStackMountTargetDomain"] as? String {
             self.dualStackMountTargetDomain = value

@@ -4300,6 +4300,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessGroupName)) {
             query["AccessGroupName"] = request.accessGroupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.accessPointAccessOnly)) {
+            query["AccessPointAccessOnly"] = request.accessPointAccessOnly!;
+        }
         if (!TeaUtils.Client.isUnset(request.dualStackMountTargetDomain)) {
             query["DualStackMountTargetDomain"] = request.dualStackMountTargetDomain ?? "";
         }
