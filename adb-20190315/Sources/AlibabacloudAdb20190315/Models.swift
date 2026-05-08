@@ -26008,6 +26008,8 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var sqlPatternHash: Int64?
+
     public var startTime: String?
 
     public var userName: String?
@@ -26050,6 +26052,9 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.sqlPatternHash != nil {
+            map["SqlPatternHash"] = self.sqlPatternHash!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -26084,6 +26089,9 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SqlPatternHash"] as? Int64 {
+            self.sqlPatternHash = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
