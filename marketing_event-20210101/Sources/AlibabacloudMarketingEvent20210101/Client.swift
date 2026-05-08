@@ -356,6 +356,68 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQwenConferenceSgTicketPopWithOptions(_ request: QueryQwenConferenceSgTicketPopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryQwenConferenceSgTicketPopResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ticketToken)) {
+            query["TicketToken"] = request.ticketToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryQwenConferenceSgTicketPop",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryQwenConferenceSgTicketPopResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQwenConferenceSgTicketPop(_ request: QueryQwenConferenceSgTicketPopRequest) async throws -> QueryQwenConferenceSgTicketPopResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryQwenConferenceSgTicketPopWithOptions(request as! QueryQwenConferenceSgTicketPopRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQwenConferenceSgTicketSearchPopWithOptions(_ request: QueryQwenConferenceSgTicketSearchPopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryQwenConferenceSgTicketSearchPopResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryQwenConferenceSgTicketSearchPop",
+            "version": "2021-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryQwenConferenceSgTicketSearchPopResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQwenConferenceSgTicketSearchPop(_ request: QueryQwenConferenceSgTicketSearchPopRequest) async throws -> QueryQwenConferenceSgTicketSearchPopResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryQwenConferenceSgTicketSearchPopWithOptions(request as! QueryQwenConferenceSgTicketSearchPopRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func querySessionByActivityIdPopWithOptions(_ request: QuerySessionByActivityIdPopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySessionByActivityIdPopResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
