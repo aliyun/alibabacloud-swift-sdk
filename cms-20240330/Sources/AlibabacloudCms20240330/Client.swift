@@ -24,6 +24,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addContextsWithOptions(_ workspace: String, _ contextStoreName: String, _ request: AddContextsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddContextsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contextType)) {
+            body["contextType"] = request.contextType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.items)) {
+            body["items"] = request.items ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryType)) {
+            body["memoryType"] = request.memoryType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddContexts",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddContextsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addContexts(_ workspace: String, _ contextStoreName: String, _ request: AddContextsRequest) async throws -> AddContextsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addContextsWithOptions(workspace as! String, contextStoreName as! String, request as! AddContextsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: AddMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMemoriesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -389,6 +428,84 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createCloudResourceWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContextStoreWithOptions(_ workspace: String, _ request: CreateContextStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContextStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["config"] = request.config!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contextStoreName)) {
+            body["contextStoreName"] = request.contextStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contextType)) {
+            body["contextType"] = request.contextType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataset)) {
+            body["dataset"] = request.dataset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateContextStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateContextStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContextStore(_ workspace: String, _ request: CreateContextStoreRequest) async throws -> CreateContextStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createContextStoreWithOptions(workspace as! String, request as! CreateContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContextStoreAPIKeyWithOptions(_ workspace: String, _ contextStoreName: String, _ request: CreateContextStoreAPIKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContextStoreAPIKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateContextStoreAPIKey",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/apikey",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateContextStoreAPIKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createContextStoreAPIKey(_ workspace: String, _ contextStoreName: String, _ request: CreateContextStoreAPIKeyRequest) async throws -> CreateContextStoreAPIKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createContextStoreAPIKeyWithOptions(workspace as! String, contextStoreName as! String, request as! CreateContextStoreAPIKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1136,6 +1253,126 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteCloudResourceWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextWithOptions(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: DeleteContextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContextResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContext",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContext(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: DeleteContextRequest) async throws -> DeleteContextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContextWithOptions(workspace as! String, contextStoreName as! String, contextId as! String, request as! DeleteContextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextStoreWithOptions(_ workspace: String, _ contextStoreName: String, _ request: DeleteContextStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContextStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContextStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContextStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextStore(_ workspace: String, _ contextStoreName: String, _ request: DeleteContextStoreRequest) async throws -> DeleteContextStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContextStoreWithOptions(workspace as! String, contextStoreName as! String, request as! DeleteContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextStoreAPIKeyWithOptions(_ workspace: String, _ contextStoreName: String, _ name: String, _ request: DeleteContextStoreAPIKeyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContextStoreAPIKeyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContextStoreAPIKey",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/apikey/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContextStoreAPIKeyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextStoreAPIKey(_ workspace: String, _ contextStoreName: String, _ name: String, _ request: DeleteContextStoreAPIKeyRequest) async throws -> DeleteContextStoreAPIKeyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContextStoreAPIKeyWithOptions(workspace as! String, contextStoreName as! String, name as! String, request as! DeleteContextStoreAPIKeyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContextsWithOptions(_ workspace: String, _ contextStoreName: String, _ request: DeleteContextsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteContextsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contextIds)) {
+            query["contextIds"] = request.contextIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["filter"] = request.filter ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteContexts",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteContextsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteContexts(_ workspace: String, _ contextStoreName: String, _ request: DeleteContextsRequest) async throws -> DeleteContextsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteContextsWithOptions(workspace as! String, contextStoreName as! String, request as! DeleteContextsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2041,6 +2278,67 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getCmsServiceWithOptions(request as! GetCmsServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getContextWithOptions(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: GetContextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetContextResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.formatted)) {
+            query["formatted"] = request.formatted!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetContext",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetContextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getContext(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: GetContextRequest) async throws -> GetContextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getContextWithOptions(workspace as! String, contextStoreName as! String, contextId as! String, request as! GetContextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getContextStoreWithOptions(_ workspace: String, _ contextStoreName: String, _ request: GetContextStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetContextStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetContextStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetContextStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getContextStore(_ workspace: String, _ contextStoreName: String, _ request: GetContextStoreRequest) async throws -> GetContextStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getContextStoreWithOptions(workspace as! String, contextStoreName as! String, request as! GetContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3128,6 +3426,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listContextStoreAPIKeysWithOptions(_ workspace: String, _ contextStoreName: String, _ request: ListContextStoreAPIKeysRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListContextStoreAPIKeysResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListContextStoreAPIKeys",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/apikey",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListContextStoreAPIKeysResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listContextStoreAPIKeys(_ workspace: String, _ contextStoreName: String, _ request: ListContextStoreAPIKeysRequest) async throws -> ListContextStoreAPIKeysResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listContextStoreAPIKeysWithOptions(workspace as! String, contextStoreName as! String, request as! ListContextStoreAPIKeysRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listContextStoresWithOptions(_ workspace: String, _ request: ListContextStoresRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListContextStoresResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contextStoreName)) {
+            query["contextStoreName"] = request.contextStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contextType)) {
+            query["contextType"] = request.contextType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListContextStores",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListContextStoresResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listContextStores(_ workspace: String, _ request: ListContextStoresRequest) async throws -> ListContextStoresResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listContextStoresWithOptions(workspace as! String, request as! ListContextStoresRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDatasetsWithOptions(_ workspace: String, _ request: ListDatasetsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4124,6 +4500,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchContextWithOptions(_ workspace: String, _ contextStoreName: String, _ request: SearchContextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchContextResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            body["filter"] = request.filter ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.formatted)) {
+            body["formatted"] = request.formatted!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            body["limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retrievalOption)) {
+            body["retrievalOption"] = request.retrievalOption ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threshold)) {
+            body["threshold"] = request.threshold!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchContext",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context/search",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchContextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchContext(_ workspace: String, _ contextStoreName: String, _ request: SearchContextRequest) async throws -> SearchContextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await searchContextWithOptions(workspace as! String, contextStoreName as! String, request as! SearchContextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func searchMemoriesWithOptions(_ workspace: String, _ memoryStoreName: String, _ request: SearchMemoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMemoriesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4516,6 +4940,93 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateBizTraceWithOptions(bizTraceId as! String, request as! UpdateBizTraceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContextWithOptions(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: UpdateContextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContextResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experience)) {
+            body["experience"] = request.experience ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.payload)) {
+            body["payload"] = request.payload ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerCondition)) {
+            body["triggerCondition"] = request.triggerCondition ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateContext",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)) + "/context/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateContextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContext(_ workspace: String, _ contextStoreName: String, _ contextId: String, _ request: UpdateContextRequest) async throws -> UpdateContextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateContextWithOptions(workspace as! String, contextStoreName as! String, contextId as! String, request as! UpdateContextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContextStoreWithOptions(_ workspace: String, _ contextStoreName: String, _ request: UpdateContextStoreRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContextStoreResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["config"] = request.config!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contextType)) {
+            body["contextType"] = request.contextType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataset)) {
+            body["dataset"] = request.dataset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateContextStore",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspace)) + "/contextstore/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(contextStoreName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateContextStoreResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateContextStore(_ workspace: String, _ contextStoreName: String, _ request: UpdateContextStoreRequest) async throws -> UpdateContextStoreResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateContextStoreWithOptions(workspace as! String, contextStoreName as! String, request as! UpdateContextStoreRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
