@@ -24,6 +24,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addYikeProductionMembersWithOptions(_ request: AddYikeProductionMembersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddYikeProductionMembersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productionId)) {
+            query["ProductionId"] = request.productionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.yikeUserIds)) {
+            query["YikeUserIds"] = request.yikeUserIds ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddYikeProductionMembers",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddYikeProductionMembersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addYikeProductionMembers(_ request: AddYikeProductionMembersRequest) async throws -> AddYikeProductionMembersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addYikeProductionMembersWithOptions(request as! AddYikeProductionMembersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addYikeUserCreditWithOptions(_ request: AddYikeUserCreditRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddYikeUserCreditResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -565,6 +599,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listYikeWorkspacesWithOptions(_ request: ListYikeWorkspacesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListYikeWorkspacesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListYikeWorkspaces",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListYikeWorkspacesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listYikeWorkspaces(_ request: ListYikeWorkspacesRequest) async throws -> ListYikeWorkspacesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listYikeWorkspacesWithOptions(request as! ListYikeWorkspacesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func precheckYikeAIAppJobWithOptions(_ request: PrecheckYikeAIAppJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PrecheckYikeAIAppJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -915,5 +983,76 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitYikeVoiceNarratorJob(_ request: SubmitYikeVoiceNarratorJobRequest) async throws -> SubmitYikeVoiceNarratorJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitYikeVoiceNarratorJobWithOptions(request as! SubmitYikeVoiceNarratorJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateYikeProductionWithOptions(_ request: UpdateYikeProductionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateYikeProductionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productionId)) {
+            query["ProductionId"] = request.productionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateYikeProduction",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateYikeProductionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateYikeProduction(_ request: UpdateYikeProductionRequest) async throws -> UpdateYikeProductionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateYikeProductionWithOptions(request as! UpdateYikeProductionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateYikeProductionMemberAuthWithOptions(_ request: UpdateYikeProductionMemberAuthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateYikeProductionMemberAuthResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auth)) {
+            query["Auth"] = request.auth ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productionId)) {
+            query["ProductionId"] = request.productionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.yikeUserId)) {
+            query["YikeUserId"] = request.yikeUserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateYikeProductionMemberAuth",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateYikeProductionMemberAuthResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateYikeProductionMemberAuth(_ request: UpdateYikeProductionMemberAuthRequest) async throws -> UpdateYikeProductionMemberAuthResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateYikeProductionMemberAuthWithOptions(request as! UpdateYikeProductionMemberAuthRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
