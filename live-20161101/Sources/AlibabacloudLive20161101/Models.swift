@@ -6029,9 +6029,15 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var selectAppName: String?
+
+    public var selectStreamName: String?
+
     public var startTime: String?
 
     public var streamName: String?
+
+    public var switchMode: String?
 
     public override init() {
         super.init()
@@ -6083,11 +6089,20 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.selectAppName != nil {
+            map["SelectAppName"] = self.selectAppName!
+        }
+        if self.selectStreamName != nil {
+            map["SelectStreamName"] = self.selectStreamName!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
         if self.streamName != nil {
             map["StreamName"] = self.streamName!
+        }
+        if self.switchMode != nil {
+            map["SwitchMode"] = self.switchMode!
         }
         return map
     }
@@ -6130,11 +6145,20 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["SelectAppName"] as? String {
+            self.selectAppName = value
+        }
+        if let value = dict["SelectStreamName"] as? String {
+            self.selectStreamName = value
+        }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
         }
         if let value = dict["StreamName"] as? String {
             self.streamName = value
+        }
+        if let value = dict["SwitchMode"] as? String {
+            self.switchMode = value
         }
     }
 }
@@ -51792,6 +51816,8 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
 
             public var streamUsing: String?
 
+            public var switchMode: String?
+
             public override init() {
                 super.init()
             }
@@ -51851,6 +51877,9 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
                 if self.streamUsing != nil {
                     map["StreamUsing"] = self.streamUsing!
                 }
+                if self.switchMode != nil {
+                    map["SwitchMode"] = self.switchMode!
+                }
                 return map
             }
 
@@ -51900,6 +51929,9 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["StreamUsing"] as? String {
                     self.streamUsing = value
+                }
+                if let value = dict["SwitchMode"] as? String {
+                    self.switchMode = value
                 }
             }
         }
