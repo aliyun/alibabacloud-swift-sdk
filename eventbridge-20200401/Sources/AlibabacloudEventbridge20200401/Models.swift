@@ -1230,6 +1230,8 @@ public class SinkApiDestinationParameters : Tea.TeaModel {
 
     public var queryStringParameters: SinkApiDestinationParameters.QueryStringParameters?
 
+    public var timeout: Int32?
+
     public override init() {
         super.init()
     }
@@ -1259,6 +1261,9 @@ public class SinkApiDestinationParameters : Tea.TeaModel {
         if self.queryStringParameters != nil {
             map["QueryStringParameters"] = self.queryStringParameters?.toMap()
         }
+        if self.timeout != nil {
+            map["Timeout"] = self.timeout!
+        }
         return map
     }
 
@@ -1281,6 +1286,9 @@ public class SinkApiDestinationParameters : Tea.TeaModel {
             var model = SinkApiDestinationParameters.QueryStringParameters()
             model.fromMap(value)
             self.queryStringParameters = model
+        }
+        if let value = dict["Timeout"] as? Int32 {
+            self.timeout = value
         }
     }
 }
