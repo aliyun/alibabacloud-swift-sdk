@@ -94,6 +94,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithOptions(_ request: ChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.message)) {
+            query["Message"] = request.message ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.summary)) {
+            query["Summary"] = request.summary ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Chat",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chat(_ request: ChatRequest) async throws -> ChatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await chatWithOptions(request as! ChatRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createCacheAnalysisJobWithOptions(_ request: CreateCacheAnalysisJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCacheAnalysisJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2795,58 +2835,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getEndpointSwitchTaskWithOptions(_ request: GetEndpointSwitchTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEndpointSwitchTaskResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.taskId)) {
-            query["TaskId"] = request.taskId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.uid)) {
-            query["Uid"] = request.uid ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            query["UserId"] = request.userId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.context)) {
-            query["__context"] = request.context ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.accessKey)) {
-            query["accessKey"] = request.accessKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signature)) {
-            query["signature"] = request.signature ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.skipAuth)) {
-            query["skipAuth"] = request.skipAuth ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.timestamp)) {
-            query["timestamp"] = request.timestamp ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetEndpointSwitchTask",
-            "version": "2020-01-16",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetEndpointSwitchTaskResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getEndpointSwitchTask(_ request: GetEndpointSwitchTaskRequest) async throws -> GetEndpointSwitchTaskResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getEndpointSwitchTaskWithOptions(request as! GetEndpointSwitchTaskRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getErrorRequestSampleWithOptions(_ request: GetErrorRequestSampleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetErrorRequestSampleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3103,107 +3091,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getFullRequestStatResultByInstanceId(_ request: GetFullRequestStatResultByInstanceIdRequest) async throws -> GetFullRequestStatResultByInstanceIdResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getFullRequestStatResultByInstanceIdWithOptions(request as! GetFullRequestStatResultByInstanceIdRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getHDMAliyunResourceSyncResultWithOptions(_ request: GetHDMAliyunResourceSyncResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHDMAliyunResourceSyncResultResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.taskId)) {
-            query["TaskId"] = request.taskId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.uid)) {
-            query["Uid"] = request.uid ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            query["UserId"] = request.userId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.context)) {
-            query["__context"] = request.context ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.accessKey)) {
-            query["accessKey"] = request.accessKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signature)) {
-            query["signature"] = request.signature ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.skipAuth)) {
-            query["skipAuth"] = request.skipAuth ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.timestamp)) {
-            query["timestamp"] = request.timestamp ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetHDMAliyunResourceSyncResult",
-            "version": "2020-01-16",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetHDMAliyunResourceSyncResultResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getHDMAliyunResourceSyncResult(_ request: GetHDMAliyunResourceSyncResultRequest) async throws -> GetHDMAliyunResourceSyncResultResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getHDMAliyunResourceSyncResultWithOptions(request as! GetHDMAliyunResourceSyncResultRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getHDMLastAliyunResourceSyncResultWithOptions(_ request: GetHDMLastAliyunResourceSyncResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHDMLastAliyunResourceSyncResultResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.uid)) {
-            query["Uid"] = request.uid ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            query["UserId"] = request.userId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.context)) {
-            query["__context"] = request.context ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.accessKey)) {
-            query["accessKey"] = request.accessKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signature)) {
-            query["signature"] = request.signature ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.skipAuth)) {
-            query["skipAuth"] = request.skipAuth ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.timestamp)) {
-            query["timestamp"] = request.timestamp ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetHDMLastAliyunResourceSyncResult",
-            "version": "2020-01-16",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetHDMLastAliyunResourceSyncResultResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getHDMLastAliyunResourceSyncResult(_ request: GetHDMLastAliyunResourceSyncResultRequest) async throws -> GetHDMLastAliyunResourceSyncResultResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getHDMLastAliyunResourceSyncResultWithOptions(request as! GetHDMLastAliyunResourceSyncResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
