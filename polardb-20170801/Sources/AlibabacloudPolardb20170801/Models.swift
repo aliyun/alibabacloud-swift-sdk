@@ -4570,6 +4570,8 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
 
     public var autoUseCoupon: Bool?
 
+    public var clientToken: String?
+
     public var DBClusterDescription: String?
 
     public var DBClusterId: String?
@@ -4650,6 +4652,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.DBClusterDescription != nil {
             map["DBClusterDescription"] = self.DBClusterDescription!
@@ -4755,6 +4760,9 @@ public class CreateAIDBClusterRequest : Tea.TeaModel {
         }
         if let value = dict["AutoUseCoupon"] as? Bool {
             self.autoUseCoupon = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["DBClusterDescription"] as? String {
             self.DBClusterDescription = value
@@ -54293,6 +54301,8 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var currentVersion: String?
+
     public var dbType: String?
 
     public var endpoints: [DescribeGatewayAttributeResponseBody.Endpoints]?
@@ -54305,6 +54315,8 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
 
     public var gwDescription: String?
 
+    public var latestVersion: String?
+
     public var modifyTime: String?
 
     public var payType: String?
@@ -54312,6 +54324,8 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var requestId: String?
+
+    public var runningVersion: String?
 
     public var securityIPArrays: [DescribeGatewayAttributeResponseBody.SecurityIPArrays]?
 
@@ -54341,6 +54355,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.currentVersion != nil {
+            map["CurrentVersion"] = self.currentVersion!
+        }
         if self.dbType != nil {
             map["DbType"] = self.dbType!
         }
@@ -54363,6 +54380,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         if self.gwDescription != nil {
             map["GwDescription"] = self.gwDescription!
         }
+        if self.latestVersion != nil {
+            map["LatestVersion"] = self.latestVersion!
+        }
         if self.modifyTime != nil {
             map["ModifyTime"] = self.modifyTime!
         }
@@ -54374,6 +54394,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.runningVersion != nil {
+            map["RunningVersion"] = self.runningVersion!
         }
         if self.securityIPArrays != nil {
             var tmp : [Any] = []
@@ -54401,6 +54424,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
+        }
+        if let value = dict["CurrentVersion"] as? String {
+            self.currentVersion = value
         }
         if let value = dict["DbType"] as? String {
             self.dbType = value
@@ -54430,6 +54456,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         if let value = dict["GwDescription"] as? String {
             self.gwDescription = value
         }
+        if let value = dict["LatestVersion"] as? String {
+            self.latestVersion = value
+        }
         if let value = dict["ModifyTime"] as? String {
             self.modifyTime = value
         }
@@ -54441,6 +54470,9 @@ public class DescribeGatewayAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["RunningVersion"] as? String {
+            self.runningVersion = value
         }
         if let value = dict["SecurityIPArrays"] as? [Any?] {
             var tmp : [DescribeGatewayAttributeResponseBody.SecurityIPArrays] = []
