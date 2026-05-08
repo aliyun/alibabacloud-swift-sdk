@@ -12558,6 +12558,10 @@ public class DescribeClusterDetailResponse : Tea.TeaModel {
 }
 
 public class DescribeClusterEventsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -12578,6 +12582,12 @@ public class DescribeClusterEventsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxResults != nil {
+            map["max_results"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["page_number"] = self.pageNumber!
         }
@@ -12592,6 +12602,12 @@ public class DescribeClusterEventsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["max_results"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["page_number"] as? Int64 {
             self.pageNumber = value
         }
@@ -12780,6 +12796,8 @@ public class DescribeClusterEventsResponseBody : Tea.TeaModel {
     }
     public var events: [DescribeClusterEventsResponseBody.Events]?
 
+    public var nextToken: String?
+
     public var pageInfo: DescribeClusterEventsResponseBody.PageInfo?
 
     public override init() {
@@ -12804,6 +12822,9 @@ public class DescribeClusterEventsResponseBody : Tea.TeaModel {
             }
             map["events"] = tmp
         }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageInfo != nil {
             map["page_info"] = self.pageInfo?.toMap()
         }
@@ -12824,6 +12845,9 @@ public class DescribeClusterEventsResponseBody : Tea.TeaModel {
                 }
             }
             self.events = tmp
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
         }
         if let value = dict["page_info"] as? [String: Any?] {
             var model = DescribeClusterEventsResponseBody.PageInfo()
@@ -17496,6 +17520,10 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
 }
 
 public class DescribeClusterTasksRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -17514,6 +17542,12 @@ public class DescribeClusterTasksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxResults != nil {
+            map["max_results"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["page_number"] = self.pageNumber!
         }
@@ -17525,6 +17559,12 @@ public class DescribeClusterTasksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["max_results"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["page_number"] as? Int32 {
             self.pageNumber = value
         }
@@ -17692,6 +17732,8 @@ public class DescribeClusterTasksResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nextToken: String?
+
     public var pageInfo: DescribeClusterTasksResponseBody.PageInfo?
 
     public var requestId: String?
@@ -17713,6 +17755,9 @@ public class DescribeClusterTasksResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageInfo != nil {
             map["page_info"] = self.pageInfo?.toMap()
         }
@@ -17731,6 +17776,9 @@ public class DescribeClusterTasksResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["page_info"] as? [String: Any?] {
             var model = DescribeClusterTasksResponseBody.PageInfo()
             model.fromMap(value)
@@ -19766,6 +19814,10 @@ public class DescribeClustersV1Response : Tea.TeaModel {
 public class DescribeEventsRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -19789,6 +19841,12 @@ public class DescribeEventsRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["cluster_id"] = self.clusterId!
         }
+        if self.maxResults != nil {
+            map["max_results"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["page_number"] = self.pageNumber!
         }
@@ -19805,6 +19863,12 @@ public class DescribeEventsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["cluster_id"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["max_results"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
         }
         if let value = dict["page_number"] as? Int64 {
             self.pageNumber = value
@@ -19994,6 +20058,8 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
     }
     public var events: [DescribeEventsResponseBody.Events]?
 
+    public var nextToken: String?
+
     public var pageInfo: DescribeEventsResponseBody.PageInfo?
 
     public override init() {
@@ -20018,6 +20084,9 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
             }
             map["events"] = tmp
         }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageInfo != nil {
             map["page_info"] = self.pageInfo?.toMap()
         }
@@ -20038,6 +20107,9 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
                 }
             }
             self.events = tmp
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
         }
         if let value = dict["page_info"] as? [String: Any?] {
             var model = DescribeEventsResponseBody.PageInfo()
@@ -20100,6 +20172,10 @@ public class DescribeEventsResponse : Tea.TeaModel {
 public class DescribeEventsForRegionRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -20121,6 +20197,12 @@ public class DescribeEventsForRegionRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["cluster_id"] = self.clusterId!
         }
+        if self.maxResults != nil {
+            map["max_results"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["page_number"] = self.pageNumber!
         }
@@ -20134,6 +20216,12 @@ public class DescribeEventsForRegionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["cluster_id"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["max_results"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
         }
         if let value = dict["page_number"] as? Int64 {
             self.pageNumber = value
@@ -20320,6 +20408,8 @@ public class DescribeEventsForRegionResponseBody : Tea.TeaModel {
     }
     public var events: [DescribeEventsForRegionResponseBody.Events]?
 
+    public var nextToken: String?
+
     public var pageInfo: DescribeEventsForRegionResponseBody.PageInfo?
 
     public override init() {
@@ -20344,6 +20434,9 @@ public class DescribeEventsForRegionResponseBody : Tea.TeaModel {
             }
             map["events"] = tmp
         }
+        if self.nextToken != nil {
+            map["next_token"] = self.nextToken!
+        }
         if self.pageInfo != nil {
             map["page_info"] = self.pageInfo?.toMap()
         }
@@ -20364,6 +20457,9 @@ public class DescribeEventsForRegionResponseBody : Tea.TeaModel {
                 }
             }
             self.events = tmp
+        }
+        if let value = dict["next_token"] as? String {
+            self.nextToken = value
         }
         if let value = dict["page_info"] as? [String: Any?] {
             var model = DescribeEventsForRegionResponseBody.PageInfo()

@@ -1914,6 +1914,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeClusterEventsWithOptions(_ ClusterId: String, _ request: DescribeClusterEventsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterEventsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["max_results"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["next_token"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["page_number"] = request.pageNumber!;
         }
@@ -2118,6 +2124,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeClusterTasksWithOptions(_ clusterId: String, _ request: DescribeClusterTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["max_results"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["next_token"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["page_number"] = request.pageNumber!;
         }
@@ -2400,6 +2412,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["cluster_id"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["max_results"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["next_token"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["page_number"] = request.pageNumber!;
         }
@@ -2441,6 +2459,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["cluster_id"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["max_results"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["next_token"] = request.nextToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["page_number"] = request.pageNumber!;
