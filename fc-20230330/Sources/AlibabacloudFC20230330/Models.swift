@@ -1039,6 +1039,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var internetAccess: Bool?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var layers: [String]?
 
     public var logConfig: LogConfig?
@@ -1085,6 +1087,7 @@ public class CreateFunctionInput : Tea.TeaModel {
         try self.customRuntimeConfig?.validate()
         try self.gpuConfig?.validate()
         try self.instanceLifecycleConfig?.validate()
+        try self.juiceFsConfig?.validate()
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
@@ -1151,6 +1154,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.internetAccess != nil {
             map["internetAccess"] = self.internetAccess!
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.layers != nil {
             map["layers"] = self.layers!
@@ -1274,6 +1280,11 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["internetAccess"] as? Bool {
             self.internetAccess = value
+        }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
         }
         if let value = dict["layers"] as? [String] {
             self.layers = value
@@ -1406,6 +1417,8 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 public class CreateSessionInput : Tea.TeaModel {
     public var disableSessionIdReuse: Bool?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
@@ -1428,6 +1441,7 @@ public class CreateSessionInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -1437,6 +1451,9 @@ public class CreateSessionInput : Tea.TeaModel {
         var map = super.toMap()
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
@@ -1463,6 +1480,11 @@ public class CreateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
         }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
@@ -2878,6 +2900,8 @@ public class Function : Tea.TeaModel {
 
     public var invocationRestriction: FunctionRestriction?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var lastModifiedTime: String?
 
     public var lastUpdateStatus: String?
@@ -2940,6 +2964,7 @@ public class Function : Tea.TeaModel {
         try self.gpuConfig?.validate()
         try self.instanceLifecycleConfig?.validate()
         try self.invocationRestriction?.validate()
+        try self.juiceFsConfig?.validate()
         try self.lockInfo?.validate()
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
@@ -3022,6 +3047,9 @@ public class Function : Tea.TeaModel {
         }
         if self.invocationRestriction != nil {
             map["invocationRestriction"] = self.invocationRestriction?.toMap()
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
@@ -3188,6 +3216,11 @@ public class Function : Tea.TeaModel {
             var model = FunctionRestriction()
             model.fromMap(value)
             self.invocationRestriction = model
+        }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
         }
         if let value = dict["lastModifiedTime"] as? String {
             self.lastModifiedTime = value
@@ -4050,6 +4083,122 @@ public class JobConfig : Tea.TeaModel {
         }
         if let value = dict["triggerInterval"] as? Int32 {
             self.triggerInterval = value
+        }
+    }
+}
+
+public class JuiceFsConfig : Tea.TeaModel {
+    public var envs: [String: String]?
+
+    public var mountPoints: [JuiceFsMountConfig]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.envs != nil {
+            map["envs"] = self.envs!
+        }
+        if self.mountPoints != nil {
+            var tmp : [Any] = []
+            for k in self.mountPoints! {
+                tmp.append(k.toMap())
+            }
+            map["mountPoints"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["envs"] as? [String: String] {
+            self.envs = value
+        }
+        if let value = dict["mountPoints"] as? [Any?] {
+            var tmp : [JuiceFsMountConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = JuiceFsMountConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.mountPoints = tmp
+        }
+    }
+}
+
+public class JuiceFsMountConfig : Tea.TeaModel {
+    public var args: [String]?
+
+    public var mountDir: String?
+
+    public var remoteDir: String?
+
+    public var token: String?
+
+    public var volumeName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.args != nil {
+            map["args"] = self.args!
+        }
+        if self.mountDir != nil {
+            map["mountDir"] = self.mountDir!
+        }
+        if self.remoteDir != nil {
+            map["remoteDir"] = self.remoteDir!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.volumeName != nil {
+            map["volumeName"] = self.volumeName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["args"] as? [String] {
+            self.args = value
+        }
+        if let value = dict["mountDir"] as? String {
+            self.mountDir = value
+        }
+        if let value = dict["remoteDir"] as? String {
+            self.remoteDir = value
+        }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+        if let value = dict["volumeName"] as? String {
+            self.volumeName = value
         }
     }
 }
@@ -7934,6 +8083,8 @@ public class Session : Tea.TeaModel {
 
     public var functionName: String?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var lastModifiedTime: String?
 
     public var nasConfig: NASConfig?
@@ -7964,6 +8115,7 @@ public class Session : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -7982,6 +8134,9 @@ public class Session : Tea.TeaModel {
         }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
@@ -8029,6 +8184,11 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["functionName"] as? String {
             self.functionName = value
+        }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
         }
         if let value = dict["lastModifiedTime"] as? String {
             self.lastModifiedTime = value
@@ -9323,6 +9483,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var internetAccess: Bool?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var layers: [String]?
 
     public var logConfig: LogConfig?
@@ -9365,6 +9527,7 @@ public class UpdateFunctionInput : Tea.TeaModel {
         try self.customRuntimeConfig?.validate()
         try self.gpuConfig?.validate()
         try self.instanceLifecycleConfig?.validate()
+        try self.juiceFsConfig?.validate()
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
@@ -9428,6 +9591,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.internetAccess != nil {
             map["internetAccess"] = self.internetAccess!
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.layers != nil {
             map["layers"] = self.layers!
@@ -9539,6 +9705,11 @@ public class UpdateFunctionInput : Tea.TeaModel {
         if let value = dict["internetAccess"] as? Bool {
             self.internetAccess = value
         }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
+        }
         if let value = dict["layers"] as? [String] {
             self.layers = value
         }
@@ -9635,6 +9806,8 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
 public class UpdateSessionInput : Tea.TeaModel {
     public var disableSessionIdReuse: Bool?
 
+    public var juiceFsConfig: JuiceFsConfig?
+
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
@@ -9655,6 +9828,7 @@ public class UpdateSessionInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.juiceFsConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
         try self.polarFsConfig?.validate()
@@ -9664,6 +9838,9 @@ public class UpdateSessionInput : Tea.TeaModel {
         var map = super.toMap()
         if self.disableSessionIdReuse != nil {
             map["disableSessionIdReuse"] = self.disableSessionIdReuse!
+        }
+        if self.juiceFsConfig != nil {
+            map["juiceFsConfig"] = self.juiceFsConfig?.toMap()
         }
         if self.nasConfig != nil {
             map["nasConfig"] = self.nasConfig?.toMap()
@@ -9687,6 +9864,11 @@ public class UpdateSessionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["disableSessionIdReuse"] as? Bool {
             self.disableSessionIdReuse = value
+        }
+        if let value = dict["juiceFsConfig"] as? [String: Any?] {
+            var model = JuiceFsConfig()
+            model.fromMap(value)
+            self.juiceFsConfig = model
         }
         if let value = dict["nasConfig"] as? [String: Any?] {
             var model = NASConfig()
