@@ -14059,6 +14059,8 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 public class DescribeSpecRequest : Tea.TeaModel {
     public var bizRegionId: String?
 
+    public var chargeType: String?
+
     public var matrixSpec: String?
 
     public var maxResults: Int32?
@@ -14090,6 +14092,9 @@ public class DescribeSpecRequest : Tea.TeaModel {
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.matrixSpec != nil {
             map["MatrixSpec"] = self.matrixSpec!
         }
@@ -14118,6 +14123,9 @@ public class DescribeSpecRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
         }
         if let value = dict["MatrixSpec"] as? String {
             self.matrixSpec = value
