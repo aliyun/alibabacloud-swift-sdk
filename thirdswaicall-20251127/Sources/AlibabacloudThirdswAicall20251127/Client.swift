@@ -24,6 +24,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryTaskConcurrencyWithOptions(_ request: QueryTaskConcurrencyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTaskConcurrencyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryTaskConcurrency",
+            "version": "2025-11-27",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryTaskConcurrencyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryTaskConcurrency(_ request: QueryTaskConcurrencyRequest) async throws -> QueryTaskConcurrencyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryTaskConcurrencyWithOptions(request as! QueryTaskConcurrencyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func readOutboundTaskCallListWithOptions(_ tmpReq: ReadOutboundTaskCallListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReadOutboundTaskCallListResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ReadOutboundTaskCallListShrinkRequest = ReadOutboundTaskCallListShrinkRequest([:])
