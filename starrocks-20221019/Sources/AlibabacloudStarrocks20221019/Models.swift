@@ -6410,6 +6410,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
         public var aclId: String?
 
+        public var aiFunctionInstanceId: String?
+
         public var architecture: String?
 
         public var beginTime: Int64?
@@ -6486,6 +6488,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.aclId != nil {
                 map["AclId"] = self.aclId!
+            }
+            if self.aiFunctionInstanceId != nil {
+                map["AiFunctionInstanceId"] = self.aiFunctionInstanceId!
             }
             if self.architecture != nil {
                 map["Architecture"] = self.architecture!
@@ -6592,6 +6597,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AclId"] as? String {
                 self.aclId = value
+            }
+            if let value = dict["AiFunctionInstanceId"] as? String {
+                self.aiFunctionInstanceId = value
             }
             if let value = dict["Architecture"] as? String {
                 self.architecture = value
@@ -10428,6 +10436,8 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
 
         public var supportCompactionService: Bool?
 
+        public var supportCompactionServiceWhiteList: Bool?
+
         public override init() {
             super.init()
         }
@@ -10502,6 +10512,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             if self.supportCompactionService != nil {
                 map["supportCompactionService"] = self.supportCompactionService!
             }
+            if self.supportCompactionServiceWhiteList != nil {
+                map["supportCompactionServiceWhiteList"] = self.supportCompactionServiceWhiteList!
+            }
             return map
         }
 
@@ -10566,6 +10579,9 @@ public class GetInstanceFeatureGateResponseBody : Tea.TeaModel {
             }
             if let value = dict["supportCompactionService"] as? Bool {
                 self.supportCompactionService = value
+            }
+            if let value = dict["supportCompactionServiceWhiteList"] as? Bool {
+                self.supportCompactionServiceWhiteList = value
             }
         }
     }
