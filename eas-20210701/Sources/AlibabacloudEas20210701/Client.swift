@@ -798,6 +798,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceRolloutWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceRolloutRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceRolloutResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batch)) {
+            body["Batch"] = request.batch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partition)) {
+            body["Partition"] = request.partition!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paused)) {
+            body["Paused"] = request.paused!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateServiceRollout",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/rollout",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateServiceRolloutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceRollout(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceRolloutRequest) async throws -> CreateServiceRolloutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createServiceRolloutWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceRolloutRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createVirtualResourceWithOptions(_ request: CreateVirtualResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVirtualResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1448,6 +1487,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceRolloutWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceRolloutRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceRolloutResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteServiceRollout",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/rollout",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteServiceRolloutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceRollout(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceRolloutRequest) async throws -> DeleteServiceRolloutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteServiceRolloutWithOptions(ClusterId as! String, ServiceName as! String, request as! DeleteServiceRolloutRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteVirtualResourceWithOptions(_ ClusterId: String, _ VirtualResourceId: String, _ request: DeleteVirtualResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVirtualResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -2074,6 +2141,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await describeServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeServiceRolloutWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceRolloutRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeServiceRolloutResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeServiceRollout",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/rollout",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeServiceRolloutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeServiceRollout(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceRolloutRequest) async throws -> DescribeServiceRolloutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await describeServiceRolloutWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceRolloutRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4037,6 +4132,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceRolloutWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRolloutRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceRolloutResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batch)) {
+            body["Batch"] = request.batch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partition)) {
+            body["Partition"] = request.partition!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paused)) {
+            body["Paused"] = request.paused!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateServiceRollout",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/rollout",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateServiceRolloutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceRollout(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRolloutRequest) async throws -> UpdateServiceRolloutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateServiceRolloutWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceRolloutRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
