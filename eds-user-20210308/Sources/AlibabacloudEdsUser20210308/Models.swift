@@ -1609,6 +1609,8 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public var platform: String?
 
+    public var resourceClassification: String?
+
     public var resourceGroupName: String?
 
     public override init() {
@@ -1637,6 +1639,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         if self.platform != nil {
             map["Platform"] = self.platform!
         }
+        if self.resourceClassification != nil {
+            map["ResourceClassification"] = self.resourceClassification!
+        }
         if self.resourceGroupName != nil {
             map["ResourceGroupName"] = self.resourceGroupName!
         }
@@ -1656,6 +1661,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
+        }
+        if let value = dict["ResourceClassification"] as? String {
+            self.resourceClassification = value
         }
         if let value = dict["ResourceGroupName"] as? String {
             self.resourceGroupName = value
@@ -4135,6 +4143,8 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
 
     public var platform: String?
 
+    public var resourceClassification: String?
+
     public var resourceGroupIds: [String]?
 
     public var resourceGroupName: String?
@@ -4171,6 +4181,9 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
         if self.platform != nil {
             map["Platform"] = self.platform!
         }
+        if self.resourceClassification != nil {
+            map["ResourceClassification"] = self.resourceClassification!
+        }
         if self.resourceGroupIds != nil {
             map["ResourceGroupIds"] = self.resourceGroupIds!
         }
@@ -4199,6 +4212,9 @@ public class DescribeResourceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["Platform"] as? String {
             self.platform = value
+        }
+        if let value = dict["ResourceClassification"] as? String {
+            self.resourceClassification = value
         }
         if let value = dict["ResourceGroupIds"] as? [String] {
             self.resourceGroupIds = value
