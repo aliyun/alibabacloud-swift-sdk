@@ -927,6 +927,8 @@ public class ConfigRuntimeChannelRequest : Tea.TeaModel {
 
     public var config: String?
 
+    public var configMode: String?
+
     public var name: String?
 
     public var runtimeIds: [String]?
@@ -959,6 +961,9 @@ public class ConfigRuntimeChannelRequest : Tea.TeaModel {
         if self.config != nil {
             map["Config"] = self.config!
         }
+        if self.configMode != nil {
+            map["ConfigMode"] = self.configMode!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -984,6 +989,9 @@ public class ConfigRuntimeChannelRequest : Tea.TeaModel {
         }
         if let value = dict["Config"] as? String {
             self.config = value
+        }
+        if let value = dict["ConfigMode"] as? String {
+            self.configMode = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -7973,9 +7981,17 @@ public class GetRuntimeChannelRequest : Tea.TeaModel {
 
 public class GetRuntimeChannelResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var avatarUrl: String?
+
         public var code: String?
 
         public var config: String?
+
+        public var configMode: String?
+
+        public var qrCodeNotifyUrl: String?
+
+        public var qrCodeStatus: String?
 
         public var riskType: String?
 
@@ -7995,11 +8011,23 @@ public class GetRuntimeChannelResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.avatarUrl != nil {
+                map["AvatarUrl"] = self.avatarUrl!
+            }
             if self.code != nil {
                 map["Code"] = self.code!
             }
             if self.config != nil {
                 map["Config"] = self.config!
+            }
+            if self.configMode != nil {
+                map["ConfigMode"] = self.configMode!
+            }
+            if self.qrCodeNotifyUrl != nil {
+                map["QrCodeNotifyUrl"] = self.qrCodeNotifyUrl!
+            }
+            if self.qrCodeStatus != nil {
+                map["QrCodeStatus"] = self.qrCodeStatus!
             }
             if self.riskType != nil {
                 map["RiskType"] = self.riskType!
@@ -8012,11 +8040,23 @@ public class GetRuntimeChannelResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AvatarUrl"] as? String {
+                self.avatarUrl = value
+            }
             if let value = dict["Code"] as? String {
                 self.code = value
             }
             if let value = dict["Config"] as? String {
                 self.config = value
+            }
+            if let value = dict["ConfigMode"] as? String {
+                self.configMode = value
+            }
+            if let value = dict["QrCodeNotifyUrl"] as? String {
+                self.qrCodeNotifyUrl = value
+            }
+            if let value = dict["QrCodeStatus"] as? String {
+                self.qrCodeStatus = value
             }
             if let value = dict["RiskType"] as? String {
                 self.riskType = value
@@ -10703,6 +10743,8 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var resourceIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -10774,6 +10816,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
         return map
     }
 
@@ -10835,6 +10880,9 @@ public class ListDesktopAgentRuntimeRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["ResourceIds"] as? [String] {
+            self.resourceIds = value
         }
     }
 }
@@ -11061,6 +11109,10 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
 
         public var modelConfigure: Bool?
 
+        public var osType: String?
+
+        public var qrCodeConfiguringList: [String]?
+
         public var regionId: String?
 
         public var resourceGroup: ListDesktopAgentRuntimeResponseBody.Data.ResourceGroup?
@@ -11120,6 +11172,12 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
             if self.modelConfigure != nil {
                 map["ModelConfigure"] = self.modelConfigure!
             }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.qrCodeConfiguringList != nil {
+                map["QrCodeConfiguringList"] = self.qrCodeConfiguringList!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -11178,6 +11236,12 @@ public class ListDesktopAgentRuntimeResponseBody : Tea.TeaModel {
             }
             if let value = dict["ModelConfigure"] as? Bool {
                 self.modelConfigure = value
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["QrCodeConfiguringList"] as? [String] {
+                self.qrCodeConfiguringList = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value

@@ -202,11 +202,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func configRuntimeChannelWithOptions(_ request: ConfigRuntimeChannelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigRuntimeChannelResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.agentPlatform)) {
-            query["AgentPlatform"] = request.agentPlatform ?? "";
-        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentPlatform)) {
+            body["AgentPlatform"] = request.agentPlatform ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.agentProvider)) {
             body["AgentProvider"] = request.agentProvider ?? "";
         }
@@ -215,6 +214,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["Config"] = request.config ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configMode)) {
+            body["ConfigMode"] = request.configMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
@@ -226,7 +228,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RuntimeType"] = request.runtimeType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1652,6 +1653,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIds)) {
+            query["ResourceIds"] = request.resourceIds ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
