@@ -120,6 +120,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             body["ResourceId"] = request.resourceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.schedulingStrategy)) {
+            body["SchedulingStrategy"] = request.schedulingStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.settings)) {
             body["Settings"] = request.settings!;
         }

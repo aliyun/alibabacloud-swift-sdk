@@ -346,6 +346,8 @@ public class AutoScalingSpec : Tea.TeaModel {
 public class AutoscalingMetricSpec : Tea.TeaModel {
     public var metricName: String?
 
+    public var stabilizationWindowSeconds: Int32?
+
     public var targetValue: Int32?
 
     public override init() {
@@ -365,6 +367,9 @@ public class AutoscalingMetricSpec : Tea.TeaModel {
         if self.metricName != nil {
             map["MetricName"] = self.metricName!
         }
+        if self.stabilizationWindowSeconds != nil {
+            map["StabilizationWindowSeconds"] = self.stabilizationWindowSeconds!
+        }
         if self.targetValue != nil {
             map["TargetValue"] = self.targetValue!
         }
@@ -375,6 +380,9 @@ public class AutoscalingMetricSpec : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MetricName"] as? String {
             self.metricName = value
+        }
+        if let value = dict["StabilizationWindowSeconds"] as? Int32 {
+            self.stabilizationWindowSeconds = value
         }
         if let value = dict["TargetValue"] as? Int32 {
             self.targetValue = value
@@ -1314,6 +1322,173 @@ public class DebuggerResult : Tea.TeaModel {
         }
         if let value = dict["JobUserId"] as? String {
             self.jobUserId = value
+        }
+    }
+}
+
+public class DownloadJobResult : Tea.TeaModel {
+    public var displayName: String?
+
+    public var downloadJobId: String?
+
+    public var downloadUrl: String?
+
+    public var endTime: String?
+
+    public var fileType: String?
+
+    public var gmtCreated: String?
+
+    public var gmtModified: String?
+
+    public var logCount: Int32?
+
+    public var podIds: [String]?
+
+    public var podUids: [String]?
+
+    public var sourceJobId: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public var tenantId: String?
+
+    public var type: String?
+
+    public var urlExpireTime: String?
+
+    public var userId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayName != nil {
+            map["DisplayName"] = self.displayName!
+        }
+        if self.downloadJobId != nil {
+            map["DownloadJobId"] = self.downloadJobId!
+        }
+        if self.downloadUrl != nil {
+            map["DownloadUrl"] = self.downloadUrl!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fileType != nil {
+            map["FileType"] = self.fileType!
+        }
+        if self.gmtCreated != nil {
+            map["GmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.logCount != nil {
+            map["LogCount"] = self.logCount!
+        }
+        if self.podIds != nil {
+            map["PodIds"] = self.podIds!
+        }
+        if self.podUids != nil {
+            map["PodUids"] = self.podUids!
+        }
+        if self.sourceJobId != nil {
+            map["SourceJobId"] = self.sourceJobId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.urlExpireTime != nil {
+            map["UrlExpireTime"] = self.urlExpireTime!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DisplayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["DownloadJobId"] as? String {
+            self.downloadJobId = value
+        }
+        if let value = dict["DownloadUrl"] as? String {
+            self.downloadUrl = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["FileType"] as? String {
+            self.fileType = value
+        }
+        if let value = dict["GmtCreated"] as? String {
+            self.gmtCreated = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["LogCount"] as? Int32 {
+            self.logCount = value
+        }
+        if let value = dict["PodIds"] as? [String] {
+            self.podIds = value
+        }
+        if let value = dict["PodUids"] as? [String] {
+            self.podUids = value
+        }
+        if let value = dict["SourceJobId"] as? String {
+            self.sourceJobId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UrlExpireTime"] as? String {
+            self.urlExpireTime = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -2534,6 +2709,8 @@ public class JobItem : Tea.TeaModel {
 
     public var restartTimes: String?
 
+    public var schedulingStrategy: String?
+
     public var settings: JobSettings?
 
     public var status: String?
@@ -2726,6 +2903,9 @@ public class JobItem : Tea.TeaModel {
         }
         if self.restartTimes != nil {
             map["RestartTimes"] = self.restartTimes!
+        }
+        if self.schedulingStrategy != nil {
+            map["SchedulingStrategy"] = self.schedulingStrategy!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -2958,6 +3138,9 @@ public class JobItem : Tea.TeaModel {
         }
         if let value = dict["RestartTimes"] as? String {
             self.restartTimes = value
+        }
+        if let value = dict["SchedulingStrategy"] as? String {
+            self.schedulingStrategy = value
         }
         if let value = dict["Settings"] as? [String: Any?] {
             var model = JobSettings()
@@ -6413,6 +6596,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var schedulingStrategy: String?
+
     public var settings: JobSettings?
 
     public var successPolicy: String?
@@ -6509,6 +6694,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
+        }
+        if self.schedulingStrategy != nil {
+            map["SchedulingStrategy"] = self.schedulingStrategy!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -6625,6 +6813,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
+        }
+        if let value = dict["SchedulingStrategy"] as? String {
+            self.schedulingStrategy = value
         }
         if let value = dict["Settings"] as? [String: Any?] {
             var model = JobSettings()
@@ -8586,6 +8777,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var roleSystemEnvs: [String: [String: Any]]?
 
+    public var schedulingStrategy: String?
+
     public var settings: JobSettings?
 
     public var status: String?
@@ -8754,6 +8947,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.roleSystemEnvs != nil {
             map["RoleSystemEnvs"] = self.roleSystemEnvs!
+        }
+        if self.schedulingStrategy != nil {
+            map["SchedulingStrategy"] = self.schedulingStrategy!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -8967,6 +9163,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["RoleSystemEnvs"] as? [String: [String: Any]] {
             self.roleSystemEnvs = value
+        }
+        if let value = dict["SchedulingStrategy"] as? String {
+            self.schedulingStrategy = value
         }
         if let value = dict["Settings"] as? [String: Any?] {
             var model = JobSettings()
