@@ -6890,6 +6890,44 @@ public class CreateTransitRouterVbrAttachmentResponse : Tea.TeaModel {
 }
 
 public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var applianceModeSupport: String?
+
+        public var ipv6Support: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applianceModeSupport != nil {
+                map["ApplianceModeSupport"] = self.applianceModeSupport!
+            }
+            if self.ipv6Support != nil {
+                map["Ipv6Support"] = self.ipv6Support!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplianceModeSupport"] as? String {
+                self.applianceModeSupport = value
+            }
+            if let value = dict["Ipv6Support"] as? String {
+                self.ipv6Support = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -6976,6 +7014,8 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var options: CreateTransitRouterVpcAttachmentRequest.Options?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -7012,6 +7052,7 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.options?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7030,6 +7071,9 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -7097,6 +7141,11 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["Options"] as? [String: Any?] {
+            var model = CreateTransitRouterVpcAttachmentRequest.Options()
+            model.fromMap(value)
+            self.options = model
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -7247,6 +7296,8 @@ public class CreateTransitRouterVpcAttachmentShrinkRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var optionsShrink: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -7301,6 +7352,9 @@ public class CreateTransitRouterVpcAttachmentShrinkRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.optionsShrink != nil {
+            map["Options"] = self.optionsShrink!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -7368,6 +7422,9 @@ public class CreateTransitRouterVpcAttachmentShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["Options"] as? String {
+            self.optionsShrink = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -31493,6 +31550,44 @@ public class ListTransitRouterVpcAttachmentsRequest : Tea.TeaModel {
 
 public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
     public class TransitRouterAttachments : Tea.TeaModel {
+        public class Options : Tea.TeaModel {
+            public var applianceModeSupport: String?
+
+            public var ipv6Support: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applianceModeSupport != nil {
+                    map["ApplianceModeSupport"] = self.applianceModeSupport!
+                }
+                if self.ipv6Support != nil {
+                    map["Ipv6Support"] = self.ipv6Support!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplianceModeSupport"] as? String {
+                    self.applianceModeSupport = value
+                }
+                if let value = dict["Ipv6Support"] as? String {
+                    self.ipv6Support = value
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -31587,6 +31682,8 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
 
         public var managedService: String?
 
+        public var options: ListTransitRouterVpcAttachmentsResponseBody.TransitRouterAttachments.Options?
+
         public var orderType: String?
 
         public var resourceType: String?
@@ -31623,6 +31720,7 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.options?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -31641,6 +31739,9 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.managedService != nil {
                 map["ManagedService"] = self.managedService!
+            }
+            if self.options != nil {
+                map["Options"] = self.options?.toMap()
             }
             if self.orderType != nil {
                 map["OrderType"] = self.orderType!
@@ -31708,6 +31809,11 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ManagedService"] as? String {
                 self.managedService = value
+            }
+            if let value = dict["Options"] as? [String: Any?] {
+                var model = ListTransitRouterVpcAttachmentsResponseBody.TransitRouterAttachments.Options()
+                model.fromMap(value)
+                self.options = model
             }
             if let value = dict["OrderType"] as? String {
                 self.orderType = value
@@ -40250,11 +40356,51 @@ public class UpdateTransitRouterVbrAttachmentAttributeResponse : Tea.TeaModel {
 }
 
 public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var applianceModeSupport: String?
+
+        public var ipv6Support: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applianceModeSupport != nil {
+                map["ApplianceModeSupport"] = self.applianceModeSupport!
+            }
+            if self.ipv6Support != nil {
+                map["Ipv6Support"] = self.ipv6Support!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplianceModeSupport"] as? String {
+                self.applianceModeSupport = value
+            }
+            if let value = dict["Ipv6Support"] as? String {
+                self.ipv6Support = value
+            }
+        }
+    }
     public var autoPublishRouteEnabled: Bool?
 
     public var clientToken: String?
 
     public var dryRun: Bool?
+
+    public var options: UpdateTransitRouterVpcAttachmentAttributeRequest.Options?
 
     public var orderType: String?
 
@@ -40284,6 +40430,7 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.options?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -40296,6 +40443,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
         }
         if self.orderType != nil {
             map["OrderType"] = self.orderType!
@@ -40338,6 +40488,11 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
         }
+        if let value = dict["Options"] as? [String: Any?] {
+            var model = UpdateTransitRouterVpcAttachmentAttributeRequest.Options()
+            model.fromMap(value)
+            self.options = model
+        }
         if let value = dict["OrderType"] as? String {
             self.orderType = value
         }
@@ -40374,6 +40529,8 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
     public var clientToken: String?
 
     public var dryRun: Bool?
+
+    public var optionsShrink: String?
 
     public var orderType: String?
 
@@ -40416,6 +40573,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.optionsShrink != nil {
+            map["Options"] = self.optionsShrink!
+        }
         if self.orderType != nil {
             map["OrderType"] = self.orderType!
         }
@@ -40456,6 +40616,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaMod
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["Options"] as? String {
+            self.optionsShrink = value
         }
         if let value = dict["OrderType"] as? String {
             self.orderType = value
