@@ -2199,7 +2199,7 @@ public class CreateJobResponse : Tea.TeaModel {
 
 public class CreatePoolRequest : Tea.TeaModel {
     public class ResourceLimits : Tea.TeaModel {
-        public var maxExectorNum: Int32?
+        public var maxExecutorNum: Int32?
 
         public override init() {
             super.init()
@@ -2215,16 +2215,16 @@ public class CreatePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.maxExectorNum != nil {
-                map["MaxExectorNum"] = self.maxExectorNum!
+            if self.maxExecutorNum != nil {
+                map["MaxExecutorNum"] = self.maxExecutorNum!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["MaxExectorNum"] as? Int32 {
-                self.maxExectorNum = value
+            if let value = dict["MaxExecutorNum"] as? Int32 {
+                self.maxExecutorNum = value
             }
         }
     }
@@ -2233,6 +2233,8 @@ public class CreatePoolRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var resourceLimits: CreatePoolRequest.ResourceLimits?
+
+    public var schedulingPolicyId: String?
 
     public override init() {
         super.init()
@@ -2258,6 +2260,9 @@ public class CreatePoolRequest : Tea.TeaModel {
         if self.resourceLimits != nil {
             map["ResourceLimits"] = self.resourceLimits?.toMap()
         }
+        if self.schedulingPolicyId != nil {
+            map["SchedulingPolicyId"] = self.schedulingPolicyId!
+        }
         return map
     }
 
@@ -2274,6 +2279,9 @@ public class CreatePoolRequest : Tea.TeaModel {
             model.fromMap(value)
             self.resourceLimits = model
         }
+        if let value = dict["SchedulingPolicyId"] as? String {
+            self.schedulingPolicyId = value
+        }
     }
 }
 
@@ -2283,6 +2291,8 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var resourceLimitsShrink: String?
+
+    public var schedulingPolicyId: String?
 
     public override init() {
         super.init()
@@ -2307,6 +2317,9 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
         if self.resourceLimitsShrink != nil {
             map["ResourceLimits"] = self.resourceLimitsShrink!
         }
+        if self.schedulingPolicyId != nil {
+            map["SchedulingPolicyId"] = self.schedulingPolicyId!
+        }
         return map
     }
 
@@ -2320,6 +2333,9 @@ public class CreatePoolShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceLimits"] as? String {
             self.resourceLimitsShrink = value
+        }
+        if let value = dict["SchedulingPolicyId"] as? String {
+            self.schedulingPolicyId = value
         }
     }
 }
@@ -5095,6 +5111,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
             public var network: GetJobResponseBody.JobInfo.DeploymentPolicy.Network?
 
+            public var pool: String?
+
             public var tags: [GetJobResponseBody.JobInfo.DeploymentPolicy.Tags]?
 
             public override init() {
@@ -5121,6 +5139,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.network != nil {
                     map["Network"] = self.network?.toMap()
                 }
+                if self.pool != nil {
+                    map["Pool"] = self.pool!
+                }
                 if self.tags != nil {
                     var tmp : [Any] = []
                     for k in self.tags! {
@@ -5143,6 +5164,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                     var model = GetJobResponseBody.JobInfo.DeploymentPolicy.Network()
                     model.fromMap(value)
                     self.network = model
+                }
+                if let value = dict["Pool"] as? String {
+                    self.pool = value
                 }
                 if let value = dict["Tags"] as? [Any?] {
                     var tmp : [GetJobResponseBody.JobInfo.DeploymentPolicy.Tags] = []
@@ -6125,6 +6149,119 @@ public class GetJobResponse : Tea.TeaModel {
     }
 }
 
+public class GetJobRecordDurationRequest : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class GetJobRecordDurationResponseBody : Tea.TeaModel {
+    public var jobRecordDuration: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobRecordDuration != nil {
+            map["JobRecordDuration"] = self.jobRecordDuration!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobRecordDuration"] as? Int64 {
+            self.jobRecordDuration = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetJobRecordDurationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetJobRecordDurationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetJobRecordDurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPoolRequest : Tea.TeaModel {
     public var poolName: String?
 
@@ -6160,17 +6297,19 @@ public class GetPoolResponseBody : Tea.TeaModel {
     public class PoolInfo : Tea.TeaModel {
         public var createTime: String?
 
-        public var exectorUsage: Int32?
+        public var executorUsage: Int32?
 
         public var isDefault: Bool?
 
-        public var maxExectorNum: Int32?
+        public var maxExecutorNum: Int32?
 
         public var poolName: String?
 
         public var priority: Int32?
 
         public var reason: String?
+
+        public var schedulingPolicyId: String?
 
         public var status: String?
 
@@ -6193,14 +6332,14 @@ public class GetPoolResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
-            if self.exectorUsage != nil {
-                map["ExectorUsage"] = self.exectorUsage!
+            if self.executorUsage != nil {
+                map["ExecutorUsage"] = self.executorUsage!
             }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
-            if self.maxExectorNum != nil {
-                map["MaxExectorNum"] = self.maxExectorNum!
+            if self.maxExecutorNum != nil {
+                map["MaxExecutorNum"] = self.maxExecutorNum!
             }
             if self.poolName != nil {
                 map["PoolName"] = self.poolName!
@@ -6210,6 +6349,9 @@ public class GetPoolResponseBody : Tea.TeaModel {
             }
             if self.reason != nil {
                 map["Reason"] = self.reason!
+            }
+            if self.schedulingPolicyId != nil {
+                map["SchedulingPolicyId"] = self.schedulingPolicyId!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -6225,14 +6367,14 @@ public class GetPoolResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
-            if let value = dict["ExectorUsage"] as? Int32 {
-                self.exectorUsage = value
+            if let value = dict["ExecutorUsage"] as? Int32 {
+                self.executorUsage = value
             }
             if let value = dict["IsDefault"] as? Bool {
                 self.isDefault = value
             }
-            if let value = dict["MaxExectorNum"] as? Int32 {
-                self.maxExectorNum = value
+            if let value = dict["MaxExecutorNum"] as? Int32 {
+                self.maxExecutorNum = value
             }
             if let value = dict["PoolName"] as? String {
                 self.poolName = value
@@ -6242,6 +6384,9 @@ public class GetPoolResponseBody : Tea.TeaModel {
             }
             if let value = dict["Reason"] as? String {
                 self.reason = value
+            }
+            if let value = dict["SchedulingPolicyId"] as? String {
+                self.schedulingPolicyId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -9568,15 +9713,21 @@ public class ListPoolsShrinkRequest : Tea.TeaModel {
 
 public class ListPoolsResponseBody : Tea.TeaModel {
     public class PoolList : Tea.TeaModel {
+        public var createTime: String?
+
         public var isDefault: Bool?
 
-        public var maxExectorNum: Int32?
+        public var maxExecutorNum: Int32?
 
         public var poolName: String?
 
         public var priority: Int32?
 
+        public var schedulingPolicyId: String?
+
         public var status: String?
+
+        public var updateTime: String?
 
         public override init() {
             super.init()
@@ -9592,11 +9743,14 @@ public class ListPoolsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
-            if self.maxExectorNum != nil {
-                map["MaxExectorNum"] = self.maxExectorNum!
+            if self.maxExecutorNum != nil {
+                map["MaxExecutorNum"] = self.maxExecutorNum!
             }
             if self.poolName != nil {
                 map["PoolName"] = self.poolName!
@@ -9604,19 +9758,28 @@ public class ListPoolsResponseBody : Tea.TeaModel {
             if self.priority != nil {
                 map["Priority"] = self.priority!
             }
+            if self.schedulingPolicyId != nil {
+                map["SchedulingPolicyId"] = self.schedulingPolicyId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
             if let value = dict["IsDefault"] as? Bool {
                 self.isDefault = value
             }
-            if let value = dict["MaxExectorNum"] as? Int32 {
-                self.maxExectorNum = value
+            if let value = dict["MaxExecutorNum"] as? Int32 {
+                self.maxExecutorNum = value
             }
             if let value = dict["PoolName"] as? String {
                 self.poolName = value
@@ -9624,8 +9787,14 @@ public class ListPoolsResponseBody : Tea.TeaModel {
             if let value = dict["Priority"] as? Int32 {
                 self.priority = value
             }
+            if let value = dict["SchedulingPolicyId"] as? String {
+                self.schedulingPolicyId = value
+            }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
             }
         }
     }
@@ -10807,9 +10976,121 @@ public class UpdateActionPlanResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateJobRecordDurationRequest : Tea.TeaModel {
+    public var jobRecordDuration: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobRecordDuration != nil {
+            map["JobRecordDuration"] = self.jobRecordDuration!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobRecordDuration"] as? Int64 {
+            self.jobRecordDuration = value
+        }
+    }
+}
+
+public class UpdateJobRecordDurationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateJobRecordDurationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateJobRecordDurationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateJobRecordDurationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdatePoolRequest : Tea.TeaModel {
     public class ResourceLimits : Tea.TeaModel {
-        public var maxExectorNum: Int32?
+        public var maxExecutorNum: Int32?
 
         public override init() {
             super.init()
@@ -10825,16 +11106,16 @@ public class UpdatePoolRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.maxExectorNum != nil {
-                map["MaxExectorNum"] = self.maxExectorNum!
+            if self.maxExecutorNum != nil {
+                map["MaxExecutorNum"] = self.maxExecutorNum!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["MaxExectorNum"] as? Int32 {
-                self.maxExectorNum = value
+            if let value = dict["MaxExecutorNum"] as? Int32 {
+                self.maxExecutorNum = value
             }
         }
     }
@@ -10843,6 +11124,8 @@ public class UpdatePoolRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var resourceLimits: UpdatePoolRequest.ResourceLimits?
+
+    public var schedulingPolicyId: String?
 
     public override init() {
         super.init()
@@ -10868,6 +11151,9 @@ public class UpdatePoolRequest : Tea.TeaModel {
         if self.resourceLimits != nil {
             map["ResourceLimits"] = self.resourceLimits?.toMap()
         }
+        if self.schedulingPolicyId != nil {
+            map["SchedulingPolicyId"] = self.schedulingPolicyId!
+        }
         return map
     }
 
@@ -10884,6 +11170,9 @@ public class UpdatePoolRequest : Tea.TeaModel {
             model.fromMap(value)
             self.resourceLimits = model
         }
+        if let value = dict["SchedulingPolicyId"] as? String {
+            self.schedulingPolicyId = value
+        }
     }
 }
 
@@ -10893,6 +11182,8 @@ public class UpdatePoolShrinkRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var resourceLimitsShrink: String?
+
+    public var schedulingPolicyId: String?
 
     public override init() {
         super.init()
@@ -10917,6 +11208,9 @@ public class UpdatePoolShrinkRequest : Tea.TeaModel {
         if self.resourceLimitsShrink != nil {
             map["ResourceLimits"] = self.resourceLimitsShrink!
         }
+        if self.schedulingPolicyId != nil {
+            map["SchedulingPolicyId"] = self.schedulingPolicyId!
+        }
         return map
     }
 
@@ -10930,6 +11224,9 @@ public class UpdatePoolShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceLimits"] as? String {
             self.resourceLimitsShrink = value
+        }
+        if let value = dict["SchedulingPolicyId"] as? String {
+            self.schedulingPolicyId = value
         }
     }
 }

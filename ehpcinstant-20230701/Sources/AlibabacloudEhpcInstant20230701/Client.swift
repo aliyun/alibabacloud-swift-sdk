@@ -227,6 +227,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceLimitsShrink)) {
             query["ResourceLimits"] = request.resourceLimitsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.schedulingPolicyId)) {
+            query["SchedulingPolicyId"] = request.schedulingPolicyId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -675,6 +678,31 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getJob(_ request: GetJobRequest) async throws -> GetJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getJobWithOptions(request as! GetJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJobRecordDurationWithOptions(_ request: GetJobRecordDurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetJobRecordDurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetJobRecordDuration",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetJobRecordDurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJobRecordDuration(_ request: GetJobRecordDurationRequest) async throws -> GetJobRecordDurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getJobRecordDurationWithOptions(request as! GetJobRecordDurationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1292,6 +1320,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateJobRecordDurationWithOptions(_ request: UpdateJobRecordDurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateJobRecordDurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobRecordDuration)) {
+            query["JobRecordDuration"] = request.jobRecordDuration!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateJobRecordDuration",
+            "version": "2023-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateJobRecordDurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateJobRecordDuration(_ request: UpdateJobRecordDurationRequest) async throws -> UpdateJobRecordDurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateJobRecordDurationWithOptions(request as! UpdateJobRecordDurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updatePoolWithOptions(_ tmpReq: UpdatePoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePoolResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdatePoolShrinkRequest = UpdatePoolShrinkRequest([:])
@@ -1308,6 +1367,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceLimitsShrink)) {
             query["ResourceLimits"] = request.resourceLimitsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedulingPolicyId)) {
+            query["SchedulingPolicyId"] = request.schedulingPolicyId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
