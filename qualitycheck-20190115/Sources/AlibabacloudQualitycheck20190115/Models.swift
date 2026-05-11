@@ -34467,7 +34467,11 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                             }
                             public class HitKeyWords : Tea.TeaModel {
                                 public class HitKeyWord : Tea.TeaModel {
+                                    public var customizeCode: String?
+
                                     public var from: Int32?
+
+                                    public var isMatch: String?
 
                                     public var pid: Int32?
 
@@ -34491,8 +34495,14 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.customizeCode != nil {
+                                            map["CustomizeCode"] = self.customizeCode!
+                                        }
                                         if self.from != nil {
                                             map["From"] = self.from!
+                                        }
+                                        if self.isMatch != nil {
+                                            map["IsMatch"] = self.isMatch!
                                         }
                                         if self.pid != nil {
                                             map["Pid"] = self.pid!
@@ -34511,8 +34521,14 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CustomizeCode"] as? String {
+                                            self.customizeCode = value
+                                        }
                                         if let value = dict["From"] as? Int32 {
                                             self.from = value
+                                        }
+                                        if let value = dict["IsMatch"] as? String {
+                                            self.isMatch = value
                                         }
                                         if let value = dict["Pid"] as? Int32 {
                                             self.pid = value
@@ -34742,6 +34758,8 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
 
                     public var hit: UploadDataSyncResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit?
 
+                    public var llmResponse: String?
+
                     public var rid: String?
 
                     public var tid: String?
@@ -34768,6 +34786,9 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                         if self.hit != nil {
                             map["Hit"] = self.hit?.toMap()
                         }
+                        if self.llmResponse != nil {
+                            map["LlmResponse"] = self.llmResponse!
+                        }
                         if self.rid != nil {
                             map["Rid"] = self.rid!
                         }
@@ -34788,6 +34809,9 @@ public class UploadDataSyncResponseBody : Tea.TeaModel {
                             var model = UploadDataSyncResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit()
                             model.fromMap(value)
                             self.hit = model
+                        }
+                        if let value = dict["LlmResponse"] as? String {
+                            self.llmResponse = value
                         }
                         if let value = dict["Rid"] as? String {
                             self.rid = value
@@ -35217,7 +35241,11 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                             }
                             public class HitKeyWords : Tea.TeaModel {
                                 public class HitKeyWord : Tea.TeaModel {
+                                    public var customizeCode: String?
+
                                     public var from: Int32?
+
+                                    public var isMatch: Bool?
 
                                     public var pid: Int32?
 
@@ -35241,8 +35269,14 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
                                     public override func toMap() -> [String : Any] {
                                         var map = super.toMap()
+                                        if self.customizeCode != nil {
+                                            map["CustomizeCode"] = self.customizeCode!
+                                        }
                                         if self.from != nil {
                                             map["From"] = self.from!
+                                        }
+                                        if self.isMatch != nil {
+                                            map["IsMatch"] = self.isMatch!
                                         }
                                         if self.pid != nil {
                                             map["Pid"] = self.pid!
@@ -35261,8 +35295,14 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
                                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                         guard let dict else { return }
+                                        if let value = dict["CustomizeCode"] as? String {
+                                            self.customizeCode = value
+                                        }
                                         if let value = dict["From"] as? Int32 {
                                             self.from = value
+                                        }
+                                        if let value = dict["IsMatch"] as? Bool {
+                                            self.isMatch = value
                                         }
                                         if let value = dict["Pid"] as? Int32 {
                                             self.pid = value
@@ -35492,6 +35532,8 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
                     public var hit: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit?
 
+                    public var llmResponse: String?
+
                     public var rid: String?
 
                     public var tid: String?
@@ -35518,6 +35560,9 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                         if self.hit != nil {
                             map["Hit"] = self.hit?.toMap()
                         }
+                        if self.llmResponse != nil {
+                            map["LlmResponse"] = self.llmResponse!
+                        }
                         if self.rid != nil {
                             map["Rid"] = self.rid!
                         }
@@ -35538,6 +35583,9 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                             var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit()
                             model.fromMap(value)
                             self.hit = model
+                        }
+                        if let value = dict["LlmResponse"] as? String {
+                            self.llmResponse = value
                         }
                         if let value = dict["Rid"] as? String {
                             self.rid = value
