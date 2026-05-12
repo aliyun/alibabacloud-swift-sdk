@@ -692,11 +692,85 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
     }
     public class SynthesizerConfig : Tea.TeaModel {
+        public class NlsAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public class PronRules : Tea.TeaModel {
+            public var pattern: String?
+
+            public var replacement: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.pattern != nil {
+                    map["Pattern"] = self.pattern!
+                }
+                if self.replacement != nil {
+                    map["Replacement"] = self.replacement!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Pattern"] as? String {
+                    self.pattern = value
+                }
+                if let value = dict["Replacement"] as? String {
+                    self.replacement = value
+                }
+            }
+        }
+        public var model: String?
+
+        public var nlsAccessProfile: CreateApplicationVersionRequest.SynthesizerConfig.NlsAccessProfile?
+
         public var nlsAccessType: String?
 
         public var nlsEngine: String?
 
         public var pitchRate: Int32?
+
+        public var pronRules: [CreateApplicationVersionRequest.SynthesizerConfig.PronRules]?
 
         public var speechRate: Int32?
 
@@ -714,10 +788,17 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nlsAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.nlsAccessProfile != nil {
+                map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+            }
             if self.nlsAccessType != nil {
                 map["NlsAccessType"] = self.nlsAccessType!
             }
@@ -726,6 +807,13 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
             }
             if self.pitchRate != nil {
                 map["PitchRate"] = self.pitchRate!
+            }
+            if self.pronRules != nil {
+                var tmp : [Any] = []
+                for k in self.pronRules! {
+                    tmp.append(k.toMap())
+                }
+                map["PronRules"] = tmp
             }
             if self.speechRate != nil {
                 map["SpeechRate"] = self.speechRate!
@@ -741,6 +829,14 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                var model = CreateApplicationVersionRequest.SynthesizerConfig.NlsAccessProfile()
+                model.fromMap(value)
+                self.nlsAccessProfile = model
+            }
             if let value = dict["NlsAccessType"] as? String {
                 self.nlsAccessType = value
             }
@@ -749,6 +845,19 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
             }
             if let value = dict["PitchRate"] as? Int32 {
                 self.pitchRate = value
+            }
+            if let value = dict["PronRules"] as? [Any?] {
+                var tmp : [CreateApplicationVersionRequest.SynthesizerConfig.PronRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateApplicationVersionRequest.SynthesizerConfig.PronRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pronRules = tmp
             }
             if let value = dict["SpeechRate"] as? Int32 {
                 self.speechRate = value
@@ -3707,11 +3816,85 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
             }
             public class SynthesizerConfig : Tea.TeaModel {
+                public class NlsAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public class PronRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
+                public var model: String?
+
+                public var nlsAccessProfile: GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig.NlsAccessProfile?
+
                 public var nlsAccessType: String?
 
                 public var nlsEngine: String?
 
                 public var pitchRate: Int32?
+
+                public var pronRules: [GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig.PronRules]?
 
                 public var speechRate: Int32?
 
@@ -3729,10 +3912,17 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.nlsAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.model != nil {
+                        map["Model"] = self.model!
+                    }
+                    if self.nlsAccessProfile != nil {
+                        map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+                    }
                     if self.nlsAccessType != nil {
                         map["NlsAccessType"] = self.nlsAccessType!
                     }
@@ -3741,6 +3931,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                     if self.pitchRate != nil {
                         map["PitchRate"] = self.pitchRate!
+                    }
+                    if self.pronRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.pronRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["PronRules"] = tmp
                     }
                     if self.speechRate != nil {
                         map["SpeechRate"] = self.speechRate!
@@ -3756,6 +3953,14 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Model"] as? String {
+                        self.model = value
+                    }
+                    if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig.NlsAccessProfile()
+                        model.fromMap(value)
+                        self.nlsAccessProfile = model
+                    }
                     if let value = dict["NlsAccessType"] as? String {
                         self.nlsAccessType = value
                     }
@@ -3764,6 +3969,19 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["PitchRate"] as? Int32 {
                         self.pitchRate = value
+                    }
+                    if let value = dict["PronRules"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig.PronRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig.PronRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.pronRules = tmp
                     }
                     if let value = dict["SpeechRate"] as? Int32 {
                         self.speechRate = value
@@ -4136,11 +4354,85 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
             }
             public class SynthesizerConfig : Tea.TeaModel {
+                public class NlsAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public class PronRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
+                public var model: String?
+
+                public var nlsAccessProfile: GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig.NlsAccessProfile?
+
                 public var nlsAccessType: String?
 
                 public var nlsEngine: String?
 
                 public var pitchRate: Int32?
+
+                public var pronRules: [GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig.PronRules]?
 
                 public var speechRate: Int32?
 
@@ -4158,10 +4450,17 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.nlsAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.model != nil {
+                        map["Model"] = self.model!
+                    }
+                    if self.nlsAccessProfile != nil {
+                        map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+                    }
                     if self.nlsAccessType != nil {
                         map["NlsAccessType"] = self.nlsAccessType!
                     }
@@ -4170,6 +4469,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                     if self.pitchRate != nil {
                         map["PitchRate"] = self.pitchRate!
+                    }
+                    if self.pronRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.pronRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["PronRules"] = tmp
                     }
                     if self.speechRate != nil {
                         map["SpeechRate"] = self.speechRate!
@@ -4185,6 +4491,14 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["Model"] as? String {
+                        self.model = value
+                    }
+                    if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig.NlsAccessProfile()
+                        model.fromMap(value)
+                        self.nlsAccessProfile = model
+                    }
                     if let value = dict["NlsAccessType"] as? String {
                         self.nlsAccessType = value
                     }
@@ -4193,6 +4507,19 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["PitchRate"] as? Int32 {
                         self.pitchRate = value
+                    }
+                    if let value = dict["PronRules"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig.PronRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig.PronRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.pronRules = tmp
                     }
                     if let value = dict["SpeechRate"] as? Int32 {
                         self.speechRate = value
@@ -9540,11 +9867,85 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
     }
     public class SynthesizerConfig : Tea.TeaModel {
+        public class NlsAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public class PronRules : Tea.TeaModel {
+            public var pattern: String?
+
+            public var replacement: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.pattern != nil {
+                    map["Pattern"] = self.pattern!
+                }
+                if self.replacement != nil {
+                    map["Replacement"] = self.replacement!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Pattern"] as? String {
+                    self.pattern = value
+                }
+                if let value = dict["Replacement"] as? String {
+                    self.replacement = value
+                }
+            }
+        }
+        public var model: String?
+
+        public var nlsAccessProfile: UpdateApplicationVersionRequest.SynthesizerConfig.NlsAccessProfile?
+
         public var nlsAccessType: String?
 
         public var nlsEngine: String?
 
         public var pitchRate: Int32?
+
+        public var pronRules: [UpdateApplicationVersionRequest.SynthesizerConfig.PronRules]?
 
         public var speechRate: Int32?
 
@@ -9562,10 +9963,17 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nlsAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.nlsAccessProfile != nil {
+                map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+            }
             if self.nlsAccessType != nil {
                 map["NlsAccessType"] = self.nlsAccessType!
             }
@@ -9574,6 +9982,13 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
             }
             if self.pitchRate != nil {
                 map["PitchRate"] = self.pitchRate!
+            }
+            if self.pronRules != nil {
+                var tmp : [Any] = []
+                for k in self.pronRules! {
+                    tmp.append(k.toMap())
+                }
+                map["PronRules"] = tmp
             }
             if self.speechRate != nil {
                 map["SpeechRate"] = self.speechRate!
@@ -9589,6 +10004,14 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                var model = UpdateApplicationVersionRequest.SynthesizerConfig.NlsAccessProfile()
+                model.fromMap(value)
+                self.nlsAccessProfile = model
+            }
             if let value = dict["NlsAccessType"] as? String {
                 self.nlsAccessType = value
             }
@@ -9597,6 +10020,19 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
             }
             if let value = dict["PitchRate"] as? Int32 {
                 self.pitchRate = value
+            }
+            if let value = dict["PronRules"] as? [Any?] {
+                var tmp : [UpdateApplicationVersionRequest.SynthesizerConfig.PronRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateApplicationVersionRequest.SynthesizerConfig.PronRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pronRules = tmp
             }
             if let value = dict["SpeechRate"] as? Int32 {
                 self.speechRate = value
