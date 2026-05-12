@@ -5139,6 +5139,8 @@ public class DescribeInstanceStorageConfigResponse : Tea.TeaModel {
 }
 
 public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var consumerName: String?
 
     public var endTime: String?
@@ -5169,6 +5171,9 @@ public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["ApiKey"] = self.apiKey!
+        }
         if self.consumerName != nil {
             map["ConsumerName"] = self.consumerName!
         }
@@ -5198,6 +5203,9 @@ public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApiKey"] as? String {
+            self.apiKey = value
+        }
         if let value = dict["ConsumerName"] as? String {
             self.consumerName = value
         }
@@ -5229,9 +5237,13 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
     public class Records : Tea.TeaModel {
         public var consumerName: String?
 
+        public var inputTokens: Double?
+
         public var instanceId: String?
 
         public var model: String?
+
+        public var outputTokens: Double?
 
         public var region: String?
 
@@ -5256,11 +5268,17 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
             if self.consumerName != nil {
                 map["ConsumerName"] = self.consumerName!
             }
+            if self.inputTokens != nil {
+                map["InputTokens"] = self.inputTokens!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
             if self.model != nil {
                 map["Model"] = self.model!
+            }
+            if self.outputTokens != nil {
+                map["OutputTokens"] = self.outputTokens!
             }
             if self.region != nil {
                 map["Region"] = self.region!
@@ -5279,11 +5297,17 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
             if let value = dict["ConsumerName"] as? String {
                 self.consumerName = value
             }
+            if let value = dict["InputTokens"] as? Double {
+                self.inputTokens = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
             if let value = dict["Model"] as? String {
                 self.model = value
+            }
+            if let value = dict["OutputTokens"] as? Double {
+                self.outputTokens = value
             }
             if let value = dict["Region"] as? String {
                 self.region = value

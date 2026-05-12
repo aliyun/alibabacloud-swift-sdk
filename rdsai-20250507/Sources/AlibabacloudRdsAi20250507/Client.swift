@@ -942,6 +942,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeMOTokenUsageDetailWithOptions(_ request: DescribeMOTokenUsageDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMOTokenUsageDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            query["ApiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.consumerName)) {
             query["ConsumerName"] = request.consumerName ?? "";
         }
