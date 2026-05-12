@@ -23354,6 +23354,8 @@ public class DescribeTaskInfoResponseBody : Tea.TeaModel {
 
     public var events: [DescribeTaskInfoResponseBody.Events]?
 
+    public var outputs: [String: Any]?
+
     public var parameters: [String: Any]?
 
     public var stages: [DescribeTaskInfoResponseBody.Stages]?
@@ -23404,6 +23406,9 @@ public class DescribeTaskInfoResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["events"] = tmp
+        }
+        if self.outputs != nil {
+            map["outputs"] = self.outputs!
         }
         if self.parameters != nil {
             map["parameters"] = self.parameters!
@@ -23468,6 +23473,9 @@ public class DescribeTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
             self.events = tmp
+        }
+        if let value = dict["outputs"] as? [String: Any] {
+            self.outputs = value
         }
         if let value = dict["parameters"] as? [String: Any] {
             self.parameters = value
