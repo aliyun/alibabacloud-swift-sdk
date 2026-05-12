@@ -674,6 +674,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filterShrink)) {
             query["filter"] = request.filterShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeMission)) {
+            query["includeMission"] = request.includeMission!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }

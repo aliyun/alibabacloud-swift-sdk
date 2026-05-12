@@ -4053,6 +4053,8 @@ public class ListThreadsRequest : Tea.TeaModel {
     }
     public var filter: [ListThreadsRequest.Filter]?
 
+    public var includeMission: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -4081,6 +4083,9 @@ public class ListThreadsRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["filter"] = tmp
+        }
+        if self.includeMission != nil {
+            map["includeMission"] = self.includeMission!
         }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
@@ -4112,6 +4117,9 @@ public class ListThreadsRequest : Tea.TeaModel {
             }
             self.filter = tmp
         }
+        if let value = dict["includeMission"] as? Bool {
+            self.includeMission = value
+        }
         if let value = dict["maxResults"] as? Int64 {
             self.maxResults = value
         }
@@ -4129,6 +4137,8 @@ public class ListThreadsRequest : Tea.TeaModel {
 
 public class ListThreadsShrinkRequest : Tea.TeaModel {
     public var filterShrink: String?
+
+    public var includeMission: Bool?
 
     public var maxResults: Int64?
 
@@ -4155,6 +4165,9 @@ public class ListThreadsShrinkRequest : Tea.TeaModel {
         if self.filterShrink != nil {
             map["filter"] = self.filterShrink!
         }
+        if self.includeMission != nil {
+            map["includeMission"] = self.includeMission!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -4174,6 +4187,9 @@ public class ListThreadsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["filter"] as? String {
             self.filterShrink = value
+        }
+        if let value = dict["includeMission"] as? Bool {
+            self.includeMission = value
         }
         if let value = dict["maxResults"] as? Int64 {
             self.maxResults = value
