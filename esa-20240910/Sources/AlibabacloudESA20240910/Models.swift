@@ -11033,6 +11033,10 @@ public class CreateHttpsBasicConfigurationResponse : Tea.TeaModel {
 }
 
 public class CreateImageTransformRequest : Tea.TeaModel {
+    public var autoAvif: String?
+
+    public var autoWebp: String?
+
     public var enable: String?
 
     public var rule: String?
@@ -11061,6 +11065,12 @@ public class CreateImageTransformRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoAvif != nil {
+            map["AutoAvif"] = self.autoAvif!
+        }
+        if self.autoWebp != nil {
+            map["AutoWebp"] = self.autoWebp!
+        }
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
@@ -11087,6 +11097,12 @@ public class CreateImageTransformRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoAvif"] as? String {
+            self.autoAvif = value
+        }
+        if let value = dict["AutoWebp"] as? String {
+            self.autoWebp = value
+        }
         if let value = dict["Enable"] as? String {
             self.enable = value
         }
@@ -41557,6 +41573,10 @@ public class GetImageTransformRequest : Tea.TeaModel {
 }
 
 public class GetImageTransformResponseBody : Tea.TeaModel {
+    public var autoAvif: String?
+
+    public var autoWebp: String?
+
     public var configId: Int64?
 
     public var configType: String?
@@ -41589,6 +41609,12 @@ public class GetImageTransformResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoAvif != nil {
+            map["AutoAvif"] = self.autoAvif!
+        }
+        if self.autoWebp != nil {
+            map["AutoWebp"] = self.autoWebp!
+        }
         if self.configId != nil {
             map["ConfigId"] = self.configId!
         }
@@ -41621,6 +41647,12 @@ public class GetImageTransformResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoAvif"] as? String {
+            self.autoAvif = value
+        }
+        if let value = dict["AutoWebp"] as? String {
+            self.autoWebp = value
+        }
         if let value = dict["ConfigId"] as? Int64 {
             self.configId = value
         }
@@ -62874,6 +62906,10 @@ public class ListImageTransformsRequest : Tea.TeaModel {
 
 public class ListImageTransformsResponseBody : Tea.TeaModel {
     public class Configs : Tea.TeaModel {
+        public var autoAvif: String?
+
+        public var autoWebp: String?
+
         public var configId: Int64?
 
         public var configType: String?
@@ -62904,6 +62940,12 @@ public class ListImageTransformsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoAvif != nil {
+                map["AutoAvif"] = self.autoAvif!
+            }
+            if self.autoWebp != nil {
+                map["AutoWebp"] = self.autoWebp!
+            }
             if self.configId != nil {
                 map["ConfigId"] = self.configId!
             }
@@ -62933,6 +62975,12 @@ public class ListImageTransformsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoAvif"] as? String {
+                self.autoAvif = value
+            }
+            if let value = dict["AutoWebp"] as? String {
+                self.autoWebp = value
+            }
             if let value = dict["ConfigId"] as? Int64 {
                 self.configId = value
             }
@@ -87879,6 +87927,10 @@ public class UpdateIPv6Response : Tea.TeaModel {
 }
 
 public class UpdateImageTransformRequest : Tea.TeaModel {
+    public var autoAvif: String?
+
+    public var autoWebp: String?
+
     public var configId: Int64?
 
     public var enable: String?
@@ -87907,6 +87959,12 @@ public class UpdateImageTransformRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoAvif != nil {
+            map["AutoAvif"] = self.autoAvif!
+        }
+        if self.autoWebp != nil {
+            map["AutoWebp"] = self.autoWebp!
+        }
         if self.configId != nil {
             map["ConfigId"] = self.configId!
         }
@@ -87933,6 +87991,12 @@ public class UpdateImageTransformRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoAvif"] as? String {
+            self.autoAvif = value
+        }
+        if let value = dict["AutoWebp"] as? String {
+            self.autoWebp = value
+        }
         if let value = dict["ConfigId"] as? Int64 {
             self.configId = value
         }

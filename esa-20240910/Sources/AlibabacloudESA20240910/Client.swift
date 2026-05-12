@@ -1886,6 +1886,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createImageTransformWithOptions(_ request: CreateImageTransformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateImageTransformResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoAvif)) {
+            query["AutoAvif"] = request.autoAvif ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoWebp)) {
+            query["AutoWebp"] = request.autoWebp ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enable)) {
             query["Enable"] = request.enable ?? "";
         }
@@ -13707,6 +13713,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateImageTransformWithOptions(_ request: UpdateImageTransformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateImageTransformResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoAvif)) {
+            query["AutoAvif"] = request.autoAvif ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoWebp)) {
+            query["AutoWebp"] = request.autoWebp ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configId)) {
             query["ConfigId"] = request.configId!;
         }
