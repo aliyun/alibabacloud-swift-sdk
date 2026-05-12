@@ -60268,6 +60268,8 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
     }
     public var diskIds: String?
 
+    public var diskType: String?
+
     public var instanceId: String?
 
     public var pageNumber: Int64?
@@ -60296,6 +60298,9 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.diskIds != nil {
             map["DiskIds"] = self.diskIds!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -60326,6 +60331,9 @@ public class DescribeRCDisksRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DiskIds"] as? String {
             self.diskIds = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
