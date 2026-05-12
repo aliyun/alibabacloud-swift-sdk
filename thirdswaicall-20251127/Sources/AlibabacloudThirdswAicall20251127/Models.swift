@@ -38,7 +38,11 @@ public class QueryTaskConcurrencyRequest : Tea.TeaModel {
 
 public class QueryTaskConcurrencyResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var availableConcurrency: Int64?
+
         public var currentConcurrency: Int64?
+
+        public var maxConcurrency: Int64?
 
         public override init() {
             super.init()
@@ -54,16 +58,28 @@ public class QueryTaskConcurrencyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.availableConcurrency != nil {
+                map["AvailableConcurrency"] = self.availableConcurrency!
+            }
             if self.currentConcurrency != nil {
                 map["CurrentConcurrency"] = self.currentConcurrency!
+            }
+            if self.maxConcurrency != nil {
+                map["MaxConcurrency"] = self.maxConcurrency!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AvailableConcurrency"] as? Int64 {
+                self.availableConcurrency = value
+            }
             if let value = dict["CurrentConcurrency"] as? Int64 {
                 self.currentConcurrency = value
+            }
+            if let value = dict["MaxConcurrency"] as? Int64 {
+                self.maxConcurrency = value
             }
         }
     }
