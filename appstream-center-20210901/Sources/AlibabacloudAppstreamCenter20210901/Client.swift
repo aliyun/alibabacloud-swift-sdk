@@ -964,6 +964,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deliverToUserSlsWithOptions(_ request: DeliverToUserSlsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeliverToUserSlsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deliveryScopes)) {
+            bodyFlat["DeliveryScopes"] = request.deliveryScopes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.existedProjectName)) {
+            body["ExistedProjectName"] = request.existedProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logStoreName)) {
+            body["LogStoreName"] = request.logStoreName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectName)) {
+            body["ProjectName"] = request.projectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slsRegionId)) {
+            body["SlsRegionId"] = request.slsRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttl)) {
+            body["Ttl"] = request.ttl!;
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeliverToUserSls",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeliverToUserSlsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deliverToUserSls(_ request: DeliverToUserSlsRequest) async throws -> DeliverToUserSlsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deliverToUserSlsWithOptions(request as! DeliverToUserSlsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeWuyingServerEipInfoWithOptions(_ request: DescribeWuyingServerEipInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWuyingServerEipInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
