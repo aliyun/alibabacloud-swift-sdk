@@ -3254,6 +3254,8 @@ public class GrantSchemaPermissionResponse : Tea.TeaModel {
 public class GrantTablePermissionRequest : Tea.TeaModel {
     public var allTable: Bool?
 
+    public var columnNames: [String]?
+
     public var databaseName: String?
 
     public var privileges: [String]?
@@ -3281,6 +3283,9 @@ public class GrantTablePermissionRequest : Tea.TeaModel {
         if self.allTable != nil {
             map["allTable"] = self.allTable!
         }
+        if self.columnNames != nil {
+            map["columnNames"] = self.columnNames!
+        }
         if self.databaseName != nil {
             map["databaseName"] = self.databaseName!
         }
@@ -3303,6 +3308,9 @@ public class GrantTablePermissionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["allTable"] as? Bool {
             self.allTable = value
+        }
+        if let value = dict["columnNames"] as? [String] {
+            self.columnNames = value
         }
         if let value = dict["databaseName"] as? String {
             self.databaseName = value
@@ -6039,6 +6047,8 @@ public class RevokeSchemaPermissionResponse : Tea.TeaModel {
 public class RevokeTablePermissionRequest : Tea.TeaModel {
     public var allTable: Bool?
 
+    public var columnNames: [String]?
+
     public var databaseName: String?
 
     public var privileges: [String]?
@@ -6066,6 +6076,9 @@ public class RevokeTablePermissionRequest : Tea.TeaModel {
         if self.allTable != nil {
             map["allTable"] = self.allTable!
         }
+        if self.columnNames != nil {
+            map["columnNames"] = self.columnNames!
+        }
         if self.databaseName != nil {
             map["databaseName"] = self.databaseName!
         }
@@ -6088,6 +6101,9 @@ public class RevokeTablePermissionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["allTable"] as? Bool {
             self.allTable = value
+        }
+        if let value = dict["columnNames"] as? [String] {
+            self.columnNames = value
         }
         if let value = dict["databaseName"] as? String {
             self.databaseName = value

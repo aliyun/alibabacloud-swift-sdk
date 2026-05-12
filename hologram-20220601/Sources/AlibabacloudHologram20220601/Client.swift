@@ -642,6 +642,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allTable)) {
             body["allTable"] = request.allTable!;
         }
+        if (!TeaUtils.Client.isUnset(request.columnNames)) {
+            body["columnNames"] = request.columnNames ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.databaseName)) {
             body["databaseName"] = request.databaseName ?? "";
         }
@@ -1157,6 +1160,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allTable)) {
             body["allTable"] = request.allTable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.columnNames)) {
+            body["columnNames"] = request.columnNames ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.databaseName)) {
             body["databaseName"] = request.databaseName ?? "";
