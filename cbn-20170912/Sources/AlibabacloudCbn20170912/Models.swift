@@ -31094,6 +31094,8 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var managedService: String?
+
         public var orderType: String?
 
         public var resourceType: String?
@@ -31138,6 +31140,9 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.managedService != nil {
+                map["ManagedService"] = self.managedService!
             }
             if self.orderType != nil {
                 map["OrderType"] = self.orderType!
@@ -31189,6 +31194,9 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CreationTime"] as? String {
                 self.creationTime = value
+            }
+            if let value = dict["ManagedService"] as? String {
+                self.managedService = value
             }
             if let value = dict["OrderType"] as? String {
                 self.orderType = value
