@@ -59949,36 +59949,6 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
     public class SystemDisk : Tea.TeaModel {
         public var category: String?
 
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.category != nil {
-                map["Category"] = self.category!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["Category"] as? String {
-                self.category = value
-            }
-        }
-    }
-    public class DataDisk : Tea.TeaModel {
-        public var category: String?
-
         public var performanceLevel: String?
 
         public var size: Int32?
@@ -60022,13 +59992,77 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
             }
         }
     }
+    public class DataDisk : Tea.TeaModel {
+        public var category: String?
+
+        public var diskId: String?
+
+        public var performanceLevel: String?
+
+        public var size: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Category"] as? String {
+                self.category = value
+            }
+            if let value = dict["DiskId"] as? String {
+                self.diskId = value
+            }
+            if let value = dict["PerformanceLevel"] as? String {
+                self.performanceLevel = value
+            }
+            if let value = dict["Size"] as? Int32 {
+                self.size = value
+            }
+        }
+    }
     public var systemDisk: DescribeInstanceModificationPriceRequest.SystemDisk?
 
     public var dataDisk: [DescribeInstanceModificationPriceRequest.DataDisk]?
 
+    public var endTime: String?
+
+    public var ISP: String?
+
+    public var imageId: String?
+
     public var instanceId: String?
 
     public var instanceType: String?
+
+    public var internetChargeType: String?
+
+    public var internetMaxBandwidthOut: Int32?
 
     public var ownerAccount: String?
 
@@ -60039,6 +60073,8 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -60065,11 +60101,26 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
             }
             map["DataDisk"] = tmp
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.ISP != nil {
+            map["ISP"] = self.ISP!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.internetChargeType != nil {
+            map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.internetMaxBandwidthOut != nil {
+            map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -60085,6 +60136,9 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -60109,11 +60163,26 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
             }
             self.dataDisk = tmp
         }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["ISP"] as? String {
+            self.ISP = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["InternetChargeType"] as? String {
+            self.internetChargeType = value
+        }
+        if let value = dict["InternetMaxBandwidthOut"] as? Int32 {
+            self.internetMaxBandwidthOut = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -60129,6 +60198,9 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -60391,6 +60463,93 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RelatedPrice : Tea.TeaModel {
+            public class MarketplaceImagePrice : Tea.TeaModel {
+                public var currency: String?
+
+                public var discountPrice: Double?
+
+                public var originalPrice: Double?
+
+                public var tradePrice: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.currency != nil {
+                        map["Currency"] = self.currency!
+                    }
+                    if self.discountPrice != nil {
+                        map["DiscountPrice"] = self.discountPrice!
+                    }
+                    if self.originalPrice != nil {
+                        map["OriginalPrice"] = self.originalPrice!
+                    }
+                    if self.tradePrice != nil {
+                        map["TradePrice"] = self.tradePrice!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Currency"] as? String {
+                        self.currency = value
+                    }
+                    if let value = dict["DiscountPrice"] as? Double {
+                        self.discountPrice = value
+                    }
+                    if let value = dict["OriginalPrice"] as? Double {
+                        self.originalPrice = value
+                    }
+                    if let value = dict["TradePrice"] as? Double {
+                        self.tradePrice = value
+                    }
+                }
+            }
+            public var marketplaceImagePrice: DescribeInstanceModificationPriceResponseBody.PriceInfo.RelatedPrice.MarketplaceImagePrice?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.marketplaceImagePrice?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.marketplaceImagePrice != nil {
+                    map["MarketplaceImagePrice"] = self.marketplaceImagePrice?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MarketplaceImagePrice"] as? [String: Any?] {
+                    var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.RelatedPrice.MarketplaceImagePrice()
+                    model.fromMap(value)
+                    self.marketplaceImagePrice = model
+                }
+            }
+        }
         public class Rules : Tea.TeaModel {
             public class Rule : Tea.TeaModel {
                 public var description_: String?
@@ -60475,6 +60634,8 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
         }
         public var price: DescribeInstanceModificationPriceResponseBody.PriceInfo.Price?
 
+        public var relatedPrice: DescribeInstanceModificationPriceResponseBody.PriceInfo.RelatedPrice?
+
         public var rules: DescribeInstanceModificationPriceResponseBody.PriceInfo.Rules?
 
         public override init() {
@@ -60488,6 +60649,7 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.price?.validate()
+            try self.relatedPrice?.validate()
             try self.rules?.validate()
         }
 
@@ -60495,6 +60657,9 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.price != nil {
                 map["Price"] = self.price?.toMap()
+            }
+            if self.relatedPrice != nil {
+                map["RelatedPrice"] = self.relatedPrice?.toMap()
             }
             if self.rules != nil {
                 map["Rules"] = self.rules?.toMap()
@@ -60508,6 +60673,11 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
                 var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Price()
                 model.fromMap(value)
                 self.price = model
+            }
+            if let value = dict["RelatedPrice"] as? [String: Any?] {
+                var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.RelatedPrice()
+                model.fromMap(value)
+                self.relatedPrice = model
             }
             if let value = dict["Rules"] as? [String: Any?] {
                 var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Rules()
