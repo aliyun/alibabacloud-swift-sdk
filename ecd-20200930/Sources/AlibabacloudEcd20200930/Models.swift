@@ -30909,6 +30909,8 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var desktopIdForModify: String?
 
+    public var desktopScenario: String?
+
     public var desktopTypeId: String?
 
     public var desktopTypeIdList: [String]?
@@ -30969,6 +30971,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         }
         if self.desktopIdForModify != nil {
             map["DesktopIdForModify"] = self.desktopIdForModify!
+        }
+        if self.desktopScenario != nil {
+            map["DesktopScenario"] = self.desktopScenario!
         }
         if self.desktopTypeId != nil {
             map["DesktopTypeId"] = self.desktopTypeId!
@@ -31037,6 +31042,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopIdForModify"] as? String {
             self.desktopIdForModify = value
+        }
+        if let value = dict["DesktopScenario"] as? String {
+            self.desktopScenario = value
         }
         if let value = dict["DesktopTypeId"] as? String {
             self.desktopTypeId = value

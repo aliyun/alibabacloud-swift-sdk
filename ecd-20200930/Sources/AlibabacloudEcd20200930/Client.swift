@@ -6193,6 +6193,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.desktopIdForModify)) {
             query["DesktopIdForModify"] = request.desktopIdForModify ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.desktopScenario)) {
+            query["DesktopScenario"] = request.desktopScenario ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.desktopTypeId)) {
             query["DesktopTypeId"] = request.desktopTypeId ?? "";
         }
