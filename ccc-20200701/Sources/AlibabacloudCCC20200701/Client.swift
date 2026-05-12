@@ -687,6 +687,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func assignUsersWithOptions(_ request: AssignUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.async)) {
+            query["Async"] = request.async!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

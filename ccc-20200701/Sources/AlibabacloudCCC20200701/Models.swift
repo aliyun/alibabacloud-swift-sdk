@@ -3877,6 +3877,8 @@ public class AppendCasesResponse : Tea.TeaModel {
 }
 
 public class AssignUsersRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var instanceId: String?
 
     public var ramIdList: String?
@@ -3901,6 +3903,9 @@ public class AssignUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3921,6 +3926,9 @@ public class AssignUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Async"] as? Bool {
+            self.async = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
