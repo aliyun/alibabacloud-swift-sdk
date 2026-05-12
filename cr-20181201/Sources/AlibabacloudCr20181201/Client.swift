@@ -817,6 +817,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.linkId)) {
+            query["LinkId"] = request.linkId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.namespaceName)) {
             query["NamespaceName"] = request.namespaceName ?? "";
         }

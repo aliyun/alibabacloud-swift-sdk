@@ -3337,6 +3337,8 @@ public class CreateRepoSourceCodeRepoResponse : Tea.TeaModel {
 public class CreateRepoSyncRuleRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var linkId: String?
+
     public var namespaceName: String?
 
     public var repoName: String?
@@ -3377,6 +3379,9 @@ public class CreateRepoSyncRuleRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.linkId != nil {
+            map["LinkId"] = self.linkId!
         }
         if self.namespaceName != nil {
             map["NamespaceName"] = self.namespaceName!
@@ -3421,6 +3426,9 @@ public class CreateRepoSyncRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["LinkId"] as? String {
+            self.linkId = value
         }
         if let value = dict["NamespaceName"] as? String {
             self.namespaceName = value
@@ -19646,6 +19654,8 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
 
         public var crossUser: Bool?
 
+        public var linkId: String?
+
         public var localInstanceId: String?
 
         public var localNamespaceName: String?
@@ -19697,6 +19707,9 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
             }
             if self.crossUser != nil {
                 map["CrossUser"] = self.crossUser!
+            }
+            if self.linkId != nil {
+                map["LinkId"] = self.linkId!
             }
             if self.localInstanceId != nil {
                 map["LocalInstanceId"] = self.localInstanceId!
@@ -19756,6 +19769,9 @@ public class ListRepoSyncRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["CrossUser"] as? Bool {
                 self.crossUser = value
+            }
+            if let value = dict["LinkId"] as? String {
+                self.linkId = value
             }
             if let value = dict["LocalInstanceId"] as? String {
                 self.localInstanceId = value
@@ -20164,7 +20180,11 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
 
         public var imageTo: ListRepoSyncTaskResponseBody.SyncTasks.ImageTo?
 
+        public var linkId: String?
+
         public var modifedTime: Int64?
+
+        public var modifiedTime: Int64?
 
         public var syncBatchTaskId: String?
 
@@ -20211,8 +20231,14 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
             if self.imageTo != nil {
                 map["ImageTo"] = self.imageTo?.toMap()
             }
+            if self.linkId != nil {
+                map["LinkId"] = self.linkId!
+            }
             if self.modifedTime != nil {
                 map["ModifedTime"] = self.modifedTime!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
             }
             if self.syncBatchTaskId != nil {
                 map["SyncBatchTaskId"] = self.syncBatchTaskId!
@@ -20259,8 +20285,14 @@ public class ListRepoSyncTaskResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.imageTo = model
             }
+            if let value = dict["LinkId"] as? String {
+                self.linkId = value
+            }
             if let value = dict["ModifedTime"] as? Int64 {
                 self.modifedTime = value
+            }
+            if let value = dict["ModifiedTime"] as? Int64 {
+                self.modifiedTime = value
             }
             if let value = dict["SyncBatchTaskId"] as? String {
                 self.syncBatchTaskId = value
