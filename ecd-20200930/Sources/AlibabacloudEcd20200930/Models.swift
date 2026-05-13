@@ -23628,6 +23628,12 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var adminAccess: String?
 
+        public var adminKeyboardOnFullScreen: String?
+
+        public var adminKeyboardOnWindows: String?
+
+        public var adminMonitor: Int32?
+
         public var appContentProtection: String?
 
         public var authorizeAccessPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
@@ -23637,6 +23643,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var cameraRedirect: String?
 
         public var clientControlMenu: String?
+
+        public var clientCreateSnapshot: String?
 
         public var clientHibernate: String?
 
@@ -23653,6 +23661,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var cpdDriveClipboard: String?
 
         public var cpuDownGradeDuration: Int32?
+
+        public var cpuOverload: String?
 
         public var cpuProcessors: [String]?
 
@@ -23676,6 +23686,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var disconnectKeepSessionTime: Int32?
 
+        public var diskOverload: String?
+
         public var displayMode: String?
 
         public var domainRegisterValue: String?
@@ -23686,7 +23698,11 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var endUserApplyAdminCoordinate: String?
 
+        public var endUserCount: String?
+
         public var endUserGroupCoordinate: String?
+
+        public var externalDrive: String?
 
         public var fileTransferAddress: String?
 
@@ -23712,11 +23728,19 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var internetPrinter: String?
 
+        public var keyboardControl: String?
+
+        public var kmsServer: String?
+
+        public var kmsServerConfig: String?
+
         public var localDrive: String?
 
         public var maxReconnectTime: Int32?
 
         public var memoryDownGradeDuration: Int32?
+
+        public var memoryOverload: String?
 
         public var memoryProcessors: [String]?
 
@@ -23748,9 +23772,13 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var netRedirectRule: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.NetRedirectRule]?
 
+        public var networkPrinter: String?
+
         public var noOperationDisconnect: String?
 
         public var noOperationDisconnectTime: Int32?
+
+        public var organizationCount: String?
 
         public var policyGroupId: String?
 
@@ -23890,6 +23918,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.adminAccess != nil {
                 map["AdminAccess"] = self.adminAccess!
             }
+            if self.adminKeyboardOnFullScreen != nil {
+                map["AdminKeyboardOnFullScreen"] = self.adminKeyboardOnFullScreen!
+            }
+            if self.adminKeyboardOnWindows != nil {
+                map["AdminKeyboardOnWindows"] = self.adminKeyboardOnWindows!
+            }
+            if self.adminMonitor != nil {
+                map["AdminMonitor"] = self.adminMonitor!
+            }
             if self.appContentProtection != nil {
                 map["AppContentProtection"] = self.appContentProtection!
             }
@@ -23912,6 +23949,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.clientControlMenu != nil {
                 map["ClientControlMenu"] = self.clientControlMenu!
+            }
+            if self.clientCreateSnapshot != nil {
+                map["ClientCreateSnapshot"] = self.clientCreateSnapshot!
             }
             if self.clientHibernate != nil {
                 map["ClientHibernate"] = self.clientHibernate!
@@ -23940,6 +23980,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.cpuDownGradeDuration != nil {
                 map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
+            }
+            if self.cpuOverload != nil {
+                map["CpuOverload"] = self.cpuOverload!
             }
             if self.cpuProcessors != nil {
                 map["CpuProcessors"] = self.cpuProcessors!
@@ -23982,6 +24025,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.disconnectKeepSessionTime != nil {
                 map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
             }
+            if self.diskOverload != nil {
+                map["DiskOverload"] = self.diskOverload!
+            }
             if self.displayMode != nil {
                 map["DisplayMode"] = self.displayMode!
             }
@@ -24001,8 +24047,14 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.endUserApplyAdminCoordinate != nil {
                 map["EndUserApplyAdminCoordinate"] = self.endUserApplyAdminCoordinate!
             }
+            if self.endUserCount != nil {
+                map["EndUserCount"] = self.endUserCount!
+            }
             if self.endUserGroupCoordinate != nil {
                 map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+            }
+            if self.externalDrive != nil {
+                map["ExternalDrive"] = self.externalDrive!
             }
             if self.fileTransferAddress != nil {
                 map["FileTransferAddress"] = self.fileTransferAddress!
@@ -24040,6 +24092,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.internetPrinter != nil {
                 map["InternetPrinter"] = self.internetPrinter!
             }
+            if self.keyboardControl != nil {
+                map["KeyboardControl"] = self.keyboardControl!
+            }
+            if self.kmsServer != nil {
+                map["KmsServer"] = self.kmsServer!
+            }
+            if self.kmsServerConfig != nil {
+                map["KmsServerConfig"] = self.kmsServerConfig!
+            }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
             }
@@ -24048,6 +24109,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.memoryDownGradeDuration != nil {
                 map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
+            }
+            if self.memoryOverload != nil {
+                map["MemoryOverload"] = self.memoryOverload!
             }
             if self.memoryProcessors != nil {
                 map["MemoryProcessors"] = self.memoryProcessors!
@@ -24098,11 +24162,17 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                 }
                 map["NetRedirectRule"] = tmp
             }
+            if self.networkPrinter != nil {
+                map["NetworkPrinter"] = self.networkPrinter!
+            }
             if self.noOperationDisconnect != nil {
                 map["NoOperationDisconnect"] = self.noOperationDisconnect!
             }
             if self.noOperationDisconnectTime != nil {
                 map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+            }
+            if self.organizationCount != nil {
+                map["OrganizationCount"] = self.organizationCount!
             }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
@@ -24296,6 +24366,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["AdminAccess"] as? String {
                 self.adminAccess = value
             }
+            if let value = dict["AdminKeyboardOnFullScreen"] as? String {
+                self.adminKeyboardOnFullScreen = value
+            }
+            if let value = dict["AdminKeyboardOnWindows"] as? String {
+                self.adminKeyboardOnWindows = value
+            }
+            if let value = dict["AdminMonitor"] as? Int32 {
+                self.adminMonitor = value
+            }
             if let value = dict["AppContentProtection"] as? String {
                 self.appContentProtection = value
             }
@@ -24331,6 +24410,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["ClientControlMenu"] as? String {
                 self.clientControlMenu = value
             }
+            if let value = dict["ClientCreateSnapshot"] as? String {
+                self.clientCreateSnapshot = value
+            }
             if let value = dict["ClientHibernate"] as? String {
                 self.clientHibernate = value
             }
@@ -24364,6 +24446,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["CpuDownGradeDuration"] as? Int32 {
                 self.cpuDownGradeDuration = value
+            }
+            if let value = dict["CpuOverload"] as? String {
+                self.cpuOverload = value
             }
             if let value = dict["CpuProcessors"] as? [String] {
                 self.cpuProcessors = value
@@ -24418,6 +24503,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["DisconnectKeepSessionTime"] as? Int32 {
                 self.disconnectKeepSessionTime = value
             }
+            if let value = dict["DiskOverload"] as? String {
+                self.diskOverload = value
+            }
             if let value = dict["DisplayMode"] as? String {
                 self.displayMode = value
             }
@@ -24443,8 +24531,14 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["EndUserApplyAdminCoordinate"] as? String {
                 self.endUserApplyAdminCoordinate = value
             }
+            if let value = dict["EndUserCount"] as? String {
+                self.endUserCount = value
+            }
             if let value = dict["EndUserGroupCoordinate"] as? String {
                 self.endUserGroupCoordinate = value
+            }
+            if let value = dict["ExternalDrive"] as? String {
+                self.externalDrive = value
             }
             if let value = dict["FileTransferAddress"] as? String {
                 self.fileTransferAddress = value
@@ -24482,6 +24576,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["InternetPrinter"] as? String {
                 self.internetPrinter = value
             }
+            if let value = dict["KeyboardControl"] as? String {
+                self.keyboardControl = value
+            }
+            if let value = dict["KmsServer"] as? String {
+                self.kmsServer = value
+            }
+            if let value = dict["KmsServerConfig"] as? String {
+                self.kmsServerConfig = value
+            }
             if let value = dict["LocalDrive"] as? String {
                 self.localDrive = value
             }
@@ -24490,6 +24593,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["MemoryDownGradeDuration"] as? Int32 {
                 self.memoryDownGradeDuration = value
+            }
+            if let value = dict["MemoryOverload"] as? String {
+                self.memoryOverload = value
             }
             if let value = dict["MemoryProcessors"] as? [String] {
                 self.memoryProcessors = value
@@ -24546,11 +24652,17 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                 }
                 self.netRedirectRule = tmp
             }
+            if let value = dict["NetworkPrinter"] as? String {
+                self.networkPrinter = value
+            }
             if let value = dict["NoOperationDisconnect"] as? String {
                 self.noOperationDisconnect = value
             }
             if let value = dict["NoOperationDisconnectTime"] as? Int32 {
                 self.noOperationDisconnectTime = value
+            }
+            if let value = dict["OrganizationCount"] as? String {
+                self.organizationCount = value
             }
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
