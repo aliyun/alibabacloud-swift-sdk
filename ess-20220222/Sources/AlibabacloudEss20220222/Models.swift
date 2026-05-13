@@ -6330,7 +6330,47 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
     }
     public class ResourcePoolOptions : Tea.TeaModel {
+        public class PrivatePoolTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var privatePoolIds: [String]?
+
+        public var privatePoolTags: [CreateScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags]?
 
         public var strategy: String?
 
@@ -6351,6 +6391,13 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             if self.privatePoolIds != nil {
                 map["PrivatePoolIds"] = self.privatePoolIds!
             }
+            if self.privatePoolTags != nil {
+                var tmp : [Any] = []
+                for k in self.privatePoolTags! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivatePoolTags"] = tmp
+            }
             if self.strategy != nil {
                 map["Strategy"] = self.strategy!
             }
@@ -6361,6 +6408,19 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["PrivatePoolIds"] as? [String] {
                 self.privatePoolIds = value
+            }
+            if let value = dict["PrivatePoolTags"] as? [Any?] {
+                var tmp : [CreateScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privatePoolTags = tmp
             }
             if let value = dict["Strategy"] as? String {
                 self.strategy = value
@@ -7775,7 +7835,47 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
     }
     public class ResourcePoolOptions : Tea.TeaModel {
+        public class PrivatePoolTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var privatePoolIds: [String]?
+
+        public var privatePoolTags: [CreateScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags]?
 
         public var strategy: String?
 
@@ -7796,6 +7896,13 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.privatePoolIds != nil {
                 map["PrivatePoolIds"] = self.privatePoolIds!
             }
+            if self.privatePoolTags != nil {
+                var tmp : [Any] = []
+                for k in self.privatePoolTags! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivatePoolTags"] = tmp
+            }
             if self.strategy != nil {
                 map["Strategy"] = self.strategy!
             }
@@ -7806,6 +7913,19 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["PrivatePoolIds"] as? [String] {
                 self.privatePoolIds = value
+            }
+            if let value = dict["PrivatePoolTags"] as? [Any?] {
+                var tmp : [CreateScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privatePoolTags = tmp
             }
             if let value = dict["Strategy"] as? String {
                 self.strategy = value
@@ -22977,7 +23097,47 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
         }
         public class ResourcePoolOptions : Tea.TeaModel {
+            public class PrivatePoolTags : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
             public var privatePoolIds: [String]?
+
+            public var privatePoolTags: [DescribeScalingConfigurationsResponseBody.ScalingConfigurations.ResourcePoolOptions.PrivatePoolTags]?
 
             public var strategy: String?
 
@@ -22998,6 +23158,13 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 if self.privatePoolIds != nil {
                     map["PrivatePoolIds"] = self.privatePoolIds!
                 }
+                if self.privatePoolTags != nil {
+                    var tmp : [Any] = []
+                    for k in self.privatePoolTags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PrivatePoolTags"] = tmp
+                }
                 if self.strategy != nil {
                     map["Strategy"] = self.strategy!
                 }
@@ -23008,6 +23175,19 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["PrivatePoolIds"] as? [String] {
                     self.privatePoolIds = value
+                }
+                if let value = dict["PrivatePoolTags"] as? [Any?] {
+                    var tmp : [DescribeScalingConfigurationsResponseBody.ScalingConfigurations.ResourcePoolOptions.PrivatePoolTags] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.ResourcePoolOptions.PrivatePoolTags()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.privatePoolTags = tmp
                 }
                 if let value = dict["Strategy"] as? String {
                     self.strategy = value
@@ -36001,7 +36181,47 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
     }
     public class ResourcePoolOptions : Tea.TeaModel {
+        public class PrivatePoolTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var privatePoolIds: [String]?
+
+        public var privatePoolTags: [ModifyScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags]?
 
         public var strategy: String?
 
@@ -36022,6 +36242,13 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             if self.privatePoolIds != nil {
                 map["PrivatePoolIds"] = self.privatePoolIds!
             }
+            if self.privatePoolTags != nil {
+                var tmp : [Any] = []
+                for k in self.privatePoolTags! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivatePoolTags"] = tmp
+            }
             if self.strategy != nil {
                 map["Strategy"] = self.strategy!
             }
@@ -36032,6 +36259,19 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["PrivatePoolIds"] as? [String] {
                 self.privatePoolIds = value
+            }
+            if let value = dict["PrivatePoolTags"] as? [Any?] {
+                var tmp : [ModifyScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyScalingConfigurationRequest.ResourcePoolOptions.PrivatePoolTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privatePoolTags = tmp
             }
             if let value = dict["Strategy"] as? String {
                 self.strategy = value
@@ -37430,7 +37670,47 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
     }
     public class ResourcePoolOptions : Tea.TeaModel {
+        public class PrivatePoolTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var privatePoolIds: [String]?
+
+        public var privatePoolTags: [ModifyScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags]?
 
         public var strategy: String?
 
@@ -37451,6 +37731,13 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.privatePoolIds != nil {
                 map["PrivatePoolIds"] = self.privatePoolIds!
             }
+            if self.privatePoolTags != nil {
+                var tmp : [Any] = []
+                for k in self.privatePoolTags! {
+                    tmp.append(k.toMap())
+                }
+                map["PrivatePoolTags"] = tmp
+            }
             if self.strategy != nil {
                 map["Strategy"] = self.strategy!
             }
@@ -37461,6 +37748,19 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["PrivatePoolIds"] as? [String] {
                 self.privatePoolIds = value
+            }
+            if let value = dict["PrivatePoolTags"] as? [Any?] {
+                var tmp : [ModifyScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyScalingConfigurationShrinkRequest.ResourcePoolOptions.PrivatePoolTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.privatePoolTags = tmp
             }
             if let value = dict["Strategy"] as? String {
                 self.strategy = value
