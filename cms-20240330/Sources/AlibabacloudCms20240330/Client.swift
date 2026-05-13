@@ -1867,6 +1867,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "labels", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keywords)) {
+            query["keywords"] = request.keywords ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
             query["labels"] = request.labelsShrink ?? "";
         }

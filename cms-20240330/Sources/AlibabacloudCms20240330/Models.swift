@@ -21215,6 +21215,8 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
             }
         }
     }
+    public var keywords: String?
+
     public var labels: [DescribeMetricMetaListRequest.Labels]?
 
     public var metaFormat: String?
@@ -21241,6 +21243,9 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.keywords != nil {
+            map["keywords"] = self.keywords!
+        }
         if self.labels != nil {
             var tmp : [Any] = []
             for k in self.labels! {
@@ -21268,6 +21273,9 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["keywords"] as? String {
+            self.keywords = value
+        }
         if let value = dict["labels"] as? [Any?] {
             var tmp : [DescribeMetricMetaListRequest.Labels] = []
             for v in value {
@@ -21300,6 +21308,8 @@ public class DescribeMetricMetaListRequest : Tea.TeaModel {
 }
 
 public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
+    public var keywords: String?
+
     public var labelsShrink: String?
 
     public var metaFormat: String?
@@ -21326,6 +21336,9 @@ public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.keywords != nil {
+            map["keywords"] = self.keywords!
+        }
         if self.labelsShrink != nil {
             map["labels"] = self.labelsShrink!
         }
@@ -21349,6 +21362,9 @@ public class DescribeMetricMetaListShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["keywords"] as? String {
+            self.keywords = value
+        }
         if let value = dict["labels"] as? String {
             self.labelsShrink = value
         }
@@ -21410,6 +21426,8 @@ public class DescribeMetricMetaListResponseBody : Tea.TeaModel {
 
         public var labels: [String: String]?
 
+        public var metaFormat: String?
+
         public var metricName: String?
 
         public var namespace: String?
@@ -21451,6 +21469,9 @@ public class DescribeMetricMetaListResponseBody : Tea.TeaModel {
             }
             if self.labels != nil {
                 map["labels"] = self.labels!
+            }
+            if self.metaFormat != nil {
+                map["metaFormat"] = self.metaFormat!
             }
             if self.metricName != nil {
                 map["metricName"] = self.metricName!
@@ -21496,6 +21517,9 @@ public class DescribeMetricMetaListResponseBody : Tea.TeaModel {
             }
             if let value = dict["labels"] as? [String: String] {
                 self.labels = value
+            }
+            if let value = dict["metaFormat"] as? String {
+                self.metaFormat = value
             }
             if let value = dict["metricName"] as? String {
                 self.metricName = value
@@ -28624,6 +28648,8 @@ public class GetPipelineResponseBody : Tea.TeaModel {
 
             public var project: String?
 
+            public var query: String?
+
             public override init() {
                 super.init()
             }
@@ -28644,6 +28670,9 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 if self.project != nil {
                     map["project"] = self.project!
                 }
+                if self.query != nil {
+                    map["query"] = self.query!
+                }
                 return map
             }
 
@@ -28654,6 +28683,9 @@ public class GetPipelineResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["project"] as? String {
                     self.project = value
+                }
+                if let value = dict["query"] as? String {
+                    self.query = value
                 }
             }
         }
