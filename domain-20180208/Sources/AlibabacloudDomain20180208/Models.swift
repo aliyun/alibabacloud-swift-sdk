@@ -6372,6 +6372,8 @@ public class QueryExportAuctionDetailResponse : Tea.TeaModel {
 public class QueryExportDomainExpireSnatchsRequest : Tea.TeaModel {
     public var currentId: Int64?
 
+    public var dataSources: [String]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -6395,6 +6397,9 @@ public class QueryExportDomainExpireSnatchsRequest : Tea.TeaModel {
         if self.currentId != nil {
             map["CurrentId"] = self.currentId!
         }
+        if self.dataSources != nil {
+            map["DataSources"] = self.dataSources!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -6411,6 +6416,72 @@ public class QueryExportDomainExpireSnatchsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CurrentId"] as? Int64 {
             self.currentId = value
+        }
+        if let value = dict["DataSources"] as? [String] {
+            self.dataSources = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class QueryExportDomainExpireSnatchsShrinkRequest : Tea.TeaModel {
+    public var currentId: Int64?
+
+    public var dataSourcesShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentId != nil {
+            map["CurrentId"] = self.currentId!
+        }
+        if self.dataSourcesShrink != nil {
+            map["DataSources"] = self.dataSourcesShrink!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentId"] as? Int64 {
+            self.currentId = value
+        }
+        if let value = dict["DataSources"] as? String {
+            self.dataSourcesShrink = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value

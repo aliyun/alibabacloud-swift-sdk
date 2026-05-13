@@ -1013,11 +1013,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryExportDomainExpireSnatchsWithOptions(_ request: QueryExportDomainExpireSnatchsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryExportDomainExpireSnatchsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryExportDomainExpireSnatchsWithOptions(_ tmpReq: QueryExportDomainExpireSnatchsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryExportDomainExpireSnatchsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryExportDomainExpireSnatchsShrinkRequest = QueryExportDomainExpireSnatchsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSources)) {
+            request.dataSourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSources, "DataSources", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.currentId)) {
             query["CurrentId"] = request.currentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourcesShrink)) {
+            query["DataSources"] = request.dataSourcesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
