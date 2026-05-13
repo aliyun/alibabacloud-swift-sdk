@@ -2277,6 +2277,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryBillingCostBreakdownWithOptions(_ request: ModelRouterQueryBillingCostBreakdownRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingCostBreakdownResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }
@@ -2285,6 +2288,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["modelId"] = request.modelId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelTypes)) {
+            query["modelTypes"] = request.modelTypes ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";

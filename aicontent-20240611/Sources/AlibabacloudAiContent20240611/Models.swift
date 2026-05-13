@@ -405,7 +405,148 @@ public class ApiKeyUpdateCmd : Tea.TeaModel {
     }
 }
 
+public class BillingBillSummaryPointDTO : Tea.TeaModel {
+    public var timestamp: Int64?
+
+    public var totalAmount: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.timestamp != nil {
+            map["timestamp"] = self.timestamp!
+        }
+        if self.totalAmount != nil {
+            map["totalAmount"] = self.totalAmount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["timestamp"] as? Int64 {
+            self.timestamp = value
+        }
+        if let value = dict["totalAmount"] as? Double {
+            self.totalAmount = value
+        }
+    }
+}
+
+public class BillingBillSummaryRespDTO : Tea.TeaModel {
+    public var points: [BillingBillSummaryPointDTO]?
+
+    public var totalAmount: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.points != nil {
+            var tmp : [Any] = []
+            for k in self.points! {
+                tmp.append(k.toMap())
+            }
+            map["points"] = tmp
+        }
+        if self.totalAmount != nil {
+            map["totalAmount"] = self.totalAmount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["points"] as? [Any?] {
+            var tmp : [BillingBillSummaryPointDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = BillingBillSummaryPointDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.points = tmp
+        }
+        if let value = dict["totalAmount"] as? Double {
+            self.totalAmount = value
+        }
+    }
+}
+
+public class BillingBillTierDTO : Tea.TeaModel {
+    public var dimValues: String?
+
+    public var payableAmount: Double?
+
+    public var values: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dimValues != nil {
+            map["dimValues"] = self.dimValues!
+        }
+        if self.payableAmount != nil {
+            map["payableAmount"] = self.payableAmount!
+        }
+        if self.values != nil {
+            map["values"] = self.values!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["dimValues"] as? String {
+            self.dimValues = value
+        }
+        if let value = dict["payableAmount"] as? Double {
+            self.payableAmount = value
+        }
+        if let value = dict["values"] as? String {
+            self.values = value
+        }
+    }
+}
+
 public class BillingCostBreakdownRespDTO : Tea.TeaModel {
+    public var columns: [MetricDefRespDTO]?
+
     public var granularity: String?
 
     public var page: Int32?
@@ -430,6 +571,13 @@ public class BillingCostBreakdownRespDTO : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.columns != nil {
+            var tmp : [Any] = []
+            for k in self.columns! {
+                tmp.append(k.toMap())
+            }
+            map["columns"] = tmp
+        }
         if self.granularity != nil {
             map["granularity"] = self.granularity!
         }
@@ -454,6 +602,19 @@ public class BillingCostBreakdownRespDTO : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["columns"] as? [Any?] {
+            var tmp : [MetricDefRespDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = MetricDefRespDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.columns = tmp
+        }
         if let value = dict["granularity"] as? String {
             self.granularity = value
         }
@@ -489,6 +650,8 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
 
     public var clientName: String?
 
+    public var dimValues: String?
+
     public var modelCode: String?
 
     public var modelId: Int64?
@@ -500,6 +663,10 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
     public var payableAmount: Double?
 
     public var summaryTime: Int64?
+
+    public var tiers: [BillingBillTierDTO]?
+
+    public var values: String?
 
     public override init() {
         super.init()
@@ -524,6 +691,9 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
         if self.clientName != nil {
             map["clientName"] = self.clientName!
         }
+        if self.dimValues != nil {
+            map["dimValues"] = self.dimValues!
+        }
         if self.modelCode != nil {
             map["modelCode"] = self.modelCode!
         }
@@ -542,6 +712,16 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
         if self.summaryTime != nil {
             map["summaryTime"] = self.summaryTime!
         }
+        if self.tiers != nil {
+            var tmp : [Any] = []
+            for k in self.tiers! {
+                tmp.append(k.toMap())
+            }
+            map["tiers"] = tmp
+        }
+        if self.values != nil {
+            map["values"] = self.values!
+        }
         return map
     }
 
@@ -555,6 +735,9 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
         }
         if let value = dict["clientName"] as? String {
             self.clientName = value
+        }
+        if let value = dict["dimValues"] as? String {
+            self.dimValues = value
         }
         if let value = dict["modelCode"] as? String {
             self.modelCode = value
@@ -573,6 +756,22 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
         }
         if let value = dict["summaryTime"] as? Int64 {
             self.summaryTime = value
+        }
+        if let value = dict["tiers"] as? [Any?] {
+            var tmp : [BillingBillTierDTO] = []
+            for v in value {
+                if v != nil {
+                    var model = BillingBillTierDTO()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tiers = tmp
+        }
+        if let value = dict["values"] as? String {
+            self.values = value
         }
     }
 }
@@ -19839,11 +20038,17 @@ public class ModelRouterQueryApiKeyListResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
+    public var clientId: Int64?
+
     public var endTime: Int64?
 
     public var granularity: String?
 
     public var maxResults: Int32?
+
+    public var modelId: Int64?
+
+    public var modelTypes: String?
 
     public var nextToken: String?
 
@@ -19867,6 +20072,9 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientId != nil {
+            map["clientId"] = self.clientId!
+        }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
@@ -19875,6 +20083,12 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
         }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.modelTypes != nil {
+            map["modelTypes"] = self.modelTypes!
         }
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
@@ -19893,6 +20107,9 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["clientId"] as? Int64 {
+            self.clientId = value
+        }
         if let value = dict["endTime"] as? Int64 {
             self.endTime = value
         }
@@ -19901,6 +20118,12 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
+        }
+        if let value = dict["modelId"] as? Int64 {
+            self.modelId = value
+        }
+        if let value = dict["modelTypes"] as? String {
+            self.modelTypes = value
         }
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
