@@ -15452,6 +15452,8 @@ public class ListAppDomainRedirectRecordsResponse : Tea.TeaModel {
 public class ListAppInstanceDomainsRequest : Tea.TeaModel {
     public var bizId: String?
 
+    public var domainKeyword: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -15481,6 +15483,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
+        if self.domainKeyword != nil {
+            map["DomainKeyword"] = self.domainKeyword!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -15506,6 +15511,9 @@ public class ListAppInstanceDomainsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizId"] as? String {
             self.bizId = value
+        }
+        if let value = dict["DomainKeyword"] as? String {
+            self.domainKeyword = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
