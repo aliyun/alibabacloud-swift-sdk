@@ -1358,6 +1358,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.credentialContent)) {
             query["CredentialContent"] = request.credentialContent!;
         }
+        if (!TeaUtils.Client.isUnset(request.credentialExternalId)) {
+            query["CredentialExternalId"] = request.credentialExternalId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.credentialIdentifier)) {
             query["CredentialIdentifier"] = request.credentialIdentifier ?? "";
         }
@@ -8309,6 +8312,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCredentialsWithOptions(_ request: ListCredentialsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCredentialsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialExternalIds)) {
+            query["CredentialExternalIds"] = request.credentialExternalIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.credentialIds)) {
             query["CredentialIds"] = request.credentialIds ?? [];
         }
