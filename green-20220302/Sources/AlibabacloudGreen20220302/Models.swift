@@ -10105,6 +10105,36 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class VlContent : Tea.TeaModel {
+                        public var outputText: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.outputText != nil {
+                                map["OutputText"] = self.outputText!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["OutputText"] as? String {
+                                self.outputText = value
+                            }
+                        }
+                    }
                     public var customImage: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage]?
 
                     public var logoData: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData]?
@@ -10117,6 +10147,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                     public var textInImage: [String: Any]?
 
+                    public var vlContent: VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.VlContent?
+
                     public override init() {
                         super.init()
                     }
@@ -10127,6 +10159,7 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.vlContent?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -10164,6 +10197,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                         if self.textInImage != nil {
                             map["TextInImage"] = self.textInImage!
+                        }
+                        if self.vlContent != nil {
+                            map["VlContent"] = self.vlContent?.toMap()
                         }
                         return map
                     }
@@ -10227,6 +10263,11 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["TextInImage"] as? [String: Any] {
                             self.textInImage = value
+                        }
+                        if let value = dict["VlContent"] as? [String: Any?] {
+                            var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.VlContent()
+                            model.fromMap(value)
+                            self.vlContent = model
                         }
                     }
                 }
