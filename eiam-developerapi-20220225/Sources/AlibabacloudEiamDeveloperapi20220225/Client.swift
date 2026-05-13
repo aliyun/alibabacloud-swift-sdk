@@ -278,6 +278,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.credentialContent)) {
             body["credentialContent"] = request.credentialContent!;
         }
+        if (!TeaUtils.Client.isUnset(request.credentialExternalId)) {
+            body["credentialExternalId"] = request.credentialExternalId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.credentialIdentifier)) {
             body["credentialIdentifier"] = request.credentialIdentifier ?? "";
         }

@@ -1018,6 +1018,8 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
     }
     public var credentialContent: CreateUserExclusiveCredentialRequest.CredentialContent?
 
+    public var credentialExternalId: String?
+
     public var credentialIdentifier: String?
 
     public var credentialName: String?
@@ -1046,6 +1048,9 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
         if self.credentialContent != nil {
             map["credentialContent"] = self.credentialContent?.toMap()
         }
+        if self.credentialExternalId != nil {
+            map["credentialExternalId"] = self.credentialExternalId!
+        }
         if self.credentialIdentifier != nil {
             map["credentialIdentifier"] = self.credentialIdentifier!
         }
@@ -1070,6 +1075,9 @@ public class CreateUserExclusiveCredentialRequest : Tea.TeaModel {
             var model = CreateUserExclusiveCredentialRequest.CredentialContent()
             model.fromMap(value)
             self.credentialContent = model
+        }
+        if let value = dict["credentialExternalId"] as? String {
+            self.credentialExternalId = value
         }
         if let value = dict["credentialIdentifier"] as? String {
             self.credentialIdentifier = value
@@ -7470,6 +7478,8 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
 
     public var credentialCreationType: String?
 
+    public var credentialExternalId: String?
+
     public var credentialId: String?
 
     public var credentialIdentifier: String?
@@ -7519,6 +7529,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         }
         if self.credentialCreationType != nil {
             map["credentialCreationType"] = self.credentialCreationType!
+        }
+        if self.credentialExternalId != nil {
+            map["credentialExternalId"] = self.credentialExternalId!
         }
         if self.credentialId != nil {
             map["credentialId"] = self.credentialId!
@@ -7574,6 +7587,9 @@ public class ObtainCredentialResponseBody : Tea.TeaModel {
         }
         if let value = dict["credentialCreationType"] as? String {
             self.credentialCreationType = value
+        }
+        if let value = dict["credentialExternalId"] as? String {
+            self.credentialExternalId = value
         }
         if let value = dict["credentialId"] as? String {
             self.credentialId = value
