@@ -18722,6 +18722,8 @@ public class ListFileUploadRequest : Tea.TeaModel {
 
     public var dmsUnit: String?
 
+    public var downloadLinkExpire: Int32?
+
     public var fileCategory: String?
 
     public var fileFrom: String?
@@ -18754,6 +18756,9 @@ public class ListFileUploadRequest : Tea.TeaModel {
         if self.dmsUnit != nil {
             map["DmsUnit"] = self.dmsUnit!
         }
+        if self.downloadLinkExpire != nil {
+            map["DownloadLinkExpire"] = self.downloadLinkExpire!
+        }
         if self.fileCategory != nil {
             map["FileCategory"] = self.fileCategory!
         }
@@ -18782,6 +18787,9 @@ public class ListFileUploadRequest : Tea.TeaModel {
         }
         if let value = dict["DmsUnit"] as? String {
             self.dmsUnit = value
+        }
+        if let value = dict["DownloadLinkExpire"] as? Int32 {
+            self.downloadLinkExpire = value
         }
         if let value = dict["FileCategory"] as? String {
             self.fileCategory = value

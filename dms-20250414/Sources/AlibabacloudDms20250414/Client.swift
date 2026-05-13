@@ -2485,6 +2485,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dmsUnit)) {
             query["DmsUnit"] = request.dmsUnit ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.downloadLinkExpire)) {
+            query["DownloadLinkExpire"] = request.downloadLinkExpire!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileCategory)) {
             query["FileCategory"] = request.fileCategory ?? "";
         }
