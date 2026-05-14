@@ -4023,6 +4023,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterName)) {
             body["cluster_name"] = request.clusterName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
+            body["cluster_spec"] = request.clusterSpec ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.controlPlaneConfig)) {
             body["control_plane_config"] = request.controlPlaneConfig!;
         }

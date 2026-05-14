@@ -31127,6 +31127,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var clusterName: String?
 
+    public var clusterSpec: String?
+
     public var controlPlaneConfig: ModifyClusterRequest.ControlPlaneConfig?
 
     public var controlPlaneEndpointsConfig: ModifyClusterRequest.ControlPlaneEndpointsConfig?
@@ -31189,6 +31191,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.clusterName != nil {
             map["cluster_name"] = self.clusterName!
+        }
+        if self.clusterSpec != nil {
+            map["cluster_spec"] = self.clusterSpec!
         }
         if self.controlPlaneConfig != nil {
             map["control_plane_config"] = self.controlPlaneConfig?.toMap()
@@ -31253,6 +31258,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if let value = dict["cluster_name"] as? String {
             self.clusterName = value
+        }
+        if let value = dict["cluster_spec"] as? String {
+            self.clusterSpec = value
         }
         if let value = dict["control_plane_config"] as? [String: Any?] {
             var model = ModifyClusterRequest.ControlPlaneConfig()
