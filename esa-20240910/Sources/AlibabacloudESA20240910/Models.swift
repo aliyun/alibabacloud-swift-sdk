@@ -11571,6 +11571,8 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
     public class AdaptiveRouting : Tea.TeaModel {
         public var failoverAcrossPools: Bool?
 
+        public var originLevelRetry: Bool?
+
         public override init() {
             super.init()
         }
@@ -11588,6 +11590,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             if self.failoverAcrossPools != nil {
                 map["FailoverAcrossPools"] = self.failoverAcrossPools!
             }
+            if self.originLevelRetry != nil {
+                map["OriginLevelRetry"] = self.originLevelRetry!
+            }
             return map
         }
 
@@ -11595,6 +11600,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FailoverAcrossPools"] as? Bool {
                 self.failoverAcrossPools = value
+            }
+            if let value = dict["OriginLevelRetry"] as? Bool {
+                self.originLevelRetry = value
             }
         }
     }
@@ -42845,6 +42853,8 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
     public class AdaptiveRouting : Tea.TeaModel {
         public var failoverAcrossPools: Bool?
 
+        public var originLevelRetry: Bool?
+
         public override init() {
             super.init()
         }
@@ -42862,6 +42872,9 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
             if self.failoverAcrossPools != nil {
                 map["FailoverAcrossPools"] = self.failoverAcrossPools!
             }
+            if self.originLevelRetry != nil {
+                map["OriginLevelRetry"] = self.originLevelRetry!
+            }
             return map
         }
 
@@ -42869,6 +42882,9 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FailoverAcrossPools"] as? Bool {
                 self.failoverAcrossPools = value
+            }
+            if let value = dict["OriginLevelRetry"] as? Bool {
+                self.originLevelRetry = value
             }
         }
     }
@@ -65125,6 +65141,8 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
         public class AdaptiveRouting : Tea.TeaModel {
             public var failoverAcrossPools: Bool?
 
+            public var originLevelRetry: Bool?
+
             public override init() {
                 super.init()
             }
@@ -65142,6 +65160,9 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
                 if self.failoverAcrossPools != nil {
                     map["FailoverAcrossPools"] = self.failoverAcrossPools!
                 }
+                if self.originLevelRetry != nil {
+                    map["OriginLevelRetry"] = self.originLevelRetry!
+                }
                 return map
             }
 
@@ -65149,6 +65170,9 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["FailoverAcrossPools"] as? Bool {
                     self.failoverAcrossPools = value
+                }
+                if let value = dict["OriginLevelRetry"] as? Bool {
+                    self.originLevelRetry = value
                 }
             }
         }
@@ -88297,6 +88321,8 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
     public class AdaptiveRouting : Tea.TeaModel {
         public var failoverAcrossPools: Bool?
 
+        public var originLevelRetry: Bool?
+
         public override init() {
             super.init()
         }
@@ -88314,6 +88340,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
             if self.failoverAcrossPools != nil {
                 map["FailoverAcrossPools"] = self.failoverAcrossPools!
             }
+            if self.originLevelRetry != nil {
+                map["OriginLevelRetry"] = self.originLevelRetry!
+            }
             return map
         }
 
@@ -88321,6 +88350,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FailoverAcrossPools"] as? Bool {
                 self.failoverAcrossPools = value
+            }
+            if let value = dict["OriginLevelRetry"] as? Bool {
+                self.originLevelRetry = value
             }
         }
     }
