@@ -36967,9 +36967,51 @@ public class DescribeResourceLogStatusRequest : Tea.TeaModel {
 
 public class DescribeResourceLogStatusResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class TraceConfig : Tea.TeaModel {
+            public var ratePerMille: Int32?
+
+            public var workspace: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ratePerMille != nil {
+                    map["RatePerMille"] = self.ratePerMille!
+                }
+                if self.workspace != nil {
+                    map["Workspace"] = self.workspace!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RatePerMille"] as? Int32 {
+                    self.ratePerMille = value
+                }
+                if let value = dict["Workspace"] as? String {
+                    self.workspace = value
+                }
+            }
+        }
         public var resource: String?
 
         public var status: Bool?
+
+        public var traceConfig: DescribeResourceLogStatusResponseBody.Result.TraceConfig?
+
+        public var traceStatus: Bool?
 
         public override init() {
             super.init()
@@ -36981,6 +37023,7 @@ public class DescribeResourceLogStatusResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.traceConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -36990,6 +37033,12 @@ public class DescribeResourceLogStatusResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.traceConfig != nil {
+                map["TraceConfig"] = self.traceConfig?.toMap()
+            }
+            if self.traceStatus != nil {
+                map["TraceStatus"] = self.traceStatus!
             }
             return map
         }
@@ -37001,6 +37050,14 @@ public class DescribeResourceLogStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? Bool {
                 self.status = value
+            }
+            if let value = dict["TraceConfig"] as? [String: Any?] {
+                var model = DescribeResourceLogStatusResponseBody.Result.TraceConfig()
+                model.fromMap(value)
+                self.traceConfig = model
+            }
+            if let value = dict["TraceStatus"] as? Bool {
+                self.traceStatus = value
             }
         }
     }
@@ -55705,6 +55762,44 @@ public class ModifyResourceLogFieldConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyResourceLogStatusRequest : Tea.TeaModel {
+    public class TraceConfig : Tea.TeaModel {
+        public var ratePerMille: Int32?
+
+        public var workspace: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ratePerMille != nil {
+                map["RatePerMille"] = self.ratePerMille!
+            }
+            if self.workspace != nil {
+                map["Workspace"] = self.workspace!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RatePerMille"] as? Int32 {
+                self.ratePerMille = value
+            }
+            if let value = dict["Workspace"] as? String {
+                self.workspace = value
+            }
+        }
+    }
     public var instanceId: String?
 
     public var regionId: String?
@@ -55714,6 +55809,92 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
     public var resourceManagerResourceGroupId: String?
 
     public var status: Bool?
+
+    public var traceConfig: ModifyResourceLogStatusRequest.TraceConfig?
+
+    public var traceStatus: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.traceConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.traceConfig != nil {
+            map["TraceConfig"] = self.traceConfig?.toMap()
+        }
+        if self.traceStatus != nil {
+            map["TraceStatus"] = self.traceStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Resource"] as? String {
+            self.resource = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+        if let value = dict["Status"] as? Bool {
+            self.status = value
+        }
+        if let value = dict["TraceConfig"] as? [String: Any?] {
+            var model = ModifyResourceLogStatusRequest.TraceConfig()
+            model.fromMap(value)
+            self.traceConfig = model
+        }
+        if let value = dict["TraceStatus"] as? Bool {
+            self.traceStatus = value
+        }
+    }
+}
+
+public class ModifyResourceLogStatusShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public var status: Bool?
+
+    public var traceConfigShrink: String?
+
+    public var traceStatus: Bool?
 
     public override init() {
         super.init()
@@ -55744,6 +55925,12 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.traceConfigShrink != nil {
+            map["TraceConfig"] = self.traceConfigShrink!
+        }
+        if self.traceStatus != nil {
+            map["TraceStatus"] = self.traceStatus!
+        }
         return map
     }
 
@@ -55763,6 +55950,12 @@ public class ModifyResourceLogStatusRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? Bool {
             self.status = value
+        }
+        if let value = dict["TraceConfig"] as? String {
+            self.traceConfigShrink = value
+        }
+        if let value = dict["TraceStatus"] as? Bool {
+            self.traceStatus = value
         }
     }
 }
