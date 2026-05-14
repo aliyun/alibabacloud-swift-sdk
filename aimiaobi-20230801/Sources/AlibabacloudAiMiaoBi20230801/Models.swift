@@ -27248,6 +27248,239 @@ public class GetPptConfigResponse : Tea.TeaModel {
     }
 }
 
+public class GetPptInfoRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class GetPptInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var exportFileLink: [String]?
+
+        public var exportTaskId: String?
+
+        public var pptArtifactId: String?
+
+        public var pptProcessId: String?
+
+        public var query: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.exportFileLink != nil {
+                map["ExportFileLink"] = self.exportFileLink!
+            }
+            if self.exportTaskId != nil {
+                map["ExportTaskId"] = self.exportTaskId!
+            }
+            if self.pptArtifactId != nil {
+                map["PptArtifactId"] = self.pptArtifactId!
+            }
+            if self.pptProcessId != nil {
+                map["PptProcessId"] = self.pptProcessId!
+            }
+            if self.query != nil {
+                map["Query"] = self.query!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExportFileLink"] as? [String] {
+                self.exportFileLink = value
+            }
+            if let value = dict["ExportTaskId"] as? String {
+                self.exportTaskId = value
+            }
+            if let value = dict["PptArtifactId"] as? String {
+                self.pptArtifactId = value
+            }
+            if let value = dict["PptProcessId"] as? String {
+                self.pptProcessId = value
+            }
+            if let value = dict["Query"] as? String {
+                self.query = value
+            }
+            if let value = dict["TaskId"] as? String {
+                self.taskId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetPptInfoResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetPptInfoResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetPptInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetPptInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetPptInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPptTemplateSelectorRequest : Tea.TeaModel {
     public var workspaceId: String?
 
@@ -32531,6 +32764,8 @@ public class InitiatePptCreationV2Request : Tea.TeaModel {
 
     public var pptTemplateType: Int32?
 
+    public var pptTitle: String?
+
     public var processType: Int32?
 
     public var taskId: String?
@@ -32566,6 +32801,9 @@ public class InitiatePptCreationV2Request : Tea.TeaModel {
         if self.pptTemplateType != nil {
             map["PptTemplateType"] = self.pptTemplateType!
         }
+        if self.pptTitle != nil {
+            map["PptTitle"] = self.pptTitle!
+        }
         if self.processType != nil {
             map["ProcessType"] = self.processType!
         }
@@ -32595,6 +32833,9 @@ public class InitiatePptCreationV2Request : Tea.TeaModel {
         if let value = dict["PptTemplateType"] as? Int32 {
             self.pptTemplateType = value
         }
+        if let value = dict["PptTitle"] as? String {
+            self.pptTitle = value
+        }
         if let value = dict["ProcessType"] as? Int32 {
             self.processType = value
         }
@@ -32609,6 +32850,8 @@ public class InitiatePptCreationV2Request : Tea.TeaModel {
 
 public class InitiatePptCreationV2ResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var alert: String?
+
         public var appKey: String?
 
         public var exportTaskId: String?
@@ -32635,6 +32878,9 @@ public class InitiatePptCreationV2ResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alert != nil {
+                map["Alert"] = self.alert!
+            }
             if self.appKey != nil {
                 map["AppKey"] = self.appKey!
             }
@@ -32658,6 +32904,9 @@ public class InitiatePptCreationV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Alert"] as? String {
+                self.alert = value
+            }
             if let value = dict["AppKey"] as? String {
                 self.appKey = value
             }
