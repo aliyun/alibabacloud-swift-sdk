@@ -18036,6 +18036,8 @@ public class ListOssCheckResultResponse : Tea.TeaModel {
 public class ListServiceConfigsRequest : Tea.TeaModel {
     public var classify: String?
 
+    public var protectionType: String?
+
     public var regionId: String?
 
     public var resourceType: String?
@@ -18059,6 +18061,9 @@ public class ListServiceConfigsRequest : Tea.TeaModel {
         if self.classify != nil {
             map["Classify"] = self.classify!
         }
+        if self.protectionType != nil {
+            map["ProtectionType"] = self.protectionType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -18075,6 +18080,9 @@ public class ListServiceConfigsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Classify"] as? String {
             self.classify = value
+        }
+        if let value = dict["ProtectionType"] as? String {
+            self.protectionType = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

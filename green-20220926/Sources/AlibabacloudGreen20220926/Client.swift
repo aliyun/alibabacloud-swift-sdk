@@ -2918,6 +2918,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.classify)) {
             query["Classify"] = request.classify ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.protectionType)) {
+            query["ProtectionType"] = request.protectionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
