@@ -315,6 +315,2017 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkAgentStatusWithOptions(_ request: ClinkAgentStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkAgentStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkAgentStatus",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkAgentStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkAgentStatus(_ request: ClinkAgentStatusRequest) async throws -> ClinkAgentStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkAgentStatusWithOptions(request as! ClinkAgentStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkAgentStatusDetailWithOptions(_ request: ClinkAgentStatusDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkAgentStatusDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkAgentStatusDetail",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkAgentStatusDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkAgentStatusDetail(_ request: ClinkAgentStatusDetailRequest) async throws -> ClinkAgentStatusDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkAgentStatusDetailWithOptions(request as! ClinkAgentStatusDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkBindClientTelWithOptions(_ request: ClinkBindClientTelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkBindClientTelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isBind)) {
+            query["IsBind"] = request.isBind!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isReserveTel)) {
+            query["IsReserveTel"] = request.isReserveTel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tel)) {
+            query["Tel"] = request.tel ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkBindClientTel",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkBindClientTelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkBindClientTel(_ request: ClinkBindClientTelRequest) async throws -> ClinkBindClientTelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkBindClientTelWithOptions(request as! ClinkBindClientTelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCdrObDetailsWithOptions(_ request: ClinkCdrObDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkCdrObDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkCdrObDetails",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkCdrObDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCdrObDetails(_ request: ClinkCdrObDetailsRequest) async throws -> ClinkCdrObDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkCdrObDetailsWithOptions(request as! ClinkCdrObDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateClientWithOptions(_ tmpReq: ClinkCreateClientRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkCreateClientResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ClinkCreateClientShrinkRequest = ClinkCreateClientShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.clid)) {
+            request.clidShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clid, "Clid", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.clidArea)) {
+            request.clidAreaShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clidArea, "ClidArea", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.clidDefault)) {
+            request.clidDefaultShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clidDefault, "ClidDefault", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.cloudNumberModes)) {
+            request.cloudNumberModesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.cloudNumberModes, "CloudNumberModes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.permission)) {
+            request.permissionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.permission, "Permission", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.qnos)) {
+            request.qnosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.qnos, "Qnos", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.serveArea)) {
+            request.serveAreaShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serveArea, "ServeArea", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.active)) {
+            query["Active"] = request.active!;
+        }
+        if (!TeaUtils.Client.isUnset(request.areaCode)) {
+            query["AreaCode"] = request.areaCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assignType)) {
+            query["AssignType"] = request.assignType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clidShrink)) {
+            query["Clid"] = request.clidShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidAreaShrink)) {
+            query["ClidArea"] = request.clidAreaShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidDefaultShrink)) {
+            query["ClidDefault"] = request.clidDefaultShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidRule)) {
+            query["ClidRule"] = request.clidRule!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clidType)) {
+            query["ClidType"] = request.clidType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudNumberEnabled)) {
+            query["CloudNumberEnabled"] = request.cloudNumberEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudNumberModesShrink)) {
+            query["CloudNumberModes"] = request.cloudNumberModesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno!;
+        }
+        if (!TeaUtils.Client.isUnset(request.crmId)) {
+            query["CrmId"] = request.crmId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicTelGroupIdDefault)) {
+            query["DynamicTelGroupIdDefault"] = request.dynamicTelGroupIdDefault!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicTelGroupName)) {
+            query["DynamicTelGroupName"] = request.dynamicTelGroupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenTel)) {
+            query["HiddenTel"] = request.hiddenTel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.obClidDefaultType)) {
+            query["ObClidDefaultType"] = request.obClidDefaultType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.obHangupSms)) {
+            query["ObHangupSms"] = request.obHangupSms!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pauseLogin)) {
+            query["PauseLogin"] = request.pauseLogin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionShrink)) {
+            query["Permission"] = request.permissionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.qnosShrink)) {
+            query["Qnos"] = request.qnosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recurrentselectionType)) {
+            query["RecurrentselectionType"] = request.recurrentselectionType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recurrentselectionValue)) {
+            query["RecurrentselectionValue"] = request.recurrentselectionValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serveAreaShrink)) {
+            query["ServeArea"] = request.serveAreaShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wechatMiniProgramRtc)) {
+            query["WechatMiniProgramRtc"] = request.wechatMiniProgramRtc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wrapupTime)) {
+            query["WrapupTime"] = request.wrapupTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkCreateClient",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkCreateClientResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateClient(_ request: ClinkCreateClientRequest) async throws -> ClinkCreateClientResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkCreateClientWithOptions(request as! ClinkCreateClientRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateEnterprisePauseWithOptions(_ request: ClinkCreateEnterprisePauseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkCreateEnterprisePauseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isDefault)) {
+            query["IsDefault"] = request.isDefault!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isRest)) {
+            query["IsRest"] = request.isRest ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pauseStatus)) {
+            query["PauseStatus"] = request.pauseStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkCreateEnterprisePause",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkCreateEnterprisePauseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateEnterprisePause(_ request: ClinkCreateEnterprisePauseRequest) async throws -> ClinkCreateEnterprisePauseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkCreateEnterprisePauseWithOptions(request as! ClinkCreateEnterprisePauseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateExtenWithOptions(_ request: ClinkCreateExtenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkCreateExtenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allow)) {
+            query["Allow"] = request.allow!;
+        }
+        if (!TeaUtils.Client.isUnset(request.areaCode)) {
+            query["AreaCode"] = request.areaCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extenNumber)) {
+            query["ExtenNumber"] = request.extenNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isDirect)) {
+            query["IsDirect"] = request.isDirect!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jittBuffer)) {
+            query["JittBuffer"] = request.jittBuffer!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkCreateExten",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkCreateExtenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateExten(_ request: ClinkCreateExtenRequest) async throws -> ClinkCreateExtenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkCreateExtenWithOptions(request as! ClinkCreateExtenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateQueueWithOptions(_ tmpReq: ClinkCreateQueueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkCreateQueueResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ClinkCreateQueueShrinkRequest = ClinkCreateQueueShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.queueMembers)) {
+            request.queueMembersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queueMembers, "QueueMembers", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chatLocation)) {
+            query["ChatLocation"] = request.chatLocation!;
+        }
+        if (!TeaUtils.Client.isUnset(request.chatMaxWait)) {
+            query["ChatMaxWait"] = request.chatMaxWait!;
+        }
+        if (!TeaUtils.Client.isUnset(request.chatStrategy)) {
+            query["ChatStrategy"] = request.chatStrategy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ibAllowed)) {
+            query["IbAllowed"] = request.ibAllowed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.joinEmpty)) {
+            query["JoinEmpty"] = request.joinEmpty!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxPauseClientFlag)) {
+            query["MaxPauseClientFlag"] = request.maxPauseClientFlag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxPauseClientType)) {
+            query["MaxPauseClientType"] = request.maxPauseClientType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxPauseClientValue)) {
+            query["MaxPauseClientValue"] = request.maxPauseClientValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxWait)) {
+            query["MaxWait"] = request.maxWait!;
+        }
+        if (!TeaUtils.Client.isUnset(request.memberTimeout)) {
+            query["MemberTimeout"] = request.memberTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qno)) {
+            query["Qno"] = request.qno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueMembersShrink)) {
+            query["QueueMembers"] = request.queueMembersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueTimeout)) {
+            query["QueueTimeout"] = request.queueTimeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sayCno)) {
+            query["SayCno"] = request.sayCno!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceLevel)) {
+            query["ServiceLevel"] = request.serviceLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            query["Strategy"] = request.strategy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vipSupport)) {
+            query["VipSupport"] = request.vipSupport!;
+        }
+        if (!TeaUtils.Client.isUnset(request.weight)) {
+            query["Weight"] = request.weight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wrapupTime)) {
+            query["WrapupTime"] = request.wrapupTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkCreateQueue",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkCreateQueueResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkCreateQueue(_ request: ClinkCreateQueueRequest) async throws -> ClinkCreateQueueResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkCreateQueueWithOptions(request as! ClinkCreateQueueRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDeleteClientWithOptions(_ request: ClinkDeleteClientRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDeleteClientResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDeleteClient",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDeleteClientResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDeleteClient(_ request: ClinkDeleteClientRequest) async throws -> ClinkDeleteClientResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDeleteClientWithOptions(request as! ClinkDeleteClientRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDeleteExtenWithOptions(_ request: ClinkDeleteExtenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDeleteExtenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extenNumber)) {
+            query["ExtenNumber"] = request.extenNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDeleteExten",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDeleteExtenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDeleteExten(_ request: ClinkDeleteExtenRequest) async throws -> ClinkDeleteExtenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDeleteExtenWithOptions(request as! ClinkDeleteExtenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrIbWithOptions(_ request: ClinkDescribeCdrIbRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeCdrIbResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeCdrIb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeCdrIbResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrIb(_ request: ClinkDescribeCdrIbRequest) async throws -> ClinkDescribeCdrIbResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeCdrIbWithOptions(request as! ClinkDescribeCdrIbRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrIbDetailsWithOptions(_ request: ClinkDescribeCdrIbDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeCdrIbDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeCdrIbDetails",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeCdrIbDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrIbDetails(_ request: ClinkDescribeCdrIbDetailsRequest) async throws -> ClinkDescribeCdrIbDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeCdrIbDetailsWithOptions(request as! ClinkDescribeCdrIbDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrObWithOptions(_ request: ClinkDescribeCdrObRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeCdrObResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeCdrOb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeCdrObResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrOb(_ request: ClinkDescribeCdrObRequest) async throws -> ClinkDescribeCdrObResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeCdrObWithOptions(request as! ClinkDescribeCdrObRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrObDetailsWithOptions(_ request: ClinkDescribeCdrObDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeCdrObDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeCdrObDetails",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeCdrObDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeCdrObDetails(_ request: ClinkDescribeCdrObDetailsRequest) async throws -> ClinkDescribeCdrObDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeCdrObDetailsWithOptions(request as! ClinkDescribeCdrObDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeClientWithOptions(_ request: ClinkDescribeClientRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeClientResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeClient",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeClientResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeClient(_ request: ClinkDescribeClientRequest) async throws -> ClinkDescribeClientResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeClientWithOptions(request as! ClinkDescribeClientRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeQueueWithOptions(_ request: ClinkDescribeQueueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeQueueResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qno)) {
+            query["Qno"] = request.qno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeQueue",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeQueueResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeQueue(_ request: ClinkDescribeQueueRequest) async throws -> ClinkDescribeQueueResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeQueueWithOptions(request as! ClinkDescribeQueueRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeRecordFileUrlWithOptions(_ request: ClinkDescribeRecordFileUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDescribeRecordFileUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.download)) {
+            query["Download"] = request.download!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recordSide)) {
+            query["RecordSide"] = request.recordSide!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recordType)) {
+            query["RecordType"] = request.recordType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDescribeRecordFileUrl",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDescribeRecordFileUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDescribeRecordFileUrl(_ request: ClinkDescribeRecordFileUrlRequest) async throws -> ClinkDescribeRecordFileUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDescribeRecordFileUrlWithOptions(request as! ClinkDescribeRecordFileUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDetailCdrIbWithOptions(_ request: ClinkDetailCdrIbRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkDetailCdrIbResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkDetailCdrIb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkDetailCdrIbResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkDetailCdrIb(_ request: ClinkDetailCdrIbRequest) async throws -> ClinkDetailCdrIbResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkDetailCdrIbWithOptions(request as! ClinkDetailCdrIbRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIbWithOptions(_ request: ClinkListCdrIbRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListCdrIbResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bridgeDuration)) {
+            query["BridgeDuration"] = request.bridgeDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeDurationEnd)) {
+            query["BridgeDurationEnd"] = request.bridgeDurationEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTime)) {
+            query["BridgeTime"] = request.bridgeTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTimeEnd)) {
+            query["BridgeTimeEnd"] = request.bridgeTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientNumber)) {
+            query["ClientNumber"] = request.clientNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cnos)) {
+            query["Cnos"] = request.cnos ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerNumber)) {
+            query["CustomerNumber"] = request.customerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimeEnd)) {
+            query["EndTimeEnd"] = request.endTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.firstCallCno)) {
+            query["FirstCallCno"] = request.firstCallCno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firstCallNumber)) {
+            query["FirstCallNumber"] = request.firstCallNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.firstCallQno)) {
+            query["FirstCallQno"] = request.firstCallQno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qnos)) {
+            query["Qnos"] = request.qnos ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scrollId)) {
+            query["ScrollId"] = request.scrollId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scrollSearch)) {
+            query["ScrollSearch"] = request.scrollSearch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimeEnd)) {
+            query["StartTimeEnd"] = request.startTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statuses)) {
+            query["Statuses"] = request.statuses!;
+        }
+        if (!TeaUtils.Client.isUnset(request.totalDuration)) {
+            query["TotalDuration"] = request.totalDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.totalDurationEnd)) {
+            query["TotalDurationEnd"] = request.totalDurationEnd!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListCdrIb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListCdrIbResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIb(_ request: ClinkListCdrIbRequest) async throws -> ClinkListCdrIbResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListCdrIbWithOptions(request as! ClinkListCdrIbRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIbAgentWithOptions(_ request: ClinkListCdrIbAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListCdrIbAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentAnswerInTime)) {
+            query["AgentAnswerInTime"] = request.agentAnswerInTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeDuration)) {
+            query["BridgeDuration"] = request.bridgeDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeDurationEnd)) {
+            query["BridgeDurationEnd"] = request.bridgeDurationEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTime)) {
+            query["BridgeTime"] = request.bridgeTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTimeEnd)) {
+            query["BridgeTimeEnd"] = request.bridgeTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientNumber)) {
+            query["ClientNumber"] = request.clientNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerNumber)) {
+            query["CustomerNumber"] = request.customerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimeEnd)) {
+            query["EndTimeEnd"] = request.endTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hotlineName)) {
+            query["HotlineName"] = request.hotlineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qno)) {
+            query["Qno"] = request.qno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scrollId)) {
+            query["ScrollId"] = request.scrollId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimeEnd)) {
+            query["StartTimeEnd"] = request.startTimeEnd!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListCdrIbAgent",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListCdrIbAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIbAgent(_ request: ClinkListCdrIbAgentRequest) async throws -> ClinkListCdrIbAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListCdrIbAgentWithOptions(request as! ClinkListCdrIbAgentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIbsWithOptions(_ request: ClinkListCdrIbsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListCdrIbsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientNumber)) {
+            query["ClientNumber"] = request.clientNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerNumber)) {
+            query["CustomerNumber"] = request.customerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qno)) {
+            query["Qno"] = request.qno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueAnswerInTime)) {
+            query["QueueAnswerInTime"] = request.queueAnswerInTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListCdrIbs",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListCdrIbsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrIbs(_ request: ClinkListCdrIbsRequest) async throws -> ClinkListCdrIbsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListCdrIbsWithOptions(request as! ClinkListCdrIbsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrObWithOptions(_ request: ClinkListCdrObRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListCdrObResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bridgeDuration)) {
+            query["BridgeDuration"] = request.bridgeDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeDurationEnd)) {
+            query["BridgeDurationEnd"] = request.bridgeDurationEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTime)) {
+            query["BridgeTime"] = request.bridgeTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bridgeTimeEnd)) {
+            query["BridgeTimeEnd"] = request.bridgeTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callType)) {
+            query["CallType"] = request.callType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientNumber)) {
+            query["ClientNumber"] = request.clientNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cnos)) {
+            query["Cnos"] = request.cnos ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerNumber)) {
+            query["CustomerNumber"] = request.customerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimeEnd)) {
+            query["EndTimeEnd"] = request.endTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.leftClid)) {
+            query["LeftClid"] = request.leftClid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qnos)) {
+            query["Qnos"] = request.qnos ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scrollId)) {
+            query["ScrollId"] = request.scrollId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scrollSearch)) {
+            query["ScrollSearch"] = request.scrollSearch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimeEnd)) {
+            query["StartTimeEnd"] = request.startTimeEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            query["TaskName"] = request.taskName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.totalDuration)) {
+            query["TotalDuration"] = request.totalDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.totalDurationEnd)) {
+            query["TotalDurationEnd"] = request.totalDurationEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.xnumber)) {
+            query["Xnumber"] = request.xnumber ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListCdrOb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListCdrObResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrOb(_ request: ClinkListCdrObRequest) async throws -> ClinkListCdrObResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListCdrObWithOptions(request as! ClinkListCdrObRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrObsWithOptions(_ request: ClinkListCdrObsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListCdrObsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associatedId)) {
+            query["AssociatedId"] = request.associatedId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.city)) {
+            query["City"] = request.city ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientNumber)) {
+            query["ClientNumber"] = request.clientNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerNumber)) {
+            query["CustomerNumber"] = request.customerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluation)) {
+            query["Evaluation"] = request.evaluation!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenType)) {
+            query["HiddenType"] = request.hiddenType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hotline)) {
+            query["Hotline"] = request.hotline ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idType)) {
+            query["IdType"] = request.idType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mainUniqueId)) {
+            query["MainUniqueId"] = request.mainUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mark)) {
+            query["Mark"] = request.mark!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.province)) {
+            query["Province"] = request.province ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueAnswerInTime)) {
+            query["QueueAnswerInTime"] = request.queueAnswerInTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestUniqueId)) {
+            query["RequestUniqueId"] = request.requestUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListCdrObs",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListCdrObsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListCdrObs(_ request: ClinkListCdrObsRequest) async throws -> ClinkListCdrObsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListCdrObsWithOptions(request as! ClinkListCdrObsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListClientsWithOptions(_ request: ClinkListClientsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListClientsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.active)) {
+            query["Active"] = request.active!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bindTel)) {
+            query["BindTel"] = request.bindTel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clid)) {
+            query["Clid"] = request.clid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.qno)) {
+            query["Qno"] = request.qno ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.updateEndTime)) {
+            query["UpdateEndTime"] = request.updateEndTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.updateStartTime)) {
+            query["UpdateStartTime"] = request.updateStartTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListClients",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListClientsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListClients(_ request: ClinkListClientsRequest) async throws -> ClinkListClientsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListClientsWithOptions(request as! ClinkListClientsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListEnterprisePausesWithOptions(_ request: ClinkListEnterprisePausesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListEnterprisePausesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListEnterprisePauses",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListEnterprisePausesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListEnterprisePauses(_ request: ClinkListEnterprisePausesRequest) async throws -> ClinkListEnterprisePausesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListEnterprisePausesWithOptions(request as! ClinkListEnterprisePausesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListExtensWithOptions(_ request: ClinkListExtensRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListExtensResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.areaCode)) {
+            query["AreaCode"] = request.areaCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListExtens",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListExtensResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListExtens(_ request: ClinkListExtensRequest) async throws -> ClinkListExtensResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListExtensWithOptions(request as! ClinkListExtensRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListIvrNodesWithOptions(_ request: ClinkListIvrNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListIvrNodesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ivrName)) {
+            query["IvrName"] = request.ivrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListIvrNodes",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListIvrNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListIvrNodes(_ request: ClinkListIvrNodesRequest) async throws -> ClinkListIvrNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListIvrNodesWithOptions(request as! ClinkListIvrNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListIvrsWithOptions(_ request: ClinkListIvrsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListIvrsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListIvrs",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListIvrsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListIvrs(_ request: ClinkListIvrsRequest) async throws -> ClinkListIvrsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListIvrsWithOptions(request as! ClinkListIvrsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListQueuesWithOptions(_ request: ClinkListQueuesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkListQueuesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            query["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkListQueues",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkListQueuesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkListQueues(_ request: ClinkListQueuesRequest) async throws -> ClinkListQueuesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkListQueuesWithOptions(request as! ClinkListQueuesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkStatIbWithOptions(_ request: ClinkStatIbRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkStatIbResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.date)) {
+            query["Date"] = request.date ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dateEnd)) {
+            query["DateEnd"] = request.dateEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endHour)) {
+            query["EndHour"] = request.endHour!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endMinute)) {
+            query["EndMinute"] = request.endMinute!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            query["Fields"] = request.fields ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hotlines)) {
+            query["Hotlines"] = request.hotlines ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startHour)) {
+            query["StartHour"] = request.startHour!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startMinute)) {
+            query["StartMinute"] = request.startMinute!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statisticMethod)) {
+            query["StatisticMethod"] = request.statisticMethod!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkStatIb",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkStatIbResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkStatIb(_ request: ClinkStatIbRequest) async throws -> ClinkStatIbResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkStatIbWithOptions(request as! ClinkStatIbRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkUpdateClientWithOptions(_ tmpReq: ClinkUpdateClientRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ClinkUpdateClientResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ClinkUpdateClientShrinkRequest = ClinkUpdateClientShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.clid)) {
+            request.clidShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clid, "Clid", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.clidArea)) {
+            request.clidAreaShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clidArea, "ClidArea", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.clidDefault)) {
+            request.clidDefaultShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clidDefault, "ClidDefault", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.cloudNumberModes)) {
+            request.cloudNumberModesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.cloudNumberModes, "CloudNumberModes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.permission)) {
+            request.permissionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.permission, "Permission", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.qnos)) {
+            request.qnosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.qnos, "Qnos", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.serveArea)) {
+            request.serveAreaShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serveArea, "ServeArea", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.active)) {
+            query["Active"] = request.active!;
+        }
+        if (!TeaUtils.Client.isUnset(request.areaCode)) {
+            query["AreaCode"] = request.areaCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assignType)) {
+            query["AssignType"] = request.assignType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clidShrink)) {
+            query["Clid"] = request.clidShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidAreaShrink)) {
+            query["ClidArea"] = request.clidAreaShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidDefaultShrink)) {
+            query["ClidDefault"] = request.clidDefaultShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clidRule)) {
+            query["ClidRule"] = request.clidRule!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clidType)) {
+            query["ClidType"] = request.clidType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudNumberEnabled)) {
+            query["CloudNumberEnabled"] = request.cloudNumberEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudNumberModesShrink)) {
+            query["CloudNumberModes"] = request.cloudNumberModesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cno)) {
+            query["Cno"] = request.cno!;
+        }
+        if (!TeaUtils.Client.isUnset(request.crmId)) {
+            query["CrmId"] = request.crmId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicTelGroupIdDefault)) {
+            query["DynamicTelGroupIdDefault"] = request.dynamicTelGroupIdDefault!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicTelGroupName)) {
+            query["DynamicTelGroupName"] = request.dynamicTelGroupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enterpriseId)) {
+            query["EnterpriseId"] = request.enterpriseId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hiddenTel)) {
+            query["HiddenTel"] = request.hiddenTel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ibWrapupTime)) {
+            query["IbWrapupTime"] = request.ibWrapupTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ibWrapupType)) {
+            query["IbWrapupType"] = request.ibWrapupType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.obClidDefaultType)) {
+            query["ObClidDefaultType"] = request.obClidDefaultType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.obHangupSms)) {
+            query["ObHangupSms"] = request.obHangupSms!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pauseLogin)) {
+            query["PauseLogin"] = request.pauseLogin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.permissionShrink)) {
+            query["Permission"] = request.permissionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.qnosShrink)) {
+            query["Qnos"] = request.qnosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recurrentselectionType)) {
+            query["RecurrentselectionType"] = request.recurrentselectionType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recurrentselectionValue)) {
+            query["RecurrentselectionValue"] = request.recurrentselectionValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serveAreaShrink)) {
+            query["ServeArea"] = request.serveAreaShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wechatMiniProgramRtc)) {
+            query["WechatMiniProgramRtc"] = request.wechatMiniProgramRtc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wrapupTime)) {
+            query["WrapupTime"] = request.wrapupTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ClinkUpdateClient",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ClinkUpdateClientResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func clinkUpdateClient(_ request: ClinkUpdateClientRequest) async throws -> ClinkUpdateClientResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await clinkUpdateClientWithOptions(request as! ClinkUpdateClientRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cloudAgentLoginWithOptions(_ request: CloudAgentLoginRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloudAgentLoginResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
