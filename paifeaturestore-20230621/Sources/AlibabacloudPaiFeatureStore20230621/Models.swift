@@ -5639,6 +5639,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -5701,6 +5703,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5753,6 +5758,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -7793,6 +7801,8 @@ public class ListFeatureViewFieldRelationshipsResponse : Tea.TeaModel {
 }
 
 public class ListFeatureViewOnlineFeaturesRequest : Tea.TeaModel {
+    public var config: String?
+
     public var joinIds: [String]?
 
     public override init() {
@@ -7809,6 +7819,9 @@ public class ListFeatureViewOnlineFeaturesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
         if self.joinIds != nil {
             map["JoinIds"] = self.joinIds!
         }
@@ -7817,6 +7830,9 @@ public class ListFeatureViewOnlineFeaturesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
         if let value = dict["JoinIds"] as? [String] {
             self.joinIds = value
         }
@@ -7824,6 +7840,8 @@ public class ListFeatureViewOnlineFeaturesRequest : Tea.TeaModel {
 }
 
 public class ListFeatureViewOnlineFeaturesShrinkRequest : Tea.TeaModel {
+    public var config: String?
+
     public var joinIdsShrink: String?
 
     public override init() {
@@ -7840,6 +7858,9 @@ public class ListFeatureViewOnlineFeaturesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
         if self.joinIdsShrink != nil {
             map["JoinIds"] = self.joinIdsShrink!
         }
@@ -7848,6 +7869,9 @@ public class ListFeatureViewOnlineFeaturesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Config"] as? String {
+            self.config = value
+        }
         if let value = dict["JoinIds"] as? String {
             self.joinIdsShrink = value
         }
@@ -10964,6 +10988,8 @@ public class ListProjectsResponseBody : Tea.TeaModel {
 
         public var projectId: String?
 
+        public var workspaceId: String?
+
         public override init() {
             super.init()
         }
@@ -11026,6 +11052,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
             }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
             return map
         }
 
@@ -11078,6 +11107,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProjectId"] as? String {
                 self.projectId = value
+            }
+            if let value = dict["WorkspaceId"] as? String {
+                self.workspaceId = value
             }
         }
     }

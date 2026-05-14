@@ -1378,6 +1378,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.joinIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.joinIds, "JoinIds", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.joinIdsShrink)) {
             query["JoinIds"] = request.joinIdsShrink ?? "";
         }
