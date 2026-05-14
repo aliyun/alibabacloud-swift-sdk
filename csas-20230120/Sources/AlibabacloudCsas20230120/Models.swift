@@ -5,6 +5,125 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AIUsageLimitPolicy : Tea.TeaModel {
+    public var description_: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var limitPolicyId: String?
+
+    public var limitValue: Int64?
+
+    public var metricType: String?
+
+    public var name: String?
+
+    public var priority: Int32?
+
+    public var resetPeriod: String?
+
+    public var serviceIds: [String]?
+
+    public var status: String?
+
+    public var userGroupIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.limitPolicyId != nil {
+            map["LimitPolicyId"] = self.limitPolicyId!
+        }
+        if self.limitValue != nil {
+            map["LimitValue"] = self.limitValue!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resetPeriod != nil {
+            map["ResetPeriod"] = self.resetPeriod!
+        }
+        if self.serviceIds != nil {
+            map["ServiceIds"] = self.serviceIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["LimitPolicyId"] as? String {
+            self.limitPolicyId = value
+        }
+        if let value = dict["LimitValue"] as? Int64 {
+            self.limitValue = value
+        }
+        if let value = dict["MetricType"] as? String {
+            self.metricType = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
+        if let value = dict["ResetPeriod"] as? String {
+            self.resetPeriod = value
+        }
+        if let value = dict["ServiceIds"] as? [String] {
+            self.serviceIds = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UserGroupIds"] as? [String] {
+            self.userGroupIds = value
+        }
+    }
+}
+
 public class AddressGroup : Tea.TeaModel {
     public class Ports : Tea.TeaModel {
         public var begin: Int32?
@@ -1217,6 +1336,8 @@ public class IdpDingtalkSubConfig : Tea.TeaModel {
 
     public var exclusive: Bool?
 
+    public var oauth: Bool?
+
     public var redirectUri: String?
 
     public override init() {
@@ -1254,6 +1375,9 @@ public class IdpDingtalkSubConfig : Tea.TeaModel {
         if self.exclusive != nil {
             map["Exclusive"] = self.exclusive!
         }
+        if self.oauth != nil {
+            map["Oauth"] = self.oauth!
+        }
         if self.redirectUri != nil {
             map["RedirectUri"] = self.redirectUri!
         }
@@ -1282,6 +1406,9 @@ public class IdpDingtalkSubConfig : Tea.TeaModel {
         }
         if let value = dict["Exclusive"] as? Bool {
             self.exclusive = value
+        }
+        if let value = dict["Oauth"] as? Bool {
+            self.oauth = value
         }
         if let value = dict["RedirectUri"] as? String {
             self.redirectUri = value
@@ -18999,9 +19126,21 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var city: String?
 
+        public var cityEn: String?
+
+        public var cityZh: String?
+
         public var continent: String?
 
+        public var continentEn: String?
+
+        public var continentZh: String?
+
         public var country: String?
+
+        public var countryEn: String?
+
+        public var countryZh: String?
 
         public var createTime: String?
 
@@ -19054,6 +19193,10 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
         public var processes: [GetUserDeviceResponseBody.Device.Processes]?
 
         public var province: String?
+
+        public var provinceEn: String?
+
+        public var provinceZh: String?
 
         public var saseUserId: String?
 
@@ -19114,11 +19257,29 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.city != nil {
                 map["City"] = self.city!
             }
+            if self.cityEn != nil {
+                map["CityEn"] = self.cityEn!
+            }
+            if self.cityZh != nil {
+                map["CityZh"] = self.cityZh!
+            }
             if self.continent != nil {
                 map["Continent"] = self.continent!
             }
+            if self.continentEn != nil {
+                map["ContinentEn"] = self.continentEn!
+            }
+            if self.continentZh != nil {
+                map["ContinentZh"] = self.continentZh!
+            }
             if self.country != nil {
                 map["Country"] = self.country!
+            }
+            if self.countryEn != nil {
+                map["CountryEn"] = self.countryEn!
+            }
+            if self.countryZh != nil {
+                map["CountryZh"] = self.countryZh!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -19210,6 +19371,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.province != nil {
                 map["Province"] = self.province!
             }
+            if self.provinceEn != nil {
+                map["ProvinceEn"] = self.provinceEn!
+            }
+            if self.provinceZh != nil {
+                map["ProvinceZh"] = self.provinceZh!
+            }
             if self.saseUserId != nil {
                 map["SaseUserId"] = self.saseUserId!
             }
@@ -19272,11 +19439,29 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if let value = dict["City"] as? String {
                 self.city = value
             }
+            if let value = dict["CityEn"] as? String {
+                self.cityEn = value
+            }
+            if let value = dict["CityZh"] as? String {
+                self.cityZh = value
+            }
             if let value = dict["Continent"] as? String {
                 self.continent = value
             }
+            if let value = dict["ContinentEn"] as? String {
+                self.continentEn = value
+            }
+            if let value = dict["ContinentZh"] as? String {
+                self.continentZh = value
+            }
             if let value = dict["Country"] as? String {
                 self.country = value
+            }
+            if let value = dict["CountryEn"] as? String {
+                self.countryEn = value
+            }
+            if let value = dict["CountryZh"] as? String {
+                self.countryZh = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -19385,6 +19570,12 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Province"] as? String {
                 self.province = value
+            }
+            if let value = dict["ProvinceEn"] as? String {
+                self.provinceEn = value
+            }
+            if let value = dict["ProvinceZh"] as? String {
+                self.provinceZh = value
             }
             if let value = dict["SaseUserId"] as? String {
                 self.saseUserId = value
@@ -32740,9 +32931,21 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
 
         public var city: String?
 
+        public var cityEn: String?
+
+        public var cityZh: String?
+
         public var continent: String?
 
+        public var continentEn: String?
+
+        public var continentZh: String?
+
         public var country: String?
+
+        public var countryEn: String?
+
+        public var countryZh: String?
 
         public var createTime: String?
 
@@ -32789,6 +32992,10 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
         public var paStatus: String?
 
         public var province: String?
+
+        public var provinceEn: String?
+
+        public var provinceZh: String?
 
         public var saseUserId: String?
 
@@ -32841,11 +33048,29 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.city != nil {
                 map["City"] = self.city!
             }
+            if self.cityEn != nil {
+                map["CityEn"] = self.cityEn!
+            }
+            if self.cityZh != nil {
+                map["CityZh"] = self.cityZh!
+            }
             if self.continent != nil {
                 map["Continent"] = self.continent!
             }
+            if self.continentEn != nil {
+                map["ContinentEn"] = self.continentEn!
+            }
+            if self.continentZh != nil {
+                map["ContinentZh"] = self.continentZh!
+            }
             if self.country != nil {
                 map["Country"] = self.country!
+            }
+            if self.countryEn != nil {
+                map["CountryEn"] = self.countryEn!
+            }
+            if self.countryZh != nil {
+                map["CountryZh"] = self.countryZh!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -32920,6 +33145,12 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.province != nil {
                 map["Province"] = self.province!
             }
+            if self.provinceEn != nil {
+                map["ProvinceEn"] = self.provinceEn!
+            }
+            if self.provinceZh != nil {
+                map["ProvinceZh"] = self.provinceZh!
+            }
             if self.saseUserId != nil {
                 map["SaseUserId"] = self.saseUserId!
             }
@@ -32973,11 +33204,29 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if let value = dict["City"] as? String {
                 self.city = value
             }
+            if let value = dict["CityEn"] as? String {
+                self.cityEn = value
+            }
+            if let value = dict["CityZh"] as? String {
+                self.cityZh = value
+            }
             if let value = dict["Continent"] as? String {
                 self.continent = value
             }
+            if let value = dict["ContinentEn"] as? String {
+                self.continentEn = value
+            }
+            if let value = dict["ContinentZh"] as? String {
+                self.continentZh = value
+            }
             if let value = dict["Country"] as? String {
                 self.country = value
+            }
+            if let value = dict["CountryEn"] as? String {
+                self.countryEn = value
+            }
+            if let value = dict["CountryZh"] as? String {
+                self.countryZh = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -33057,6 +33306,12 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Province"] as? String {
                 self.province = value
+            }
+            if let value = dict["ProvinceEn"] as? String {
+                self.provinceEn = value
+            }
+            if let value = dict["ProvinceZh"] as? String {
+                self.provinceZh = value
             }
             if let value = dict["SaseUserId"] as? String {
                 self.saseUserId = value
