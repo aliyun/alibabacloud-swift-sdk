@@ -29984,6 +29984,8 @@ public class ListHttpApiOperationsResponse : Tea.TeaModel {
 }
 
 public class ListHttpApiRoutesRequest : Tea.TeaModel {
+    public var backendServiceName: String?
+
     public var consumerAuthorizationRuleId: String?
 
     public var deployStatuses: String?
@@ -30026,6 +30028,9 @@ public class ListHttpApiRoutesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backendServiceName != nil {
+            map["backendServiceName"] = self.backendServiceName!
+        }
         if self.consumerAuthorizationRuleId != nil {
             map["consumerAuthorizationRuleId"] = self.consumerAuthorizationRuleId!
         }
@@ -30073,6 +30078,9 @@ public class ListHttpApiRoutesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["backendServiceName"] as? String {
+            self.backendServiceName = value
+        }
         if let value = dict["consumerAuthorizationRuleId"] as? String {
             self.consumerAuthorizationRuleId = value
         }

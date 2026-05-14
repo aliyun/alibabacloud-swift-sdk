@@ -2697,6 +2697,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listHttpApiRoutesWithOptions(_ httpApiId: String, _ request: ListHttpApiRoutesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHttpApiRoutesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backendServiceName)) {
+            query["backendServiceName"] = request.backendServiceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.consumerAuthorizationRuleId)) {
             query["consumerAuthorizationRuleId"] = request.consumerAuthorizationRuleId ?? "";
         }
