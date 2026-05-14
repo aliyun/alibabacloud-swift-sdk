@@ -8554,6 +8554,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var restartFailReason: String?
 
+        public var restartLevelType: String?
+
         public var restartStatus: String?
 
         public var triggerID: String?
@@ -8597,6 +8599,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             if self.restartFailReason != nil {
                 map["RestartFailReason"] = self.restartFailReason!
             }
+            if self.restartLevelType != nil {
+                map["RestartLevelType"] = self.restartLevelType!
+            }
             if self.restartStatus != nil {
                 map["RestartStatus"] = self.restartStatus!
             }
@@ -8638,6 +8643,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["RestartFailReason"] as? String {
                 self.restartFailReason = value
+            }
+            if let value = dict["RestartLevelType"] as? String {
+                self.restartLevelType = value
             }
             if let value = dict["RestartStatus"] as? String {
                 self.restartStatus = value
