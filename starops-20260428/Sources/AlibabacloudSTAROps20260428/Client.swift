@@ -72,6 +72,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDigitalEmployeeWithOptions(_ request: CreateDigitalEmployeeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDigitalEmployeeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            body["attributes"] = request.attributes ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.defaultRule)) {
             body["defaultRule"] = request.defaultRule ?? "";
         }
@@ -719,6 +722,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateDigitalEmployeeWithOptions(_ name: String, _ request: UpdateDigitalEmployeeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDigitalEmployeeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            body["attributes"] = request.attributes ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.defaultRule)) {
             body["defaultRule"] = request.defaultRule ?? "";
         }

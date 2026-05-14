@@ -571,6 +571,8 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public var attributes: [String: String]?
+
     public var defaultRule: String?
 
     public var description_: String?
@@ -602,6 +604,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.defaultRule != nil {
             map["defaultRule"] = self.defaultRule!
         }
@@ -635,6 +640,9 @@ public class CreateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["defaultRule"] as? String {
             self.defaultRule = value
         }
@@ -1796,6 +1804,8 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var attributes: [String: String]?
+
     public var createTime: String?
 
     public var defaultRule: String?
@@ -1837,6 +1847,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.createTime != nil {
             map["createTime"] = self.createTime!
         }
@@ -1885,6 +1898,9 @@ public class GetDigitalEmployeeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["createTime"] as? String {
             self.createTime = value
         }
@@ -3760,6 +3776,8 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var attributes: [String: String]?
+
         public var createTime: String?
 
         public var defaultRule: String?
@@ -3797,6 +3815,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attributes != nil {
+                map["attributes"] = self.attributes!
+            }
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
             }
@@ -3839,6 +3860,9 @@ public class ListDigitalEmployeesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["attributes"] as? [String: String] {
+                self.attributes = value
+            }
             if let value = dict["createTime"] as? String {
                 self.createTime = value
             }
@@ -4583,6 +4607,8 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
             }
         }
     }
+    public var attributes: [String: String]?
+
     public var defaultRule: String?
 
     public var description_: String?
@@ -4608,6 +4634,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attributes != nil {
+            map["attributes"] = self.attributes!
+        }
         if self.defaultRule != nil {
             map["defaultRule"] = self.defaultRule!
         }
@@ -4628,6 +4657,9 @@ public class UpdateDigitalEmployeeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
         if let value = dict["defaultRule"] as? String {
             self.defaultRule = value
         }
