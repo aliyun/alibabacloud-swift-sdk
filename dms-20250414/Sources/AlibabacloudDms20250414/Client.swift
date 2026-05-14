@@ -225,11 +225,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createAirflowWithOptions(_ request: CreateAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAirflowResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createAirflowWithOptions(_ tmpReq: CreateAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAirflowResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAirflowShrinkRequest = CreateAirflowShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataMountInfoList)) {
+            request.dataMountInfoListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataMountInfoList, "DataMountInfoList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.airflowName)) {
             query["AirflowName"] = request.airflowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.airflowVersion)) {
+            query["AirflowVersion"] = request.airflowVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.appSpec)) {
             query["AppSpec"] = request.appSpec ?? "";
@@ -240,8 +248,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dagsDir)) {
             query["DagsDir"] = request.dagsDir ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dataMountInfoListShrink)) {
+            query["DataMountInfoList"] = request.dataMountInfoListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableServerless)) {
+            query["EnableServerless"] = request.enableServerless!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gracefulShutdownTimeout)) {
+            query["GracefulShutdownTimeout"] = request.gracefulShutdownTimeout!;
         }
         if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
             query["OssBucketName"] = request.ossBucketName ?? "";
@@ -2831,8 +2848,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateAirflowWithOptions(_ request: UpdateAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAirflowResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateAirflowWithOptions(_ tmpReq: UpdateAirflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAirflowResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateAirflowShrinkRequest = UpdateAirflowShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataMountInfoList)) {
+            request.dataMountInfoListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataMountInfoList, "DataMountInfoList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.airflowId)) {
             query["AirflowId"] = request.airflowId ?? "";
@@ -2849,8 +2871,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dagsDir)) {
             query["DagsDir"] = request.dagsDir ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dataMountInfoListShrink)) {
+            query["DataMountInfoList"] = request.dataMountInfoListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableServerless)) {
+            query["EnableServerless"] = request.enableServerless!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gracefulShutdownTimeout)) {
+            query["GracefulShutdownTimeout"] = request.gracefulShutdownTimeout!;
         }
         if (!TeaUtils.Client.isUnset(request.pluginsDir)) {
             query["PluginsDir"] = request.pluginsDir ?? "";

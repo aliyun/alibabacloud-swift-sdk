@@ -1670,6 +1670,61 @@ public class DLTablebaseInfo : Tea.TeaModel {
     }
 }
 
+public class DataMountInfo : Tea.TeaModel {
+    public var mountFolderName: String?
+
+    public var ossBucket: String?
+
+    public var prefix_: String?
+
+    public var readOnly: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mountFolderName != nil {
+            map["MountFolderName"] = self.mountFolderName!
+        }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.prefix_ != nil {
+            map["Prefix"] = self.prefix_!
+        }
+        if self.readOnly != nil {
+            map["ReadOnly"] = self.readOnly!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MountFolderName"] as? String {
+            self.mountFolderName = value
+        }
+        if let value = dict["OssBucket"] as? String {
+            self.ossBucket = value
+        }
+        if let value = dict["Prefix"] as? String {
+            self.prefix_ = value
+        }
+        if let value = dict["ReadOnly"] as? Bool {
+            self.readOnly = value
+        }
+    }
+}
+
 public class DmsKnowledgeSearchOrderInfoDO : Tea.TeaModel {
     public var aliyunAccountUid: String?
 
@@ -4181,13 +4236,21 @@ public class BatchUpdateDataLakePartitionsResponse : Tea.TeaModel {
 public class CreateAirflowRequest : Tea.TeaModel {
     public var airflowName: String?
 
+    public var airflowVersion: String?
+
     public var appSpec: String?
 
     public var clientToken: String?
 
     public var dagsDir: String?
 
+    public var dataMountInfoList: [DataMountInfo]?
+
     public var description_: String?
+
+    public var enableServerless: Bool?
+
+    public var gracefulShutdownTimeout: Int32?
 
     public var ossBucketName: String?
 
@@ -4228,6 +4291,9 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if self.airflowName != nil {
             map["AirflowName"] = self.airflowName!
         }
+        if self.airflowVersion != nil {
+            map["AirflowVersion"] = self.airflowVersion!
+        }
         if self.appSpec != nil {
             map["AppSpec"] = self.appSpec!
         }
@@ -4237,8 +4303,21 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if self.dagsDir != nil {
             map["DagsDir"] = self.dagsDir!
         }
+        if self.dataMountInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.dataMountInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["DataMountInfoList"] = tmp
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableServerless != nil {
+            map["EnableServerless"] = self.enableServerless!
+        }
+        if self.gracefulShutdownTimeout != nil {
+            map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
         }
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
@@ -4281,6 +4360,9 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if let value = dict["AirflowName"] as? String {
             self.airflowName = value
         }
+        if let value = dict["AirflowVersion"] as? String {
+            self.airflowVersion = value
+        }
         if let value = dict["AppSpec"] as? String {
             self.appSpec = value
         }
@@ -4290,8 +4372,210 @@ public class CreateAirflowRequest : Tea.TeaModel {
         if let value = dict["DagsDir"] as? String {
             self.dagsDir = value
         }
+        if let value = dict["DataMountInfoList"] as? [Any?] {
+            var tmp : [DataMountInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = DataMountInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataMountInfoList = tmp
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableServerless"] as? Bool {
+            self.enableServerless = value
+        }
+        if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+            self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["OssBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["OssPath"] as? String {
+            self.ossPath = value
+        }
+        if let value = dict["PluginsDir"] as? String {
+            self.pluginsDir = value
+        }
+        if let value = dict["RequirementFile"] as? String {
+            self.requirementFile = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["StartupFile"] as? String {
+            self.startupFile = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["WorkerServerlessReplicas"] as? Int32 {
+            self.workerServerlessReplicas = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class CreateAirflowShrinkRequest : Tea.TeaModel {
+    public var airflowName: String?
+
+    public var airflowVersion: String?
+
+    public var appSpec: String?
+
+    public var clientToken: String?
+
+    public var dagsDir: String?
+
+    public var dataMountInfoListShrink: String?
+
+    public var description_: String?
+
+    public var enableServerless: Bool?
+
+    public var gracefulShutdownTimeout: Int32?
+
+    public var ossBucketName: String?
+
+    public var ossPath: String?
+
+    public var pluginsDir: String?
+
+    public var requirementFile: String?
+
+    public var securityGroupId: String?
+
+    public var startupFile: String?
+
+    public var vSwitchId: String?
+
+    public var vpcId: String?
+
+    public var workerServerlessReplicas: Int32?
+
+    public var workspaceId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.airflowName != nil {
+            map["AirflowName"] = self.airflowName!
+        }
+        if self.airflowVersion != nil {
+            map["AirflowVersion"] = self.airflowVersion!
+        }
+        if self.appSpec != nil {
+            map["AppSpec"] = self.appSpec!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dagsDir != nil {
+            map["DagsDir"] = self.dagsDir!
+        }
+        if self.dataMountInfoListShrink != nil {
+            map["DataMountInfoList"] = self.dataMountInfoListShrink!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enableServerless != nil {
+            map["EnableServerless"] = self.enableServerless!
+        }
+        if self.gracefulShutdownTimeout != nil {
+            map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossPath != nil {
+            map["OssPath"] = self.ossPath!
+        }
+        if self.pluginsDir != nil {
+            map["PluginsDir"] = self.pluginsDir!
+        }
+        if self.requirementFile != nil {
+            map["RequirementFile"] = self.requirementFile!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.startupFile != nil {
+            map["StartupFile"] = self.startupFile!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.workerServerlessReplicas != nil {
+            map["WorkerServerlessReplicas"] = self.workerServerlessReplicas!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AirflowName"] as? String {
+            self.airflowName = value
+        }
+        if let value = dict["AirflowVersion"] as? String {
+            self.airflowVersion = value
+        }
+        if let value = dict["AppSpec"] as? String {
+            self.appSpec = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DagsDir"] as? String {
+            self.dagsDir = value
+        }
+        if let value = dict["DataMountInfoList"] as? String {
+            self.dataMountInfoListShrink = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnableServerless"] as? Bool {
+            self.enableServerless = value
+        }
+        if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+            self.gracefulShutdownTimeout = value
         }
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
@@ -4335,17 +4619,27 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
 
         public var airflowName: String?
 
+        public var airflowVersion: String?
+
         public var appSpec: String?
 
         public var appType: String?
 
+        public var customAirflowCfg: [String]?
+
         public var dagsDir: String?
+
+        public var dataMountInfoList: [DataMountInfo]?
 
         public var deployErrorMsg: String?
 
         public var description_: String?
 
+        public var enableServerless: Bool?
+
         public var gmtCreated: String?
+
+        public var gracefulShutdownTimeout: Int32?
 
         public var ossBucketName: String?
 
@@ -4391,14 +4685,27 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if self.airflowName != nil {
                 map["AirflowName"] = self.airflowName!
             }
+            if self.airflowVersion != nil {
+                map["AirflowVersion"] = self.airflowVersion!
+            }
             if self.appSpec != nil {
                 map["AppSpec"] = self.appSpec!
             }
             if self.appType != nil {
                 map["AppType"] = self.appType!
             }
+            if self.customAirflowCfg != nil {
+                map["CustomAirflowCfg"] = self.customAirflowCfg!
+            }
             if self.dagsDir != nil {
                 map["DagsDir"] = self.dagsDir!
+            }
+            if self.dataMountInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.dataMountInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["DataMountInfoList"] = tmp
             }
             if self.deployErrorMsg != nil {
                 map["DeployErrorMsg"] = self.deployErrorMsg!
@@ -4406,8 +4713,14 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.enableServerless != nil {
+                map["EnableServerless"] = self.enableServerless!
+            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
+            }
+            if self.gracefulShutdownTimeout != nil {
+                map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
             }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
@@ -4456,14 +4769,33 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["AirflowName"] as? String {
                 self.airflowName = value
             }
+            if let value = dict["AirflowVersion"] as? String {
+                self.airflowVersion = value
+            }
             if let value = dict["AppSpec"] as? String {
                 self.appSpec = value
             }
             if let value = dict["AppType"] as? String {
                 self.appType = value
             }
+            if let value = dict["CustomAirflowCfg"] as? [String] {
+                self.customAirflowCfg = value
+            }
             if let value = dict["DagsDir"] as? String {
                 self.dagsDir = value
+            }
+            if let value = dict["DataMountInfoList"] as? [Any?] {
+                var tmp : [DataMountInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = DataMountInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dataMountInfoList = tmp
             }
             if let value = dict["DeployErrorMsg"] as? String {
                 self.deployErrorMsg = value
@@ -4471,8 +4803,14 @@ public class CreateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EnableServerless"] as? Bool {
+                self.enableServerless = value
+            }
             if let value = dict["GmtCreated"] as? String {
                 self.gmtCreated = value
+            }
+            if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+                self.gracefulShutdownTimeout = value
             }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
@@ -21654,7 +21992,13 @@ public class UpdateAirflowRequest : Tea.TeaModel {
 
     public var dagsDir: String?
 
+    public var dataMountInfoList: [DataMountInfo]?
+
     public var description_: String?
+
+    public var enableServerless: Bool?
+
+    public var gracefulShutdownTimeout: Int32?
 
     public var pluginsDir: String?
 
@@ -21695,8 +22039,21 @@ public class UpdateAirflowRequest : Tea.TeaModel {
         if self.dagsDir != nil {
             map["DagsDir"] = self.dagsDir!
         }
+        if self.dataMountInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.dataMountInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["DataMountInfoList"] = tmp
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableServerless != nil {
+            map["EnableServerless"] = self.enableServerless!
+        }
+        if self.gracefulShutdownTimeout != nil {
+            map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
         }
         if self.pluginsDir != nil {
             map["PluginsDir"] = self.pluginsDir!
@@ -21733,8 +22090,162 @@ public class UpdateAirflowRequest : Tea.TeaModel {
         if let value = dict["DagsDir"] as? String {
             self.dagsDir = value
         }
+        if let value = dict["DataMountInfoList"] as? [Any?] {
+            var tmp : [DataMountInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = DataMountInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataMountInfoList = tmp
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableServerless"] as? Bool {
+            self.enableServerless = value
+        }
+        if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+            self.gracefulShutdownTimeout = value
+        }
+        if let value = dict["PluginsDir"] as? String {
+            self.pluginsDir = value
+        }
+        if let value = dict["RequirementFile"] as? String {
+            self.requirementFile = value
+        }
+        if let value = dict["StartupFile"] as? String {
+            self.startupFile = value
+        }
+        if let value = dict["WorkerServerlessReplicas"] as? Int32 {
+            self.workerServerlessReplicas = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class UpdateAirflowShrinkRequest : Tea.TeaModel {
+    public var airflowId: String?
+
+    public var airflowName: String?
+
+    public var appSpec: String?
+
+    public var clientToken: String?
+
+    public var dagsDir: String?
+
+    public var dataMountInfoListShrink: String?
+
+    public var description_: String?
+
+    public var enableServerless: Bool?
+
+    public var gracefulShutdownTimeout: Int32?
+
+    public var pluginsDir: String?
+
+    public var requirementFile: String?
+
+    public var startupFile: String?
+
+    public var workerServerlessReplicas: Int32?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.airflowId != nil {
+            map["AirflowId"] = self.airflowId!
+        }
+        if self.airflowName != nil {
+            map["AirflowName"] = self.airflowName!
+        }
+        if self.appSpec != nil {
+            map["AppSpec"] = self.appSpec!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dagsDir != nil {
+            map["DagsDir"] = self.dagsDir!
+        }
+        if self.dataMountInfoListShrink != nil {
+            map["DataMountInfoList"] = self.dataMountInfoListShrink!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.enableServerless != nil {
+            map["EnableServerless"] = self.enableServerless!
+        }
+        if self.gracefulShutdownTimeout != nil {
+            map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
+        }
+        if self.pluginsDir != nil {
+            map["PluginsDir"] = self.pluginsDir!
+        }
+        if self.requirementFile != nil {
+            map["RequirementFile"] = self.requirementFile!
+        }
+        if self.startupFile != nil {
+            map["StartupFile"] = self.startupFile!
+        }
+        if self.workerServerlessReplicas != nil {
+            map["WorkerServerlessReplicas"] = self.workerServerlessReplicas!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AirflowId"] as? String {
+            self.airflowId = value
+        }
+        if let value = dict["AirflowName"] as? String {
+            self.airflowName = value
+        }
+        if let value = dict["AppSpec"] as? String {
+            self.appSpec = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DagsDir"] as? String {
+            self.dagsDir = value
+        }
+        if let value = dict["DataMountInfoList"] as? String {
+            self.dataMountInfoListShrink = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["EnableServerless"] as? Bool {
+            self.enableServerless = value
+        }
+        if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+            self.gracefulShutdownTimeout = value
         }
         if let value = dict["PluginsDir"] as? String {
             self.pluginsDir = value
@@ -21758,6 +22269,8 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
     public class Root : Tea.TeaModel {
         public var airflowName: String?
 
+        public var airflowVersion: String?
+
         public var appSpec: String?
 
         public var appType: String?
@@ -21766,13 +22279,19 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
 
         public var dagsDir: String?
 
+        public var dataMountInfoList: [DataMountInfo]?
+
         public var deployErrorMsg: String?
 
         public var description_: String?
 
+        public var enableServerless: Bool?
+
         public var environments: String?
 
         public var gmtCreated: String?
+
+        public var gracefulShutdownTimeout: Int32?
 
         public var ossBucketName: String?
 
@@ -21819,6 +22338,9 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if self.airflowName != nil {
                 map["AirflowName"] = self.airflowName!
             }
+            if self.airflowVersion != nil {
+                map["AirflowVersion"] = self.airflowVersion!
+            }
             if self.appSpec != nil {
                 map["AppSpec"] = self.appSpec!
             }
@@ -21831,17 +22353,30 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if self.dagsDir != nil {
                 map["DagsDir"] = self.dagsDir!
             }
+            if self.dataMountInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.dataMountInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["DataMountInfoList"] = tmp
+            }
             if self.deployErrorMsg != nil {
                 map["DeployErrorMsg"] = self.deployErrorMsg!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.enableServerless != nil {
+                map["EnableServerless"] = self.enableServerless!
+            }
             if self.environments != nil {
                 map["Environments"] = self.environments!
             }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
+            }
+            if self.gracefulShutdownTimeout != nil {
+                map["GracefulShutdownTimeout"] = self.gracefulShutdownTimeout!
             }
             if self.ossBucketName != nil {
                 map["OssBucketName"] = self.ossBucketName!
@@ -21893,6 +22428,9 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["AirflowName"] as? String {
                 self.airflowName = value
             }
+            if let value = dict["AirflowVersion"] as? String {
+                self.airflowVersion = value
+            }
             if let value = dict["AppSpec"] as? String {
                 self.appSpec = value
             }
@@ -21905,17 +22443,36 @@ public class UpdateAirflowResponseBody : Tea.TeaModel {
             if let value = dict["DagsDir"] as? String {
                 self.dagsDir = value
             }
+            if let value = dict["DataMountInfoList"] as? [Any?] {
+                var tmp : [DataMountInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = DataMountInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dataMountInfoList = tmp
+            }
             if let value = dict["DeployErrorMsg"] as? String {
                 self.deployErrorMsg = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
             }
+            if let value = dict["EnableServerless"] as? Bool {
+                self.enableServerless = value
+            }
             if let value = dict["Environments"] as? String {
                 self.environments = value
             }
             if let value = dict["GmtCreated"] as? String {
                 self.gmtCreated = value
+            }
+            if let value = dict["GracefulShutdownTimeout"] as? Int32 {
+                self.gracefulShutdownTimeout = value
             }
             if let value = dict["OssBucketName"] as? String {
                 self.ossBucketName = value
