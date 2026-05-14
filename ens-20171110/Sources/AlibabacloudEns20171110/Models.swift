@@ -54667,6 +54667,8 @@ public class DescribeSDGRequest : Tea.TeaModel {
 
     public var SDGIds: [String]?
 
+    public var sameDiskId: Bool?
+
     public override init() {
         super.init()
     }
@@ -54690,6 +54692,9 @@ public class DescribeSDGRequest : Tea.TeaModel {
         if self.SDGIds != nil {
             map["SDGIds"] = self.SDGIds!
         }
+        if self.sameDiskId != nil {
+            map["SameDiskId"] = self.sameDiskId!
+        }
         return map
     }
 
@@ -54704,6 +54709,9 @@ public class DescribeSDGRequest : Tea.TeaModel {
         if let value = dict["SDGIds"] as? [String] {
             self.SDGIds = value
         }
+        if let value = dict["SameDiskId"] as? Bool {
+            self.sameDiskId = value
+        }
     }
 }
 
@@ -54713,6 +54721,8 @@ public class DescribeSDGShrinkRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var SDGIdsShrink: String?
+
+    public var sameDiskId: Bool?
 
     public override init() {
         super.init()
@@ -54737,6 +54747,9 @@ public class DescribeSDGShrinkRequest : Tea.TeaModel {
         if self.SDGIdsShrink != nil {
             map["SDGIds"] = self.SDGIdsShrink!
         }
+        if self.sameDiskId != nil {
+            map["SameDiskId"] = self.sameDiskId!
+        }
         return map
     }
 
@@ -54750,6 +54763,9 @@ public class DescribeSDGShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SDGIds"] as? String {
             self.SDGIdsShrink = value
+        }
+        if let value = dict["SameDiskId"] as? Bool {
+            self.sameDiskId = value
         }
     }
 }

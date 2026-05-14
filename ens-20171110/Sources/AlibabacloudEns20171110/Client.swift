@@ -7522,6 +7522,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.SDGIdsShrink)) {
             query["SDGIds"] = request.SDGIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sameDiskId)) {
+            query["SameDiskId"] = request.sameDiskId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
