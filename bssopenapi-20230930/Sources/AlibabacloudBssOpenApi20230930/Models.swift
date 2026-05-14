@@ -1582,6 +1582,765 @@ public class CheckAccountExistResponse : Tea.TeaModel {
     }
 }
 
+public class CheckBudgetNameExistsRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var nbid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+    }
+}
+
+public class CheckBudgetNameExistsResponseBody : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var exists: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.exists != nil {
+            map["Exists"] = self.exists!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["Exists"] as? Bool {
+            self.exists = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CheckBudgetNameExistsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckBudgetNameExistsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CheckBudgetNameExistsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateBudgetRequest : Tea.TeaModel {
+    public class CycleQuota : Tea.TeaModel {
+        public var cyclePeriod: String?
+
+        public var quota: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cyclePeriod != nil {
+                map["CyclePeriod"] = self.cyclePeriod!
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CyclePeriod"] as? String {
+                self.cyclePeriod = value
+            }
+            if let value = dict["Quota"] as? String {
+                self.quota = value
+            }
+        }
+    }
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public class QueryFilter : Tea.TeaModel {
+        public var code: String?
+
+        public var selectType: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.selectType != nil {
+                map["SelectType"] = self.selectType!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["SelectType"] as? String {
+                self.selectType = value
+            }
+            if let value = dict["Values"] as? [String] {
+                self.values = value
+            }
+        }
+    }
+    public class WarnConfs : Tea.TeaModel {
+        public var comment: String?
+
+        public var eventBridge: Bool?
+
+        public var mscChannels: [String]?
+
+        public var mscContacts: [String]?
+
+        public var name: String?
+
+        public var thresholdType: String?
+
+        public var thresholdValue: String?
+
+        public var warnTarget: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.comment != nil {
+                map["Comment"] = self.comment!
+            }
+            if self.eventBridge != nil {
+                map["EventBridge"] = self.eventBridge!
+            }
+            if self.mscChannels != nil {
+                map["MscChannels"] = self.mscChannels!
+            }
+            if self.mscContacts != nil {
+                map["MscContacts"] = self.mscContacts!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.thresholdType != nil {
+                map["ThresholdType"] = self.thresholdType!
+            }
+            if self.thresholdValue != nil {
+                map["ThresholdValue"] = self.thresholdValue!
+            }
+            if self.warnTarget != nil {
+                map["WarnTarget"] = self.warnTarget!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Comment"] as? String {
+                self.comment = value
+            }
+            if let value = dict["EventBridge"] as? Bool {
+                self.eventBridge = value
+            }
+            if let value = dict["MscChannels"] as? [String] {
+                self.mscChannels = value
+            }
+            if let value = dict["MscContacts"] as? [String] {
+                self.mscContacts = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["ThresholdType"] as? String {
+                self.thresholdType = value
+            }
+            if let value = dict["ThresholdValue"] as? String {
+                self.thresholdValue = value
+            }
+            if let value = dict["WarnTarget"] as? String {
+                self.warnTarget = value
+            }
+        }
+    }
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var comment: String?
+
+    public var cycleEndPeriod: String?
+
+    public var cycleQuota: [CreateBudgetRequest.CycleQuota]?
+
+    public var cycleStartPeriod: String?
+
+    public var cycleType: String?
+
+    public var ecIdAccountIds: [CreateBudgetRequest.EcIdAccountIds]?
+
+    public var metric: String?
+
+    public var nbid: String?
+
+    public var queryFilter: [CreateBudgetRequest.QueryFilter]?
+
+    public var quota: String?
+
+    public var quotaType: String?
+
+    public var warnConfs: [CreateBudgetRequest.WarnConfs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.cycleEndPeriod != nil {
+            map["CycleEndPeriod"] = self.cycleEndPeriod!
+        }
+        if self.cycleQuota != nil {
+            var tmp : [Any] = []
+            for k in self.cycleQuota! {
+                tmp.append(k.toMap())
+            }
+            map["CycleQuota"] = tmp
+        }
+        if self.cycleStartPeriod != nil {
+            map["CycleStartPeriod"] = self.cycleStartPeriod!
+        }
+        if self.cycleType != nil {
+            map["CycleType"] = self.cycleType!
+        }
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.queryFilter != nil {
+            var tmp : [Any] = []
+            for k in self.queryFilter! {
+                tmp.append(k.toMap())
+            }
+            map["QueryFilter"] = tmp
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.quotaType != nil {
+            map["QuotaType"] = self.quotaType!
+        }
+        if self.warnConfs != nil {
+            var tmp : [Any] = []
+            for k in self.warnConfs! {
+                tmp.append(k.toMap())
+            }
+            map["WarnConfs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["CycleEndPeriod"] as? String {
+            self.cycleEndPeriod = value
+        }
+        if let value = dict["CycleQuota"] as? [Any?] {
+            var tmp : [CreateBudgetRequest.CycleQuota] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBudgetRequest.CycleQuota()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cycleQuota = tmp
+        }
+        if let value = dict["CycleStartPeriod"] as? String {
+            self.cycleStartPeriod = value
+        }
+        if let value = dict["CycleType"] as? String {
+            self.cycleType = value
+        }
+        if let value = dict["EcIdAccountIds"] as? [Any?] {
+            var tmp : [CreateBudgetRequest.EcIdAccountIds] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBudgetRequest.EcIdAccountIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["QueryFilter"] as? [Any?] {
+            var tmp : [CreateBudgetRequest.QueryFilter] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBudgetRequest.QueryFilter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.queryFilter = tmp
+        }
+        if let value = dict["Quota"] as? String {
+            self.quota = value
+        }
+        if let value = dict["QuotaType"] as? String {
+            self.quotaType = value
+        }
+        if let value = dict["WarnConfs"] as? [Any?] {
+            var tmp : [CreateBudgetRequest.WarnConfs] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateBudgetRequest.WarnConfs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.warnConfs = tmp
+        }
+    }
+}
+
+public class CreateBudgetShrinkRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var comment: String?
+
+    public var cycleEndPeriod: String?
+
+    public var cycleQuotaShrink: String?
+
+    public var cycleStartPeriod: String?
+
+    public var cycleType: String?
+
+    public var ecIdAccountIdsShrink: String?
+
+    public var metric: String?
+
+    public var nbid: String?
+
+    public var queryFilterShrink: String?
+
+    public var quota: String?
+
+    public var quotaType: String?
+
+    public var warnConfsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.cycleEndPeriod != nil {
+            map["CycleEndPeriod"] = self.cycleEndPeriod!
+        }
+        if self.cycleQuotaShrink != nil {
+            map["CycleQuota"] = self.cycleQuotaShrink!
+        }
+        if self.cycleStartPeriod != nil {
+            map["CycleStartPeriod"] = self.cycleStartPeriod!
+        }
+        if self.cycleType != nil {
+            map["CycleType"] = self.cycleType!
+        }
+        if self.ecIdAccountIdsShrink != nil {
+            map["EcIdAccountIds"] = self.ecIdAccountIdsShrink!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.queryFilterShrink != nil {
+            map["QueryFilter"] = self.queryFilterShrink!
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.quotaType != nil {
+            map["QuotaType"] = self.quotaType!
+        }
+        if self.warnConfsShrink != nil {
+            map["WarnConfs"] = self.warnConfsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["CycleEndPeriod"] as? String {
+            self.cycleEndPeriod = value
+        }
+        if let value = dict["CycleQuota"] as? String {
+            self.cycleQuotaShrink = value
+        }
+        if let value = dict["CycleStartPeriod"] as? String {
+            self.cycleStartPeriod = value
+        }
+        if let value = dict["CycleType"] as? String {
+            self.cycleType = value
+        }
+        if let value = dict["EcIdAccountIds"] as? String {
+            self.ecIdAccountIdsShrink = value
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["QueryFilter"] as? String {
+            self.queryFilterShrink = value
+        }
+        if let value = dict["Quota"] as? String {
+            self.quota = value
+        }
+        if let value = dict["QuotaType"] as? String {
+            self.quotaType = value
+        }
+        if let value = dict["WarnConfs"] as? String {
+            self.warnConfsShrink = value
+        }
+    }
+}
+
+public class CreateBudgetResponseBody : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateBudgetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBudgetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateBudgetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateCostCenterRequest : Tea.TeaModel {
     public class CostCenterEntityList : Tea.TeaModel {
         public var costCenterName: String?
@@ -4242,6 +5001,1092 @@ public class DeleteReportDefinitionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteReportDefinitionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeBudgetRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var nbid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+    }
+}
+
+public class DescribeBudgetResponseBody : Tea.TeaModel {
+    public class CycleQuota : Tea.TeaModel {
+        public var cyclePeriod: String?
+
+        public var quota: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cyclePeriod != nil {
+                map["CyclePeriod"] = self.cyclePeriod!
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CyclePeriod"] as? String {
+                self.cyclePeriod = value
+            }
+            if let value = dict["Quota"] as? String {
+                self.quota = value
+            }
+        }
+    }
+    public class EcIdAccountIdsFilter : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public class QueryFilter : Tea.TeaModel {
+        public var code: String?
+
+        public var selectType: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.selectType != nil {
+                map["SelectType"] = self.selectType!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["SelectType"] as? String {
+                self.selectType = value
+            }
+            if let value = dict["Values"] as? [String] {
+                self.values = value
+            }
+        }
+    }
+    public class WarnConfs : Tea.TeaModel {
+        public var comment: String?
+
+        public var eventBridge: Bool?
+
+        public var mscChannels: [String]?
+
+        public var mscContacts: [String]?
+
+        public var name: String?
+
+        public var sequence: Int32?
+
+        public var thresholdType: String?
+
+        public var thresholdValue: String?
+
+        public var warnTarget: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.comment != nil {
+                map["Comment"] = self.comment!
+            }
+            if self.eventBridge != nil {
+                map["EventBridge"] = self.eventBridge!
+            }
+            if self.mscChannels != nil {
+                map["MscChannels"] = self.mscChannels!
+            }
+            if self.mscContacts != nil {
+                map["MscContacts"] = self.mscContacts!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.sequence != nil {
+                map["Sequence"] = self.sequence!
+            }
+            if self.thresholdType != nil {
+                map["ThresholdType"] = self.thresholdType!
+            }
+            if self.thresholdValue != nil {
+                map["ThresholdValue"] = self.thresholdValue!
+            }
+            if self.warnTarget != nil {
+                map["WarnTarget"] = self.warnTarget!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Comment"] as? String {
+                self.comment = value
+            }
+            if let value = dict["EventBridge"] as? Bool {
+                self.eventBridge = value
+            }
+            if let value = dict["MscChannels"] as? [String] {
+                self.mscChannels = value
+            }
+            if let value = dict["MscContacts"] as? [String] {
+                self.mscContacts = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Sequence"] as? Int32 {
+                self.sequence = value
+            }
+            if let value = dict["ThresholdType"] as? String {
+                self.thresholdType = value
+            }
+            if let value = dict["ThresholdValue"] as? String {
+                self.thresholdValue = value
+            }
+            if let value = dict["WarnTarget"] as? String {
+                self.warnTarget = value
+            }
+        }
+    }
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var comment: String?
+
+    public var cycleEndPeriod: String?
+
+    public var cycleQuota: [DescribeBudgetResponseBody.CycleQuota]?
+
+    public var cycleStartPeriod: String?
+
+    public var cycleType: String?
+
+    public var ecIdAccountIdsFilter: DescribeBudgetResponseBody.EcIdAccountIdsFilter?
+
+    public var metadata: Any?
+
+    public var metric: String?
+
+    public var queryFilter: [DescribeBudgetResponseBody.QueryFilter]?
+
+    public var quota: String?
+
+    public var quotaType: String?
+
+    public var requestId: String?
+
+    public var warnConfs: [DescribeBudgetResponseBody.WarnConfs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ecIdAccountIdsFilter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.cycleEndPeriod != nil {
+            map["CycleEndPeriod"] = self.cycleEndPeriod!
+        }
+        if self.cycleQuota != nil {
+            var tmp : [Any] = []
+            for k in self.cycleQuota! {
+                tmp.append(k.toMap())
+            }
+            map["CycleQuota"] = tmp
+        }
+        if self.cycleStartPeriod != nil {
+            map["CycleStartPeriod"] = self.cycleStartPeriod!
+        }
+        if self.cycleType != nil {
+            map["CycleType"] = self.cycleType!
+        }
+        if self.ecIdAccountIdsFilter != nil {
+            map["EcIdAccountIdsFilter"] = self.ecIdAccountIdsFilter?.toMap()
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.queryFilter != nil {
+            var tmp : [Any] = []
+            for k in self.queryFilter! {
+                tmp.append(k.toMap())
+            }
+            map["QueryFilter"] = tmp
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.quotaType != nil {
+            map["QuotaType"] = self.quotaType!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.warnConfs != nil {
+            var tmp : [Any] = []
+            for k in self.warnConfs! {
+                tmp.append(k.toMap())
+            }
+            map["WarnConfs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["CycleEndPeriod"] as? String {
+            self.cycleEndPeriod = value
+        }
+        if let value = dict["CycleQuota"] as? [Any?] {
+            var tmp : [DescribeBudgetResponseBody.CycleQuota] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeBudgetResponseBody.CycleQuota()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cycleQuota = tmp
+        }
+        if let value = dict["CycleStartPeriod"] as? String {
+            self.cycleStartPeriod = value
+        }
+        if let value = dict["CycleType"] as? String {
+            self.cycleType = value
+        }
+        if let value = dict["EcIdAccountIdsFilter"] as? [String: Any?] {
+            var model = DescribeBudgetResponseBody.EcIdAccountIdsFilter()
+            model.fromMap(value)
+            self.ecIdAccountIdsFilter = model
+        }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["QueryFilter"] as? [Any?] {
+            var tmp : [DescribeBudgetResponseBody.QueryFilter] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeBudgetResponseBody.QueryFilter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.queryFilter = tmp
+        }
+        if let value = dict["Quota"] as? String {
+            self.quota = value
+        }
+        if let value = dict["QuotaType"] as? String {
+            self.quotaType = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["WarnConfs"] as? [Any?] {
+            var tmp : [DescribeBudgetResponseBody.WarnConfs] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeBudgetResponseBody.WarnConfs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.warnConfs = tmp
+        }
+    }
+}
+
+public class DescribeBudgetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBudgetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeBudgetResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeBudgetsRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var expireStatus: String?
+
+    public var nbid: String?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.expireStatus != nil {
+            map["ExpireStatus"] = self.expireStatus!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["ExpireStatus"] as? String {
+            self.expireStatus = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["PageNo"] as? Int32 {
+            self.pageNo = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+    }
+}
+
+public class DescribeBudgetsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class CycleQuota : Tea.TeaModel {
+            public var cyclePeriod: String?
+
+            public var quota: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cyclePeriod != nil {
+                    map["CyclePeriod"] = self.cyclePeriod!
+                }
+                if self.quota != nil {
+                    map["Quota"] = self.quota!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CyclePeriod"] as? String {
+                    self.cyclePeriod = value
+                }
+                if let value = dict["Quota"] as? String {
+                    self.quota = value
+                }
+            }
+        }
+        public class EcIdAccountIdsFilter : Tea.TeaModel {
+            public var accountIds: [Int64]?
+
+            public var ecId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accountIds != nil {
+                    map["AccountIds"] = self.accountIds!
+                }
+                if self.ecId != nil {
+                    map["EcId"] = self.ecId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccountIds"] as? [Int64] {
+                    self.accountIds = value
+                }
+                if let value = dict["EcId"] as? String {
+                    self.ecId = value
+                }
+            }
+        }
+        public class QueryFilter : Tea.TeaModel {
+            public var code: String?
+
+            public var selectType: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.selectType != nil {
+                    map["SelectType"] = self.selectType!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["SelectType"] as? String {
+                    self.selectType = value
+                }
+                if let value = dict["Values"] as? [String] {
+                    self.values = value
+                }
+            }
+        }
+        public class WarnConfs : Tea.TeaModel {
+            public var comment: String?
+
+            public var eventBridge: Bool?
+
+            public var mscChannels: [String]?
+
+            public var mscContacts: [String]?
+
+            public var name: String?
+
+            public var sequence: Int32?
+
+            public var thresholdType: String?
+
+            public var thresholdValue: String?
+
+            public var warnTarget: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.comment != nil {
+                    map["Comment"] = self.comment!
+                }
+                if self.eventBridge != nil {
+                    map["EventBridge"] = self.eventBridge!
+                }
+                if self.mscChannels != nil {
+                    map["MscChannels"] = self.mscChannels!
+                }
+                if self.mscContacts != nil {
+                    map["MscContacts"] = self.mscContacts!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.sequence != nil {
+                    map["Sequence"] = self.sequence!
+                }
+                if self.thresholdType != nil {
+                    map["ThresholdType"] = self.thresholdType!
+                }
+                if self.thresholdValue != nil {
+                    map["ThresholdValue"] = self.thresholdValue!
+                }
+                if self.warnTarget != nil {
+                    map["WarnTarget"] = self.warnTarget!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Comment"] as? String {
+                    self.comment = value
+                }
+                if let value = dict["EventBridge"] as? Bool {
+                    self.eventBridge = value
+                }
+                if let value = dict["MscChannels"] as? [String] {
+                    self.mscChannels = value
+                }
+                if let value = dict["MscContacts"] as? [String] {
+                    self.mscContacts = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["Sequence"] as? Int32 {
+                    self.sequence = value
+                }
+                if let value = dict["ThresholdType"] as? String {
+                    self.thresholdType = value
+                }
+                if let value = dict["ThresholdValue"] as? String {
+                    self.thresholdValue = value
+                }
+                if let value = dict["WarnTarget"] as? String {
+                    self.warnTarget = value
+                }
+            }
+        }
+        public var budgetName: String?
+
+        public var budgetType: String?
+
+        public var comment: String?
+
+        public var cycleEndPeriod: String?
+
+        public var cycleQuota: [DescribeBudgetsResponseBody.Data.CycleQuota]?
+
+        public var cycleStartPeriod: String?
+
+        public var cycleType: String?
+
+        public var ecIdAccountIdsFilter: DescribeBudgetsResponseBody.Data.EcIdAccountIdsFilter?
+
+        public var expireStatus: String?
+
+        public var metric: String?
+
+        public var queryFilter: [DescribeBudgetsResponseBody.Data.QueryFilter]?
+
+        public var quota: String?
+
+        public var quotaType: String?
+
+        public var warnConfs: [DescribeBudgetsResponseBody.Data.WarnConfs]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.ecIdAccountIdsFilter?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.budgetName != nil {
+                map["BudgetName"] = self.budgetName!
+            }
+            if self.budgetType != nil {
+                map["BudgetType"] = self.budgetType!
+            }
+            if self.comment != nil {
+                map["Comment"] = self.comment!
+            }
+            if self.cycleEndPeriod != nil {
+                map["CycleEndPeriod"] = self.cycleEndPeriod!
+            }
+            if self.cycleQuota != nil {
+                var tmp : [Any] = []
+                for k in self.cycleQuota! {
+                    tmp.append(k.toMap())
+                }
+                map["CycleQuota"] = tmp
+            }
+            if self.cycleStartPeriod != nil {
+                map["CycleStartPeriod"] = self.cycleStartPeriod!
+            }
+            if self.cycleType != nil {
+                map["CycleType"] = self.cycleType!
+            }
+            if self.ecIdAccountIdsFilter != nil {
+                map["EcIdAccountIdsFilter"] = self.ecIdAccountIdsFilter?.toMap()
+            }
+            if self.expireStatus != nil {
+                map["ExpireStatus"] = self.expireStatus!
+            }
+            if self.metric != nil {
+                map["Metric"] = self.metric!
+            }
+            if self.queryFilter != nil {
+                var tmp : [Any] = []
+                for k in self.queryFilter! {
+                    tmp.append(k.toMap())
+                }
+                map["QueryFilter"] = tmp
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota!
+            }
+            if self.quotaType != nil {
+                map["QuotaType"] = self.quotaType!
+            }
+            if self.warnConfs != nil {
+                var tmp : [Any] = []
+                for k in self.warnConfs! {
+                    tmp.append(k.toMap())
+                }
+                map["WarnConfs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BudgetName"] as? String {
+                self.budgetName = value
+            }
+            if let value = dict["BudgetType"] as? String {
+                self.budgetType = value
+            }
+            if let value = dict["Comment"] as? String {
+                self.comment = value
+            }
+            if let value = dict["CycleEndPeriod"] as? String {
+                self.cycleEndPeriod = value
+            }
+            if let value = dict["CycleQuota"] as? [Any?] {
+                var tmp : [DescribeBudgetsResponseBody.Data.CycleQuota] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeBudgetsResponseBody.Data.CycleQuota()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.cycleQuota = tmp
+            }
+            if let value = dict["CycleStartPeriod"] as? String {
+                self.cycleStartPeriod = value
+            }
+            if let value = dict["CycleType"] as? String {
+                self.cycleType = value
+            }
+            if let value = dict["EcIdAccountIdsFilter"] as? [String: Any?] {
+                var model = DescribeBudgetsResponseBody.Data.EcIdAccountIdsFilter()
+                model.fromMap(value)
+                self.ecIdAccountIdsFilter = model
+            }
+            if let value = dict["ExpireStatus"] as? String {
+                self.expireStatus = value
+            }
+            if let value = dict["Metric"] as? String {
+                self.metric = value
+            }
+            if let value = dict["QueryFilter"] as? [Any?] {
+                var tmp : [DescribeBudgetsResponseBody.Data.QueryFilter] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeBudgetsResponseBody.Data.QueryFilter()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.queryFilter = tmp
+            }
+            if let value = dict["Quota"] as? String {
+                self.quota = value
+            }
+            if let value = dict["QuotaType"] as? String {
+                self.quotaType = value
+            }
+            if let value = dict["WarnConfs"] as? [Any?] {
+                var tmp : [DescribeBudgetsResponseBody.Data.WarnConfs] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeBudgetsResponseBody.Data.WarnConfs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.warnConfs = tmp
+            }
+        }
+    }
+    public var currentPage: Int32?
+
+    public var data: [DescribeBudgetsResponseBody.Data]?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [DescribeBudgetsResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeBudgetsResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeBudgetsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBudgetsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeBudgetsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -16376,6 +18221,645 @@ public class SetSavingPlanUserDeductRuleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetSavingPlanUserDeductRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateBudgetRequest : Tea.TeaModel {
+    public class CycleQuota : Tea.TeaModel {
+        public var cyclePeriod: String?
+
+        public var quota: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cyclePeriod != nil {
+                map["CyclePeriod"] = self.cyclePeriod!
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CyclePeriod"] as? String {
+                self.cyclePeriod = value
+            }
+            if let value = dict["Quota"] as? String {
+                self.quota = value
+            }
+        }
+    }
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public class QueryFilter : Tea.TeaModel {
+        public var code: String?
+
+        public var selectType: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.selectType != nil {
+                map["SelectType"] = self.selectType!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["SelectType"] as? String {
+                self.selectType = value
+            }
+            if let value = dict["Values"] as? [String] {
+                self.values = value
+            }
+        }
+    }
+    public class WarnConfs : Tea.TeaModel {
+        public var comment: String?
+
+        public var eventBridge: Bool?
+
+        public var mscChannels: [String]?
+
+        public var mscContacts: [String]?
+
+        public var name: String?
+
+        public var thresholdType: String?
+
+        public var thresholdValue: String?
+
+        public var warnTarget: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.comment != nil {
+                map["Comment"] = self.comment!
+            }
+            if self.eventBridge != nil {
+                map["EventBridge"] = self.eventBridge!
+            }
+            if self.mscChannels != nil {
+                map["MscChannels"] = self.mscChannels!
+            }
+            if self.mscContacts != nil {
+                map["MscContacts"] = self.mscContacts!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.thresholdType != nil {
+                map["ThresholdType"] = self.thresholdType!
+            }
+            if self.thresholdValue != nil {
+                map["ThresholdValue"] = self.thresholdValue!
+            }
+            if self.warnTarget != nil {
+                map["WarnTarget"] = self.warnTarget!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Comment"] as? String {
+                self.comment = value
+            }
+            if let value = dict["EventBridge"] as? Bool {
+                self.eventBridge = value
+            }
+            if let value = dict["MscChannels"] as? [String] {
+                self.mscChannels = value
+            }
+            if let value = dict["MscContacts"] as? [String] {
+                self.mscContacts = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["ThresholdType"] as? String {
+                self.thresholdType = value
+            }
+            if let value = dict["ThresholdValue"] as? String {
+                self.thresholdValue = value
+            }
+            if let value = dict["WarnTarget"] as? String {
+                self.warnTarget = value
+            }
+        }
+    }
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var comment: String?
+
+    public var cycleEndPeriod: String?
+
+    public var cycleQuota: [UpdateBudgetRequest.CycleQuota]?
+
+    public var cycleStartPeriod: String?
+
+    public var cycleType: String?
+
+    public var ecIdAccountIds: [UpdateBudgetRequest.EcIdAccountIds]?
+
+    public var metric: String?
+
+    public var nbid: String?
+
+    public var originalBudgetName: String?
+
+    public var queryFilter: [UpdateBudgetRequest.QueryFilter]?
+
+    public var quota: String?
+
+    public var quotaType: String?
+
+    public var warnConfs: [UpdateBudgetRequest.WarnConfs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.cycleEndPeriod != nil {
+            map["CycleEndPeriod"] = self.cycleEndPeriod!
+        }
+        if self.cycleQuota != nil {
+            var tmp : [Any] = []
+            for k in self.cycleQuota! {
+                tmp.append(k.toMap())
+            }
+            map["CycleQuota"] = tmp
+        }
+        if self.cycleStartPeriod != nil {
+            map["CycleStartPeriod"] = self.cycleStartPeriod!
+        }
+        if self.cycleType != nil {
+            map["CycleType"] = self.cycleType!
+        }
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.originalBudgetName != nil {
+            map["OriginalBudgetName"] = self.originalBudgetName!
+        }
+        if self.queryFilter != nil {
+            var tmp : [Any] = []
+            for k in self.queryFilter! {
+                tmp.append(k.toMap())
+            }
+            map["QueryFilter"] = tmp
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.quotaType != nil {
+            map["QuotaType"] = self.quotaType!
+        }
+        if self.warnConfs != nil {
+            var tmp : [Any] = []
+            for k in self.warnConfs! {
+                tmp.append(k.toMap())
+            }
+            map["WarnConfs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["CycleEndPeriod"] as? String {
+            self.cycleEndPeriod = value
+        }
+        if let value = dict["CycleQuota"] as? [Any?] {
+            var tmp : [UpdateBudgetRequest.CycleQuota] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateBudgetRequest.CycleQuota()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.cycleQuota = tmp
+        }
+        if let value = dict["CycleStartPeriod"] as? String {
+            self.cycleStartPeriod = value
+        }
+        if let value = dict["CycleType"] as? String {
+            self.cycleType = value
+        }
+        if let value = dict["EcIdAccountIds"] as? [Any?] {
+            var tmp : [UpdateBudgetRequest.EcIdAccountIds] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateBudgetRequest.EcIdAccountIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["OriginalBudgetName"] as? String {
+            self.originalBudgetName = value
+        }
+        if let value = dict["QueryFilter"] as? [Any?] {
+            var tmp : [UpdateBudgetRequest.QueryFilter] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateBudgetRequest.QueryFilter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.queryFilter = tmp
+        }
+        if let value = dict["Quota"] as? String {
+            self.quota = value
+        }
+        if let value = dict["QuotaType"] as? String {
+            self.quotaType = value
+        }
+        if let value = dict["WarnConfs"] as? [Any?] {
+            var tmp : [UpdateBudgetRequest.WarnConfs] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateBudgetRequest.WarnConfs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.warnConfs = tmp
+        }
+    }
+}
+
+public class UpdateBudgetShrinkRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var budgetType: String?
+
+    public var comment: String?
+
+    public var cycleEndPeriod: String?
+
+    public var cycleQuotaShrink: String?
+
+    public var cycleStartPeriod: String?
+
+    public var cycleType: String?
+
+    public var ecIdAccountIdsShrink: String?
+
+    public var metric: String?
+
+    public var nbid: String?
+
+    public var originalBudgetName: String?
+
+    public var queryFilterShrink: String?
+
+    public var quota: String?
+
+    public var quotaType: String?
+
+    public var warnConfsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.cycleEndPeriod != nil {
+            map["CycleEndPeriod"] = self.cycleEndPeriod!
+        }
+        if self.cycleQuotaShrink != nil {
+            map["CycleQuota"] = self.cycleQuotaShrink!
+        }
+        if self.cycleStartPeriod != nil {
+            map["CycleStartPeriod"] = self.cycleStartPeriod!
+        }
+        if self.cycleType != nil {
+            map["CycleType"] = self.cycleType!
+        }
+        if self.ecIdAccountIdsShrink != nil {
+            map["EcIdAccountIds"] = self.ecIdAccountIdsShrink!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.originalBudgetName != nil {
+            map["OriginalBudgetName"] = self.originalBudgetName!
+        }
+        if self.queryFilterShrink != nil {
+            map["QueryFilter"] = self.queryFilterShrink!
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.quotaType != nil {
+            map["QuotaType"] = self.quotaType!
+        }
+        if self.warnConfsShrink != nil {
+            map["WarnConfs"] = self.warnConfsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["BudgetType"] as? String {
+            self.budgetType = value
+        }
+        if let value = dict["Comment"] as? String {
+            self.comment = value
+        }
+        if let value = dict["CycleEndPeriod"] as? String {
+            self.cycleEndPeriod = value
+        }
+        if let value = dict["CycleQuota"] as? String {
+            self.cycleQuotaShrink = value
+        }
+        if let value = dict["CycleStartPeriod"] as? String {
+            self.cycleStartPeriod = value
+        }
+        if let value = dict["CycleType"] as? String {
+            self.cycleType = value
+        }
+        if let value = dict["EcIdAccountIds"] as? String {
+            self.ecIdAccountIdsShrink = value
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["OriginalBudgetName"] as? String {
+            self.originalBudgetName = value
+        }
+        if let value = dict["QueryFilter"] as? String {
+            self.queryFilterShrink = value
+        }
+        if let value = dict["Quota"] as? String {
+            self.quota = value
+        }
+        if let value = dict["QuotaType"] as? String {
+            self.quotaType = value
+        }
+        if let value = dict["WarnConfs"] as? String {
+            self.warnConfsShrink = value
+        }
+    }
+}
+
+public class UpdateBudgetResponseBody : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BudgetName"] as? String {
+            self.budgetName = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateBudgetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateBudgetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateBudgetResponseBody()
             model.fromMap(value)
             self.body = model
         }
