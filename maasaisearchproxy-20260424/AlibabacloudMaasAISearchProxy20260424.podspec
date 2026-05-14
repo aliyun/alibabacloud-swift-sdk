@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudMaasAISearchProxy20260424"
-  spec.version      = "1.0.0"
+  spec.version      = "2.0.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud MaasAISearchProxy (20260424) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/maasaisearchproxy-20260424" 

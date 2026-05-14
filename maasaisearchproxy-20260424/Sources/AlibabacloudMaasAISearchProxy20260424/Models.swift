@@ -87,7 +87,57 @@ public class WebSearchRequest : Tea.TeaModel {
 public class WebSearchResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Result : Tea.TeaModel {
+            public class Source : Tea.TeaModel {
+                public var domain: String?
+
+                public var favicon: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.domain != nil {
+                        map["domain"] = self.domain!
+                    }
+                    if self.favicon != nil {
+                        map["favicon"] = self.favicon!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["domain"] as? String {
+                        self.domain = value
+                    }
+                    if let value = dict["favicon"] as? String {
+                        self.favicon = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public var date: String?
+
             public var snippet: String?
+
+            public var source: WebSearchResponseBody.Data.Result.Source?
 
             public var title: String?
 
@@ -103,12 +153,19 @@ public class WebSearchResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.source?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.date != nil {
+                    map["date"] = self.date!
+                }
                 if self.snippet != nil {
                     map["snippet"] = self.snippet!
+                }
+                if self.source != nil {
+                    map["source"] = self.source?.toMap()
                 }
                 if self.title != nil {
                     map["title"] = self.title!
@@ -121,8 +178,16 @@ public class WebSearchResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["date"] as? String {
+                    self.date = value
+                }
                 if let value = dict["snippet"] as? String {
                     self.snippet = value
+                }
+                if let value = dict["source"] as? [String: Any?] {
+                    var model = WebSearchResponseBody.Data.Result.Source()
+                    model.fromMap(value)
+                    self.source = model
                 }
                 if let value = dict["title"] as? String {
                     self.title = value
@@ -189,8 +254,6 @@ public class WebSearchResponseBody : Tea.TeaModel {
 
     public var message: String?
 
-    public var traceId: String?
-
     public override init() {
         super.init()
     }
@@ -215,9 +278,6 @@ public class WebSearchResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["message"] = self.message!
         }
-        if self.traceId != nil {
-            map["traceId"] = self.traceId!
-        }
         return map
     }
 
@@ -233,9 +293,6 @@ public class WebSearchResponseBody : Tea.TeaModel {
         }
         if let value = dict["message"] as? String {
             self.message = value
-        }
-        if let value = dict["traceId"] as? String {
-            self.traceId = value
         }
     }
 }
