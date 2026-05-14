@@ -40272,7 +40272,55 @@ public class GetProjectRoleRequest : Tea.TeaModel {
 
 public class GetProjectRoleResponseBody : Tea.TeaModel {
     public class ProjectRole : Tea.TeaModel {
+        public class ModulePermissions : Tea.TeaModel {
+            public var moduleId: Int64?
+
+            public var moduleName: String?
+
+            public var permissionType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.moduleId != nil {
+                    map["ModuleId"] = self.moduleId!
+                }
+                if self.moduleName != nil {
+                    map["ModuleName"] = self.moduleName!
+                }
+                if self.permissionType != nil {
+                    map["PermissionType"] = self.permissionType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ModuleId"] as? Int64 {
+                    self.moduleId = value
+                }
+                if let value = dict["ModuleName"] as? String {
+                    self.moduleName = value
+                }
+                if let value = dict["PermissionType"] as? String {
+                    self.permissionType = value
+                }
+            }
+        }
         public var code: String?
+
+        public var modulePermissions: [GetProjectRoleResponseBody.ProjectRole.ModulePermissions]?
 
         public var name: String?
 
@@ -40297,6 +40345,13 @@ public class GetProjectRoleResponseBody : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.modulePermissions != nil {
+                var tmp : [Any] = []
+                for k in self.modulePermissions! {
+                    tmp.append(k.toMap())
+                }
+                map["ModulePermissions"] = tmp
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -40313,6 +40368,19 @@ public class GetProjectRoleResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Code"] as? String {
                 self.code = value
+            }
+            if let value = dict["ModulePermissions"] as? [Any?] {
+                var tmp : [GetProjectRoleResponseBody.ProjectRole.ModulePermissions] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetProjectRoleResponseBody.ProjectRole.ModulePermissions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.modulePermissions = tmp
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -73243,7 +73311,55 @@ public class ListProjectRolesShrinkRequest : Tea.TeaModel {
 public class ListProjectRolesResponseBody : Tea.TeaModel {
     public class PagingInfo : Tea.TeaModel {
         public class ProjectRoles : Tea.TeaModel {
+            public class ModulePermissions : Tea.TeaModel {
+                public var moduleId: Int64?
+
+                public var moduleName: String?
+
+                public var permissionType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.moduleId != nil {
+                        map["ModuleId"] = self.moduleId!
+                    }
+                    if self.moduleName != nil {
+                        map["ModuleName"] = self.moduleName!
+                    }
+                    if self.permissionType != nil {
+                        map["PermissionType"] = self.permissionType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ModuleId"] as? Int64 {
+                        self.moduleId = value
+                    }
+                    if let value = dict["ModuleName"] as? String {
+                        self.moduleName = value
+                    }
+                    if let value = dict["PermissionType"] as? String {
+                        self.permissionType = value
+                    }
+                }
+            }
             public var code: String?
+
+            public var modulePermissions: [ListProjectRolesResponseBody.PagingInfo.ProjectRoles.ModulePermissions]?
 
             public var name: String?
 
@@ -73268,6 +73384,13 @@ public class ListProjectRolesResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["Code"] = self.code!
                 }
+                if self.modulePermissions != nil {
+                    var tmp : [Any] = []
+                    for k in self.modulePermissions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ModulePermissions"] = tmp
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -73284,6 +73407,19 @@ public class ListProjectRolesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["Code"] as? String {
                     self.code = value
+                }
+                if let value = dict["ModulePermissions"] as? [Any?] {
+                    var tmp : [ListProjectRolesResponseBody.PagingInfo.ProjectRoles.ModulePermissions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListProjectRolesResponseBody.PagingInfo.ProjectRoles.ModulePermissions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.modulePermissions = tmp
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
