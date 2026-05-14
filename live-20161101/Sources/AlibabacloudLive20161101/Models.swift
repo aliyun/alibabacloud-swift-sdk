@@ -48067,6 +48067,8 @@ public class DescribeLiveRecordNotifyRecordsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var storageType: String?
+
     public var streamName: String?
 
     public override init() {
@@ -48110,6 +48112,9 @@ public class DescribeLiveRecordNotifyRecordsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
         if self.streamName != nil {
             map["StreamName"] = self.streamName!
         }
@@ -48145,6 +48150,9 @@ public class DescribeLiveRecordNotifyRecordsRequest : Tea.TeaModel {
         if let value = dict["Status"] as? String {
             self.status = value
         }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
         if let value = dict["StreamName"] as? String {
             self.streamName = value
         }
@@ -48172,6 +48180,8 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
         public var notifyType: String?
 
         public var notifyUrl: String?
+
+        public var storageType: String?
 
         public var streamName: String?
 
@@ -48219,6 +48229,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             if self.notifyUrl != nil {
                 map["NotifyUrl"] = self.notifyUrl!
             }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
+            }
             if self.streamName != nil {
                 map["StreamName"] = self.streamName!
             }
@@ -48256,6 +48269,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["NotifyUrl"] as? String {
                 self.notifyUrl = value
+            }
+            if let value = dict["StorageType"] as? String {
+                self.storageType = value
             }
             if let value = dict["StreamName"] as? String {
                 self.streamName = value
