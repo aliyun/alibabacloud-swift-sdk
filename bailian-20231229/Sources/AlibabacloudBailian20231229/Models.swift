@@ -223,6 +223,44 @@ public class AddCategoryResponse : Tea.TeaModel {
 }
 
 public class AddFileRequest : Tea.TeaModel {
+    public class ParserConfig : Tea.TeaModel {
+        public var modelName: String?
+
+        public var modelPrompt: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.modelName != nil {
+                map["ModelName"] = self.modelName!
+            }
+            if self.modelPrompt != nil {
+                map["ModelPrompt"] = self.modelPrompt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ModelName"] as? String {
+                self.modelName = value
+            }
+            if let value = dict["ModelPrompt"] as? String {
+                self.modelPrompt = value
+            }
+        }
+    }
     public var categoryId: String?
 
     public var categoryType: String?
@@ -232,6 +270,8 @@ public class AddFileRequest : Tea.TeaModel {
     public var originalFileUrl: String?
 
     public var parser: String?
+
+    public var parserConfig: AddFileRequest.ParserConfig?
 
     public var tags: [String]?
 
@@ -245,6 +285,7 @@ public class AddFileRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.parserConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -263,6 +304,9 @@ public class AddFileRequest : Tea.TeaModel {
         }
         if self.parser != nil {
             map["Parser"] = self.parser!
+        }
+        if self.parserConfig != nil {
+            map["ParserConfig"] = self.parserConfig?.toMap()
         }
         if self.tags != nil {
             map["Tags"] = self.tags!
@@ -287,6 +331,11 @@ public class AddFileRequest : Tea.TeaModel {
         if let value = dict["Parser"] as? String {
             self.parser = value
         }
+        if let value = dict["ParserConfig"] as? [String: Any?] {
+            var model = AddFileRequest.ParserConfig()
+            model.fromMap(value)
+            self.parserConfig = model
+        }
         if let value = dict["Tags"] as? [String] {
             self.tags = value
         }
@@ -303,6 +352,8 @@ public class AddFileShrinkRequest : Tea.TeaModel {
     public var originalFileUrl: String?
 
     public var parser: String?
+
+    public var parserConfigShrink: String?
 
     public var tagsShrink: String?
 
@@ -335,6 +386,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
         if self.parser != nil {
             map["Parser"] = self.parser!
         }
+        if self.parserConfigShrink != nil {
+            map["ParserConfig"] = self.parserConfigShrink!
+        }
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
@@ -357,6 +411,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Parser"] as? String {
             self.parser = value
+        }
+        if let value = dict["ParserConfig"] as? String {
+            self.parserConfigShrink = value
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
@@ -1792,6 +1849,358 @@ public class ApplyTempStorageLeaseResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ApplyTempStorageLeaseResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class BatchUpdateFileTagRequest : Tea.TeaModel {
+    public class FileInfos : Tea.TeaModel {
+        public var fileId: String?
+
+        public var tags: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.tags != nil {
+                map["tags"] = self.tags!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileId"] as? String {
+                self.fileId = value
+            }
+            if let value = dict["tags"] as? [String] {
+                self.tags = value
+            }
+        }
+    }
+    public var fileInfos: [BatchUpdateFileTagRequest.FileInfos]?
+
+    public var updateMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileInfos != nil {
+            var tmp : [Any] = []
+            for k in self.fileInfos! {
+                tmp.append(k.toMap())
+            }
+            map["FileInfos"] = tmp
+        }
+        if self.updateMode != nil {
+            map["UpdateMode"] = self.updateMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileInfos"] as? [Any?] {
+            var tmp : [BatchUpdateFileTagRequest.FileInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = BatchUpdateFileTagRequest.FileInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fileInfos = tmp
+        }
+        if let value = dict["UpdateMode"] as? String {
+            self.updateMode = value
+        }
+    }
+}
+
+public class BatchUpdateFileTagShrinkRequest : Tea.TeaModel {
+    public var fileInfosShrink: String?
+
+    public var updateMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileInfosShrink != nil {
+            map["FileInfos"] = self.fileInfosShrink!
+        }
+        if self.updateMode != nil {
+            map["UpdateMode"] = self.updateMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FileInfos"] as? String {
+            self.fileInfosShrink = value
+        }
+        if let value = dict["UpdateMode"] as? String {
+            self.updateMode = value
+        }
+    }
+}
+
+public class BatchUpdateFileTagResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class UpdateFileTagResultList : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var fileId: String?
+
+            public var success: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.fileId != nil {
+                    map["FileId"] = self.fileId!
+                }
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMessage"] as? String {
+                    self.errorMessage = value
+                }
+                if let value = dict["FileId"] as? String {
+                    self.fileId = value
+                }
+                if let value = dict["Success"] as? Bool {
+                    self.success = value
+                }
+            }
+        }
+        public var updateFileTagResultList: [BatchUpdateFileTagResponseBody.Data.UpdateFileTagResultList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.updateFileTagResultList != nil {
+                var tmp : [Any] = []
+                for k in self.updateFileTagResultList! {
+                    tmp.append(k.toMap())
+                }
+                map["UpdateFileTagResultList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UpdateFileTagResultList"] as? [Any?] {
+                var tmp : [BatchUpdateFileTagResponseBody.Data.UpdateFileTagResultList] = []
+                for v in value {
+                    if v != nil {
+                        var model = BatchUpdateFileTagResponseBody.Data.UpdateFileTagResultList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.updateFileTagResultList = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: BatchUpdateFileTagResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = BatchUpdateFileTagResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class BatchUpdateFileTagResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchUpdateFileTagResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchUpdateFileTagResponseBody()
             model.fromMap(value)
             self.body = model
         }

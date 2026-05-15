@@ -70,6 +70,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddFileShrinkRequest = AddFileShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.parserConfig)) {
+            request.parserConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parserConfig, "ParserConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
         }
@@ -88,6 +91,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.parser)) {
             body["Parser"] = request.parser ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parserConfigShrink)) {
+            body["ParserConfig"] = request.parserConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
             body["Tags"] = request.tagsShrink ?? "";
@@ -300,6 +306,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await applyTempStorageLeaseWithOptions(WorkspaceId as! String, request as! ApplyTempStorageLeaseRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFileTagWithOptions(_ WorkspaceId: String, _ tmpReq: BatchUpdateFileTagRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateFileTagResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchUpdateFileTagShrinkRequest = BatchUpdateFileTagShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.fileInfos)) {
+            request.fileInfosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fileInfos, "FileInfos", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileInfosShrink)) {
+            body["FileInfos"] = request.fileInfosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateMode)) {
+            body["UpdateMode"] = request.updateMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateFileTag",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/datacenter/batchupdatetag",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateFileTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFileTag(_ WorkspaceId: String, _ request: BatchUpdateFileTagRequest) async throws -> BatchUpdateFileTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchUpdateFileTagWithOptions(WorkspaceId as! String, request as! BatchUpdateFileTagRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
