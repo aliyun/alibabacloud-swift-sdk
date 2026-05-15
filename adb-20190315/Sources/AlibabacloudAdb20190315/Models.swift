@@ -37096,6 +37096,8 @@ public class ModifyDBClusterShardNumberRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var isRollback: Bool?
+
     public var newShardNumber: Int64?
 
     public var ownerAccount: String?
@@ -37132,6 +37134,9 @@ public class ModifyDBClusterShardNumberRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.isRollback != nil {
+            map["IsRollback"] = self.isRollback!
+        }
         if self.newShardNumber != nil {
             map["NewShardNumber"] = self.newShardNumber!
         }
@@ -37166,6 +37171,9 @@ public class ModifyDBClusterShardNumberRequest : Tea.TeaModel {
         }
         if let value = dict["DryRun"] as? Bool {
             self.dryRun = value
+        }
+        if let value = dict["IsRollback"] as? Bool {
+            self.isRollback = value
         }
         if let value = dict["NewShardNumber"] as? Int64 {
             self.newShardNumber = value

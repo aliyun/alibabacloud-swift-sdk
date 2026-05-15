@@ -6636,6 +6636,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.isRollback)) {
+            query["IsRollback"] = request.isRollback!;
+        }
         if (!TeaUtils.Client.isUnset(request.newShardNumber)) {
             query["NewShardNumber"] = request.newShardNumber!;
         }
