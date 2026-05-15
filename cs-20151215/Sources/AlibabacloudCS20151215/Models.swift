@@ -13139,6 +13139,44 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class EfloNodeGroup : Tea.TeaModel {
+        public var clusterId: String?
+
+        public var groupId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["cluster_id"] = self.clusterId!
+            }
+            if self.groupId != nil {
+                map["group_id"] = self.groupId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cluster_id"] as? String {
+                self.clusterId = value
+            }
+            if let value = dict["group_id"] as? String {
+                self.groupId = value
+            }
+        }
+    }
     public class InterconnectConfig : Tea.TeaModel {
         public var bandwidth: Int64?
 
@@ -14682,6 +14720,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
     public var autoScaling: DescribeClusterNodePoolDetailResponseBody.AutoScaling?
 
+    public var efloNodeGroup: DescribeClusterNodePoolDetailResponseBody.EfloNodeGroup?
+
     public var hostNetwork: Bool?
 
     public var interconnectConfig: DescribeClusterNodePoolDetailResponseBody.InterconnectConfig?
@@ -14720,6 +14760,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.autoMode?.validate()
         try self.autoScaling?.validate()
+        try self.efloNodeGroup?.validate()
         try self.interconnectConfig?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
@@ -14737,6 +14778,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         if self.autoScaling != nil {
             map["auto_scaling"] = self.autoScaling?.toMap()
+        }
+        if self.efloNodeGroup != nil {
+            map["eflo_node_group"] = self.efloNodeGroup?.toMap()
         }
         if self.hostNetwork != nil {
             map["host_network"] = self.hostNetwork!
@@ -14795,6 +14839,11 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             var model = DescribeClusterNodePoolDetailResponseBody.AutoScaling()
             model.fromMap(value)
             self.autoScaling = model
+        }
+        if let value = dict["eflo_node_group"] as? [String: Any?] {
+            var model = DescribeClusterNodePoolDetailResponseBody.EfloNodeGroup()
+            model.fromMap(value)
+            self.efloNodeGroup = model
         }
         if let value = dict["host_network"] as? Bool {
             self.hostNetwork = value
@@ -15052,6 +15101,44 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
+                }
+            }
+        }
+        public class EfloNodeGroup : Tea.TeaModel {
+            public var clusterId: String?
+
+            public var groupId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterId != nil {
+                    map["cluster_id"] = self.clusterId!
+                }
+                if self.groupId != nil {
+                    map["group_id"] = self.groupId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["cluster_id"] as? String {
+                    self.clusterId = value
+                }
+                if let value = dict["group_id"] as? String {
+                    self.groupId = value
                 }
             }
         }
@@ -16503,6 +16590,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
         public var autoScaling: DescribeClusterNodePoolsResponseBody.Nodepools.AutoScaling?
 
+        public var efloNodeGroup: DescribeClusterNodePoolsResponseBody.Nodepools.EfloNodeGroup?
+
         public var interconnectConfig: DescribeClusterNodePoolsResponseBody.Nodepools.InterconnectConfig?
 
         public var interconnectMode: String?
@@ -16537,6 +16626,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.autoMode?.validate()
             try self.autoScaling?.validate()
+            try self.efloNodeGroup?.validate()
             try self.interconnectConfig?.validate()
             try self.kubernetesConfig?.validate()
             try self.management?.validate()
@@ -16554,6 +16644,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
             if self.autoScaling != nil {
                 map["auto_scaling"] = self.autoScaling?.toMap()
+            }
+            if self.efloNodeGroup != nil {
+                map["eflo_node_group"] = self.efloNodeGroup?.toMap()
             }
             if self.interconnectConfig != nil {
                 map["interconnect_config"] = self.interconnectConfig?.toMap()
@@ -16606,6 +16699,11 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 var model = DescribeClusterNodePoolsResponseBody.Nodepools.AutoScaling()
                 model.fromMap(value)
                 self.autoScaling = model
+            }
+            if let value = dict["eflo_node_group"] as? [String: Any?] {
+                var model = DescribeClusterNodePoolsResponseBody.Nodepools.EfloNodeGroup()
+                model.fromMap(value)
+                self.efloNodeGroup = model
             }
             if let value = dict["interconnect_config"] as? [String: Any?] {
                 var model = DescribeClusterNodePoolsResponseBody.Nodepools.InterconnectConfig()
