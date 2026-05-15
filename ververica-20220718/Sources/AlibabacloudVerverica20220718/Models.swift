@@ -75,6 +75,8 @@ public class AiModel : Tea.TeaModel {
 }
 
 public class Artifact : Tea.TeaModel {
+    public var cdcYamlArtifact: CdcYamlArtifact?
+
     public var jarArtifact: JarArtifact?
 
     public var kind: String?
@@ -93,6 +95,7 @@ public class Artifact : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.cdcYamlArtifact?.validate()
         try self.jarArtifact?.validate()
         try self.pythonArtifact?.validate()
         try self.sqlArtifact?.validate()
@@ -100,6 +103,9 @@ public class Artifact : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cdcYamlArtifact != nil {
+            map["cdcYamlArtifact"] = self.cdcYamlArtifact?.toMap()
+        }
         if self.jarArtifact != nil {
             map["jarArtifact"] = self.jarArtifact?.toMap()
         }
@@ -117,6 +123,11 @@ public class Artifact : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["cdcYamlArtifact"] as? [String: Any?] {
+            var model = CdcYamlArtifact()
+            model.fromMap(value)
+            self.cdcYamlArtifact = model
+        }
         if let value = dict["jarArtifact"] as? [String: Any?] {
             var model = JarArtifact()
             model.fromMap(value)
@@ -578,6 +589,45 @@ public class Catalog : Tea.TeaModel {
         }
         if let value = dict["properties"] as? [String: Any] {
             self.properties = value
+        }
+    }
+}
+
+public class CdcYamlArtifact : Tea.TeaModel {
+    public var additionalDependencies: [String]?
+
+    public var cdcYaml: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalDependencies != nil {
+            map["additionalDependencies"] = self.additionalDependencies!
+        }
+        if self.cdcYaml != nil {
+            map["cdcYaml"] = self.cdcYaml!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["additionalDependencies"] as? [String] {
+            self.additionalDependencies = value
+        }
+        if let value = dict["cdcYaml"] as? String {
+            self.cdcYaml = value
         }
     }
 }
