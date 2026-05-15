@@ -5485,6 +5485,84 @@ public class AddLiveRecordNotifyConfigResponse : Tea.TeaModel {
 }
 
 public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
+    public class RecordFormat : Tea.TeaModel {
+        public var autoCompose: String?
+
+        public var format: String?
+
+        public var processMethod: String?
+
+        public var processTemplateId: String?
+
+        public var sliceDuration: Int32?
+
+        public var tags: String?
+
+        public var videoProcess: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoCompose != nil {
+                map["AutoCompose"] = self.autoCompose!
+            }
+            if self.format != nil {
+                map["Format"] = self.format!
+            }
+            if self.processMethod != nil {
+                map["ProcessMethod"] = self.processMethod!
+            }
+            if self.processTemplateId != nil {
+                map["ProcessTemplateId"] = self.processTemplateId!
+            }
+            if self.sliceDuration != nil {
+                map["SliceDuration"] = self.sliceDuration!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
+            if self.videoProcess != nil {
+                map["VideoProcess"] = self.videoProcess!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoCompose"] as? String {
+                self.autoCompose = value
+            }
+            if let value = dict["Format"] as? String {
+                self.format = value
+            }
+            if let value = dict["ProcessMethod"] as? String {
+                self.processMethod = value
+            }
+            if let value = dict["ProcessTemplateId"] as? String {
+                self.processTemplateId = value
+            }
+            if let value = dict["SliceDuration"] as? Int32 {
+                self.sliceDuration = value
+            }
+            if let value = dict["Tags"] as? String {
+                self.tags = value
+            }
+            if let value = dict["VideoProcess"] as? String {
+                self.videoProcess = value
+            }
+        }
+    }
     public var appName: String?
 
     public var autoCompose: String?
@@ -5493,17 +5571,29 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
 
     public var cycleDuration: Int32?
 
+    public var delayTime: Int32?
+
     public var domainName: String?
+
+    public var formatConfig: Bool?
 
     public var onDemand: Int32?
 
     public var ownerId: Int64?
 
+    public var recordContent: String?
+
+    public var recordFormat: [AddLiveRecordVodConfigRequest.RecordFormat]?
+
     public var regionId: String?
+
+    public var spaceId: String?
 
     public var storageLocation: String?
 
     public var streamName: String?
+
+    public var transcodeTemplates: [String]?
 
     public var vodTranscodeGroupId: String?
 
@@ -5533,8 +5623,14 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         if self.cycleDuration != nil {
             map["CycleDuration"] = self.cycleDuration!
         }
+        if self.delayTime != nil {
+            map["DelayTime"] = self.delayTime!
+        }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
+        }
+        if self.formatConfig != nil {
+            map["FormatConfig"] = self.formatConfig!
         }
         if self.onDemand != nil {
             map["OnDemand"] = self.onDemand!
@@ -5542,14 +5638,30 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.recordContent != nil {
+            map["RecordContent"] = self.recordContent!
+        }
+        if self.recordFormat != nil {
+            var tmp : [Any] = []
+            for k in self.recordFormat! {
+                tmp.append(k.toMap())
+            }
+            map["RecordFormat"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.spaceId != nil {
+            map["SpaceId"] = self.spaceId!
         }
         if self.storageLocation != nil {
             map["StorageLocation"] = self.storageLocation!
         }
         if self.streamName != nil {
             map["StreamName"] = self.streamName!
+        }
+        if self.transcodeTemplates != nil {
+            map["TranscodeTemplates"] = self.transcodeTemplates!
         }
         if self.vodTranscodeGroupId != nil {
             map["VodTranscodeGroupId"] = self.vodTranscodeGroupId!
@@ -5571,8 +5683,14 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         if let value = dict["CycleDuration"] as? Int32 {
             self.cycleDuration = value
         }
+        if let value = dict["DelayTime"] as? Int32 {
+            self.delayTime = value
+        }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["FormatConfig"] as? Bool {
+            self.formatConfig = value
         }
         if let value = dict["OnDemand"] as? Int32 {
             self.onDemand = value
@@ -5580,14 +5698,36 @@ public class AddLiveRecordVodConfigRequest : Tea.TeaModel {
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["RecordContent"] as? String {
+            self.recordContent = value
+        }
+        if let value = dict["RecordFormat"] as? [Any?] {
+            var tmp : [AddLiveRecordVodConfigRequest.RecordFormat] = []
+            for v in value {
+                if v != nil {
+                    var model = AddLiveRecordVodConfigRequest.RecordFormat()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recordFormat = tmp
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SpaceId"] as? String {
+            self.spaceId = value
         }
         if let value = dict["StorageLocation"] as? String {
             self.storageLocation = value
         }
         if let value = dict["StreamName"] as? String {
             self.streamName = value
+        }
+        if let value = dict["TranscodeTemplates"] as? [String] {
+            self.transcodeTemplates = value
         }
         if let value = dict["VodTranscodeGroupId"] as? String {
             self.vodTranscodeGroupId = value
@@ -48510,6 +48650,128 @@ public class DescribeLiveRecordVodConfigsRequest : Tea.TeaModel {
 public class DescribeLiveRecordVodConfigsResponseBody : Tea.TeaModel {
     public class LiveRecordVodConfigs : Tea.TeaModel {
         public class LiveRecordVodConfig : Tea.TeaModel {
+            public class RecordFormatList : Tea.TeaModel {
+                public class RecordFormat : Tea.TeaModel {
+                    public var autoCompose: String?
+
+                    public var format: String?
+
+                    public var processMethod: String?
+
+                    public var processTemplateId: String?
+
+                    public var sliceDuration: Int32?
+
+                    public var tags: String?
+
+                    public var videoProcess: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.autoCompose != nil {
+                            map["AutoCompose"] = self.autoCompose!
+                        }
+                        if self.format != nil {
+                            map["Format"] = self.format!
+                        }
+                        if self.processMethod != nil {
+                            map["ProcessMethod"] = self.processMethod!
+                        }
+                        if self.processTemplateId != nil {
+                            map["ProcessTemplateId"] = self.processTemplateId!
+                        }
+                        if self.sliceDuration != nil {
+                            map["SliceDuration"] = self.sliceDuration!
+                        }
+                        if self.tags != nil {
+                            map["Tags"] = self.tags!
+                        }
+                        if self.videoProcess != nil {
+                            map["VideoProcess"] = self.videoProcess!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AutoCompose"] as? String {
+                            self.autoCompose = value
+                        }
+                        if let value = dict["Format"] as? String {
+                            self.format = value
+                        }
+                        if let value = dict["ProcessMethod"] as? String {
+                            self.processMethod = value
+                        }
+                        if let value = dict["ProcessTemplateId"] as? String {
+                            self.processTemplateId = value
+                        }
+                        if let value = dict["SliceDuration"] as? Int32 {
+                            self.sliceDuration = value
+                        }
+                        if let value = dict["Tags"] as? String {
+                            self.tags = value
+                        }
+                        if let value = dict["VideoProcess"] as? String {
+                            self.videoProcess = value
+                        }
+                    }
+                }
+                public var recordFormat: [DescribeLiveRecordVodConfigsResponseBody.LiveRecordVodConfigs.LiveRecordVodConfig.RecordFormatList.RecordFormat]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.recordFormat != nil {
+                        var tmp : [Any] = []
+                        for k in self.recordFormat! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RecordFormat"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RecordFormat"] as? [Any?] {
+                        var tmp : [DescribeLiveRecordVodConfigsResponseBody.LiveRecordVodConfigs.LiveRecordVodConfig.RecordFormatList.RecordFormat] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeLiveRecordVodConfigsResponseBody.LiveRecordVodConfigs.LiveRecordVodConfig.RecordFormatList.RecordFormat()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.recordFormat = tmp
+                    }
+                }
+            }
             public var appName: String?
 
             public var autoCompose: String?
@@ -48520,13 +48782,25 @@ public class DescribeLiveRecordVodConfigsResponseBody : Tea.TeaModel {
 
             public var cycleDuration: Int32?
 
+            public var delayTime: Int32?
+
             public var domainName: String?
 
+            public var formatConfig: Bool?
+
             public var onDemand: Int32?
+
+            public var recordContent: String?
+
+            public var recordFormatList: DescribeLiveRecordVodConfigsResponseBody.LiveRecordVodConfigs.LiveRecordVodConfig.RecordFormatList?
+
+            public var spaceId: String?
 
             public var storageLocation: String?
 
             public var streamName: String?
+
+            public var transcodeTemplates: String?
 
             public var vodTranscodeGroupId: String?
 
@@ -48540,6 +48814,7 @@ public class DescribeLiveRecordVodConfigsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.recordFormatList?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -48559,17 +48834,35 @@ public class DescribeLiveRecordVodConfigsResponseBody : Tea.TeaModel {
                 if self.cycleDuration != nil {
                     map["CycleDuration"] = self.cycleDuration!
                 }
+                if self.delayTime != nil {
+                    map["DelayTime"] = self.delayTime!
+                }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
                 }
+                if self.formatConfig != nil {
+                    map["FormatConfig"] = self.formatConfig!
+                }
                 if self.onDemand != nil {
                     map["OnDemand"] = self.onDemand!
+                }
+                if self.recordContent != nil {
+                    map["RecordContent"] = self.recordContent!
+                }
+                if self.recordFormatList != nil {
+                    map["RecordFormatList"] = self.recordFormatList?.toMap()
+                }
+                if self.spaceId != nil {
+                    map["SpaceId"] = self.spaceId!
                 }
                 if self.storageLocation != nil {
                     map["StorageLocation"] = self.storageLocation!
                 }
                 if self.streamName != nil {
                     map["StreamName"] = self.streamName!
+                }
+                if self.transcodeTemplates != nil {
+                    map["TranscodeTemplates"] = self.transcodeTemplates!
                 }
                 if self.vodTranscodeGroupId != nil {
                     map["VodTranscodeGroupId"] = self.vodTranscodeGroupId!
@@ -48594,17 +48887,37 @@ public class DescribeLiveRecordVodConfigsResponseBody : Tea.TeaModel {
                 if let value = dict["CycleDuration"] as? Int32 {
                     self.cycleDuration = value
                 }
+                if let value = dict["DelayTime"] as? Int32 {
+                    self.delayTime = value
+                }
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
                 }
+                if let value = dict["FormatConfig"] as? Bool {
+                    self.formatConfig = value
+                }
                 if let value = dict["OnDemand"] as? Int32 {
                     self.onDemand = value
+                }
+                if let value = dict["RecordContent"] as? String {
+                    self.recordContent = value
+                }
+                if let value = dict["RecordFormatList"] as? [String: Any?] {
+                    var model = DescribeLiveRecordVodConfigsResponseBody.LiveRecordVodConfigs.LiveRecordVodConfig.RecordFormatList()
+                    model.fromMap(value)
+                    self.recordFormatList = model
+                }
+                if let value = dict["SpaceId"] as? String {
+                    self.spaceId = value
                 }
                 if let value = dict["StorageLocation"] as? String {
                     self.storageLocation = value
                 }
                 if let value = dict["StreamName"] as? String {
                     self.streamName = value
+                }
+                if let value = dict["TranscodeTemplates"] as? String {
+                    self.transcodeTemplates = value
                 }
                 if let value = dict["VodTranscodeGroupId"] as? String {
                     self.vodTranscodeGroupId = value
@@ -103149,6 +103462,84 @@ public class UpdateLiveRecordNotifyConfigResponse : Tea.TeaModel {
 }
 
 public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
+    public class RecordFormat : Tea.TeaModel {
+        public var autoCompose: String?
+
+        public var format: String?
+
+        public var processMethod: String?
+
+        public var processTemplateId: String?
+
+        public var sliceDuration: Int32?
+
+        public var tags: String?
+
+        public var videoProcess: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoCompose != nil {
+                map["AutoCompose"] = self.autoCompose!
+            }
+            if self.format != nil {
+                map["Format"] = self.format!
+            }
+            if self.processMethod != nil {
+                map["ProcessMethod"] = self.processMethod!
+            }
+            if self.processTemplateId != nil {
+                map["ProcessTemplateId"] = self.processTemplateId!
+            }
+            if self.sliceDuration != nil {
+                map["SliceDuration"] = self.sliceDuration!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
+            if self.videoProcess != nil {
+                map["VideoProcess"] = self.videoProcess!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoCompose"] as? String {
+                self.autoCompose = value
+            }
+            if let value = dict["Format"] as? String {
+                self.format = value
+            }
+            if let value = dict["ProcessMethod"] as? String {
+                self.processMethod = value
+            }
+            if let value = dict["ProcessTemplateId"] as? String {
+                self.processTemplateId = value
+            }
+            if let value = dict["SliceDuration"] as? Int32 {
+                self.sliceDuration = value
+            }
+            if let value = dict["Tags"] as? String {
+                self.tags = value
+            }
+            if let value = dict["VideoProcess"] as? String {
+                self.videoProcess = value
+            }
+        }
+    }
     public var appName: String?
 
     public var autoCompose: String?
@@ -103157,15 +103548,23 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
 
     public var cycleDuration: Int32?
 
+    public var delayTime: Int32?
+
     public var domainName: String?
+
+    public var formatConfig: Bool?
 
     public var onDemand: Int32?
 
     public var ownerId: Int64?
 
+    public var recordFormat: [UpdateLiveRecordVodConfigRequest.RecordFormat]?
+
     public var regionId: String?
 
     public var streamName: String?
+
+    public var transcodeTemplates: [String]?
 
     public var vodTranscodeGroupId: String?
 
@@ -103195,8 +103594,14 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         if self.cycleDuration != nil {
             map["CycleDuration"] = self.cycleDuration!
         }
+        if self.delayTime != nil {
+            map["DelayTime"] = self.delayTime!
+        }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
+        }
+        if self.formatConfig != nil {
+            map["FormatConfig"] = self.formatConfig!
         }
         if self.onDemand != nil {
             map["OnDemand"] = self.onDemand!
@@ -103204,11 +103609,21 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.recordFormat != nil {
+            var tmp : [Any] = []
+            for k in self.recordFormat! {
+                tmp.append(k.toMap())
+            }
+            map["RecordFormat"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
         if self.streamName != nil {
             map["StreamName"] = self.streamName!
+        }
+        if self.transcodeTemplates != nil {
+            map["TranscodeTemplates"] = self.transcodeTemplates!
         }
         if self.vodTranscodeGroupId != nil {
             map["VodTranscodeGroupId"] = self.vodTranscodeGroupId!
@@ -103230,8 +103645,14 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         if let value = dict["CycleDuration"] as? Int32 {
             self.cycleDuration = value
         }
+        if let value = dict["DelayTime"] as? Int32 {
+            self.delayTime = value
+        }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
+        }
+        if let value = dict["FormatConfig"] as? Bool {
+            self.formatConfig = value
         }
         if let value = dict["OnDemand"] as? Int32 {
             self.onDemand = value
@@ -103239,11 +103660,27 @@ public class UpdateLiveRecordVodConfigRequest : Tea.TeaModel {
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
+        if let value = dict["RecordFormat"] as? [Any?] {
+            var tmp : [UpdateLiveRecordVodConfigRequest.RecordFormat] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateLiveRecordVodConfigRequest.RecordFormat()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recordFormat = tmp
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
         if let value = dict["StreamName"] as? String {
             self.streamName = value
+        }
+        if let value = dict["TranscodeTemplates"] as? [String] {
+            self.transcodeTemplates = value
         }
         if let value = dict["VodTranscodeGroupId"] as? String {
             self.vodTranscodeGroupId = value
