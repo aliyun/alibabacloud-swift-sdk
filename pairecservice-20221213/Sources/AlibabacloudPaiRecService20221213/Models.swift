@@ -11465,6 +11465,8 @@ public class ExportRecallManagementTableRequest : Tea.TeaModel {
 
     public var partitions: [String: String]?
 
+    public var recallManagementTableVersionId: String?
+
     public override init() {
         super.init()
     }
@@ -11494,6 +11496,9 @@ public class ExportRecallManagementTableRequest : Tea.TeaModel {
         if self.partitions != nil {
             map["Partitions"] = self.partitions!
         }
+        if self.recallManagementTableVersionId != nil {
+            map["RecallManagementTableVersionId"] = self.recallManagementTableVersionId!
+        }
         return map
     }
 
@@ -11513,6 +11518,9 @@ public class ExportRecallManagementTableRequest : Tea.TeaModel {
         }
         if let value = dict["Partitions"] as? [String: String] {
             self.partitions = value
+        }
+        if let value = dict["RecallManagementTableVersionId"] as? String {
+            self.recallManagementTableVersionId = value
         }
     }
 }
