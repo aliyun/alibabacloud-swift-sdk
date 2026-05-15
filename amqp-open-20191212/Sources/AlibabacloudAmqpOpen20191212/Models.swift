@@ -732,6 +732,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var authModel: String?
+
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int32?
@@ -776,6 +778,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var serverlessChargeType: String?
 
+    public var serverlessSwitch: Bool?
+
     public var storageSize: Int32?
 
     public var supportEip: Bool?
@@ -804,6 +808,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authModel != nil {
+            map["AuthModel"] = self.authModel!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -870,6 +877,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.serverlessChargeType != nil {
             map["ServerlessChargeType"] = self.serverlessChargeType!
         }
+        if self.serverlessSwitch != nil {
+            map["ServerlessSwitch"] = self.serverlessSwitch!
+        }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
         }
@@ -900,6 +910,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthModel"] as? String {
+            self.authModel = value
+        }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
@@ -965,6 +978,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ServerlessChargeType"] as? String {
             self.serverlessChargeType = value
+        }
+        if let value = dict["ServerlessSwitch"] as? Bool {
+            self.serverlessSwitch = value
         }
         if let value = dict["StorageSize"] as? Int32 {
             self.storageSize = value
@@ -1001,6 +1017,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 }
 
 public class CreateInstanceShrinkRequest : Tea.TeaModel {
+    public var authModel: String?
+
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int32?
@@ -1045,6 +1063,8 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public var serverlessChargeType: String?
 
+    public var serverlessSwitch: Bool?
+
     public var storageSize: Int32?
 
     public var supportEip: Bool?
@@ -1073,6 +1093,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authModel != nil {
+            map["AuthModel"] = self.authModel!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -1139,6 +1162,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.serverlessChargeType != nil {
             map["ServerlessChargeType"] = self.serverlessChargeType!
         }
+        if self.serverlessSwitch != nil {
+            map["ServerlessSwitch"] = self.serverlessSwitch!
+        }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
         }
@@ -1165,6 +1191,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthModel"] as? String {
+            self.authModel = value
+        }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
@@ -1230,6 +1259,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ServerlessChargeType"] as? String {
             self.serverlessChargeType = value
+        }
+        if let value = dict["ServerlessSwitch"] as? Bool {
+            self.serverlessSwitch = value
         }
         if let value = dict["StorageSize"] as? Int32 {
             self.storageSize = value
@@ -2475,6 +2507,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var securityGroupId: String?
 
+        public var serverlessSwitch: Bool?
+
         public var status: String?
 
         public var storageSize: Int32?
@@ -2570,6 +2604,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.serverlessSwitch != nil {
+                map["ServerlessSwitch"] = self.serverlessSwitch!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -2669,6 +2706,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["SecurityGroupId"] as? String {
                 self.securityGroupId = value
+            }
+            if let value = dict["ServerlessSwitch"] as? Bool {
+                self.serverlessSwitch = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -4442,6 +4482,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var securityGroupId: String?
 
+            public var serverlessSwitch: Bool?
+
             public var status: String?
 
             public var storageSize: Int32?
@@ -4530,6 +4572,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.serverlessSwitch != nil {
+                    map["ServerlessSwitch"] = self.serverlessSwitch!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -4620,6 +4665,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SecurityGroupId"] as? String {
                     self.securityGroupId = value
+                }
+                if let value = dict["ServerlessSwitch"] as? Bool {
+                    self.serverlessSwitch = value
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value

@@ -185,6 +185,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.vswitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vswitchIds, "VswitchIds", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authModel)) {
+            query["AuthModel"] = request.authModel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
         }
@@ -250,6 +253,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serverlessChargeType)) {
             query["ServerlessChargeType"] = request.serverlessChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessSwitch)) {
+            query["ServerlessSwitch"] = request.serverlessSwitch!;
         }
         if (!TeaUtils.Client.isUnset(request.storageSize)) {
             query["StorageSize"] = request.storageSize!;
