@@ -1875,6 +1875,8 @@ public class CreateParameterSetRequest : Tea.TeaModel {
     public class Parameters : Tea.TeaModel {
         public var name: String?
 
+        public var secret: Bool?
+
         public var status: String?
 
         public var type: String?
@@ -1898,6 +1900,9 @@ public class CreateParameterSetRequest : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.secret != nil {
+                map["secret"] = self.secret!
+            }
             if self.status != nil {
                 map["status"] = self.status!
             }
@@ -1914,6 +1919,9 @@ public class CreateParameterSetRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["secret"] as? Bool {
+                self.secret = value
             }
             if let value = dict["status"] as? String {
                 self.status = value
@@ -3201,6 +3209,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var parameterSetIds: [String]?
+
     public var protectionStrategy: [String]?
 
     public var ramRole: String?
@@ -3257,6 +3267,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["name"] = self.name!
+        }
+        if self.parameterSetIds != nil {
+            map["parameterSetIds"] = self.parameterSetIds!
         }
         if self.protectionStrategy != nil {
             map["protectionStrategy"] = self.protectionStrategy!
@@ -3316,6 +3329,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["parameterSetIds"] as? [String] {
+            self.parameterSetIds = value
         }
         if let value = dict["protectionStrategy"] as? [String] {
             self.protectionStrategy = value
@@ -6758,6 +6774,52 @@ public class GetJobRequest : Tea.TeaModel {
 
 public class GetJobResponseBody : Tea.TeaModel {
     public class Job : Tea.TeaModel {
+        public class AllParameters : Tea.TeaModel {
+            public var name: String?
+
+            public var secret: Bool?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.secret != nil {
+                    map["secret"] = self.secret!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["secret"] as? Bool {
+                    self.secret = value
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public class AssertCheckDetail : Tea.TeaModel {
             public var comparison: String?
 
@@ -6882,6 +6944,8 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allParameters: [GetJobResponseBody.Job.AllParameters]?
+
         public var assertCheckDetail: [GetJobResponseBody.Job.AssertCheckDetail]?
 
         public var config: GetJobResponseBody.Job.Config?
@@ -6935,6 +6999,13 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allParameters != nil {
+                var tmp : [Any] = []
+                for k in self.allParameters! {
+                    tmp.append(k.toMap())
+                }
+                map["allParameters"] = tmp
+            }
             if self.assertCheckDetail != nil {
                 var tmp : [Any] = []
                 for k in self.assertCheckDetail! {
@@ -7005,6 +7076,19 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["allParameters"] as? [Any?] {
+                var tmp : [GetJobResponseBody.Job.AllParameters] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetJobResponseBody.Job.AllParameters()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.allParameters = tmp
+            }
             if let value = dict["assertCheckDetail"] as? [Any?] {
                 var tmp : [GetJobResponseBody.Job.AssertCheckDetail] = []
                 for v in value {
@@ -7773,6 +7857,8 @@ public class GetParameterSetResponseBody : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var name: String?
 
+            public var secret: Bool?
+
             public var status: String?
 
             public var type: String?
@@ -7796,6 +7882,9 @@ public class GetParameterSetResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.secret != nil {
+                    map["secret"] = self.secret!
+                }
                 if self.status != nil {
                     map["status"] = self.status!
                 }
@@ -7812,6 +7901,9 @@ public class GetParameterSetResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["secret"] as? Bool {
+                    self.secret = value
                 }
                 if let value = dict["status"] as? String {
                     self.status = value
@@ -10188,6 +10280,8 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var sensitive: Bool?
+
             public var type: String?
 
             public var value: String?
@@ -10215,6 +10309,9 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.sensitive != nil {
+                    map["sensitive"] = self.sensitive!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
                 }
@@ -10234,6 +10331,9 @@ public class GetStackDeploymentsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["sensitive"] as? Bool {
+                    self.sensitive = value
                 }
                 if let value = dict["type"] as? String {
                     self.type = value
@@ -15140,6 +15240,8 @@ public class ListParameterSetRelationResponse : Tea.TeaModel {
 public class ListParameterSetsRequest : Tea.TeaModel {
     public var keyword: String?
 
+    public var kmsKeyId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -15161,6 +15263,9 @@ public class ListParameterSetsRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -15175,6 +15280,9 @@ public class ListParameterSetsRequest : Tea.TeaModel {
         if let value = dict["keyword"] as? String {
             self.keyword = value
         }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -15188,6 +15296,8 @@ public class ListParameterSetsResponseBody : Tea.TeaModel {
     public class ParameterSets : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var name: String?
+
+            public var secret: Bool?
 
             public var status: String?
 
@@ -15212,6 +15322,9 @@ public class ListParameterSetsResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.secret != nil {
+                    map["secret"] = self.secret!
+                }
                 if self.status != nil {
                     map["status"] = self.status!
                 }
@@ -15228,6 +15341,9 @@ public class ListParameterSetsResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["name"] as? String {
                     self.name = value
+                }
+                if let value = dict["secret"] as? Bool {
+                    self.secret = value
                 }
                 if let value = dict["status"] as? String {
                     self.status = value
@@ -19154,6 +19270,8 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var sensitive: Bool?
+
                 public var type: String?
 
                 public override init() {
@@ -19179,6 +19297,9 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["name"] = self.name!
                     }
+                    if self.sensitive != nil {
+                        map["sensitive"] = self.sensitive!
+                    }
                     if self.type != nil {
                         map["type"] = self.type!
                     }
@@ -19195,6 +19316,9 @@ public class ListStackConfigsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["name"] as? String {
                         self.name = value
+                    }
+                    if let value = dict["sensitive"] as? Bool {
+                        self.sensitive = value
                     }
                     if let value = dict["type"] as? String {
                         self.type = value
@@ -19726,6 +19850,8 @@ public class ListStackConfigsResponse : Tea.TeaModel {
 public class ListStacksRequest : Tea.TeaModel {
     public var keyword: String?
 
+    public var kmsKeyId: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -19753,6 +19879,9 @@ public class ListStacksRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -19775,6 +19904,9 @@ public class ListStacksRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["keyword"] as? String {
             self.keyword = value
+        }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
@@ -20058,6 +20190,8 @@ public class ListTasksRequest : Tea.TeaModel {
 
     public var keyword: String?
 
+    public var kmsKeyId: String?
+
     public var moduleId: String?
 
     public var pageNumber: Int32?
@@ -20091,6 +20225,9 @@ public class ListTasksRequest : Tea.TeaModel {
         }
         if self.keyword != nil {
             map["keyword"] = self.keyword!
+        }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
         }
         if self.moduleId != nil {
             map["moduleId"] = self.moduleId!
@@ -20127,6 +20264,9 @@ public class ListTasksRequest : Tea.TeaModel {
         }
         if let value = dict["keyword"] as? String {
             self.keyword = value
+        }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
         }
         if let value = dict["moduleId"] as? String {
             self.moduleId = value
@@ -20167,6 +20307,8 @@ public class ListTasksShrinkRequest : Tea.TeaModel {
 
     public var keyword: String?
 
+    public var kmsKeyId: String?
+
     public var moduleId: String?
 
     public var pageNumber: Int32?
@@ -20201,6 +20343,9 @@ public class ListTasksShrinkRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
+        }
         if self.moduleId != nil {
             map["moduleId"] = self.moduleId!
         }
@@ -20232,6 +20377,9 @@ public class ListTasksShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["keyword"] as? String {
             self.keyword = value
+        }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
         }
         if let value = dict["moduleId"] as? String {
             self.moduleId = value
@@ -22547,6 +22695,8 @@ public class UpdateParameterSetAttributeRequest : Tea.TeaModel {
     public class Parameters : Tea.TeaModel {
         public var name: String?
 
+        public var secret: Bool?
+
         public var status: String?
 
         public var type: String?
@@ -22570,6 +22720,9 @@ public class UpdateParameterSetAttributeRequest : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.secret != nil {
+                map["secret"] = self.secret!
+            }
             if self.status != nil {
                 map["status"] = self.status!
             }
@@ -22586,6 +22739,9 @@ public class UpdateParameterSetAttributeRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["secret"] as? Bool {
+                self.secret = value
             }
             if let value = dict["status"] as? String {
                 self.status = value

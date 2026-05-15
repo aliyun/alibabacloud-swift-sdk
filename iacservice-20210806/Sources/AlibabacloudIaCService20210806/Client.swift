@@ -887,6 +887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parameterSetIds)) {
+            body["parameterSetIds"] = request.parameterSetIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.protectionStrategy)) {
             body["protectionStrategy"] = request.protectionStrategy ?? [];
         }
@@ -2637,6 +2640,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["keyword"] = request.keyword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["kmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
@@ -3148,6 +3154,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["keyword"] = request.keyword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["kmsKeyId"] = request.kmsKeyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
@@ -3203,6 +3212,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsKeyId)) {
+            query["kmsKeyId"] = request.kmsKeyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.moduleId)) {
             query["moduleId"] = request.moduleId ?? "";
