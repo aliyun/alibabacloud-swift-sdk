@@ -610,6 +610,8 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
 
     public var deliveryOrderType: String?
 
+    public var exclusive: Bool?
+
     public var maxReceiveTps: Int64?
 
     public var messageModel: String?
@@ -639,6 +641,9 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
         if self.deliveryOrderType != nil {
             map["deliveryOrderType"] = self.deliveryOrderType!
         }
+        if self.exclusive != nil {
+            map["exclusive"] = self.exclusive!
+        }
         if self.maxReceiveTps != nil {
             map["maxReceiveTps"] = self.maxReceiveTps!
         }
@@ -663,6 +668,9 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
         }
         if let value = dict["deliveryOrderType"] as? String {
             self.deliveryOrderType = value
+        }
+        if let value = dict["exclusive"] as? Bool {
+            self.exclusive = value
         }
         if let value = dict["maxReceiveTps"] as? Int64 {
             self.maxReceiveTps = value
@@ -4949,6 +4957,8 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
 
         public var deliveryOrderType: String?
 
+        public var exclusive: Bool?
+
         public var instanceId: String?
 
         public var maxReceiveTps: Int64?
@@ -4992,6 +5002,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             if self.deliveryOrderType != nil {
                 map["deliveryOrderType"] = self.deliveryOrderType!
             }
+            if self.exclusive != nil {
+                map["exclusive"] = self.exclusive!
+            }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
             }
@@ -5034,6 +5047,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["deliveryOrderType"] as? String {
                 self.deliveryOrderType = value
+            }
+            if let value = dict["exclusive"] as? Bool {
+                self.exclusive = value
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value

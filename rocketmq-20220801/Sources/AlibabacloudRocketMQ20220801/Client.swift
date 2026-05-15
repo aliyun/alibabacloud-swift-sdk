@@ -108,6 +108,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deliveryOrderType)) {
             body["deliveryOrderType"] = request.deliveryOrderType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.exclusive)) {
+            body["exclusive"] = request.exclusive!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxReceiveTps)) {
             body["maxReceiveTps"] = request.maxReceiveTps!;
         }
