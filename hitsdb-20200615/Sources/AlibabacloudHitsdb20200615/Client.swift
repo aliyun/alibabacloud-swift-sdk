@@ -204,6 +204,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAdditionalVpcLinkWithOptions(_ request: CreateAdditionalVpcLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAdditionalVpcLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalAliBid)) {
+            query["AdditionalAliBid"] = request.additionalAliBid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.additionalAliUid)) {
+            query["AdditionalAliUid"] = request.additionalAliUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.additionalVpcId)) {
             query["AdditionalVpcId"] = request.additionalVpcId ?? "";
         }

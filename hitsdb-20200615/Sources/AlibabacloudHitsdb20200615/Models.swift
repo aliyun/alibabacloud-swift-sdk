@@ -750,6 +750,10 @@ public class CheckLdpsColumnarIndexStatusResponse : Tea.TeaModel {
 }
 
 public class CreateAdditionalVpcLinkRequest : Tea.TeaModel {
+    public var additionalAliBid: String?
+
+    public var additionalAliUid: String?
+
     public var additionalVpcId: String?
 
     public var additionalVswitchId: String?
@@ -774,6 +778,12 @@ public class CreateAdditionalVpcLinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalAliBid != nil {
+            map["AdditionalAliBid"] = self.additionalAliBid!
+        }
+        if self.additionalAliUid != nil {
+            map["AdditionalAliUid"] = self.additionalAliUid!
+        }
         if self.additionalVpcId != nil {
             map["AdditionalVpcId"] = self.additionalVpcId!
         }
@@ -794,6 +804,12 @@ public class CreateAdditionalVpcLinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalAliBid"] as? String {
+            self.additionalAliBid = value
+        }
+        if let value = dict["AdditionalAliUid"] as? String {
+            self.additionalAliUid = value
+        }
         if let value = dict["AdditionalVpcId"] as? String {
             self.additionalVpcId = value
         }
