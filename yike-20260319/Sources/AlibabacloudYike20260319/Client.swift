@@ -395,6 +395,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikePromptExpansionVoiceFixJobWithOptions(_ request: GetYikePromptExpansionVoiceFixJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikePromptExpansionVoiceFixJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            body["JobId"] = request.jobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetYikePromptExpansionVoiceFixJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetYikePromptExpansionVoiceFixJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getYikePromptExpansionVoiceFixJob(_ request: GetYikePromptExpansionVoiceFixJobRequest) async throws -> GetYikePromptExpansionVoiceFixJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getYikePromptExpansionVoiceFixJobWithOptions(request as! GetYikePromptExpansionVoiceFixJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getYikeStoryboardJobWithOptions(_ request: GetYikeStoryboardJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetYikeStoryboardJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -877,6 +908,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitYikeAIAppJob(_ request: SubmitYikeAIAppJobRequest) async throws -> SubmitYikeAIAppJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitYikeAIAppJobWithOptions(request as! SubmitYikeAIAppJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitYikePromptExpansionVoiceFixJobWithOptions(_ request: SubmitYikePromptExpansionVoiceFixJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitYikePromptExpansionVoiceFixJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobParams)) {
+            body["JobParams"] = request.jobParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            body["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitYikePromptExpansionVoiceFixJob",
+            "version": "2026-03-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitYikePromptExpansionVoiceFixJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitYikePromptExpansionVoiceFixJob(_ request: SubmitYikePromptExpansionVoiceFixJobRequest) async throws -> SubmitYikePromptExpansionVoiceFixJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitYikePromptExpansionVoiceFixJobWithOptions(request as! SubmitYikePromptExpansionVoiceFixJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
