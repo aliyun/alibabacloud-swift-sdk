@@ -22392,6 +22392,44 @@ public class GetDocInfoRequest : Tea.TeaModel {
 
 public class GetDocInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class PageInfo : Tea.TeaModel {
+            public var height: Int32?
+
+            public var width: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Height"] as? Int32 {
+                    self.height = value
+                }
+                if let value = dict["Width"] as? Int32 {
+                    self.width = value
+                }
+            }
+        }
         public var categoryId: String?
 
         public var docName: String?
@@ -22399,6 +22437,8 @@ public class GetDocInfoResponseBody : Tea.TeaModel {
         public var docType: String?
 
         public var fileUrl: String?
+
+        public var pageInfo: GetDocInfoResponseBody.Data.PageInfo?
 
         public var status: Int32?
 
@@ -22416,6 +22456,7 @@ public class GetDocInfoResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.pageInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -22431,6 +22472,9 @@ public class GetDocInfoResponseBody : Tea.TeaModel {
             }
             if self.fileUrl != nil {
                 map["FileUrl"] = self.fileUrl!
+            }
+            if self.pageInfo != nil {
+                map["PageInfo"] = self.pageInfo?.toMap()
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -22457,6 +22501,11 @@ public class GetDocInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileUrl"] as? String {
                 self.fileUrl = value
+            }
+            if let value = dict["PageInfo"] as? [String: Any?] {
+                var model = GetDocInfoResponseBody.Data.PageInfo()
+                model.fromMap(value)
+                self.pageInfo = model
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
