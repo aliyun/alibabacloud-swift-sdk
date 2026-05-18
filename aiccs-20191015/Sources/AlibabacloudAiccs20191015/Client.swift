@@ -5187,7 +5187,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentId)) {
-            query["AgentId"] = request.agentId!;
+            query["AgentId"] = request.agentId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.agentName)) {
             query["AgentName"] = request.agentName ?? "";
@@ -5467,13 +5467,13 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentId)) {
-            query["AgentId"] = request.agentId!;
+            query["AgentId"] = request.agentId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.branchId)) {
-            query["BranchId"] = request.branchId!;
+            query["BranchId"] = request.branchId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.versionId)) {
-            query["VersionId"] = request.versionId!;
+            query["VersionId"] = request.versionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

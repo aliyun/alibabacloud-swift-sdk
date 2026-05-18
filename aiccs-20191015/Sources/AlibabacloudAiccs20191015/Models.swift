@@ -32344,7 +32344,7 @@ public class PageQueryAgentListResponse : Tea.TeaModel {
 }
 
 public class PageQueryAgentListNewRequest : Tea.TeaModel {
-    public var agentId: Int64?
+    public var agentId: String?
 
     public var agentName: String?
 
@@ -32393,7 +32393,7 @@ public class PageQueryAgentListNewRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["AgentId"] as? Int64 {
+        if let value = dict["AgentId"] as? String {
             self.agentId = value
         }
         if let value = dict["AgentName"] as? String {
@@ -35677,11 +35677,11 @@ public class QueryAiVoiceAgentDetailResponse : Tea.TeaModel {
 }
 
 public class QueryAiVoiceAgentDetailNewRequest : Tea.TeaModel {
-    public var agentId: Int64?
+    public var agentId: String?
 
-    public var branchId: Int64?
+    public var branchId: String?
 
-    public var versionId: Int64?
+    public var versionId: String?
 
     public override init() {
         super.init()
@@ -35711,13 +35711,13 @@ public class QueryAiVoiceAgentDetailNewRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["AgentId"] as? Int64 {
+        if let value = dict["AgentId"] as? String {
             self.agentId = value
         }
-        if let value = dict["BranchId"] as? Int64 {
+        if let value = dict["BranchId"] as? String {
             self.branchId = value
         }
-        if let value = dict["VersionId"] as? Int64 {
+        if let value = dict["VersionId"] as? String {
             self.versionId = value
         }
     }
@@ -36513,47 +36513,9 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public class MappingTag : Tea.TeaModel {
-                    public var desc: String?
-
-                    public var tag: String?
-
-                    public override init() {
-                        super.init()
-                    }
-
-                    public init(_ dict: [String: Any]) {
-                        super.init()
-                        self.fromMap(dict)
-                    }
-
-                    public override func validate() throws -> Void {
-                    }
-
-                    public override func toMap() -> [String : Any] {
-                        var map = super.toMap()
-                        if self.desc != nil {
-                            map["Desc"] = self.desc!
-                        }
-                        if self.tag != nil {
-                            map["Tag"] = self.tag!
-                        }
-                        return map
-                    }
-
-                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                        guard let dict else { return }
-                        if let value = dict["Desc"] as? String {
-                            self.desc = value
-                        }
-                        if let value = dict["Tag"] as? String {
-                            self.tag = value
-                        }
-                    }
-                }
                 public var defaultTag: QueryAiVoiceAgentDetailNewResponseBody.Data.SummaryConfig.CallResultTagConfig.DefaultTag?
 
-                public var mappingTag: QueryAiVoiceAgentDetailNewResponseBody.Data.SummaryConfig.CallResultTagConfig.MappingTag?
+                public var mappingTag: [String: String]?
 
                 public override init() {
                     super.init()
@@ -36566,7 +36528,6 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
 
                 public override func validate() throws -> Void {
                     try self.defaultTag?.validate()
-                    try self.mappingTag?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -36575,7 +36536,7 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
                         map["DefaultTag"] = self.defaultTag?.toMap()
                     }
                     if self.mappingTag != nil {
-                        map["MappingTag"] = self.mappingTag?.toMap()
+                        map["MappingTag"] = self.mappingTag!
                     }
                     return map
                 }
@@ -36587,10 +36548,8 @@ public class QueryAiVoiceAgentDetailNewResponseBody : Tea.TeaModel {
                         model.fromMap(value)
                         self.defaultTag = model
                     }
-                    if let value = dict["MappingTag"] as? [String: Any?] {
-                        var model = QueryAiVoiceAgentDetailNewResponseBody.Data.SummaryConfig.CallResultTagConfig.MappingTag()
-                        model.fromMap(value)
-                        self.mappingTag = model
+                    if let value = dict["MappingTag"] as? [String: String] {
+                        self.mappingTag = value
                     }
                 }
             }
