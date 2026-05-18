@@ -11942,6 +11942,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
             query["DeletionProtection"] = request.deletionProtection!;
         }
+        if (!TeaUtils.Client.isUnset(request.deploymentSetId)) {
+            query["DeploymentSetId"] = request.deploymentSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ensRegionId)) {
             query["EnsRegionId"] = request.ensRegionId ?? "";
         }

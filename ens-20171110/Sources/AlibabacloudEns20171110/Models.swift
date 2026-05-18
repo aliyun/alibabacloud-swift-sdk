@@ -78489,6 +78489,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var deletionProtection: Bool?
 
+    public var deploymentSetId: String?
+
     public var ensRegionId: String?
 
     public var hostName: String?
@@ -78603,6 +78605,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.deploymentSetId != nil {
+            map["DeploymentSetId"] = self.deploymentSetId!
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
@@ -78754,6 +78759,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["DeletionProtection"] as? Bool {
             self.deletionProtection = value
+        }
+        if let value = dict["DeploymentSetId"] as? String {
+            self.deploymentSetId = value
         }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
@@ -78933,6 +78941,8 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
 
     public var deletionProtection: Bool?
 
+    public var deploymentSetId: String?
+
     public var ensRegionId: String?
 
     public var hostName: String?
@@ -79042,6 +79052,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.deploymentSetId != nil {
+            map["DeploymentSetId"] = self.deploymentSetId!
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
@@ -79183,6 +79196,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DeletionProtection"] as? Bool {
             self.deletionProtection = value
+        }
+        if let value = dict["DeploymentSetId"] as? String {
+            self.deploymentSetId = value
         }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
