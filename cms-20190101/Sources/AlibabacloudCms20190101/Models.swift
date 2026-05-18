@@ -55849,6 +55849,8 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
 
     public var ruleName: String?
 
+    public var sendOK: Bool?
+
     public var silenceTime: Int32?
 
     public var webhook: String?
@@ -55921,6 +55923,9 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
         }
         if self.ruleName != nil {
             map["RuleName"] = self.ruleName!
+        }
+        if self.sendOK != nil {
+            map["SendOK"] = self.sendOK!
         }
         if self.silenceTime != nil {
             map["SilenceTime"] = self.silenceTime!
@@ -55996,6 +56001,9 @@ public class PutResourceMetricRuleRequest : Tea.TeaModel {
         }
         if let value = dict["RuleName"] as? String {
             self.ruleName = value
+        }
+        if let value = dict["SendOK"] as? Bool {
+            self.sendOK = value
         }
         if let value = dict["SilenceTime"] as? Int32 {
             self.silenceTime = value
@@ -56294,6 +56302,8 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
 
     public var ruleName: String?
 
+    public var sendOK: Bool?
+
     public var silenceTime: Int32?
 
     public var webhook: String?
@@ -56365,6 +56375,9 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
         if self.ruleName != nil {
             map["RuleName"] = self.ruleName!
         }
+        if self.sendOK != nil {
+            map["SendOK"] = self.sendOK!
+        }
         if self.silenceTime != nil {
             map["SilenceTime"] = self.silenceTime!
         }
@@ -56435,6 +56448,9 @@ public class PutResourceMetricRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RuleName"] as? String {
             self.ruleName = value
+        }
+        if let value = dict["SendOK"] as? Bool {
+            self.sendOK = value
         }
         if let value = dict["SilenceTime"] as? Int32 {
             self.silenceTime = value
@@ -56883,6 +56899,8 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
 
         public var ruleName: String?
 
+        public var sendOK: Bool?
+
         public var silenceTime: Int32?
 
         public var webhook: String?
@@ -56948,6 +56966,9 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
             if self.ruleName != nil {
                 map["RuleName"] = self.ruleName!
             }
+            if self.sendOK != nil {
+                map["SendOK"] = self.sendOK!
+            }
             if self.silenceTime != nil {
                 map["SilenceTime"] = self.silenceTime!
             }
@@ -57012,6 +57033,9 @@ public class PutResourceMetricRulesRequest : Tea.TeaModel {
             }
             if let value = dict["RuleName"] as? String {
                 self.ruleName = value
+            }
+            if let value = dict["SendOK"] as? Bool {
+                self.sendOK = value
             }
             if let value = dict["SilenceTime"] as? Int32 {
                 self.silenceTime = value

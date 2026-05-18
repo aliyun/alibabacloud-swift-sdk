@@ -6534,6 +6534,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ruleName)) {
             query["RuleName"] = request.ruleName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sendOK)) {
+            query["SendOK"] = request.sendOK!;
+        }
         if (!TeaUtils.Client.isUnset(request.silenceTime)) {
             query["SilenceTime"] = request.silenceTime!;
         }
