@@ -1710,6 +1710,8 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
     }
     public var apiPassthrough: CreateExternalCACertificateRequest.ApiPassthrough?
 
+    public var certMaxTime: Int32?
+
     public var csr: String?
 
     public var instanceId: String?
@@ -1737,6 +1739,9 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.apiPassthrough != nil {
             map["ApiPassthrough"] = self.apiPassthrough?.toMap()
+        }
+        if self.certMaxTime != nil {
+            map["CertMaxTime"] = self.certMaxTime!
         }
         if self.csr != nil {
             map["Csr"] = self.csr!
@@ -1766,6 +1771,9 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
             var model = CreateExternalCACertificateRequest.ApiPassthrough()
             model.fromMap(value)
             self.apiPassthrough = model
+        }
+        if let value = dict["CertMaxTime"] as? Int32 {
+            self.certMaxTime = value
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
@@ -1836,6 +1844,8 @@ public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
     }
     public var apiPassthroughShrink: String?
 
+    public var certMaxTime: Int32?
+
     public var csr: String?
 
     public var instanceId: String?
@@ -1863,6 +1873,9 @@ public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
         if self.apiPassthroughShrink != nil {
             map["ApiPassthrough"] = self.apiPassthroughShrink!
         }
+        if self.certMaxTime != nil {
+            map["CertMaxTime"] = self.certMaxTime!
+        }
         if self.csr != nil {
             map["Csr"] = self.csr!
         }
@@ -1889,6 +1902,9 @@ public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApiPassthrough"] as? String {
             self.apiPassthroughShrink = value
+        }
+        if let value = dict["CertMaxTime"] as? Int32 {
+            self.certMaxTime = value
         }
         if let value = dict["Csr"] as? String {
             self.csr = value
@@ -3132,6 +3148,8 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
     }
     public var algorithm: String?
 
+    public var certMaxTime: Int32?
+
     public var clientToken: String?
 
     public var commonName: String?
@@ -3178,6 +3196,9 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
+        }
+        if self.certMaxTime != nil {
+            map["CertMaxTime"] = self.certMaxTime!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -3235,6 +3256,9 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["CertMaxTime"] as? Int32 {
+            self.certMaxTime = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
