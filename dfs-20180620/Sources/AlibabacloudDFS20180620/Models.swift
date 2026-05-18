@@ -3995,6 +3995,257 @@ public class DescribeVscMountPointsResponse : Tea.TeaModel {
     }
 }
 
+public class DetachVscFromMountPointsRequest : Tea.TeaModel {
+    public class DetachInfos : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var mountPointId: String?
+
+        public var vscId: String?
+
+        public var vscName: String?
+
+        public var vscType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.mountPointId != nil {
+                map["MountPointId"] = self.mountPointId!
+            }
+            if self.vscId != nil {
+                map["VscId"] = self.vscId!
+            }
+            if self.vscName != nil {
+                map["VscName"] = self.vscName!
+            }
+            if self.vscType != nil {
+                map["VscType"] = self.vscType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["MountPointId"] as? String {
+                self.mountPointId = value
+            }
+            if let value = dict["VscId"] as? String {
+                self.vscId = value
+            }
+            if let value = dict["VscName"] as? String {
+                self.vscName = value
+            }
+            if let value = dict["VscType"] as? String {
+                self.vscType = value
+            }
+        }
+    }
+    public var detachInfos: [DetachVscFromMountPointsRequest.DetachInfos]?
+
+    public var inputRegionId: String?
+
+    public var useAssumeRoleChkServerPerm: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detachInfos != nil {
+            var tmp : [Any] = []
+            for k in self.detachInfos! {
+                tmp.append(k.toMap())
+            }
+            map["DetachInfos"] = tmp
+        }
+        if self.inputRegionId != nil {
+            map["InputRegionId"] = self.inputRegionId!
+        }
+        if self.useAssumeRoleChkServerPerm != nil {
+            map["UseAssumeRoleChkServerPerm"] = self.useAssumeRoleChkServerPerm!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DetachInfos"] as? [Any?] {
+            var tmp : [DetachVscFromMountPointsRequest.DetachInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = DetachVscFromMountPointsRequest.DetachInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.detachInfos = tmp
+        }
+        if let value = dict["InputRegionId"] as? String {
+            self.inputRegionId = value
+        }
+        if let value = dict["UseAssumeRoleChkServerPerm"] as? Bool {
+            self.useAssumeRoleChkServerPerm = value
+        }
+    }
+}
+
+public class DetachVscFromMountPointsShrinkRequest : Tea.TeaModel {
+    public var detachInfosShrink: String?
+
+    public var inputRegionId: String?
+
+    public var useAssumeRoleChkServerPerm: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detachInfosShrink != nil {
+            map["DetachInfos"] = self.detachInfosShrink!
+        }
+        if self.inputRegionId != nil {
+            map["InputRegionId"] = self.inputRegionId!
+        }
+        if self.useAssumeRoleChkServerPerm != nil {
+            map["UseAssumeRoleChkServerPerm"] = self.useAssumeRoleChkServerPerm!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DetachInfos"] as? String {
+            self.detachInfosShrink = value
+        }
+        if let value = dict["InputRegionId"] as? String {
+            self.inputRegionId = value
+        }
+        if let value = dict["UseAssumeRoleChkServerPerm"] as? Bool {
+            self.useAssumeRoleChkServerPerm = value
+        }
+    }
+}
+
+public class DetachVscFromMountPointsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DetachVscFromMountPointsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DetachVscFromMountPointsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DetachVscFromMountPointsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DetachVscMountPointRequest : Tea.TeaModel {
     public var description_: String?
 

@@ -901,6 +901,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detachVscFromMountPointsWithOptions(_ tmpReq: DetachVscFromMountPointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachVscFromMountPointsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DetachVscFromMountPointsShrinkRequest = DetachVscFromMountPointsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.detachInfos)) {
+            request.detachInfosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.detachInfos, "DetachInfos", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.detachInfosShrink)) {
+            query["DetachInfos"] = request.detachInfosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputRegionId)) {
+            query["InputRegionId"] = request.inputRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useAssumeRoleChkServerPerm)) {
+            query["UseAssumeRoleChkServerPerm"] = request.useAssumeRoleChkServerPerm!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DetachVscFromMountPoints",
+            "version": "2018-06-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DetachVscFromMountPointsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func detachVscFromMountPoints(_ request: DetachVscFromMountPointsRequest) async throws -> DetachVscFromMountPointsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await detachVscFromMountPointsWithOptions(request as! DetachVscFromMountPointsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func detachVscMountPointWithOptions(_ tmpReq: DetachVscMountPointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachVscMountPointResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DetachVscMountPointShrinkRequest = DetachVscMountPointShrinkRequest([:])
