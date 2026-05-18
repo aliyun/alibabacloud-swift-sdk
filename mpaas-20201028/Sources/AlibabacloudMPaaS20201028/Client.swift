@@ -350,6 +350,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkUserAuthToMsceneWithOptions(_ request: CheckUserAuthToMsceneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUserAuthToMsceneResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["AuthToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.miniProgramId)) {
+            body["MiniProgramId"] = request.miniProgramId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openUid)) {
+            body["OpenUid"] = request.openUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformId)) {
+            body["PlatformId"] = request.platformId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            body["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckUserAuthToMscene",
+            "version": "2020-10-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckUserAuthToMsceneResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkUserAuthToMscene(_ request: CheckUserAuthToMsceneRequest) async throws -> CheckUserAuthToMsceneResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkUserAuthToMsceneWithOptions(request as! CheckUserAuthToMsceneRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func copyMcdpGroupWithOptions(_ request: CopyMcdpGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CopyMcdpGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
