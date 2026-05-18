@@ -7945,6 +7945,1000 @@ public class FaceLivenessResponse : Tea.TeaModel {
     }
 }
 
+public class FaceLivenessV2Request : Tea.TeaModel {
+    public var facePictureBase64: String?
+
+    public var facePictureFile: String?
+
+    public var facePictureUrl: String?
+
+    public var faceQualityCheck: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureFile != nil {
+            map["FacePictureFile"] = self.facePictureFile!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FacePictureBase64"] as? String {
+            self.facePictureBase64 = value
+        }
+        if let value = dict["FacePictureFile"] as? String {
+            self.facePictureFile = value
+        }
+        if let value = dict["FacePictureUrl"] as? String {
+            self.facePictureUrl = value
+        }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+    }
+}
+
+public class FaceLivenessV2AdvanceRequest : Tea.TeaModel {
+    public var facePictureBase64: String?
+
+    public var facePictureFileObject: InputStream?
+
+    public var facePictureUrl: String?
+
+    public var faceQualityCheck: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureFileObject != nil {
+            map["FacePictureFile"] = self.facePictureFileObject!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FacePictureBase64"] as? String {
+            self.facePictureBase64 = value
+        }
+        if let value = dict["FacePictureFile"] as? InputStream {
+            self.facePictureFileObject = value
+        }
+        if let value = dict["FacePictureUrl"] as? String {
+            self.facePictureUrl = value
+        }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+    }
+}
+
+public class FaceLivenessV2ResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class ExtFaceInfo : Tea.TeaModel {
+            public var faceAge: Int64?
+
+            public var faceAttack: String?
+
+            public var faceGender: String?
+
+            public var faceQualityScore: Double?
+
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
+            public var occlusionResult: String?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.faceAge != nil {
+                    map["FaceAge"] = self.faceAge!
+                }
+                if self.faceAttack != nil {
+                    map["FaceAttack"] = self.faceAttack!
+                }
+                if self.faceGender != nil {
+                    map["FaceGender"] = self.faceGender!
+                }
+                if self.faceQualityScore != nil {
+                    map["FaceQualityScore"] = self.faceQualityScore!
+                }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
+                if self.occlusionResult != nil {
+                    map["OcclusionResult"] = self.occlusionResult!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FaceAge"] as? Int64 {
+                    self.faceAge = value
+                }
+                if let value = dict["FaceAttack"] as? String {
+                    self.faceAttack = value
+                }
+                if let value = dict["FaceGender"] as? String {
+                    self.faceGender = value
+                }
+                if let value = dict["FaceQualityScore"] as? Double {
+                    self.faceQualityScore = value
+                }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
+                if let value = dict["OcclusionResult"] as? String {
+                    self.occlusionResult = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
+                }
+            }
+        }
+        public var extFaceInfo: FaceLivenessV2ResponseBody.Result.ExtFaceInfo?
+
+        public var passed: String?
+
+        public var subCode: String?
+
+        public var transactionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.extFaceInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extFaceInfo != nil {
+                map["ExtFaceInfo"] = self.extFaceInfo?.toMap()
+            }
+            if self.passed != nil {
+                map["Passed"] = self.passed!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExtFaceInfo"] as? [String: Any?] {
+                var model = FaceLivenessV2ResponseBody.Result.ExtFaceInfo()
+                model.fromMap(value)
+                self.extFaceInfo = model
+            }
+            if let value = dict["Passed"] as? String {
+                self.passed = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: FaceLivenessV2ResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = FaceLivenessV2ResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+    }
+}
+
+public class FaceLivenessV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: FaceLivenessV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = FaceLivenessV2ResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class FaceVerifyIntlRequest : Tea.TeaModel {
+    public var autoRegistration: String?
+
+    public var faceGroupCodes: String?
+
+    public var faceQualityCheck: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var productCode: String?
+
+    public var returnFaces: String?
+
+    public var sourceFacePicture: String?
+
+    public var sourceFacePictureFile: String?
+
+    public var sourceFacePictureUrl: String?
+
+    public var targetFacePicture: String?
+
+    public var targetFacePictureFile: String?
+
+    public var targetFacePictureUrl: String?
+
+    public var verifyModel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
+        if self.sourceFacePicture != nil {
+            map["SourceFacePicture"] = self.sourceFacePicture!
+        }
+        if self.sourceFacePictureFile != nil {
+            map["SourceFacePictureFile"] = self.sourceFacePictureFile!
+        }
+        if self.sourceFacePictureUrl != nil {
+            map["SourceFacePictureUrl"] = self.sourceFacePictureUrl!
+        }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureFile != nil {
+            map["TargetFacePictureFile"] = self.targetFacePictureFile!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
+        }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
+        if let value = dict["SourceFacePicture"] as? String {
+            self.sourceFacePicture = value
+        }
+        if let value = dict["SourceFacePictureFile"] as? String {
+            self.sourceFacePictureFile = value
+        }
+        if let value = dict["SourceFacePictureUrl"] as? String {
+            self.sourceFacePictureUrl = value
+        }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureFile"] as? String {
+            self.targetFacePictureFile = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
+        }
+    }
+}
+
+public class FaceVerifyIntlAdvanceRequest : Tea.TeaModel {
+    public var autoRegistration: String?
+
+    public var faceGroupCodes: String?
+
+    public var faceQualityCheck: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var productCode: String?
+
+    public var returnFaces: String?
+
+    public var sourceFacePicture: String?
+
+    public var sourceFacePictureFileObject: InputStream?
+
+    public var sourceFacePictureUrl: String?
+
+    public var targetFacePicture: String?
+
+    public var targetFacePictureFileObject: InputStream?
+
+    public var targetFacePictureUrl: String?
+
+    public var verifyModel: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
+        }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
+        if self.faceQualityCheck != nil {
+            map["FaceQualityCheck"] = self.faceQualityCheck!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
+        if self.sourceFacePicture != nil {
+            map["SourceFacePicture"] = self.sourceFacePicture!
+        }
+        if self.sourceFacePictureFileObject != nil {
+            map["SourceFacePictureFile"] = self.sourceFacePictureFileObject!
+        }
+        if self.sourceFacePictureUrl != nil {
+            map["SourceFacePictureUrl"] = self.sourceFacePictureUrl!
+        }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureFileObject != nil {
+            map["TargetFacePictureFile"] = self.targetFacePictureFileObject!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
+        }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
+        if let value = dict["FaceQualityCheck"] as? String {
+            self.faceQualityCheck = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["MerchantUserId"] as? String {
+            self.merchantUserId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
+        if let value = dict["SourceFacePicture"] as? String {
+            self.sourceFacePicture = value
+        }
+        if let value = dict["SourceFacePictureFile"] as? InputStream {
+            self.sourceFacePictureFileObject = value
+        }
+        if let value = dict["SourceFacePictureUrl"] as? String {
+            self.sourceFacePictureUrl = value
+        }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureFile"] as? InputStream {
+            self.targetFacePictureFileObject = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
+        }
+    }
+}
+
+public class FaceVerifyIntlResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class ExtFaceInfo : Tea.TeaModel {
+            public var faceQualityScore: Double?
+
+            public var illuminationScore: Double?
+
+            public var kaOcclusionScore: Double?
+
+            public var occlusionScore: Double?
+
+            public var sharpnessScore: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.faceQualityScore != nil {
+                    map["FaceQualityScore"] = self.faceQualityScore!
+                }
+                if self.illuminationScore != nil {
+                    map["IlluminationScore"] = self.illuminationScore!
+                }
+                if self.kaOcclusionScore != nil {
+                    map["KaOcclusionScore"] = self.kaOcclusionScore!
+                }
+                if self.occlusionScore != nil {
+                    map["OcclusionScore"] = self.occlusionScore!
+                }
+                if self.sharpnessScore != nil {
+                    map["SharpnessScore"] = self.sharpnessScore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FaceQualityScore"] as? Double {
+                    self.faceQualityScore = value
+                }
+                if let value = dict["IlluminationScore"] as? Double {
+                    self.illuminationScore = value
+                }
+                if let value = dict["KaOcclusionScore"] as? Double {
+                    self.kaOcclusionScore = value
+                }
+                if let value = dict["OcclusionScore"] as? Double {
+                    self.occlusionScore = value
+                }
+                if let value = dict["SharpnessScore"] as? Double {
+                    self.sharpnessScore = value
+                }
+            }
+        }
+        public var duplicateFace: String?
+
+        public var extFaceInfo: FaceVerifyIntlResponseBody.Result.ExtFaceInfo?
+
+        public var faceAge: Int64?
+
+        public var faceAttack: String?
+
+        public var faceAttackScore: Double?
+
+        public var faceComparisonScore: Double?
+
+        public var faceGender: String?
+
+        public var facePassed: String?
+
+        public var faceRegistrationId: String?
+
+        public var faceRegistrationResult: Int64?
+
+        public var subCode: String?
+
+        public var transactionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.extFaceInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duplicateFace != nil {
+                map["DuplicateFace"] = self.duplicateFace!
+            }
+            if self.extFaceInfo != nil {
+                map["ExtFaceInfo"] = self.extFaceInfo?.toMap()
+            }
+            if self.faceAge != nil {
+                map["FaceAge"] = self.faceAge!
+            }
+            if self.faceAttack != nil {
+                map["FaceAttack"] = self.faceAttack!
+            }
+            if self.faceAttackScore != nil {
+                map["FaceAttackScore"] = self.faceAttackScore!
+            }
+            if self.faceComparisonScore != nil {
+                map["FaceComparisonScore"] = self.faceComparisonScore!
+            }
+            if self.faceGender != nil {
+                map["FaceGender"] = self.faceGender!
+            }
+            if self.facePassed != nil {
+                map["FacePassed"] = self.facePassed!
+            }
+            if self.faceRegistrationId != nil {
+                map["FaceRegistrationId"] = self.faceRegistrationId!
+            }
+            if self.faceRegistrationResult != nil {
+                map["FaceRegistrationResult"] = self.faceRegistrationResult!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DuplicateFace"] as? String {
+                self.duplicateFace = value
+            }
+            if let value = dict["ExtFaceInfo"] as? [String: Any?] {
+                var model = FaceVerifyIntlResponseBody.Result.ExtFaceInfo()
+                model.fromMap(value)
+                self.extFaceInfo = model
+            }
+            if let value = dict["FaceAge"] as? Int64 {
+                self.faceAge = value
+            }
+            if let value = dict["FaceAttack"] as? String {
+                self.faceAttack = value
+            }
+            if let value = dict["FaceAttackScore"] as? Double {
+                self.faceAttackScore = value
+            }
+            if let value = dict["FaceComparisonScore"] as? Double {
+                self.faceComparisonScore = value
+            }
+            if let value = dict["FaceGender"] as? String {
+                self.faceGender = value
+            }
+            if let value = dict["FacePassed"] as? String {
+                self.facePassed = value
+            }
+            if let value = dict["FaceRegistrationId"] as? String {
+                self.faceRegistrationId = value
+            }
+            if let value = dict["FaceRegistrationResult"] as? Int64 {
+                self.faceRegistrationResult = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: FaceVerifyIntlResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = FaceVerifyIntlResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+    }
+}
+
+public class FaceVerifyIntlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: FaceVerifyIntlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = FaceVerifyIntlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class FraudResultCallBackRequest : Tea.TeaModel {
     public var certifyId: String?
 
