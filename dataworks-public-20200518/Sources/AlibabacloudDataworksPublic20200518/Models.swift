@@ -15937,7 +15937,7 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
 
         public var columns: [DsgDesensPlanAddOrUpdateRequest.DesensRules.Columns]?
 
-        public var emptyNotDesesn: Bool?
+        public var emptyNotDesens: Bool?
 
         public override init() {
             super.init()
@@ -15985,8 +15985,8 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
                 }
                 map["columns"] = tmp
             }
-            if self.emptyNotDesesn != nil {
-                map["emptyNotDesesn"] = self.emptyNotDesesn!
+            if self.emptyNotDesens != nil {
+                map["emptyNotDesens"] = self.emptyNotDesens!
             }
             return map
         }
@@ -16032,8 +16032,8 @@ public class DsgDesensPlanAddOrUpdateRequest : Tea.TeaModel {
                 }
                 self.columns = tmp
             }
-            if let value = dict["emptyNotDesesn"] as? Bool {
-                self.emptyNotDesesn = value
+            if let value = dict["emptyNotDesens"] as? Bool {
+                self.emptyNotDesens = value
             }
         }
     }
@@ -18134,6 +18134,10 @@ public class DsgQuerySensResultRequest : Tea.TeaModel {
 
     public var tenantId: String?
 
+    public var endDate: String?
+
+    public var startDate: String?
+
     public override init() {
         super.init()
     }
@@ -18193,6 +18197,12 @@ public class DsgQuerySensResultRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.endDate != nil {
+            map["endDate"] = self.endDate!
+        }
+        if self.startDate != nil {
+            map["startDate"] = self.startDate!
+        }
         return map
     }
 
@@ -18242,6 +18252,12 @@ public class DsgQuerySensResultRequest : Tea.TeaModel {
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
+        }
+        if let value = dict["endDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["startDate"] as? String {
+            self.startDate = value
         }
     }
 }
