@@ -7499,30 +7499,6 @@ public class CreateTensorboardResponse : Tea.TeaModel {
     }
 }
 
-public class DeleteJobRequest : Tea.TeaModel {
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-    }
-}
-
 public class DeleteJobResponseBody : Tea.TeaModel {
     public var jobId: String?
 
@@ -12937,30 +12913,6 @@ public class StartTensorboardResponse : Tea.TeaModel {
             model.fromMap(value)
             self.body = model
         }
-    }
-}
-
-public class StopJobRequest : Tea.TeaModel {
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
     }
 }
 

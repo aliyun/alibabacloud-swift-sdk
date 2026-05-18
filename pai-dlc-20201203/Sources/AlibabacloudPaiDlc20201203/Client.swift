@@ -315,8 +315,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteJobWithOptions(_ JobId: String, _ request: DeleteJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func deleteJobWithOptions(_ JobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteJobResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -336,10 +335,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteJob(_ JobId: String, _ request: DeleteJobRequest) async throws -> DeleteJobResponse {
+    public func deleteJob(_ JobId: String) async throws -> DeleteJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteJobWithOptions(JobId as! String, request as! DeleteJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteJobWithOptions(JobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1336,8 +1335,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopJobWithOptions(_ JobId: String, _ request: StopJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func stopJobWithOptions(_ JobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopJobResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -1357,10 +1355,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopJob(_ JobId: String, _ request: StopJobRequest) async throws -> StopJobResponse {
+    public func stopJob(_ JobId: String) async throws -> StopJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await stopJobWithOptions(JobId as! String, request as! StopJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await stopJobWithOptions(JobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
