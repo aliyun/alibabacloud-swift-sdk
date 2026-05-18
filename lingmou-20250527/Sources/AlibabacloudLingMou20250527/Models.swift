@@ -1671,6 +1671,8 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
 
         public var languageHints: [String]?
 
+        public var mode: String?
+
         public var resolution: String?
 
         public var watermark: Bool?
@@ -1695,6 +1697,9 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
             if self.languageHints != nil {
                 map["languageHints"] = self.languageHints!
             }
+            if self.mode != nil {
+                map["mode"] = self.mode!
+            }
             if self.resolution != nil {
                 map["resolution"] = self.resolution!
             }
@@ -1711,6 +1716,9 @@ public class CreateBroadcastVideoFromTemplateRequest : Tea.TeaModel {
             }
             if let value = dict["languageHints"] as? [String] {
                 self.languageHints = value
+            }
+            if let value = dict["mode"] as? String {
+                self.mode = value
             }
             if let value = dict["resolution"] as? String {
                 self.resolution = value
