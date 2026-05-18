@@ -2968,6 +2968,214 @@ public class CreateTagResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTemplateRequest : Tea.TeaModel {
+    public var fromType: Int32?
+
+    public var ownerId: Int64?
+
+    public var remark: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var smsContent: String?
+
+    public var smsType: Int32?
+
+    public var templateName: String?
+
+    public var templateNickName: String?
+
+    public var templateSubject: String?
+
+    public var templateText: String?
+
+    public var templateType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fromType != nil {
+            map["FromType"] = self.fromType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.smsContent != nil {
+            map["SmsContent"] = self.smsContent!
+        }
+        if self.smsType != nil {
+            map["SmsType"] = self.smsType!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.templateNickName != nil {
+            map["TemplateNickName"] = self.templateNickName!
+        }
+        if self.templateSubject != nil {
+            map["TemplateSubject"] = self.templateSubject!
+        }
+        if self.templateText != nil {
+            map["TemplateText"] = self.templateText!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FromType"] as? Int32 {
+            self.fromType = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SmsContent"] as? String {
+            self.smsContent = value
+        }
+        if let value = dict["SmsType"] as? Int32 {
+            self.smsType = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+        if let value = dict["TemplateNickName"] as? String {
+            self.templateNickName = value
+        }
+        if let value = dict["TemplateSubject"] as? String {
+            self.templateSubject = value
+        }
+        if let value = dict["TemplateText"] as? String {
+            self.templateText = value
+        }
+        if let value = dict["TemplateType"] as? Int32 {
+            self.templateType = value
+        }
+    }
+}
+
+public class CreateTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var templateId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TemplateId"] as? Int32 {
+            self.templateId = value
+        }
+    }
+}
+
+public class CreateTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateUserSuppressionRequest : Tea.TeaModel {
     public var address: String?
 
