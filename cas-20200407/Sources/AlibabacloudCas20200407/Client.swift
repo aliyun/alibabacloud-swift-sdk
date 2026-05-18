@@ -145,6 +145,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateNoticeStatusWithOptions(_ request: BatchUpdateNoticeStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateNoticeStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ids)) {
+            query["Ids"] = request.ids ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noticeBiz)) {
+            query["NoticeBiz"] = request.noticeBiz ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noticeStatus)) {
+            query["NoticeStatus"] = request.noticeStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
+            query["SourceIp"] = request.sourceIp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateNoticeStatus",
+            "version": "2020-04-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateNoticeStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateNoticeStatus(_ request: BatchUpdateNoticeStatusRequest) async throws -> BatchUpdateNoticeStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchUpdateNoticeStatusWithOptions(request as! BatchUpdateNoticeStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelCertificateForPackageRequestWithOptions(_ request: CancelCertificateForPackageRequestRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelCertificateForPackageRequestResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -245,6 +245,150 @@ public class ApplyCertificateResponse : Tea.TeaModel {
     }
 }
 
+public class BatchUpdateNoticeStatusRequest : Tea.TeaModel {
+    public var ids: String?
+
+    public var lang: String?
+
+    public var noticeBiz: String?
+
+    public var noticeStatus: String?
+
+    public var sourceIp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.noticeBiz != nil {
+            map["NoticeBiz"] = self.noticeBiz!
+        }
+        if self.noticeStatus != nil {
+            map["NoticeStatus"] = self.noticeStatus!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Ids"] as? String {
+            self.ids = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["NoticeBiz"] as? String {
+            self.noticeBiz = value
+        }
+        if let value = dict["NoticeStatus"] as? String {
+            self.noticeStatus = value
+        }
+        if let value = dict["SourceIp"] as? String {
+            self.sourceIp = value
+        }
+    }
+}
+
+public class BatchUpdateNoticeStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class BatchUpdateNoticeStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchUpdateNoticeStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchUpdateNoticeStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelCertificateForPackageRequestRequest : Tea.TeaModel {
     public var orderId: Int64?
 
@@ -6794,6 +6938,8 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
 
     public var certIdentifier: String?
 
+    public var certSha2: String?
+
     public var city: String?
 
     public var common: String?
@@ -6880,6 +7026,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
+        }
+        if self.certSha2 != nil {
+            map["CertSha2"] = self.certSha2!
         }
         if self.city != nil {
             map["City"] = self.city!
@@ -6995,6 +7144,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["CertIdentifier"] as? String {
             self.certIdentifier = value
+        }
+        if let value = dict["CertSha2"] as? String {
+            self.certSha2 = value
         }
         if let value = dict["City"] as? String {
             self.city = value
