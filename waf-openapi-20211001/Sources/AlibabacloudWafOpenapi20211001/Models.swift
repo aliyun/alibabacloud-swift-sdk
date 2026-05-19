@@ -14890,6 +14890,8 @@ public class DescribeBaseSystemRulesRequest : Tea.TeaModel {
 
     public var ruleId: Int64?
 
+    public var ruleIds: [Int64]?
+
     public var ruleName: String?
 
     public var ruleStatus: Int32?
@@ -14940,6 +14942,9 @@ public class DescribeBaseSystemRulesRequest : Tea.TeaModel {
         if self.ruleId != nil {
             map["RuleId"] = self.ruleId!
         }
+        if self.ruleIds != nil {
+            map["RuleIds"] = self.ruleIds!
+        }
         if self.ruleName != nil {
             map["RuleName"] = self.ruleName!
         }
@@ -14983,6 +14988,9 @@ public class DescribeBaseSystemRulesRequest : Tea.TeaModel {
         }
         if let value = dict["RuleId"] as? Int64 {
             self.ruleId = value
+        }
+        if let value = dict["RuleIds"] as? [Int64] {
+            self.ruleIds = value
         }
         if let value = dict["RuleName"] as? String {
             self.ruleName = value
