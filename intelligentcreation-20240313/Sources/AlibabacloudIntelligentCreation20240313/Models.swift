@@ -8998,6 +8998,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
         public var questionDescription: String?
 
+        public var scriptPointId: String?
+
         public var sortNo: Int32?
 
         public var weight: Int32?
@@ -9035,6 +9037,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             if self.questionDescription != nil {
                 map["questionDescription"] = self.questionDescription!
             }
+            if self.scriptPointId != nil {
+                map["scriptPointId"] = self.scriptPointId!
+            }
             if self.sortNo != nil {
                 map["sortNo"] = self.sortNo!
             }
@@ -9070,6 +9075,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
             if let value = dict["questionDescription"] as? String {
                 self.questionDescription = value
+            }
+            if let value = dict["scriptPointId"] as? String {
+                self.scriptPointId = value
             }
             if let value = dict["sortNo"] as? Int32 {
                 self.sortNo = value
@@ -9401,6 +9409,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
     public var orderAckFlag: Bool?
 
+    public var pointCoveredFlag: Bool?
+
     public var pointDeductionRuleList: [GetAICoachScriptResponseBody.PointDeductionRuleList]?
 
     public var points: [GetAICoachScriptResponseBody.Points]?
@@ -9534,6 +9544,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
         }
         if self.orderAckFlag != nil {
             map["orderAckFlag"] = self.orderAckFlag!
+        }
+        if self.pointCoveredFlag != nil {
+            map["pointCoveredFlag"] = self.pointCoveredFlag!
         }
         if self.pointDeductionRuleList != nil {
             var tmp : [Any] = []
@@ -9698,6 +9711,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
         }
         if let value = dict["orderAckFlag"] as? Bool {
             self.orderAckFlag = value
+        }
+        if let value = dict["pointCoveredFlag"] as? Bool {
+            self.pointCoveredFlag = value
         }
         if let value = dict["pointDeductionRuleList"] as? [Any?] {
             var tmp : [GetAICoachScriptResponseBody.PointDeductionRuleList] = []
