@@ -2008,6 +2008,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCostByCostCenterWithOptions(_ request: QueryCostByCostCenterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCostByCostCenterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billingMonth)) {
+            query["BillingMonth"] = request.billingMonth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.displayZeroAmountBills)) {
+            query["DisplayZeroAmountBills"] = request.displayZeroAmountBills!;
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByCostCenterLevel)) {
+            query["GroupByCostCenterLevel"] = request.groupByCostCenterLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.metrics)) {
+            query["Metrics"] = request.metrics ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccountId)) {
+            query["OwnerAccountId"] = request.ownerAccountId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryCostByCostCenter",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryCostByCostCenterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCostByCostCenter(_ request: QueryCostByCostCenterRequest) async throws -> QueryCostByCostCenterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryCostByCostCenterWithOptions(request as! QueryCostByCostCenterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryCostCenterWithOptions(_ tmpReq: QueryCostCenterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCostCenterResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: QueryCostCenterShrinkRequest = QueryCostCenterShrinkRequest([:])

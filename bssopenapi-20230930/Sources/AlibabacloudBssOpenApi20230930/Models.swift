@@ -15360,6 +15360,306 @@ public class PayOrderResponse : Tea.TeaModel {
     }
 }
 
+public class QueryCostByCostCenterRequest : Tea.TeaModel {
+    public var billingMonth: Int32?
+
+    public var displayZeroAmountBills: Bool?
+
+    public var groupByCostCenterLevel: Bool?
+
+    public var metrics: String?
+
+    public var ownerAccountId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billingMonth != nil {
+            map["BillingMonth"] = self.billingMonth!
+        }
+        if self.displayZeroAmountBills != nil {
+            map["DisplayZeroAmountBills"] = self.displayZeroAmountBills!
+        }
+        if self.groupByCostCenterLevel != nil {
+            map["GroupByCostCenterLevel"] = self.groupByCostCenterLevel!
+        }
+        if self.metrics != nil {
+            map["Metrics"] = self.metrics!
+        }
+        if self.ownerAccountId != nil {
+            map["OwnerAccountId"] = self.ownerAccountId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BillingMonth"] as? Int32 {
+            self.billingMonth = value
+        }
+        if let value = dict["DisplayZeroAmountBills"] as? Bool {
+            self.displayZeroAmountBills = value
+        }
+        if let value = dict["GroupByCostCenterLevel"] as? Bool {
+            self.groupByCostCenterLevel = value
+        }
+        if let value = dict["Metrics"] as? String {
+            self.metrics = value
+        }
+        if let value = dict["OwnerAccountId"] as? Int64 {
+            self.ownerAccountId = value
+        }
+    }
+}
+
+public class QueryCostByCostCenterResponseBody : Tea.TeaModel {
+    public class ConsumeAmountList : Tea.TeaModel {
+        public var allocatedAmount: String?
+
+        public var costCenterCode: String?
+
+        public var costCenterId: Int64?
+
+        public var costCenterName: String?
+
+        public var directAmount: String?
+
+        public var level: Int32?
+
+        public var ownerAccountId: Int64?
+
+        public var ownerAccountName: String?
+
+        public var parentCostCenterId: Int64?
+
+        public var preCostCenterId: Int64?
+
+        public var totalAllocatedAmount: String?
+
+        public var totalAllocatedAmountPercent: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allocatedAmount != nil {
+                map["AllocatedAmount"] = self.allocatedAmount!
+            }
+            if self.costCenterCode != nil {
+                map["CostCenterCode"] = self.costCenterCode!
+            }
+            if self.costCenterId != nil {
+                map["CostCenterId"] = self.costCenterId!
+            }
+            if self.costCenterName != nil {
+                map["CostCenterName"] = self.costCenterName!
+            }
+            if self.directAmount != nil {
+                map["DirectAmount"] = self.directAmount!
+            }
+            if self.level != nil {
+                map["Level"] = self.level!
+            }
+            if self.ownerAccountId != nil {
+                map["OwnerAccountId"] = self.ownerAccountId!
+            }
+            if self.ownerAccountName != nil {
+                map["OwnerAccountName"] = self.ownerAccountName!
+            }
+            if self.parentCostCenterId != nil {
+                map["ParentCostCenterId"] = self.parentCostCenterId!
+            }
+            if self.preCostCenterId != nil {
+                map["PreCostCenterId"] = self.preCostCenterId!
+            }
+            if self.totalAllocatedAmount != nil {
+                map["TotalAllocatedAmount"] = self.totalAllocatedAmount!
+            }
+            if self.totalAllocatedAmountPercent != nil {
+                map["TotalAllocatedAmountPercent"] = self.totalAllocatedAmountPercent!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllocatedAmount"] as? String {
+                self.allocatedAmount = value
+            }
+            if let value = dict["CostCenterCode"] as? String {
+                self.costCenterCode = value
+            }
+            if let value = dict["CostCenterId"] as? Int64 {
+                self.costCenterId = value
+            }
+            if let value = dict["CostCenterName"] as? String {
+                self.costCenterName = value
+            }
+            if let value = dict["DirectAmount"] as? String {
+                self.directAmount = value
+            }
+            if let value = dict["Level"] as? Int32 {
+                self.level = value
+            }
+            if let value = dict["OwnerAccountId"] as? Int64 {
+                self.ownerAccountId = value
+            }
+            if let value = dict["OwnerAccountName"] as? String {
+                self.ownerAccountName = value
+            }
+            if let value = dict["ParentCostCenterId"] as? Int64 {
+                self.parentCostCenterId = value
+            }
+            if let value = dict["PreCostCenterId"] as? Int64 {
+                self.preCostCenterId = value
+            }
+            if let value = dict["TotalAllocatedAmount"] as? String {
+                self.totalAllocatedAmount = value
+            }
+            if let value = dict["TotalAllocatedAmountPercent"] as? String {
+                self.totalAllocatedAmountPercent = value
+            }
+        }
+    }
+    public var consumeAmountList: [QueryCostByCostCenterResponseBody.ConsumeAmountList]?
+
+    public var metadata: Any?
+
+    public var requestId: String?
+
+    public var totalAmount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.consumeAmountList != nil {
+            var tmp : [Any] = []
+            for k in self.consumeAmountList! {
+                tmp.append(k.toMap())
+            }
+            map["ConsumeAmountList"] = tmp
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalAmount != nil {
+            map["TotalAmount"] = self.totalAmount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConsumeAmountList"] as? [Any?] {
+            var tmp : [QueryCostByCostCenterResponseBody.ConsumeAmountList] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryCostByCostCenterResponseBody.ConsumeAmountList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.consumeAmountList = tmp
+        }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalAmount"] as? String {
+            self.totalAmount = value
+        }
+    }
+}
+
+public class QueryCostByCostCenterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCostByCostCenterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryCostByCostCenterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryCostCenterRequest : Tea.TeaModel {
     public class EcIdAccountIds : Tea.TeaModel {
         public var accountIds: [Int64]?
