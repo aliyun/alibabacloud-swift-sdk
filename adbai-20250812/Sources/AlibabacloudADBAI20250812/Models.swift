@@ -408,6 +408,194 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
             }
         }
     }
+    public class RayTrainConfig : Tea.TeaModel {
+        public class GpuSpecs : Tea.TeaModel {
+            public var allocateUnit: String?
+
+            public var count: Int64?
+
+            public var specName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocateUnit != nil {
+                    map["AllocateUnit"] = self.allocateUnit!
+                }
+                if self.count != nil {
+                    map["Count"] = self.count!
+                }
+                if self.specName != nil {
+                    map["SpecName"] = self.specName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocateUnit"] as? String {
+                    self.allocateUnit = value
+                }
+                if let value = dict["Count"] as? Int64 {
+                    self.count = value
+                }
+                if let value = dict["SpecName"] as? String {
+                    self.specName = value
+                }
+            }
+        }
+        public class TerminalConfig : Tea.TeaModel {
+            public class AcrConfig : Tea.TeaModel {
+                public var instanceId: String?
+
+                public var namespaces: [String]?
+
+                public var registry: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    if self.namespaces != nil {
+                        map["Namespaces"] = self.namespaces!
+                    }
+                    if self.registry != nil {
+                        map["Registry"] = self.registry!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceId"] as? String {
+                        self.instanceId = value
+                    }
+                    if let value = dict["Namespaces"] as? [String] {
+                        self.namespaces = value
+                    }
+                    if let value = dict["Registry"] as? String {
+                        self.registry = value
+                    }
+                }
+            }
+            public var acrConfig: CreateEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig.AcrConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.acrConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.acrConfig != nil {
+                    map["AcrConfig"] = self.acrConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AcrConfig"] as? [String: Any?] {
+                    var model = CreateEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig.AcrConfig()
+                    model.fromMap(value)
+                    self.acrConfig = model
+                }
+            }
+        }
+        public var cpuAcu: Int64?
+
+        public var gpuSpecs: [CreateEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs]?
+
+        public var terminalConfig: CreateEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.terminalConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuAcu != nil {
+                map["CpuAcu"] = self.cpuAcu!
+            }
+            if self.gpuSpecs != nil {
+                var tmp : [Any] = []
+                for k in self.gpuSpecs! {
+                    tmp.append(k.toMap())
+                }
+                map["GpuSpecs"] = tmp
+            }
+            if self.terminalConfig != nil {
+                map["TerminalConfig"] = self.terminalConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CpuAcu"] as? Int64 {
+                self.cpuAcu = value
+            }
+            if let value = dict["GpuSpecs"] as? [Any?] {
+                var tmp : [CreateEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.gpuSpecs = tmp
+            }
+            if let value = dict["TerminalConfig"] as? [String: Any?] {
+                var model = CreateEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig()
+                model.fromMap(value)
+                self.terminalConfig = model
+            }
+        }
+    }
     public var DBClusterId: String?
 
     public var deviceCount: Int32?
@@ -415,6 +603,8 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
     public var platformName: String?
 
     public var rayConfig: CreateEmbodiedAIPlatformRequest.RayConfig?
+
+    public var rayTrainConfig: CreateEmbodiedAIPlatformRequest.RayTrainConfig?
 
     public var regionId: String?
 
@@ -431,6 +621,7 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.rayConfig?.validate()
+        try self.rayTrainConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -446,6 +637,9 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
         }
         if self.rayConfig != nil {
             map["RayConfig"] = self.rayConfig?.toMap()
+        }
+        if self.rayTrainConfig != nil {
+            map["RayTrainConfig"] = self.rayTrainConfig?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -472,6 +666,11 @@ public class CreateEmbodiedAIPlatformRequest : Tea.TeaModel {
             model.fromMap(value)
             self.rayConfig = model
         }
+        if let value = dict["RayTrainConfig"] as? [String: Any?] {
+            var model = CreateEmbodiedAIPlatformRequest.RayTrainConfig()
+            model.fromMap(value)
+            self.rayTrainConfig = model
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -489,6 +688,8 @@ public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
     public var platformName: String?
 
     public var rayConfigShrink: String?
+
+    public var rayTrainConfigShrink: String?
 
     public var regionId: String?
 
@@ -520,6 +721,9 @@ public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         if self.rayConfigShrink != nil {
             map["RayConfig"] = self.rayConfigShrink!
         }
+        if self.rayTrainConfigShrink != nil {
+            map["RayTrainConfig"] = self.rayTrainConfigShrink!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -542,6 +746,9 @@ public class CreateEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RayConfig"] as? String {
             self.rayConfigShrink = value
+        }
+        if let value = dict["RayTrainConfig"] as? String {
+            self.rayTrainConfigShrink = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -2004,6 +2211,194 @@ public class DescribeEmbodiedAIPlatformsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RayTrainConfig : Tea.TeaModel {
+            public class GpuSpecs : Tea.TeaModel {
+                public var allocateUnit: String?
+
+                public var count: Int64?
+
+                public var specName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.allocateUnit != nil {
+                        map["AllocateUnit"] = self.allocateUnit!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.specName != nil {
+                        map["SpecName"] = self.specName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AllocateUnit"] as? String {
+                        self.allocateUnit = value
+                    }
+                    if let value = dict["Count"] as? Int64 {
+                        self.count = value
+                    }
+                    if let value = dict["SpecName"] as? String {
+                        self.specName = value
+                    }
+                }
+            }
+            public class TerminalConfig : Tea.TeaModel {
+                public class AcrConfig : Tea.TeaModel {
+                    public var instanceId: String?
+
+                    public var namespaces: [String]?
+
+                    public var registry: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.instanceId != nil {
+                            map["InstanceId"] = self.instanceId!
+                        }
+                        if self.namespaces != nil {
+                            map["Namespaces"] = self.namespaces!
+                        }
+                        if self.registry != nil {
+                            map["Registry"] = self.registry!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["InstanceId"] as? String {
+                            self.instanceId = value
+                        }
+                        if let value = dict["Namespaces"] as? [String] {
+                            self.namespaces = value
+                        }
+                        if let value = dict["Registry"] as? String {
+                            self.registry = value
+                        }
+                    }
+                }
+                public var acrConfig: DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.TerminalConfig.AcrConfig?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.acrConfig?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.acrConfig != nil {
+                        map["AcrConfig"] = self.acrConfig?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AcrConfig"] as? [String: Any?] {
+                        var model = DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.TerminalConfig.AcrConfig()
+                        model.fromMap(value)
+                        self.acrConfig = model
+                    }
+                }
+            }
+            public var cpuAcu: Int64?
+
+            public var gpuSpecs: [DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.GpuSpecs]?
+
+            public var terminalConfig: DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.TerminalConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.terminalConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpuAcu != nil {
+                    map["CpuAcu"] = self.cpuAcu!
+                }
+                if self.gpuSpecs != nil {
+                    var tmp : [Any] = []
+                    for k in self.gpuSpecs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["GpuSpecs"] = tmp
+                }
+                if self.terminalConfig != nil {
+                    map["TerminalConfig"] = self.terminalConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CpuAcu"] as? Int64 {
+                    self.cpuAcu = value
+                }
+                if let value = dict["GpuSpecs"] as? [Any?] {
+                    var tmp : [DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.GpuSpecs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.GpuSpecs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.gpuSpecs = tmp
+                }
+                if let value = dict["TerminalConfig"] as? [String: Any?] {
+                    var model = DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig.TerminalConfig()
+                    model.fromMap(value)
+                    self.terminalConfig = model
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var eapConfig: DescribeEmbodiedAIPlatformsResponseBody.Platforms.EapConfig?
@@ -2013,6 +2408,8 @@ public class DescribeEmbodiedAIPlatformsResponseBody : Tea.TeaModel {
         public var platformName: String?
 
         public var rayConfig: DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayConfig?
+
+        public var rayTrainConfig: DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig?
 
         public var state: String?
 
@@ -2028,6 +2425,7 @@ public class DescribeEmbodiedAIPlatformsResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.eapConfig?.validate()
             try self.rayConfig?.validate()
+            try self.rayTrainConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2046,6 +2444,9 @@ public class DescribeEmbodiedAIPlatformsResponseBody : Tea.TeaModel {
             }
             if self.rayConfig != nil {
                 map["RayConfig"] = self.rayConfig?.toMap()
+            }
+            if self.rayTrainConfig != nil {
+                map["RayTrainConfig"] = self.rayTrainConfig?.toMap()
             }
             if self.state != nil {
                 map["State"] = self.state!
@@ -2073,6 +2474,11 @@ public class DescribeEmbodiedAIPlatformsResponseBody : Tea.TeaModel {
                 var model = DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayConfig()
                 model.fromMap(value)
                 self.rayConfig = model
+            }
+            if let value = dict["RayTrainConfig"] as? [String: Any?] {
+                var model = DescribeEmbodiedAIPlatformsResponseBody.Platforms.RayTrainConfig()
+                model.fromMap(value)
+                self.rayTrainConfig = model
             }
             if let value = dict["State"] as? String {
                 self.state = value
@@ -3209,6 +3615,194 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
             }
         }
     }
+    public class RayTrainConfig : Tea.TeaModel {
+        public class GpuSpecs : Tea.TeaModel {
+            public var allocateUnit: String?
+
+            public var count: Int64?
+
+            public var specName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allocateUnit != nil {
+                    map["AllocateUnit"] = self.allocateUnit!
+                }
+                if self.count != nil {
+                    map["Count"] = self.count!
+                }
+                if self.specName != nil {
+                    map["SpecName"] = self.specName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AllocateUnit"] as? String {
+                    self.allocateUnit = value
+                }
+                if let value = dict["Count"] as? Int64 {
+                    self.count = value
+                }
+                if let value = dict["SpecName"] as? String {
+                    self.specName = value
+                }
+            }
+        }
+        public class TerminalConfig : Tea.TeaModel {
+            public class AcrConfig : Tea.TeaModel {
+                public var instanceId: String?
+
+                public var namespaces: [String]?
+
+                public var registry: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    if self.namespaces != nil {
+                        map["Namespaces"] = self.namespaces!
+                    }
+                    if self.registry != nil {
+                        map["Registry"] = self.registry!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceId"] as? String {
+                        self.instanceId = value
+                    }
+                    if let value = dict["Namespaces"] as? [String] {
+                        self.namespaces = value
+                    }
+                    if let value = dict["Registry"] as? String {
+                        self.registry = value
+                    }
+                }
+            }
+            public var acrConfig: ModifyEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig.AcrConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.acrConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.acrConfig != nil {
+                    map["AcrConfig"] = self.acrConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AcrConfig"] as? [String: Any?] {
+                    var model = ModifyEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig.AcrConfig()
+                    model.fromMap(value)
+                    self.acrConfig = model
+                }
+            }
+        }
+        public var cpuAcu: Int64?
+
+        public var gpuSpecs: [ModifyEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs]?
+
+        public var terminalConfig: ModifyEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.terminalConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuAcu != nil {
+                map["CpuAcu"] = self.cpuAcu!
+            }
+            if self.gpuSpecs != nil {
+                var tmp : [Any] = []
+                for k in self.gpuSpecs! {
+                    tmp.append(k.toMap())
+                }
+                map["GpuSpecs"] = tmp
+            }
+            if self.terminalConfig != nil {
+                map["TerminalConfig"] = self.terminalConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CpuAcu"] as? Int64 {
+                self.cpuAcu = value
+            }
+            if let value = dict["GpuSpecs"] as? [Any?] {
+                var tmp : [ModifyEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyEmbodiedAIPlatformRequest.RayTrainConfig.GpuSpecs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.gpuSpecs = tmp
+            }
+            if let value = dict["TerminalConfig"] as? [String: Any?] {
+                var model = ModifyEmbodiedAIPlatformRequest.RayTrainConfig.TerminalConfig()
+                model.fromMap(value)
+                self.terminalConfig = model
+            }
+        }
+    }
     public var DBClusterId: String?
 
     public var deviceCount: String?
@@ -3216,6 +3810,8 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
     public var platformName: String?
 
     public var rayConfig: ModifyEmbodiedAIPlatformRequest.RayConfig?
+
+    public var rayTrainConfig: ModifyEmbodiedAIPlatformRequest.RayTrainConfig?
 
     public var regionId: String?
 
@@ -3232,6 +3828,7 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.rayConfig?.validate()
+        try self.rayTrainConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3247,6 +3844,9 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
         }
         if self.rayConfig != nil {
             map["RayConfig"] = self.rayConfig?.toMap()
+        }
+        if self.rayTrainConfig != nil {
+            map["RayTrainConfig"] = self.rayTrainConfig?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -3273,6 +3873,11 @@ public class ModifyEmbodiedAIPlatformRequest : Tea.TeaModel {
             model.fromMap(value)
             self.rayConfig = model
         }
+        if let value = dict["RayTrainConfig"] as? [String: Any?] {
+            var model = ModifyEmbodiedAIPlatformRequest.RayTrainConfig()
+            model.fromMap(value)
+            self.rayTrainConfig = model
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -3290,6 +3895,8 @@ public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
     public var platformName: String?
 
     public var rayConfigShrink: String?
+
+    public var rayTrainConfigShrink: String?
 
     public var regionId: String?
 
@@ -3321,6 +3928,9 @@ public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         if self.rayConfigShrink != nil {
             map["RayConfig"] = self.rayConfigShrink!
         }
+        if self.rayTrainConfigShrink != nil {
+            map["RayTrainConfig"] = self.rayTrainConfigShrink!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3343,6 +3953,9 @@ public class ModifyEmbodiedAIPlatformShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RayConfig"] as? String {
             self.rayConfigShrink = value
+        }
+        if let value = dict["RayTrainConfig"] as? String {
+            self.rayTrainConfigShrink = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

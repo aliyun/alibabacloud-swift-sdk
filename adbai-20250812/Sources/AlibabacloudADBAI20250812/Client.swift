@@ -76,6 +76,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.rayConfig)) {
             request.rayConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rayConfig, "RayConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.rayTrainConfig)) {
+            request.rayTrainConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rayTrainConfig, "RayTrainConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
@@ -88,6 +91,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.rayConfigShrink)) {
             query["RayConfig"] = request.rayConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rayTrainConfigShrink)) {
+            query["RayTrainConfig"] = request.rayTrainConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -461,6 +467,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.rayConfig)) {
             request.rayConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rayConfig, "RayConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.rayTrainConfig)) {
+            request.rayTrainConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rayTrainConfig, "RayTrainConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
@@ -473,6 +482,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.rayConfigShrink)) {
             query["RayConfig"] = request.rayConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rayTrainConfigShrink)) {
+            query["RayTrainConfig"] = request.rayTrainConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
