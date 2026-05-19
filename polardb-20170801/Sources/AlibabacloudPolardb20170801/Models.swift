@@ -30134,6 +30134,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var canDisableSnat: Bool?
+
     public var components: [DescribeApplicationAttributeResponseBody.Components]?
 
     public var creationTime: String?
@@ -30162,6 +30164,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
     public var minorVersion: String?
 
+    public var natGatewayId: String?
+
     public var payType: String?
 
     public var polarClawSaaSApplicationAttribute: DescribeApplicationAttributeResponseBody.PolarClawSaaSApplicationAttribute?
@@ -30177,6 +30181,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
     public var securityIPArrays: [DescribeApplicationAttributeResponseBody.SecurityIPArrays]?
 
     public var serverlessType: String?
+
+    public var snatStatus: String?
 
     public var status: String?
 
@@ -30216,6 +30222,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.canDisableSnat != nil {
+            map["CanDisableSnat"] = self.canDisableSnat!
         }
         if self.components != nil {
             var tmp : [Any] = []
@@ -30267,6 +30276,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if self.minorVersion != nil {
             map["MinorVersion"] = self.minorVersion!
         }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -30298,6 +30310,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if self.serverlessType != nil {
             map["ServerlessType"] = self.serverlessType!
+        }
+        if self.snatStatus != nil {
+            map["SnatStatus"] = self.snatStatus!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -30337,6 +30352,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Architecture"] as? String {
             self.architecture = value
+        }
+        if let value = dict["CanDisableSnat"] as? Bool {
+            self.canDisableSnat = value
         }
         if let value = dict["Components"] as? [Any?] {
             var tmp : [DescribeApplicationAttributeResponseBody.Components] = []
@@ -30402,6 +30420,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         if let value = dict["MinorVersion"] as? String {
             self.minorVersion = value
         }
+        if let value = dict["NatGatewayId"] as? String {
+            self.natGatewayId = value
+        }
         if let value = dict["PayType"] as? String {
             self.payType = value
         }
@@ -30447,6 +30468,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServerlessType"] as? String {
             self.serverlessType = value
+        }
+        if let value = dict["SnatStatus"] as? String {
+            self.snatStatus = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -68583,6 +68607,10 @@ public class DescribePolarFsQuotaResponse : Tea.TeaModel {
 public class DescribePolarFsQuotaListRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var polarFsInstanceId: String?
 
     public var quotaMode: String?
@@ -68606,6 +68634,12 @@ public class DescribePolarFsQuotaListRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.polarFsInstanceId != nil {
             map["PolarFsInstanceId"] = self.polarFsInstanceId!
         }
@@ -68622,6 +68656,12 @@ public class DescribePolarFsQuotaListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["PolarFsInstanceId"] as? String {
             self.polarFsInstanceId = value
