@@ -35532,8 +35532,6 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
 
                     public var hit: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit?
 
-                    public var llmResponse: String?
-
                     public var rid: String?
 
                     public var tid: String?
@@ -35560,9 +35558,6 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                         if self.hit != nil {
                             map["Hit"] = self.hit?.toMap()
                         }
-                        if self.llmResponse != nil {
-                            map["LlmResponse"] = self.llmResponse!
-                        }
                         if self.rid != nil {
                             map["Rid"] = self.rid!
                         }
@@ -35583,9 +35578,6 @@ public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
                             var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit()
                             model.fromMap(value)
                             self.hit = model
-                        }
-                        if let value = dict["LlmResponse"] as? String {
-                            self.llmResponse = value
                         }
                         if let value = dict["Rid"] as? String {
                             self.rid = value
