@@ -7108,6 +7108,383 @@ public class InviteSubAccountResponse : Tea.TeaModel {
     }
 }
 
+public class InviteSubResellerRequest : Tea.TeaModel {
+    public class AccountInfoList : Tea.TeaModel {
+        public var accountNickname: String?
+
+        public var creditLine: String?
+
+        public var crossScopeRemark: String?
+
+        public var customerBd: String?
+
+        public var emailAddress: String?
+
+        public var newBuyStatus: String?
+
+        public var registerNation: String?
+
+        public var remark: String?
+
+        public var subAccountType: String?
+
+        public var zeroCreditShutdownPolicy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountNickname != nil {
+                map["AccountNickname"] = self.accountNickname!
+            }
+            if self.creditLine != nil {
+                map["CreditLine"] = self.creditLine!
+            }
+            if self.crossScopeRemark != nil {
+                map["CrossScopeRemark"] = self.crossScopeRemark!
+            }
+            if self.customerBd != nil {
+                map["CustomerBd"] = self.customerBd!
+            }
+            if self.emailAddress != nil {
+                map["EmailAddress"] = self.emailAddress!
+            }
+            if self.newBuyStatus != nil {
+                map["NewBuyStatus"] = self.newBuyStatus!
+            }
+            if self.registerNation != nil {
+                map["RegisterNation"] = self.registerNation!
+            }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
+            if self.subAccountType != nil {
+                map["SubAccountType"] = self.subAccountType!
+            }
+            if self.zeroCreditShutdownPolicy != nil {
+                map["ZeroCreditShutdownPolicy"] = self.zeroCreditShutdownPolicy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountNickname"] as? String {
+                self.accountNickname = value
+            }
+            if let value = dict["CreditLine"] as? String {
+                self.creditLine = value
+            }
+            if let value = dict["CrossScopeRemark"] as? String {
+                self.crossScopeRemark = value
+            }
+            if let value = dict["CustomerBd"] as? String {
+                self.customerBd = value
+            }
+            if let value = dict["EmailAddress"] as? String {
+                self.emailAddress = value
+            }
+            if let value = dict["NewBuyStatus"] as? String {
+                self.newBuyStatus = value
+            }
+            if let value = dict["RegisterNation"] as? String {
+                self.registerNation = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
+            }
+            if let value = dict["SubAccountType"] as? String {
+                self.subAccountType = value
+            }
+            if let value = dict["ZeroCreditShutdownPolicy"] as? String {
+                self.zeroCreditShutdownPolicy = value
+            }
+        }
+    }
+    public var accountInfoList: [InviteSubResellerRequest.AccountInfoList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.accountInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["AccountInfoList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccountInfoList"] as? [Any?] {
+            var tmp : [InviteSubResellerRequest.AccountInfoList] = []
+            for v in value {
+                if v != nil {
+                    var model = InviteSubResellerRequest.AccountInfoList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.accountInfoList = tmp
+        }
+    }
+}
+
+public class InviteSubResellerResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var days: Int32?
+
+            public var inviteId: Int64?
+
+            public var regUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.days != nil {
+                    map["Days"] = self.days!
+                }
+                if self.inviteId != nil {
+                    map["InviteId"] = self.inviteId!
+                }
+                if self.regUrl != nil {
+                    map["RegUrl"] = self.regUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Days"] as? Int32 {
+                    self.days = value
+                }
+                if let value = dict["InviteId"] as? Int64 {
+                    self.inviteId = value
+                }
+                if let value = dict["RegUrl"] as? String {
+                    self.regUrl = value
+                }
+            }
+        }
+        public var code: String?
+
+        public var message: String?
+
+        public var result: InviteSubResellerResponseBody.Results.Result?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["Result"] as? [String: Any?] {
+                var model = InviteSubResellerResponseBody.Results.Result()
+                model.fromMap(value)
+                self.result = model
+            }
+            if let value = dict["Success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var results: [InviteSubResellerResponseBody.Results]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            var tmp : [Any] = []
+            for k in self.results! {
+                tmp.append(k.toMap())
+            }
+            map["Results"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Results"] as? [Any?] {
+            var tmp : [InviteSubResellerResponseBody.Results] = []
+            for v in value {
+                if v != nil {
+                    var model = InviteSubResellerResponseBody.Results()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.results = tmp
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class InviteSubResellerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InviteSubResellerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InviteSubResellerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class IssueCouponForCustomerRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 

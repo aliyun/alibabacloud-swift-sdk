@@ -1052,6 +1052,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func inviteSubResellerWithOptions(_ request: InviteSubResellerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InviteSubResellerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountInfoList)) {
+            query["AccountInfoList"] = request.accountInfoList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InviteSubReseller",
+            "version": "2022-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InviteSubResellerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func inviteSubReseller(_ request: InviteSubResellerRequest) async throws -> InviteSubResellerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await inviteSubResellerWithOptions(request as! InviteSubResellerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func issueCouponForCustomerWithOptions(_ request: IssueCouponForCustomerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> IssueCouponForCustomerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
