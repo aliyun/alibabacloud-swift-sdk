@@ -27342,6 +27342,8 @@ public class GetPptInfoResponseBody : Tea.TeaModel {
 
         public var exportTaskId: String?
 
+        public var pptArtifactCover: String?
+
         public var pptArtifactId: String?
 
         public var pptProcessId: String?
@@ -27370,6 +27372,9 @@ public class GetPptInfoResponseBody : Tea.TeaModel {
             if self.exportTaskId != nil {
                 map["ExportTaskId"] = self.exportTaskId!
             }
+            if self.pptArtifactCover != nil {
+                map["PptArtifactCover"] = self.pptArtifactCover!
+            }
             if self.pptArtifactId != nil {
                 map["PptArtifactId"] = self.pptArtifactId!
             }
@@ -27392,6 +27397,9 @@ public class GetPptInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExportTaskId"] as? String {
                 self.exportTaskId = value
+            }
+            if let value = dict["PptArtifactCover"] as? String {
+                self.pptArtifactCover = value
             }
             if let value = dict["PptArtifactId"] as? String {
                 self.pptArtifactId = value
