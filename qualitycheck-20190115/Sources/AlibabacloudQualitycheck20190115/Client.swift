@@ -2546,6 +2546,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runCompletionMessageWithOptions(_ tmpReq: RunCompletionMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunCompletionMessageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunCompletionMessageShrinkRequest = RunCompletionMessageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.messages)) {
+            request.messagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.messages, "Messages", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messagesShrink)) {
+            body["Messages"] = request.messagesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCode)) {
+            body["ModelCode"] = request.modelCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["Stream"] = request.stream!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunCompletionMessage",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunCompletionMessageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runCompletionMessage(_ request: RunCompletionMessageRequest) async throws -> RunCompletionMessageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await runCompletionMessageWithOptions(request as! RunCompletionMessageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func saveConfigDataSetWithOptions(_ request: SaveConfigDataSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveConfigDataSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
