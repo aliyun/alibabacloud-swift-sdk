@@ -111148,6 +111148,8 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
         public var topologyType: String?
 
+        public var nestedVirtualization: String?
+
         public override init() {
             super.init()
         }
@@ -111171,6 +111173,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
             if self.topologyType != nil {
                 map["TopologyType"] = self.topologyType!
             }
+            if self.nestedVirtualization != nil {
+                map["NestedVirtualization"] = self.nestedVirtualization!
+            }
             return map
         }
 
@@ -111184,6 +111189,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
             }
             if let value = dict["TopologyType"] as? String {
                 self.topologyType = value
+            }
+            if let value = dict["NestedVirtualization"] as? String {
+                self.nestedVirtualization = value
             }
         }
     }
@@ -128032,6 +128040,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
         public var topologyType: String?
 
+        public var nestedVirtualization: String?
+
         public override init() {
             super.init()
         }
@@ -128058,6 +128068,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             if self.topologyType != nil {
                 map["TopologyType"] = self.topologyType!
             }
+            if self.nestedVirtualization != nil {
+                map["NestedVirtualization"] = self.nestedVirtualization!
+            }
             return map
         }
 
@@ -128074,6 +128087,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["TopologyType"] as? String {
                 self.topologyType = value
+            }
+            if let value = dict["NestedVirtualization"] as? String {
+                self.nestedVirtualization = value
             }
         }
     }
