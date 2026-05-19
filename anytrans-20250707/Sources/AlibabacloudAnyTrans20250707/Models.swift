@@ -2987,6 +2987,8 @@ public class GetLongTextTranslateTaskResponse : Tea.TeaModel {
 public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public var isBilingual: Bool?
+
             public var skipImgTrans: Bool?
 
             public override init() {
@@ -3003,6 +3005,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.isBilingual != nil {
+                    map["isBilingual"] = self.isBilingual!
+                }
                 if self.skipImgTrans != nil {
                     map["skipImgTrans"] = self.skipImgTrans!
                 }
@@ -3011,6 +3016,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["isBilingual"] as? Bool {
+                    self.isBilingual = value
+                }
                 if let value = dict["skipImgTrans"] as? Bool {
                     self.skipImgTrans = value
                 }
