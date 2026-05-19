@@ -13117,6 +13117,359 @@ public class GetIcpFilingInfoForPartnerResponse : Tea.TeaModel {
     }
 }
 
+public class GetLlmProxyConfigForAdminRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var capability: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.capability != nil {
+            map["Capability"] = self.capability!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["Capability"] as? String {
+            self.capability = value
+        }
+    }
+}
+
+public class GetLlmProxyConfigForAdminResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public var allowedModels: String?
+
+        public var bizId: String?
+
+        public var blockedModels: String?
+
+        public var capability: String?
+
+        public var dailyLimit: Int32?
+
+        public var dailyTokenLimit: Int64?
+
+        public var enabled: Bool?
+
+        public var extend: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: Int64?
+
+        public var ipBlacklist: String?
+
+        public var ipWhitelist: String?
+
+        public var rpmLimit: Int32?
+
+        public var status: Int32?
+
+        public var suspendReason: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowedModels != nil {
+                map["AllowedModels"] = self.allowedModels!
+            }
+            if self.bizId != nil {
+                map["BizId"] = self.bizId!
+            }
+            if self.blockedModels != nil {
+                map["BlockedModels"] = self.blockedModels!
+            }
+            if self.capability != nil {
+                map["Capability"] = self.capability!
+            }
+            if self.dailyLimit != nil {
+                map["DailyLimit"] = self.dailyLimit!
+            }
+            if self.dailyTokenLimit != nil {
+                map["DailyTokenLimit"] = self.dailyTokenLimit!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.extend != nil {
+                map["Extend"] = self.extend!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.ipBlacklist != nil {
+                map["IpBlacklist"] = self.ipBlacklist!
+            }
+            if self.ipWhitelist != nil {
+                map["IpWhitelist"] = self.ipWhitelist!
+            }
+            if self.rpmLimit != nil {
+                map["RpmLimit"] = self.rpmLimit!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.suspendReason != nil {
+                map["SuspendReason"] = self.suspendReason!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AllowedModels"] as? String {
+                self.allowedModels = value
+            }
+            if let value = dict["BizId"] as? String {
+                self.bizId = value
+            }
+            if let value = dict["BlockedModels"] as? String {
+                self.blockedModels = value
+            }
+            if let value = dict["Capability"] as? String {
+                self.capability = value
+            }
+            if let value = dict["DailyLimit"] as? Int32 {
+                self.dailyLimit = value
+            }
+            if let value = dict["DailyTokenLimit"] as? Int64 {
+                self.dailyTokenLimit = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Extend"] as? String {
+                self.extend = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["IpBlacklist"] as? String {
+                self.ipBlacklist = value
+            }
+            if let value = dict["IpWhitelist"] as? String {
+                self.ipWhitelist = value
+            }
+            if let value = dict["RpmLimit"] as? Int32 {
+                self.rpmLimit = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+            if let value = dict["SuspendReason"] as? String {
+                self.suspendReason = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var allowRetry: Bool?
+
+    public var appName: String?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var module: GetLlmProxyConfigForAdminResponseBody.Module?
+
+    public var requestId: String?
+
+    public var rootErrorCode: String?
+
+    public var rootErrorMsg: String?
+
+    public var synchro: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.module != nil {
+            map["Module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rootErrorCode != nil {
+            map["RootErrorCode"] = self.rootErrorCode!
+        }
+        if self.rootErrorMsg != nil {
+            map["RootErrorMsg"] = self.rootErrorMsg!
+        }
+        if self.synchro != nil {
+            map["Synchro"] = self.synchro!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["AllowRetry"] as? Bool {
+            self.allowRetry = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrorArgs"] as? [Any] {
+            self.errorArgs = value
+        }
+        if let value = dict["Module"] as? [String: Any?] {
+            var model = GetLlmProxyConfigForAdminResponseBody.Module()
+            model.fromMap(value)
+            self.module = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["RootErrorCode"] as? String {
+            self.rootErrorCode = value
+        }
+        if let value = dict["RootErrorMsg"] as? String {
+            self.rootErrorMsg = value
+        }
+        if let value = dict["Synchro"] as? Bool {
+            self.synchro = value
+        }
+    }
+}
+
+public class GetLlmProxyConfigForAdminResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLlmProxyConfigForAdminResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLlmProxyConfigForAdminResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetUserAccessTokenForPartnerRequest : Tea.TeaModel {
     public var siteHost: String?
 
