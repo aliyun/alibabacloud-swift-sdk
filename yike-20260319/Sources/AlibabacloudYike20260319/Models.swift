@@ -3785,7 +3785,11 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var endTime: String?
+
     public var errorCode: String?
+
+    public var errorMessage: String?
 
     public var jobId: String?
 
@@ -3796,6 +3800,8 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
     public var jobStatus: String?
 
     public var requestId: String?
+
+    public var startTime: String?
 
     public var userData: String?
 
@@ -3813,8 +3819,14 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
@@ -3835,6 +3847,9 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -3843,8 +3858,14 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["ErrorCode"] as? String {
             self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
         }
         if let value = dict["JobId"] as? String {
             self.jobId = value
@@ -3870,6 +3891,9 @@ public class GetYikePromptExpansionVoiceFixJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
