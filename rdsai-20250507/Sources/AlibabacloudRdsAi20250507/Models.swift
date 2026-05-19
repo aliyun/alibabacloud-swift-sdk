@@ -5143,6 +5143,8 @@ public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
 
     public var consumerName: String?
 
+    public var cursor: String?
+
     public var endTime: String?
 
     public var instanceId: String?
@@ -5177,6 +5179,9 @@ public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
         if self.consumerName != nil {
             map["ConsumerName"] = self.consumerName!
         }
+        if self.cursor != nil {
+            map["Cursor"] = self.cursor!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -5208,6 +5213,9 @@ public class DescribeMOTokenUsageDetailRequest : Tea.TeaModel {
         }
         if let value = dict["ConsumerName"] as? String {
             self.consumerName = value
+        }
+        if let value = dict["Cursor"] as? String {
+            self.cursor = value
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
@@ -5320,6 +5328,8 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nextCursor: String?
+
     public var page: Int32?
 
     public var pageSize: Int32?
@@ -5344,6 +5354,9 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextCursor != nil {
+            map["NextCursor"] = self.nextCursor!
+        }
         if self.page != nil {
             map["Page"] = self.page!
         }
@@ -5368,6 +5381,9 @@ public class DescribeMOTokenUsageDetailResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NextCursor"] as? String {
+            self.nextCursor = value
+        }
         if let value = dict["Page"] as? Int32 {
             self.page = value
         }
@@ -8467,6 +8483,8 @@ public class GetModelOperatorOrderRequest : Tea.TeaModel {
 public class GetModelOperatorOrderResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class InstanceList : Tea.TeaModel {
+            public var chargeType: String?
+
             public var endTime: Int64?
 
             public var instanceClass: String?
@@ -8491,6 +8509,9 @@ public class GetModelOperatorOrderResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.chargeType != nil {
+                    map["ChargeType"] = self.chargeType!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -8511,6 +8532,9 @@ public class GetModelOperatorOrderResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ChargeType"] as? String {
+                    self.chargeType = value
+                }
                 if let value = dict["EndTime"] as? Int64 {
                     self.endTime = value
                 }
