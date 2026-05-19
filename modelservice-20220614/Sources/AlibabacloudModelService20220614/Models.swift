@@ -167,14 +167,14 @@ public class GetUserRequest : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.sceneType != nil {
-            map["SceneType"] = self.sceneType!
+            map["scene_type"] = self.sceneType!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["SceneType"] as? String {
+        if let value = dict["scene_type"] as? String {
             self.sceneType = value
         }
     }
