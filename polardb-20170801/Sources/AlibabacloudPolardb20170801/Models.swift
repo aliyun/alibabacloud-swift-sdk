@@ -71439,6 +71439,418 @@ public class DescribeScheduleTasksResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSharedBackupsRequest : Tea.TeaModel {
+    public var backupId: String?
+
+    public var DBClusterId: String?
+
+    public var DBType: String?
+
+    public var DBVersion: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var shareType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupId != nil {
+            map["BackupId"] = self.backupId!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.DBType != nil {
+            map["DBType"] = self.DBType!
+        }
+        if self.DBVersion != nil {
+            map["DBVersion"] = self.DBVersion!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.shareType != nil {
+            map["ShareType"] = self.shareType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BackupId"] as? String {
+            self.backupId = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["DBType"] as? String {
+            self.DBType = value
+        }
+        if let value = dict["DBVersion"] as? String {
+            self.DBVersion = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["ShareType"] as? String {
+            self.shareType = value
+        }
+    }
+}
+
+public class DescribeSharedBackupsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var backupEndTime: String?
+
+        public var backupId: String?
+
+        public var backupMethod: String?
+
+        public var backupMode: String?
+
+        public var backupSetSize: String?
+
+        public var backupStartTime: String?
+
+        public var backupStatus: String?
+
+        public var backupType: String?
+
+        public var backupsLevel: String?
+
+        public var consistentTime: String?
+
+        public var DBClusterId: String?
+
+        public var DBType: String?
+
+        public var DBVersion: String?
+
+        public var payType: String?
+
+        public var regionId: String?
+
+        public var serverlessType: String?
+
+        public var shareType: String?
+
+        public var sharerUID: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupEndTime != nil {
+                map["BackupEndTime"] = self.backupEndTime!
+            }
+            if self.backupId != nil {
+                map["BackupId"] = self.backupId!
+            }
+            if self.backupMethod != nil {
+                map["BackupMethod"] = self.backupMethod!
+            }
+            if self.backupMode != nil {
+                map["BackupMode"] = self.backupMode!
+            }
+            if self.backupSetSize != nil {
+                map["BackupSetSize"] = self.backupSetSize!
+            }
+            if self.backupStartTime != nil {
+                map["BackupStartTime"] = self.backupStartTime!
+            }
+            if self.backupStatus != nil {
+                map["BackupStatus"] = self.backupStatus!
+            }
+            if self.backupType != nil {
+                map["BackupType"] = self.backupType!
+            }
+            if self.backupsLevel != nil {
+                map["BackupsLevel"] = self.backupsLevel!
+            }
+            if self.consistentTime != nil {
+                map["ConsistentTime"] = self.consistentTime!
+            }
+            if self.DBClusterId != nil {
+                map["DBClusterId"] = self.DBClusterId!
+            }
+            if self.DBType != nil {
+                map["DBType"] = self.DBType!
+            }
+            if self.DBVersion != nil {
+                map["DBVersion"] = self.DBVersion!
+            }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.serverlessType != nil {
+                map["ServerlessType"] = self.serverlessType!
+            }
+            if self.shareType != nil {
+                map["ShareType"] = self.shareType!
+            }
+            if self.sharerUID != nil {
+                map["SharerUID"] = self.sharerUID!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BackupEndTime"] as? String {
+                self.backupEndTime = value
+            }
+            if let value = dict["BackupId"] as? String {
+                self.backupId = value
+            }
+            if let value = dict["BackupMethod"] as? String {
+                self.backupMethod = value
+            }
+            if let value = dict["BackupMode"] as? String {
+                self.backupMode = value
+            }
+            if let value = dict["BackupSetSize"] as? String {
+                self.backupSetSize = value
+            }
+            if let value = dict["BackupStartTime"] as? String {
+                self.backupStartTime = value
+            }
+            if let value = dict["BackupStatus"] as? String {
+                self.backupStatus = value
+            }
+            if let value = dict["BackupType"] as? String {
+                self.backupType = value
+            }
+            if let value = dict["BackupsLevel"] as? String {
+                self.backupsLevel = value
+            }
+            if let value = dict["ConsistentTime"] as? String {
+                self.consistentTime = value
+            }
+            if let value = dict["DBClusterId"] as? String {
+                self.DBClusterId = value
+            }
+            if let value = dict["DBType"] as? String {
+                self.DBType = value
+            }
+            if let value = dict["DBVersion"] as? String {
+                self.DBVersion = value
+            }
+            if let value = dict["PayType"] as? String {
+                self.payType = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ServerlessType"] as? String {
+                self.serverlessType = value
+            }
+            if let value = dict["ShareType"] as? String {
+                self.shareType = value
+            }
+            if let value = dict["SharerUID"] as? String {
+                self.sharerUID = value
+            }
+        }
+    }
+    public var items: [DescribeSharedBackupsResponseBody.Items]?
+
+    public var pageNumber: String?
+
+    public var pageRecordCount: String?
+
+    public var requestId: String?
+
+    public var totalRecordCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeSharedBackupsResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeSharedBackupsResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["PageNumber"] as? String {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? String {
+            self.pageRecordCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? String {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class DescribeSharedBackupsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSharedBackupsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSharedBackupsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
