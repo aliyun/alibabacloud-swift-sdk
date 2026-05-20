@@ -871,9 +871,91 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
     }
     public class TranscriberConfig : Tea.TeaModel {
+        public class CorrectionRules : Tea.TeaModel {
+            public var pattern: String?
+
+            public var replacement: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.pattern != nil {
+                    map["Pattern"] = self.pattern!
+                }
+                if self.replacement != nil {
+                    map["Replacement"] = self.replacement!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Pattern"] as? String {
+                    self.pattern = value
+                }
+                if let value = dict["Replacement"] as? String {
+                    self.replacement = value
+                }
+            }
+        }
+        public class NlsAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public var correctionRules: [CreateApplicationVersionRequest.TranscriberConfig.CorrectionRules]?
+
+        public var customizationId: String?
+
+        public var endSilenceTimeout: Int32?
+
+        public var model: String?
+
+        public var nlsAccessProfile: CreateApplicationVersionRequest.TranscriberConfig.NlsAccessProfile?
+
         public var nlsAccessType: String?
 
         public var nlsEngine: String?
+
+        public var speechNoiseThreshold: Int32?
+
+        public var vocabularyId: String?
 
         public override init() {
             super.init()
@@ -885,26 +967,85 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nlsAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.correctionRules != nil {
+                var tmp : [Any] = []
+                for k in self.correctionRules! {
+                    tmp.append(k.toMap())
+                }
+                map["CorrectionRules"] = tmp
+            }
+            if self.customizationId != nil {
+                map["CustomizationId"] = self.customizationId!
+            }
+            if self.endSilenceTimeout != nil {
+                map["EndSilenceTimeout"] = self.endSilenceTimeout!
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.nlsAccessProfile != nil {
+                map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+            }
             if self.nlsAccessType != nil {
                 map["NlsAccessType"] = self.nlsAccessType!
             }
             if self.nlsEngine != nil {
                 map["NlsEngine"] = self.nlsEngine!
             }
+            if self.speechNoiseThreshold != nil {
+                map["SpeechNoiseThreshold"] = self.speechNoiseThreshold!
+            }
+            if self.vocabularyId != nil {
+                map["VocabularyId"] = self.vocabularyId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CorrectionRules"] as? [Any?] {
+                var tmp : [CreateApplicationVersionRequest.TranscriberConfig.CorrectionRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateApplicationVersionRequest.TranscriberConfig.CorrectionRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.correctionRules = tmp
+            }
+            if let value = dict["CustomizationId"] as? String {
+                self.customizationId = value
+            }
+            if let value = dict["EndSilenceTimeout"] as? Int32 {
+                self.endSilenceTimeout = value
+            }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                var model = CreateApplicationVersionRequest.TranscriberConfig.NlsAccessProfile()
+                model.fromMap(value)
+                self.nlsAccessProfile = model
+            }
             if let value = dict["NlsAccessType"] as? String {
                 self.nlsAccessType = value
             }
             if let value = dict["NlsEngine"] as? String {
                 self.nlsEngine = value
+            }
+            if let value = dict["SpeechNoiseThreshold"] as? Int32 {
+                self.speechNoiseThreshold = value
+            }
+            if let value = dict["VocabularyId"] as? String {
+                self.vocabularyId = value
             }
         }
     }
@@ -3995,9 +4136,91 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
             }
             public class TranscriberConfig : Tea.TeaModel {
+                public class CorrectionRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
+                public class NlsAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public var correctionRules: [GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules]?
+
+                public var customizationId: String?
+
+                public var endSilenceTimeout: Int32?
+
+                public var model: String?
+
+                public var nlsAccessProfile: GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig.NlsAccessProfile?
+
                 public var nlsAccessType: String?
 
                 public var nlsEngine: String?
+
+                public var speechNoiseThreshold: Int32?
+
+                public var vocabularyId: String?
 
                 public override init() {
                     super.init()
@@ -4009,26 +4232,85 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.nlsAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.correctionRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.correctionRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CorrectionRules"] = tmp
+                    }
+                    if self.customizationId != nil {
+                        map["CustomizationId"] = self.customizationId!
+                    }
+                    if self.endSilenceTimeout != nil {
+                        map["EndSilenceTimeout"] = self.endSilenceTimeout!
+                    }
+                    if self.model != nil {
+                        map["Model"] = self.model!
+                    }
+                    if self.nlsAccessProfile != nil {
+                        map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+                    }
                     if self.nlsAccessType != nil {
                         map["NlsAccessType"] = self.nlsAccessType!
                     }
                     if self.nlsEngine != nil {
                         map["NlsEngine"] = self.nlsEngine!
                     }
+                    if self.speechNoiseThreshold != nil {
+                        map["SpeechNoiseThreshold"] = self.speechNoiseThreshold!
+                    }
+                    if self.vocabularyId != nil {
+                        map["VocabularyId"] = self.vocabularyId!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CorrectionRules"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig.CorrectionRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.correctionRules = tmp
+                    }
+                    if let value = dict["CustomizationId"] as? String {
+                        self.customizationId = value
+                    }
+                    if let value = dict["EndSilenceTimeout"] as? Int32 {
+                        self.endSilenceTimeout = value
+                    }
+                    if let value = dict["Model"] as? String {
+                        self.model = value
+                    }
+                    if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig.NlsAccessProfile()
+                        model.fromMap(value)
+                        self.nlsAccessProfile = model
+                    }
                     if let value = dict["NlsAccessType"] as? String {
                         self.nlsAccessType = value
                     }
                     if let value = dict["NlsEngine"] as? String {
                         self.nlsEngine = value
+                    }
+                    if let value = dict["SpeechNoiseThreshold"] as? Int32 {
+                        self.speechNoiseThreshold = value
+                    }
+                    if let value = dict["VocabularyId"] as? String {
+                        self.vocabularyId = value
                     }
                 }
             }
@@ -4533,9 +4815,91 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
             }
             public class TranscriberConfig : Tea.TeaModel {
+                public class CorrectionRules : Tea.TeaModel {
+                    public var pattern: String?
+
+                    public var replacement: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.pattern != nil {
+                            map["Pattern"] = self.pattern!
+                        }
+                        if self.replacement != nil {
+                            map["Replacement"] = self.replacement!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Pattern"] as? String {
+                            self.pattern = value
+                        }
+                        if let value = dict["Replacement"] as? String {
+                            self.replacement = value
+                        }
+                    }
+                }
+                public class NlsAccessProfile : Tea.TeaModel {
+                    public var accessProfileId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessProfileId != nil {
+                            map["AccessProfileId"] = self.accessProfileId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessProfileId"] as? String {
+                            self.accessProfileId = value
+                        }
+                    }
+                }
+                public var correctionRules: [GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules]?
+
+                public var customizationId: String?
+
+                public var endSilenceTimeout: Int32?
+
+                public var model: String?
+
+                public var nlsAccessProfile: GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig.NlsAccessProfile?
+
                 public var nlsAccessType: String?
 
                 public var nlsEngine: String?
+
+                public var speechNoiseThreshold: Int32?
+
+                public var vocabularyId: String?
 
                 public override init() {
                     super.init()
@@ -4547,26 +4911,85 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.nlsAccessProfile?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.correctionRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.correctionRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CorrectionRules"] = tmp
+                    }
+                    if self.customizationId != nil {
+                        map["CustomizationId"] = self.customizationId!
+                    }
+                    if self.endSilenceTimeout != nil {
+                        map["EndSilenceTimeout"] = self.endSilenceTimeout!
+                    }
+                    if self.model != nil {
+                        map["Model"] = self.model!
+                    }
+                    if self.nlsAccessProfile != nil {
+                        map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+                    }
                     if self.nlsAccessType != nil {
                         map["NlsAccessType"] = self.nlsAccessType!
                     }
                     if self.nlsEngine != nil {
                         map["NlsEngine"] = self.nlsEngine!
                     }
+                    if self.speechNoiseThreshold != nil {
+                        map["SpeechNoiseThreshold"] = self.speechNoiseThreshold!
+                    }
+                    if self.vocabularyId != nil {
+                        map["VocabularyId"] = self.vocabularyId!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["CorrectionRules"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig.CorrectionRules()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.correctionRules = tmp
+                    }
+                    if let value = dict["CustomizationId"] as? String {
+                        self.customizationId = value
+                    }
+                    if let value = dict["EndSilenceTimeout"] as? Int32 {
+                        self.endSilenceTimeout = value
+                    }
+                    if let value = dict["Model"] as? String {
+                        self.model = value
+                    }
+                    if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                        var model = GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig.NlsAccessProfile()
+                        model.fromMap(value)
+                        self.nlsAccessProfile = model
+                    }
                     if let value = dict["NlsAccessType"] as? String {
                         self.nlsAccessType = value
                     }
                     if let value = dict["NlsEngine"] as? String {
                         self.nlsEngine = value
+                    }
+                    if let value = dict["SpeechNoiseThreshold"] as? Int32 {
+                        self.speechNoiseThreshold = value
+                    }
+                    if let value = dict["VocabularyId"] as? String {
+                        self.vocabularyId = value
                     }
                 }
             }
@@ -10046,9 +10469,91 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
     }
     public class TranscriberConfig : Tea.TeaModel {
+        public class CorrectionRules : Tea.TeaModel {
+            public var pattern: String?
+
+            public var replacement: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.pattern != nil {
+                    map["Pattern"] = self.pattern!
+                }
+                if self.replacement != nil {
+                    map["Replacement"] = self.replacement!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Pattern"] as? String {
+                    self.pattern = value
+                }
+                if let value = dict["Replacement"] as? String {
+                    self.replacement = value
+                }
+            }
+        }
+        public class NlsAccessProfile : Tea.TeaModel {
+            public var accessProfileId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessProfileId != nil {
+                    map["AccessProfileId"] = self.accessProfileId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AccessProfileId"] as? String {
+                    self.accessProfileId = value
+                }
+            }
+        }
+        public var correctionRules: [UpdateApplicationVersionRequest.TranscriberConfig.CorrectionRules]?
+
+        public var customizationId: String?
+
+        public var endSilenceTimeout: Int32?
+
+        public var model: String?
+
+        public var nlsAccessProfile: UpdateApplicationVersionRequest.TranscriberConfig.NlsAccessProfile?
+
         public var nlsAccessType: String?
 
         public var nlsEngine: String?
+
+        public var speechNoiseThreshold: Int32?
+
+        public var vocabularyId: String?
 
         public override init() {
             super.init()
@@ -10060,26 +10565,85 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nlsAccessProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.correctionRules != nil {
+                var tmp : [Any] = []
+                for k in self.correctionRules! {
+                    tmp.append(k.toMap())
+                }
+                map["CorrectionRules"] = tmp
+            }
+            if self.customizationId != nil {
+                map["CustomizationId"] = self.customizationId!
+            }
+            if self.endSilenceTimeout != nil {
+                map["EndSilenceTimeout"] = self.endSilenceTimeout!
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.nlsAccessProfile != nil {
+                map["NlsAccessProfile"] = self.nlsAccessProfile?.toMap()
+            }
             if self.nlsAccessType != nil {
                 map["NlsAccessType"] = self.nlsAccessType!
             }
             if self.nlsEngine != nil {
                 map["NlsEngine"] = self.nlsEngine!
             }
+            if self.speechNoiseThreshold != nil {
+                map["SpeechNoiseThreshold"] = self.speechNoiseThreshold!
+            }
+            if self.vocabularyId != nil {
+                map["VocabularyId"] = self.vocabularyId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CorrectionRules"] as? [Any?] {
+                var tmp : [UpdateApplicationVersionRequest.TranscriberConfig.CorrectionRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateApplicationVersionRequest.TranscriberConfig.CorrectionRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.correctionRules = tmp
+            }
+            if let value = dict["CustomizationId"] as? String {
+                self.customizationId = value
+            }
+            if let value = dict["EndSilenceTimeout"] as? Int32 {
+                self.endSilenceTimeout = value
+            }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["NlsAccessProfile"] as? [String: Any?] {
+                var model = UpdateApplicationVersionRequest.TranscriberConfig.NlsAccessProfile()
+                model.fromMap(value)
+                self.nlsAccessProfile = model
+            }
             if let value = dict["NlsAccessType"] as? String {
                 self.nlsAccessType = value
             }
             if let value = dict["NlsEngine"] as? String {
                 self.nlsEngine = value
+            }
+            if let value = dict["SpeechNoiseThreshold"] as? Int32 {
+                self.speechNoiseThreshold = value
+            }
+            if let value = dict["VocabularyId"] as? String {
+                self.vocabularyId = value
             }
         }
     }
