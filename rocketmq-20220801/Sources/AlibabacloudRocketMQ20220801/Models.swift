@@ -7627,6 +7627,10 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var aclInfo: GetInstanceResponseBody.Data.AclInfo?
 
+        public var autoRenew: Bool?
+
+        public var autoRenewPeriod: Int32?
+
         public var bid: String?
 
         public var commodityCode: String?
@@ -7704,6 +7708,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.aclInfo != nil {
                 map["aclInfo"] = self.aclInfo?.toMap()
+            }
+            if self.autoRenew != nil {
+                map["autoRenew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["autoRenewPeriod"] = self.autoRenewPeriod!
             }
             if self.bid != nil {
                 map["bid"] = self.bid!
@@ -7805,6 +7815,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 var model = GetInstanceResponseBody.Data.AclInfo()
                 model.fromMap(value)
                 self.aclInfo = model
+            }
+            if let value = dict["autoRenew"] as? Bool {
+                self.autoRenew = value
+            }
+            if let value = dict["autoRenewPeriod"] as? Int32 {
+                self.autoRenewPeriod = value
             }
             if let value = dict["bid"] as? String {
                 self.bid = value
