@@ -1467,6 +1467,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filename)) {
             query["Filename"] = request.filename ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ossBucket)) {
+            query["OssBucket"] = request.ossBucket ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.uploadLocation)) {
             query["UploadLocation"] = request.uploadLocation ?? "";
         }
