@@ -2727,6 +2727,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ocr)) {
             query["Ocr"] = request.ocr ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pages)) {
             query["Pages"] = request.pages ?? "";
         }

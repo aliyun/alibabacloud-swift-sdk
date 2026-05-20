@@ -9604,6 +9604,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var ocr: String?
 
+    public var ocrValueStandard: String?
+
     public var pages: String?
 
     public var procedurePriority: String?
@@ -9762,6 +9764,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
         }
         if self.pages != nil {
             map["Pages"] = self.pages!
@@ -9933,6 +9938,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["Ocr"] as? String {
             self.ocr = value
         }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
+        }
         if let value = dict["Pages"] as? String {
             self.pages = value
         }
@@ -10066,6 +10074,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var model: String?
 
     public var ocr: String?
+
+    public var ocrValueStandard: String?
 
     public var pages: String?
 
@@ -10225,6 +10235,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
+        }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
         }
         if self.pages != nil {
             map["Pages"] = self.pages!
@@ -10395,6 +10408,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
         }
         if let value = dict["Pages"] as? String {
             self.pages = value
