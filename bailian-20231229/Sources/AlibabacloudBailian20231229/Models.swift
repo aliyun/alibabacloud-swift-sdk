@@ -12313,6 +12313,36 @@ public class ListPublishedAgentResponse : Tea.TeaModel {
 }
 
 public class RetrieveRequest : Tea.TeaModel {
+    public class Extra : Tea.TeaModel {
+        public var uniqueId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.uniqueId != nil {
+                map["uniqueId"] = self.uniqueId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["uniqueId"] as? String {
+                self.uniqueId = value
+            }
+        }
+    }
     public class QueryHistory : Tea.TeaModel {
         public var content: String?
 
@@ -12433,6 +12463,8 @@ public class RetrieveRequest : Tea.TeaModel {
 
     public var enableRewrite: Bool?
 
+    public var extra: RetrieveRequest.Extra?
+
     public var images: [String]?
 
     public var indexId: String?
@@ -12465,6 +12497,7 @@ public class RetrieveRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extra?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12477,6 +12510,9 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if self.enableRewrite != nil {
             map["EnableRewrite"] = self.enableRewrite!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra?.toMap()
         }
         if self.images != nil {
             map["Images"] = self.images!
@@ -12536,6 +12572,11 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if let value = dict["EnableRewrite"] as? Bool {
             self.enableRewrite = value
+        }
+        if let value = dict["Extra"] as? [String: Any?] {
+            var model = RetrieveRequest.Extra()
+            model.fromMap(value)
+            self.extra = model
         }
         if let value = dict["Images"] as? [String] {
             self.images = value
@@ -12610,6 +12651,8 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
 
     public var enableRewrite: Bool?
 
+    public var extraShrink: String?
+
     public var imagesShrink: String?
 
     public var indexId: String?
@@ -12654,6 +12697,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         }
         if self.enableRewrite != nil {
             map["EnableRewrite"] = self.enableRewrite!
+        }
+        if self.extraShrink != nil {
+            map["Extra"] = self.extraShrink!
         }
         if self.imagesShrink != nil {
             map["Images"] = self.imagesShrink!
@@ -12701,6 +12747,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnableRewrite"] as? Bool {
             self.enableRewrite = value
+        }
+        if let value = dict["Extra"] as? String {
+            self.extraShrink = value
         }
         if let value = dict["Images"] as? String {
             self.imagesShrink = value
@@ -12953,6 +13002,36 @@ public class RetrieveResponse : Tea.TeaModel {
 }
 
 public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
+    public class Extra : Tea.TeaModel {
+        public var uniqueId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.uniqueId != nil {
+                map["uniqueId"] = self.uniqueId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["uniqueId"] as? String {
+                self.uniqueId = value
+            }
+        }
+    }
     public var categoryIds: [String]?
 
     public var chunkMode: String?
@@ -12962,6 +13041,8 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
     public var documentIds: [String]?
 
     public var enableHeaders: Bool?
+
+    public var extra: SubmitIndexAddDocumentsJobRequest.Extra?
 
     public var indexId: String?
 
@@ -12981,6 +13062,7 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.extra?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12999,6 +13081,9 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         }
         if self.enableHeaders != nil {
             map["EnableHeaders"] = self.enableHeaders!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra?.toMap()
         }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
@@ -13032,6 +13117,11 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         if let value = dict["EnableHeaders"] as? Bool {
             self.enableHeaders = value
         }
+        if let value = dict["Extra"] as? [String: Any?] {
+            var model = SubmitIndexAddDocumentsJobRequest.Extra()
+            model.fromMap(value)
+            self.extra = model
+        }
         if let value = dict["IndexId"] as? String {
             self.indexId = value
         }
@@ -13057,6 +13147,8 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
     public var documentIdsShrink: String?
 
     public var enableHeaders: Bool?
+
+    public var extraShrink: String?
 
     public var indexId: String?
 
@@ -13095,6 +13187,9 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         if self.enableHeaders != nil {
             map["EnableHeaders"] = self.enableHeaders!
         }
+        if self.extraShrink != nil {
+            map["Extra"] = self.extraShrink!
+        }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
         }
@@ -13126,6 +13221,9 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnableHeaders"] as? Bool {
             self.enableHeaders = value
+        }
+        if let value = dict["Extra"] as? String {
+            self.extraShrink = value
         }
         if let value = dict["IndexId"] as? String {
             self.indexId = value

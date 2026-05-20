@@ -1815,6 +1815,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RetrieveShrinkRequest = RetrieveShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.extra)) {
+            request.extraShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.extra, "Extra", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.images)) {
             request.imagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.images, "Images", "simple")
         }
@@ -1839,6 +1842,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableRewrite)) {
             query["EnableRewrite"] = request.enableRewrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extraShrink)) {
+            query["Extra"] = request.extraShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.imagesShrink)) {
             query["Images"] = request.imagesShrink ?? "";
@@ -1910,6 +1916,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.documentIds)) {
             request.documentIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentIds, "DocumentIds", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.extra)) {
+            request.extraShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.extra, "Extra", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.categoryIdsShrink)) {
             query["CategoryIds"] = request.categoryIdsShrink ?? "";
@@ -1925,6 +1934,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableHeaders)) {
             query["EnableHeaders"] = request.enableHeaders!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extraShrink)) {
+            query["Extra"] = request.extraShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.indexId)) {
             query["IndexId"] = request.indexId ?? "";
