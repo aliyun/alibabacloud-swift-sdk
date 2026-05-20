@@ -644,6 +644,10 @@ public class BillingCostBreakdownRespDTO : Tea.TeaModel {
 }
 
 public class BillingCostBreakdownRowDTO : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
+    public var apiKeyName: String?
+
     public var billingType: String?
 
     public var clientId: Int64?
@@ -682,6 +686,12 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
+        if self.apiKeyName != nil {
+            map["apiKeyName"] = self.apiKeyName!
+        }
         if self.billingType != nil {
             map["billingType"] = self.billingType!
         }
@@ -727,6 +737,12 @@ public class BillingCostBreakdownRowDTO : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
+        if let value = dict["apiKeyName"] as? String {
+            self.apiKeyName = value
+        }
         if let value = dict["billingType"] as? String {
             self.billingType = value
         }
@@ -5207,6 +5223,10 @@ public class UsageBreakdownRespDTO : Tea.TeaModel {
 }
 
 public class UsageBreakdownRowDTO : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
+    public var apiKeyName: String?
+
     public var clientId: Int64?
 
     public var clientName: String?
@@ -5237,6 +5257,12 @@ public class UsageBreakdownRowDTO : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
+        if self.apiKeyName != nil {
+            map["apiKeyName"] = self.apiKeyName!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -5270,6 +5296,12 @@ public class UsageBreakdownRowDTO : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
+        if let value = dict["apiKeyName"] as? String {
+            self.apiKeyName = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -20038,6 +20070,8 @@ public class ModelRouterQueryApiKeyListResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
     public var clientId: Int64?
 
     public var endTime: Int64?
@@ -20072,6 +20106,9 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -20107,6 +20144,9 @@ public class ModelRouterQueryBillingCostBreakdownRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -21938,6 +21978,8 @@ public class ModelRouterQueryConversationListResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryCostModelDetailRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
     public var clientId: Int64?
 
     public var endTime: Int64?
@@ -21970,6 +22012,9 @@ public class ModelRouterQueryCostModelDetailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -22002,6 +22047,9 @@ public class ModelRouterQueryCostModelDetailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -22173,6 +22221,8 @@ public class ModelRouterQueryCostModelDetailResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
     public var clientId: Int64?
 
     public var endTime: Int64?
@@ -22203,6 +22253,9 @@ public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -22232,6 +22285,9 @@ public class ModelRouterQueryCostModelListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -22400,6 +22456,8 @@ public class ModelRouterQueryCostModelListResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryCostOverviewMetricsRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
     public var clientId: Int64?
 
     public var endTime: Int64?
@@ -22428,6 +22486,9 @@ public class ModelRouterQueryCostOverviewMetricsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -22454,6 +22515,9 @@ public class ModelRouterQueryCostOverviewMetricsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -22630,6 +22694,8 @@ public class ModelRouterQueryCostOverviewMetricsResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
     public var clientId: Int64?
 
     public var endTime: Int64?
@@ -22658,6 +22724,9 @@ public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
         if self.clientId != nil {
             map["clientId"] = self.clientId!
         }
@@ -22684,6 +22753,9 @@ public class ModelRouterQueryCostTrendMetricsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
         if let value = dict["clientId"] as? Int64 {
             self.clientId = value
         }
@@ -24790,6 +24862,10 @@ public class ModelRouterQueryObservationMetricsResponse : Tea.TeaModel {
 }
 
 public class ModelRouterQueryUsageBreakdownRequest : Tea.TeaModel {
+    public var apiKeyId: Int64?
+
+    public var clientId: Int64?
+
     public var endTime: Int64?
 
     public var granularity: String?
@@ -24818,6 +24894,12 @@ public class ModelRouterQueryUsageBreakdownRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyId != nil {
+            map["apiKeyId"] = self.apiKeyId!
+        }
+        if self.clientId != nil {
+            map["clientId"] = self.clientId!
+        }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
@@ -24844,6 +24926,12 @@ public class ModelRouterQueryUsageBreakdownRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["apiKeyId"] as? Int64 {
+            self.apiKeyId = value
+        }
+        if let value = dict["clientId"] as? Int64 {
+            self.clientId = value
+        }
         if let value = dict["endTime"] as? Int64 {
             self.endTime = value
         }

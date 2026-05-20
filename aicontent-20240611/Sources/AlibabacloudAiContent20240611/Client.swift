@@ -2277,6 +2277,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryBillingCostBreakdownWithOptions(_ request: ModelRouterQueryBillingCostBreakdownRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryBillingCostBreakdownResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
@@ -2613,6 +2616,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryCostModelDetailWithOptions(_ request: ModelRouterQueryCostModelDetailRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostModelDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
@@ -2670,6 +2676,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryCostModelListWithOptions(_ request: ModelRouterQueryCostModelListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostModelListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
@@ -2724,6 +2733,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryCostOverviewMetricsWithOptions(_ request: ModelRouterQueryCostOverviewMetricsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostOverviewMetricsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
@@ -2775,6 +2787,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryCostTrendMetricsWithOptions(_ request: ModelRouterQueryCostTrendMetricsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryCostTrendMetricsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["clientId"] = request.clientId!;
         }
@@ -3219,6 +3234,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modelRouterQueryUsageBreakdownWithOptions(_ request: ModelRouterQueryUsageBreakdownRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelRouterQueryUsageBreakdownResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKeyId)) {
+            query["apiKeyId"] = request.apiKeyId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["clientId"] = request.clientId!;
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["endTime"] = request.endTime!;
         }

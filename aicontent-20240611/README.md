@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAiContent20240611` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/aicontent-20240611" "7.4.2"
+github "alibabacloud-sdk-swift/aicontent-20240611" "7.4.3"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAiContent20240611` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/aicontent-20240611.git", from: "7.4.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/aicontent-20240611.git", from: "7.4.3")
 ]
 ```
 
