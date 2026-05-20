@@ -282,6 +282,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var diskSize: Int?
 
+    public var edition: String?
+
     public var enableSessionIsolation: Bool?
 
     public var environmentVariables: [String: String]?
@@ -379,6 +381,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.edition != nil {
+            map["edition"] = self.edition!
         }
         if self.enableSessionIsolation != nil {
             map["enableSessionIsolation"] = self.enableSessionIsolation!
@@ -484,6 +489,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["diskSize"] as? Int {
             self.diskSize = value
+        }
+        if let value = dict["edition"] as? String {
+            self.edition = value
         }
         if let value = dict["enableSessionIsolation"] as? Bool {
             self.enableSessionIsolation = value
@@ -3882,6 +3890,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var edition: String?
+
     public var enableSessionIsolation: Bool?
 
     public var environmentVariables: [String: String]?
@@ -3968,6 +3978,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.edition != nil {
+            map["edition"] = self.edition!
         }
         if self.enableSessionIsolation != nil {
             map["enableSessionIsolation"] = self.enableSessionIsolation!
@@ -4060,6 +4073,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
+        }
+        if let value = dict["edition"] as? String {
+            self.edition = value
         }
         if let value = dict["enableSessionIsolation"] as? Bool {
             self.enableSessionIsolation = value
@@ -4954,6 +4970,8 @@ public class CreateDomainInput : Tea.TeaModel {
 public class CreateFlowEndpointInput : Tea.TeaModel {
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var flowEndpointName: String?
 
     public var routingConfiguration: [FlowEndpointRoutingConfig]?
@@ -4977,6 +4995,9 @@ public class CreateFlowEndpointInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.flowEndpointName != nil {
             map["flowEndpointName"] = self.flowEndpointName!
         }
@@ -4997,6 +5018,9 @@ public class CreateFlowEndpointInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["flowEndpointName"] as? String {
             self.flowEndpointName = value
@@ -5024,6 +5048,8 @@ public class CreateFlowInput : Tea.TeaModel {
     public var definition: String?
 
     public var description_: String?
+
+    public var disablePublicNetworkAccess: Bool?
 
     public var environmentConfiguration: EnvironmentConfiguration?
 
@@ -5064,6 +5090,9 @@ public class CreateFlowInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.environmentConfiguration != nil {
             map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
         }
@@ -5098,6 +5127,9 @@ public class CreateFlowInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["environmentConfiguration"] as? [String: Any?] {
             var model = EnvironmentConfiguration()
@@ -8630,6 +8662,8 @@ public class Flow : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var environmentConfiguration: EnvironmentConfiguration?
 
     public var executionRoleArn: String?
@@ -8678,6 +8712,9 @@ public class Flow : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.environmentConfiguration != nil {
             map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
         }
@@ -8724,6 +8761,9 @@ public class Flow : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["environmentConfiguration"] as? [String: Any?] {
             var model = EnvironmentConfiguration()
@@ -8772,6 +8812,8 @@ public class FlowEndpoint : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var flowEndpointArn: String?
 
     public var flowEndpointId: String?
@@ -8805,6 +8847,9 @@ public class FlowEndpoint : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
         }
         if self.flowEndpointArn != nil {
             map["flowEndpointArn"] = self.flowEndpointArn!
@@ -8841,6 +8886,9 @@ public class FlowEndpoint : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["flowEndpointArn"] as? String {
             self.flowEndpointArn = value
@@ -16777,6 +16825,10 @@ public class PaginationInfo : Tea.TeaModel {
 public class PathConfig : Tea.TeaModel {
     public var agentRuntimeEndpointName: String?
 
+    public var compatibleProtocol: String?
+
+    public var flowEndpointName: String?
+
     public var methods: [String]?
 
     public var path: String?
@@ -16804,6 +16856,12 @@ public class PathConfig : Tea.TeaModel {
         if self.agentRuntimeEndpointName != nil {
             map["agentRuntimeEndpointName"] = self.agentRuntimeEndpointName!
         }
+        if self.compatibleProtocol != nil {
+            map["compatibleProtocol"] = self.compatibleProtocol!
+        }
+        if self.flowEndpointName != nil {
+            map["flowEndpointName"] = self.flowEndpointName!
+        }
         if self.methods != nil {
             map["methods"] = self.methods!
         }
@@ -16826,6 +16884,12 @@ public class PathConfig : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["agentRuntimeEndpointName"] as? String {
             self.agentRuntimeEndpointName = value
+        }
+        if let value = dict["compatibleProtocol"] as? String {
+            self.compatibleProtocol = value
+        }
+        if let value = dict["flowEndpointName"] as? String {
+            self.flowEndpointName = value
         }
         if let value = dict["methods"] as? [String] {
             self.methods = value
@@ -20476,6 +20540,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var edition: String?
+
     public var enableSessionIsolation: Bool?
 
     public var environmentVariables: [String: String]?
@@ -20557,6 +20623,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.edition != nil {
+            map["edition"] = self.edition!
         }
         if self.enableSessionIsolation != nil {
             map["enableSessionIsolation"] = self.enableSessionIsolation!
@@ -20643,6 +20712,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
+        }
+        if let value = dict["edition"] as? String {
+            self.edition = value
         }
         if let value = dict["enableSessionIsolation"] as? Bool {
             self.enableSessionIsolation = value
@@ -21249,6 +21321,8 @@ public class UpdateFlowDraftInput : Tea.TeaModel {
 public class UpdateFlowEndpointInput : Tea.TeaModel {
     public var description_: String?
 
+    public var disablePublicNetworkAccess: Bool?
+
     public var flowEndpointName: String?
 
     public var routingConfiguration: [FlowEndpointRoutingConfig]?
@@ -21272,6 +21346,9 @@ public class UpdateFlowEndpointInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.flowEndpointName != nil {
             map["flowEndpointName"] = self.flowEndpointName!
         }
@@ -21292,6 +21369,9 @@ public class UpdateFlowEndpointInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["flowEndpointName"] as? String {
             self.flowEndpointName = value
@@ -21319,6 +21399,8 @@ public class UpdateFlowInput : Tea.TeaModel {
     public var definition: String?
 
     public var description_: String?
+
+    public var disablePublicNetworkAccess: Bool?
 
     public var environmentConfiguration: EnvironmentConfiguration?
 
@@ -21359,6 +21441,9 @@ public class UpdateFlowInput : Tea.TeaModel {
         if self.description_ != nil {
             map["description"] = self.description_!
         }
+        if self.disablePublicNetworkAccess != nil {
+            map["disablePublicNetworkAccess"] = self.disablePublicNetworkAccess!
+        }
         if self.environmentConfiguration != nil {
             map["environmentConfiguration"] = self.environmentConfiguration?.toMap()
         }
@@ -21393,6 +21478,9 @@ public class UpdateFlowInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disablePublicNetworkAccess"] as? Bool {
+            self.disablePublicNetworkAccess = value
         }
         if let value = dict["environmentConfiguration"] as? [String: Any?] {
             var model = EnvironmentConfiguration()
