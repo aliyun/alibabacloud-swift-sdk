@@ -1980,6 +1980,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.exportFileType)) {
             body["ExportFileType"] = request.exportFileType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pptArtifactId)) {
             body["PptArtifactId"] = request.pptArtifactId!;
         }
@@ -3578,6 +3581,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.exportTaskId)) {
             body["ExportTaskId"] = request.exportTaskId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -3643,6 +3649,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPptInfoWithOptions(_ request: GetPptInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPptInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["ExternalUserId"] = request.externalUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
         }
