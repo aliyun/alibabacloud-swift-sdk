@@ -33785,7 +33785,11 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
 
             public var m2mApplicationQuota: Int64?
 
+            public var mimApplicationLicenseStatus: String?
+
             public var networkAccessEndpointQuota: Int64?
+
+            public var prepaidActiveUserNumber: Int64?
 
             public var userQuota: Int64?
 
@@ -33812,8 +33816,14 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 if self.m2mApplicationQuota != nil {
                     map["M2mApplicationQuota"] = self.m2mApplicationQuota!
                 }
+                if self.mimApplicationLicenseStatus != nil {
+                    map["MimApplicationLicenseStatus"] = self.mimApplicationLicenseStatus!
+                }
                 if self.networkAccessEndpointQuota != nil {
                     map["NetworkAccessEndpointQuota"] = self.networkAccessEndpointQuota!
+                }
+                if self.prepaidActiveUserNumber != nil {
+                    map["PrepaidActiveUserNumber"] = self.prepaidActiveUserNumber!
                 }
                 if self.userQuota != nil {
                     map["UserQuota"] = self.userQuota!
@@ -33832,8 +33842,14 @@ public class GetInstanceLicenseResponseBody : Tea.TeaModel {
                 if let value = dict["M2mApplicationQuota"] as? Int64 {
                     self.m2mApplicationQuota = value
                 }
+                if let value = dict["MimApplicationLicenseStatus"] as? String {
+                    self.mimApplicationLicenseStatus = value
+                }
                 if let value = dict["NetworkAccessEndpointQuota"] as? Int64 {
                     self.networkAccessEndpointQuota = value
+                }
+                if let value = dict["PrepaidActiveUserNumber"] as? Int64 {
+                    self.prepaidActiveUserNumber = value
                 }
                 if let value = dict["UserQuota"] as? Int64 {
                     self.userQuota = value
