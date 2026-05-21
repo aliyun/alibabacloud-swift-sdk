@@ -68917,6 +68917,406 @@ public class ListPagesResponse : Tea.TeaModel {
     }
 }
 
+public class ListPostpaidRatePlanInstancesRequest : Tea.TeaModel {
+    public var checkRemainingSiteQuota: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sortBy: String?
+
+    public var sortOrder: String?
+
+    public var status: String?
+
+    public var unrelatedType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.checkRemainingSiteQuota != nil {
+            map["CheckRemainingSiteQuota"] = self.checkRemainingSiteQuota!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.unrelatedType != nil {
+            map["UnrelatedType"] = self.unrelatedType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CheckRemainingSiteQuota"] as? String {
+            self.checkRemainingSiteQuota = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["SortOrder"] as? String {
+            self.sortOrder = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UnrelatedType"] as? String {
+            self.unrelatedType = value
+        }
+    }
+}
+
+public class ListPostpaidRatePlanInstancesResponseBody : Tea.TeaModel {
+    public class InstanceInfo : Tea.TeaModel {
+        public class Sites : Tea.TeaModel {
+            public var siteId: Int64?
+
+            public var siteName: String?
+
+            public var siteStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.siteId != nil {
+                    map["SiteId"] = self.siteId!
+                }
+                if self.siteName != nil {
+                    map["SiteName"] = self.siteName!
+                }
+                if self.siteStatus != nil {
+                    map["SiteStatus"] = self.siteStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SiteId"] as? Int64 {
+                    self.siteId = value
+                }
+                if let value = dict["SiteName"] as? String {
+                    self.siteName = value
+                }
+                if let value = dict["SiteStatus"] as? String {
+                    self.siteStatus = value
+                }
+            }
+        }
+        public var billingMethod: String?
+
+        public var billingMode: String?
+
+        public var coverages: String?
+
+        public var createTime: String?
+
+        public var expectedUpdateTime: String?
+
+        public var instanceId: String?
+
+        public var planName: String?
+
+        public var planNameCn: String?
+
+        public var planType: String?
+
+        public var siteQuota: String?
+
+        public var sites: [ListPostpaidRatePlanInstancesResponseBody.InstanceInfo.Sites]?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.billingMethod != nil {
+                map["BillingMethod"] = self.billingMethod!
+            }
+            if self.billingMode != nil {
+                map["BillingMode"] = self.billingMode!
+            }
+            if self.coverages != nil {
+                map["Coverages"] = self.coverages!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.expectedUpdateTime != nil {
+                map["ExpectedUpdateTime"] = self.expectedUpdateTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.planName != nil {
+                map["PlanName"] = self.planName!
+            }
+            if self.planNameCn != nil {
+                map["PlanNameCn"] = self.planNameCn!
+            }
+            if self.planType != nil {
+                map["PlanType"] = self.planType!
+            }
+            if self.siteQuota != nil {
+                map["SiteQuota"] = self.siteQuota!
+            }
+            if self.sites != nil {
+                var tmp : [Any] = []
+                for k in self.sites! {
+                    tmp.append(k.toMap())
+                }
+                map["Sites"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BillingMethod"] as? String {
+                self.billingMethod = value
+            }
+            if let value = dict["BillingMode"] as? String {
+                self.billingMode = value
+            }
+            if let value = dict["Coverages"] as? String {
+                self.coverages = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["ExpectedUpdateTime"] as? String {
+                self.expectedUpdateTime = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["PlanName"] as? String {
+                self.planName = value
+            }
+            if let value = dict["PlanNameCn"] as? String {
+                self.planNameCn = value
+            }
+            if let value = dict["PlanType"] as? String {
+                self.planType = value
+            }
+            if let value = dict["SiteQuota"] as? String {
+                self.siteQuota = value
+            }
+            if let value = dict["Sites"] as? [Any?] {
+                var tmp : [ListPostpaidRatePlanInstancesResponseBody.InstanceInfo.Sites] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPostpaidRatePlanInstancesResponseBody.InstanceInfo.Sites()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sites = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var instanceInfo: [ListPostpaidRatePlanInstancesResponseBody.InstanceInfo]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var totalPage: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceInfo != nil {
+            var tmp : [Any] = []
+            for k in self.instanceInfo! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceInfo"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.totalPage != nil {
+            map["TotalPage"] = self.totalPage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceInfo"] as? [Any?] {
+            var tmp : [ListPostpaidRatePlanInstancesResponseBody.InstanceInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = ListPostpaidRatePlanInstancesResponseBody.InstanceInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.instanceInfo = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+        if let value = dict["TotalPage"] as? Int32 {
+            self.totalPage = value
+        }
+    }
+}
+
+public class ListPostpaidRatePlanInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPostpaidRatePlanInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListPostpaidRatePlanInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListRecordsRequest : Tea.TeaModel {
     public var bizName: String?
 
