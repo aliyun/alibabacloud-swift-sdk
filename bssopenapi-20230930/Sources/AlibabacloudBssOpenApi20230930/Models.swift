@@ -17689,6 +17689,382 @@ public class QueryCostCenterShareRuleResponse : Tea.TeaModel {
     }
 }
 
+public class QueryMonthlySlaListRequest : Tea.TeaModel {
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public var currentPage: Int32?
+
+    public var ecIdAccountIds: [QueryMonthlySlaListRequest.EcIdAccountIds]?
+
+    public var instanceIds: [String]?
+
+    public var months: [Int32]?
+
+    public var nbid: String?
+
+    public var pageSize: Int32?
+
+    public var payStatuses: [Int32]?
+
+    public var productCodes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.months != nil {
+            map["Months"] = self.months!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.payStatuses != nil {
+            map["PayStatuses"] = self.payStatuses!
+        }
+        if self.productCodes != nil {
+            map["ProductCodes"] = self.productCodes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["EcIdAccountIds"] as? [Any?] {
+            var tmp : [QueryMonthlySlaListRequest.EcIdAccountIds] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryMonthlySlaListRequest.EcIdAccountIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["Months"] as? [Int32] {
+            self.months = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["PayStatuses"] as? [Int32] {
+            self.payStatuses = value
+        }
+        if let value = dict["ProductCodes"] as? [String] {
+            self.productCodes = value
+        }
+    }
+}
+
+public class QueryMonthlySlaListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var availableRate: Double?
+
+        public var damagedId: String?
+
+        public var instanceId: String?
+
+        public var month: Int32?
+
+        public var monthlyServiceCharge: Double?
+
+        public var payDescription: String?
+
+        public var payRate: Double?
+
+        public var payStatus: Int32?
+
+        public var productCode: String?
+
+        public var shouldPaySum: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.availableRate != nil {
+                map["AvailableRate"] = self.availableRate!
+            }
+            if self.damagedId != nil {
+                map["DamagedId"] = self.damagedId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.month != nil {
+                map["Month"] = self.month!
+            }
+            if self.monthlyServiceCharge != nil {
+                map["MonthlyServiceCharge"] = self.monthlyServiceCharge!
+            }
+            if self.payDescription != nil {
+                map["PayDescription"] = self.payDescription!
+            }
+            if self.payRate != nil {
+                map["PayRate"] = self.payRate!
+            }
+            if self.payStatus != nil {
+                map["PayStatus"] = self.payStatus!
+            }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
+            if self.shouldPaySum != nil {
+                map["ShouldPaySum"] = self.shouldPaySum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AvailableRate"] as? Double {
+                self.availableRate = value
+            }
+            if let value = dict["DamagedId"] as? String {
+                self.damagedId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Month"] as? Int32 {
+                self.month = value
+            }
+            if let value = dict["MonthlyServiceCharge"] as? Double {
+                self.monthlyServiceCharge = value
+            }
+            if let value = dict["PayDescription"] as? String {
+                self.payDescription = value
+            }
+            if let value = dict["PayRate"] as? Double {
+                self.payRate = value
+            }
+            if let value = dict["PayStatus"] as? Int32 {
+                self.payStatus = value
+            }
+            if let value = dict["ProductCode"] as? String {
+                self.productCode = value
+            }
+            if let value = dict["ShouldPaySum"] as? Double {
+                self.shouldPaySum = value
+            }
+        }
+    }
+    public var currentPage: Int32?
+
+    public var data: [QueryMonthlySlaListResponseBody.Data]?
+
+    public var metadata: Any?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [QueryMonthlySlaListResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryMonthlySlaListResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class QueryMonthlySlaListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryMonthlySlaListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryMonthlySlaListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SaveCostCenterShareRuleRequest : Tea.TeaModel {
     public class CreateShareRuleList : Tea.TeaModel {
         public var fromCostCenterList: [Int64]?
@@ -18649,6 +19025,226 @@ public class SetSavingPlanUserDeductRuleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SetSavingPlanUserDeductRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SubmitSlaCouponApplyRequest : Tea.TeaModel {
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public var damagedIds: [String]?
+
+    public var ecIdAccountIds: [SubmitSlaCouponApplyRequest.EcIdAccountIds]?
+
+    public var month: Int32?
+
+    public var nbid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.damagedIds != nil {
+            map["DamagedIds"] = self.damagedIds!
+        }
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.month != nil {
+            map["Month"] = self.month!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DamagedIds"] as? [String] {
+            self.damagedIds = value
+        }
+        if let value = dict["EcIdAccountIds"] as? [Any?] {
+            var tmp : [SubmitSlaCouponApplyRequest.EcIdAccountIds] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitSlaCouponApplyRequest.EcIdAccountIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if let value = dict["Month"] as? Int32 {
+            self.month = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+    }
+}
+
+public class SubmitSlaCouponApplyResponseBody : Tea.TeaModel {
+    public var metadata: Any?
+
+    public var requestId: String?
+
+    public var sumCoupon: Double?
+
+    public var validEndTime: String?
+
+    public var validStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sumCoupon != nil {
+            map["SumCoupon"] = self.sumCoupon!
+        }
+        if self.validEndTime != nil {
+            map["ValidEndTime"] = self.validEndTime!
+        }
+        if self.validStartTime != nil {
+            map["ValidStartTime"] = self.validStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SumCoupon"] as? Double {
+            self.sumCoupon = value
+        }
+        if let value = dict["ValidEndTime"] as? String {
+            self.validEndTime = value
+        }
+        if let value = dict["ValidStartTime"] as? String {
+            self.validStartTime = value
+        }
+    }
+}
+
+public class SubmitSlaCouponApplyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitSlaCouponApplyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SubmitSlaCouponApplyResponseBody()
             model.fromMap(value)
             self.body = model
         }
