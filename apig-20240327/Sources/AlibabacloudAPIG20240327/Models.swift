@@ -865,7 +865,7 @@ public class AiNetworkSearchConfig : Tea.TeaModel {
 }
 
 public class AiPluginStatus : Tea.TeaModel {
-    public var errorLogs: [String: String]?
+    public var errorLogs: [[String: Any]]?
 
     public var pluginId: String?
 
@@ -899,7 +899,7 @@ public class AiPluginStatus : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["errorLogs"] as? [String: String] {
+        if let value = dict["errorLogs"] as? [[String: Any]] {
             self.errorLogs = value
         }
         if let value = dict["pluginId"] as? String {
@@ -6944,6 +6944,52 @@ public class HttpApiDeployConfig : Tea.TeaModel {
             }
         }
     }
+    public class EnvDomainInfos : Tea.TeaModel {
+        public var domainId: String?
+
+        public var name: String?
+
+        public var protocol_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainId != nil {
+                map["domainId"] = self.domainId!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.protocol_ != nil {
+                map["protocol"] = self.protocol_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["domainId"] as? String {
+                self.domainId = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["protocol"] as? String {
+                self.protocol_ = value
+            }
+        }
+    }
     public class ServiceConfigs : Tea.TeaModel {
         public class ObservabilityRouteConfig : Tea.TeaModel {
             public var mode: String?
@@ -7186,6 +7232,10 @@ public class HttpApiDeployConfig : Tea.TeaModel {
 
     public var customDomainInfos: [HttpApiDeployConfig.CustomDomainInfos]?
 
+    public var envDomainIds: [String]?
+
+    public var envDomainInfos: [HttpApiDeployConfig.EnvDomainInfos]?
+
     public var environmentId: String?
 
     public var gatewayId: String?
@@ -7239,6 +7289,16 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["customDomainInfos"] = tmp
+        }
+        if self.envDomainIds != nil {
+            map["envDomainIds"] = self.envDomainIds!
+        }
+        if self.envDomainInfos != nil {
+            var tmp : [Any] = []
+            for k in self.envDomainInfos! {
+                tmp.append(k.toMap())
+            }
+            map["envDomainInfos"] = tmp
         }
         if self.environmentId != nil {
             map["environmentId"] = self.environmentId!
@@ -7308,6 +7368,22 @@ public class HttpApiDeployConfig : Tea.TeaModel {
                 }
             }
             self.customDomainInfos = tmp
+        }
+        if let value = dict["envDomainIds"] as? [String] {
+            self.envDomainIds = value
+        }
+        if let value = dict["envDomainInfos"] as? [Any?] {
+            var tmp : [HttpApiDeployConfig.EnvDomainInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = HttpApiDeployConfig.EnvDomainInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.envDomainInfos = tmp
         }
         if let value = dict["environmentId"] as? String {
             self.environmentId = value
