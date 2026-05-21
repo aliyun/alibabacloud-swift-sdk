@@ -8882,6 +8882,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizDate)) {
             body["BizDate"] = request.bizDate!;
         }
+        if (!TeaUtils.Client.isUnset(request.envType)) {
+            body["EnvType"] = request.envType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             body["Filter"] = request.filter ?? "";
         }

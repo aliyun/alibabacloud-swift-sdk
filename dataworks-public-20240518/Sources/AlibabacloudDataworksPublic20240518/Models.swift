@@ -81890,6 +81890,8 @@ public class ListWorkflowDefinitionsResponse : Tea.TeaModel {
 public class ListWorkflowInstancesRequest : Tea.TeaModel {
     public var bizDate: Int64?
 
+    public var envType: String?
+
     public var filter: String?
 
     public var ids: [Int64]?
@@ -81930,6 +81932,9 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizDate != nil {
             map["BizDate"] = self.bizDate!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
@@ -81975,6 +81980,9 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         if let value = dict["BizDate"] as? Int64 {
             self.bizDate = value
         }
+        if let value = dict["EnvType"] as? String {
+            self.envType = value
+        }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
@@ -82017,6 +82025,8 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
 public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
     public var bizDate: Int64?
 
+    public var envType: String?
+
     public var filter: String?
 
     public var idsShrink: String?
@@ -82057,6 +82067,9 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizDate != nil {
             map["BizDate"] = self.bizDate!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
@@ -82101,6 +82114,9 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizDate"] as? Int64 {
             self.bizDate = value
+        }
+        if let value = dict["EnvType"] as? String {
+            self.envType = value
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
