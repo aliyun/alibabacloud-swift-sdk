@@ -138,6 +138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.synthesizerConfig)) {
             request.synthesizerConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.synthesizerConfig, "SynthesizerConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.toolConfig)) {
+            request.toolConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.toolConfig, "ToolConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.transcriberConfig)) {
             request.transcriberConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transcriberConfig, "TranscriberConfig", "json")
         }
@@ -162,6 +165,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.synthesizerConfigShrink)) {
             query["SynthesizerConfig"] = request.synthesizerConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toolConfigShrink)) {
+            query["ToolConfig"] = request.toolConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.transcriberConfigShrink)) {
             query["TranscriberConfig"] = request.transcriberConfigShrink ?? "";
@@ -1325,6 +1331,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.synthesizerConfig)) {
             request.synthesizerConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.synthesizerConfig, "SynthesizerConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.toolConfig)) {
+            request.toolConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.toolConfig, "ToolConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.transcriberConfig)) {
             request.transcriberConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transcriberConfig, "TranscriberConfig", "json")
         }
@@ -1346,6 +1355,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.synthesizerConfigShrink)) {
             query["SynthesizerConfig"] = request.synthesizerConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toolConfigShrink)) {
+            query["ToolConfig"] = request.toolConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.transcriberConfigShrink)) {
             query["TranscriberConfig"] = request.transcriberConfigShrink ?? "";

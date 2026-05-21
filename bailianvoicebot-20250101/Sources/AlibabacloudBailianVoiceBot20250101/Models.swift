@@ -870,6 +870,96 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
             }
         }
     }
+    public class ToolConfig : Tea.TeaModel {
+        public class McpServers : Tea.TeaModel {
+            public var baseUrl: String?
+
+            public var name: String?
+
+            public var sseEndpoint: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.baseUrl != nil {
+                    map["BaseUrl"] = self.baseUrl!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.sseEndpoint != nil {
+                    map["SseEndpoint"] = self.sseEndpoint!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BaseUrl"] as? String {
+                    self.baseUrl = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["SseEndpoint"] as? String {
+                    self.sseEndpoint = value
+                }
+            }
+        }
+        public var mcpServers: [CreateApplicationVersionRequest.ToolConfig.McpServers]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mcpServers != nil {
+                var tmp : [Any] = []
+                for k in self.mcpServers! {
+                    tmp.append(k.toMap())
+                }
+                map["McpServers"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["McpServers"] as? [Any?] {
+                var tmp : [CreateApplicationVersionRequest.ToolConfig.McpServers] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateApplicationVersionRequest.ToolConfig.McpServers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mcpServers = tmp
+            }
+        }
+    }
     public class TranscriberConfig : Tea.TeaModel {
         public class CorrectionRules : Tea.TeaModel {
             public var pattern: String?
@@ -1063,6 +1153,8 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
 
     public var synthesizerConfig: CreateApplicationVersionRequest.SynthesizerConfig?
 
+    public var toolConfig: CreateApplicationVersionRequest.ToolConfig?
+
     public var transcriberConfig: CreateApplicationVersionRequest.TranscriberConfig?
 
     public override init() {
@@ -1079,6 +1171,7 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         try self.ragConfig?.validate()
         try self.scriptProfile?.validate()
         try self.synthesizerConfig?.validate()
+        try self.toolConfig?.validate()
         try self.transcriberConfig?.validate()
     }
 
@@ -1104,6 +1197,9 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
         }
         if self.synthesizerConfig != nil {
             map["SynthesizerConfig"] = self.synthesizerConfig?.toMap()
+        }
+        if self.toolConfig != nil {
+            map["ToolConfig"] = self.toolConfig?.toMap()
         }
         if self.transcriberConfig != nil {
             map["TranscriberConfig"] = self.transcriberConfig?.toMap()
@@ -1142,6 +1238,11 @@ public class CreateApplicationVersionRequest : Tea.TeaModel {
             model.fromMap(value)
             self.synthesizerConfig = model
         }
+        if let value = dict["ToolConfig"] as? [String: Any?] {
+            var model = CreateApplicationVersionRequest.ToolConfig()
+            model.fromMap(value)
+            self.toolConfig = model
+        }
         if let value = dict["TranscriberConfig"] as? [String: Any?] {
             var model = CreateApplicationVersionRequest.TranscriberConfig()
             model.fromMap(value)
@@ -1164,6 +1265,8 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
     public var sourceVersionId: String?
 
     public var synthesizerConfigShrink: String?
+
+    public var toolConfigShrink: String?
 
     public var transcriberConfigShrink: String?
 
@@ -1202,6 +1305,9 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
         if self.synthesizerConfigShrink != nil {
             map["SynthesizerConfig"] = self.synthesizerConfigShrink!
         }
+        if self.toolConfigShrink != nil {
+            map["ToolConfig"] = self.toolConfigShrink!
+        }
         if self.transcriberConfigShrink != nil {
             map["TranscriberConfig"] = self.transcriberConfigShrink!
         }
@@ -1230,6 +1336,9 @@ public class CreateApplicationVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SynthesizerConfig"] as? String {
             self.synthesizerConfigShrink = value
+        }
+        if let value = dict["ToolConfig"] as? String {
+            self.toolConfigShrink = value
         }
         if let value = dict["TranscriberConfig"] as? String {
             self.transcriberConfigShrink = value
@@ -4135,6 +4244,96 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ToolConfig : Tea.TeaModel {
+                public class McpServers : Tea.TeaModel {
+                    public var baseUrl: String?
+
+                    public var name: String?
+
+                    public var sseEndpoint: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baseUrl != nil {
+                            map["BaseUrl"] = self.baseUrl!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.sseEndpoint != nil {
+                            map["SseEndpoint"] = self.sseEndpoint!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["BaseUrl"] as? String {
+                            self.baseUrl = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["SseEndpoint"] as? String {
+                            self.sseEndpoint = value
+                        }
+                    }
+                }
+                public var mcpServers: [GetApplicationResponseBody.Data.DraftVersion.ToolConfig.McpServers]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mcpServers != nil {
+                        var tmp : [Any] = []
+                        for k in self.mcpServers! {
+                            tmp.append(k.toMap())
+                        }
+                        map["McpServers"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["McpServers"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.DraftVersion.ToolConfig.McpServers] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.DraftVersion.ToolConfig.McpServers()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.mcpServers = tmp
+                    }
+                }
+            }
             public class TranscriberConfig : Tea.TeaModel {
                 public class CorrectionRules : Tea.TeaModel {
                     public var pattern: String?
@@ -4322,6 +4521,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
             public var synthesizerConfig: GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig?
 
+            public var toolConfig: GetApplicationResponseBody.Data.DraftVersion.ToolConfig?
+
             public var transcriberConfig: GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig?
 
             public var versionId: String?
@@ -4340,6 +4541,7 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 try self.ragConfig?.validate()
                 try self.scriptProfile?.validate()
                 try self.synthesizerConfig?.validate()
+                try self.toolConfig?.validate()
                 try self.transcriberConfig?.validate()
             }
 
@@ -4356,6 +4558,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
                 if self.synthesizerConfig != nil {
                     map["SynthesizerConfig"] = self.synthesizerConfig?.toMap()
+                }
+                if self.toolConfig != nil {
+                    map["ToolConfig"] = self.toolConfig?.toMap()
                 }
                 if self.transcriberConfig != nil {
                     map["TranscriberConfig"] = self.transcriberConfig?.toMap()
@@ -4387,6 +4592,11 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     var model = GetApplicationResponseBody.Data.DraftVersion.SynthesizerConfig()
                     model.fromMap(value)
                     self.synthesizerConfig = model
+                }
+                if let value = dict["ToolConfig"] as? [String: Any?] {
+                    var model = GetApplicationResponseBody.Data.DraftVersion.ToolConfig()
+                    model.fromMap(value)
+                    self.toolConfig = model
                 }
                 if let value = dict["TranscriberConfig"] as? [String: Any?] {
                     var model = GetApplicationResponseBody.Data.DraftVersion.TranscriberConfig()
@@ -4814,6 +5024,96 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ToolConfig : Tea.TeaModel {
+                public class McpServers : Tea.TeaModel {
+                    public var baseUrl: String?
+
+                    public var name: String?
+
+                    public var sseEndpoint: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baseUrl != nil {
+                            map["BaseUrl"] = self.baseUrl!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.sseEndpoint != nil {
+                            map["SseEndpoint"] = self.sseEndpoint!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["BaseUrl"] as? String {
+                            self.baseUrl = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["SseEndpoint"] as? String {
+                            self.sseEndpoint = value
+                        }
+                    }
+                }
+                public var mcpServers: [GetApplicationResponseBody.Data.PublishedVersion.ToolConfig.McpServers]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mcpServers != nil {
+                        var tmp : [Any] = []
+                        for k in self.mcpServers! {
+                            tmp.append(k.toMap())
+                        }
+                        map["McpServers"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["McpServers"] as? [Any?] {
+                        var tmp : [GetApplicationResponseBody.Data.PublishedVersion.ToolConfig.McpServers] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetApplicationResponseBody.Data.PublishedVersion.ToolConfig.McpServers()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.mcpServers = tmp
+                    }
+                }
+            }
             public class TranscriberConfig : Tea.TeaModel {
                 public class CorrectionRules : Tea.TeaModel {
                     public var pattern: String?
@@ -5001,6 +5301,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
             public var synthesizerConfig: GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig?
 
+            public var toolConfig: GetApplicationResponseBody.Data.PublishedVersion.ToolConfig?
+
             public var transcriberConfig: GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig?
 
             public var versionId: String?
@@ -5019,6 +5321,7 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 try self.ragConfig?.validate()
                 try self.scriptProfile?.validate()
                 try self.synthesizerConfig?.validate()
+                try self.toolConfig?.validate()
                 try self.transcriberConfig?.validate()
             }
 
@@ -5035,6 +5338,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
                 if self.synthesizerConfig != nil {
                     map["SynthesizerConfig"] = self.synthesizerConfig?.toMap()
+                }
+                if self.toolConfig != nil {
+                    map["ToolConfig"] = self.toolConfig?.toMap()
                 }
                 if self.transcriberConfig != nil {
                     map["TranscriberConfig"] = self.transcriberConfig?.toMap()
@@ -5066,6 +5372,11 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     var model = GetApplicationResponseBody.Data.PublishedVersion.SynthesizerConfig()
                     model.fromMap(value)
                     self.synthesizerConfig = model
+                }
+                if let value = dict["ToolConfig"] as? [String: Any?] {
+                    var model = GetApplicationResponseBody.Data.PublishedVersion.ToolConfig()
+                    model.fromMap(value)
+                    self.toolConfig = model
                 }
                 if let value = dict["TranscriberConfig"] as? [String: Any?] {
                     var model = GetApplicationResponseBody.Data.PublishedVersion.TranscriberConfig()
@@ -10468,6 +10779,96 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
             }
         }
     }
+    public class ToolConfig : Tea.TeaModel {
+        public class McpServers : Tea.TeaModel {
+            public var baseUrl: String?
+
+            public var name: String?
+
+            public var sseEndpoint: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.baseUrl != nil {
+                    map["BaseUrl"] = self.baseUrl!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.sseEndpoint != nil {
+                    map["SseEndpoint"] = self.sseEndpoint!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BaseUrl"] as? String {
+                    self.baseUrl = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["SseEndpoint"] as? String {
+                    self.sseEndpoint = value
+                }
+            }
+        }
+        public var mcpServers: [UpdateApplicationVersionRequest.ToolConfig.McpServers]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mcpServers != nil {
+                var tmp : [Any] = []
+                for k in self.mcpServers! {
+                    tmp.append(k.toMap())
+                }
+                map["McpServers"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["McpServers"] as? [Any?] {
+                var tmp : [UpdateApplicationVersionRequest.ToolConfig.McpServers] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateApplicationVersionRequest.ToolConfig.McpServers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.mcpServers = tmp
+            }
+        }
+    }
     public class TranscriberConfig : Tea.TeaModel {
         public class CorrectionRules : Tea.TeaModel {
             public var pattern: String?
@@ -10659,6 +11060,8 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
 
     public var synthesizerConfig: UpdateApplicationVersionRequest.SynthesizerConfig?
 
+    public var toolConfig: UpdateApplicationVersionRequest.ToolConfig?
+
     public var transcriberConfig: UpdateApplicationVersionRequest.TranscriberConfig?
 
     public var versionId: String?
@@ -10677,6 +11080,7 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         try self.ragConfig?.validate()
         try self.scriptProfile?.validate()
         try self.synthesizerConfig?.validate()
+        try self.toolConfig?.validate()
         try self.transcriberConfig?.validate()
     }
 
@@ -10699,6 +11103,9 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
         }
         if self.synthesizerConfig != nil {
             map["SynthesizerConfig"] = self.synthesizerConfig?.toMap()
+        }
+        if self.toolConfig != nil {
+            map["ToolConfig"] = self.toolConfig?.toMap()
         }
         if self.transcriberConfig != nil {
             map["TranscriberConfig"] = self.transcriberConfig?.toMap()
@@ -10737,6 +11144,11 @@ public class UpdateApplicationVersionRequest : Tea.TeaModel {
             model.fromMap(value)
             self.synthesizerConfig = model
         }
+        if let value = dict["ToolConfig"] as? [String: Any?] {
+            var model = UpdateApplicationVersionRequest.ToolConfig()
+            model.fromMap(value)
+            self.toolConfig = model
+        }
         if let value = dict["TranscriberConfig"] as? [String: Any?] {
             var model = UpdateApplicationVersionRequest.TranscriberConfig()
             model.fromMap(value)
@@ -10760,6 +11172,8 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
     public var scriptProfileShrink: String?
 
     public var synthesizerConfigShrink: String?
+
+    public var toolConfigShrink: String?
 
     public var transcriberConfigShrink: String?
 
@@ -10797,6 +11211,9 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
         if self.synthesizerConfigShrink != nil {
             map["SynthesizerConfig"] = self.synthesizerConfigShrink!
         }
+        if self.toolConfigShrink != nil {
+            map["ToolConfig"] = self.toolConfigShrink!
+        }
         if self.transcriberConfigShrink != nil {
             map["TranscriberConfig"] = self.transcriberConfigShrink!
         }
@@ -10825,6 +11242,9 @@ public class UpdateApplicationVersionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SynthesizerConfig"] as? String {
             self.synthesizerConfigShrink = value
+        }
+        if let value = dict["ToolConfig"] as? String {
+            self.toolConfigShrink = value
         }
         if let value = dict["TranscriberConfig"] as? String {
             self.transcriberConfigShrink = value
