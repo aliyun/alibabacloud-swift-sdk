@@ -66,6 +66,53 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addConnectorWithOptions(_ WorkspaceId: String, _ tmpReq: AddConnectorRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddConnectorResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddConnectorShrinkRequest = AddConnectorShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.fileConnectorConfig)) {
+            request.fileConnectorConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fileConnectorConfig, "FileConnectorConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectorName)) {
+            body["ConnectorName"] = request.connectorName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectorType)) {
+            body["ConnectorType"] = request.connectorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileConnectorConfigShrink)) {
+            body["FileConnectorConfig"] = request.fileConnectorConfigShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddConnector",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/datacenter/connector",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddConnectorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addConnector(_ WorkspaceId: String, _ request: AddConnectorRequest) async throws -> AddConnectorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addConnectorWithOptions(WorkspaceId as! String, request as! AddConnectorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addFileWithOptions(_ WorkspaceId: String, _ tmpReq: AddFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddFileResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddFileShrinkRequest = AddFileShrinkRequest([:])
@@ -1117,6 +1164,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConnectorWithOptions(_ WorkspaceId: String, _ request: GetConnectorRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConnectorResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectorId)) {
+            query["ConnectorId"] = request.connectorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.connectorName)) {
+            query["ConnectorName"] = request.connectorName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetConnector",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/datacenter/connector",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetConnectorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConnector(_ WorkspaceId: String, _ request: GetConnectorRequest) async throws -> GetConnectorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getConnectorWithOptions(WorkspaceId as! String, request as! GetConnectorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getIndexJobStatusWithOptions(_ WorkspaceId: String, _ request: GetIndexJobStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIndexJobStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1400,6 +1483,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryType)) {
             body["CategoryType"] = request.categoryType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connectorId)) {
+            body["ConnectorId"] = request.connectorId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
@@ -1484,11 +1570,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listFileWithOptions(_ WorkspaceId: String, _ request: ListFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFileResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listFileWithOptions(_ WorkspaceId: String, _ tmpReq: ListFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFileResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListFileShrinkRequest = ListFileShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.fileIds)) {
+            request.fileIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fileIds, "FileIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             query["CategoryId"] = request.categoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileIdsShrink)) {
+            query["FileIds"] = request.fileIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";

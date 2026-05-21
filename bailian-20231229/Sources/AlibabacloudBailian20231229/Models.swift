@@ -222,6 +222,319 @@ public class AddCategoryResponse : Tea.TeaModel {
     }
 }
 
+public class AddConnectorRequest : Tea.TeaModel {
+    public class FileConnectorConfig : Tea.TeaModel {
+        public var bucketName: String?
+
+        public var regionId: String?
+
+        public var storageType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucketName != nil {
+                map["BucketName"] = self.bucketName!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BucketName"] as? String {
+                self.bucketName = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["StorageType"] as? String {
+                self.storageType = value
+            }
+        }
+    }
+    public var connectorName: String?
+
+    public var connectorType: String?
+
+    public var description_: String?
+
+    public var fileConnectorConfig: AddConnectorRequest.FileConnectorConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.fileConnectorConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.connectorName != nil {
+            map["ConnectorName"] = self.connectorName!
+        }
+        if self.connectorType != nil {
+            map["ConnectorType"] = self.connectorType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.fileConnectorConfig != nil {
+            map["FileConnectorConfig"] = self.fileConnectorConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConnectorName"] as? String {
+            self.connectorName = value
+        }
+        if let value = dict["ConnectorType"] as? String {
+            self.connectorType = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["FileConnectorConfig"] as? [String: Any?] {
+            var model = AddConnectorRequest.FileConnectorConfig()
+            model.fromMap(value)
+            self.fileConnectorConfig = model
+        }
+    }
+}
+
+public class AddConnectorShrinkRequest : Tea.TeaModel {
+    public var connectorName: String?
+
+    public var connectorType: String?
+
+    public var description_: String?
+
+    public var fileConnectorConfigShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.connectorName != nil {
+            map["ConnectorName"] = self.connectorName!
+        }
+        if self.connectorType != nil {
+            map["ConnectorType"] = self.connectorType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.fileConnectorConfigShrink != nil {
+            map["FileConnectorConfig"] = self.fileConnectorConfigShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConnectorName"] as? String {
+            self.connectorName = value
+        }
+        if let value = dict["ConnectorType"] as? String {
+            self.connectorType = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["FileConnectorConfig"] as? String {
+            self.fileConnectorConfigShrink = value
+        }
+    }
+}
+
+public class AddConnectorResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var connectorId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectorId != nil {
+                map["ConnectorId"] = self.connectorId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectorId"] as? String {
+                self.connectorId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: AddConnectorResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = AddConnectorResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddConnectorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddConnectorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddConnectorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddFileRequest : Tea.TeaModel {
     public class ParserConfig : Tea.TeaModel {
         public var modelName: String?
@@ -6870,6 +7183,223 @@ public class GetAvailableParserTypesResponse : Tea.TeaModel {
     }
 }
 
+public class GetConnectorRequest : Tea.TeaModel {
+    public var connectorId: String?
+
+    public var connectorName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.connectorId != nil {
+            map["ConnectorId"] = self.connectorId!
+        }
+        if self.connectorName != nil {
+            map["ConnectorName"] = self.connectorName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConnectorId"] as? String {
+            self.connectorId = value
+        }
+        if let value = dict["ConnectorName"] as? String {
+            self.connectorName = value
+        }
+    }
+}
+
+public class GetConnectorResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var connectorId: String?
+
+        public var connectorName: String?
+
+        public var connectorType: String?
+
+        public var description_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectorId != nil {
+                map["ConnectorId"] = self.connectorId!
+            }
+            if self.connectorName != nil {
+                map["ConnectorName"] = self.connectorName!
+            }
+            if self.connectorType != nil {
+                map["ConnectorType"] = self.connectorType!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectorId"] as? String {
+                self.connectorId = value
+            }
+            if let value = dict["ConnectorName"] as? String {
+                self.connectorName = value
+            }
+            if let value = dict["ConnectorType"] as? String {
+                self.connectorType = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetConnectorResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetConnectorResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetConnectorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetConnectorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetConnectorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetIndexJobStatusRequest : Tea.TeaModel {
     public var indexId: String?
 
@@ -8816,6 +9346,8 @@ public class ListCategoryRequest : Tea.TeaModel {
 
     public var categoryType: String?
 
+    public var connectorId: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -8842,6 +9374,9 @@ public class ListCategoryRequest : Tea.TeaModel {
         if self.categoryType != nil {
             map["CategoryType"] = self.categoryType!
         }
+        if self.connectorId != nil {
+            map["ConnectorId"] = self.connectorId!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -8861,6 +9396,9 @@ public class ListCategoryRequest : Tea.TeaModel {
         }
         if let value = dict["CategoryType"] as? String {
             self.categoryType = value
+        }
+        if let value = dict["ConnectorId"] as? String {
+            self.connectorId = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -9432,6 +9970,8 @@ public class ListChunksResponse : Tea.TeaModel {
 public class ListFileRequest : Tea.TeaModel {
     public var categoryId: String?
 
+    public var fileIds: [String]?
+
     public var fileName: String?
 
     public var maxResults: Int32?
@@ -9455,6 +9995,9 @@ public class ListFileRequest : Tea.TeaModel {
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
+        if self.fileIds != nil {
+            map["FileIds"] = self.fileIds!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -9471,6 +10014,72 @@ public class ListFileRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CategoryId"] as? String {
             self.categoryId = value
+        }
+        if let value = dict["FileIds"] as? [String] {
+            self.fileIds = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListFileShrinkRequest : Tea.TeaModel {
+    public var categoryId: String?
+
+    public var fileIdsShrink: String?
+
+    public var fileName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.fileIdsShrink != nil {
+            map["FileIds"] = self.fileIdsShrink!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CategoryId"] as? String {
+            self.categoryId = value
+        }
+        if let value = dict["FileIds"] as? String {
+            self.fileIdsShrink = value
         }
         if let value = dict["FileName"] as? String {
             self.fileName = value
