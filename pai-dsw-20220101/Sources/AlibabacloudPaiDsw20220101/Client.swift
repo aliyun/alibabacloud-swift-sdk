@@ -750,6 +750,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxEventsNum)) {
             query["MaxEventsNum"] = request.maxEventsNum!;
         }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reverse)) {
+            query["Reverse"] = request.reverse!;
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }

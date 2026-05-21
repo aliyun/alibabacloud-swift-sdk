@@ -6133,6 +6133,10 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
 
     public var maxEventsNum: Int32?
 
+    public var offset: Int32?
+
+    public var reverse: Bool?
+
     public var startTime: String?
 
     public var token: String?
@@ -6160,6 +6164,12 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         if self.maxEventsNum != nil {
             map["MaxEventsNum"] = self.maxEventsNum!
         }
+        if self.offset != nil {
+            map["Offset"] = self.offset!
+        }
+        if self.reverse != nil {
+            map["Reverse"] = self.reverse!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -6179,6 +6189,12 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         }
         if let value = dict["MaxEventsNum"] as? Int32 {
             self.maxEventsNum = value
+        }
+        if let value = dict["Offset"] as? Int32 {
+            self.offset = value
+        }
+        if let value = dict["Reverse"] as? Bool {
+            self.reverse = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -6203,6 +6219,8 @@ public class GetInstanceEventsResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var success: Bool?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -6239,6 +6257,9 @@ public class GetInstanceEventsResponseBody : Tea.TeaModel {
         if self.success != nil {
             map["Success"] = self.success!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -6264,6 +6285,9 @@ public class GetInstanceEventsResponseBody : Tea.TeaModel {
         }
         if let value = dict["Success"] as? Bool {
             self.success = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
