@@ -24,6 +24,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openDatasetImportDataWithOptions(_ request: OpenDatasetImportDataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OpenDatasetImportDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.records)) {
+            body["records"] = request.records ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OpenDatasetImportData",
+            "version": "2026-04-24",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/dataset/open/upsert",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OpenDatasetImportDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openDatasetImportData(_ request: OpenDatasetImportDataRequest) async throws -> OpenDatasetImportDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await openDatasetImportDataWithOptions(request as! OpenDatasetImportDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openDatasetResourceUrlWithOptions(_ request: OpenDatasetResourceUrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OpenDatasetResourceUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.datasetId)) {
+            body["datasetId"] = request.datasetId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.primaryKey)) {
+            body["primaryKey"] = request.primaryKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OpenDatasetResourceUrl",
+            "version": "2026-04-24",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/dataset/open/resources",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OpenDatasetResourceUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openDatasetResourceUrl(_ request: OpenDatasetResourceUrlRequest) async throws -> OpenDatasetResourceUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await openDatasetResourceUrlWithOptions(request as! OpenDatasetResourceUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func webSearchWithOptions(_ request: WebSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> WebSearchResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -44,6 +116,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchType)) {
+            body["searchType"] = request.searchType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             body["startTime"] = request.startTime ?? "";
