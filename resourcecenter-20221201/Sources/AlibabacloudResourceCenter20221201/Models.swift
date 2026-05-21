@@ -6734,6 +6734,44 @@ public class ListMultiAccountResourceGroupsRequest : Tea.TeaModel {
 
 public class ListMultiAccountResourceGroupsResponseBody : Tea.TeaModel {
     public class ResourceGroups : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var accountId: String?
 
         public var createDate: String?
@@ -6745,6 +6783,8 @@ public class ListMultiAccountResourceGroupsResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var status: String?
+
+        public var tags: [ListMultiAccountResourceGroupsResponseBody.ResourceGroups.Tags]?
 
         public override init() {
             super.init()
@@ -6778,6 +6818,13 @@ public class ListMultiAccountResourceGroupsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -6800,6 +6847,19 @@ public class ListMultiAccountResourceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [ListMultiAccountResourceGroupsResponseBody.ResourceGroups.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListMultiAccountResourceGroupsResponseBody.ResourceGroups.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
         }
     }
