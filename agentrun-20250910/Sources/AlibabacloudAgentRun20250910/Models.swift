@@ -280,6 +280,8 @@ public class AgentRuntime : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableSessionAffinity: Bool?
+
     public var diskSize: Int?
 
     public var edition: String?
@@ -378,6 +380,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableSessionAffinity != nil {
+            map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
@@ -486,6 +491,9 @@ public class AgentRuntime : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disableSessionAffinity"] as? Bool {
+            self.disableSessionAffinity = value
         }
         if let value = dict["diskSize"] as? Int {
             self.diskSize = value
@@ -3888,6 +3896,8 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableSessionAffinity: Bool?
+
     public var diskSize: Int32?
 
     public var edition: String?
@@ -3975,6 +3985,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableSessionAffinity != nil {
+            map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
@@ -4070,6 +4083,9 @@ public class CreateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disableSessionAffinity"] as? Bool {
+            self.disableSessionAffinity = value
         }
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
@@ -20538,6 +20554,8 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableSessionAffinity: Bool?
+
     public var diskSize: Int32?
 
     public var edition: String?
@@ -20620,6 +20638,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableSessionAffinity != nil {
+            map["disableSessionAffinity"] = self.disableSessionAffinity!
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
@@ -20709,6 +20730,9 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disableSessionAffinity"] as? Bool {
+            self.disableSessionAffinity = value
         }
         if let value = dict["diskSize"] as? Int32 {
             self.diskSize = value
