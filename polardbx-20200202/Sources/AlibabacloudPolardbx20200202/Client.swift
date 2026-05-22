@@ -1605,6 +1605,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
             query["DBInstanceName"] = request.DBInstanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceClusterName)) {
+            query["InstanceClusterName"] = request.instanceClusterName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
