@@ -8249,11 +8249,21 @@ public class GetMessagesResponseBody : Tea.TeaModel {
 
         public var feedback: String?
 
+        public var generationFinishedAt: String?
+
+        public var generationStartedAt: String?
+
+        public var generationStatus: String?
+
         public var id: String?
+
+        public var lastSentEntryId: String?
 
         public var query: String?
 
         public var retrieverResources: [Any]?
+
+        public var streamKey: String?
 
         public override init() {
             super.init()
@@ -8288,14 +8298,29 @@ public class GetMessagesResponseBody : Tea.TeaModel {
             if self.feedback != nil {
                 map["Feedback"] = self.feedback!
             }
+            if self.generationFinishedAt != nil {
+                map["GenerationFinishedAt"] = self.generationFinishedAt!
+            }
+            if self.generationStartedAt != nil {
+                map["GenerationStartedAt"] = self.generationStartedAt!
+            }
+            if self.generationStatus != nil {
+                map["GenerationStatus"] = self.generationStatus!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
+            }
+            if self.lastSentEntryId != nil {
+                map["LastSentEntryId"] = self.lastSentEntryId!
             }
             if self.query != nil {
                 map["Query"] = self.query!
             }
             if self.retrieverResources != nil {
                 map["RetrieverResources"] = self.retrieverResources!
+            }
+            if self.streamKey != nil {
+                map["StreamKey"] = self.streamKey!
             }
             return map
         }
@@ -8327,14 +8352,29 @@ public class GetMessagesResponseBody : Tea.TeaModel {
             if let value = dict["Feedback"] as? String {
                 self.feedback = value
             }
+            if let value = dict["GenerationFinishedAt"] as? String {
+                self.generationFinishedAt = value
+            }
+            if let value = dict["GenerationStartedAt"] as? String {
+                self.generationStartedAt = value
+            }
+            if let value = dict["GenerationStatus"] as? String {
+                self.generationStatus = value
+            }
             if let value = dict["Id"] as? String {
                 self.id = value
+            }
+            if let value = dict["LastSentEntryId"] as? String {
+                self.lastSentEntryId = value
             }
             if let value = dict["Query"] as? String {
                 self.query = value
             }
             if let value = dict["RetrieverResources"] as? [Any] {
                 self.retrieverResources = value
+            }
+            if let value = dict["StreamKey"] as? String {
+                self.streamKey = value
             }
         }
     }
