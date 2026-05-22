@@ -578,6 +578,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardAsyncWithOptions(_ request: MultiModalGuardAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultiModalGuardAsyncResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.service)) {
+            body["Service"] = request.service ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            body["ServiceParameters"] = request.serviceParameters ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MultiModalGuardAsync",
+            "version": "2022-03-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MultiModalGuardAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardAsync(_ request: MultiModalGuardAsyncRequest) async throws -> MultiModalGuardAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await multiModalGuardAsyncWithOptions(request as! MultiModalGuardAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardAsyncResultWithOptions(_ request: MultiModalGuardAsyncResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultiModalGuardAsyncResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.service)) {
+            body["Service"] = request.service ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            body["ServiceParameters"] = request.serviceParameters ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MultiModalGuardAsyncResult",
+            "version": "2022-03-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MultiModalGuardAsyncResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func multiModalGuardAsyncResult(_ request: MultiModalGuardAsyncResultRequest) async throws -> MultiModalGuardAsyncResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await multiModalGuardAsyncResultWithOptions(request as! MultiModalGuardAsyncResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func multiModalGuardForBase64WithOptions(_ request: MultiModalGuardForBase64Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> MultiModalGuardForBase64Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
