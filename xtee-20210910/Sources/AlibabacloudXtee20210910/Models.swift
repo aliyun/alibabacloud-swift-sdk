@@ -40194,6 +40194,8 @@ public class DescribeRequestHitResponseBody : Tea.TeaModel {
 
             public var ruleStatus: String?
 
+            public var ruleType: String?
+
             public override init() {
                 super.init()
             }
@@ -40232,6 +40234,9 @@ public class DescribeRequestHitResponseBody : Tea.TeaModel {
                 if self.ruleStatus != nil {
                     map["ruleStatus"] = self.ruleStatus!
                 }
+                if self.ruleType != nil {
+                    map["ruleType"] = self.ruleType!
+                }
                 return map
             }
 
@@ -40260,6 +40265,9 @@ public class DescribeRequestHitResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ruleStatus"] as? String {
                     self.ruleStatus = value
+                }
+                if let value = dict["ruleType"] as? String {
+                    self.ruleType = value
                 }
             }
         }
