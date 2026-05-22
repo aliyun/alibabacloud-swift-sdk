@@ -8787,6 +8787,44 @@ public class GetServiceInstanceRequest : Tea.TeaModel {
 }
 
 public class GetServiceInstanceResponseBody : Tea.TeaModel {
+    public class GrantedPermission : Tea.TeaModel {
+        public var operationEndTime: String?
+
+        public var policyNames: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.operationEndTime != nil {
+                map["OperationEndTime"] = self.operationEndTime!
+            }
+            if self.policyNames != nil {
+                map["PolicyNames"] = self.policyNames!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OperationEndTime"] as? String {
+                self.operationEndTime = value
+            }
+            if let value = dict["PolicyNames"] as? String {
+                self.policyNames = value
+            }
+        }
+    }
     public class NetworkConfig : Tea.TeaModel {
         public class PrivateVpcConnections : Tea.TeaModel {
             public class ConnectionConfigs : Tea.TeaModel {
@@ -9373,6 +9411,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
 
     public var grafanaDashBoardUrl: String?
 
+    public var grantedPermission: GetServiceInstanceResponseBody.GrantedPermission?
+
     public var isOperated: Bool?
 
     public var licenseMetadata: String?
@@ -9394,6 +9434,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
     public var parameters: String?
 
     public var payType: String?
+
+    public var policyNames: String?
 
     public var predefinedParameterName: String?
 
@@ -9439,6 +9481,7 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.grantedPermission?.validate()
         try self.networkConfig?.validate()
         try self.service?.validate()
     }
@@ -9462,6 +9505,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if self.grafanaDashBoardUrl != nil {
             map["GrafanaDashBoardUrl"] = self.grafanaDashBoardUrl!
+        }
+        if self.grantedPermission != nil {
+            map["GrantedPermission"] = self.grantedPermission?.toMap()
         }
         if self.isOperated != nil {
             map["IsOperated"] = self.isOperated!
@@ -9495,6 +9541,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
+        }
+        if self.policyNames != nil {
+            map["PolicyNames"] = self.policyNames!
         }
         if self.predefinedParameterName != nil {
             map["PredefinedParameterName"] = self.predefinedParameterName!
@@ -9574,6 +9623,11 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         if let value = dict["GrafanaDashBoardUrl"] as? String {
             self.grafanaDashBoardUrl = value
         }
+        if let value = dict["GrantedPermission"] as? [String: Any?] {
+            var model = GetServiceInstanceResponseBody.GrantedPermission()
+            model.fromMap(value)
+            self.grantedPermission = model
+        }
         if let value = dict["IsOperated"] as? Bool {
             self.isOperated = value
         }
@@ -9608,6 +9662,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
+        }
+        if let value = dict["PolicyNames"] as? String {
+            self.policyNames = value
         }
         if let value = dict["PredefinedParameterName"] as? String {
             self.predefinedParameterName = value
@@ -17083,6 +17140,44 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
 
 public class ListServiceInstancesResponseBody : Tea.TeaModel {
     public class ServiceInstances : Tea.TeaModel {
+        public class GrantedPermission : Tea.TeaModel {
+            public var operationEndTime: String?
+
+            public var policyNames: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.operationEndTime != nil {
+                    map["OperationEndTime"] = self.operationEndTime!
+                }
+                if self.policyNames != nil {
+                    map["PolicyNames"] = self.policyNames!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["OperationEndTime"] as? String {
+                    self.operationEndTime = value
+                }
+                if let value = dict["PolicyNames"] as? String {
+                    self.policyNames = value
+                }
+            }
+        }
         public class Service : Tea.TeaModel {
             public class ServiceInfos : Tea.TeaModel {
                 public var image: String?
@@ -17323,6 +17418,8 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var grantedPermission: ListServiceInstancesResponseBody.ServiceInstances.GrantedPermission?
+
         public var isOperated: Bool?
 
         public var name: String?
@@ -17336,6 +17433,8 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
         public var parameters: String?
 
         public var payType: String?
+
+        public var policyNames: String?
 
         public var progress: Int64?
 
@@ -17371,6 +17470,7 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.grantedPermission?.validate()
             try self.service?.validate()
         }
 
@@ -17387,6 +17487,9 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.grantedPermission != nil {
+                map["GrantedPermission"] = self.grantedPermission?.toMap()
             }
             if self.isOperated != nil {
                 map["IsOperated"] = self.isOperated!
@@ -17408,6 +17511,9 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             }
             if self.payType != nil {
                 map["PayType"] = self.payType!
+            }
+            if self.policyNames != nil {
+                map["PolicyNames"] = self.policyNames!
             }
             if self.progress != nil {
                 map["Progress"] = self.progress!
@@ -17466,6 +17572,11 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
             }
+            if let value = dict["GrantedPermission"] as? [String: Any?] {
+                var model = ListServiceInstancesResponseBody.ServiceInstances.GrantedPermission()
+                model.fromMap(value)
+                self.grantedPermission = model
+            }
             if let value = dict["IsOperated"] as? Bool {
                 self.isOperated = value
             }
@@ -17486,6 +17597,9 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PayType"] as? String {
                 self.payType = value
+            }
+            if let value = dict["PolicyNames"] as? String {
+                self.policyNames = value
             }
             if let value = dict["Progress"] as? Int64 {
                 self.progress = value
@@ -19168,6 +19282,8 @@ public class ListServiceUsagesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var regionId: String?
+
     public var supplierRole: String?
 
     public override init() {
@@ -19197,6 +19313,9 @@ public class ListServiceUsagesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.supplierRole != nil {
             map["SupplierRole"] = self.supplierRole!
         }
@@ -19223,6 +19342,9 @@ public class ListServiceUsagesRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
         if let value = dict["SupplierRole"] as? String {
             self.supplierRole = value
@@ -21833,6 +21955,8 @@ public class RejectServiceUsageRequest : Tea.TeaModel {
 
     public var comments: String?
 
+    public var regionId: String?
+
     public var serviceId: String?
 
     public var type: Int32?
@@ -21859,6 +21983,9 @@ public class RejectServiceUsageRequest : Tea.TeaModel {
         if self.comments != nil {
             map["Comments"] = self.comments!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
@@ -21878,6 +22005,9 @@ public class RejectServiceUsageRequest : Tea.TeaModel {
         }
         if let value = dict["Comments"] as? String {
             self.comments = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
@@ -24465,6 +24595,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var duration: Int64?
 
+    public var isDefault: Bool?
+
     public var isSupportOperated: Bool?
 
     public var licenseMetadata: String?
@@ -24547,6 +24679,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
         }
         if self.isSupportOperated != nil {
             map["IsSupportOperated"] = self.isSupportOperated!
@@ -24648,6 +24783,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if let value = dict["Duration"] as? Int64 {
             self.duration = value
+        }
+        if let value = dict["IsDefault"] as? Bool {
+            self.isDefault = value
         }
         if let value = dict["IsSupportOperated"] as? Bool {
             self.isSupportOperated = value
@@ -24977,6 +25115,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 
     public var duration: Int64?
 
+    public var isDefault: Bool?
+
     public var isSupportOperated: Bool?
 
     public var licenseMetadata: String?
@@ -25056,6 +25196,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
         }
         if self.isSupportOperated != nil {
             map["IsSupportOperated"] = self.isSupportOperated!
@@ -25153,6 +25296,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Duration"] as? Int64 {
             self.duration = value
+        }
+        if let value = dict["IsDefault"] as? Bool {
+            self.isDefault = value
         }
         if let value = dict["IsSupportOperated"] as? Bool {
             self.isSupportOperated = value
