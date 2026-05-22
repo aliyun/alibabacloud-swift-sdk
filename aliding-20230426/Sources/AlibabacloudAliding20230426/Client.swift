@@ -9664,6 +9664,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUserIdByOpenDingtalkIdWithOptions(_ tmpReq: GetUserIdByOpenDingtalkIdRequest, _ tmpHeader: GetUserIdByOpenDingtalkIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserIdByOpenDingtalkIdResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetUserIdByOpenDingtalkIdShrinkRequest = GetUserIdByOpenDingtalkIdShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetUserIdByOpenDingtalkIdShrinkHeaders = GetUserIdByOpenDingtalkIdShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openDingtalkId)) {
+            body["openDingtalkId"] = request.openDingtalkId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetUserIdByOpenDingtalkId",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/im/getUserIdByOpenDingtalkId",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUserIdByOpenDingtalkIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUserIdByOpenDingtalkId(_ request: GetUserIdByOpenDingtalkIdRequest) async throws -> GetUserIdByOpenDingtalkIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetUserIdByOpenDingtalkIdHeaders = GetUserIdByOpenDingtalkIdHeaders([:])
+        return try await getUserIdByOpenDingtalkIdWithOptions(request as! GetUserIdByOpenDingtalkIdRequest, headers as! GetUserIdByOpenDingtalkIdHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getUserIdByOrgIdAndStaffIdWithOptions(_ tmpReq: GetUserIdByOrgIdAndStaffIdRequest, _ tmpHeader: GetUserIdByOrgIdAndStaffIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUserIdByOrgIdAndStaffIdResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetUserIdByOrgIdAndStaffIdShrinkRequest = GetUserIdByOrgIdAndStaffIdShrinkRequest([:])
