@@ -3267,7 +3267,11 @@ public class ApiRouteConflictInfo : Tea.TeaModel {
 }
 
 public class Attachment : Tea.TeaModel {
+    public var attachResourceId: String?
+
     public var attachResourceIds: [String]?
+
+    public var attachResourceParentIds: [String]?
 
     public var attachResourceType: String?
 
@@ -3291,8 +3295,14 @@ public class Attachment : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attachResourceId != nil {
+            map["attachResourceId"] = self.attachResourceId!
+        }
         if self.attachResourceIds != nil {
             map["attachResourceIds"] = self.attachResourceIds!
+        }
+        if self.attachResourceParentIds != nil {
+            map["attachResourceParentIds"] = self.attachResourceParentIds!
         }
         if self.attachResourceType != nil {
             map["attachResourceType"] = self.attachResourceType!
@@ -3311,8 +3321,14 @@ public class Attachment : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attachResourceId"] as? String {
+            self.attachResourceId = value
+        }
         if let value = dict["attachResourceIds"] as? [String] {
             self.attachResourceIds = value
+        }
+        if let value = dict["attachResourceParentIds"] as? [String] {
+            self.attachResourceParentIds = value
         }
         if let value = dict["attachResourceType"] as? String {
             self.attachResourceType = value
